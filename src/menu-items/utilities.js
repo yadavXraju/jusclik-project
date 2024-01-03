@@ -25,6 +25,14 @@ const utilities = {
       breadcrumbs: false
     },
     {
+      id: 'util-timetable',
+      title: 'Timetable',
+      type: 'item',
+      url: '/utils/util-timetable',
+      icon: icons.IconTypography,
+      breadcrumbs: false
+    },
+    {
       id: 'util-color',
       title: 'Color',
       type: 'item',
