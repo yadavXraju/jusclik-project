@@ -18,7 +18,10 @@ import {
 } from '@mui/material';
 import { IconSettings } from '@tabler/icons';
 
+// <<<<<<< HEAD
+// =======
 
+// >>>>>>> bb9075973686836a3daf0e8b4bf26e4d1372478c
 // third-party
 import PerfectScrollbar from 'react-perfect-scrollbar';
 
