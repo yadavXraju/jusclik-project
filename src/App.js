@@ -12,6 +12,8 @@ import themes from 'themes';
 
 // project imports
 import NavigationScroll from 'layout/NavigationScroll';
+
+import EllipsisList from './views/utilities/Communication';
 // ==============================|| APP ||============================== //
 
 const App = () => {
@@ -26,6 +28,7 @@ const App = () => {
         </NavigationScroll>
     {/* <Attendance /> */}
       </ThemeProvider>
+      <EllipsisList />
     </StyledEngineProvider>
     </>
   );
