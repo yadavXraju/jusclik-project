@@ -61,16 +61,16 @@
     "import/no-named-as-default": "off",
     "import/no-extraneous-dependencies": "off",
     "jsx-a11y/no-autofocus": "off",
-    "no-restricted-imports": [
-      "error",
-      {
-        "patterns": ["@mui/*/*/*", "!@mui/material/test-utils/*"]
-      }
-    ],
+    // "no-restricted-imports": [
+    //   "error",
+    //   {
+    //     "patterns": ["@mui/*/*/*", "!@mui/material/test-utils/*"]
+    //   }
+    // ],
     "no-unused-vars": [
       "error",
       {
-        "ignoreRestSiblings": false
+        "ignoreRestSiblings": true
       }
     ],
     "prettier/prettier": [

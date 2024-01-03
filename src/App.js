@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 
 import { ThemeProvider } from '@mui/material/styles';
 import { CssBaseline, StyledEngineProvider } from '@mui/material';
-import Attendance from './components/Attendance';
+// import Attendance from './Attendance.js';
 
 // routing
 import Routes from 'routes';
@@ -30,7 +30,7 @@ const App = () => {
       </ThemeProvider>
       <EllipsisList />
     </StyledEngineProvider>
-    <Attendance />
+    {/* <Attendance /> */}
     </>
   );
 };

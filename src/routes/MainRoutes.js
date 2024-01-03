@@ -17,7 +17,7 @@ const UtilsTablerIcons = Loadable(lazy(() => import('views/utilities/TablerIcons
 // sample page routing
 const SamplePage = Loadable(lazy(() => import('views/sample-page')));
 // components page routing
-const Attendance1 = Loadable(lazy(() => import('views/components/Attendance1')));
+const Attendance = Loadable(lazy(() => import('views/attendance')));
 
 // ==============================|| MAIN ROUTING ||============================== //
 
@@ -86,16 +86,13 @@ const MainRoutes = {
     {
       path: 'sample-page',
       element: <SamplePage />
-    },
-    {
-      path: 'components',
-      children: [
+    }
+    ,
         {
           path: 'attendance',
-          element: <Attendance1 />
+          element: <Attendance />
         }
-      ]
-    }
+    
   ]
 };
 
