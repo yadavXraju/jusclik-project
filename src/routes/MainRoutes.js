@@ -18,8 +18,7 @@ const UtilsTimetable = Loadable(lazy(() => import('views/utilities/Timetable')))
 // sample page routing
 const SamplePage = Loadable(lazy(() => import('views/sample-page')));
 // components page routing
-const Attendance = Loadable(lazy(() => import('views/attendance')));
-
+const Attendance = Loadable(lazy(() => import('views/sidebar-menus/attendance')));
 // ==============================|| MAIN ROUTING ||============================== //
 
 const MainRoutes = {
@@ -101,8 +100,7 @@ const MainRoutes = {
         {
           path: 'attendance',
           element: <Attendance />
-        }
-    
+        },
   ]
 };
 
