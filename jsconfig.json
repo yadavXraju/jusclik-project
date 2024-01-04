@@ -1,9 +1,10 @@
 {
   "compilerOptions": {
+    "jsx": "react",
     "target": "esnext",
     "module": "commonjs",
     "baseUrl": "src"
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "Attendance.js"],
   "exclude": ["node_modules"]
 }

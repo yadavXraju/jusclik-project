@@ -13,9 +13,12 @@ const UtilsColor = Loadable(lazy(() => import('views/utilities/Color')));
 const UtilsShadow = Loadable(lazy(() => import('views/utilities/Shadow')));
 const UtilsMaterialIcons = Loadable(lazy(() => import('views/utilities/MaterialIcons')));
 const UtilsTablerIcons = Loadable(lazy(() => import('views/utilities/TablerIcons')));
+const UtilsTimetable = Loadable(lazy(() => import('views/utilities/Timetable')));
 
 // sample page routing
 const SamplePage = Loadable(lazy(() => import('views/sample-page')));
+// components page routing
+const Attendance = Loadable(lazy(() => import('views/attendance')));
 
 // ==============================|| MAIN ROUTING ||============================== //
 
@@ -42,6 +45,15 @@ const MainRoutes = {
         {
           path: 'util-typography',
           element: <UtilsTypography />
+        }
+      ]
+    },
+    {
+      path: 'utils',
+      children: [
+        {
+          path: 'util-timetable',
+          element: <UtilsTimetable/>
         }
       ]
     },
@@ -85,6 +97,12 @@ const MainRoutes = {
       path: 'sample-page',
       element: <SamplePage />
     }
+    ,
+        {
+          path: 'attendance',
+          element: <Attendance />
+        }
+    
   ]
 };
 
