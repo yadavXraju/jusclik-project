@@ -27,7 +27,7 @@ const TimeTable = Loadable(lazy(() => import('views/sidebar-menus/timetable/')))
 const Performance = Loadable(lazy(() => import('views/sidebar-menus/performance/')));
 const SchoolFee = Loadable(lazy(() => import('views/sidebar-menus/fee-school-fee/')));
 const OnlineAssessment = Loadable(lazy(() => import('views/sidebar-menus/assessments')));
-const CommunicationMessage = Loadable(lazy(() => import('views/sidebar-menus/communication-message/')));
+const CommunicationMessage = Loadable(lazy(() => import('views/sidebar-menus/communication-message')));
 const AddMetting = Loadable(lazy(() => import('views/sidebar-menus/request/AddMetting')));
 const ItemRequestGatePass = Loadable(lazy(() => import('views/sidebar-menus/request/ItemRequestGatePass')));
 const Resources = Loadable(lazy(() => import('views/sidebar-menus/resources/')));

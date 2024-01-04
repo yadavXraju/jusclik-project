@@ -13,7 +13,6 @@ import themes from 'themes';
 // project imports
 import NavigationScroll from 'layout/NavigationScroll';
 
-import EllipsisList from './views/utilities/Communication';
 // ==============================|| APP ||============================== //
 
 const App = () => {
@@ -28,7 +27,6 @@ const App = () => {
           <Routes />
         </NavigationScroll>
       </ThemeProvider>
-      <EllipsisList />
     </StyledEngineProvider>
     {/* <Attendance /> */}
     </>
