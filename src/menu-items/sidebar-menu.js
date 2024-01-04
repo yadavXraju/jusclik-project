@@ -23,7 +23,7 @@ const icons = {
 
 const sidebarMenu = {
   id: 'sidebarMenu',
-  title: 'sidebarMenu',
+  // title: 'sidebarMenu',
   type: 'group',
   children: [
     {
