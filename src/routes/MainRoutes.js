@@ -19,10 +19,8 @@ const UtilsTimetable = Loadable(lazy(() => import('views/utilities/Timetable')))
 // sample page routing
 const SamplePage = Loadable(lazy(() => import('views/sample-page')));
 // components page routing
-<<<<<<< HEAD
 const Attendance = Loadable(lazy(() => import('views/sidebar-menus/attendance')));
-=======
-const Attendance = Loadable(lazy(() => import('views/attendance')));
+// const Attendance = Loadable(lazy(() => import('views/attendance')));
 const Assignments = Loadable(lazy(() => import('views/sidebar-menus/assignments/')));
 const Updates = Loadable(lazy(() => import('views/sidebar-menus/updates/')));
 const TimeTable = Loadable(lazy(() => import('views/sidebar-menus/timetable/')));
@@ -36,7 +34,6 @@ const Resources = Loadable(lazy(() => import('views/sidebar-menus/resources/')))
 const Setting = Loadable(lazy(() => import('views/sidebar-menus/settings')));
 
 
->>>>>>> 10c1c6139b26434051870ea2390f7b3b20d5eb17
 // ==============================|| MAIN ROUTING ||============================== //
 
 const MainRoutes = {
@@ -119,9 +116,6 @@ const MainRoutes = {
           path: 'attendance',
           element: <Attendance />
         },
-<<<<<<< HEAD
-=======
-
         {
           path: 'assignments',
           element: <Assignments />
@@ -185,8 +179,6 @@ const MainRoutes = {
           path: 'settings',
           element: <Setting />
         },
-
->>>>>>> 10c1c6139b26434051870ea2390f7b3b20d5eb17
   ]
 };
 
