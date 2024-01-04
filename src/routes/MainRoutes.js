@@ -14,7 +14,7 @@ const UtilsColor = Loadable(lazy(() => import('views/utilities/Color')));
 const UtilsShadow = Loadable(lazy(() => import('views/utilities/Shadow')));
 const UtilsMaterialIcons = Loadable(lazy(() => import('views/utilities/MaterialIcons')));
 const UtilsTablerIcons = Loadable(lazy(() => import('views/utilities/TablerIcons')));
-const UtilsTimetable = Loadable(lazy(() => import('views/utilities/Timetable')));
+// const UtilsTimetable = Loadable(lazy(() => import('views/sidebar-menus/timetable/Timetable')));
 
 // sample page routing
 const SamplePage = Loadable(lazy(() => import('views/sample-page')));
@@ -27,7 +27,7 @@ const TimeTable = Loadable(lazy(() => import('views/sidebar-menus/timetable/')))
 const Performance = Loadable(lazy(() => import('views/sidebar-menus/performance/')));
 const SchoolFee = Loadable(lazy(() => import('views/sidebar-menus/fee-school-fee/')));
 const OnlineAssessment = Loadable(lazy(() => import('views/sidebar-menus/assessments')));
-const CommunicationMessage = Loadable(lazy(() => import('views/sidebar-menus/communication-message/')));
+const CommunicationMessage = Loadable(lazy(() => import('views/sidebar-menus/communication-message')));
 const AddMetting = Loadable(lazy(() => import('views/sidebar-menus/request/AddMetting')));
 const ItemRequestGatePass = Loadable(lazy(() => import('views/sidebar-menus/request/ItemRequestGatePass')));
 const Resources = Loadable(lazy(() => import('views/sidebar-menus/resources/')));
@@ -62,15 +62,15 @@ const MainRoutes = {
         }
       ]
     },
-    {
-      path: 'utils',
-      children: [
-        {
-          path: 'util-timetable',
-          element: <UtilsTimetable/>
-        }
-      ]
-    },
+    // {
+    //   path: 'utils',
+    //   children: [
+    //     {
+    //       path: 'util-timetable',
+    //       element: <UtilsTimetable/>
+    //     }
+    //   ]
+    // },
     {
       path: 'utils',
       children: [
