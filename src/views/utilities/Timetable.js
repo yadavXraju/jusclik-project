@@ -67,15 +67,7 @@ function BasicTabs() {
       {/* Content of each tab panel */}
       <CustomTabPanel value={value} index={0}>
         Item One
-
-        {/* <GutterlessList/> */}
-
-
-
       </CustomTabPanel>
-
-
-      
       <CustomTabPanel value={value} index={1}>
         Item Two
       </CustomTabPanel>
@@ -98,6 +90,5 @@ function BasicTabs() {
     </MainCard>
   );
 }
-
 // Export the component
 export default BasicTabs;
