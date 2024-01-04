@@ -62,7 +62,10 @@ function LinearProgressWithLabel({ value, ...others }) {
             </Typography>
           </Grid>
           <Grid item>
-            <Typography variant="h6" color="inherit">{`${Math.round(value)}%`}</Typography>
+            {/* <Typography variant="h6" color="inherit">{`${Math.round(value)}%`}</Typography> */}
+            <Typography variant="h6" color="inherit">
+              <span style={{ color: 'white' }}>{`${Math.round(value)}%`}</span>
+            </Typography>
           </Grid>
         </Grid>
       </Grid>
@@ -118,10 +121,11 @@ const MenuCard = () => {
             />
           </ListItem>
         </List>
-        <LinearProgressWithLabel value={80} />
+        <LinearProgressWithLabel value={80}/>
       </CardContent>
     </CardStyle>
   );
 };
+
 
 export default MenuCard;
