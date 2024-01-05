@@ -12,7 +12,7 @@ import themes from 'themes';
 
 // project imports
 import NavigationScroll from 'layout/NavigationScroll';
-//import EllipsisList from './views/utilities/Communication';
+// import SubjectCard from 'views/utilities/SubjectCard';
 
 // ==============================|| APP ||============================== //
 
@@ -28,10 +28,10 @@ const App = () => {
           <Routes />
         </NavigationScroll>
       </ThemeProvider>
-    </StyledEngineProvider>
-    {/* <Attendance /> */}
+
+    </StyledEngineProvider> 
     </>
-  );
+  )
 };
 
 export default App;
