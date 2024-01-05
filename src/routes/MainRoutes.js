@@ -32,6 +32,7 @@ const AddMetting = Loadable(lazy(() => import('views/sidebar-menus/request/AddMe
 const ItemRequestGatePass = Loadable(lazy(() => import('views/sidebar-menus/request/ItemRequestGatePass')));
 const Resources = Loadable(lazy(() => import('views/sidebar-menus/resources/')));
 const Setting = Loadable(lazy(() => import('views/sidebar-menus/settings')));
+const StudentProfile = Loadable(lazy(() => import('views/sidebar-menus/studentProfile')));
 
 
 // ==============================|| MAIN ROUTING ||============================== //
@@ -178,6 +179,11 @@ const MainRoutes = {
         {
           path: 'settings',
           element: <Setting />
+        },
+
+        {
+          path: '/student-profile',
+          element: <StudentProfile/>
         },
   ]
 };

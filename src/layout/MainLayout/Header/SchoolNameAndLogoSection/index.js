@@ -7,7 +7,7 @@ const SchoolName = () => {
   const [logoSrc, setLogoSrc] = useState('');
 
   const SchoolDetails = () => {
-    const schoolInfo = { id: 1, schoolName: 'The Wisdom Tree School', logo: logo };
+    const schoolInfo = { id: 1, schoolName: 'THE WISDOM TREE SCHOOL', logo: logo };
     return schoolInfo;
   };
 
@@ -20,8 +20,8 @@ const SchoolName = () => {
   return (
     <>
       <Box sx={{ mx: '2rem' , display: 'flex' , alignItems: 'center' }}>
-        <Box  sx={{ mx: '2rem' , maxWidth:'300px'  }}>  <img src={logoSrc} alt="School Logo"  style={{objectFit:'cover', width:'100%'}}/> </Box>
-        <Box  sx={{ mx: '2rem'}} >  <h3>{schoolName}</h3> </Box>
+        <Box  sx={{ mx: '2rem' , maxWidth:'300px' , maxHeight:'100px'  }}>  <img src={logoSrc} alt="School Logo"  style={{objectFit:'cover', width:'100%', height:'100px'}}/> </Box>
+        <Box  sx={{ mx: '2rem'}} >  <h2>{schoolName}</h2> </Box>
       </Box>
     </>
   );
