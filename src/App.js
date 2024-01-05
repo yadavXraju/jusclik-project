@@ -14,6 +14,7 @@ import themes from 'themes';
 import NavigationScroll from 'layout/NavigationScroll';
 
 import EllipsisList from './views/utilities/Communication';
+// import SubjectCard from 'views/utilities/SubjectCard';
 // ==============================|| APP ||============================== //
 
 const App = () => {
@@ -29,9 +30,12 @@ const App = () => {
         </NavigationScroll>
       </ThemeProvider>
       <EllipsisList />
-    </StyledEngineProvider>
-    {/* <Attendance /> */}
+    </StyledEngineProvider> 
+
+  
+
     </>
+    
   );
 };
 
