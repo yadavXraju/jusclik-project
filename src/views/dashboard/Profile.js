@@ -14,7 +14,7 @@ const Profile = () => {
     <Avatar alt="Remy Sharp" src={User1} sx={{ width: 200, height: 200 , margin:'auto', marginBottom : '10px' }}/>
       <Typography variant='h2'>{StudentName}</Typography> 
       <Typography variant='h5'>{AdminNo}</Typography>
-      <Button sx={{textTransform: 'uppercase'}} variant="Profile" >Profile</Button>
+      <Button sx={{textTransform: 'uppercase' , background:'rgb(33, 150, 243)'}} variant="Profile" >Profile</Button>
       
     </Box>
 
