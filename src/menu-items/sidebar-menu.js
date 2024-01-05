@@ -1,5 +1,15 @@
 // assets
 import { IconTypography, IconPalette, IconShadow, IconWindmill } from '@tabler/icons';
+import AssignmentOutlinedIcon from '@mui/icons-material/AssignmentOutlined';
+import TipsAndUpdatesOutlinedIcon from '@mui/icons-material/TipsAndUpdatesOutlined';
+import TableViewOutlinedIcon from '@mui/icons-material/TableViewOutlined';
+import PollOutlinedIcon from '@mui/icons-material/PollOutlined';
+import HistoryEduOutlinedIcon from '@mui/icons-material/HistoryEduOutlined';
+import AssessmentOutlinedIcon from '@mui/icons-material/AssessmentOutlined';
+import ChatOutlinedIcon from '@mui/icons-material/ChatOutlined';
+import RateReviewOutlinedIcon from '@mui/icons-material/RateReviewOutlined';
+import AccountTreeOutlinedIcon from '@mui/icons-material/AccountTreeOutlined';
+import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 
 // constant
 const icons = {
@@ -13,7 +23,7 @@ const icons = {
 
 const sidebarMenu = {
   id: 'sidebarMenu',
-  title: 'sidebarMenu',
+  // title: 'sidebarMenu',
   type: 'group',
   children: [
     {
@@ -29,7 +39,7 @@ const sidebarMenu = {
       title: 'Assignments',
       type: 'item',
       url: '/assignments',
-      icon: icons.IconPalette,
+      icon:  AssignmentOutlinedIcon,
       breadcrumbs: false
     },
     {
@@ -37,39 +47,24 @@ const sidebarMenu = {
       title: 'Updates',
       type: 'item',
       url: '/updates',
-      icon: icons.IconShadow,
+      icon: TipsAndUpdatesOutlinedIcon,
       breadcrumbs: false
     },
     {
       id: 'timetable',
       title: 'Timetable',
-      type: 'collapse',
-      icon: icons.IconWindmill,
-      children: [
-        {
-          id: 'tabler-icons',
-          title: 'Tabler Icons',
-          type: 'item',
-          url: '/icons/tabler-icons',
-          breadcrumbs: false
-        },
-        {
-          id: 'material-icons',
-          title: 'Material Icons',
-          type: 'item',
-          external: true,
-          target: '_blank',
-          url: 'https://mui.com/material-ui/material-icons/',
-          breadcrumbs: false
-        }
-      ]
+      type: 'item',
+      url: '/timetable',
+      icon: TableViewOutlinedIcon,
+      breadcrumbs: false
+      
     },
     {
         id: 'performance',
         title: 'Performance',
         type: 'item',
         url: '/performance',
-        icon: icons.IconShadow,
+        icon: PollOutlinedIcon,
         breadcrumbs: false
       },
 
@@ -78,16 +73,16 @@ const sidebarMenu = {
         title: 'Fees/school Fee',
         type: 'item',
         url: '/fee-school-fee',
-        icon: icons.IconShadow,
+        icon: HistoryEduOutlinedIcon,
         breadcrumbs: false
       },
 
       {
-        id: 'performance',
+        id: 'online-assessment',
         title: 'Online Assessment',
         type: 'item',
         url: '/online-assessment',
-        icon: icons.IconShadow,
+        icon:  AssessmentOutlinedIcon,
         breadcrumbs: false
       },
 
@@ -96,7 +91,7 @@ const sidebarMenu = {
         title: 'Communication / Messages',
         type: 'item',
         url: '/communication-messages',
-        icon: icons.IconShadow,
+        icon: ChatOutlinedIcon,
         breadcrumbs: false
       },
 
@@ -104,7 +99,7 @@ const sidebarMenu = {
         id: 'request',
         title: 'Request',
         type: 'collapse',
-        icon: icons.IconWindmill,
+        icon: RateReviewOutlinedIcon,
         children: [
           {
             id: 'request-add-meeting',
@@ -117,8 +112,6 @@ const sidebarMenu = {
             id: 'item-request-gate-pass',
             title: 'Item Request Gate Pass',
             type: 'item',
-            // external: true,
-            // target: '_blank',
             url: '/request/item-request-gate-pass',
             breadcrumbs: false
           }
@@ -132,7 +125,7 @@ const sidebarMenu = {
         title: 'Resources',
         type: 'item',
         url: '/resources',
-        icon: icons.IconShadow,
+        icon:  AccountTreeOutlinedIcon,
         breadcrumbs: false
       },
       {
@@ -140,7 +133,7 @@ const sidebarMenu = {
         title: 'Settings',
         type: 'item',
         url: '/settings',
-        icon: icons.IconShadow,
+        icon: SettingsOutlinedIcon,
         breadcrumbs: false
       }
 

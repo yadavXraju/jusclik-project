@@ -8,10 +8,13 @@ import { Avatar, Box, ButtonBase } from '@mui/material';
 import LogoSection from '../LogoSection';
 import SearchSection from './SearchSection';
 import ProfileSection from './ProfileSection';
+import SchoolName from './SchoolNameAndLogoSection';
 import NotificationSection from './NotificationSection';
 
 // assets
 import { IconMenu2 } from '@tabler/icons';
+import SiblingSwitch from './SiblingSwitchSection';
+import AcadmicYear from './AcadmicYearSection';
 
 // ==============================|| MAIN NAVBAR / HEADER ||============================== //
 
@@ -55,10 +58,19 @@ const Header = ({ handleLeftDrawerToggle }) => {
         </ButtonBase>
       </Box>
 
+      {/* school Name */}
+      <SchoolName/>
+
       {/* header search */}
       <SearchSection />
       <Box sx={{ flexGrow: 1 }} />
       <Box sx={{ flexGrow: 1 }} />
+
+      {/* sibling switch */}
+      <SiblingSwitch />
+
+      {/* acadmic section */}
+      <AcadmicYear/>
 
       {/* notification & profile */}
       <NotificationSection />

@@ -12,9 +12,10 @@ import themes from 'themes';
 
 // project imports
 import NavigationScroll from 'layout/NavigationScroll';
-
+//import EllipsisList from './views/utilities/Communication';
 import EllipsisList from './views/utilities/Communication';
 // import SubjectCard from 'views/utilities/SubjectCard';
+
 // ==============================|| APP ||============================== //
 
 const App = () => {
@@ -31,12 +32,8 @@ const App = () => {
       </ThemeProvider>
       <EllipsisList />
     </StyledEngineProvider> 
-
-  
-
     </>
-    
-  );
+  )
 };
 
 export default App;
