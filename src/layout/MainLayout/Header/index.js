@@ -58,7 +58,7 @@ const Header = ({ handleLeftDrawerToggle }) => {
         </ButtonBase>
       </Box>
 
-      {/* school Name */}
+      {/* school Name and logo*/}
       <SchoolName/>
 
       {/* header search */}
