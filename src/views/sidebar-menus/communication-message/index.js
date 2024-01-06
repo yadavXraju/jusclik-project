@@ -11,6 +11,7 @@ import Typography from '@mui/material/Typography';
 import MainCard from 'ui-component/cards/MainCard';
 
 export default function AlignItemsList() {
+  
   return (
     <MainCard title="CONTACT" sx={{fontSize:'22px', fontWeight:'bold' }} >
 
