@@ -1,9 +1,11 @@
-import React from 'react'
+import React from 'react';
 
 const Assignments = () => {
   return (
-    <div>Assignments</div>
-  )
+    <>
+    Assignments
+    </>
+  );
 }
 
-export default Assignments
+export default Assignments;

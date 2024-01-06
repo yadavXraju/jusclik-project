@@ -41,7 +41,8 @@ export default function AlignItemsList() {
           <MessageOutlinedIcon />
         </ListItemDecorator>
       </ListItem>
-      <Divider variant="middle" component="li" /><ListItem >
+      <Divider variant="middle" component="li" />
+      <ListItem >
         <ListItemAvatar>
         <Avatar
         src="/static/images/avatar/1.jpg"
@@ -67,7 +68,8 @@ export default function AlignItemsList() {
           <MessageOutlinedIcon />
         </ListItemDecorator>
       </ListItem>
-      <Divider variant="middle" component="li" /><ListItem >
+      <Divider variant="middle" component="li" />
+      <ListItem >
         <ListItemAvatar>
         <Avatar
         src="/static/images/avatar/1.jpg"
@@ -84,7 +86,7 @@ export default function AlignItemsList() {
                 variant="subtitle2"
                 color="text.primary"
               >
-                All Rounder
+                Gamer
               </Typography>
             </React.Fragment>
           }
@@ -93,7 +95,35 @@ export default function AlignItemsList() {
           <MessageOutlinedIcon />
         </ListItemDecorator>
       </ListItem>
-      <Divider variant="middle" component="li" /><ListItem >
+      <Divider variant="middle" component="li" />
+       <ListItem >
+        <ListItemAvatar>
+        <Avatar
+        src="/static/images/avatar/1.jpg"
+        sx={{ width: 50, height: 50 }}
+      />
+        </ListItemAvatar>
+        <ListItemText sx={{paddingLeft:'10px' }}>
+      <Typography variant='h4'>Ruby Dhiman</Typography>
+         {
+            <React.Fragment>
+              <Typography
+                sx={{ display: 'inline' }}
+                component="span"
+                variant="subtitle2"
+                color="text.primary"
+              >
+                Website Developer
+              </Typography>
+            </React.Fragment>
+          }
+        </ListItemText>
+        <ListItemDecorator>
+          <MessageOutlinedIcon />
+        </ListItemDecorator>
+      </ListItem>
+      <Divider variant="middle" component="li" />
+      <ListItem >
         <ListItemAvatar>
         <Avatar
         src="/static/images/avatar/1.jpg"

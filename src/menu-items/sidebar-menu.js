@@ -1,5 +1,5 @@
 // assets
-import { IconTypography, IconPalette, IconShadow, IconWindmill } from '@tabler/icons';
+// import { IconTypography, IconPalette, IconShadow, IconWindmill } from '@tabler/icons';
 import AssignmentOutlinedIcon from '@mui/icons-material/AssignmentOutlined';
 import TipsAndUpdatesOutlinedIcon from '@mui/icons-material/TipsAndUpdatesOutlined';
 import TableViewOutlinedIcon from '@mui/icons-material/TableViewOutlined';
@@ -12,13 +12,24 @@ import AccountTreeOutlinedIcon from '@mui/icons-material/AccountTreeOutlined';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 
+// font awesome
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCalendar } from '@fortawesome/free-regular-svg-icons';
+
+const Calendar= () => <FontAwesomeIcon icon={faCalendar} />;
+
+const iconsFontAwesome = {
+  CalendarIcon : Calendar,
+}
+
+
 // constant
-const icons = {
-  IconTypography,
-  IconPalette,
-  IconShadow,
-  IconWindmill
-};
+// const icons = {
+//   IconTypography,
+//   IconPalette,
+//   IconShadow,
+//   IconWindmill
+// };
 
 // ==============================|| MENU ITEMS ||============================== //
 
@@ -32,7 +43,8 @@ const sidebarMenu = {
       title: 'Attendance',
       type: 'item',
       url: '/attendance',
-      icon: icons.IconTypography,
+      // icon: icons.IconTypography,
+      icon: iconsFontAwesome.CalendarIcon,
       breadcrumbs: false
     },
     {
