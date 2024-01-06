@@ -3,7 +3,7 @@ import React from 'react';
 const Assignments = () => {
   return (
     <>
-    Assignments
+    Assignments1
     </>
   );
 }
