@@ -12,11 +12,7 @@
     "@fortawesome/free-brands-svg-icons": "^6.5.1",
     "@fortawesome/free-regular-svg-icons": "^6.5.1",
     "@fortawesome/free-solid-svg-icons": "^6.5.1",
-<<<<<<< HEAD
     "@fortawesome/react-fontawesome": "^0.2.0",
-=======
-
->>>>>>> 619da17fea224a7fca79fd66f0b82a413e311f70
     "@mui/icons-material": "^5.8.4",
     "@mui/joy": "^5.0.0-beta.20",
     "@mui/lab": "^5.0.0-alpha.88",
