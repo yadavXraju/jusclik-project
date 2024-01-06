@@ -1,5 +1,13 @@
 // assets
 import { IconDashboard } from '@tabler/icons';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faTachometer } from '@fortawesome/free-solid-svg-icons';
+
+// const DashboardIcon = () => <FontAwesomeIcon icon={faTachometer} />;
+
+// const icons = {
+//   dashboardIcon : DashboardIcon,
+// }
 
 // constant
 const icons = { IconDashboard };
@@ -17,6 +25,7 @@ const dashboard = {
       type: 'item',
       url: '/dashboard/default',
       icon: icons.IconDashboard,
+        // icon: icons.IconDashboard,
       breadcrumbs: false
     }
   ]

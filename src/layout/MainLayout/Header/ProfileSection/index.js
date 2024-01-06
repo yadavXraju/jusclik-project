@@ -14,12 +14,10 @@ import {
   ClickAwayListener,
   Divider,
   Grid,
-  // InputAdornment,
   List,
   ListItemButton,
   ListItemIcon,
   ListItemText,
-  // OutlinedInput,
   Paper,
   Popper,
   Stack,
@@ -34,12 +32,14 @@ import PerfectScrollbar from 'react-perfect-scrollbar';
 import MainCard from 'ui-component/cards/MainCard';
 import Transitions from 'ui-component/extended/Transitions';
 // import UpgradePlanCard from './UpgradePlanCard';
-import User1 from 'assets/images/users/user-round.svg';
+// import User1 from 'assets/images/users/user-round.svg';
 
 // assets
 // import { IconLogout, IconSearch, IconSettings, IconUser } from '@tabler/icons';
 import { IconLogout, IconSettings, IconUser } from '@tabler/icons';
-// import { studentProfile } from './ProfileDeatails';
+import {  studentProfileDetails } from './ProfileDeatails';
+
+
 
 // ==============================|| PROFILE MENU ||============================== //
 
@@ -113,7 +113,7 @@ const ProfileSection = () => {
         }}
         icon={
           <Avatar
-            src={User1}
+            src={studentProfileDetails.StudentImage}
             sx={{
               ...theme.typography.mediumAvatar,
               margin: '8px 0 8px 8px !important',
@@ -161,33 +161,17 @@ const ProfileSection = () => {
                       <Stack direction="row" spacing={0.5} alignItems="center">
                         <Typography variant="h4">Good Morning,</Typography>
                         <Typography component="span" variant="h4" sx={{ fontWeight: 400 }}>
-                        Megha
+                        {studentProfileDetails.StudentName}
                         </Typography>
                       </Stack>
                       <Typography variant="subtitle2">Parent Dashboard</Typography>
                     </Stack>
-                    {/* <OutlinedInput
-                      sx={{ width: '100%', pr: 1, pl: 2, my: 2 }}
-                      id="input-search-profile"
-                      value={value}
-                      onChange={(e) => setValue(e.target.value)}
-                      placeholder="Search profile options"
-                      startAdornment={
-                        <InputAdornment position="start">
-                          <IconSearch stroke={1.5} size="1rem" color={theme.palette.grey[500]} />
-                        </InputAdornment>
-                      }
-                      aria-describedby="search-helper-text"
-                      inputProps={{
-                        'aria-label': 'weight'
-                      }}
-                    /> */}
+
                     <Divider />
                   </Box>
                   <PerfectScrollbar style={{ height: '100%', maxHeight: 'calc(100vh - 250px)', overflowX: 'hidden' }}>
                     <Box sx={{ p: 2 }}>
-                      {/* <UpgradePlanCard /> */}
-                      {/* <Divider /> */}
+         
                       <Card
                         sx={{
                           bgcolor: theme.palette.primary.light,
@@ -196,22 +180,7 @@ const ProfileSection = () => {
                       >
                         <CardContent>
                           <Grid container spacing={3} direction="column">
-                            {/* <Grid item>
-                              <Grid item container alignItems="center" justifyContent="space-between">
-                                <Grid item>
-                                  <Typography variant="subtitle1">Start DND Mode</Typography>
-                                </Grid>
-                                <Grid item>
-                                  <Switch
-                                    color="primary"
-                                    checked={sdm}
-                                    onChange={(e) => setSdm(e.target.checked)}
-                                    name="sdm"
-                                    size="small"
-                                  />
-                                </Grid>
-                              </Grid>
-                            </Grid> */}
+      
                             <Grid item>
                               <Grid item container alignItems="center" justifyContent="space-between">
                                 <Grid item>
