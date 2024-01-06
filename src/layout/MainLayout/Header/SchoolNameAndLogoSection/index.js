@@ -23,10 +23,10 @@ const SchoolName = () => {
   return (
     <>
       <Box sx={{ mx: isMobile ? '0rem' : '2rem' , display: 'flex' , alignItems: 'center' }}>
-            <Box  sx={{ mx: isMobile ? '0rem' : '2rem' , maxWidth:'300px' , maxHeight:'100px'  }}> 
+            <Box  sx={{ mx: isMobile ? '0rem' : '1rem' , maxWidth:'300px' , maxHeight:'100px'  }}> 
               <img src={logoSrc} alt="School Logo"  style={{objectFit:'cover', width:'100%', height:'100px'}}/> 
             </Box>
-        <Box  sx={{ mx: '2rem'}} >  <Typography variant='h3'>{schoolName}</Typography> </Box>
+        <Box >  <Typography variant='h3' sx={{lineHeight:'.5px'}}>{schoolName}</Typography> </Box>
       </Box>
     </>
   );
