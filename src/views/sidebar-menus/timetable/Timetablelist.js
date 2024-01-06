@@ -7,8 +7,6 @@ function createData(key, sub, teacher, time) {
 }
 
 
-
-
 const rows = [
   createData(1, 'English', 'Mr. kavin', '8:15am to 9:15am'),
   createData(2, 'Mathematics', 'Mr. Suraj', '9:15am to 10:15am'),
@@ -24,7 +22,6 @@ const rows = [
 
 export default function BasicList() {
   return (
-
     <Grid container spacing={0.5} style={{marginTop: '10px'}}>
       {rows.map((row) => (
         <Grid item xs={12} key={row.key}>
