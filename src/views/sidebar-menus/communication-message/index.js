@@ -9,8 +9,18 @@ import Avatar from '@mui/material/Avatar';
 import MessageOutlinedIcon from '@mui/icons-material/MessageOutlined';
 import Typography from '@mui/material/Typography';
 import MainCard from 'ui-component/cards/MainCard';
+import Box from '@mui/material/Box';
 
 export default function AlignItemsList() {
+
+  const commonStyles = {
+    bgcolor: 'background.paper',
+    borderRadius: '5px',
+    border: 1,
+    p:1,
+    height:'40px'
+  };
+  
   return (
     <MainCard title="CONTACT" sx={{fontSize:'22px', fontWeight:'bold' }} >
 
@@ -38,7 +48,9 @@ export default function AlignItemsList() {
           }
         </ListItemText>
         <ListItemDecorator>
-          <MessageOutlinedIcon />
+        <Box sx={{ ...commonStyles, borderColor: 'primary.main' }} >
+          <MessageOutlinedIcon color="primary"/>
+          </Box>
         </ListItemDecorator>
       </ListItem>
       <Divider variant="middle" component="li" />
@@ -65,7 +77,9 @@ export default function AlignItemsList() {
           }
         </ListItemText>
         <ListItemDecorator>
-          <MessageOutlinedIcon />
+          <Box sx={{ ...commonStyles, borderColor: 'primary.main' }} >
+          <MessageOutlinedIcon color="primary"/>
+          </Box>
         </ListItemDecorator>
       </ListItem>
       <Divider variant="middle" component="li" />
@@ -92,7 +106,9 @@ export default function AlignItemsList() {
           }
         </ListItemText>
         <ListItemDecorator>
-          <MessageOutlinedIcon />
+          <Box sx={{ ...commonStyles, borderColor: 'primary.main' }} >
+          <MessageOutlinedIcon color="primary"/>
+          </Box>
         </ListItemDecorator>
       </ListItem>
       <Divider variant="middle" component="li" />
@@ -119,7 +135,9 @@ export default function AlignItemsList() {
           }
         </ListItemText>
         <ListItemDecorator>
-          <MessageOutlinedIcon />
+          <Box sx={{ ...commonStyles, borderColor: 'primary.main' }} >
+          <MessageOutlinedIcon color="primary"/>
+          </Box>
         </ListItemDecorator>
       </ListItem>
       <Divider variant="middle" component="li" />
@@ -146,7 +164,9 @@ export default function AlignItemsList() {
           }
         </ListItemText>
         <ListItemDecorator>
-          <MessageOutlinedIcon />
+          <Box sx={{ ...commonStyles, borderColor: 'primary.main' }} >
+          <MessageOutlinedIcon color="primary"/>
+          </Box>
         </ListItemDecorator>
       </ListItem>
       <Divider variant="middle" component="li" /><ListItem >
@@ -172,7 +192,9 @@ export default function AlignItemsList() {
           }
         </ListItemText>
         <ListItemDecorator>
-          <MessageOutlinedIcon />
+          <Box sx={{ ...commonStyles, borderColor: 'primary.main' }} >
+          <MessageOutlinedIcon color="primary"/>
+          </Box>
         </ListItemDecorator>
       </ListItem>
       <Divider variant="middle" component="li" /><ListItem >
@@ -198,7 +220,9 @@ export default function AlignItemsList() {
           }
         </ListItemText>
         <ListItemDecorator>
-          <MessageOutlinedIcon />
+          <Box sx={{ ...commonStyles, borderColor: 'primary.main' }} >
+          <MessageOutlinedIcon color="primary"/>
+          </Box>
         </ListItemDecorator>
       </ListItem>
       <Divider variant="middle" component="li" /><ListItem >
@@ -224,7 +248,9 @@ export default function AlignItemsList() {
           }
         </ListItemText>
         <ListItemDecorator>
-          <MessageOutlinedIcon />
+          <Box sx={{ ...commonStyles, borderColor: 'primary.main' }} >
+          <MessageOutlinedIcon color="primary"/>
+          </Box>
         </ListItemDecorator>
       </ListItem>
       <Divider variant="middle" component="li" /><ListItem >
@@ -250,7 +276,9 @@ export default function AlignItemsList() {
           }
         </ListItemText>
         <ListItemDecorator>
-          <MessageOutlinedIcon />
+          <Box sx={{ ...commonStyles, borderColor: 'primary.main' }} >
+          <MessageOutlinedIcon color="primary"/>
+          </Box>
         </ListItemDecorator>
       </ListItem>
       <Divider variant="middle" component="li" /><ListItem >
@@ -276,7 +304,9 @@ export default function AlignItemsList() {
           }
         </ListItemText>
         <ListItemDecorator>
-          <MessageOutlinedIcon />
+          <Box sx={{ ...commonStyles, borderColor: 'primary.main' }} >
+          <MessageOutlinedIcon color="primary"/>
+          </Box>
         </ListItemDecorator>
       </ListItem>
       <Divider variant="middle" component="li" /><ListItem >
@@ -302,7 +332,9 @@ export default function AlignItemsList() {
           }
         </ListItemText>
         <ListItemDecorator>
-          <MessageOutlinedIcon />
+          <Box sx={{ ...commonStyles, borderColor: 'primary.main' }} >
+          <MessageOutlinedIcon color="primary"/>
+          </Box>
         </ListItemDecorator>
       </ListItem>
       <Divider variant="middle" component="li" /><ListItem >
@@ -328,7 +360,9 @@ export default function AlignItemsList() {
           }
         </ListItemText>
         <ListItemDecorator>
-          <MessageOutlinedIcon />
+          <Box sx={{ ...commonStyles, borderColor: 'primary.main' }} >
+          <MessageOutlinedIcon color="primary"/>
+          </Box>
         </ListItemDecorator>
       </ListItem>
       <Divider variant="middle" component="li" /><ListItem >
@@ -354,7 +388,9 @@ export default function AlignItemsList() {
           }
         </ListItemText>
         <ListItemDecorator>
-          <MessageOutlinedIcon />
+          <Box sx={{ ...commonStyles, borderColor: 'primary.main' }} >
+          <MessageOutlinedIcon color="primary"/>
+          </Box>
         </ListItemDecorator>
       </ListItem>
       <Divider variant="middle" component="li" /><ListItem >
@@ -380,7 +416,9 @@ export default function AlignItemsList() {
           }
         </ListItemText>
         <ListItemDecorator>
-          <MessageOutlinedIcon />
+          <Box sx={{ ...commonStyles, borderColor: 'primary.main' }} >
+          <MessageOutlinedIcon color="primary"/>
+          </Box>
         </ListItemDecorator>
       </ListItem>
       <Divider variant="middle" component="li" /><ListItem >
@@ -406,7 +444,9 @@ export default function AlignItemsList() {
           }
         </ListItemText>
         <ListItemDecorator>
-          <MessageOutlinedIcon />
+          <Box sx={{ ...commonStyles, borderColor: 'primary.main' }} >
+          <MessageOutlinedIcon color="primary"/>
+          </Box>
         </ListItemDecorator>
       </ListItem>
       <Divider variant="middle" component="li" />
