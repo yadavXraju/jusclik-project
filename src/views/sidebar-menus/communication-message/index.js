@@ -8,22 +8,13 @@ import ListItemDecorator from '@mui/joy/ListItemDecorator';
 import Avatar from '@mui/material/Avatar';
 import MessageOutlinedIcon from '@mui/icons-material/MessageOutlined';
 import Typography from '@mui/material/Typography';
+import MainCard from 'ui-component/cards/MainCard';
 
 export default function AlignItemsList() {
   return (
-    <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
-      <Typography
-        id="ellipsis-list-demo"
-        level="body-xs"
-        fontSize="22px"
-        paddingLeft="20px"
-        fontWeight="bold"
-        textTransform="uppercase"
-        sx={{ letterSpacing: '0.15rem' }}
-      >
-        Inbox
-      </Typography>
+    <MainCard title="CONTACT" sx={{fontSize:'22px', fontWeight:'bold' }} >
 
+    <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
       <ListItem>
         <ListItemAvatar>
         <Avatar
@@ -391,5 +382,7 @@ export default function AlignItemsList() {
       <Divider variant="middle" component="li" />
 
     </List>
+    </MainCard>
+
   );
 }
