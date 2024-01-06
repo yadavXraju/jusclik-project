@@ -10,6 +10,7 @@ import ChatOutlinedIcon from '@mui/icons-material/ChatOutlined';
 import RateReviewOutlinedIcon from '@mui/icons-material/RateReviewOutlined';
 import AccountTreeOutlinedIcon from '@mui/icons-material/AccountTreeOutlined';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
+import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 
 // constant
 const icons = {
@@ -134,6 +135,14 @@ const sidebarMenu = {
         type: 'item',
         url: '/settings',
         icon: SettingsOutlinedIcon,
+        breadcrumbs: false
+      },
+      {
+        id: 'student-profile',
+        title: 'Student Profile',
+        type: 'item',
+        url: '/student-profile',
+        icon: PersonOutlineOutlinedIcon,
         breadcrumbs: false
       }
 

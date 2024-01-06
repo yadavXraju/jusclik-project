@@ -39,6 +39,7 @@ import User1 from 'assets/images/users/user-round.svg';
 // assets
 // import { IconLogout, IconSearch, IconSettings, IconUser } from '@tabler/icons';
 import { IconLogout, IconSettings, IconUser } from '@tabler/icons';
+// import { studentProfile } from './ProfileDeatails';
 
 // ==============================|| PROFILE MENU ||============================== //
 
