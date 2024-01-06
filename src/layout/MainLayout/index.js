@@ -5,6 +5,7 @@ import { Outlet } from 'react-router-dom';
 import { styled, useTheme } from '@mui/material/styles';
 import { AppBar, Box, CssBaseline, Toolbar, useMediaQuery } from '@mui/material';
 
+
 // project imports
 import Breadcrumbs from 'ui-component/extended/Breadcrumbs';
 import Header from './Header';
@@ -63,8 +64,9 @@ const MainLayout = () => {
     dispatch({ type: SET_MENU, opened: !leftDrawerOpened });
   };
 
+  const isMobile = useMediaQuery('(max-width: 767px)');
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box  sx={{ display: 'flex' }}>
       <CssBaseline />
       {/* header */}
       <AppBar
@@ -77,13 +79,13 @@ const MainLayout = () => {
           transition: leftDrawerOpened ? theme.transitions.create('width') : 'none'
         }}
       >
-        <Toolbar>
+        <Toolbar sx={{  flexWrap: isMobile ? 'wrap' : 'nowrap',}}>
           <Header handleLeftDrawerToggle={handleLeftDrawerToggle} />
         </Toolbar>
       </AppBar>
 
       {/* drawer */}
-      <Sidebar drawerOpen={!matchDownMd ? leftDrawerOpened : !leftDrawerOpened} drawerToggle={handleLeftDrawerToggle} />
+      <Sidebar  drawerOpen={!matchDownMd ? leftDrawerOpened : !leftDrawerOpened} drawerToggle={handleLeftDrawerToggle} />
 
       {/* main content */}
       <Main theme={theme} open={leftDrawerOpened}>

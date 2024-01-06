@@ -10,7 +10,7 @@ import TotalOrderLineChartCard from './TotalOrderLineChartCard';
 // import TotalIncomeLightCard from './TotalIncomeLightCard';
 import TotalGrowthBarChart from './TotalGrowthBarChart';
 import { gridSpacing } from 'store/constant';
-import Profile from '../Profile';
+import Profile from './Profile';
 
 
 // ==============================|| DEFAULT DASHBOARD ||============================== //

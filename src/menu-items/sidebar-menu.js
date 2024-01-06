@@ -14,7 +14,7 @@ import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined
 
 // font awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCalendar } from '@fortawesome/free-solid-svg-icons';
+import { faCalendar } from '@fortawesome/free-regular-svg-icons';
 
 const Calendar= () => <FontAwesomeIcon icon={faCalendar} />;
 
