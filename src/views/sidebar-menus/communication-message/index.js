@@ -86,7 +86,7 @@ export default function AlignItemsList() {
                 variant="subtitle2"
                 color="text.primary"
               >
-                All Rounder
+                Gamer
               </Typography>
             </React.Fragment>
           }

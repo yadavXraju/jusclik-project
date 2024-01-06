@@ -99,7 +99,7 @@ const ChatComponent = () => {
                     width={getMessageBoxWidth(message)}
                     whiteSpace="pre-wrap"
                     display="flex"
-                    maxWidth="70%"                    // justifyContent={'space-between'}
+                    maxWidth="70%"
                     position="relative"
                   >
                     <Typography>
