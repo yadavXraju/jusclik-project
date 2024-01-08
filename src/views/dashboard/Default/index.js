@@ -11,6 +11,7 @@ import TotalOrderLineChartCard from './TotalOrderLineChartCard';
 import TotalGrowthBarChart from './TotalGrowthBarChart';
 import { gridSpacing } from 'store/constant';
 import Profile from './Profile';
+// import { useMediaQuery } from '@mui/material';
 
 
 // ==============================|| DEFAULT DASHBOARD ||============================== //
@@ -21,16 +22,16 @@ const Dashboard = () => {
     setLoading(false);
   }, []);
 
-
+  // const isMobile = useMediaQuery('(max-width: 767px)');
 
   return (
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
-        <Grid container spacing={gridSpacing}>
+        <Grid container spacing={gridSpacing} >
           <Grid item lg={4} md={6} sm={6} xs={12}>
             <EarningCard isLoading={isLoading} />
           </Grid>
-          <Grid item lg={4} md={6} sm={6} xs={12}>
+          <Grid item lg={4} md={6} sm={6} xs={12} >
             <TotalOrderLineChartCard isLoading={isLoading} />
           </Grid>
           <Grid item lg={4} md={12} sm={12} xs={12}>

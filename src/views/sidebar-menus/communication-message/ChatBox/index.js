@@ -1,5 +1,16 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Box, Paper, List, ListItem, ListItemText, TextField, IconButton, Typography, Avatar, Divider } from '@mui/material';
+import {
+  Box,
+  Paper,
+  List,
+  ListItem,
+  ListItemText,
+  TextField,
+  IconButton,
+  Typography,
+  Avatar,
+  Divider,
+} from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import AttachFileIcon from '@mui/icons-material/AttachFile';
 
@@ -12,15 +23,17 @@ const ChatComponent = () => {
   useEffect(() => {
     // Scroll to the bottom when messages change
     if (messageListRef.current) {
-      messageListRef.current.scrollTop = messageListRef.current.scrollHeight;
+      messageListRef.current.scrollBottom = messageListRef.current.scrollHeight;
     }
   }, [messages]);
 
   const getCurrentTime = () => {
     const now = new Date();
-    const hours = now.getHours().toString().padStart(2, '0');
+    const hours = now.getHours();
     const minutes = now.getMinutes().toString().padStart(2, '0');
-    return `${hours}:${minutes}`;
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+    const formattedHours = hours % 12 || 12;
+    return `${formattedHours}:${minutes} ${ampm}`;
   };
 
   const handleSendClick = () => {
@@ -39,7 +52,6 @@ const ChatComponent = () => {
   };
 
   const handleAttachmentClick = () => {
-    // Trigger file input click when attachment button is clicked
     if (fileInput) {
       fileInput.click();
     }
@@ -61,7 +73,7 @@ const ChatComponent = () => {
     document.body.appendChild(dummyDiv);
     const width = dummyDiv.offsetWidth;
     document.body.removeChild(dummyDiv);
-    return width + 40; // Add some padding for better readability
+    return width + 40;
   };
 
   // Placeholder user information
@@ -93,13 +105,14 @@ const ChatComponent = () => {
               <ListItemText
                 secondary={
                   <Box
-                    bgcolor={message.sender === 'You' ? '#90caf9' : 'white'}
+                    bgcolor={message.sender === 'You' ? '#90caf9' : 'lightgray'}
                     p={3}
                     borderRadius={2}
                     width={getMessageBoxWidth(message)}
                     whiteSpace="pre-wrap"
-                    display="flex"
-                    maxWidth="70%"                    // justifyContent={'space-between'}
+                    display="flex-end"
+                    maxWidth="70%"
+                    flexDirection="column"
                     position="relative"
                   >
                     <Typography>

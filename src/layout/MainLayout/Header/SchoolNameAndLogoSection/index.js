@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Box } from '@mui/system';
 import logo from './logo.png';
-import { Typography } from '@mui/material';
-import { useMediaQuery } from '@mui/material';
+import { Typography ,  useMediaQuery } from '@mui/material';
+
 
 const SchoolName = () => {
   const [schoolName, setSchoolName] = useState('');
@@ -22,11 +22,11 @@ const SchoolName = () => {
 
   return (
     <>
-      <Box sx={{ mx: '2rem' , display: 'flex' , alignItems: 'center' , md: isMobile ? 12 : undefined,}}>
-            <Box  sx={{ mx: '2rem' , maxWidth:'300px' , maxHeight:'100px'  }}> 
+      <Box sx={{ mx: isMobile ? '0rem' : '2rem' , display: 'flex' , alignItems: 'center' }}>
+            <Box  sx={{ mx: isMobile ? '0rem' : '1rem' , maxWidth:'300px' , maxHeight:'100px'  }}> 
               <img src={logoSrc} alt="School Logo"  style={{objectFit:'cover', width:'100%', height:'100px'}}/> 
             </Box>
-        <Box  sx={{ mx: '2rem'}} >  <Typography variant='h3'>{schoolName}</Typography> </Box>
+        <Box >  <Typography variant='h3' sx={{lineHeight:'.5px'}}>{schoolName}</Typography> </Box>
       </Box>
     </>
   );

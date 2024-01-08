@@ -1,35 +1,20 @@
 // assets
-// import { IconTypography, IconPalette, IconShadow, IconWindmill } from '@tabler/icons';
-import AssignmentOutlinedIcon from '@mui/icons-material/AssignmentOutlined';
-import TipsAndUpdatesOutlinedIcon from '@mui/icons-material/TipsAndUpdatesOutlined';
-import TableViewOutlinedIcon from '@mui/icons-material/TableViewOutlined';
-import PollOutlinedIcon from '@mui/icons-material/PollOutlined';
-import HistoryEduOutlinedIcon from '@mui/icons-material/HistoryEduOutlined';
-import AssessmentOutlinedIcon from '@mui/icons-material/AssessmentOutlined';
-import ChatOutlinedIcon from '@mui/icons-material/ChatOutlined';
-import RateReviewOutlinedIcon from '@mui/icons-material/RateReviewOutlined';
-import AccountTreeOutlinedIcon from '@mui/icons-material/AccountTreeOutlined';
-import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 
-// font awesome
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCalendar } from '@fortawesome/free-regular-svg-icons';
+// new icon
+import CalendarMonthTwoToneIcon from '@mui/icons-material/CalendarMonthTwoTone';
+import LibraryBooksTwoToneIcon from '@mui/icons-material/LibraryBooksTwoTone';
+import DraftsTwoToneIcon from '@mui/icons-material/DraftsTwoTone';
+import AlarmTwoToneIcon from '@mui/icons-material/AlarmTwoTone';
+import InsertChartTwoToneIcon from '@mui/icons-material/InsertChartTwoTone';
+import CreditCardTwoToneIcon from '@mui/icons-material/CreditCardTwoTone';
+import NoteAltTwoToneIcon from '@mui/icons-material/NoteAltTwoTone';
+import MarkUnreadChatAltTwoToneIcon from '@mui/icons-material/MarkUnreadChatAltTwoTone';
+import AssignmentIndTwoToneIcon from '@mui/icons-material/AssignmentIndTwoTone';
+import FolderCopyTwoToneIcon from '@mui/icons-material/FolderCopyTwoTone';
 
-const Calendar= () => <FontAwesomeIcon icon={faCalendar} />;
-
-const iconsFontAwesome = {
-  CalendarIcon : Calendar,
-}
 
 
-// constant
-// const icons = {
-//   IconTypography,
-//   IconPalette,
-//   IconShadow,
-//   IconWindmill
-// };
 
 // ==============================|| MENU ITEMS ||============================== //
 
@@ -43,8 +28,7 @@ const sidebarMenu = {
       title: 'Attendance',
       type: 'item',
       url: '/attendance',
-      // icon: icons.IconTypography,
-      icon: iconsFontAwesome.CalendarIcon,
+      icon:CalendarMonthTwoToneIcon,
       breadcrumbs: false
     },
     {
@@ -52,7 +36,7 @@ const sidebarMenu = {
       title: 'Assignments',
       type: 'item',
       url: '/assignments',
-      icon:  AssignmentOutlinedIcon,
+      icon: LibraryBooksTwoToneIcon,
       breadcrumbs: false
     },
     {
@@ -60,7 +44,7 @@ const sidebarMenu = {
       title: 'Updates',
       type: 'item',
       url: '/updates',
-      icon: TipsAndUpdatesOutlinedIcon,
+      icon: DraftsTwoToneIcon,
       breadcrumbs: false
     },
     {
@@ -68,7 +52,7 @@ const sidebarMenu = {
       title: 'Timetable',
       type: 'item',
       url: '/timetable',
-      icon: TableViewOutlinedIcon,
+      icon: AlarmTwoToneIcon,
       breadcrumbs: false
       
     },
@@ -77,7 +61,7 @@ const sidebarMenu = {
         title: 'Performance',
         type: 'item',
         url: '/performance',
-        icon: PollOutlinedIcon,
+        icon:InsertChartTwoToneIcon,
         breadcrumbs: false
       },
 
@@ -86,7 +70,7 @@ const sidebarMenu = {
         title: 'Fees/school Fee',
         type: 'item',
         url: '/fee-school-fee',
-        icon: HistoryEduOutlinedIcon,
+        icon: CreditCardTwoToneIcon,
         breadcrumbs: false
       },
 
@@ -95,7 +79,7 @@ const sidebarMenu = {
         title: 'Online Assessment',
         type: 'item',
         url: '/online-assessment',
-        icon:  AssessmentOutlinedIcon,
+        icon:  NoteAltTwoToneIcon,
         breadcrumbs: false
       },
 
@@ -104,7 +88,7 @@ const sidebarMenu = {
         title: 'Communication / Messages',
         type: 'item',
         url: '/communication-messages',
-        icon: ChatOutlinedIcon,
+        icon: MarkUnreadChatAltTwoToneIcon,
         breadcrumbs: false
       },
 
@@ -112,7 +96,7 @@ const sidebarMenu = {
         id: 'request',
         title: 'Request',
         type: 'collapse',
-        icon: RateReviewOutlinedIcon,
+        icon: AssignmentIndTwoToneIcon,
         children: [
           {
             id: 'request-add-meeting',
@@ -138,17 +122,17 @@ const sidebarMenu = {
         title: 'Resources',
         type: 'item',
         url: '/resources',
-        icon:  AccountTreeOutlinedIcon,
+        icon:   FolderCopyTwoToneIcon ,
         breadcrumbs: false
       },
-      {
-        id: 'settings',
-        title: 'Settings',
-        type: 'item',
-        url: '/settings',
-        icon: SettingsOutlinedIcon,
-        breadcrumbs: false
-      },
+      // {
+      //   id: 'settings',
+      //   title: 'Settings',
+      //   type: 'item',
+      //   url: '/settings',
+      //   icon: SettingsTwoToneIcon,
+      //   breadcrumbs: false
+      // },
       {
         id: 'student-profile',
         title: 'Student Profile',
