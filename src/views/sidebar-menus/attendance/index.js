@@ -7,6 +7,8 @@ import AttendanceChart from './AttendanceChart';
 import Leaves from './Leaves';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
+import Paper from '@mui/material/Paper'
+import { Typography } from '@mui/material';
 
 export default function BasicDateCalendar() {
   return (
@@ -15,9 +17,17 @@ export default function BasicDateCalendar() {
       <Box>
         <Grid container spacing={2} justifyContent="center" alignItems="center">
           <Grid item xs={12} sm={6} md={4}>
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
-              <DateCalendar />
-            </LocalizationProvider>
+
+            <Paper sx={{ height: '538px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+              <Grid item>
+                <Typography variant='h3'>
+                  Monthly Calendar
+                </Typography>
+              </Grid>
+              <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <DateCalendar />
+              </LocalizationProvider>
+            </Paper>
           </Grid>
           <Grid item xs={12} sm={6} md={8}>
             <AttendanceChart />

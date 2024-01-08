@@ -78,10 +78,10 @@ const chartData = {
       name: 'Present',
       data: [35, 145, 35, 35, 20, 105, 100, 10, 65, 45, 30, 10]
     },
-    {
-      name: 'Leave',
-      data: [0, 0, 75, 0, 0, 115, 0, 0, 0, 0, 150, 0]
-    }
+    // {
+    //   name: 'Leave',
+    //   data: [0, 0, 75, 0, 0, 115, 0, 0, 0, 0, 150, 0]
+    // }
   ]
 };
 export default chartData;

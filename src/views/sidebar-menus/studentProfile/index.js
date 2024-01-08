@@ -19,6 +19,10 @@ import { useTheme, useMediaQuery, Box, Typography } from '@mui/material';
 import ProdileCard from './StudentProfile';
 import Grid from '@mui/material/Grid';
 import ProdileForm from './ProfileForm';
+import Transport from './Transport';
+import FatherDetails from './FatherDetails';
+import MotherDetails from './MotherDetails';
+import GuardianDetails from './GuardianDetails';
 
 
 // Custom component for rendering the content of each tab panel
@@ -69,10 +73,10 @@ function Profile() {
         {/* Tabs for navigation */}
         <Tabs value={value} variant="scrollable" onChange={handleChange}>
           <Tab aria-label="basic tabs example" label="Primary" {...a11yProps(0)} />
-          <Tab aria-label="basic tabs example" label="Transport" {...a11yProps(1)} />
-          <Tab aria-label="basic tabs example" label="Father" {...a11yProps(2)} />
-          <Tab aria-label="basic tabs example" label="Mother" {...a11yProps(3)} />
-          <Tab aria-label="basic tabs example" label="Guardian" {...a11yProps(4)} />
+          <Tab aria-label="basic tabs example" label="Father" {...a11yProps(1)} />
+          <Tab aria-label="basic tabs example" label="Mother" {...a11yProps(2)} />
+          <Tab aria-label="basic tabs example" label="Guardian" {...a11yProps(3)} />
+          <Tab aria-label="basic tabs example" label="Transport" {...a11yProps(4)} />
         </Tabs>
       </Box>
 
@@ -87,21 +91,19 @@ function Profile() {
           <ProdileForm/>
         </Grid>
       </Grid>
-    </Box>
-      
-
+      </Box>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-      Tab Panal 2
+        <FatherDetails/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
-      Tab Panal 6
+       <MotherDetails/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={3}>
-      Tab Panal 3
+       <GuardianDetails/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={4}>
-      Tab Panal 4
+      <Transport/>
       </CustomTabPanel>
     </Box>
     </MainCard>

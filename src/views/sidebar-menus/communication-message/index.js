@@ -39,6 +39,7 @@ const contactData = [
 ];
 
 export default function AlignItemsList() {
+  
   return (
     <MainCard title="CONTACT" sx={{ fontSize: '22px', fontWeight: 'bold' }}>
       <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
