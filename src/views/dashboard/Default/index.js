@@ -25,7 +25,7 @@ const Dashboard = () => {
   // const isMobile = useMediaQuery('(max-width: 767px)');
 
   return (
-    <Grid container spacing={gridSpacing} className='test'>
+    <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
         <Grid container spacing={gridSpacing} >
           <Grid item lg={4} md={6} sm={6} xs={12}>

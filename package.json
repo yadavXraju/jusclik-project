@@ -41,6 +41,7 @@
     "reactstrap": "^9.2.1",
     "recharts": "^2.10.3",
     "redux": "^4.2.0",
+    "use-history": "^1.4.1",
     "yup": "^0.32.11"
   },
   "scripts": {

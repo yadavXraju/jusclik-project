@@ -10,449 +10,70 @@ import MessageOutlinedIcon from '@mui/icons-material/MessageOutlined';
 import Typography from '@mui/material/Typography';
 import MainCard from 'ui-component/cards/MainCard';
 import Box from '@mui/material/Box';
+import Badge from '@mui/material/Badge';
+
+const commonStyles = {
+  bgcolor: 'background.paper',
+  borderRadius: '5px',
+  border: 1,
+  padding: '5px',
+  height: '30px',
+};
+
+const contactData = [
+  { name: 'Suraj Mishra', role: 'Website Developer' },
+  { name: 'Abhishek Negi', role: 'Website Developer' },
+  { name: 'Shruti Sharma', role: 'Gamer' },
+  { name: 'Ruby Dhiman', role: 'Website Developer' },
+  { name: 'Megha', role: 'Website Designer (Paratha Junction)' },
+  { name: 'Amit', role: 'Graphic Designer & 3D Animation Creator' },
+  { name: 'Nitika', role: 'Graphic Designer' },
+  { name: 'Sangeeta', role: 'UI Designer' },
+  { name: 'Harsh', role: 'Data Scientist' },
+  { name: 'Kanika Kapoor Khan', role: 'Undefined' },
+  { name: 'Sahil Jain', role: 'Trainee Manager' },
+  { name: 'Ashish', role: 'Business Development Manager' },
+  { name: 'Rahul Sood', role: 'Business Development Manager' },
+  { name: 'Gaganraj', role: 'Software Engineer' },
+  { name: 'Narendra Modi', role: 'Prime Minister' },
+];
 
 export default function AlignItemsList() {
-
-  const commonStyles = {
-    bgcolor: 'background.paper',
-    borderRadius: '5px',
-    border: 1,
-    p:1,
-    height:'40px'
-  };
   
   return (
-    <MainCard title="CONTACT" sx={{fontSize:'22px', fontWeight:'bold' }} >
-
-    <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
-      <ListItem>
-        <ListItemAvatar>
-        <Avatar
-        src="/static/images/avatar/1.jpg"
-        sx={{ width: 50, height: 50 }}
-      />
-        </ListItemAvatar>
-        <ListItemText sx={{paddingLeft:'10px' }}>
-      <Typography variant='h4'>Suraj Mishra</Typography>
-         {
-            <React.Fragment>
-              <Typography
-                sx={{ display: 'inline'}}
-                component="span"
-                variant="subtitle2"
-                color="text.primary"
-              >
-                Website Developer
-              </Typography>
-            </React.Fragment>
-          }
-        </ListItemText>
-        <ListItemDecorator>
-        <Box sx={{ ...commonStyles, borderColor: 'primary.main' }} >
-          <MessageOutlinedIcon color="primary"/>
-          </Box>
-        </ListItemDecorator>
-      </ListItem>
-      <Divider variant="middle" component="li" />
-      <ListItem >
-        <ListItemAvatar>
-        <Avatar
-        src="/static/images/avatar/1.jpg"
-        sx={{ width: 50, height: 50 }}
-      />
-        </ListItemAvatar>
-        <ListItemText sx={{paddingLeft:'10px' }}>
-      <Typography variant='h4'>Abhishek Negi</Typography>
-         {
-            <React.Fragment>
-              <Typography
-                sx={{ display: 'inline' }}
-                component="span"
-                variant="subtitle2"
-                color="text.primary"
-              >
-                Website Developer
-              </Typography>
-            </React.Fragment>
-          }
-        </ListItemText>
-        <ListItemDecorator>
-          <Box sx={{ ...commonStyles, borderColor: 'primary.main' }} >
-          <MessageOutlinedIcon color="primary"/>
-          </Box>
-        </ListItemDecorator>
-      </ListItem>
-      <Divider variant="middle" component="li" />
-      <ListItem >
-        <ListItemAvatar>
-        <Avatar
-        src="/static/images/avatar/1.jpg"
-        sx={{ width: 50, height: 50 }}
-      />
-        </ListItemAvatar>
-        <ListItemText sx={{paddingLeft:'10px' }}>
-      <Typography variant='h4'>Shruti Sharma</Typography>
-         {
-            <React.Fragment>
-              <Typography
-                sx={{ display: 'inline' }}
-                component="span"
-                variant="subtitle2"
-                color="text.primary"
-              >
-                Gamer
-              </Typography>
-            </React.Fragment>
-          }
-        </ListItemText>
-        <ListItemDecorator>
-          <Box sx={{ ...commonStyles, borderColor: 'primary.main' }} >
-          <MessageOutlinedIcon color="primary"/>
-          </Box>
-        </ListItemDecorator>
-      </ListItem>
-      <Divider variant="middle" component="li" />
-       <ListItem >
-        <ListItemAvatar>
-        <Avatar
-        src="/static/images/avatar/1.jpg"
-        sx={{ width: 50, height: 50 }}
-      />
-        </ListItemAvatar>
-        <ListItemText sx={{paddingLeft:'10px' }}>
-      <Typography variant='h4'>Ruby Dhiman</Typography>
-         {
-            <React.Fragment>
-              <Typography
-                sx={{ display: 'inline' }}
-                component="span"
-                variant="subtitle2"
-                color="text.primary"
-              >
-                Website Developer
-              </Typography>
-            </React.Fragment>
-          }
-        </ListItemText>
-        <ListItemDecorator>
-          <Box sx={{ ...commonStyles, borderColor: 'primary.main' }} >
-          <MessageOutlinedIcon color="primary"/>
-          </Box>
-        </ListItemDecorator>
-      </ListItem>
-      <Divider variant="middle" component="li" />
-      <ListItem >
-        <ListItemAvatar>
-        <Avatar
-        src="/static/images/avatar/1.jpg"
-        sx={{ width: 50, height: 50 }}
-      />
-        </ListItemAvatar>
-        <ListItemText sx={{paddingLeft:'10px' }}>
-      <Typography variant='h4'>Megha</Typography>
-         {
-            <React.Fragment>
-              <Typography
-                sx={{ display: 'inline' }}
-                component="span"
-                variant="subtitle2"
-                color="text.primary"
-              >
-               Website Designer (Paratha Junction)
-              </Typography>
-            </React.Fragment>
-          }
-        </ListItemText>
-        <ListItemDecorator>
-          <Box sx={{ ...commonStyles, borderColor: 'primary.main' }} >
-          <MessageOutlinedIcon color="primary"/>
-          </Box>
-        </ListItemDecorator>
-      </ListItem>
-      <Divider variant="middle" component="li" /><ListItem >
-        <ListItemAvatar>
-        <Avatar
-        src="/static/images/avatar/1.jpg"
-        sx={{ width: 50, height: 50 }}
-      />
-        </ListItemAvatar>
-        <ListItemText sx={{paddingLeft:'10px' }}>
-      <Typography variant='h4'>Amit</Typography>
-         {
-            <React.Fragment>
-              <Typography
-                sx={{ display: 'inline' }}
-                component="span"
-                variant="subtitle2"
-                color="text.primary"
-              >
-                Graphic Designer & 3D Animation Creator
-              </Typography>
-            </React.Fragment>
-          }
-        </ListItemText>
-        <ListItemDecorator>
-          <Box sx={{ ...commonStyles, borderColor: 'primary.main' }} >
-          <MessageOutlinedIcon color="primary"/>
-          </Box>
-        </ListItemDecorator>
-      </ListItem>
-      <Divider variant="middle" component="li" /><ListItem >
-        <ListItemAvatar>
-        <Avatar
-        src="/static/images/avatar/1.jpg"
-        sx={{ width: 50, height: 50 }}
-      />
-        </ListItemAvatar>
-        <ListItemText sx={{paddingLeft:'10px' }}>
-      <Typography variant='h4'>Nitika</Typography>
-         {
-            <React.Fragment>
-              <Typography
-                sx={{ display: 'inline' }}
-                component="span"
-                variant="subtitle2"
-                color="text.primary"
-              >
-                Graphic Designer
-              </Typography>
-            </React.Fragment>
-          }
-        </ListItemText>
-        <ListItemDecorator>
-          <Box sx={{ ...commonStyles, borderColor: 'primary.main' }} >
-          <MessageOutlinedIcon color="primary"/>
-          </Box>
-        </ListItemDecorator>
-      </ListItem>
-      <Divider variant="middle" component="li" /><ListItem >
-        <ListItemAvatar>
-        <Avatar
-        src="/static/images/avatar/1.jpg"
-        sx={{ width: 50, height: 50 }}
-      />
-        </ListItemAvatar>
-        <ListItemText sx={{paddingLeft:'10px' }}>
-      <Typography variant='h4'>Sangeeta</Typography>
-         {
-            <React.Fragment>
-              <Typography
-                sx={{ display: 'inline' }}
-                component="span"
-                variant="subtitle2"
-                color="text.primary"
-              >
-                UI Designer
-              </Typography>
-            </React.Fragment>
-          }
-        </ListItemText>
-        <ListItemDecorator>
-          <Box sx={{ ...commonStyles, borderColor: 'primary.main' }} >
-          <MessageOutlinedIcon color="primary"/>
-          </Box>
-        </ListItemDecorator>
-      </ListItem>
-      <Divider variant="middle" component="li" /><ListItem >
-        <ListItemAvatar>
-        <Avatar
-        src="/static/images/avatar/1.jpg"
-        sx={{ width: 50, height: 50 }}
-      />
-        </ListItemAvatar>
-        <ListItemText sx={{paddingLeft:'10px' }}>
-      <Typography variant='h4'>Harsh</Typography>
-         {
-            <React.Fragment>
-              <Typography
-                sx={{ display: 'inline' }}
-                component="span"
-                variant="subtitle2"
-                color="text.primary"
-              >
-               Data Scientist
-              </Typography>
-            </React.Fragment>
-          }
-        </ListItemText>
-        <ListItemDecorator>
-          <Box sx={{ ...commonStyles, borderColor: 'primary.main' }} >
-          <MessageOutlinedIcon color="primary"/>
-          </Box>
-        </ListItemDecorator>
-      </ListItem>
-      <Divider variant="middle" component="li" /><ListItem >
-        <ListItemAvatar>
-        <Avatar
-        src="/static/images/avatar/1.jpg"
-        sx={{ width: 50, height: 50 }}
-      />
-        </ListItemAvatar>
-        <ListItemText sx={{paddingLeft:'10px' }}>
-      <Typography variant='h4'>Kanika Kapoor Khan</Typography>
-         {
-            <React.Fragment>
-              <Typography
-                sx={{ display: 'inline' }}
-                component="span"
-                variant="subtitle2"
-                color="text.primary"
-              >
-                Undefined
-              </Typography>
-            </React.Fragment>
-          }
-        </ListItemText>
-        <ListItemDecorator>
-          <Box sx={{ ...commonStyles, borderColor: 'primary.main' }} >
-          <MessageOutlinedIcon color="primary"/>
-          </Box>
-        </ListItemDecorator>
-      </ListItem>
-      <Divider variant="middle" component="li" /><ListItem >
-        <ListItemAvatar>
-        <Avatar
-        src="/static/images/avatar/1.jpg"
-        sx={{ width: 50, height: 50 }}
-      />
-        </ListItemAvatar>
-        <ListItemText sx={{paddingLeft:'10px' }}>
-      <Typography variant='h4'>Sahil Jain</Typography>
-         {
-            <React.Fragment>
-              <Typography
-                sx={{ display: 'inline' }}
-                component="span"
-                variant="subtitle2"
-                color="text.primary"
-              >
-               Trainee Manager
-              </Typography>
-            </React.Fragment>
-          }
-        </ListItemText>
-        <ListItemDecorator>
-          <Box sx={{ ...commonStyles, borderColor: 'primary.main' }} >
-          <MessageOutlinedIcon color="primary"/>
-          </Box>
-        </ListItemDecorator>
-      </ListItem>
-      <Divider variant="middle" component="li" /><ListItem >
-        <ListItemAvatar>
-        <Avatar
-        src="/static/images/avatar/1.jpg"
-        sx={{ width: 50, height: 50 }}
-      />
-        </ListItemAvatar>
-        <ListItemText sx={{paddingLeft:'10px' }}>
-      <Typography variant='h4'>Ashish</Typography>
-         {
-            <React.Fragment>
-              <Typography
-                sx={{ display: 'inline' }}
-                component="span"
-                variant="subtitle2"
-                color="text.primary"
-              >
-               Business Development Manager
-              </Typography>
-            </React.Fragment>
-          }
-        </ListItemText>
-        <ListItemDecorator>
-          <Box sx={{ ...commonStyles, borderColor: 'primary.main' }} >
-          <MessageOutlinedIcon color="primary"/>
-          </Box>
-        </ListItemDecorator>
-      </ListItem>
-      <Divider variant="middle" component="li" /><ListItem >
-        <ListItemAvatar>
-        <Avatar
-        src="/static/images/avatar/1.jpg"
-        sx={{ width: 50, height: 50 }}
-      />
-        </ListItemAvatar>
-        <ListItemText sx={{paddingLeft:'10px' }}>
-      <Typography variant='h4'>Rahul Sood</Typography>
-         {
-            <React.Fragment>
-              <Typography
-                sx={{ display: 'inline' }}
-                component="span"
-                variant="subtitle2"
-                color="text.primary"
-              >
-               Business Development Manager
-              </Typography>
-            </React.Fragment>
-          }
-        </ListItemText>
-        <ListItemDecorator>
-          <Box sx={{ ...commonStyles, borderColor: 'primary.main' }} >
-          <MessageOutlinedIcon color="primary"/>
-          </Box>
-        </ListItemDecorator>
-      </ListItem>
-      <Divider variant="middle" component="li" /><ListItem >
-        <ListItemAvatar>
-        <Avatar
-        src="/static/images/avatar/1.jpg"
-        sx={{ width: 50, height: 50 }}
-      />
-        </ListItemAvatar>
-        <ListItemText sx={{paddingLeft:'10px' }}>
-      <Typography variant='h4'>Gaganraj</Typography>
-         {
-            <React.Fragment>
-              <Typography
-                sx={{ display: 'inline' }}
-                component="span"
-                variant="subtitle2"
-                color="text.primary"
-              >
-               Software Engineer
-              </Typography>
-            </React.Fragment>
-          }
-        </ListItemText>
-        <ListItemDecorator>
-          <Box sx={{ ...commonStyles, borderColor: 'primary.main' }} >
-          <MessageOutlinedIcon color="primary"/>
-          </Box>
-        </ListItemDecorator>
-      </ListItem>
-      <Divider variant="middle" component="li" /><ListItem >
-        <ListItemAvatar>
-        <Avatar
-        src="/static/images/avatar/1.jpg"
-        sx={{ width: 50, height: 50 }}
-      />
-        </ListItemAvatar>
-        <ListItemText sx={{paddingLeft:'10px' }}>
-      <Typography variant='h4'>Narendra Modi</Typography>
-         {
-            <React.Fragment>
-              <Typography
-                sx={{ display: 'inline' }}
-                component="span"
-                variant="subtitle2"
-                color="text.primary"
-              >
-                Prime Minister
-              </Typography>
-            </React.Fragment>
-          }
-        </ListItemText>
-        <ListItemDecorator>
-          <Box sx={{ ...commonStyles, borderColor: 'primary.main' }} >
-          <MessageOutlinedIcon color="primary"/>
-          </Box>
-        </ListItemDecorator>
-      </ListItem>
-      <Divider variant="middle" component="li" />
-
-    </List>
+    <MainCard title="CONTACT" sx={{ fontSize: '22px', fontWeight: 'bold' }}>
+      <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
+        {contactData.map((contact, index) => (
+          <React.Fragment key={index}>
+            <ListItem>
+              <ListItemAvatar>
+                <Avatar src="/static/images/avatar/1.jpg" sx={{ width: 50, height: 50 }} />
+              </ListItemAvatar>
+              <ListItemText sx={{ paddingLeft: '10px' }}>
+                <Typography variant="h4">{contact.name}</Typography>
+                <React.Fragment>
+                  <Typography
+                    sx={{ display: 'inline' }}
+                    component="span"
+                    variant="subtitle2"
+                    color="text.primary"
+                  >
+                    {contact.role}
+                  </Typography>
+                </React.Fragment>
+              </ListItemText>
+              <ListItemDecorator>
+                <Badge badgeContent={4} color="primary">
+                  <Box sx={{ ...commonStyles, borderColor: 'primary.main' }}>
+                    <MessageOutlinedIcon color="primary" fontSize="small" />
+                  </Box>
+                </Badge>
+              </ListItemDecorator>
+            </ListItem>
+            {index < contactData.length - 1 && <Divider variant="middle" component="li" />}
+          </React.Fragment>
+        ))}
+      </List>
     </MainCard>
-
   );
 }
