@@ -6,7 +6,8 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Box } from '@mui/system';
-import logo from '../../../assets/images/brand.png';
+// import logo from '../../../assets/images/brand.png';
+import { studentProfileDetails } from 'layout/MainLayout/Header/ProfileSection/ProfileDeatails';
 
 
 export default function ProdileCard() {
@@ -19,18 +20,18 @@ export default function ProdileCard() {
         <CardMedia
         
         sx={{ height: 100, width: 100, m: 'auto',borderRadius: '50%' }}
-        image={logo}
+        image={studentProfileDetails.StudentImage}
         title="Student image"
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          Student Name
+            {studentProfileDetails.StudentName}
         </Typography>
         <Typography variant="body1" color="text.secondary">
           Class Teacher
         </Typography>
         <Typography variant="body1" color="text.secondary">
-          Adm. No. - D00158
+          {studentProfileDetails.AdminNo}
         </Typography>
       </CardContent>
       <CardActions>
