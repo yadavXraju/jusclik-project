@@ -13,8 +13,9 @@ import { useNavigate } from 'react-router-dom';
         <Avatar alt="Remy Sharp" src={studentProfileDetails.StudentImage} sx={{ width: 150, height: 150, margin: 'auto', marginBottom: '10px' }} />
         <Typography variant="h2">{studentProfileDetails.StudentName}</Typography>
         <Typography variant="h5">{studentProfileDetails.AdminNo}</Typography>
+        <Typography variant="h5">Class : {studentProfileDetails.Class}</Typography>
         <Button sx={{ textTransform: 'uppercase', background: 'rgb(33, 150, 243)', color: '#fff' , marginTop:'1rem' }} variant="contained"  onClick={() => navigate('/student-profile')}>
-          go to Profile
+          View Profile
         </Button>
       </Box>
     </>

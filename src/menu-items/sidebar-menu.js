@@ -1,5 +1,5 @@
 // assets
-import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
+// import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 
 // new icon
 import CalendarMonthTwoToneIcon from '@mui/icons-material/CalendarMonthTwoTone';
@@ -133,14 +133,15 @@ const sidebarMenu = {
       //   icon: SettingsTwoToneIcon,
       //   breadcrumbs: false
       // },
-      {
-        id: 'student-profile',
-        title: 'Student Profile',
-        type: 'item',
-        url: '/student-profile',
-        icon: PersonOutlineOutlinedIcon,
-        breadcrumbs: false
-      }
+
+      // {
+      //   id: 'student-profile',
+      //   title: 'Student Profile',
+      //   type: 'item',
+      //   url: '/student-profile',
+      //   icon: PersonOutlineOutlinedIcon,
+      //   breadcrumbs: false
+      // }
 
   ]
 };

@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 // material-ui
 import { useTheme, styled } from '@mui/material/styles';
-import { Avatar, Box, Button, Grid, Typography } from '@mui/material';
+import { Avatar, Box,  Grid, Typography } from '@mui/material';
 
 // third-party
 import Chart from 'react-apexcharts';
@@ -16,8 +16,9 @@ import ChartDataMonth from './chart-data/total-order-month-line-chart';
 import ChartDataYear from './chart-data/total-order-year-line-chart';
 
 // assets
-import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
-import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+// import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
+// import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import CreditCardTwoToneIcon from '@mui/icons-material/CreditCardTwoTone';
 
 const CardWrapper = styled(MainCard)(({ theme }) => ({
   backgroundColor: theme.palette.primary.dark,
@@ -66,10 +67,10 @@ const CardWrapper = styled(MainCard)(({ theme }) => ({
 const TotalOrderLineChartCard = ({ isLoading }) => {
   const theme = useTheme();
 
-  const [timeValue, setTimeValue] = useState(false);
-  const handleChangeTime = (event, newValue) => {
-    setTimeValue(newValue);
-  };
+  const [timeValue] = useState(false);
+  // const handleChangeTime = (event, newValue) => {
+  //   setTimeValue(newValue);
+  // };
 
   return (
     <>
@@ -92,10 +93,10 @@ const TotalOrderLineChartCard = ({ isLoading }) => {
                         mt: 1
                       }}
                     >
-                      <LocalMallOutlinedIcon fontSize="inherit" />
+                      <CreditCardTwoToneIcon fontSize="inherit" />
                     </Avatar>
                   </Grid>
-                  <Grid item>
+                  {/* <Grid item>
                     <Button
                       disableElevation
                       variant={timeValue ? 'contained' : 'text'}
@@ -114,19 +115,15 @@ const TotalOrderLineChartCard = ({ isLoading }) => {
                     >
                       Year
                     </Button>
-                  </Grid>
+                  </Grid> */}
                 </Grid>
               </Grid>
               <Grid item sx={{ mb: 0.75 }}>
                 <Grid container alignItems="center">
                   <Grid item xs={6}>
                     <Grid container alignItems="center">
-                      <Grid item>
-                        {timeValue ? (
-                          <Typography sx={{ fontSize: '2.125rem', fontWeight: 500, mr: 1, mt: 1.75, mb: 0.75 }}>$108</Typography>
-                        ) : (
-                          <Typography sx={{ fontSize: '2.125rem', fontWeight: 500, mr: 1, mt: 1.75, mb: 0.75 }}>$961</Typography>
-                        )}
+                      <Grid item>                      
+                          <Typography sx={{ fontSize: '2.125rem', fontWeight: 500, mr: 1, mt: 1.75, mb: 0.75 }}>-48,836</Typography>
                       </Grid>
                       <Grid item>
                         <Avatar
@@ -137,7 +134,7 @@ const TotalOrderLineChartCard = ({ isLoading }) => {
                             color: theme.palette.primary.dark
                           }}
                         >
-                          <ArrowDownwardIcon fontSize="inherit" sx={{ transform: 'rotate3d(1, 1, 1, 45deg)' }} />
+                          <CreditCardTwoToneIcon fontSize="inherit" sx={{ transform: 'rotate3d(1, 1, 1, 45deg)' }} />
                         </Avatar>
                       </Grid>
                       <Grid item xs={12}>
@@ -145,10 +142,11 @@ const TotalOrderLineChartCard = ({ isLoading }) => {
                           sx={{
                             fontSize: '1rem',
                             fontWeight: 500,
-                            color: theme.palette.primary[200]
+                            color: theme.palette.primary[200],
+                            textTransform:'uppercase'
                           }}
                         >
-                          Total Order
+                          fee due
                         </Typography>
                       </Grid>
                     </Grid>

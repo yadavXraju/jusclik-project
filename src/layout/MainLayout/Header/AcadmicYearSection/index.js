@@ -7,10 +7,11 @@ const StyledContainer = styled('div')({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  width: '40px',
-  height: '40px',
-  borderRadius: '50%',
-  backgroundColor: '#2196f3',
+  width: '34px',
+  height: '34px',
+  borderRadius: '8px',
+  backgroundColor: '#409ae9f5',
+  
   cursor: 'pointer',
 });
 
@@ -38,7 +39,7 @@ const AcademicYear = () => {
     <Box
       sx={{
         ml: 2,
-        mr: 3,
+        mr: 0,
         [theme.breakpoints.down('md')]: {
           mr: 2,
         },
@@ -46,7 +47,7 @@ const AcademicYear = () => {
     >
       <Tooltip title={`Academic Year ${academicYear}`} arrow>
         <StyledContainer>
-          <StyledIcon data-testid="CalendarMonthIcon" />
+          <StyledIcon data-testid="CalendarMonthIcon" sx={{width:'20px'}} />
         </StyledContainer>
       </Tooltip>
     </Box>

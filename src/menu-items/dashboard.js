@@ -1,5 +1,5 @@
 // assets
-import { IconDashboard } from '@tabler/icons';
+// import { IconDashboard } from '@tabler/icons';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faTachometer } from '@fortawesome/free-solid-svg-icons';
 
@@ -8,9 +8,10 @@ import { IconDashboard } from '@tabler/icons';
 // const icons = {
 //   dashboardIcon : DashboardIcon,
 // }
+import HomeTwoToneIcon from '@mui/icons-material/HomeTwoTone';
 
 // constant
-const icons = { IconDashboard };
+// const icons = { IconDashboard };
 
 // ==============================|| DASHBOARD MENU ITEMS ||============================== //
 
@@ -21,10 +22,10 @@ const dashboard = {
   children: [
     {
       id: 'default',
-      title: 'Home',
+      title: 'Dashboard',
       type: 'item',
       url: '/dashboard/default',
-      icon: icons.IconDashboard,
+      icon:HomeTwoToneIcon ,
         // icon: icons.IconDashboard,
       breadcrumbs: false
     }
