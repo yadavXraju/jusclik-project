@@ -1,21 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import Grid from '@mui/material/Grid';
-import { gridSpacing } from 'store/constant';
-import Profile from './Profile';
-import WelcomeAttandanceFeeComp from './WelcomeAttandanceFeeComp';
-import TotalGrowthBarChart from './TotalGrowthBarChart';
-import PopularCard from './PopularCard';
+import React from 'react'
+import { Grid } from '@mui/material'
+import { Spacing } from '@mui/system'
 
-const Dashboard = () => {
-  const [isLoading, setLoading] = useState(true);
-
-  useEffect(() => {
-    setLoading(false);
-  }, []);
-
+const TimeTableHome = () => {
   return (
-    <Grid container spacing={gridSpacing}>
-      <Grid item xs={12}>
+    <>
+         <Grid container spacing={gridSpacing}>
+      <Grid item xs={8}>
         <Grid container spacing={gridSpacing}> 
 
           <Grid item lg={8} md={12} sm={12} xs={12}  spacing={gridSpacing} >
@@ -50,7 +41,8 @@ const Dashboard = () => {
         </Grid>
       </Grid>
     </Grid>
-  );
-};
+    </>
+  )
+}
 
-export default Dashboard;
+export default TimeTableHome
