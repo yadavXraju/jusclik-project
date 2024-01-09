@@ -6,11 +6,12 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListItemDecorator from '@mui/joy/ListItemDecorator';
 import Avatar from '@mui/material/Avatar';
-import MessageOutlinedIcon from '@mui/icons-material/MessageOutlined';
+import MailOutlinedIcon from '@mui/icons-material/MailOutlined';
 import Typography from '@mui/material/Typography';
 import MainCard from 'ui-component/cards/MainCard';
 import Box from '@mui/material/Box';
 import Badge from '@mui/material/Badge';
+import { useNavigate } from 'react-router';
 
 const commonStyles = {
   bgcolor: 'background.paper',
@@ -39,6 +40,8 @@ const contactData = [
 ];
 
 export default function AlignItemsList() {
+
+  const navigate = useNavigate()
   
   return (
     <MainCard title="CONTACT" sx={{ fontSize: '22px', fontWeight: 'bold' }}>
@@ -64,8 +67,8 @@ export default function AlignItemsList() {
               </ListItemText>
               <ListItemDecorator>
                 <Badge badgeContent={4} color="primary">
-                  <Box sx={{ ...commonStyles, borderColor: 'primary.main' }}>
-                    <MessageOutlinedIcon color="primary" fontSize="small" />
+                  <Box sx={{ ...commonStyles, borderColor: 'primary.main' }} onClick={()=>navigate('/updates')}>
+                    <MailOutlinedIcon color="primary" fontSize="small" />
                   </Box>
                 </Badge>
               </ListItemDecorator>
