@@ -11,6 +11,7 @@ import ProdileForm from './ProfileForm';
 import FatherDetails from './FatherDetails';
 import MotherDetails from './MotherDetails';
 import GuardianDetails from './GuardianDetails';
+import Credentials from './Credentials';
 
 
 // Custom component for rendering the content of each tab panel
@@ -95,7 +96,7 @@ function Profile() {
       Upload Documents
       </CustomTabPanel>
       <CustomTabPanel value={value} index={5}>
-      Credentials
+       <Credentials/>
       </CustomTabPanel>
     </Box>
     </MainCard>
