@@ -12,13 +12,13 @@ export const StyledContainer = styled('div')({
   width: '34px',
   height: '34px',
   borderRadius: '8px',
-  backgroundColor: '#409ae9f5',
+  backgroundColor: '#ede7f6',
   
   cursor: 'pointer',
 });
 
 const StyledIcon = styled(QuestionMarkOutlinedIcon)({
-  color: 'white',
+  color: '#5e35b1',
 });
 
 

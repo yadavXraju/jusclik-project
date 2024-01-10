@@ -26,7 +26,9 @@ const SchoolName = () => {
             <Box  sx={{ mx: isMobile ? '0rem' : '1rem' , maxWidth:'300px' , maxHeight:'100px'  }}> 
               <img src={logoSrc} alt="School Logo"  style={{objectFit:'cover', width:'100%', height:'100px'}}/> 
             </Box>
-        <Box >  <Typography variant='h2' sx={{lineHeight:'.5px', fontSize:'26px'}}>{schoolName}</Typography> </Box>
+        <Box >  <Typography variant='h2' sx={{lineHeight:'.5px', fontSize:'26px', '@media (max-width:767px)': {
+    fontSize: '18px',
+  }}}>{schoolName}</Typography> </Box>
       </Box>
     </>
   );
