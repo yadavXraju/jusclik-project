@@ -5,7 +5,7 @@ import MainCard from 'ui-component/cards/MainCard';
 
 const Updates = () => {
   return (
-    <MainCard title="CHAT">
+    <MainCard title="MAIL">
     <ChatInbox/>
         </MainCard>
   )

@@ -1,172 +1,258 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
-  Box,
-  Paper,
-  List,
-  ListItem,
-  ListItemText,
-  TextField,
-  IconButton,
-  Typography,
-  Avatar,
-  Divider,
+  CssBaseline, Box, List, ListItem, ListItemAvatar, Avatar, ListItemIcon, ListItemText, Divider, Typography, Button, InputBase, ThemeProvider, createTheme, IconButton, Popover, MenuItem, Grid,
 } from '@mui/material';
-import SendIcon from '@mui/icons-material/Send';
-import AttachFileIcon from '@mui/icons-material/AttachFile';
+import TablePagination from '@mui/material/TablePagination';
+import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
+import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
+import SearchIcon from '@mui/icons-material/Search';
+import FilterListIcon from '@mui/icons-material/FilterList';
+import MailCompose from './MailCompose';
+import { styled } from '@mui/system';
 
-const ChatComponent = () => {
-  const [messages, setMessages] = useState([]);
-  const [newMessage, setNewMessage] = useState('');
-  const [fileInput, setFileInput] = useState(null);
-  const messageListRef = useRef();
+const theme = createTheme();
 
-  useEffect(() => {
-    // Scroll to the bottom when messages change
-    if (messageListRef.current) {
-      messageListRef.current.scrollBottom = messageListRef.current.scrollHeight;
+const GmailInboxTemplate = () => {
+  const getCurrentDateTime = () => {
+    const currentDate = new Date();
+    const options = {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric',
+    };
+    return currentDate.toLocaleString('en-US', options);
+  };
+
+  const initialData = [
+    { id: 1, name: 'John Doe', message: 'Lorem ipsum dolor sit amet 1', unread: false, important: true },
+    { id: 2, name: 'Jane Smith', message: 'Lorem ipsum dolor sit amet 2', unread: true, important: false },
+    { id: 3, name: 'Bob Johnson', message: 'Lorem ipsum dolor sit amet 3', unread: false, important: true },
+    { id: 4, name: 'Alice Williams', message: 'Lorem ipsum dolor sit amet 4', unread: true, important: false },
+    { id: 5, name: 'Charlie Brown', message: 'Lorem ipsum dolor sit amet 5', unread: false, important: true },
+    { id: 6, name: 'Eva Davis', message: 'Lorem ipsum dolor sit amet 6', unread: false, important: false },
+    { id: 7, name: 'Frank White', message: 'Lorem ipsum dolor sit amet 7', unread: true, important: true },
+    { id: 8, name: 'Grace Miller', message: 'Lorem ipsum dolor sit amet 8', unread: false, important: false },
+    { id: 9, name: 'Henry Jackson', message: 'Lorem ipsum dolor sit amet 9', unread: true, important: true },
+    { id: 10, name: 'Ivy Lee', message: 'Lorem ipsum dolor sit amet 10', unread: false, important: false },
+    { id: 11, name: 'Charlie Brown', message: 'Lorem ipsum dolor sit amet 5', unread: false, important: true },
+    { id: 12, name: 'Eva Davis', message: 'Lorem ipsum dolor sit amet 6', unread: false, important: false },
+    { id: 13, name: 'Frank White', message: 'Lorem ipsum dolor sit amet 7', unread: true, important: true },
+    { id: 14, name: 'Grace Miller', message: 'Lorem ipsum dolor sit amet 8', unread: false, important: false },
+    { id: 15, name: 'Henry Jackson', message: 'Lorem ipsum dolor sit amet 9', unread: true, important: true },
+    { id: 16, name: 'Ivy Lee', message: 'Lorem ipsum dolor sit amet 10', unread: false, important: false },
+  ];
+
+  const [data, setData] = useState(initialData);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [isComposeOpen, setComposeOpen] = useState(false);
+
+  const SearchWrapper = styled('div')({
+    position: 'relative',
+    borderRadius: theme.shape.borderRadius,
+    backgroundColor: theme.palette.background.default,
+    border: `1px solid ${theme.palette.divider}`,
+    '&:hover': {
+      backgroundColor: theme.palette.background.paper,
+    },
+    marginLeft: 0,
+    width: '100%',
+    [theme.breakpoints.up('sm')]: {
+      marginLeft: theme.spacing(1),
+      width: 'auto',
+    },
+  });
+
+  const SearchIconWrapper = styled('div')(({ theme }) => ({
+    padding: theme.spacing(0, 2),
+    height: '100%',
+    position: 'absolute',
+    pointerEvents: 'none',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    color: theme.palette.text.secondary,
+  }));
+
+  const StyledInputBase = styled(InputBase)(({ theme }) => ({
+    color: 'inherit',
+    width: '100%',
+    '& .MuiInputBase-input': {
+      padding: theme.spacing(1, 1, 1, 0),
+      paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+      [theme.breakpoints.up('sm')]: {
+        width: '12ch',
+      },
+    },
+  }));
+
+  const ComposeButtonWrapper = styled('div')({
+    display: 'flex',
+    alignItems: 'center',
+    order: -1,
+  });
+
+  const FilterWrapper = styled('div')({
+    display: 'flex',
+    alignItems: 'center',
+    marginRight: theme.spacing(2),
+  });
+
+  const handleFilterClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleFilterClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleFilterSelect = (filterValue) => {
+    handleFilterClose();
+    filterData(filterValue);
+  };
+
+  const filterData = (filterValue) => {
+    if (filterValue === 'name') {
+      setData([...initialData.sort((a, b) => a.name.localeCompare(b.name))]);
+    } else if (filterValue === 'date') {
+      setData([...initialData.sort((a, b) => a.id - b.id)]);
+    } else if (filterValue === 'unread') {
+      setData([...initialData.filter((item) => item.unread)]);
+    } else if (filterValue === 'important') {
+      setData([...initialData.filter((item) => item.important)]);
     }
-  }, [messages]);
-
-  const getCurrentTime = () => {
-    const now = new Date();
-    const hours = now.getHours();
-    const minutes = now.getMinutes().toString().padStart(2, '0');
-    const ampm = hours >= 12 ? 'PM' : 'AM';
-    const formattedHours = hours % 12 || 12;
-    return `${formattedHours}:${minutes} ${ampm}`;
   };
 
-  const handleSendClick = () => {
-    if ((newMessage.trim() !== '' || fileInput) && newMessage.trim() !== '') {
-      const currentTime = getCurrentTime();
-      const newMessageObj = { text: newMessage, sender: 'You', timestamp: currentTime };
+  const EmailItem = ({ emailData }) => {
+    const [isImportant, setIsImportant] = useState(emailData.important);
 
-      if (fileInput) {
-        newMessageObj.file = fileInput.name;
-        setFileInput(null);
-      }
+    const handleStarClick = () => {
+      setIsImportant(!isImportant);
+    };
 
-      setMessages([...messages, newMessageObj]);
-      setNewMessage('');
-    }
+    return (
+      <ListItemIcon onClick={handleStarClick}>
+        <StarBorderOutlinedIcon color={isImportant ? 'yellow' : 'inherit'} />
+      </ListItemIcon>
+    );
   };
 
-  const handleAttachmentClick = () => {
-    if (fileInput) {
-      fileInput.click();
-    }
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
   };
 
-  const handleFileInputChange = (event) => {
-    const file = event.target.files[0];
-    setFileInput(file);
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
   };
 
-  const getMessageBoxWidth = (message) => {
-    // Calculate the width based on the message content
-    const dummyDiv = document.createElement('div');
-    dummyDiv.innerHTML = message.text;
-    dummyDiv.style.width = 'auto';
-    dummyDiv.style.whiteSpace = 'pre-wrap';
-    dummyDiv.style.position = 'absolute';
-    dummyDiv.style.visibility = 'hidden';
-    document.body.appendChild(dummyDiv);
-    const width = dummyDiv.offsetWidth;
-    document.body.removeChild(dummyDiv);
-    return width + 40;
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value);
+    filterData('search', event.target.value);
   };
 
-  // Placeholder user information
-  const userAvatar = 'url_to_avatar_image';
-  const userName = 'Abhishek Negi';
-  const userStatus = 'Online';
+  const handleComposeOpen = () => {
+    setComposeOpen(true);
+  };
+
+  const handleComposeClose = () => {
+    setComposeOpen(false);
+  };
+
+  const handleComposeSend = (mailData) => {
+    console.log('Sending mail:', mailData);
+    handleComposeClose();
+  };
 
   return (
-    <Box p={1} height="75vh" display="flex" flexDirection="column">
-      <Paper style={{ flex: 1, overflowY: 'auto', marginBottom: '10px' }}>
-        <Box display="flex" alignItems="center">
-          <Avatar src={userAvatar} alt={userName} sx={{ width: 50, height: 50, marginRight: 2 }} />
-          <Box>
-            <Typography variant="h4" fontWeight="bold">
-              {userName}
-            </Typography>
-            <Typography variant="body2" color="textSecondary">
-              {userStatus}
-            </Typography>
-          </Box>
-        </Box>
-        <Divider sx={{ paddingBottom: '10px' }} />
-        <List ref={messageListRef} id="message-list">
-          {messages.map((message, index) => (
-            <ListItem
-              key={index}
-              alignItems={message.sender === 'You' ? 'flex-end' : 'flex-start'}
-            >
-              <ListItemText
-                secondary={
-                  <Box
-                    bgcolor={message.sender === 'You' ? '#90caf9' : 'lightgray'}
-                    p={3}
-                    borderRadius={2}
-                    width={getMessageBoxWidth(message)}
-                    whiteSpace="pre-wrap"
-                    display="flex-end"
-                    maxWidth="70%"
-                    flexDirection="column"
-                    position="relative"
-                  >
-                    <Typography>
-                      {message.text}
-                      {message.file && <div>Attachment: {message.file}</div>}
-                    </Typography>
-                    <Typography
-                      style={{
-                        position: 'absolute',
-                        bottom: '0',
-                        right: '0',
-                        paddingRight: '10px',
-                        color: message.sender === 'You' ? 'white' : 'black',
-                      }}
-                    >
-                      {message.timestamp}
-                    </Typography>
+    <ThemeProvider theme={theme}>
+      <Box sx={{ display: 'flex' }}>
+        <CssBaseline />
+        <Box sx={{ padding: '20px', flexGrow: 1 }}>
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+            <Grid sx={{ display: 'inline-flex' }}>
+              <ComposeButtonWrapper onClick={handleComposeOpen}>
+                <Button variant="contained" color="primary">
+                  <AddCircleOutlineOutlinedIcon sx={{ marginRight: '7px' }} />
+                  Compose
+                </Button>
+              </ComposeButtonWrapper>
+              <FilterWrapper>
+                <IconButton aria-label="Filter" onClick={handleFilterClick}>
+                  <FilterListIcon />
+                </IconButton>
+                <Popover
+                  open={Boolean(anchorEl)}
+                  anchorEl={anchorEl}
+                  onClose={handleFilterClose}
+                  anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'right',
+                  }}
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                >
+                  <Box sx={{ p: 2 }}>
+                    <MenuItem onClick={() => handleFilterSelect('name')}>Name</MenuItem>
+                    <MenuItem onClick={() => handleFilterSelect('date')}>Date</MenuItem>
+                    <MenuItem onClick={() => handleFilterSelect('unread')}>Unread</MenuItem>
+                    <MenuItem onClick={() => handleFilterSelect('important')}>Important</MenuItem>
                   </Box>
-                }
+                </Popover>
+              </FilterWrapper>
+            </Grid>
+            <Grid sx={{ display: 'inline-flex' }}>
+              <SearchWrapper>
+                <SearchIconWrapper>
+                  <SearchIcon />
+                </SearchIconWrapper>
+                <StyledInputBase
+                  placeholder="Search…"
+                  inputProps={{ 'aria-label': 'search' }}
+                  value={searchQuery}
+                  onChange={handleSearchChange}
+                />
+              </SearchWrapper>
+              <TablePagination
+                component="div"
+                count={data.length}
+                page={page}
+                onPageChange={handleChangePage}
+                rowsPerPage={rowsPerPage}
+                onRowsPerPageChange={handleChangeRowsPerPage}
+                labelRowsPerPage=""
               />
-            </ListItem>
-          ))}
-        </List>
-      </Paper>
-      <Box display="flex" alignItems="center" mb={2} bgcolor="white" borderRadius={2} width="100%">
-        <input
-          type="file"
-          accept=".png, .jpg, .jpeg, .pdf, .doc, .docx, .xls, .xlsx, .ppt, .pptx, .zip, .rar, .txt, .csv, .mp3, .mp4, .avi, .mkv, .gif, .svg,"
-          style={{ display: 'none' }}
-          ref={(input) => setFileInput(input)}
-          onChange={handleFileInputChange}
-        />
-        <IconButton color="primary" onClick={handleAttachmentClick}>
-          <AttachFileIcon />
-        </IconButton>
-        <TextField
-          fullWidth
-          variant="outlined"
-          placeholder="Type a message..."
-          value={newMessage}
-          onChange={(e) => setNewMessage(e.target.value)}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter') {
-              e.preventDefault();
-              handleSendClick();
-            }
-          }}
-        />
-        <IconButton color="primary" onClick={handleSendClick}>
-          <SendIcon />
-        </IconButton>
+            </Grid>
+          </Box>
+          <List>
+            {data.slice(page * rowsPerPage, (page + 1) * rowsPerPage).map((item) => (
+              <React.Fragment key={item.id}>
+                <ListItem>
+                  <ListItemAvatar>
+                    <Avatar alt="User Avatar" src={`/static/images/avatar/${item.id}.jpg`} />
+                  </ListItemAvatar>
+                  <EmailItem emailData={item} />
+                  <ListItemText primary={item.name} secondary={item.message} />
+                  <Typography variant="subtitle2" color="textSecondary">
+                    {getCurrentDateTime()}
+                  </Typography>
+                </ListItem>
+                <Divider />
+              </React.Fragment>
+            ))}
+          </List>
+        </Box>
       </Box>
-    </Box>
+      <MailCompose open={isComposeOpen} onClose={handleComposeClose} onSend={handleComposeSend} />
+    </ThemeProvider>
   );
 };
 
-export default ChatComponent;
+export default GmailInboxTemplate;

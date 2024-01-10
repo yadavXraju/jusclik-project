@@ -1,15 +1,3 @@
-// import React from 'react'
-
-// const StudentProfile = () => {
-//   return (
-//     <div>Student Profile</div>
-//   )
-// }
-
-// export default StudentProfile
-
-
-
 // Import necessary dependencies from Material-UI
 import React, { useState } from 'react';
 import Tabs from '@mui/material/Tabs';
@@ -19,7 +7,7 @@ import { useTheme, useMediaQuery, Box, Typography } from '@mui/material';
 import ProdileCard from './StudentProfile';
 import Grid from '@mui/material/Grid';
 import ProdileForm from './ProfileForm';
-import Transport from './Transport';
+// import Transport from './Transport';
 import FatherDetails from './FatherDetails';
 import MotherDetails from './MotherDetails';
 import GuardianDetails from './GuardianDetails';
@@ -76,7 +64,8 @@ function Profile() {
           <Tab aria-label="basic tabs example" label="Father" {...a11yProps(1)} />
           <Tab aria-label="basic tabs example" label="Mother" {...a11yProps(2)} />
           <Tab aria-label="basic tabs example" label="Guardian" {...a11yProps(3)} />
-          <Tab aria-label="basic tabs example" label="Transport" {...a11yProps(4)} />
+          <Tab aria-label="basic tabs example" label="Upload Documents" {...a11yProps(4)} />
+          <Tab aria-label="basic tabs example" label="Credentials" {...a11yProps(5)} />
         </Tabs>
       </Box>
 
@@ -103,7 +92,10 @@ function Profile() {
        <GuardianDetails/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={4}>
-      <Transport/>
+      Upload Documents
+      </CustomTabPanel>
+      <CustomTabPanel value={value} index={5}>
+      Credentials
       </CustomTabPanel>
     </Box>
     </MainCard>

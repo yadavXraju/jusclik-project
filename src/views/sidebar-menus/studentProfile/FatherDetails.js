@@ -36,8 +36,14 @@ export default function FatherDetails() {
     setMobileError(!mobileRegex.test(mobile));
   };
 
-  const handleMobileChange = (e) => {
-    setMobile(e.target.value);
+  const handleMobileChange = (event) => {
+    const inputMobile = event.target.value.replace(/\D/g, '');
+    if (inputMobile.length <= 10){
+      setMobile(inputMobile);
+      setMobileError(false);
+    }else {
+      setMobileError(true);
+    }
   };
 
 
@@ -84,9 +90,10 @@ export default function FatherDetails() {
         <TextField
          onChange={handleMobileChange}
                   onBlur={validateMobile}
+                  value={mobile}
                   error={mobileError}
-                  helperText={mobileError ? 'Invalid mobile number' : ''}
-         id="outlined-basic" fullWidth label="Mobile" type='number' variant="outlined" />
+                  helperText={mobileError ? 'Mobile number must be 10 digits' : ''}
+         id="outlined-basic" fullWidth label="Mobile No." type='number' variant="outlined" />
 
         </Grid>
         <Grid item sm={6} xs={12}>
