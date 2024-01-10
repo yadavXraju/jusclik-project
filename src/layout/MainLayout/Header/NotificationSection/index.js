@@ -93,7 +93,7 @@ const NotificationSection = () => {
       <Box
         sx={{
           ml: 2,
-          mr: 3,
+          mr: 2,
           [theme.breakpoints.down('md')]: {
             mr: 2
           }

@@ -1,8 +1,13 @@
-import React from 'react'
+
+import ChatInbox from '../communication-message/ChatBox/index';
+// import Typography from '@mui/material/Typography';
+import MainCard from 'ui-component/cards/MainCard';
 
 const Updates = () => {
   return (
-    <div>Updates</div>
+    <MainCard title="MAIL">
+    <ChatInbox/>
+        </MainCard>
   )
 }
 

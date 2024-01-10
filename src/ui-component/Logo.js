@@ -75,8 +75,8 @@ const Logo = () => {
     // </svg>
     <>
     <div style={brandStyle}>
-      <img src={brand} alt="cloud9" width="30" />
-     <p style={{fontWeight:'700'}}>Cloud9 School ERP</p>
+      <img src={brand} alt="cloud9" width="50" />
+     <p style={{fontWeight:'700'}}>CLOUD9 SCHOOL APP</p>
     </div>
     </>
   );

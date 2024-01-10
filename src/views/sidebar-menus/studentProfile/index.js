@@ -2,11 +2,15 @@
 import React, { useState } from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-// import Typography from '@mui/material/Typography';
-// import Box from '@mui/material/Box';
 import MainCard from 'ui-component/cards/MainCard';
-import BasicList from './Timetablelist';
 import { useTheme, useMediaQuery, Box, Typography } from '@mui/material';
+import ProdileCard from './StudentProfile';
+import Grid from '@mui/material/Grid';
+import ProdileForm from './ProfileForm';
+// import Transport from './Transport';
+import FatherDetails from './FatherDetails';
+import MotherDetails from './MotherDetails';
+import GuardianDetails from './GuardianDetails';
 
 
 // Custom component for rendering the content of each tab panel
@@ -41,7 +45,7 @@ function a11yProps(index) {
 }
 
 // Main component for rendering the tab section
-function Timetable() {
+function Profile() {
   const [value, setValue] = useState(0);
 
   // Event handler for tab change
@@ -51,55 +55,52 @@ function Timetable() {
 
   // Render the tab section
   return (
-    <MainCard title="Timetable" sx={{'.MuiCardContent-root': { padding: 0 } }}>
-    <Box sx={{ width: '100%'}}>
-      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+    <MainCard title="Student Profile" >
+    <Box sx={{ width: '100%' }}>
+      <Box sx={{ borderBottom: 1, borderColor: 'divider', '@media (max-width:600px)': { marginBottom: '15px' } }}>
         {/* Tabs for navigation */}
-        <Tabs value={value} onChange={handleChange}>
-          <Tab style={{minWidth: "10%", padding: "10px"}} aria-label="basic tabs example" label="MON" {...a11yProps(0)} />
-          <Tab style={{minWidth: "10%", padding: "10px"}} aria-label="basic tabs example" label="TUE" {...a11yProps(1)} />
-          <Tab style={{minWidth: "10%", padding: "10px"}} aria-label="basic tabs example" label="WED" {...a11yProps(2)} />
-          <Tab style={{minWidth: "10%", padding: "10px"}} aria-label="basic tabs example" label="THU" {...a11yProps(3)} />
-          <Tab style={{minWidth: "10%", padding: "10px"}} aria-label="basic tabs example" label="FRI" {...a11yProps(4)} />
-          <Tab style={{minWidth: "10%", padding: "10px"}} aria-label="basic tabs example" label="SAT" {...a11yProps(5)} />
-          {/* <Tab style={{minWidth: "10%", padding: "10px"}} aria-label="basic tabs example" label="SUN" {...a11yProps(6)} /> */}
+        <Tabs value={value} variant="scrollable" onChange={handleChange}>
+          <Tab aria-label="basic tabs example" label="Primary" {...a11yProps(0)} />
+          <Tab aria-label="basic tabs example" label="Father" {...a11yProps(1)} />
+          <Tab aria-label="basic tabs example" label="Mother" {...a11yProps(2)} />
+          <Tab aria-label="basic tabs example" label="Guardian" {...a11yProps(3)} />
+          <Tab aria-label="basic tabs example" label="Upload Documents" {...a11yProps(4)} />
+          <Tab aria-label="basic tabs example" label="Credentials" {...a11yProps(5)} />
         </Tabs>
       </Box>
 
       {/* Content of each tab panel */}
       <CustomTabPanel value={value} index={0}>
-      
-        <BasicList/>
-
+      <Box sx={{ flexGrow: 1 }}>
+      <Grid container spacing={2}>
+        <Grid item xs={12} sm={4}>
+        <ProdileCard/>
+        </Grid>
+        <Grid item xs={12} sm={8}>
+          <ProdileForm/>
+        </Grid>
+      </Grid>
+      </Box>
       </CustomTabPanel>
-
       <CustomTabPanel value={value} index={1}>
-      <BasicList/>
+        <FatherDetails/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
-      Tab Panal 6
-      {/* <BasicList/> */}
+       <MotherDetails/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={3}>
-      Tab Panal 3
-      {/* <BasicList/> */}
+       <GuardianDetails/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={4}>
-      Tab Panal 4
-      <BasicList/>
+      Upload Documents
       </CustomTabPanel>
       <CustomTabPanel value={value} index={5}>
-      Tab Panal 5
-      {/* <BasicList/> */}
+      Credentials
       </CustomTabPanel>
-      {/* <CustomTabPanel value={value} index={6}>
-      <BasicList/>
-       Tab Panal 6
-      </CustomTabPanel> */}
     </Box>
     </MainCard>
   );
 }
 
 // Export the component
-export default Timetable;
+export default Profile;

@@ -1,383 +1,82 @@
 import * as React from 'react';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
+import Divider from '@mui/material/Divider';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListItemDecorator from '@mui/joy/ListItemDecorator';
 import Avatar from '@mui/material/Avatar';
 import MailOutlinedIcon from '@mui/icons-material/MailOutlined';
 import Typography from '@mui/material/Typography';
-import { Paper, Grid } from '@mui/material'
+import MainCard from 'ui-component/cards/MainCard';
+import Box from '@mui/material/Box';
+import Badge from '@mui/material/Badge';
+import { useNavigate } from 'react-router';
+
+const commonStyles = {
+  bgcolor: 'background.paper',
+  borderRadius: '5px',
+  border: 1,
+  padding: '5px',
+  height: '30px',
+};
+
+const contactData = [
+  { name: 'Suraj Mishra', role: 'Website Developer' },
+  { name: 'Abhishek Negi', role: 'Website Developer' },
+  { name: 'Shruti Sharma', role: 'Gamer' },
+  { name: 'Ruby Dhiman', role: 'Website Developer' },
+  { name: 'Megha', role: 'Website Designer (Paratha Junction)' },
+  { name: 'Amit', role: 'Graphic Designer & 3D Animation Creator' },
+  { name: 'Nitika', role: 'Graphic Designer' },
+  { name: 'Sangeeta', role: 'UI Designer' },
+  { name: 'Harsh', role: 'Data Scientist' },
+  { name: 'Kanika Kapoor Khan', role: 'Undefined' },
+  { name: 'Sahil Jain', role: 'Trainee Manager' },
+  { name: 'Ashish', role: 'Business Development Manager' },
+  { name: 'Rahul Sood', role: 'Business Development Manager' },
+  { name: 'Gaganraj', role: 'Software Engineer' },
+  { name: 'Narendra Modi', role: 'Prime Minister' },
+];
 
 export default function AlignItemsList() {
+
+  const navigate = useNavigate()
+  
   return (
-    <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
-      <Typography
-        id="ellipsis-list-demo"
-        level="body-xs"
-        fontSize="22px"
-        padding="20px"
-        fontWeight="bold"
-        textTransform="uppercase"
-        sx={{ letterSpacing: '0.15rem' }}
-      >
-        Inbox
-      </Typography>
-      <Grid container spacing={2}>
-        <Grid item xs={12}>
-          <Paper elevation={3}>
-            <ListItem alignItems="flex-start">
+    <MainCard title="CONTACT" sx={{ fontSize: '22px', fontWeight: 'bold' }}>
+      <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
+        {contactData.map((contact, index) => (
+          <React.Fragment key={index}>
+            <ListItem>
               <ListItemAvatar>
-                <Avatar src="/static/images/avatar/1.jpg" />
+                <Avatar src="/static/images/avatar/1.jpg" sx={{ width: 50, height: 50 }} />
               </ListItemAvatar>
-              <ListItemText
-                primary="Brunch this weekend?"
-                secondary={
-                  <React.Fragment>
-                    <Typography
-                      sx={{ display: 'inline' }}
-                      component="span"
-                      variant="body2"
-                      color="text.primary"
-                    >
-                      Ali Connors
-                    </Typography>
-                    {" — I'll be in your neighborhood doing errands this…"}
-                  </React.Fragment>
-                }
-              />
+              <ListItemText sx={{ paddingLeft: '10px' }}>
+                <Typography variant="h4">{contact.name}</Typography>
+                <React.Fragment>
+                  <Typography
+                    sx={{ display: 'inline' }}
+                    component="span"
+                    variant="subtitle2"
+                    color="text.primary"
+                  >
+                    {contact.role}
+                  </Typography>
+                </React.Fragment>
+              </ListItemText>
               <ListItemDecorator>
-                <MailOutlinedIcon />
+                <Badge badgeContent={4} color="primary">
+                  <Box sx={{ ...commonStyles, borderColor: 'primary.main' }} onClick={()=>navigate('/updates')}>
+                    <MailOutlinedIcon color="primary" fontSize="small" />
+                  </Box>
+                </Badge>
               </ListItemDecorator>
             </ListItem>
-          </Paper>
-        </Grid>
-        <Grid item xs={12}>
-          <Paper elevation={3}>
-            <ListItem alignItems="flex-start">
-              <ListItemAvatar>
-                <Avatar src="/static/images/avatar/1.jpg" />
-              </ListItemAvatar>
-              <ListItemText
-                primary="Brunch this weekend?"
-                secondary={
-                  <React.Fragment>
-                    <Typography
-                      sx={{ display: 'inline' }}
-                      component="span"
-                      variant="body2"
-                      color="text.primary"
-                    >
-                      Ali Connors
-                    </Typography>
-                    {" — I'll be in your neighborhood doing errands this…"}
-                  </React.Fragment>
-                }
-              />
-              <ListItemDecorator>
-                <MailOutlinedIcon />
-              </ListItemDecorator>
-            </ListItem>
-          </Paper>
-        </Grid><Grid item xs={12}>
-          <Paper elevation={3}>
-            <ListItem alignItems="flex-start">
-              <ListItemAvatar>
-                <Avatar src="/static/images/avatar/1.jpg" />
-              </ListItemAvatar>
-              <ListItemText
-                primary="Brunch this weekend?"
-                secondary={
-                  <React.Fragment>
-                    <Typography
-                      sx={{ display: 'inline' }}
-                      component="span"
-                      variant="body2"
-                      color="text.primary"
-                    >
-                      Ali Connors
-                    </Typography>
-                    {" — I'll be in your neighborhood doing errands this…"}
-                  </React.Fragment>
-                }
-              />
-              <ListItemDecorator>
-                <MailOutlinedIcon />
-              </ListItemDecorator>
-            </ListItem>
-          </Paper>
-        </Grid><Grid item xs={12}>
-          <Paper elevation={3}>
-            <ListItem alignItems="flex-start">
-              <ListItemAvatar>
-                <Avatar src="/static/images/avatar/1.jpg" />
-              </ListItemAvatar>
-              <ListItemText
-                primary="Brunch this weekend?"
-                secondary={
-                  <React.Fragment>
-                    <Typography
-                      sx={{ display: 'inline' }}
-                      component="span"
-                      variant="body2"
-                      color="text.primary"
-                    >
-                      Ali Connors
-                    </Typography>
-                    {" — I'll be in your neighborhood doing errands this…"}
-                  </React.Fragment>
-                }
-              />
-              <ListItemDecorator>
-                <MailOutlinedIcon />
-              </ListItemDecorator>
-            </ListItem>
-          </Paper>
-        </Grid><Grid item xs={12}>
-          <Paper elevation={3}>
-            <ListItem alignItems="flex-start">
-              <ListItemAvatar>
-                <Avatar src="/static/images/avatar/1.jpg" />
-              </ListItemAvatar>
-              <ListItemText
-                primary="Brunch this weekend?"
-                secondary={
-                  <React.Fragment>
-                    <Typography
-                      sx={{ display: 'inline' }}
-                      component="span"
-                      variant="body2"
-                      color="text.primary"
-                    >
-                      Ali Connors
-                    </Typography>
-                    {" — I'll be in your neighborhood doing errands this…"}
-                  </React.Fragment>
-                }
-              />
-              <ListItemDecorator>
-                <MailOutlinedIcon />
-              </ListItemDecorator>
-            </ListItem>
-          </Paper>
-        </Grid><Grid item xs={12}>
-          <Paper elevation={3}>
-            <ListItem alignItems="flex-start">
-              <ListItemAvatar>
-                <Avatar src="/static/images/avatar/1.jpg" />
-              </ListItemAvatar>
-              <ListItemText
-                primary="Brunch this weekend?"
-                secondary={
-                  <React.Fragment>
-                    <Typography
-                      sx={{ display: 'inline' }}
-                      component="span"
-                      variant="body2"
-                      color="text.primary"
-                    >
-                      Ali Connors
-                    </Typography>
-                    {" — I'll be in your neighborhood doing errands this…"}
-                  </React.Fragment>
-                }
-              />
-              <ListItemDecorator>
-                <MailOutlinedIcon />
-              </ListItemDecorator>
-            </ListItem>
-          </Paper>
-        </Grid><Grid item xs={12}>
-          <Paper elevation={3}>
-            <ListItem alignItems="flex-start">
-              <ListItemAvatar>
-                <Avatar src="/static/images/avatar/1.jpg" />
-              </ListItemAvatar>
-              <ListItemText
-                primary="Brunch this weekend?"
-                secondary={
-                  <React.Fragment>
-                    <Typography
-                      sx={{ display: 'inline' }}
-                      component="span"
-                      variant="body2"
-                      color="text.primary"
-                    >
-                      Ali Connors
-                    </Typography>
-                    {" — I'll be in your neighborhood doing errands this…"}
-                  </React.Fragment>
-                }
-              />
-              <ListItemDecorator>
-                <MailOutlinedIcon />
-              </ListItemDecorator>
-            </ListItem>
-          </Paper>
-        </Grid><Grid item xs={12}>
-          <Paper elevation={3}>
-            <ListItem alignItems="flex-start">
-              <ListItemAvatar>
-                <Avatar src="/static/images/avatar/1.jpg" />
-              </ListItemAvatar>
-              <ListItemText
-                primary="Brunch this weekend?"
-                secondary={
-                  <React.Fragment>
-                    <Typography
-                      sx={{ display: 'inline' }}
-                      component="span"
-                      variant="body2"
-                      color="text.primary"
-                    >
-                      Ali Connors
-                    </Typography>
-                    {" — I'll be in your neighborhood doing errands this…"}
-                  </React.Fragment>
-                }
-              />
-              <ListItemDecorator>
-                <MailOutlinedIcon />
-              </ListItemDecorator>
-            </ListItem>
-          </Paper>
-        </Grid><Grid item xs={12}>
-          <Paper elevation={3}>
-            <ListItem alignItems="flex-start">
-              <ListItemAvatar>
-                <Avatar src="/static/images/avatar/1.jpg" />
-              </ListItemAvatar>
-              <ListItemText
-                primary="Brunch this weekend?"
-                secondary={
-                  <React.Fragment>
-                    <Typography
-                      sx={{ display: 'inline' }}
-                      component="span"
-                      variant="body2"
-                      color="text.primary"
-                    >
-                      Ali Connors
-                    </Typography>
-                    {" — I'll be in your neighborhood doing errands this…"}
-                  </React.Fragment>
-                }
-              />
-              <ListItemDecorator>
-                <MailOutlinedIcon />
-              </ListItemDecorator>
-            </ListItem>
-          </Paper>
-        </Grid><Grid item xs={12}>
-          <Paper elevation={3}>
-            <ListItem alignItems="flex-start">
-              <ListItemAvatar>
-                <Avatar src="/static/images/avatar/1.jpg" />
-              </ListItemAvatar>
-              <ListItemText
-                primary="Brunch this weekend?"
-                secondary={
-                  <React.Fragment>
-                    <Typography
-                      sx={{ display: 'inline' }}
-                      component="span"
-                      variant="body2"
-                      color="text.primary"
-                    >
-                      Ali Connors
-                    </Typography>
-                    {" — I'll be in your neighborhood doing errands this…"}
-                  </React.Fragment>
-                }
-              />
-              <ListItemDecorator>
-                <MailOutlinedIcon />
-              </ListItemDecorator>
-            </ListItem>
-          </Paper>
-        </Grid><Grid item xs={12}>
-          <Paper elevation={3}>
-            <ListItem alignItems="flex-start">
-              <ListItemAvatar>
-                <Avatar src="/static/images/avatar/1.jpg" />
-              </ListItemAvatar>
-              <ListItemText
-                primary="Brunch this weekend?"
-                secondary={
-                  <React.Fragment>
-                    <Typography
-                      sx={{ display: 'inline' }}
-                      component="span"
-                      variant="body2"
-                      color="text.primary"
-                    >
-                      Ali Connors
-                    </Typography>
-                    {" — I'll be in your neighborhood doing errands this…"}
-                  </React.Fragment>
-                }
-              />
-              <ListItemDecorator>
-                <MailOutlinedIcon />
-              </ListItemDecorator>
-            </ListItem>
-          </Paper>
-        </Grid><Grid item xs={12}>
-          <Paper elevation={3}>
-            <ListItem alignItems="flex-start">
-              <ListItemAvatar>
-                <Avatar src="/static/images/avatar/1.jpg" />
-              </ListItemAvatar>
-              <ListItemText
-                primary="Brunch this weekend?"
-                secondary={
-                  <React.Fragment>
-                    <Typography
-                      sx={{ display: 'inline' }}
-                      component="span"
-                      variant="body2"
-                      color="text.primary"
-                    >
-                      Ali Connors
-                    </Typography>
-                    {" — I'll be in your neighborhood doing errands this…"}
-                  </React.Fragment>
-                }
-              />
-              <ListItemDecorator>
-                <MailOutlinedIcon />
-              </ListItemDecorator>
-            </ListItem>
-          </Paper>
-        </Grid><Grid item xs={12}>
-          <Paper elevation={3}>
-            <ListItem alignItems="flex-start">
-              <ListItemAvatar>
-                <Avatar src="/static/images/avatar/1.jpg" />
-              </ListItemAvatar>
-              <ListItemText
-                primary="Brunch this weekend?"
-                secondary={
-                  <React.Fragment>
-                    <Typography
-                      sx={{ display: 'inline' }}
-                      component="span"
-                      variant="body2"
-                      color="text.primary"
-                    >
-                      Ali Connors
-                    </Typography>
-                    {" — I'll be in your neighborhood doing errands this…"}
-                  </React.Fragment>
-                }
-              />
-              <ListItemDecorator>
-                <MailOutlinedIcon />
-              </ListItemDecorator>
-            </ListItem>
-          </Paper>
-        </Grid>
-      </Grid>
-    </List>
+            {index < contactData.length - 1 && <Divider variant="middle" component="li" />}
+          </React.Fragment>
+        ))}
+      </List>
+    </MainCard>
   );
 }

@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Box } from '@mui/system';
 import logo from './logo.png';
+import { Typography ,  useMediaQuery } from '@mui/material';
+
 
 const SchoolName = () => {
   const [schoolName, setSchoolName] = useState('');
   const [logoSrc, setLogoSrc] = useState('');
+  const isMobile = useMediaQuery('(max-width: 767px)');
 
   const SchoolDetails = () => {
-    const schoolInfo = { id: 1, schoolName: 'The Wisdom Tree School', logo: logo };
+    const schoolInfo = { id: 1, schoolName: 'THE WISDOM TREE SCHOOL', logo: logo };
     return schoolInfo;
   };
 
@@ -19,9 +22,11 @@ const SchoolName = () => {
 
   return (
     <>
-      <Box sx={{ mx: '2rem' , display: 'flex' , alignItems: 'center' }}>
-        <Box  sx={{ mx: '2rem' , maxWidth:'300px'  }}>  <img src={logoSrc} alt="School Logo"  style={{objectFit:'cover', width:'100%'}}/> </Box>
-        <Box  sx={{ mx: '2rem'}} >  <h3>{schoolName}</h3> </Box>
+      <Box sx={{ mx: isMobile ? '0rem' : '2rem' , display: 'flex' , alignItems: 'center' }}>
+            <Box  sx={{ mx: isMobile ? '0rem' : '1rem' , maxWidth:'300px' , maxHeight:'100px'  }}> 
+              <img src={logoSrc} alt="School Logo"  style={{objectFit:'cover', width:'100%', height:'100px'}}/> 
+            </Box>
+        <Box >  <Typography variant='h3' sx={{lineHeight:'.5px'}}>{schoolName}</Typography> </Box>
       </Box>
     </>
   );

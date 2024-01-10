@@ -2,8 +2,10 @@
  * Typography used in theme
  * @param {JsonObject} theme theme customization object
  */
+import { useMediaQuery } from "@mui/material";
 
-export default function themeTypography(theme) {
+export default function ThemeTypography(theme) {
+  const isMobile = useMediaQuery('(max-width: 767px)');
   return {
     fontFamily: theme?.customization?.fontFamily,
     h6: {
@@ -92,7 +94,7 @@ export default function themeTypography(theme) {
       minHeight: 'calc(100vh - 88px)',
       flexGrow: 1,
       padding: '20px',
-      marginTop: '88px',
+      marginTop: isMobile ? '230px' : '130px',
       marginRight: '20px',
       borderRadius: `${theme?.customization?.borderRadius}px`
     },
