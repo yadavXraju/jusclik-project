@@ -1,17 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Grid from '@mui/material/Grid';
 import { gridSpacing } from 'store/constant';
 import Profile from './Profile';
 import WelcomeAttandanceFeeComp from './WelcomeAttandanceFeeComp';
 import TotalGrowthBarChart from './TotalGrowthBarChart';
 import PopularCard from './PopularCard';
+import TimeTableHome from './TimeTableHome';
 
-const Dashboard = () => {
-  const [isLoading, setLoading] = useState(true);
 
-  useEffect(() => {
-    setLoading(false);
-  }, []);
+const Dashboard =({ isLoading })=> {
 
   return (
     <Grid container spacing={gridSpacing}>
@@ -46,6 +43,13 @@ const Dashboard = () => {
           <Grid item xs={12} md={4}>
             <PopularCard isLoading={isLoading} />
           </Grid>
+
+
+          <Grid item xs={12} md={8} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
+            <TimeTableHome isLoading={isLoading} />
+          </Grid>
+
+
 
         </Grid>
       </Grid>

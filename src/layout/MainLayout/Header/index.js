@@ -15,6 +15,7 @@ import NotificationSection from './NotificationSection';
 import { IconMenu2 } from '@tabler/icons';
 import SiblingSwitch from './SiblingSwitchSection';
 import AcadmicYear from './AcadmicYearSection';
+import HelpSection from './HelpSection';
 
 // ==============================|| MAIN NAVBAR / HEADER ||============================== //
 
@@ -69,6 +70,9 @@ const Header = ({ handleLeftDrawerToggle }) => {
       {/* sibling switch */}
       <SiblingSwitch />
 
+      {/* help section */}
+      <HelpSection/>
+      
       {/* acadmic section */}
       <AcadmicYear/>
 

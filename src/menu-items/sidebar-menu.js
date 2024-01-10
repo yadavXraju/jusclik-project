@@ -8,10 +8,12 @@ import DraftsTwoToneIcon from '@mui/icons-material/DraftsTwoTone';
 import AlarmTwoToneIcon from '@mui/icons-material/AlarmTwoTone';
 import InsertChartTwoToneIcon from '@mui/icons-material/InsertChartTwoTone';
 import CreditCardTwoToneIcon from '@mui/icons-material/CreditCardTwoTone';
-import NoteAltTwoToneIcon from '@mui/icons-material/NoteAltTwoTone';
+// import NoteAltTwoToneIcon from '@mui/icons-material/NoteAltTwoTone';
 import MarkUnreadChatAltTwoToneIcon from '@mui/icons-material/MarkUnreadChatAltTwoTone';
 import AssignmentIndTwoToneIcon from '@mui/icons-material/AssignmentIndTwoTone';
 import FolderCopyTwoToneIcon from '@mui/icons-material/FolderCopyTwoTone';
+import CameraAltTwoToneIcon from '@mui/icons-material/CameraAltTwoTone';
+import CategoryTwoToneIcon from '@mui/icons-material/CategoryTwoTone';
 
 
 
@@ -66,30 +68,80 @@ const sidebarMenu = {
       },
 
       {
-        id: 'fee-school-fee',
-        title: 'Fees/school Fee',
+        id: 'school-fee',
+        title: 'School Fee',
         type: 'item',
-        url: '/fee-school-fee',
+        url: '/school-fee',
         icon: CreditCardTwoToneIcon,
         breadcrumbs: false
       },
 
-      {
-        id: 'online-assessment',
-        title: 'Online Assessment',
-        type: 'item',
-        url: '/online-assessment',
-        icon:  NoteAltTwoToneIcon,
-        breadcrumbs: false
-      },
+      // {
+      //   id: 'online-assessment',
+      //   title: 'Online Assessment',
+      //   type: 'item',
+      //   url: '/online-assessment',
+      //   icon:  NoteAltTwoToneIcon,
+      //   breadcrumbs: false
+      // },
+
+      // {
+      //   id: 'online-class',
+      //   title: 'Online Class',
+      //   type: 'item',
+      //   url: '/online-class',
+      //   icon: CategoryTwoToneIcon,
+      //   breadcrumbs: false
+      // },
 
       {
-        id: 'communication-messages',
-        title: 'Communication / Messages',
-        type: 'item',
-        url: '/communication-messages',
+        id: 'remote-learning',
+        title: 'Remote Learning',
+        type: 'collapse',
+        url: '/remote-learning',
+        icon: CategoryTwoToneIcon,
+        children: [
+          {
+            id: 'remote-learning-online-assessment',
+            title: 'Online Assesment',
+            type: 'item',
+            url: '/remote-learning/online-assessment',
+            breadcrumbs: false
+          },
+          {
+            id: 'remote-learning-online-class',
+            title: 'Online Class',
+            type: 'item',
+            url: '/remote-learning/online-class',
+            breadcrumbs: false
+          }
+        ]
+      },
+
+
+
+      {
+        id: 'communication',
+        title: 'Communication',
+        type: 'collapse',
+        url: '/communication',
         icon: MarkUnreadChatAltTwoToneIcon,
-        breadcrumbs: false
+        children: [
+          {
+            id: 'communication-contact-list',
+            title: 'Contact List',
+            type: 'item',
+            url: '/communication/contact-list',
+            breadcrumbs: false
+          },
+          {
+            id: 'communication-recent-message',
+            title: 'Recent Message',
+            type: 'item',
+            url: '/communication/recent-message',
+            breadcrumbs: false
+          }
+        ]
       },
 
     {
@@ -125,6 +177,16 @@ const sidebarMenu = {
         icon:   FolderCopyTwoToneIcon ,
         breadcrumbs: false
       },
+
+      {
+        id: 'photo-gallery',
+        title: 'Photo Gallery',
+        type: 'item',
+        url: '/photo-gallery',
+        icon:   CameraAltTwoToneIcon,
+        breadcrumbs: false
+      },
+
       // {
       //   id: 'settings',
       //   title: 'Settings',

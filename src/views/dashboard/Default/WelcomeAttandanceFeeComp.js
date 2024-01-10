@@ -1,9 +1,12 @@
 import React from 'react';
 import Grid from '@mui/system/Unstable_Grid/Grid';
-import EarningCard from './EarningCard';
-import TotalOrderLineChartCard from './TotalOrderLineChartCard';
+// import TotalOrderLineChartCard from './TotalOrderLineChartCard';
 import WelcomeMessage from './WelcomeMessage';
 import { gridSpacing } from 'store/constant';
+// import EarningCard from './EarningCard';
+import AttendanceHomeComp from './AttendanceHomeComp';
+import DueFee from './FeeDueHomeComp';
+
 // import { useMediaQuery } from '@mui/material';
 
 
@@ -15,10 +18,10 @@ const WelcomeAttandanceFeeComp = ({ isLoading }) => {
         <WelcomeMessage isLoading={isLoading} />
       </Grid>
       <Grid item lg={6} md={6} sm={6} xs={12}>
-        <EarningCard isLoading={isLoading} />
+        <AttendanceHomeComp isLoading={isLoading} />
       </Grid>
       <Grid item lg={6} md={6} sm={6} xs={12}>
-        <TotalOrderLineChartCard isLoading={isLoading} />
+        <DueFee isLoading={isLoading} />
       </Grid>
     </Grid>
   );

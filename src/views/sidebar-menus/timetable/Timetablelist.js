@@ -7,7 +7,7 @@ function createData(key, sub, teacher, time) {
 }
 
 
-const rows = [
+export const timetableRows = [
   createData(1, 'English', 'Mr. kavin', '8:15am to 9:15am'),
   createData(2, 'Mathematics', 'Mr. Suraj', '9:15am to 10:15am'),
   createData(3, 'Science', 'Mr. Abhishek', '10:15am to 11:00am'),
@@ -23,7 +23,7 @@ const rows = [
 export default function BasicList() {
   return (
     <Grid container spacing={0.5} style={{marginTop: '10px'}}>
-      {rows.map((row) => (
+      {timetableRows.map((row) => (
         <Grid item xs={12} key={row.key}>
           <Paper elevation={3} style={{ padding: row.key === null ? '5px' : '10px', display: 'flex',lineHeight: '10px',
           color: row.key === null ? 'green' : '#00000' }}>
