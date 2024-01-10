@@ -1,15 +1,3 @@
-// import React from 'react'
-
-// const StudentProfile = () => {
-//   return (
-//     <div>Student Profile</div>
-//   )
-// }
-
-// export default StudentProfile
-
-
-
 // Import necessary dependencies from Material-UI
 import React, { useState } from 'react';
 import Tabs from '@mui/material/Tabs';
@@ -76,7 +64,8 @@ function Profile() {
           <Tab aria-label="basic tabs example" label="Father" {...a11yProps(1)} />
           <Tab aria-label="basic tabs example" label="Mother" {...a11yProps(2)} />
           <Tab aria-label="basic tabs example" label="Guardian" {...a11yProps(3)} />
-          {/* <Tab aria-label="basic tabs example" label="Transport" {...a11yProps(4)} /> */}
+          <Tab aria-label="basic tabs example" label="Upload Documents" {...a11yProps(4)} />
+          <Tab aria-label="basic tabs example" label="Credentials" {...a11yProps(5)} />
         </Tabs>
       </Box>
 
@@ -102,9 +91,12 @@ function Profile() {
       <CustomTabPanel value={value} index={3}>
        <GuardianDetails/>
       </CustomTabPanel>
-      {/* <CustomTabPanel value={value} index={4}>
-      <Transport/>
-      </CustomTabPanel> */}
+      <CustomTabPanel value={value} index={4}>
+      Upload Documents
+      </CustomTabPanel>
+      <CustomTabPanel value={value} index={5}>
+      Credentials
+      </CustomTabPanel>
     </Box>
     </MainCard>
   );
