@@ -17,7 +17,7 @@ import HomeTwoToneIcon from '@mui/icons-material/HomeTwoTone';
 
 const dashboard = {
   id: 'dashboard',
-  title: 'Dashboard',
+  title: '',
   type: 'group',
   children: [
     {

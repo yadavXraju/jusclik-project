@@ -26,13 +26,17 @@ const Updates = Loadable(lazy(() => import('views/sidebar-menus/updates/')));
 const TimeTable = Loadable(lazy(() => import('views/sidebar-menus/timetable/')));
 const Performance = Loadable(lazy(() => import('views/sidebar-menus/performance/')));
 const SchoolFee = Loadable(lazy(() => import('views/sidebar-menus/fee-school-fee/')));
-const OnlineAssessment = Loadable(lazy(() => import('views/sidebar-menus/assessments')));
-const CommunicationMessage = Loadable(lazy(() => import('views/sidebar-menus/communication-message')));
+const OnlineAssessment = Loadable(lazy(() => import('views/sidebar-menus/remote-learning/assessments')));
+const OnlineClass = Loadable(lazy(() => import('views/sidebar-menus/remote-learning/online-class')));
+const ContactList = Loadable(lazy(() => import('views/sidebar-menus/communication-message/Contact-list')));
+const RecentMessage = Loadable(lazy(() => import('views/sidebar-menus/communication-message/Recent-Message')));
 const AddMetting = Loadable(lazy(() => import('views/sidebar-menus/request/AddMetting')));
 const ItemRequestGatePass = Loadable(lazy(() => import('views/sidebar-menus/request/ItemRequestGatePass')));
 const Resources = Loadable(lazy(() => import('views/sidebar-menus/resources/')));
 const Setting = Loadable(lazy(() => import('views/sidebar-menus/settings')));
 const StudentProfile = Loadable(lazy(() => import('views/sidebar-menus/studentProfile')));
+const PhotoGallery = Loadable(lazy(() => import('views/sidebar-menus/photo-gallery')));
+
 
 
 // ==============================|| MAIN ROUTING ||============================== //
@@ -137,19 +141,70 @@ const MainRoutes = {
         },
 
         {
-          path: 'fee-school-fee',
+          path: 'school-fee',
           element: <SchoolFee />
         },
 
         {
-          path: 'online-assessment',
-          element: <OnlineAssessment />
+          path: 'remote-learning',
+          children: [
+            {
+              path: 'online-assessment',
+              element: <OnlineAssessment/>
+            }
+          ]
         },
 
         {
-          path: 'communication-messages',
-          element: <CommunicationMessage />
+          path: 'remote-learning',
+          children: [
+            {
+              path: 'online-class',
+              element: <OnlineClass/>
+            }
+          ]
         },
+
+
+
+        // {
+        //   path: 'online-assessment',
+        //   element: <OnlineAssessment />
+        // },
+
+        // {
+        //   path: 'online-class',
+        //   element: <OnlineClass />
+        // },
+
+        
+        // {
+        //   path: 'communication',
+        //   element: <CommunicationMessage />
+        // },
+
+        {
+          path: 'communication',
+          children: [
+            {
+              path: 'contact-list',
+              element: <ContactList/>
+            }
+          ]
+        },
+
+
+        {
+          path: 'communication',
+          children: [
+            {
+              path: 'recent-message',
+              element: <RecentMessage/>
+            }
+          ]
+        },
+
+
 
         {
           path: 'request',
@@ -176,6 +231,11 @@ const MainRoutes = {
           element: <Resources />
         },
     
+        {
+          path: 'photo-gallery',
+          element: <PhotoGallery />
+        },
+
         {
           path: 'settings',
           element: <Setting />

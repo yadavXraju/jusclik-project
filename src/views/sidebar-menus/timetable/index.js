@@ -1,19 +1,13 @@
-// Import necessary dependencies from Material-UI
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-// import Typography from '@mui/material/Typography';
-// import Box from '@mui/material/Box';
 import MainCard from 'ui-component/cards/MainCard';
 import BasicList from './Timetablelist';
-import { useTheme, useMediaQuery, Box, Typography } from '@mui/material';
-
+import { Box, Typography } from '@mui/material';
 
 // Custom component for rendering the content of each tab panel
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
-  const theme = useTheme();
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
     <div
@@ -24,7 +18,7 @@ function CustomTabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ p: isSmallScreen ? 1 : 3 }}>
+        <Box sx={{ p: 3 }}>
           <Typography>{children}</Typography>
         </Box>
       )}
@@ -44,6 +38,14 @@ function a11yProps(index) {
 function Timetable() {
   const [value, setValue] = useState(0);
 
+  useEffect(() => {
+    // Get the current day (0 for Sunday, 1 for Monday, ..., 6 for Saturday)
+    const currentDay = new Date().getDay();
+
+    // Set the initial value based on the current day
+    setValue(currentDay === 0 ? 6 : currentDay - 1);
+  }, []); // Empty dependency array ensures the effect runs once on mount
+
   // Event handler for tab change
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -51,52 +53,47 @@ function Timetable() {
 
   // Render the tab section
   return (
-    <MainCard title="Timetable" sx={{'.MuiCardContent-root': { padding: 0 } }}>
-    <Box sx={{ width: '100%'}}>
-      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        {/* Tabs for navigation */}
-        <Tabs value={value} onChange={handleChange}>
-          <Tab style={{minWidth: "10%", padding: "10px"}} aria-label="basic tabs example" label="MON" {...a11yProps(0)} />
-          <Tab style={{minWidth: "10%", padding: "10px"}} aria-label="basic tabs example" label="TUE" {...a11yProps(1)} />
-          <Tab style={{minWidth: "10%", padding: "10px"}} aria-label="basic tabs example" label="WED" {...a11yProps(2)} />
-          <Tab style={{minWidth: "10%", padding: "10px"}} aria-label="basic tabs example" label="THU" {...a11yProps(3)} />
-          <Tab style={{minWidth: "10%", padding: "10px"}} aria-label="basic tabs example" label="FRI" {...a11yProps(4)} />
-          <Tab style={{minWidth: "10%", padding: "10px"}} aria-label="basic tabs example" label="SAT" {...a11yProps(5)} />
-          {/* <Tab style={{minWidth: "10%", padding: "10px"}} aria-label="basic tabs example" label="SUN" {...a11yProps(6)} /> */}
-        </Tabs>
-      </Box>
+    <MainCard title="Timetable" sx={{ '.MuiCardContent-root': { padding: 0 } }}>
+      <Box sx={{ width: '100%' }}>
+        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+          {/* Tabs for navigation */}
+          <Tabs value={value} onChange={handleChange}>
+            <Tab style={{ minWidth: '10%', padding: '10px' }} aria-label="MON" label="MON" {...a11yProps(0)} />
+            <Tab style={{ minWidth: '10%', padding: '10px' }} aria-label="TUE" label="TUE" {...a11yProps(1)} />
+            <Tab style={{ minWidth: '10%', padding: '10px' }} aria-label="WED" label="WED" {...a11yProps(2)} />
+            <Tab style={{ minWidth: '10%', padding: '10px' }} aria-label="THU" label="THU" {...a11yProps(3)} />
+            <Tab style={{ minWidth: '10%', padding: '10px' }} aria-label="FRI" label="FRI" {...a11yProps(4)} />
+            <Tab style={{ minWidth: '10%', padding: '10px' }} aria-label="SAT" label="SAT" {...a11yProps(5)} />
+            {/* <Tab style={{ minWidth: '10%', padding: '10px' }} aria-label="SUN" label="SUN" {...a11yProps(6)} /> */}
+          </Tabs>
+        </Box>
 
-      {/* Content of each tab panel */}
-      <CustomTabPanel value={value} index={0}>
-      
-        <BasicList/>
-
-      </CustomTabPanel>
-
-      <CustomTabPanel value={value} index={1}>
+        {/* Content of each tab panel */}
+        <CustomTabPanel value={value} index={0}>
+          <BasicList />
+        </CustomTabPanel>
+        <CustomTabPanel value={value} index={1}>
+          <BasicList />
+        </CustomTabPanel>
+        <CustomTabPanel value={value} index={2}>
+          <BasicList />
+        </CustomTabPanel>
+       <CustomTabPanel value={value} index={3}>
+       <BasicList />
       <BasicList/>
-      </CustomTabPanel>
-      <CustomTabPanel value={value} index={2}>
-      Tab Panal 6
-      {/* <BasicList/> */}
-      </CustomTabPanel>
-      <CustomTabPanel value={value} index={3}>
-      Tab Panal 3
-      {/* <BasicList/> */}
       </CustomTabPanel>
       <CustomTabPanel value={value} index={4}>
-      Tab Panal 4
-      <BasicList/>
-      </CustomTabPanel>
-      <CustomTabPanel value={value} index={5}>
-      Tab Panal 5
-      {/* <BasicList/> */}
-      </CustomTabPanel>
-      {/* <CustomTabPanel value={value} index={6}>
-      <BasicList/>
-       Tab Panal 6
-      </CustomTabPanel> */}
-    </Box>
+       <BasicList/>
+       </CustomTabPanel>
+       <CustomTabPanel value={value} index={5}>
+       <BasicList/>
+       </CustomTabPanel>
+       {/* <CustomTabPanel value={value} index={6}>
+       <BasicList/>
+        Tab Panal 6
+       </CustomTabPanel> */}
+        
+      </Box>
     </MainCard>
   );
 }

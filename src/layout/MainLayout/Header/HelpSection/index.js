@@ -1,5 +1,7 @@
 import React from 'react';
-import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import QuestionMarkOutlinedIcon from '@mui/icons-material/QuestionMarkOutlined';
+
+
 import { styled } from '@mui/system';
 import { Box, useTheme, Tooltip } from '@mui/material';
 
@@ -10,30 +12,19 @@ export const StyledContainer = styled('div')({
   width: '34px',
   height: '34px',
   borderRadius: '8px',
-  backgroundColor: '#409ae9f5',
+  backgroundColor: '#ede7f6',
   
   cursor: 'pointer',
 });
 
-const StyledIcon = styled(CalendarMonthIcon)({
-  color: 'white',
+const StyledIcon = styled(QuestionMarkOutlinedIcon)({
+  color: '#5e35b1',
 });
 
-const getAcademicYear = () => {
-  const currentDate = new Date();
-  const currentMonth = currentDate.getMonth(); 
-  const currentYear = currentDate.getFullYear();
 
-  if (currentMonth >= 4) {
-    return `${currentYear}-${currentYear + 1}`;
-  } else {
-    return `${currentYear - 1}-${currentYear}`;
-  }
-};
 
-const AcademicYear = () => {
+const HelpSection = () => {
   const theme = useTheme();
-  const academicYear = getAcademicYear();
 
   return (
     <Box
@@ -45,7 +36,7 @@ const AcademicYear = () => {
         },
       }}
     >
-      <Tooltip title={`Academic Year ${academicYear}`} arrow>
+      <Tooltip title={'Help'} arrow>
         <StyledContainer>
           <StyledIcon data-testid="CalendarMonthIcon" sx={{width:'20px'}} />
         </StyledContainer>
@@ -54,4 +45,4 @@ const AcademicYear = () => {
   );
 };
 
-export default AcademicYear;
+export default HelpSection;
