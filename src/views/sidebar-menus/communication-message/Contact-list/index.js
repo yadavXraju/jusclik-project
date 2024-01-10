@@ -67,7 +67,7 @@ export default function AlignItemsList() {
               </ListItemText>
               <ListItemDecorator>
                 <Badge badgeContent={4} color="primary">
-                  <Box sx={{ ...commonStyles, borderColor: 'primary.main' }} onClick={()=>navigate('/updates')}>
+                  <Box sx={{ ...commonStyles, borderColor: 'primary.main' }} onClick={()=>navigate('/communication/recent-message')}>
                     <MailOutlinedIcon color="primary" fontSize="small" />
                   </Box>
                 </Badge>

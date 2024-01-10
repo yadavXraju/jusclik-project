@@ -1,9 +1,14 @@
-import React from 'react'
+
+import GmailInboxTemplate from '../MailBox';
+// import Typography from '@mui/material/Typography';
+import MainCard from 'ui-component/cards/MainCard';
 
 const RecentMessage = () => {
   return (
-    <div>Recent Message</div>
+    <MainCard title="MAIL">
+    <GmailInboxTemplate/>
+        </MainCard>
   )
 }
 
-export default RecentMessage
+export default RecentMessage;
