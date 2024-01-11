@@ -21,11 +21,6 @@ import AppleStoreImage from '../../../assets/images/app-store.png';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import ToggleButton from '@mui/material/ToggleButton';
 import CloudLogo from '../../../assets/images/Untitled-2.png'
-// password eye
-import InputAdornment from '@mui/material/InputAdornment';
-import IconButton from '@mui/material/IconButton';
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 // Password otp start
 function ToggleGroupVariants() {
   const [value, setValue] = React.useState();
@@ -64,39 +59,13 @@ function ToggleGroupVariants() {
   );
 }
 // Password otp end
-// passwordeye
-function PasswordField() {
-  const [showPassword, setShowPassword] = useState(false);
 
-  const handleTogglePasswordVisibility = () => {
-    setShowPassword((prevShowPassword) => !prevShowPassword);
-  };
-
-  return (
-    <TextField
-      label="Password"
-      type={showPassword ? 'text' : 'password'}
-      InputProps={{
-        endAdornment: (
-          <InputAdornment position="end">
-            <IconButton
-              onClick={handleTogglePasswordVisibility}
-              edge="end"
-            >
-              {showPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
-            </IconButton>
-          </InputAdornment>
-        ),
-      }}
-    />
-  );
-}
 
 // TODO remove, this demo shouldn't need to reset the theme.
 
 const defaultTheme = createTheme();
 
-export default function Login() {
+export default function SignInSide() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -144,28 +113,38 @@ export default function Login() {
               LOGIN
             </Typography>
             <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
-              <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
-                <TextField
-                  InputProps={{
-                    style: {
-                      borderRadius: "50px",
-                    }
-                  }}
-                  margin="normal"
-                  required
-                  fullWidth
-                  id="email"
-                  label="Phone number"
-                  name="email"
-                  autoComplete="email"
-                  autoFocus sx={{ backgroundColor: '#fff', borderRadius: '50px' }}
-                />
-                <PasswordField />
-                {/* Rest of your code... */}
-              </Box>
-             
-               {/* Remmember me */}
-            
+              <TextField
+                InputProps={{
+                  style: {
+                    borderRadius: "50px",
+                  }
+                }}
+                margin="normal"
+                required
+                fullWidth
+                id="email"
+                label="Phone number"
+                name="email"
+                autoComplete="email"
+                autoFocus sx={{ backgroundColor: '#fff', borderRadius: '50px' }}
+              />
+              <TextField
+                InputProps={{
+                  style: {
+                    borderRadius: "50px",
+                  }
+                }}
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+                sx={{ backgroundColor: '#fff', borderRadius: '50px' }}
+              />
+              {/* Remmember me */}
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" style={{ color: '#fff' }} />}
                 label={<Typography sx={{ color: '#fff' }}>Remember me</Typography>}
