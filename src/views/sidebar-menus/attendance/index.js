@@ -18,9 +18,9 @@ export default function BasicDateCalendar() {
         <Grid container spacing={2} justifyContent="center" alignItems="center">
           <Grid item xs={12} sm={6} md={4}>
 
-            <Paper sx={{ height: '538px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+            <Paper sx={{ height: '525px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
               <Grid item>
-                <Typography variant='h3'>
+                <Typography variant='h3' sx={{mb:4}}>
                   Monthly Calendar
                 </Typography>
               </Grid>
