@@ -33,10 +33,10 @@ const RecentMessage = Loadable(lazy(() => import('views/sidebar-menus/communicat
 const AddMetting = Loadable(lazy(() => import('views/sidebar-menus/request/AddMetting')));
 const ItemRequestGatePass = Loadable(lazy(() => import('views/sidebar-menus/request/ItemRequestGatePass')));
 const Resources = Loadable(lazy(() => import('views/sidebar-menus/resources/')));
-const Setting = Loadable(lazy(() => import('views/sidebar-menus/settings')));
+// const Setting = Loadable(lazy(() => import('views/sidebar-menus/settings')));
 const StudentProfile = Loadable(lazy(() => import('views/sidebar-menus/studentProfile')));
 const PhotoGallery = Loadable(lazy(() => import('views/sidebar-menus/photo-gallery')));
-
+const EmailMsg = Loadable(lazy(() => import('views/sidebar-menus/communication-message/MailBox/EmailMssg')));
 
 
 
@@ -206,6 +206,11 @@ const MainRoutes = {
         },
 
 
+        {
+          path: 'communication/inbox/message',
+          element: <EmailMsg />
+        },
+
 
         {
           path: 'request',
@@ -237,10 +242,7 @@ const MainRoutes = {
           element: <PhotoGallery />
         },
 
-        {
-          path: 'settings',
-          element: <Setting />
-        },
+     
 
         {
           path: '/student-profile',

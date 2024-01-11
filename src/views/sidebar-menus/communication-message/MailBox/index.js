@@ -240,7 +240,7 @@ const GmailInboxTemplate = () => {
           <List>
             {data.slice(page * rowsPerPage, (page + 1) * rowsPerPage).map((item) => (
               <React.Fragment key={item.id}>
-                <ListItem onClick={()=>navigate('../MailBox/EmailMssg')}>
+                <ListItem onClick={()=>navigate('/communication/inbox/message')}>
                   <ListItemAvatar>
                     <Avatar alt="User Avatar" src={`/static/images/avatar/1.jpg/${item.id}.jpg`} />
                   </ListItemAvatar>
