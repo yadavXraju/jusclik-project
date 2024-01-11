@@ -6,34 +6,43 @@ import { Box } from '@mui/system';
 import { useNavigate } from 'react-router';
 
 const TimeTableHome = () => {
+  
   const periodsToShow = 4;
   const navigate = useNavigate();
 
   return (
-    <Grid container spacing={gridSpacing}>
-      <Grid item component={Paper} lg={8} md={12} sm={12} xs={12} sx={{ textAlign: 'right', p: 3 , display: 'flex' , flexDirection:'column' , gap:'24px'}}>
+    <Grid spacing={gridSpacing}>
+      <Grid item component={Paper} lg={8} md={12} sm={12} xs={12} sx={{ textAlign: 'right', p: 3, display: 'flex', flexDirection: 'column', gap: '24px' }}>
         {timetableRows.slice(0, periodsToShow).map((row, index) => (
           <Grid container key={index} sx={{ textAlign: 'left', display: 'flex' }}>
 
-
-            <Grid item lg={4} md={4} sm={4} xs={4} sx={{display:'flex', gap:'16px'}}>
-              <Typography variant='span'>Time:</Typography>
+            <Grid item lg={4} md={4} sm={4} xs={4} sx={{ display: 'flex', gap: '16px' }}>
+              <Typography variant='span' sx={{ color: '#99a1b7', fontWeight: '500' }}>Time:</Typography>
               <Typography variant='h5'>{row.time}</Typography>
             </Grid>
 
-            <Grid item lg={4} md={4} sm={4} xs={4} sx={{display:'flex', gap:'16px'}}>
-            <Typography variant='span'>Period:<span>{row.key === null ? row.sub : row.key} </span></Typography>
-              <Typography variant='h5'>
-                <span>{row.key !== null ? row.sub : null}</span>
-              </Typography>
-            </Grid>
+            {row.key !== null ? (
+              <Grid item lg={4} md={4} sm={4} xs={4} sx={{ display: 'flex', gap: '16px' }}>
+                <Typography variant='body2' sx={{ color: '#99a1b7', fontWeight: '500' }}>Period {row.key}</Typography>
+                <Typography variant='h5'>
+                  <span>{row.sub}</span>
+                </Typography>
+              </Grid>
+            ) : (
+              <Grid item lg={4} md={4} sm={4} xs={4} sx={{ display: 'flex', gap: '16px' }}>
+                <Typography variant='h5'>
+                  <span>{row.sub}</span>
+                </Typography>
+              </Grid>
+            )}
 
-            
+            {row.key !== null && (
+              <Grid item lg={4} md={4} sm={4} xs={4} sx={{ display: 'flex', gap: '16px' }}>
+                <Typography variant='body2' sx={{ color: '#99a1b7', fontWeight: '500' }}>Teacher:</Typography>
+                <Typography variant='h5'>{row.teacher}</Typography>
+              </Grid>
+            )}
 
-            <Grid item lg={4} md={4} sm={4} xs={4} sx={{display:'flex', gap:'16px'}}>
-            <Typography variant='span'>Teacher:</Typography>
-              <Typography variant='h5'>{row.teacher}</Typography>
-            </Grid>
           </Grid>
         ))}
 
