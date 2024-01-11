@@ -1,6 +1,6 @@
 
 import dashboard from './dashboard';
-import pages from './pages';
+// import pages from './pages';
 // import utilities from './utilities';
 // import other from './other';
 import sidebarMenu from './sidebar-menu';
@@ -8,7 +8,7 @@ import sidebarMenu from './sidebar-menu';
 // ==============================|| MENU ITEMS ||============================== //
 
 const menuItems = {
-  items: [dashboard , sidebarMenu , pages ]
+  items: [dashboard , sidebarMenu]
 };
 
 export default menuItems;
