@@ -4,6 +4,9 @@ import Tab from '@mui/material/Tab';
 import MainCard from 'ui-component/cards/MainCard';
 import BasicList from './Timetablelist';
 import { Box, Typography } from '@mui/material';
+import TestList from './Test';
+import { getCurrentDay } from 'utils/dateUtils';
+import Thusday from './Thusday';
 
 // Custom component for rendering the content of each tab panel
 function CustomTabPanel(props) {
@@ -39,11 +42,7 @@ function Timetable() {
   const [value, setValue] = useState(0);
 
   useEffect(() => {
-    // Get the current day (0 for Sunday, 1 for Monday, ..., 6 for Saturday)
-    const currentDay = new Date().getDay();
-
-    // Set the initial value based on the current day
-    setValue(currentDay === 0 ? 6 : currentDay - 1);
+      setValue(getCurrentDay());
   }, []); // Empty dependency array ensures the effect runs once on mount
 
   // Event handler for tab change
@@ -76,11 +75,10 @@ function Timetable() {
           <BasicList />
         </CustomTabPanel>
         <CustomTabPanel value={value} index={2}>
-          <BasicList />
+          <TestList />
         </CustomTabPanel>
        <CustomTabPanel value={value} index={3}>
-       <BasicList />
-      <BasicList/>
+     <Thusday/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={4}>
        <BasicList/>

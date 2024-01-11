@@ -39,6 +39,7 @@ const PhotoGallery = Loadable(lazy(() => import('views/sidebar-menus/photo-galle
 
 
 
+
 // ==============================|| MAIN ROUTING ||============================== //
 
 const MainRoutes = {
@@ -146,7 +147,7 @@ const MainRoutes = {
         },
 
         {
-          path: 'remote-learning',
+          path: 'digital-learning',
           children: [
             {
               path: 'online-assessment',
@@ -156,7 +157,7 @@ const MainRoutes = {
         },
 
         {
-          path: 'remote-learning',
+          path: 'digital-learning',
           children: [
             {
               path: 'online-class',
@@ -198,7 +199,7 @@ const MainRoutes = {
           path: 'communication',
           children: [
             {
-              path: 'recent-message',
+              path: 'inbox',
               element: <RecentMessage/>
             }
           ]
@@ -245,6 +246,8 @@ const MainRoutes = {
           path: '/student-profile',
           element: <StudentProfile/>
         },
+
+
   ]
 };
 

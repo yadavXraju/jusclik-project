@@ -95,24 +95,24 @@ const sidebarMenu = {
       // },
 
       {
-        id: 'remote-learning',
-        title: 'Remote Learning',
+        id: 'digital-learning',
+        title: 'Digital Learning',
         type: 'collapse',
-        url: '/remote-learning',
+        url: '/digital-learning',
         icon: CategoryTwoToneIcon,
         children: [
           {
-            id: 'remote-learning-online-assessment',
+            id: 'digital-learning-online-assessment',
             title: 'Online Assesment',
             type: 'item',
-            url: '/remote-learning/online-assessment',
+            url: '/digital-learning/online-assessment',
             breadcrumbs: false
           },
           {
-            id: 'remote-learning-online-class',
+            id: 'digital-learning-online-class',
             title: 'Online Class',
             type: 'item',
-            url: '/remote-learning/online-class',
+            url: '/digital-learning/online-class',
             breadcrumbs: false
           }
         ]
@@ -135,10 +135,10 @@ const sidebarMenu = {
             breadcrumbs: false
           },
           {
-            id: 'communication-recent-message',
-            title: 'Recent Message',
+            id: 'communication-inbox',
+            title: 'Inbox',
             type: 'item',
-            url: '/communication/recent-message',
+            url: '/communication/inbox',
             breadcrumbs: false
           }
         ]
