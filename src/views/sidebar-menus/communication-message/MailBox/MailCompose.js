@@ -34,6 +34,7 @@ const Queries = [
   },
 ];
 
+
 const MailCompose = ({ open, onClose, onSend }) => {
   const [to, setTo] = useState('');
   const [subject, setSubject] = useState('');
@@ -51,14 +52,16 @@ const MailCompose = ({ open, onClose, onSend }) => {
 
   const modules = {
     toolbar: [
-      [{ 'header': '1' }, { 'header': '2' },{ 'header': '3' },{ 'header': '4' },{ 'header': '5' },{ 'header': '6' } ],
-      ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+      [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+      ['bold', 'italic', 'underline', 'strike'],
       [{ 'list': 'ordered' }, { 'list': 'bullet' }],
       ['link', 'image', 'video'],
       [{ 'align': [] }],
-      ['clean'],
+      [{ 'script': 'sub' }, { 'script': 'super' }],
     ],
   };
+  
+  
 
   const handleSend = () => {
     const mailData = {
@@ -70,7 +73,6 @@ const MailCompose = ({ open, onClose, onSend }) => {
   };
 
   const handleQuillChange = (value) => {
-    // Check and limit the character count
     if (value.length <= maxCharacterLimit) {
       setMessage(value);
     }
@@ -124,14 +126,14 @@ const MailCompose = ({ open, onClose, onSend }) => {
           onChange={(e) => setSubject(e.target.value)}
         />
         <ReactQuill
-          style={{ height: '100px' }}
+          style={{ height: '300px' }}
           value={message}
           onChange={handleQuillChange}
           formats={formats}
           modules={modules}
-          readOnly={isCharacterLimitReached} // Disable editing when character limit is reached
+          readOnly={isCharacterLimitReached} 
         />
-        <Typography style={{ marginTop: '20px', color: isCharacterLimitReached ? 'red' : 'inherit' }}>
+        <Typography style={{ marginTop: '20px', fontSize:'12px', color: isCharacterLimitReached ? 'red' : 'inherit' }}>
           Length: {wordCount} (max Character Limit: {maxCharacterLimit})
         </Typography>
       </DialogContent>

@@ -9,8 +9,10 @@ import SearchIcon from '@mui/icons-material/Search';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import MailCompose from './MailCompose';
 import { styled } from '@mui/system';
+import { useNavigate } from 'react-router';
 
 const theme = createTheme();
+
 
 const GmailInboxTemplate = () => {
   const getCurrentDateTime = () => {
@@ -131,6 +133,7 @@ const GmailInboxTemplate = () => {
   const EmailItem = ({ emailData }) => {
     const [isImportant, setIsImportant] = useState(emailData.important);
 
+    
     const handleStarClick = () => {
       setIsImportant(!isImportant);
     };
@@ -145,7 +148,8 @@ const GmailInboxTemplate = () => {
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
-
+  
+  // const [isComposeOpen, setComposeOpen] = useState(true);
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
@@ -168,6 +172,8 @@ const GmailInboxTemplate = () => {
     console.log('Sending mail:', mailData);
     handleComposeClose();
   };
+
+  const navigate = useNavigate()
 
   return (
     <ThemeProvider theme={theme}>
@@ -234,9 +240,9 @@ const GmailInboxTemplate = () => {
           <List>
             {data.slice(page * rowsPerPage, (page + 1) * rowsPerPage).map((item) => (
               <React.Fragment key={item.id}>
-                <ListItem>
+                <ListItem onClick={()=>navigate('/communication/inbox/message')}>
                   <ListItemAvatar>
-                    <Avatar alt="User Avatar" src={`/static/images/avatar/${item.id}.jpg`} />
+                    <Avatar alt="User Avatar" src={`/static/images/avatar/1.jpg/${item.id}.jpg`} />
                   </ListItemAvatar>
                   <EmailItem emailData={item} />
                   <ListItemText primary={item.name} secondary={item.message} />

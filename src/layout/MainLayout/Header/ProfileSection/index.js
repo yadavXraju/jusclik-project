@@ -262,7 +262,7 @@ const ProfileSection = () => {
                           <ListItemIcon>
                             <IconLogout stroke={1.5} size="1.3rem" />
                           </ListItemIcon>
-                          <ListItemText primary={<Typography variant="body2">Logout</Typography>} />
+                          <ListItemText primary={<Typography variant="body2">Logout</Typography>} onClick={()=>navigate('/login')}/>
                         </ListItemButton>
                       </List>
                     </Box>
