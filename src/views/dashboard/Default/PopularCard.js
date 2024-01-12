@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
-import { Avatar, Button, CardActions, CardContent, Divider, Grid, Menu, MenuItem, Typography } from '@mui/material';
+import { Avatar, CardContent, Divider, Grid, Menu, MenuItem, Typography } from '@mui/material';
 
 // project imports
 import BajajAreaChartCard from './BajajAreaChartCard';
@@ -12,7 +12,7 @@ import SkeletonPopularCard from 'ui-component/cards/Skeleton/PopularCard';
 import { gridSpacing } from 'store/constant';
 
 // assets
-import ChevronRightOutlinedIcon from '@mui/icons-material/ChevronRightOutlined';
+// import ChevronRightOutlinedIcon from '@mui/icons-material/ChevronRightOutlined';
 import MoreHorizOutlinedIcon from '@mui/icons-material/MoreHorizOutlined';
 import KeyboardArrowUpOutlinedIcon from '@mui/icons-material/KeyboardArrowUpOutlined';
 import KeyboardArrowDownOutlinedIcon from '@mui/icons-material/KeyboardArrowDownOutlined';
@@ -43,7 +43,7 @@ const PopularCard = ({ isLoading }) => {
               <Grid item xs={12}>
                 <Grid container alignContent="center" justifyContent="space-between">
                   <Grid item>
-                    <Typography variant="h4">Popular Stocks</Typography>
+                    <Typography variant="h4">CIRCULARS & NOTICES</Typography>
                   </Grid>
                   <Grid item>
                     <MoreHorizOutlinedIcon
@@ -240,14 +240,14 @@ const PopularCard = ({ isLoading }) => {
                       </Grid>
                     </Grid>
                   </Grid>
-                  <Grid item>
+                  {/* <Grid item>
                     <Typography variant="subtitle2" sx={{ color: theme.palette.orange.dark }}>
                       10% loss
                     </Typography>
-                  </Grid>
+                  </Grid> */}
                 </Grid>
                 <Divider sx={{ my: 1.5 }} />
-                <Grid container direction="column">
+                {/* <Grid container direction="column">
                   <Grid item>
                     <Grid container alignItems="center" justifyContent="space-between">
                       <Grid item>
@@ -286,16 +286,16 @@ const PopularCard = ({ isLoading }) => {
                       10% loss
                     </Typography>
                   </Grid>
-                </Grid>
+                </Grid> */}
               </Grid>
             </Grid>
           </CardContent>
-          <CardActions sx={{ p: 1.25, pt: 0, justifyContent: 'center' }}>
+          {/* <CardActions sx={{ p: 1.25, pt: 0, justifyContent: 'center' }}>
             <Button size="small" disableElevation>
               View All
               <ChevronRightOutlinedIcon />
             </Button>
-          </CardActions>
+          </CardActions> */}
         </MainCard>
       )}
     </>
