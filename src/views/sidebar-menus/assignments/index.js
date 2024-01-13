@@ -39,16 +39,6 @@ const Assignments = () => {
     setValue(newValue);
   };
 
-  // const data = [
-  //   { id: 1, sub: 'E', name: 'ENGLISH', description: 'Description for Item 1', dueDate: '2023-01-12', date: '2023-01-10'  , homework:"disinformation) presented as news. Fake news often has the aim of damaging the reputation of a person or entity, or making money through advertising revenue.[1][2] Although false news has always been spread throughout history, the term  was first used in the 1890s when"},
-  //   { id: 2, sub: 'H', name: 'HINDI', description: 'Description for Item 2', dueDate: '2023-01-12', date: '2023-01-09'  , homework:"disinformation) presented as news. Fake news often has the aim of damaging the reputation of a person or entity, or making money through advertising revenue.[1][2] Although false news has always been spread throughout history, the term  was first used in the 1890s when"},
-  //   { id: 3, sub: 'M', name: 'MATH', description: 'Description for Item 3', dueDate: '2023-06-10', date: '2023-06-5'  , homework:"disinformation) presented as news. Fake news often has the aim of damaging the reputation of a person or entity, or making money through advertising revenue.[1][2] Although false news has always been spread throughout history, the term  was first used in the 1890s when"},
-  //   { id: 4, sub: 'M', name: 'MATH', description: 'Description for Item 3', dueDate: '2023-01-12', date: '2024-01-06' , homework:"disinformation) presented as news. Fake news often has the aim of damaging the reputation of a person or entity, or making money through advertising revenue.[1][2] Although false news has always been spread throughout history, the term  was first used in the 1890s when" },
-  //   { id: 5, sub: 'M', name: 'English', description: 'Description for Item 3', dueDate: '2023-01-12', date: '2024-01-09'  , homework:"disinformation) presented as news. Fake news often has the aim of damaging the reputation of a person or entity, or making money through advertising revenue.[1][2] Although false news has always been spread throughout history, the term  was first used in the 1890s when"},
-  //   { id: 6, sub: 'M', name: 'MATH', description: 'Description for Item 3', dueDate: '2024-01-12', date: '2024-01-08'  , homework:"disinformation) presented as news. Fake news often has the aim of damaging the reputation of a person or entity, or making money through advertising revenue.[1][2] Although false news has always been spread throughout history, the term  was first used in the 1890s when"},
-  //   { id: 7, sub: 'E', name: 'ENGLISH', description: 'Description for Item 3', dueDate: '2024-01-12', date: '2024-01-08' , homework:"disinformation) presented as news. Fake news often has the aim of damaging the reputation of a person or entity, or making money through advertising revenue.[1][2] Although false news has always been spread throughout history, the term  was first used in the 1890s when" },
-  //   { id: 8, sub: 'E', name: 'ENGLISH', description: 'Description for Item 3', dueDate: '2024-01-15', date: '2024-01-07'  , homework:"disinformation)disinformation) presented as news. Fake news often has the aim of damaging the reputation of a person or entity, or making money through advertising revenue.[1][2] Although false news has always been spread throughout history, the term  was first used in the 1 presented as news. Fake news often has the aim of damaging the reputation of a person or entity, or making money through advertising revenue.[1][2] Although false news has always been spread throughout history, the term  was first used in the 1890s when"}
-  // ];
 
  
   
@@ -229,9 +219,7 @@ const Assignments = () => {
         <DialogTitle>Submit Files</DialogTitle>
         <DialogContent maxWidth="md"  fullWidth >
           <Typography>Upload files</Typography>
-          {/* Add your file upload component or form here */}
-          {/* Example: <FileUploadComponent /> */}
-          {/* Ensure to handle file submission logic */}
+      
         </DialogContent>
         <DialogActions>
           <Button onClick={handleCloseDialog} color="primary">
@@ -239,6 +227,7 @@ const Assignments = () => {
           </Button>
         </DialogActions>
       </Dialog>
+      
       <Snackbar
         open={snackbarOpen}
         autoHideDuration={3000} // Set the duration in milliseconds (e.g., 3000 for 3 seconds)
