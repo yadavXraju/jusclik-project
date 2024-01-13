@@ -28,7 +28,7 @@ const GmailInboxTemplate = () => {
     return currentDate.toLocaleString('en-US', options);
   };
 
-  const initialData = [
+ const initialData = [
     { id: 1, name: 'John Doe', message: 'Lorem ipsum dolor sit amet 1', unread: false, important: true },
     { id: 2, name: 'Jane Smith', message: 'Lorem ipsum dolor sit amet 2', unread: true, important: false },
     { id: 3, name: 'Bob Johnson', message: 'Lorem ipsum dolor sit amet 3', unread: false, important: true },
