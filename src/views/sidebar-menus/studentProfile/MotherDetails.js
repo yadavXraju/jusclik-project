@@ -110,7 +110,7 @@ export default function MotherDetails() {
         <TextField
               type="file"
               fullWidth
-              variant="outlined"
+              variant='outlined'
             />
         </Grid>
       </Grid>
