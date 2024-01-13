@@ -16,6 +16,7 @@ import { useState } from 'react';
 import TextField from '@mui/material/TextField';
 import { Label } from 'reactstrap';
 import Checkbox from '@mui/material/Checkbox';
+import sidebarMenu from 'menu-items/sidebar-menu';
 
 
 
@@ -47,6 +48,19 @@ export default function Credentials() {
 
   }
 
+  const [displayStudentPre, setdisplayStudentPre] = useState('displayStudentPre')
+
+  const handledisplayStudentPre = () => {
+    if (displayStudentPre === 'displayStudentPre') {
+      setdisplayStudentPre('displayStudentPre active')
+    }
+
+    else {
+      setdisplayStudentPre('displayStudentPre')
+    }
+
+  }
+
 
   return (
     <>
@@ -65,8 +79,8 @@ export default function Credentials() {
                   value={studentProfileDetails.StudentName}
                   endAdornment={
                     <InputAdornment sx={{ marginBottom: '20px' }} position="end">
-                      <Button size='small' onClick={handleDisplay} sx={{ backgroundColor: '#9a9a9a63',
-                       color: 'black','&:hover': {backgroundColor: '#9a9a9a63'} }} variant="contained">Change User Name</Button>
+                      <Button size='small' onClick={handleDisplay} sx={{ backgroundColor: '#F9F9F9',
+                       color: 'black','&:hover': {backgroundColor: '#DBDFE9'} }} variant="contained">Change User Name</Button>
                     </InputAdornment>
                   }
                 />
@@ -89,7 +103,7 @@ export default function Credentials() {
 
               <Box sx={{ marginBottom: '15px', marginTop:'15px' }}>
                 <Button sx={{ m: 1 }} size='small' variant="contained">Update Email</Button>
-                <Button size='small' sx={{ backgroundColor: '#9a9a9a63', color: 'black', '&:hover': {backgroundColor: '#9a9a9a63'} }} 
+                <Button size='small' sx={{ backgroundColor: '#F9F9F9', color: 'black', '&:hover': {backgroundColor: '#DBDFE9'} }} 
                 onClick={handleDisplay} variant="contained">Cancel</Button>
               </Box>
             </Box>
@@ -106,8 +120,8 @@ export default function Credentials() {
                   value="test@123"
                   endAdornment={
                     <InputAdornment sx={{ marginBottom: '20px' }} position="end">
-                      <Button size='small' onClick={handleDisplayPassword} sx={{ backgroundColor: '#9a9a9a63', 
-                      color: 'black','&:hover': {backgroundColor: '#9a9a9a63'} }} variant="contained">Reset Password</Button>
+                      <Button size='small' onClick={handleDisplayPassword} sx={{ backgroundColor: '#F9F9F9', 
+                      color: 'black','&:hover': {backgroundColor: '#DBDFE9'} }} variant="contained">Reset Password</Button>
                     </InputAdornment>
                   }
                 />
@@ -134,24 +148,10 @@ export default function Credentials() {
 
               <Box sx={{ marginBottom: '15px', marginTop:'10px' }}>
                 <Button sx={{ m: 1 }} size='small' variant="contained">Update Password</Button>
-                <Button size='small' sx={{ backgroundColor: '#9a9a9a63', color: 'black', '&:hover': {backgroundColor: '#9a9a9a63'} }} 
+                <Button size='small' sx={{ backgroundColor: '#F9F9F9', color: 'black', '&:hover': {backgroundColor: '#DBDFE9'} }} 
                 onClick={handleDisplayPassword} variant="contained">Cancel</Button>
               </Box>
             </Box>
-
-            {/* <FormControl disabled variant="standard" fullWidth>
-              <InputLabel htmlFor="namefield">Password</InputLabel>
-              <Input
-                id="namefield"
-                type='password'
-                value={'test@123'}
-                endAdornment={
-                  <InputAdornment sx={{ paddingBottom: '10px' }} position="end">
-                    <Button size='small' sx={{ backgroundColor: '#9a9a9a63', color: 'black' }} variant="contained">Reset Password</Button>
-                  </InputAdornment>
-                }
-              />
-            </FormControl> */}
 
             <Box>
               <Grid sx={{ p: 2, marginTop: '2rem', border: '1px dotted #1e88e5', background: '#deedf9', borderRadius: '5px' }} container spacing={1}>
@@ -166,7 +166,7 @@ export default function Credentials() {
                 </Grid>
                 <Grid item sm={2} sx={{ display: 'flex', justifyContent: 'end' }}>
                   <Box>
-                    <Button variant="contained">Configure</Button>
+                    <Button onClick={handledisplayStudentPre} variant="contained">Configure</Button>
                   </Box>
                 </Grid>
               </Grid>
@@ -176,36 +176,74 @@ export default function Credentials() {
       </Card>
        
        <br/><br/>
+      <Box className={displayStudentPre} sx={{ display: displayStudentPre.includes('active') ? 'Block' : 'none' }}>
+      <Card sx={{ border: '1px solid #ccc' }}>
+        <Box component="form">
+          <CardContent>
+            <Box sx={{ display: displayItem.includes('active') ? 'none' : 'Block'  }}>
+              <FormControl variant="standard" fullWidth sx={{ marginBottom: '10px' }}>
+                <InputLabel htmlFor="namefield">User Name</InputLabel>
+                <Input
+                  id="namefield"
+                  disableUnderline
+                  value={studentProfileDetails.StudentName}
+                  endAdornment={
+                    <InputAdornment sx={{ marginBottom: '20px' }} position="end">
+                      <Button size='small' sx={{ backgroundColor: '#F9F9F9',
+                       color: 'black','&:hover': {backgroundColor: '#DBDFE9'} }} variant="contained">Change User Name</Button>
+                    </InputAdornment>
+                  }
+                />
+              </FormControl>
+            </Box>
+
+              <Box sx={{borderBottom: '1px dotted #7d828e', marginBottom: '20px'}}></Box>
+
+              <Box  sx={{ display: displayPassword.includes('active') ? 'none' : 'Block' }}>
+              <FormControl variant="standard" fullWidth sx={{ marginBottom: '10px' }}>
+                <InputLabel htmlFor="namefield">Password</InputLabel>
+                <Input
+                  id="namefield"
+                  disableUnderline
+                  type='password'
+                  value="test@123"
+                  endAdornment={
+                    <InputAdornment sx={{ marginBottom: '20px' }} position="end">
+                      <Button size='small' sx={{ backgroundColor: '#F9F9F9', 
+                      color: 'black','&:hover': {backgroundColor: '#DBDFE9'} }} variant="contained">Reset Password</Button>
+                    </InputAdornment>
+                  }
+                />
+              </FormControl>
+            </Box>
+          </CardContent>
+        </Box>
+      </Card>
+      <br/><br/>
+      
       <Card sx={{ border: '1px solid #ccc' }}>
         <Typography sx={{ p: 2, borderBottom: '1px solid #ccc' }} variant='h5' component="div">
           Student Deshboard Preferences
         </Typography>
-        <Box>
+
+        {sidebarMenu.children.map((item) => (
+        <Box key={item.id}>
         <Box sx={{ display: 'flex',p: 2,borderBottom: '1px dotted #7d828e' }}>
                <Checkbox  defaultChecked />
                   <Box>
-                    <Typography variant="h4">Create Student Account</Typography>
+                    <Typography variant="h4">{item.title}</Typography>
                     <Typography variant='body2'>
                       Configure Student Account to share limited access of the dashbord  with your word.
                     </Typography>
                   </Box>
                 </Box> 
         </Box>
-        <Box>
-        <Box sx={{ display: 'flex',p: 2 }}>
-               <Checkbox  />
-                  <Box>
-                    <Typography variant="h4">Create Student Account</Typography>
-                    <Typography variant='body2'>
-                      Configure Student Account to share limited access of the dashbord  with your word.
-                    </Typography>
-                  </Box>
-                </Box> 
-        </Box>
-        <Box sx={{ p: 3, borderTop: '1px solid #ccc', display:'flex', justifyContent:'flex-end' }} variant='h5' component="div">
+        ))}
+        <Box sx={{ p: 3, display:'flex', justifyContent:'flex-end' }} variant='h5' component="div">
         <Button  variant="contained">Save Changes</Button>
         </Box>
       </Card>
+      </Box>
     </>
   );
 }
