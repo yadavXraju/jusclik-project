@@ -6,6 +6,7 @@ import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import timeTableData from './TimeTableData';
+import Card from '@mui/material/Card';
 
 const TimeTable = () => {
   const [value, setValue] = useState('Monday');
@@ -29,7 +30,7 @@ const TimeTable = () => {
 
     return (
       <div>
-        {/* <h2>{value} Timetable</h2> */}
+        {/* <h2> Timetable</h2> */}
         {daySchedule.map((scheduleItem) => (
           <Grid container spacing={0.5} style={{ marginTop: '10px' }} key={scheduleItem.id}>
             <Grid item xs={12}>
@@ -56,25 +57,35 @@ const TimeTable = () => {
   };
 
   return (
+    <Card sx={{ border: '1px solid #ccc' }}>
+    <Typography sx={{p:2,borderBottom: '1px solid #ccc'}} variant='h5'  component="div">
+         Timetable
+    </Typography>
     <div>
       <Box sx={{ width: '100%' }}>
+        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs
+          variant="scrollable"
           value={value}
           onChange={handleChange}
           aria-label="wrapped label tabs example"
         >
-          <Tab value="Sunday" label="Sunday" />
-          <Tab value="Monday" label="Monday" />
-          <Tab value="Tuesday" label="Tuesday" />
-          <Tab value="Wednesday" label="Wednesday" />
-          <Tab value="Thursday" label="Thursday" />
-          <Tab value="Friday" label="Friday" />
-          <Tab value="Saturday" label="Saturday" />
+          <Tab style={{minWidth: "10%", padding: "10px"}} value="Sunday" label="SUN" />
+          <Tab style={{minWidth: "10%", padding: "10px"}} value="Monday" label="MON" />
+          <Tab style={{minWidth: "10%", padding: "10px"}} value="Tuesday" label="TUE" />
+          <Tab style={{minWidth: "10%", padding: "10px"}} value="Wednesday" label="WED" />
+          <Tab style={{minWidth: "10%", padding: "10px"}} value="Thursday" label="THU" />
+          <Tab style={{minWidth: "10%", padding: "10px"}} value="Friday" label="FRI" />
+          <Tab style={{minWidth: "10%", padding: "10px"}} value="Saturday" label="SAT" />
         </Tabs>
+        </Box>
       </Box>
-
+      <Box sx={{p:1}}>
       {renderTabContent()}
+      </Box>
     </div>
+    </Card>
+    
   );
 };
 

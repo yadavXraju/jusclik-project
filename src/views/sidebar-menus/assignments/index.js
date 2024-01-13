@@ -36,9 +36,7 @@ const Assignments = () => {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-<<<<<<< HEAD
 
-=======
   // const data = [
   //   { id: 1, sub: 'E', name: 'ENGLISH', description: 'Description for Item 1', dueDate: '2023-01-12', date: '2023-01-10', homework: "disinformation) presented as news. Fake news often has the aim of damaging the reputation of a person or entity, or making money through advertising revenue.[1][2] Although false news has always been spread throughout history, the term  was first used in the 1890s when" },
   //   { id: 2, sub: 'H', name: 'HINDI', description: 'Description for Item 2', dueDate: '2023-01-12', date: '2023-01-09', homework: "disinformation) presented as news. Fake news often has the aim of damaging the reputation of a person or entity, or making money through advertising revenue.[1][2] Although false news has always been spread throughout history, the term  was first used in the 1890s when" },
@@ -59,7 +57,7 @@ const Assignments = () => {
   //   { id: 7, sub: 'E', name: 'ENGLISH', description: 'Description for Item 3', dueDate: '2024-01-12', date: '2024-01-08' , homework:"disinformation) presented as news. Fake news often has the aim of damaging the reputation of a person or entity, or making money through advertising revenue.[1][2] Although false news has always been spread throughout history, the term  was first used in the 1890s when" },
   //   { id: 8, sub: 'E', name: 'ENGLISH', description: 'Description for Item 3', dueDate: '2024-01-15', date: '2024-01-07'  , homework:"disinformation)disinformation) presented as news. Fake news often has the aim of damaging the reputation of a person or entity, or making money through advertising revenue.[1][2] Although false news has always been spread throughout history, the term  was first used in the 1 presented as news. Fake news often has the aim of damaging the reputation of a person or entity, or making money through advertising revenue.[1][2] Although false news has always been spread throughout history, the term  was first used in the 1890s when"}
   // ];
->>>>>>> 549617c780249a71751e3dbf9151be453a3c545b
+
 
   const currentDate = new Date();
 
