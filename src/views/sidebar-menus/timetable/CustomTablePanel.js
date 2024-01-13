@@ -1,25 +1,31 @@
-// CustomTabPanel.js
 import React from 'react';
-import { Box, Typography } from '@mui/material';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
 
-function CustomTabPanel(props) {
-  const { children, value, index, ...other } = props;
+function CustomTabs({ value, onChange }) {
+  const days = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
 
   return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
-    </div>
+    <Tabs value={value} onChange={onChange}>
+      {days.map((day, index) => (
+        <Tab
+          key={day}
+          style={{ minWidth: '10%', padding: '10px' }}
+          aria-label={day}
+          label={day}
+          {...a11yProps(index)}
+          id={value === index ? 'active' : null}
+        />
+      ))}
+    </Tabs>
   );
 }
 
-export default CustomTabPanel;
+function a11yProps(index) {
+  return {
+    id: `simple-tab-${index}`,
+    'aria-controls': `simple-tabpanel-${index}`,
+  };
+}
+
+export default CustomTabs;
