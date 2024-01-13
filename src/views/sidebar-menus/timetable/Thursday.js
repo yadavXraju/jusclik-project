@@ -20,7 +20,7 @@ export const timetableRows = [
   // Add more rows as needed
 ];
 
-export default function Thusday() {
+export default function Thursday() {
   return (
     <Grid container spacing={0.5} style={{marginTop: '10px'}}>
       {timetableRows.map((row) => (
