@@ -37,7 +37,10 @@ const Assignments = () => {
     setValue(newValue);
   };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4aebf1c8344c53d64cab50ba348f58b6ae80f976
   // const data = [
   //   { id: 1, sub: 'E', name: 'ENGLISH', description: 'Description for Item 1', dueDate: '2023-01-12', date: '2023-01-10', homework: "disinformation) presented as news. Fake news often has the aim of damaging the reputation of a person or entity, or making money through advertising revenue.[1][2] Although false news has always been spread throughout history, the term  was first used in the 1890s when" },
   //   { id: 2, sub: 'H', name: 'HINDI', description: 'Description for Item 2', dueDate: '2023-01-12', date: '2023-01-09', homework: "disinformation) presented as news. Fake news often has the aim of damaging the reputation of a person or entity, or making money through advertising revenue.[1][2] Although false news has always been spread throughout history, the term  was first used in the 1890s when" },
