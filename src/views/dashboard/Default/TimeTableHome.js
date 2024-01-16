@@ -27,7 +27,7 @@ const TimeTableHome = () => {
   return (
     <Grid spacing={gridSpacing} sx={{border:'1px solid #80808026', borderRadius:'8px'}}>
       <Grid item component={Paper} lg={12} md={12} sm={12} xs={12} sx={{ textAlign: 'right', p: 3, display: 'flex', flexDirection: 'column', gap: '48px' }}>
-      <Typography variant='h2' sx={{ textAlign: 'left' , color:'#99a1b7' , borderBottom: '1px solid #80808040;' , paddingBottom:'16px' }}>{currentDayName} Timetable</Typography>
+      <Typography variant='h2' sx={{ textAlign: 'left' , color:'#99a1b7' , borderBottom: '1px solid #80808040;' , paddingBottom:'20px' }}>{currentDayName} Timetable</Typography>
 
          {/* header sec start */}
          <Grid container >
