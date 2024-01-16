@@ -1,8 +1,21 @@
 import React from 'react'
+import AttachmentIcon from '@mui/icons-material/Attachment';
+import { Tooltip , IconButton } from '@mui/material';
 
-const Attachment = () => {
+
+const Attachment = ({handleOpenDialog}) => {
+
+ 
+
+
   return (
-    <div>Attachment</div>
+    <>
+        <Tooltip title="Attachment">
+              <IconButton onClick={handleOpenDialog}>
+                <AttachmentIcon />
+              </IconButton>
+        </Tooltip>
+    </>
   )
 }
 

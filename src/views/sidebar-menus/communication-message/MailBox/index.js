@@ -13,22 +13,7 @@ import { useNavigate } from 'react-router';
 
 const theme = createTheme();
 
-
-const GmailInboxTemplate = () => {
-  const getCurrentDateTime = () => {
-    const currentDate = new Date();
-    const options = {
-      weekday: 'long',
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-      hour: 'numeric',
-      minute: 'numeric',
-    };
-    return currentDate.toLocaleString('en-US', options);
-  };
-
- const initialData = [
+ export const initialData = [
     { id: 1, name: 'John Doe', message: 'Lorem ipsum dolor sit amet 1', unread: false, important: true },
     { id: 2, name: 'Jane Smith', message: 'Lorem ipsum dolor sit amet 2', unread: true, important: false },
     { id: 3, name: 'Bob Johnson', message: 'Lorem ipsum dolor sit amet 3', unread: false, important: true },
@@ -46,13 +31,29 @@ const GmailInboxTemplate = () => {
     { id: 15, name: 'Henry Jackson', message: 'Lorem ipsum dolor sit amet 9', unread: true, important: true },
     { id: 16, name: 'Ivy Lee', message: 'Lorem ipsum dolor sit amet 10', unread: false, important: false },
   ];
+  
+const GmailInboxTemplate = () => {
+  const getCurrentDateTime = () => {
+    const currentDate = new Date();
+    const options = {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric',
+    };
+    return currentDate.toLocaleString('en-US', options);
+  };
+
+
 
   const [data, setData] = useState(initialData);
   const [anchorEl, setAnchorEl] = useState(null);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [searchQuery, setSearchQuery] = useState('');
-  const [isComposeOpen, setComposeOpen] = useState(false);
+  const [isComposeOpen, setComposeOpen] = useState(true);
 
   const SearchWrapper = styled('div')({
     position: 'relative',
@@ -214,8 +215,8 @@ const GmailInboxTemplate = () => {
                 </Popover>
               </FilterWrapper>
             </Grid>
-            <Grid sx={{ display: 'inline-flex' }}>
-              <SearchWrapper>
+            <Grid sx={{ display: 'inline-flex'  }}>
+              <SearchWrapper sx={{justifyContent:'center'}}>
                 <SearchIconWrapper>
                   <SearchIcon />
                 </SearchIconWrapper>

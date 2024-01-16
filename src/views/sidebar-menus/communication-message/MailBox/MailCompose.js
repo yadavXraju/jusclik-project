@@ -10,6 +10,8 @@ import {
   Box,
   Tooltip,
   IconButton,
+  Input,
+  Paper
 } from '@mui/material';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
@@ -19,7 +21,6 @@ import MenuItem from '@mui/material/MenuItem';
 import AttachmentIcon from '@mui/icons-material/Attachment';
 import 'react-quill/dist/quill.core.css';
 import 'react-quill/dist/quill.snow.css';
-import 'react-quill/dist/quill.bubble.css';
 
 const Queries = [
   {
@@ -40,6 +41,7 @@ const MailCompose = ({ open, onClose, onSend }) => {
   const [to, setTo] = useState('');
   const [subject, setSubject] = useState('');
   const [message, setMessage] = useState('');
+  const [attachments, setAttachments] = useState([]);
 
   const maxCharacterLimit = 1500;
 
@@ -53,7 +55,7 @@ const MailCompose = ({ open, onClose, onSend }) => {
 
   const modules = {
     toolbar: [
-      [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+      [{ 'header': [1, 2, 3, 4, false] }],
       ['bold', 'italic', 'underline', 'strike'],
       [{ 'list': 'ordered' }, { 'list': 'bullet' }],
       ['link', 'image', 'video'],
@@ -67,9 +69,15 @@ const MailCompose = ({ open, onClose, onSend }) => {
       userName: to,
       subject,
       message,
+      attachments,
     };
     onSend(mailData);
-    onClose(); // Close the dialog after sending
+    // Reset state and close the dialog after sending
+    setTo('');
+    setSubject('');
+    setMessage('');
+    setAttachments([]);
+    onClose();
   };
 
   const handleQuillChange = (value) => {
@@ -78,7 +86,21 @@ const MailCompose = ({ open, onClose, onSend }) => {
     }
   };
 
-  const wordCount = message.trim() === '' ? 0 : message.trim().split(/\s+/).length;
+  const handleFileChange = (e) => {
+    const selectedFiles = e.target.files;
+    // Update state with selected files
+    setAttachments([...attachments, ...selectedFiles]);
+    setFileInputKey(Date.now());
+
+  };
+
+  const handleRemoveAttachment = (index) => {
+    const updatedAttachments = [...attachments];
+    updatedAttachments.splice(index, 1);
+    setAttachments(updatedAttachments);
+  };
+
+  const wordCount = message.trim() === '' ? 0 : message.trim().split(/\s+/).filter(Boolean).length;
   const isCharacterLimitReached = message.length >= maxCharacterLimit;
 
   return (
@@ -134,20 +156,51 @@ const MailCompose = ({ open, onClose, onSend }) => {
             modules={modules}
             readOnly={isCharacterLimitReached}
           />
-
-          <Typography style={{ marginTop: '20px', fontSize: '12px', color: isCharacterLimitReached ? 'red' : 'inherit' }}>
-            Length: {wordCount} (max Character Limit: {maxCharacterLimit})
-          </Typography>
+          <Box>
+            <Typography style={{ marginTop: '50px', fontSize: '12px', color: isCharacterLimitReached ? 'red' : 'inherit' }}>
+              Length: {wordCount} (max Character Limit: {maxCharacterLimit})
+            </Typography>
+          </Box>
         </DialogContent>
-        <DialogActions>
-          <Tooltip title="Attachment">
-            <IconButton>
-              <AttachmentIcon />
-            </IconButton>
-          </Tooltip>
-          <Button onClick={handleSend} color="primary" variant="contained" endIcon={<SendIcon />} disabled={isCharacterLimitReached}>
-            Send
-          </Button>
+        <DialogActions style={{ justifyContent: 'space-between', padding: '10px' }}>
+          <Box >
+
+            <Tooltip title="Attachment">
+              <label htmlFor="fileInput">
+                <Input
+                  id="fileInput"
+                  type="file"
+                  style={{ display: 'none' }}
+                  multiple
+                  onChange={handleFileChange}
+                />
+                <IconButton component="span">
+                  <AttachmentIcon />
+                </IconButton>
+              </label>
+            </Tooltip>
+            {attachments.length > 0 && (
+              <Box>
+                <ul style={{ listStyleType: 'none' }}>
+                  {attachments.map((file, index) => (
+                    <li key={index}>
+                      <Paper>
+                        {file.name}
+                        <IconButton size="small" onClick={() => handleRemoveAttachment(index)}>
+                          <CloseIcon />
+                        </IconButton>
+                      </Paper>
+                    </li>
+                  ))}
+                </ul>
+              </Box>
+            )}
+          </Box>
+          <Box>
+            <Button onClick={handleSend} color="primary" variant="contained" endIcon={<SendIcon />} disabled={isCharacterLimitReached}>
+              Send
+            </Button>
+          </Box>
         </DialogActions>
       </Box>
     </Dialog>
