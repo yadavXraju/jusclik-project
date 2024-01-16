@@ -16,70 +16,82 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import InputAdornment from '@mui/material/InputAdornment';
 import IconButton from '@mui/material/IconButton';
+import FormControl from '@mui/material/FormControl';  // Add this import
 import Frame from '../../../assets/images/Frame.png';
 import LoginImage from '../../../assets/images/Group-36.png';
 import LogoImg from '../../../assets/images/WhatsApp_Image_2020-03-21_at_8_04_53_PM__1-removebg-preview 1.png';
 import PlayStoreImage from '../../../assets/images/Google-Play.png';
 import AppleStoreImage from '../../../assets/images/app-store.png';
 import CloudLogo from '../../../assets/images/Untitled-2.png';
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 
 const defaultTheme = createTheme();
 
 function ToggleGroupVariants() {
-  const [value, setValue] = React.useState('plain'); // Set the default value to 'plain'
+  const navigate = useNavigate();
+  const [value, setValue] = React.useState('plain'); 
 
   return (
-    <ToggleButtonGroup
-      value={value}
-      exclusive
-      onChange={(event, newValue) => {
-        setValue(newValue);
-      }}
-      style={{
-        borderRadius: '50px',
-        border: '2px solid #fff', // Set the border color for the whole group
-      }}
-    >
-      <ToggleButton
-        style={{
-          borderRadius: '50px 0px 0px 50px',
-          width: '110px',
-          color: value === 'plain' ? '#000' : '#fff',
-          backgroundColor: value === 'plain' ? '#fff' : 'initial',
-          border: 'none', // Remove border for individual button
-        }}
-        // value="plain"
-      >
-        Password
-      </ToggleButton>
-      <ToggleButton
-        style={{
-          borderRadius: '0px 50px 50px 0px',
-          width: '110px',
-          color: value === 'outlined' ? '#000' : '#fff',
-          backgroundColor: value === 'outlined' ? '#fff' : 'initial',
-          border: 'none', // Remove border for individual button
-        }}
-        // value="outlined"
-      >
-        OTP
-      </ToggleButton>
-    </ToggleButtonGroup>
+    <FormControl>
+      <Grid container>
+        <Grid item>
+          <ToggleButtonGroup
+            value={value}
+            exclusive
+            onChange={(event, newValue) => {
+              setValue(newValue);
+              setSelectedVariant(newValue);
+            }}
+            style={{
+              borderRadius: '50px',
+              border: '2px solid #fff', 
+            }}
+          >
+            <ToggleButton
+              style={{
+                borderRadius: '50px 0px 0px 50px',
+                width: '110px',
+                color: value === 'plain' ? '#000' : '#fff',
+                backgroundColor: value === 'plain' ? '#fff' : 'initial',
+                border: 'none', // Remove border for individual button
+              }}
+              value="plain"
+            >
+              Password
+            </ToggleButton>
+            <ToggleButton
+             onClick={() => navigate('/otplogin')} 
+              style={{
+                borderRadius: '0px 50px 50px 0px',
+                width: '110px',
+                color: value === 'outlined' ? '#000' : '#fff',
+                backgroundColor: value === 'outlined' ? '#fff' : 'initial',
+                border: 'none', // Remove border for individual button
+              }}
+              value="outlined"
+            >
+              OTP
+            </ToggleButton>
+          </ToggleButtonGroup>
+        </Grid>
+      </Grid>
+    </FormControl>
   );
 }
 
 export default function LogInPage() {
+  const navigate = useNavigate(); 
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     console.log({
       email: data.get('username'),
       password: data.get('password'),
+      otp: data.get('otp'),
     });
   };
   const [showPassword, setShowPassword] = React.useState(false);
-  const navigate = useNavigate()
+  // const [selectedVariant, setSelectedVariant] = React.useState('plain');
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -97,11 +109,10 @@ export default function LogInPage() {
             backgroundColor: (t) =>
               t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
             backgroundSize: 'cover',
-            backgroundPosition: 'center',
+            backgroundPosition: 'bottom',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            // overflowY:'hidden'
           }}
         >
           <Grid item sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
@@ -113,7 +124,8 @@ export default function LogInPage() {
         </Grid>
         {/* left school logo start */}
         {/* right side background img */}
-        <Grid item xs={12} sm={8} md={8} component={Paper} elevation={6} square sx={{ backgroundImage: `url(${LoginImage})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+        <Grid item xs={12} sm={8} md={8} component={Paper} elevation={6} square sx={{ backgroundImage: `url(${LoginImage} )`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundPosition: 'bottom' , display: 'flex',
+            alignItems: 'center',justifyContent: 'center',}}>
           <Box
             sx={{
               my: 8,
@@ -123,8 +135,7 @@ export default function LogInPage() {
               alignItems: 'center',
             }}
           >
-          
-            <Typography component="h1" variant="h5" sx={{ color: 'white', fontWeight: '700', fontSize: '30px'}}>
+            <Typography component="h1" variant="h5" sx={{ color: 'white', fontWeight: '700', fontSize: '30px' }}>
               LOGIN
             </Typography>
             <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
@@ -133,7 +144,6 @@ export default function LogInPage() {
                 InputProps={{
                   style: {
                     borderRadius: '50px',
-                    
                   },
                 }}
                 margin="normal"
@@ -147,15 +157,6 @@ export default function LogInPage() {
                 sx={{ backgroundColor: '#fff', borderRadius: '50px' }}
               />
               <TextField
-                margin="normal"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type={showPassword ? 'text' : 'password'}
-                id="password"
-                autoComplete="current-password"
-                sx={{ backgroundColor: '#fff', borderRadius: '50px'}}
                 InputProps={{
                   style: { borderRadius: '50px' },
                   endAdornment: (
@@ -171,6 +172,15 @@ export default function LogInPage() {
                     </InputAdornment>
                   ),
                 }}
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type={showPassword ? 'text' : 'password'}
+                id="password"
+                autoComplete="current-password"
+                sx={{ backgroundColor: '#fff', borderRadius: '50px' }}
               />
 
               {/* Remember me */}
@@ -178,8 +188,8 @@ export default function LogInPage() {
                 control={<Checkbox value="remember" color="primary" style={{ color: '#fff' }} />}
                 label={<Typography sx={{ color: '#fff' }}>Remember me</Typography>}
               />
-              <Grid item xs sx={{ display: 'flex', justifyContent: 'end', alignItems: 'end', mt: -4 }} onClick={()=>navigate('/logout')}>
-                <Link href="#" variant="body2" color={'#fff'}>
+              <Grid item xs sx={{ display: 'flex', justifyContent: 'end', alignItems: 'end', mt: -4 }} style={{ cursor: 'pointer' }}>
+                <Link href="#" variant="body2" color={'#fff'} onClick={() => navigate('/forgetpassword')}>
                   Forgot credential?
                 </Link>
               </Grid>
@@ -190,7 +200,7 @@ export default function LogInPage() {
                 <Button
                   type="submit"
                   variant="contained"
-                  sx={{ mt: 3, mb: 2, backgroundColor: '#fff', color: '#364152b5', borderRadius: '50px', width: "200px", height: '50px', display: 'flex' }}
+                  sx={{ mt: 3, mb: 2, backgroundColor: '#fff', color: '#364152b5', borderRadius: '50px', width: "150px", margin: '20px', display: 'flex' }}
                 >
                   LOGIN
                 </Button>

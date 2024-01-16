@@ -4,10 +4,13 @@ import Grid from '@mui/material/Grid';
 import { gridSpacing } from 'store/constant';
 import Profile from './Profile';
 import WelcomeAttandanceFeeComp from './WelcomeAttandanceFeeComp';
-import TotalGrowthBarChart from './TotalGrowthBarChart';
-import PopularCard from './PopularCard';
-import AssignmentsHomeComp from '../AssignmentsHomeComp';
+// import TotalGrowthBarChart from './TotalGrowthBarChart';
+// import PopularCard from './PopularCard';
+import CircularAndNoticeHomeComp from './CircularAndNoticeHomeComp';
+import AssignmentsHomeComp from './assignmentHome/AssignmentsHomeComp';
 import TimeTableHome from './TimeTableHome';
+import CommunicationHomeComp from './CommunicationHomeComp';
+import AttandanceChartHomeComp from './AttendanceChartHomeComp';
 
 
 const Dashboard = ({ isLoading }) => {
@@ -43,23 +46,40 @@ const Dashboard = ({ isLoading }) => {
 
       <Grid item xs={12}>
         <Grid container spacing={gridSpacing}>
-          <Grid item xs={12} md={8} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
-            <TotalGrowthBarChart isLoading={isLoading} />
+          <Grid item xs={12} md={5} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
+            <AttandanceChartHomeComp isLoading={isLoading} />
           </Grid>
 
-          <Grid item xs={12} md={4}>
-            <PopularCard isLoading={isLoading} />
+          {/* <Grid item xs={12} md={7}>
+            <CircularAndNoticeHomeComp isLoading={isLoading} />
+          </Grid> */}
+
+           <Grid item xs={12} md={7} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
+            <AssignmentsHomeComp isLoading={isLoading} />
           </Grid>
 
 
-          <Grid item xs={12} md={6} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
+          <Grid item xs={12} md={7} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
             <TimeTableHome isLoading={isLoading} />
           </Grid>
           
 
-          <Grid item xs={12} md={6} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
+          {/* <Grid item xs={12} md={7} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
             <AssignmentsHomeComp isLoading={isLoading} />
+          </Grid> */}
+
+
+          <Grid item xs={12} md={5}>
+            <CircularAndNoticeHomeComp isLoading={isLoading} />
           </Grid>
+
+
+          <Grid item xs={12} md={6} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
+            <CommunicationHomeComp isLoading={isLoading} />
+          </Grid>
+
+
+
         </Grid>
       </Grid>
     </Grid>

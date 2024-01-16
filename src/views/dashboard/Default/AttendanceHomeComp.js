@@ -12,6 +12,7 @@ import SkeletonAttendanceCard from 'ui-component/cards/Skeleton/CounterCard';
 import CalendarMonthTwoToneIcon from '@mui/icons-material/CalendarMonthTwoTone';
 import ArrowForwardTwoToneIcon from '@mui/icons-material/ArrowForwardTwoTone';
 import { useNavigate } from 'react-router';
+import { present } from './chart-data/AttandanceData';
 
 const CardWrapper = styled(MainCard)(({ theme }) => ({
   backgroundColor: theme.palette.secondary.dark,
@@ -106,7 +107,7 @@ const AttendanceHomeComp = ({ isLoading }) => {
               <Grid item>
                 <Grid container alignItems="center">
                   <Grid item>
-                    <Typography sx={{ fontSize: '2.125rem', fontWeight: 500, mr: 1, mt: 1.75, mb: 0.75 }}>63.16%</Typography>
+                    <Typography sx={{ fontSize: '2.125rem', fontWeight: 500, mr: 1, mt: 1.75, mb: 0.75 }}>{present}</Typography>
                   </Grid>
      
                 </Grid>
