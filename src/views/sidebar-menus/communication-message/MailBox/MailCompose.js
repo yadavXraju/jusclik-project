@@ -163,9 +163,13 @@ const MailCompose = ({ open, onClose, onSend }) => {
           </Box>
         </DialogContent>
         <DialogActions style={{ justifyContent: 'space-between', padding: '10px' }}>
+<<<<<<< HEAD
+          <Box>
+            <Tooltip title="Attachment" placement="right" arrow>
+=======
           <Box >
-
             <Tooltip title="Attachment">
+>>>>>>> 26f7360949d3e70051b07266127431d6b3597d2f
               <label htmlFor="fileInput">
                 <Input
                   id="fileInput"
