@@ -1,18 +1,21 @@
 import React from 'react';
 import ApexCharts from 'react-apexcharts';
 import { present, absent } from './chart-data/AttandanceData';
-import { Divider, Grid, Paper, Typography } from '@mui/material';
+import { Grid, Paper, Typography , Button , Box } from '@mui/material';
 import { gridSpacing } from 'store/constant';
+import { HeadingCss } from './dashboard-css/CommonCss';
+import { useNavigate } from 'react-router';
 
 const AttandanceChartHomeComp = () => {
-
+const navigate = useNavigate();
   const AttendanceBox = {
     // height:'100%',
     // background:'#fff',
     display : 'flex',
     // justifyContent:'center',
     flexDirection: 'column',
-    padding : '20px'
+    padding : '20px',
+    paddingBottom:'0'
   }
   const chartData = {
     series: [parseFloat(present), parseFloat(absent)],
@@ -20,7 +23,7 @@ const AttandanceChartHomeComp = () => {
       type: 'donut',
     },
     labels: ['Present', 'Absent'],
-    colors: ['rgb(76, 192, 193)', 'rgb(251, 107, 91)'],
+    colors: ['#00c853', '#f44336'],
     responsive: [{
       breakpoint: 480,
       options: {
@@ -43,14 +46,19 @@ const AttandanceChartHomeComp = () => {
        <>
           <Paper spacing={gridSpacing}>
               <Grid sx={{padding:'24px'}}>
-                    <Typography variant='h3' sx={{textTransform:'uppercase'}}>Attendance</Typography> 
+                    <Typography variant='h2' style={HeadingCss}>Attendance</Typography> 
               </Grid>
 
-              <Divider/>
-
+      
               <Grid className='attandance-graph' style={AttendanceBox}>
                   <ApexCharts options={chartData} series={chartData.series} type="donut" height={350} />
               </Grid>
+
+              <Box sx={{p:3, pt:0 , textAlign:'right'}}>
+                  <Button variant="contained" onClick={() => navigate('/attendance')}>
+                    View More
+                  </Button>
+              </Box>
           </Paper>
        </>
   );

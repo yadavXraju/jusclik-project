@@ -59,8 +59,8 @@ const Dashboard = ({ isLoading }) => {
           </Grid>
 
 
-          <Grid item xs={12} md={7} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
-            <TimeTableHome isLoading={isLoading} />
+          <Grid item xs={12} md={5} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
+             <CircularAndNoticeHomeComp isLoading={isLoading} />
           </Grid>
           
 
@@ -69,12 +69,12 @@ const Dashboard = ({ isLoading }) => {
           </Grid> */}
 
 
-          <Grid item xs={12} md={5}>
-            <CircularAndNoticeHomeComp isLoading={isLoading} />
+          <Grid item xs={12} md={7}>
+              <TimeTableHome isLoading={isLoading} /> 
           </Grid>
 
 
-          <Grid item xs={12} md={6} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
+          <Grid item xs={12} md={5} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
             <CommunicationHomeComp isLoading={isLoading} />
           </Grid>
 

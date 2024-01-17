@@ -10,16 +10,15 @@ import {
   Box,
   Tooltip,
   IconButton,
+  Input,
+  Paper,
+  MenuItem,
 } from '@mui/material';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import CloseIcon from '@mui/icons-material/Close';
 import SendIcon from '@mui/icons-material/Send';
-import MenuItem from '@mui/material/MenuItem';
 import AttachmentIcon from '@mui/icons-material/Attachment';
-import 'react-quill/dist/quill.core.css';
-import 'react-quill/dist/quill.snow.css';
-import 'react-quill/dist/quill.bubble.css';
 
 const Queries = [
   {
@@ -40,20 +39,28 @@ const MailCompose = ({ open, onClose, onSend }) => {
   const [to, setTo] = useState('');
   const [subject, setSubject] = useState('');
   const [message, setMessage] = useState('');
+  const [attachments, setAttachments] = useState([]);
+  const [fileInputKey, setFileInputKey] = useState(Date.now());
 
   const maxCharacterLimit = 1500;
 
   const formats = [
     'header',
-    'bold', 'italic', 'underline', 'strike',
-    'list', 'bullet',
-    'link', 'image',
-    'align', 'script',
+    'bold',
+    'italic',
+    'underline',
+    'strike',
+    'list',
+    'bullet',
+    'link',
+    'image',
+    'align',
+    'script',
   ];
 
   const modules = {
     toolbar: [
-      [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+      [{ 'header': [1, 2, 3, 4, false] }],
       ['bold', 'italic', 'underline', 'strike'],
       [{ 'list': 'ordered' }, { 'list': 'bullet' }],
       ['link', 'image', 'video'],
@@ -67,9 +74,15 @@ const MailCompose = ({ open, onClose, onSend }) => {
       userName: to,
       subject,
       message,
+      attachments,
     };
     onSend(mailData);
-    onClose(); // Close the dialog after sending
+    // Reset state and close the dialog after sending
+    setTo('');
+    setSubject('');
+    setMessage('');
+    setAttachments([]);
+    onClose();
   };
 
   const handleQuillChange = (value) => {
@@ -78,7 +91,20 @@ const MailCompose = ({ open, onClose, onSend }) => {
     }
   };
 
-  const wordCount = message.trim() === '' ? 0 : message.trim().split(/\s+/).length;
+  const handleFileChange = (e) => {
+    const selectedFiles = e.target.files;
+    // Update state with selected files
+    setAttachments([...attachments, ...selectedFiles]);
+    setFileInputKey(Date.now());
+  };
+
+  const handleRemoveAttachment = (index) => {
+    const updatedAttachments = [...attachments];
+    updatedAttachments.splice(index, 1);
+    setAttachments(updatedAttachments);
+  };
+
+  const wordCount = message.trim() === '' ? 0 : message.trim().split(/\s+/).filter(Boolean).length;
   const isCharacterLimitReached = message.length >= maxCharacterLimit;
 
   return (
@@ -97,27 +123,18 @@ const MailCompose = ({ open, onClose, onSend }) => {
             value={to}
             onChange={(e) => setTo(e.target.value)}
           />
-          <Box
-            component="form"
-            sx={{
-              '& .MuiTextField-root': { width: '25ch' },
-            }}
-            noValidate
-            autoComplete="off"
+          <TextField
+            id="outlined-select-queries"
+            select
+            label="Related to"
+            style={{ width: '100%' }}
           >
-            <TextField
-              id="outlined-select-queries"
-              select
-              label="Related to"
-              style={{ width: '100%' }}
-            >
-              {Queries.map((option) => (
-                <MenuItem key={option.value} value={option.value}>
-                  {option.label}
-                </MenuItem>
-              ))}
-            </TextField>
-          </Box>
+            {Queries.map((option) => (
+              <MenuItem key={option.value} value={option.value}>
+                {option.label}
+              </MenuItem>
+            ))}
+          </TextField>
           <TextField
             fullWidth
             label="Subject"
@@ -134,20 +151,53 @@ const MailCompose = ({ open, onClose, onSend }) => {
             modules={modules}
             readOnly={isCharacterLimitReached}
           />
-
-          <Typography style={{ marginTop: '20px', fontSize: '12px', color: isCharacterLimitReached ? 'red' : 'inherit' }}>
-            Length: {wordCount} (max Character Limit: {maxCharacterLimit})
-          </Typography>
+          <Box>
+            <Typography style={{ marginTop: '50px', fontSize: '12px', color: isCharacterLimitReached ? 'red' : 'inherit' }}>
+              Length: {wordCount} (max Character Limit: {maxCharacterLimit})
+            </Typography>
+          </Box>
         </DialogContent>
-        <DialogActions>
-          <Tooltip title="Attachment">
-            <IconButton>
-              <AttachmentIcon />
-            </IconButton>
-          </Tooltip>
-          <Button onClick={handleSend} color="primary" variant="contained" endIcon={<SendIcon />} disabled={isCharacterLimitReached}>
-            Send
-          </Button>
+        <DialogActions style={{ justifyContent: 'space-between', padding: '10px' }}>
+          <Box>
+            <Tooltip title="Attachment" placement="right" arrow>
+              <Box>
+                <label htmlFor="fileInput">
+                  <Input
+                    id="fileInput"
+                    type="file"
+                    style={{ display: 'none' }}
+                    multiple
+                    onChange={handleFileChange}
+                    key={fileInputKey}
+                  />
+                  <IconButton component="span">
+                    <AttachmentIcon />
+                  </IconButton>
+                </label>
+              </Box>
+            </Tooltip>
+            {attachments.length > 0 && (
+              <Box>
+                <ul style={{ listStyleType: 'none' }}>
+                  {attachments.map((file, index) => (
+                    <li key={index}>
+                      <Paper>
+                        {file.name}
+                        <IconButton size="small" onClick={() => handleRemoveAttachment(index)}>
+                          <CloseIcon />
+                        </IconButton>
+                      </Paper>
+                    </li>
+                  ))}
+                </ul>
+              </Box>
+            )}
+          </Box>
+          <Box>
+            <Button onClick={handleSend} color="primary" variant="contained" endIcon={<SendIcon />} disabled={isCharacterLimitReached}>
+              Send
+            </Button>
+          </Box>
         </DialogActions>
       </Box>
     </Dialog>

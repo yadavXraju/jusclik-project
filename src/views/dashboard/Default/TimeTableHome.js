@@ -1,15 +1,17 @@
 import React from 'react';
-import { Grid, Paper, Typography,   useMediaQuery , Button } from '@mui/material';
+import { Grid, Paper, Typography,   useMediaQuery  } from '@mui/material';
 import { gridSpacing } from 'store/constant';
-import { Box } from '@mui/system';
-import { useNavigate } from 'react-router';
+// import { Box } from '@mui/system';
+// import { useNavigate } from 'react-router';
 import timeTableData from 'views/sidebar-menus/timetable/TimeTableData';
+import { HeadingCss , boxHeight } from './dashboard-css/CommonCss';
+
 
 
 const TimeTableHome = () => {
   const isMobile = useMediaQuery('(max-width: 767px)');
-  const periodsToShow = 4;
-  const navigate = useNavigate();
+  // const periodsToShow = 4;
+  // const navigate = useNavigate();
 
    // Get the current day (0 = Sunday, 1 = Monday, ..., 6 = Saturday)
    const currentDay = new Date().getDay();
@@ -24,13 +26,15 @@ const TimeTableHome = () => {
    }
 
 
+
+
   return (
-    <Grid spacing={gridSpacing} sx={{border:'1px solid #80808026', borderRadius:'8px'}}>
-      <Grid item component={Paper} lg={12} md={12} sm={12} xs={12} sx={{ textAlign: 'right', p: 3, display: 'flex', flexDirection: 'column', gap: '48px' }}>
-      <Typography variant='h2' sx={{ textAlign: 'left' , color:'#99a1b7' , borderBottom: '1px solid #80808040;' , paddingBottom:'20px' }}>{currentDayName} Timetable</Typography>
+    <Grid spacing={gridSpacing} sx={{border:'1px solid #80808026', borderRadius:'8px'}} style={boxHeight}>
+      <Grid item component={Paper} lg={12} md={12} sm={12} xs={12} sx={{ textAlign: 'right', p: 3, display: 'flex', flexDirection: 'column', gap: '37px' }}>
+      <Typography variant='h2' sx={{ textAlign: 'left' ,}} style={HeadingCss}>today Timetable</Typography>
 
          {/* header sec start */}
-         <Grid container >
+         <Grid container sx={{ borderBottom: '1px solid #80808040;' , paddingBottom:'20px'}} >
 
             <Grid item lg={4} md={4} sm={4} xs={4} sx={{ display: 'flex', gap: '16px' , flexDirection: isMobile ? 'column' : 'row'  , textAlign: 'left'}} >
                     <Typography variant='span' sx={{ color: '#99a1b7', fontWeight: '500' , fontSize:'18px'  }}>Time</Typography>
@@ -46,7 +50,7 @@ const TimeTableHome = () => {
           </Grid>
           {/* header section end */}
 
-          {currentDaySchedule.slice(0, periodsToShow).map((scheduleItem) => ( 
+          {currentDaySchedule.map((scheduleItem) => ( 
           <Grid container sx={{ textAlign: 'left', display: 'flex' , borderBottom: '1px solid #80808040;' , paddingBottom:'10px',}} key={scheduleItem.id}>
           
             <Grid item lg={4} md={4} sm={4} xs={4} sx={{ display: 'flex' , flexDirection: isMobile ? 'column' : 'row'  ,}} >
@@ -77,13 +81,13 @@ const TimeTableHome = () => {
           </Grid>
          ))}
 
-      <Box sx={{ pt: 3 }}>
+      {/* <Box sx={{ }}>
         {periodsToShow < currentDaySchedule.length && (
           <Button variant="contained" onClick={() => navigate('/timetable')}>
             View More
           </Button>
         )}
-      </Box>
+      </Box> */}
 
       </Grid>
     </Grid>

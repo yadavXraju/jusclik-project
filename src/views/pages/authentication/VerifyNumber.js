@@ -2,21 +2,12 @@ import * as React from 'react';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
-import ToggleButton from '@mui/material/ToggleButton';
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
-import InputAdornment from '@mui/material/InputAdornment';
-import IconButton from '@mui/material/IconButton';
-import FormControl from '@mui/material/FormControl';  // Add this import
 import Frame from '../../../assets/images/Frame.png';
 import LoginImage from '../../../assets/images/Group-36.png';
 import LogoImg from '../../../assets/images/WhatsApp_Image_2020-03-21_at_8_04_53_PM__1-removebg-preview 1.png';
@@ -27,60 +18,8 @@ import { useNavigate } from 'react-router-dom';
 
 const defaultTheme = createTheme();
 
-function ToggleGroupVariants() {
+export default function ForgetPassword() {
   const navigate = useNavigate();
-  const [value, setValue] = React.useState('plain'); 
-
-  return (
-    <FormControl>
-      <Grid container>
-        <Grid item>
-          <ToggleButtonGroup
-            value={value}
-            exclusive
-            onChange={(event, newValue) => {
-              setValue(newValue);
-              setSelectedVariant(newValue);
-            }}
-            style={{
-              borderRadius: '50px',
-              border: '2px solid #fff', 
-            }}
-          >
-            <ToggleButton
-              style={{
-                borderRadius: '50px 0px 0px 50px',
-                width: '110px',
-                color: value === 'plain' ? '#000' : '#fff',
-                backgroundColor: value === 'plain' ? '#fff' : 'initial',
-                border: 'none', // Remove border for individual button
-              }}
-              value="plain"
-            >
-              Password
-            </ToggleButton>
-            <ToggleButton
-             onClick={() => navigate('/otplogin')} 
-              style={{
-                borderRadius: '0px 50px 50px 0px',
-                width: '110px',
-                color: value === 'outlined' ? '#000' : '#fff',
-                backgroundColor: value === 'outlined' ? '#fff' : 'initial',
-                border: 'none', // Remove border for individual button
-              }}
-              value="outlined"
-            >
-              OTP
-            </ToggleButton>
-          </ToggleButtonGroup>
-        </Grid>
-      </Grid>
-    </FormControl>
-  );
-}
-
-export default function LogInPage() {
-  const navigate = useNavigate(); 
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -90,8 +29,6 @@ export default function LogInPage() {
       otp: data.get('otp'),
     });
   };
-  const [showPassword, setShowPassword] = React.useState(false);
-  // const [selectedVariant, setSelectedVariant] = React.useState('plain');
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -124,8 +61,10 @@ export default function LogInPage() {
         </Grid>
         {/* left school logo start */}
         {/* right side background img */}
-        <Grid item xs={12} sm={8} md={8} component={Paper} elevation={6} square sx={{ backgroundImage: `url(${LoginImage} )`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundPosition: 'bottom' , display: 'flex',
-            alignItems: 'center',justifyContent: 'center',}}>
+        <Grid item xs={12} sm={8} md={8} component={Paper} elevation={6} square sx={{
+          backgroundImage: `url(${LoginImage} )`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundPosition: 'bottom', display: 'flex',
+          alignItems: 'center', justifyContent: 'center',
+        }}>
           <Box
             sx={{
               my: 8,
@@ -136,73 +75,61 @@ export default function LogInPage() {
             }}
           >
             <Typography component="h1" variant="h5" sx={{ color: 'white', fontWeight: '700', fontSize: '30px' }}>
-              LOGIN
+              VERIFY YOUR DETAILS
             </Typography>
             <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
-              {/* phone no. */}
-              <TextField
-                InputProps={{
-                  style: {
-                    borderRadius: '50px',
-                  },
-                }}
-                margin="normal"
-                required
-                fullWidth
-                id="Username"
-                label="Username"
-                name="Username"
-                autoComplete="Username"
-                autoFocus
-                sx={{ backgroundColor: '#fff', borderRadius: '50px' }}
-              />
-              <TextField
-                InputProps={{
-                  style: { borderRadius: '50px' },
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      <IconButton
-                        aria-label="toggle password visibility"
-                        onClick={() => setShowPassword(!showPassword)}
-                        edge="end"
-                        sx={{ color: '#364152b5', marginRight: '2px' }}
-                      >
-                        {showPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
-                      </IconButton>
-                    </InputAdornment>
-                  ),
-                }}
-                margin="normal"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type={showPassword ? 'text' : 'password'}
-                id="password"
-                autoComplete="current-password"
-                sx={{ backgroundColor: '#fff', borderRadius: '50px' }}
-              />
-
-              {/* Remember me */}
-              <FormControlLabel
-                control={<Checkbox value="remember" color="primary" style={{ color: '#fff' }} />}
-                label={<Typography sx={{ color: '#fff' }}>Remember me</Typography>}
-              />
-              <Grid item xs sx={{ display: 'flex', justifyContent: 'end', alignItems: 'end', mt: -4 }} style={{ cursor: 'pointer' }}>
-                <Link href="#" variant="body2" color={'#fff'} onClick={() => navigate('/forgetpassword')}>
-                  Forgot credential?
-                </Link>
+              <Grid>
+                {/* phone no. */}
+                <TextField
+                  InputProps={{
+                    style: {
+                      borderRadius: '50px',
+                    },
+                  }}
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="Username"
+                  label="Phone Number/ E-mail"
+                  name="Username"
+                  autoComplete="Username"
+                  autoFocus
+                  sx={{ backgroundColor: '#fff', borderRadius: '50px' }}
+                />
+                <TextField
+                  InputProps={{
+                    style: {
+                      borderRadius: '50px',
+                    },
+                  }}
+                  margin="normal"
+                  required
+                  fullWidth
+                  name="password"
+                  label="Enter OTP"
+                  type="text"
+                  id="password"
+                  // autoComplete="current-password"
+                  sx={{ backgroundColor: '#fff', borderRadius: '50px' }}
+                />
               </Grid>
+              <Box>
+                <Grid item xs sx={{ display: 'flex', justifyContent: 'end', alignItems: 'end', mt: 1 }} style={{ cursor: 'pointer' }}>
+                  <Link href="#" variant="body2" color={'#fff'} onClick={() => navigate('/logout')}>
+                    Resend OTP
+                  </Link>
+                </Grid>
+              </Box>
               <Box sx={{ display: 'flex', alignItems: 'end', justifyContent: 'end', mt: 4 }}>
-                <ToggleGroupVariants />
               </Box>
               <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <Button
                   type="submit"
                   variant="contained"
-                  sx={{ mt: 3, mb: 2, backgroundColor: '#fff', color: '#364152b5', borderRadius: '50px', width: "150px", margin: '15px', display: 'flex', height:'45px' }}
+                  onClick={() => navigate('/setnewpassword')}
+                  sx={{ mt: 3, mb: 2, backgroundColor: '#fff', color: '#364152b5', borderRadius: '50px', width: "150px", margin: '20px', display: 'flex', height: '50px' }}
                 >
-                  LOGIN
+                  PROCEED
                 </Button>
               </Box>
               <Grid item sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', mt: 3 }}>

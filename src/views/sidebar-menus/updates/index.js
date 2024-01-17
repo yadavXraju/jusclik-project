@@ -29,10 +29,6 @@ export default function Update() {
               </Typography>
             </Grid>
             </Grid>
-    
-    
-
-
               <Grid item xs={12}>
                 <Typography variant="body2" color={'#364152ad'}>
                        {data.description}
