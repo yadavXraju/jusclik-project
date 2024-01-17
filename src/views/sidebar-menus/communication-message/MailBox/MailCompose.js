@@ -11,16 +11,14 @@ import {
   Tooltip,
   IconButton,
   Input,
-  Paper
+  Paper,
+  MenuItem,
 } from '@mui/material';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import CloseIcon from '@mui/icons-material/Close';
 import SendIcon from '@mui/icons-material/Send';
-import MenuItem from '@mui/material/MenuItem';
 import AttachmentIcon from '@mui/icons-material/Attachment';
-import 'react-quill/dist/quill.core.css';
-import 'react-quill/dist/quill.snow.css';
 
 const Queries = [
   {
@@ -42,15 +40,22 @@ const MailCompose = ({ open, onClose, onSend }) => {
   const [subject, setSubject] = useState('');
   const [message, setMessage] = useState('');
   const [attachments, setAttachments] = useState([]);
+  const [fileInputKey, setFileInputKey] = useState(Date.now());
 
   const maxCharacterLimit = 1500;
 
   const formats = [
     'header',
-    'bold', 'italic', 'underline', 'strike',
-    'list', 'bullet',
-    'link', 'image',
-    'align', 'script',
+    'bold',
+    'italic',
+    'underline',
+    'strike',
+    'list',
+    'bullet',
+    'link',
+    'image',
+    'align',
+    'script',
   ];
 
   const modules = {
@@ -91,7 +96,6 @@ const MailCompose = ({ open, onClose, onSend }) => {
     // Update state with selected files
     setAttachments([...attachments, ...selectedFiles]);
     setFileInputKey(Date.now());
-
   };
 
   const handleRemoveAttachment = (index) => {
@@ -119,27 +123,18 @@ const MailCompose = ({ open, onClose, onSend }) => {
             value={to}
             onChange={(e) => setTo(e.target.value)}
           />
-          <Box
-            component="form"
-            sx={{
-              '& .MuiTextField-root': { width: '25ch' },
-            }}
-            noValidate
-            autoComplete="off"
+          <TextField
+            id="outlined-select-queries"
+            select
+            label="Related to"
+            style={{ width: '100%' }}
           >
-            <TextField
-              id="outlined-select-queries"
-              select
-              label="Related to"
-              style={{ width: '100%' }}
-            >
-              {Queries.map((option) => (
-                <MenuItem key={option.value} value={option.value}>
-                  {option.label}
-                </MenuItem>
-              ))}
-            </TextField>
-          </Box>
+            {Queries.map((option) => (
+              <MenuItem key={option.value} value={option.value}>
+                {option.label}
+              </MenuItem>
+            ))}
+          </TextField>
           <TextField
             fullWidth
             label="Subject"
@@ -163,25 +158,23 @@ const MailCompose = ({ open, onClose, onSend }) => {
           </Box>
         </DialogContent>
         <DialogActions style={{ justifyContent: 'space-between', padding: '10px' }}>
-<<<<<<< HEAD
           <Box>
             <Tooltip title="Attachment" placement="right" arrow>
-=======
-          <Box >
-            <Tooltip title="Attachment">
->>>>>>> 26f7360949d3e70051b07266127431d6b3597d2f
-              <label htmlFor="fileInput">
-                <Input
-                  id="fileInput"
-                  type="file"
-                  style={{ display: 'none' }}
-                  multiple
-                  onChange={handleFileChange}
-                />
-                <IconButton component="span">
-                  <AttachmentIcon />
-                </IconButton>
-              </label>
+              <Box>
+                <label htmlFor="fileInput">
+                  <Input
+                    id="fileInput"
+                    type="file"
+                    style={{ display: 'none' }}
+                    multiple
+                    onChange={handleFileChange}
+                    key={fileInputKey}
+                  />
+                  <IconButton component="span">
+                    <AttachmentIcon />
+                  </IconButton>
+                </label>
+              </Box>
             </Tooltip>
             {attachments.length > 0 && (
               <Box>
