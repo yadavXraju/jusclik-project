@@ -9,6 +9,7 @@ import MinimalLayout from 'layout/MinimalLayout';
 // const AuthRegister3 = Loadable(lazy(() => import('views/pages/authentication/authentication3/Register3')));
 const Login = Loadable(lazy(() => import('views/pages/authentication/Login')));
 const ForgetPassword = Loadable(lazy(() => import('views/pages/authentication/ForgetPassword')));
+const VerifyNumber = Loadable(lazy(() => import('views/pages/authentication/VerifyNumber')));
 const OtpLogin = Loadable(lazy(() => import('views/pages/authentication/OtpLogin')));
 const SetNewPassword = Loadable(lazy(() => import('views/pages/authentication/SetNewPassword')));
 
@@ -35,6 +36,11 @@ const AuthenticationRoutes = {
     {
       path: '/forgetpassword',
       element: <ForgetPassword  />
+    },
+
+    {
+      path: '/verifynumber',
+      element: <VerifyNumber  />
     },
 
     {
