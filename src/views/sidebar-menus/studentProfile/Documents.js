@@ -33,119 +33,110 @@ export default function Documents() {
 
 
 // import * as React from 'react';
+// import Paper from '@mui/material/Paper';
 // import Table from '@mui/material/Table';
 // import TableBody from '@mui/material/TableBody';
 // import TableCell from '@mui/material/TableCell';
 // import TableContainer from '@mui/material/TableContainer';
 // import TableHead from '@mui/material/TableHead';
+// import TablePagination from '@mui/material/TablePagination';
 // import TableRow from '@mui/material/TableRow';
-// import Paper from '@mui/material/Paper';
-// import { TableVirtuoso } from 'react-virtuoso';
-
-// const sample = [
-//   ['Frozen yoghurt', 159, 6.0, 24, 4.0],
-//   ['Ice cream sandwich', 237, 9.0, 37, 4.3],
-//   ['Eclair', 262, 16.0, 24, 6.0],
-//   ['Cupcake', 305, 3.7, 67, 4.3],
-//   ['Gingerbread', 356, 16.0, 49, 3.9],
-// ];
-
-// function createData(id, dessert, calories, fat, carbs, protein) {
-//   return { id, dessert, calories, fat, carbs, protein };
-// }
 
 // const columns = [
+//   { id: 'documenttitle', label: 'Document Title', minWidth: 170 },
+//   { id: 'discription', label: 'Discription', minWidth: 100 },
 //   {
-//     width: 200,
-//     label: 'Dessert',
-//     dataKey: 'dessert',
+//     id: 'action',
+//     label: 'Action',
+//     minWidth: 170,
+//     align: 'right',
+//     format: (value) => value.toLocaleString('en-US'),
 //   },
 //   {
-//     width: 120,
-//     label: 'Calories\u00A0(g)',
-//     dataKey: 'calories',
-//     numeric: true,
+//     id: 'lastupdated',
+//     label: 'LastUpdated',
+//     minWidth: 170,
+//     align: 'right',
+//     format: (value) => value.toLocaleString('en-US'),
 //   },
 //   {
-//     width: 120,
-//     label: 'Fat\u00A0(g)',
-//     dataKey: 'fat',
-//     numeric: true,
-//   },
-//   {
-//     width: 120,
-//     label: 'Carbs\u00A0(g)',
-//     dataKey: 'carbs',
-//     numeric: true,
-//   },
-//   {
-//     width: 120,
-//     label: 'Protein\u00A0(g)',
-//     dataKey: 'protein',
-//     numeric: true,
+//     id: 'status',
+//     label: 'Status',
+//     minWidth: 170,
+//     align: 'right',
+//     format: (value) => value.toFixed(2),
 //   },
 // ];
 
-// const rows = Array.from({ length: 200 }, (_, index) => {
-//   const randomSelection = sample[Math.floor(Math.random() * sample.length)];
-//   return createData(index, ...randomSelection);
-// });
-
-// const VirtuosoTableComponents = {
-//   Scroller: React.forwardRef((props, ref) => (
-//     <TableContainer component={Paper} {...props} ref={ref} />
-//   )),
-//   Table: (props) => (
-//     <Table {...props} sx={{ borderCollapse: 'separate', tableLayout: 'fixed' }} />
-//   ),
-//   TableHead,
-//   TableRow: ({ item: _item, ...props }) => <TableRow {...props} />,
-//   TableBody: React.forwardRef((props, ref) => <TableBody {...props} ref={ref} />),
-// };
-
-// function fixedHeaderContent() {
-//   return (
-//     <TableRow>
-//       {columns.map((column) => (
-//         <TableCell
-//           key={column.dataKey}
-//           variant="head"
-//           align={column.numeric || false ? 'right' : 'left'}
-//           style={{ width: column.width }}
-//           sx={{
-//             backgroundColor: 'background.paper',
-//           }}
-//         >
-//           {column.label}
-//         </TableCell>
-//       ))}
-//     </TableRow>
-//   );
+// function createData(documenttitle, discription, action, lastupdated, status) {
+//   return { documenttitle, discription, action, lastupdated, status };
 // }
 
-// function rowContent(_index, row) {
-//   return (
-//     <React.Fragment>
-//       {columns.map((column) => (
-//         <TableCell
-//           key={column.dataKey}
-//           align={column.numeric || false ? 'right' : 'left'}
-//         >
-//           {row[column.dataKey]}
-//         </TableCell>
-//       ))}
-//     </React.Fragment>
-//   );
-// }
+// const rows = [
+//   createData('India', 'IN', 1324171354, 3287263),
+//   createData('China', 'CN', 1403500365, 9596961),
+// ];
 
 // export default function Documents() {
+//   const [page, setPage] = React.useState(0);
+//   const [rowsPerPage, setRowsPerPage] = React.useState(10);
+
+//   const handleChangePage = (event, newPage) => {
+//     setPage(newPage);
+//   };
+
+//   const handleChangeRowsPerPage = (event) => {
+//     setRowsPerPage(+event.target.value);
+//     setPage(0);
+//   };
+
 //   return (
-//     <Paper style={{ height: 400, width: '100%' }}>
-//       <TableVirtuoso
-//         data={rows}
-//         components={VirtuosoTableComponents}
-//         fixedHeaderContent={fixedHeaderContent}
-//         itemContent={rowContent}
+//     <Paper sx={{ width: '100%', overflow: 'hidden' }}>
+//       <TableContainer sx={{ maxHeight: 440 }}>
+//         <Table stickyHeader aria-label="sticky table">
+//           <TableHead>
+//             <TableRow>
+//               {columns.map((column) => (
+//                 <TableCell
+//                   key={column.id}
+//                   align={column.align}
+//                   style={{ minWidth: column.minWidth }}
+//                 >
+//                   {column.label}
+//                 </TableCell>
+//               ))}
+//             </TableRow>
+//           </TableHead>
+//           <TableBody>
+//             {rows
+//               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+//               .map((row) => {
+//                 return (
+//                   <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
+//                     {columns.map((column) => {
+//                       const value = row[column.id];
+//                       return (
+//                         <TableCell key={column.id} align={column.align}>
+//                           {column.format && typeof value === 'number'
+//                             ? column.format(value)
+//                             : value}
+//                         </TableCell>
+//                       );
+//                     })}
+//                   </TableRow>
+//                 );
+//               })}
+//           </TableBody>
+//         </Table>
+//       </TableContainer>
+//       <TablePagination
+//         rowsPerPageOptions={[10, 25, 100]}
+//         component="div"
+//         count={rows.length}
+//         rowsPerPage={rowsPerPage}
+//         page={page}
+//         onPageChange={handleChangePage}
+//         onRowsPerPageChange={handleChangeRowsPerPage}
 //       />
 //     </Paper>
 //   );
