@@ -17,7 +17,7 @@ const UtilsTablerIcons = Loadable(lazy(() => import('views/utilities/TablerIcons
 // const UtilsTimetable = Loadable(lazy(() => import('views/sidebar-menus/timetable/Timetable')));
 
 // sample page routing
-const SamplePage = Loadable(lazy(() => import('views/sample-page')));
+// const SamplePage = Loadable(lazy(() => import('views/sample-page')));
 // components page routing
 const Attendance = Loadable(lazy(() => import('views/sidebar-menus/attendance')));
 // const Attendance = Loadable(lazy(() => import('views/attendance')));
@@ -68,15 +68,7 @@ const MainRoutes = {
         }
       ]
     },
-    // {
-    //   path: 'utils',
-    //   children: [
-    //     {
-    //       path: 'util-timetable',
-    //       element: <UtilsTimetable/>
-    //     }
-    //   ]
-    // },
+
     {
       path: 'utils',
       children: [
@@ -113,11 +105,7 @@ const MainRoutes = {
         }
       ]
     },
-    {
-      path: 'sample-page',
-      element: <SamplePage />
-    }
-    ,
+
         {
           path: 'attendance',
           element: <Attendance />

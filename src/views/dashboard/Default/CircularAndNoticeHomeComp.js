@@ -30,10 +30,10 @@ const CircularAndNoticeHomeComp = ({ isLoading }) => {
     
             <Grid container spacing={gridSpacing}>
               <Grid item xs={12}>
-                <Grid container alignContent="center" justifyContent="space-between">
+                <Grid  alignContent="center" justifyContent="space-between">
                   <Grid item>
                     <Typography variant="h2" style={HeadingCss}>
-                      CIRCULARS & NOTICES
+                      latest update
                     </Typography>
                   </Grid>
                 </Grid>
@@ -45,7 +45,7 @@ const CircularAndNoticeHomeComp = ({ isLoading }) => {
                     <Grid item>
                       <Grid container alignItems="center" justifyContent="space-between" sx={{ alignItems: 'baseline' }}>
                         <Grid item sx={{ pb: 2 }}>
-                          <Typography variant="h4" color="rgb(153, 161, 183)">
+                          <Typography variant="h3" color="rgb(153, 161, 183)">
                             {data.title}
                           </Typography>
                         </Grid>
@@ -61,7 +61,7 @@ const CircularAndNoticeHomeComp = ({ isLoading }) => {
                       </Grid>
                     </Grid>
                     <Grid item>
-                      <Typography variant="subtitle2" style={lineClamp}>
+                      <Typography variant="p" style={lineClamp}>
                         {data.description}
                       </Typography>
                     </Grid>

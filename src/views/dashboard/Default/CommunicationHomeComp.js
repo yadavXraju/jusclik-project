@@ -13,19 +13,26 @@ import Box from '@mui/material/Box';
 import Badge from '@mui/material/Badge';
 import { contactData } from 'views/sidebar-menus/communication-message/Contact-list';
 import { commonStyles } from 'views/sidebar-menus/communication-message/Contact-list';
-import { useNavigate } from 'react-router';
-import { Button } from '@mui/material';
+// import { useNavigate } from 'react-router';
+import {  Grid } from '@mui/material';
+import { HeadingCss , boxHeight} from './dashboard-css/CommonCss';
 
 
 const CommunicationHomeComp = () => {
   
-const contactListToShow = 4
-const navigate = useNavigate();
+// const contactListToShow = 4
+// const navigate = useNavigate();
   return (
     <>
-     <MainCard  sx={{ fontSize: '22px', fontWeight: 'bold' }}>
+     <MainCard  sx={{ fontSize: '22px', fontWeight: 'bold' }} style={boxHeight}>
+        <Grid item>
+            <Typography variant="h2" style={HeadingCss}>
+                    communication
+              </Typography>
+        </Grid>
+
       <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
-        {contactData.slice(0,contactListToShow).map((contact, index) => (
+        {contactData.map((contact, index) => (
           <React.Fragment key={index}>
             <ListItem>
               <ListItemAvatar>
@@ -56,11 +63,11 @@ const navigate = useNavigate();
           </React.Fragment>
         ))}
 
-        <Box sx={{ pt: 3 , textAlign:'right'}}>
+        {/* <Box sx={{ pt: 3 , textAlign:'right'}}>
             <Button variant="contained" onClick={() => navigate('/communication/contact-list')}>
               View More
             </Button>
-        </Box>
+        </Box> */}
       </List>
     </MainCard>
 
