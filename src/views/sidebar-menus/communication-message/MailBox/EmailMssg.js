@@ -8,6 +8,7 @@ import ForwardIcon from '@mui/icons-material/Forward';
 import { useNavigate } from 'react-router';
 import { initialData } from '.';
 
+// use of avatar
 const Message = ({ userAvatar }) => {
     const currentDate = new Date().toLocaleDateString();
     const [emailData, setEmailData] = useState(null);
@@ -47,7 +48,6 @@ const Message = ({ userAvatar }) => {
     };
 
     const navigate = useNavigate()
-
     const NameToShow = 1
 
     return (
