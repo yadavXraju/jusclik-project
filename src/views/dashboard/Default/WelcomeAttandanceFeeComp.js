@@ -1,7 +1,7 @@
 import React from 'react';
 import Grid from '@mui/system/Unstable_Grid/Grid';
 // import TotalOrderLineChartCard from './TotalOrderLineChartCard';
-import WelcomeMessage from './WelcomeMessage';
+import WelcomeMessage from './welcome-comp/WelcomeMessage';
 import { gridSpacing } from 'store/constant';
 // import EarningCard from './EarningCard';
 import AttendanceHomeComp from './AttendanceHomeComp';
