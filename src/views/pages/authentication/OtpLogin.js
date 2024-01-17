@@ -22,6 +22,8 @@ import PlayStoreImage from '../../../assets/images/Google-Play.png';
 import AppleStoreImage from '../../../assets/images/app-store.png';
 import CloudLogo from '../../../assets/images/Untitled-2.png';
 import { useNavigate } from 'react-router-dom';
+import SelectAccount from './SelectAccount';
+
 
 const defaultTheme = createTheme();
 
@@ -91,8 +93,16 @@ export default function OtpLogin() {
     };
     const [showPassword, setShowPassword] = React.useState(false);
 
+     // Set dialogOpen to true initially
+  const [dialogOpen, setDialogOpen] = React.useState(true);
+
+  const handleDialogToggle = () => {
+    setDialogOpen(!dialogOpen);
+  };
+
     return (
         <ThemeProvider theme={defaultTheme}>
+            <SelectAccount open={dialogOpen} onClose={handleDialogToggle} />
             <Grid container component="main" sx={{ minHeight: '100vh' }}>
                 <CssBaseline />
                 {/* left school logo start */}
