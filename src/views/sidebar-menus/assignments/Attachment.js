@@ -11,7 +11,7 @@ const Attachment = ({handleOpenDialog}) => {
   return (
     <>
         <Tooltip title="Attachment">
-              <IconButton onClick={handleOpenDialog}>
+              <IconButton sx={{padding:'0'}}onClick={handleOpenDialog}>
                 <AttachmentIcon />
               </IconButton>
         </Tooltip>

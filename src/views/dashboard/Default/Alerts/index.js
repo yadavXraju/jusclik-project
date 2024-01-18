@@ -13,6 +13,9 @@ import AlertData from './AlertData';
 
 const Alert = () => {
     const isMobile = useMediaQuery('(max-width: 767px)');
+
+
+
   return (
     <>
  
@@ -35,21 +38,32 @@ const Alert = () => {
                            <Grid container alignItems="center" justifyContent="space-between" sx={{ alignItems: 'baseline' }}>
                                {/* title */}
                              <Grid item sx={{display:'flex' , gap:'16px' ,alignItems:'center',}}>
-       
-                               <Box sx={{
-                                   background: '#5e35b1',
-                                   padding: '6px',
-                                   borderRadius: '50%',
-                                   color: '#fff',
-                                   display: 'flex',
-                                   justifyContent: 'center',
-                               }}>
-                                   {alert.icon}
-                               </Box>
-       
-                               <Typography variant="h3" color="rgb(153, 161, 183)" sx={{fontSize: isMobile ? '16px' :'auto' , lineHeight:  isMobile ? '22px' :'auto'}}>
-                                 {alert.title}
-                               </Typography>
+                              
+                             
+                                        <Box sx={{
+                                        backgroundColor:'#5e35b1',
+                                        padding: '6px',
+                                        borderRadius: '50%',
+                                        color: '#fff',
+                                        display: 'flex',
+                                        justifyContent: 'center',
+                                    }}>
+                                        {alert.icon}
+                                        </Box>
+            
+                                       <Box>
+                                         <Typography variant="h3" color="#000" sx={{fontSize: isMobile ? '16px' :'16px' , lineHeight:  isMobile ? '22px' :'auto' , fontWeight:'500'}}>
+                                      {alert.title}
+                                         </Typography>
+                           
+                                          {/* desc */}
+                                          <Grid item sx={{paddingTop:'5px'}}>
+                                            <Typography variant="subtitle" sx={{color:'#808080'}}>
+                                                {alert.description}
+                                            </Typography>
+                                          </Grid>
+                                       </Box>
+
                              </Grid>
                               {/* Button */}
                                 {alert.showButton && (
@@ -66,12 +80,6 @@ const Alert = () => {
                            </Grid>
                          </Grid>
        
-                         {/* desc */}
-                         <Grid item sx={{pt:2}}>
-                           <Typography variant="subtitle" sx={{color:'#808080'}}>
-                               {alert.description}
-                           </Typography>
-                         </Grid>
        
                          {/* uploaded time */}
        

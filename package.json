@@ -50,6 +50,7 @@
     "recharts": "^2.10.3",
     "redux": "^4.2.0",
     "slick-carousel": "^1.8.1",
+    "slick-slider": "^1.8.2",
     "use-history": "^1.4.1",
     "yup": "^0.32.11"
   },

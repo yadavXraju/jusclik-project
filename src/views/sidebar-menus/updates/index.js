@@ -2,7 +2,8 @@ import * as React from 'react';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
-import EventIcon from '@mui/icons-material/Event';
+// import EventIcon from '@mui/icons-material/Event';
+import CalendarMonthTwoToneIcon from '@mui/icons-material/CalendarMonthTwoTone';
 import Container from '@mui/material/Container'; // Correct import
 import Box from '@mui/material/Box';
 import { UpdatesData } from './UpdatesData';
@@ -23,8 +24,10 @@ export default function Update() {
               {data.title}
             </Typography>
             <Grid item sx={{ display: 'flex', direction: "row", alignItems: "center", justifyContent: "flex-start" }}>
-              <EventIcon sx={{ color: '#364152a3' }} />
-              <Typography variant="body2" sx={{ mt: 0, color: '#364152e0' }}>
+              <CalendarMonthTwoToneIcon sx={{ color: '#364152a3' , fontSize:'20px', marginRight:'2px' }} />
+              {/* {data.icon } */}
+
+              <Typography variant="body2" sx={{ mt: 0, color: '#364152e0',paddingTop:'3px' }}>
                {data.day} {data.date}
               </Typography>
             </Grid>

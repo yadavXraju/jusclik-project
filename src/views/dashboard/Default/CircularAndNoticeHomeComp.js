@@ -6,6 +6,8 @@ import { gridSpacing } from 'store/constant';
 import { HeadingCss ,fullHeight } from './dashboard-css/CommonCss';
 import { UpdatesData } from 'views/sidebar-menus/updates/UpdatesData';
 import { useNavigate } from 'react-router';
+import CalendarMonthTwoToneIcon from '@mui/icons-material/CalendarMonthTwoTone';
+
 
 
 // ==============================|| DASHBOARD DEFAULT - POPULAR CARD ||============================== //
@@ -46,15 +48,16 @@ const CircularAndNoticeHomeComp = ({ isLoading }) => {
                     <Grid item>
                       <Grid container alignItems="center" justifyContent="space-between" sx={{ alignItems: 'baseline' }}>
                         <Grid item sx={{ pb: 2 }}>
-                          <Typography variant="h3" color="rgb(153, 161, 183)">
+                          <Typography variant="h3" color="#000" sx={{fontWeight:'500', fontSize:'16px'}}>
                             {data.title}
                           </Typography>
                         </Grid>
                         <Grid item>
                           <Grid container alignItems="center" justifyContent="space-between">
-                            <Grid item>
+                            <Grid item sx={{display:'flex'}}>
+                            <CalendarMonthTwoToneIcon sx={{ color: '#364152a3' , fontSize:'20px', marginRight:'2px' }} />
                               <Typography variant="subtitle1" color="inherit">
-                                {data.date} - {data.day}
+                                {data.date} 
                               </Typography>
                             </Grid>
                           </Grid>
