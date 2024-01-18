@@ -1,30 +1,34 @@
 import React, { useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { alpha, Box, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TableSortLabel, Toolbar, Typography,  Checkbox, IconButton, Tooltip, TextField } from '@mui/material';
+import { alpha, Box, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TableSortLabel, Toolbar, Typography, Checkbox, IconButton, Tooltip } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
-import FilterListIcon from '@mui/icons-material/FilterList';
 import { visuallyHidden } from '@mui/utils';
 import PrintTwoToneIcon from '@mui/icons-material/PrintTwoTone';
-import ContentCopyTwoToneIcon from '@mui/icons-material/ContentCopyTwoTone';
 
-function createData(id, name, date, ldate, created, status, action) {
+
+
+function createData(id, name, date, ldate, netpay, amtpay, bal, receiptno, receiptdate, paymode, status) {
   return {
     id,
     name,
     date,
     ldate,
-    created,
+    netpay,
+    amtpay,
+    bal,
+    receiptno,
+    receiptdate,
+    paymode,
     status,
-    action,
   };
 }
 
 const rows = [
-  createData(1, 'ragular','01/05/2024', '28/08/2024', 305, 'paid', 'true'),
-  createData(2, 'tution','01/03/2024', '22/08/2024', 30, 'paid', 'false'),
-  createData(3, 'practical','01/07/2024', '23/05/2024', 3067, 'paid', 'true'),
-  createData(4, 'tution','01/05/2024', '22/08/2024', 3088, 'paid', 'false'),
-  createData(5, 'ragular','01/03/2024', '21/09/2024', 3043, 'paid', 'true'),
+  createData(1, 'Regular', '01/May/2024', '28/Feb/2024', 305, 4000, 40000, '1', '28/Jan/2024', 'Adj Entry', 'Overdue'),
+  createData(2, 'Tution', '01/Mar/2024', '22/Dec/2024', 30, 45000, 45000, '2', '28/Feb/2024', 'Demand Draft', 'paid'),
+  createData(3, 'Practical', '01/Jul/2024', '23/Jan/2024', 3067, 9000, 43000, '3', '28/Mar/2024', 'Adj Entry', 'Overdue'),
+  createData(4, 'Tution', '01/Jun/2024', '22/Sep/2024', 3088, 5000, 35000, '4', '28/Apr/2024', 'Credit/Debit Card', 'paid'),
+  createData(5, 'Regular', '01/Aug/2024', '21/Nov/2024', 3043, 8000, 54000, '5', '28/May/2024', 'Unpaid', 'paid'),
 ];
 
 
@@ -60,14 +64,44 @@ const headCells = [
   {
     id: 'name',
     numeric: false,
-    disablePadding: true,
+    disablePadding: false,
     label: 'Invoice Details',
   },
   {
-    id: 'created',
+    id: 'lastdate',
     numeric: true,
     disablePadding: false,
-    label: 'Created',
+    label: 'Last Date',
+  },
+  {
+    id: 'netpayable',
+    numeric: true,
+    disablePadding: false,
+    label: 'Net Payable',
+  },
+  {
+    id: 'amtpay',
+    numeric: true,
+    disablePadding: false,
+    label: 'Amount Paid',
+  },
+  {
+    id: 'balance',
+    numeric: true,
+    disablePadding: false,
+    label: 'Balance',
+  },
+  {
+    id: 'receipt',
+    numeric: true,
+    disablePadding: false,
+    label: 'Receipt',
+  },
+  {
+    id: 'paymode',
+    numeric: true,
+    disablePadding: false,
+    label: 'Pay Mode',
   },
   {
     id: 'status',
@@ -76,7 +110,7 @@ const headCells = [
     label: 'Status',
   },
   {
-    id: 'Print',
+    id: 'print',
     numeric: true,
     disablePadding: false,
     label: 'Print',
@@ -139,8 +173,9 @@ EnhancedTableHead.propTypes = {
   rowCount: PropTypes.number.isRequired,
 };
 
+
 function EnhancedTableToolbar(props) {
-  const { numSelected, onSearchChange } = props;
+  const { numSelected } = props;
 
   return (
     <Toolbar
@@ -153,14 +188,6 @@ function EnhancedTableToolbar(props) {
         }),
       }}
     >
-      <TextField
-        label="Search"
-        variant="outlined"
-        size="small"
-        sx={{ flex: '1 1 30%' }}
-        onChange={onSearchChange}
-      />
-
       {numSelected > 0 ? (
         <Typography
           sx={{ flex: '1 1 100%' }}
@@ -190,7 +217,7 @@ function EnhancedTableToolbar(props) {
       ) : (
         <>
           {/* Add the icons inside the Tooltip component */}
-          <Tooltip title="Copy">
+          {/* <Tooltip title="Copy">
             <IconButton>
               <ContentCopyTwoToneIcon />
             </IconButton>
@@ -204,7 +231,7 @@ function EnhancedTableToolbar(props) {
             <IconButton>
               <FilterListIcon />
             </IconButton>
-          </Tooltip>
+          </Tooltip> */}
         </>
       )}
     </Toolbar>
@@ -264,9 +291,10 @@ export default function FeeDataTable() {
         <EnhancedTableToolbar numSelected={selected.length} onSearchChange={(e) => setSearchText(e.target.value)} />
         <TableContainer>
           <Table
-            sx={{ minWidth: 750 }}
+            sx={{ minWidth: 750, border: '1px solid rgba(224, 224, 224, 1)' }}
             aria-labelledby="tableTitle"
             size="medium"
+
           >
             <EnhancedTableHead
               numSelected={selected.length}
@@ -284,18 +312,19 @@ export default function FeeDataTable() {
                 return (
                   <TableRow
                     hover
-                    onClick={(event) => handleClick(event, row.id)}
+                    //onClick={(event) => handleClick(event, row.id)}
                     role="checkbox"
-                    aria-checked={isItemSelected}
+                    //aria-checked={isItemSelected}
                     tabIndex={-1}
                     key={row.id}
-                    selected={isItemSelected}
+                    //selected={isItemSelected}
                     sx={{ cursor: 'pointer' }}
                   >
                     <TableCell padding="checkbox">
                       <Checkbox
                         color="primary"
                         checked={isItemSelected}
+                        onClick={(event) => handleClick(event, row.id)}
                         inputProps={{
                           'aria-labelledby': labelId,
                         }}
@@ -306,16 +335,48 @@ export default function FeeDataTable() {
                       id={labelId}
                       scope="row"
                     >
-                      {/* {row.name} */}
-                      {/* {`${row.name} - ${row.type}`} */}
-                      {`Type: ${row.name}`}<br />
-                       {`Date: ${row.date}`}<br />
-                       {`Lase date: ${row.ldate}`}
+                      <div>
+                        <span style={{ fontWeight: 'bold' }}>{row.name}</span><br />
+                        {row.date}
+                      </div>
+                      {/* {`${row.name}`}<br />
+                       {`${row.date}`} */}
                     </TableCell>
-                    <TableCell align="right">{row.created}</TableCell>
-                    <TableCell align="right">{row.status}</TableCell>
-                    <TableCell align="right">{row.action}</TableCell>
-                  
+                    <TableCell align="right">{row.ldate}</TableCell>
+                    <TableCell align="right">{row.netpay}</TableCell>
+                    <TableCell align="right">{row.amtpay}</TableCell>
+                    <TableCell align="right">{row.bal}</TableCell>
+                    <TableCell align="right">
+                      <div>
+                        <span style={{ fontWeight: 'bold' }}>{`#${row.receiptno}`}</span><br />
+                        {`${row.receiptdate}`}
+                      </div>
+                      {/* {`#${row.receiptno}`}<br />{`${row.receiptdate}`} */}
+                    </TableCell>
+                    <TableCell align="right">{row.paymode}</TableCell>
+                    <TableCell sx={{
+                      //color: row.paymode === 'paid' ? '#00cc5d' : (row.paymode === 'Demand Draft' ? '#00ffd0' : '#f5403c'),
+                    }}>
+                      <Box sx={{ width: '100%', display: 'flex', justifyContent: 'end' }}>
+                        <Box sx={{
+                          color: row.status === 'paid' ? 'rgb(0, 200, 83)' : 'rgb(216, 67, 21)',
+                          borderRadius: '16px',
+                          background: row.status === 'paid' ? 'rgba(147, 213, 166, 0.38)' : 'rgb(251, 233, 231)',
+                          '&:hover': {
+                            background: row.status === 'paid' ? 'rgb(0, 200, 83)' : 'rgb(216, 67, 21)',
+                            color: 'white',
+                          },
+                          padding: '2px',
+                          paddingRight: '8px',
+                          paddingLeft: '8px',
+                          textAlign: 'center'
+                        }}>
+                          {row.status}
+                        </Box>
+                      </Box>
+                    </TableCell>
+                    <TableCell align="right"><IconButton onClick={() => handlePrint(id)}><PrintTwoToneIcon /></IconButton>
+                    </TableCell>
                   </TableRow>
                 );
               })}
