@@ -11,40 +11,26 @@ import Typography from '@mui/material/Typography';
 import MainCard from 'ui-component/cards/MainCard';
 import Box from '@mui/material/Box';
 import Badge from '@mui/material/Badge';
+import { contactData } from 'views/sidebar-menus/communication-message/Contact-list';
+import { commonStyles } from 'views/sidebar-menus/communication-message/Contact-list';
 import { useNavigate } from 'react-router';
+import {  Grid } from '@mui/material';
+import { HeadingCss , boxHeight} from './dashboard-css/CommonCss';
 
-export const commonStyles = {
-  bgcolor: 'background.paper',
-  borderRadius: '5px',
-  border: 1,
-  padding: '5px',
-  height: '30px',
-};
 
-export const contactData = [
-  { name: 'Suraj Mishra', role: 'Website Developer' },
-  { name: 'Abhishek Negi', role: 'Website Developer' },
-  { name: 'Shruti Sharma', role: 'Gamer' },
-  { name: 'Ruby Dhiman', role: 'Website Developer' },
-  { name: 'Megha', role: 'Website Designer (Paratha Junction)' },
-  { name: 'Amit', role: 'Graphic Designer & 3D Animation Creator' },
-  { name: 'Nitika', role: 'Graphic Designer' },
-  { name: 'Sangeeta', role: 'UI Designer' },
-  { name: 'Harsh', role: 'Data Scientist' },
-  { name: 'Kanika Kapoor Khan', role: 'Undefined' },
-  { name: 'Sahil Jain', role: 'Trainee Manager' },
-  { name: 'Ashish', role: 'Business Development Manager' },
-  { name: 'Rahul Sood', role: 'Business Development Manager' },
-  { name: 'Gaganraj', role: 'Software Engineer' },
-  { name: 'Narendra Modi', role: 'Prime Minister' },
-];
-
-export default function AlignItemsList() {
-
-  const navigate = useNavigate()
+const CommunicationHomeComp = () => {
   
+// const contactListToShow = 4
+const navigate = useNavigate();
   return (
-    <MainCard title="CONTACT" sx={{ fontSize: '22px', fontWeight: 'bold' }}>
+    <>
+     <MainCard  sx={{ fontSize: '22px', fontWeight: 'bold' }} style={boxHeight} className='scrollbar'>
+        <Grid item>
+            <Typography variant="h2" style={HeadingCss}>
+                    communication
+              </Typography>
+        </Grid>
+
       <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
         {contactData.map((contact, index) => (
           <React.Fragment key={index}>
@@ -65,7 +51,7 @@ export default function AlignItemsList() {
                   </Typography>
                 </React.Fragment>
               </ListItemText>
-              <ListItemDecorator>
+              <ListItemDecorator sx={{cursor:'pointer'}}>
                 <Badge badgeContent={4} color="primary">
                   <Box sx={{ ...commonStyles, borderColor: 'primary.main' }} onClick={()=>navigate('/communication/inbox')}>
                     <MailOutlinedIcon color="primary" fontSize="small" />
@@ -76,7 +62,17 @@ export default function AlignItemsList() {
             {index < contactData.length - 1 && <Divider variant="middle" component="li" />}
           </React.Fragment>
         ))}
+
+        {/* <Box sx={{ pt: 3 , textAlign:'right'}}>
+            <Button variant="contained" onClick={() => navigate('/communication/contact-list')}>
+              View More
+            </Button>
+        </Box> */}
       </List>
     </MainCard>
+
+    </>
   );
-}
+};
+
+export default CommunicationHomeComp;
