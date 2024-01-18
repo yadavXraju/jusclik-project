@@ -1,34 +1,29 @@
+// ImageSlider.jsx
+
 import React from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { makeStyles } from '@mui/styles';
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-
-const useStyles = makeStyles((theme) => ({
-  arrowIcon: {
-    color: '#000000',
-  },
-}));
+// import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+// import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 const ImageSlider = ({ images }) => {
-  const classes = useStyles();
-
+ 
+  
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    nextArrow: <ArrowForwardIosIcon className={classes.arrowIcon} />,
-    prevArrow: <ArrowBackIosIcon className={classes.arrowIcon} />,
+    // nextArrow: <SampleNextArrow />,
+    // prevArrow: <SamplePrevArrow />,
   };
 
   return (
     <Slider {...settings}>
       {images.map((image, index) => (
-        <div key={index}>
+        <div key={index} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center',textAlign:'center' ,margin:'10px'}}>
           <img
             src={image}
             alt={`Slide ${index}`}
@@ -42,3 +37,6 @@ const ImageSlider = ({ images }) => {
 };
 
 export default ImageSlider;
+
+
+

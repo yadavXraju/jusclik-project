@@ -11,8 +11,8 @@ import {
 } from '@mui/material';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import PopupComponent from './PopupComponent';
-import Image1 from './img/front-view-smiley-woman-with-fireworks.jpg'; // Import your actual image file
-import Image2 from './img/women-outdoor-park-using-mobiles.jpg'; // Import your actual image file
+import Image1 from './img/front-view-smiley-woman-with-fireworks.jpg';
+import Image2 from './img/women-outdoor-park-using-mobiles.jpg';
 import Image3 from './img/group-girlfriends-sitting-table-together-celebrating-birthday-outdoor-park.jpg'
 
 const PhotoGallery = () => {
@@ -20,6 +20,7 @@ const PhotoGallery = () => {
   const [popupData, setPopupData] = useState(null);
 
   const handleSeeMoreClick = (data) => {
+    console.log("Clicked See More", data);
     setPopupData(data);
     setPopupOpen(true);
   };
@@ -37,14 +38,14 @@ const PhotoGallery = () => {
       sliderImg: [Image1, Image2,Image3]
     },
     {
-      cover: Image1,
+      cover: Image3,
       title: 'Christmas Party',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.',
       date: "25-dec-2023",
       sliderImg: [Image1, Image2]
     },
     {
-      cover: Image1,
+      cover: Image2,
       title: 'New Year Bash',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.',
       date: "1-jan-2024",

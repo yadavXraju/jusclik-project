@@ -22,12 +22,3 @@ export const coverData = [
 
 
 
-  export const imgCollextion=[
-    {
-        id:1,
-        img1:'',
-        img2:"",
-        img3:"",
-        img4:"",
-    }
-  ]

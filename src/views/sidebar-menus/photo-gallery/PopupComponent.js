@@ -1,24 +1,27 @@
 // PopupComponent.jsx
 import React from 'react';
-import Dialog from '@mui/material/Dialog';
-import DialogTitle from '@mui/material/DialogTitle';
-import DialogContent from '@mui/material/DialogContent';
-import DialogActions from '@mui/material/DialogActions';
-import Button from '@mui/material/Button';
-import ImageSlider from './ImageSlider'; // Import the ImageSlider component
+import { Dialog, DialogTitle, DialogContent, DialogActions, Button, Typography, Grid } from '@mui/material';
+import ImageSlider from './ImageSlider';
+
 
 const PopupComponent = ({ isOpen, onClose, data }) => {
+  
+
   return (
-    <Dialog open={isOpen} onClose={onClose}>
+    <Dialog open={isOpen} onClose={onClose} height="400px" >
       <DialogTitle>{data?.title}</DialogTitle>
-      <DialogContent>
-        <ImageSlider images={data?.sliderImg} />
-        <div>
-          <p>{data?.description}</p>
-          <p>Date: {data?.date}</p>
-        </div>
+      <DialogContent style={{ overflow: 'hidden',background:"rgba(0,0,0,0.2)", margin:'10px', paddingTop:'20px' }}>
+        {data && (
+          <>
+            <ImageSlider images={data.sliderImg} />
+            <Grid container sx={{display:'flex',justifyContent:'flex-start'}}>
+              <Typography sx={{color:'black'}}>{data?.description}</Typography>
+              <Typography sx={{color:'black'}}>Date: {data?.date}</Typography>
+            </Grid>
+          </>
+        )}
       </DialogContent>
-        <DialogActions>
+      <DialogActions>
         <Button onClick={onClose} color="primary">
           Close
         </Button>
@@ -28,5 +31,7 @@ const PopupComponent = ({ isOpen, onClose, data }) => {
 };
 
 export default PopupComponent;
+
+
 
 
