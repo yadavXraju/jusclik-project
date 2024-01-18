@@ -1,0 +1,43 @@
+/* Custom CSS for the scrollbar */
+.scrollbar {
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #999999 #f0f0f0;
+  }
+  
+  /* Track */
+  .scrollbar::-webkit-scrollbar {
+    width: 5px; /* Adjust the width as needed */
+  }
+  
+  /* Handle */
+  .scrollbar::-webkit-scrollbar-thumb {
+    background-color: #999999;
+  }
+  
+  /* Handle on hover */
+  .scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: #777;
+  }
+  
+  /* Track */
+  .scrollbar::-webkit-scrollbar-track {
+    background: #f0f0f0;
+  }
+  
+  /* Additional styles */
+  .headingCss {
+    color: '#99a1b7';
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid #80808040;
+    padding-bottom: 20px;
+    text-transform: uppercase;
+  }
+  
+  .boxHeight {
+    overflow: hidden;
+    height: 535px;
+    overflow-y: auto;
+  }
+  
+

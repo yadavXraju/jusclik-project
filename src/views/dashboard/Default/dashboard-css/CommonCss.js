@@ -9,9 +9,10 @@ export const HeadingCss = {
 export const boxHeight = {
     overflow: 'hidden',
     height: '535px',
-    overflowY: 'auto'
+    overflowY: 'auto',
+    background:'#fff',
  }
 
-//  ::-webkit-scrollbar { 
-//     width: 5px; 
-//   } 
+ export const fullHeight = {
+    height: '100%',
+ }

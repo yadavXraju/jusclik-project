@@ -1,4 +1,5 @@
 import * as React from 'react';
+const { useState } = React;
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
@@ -24,12 +25,15 @@ import PlayStoreImage from '../../../assets/images/Google-Play.png';
 import AppleStoreImage from '../../../assets/images/app-store.png';
 import CloudLogo from '../../../assets/images/Untitled-2.png';
 import { useNavigate } from 'react-router-dom';
+import EnterMobileDialog from './EnterMobileDialog'
+
+
 
 const defaultTheme = createTheme();
 
 function ToggleGroupVariants() {
   const navigate = useNavigate();
-  const [value, setValue] = React.useState('plain'); 
+  const [value, setValue] = React.useState('plain');
 
   return (
     <FormControl>
@@ -44,7 +48,7 @@ function ToggleGroupVariants() {
             }}
             style={{
               borderRadius: '50px',
-              border: '2px solid #fff', 
+              border: '2px solid #fff',
             }}
           >
             <ToggleButton
@@ -60,7 +64,7 @@ function ToggleGroupVariants() {
               Password
             </ToggleButton>
             <ToggleButton
-             onClick={() => navigate('/otplogin')} 
+              onClick={() => navigate('/otplogin')}
               style={{
                 borderRadius: '0px 50px 50px 0px',
                 width: '110px',
@@ -80,19 +84,27 @@ function ToggleGroupVariants() {
 }
 
 export default function LogInPage() {
-  const navigate = useNavigate(); 
+  const [showPassword, setShowPassword] = useState(false);
+
+  const [dialogOpen, setDialogOpen] = useState(false);
+
+  const handleDialogToggle = () => {
+    setDialogOpen(!dialogOpen);
+  };
+
+  const handleClickOpen = () => {
+    setDialogOpen(true);
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     console.log({
-      email: data.get('username'),
+      email: data.get('Username'),
       password: data.get('password'),
       otp: data.get('otp'),
     });
   };
-  const [showPassword, setShowPassword] = React.useState(false);
-  // const [selectedVariant, setSelectedVariant] = React.useState('plain');
-
   return (
     <ThemeProvider theme={defaultTheme}>
       <Grid container component="main" sx={{ minHeight: '100vh' }}>
@@ -124,8 +136,10 @@ export default function LogInPage() {
         </Grid>
         {/* left school logo start */}
         {/* right side background img */}
-        <Grid item xs={12} sm={8} md={8} component={Paper} elevation={6} square sx={{ backgroundImage: `url(${LoginImage} )`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundPosition: 'bottom' , display: 'flex',
-            alignItems: 'center',justifyContent: 'center',}}>
+        <Grid item xs={12} sm={8} md={8} component={Paper} elevation={6} square sx={{
+          backgroundImage: `url(${LoginImage} )`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundPosition: 'bottom', display: 'flex',
+          alignItems: 'center', justifyContent: 'center',
+        }}>
           <Box
             sx={{
               my: 8,
@@ -189,9 +203,11 @@ export default function LogInPage() {
                 label={<Typography sx={{ color: '#fff' }}>Remember me</Typography>}
               />
               <Grid item xs sx={{ display: 'flex', justifyContent: 'end', alignItems: 'end', mt: -4 }} style={{ cursor: 'pointer' }}>
-                <Link href="#" variant="body2" color={'#fff'} onClick={() => navigate('/forgetpassword')}>
-                  Forgot credential?
-                </Link>
+                
+                <EnterMobileDialog open={dialogOpen} onClose={handleDialogToggle} onClick={handleClickOpen}/>
+                  {/* <Typography variant="body2" sx={{ cursor: 'pointer', color: '#fff' }} onClick={handleClickOpen}>
+                  Forgot Credentials
+                </Typography> */}
               </Grid>
               <Box sx={{ display: 'flex', alignItems: 'end', justifyContent: 'end', mt: 4 }}>
                 <ToggleGroupVariants />
@@ -200,7 +216,7 @@ export default function LogInPage() {
                 <Button
                   type="submit"
                   variant="contained"
-                  sx={{ mt: 3, mb: 2, backgroundColor: '#fff', color: '#364152b5', borderRadius: '50px', width: "150px", margin: '15px', display: 'flex', height:'45px' }}
+                  sx={{ mt: 3, mb: 2, backgroundColor: '#fff', color: '#364152b5', borderRadius: '50px', width: "150px", margin: '15px', display: 'flex', height: '45px' }}
                 >
                   LOGIN
                 </Button>
