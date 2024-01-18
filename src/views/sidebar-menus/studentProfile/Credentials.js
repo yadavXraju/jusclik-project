@@ -15,6 +15,7 @@ import { studentProfileDetails } from 'layout/MainLayout/Header/ProfileSection/P
 import { useState } from 'react';
 import TextField from '@mui/material/TextField';
 import { Label } from 'reactstrap';
+import Checkbox from '@mui/material/Checkbox';
 
 
 
@@ -118,7 +119,7 @@ export default function Credentials() {
 
               <Grid container spacing={2}>
                 <Grid item sm={4} xs={12}>
-                  <Label>Current Password</Label>
+                  <Label >Current Password</Label>
                   <TextField disableUnderline size='small' id="outlined-basic" fullWidth />
                 </Grid>
                 <Grid item sm={4} xs={12}>
@@ -138,10 +139,6 @@ export default function Credentials() {
               </Box>
             </Box>
 
-
-
-
-
             {/* <FormControl disabled variant="standard" fullWidth>
               <InputLabel htmlFor="namefield">Password</InputLabel>
               <Input
@@ -155,7 +152,6 @@ export default function Credentials() {
                 }
               />
             </FormControl> */}
-
 
             <Box>
               <Grid sx={{ p: 2, marginTop: '2rem', border: '1px dotted #1e88e5', background: '#deedf9', borderRadius: '5px' }} container spacing={1}>
@@ -176,38 +172,40 @@ export default function Credentials() {
               </Grid>
             </Box>
           </CardContent>
-          {/* <CardActions>
-          <Button variant="contained">Submit</Button>
-        </CardActions> */}
         </Box>
       </Card>
-
+       
+       <br/><br/>
+      <Card sx={{ border: '1px solid #ccc' }}>
+        <Typography sx={{ p: 2, borderBottom: '1px solid #ccc' }} variant='h5' component="div">
+          Student Deshboard Preferences
+        </Typography>
+        <Box>
+        <Box sx={{ display: 'flex',p: 2,borderBottom: '1px dotted #7d828e' }}>
+               <Checkbox  defaultChecked />
+                  <Box>
+                    <Typography variant="h4">Create Student Account</Typography>
+                    <Typography variant='body2'>
+                      Configure Student Account to share limited access of the dashbord  with your word.
+                    </Typography>
+                  </Box>
+                </Box> 
+        </Box>
+        <Box>
+        <Box sx={{ display: 'flex',p: 2 }}>
+               <Checkbox  />
+                  <Box>
+                    <Typography variant="h4">Create Student Account</Typography>
+                    <Typography variant='body2'>
+                      Configure Student Account to share limited access of the dashbord  with your word.
+                    </Typography>
+                  </Box>
+                </Box> 
+        </Box>
+        <Box sx={{ p: 3, borderTop: '1px solid #ccc', display:'flex', justifyContent:'flex-end' }} variant='h5' component="div">
+        <Button  variant="contained">Save Changes</Button>
+        </Box>
+      </Card>
     </>
   );
 }
-
-
-
-
-
-
-{/* <FormControl variant="standard" fullWidth sx={{marginBottom:'10px'}}>
-            <InputLabel htmlFor="namefield">Enter New Email</InputLabel>
-            <Input
-              id="namefield"
-            />
-          </FormControl>
-          <FormControl variant="standard" fullWidth sx={{marginBottom:'10px'}}>
-            <InputLabel htmlFor="namefield">Password</InputLabel>
-            <Input
-              id="namefield"
-              type='password'
-            />
-          </FormControl>
-          <FormControl variant="standard" fullWidth sx={{marginBottom:'10px'}}>
-            <InputLabel htmlFor="namefield">Confirm Password</InputLabel>
-            <Input
-              id="namefield"
-              type='password'
-            />
-          </FormControl> */}
