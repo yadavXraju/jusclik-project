@@ -5,6 +5,7 @@ import { gridSpacing } from 'store/constant';
 // import { useNavigate } from 'react-router';
 import timeTableData from 'views/sidebar-menus/timetable/TimeTableData';
 import { HeadingCss , boxHeight } from './dashboard-css/CommonCss';
+import './dashboard-css/Overflow.css'
 
 
 
@@ -29,7 +30,7 @@ const TimeTableHome = () => {
 
 
   return (
-    <Grid spacing={gridSpacing} sx={{border:'1px solid #80808026', borderRadius:'8px'}} style={boxHeight}>
+    <Grid spacing={gridSpacing} sx={{border:'1px solid #80808026', borderRadius:'8px'}} style={boxHeight} className='scrollbar'>
       <Grid item component={Paper} lg={12} md={12} sm={12} xs={12} sx={{ textAlign: 'right', p: 3, display: 'flex', flexDirection: 'column', gap: '37px' }}>
       <Typography variant='h2' sx={{ textAlign: 'left' ,}} style={HeadingCss}>today Timetable</Typography>
 

@@ -13,7 +13,7 @@ import Box from '@mui/material/Box';
 import Badge from '@mui/material/Badge';
 import { contactData } from 'views/sidebar-menus/communication-message/Contact-list';
 import { commonStyles } from 'views/sidebar-menus/communication-message/Contact-list';
-// import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router';
 import {  Grid } from '@mui/material';
 import { HeadingCss , boxHeight} from './dashboard-css/CommonCss';
 
@@ -21,10 +21,10 @@ import { HeadingCss , boxHeight} from './dashboard-css/CommonCss';
 const CommunicationHomeComp = () => {
   
 // const contactListToShow = 4
-// const navigate = useNavigate();
+const navigate = useNavigate();
   return (
     <>
-     <MainCard  sx={{ fontSize: '22px', fontWeight: 'bold' }} style={boxHeight}>
+     <MainCard  sx={{ fontSize: '22px', fontWeight: 'bold' }} style={boxHeight} className='scrollbar'>
         <Grid item>
             <Typography variant="h2" style={HeadingCss}>
                     communication
@@ -51,7 +51,7 @@ const CommunicationHomeComp = () => {
                   </Typography>
                 </React.Fragment>
               </ListItemText>
-              <ListItemDecorator>
+              <ListItemDecorator sx={{cursor:'pointer'}}>
                 <Badge badgeContent={4} color="primary">
                   <Box sx={{ ...commonStyles, borderColor: 'primary.main' }} onClick={()=>navigate('/communication/inbox')}>
                     <MailOutlinedIcon color="primary" fontSize="small" />

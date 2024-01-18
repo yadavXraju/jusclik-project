@@ -3,9 +3,10 @@ import {  Divider, Grid, Typography , Button ,Box} from '@mui/material';
 import MainCard from 'ui-component/cards/MainCard';
 import SkeletonPopularCard from 'ui-component/cards/Skeleton/PopularCard';
 import { gridSpacing } from 'store/constant';
-import { HeadingCss } from './dashboard-css/CommonCss';
+import { HeadingCss ,fullHeight } from './dashboard-css/CommonCss';
 import { UpdatesData } from 'views/sidebar-menus/updates/UpdatesData';
 import { useNavigate } from 'react-router';
+
 
 // ==============================|| DASHBOARD DEFAULT - POPULAR CARD ||============================== //
 
@@ -26,7 +27,7 @@ const CircularAndNoticeHomeComp = ({ isLoading }) => {
       {isLoading ? (
         <SkeletonPopularCard />
       ) : (
-        <MainCard content={true}> {/* Updated content={true} */}
+        <MainCard content={true} style={fullHeight}> {/* Updated content={true} */}
     
             <Grid container spacing={gridSpacing}>
               <Grid item xs={12}>

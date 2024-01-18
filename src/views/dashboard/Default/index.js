@@ -11,6 +11,7 @@ import AssignmentsHomeComp from './assignmentHome/AssignmentsHomeComp';
 import TimeTableHome from './TimeTableHome';
 import CommunicationHomeComp from './CommunicationHomeComp';
 import AttandanceChartHomeComp from './AttendanceChartHomeComp';
+import Alert from './Alerts';
 
 
 const Dashboard = ({ isLoading }) => {
@@ -46,21 +47,24 @@ const Dashboard = ({ isLoading }) => {
 
       <Grid item xs={12}>
         <Grid container spacing={gridSpacing}>
-          <Grid item xs={12} md={5} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
-            <AttandanceChartHomeComp isLoading={isLoading} />
+          <Grid item xs={12} md={7} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
+            {/* <AttandanceChartHomeComp isLoading={isLoading} /> */}
+            <CommunicationHomeComp isLoading={isLoading} />
           </Grid>
 
           {/* <Grid item xs={12} md={7}>
             <CircularAndNoticeHomeComp isLoading={isLoading} />
           </Grid> */}
 
-           <Grid item xs={12} md={7} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
-            <AssignmentsHomeComp isLoading={isLoading} />
+           <Grid item xs={12} md={5} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
+            {/* <AssignmentsHomeComp isLoading={isLoading} /> */}
+            <Alert isLoading={isLoading} /> 
           </Grid>
 
 
-          <Grid item xs={12} md={5} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
-             <CircularAndNoticeHomeComp isLoading={isLoading} />
+          <Grid item xs={12} md={7} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
+             {/* <CircularAndNoticeHomeComp isLoading={isLoading} /> */}
+             <AssignmentsHomeComp isLoading={isLoading} />
           </Grid>
           
 
@@ -69,13 +73,21 @@ const Dashboard = ({ isLoading }) => {
           </Grid> */}
 
 
-          <Grid item xs={12} md={7}>
-              <TimeTableHome isLoading={isLoading} /> 
+          <Grid item xs={12} md={5}>
+              {/* <TimeTableHome isLoading={isLoading} />  */}
+              <AttandanceChartHomeComp isLoading={isLoading} />
           </Grid>
 
 
-          <Grid item xs={12} md={5} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
-            <CommunicationHomeComp isLoading={isLoading} />
+          <Grid item xs={12} md={7} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
+             {/* <AttandanceChartHomeComp isLoading={isLoading} /> */}
+             <TimeTableHome isLoading={isLoading} /> 
+          </Grid>
+
+          <Grid item xs={12} md={5}>
+              {/* <Alert isLoading={isLoading} />  */}
+              {/* <AssignmentsHomeComp isLoading={isLoading} /> */}
+              <CircularAndNoticeHomeComp isLoading={isLoading} />
           </Grid>
 
 
