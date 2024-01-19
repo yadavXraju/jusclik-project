@@ -106,7 +106,7 @@ export default function OtpLogin() {
     return (
         <ThemeProvider theme={defaultTheme}>
             <SelectAccount open={dialogOpen} onClose={handleDialogToggle} onOtpToggle={(accountId) => setSelectedAccountId(accountId)} />
-            
+
             <Grid container component="main" sx={{ minHeight: '100vh' }}>
                 <CssBaseline />
                 {/* left school logo start */}
