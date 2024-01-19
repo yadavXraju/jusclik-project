@@ -12,7 +12,7 @@ import FatherDetails from './FatherDetails';
 import MotherDetails from './MotherDetails';
 import GuardianDetails from './GuardianDetails';
 import Credentials from './Credentials';
-import Documents from './Documents';
+import DocumentTabs from './DocumentsTab';
 
 
 
@@ -95,7 +95,7 @@ function Profile() {
        <GuardianDetails/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={4}>
-       <Documents/>
+       <DocumentTabs/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={5}>
        <Credentials/>
