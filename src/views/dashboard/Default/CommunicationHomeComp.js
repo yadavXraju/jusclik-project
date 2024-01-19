@@ -1,7 +1,7 @@
 import * as React from 'react';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
-import Divider from '@mui/material/Divider';
+// import Divider from '@mui/material/Divider';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListItemDecorator from '@mui/joy/ListItemDecorator';
@@ -15,7 +15,7 @@ import { contactData } from 'views/sidebar-menus/communication-message/Contact-l
 import { commonStyles } from 'views/sidebar-menus/communication-message/Contact-list';
 import { useNavigate } from 'react-router';
 import {  Grid } from '@mui/material';
-import { HeadingCss , boxHeight} from './dashboard-css/CommonCss';
+import { HeadingCss , boxHeight , subTitle , subtitle2} from './dashboard-css/CommonCss';
 
 
 const CommunicationHomeComp = () => {
@@ -34,32 +34,33 @@ const navigate = useNavigate();
       <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
         {contactData.map((contact, index) => (
           <React.Fragment key={index}>
-            <ListItem>
+            <ListItem sx={{borderBottom:'1px solid #80808024'}}>
               <ListItemAvatar>
                 <Avatar src="/static/images/avatar/1.jpg" sx={{ width: 50, height: 50 }} />
               </ListItemAvatar>
               <ListItemText sx={{ paddingLeft: '10px' }}>
-                <Typography variant="h4">{contact.name}</Typography>
+                <Typography variant="h4" style={subTitle}>{contact.name}</Typography>
                 <React.Fragment>
                   <Typography
                     sx={{ display: 'inline' }}
                     component="span"
                     variant="subtitle2"
-                    color="text.primary"
+                   style={subtitle2}
                   >
+
                     {contact.role}
                   </Typography>
                 </React.Fragment>
               </ListItemText>
               <ListItemDecorator sx={{cursor:'pointer'}}>
                 <Badge badgeContent={4} color="primary">
-                  <Box sx={{ ...commonStyles, borderColor: 'primary.main' }} onClick={()=>navigate('/communication/inbox')}>
+                  <Box sx={{ ...commonStyles, borderColor: 'primary.main'  }} onClick={()=>navigate('/communication/inbox')}>
                     <MailOutlinedIcon color="primary" fontSize="small" />
                   </Box>
                 </Badge>
               </ListItemDecorator>
             </ListItem>
-            {index < contactData.length - 1 && <Divider variant="middle" component="li" />}
+            {/* {index < contactData.length - 1 && <Divider variant="middle" component="li" />} */}
           </React.Fragment>
         ))}
 

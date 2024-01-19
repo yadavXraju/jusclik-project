@@ -1,18 +1,31 @@
-// useDialog.js (Custom Hook)
 import { useState } from 'react';
 
 const useDialog = () => {
-  const [open, setOpen] = useState(false);
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [openDialog, setOpenDialog] = useState(false);
 
   const handleOpen = () => {
-    setOpen(true);
+    setOpenDialog(true);
   };
 
   const handleClose = () => {
-    setOpen(false);
+    setOpenDialog(false);
   };
 
-  return { open, handleOpen, handleClose };
+  const handleOpenDialog = () => {
+    setOpenDialog(true);
+  };
+
+  const handleCloseDialog = () => {
+    setSnackbarOpen(true); // Show a Snackbar notification
+    setOpenDialog(false);
+  };
+
+  const handleSnackbarClose = () => {
+    setSnackbarOpen(false);
+  };
+
+  return { snackbarOpen, openDialog, handleOpenDialog, handleOpen, handleClose, handleCloseDialog, handleSnackbarClose };
 };
 
 export default useDialog;
