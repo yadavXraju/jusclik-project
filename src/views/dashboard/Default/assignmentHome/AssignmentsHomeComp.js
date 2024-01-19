@@ -1,20 +1,23 @@
-import React, { useState } from 'react';
-import { Grid, Paper, Typography,  Box , IconButton , Tooltip , Button, Badge} from '@mui/material';
+import React, { useState, useEffect } from 'react';
+import { Grid, Paper, Typography, Box, IconButton, Tooltip, Button, } from '@mui/material';
 import { gridSpacing } from 'store/constant';
 import { data } from 'views/sidebar-menus/assignments/AssignmentData';
 import CreateIcon from '@mui/icons-material/Create';
 import { useNavigate } from 'react-router';
 import { HeadingCss } from '../dashboard-css/CommonCss';
-import Attachment from 'views/sidebar-menus/assignments/Attachment';
-import Model from 'views/sidebar-menus/assignments/Model';
-import useDialog from '../customHook/UseDialog';
 import Checkbox from '@mui/material/Checkbox';
-
-
+import Attcgment from 'views/sidebar-menus/assignments/Attcgment';
+import AttachmentIcon from '@mui/icons-material/Attachment';
 
 const AssignmentsHomeComp = () => {
   const [selectedItems, setSelectedItems] = useState([]);
   const [completedItems, setCompletedItems] = useState([]);
+  const [openDialog, setOpenDialog] = useState(false);
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+
+  const navigate = useNavigate();
+
+  // checkbox id 
 
   const handleCheckboxClick = (id) => {
     setSelectedItems((prevSelectedItems) =>
@@ -30,14 +33,54 @@ const AssignmentsHomeComp = () => {
     );
   };
 
-  const navigate = useNavigate();
+
+  // Load selected items from localStorage on component mount
+  useEffect(() => {
+    const storedSelectedItems = localStorage.getItem('selectedItems');
+    const storedCompletedItems = localStorage.getItem('completedItems');
+
+    if (storedSelectedItems) {
+      setSelectedItems(JSON.parse(storedSelectedItems));
+    }
+
+    if (storedCompletedItems) {
+      setCompletedItems(JSON.parse(storedCompletedItems));
+    }
+  }, []);
+
+  // Save selected items to localStorage whenever it changes
+
+  useEffect(() => {
+    localStorage.setItem('selectedItems', JSON.stringify(selectedItems));
+    localStorage.setItem('completedItems', JSON.stringify(completedItems));
+  }, [selectedItems, completedItems]);
+
+
+  const inputStyle = {
+    borderRadius: '0',
+    width: '0',
+    height: '0',
+  }
 
 
   const AssignmentToShow = 5;
-  const { open, handleOpen, handleClose } = useDialog();
 
   const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
+  const handleOpenDialog = () => {
+    setOpenDialog(true);
+  };
+
+  const handleCloseDialog = () => {
+
+    setSnackbarOpen(true); // Show a Snackbar notification
+    setOpenDialog(false);
+  };
+
+  const handleSnackbarClose = () => {
+    setSnackbarOpen(false);
+  };
+  
   return (
     <Grid spacing={gridSpacing}>
       <Grid item component={Paper} lg={12} md={12} sm={12} xs={12} sx={{ p: 3, display: 'flex', flexDirection: 'column', gap: '24px' , border:'1px solid #80808026' }}>
@@ -45,11 +88,11 @@ const AssignmentsHomeComp = () => {
          RECENT HOMEWORK & ASSIGNMENTS
         </Typography>
 
-
+{/* getting data and slicing */}
             {data.slice(0 , AssignmentToShow).map((item) => (
               <Grid container key={item.id} lg={12} sx={{ gap: '8px', borderBottom:'1px solid #80808040', paddingBottom:'10px'}}>
                   <Grid container lg={6} sx={{gap:'8px'}}>
-                      <Grid item col={3} sx={{ display: 'flex', gap: '3px' }}   className="notchecked" >
+                      <Grid item col={3} sx={{ display: 'flex', gap: '3px', alignItems:'center' }}   className="notchecked" >
                         <Grid
                           sx={{
                             background: completedItems.includes(item.id) ? theme => theme.palette.success.main : theme => theme.palette.primary.main,
@@ -59,12 +102,16 @@ const AssignmentsHomeComp = () => {
                           }}
                         ></Grid>
 
-                         <Checkbox {...label} defaultChecked color="success" 
+                         <Checkbox {...label} defaultChecked color="success"  style={inputStyle }
                           type='checkbox'
                           {...label} 
                           checked={selectedItems.includes(item.id)}
                           onClick={() => handleCheckboxClick(item.id)}
                           sx={{margin:'0 18px',transform:'scale(1.3) ',
+                   
+                          '&:not(.Mui-checked)': {
+                            backgroundColor: '#f1f1f4',
+                          },                
                           }}                           
                         />
 
@@ -82,7 +129,7 @@ const AssignmentsHomeComp = () => {
                             </Box>
 
                             <Box>
-                                <Typography variant='body1' sx={{ color: completedItems.includes(item.id) ? '#00e676' : '#2196f3', fontWeight: '400', fontSize: '14px' , background : completedItems.includes(item.id) ? '#dfffea' : '#2196f314'}}>
+                                <Typography variant='body1' sx={{ color: completedItems.includes(item.id) ? '#00e676' : '#2196f3', fontWeight: '400', fontSize: '14px' , background : completedItems.includes(item.id) ? '#ccffdd' : '#2196f32e' , padding:'0 4px'}}>
                                 {completedItems.includes(item.id) ? 'Complete' : 'In Process'}
                               </Typography>
                             </Box>
@@ -92,19 +139,15 @@ const AssignmentsHomeComp = () => {
                   </Grid>
 
                   <Grid container lg={5} sx={{gap:'20px' , alignItems:'center', justifyContent:'end'}}>
-                    {/* due date start*/}
-                      {/* <Box>
+            
 
-                        <Typography variant='body1' sx={{}}>
-                                      {item.dueDate}
-                        </Typography>
-                      </Box> */}
+                      <Box sx={{display:'flex', gap:'20px'}}>                          
 
-                      <Box sx={{display:'flex', gap:'20px'}}>
-                          
-                           <Badge badgeContent={item.attachmentNo} color="primary" >
-                               <Attachment handleOpenDialog={handleOpen} />
-                           </Badge>
+                          <Tooltip title="Attachment">
+                            <IconButton onClick={handleOpenDialog}>
+                                  <AttachmentIcon />
+                             </IconButton>
+                          </Tooltip>
 
 
                           <Tooltip title="Edit">
@@ -112,12 +155,6 @@ const AssignmentsHomeComp = () => {
                               <CreateIcon />
                             </IconButton>
                           </Tooltip>
-
-                          {/* <Tooltip title="Email" onClick={()=>navigate('../../communication/inbox')}>
-                            <IconButton>
-                              <MailOutlinedIcon  />
-                            </IconButton>
-                          </Tooltip> */}
 
                       </Box>
 
@@ -130,14 +167,14 @@ const AssignmentsHomeComp = () => {
             ))}
 
             <Box sx={{px:3, textAlign:'right'}}>
-                <Button variant="contained" onClick={() => navigate('/updates')}>
+                <Button variant="contained" onClick={() => navigate('/assignments')}>
                   View More
                 </Button>
             </Box>
 
 
       </Grid>
-        <Model openDialog={open} handleCloseDialog={handleClose} />
+        <Attcgment isOpen={openDialog} onClose={handleCloseDialog} snackOpen={snackbarOpen} snackBarClose={handleSnackbarClose} />
     </Grid>
   );
 }
