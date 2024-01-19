@@ -1369,6 +1369,11 @@
   resolved "https://registry.npmjs.org/@floating-ui/utils/-/utils-0.1.6.tgz"
   integrity sha512-OfX7E2oUDYxtBvsuS4e/jSn4Q9Qb6DzgeYtsAdkPZ47znpoNsMgZw0+tVijiv3uGNR6dgNlty6r9rzIzHjtd/A==
 
+"@fontsource/plus-jakarta-sans@^5.0.18":
+  version "5.0.18"
+  resolved "https://registry.npmjs.org/@fontsource/plus-jakarta-sans/-/plus-jakarta-sans-5.0.18.tgz"
+  integrity sha512-poMuIcQ8F7WGXF4mNUviDk49Ewdf0pU7wmCzWQNbWEtus+L46BSp+4OqbWy0LWJEmMLI9F5hUHaSo2maLJwrQw==
+
 "@fortawesome/fontawesome-common-types@6.5.1":
   version "6.5.1"
   resolved "https://registry.npmjs.org/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-6.5.1.tgz"

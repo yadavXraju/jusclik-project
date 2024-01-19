@@ -1,18 +1,15 @@
 import React from 'react';
 import { Grid, Paper, Typography,   useMediaQuery  } from '@mui/material';
 import { gridSpacing } from 'store/constant';
-// import { Box } from '@mui/system';
-// import { useNavigate } from 'react-router';
 import timeTableData from 'views/sidebar-menus/timetable/TimeTableData';
-import { HeadingCss , boxHeight } from './dashboard-css/CommonCss';
+import { HeadingCss , boxHeight, subTitle, subtitle2 } from './dashboard-css/CommonCss';
 import './dashboard-css/Overflow.css'
 
 
 
 const TimeTableHome = () => {
   const isMobile = useMediaQuery('(max-width: 767px)');
-  // const periodsToShow = 4;
-  // const navigate = useNavigate();
+
 
    // Get the current day (0 = Sunday, 1 = Monday, ..., 6 = Saturday)
    const currentDay = new Date().getDay();
@@ -27,37 +24,43 @@ const TimeTableHome = () => {
    }
 
 
+   const timeTableHeader = {
+     display: 'flex',
+     gap: '16px' , 
+     flexDirection: isMobile ? 'column' : 'row'  ,
+      textAlign: 'left',
+   }
 
 
   return (
     <Grid spacing={gridSpacing} sx={{border:'1px solid #80808026', borderRadius:'8px'}} style={boxHeight} className='scrollbar'>
-      <Grid item component={Paper} lg={12} md={12} sm={12} xs={12} sx={{ textAlign: 'right', p: 3, display: 'flex', flexDirection: 'column', }}>
-      <Typography variant='h2' sx={{ textAlign: 'left' ,}} style={HeadingCss}>today Timetable</Typography>
+      <Grid item component={Paper} lg={12} md={12} sm={12} xs={12} sx={{ textAlign: 'right', p: 0, display: 'flex', flexDirection: 'column', }}>
+      <Typography variant='h2' sx={{ textAlign: 'left' ,p:3}} style={HeadingCss}>today Timetable</Typography>
 
          {/* header sec start */}
-         <Grid container sx={{ borderBottom: '1px solid #80808040;' , padding:'10px 5px'}} >
+         <Grid container sx={{ borderBottom: '1px solid #80808040;' , padding:'10px 24px'}} >
 
-            <Grid item lg={4} md={4} sm={4} xs={4} sx={{ display: 'flex', gap: '16px' , flexDirection: isMobile ? 'column' : 'row'  , textAlign: 'left'}} >
-                    <Typography variant='span' sx={{ color: '#000', fontWeight: '500' , fontSize:'18px'  }}>Time</Typography>
+            <Grid item lg={4} md={4} sm={4} xs={4} style={timeTableHeader}>
+                    <Typography variant='span'  style={subTitle} >Time</Typography>
                 </Grid>
 
-                <Grid item lg={4} md={4} sm={4} xs={4} sx={{ display: 'flex', gap: '16px' , flexDirection: isMobile ? 'column' : 'row'  ,textAlign: 'left',}} >
-                    <Typography variant='span' sx={{ color: '#000', fontWeight: '500' , fontSize:'18px'  }}>Period</Typography>
+                <Grid item lg={4} md={4} sm={4} xs={4} style={timeTableHeader} >
+                    <Typography variant='span'  style={subTitle} >Period</Typography>
                 </Grid>
 
-                <Grid item lg={4} md={4} sm={4} xs={4} sx={{ display: 'flex', gap: '16px' , flexDirection: isMobile ? 'column' : 'row'  ,textAlign: 'left',}} >
-                    <Typography variant='span' sx={{ color: '#000', fontWeight: '500' , fontSize:'18px'  }}>Teacher</Typography>
+                <Grid item lg={4} md={4} sm={4} xs={4} style={timeTableHeader} >
+                    <Typography variant='span' style={subTitle}>Teacher</Typography>
                 </Grid>
           </Grid>
           {/* header section end */}
 
           {currentDaySchedule.map((scheduleItem) => ( 
-          <Grid container sx={{ textAlign: 'left', display: 'flex' , borderBottom: '1px solid #80808040;' , padding:'13px 5px',
+          <Grid container sx={{ textAlign: 'left', display: 'flex', padding:'13px 24px',
           backgroundColor: scheduleItem.id === null ? '#8080807d' : 'transparent',}} key={scheduleItem.id}>
           
           {/* time */}
             <Grid item lg={4} md={4} sm={4} xs={4} sx={{ display: 'flex' , flexDirection: isMobile ? 'column' : 'row'  ,}} >
-              <Typography variant='h5' sx={{fontSize:isMobile ? '14px' : '15px' }}>{scheduleItem.time}</Typography>
+              <Typography variant='h5' style={subtitle2}>{scheduleItem.time}</Typography>
             </Grid>
 
 

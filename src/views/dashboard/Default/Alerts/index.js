@@ -1,18 +1,13 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
-import {  Divider, Grid, Typography ,Button , useMediaQuery} from '@mui/material';
+import { Divider, Grid, Typography, Button, } from '@mui/material';
 import MainCard from 'ui-component/cards/MainCard';
 import { gridSpacing } from 'store/constant';
-import { HeadingCss , boxHeight} from '../dashboard-css/CommonCss';
+import { HeadingCss, boxHeight, subTitle, subtitle2 } from '../dashboard-css/CommonCss';
 import { Box } from '@mui/system';
-// import CurrencyRupeeOutlinedIcon from '@mui/icons-material/CurrencyRupeeOutlined';
-// import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
 import AlertData from './AlertData';
 
-
-
 const Alert = () => {
-    const isMobile = useMediaQuery('(max-width: 767px)');
+  // const isMobile = useMediaQuery('(max-width: 767px)');
 
 
 
@@ -35,13 +30,13 @@ const Alert = () => {
                        <Grid item xs={12} key={index} sx={{paddingTop:'0 !important'}}>
                        <Grid container direction="column">
                          <Grid item>
-                           <Grid container alignItems="center" justifyContent="space-between" sx={{ alignItems: 'baseline' }}>
+                           <Grid container alignItems="center" justifyContent="space-between" >
                                {/* title */}
                              <Grid item sx={{display:'flex' , gap:'16px' ,alignItems:'center',}}>
                               
                              
                                         <Box sx={{
-                                        backgroundColor:'#5e35b1',
+                                        backgroundColor: alert.bgColor,
                                         padding: '6px',
                                         borderRadius: '50%',
                                         color: '#fff',
@@ -52,13 +47,13 @@ const Alert = () => {
                                         </Box>
             
                                        <Box>
-                                         <Typography variant="h3" color="#000" sx={{fontSize: isMobile ? '16px' :'16px' , lineHeight:  isMobile ? '22px' :'auto' , fontWeight:'500'}}>
+                                         <Typography variant="h3" style={subTitle}>
                                       {alert.title}
                                          </Typography>
                            
                                           {/* desc */}
-                                          <Grid item sx={{paddingTop:'5px'}}>
-                                            <Typography variant="subtitle" sx={{color:'#808080'}}>
+                                          <Grid item>
+                                            <Typography variant="subtitle" style={subtitle2}>
                                                 {alert.description}
                                             </Typography>
                                           </Grid>
@@ -80,14 +75,8 @@ const Alert = () => {
                            </Grid>
                          </Grid>
        
-       
-                         {/* uploaded time */}
-       
-                         {/* <Grid sx={{textAlign:'right',pt:2}}>
-                           <Typography  sx={{color:'#808080'}}>{alert.uploadedTime}</Typography>
-                         </Grid> */}
                        </Grid>
-                       <Divider sx={{ my: 1.5 }} />
+                       <Divider sx={{ my: 1.5 , color:'1px solid #80808024'}} />
                      </Grid>
 
            ))}

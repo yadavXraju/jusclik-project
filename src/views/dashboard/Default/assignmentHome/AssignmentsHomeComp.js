@@ -4,7 +4,7 @@ import { gridSpacing } from 'store/constant';
 import { data } from 'views/sidebar-menus/assignments/AssignmentData';
 import CreateIcon from '@mui/icons-material/Create';
 import { useNavigate } from 'react-router';
-import { HeadingCss } from '../dashboard-css/CommonCss';
+import { HeadingCss, subTitle, subtitle2 } from '../dashboard-css/CommonCss';
 import Checkbox from '@mui/material/Checkbox';
 import Attcgment from 'views/sidebar-menus/assignments/Attcgment';
 import AttachmentIcon from '@mui/icons-material/Attachment';
@@ -48,6 +48,7 @@ const AssignmentsHomeComp = () => {
     }
   }, []);
 
+
   // Save selected items to localStorage whenever it changes
 
   useEffect(() => {
@@ -67,6 +68,9 @@ const AssignmentsHomeComp = () => {
 
   const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
+
+  // function from assignments
+
   const handleOpenDialog = () => {
     setOpenDialog(true);
   };
@@ -80,17 +84,18 @@ const AssignmentsHomeComp = () => {
   const handleSnackbarClose = () => {
     setSnackbarOpen(false);
   };
+
   
   return (
     <Grid spacing={gridSpacing}>
       <Grid item component={Paper} lg={12} md={12} sm={12} xs={12} sx={{ p: 3, display: 'flex', flexDirection: 'column', gap: '24px' , border:'1px solid #80808026' }}>
         <Typography variant='h2' sx={{ textAlign: 'left', }} style={HeadingCss}>
-         RECENT HOMEWORK & ASSIGNMENTS
+          recent homework & assignments
         </Typography>
 
-{/* getting data and slicing */}
+             {/* getting data and slicing */}
             {data.slice(0 , AssignmentToShow).map((item) => (
-              <Grid container key={item.id} lg={12} sx={{ gap: '8px', borderBottom:'1px solid #80808040', paddingBottom:'10px'}}>
+              <Grid container key={item.id} lg={12} sx={{ gap: '8px', borderBottom:'1px solid #80808024', paddingBottom:'10px'}}>
                   <Grid container lg={6} sx={{gap:'8px'}}>
                       <Grid item col={3} sx={{ display: 'flex', gap: '3px', alignItems:'center' }}   className="notchecked" >
                         <Grid
@@ -101,6 +106,8 @@ const AssignmentsHomeComp = () => {
                             borderRadius: '3px'
                           }}
                         ></Grid>
+
+                         {/* checkbox */}
 
                          <Checkbox {...label} defaultChecked color="success"  style={inputStyle }
                           type='checkbox'
@@ -116,14 +123,19 @@ const AssignmentsHomeComp = () => {
                         />
 
                       </Grid>
+                      
+                       {/* sub, date, title */}
+                        <Grid item col={9} sx={{display:'flex' , gap:'30px' , alignItems:'center'}}>
 
-                        <Grid item col={9} sx={{display:'flex' , gap:'30px'}}>
                             <Box>
-                               <Typography variant='body1' sx={{}}>
+                                {/* subject and date*/}
+                               <Typography variant='body1' style={subTitle}>
                                   {item.name} -  {item.date}
                               </Typography>
 
-                              <Typography variant='body1' sx={{ color: '#99a1b7', fontWeight: '500', fontSize: '14px' }}>
+                               {/*description*/}
+
+                              <Typography variant='body1' style={subtitle2}>
                               {item.description}  
                               </Typography>
                             </Box>
@@ -148,6 +160,16 @@ const AssignmentsHomeComp = () => {
                                   <AttachmentIcon />
                              </IconButton>
                           </Tooltip>
+
+                          {/* <Badge badgeContent={4} color="primary">
+                             <Box sx={{ ...commonStyles, borderColor: 'primary.main' }} onClick={()=>navigate('/communication/inbox')}>
+                                  <Tooltip title="Attachment">
+                                  <IconButton onClick={handleOpenDialog}>
+                                        <AttachmentIcon />
+                                  </IconButton>
+                                </Tooltip> 
+                             </Box>
+                          </Badge> */}
 
 
                           <Tooltip title="Edit">
