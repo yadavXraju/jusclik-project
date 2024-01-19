@@ -1,8 +1,11 @@
 import React from 'react'
+import Request from './Request'
 
 const ItemRequestGatePass = () => {
   return (
-    <div>Item Request Gate Pass</div>
+    <div>
+   <Request/>
+      </div>
   )
 }
 

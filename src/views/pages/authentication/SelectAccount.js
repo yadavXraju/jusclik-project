@@ -10,14 +10,21 @@ import KeyboardArrowRightOutlinedIcon from '@mui/icons-material/KeyboardArrowRig
 import { Typography, ListItem, Divider, Avatar, ListItemAvatar, List, ListItemText, ListItemIcon } from '@mui/material';
 import OtpDialog from './OtpDialog';
 
-const SelectAccount = ({ open, onClose }) => {
+const SelectAccount = ({ open, onClose, onOtpToggle }) => {
     const [selectedListItem, setSelectedListItem] = useState(null);
     const [otpDialogOpen, setOtpDialogOpen] = useState(false);
 
     const handleListItemClick = (item) => {
         setSelectedListItem(item);
-        setOtpDialogOpen(true);
-        handleClose(); // Close the SelectAccount dialog
+
+        // Check if the dialog was opened from OTP toggle
+        if (onOtpToggle) {
+            onOtpToggle(item.id); // Pass the selected account ID to the OTP toggle handler
+        } else {
+            setOtpDialogOpen(true);
+        }
+
+        handleClose();
     };
 
     const handleClose = () => {
@@ -93,11 +100,11 @@ const SelectAccount = ({ open, onClose }) => {
                     </Button>
                 </DialogActions>
             </BootstrapDialog>
-            {selectedListItem && (
+            {selectedListItem && !onOtpToggle && (
                 <OtpDialog
                     open={otpDialogOpen}
                     onClose={() => {
-                        setOtpDialogOpen(false); // Close the OtpDialog
+                        setOtpDialogOpen(false);
                         // Additional logic you want to perform on OTP dialog close
                     }}
                     selectedListItem={selectedListItem}

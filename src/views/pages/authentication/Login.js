@@ -27,8 +27,6 @@ import CloudLogo from '../../../assets/images/Untitled-2.png';
 import { useNavigate } from 'react-router-dom';
 import EnterMobileDialog from './EnterMobileDialog'
 
-
-
 const defaultTheme = createTheme();
 
 function ToggleGroupVariants() {

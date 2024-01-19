@@ -23,7 +23,7 @@ const navigate = useNavigate();
       type: 'donut',
     },
     labels: ['Present', 'Absent'],
-    colors: ['#00c853', '#f44336'],
+    colors: ['#61bb61d4', 'rgb(244, 67, 54)'],
     responsive: [{
       breakpoint: 480,
       options: {

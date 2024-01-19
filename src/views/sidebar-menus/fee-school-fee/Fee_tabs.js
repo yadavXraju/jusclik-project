@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import MainCard from 'ui-component/cards/MainCard';
+//import MainCard from 'ui-component/cards/MainCard';
 import { useTheme, useMediaQuery, Box, Typography } from '@mui/material';
 import FeeDataTable from './Fee_table';
 
@@ -48,7 +48,7 @@ function Feetabs() {
 
   // Render the tab section
   return (
-    <MainCard title="Student Profile" >
+    
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider', '@media (max-width:600px)': { marginBottom: '15px' } }}>
         {/* Tabs for navigation */}
@@ -74,7 +74,7 @@ function Feetabs() {
        4
       </CustomTabPanel>
     </Box>
-    </MainCard>
+    
   );
 }
 
