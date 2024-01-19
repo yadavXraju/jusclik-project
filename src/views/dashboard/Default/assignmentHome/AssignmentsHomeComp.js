@@ -1,21 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import { Grid, Paper, Typography, Box, IconButton, Tooltip, Button, Badge } from '@mui/material';
+import { Grid, Paper, Typography, Box, IconButton, Tooltip, Button, } from '@mui/material';
 import { gridSpacing } from 'store/constant';
 import { data } from 'views/sidebar-menus/assignments/AssignmentData';
 import CreateIcon from '@mui/icons-material/Create';
 import { useNavigate } from 'react-router';
 import { HeadingCss } from '../dashboard-css/CommonCss';
-import Attachment from 'views/sidebar-menus/assignments/Attachment';
-import Model from 'views/sidebar-menus/assignments/Model';
-import useDialog from '../customHook/UseDialog';
 import Checkbox from '@mui/material/Checkbox';
-import { ListItemDecorator } from '@mui/joy';
-import { commonStyles } from 'views/sidebar-menus/communication-message/Contact-list';
+import Attcgment from 'views/sidebar-menus/assignments/Attcgment';
+import AttachmentIcon from '@mui/icons-material/Attachment';
 
 const AssignmentsHomeComp = () => {
   const [selectedItems, setSelectedItems] = useState([]);
   const [completedItems, setCompletedItems] = useState([]);
+  const [openDialog, setOpenDialog] = useState(false);
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+
   const navigate = useNavigate();
+
+  // checkbox id 
 
   const handleCheckboxClick = (id) => {
     setSelectedItems((prevSelectedItems) =>
@@ -30,6 +32,7 @@ const AssignmentsHomeComp = () => {
         : [...prevCompletedItems, id]
     );
   };
+
 
   // Load selected items from localStorage on component mount
   useEffect(() => {
@@ -46,6 +49,7 @@ const AssignmentsHomeComp = () => {
   }, []);
 
   // Save selected items to localStorage whenever it changes
+
   useEffect(() => {
     localStorage.setItem('selectedItems', JSON.stringify(selectedItems));
     localStorage.setItem('completedItems', JSON.stringify(completedItems));
@@ -58,14 +62,25 @@ const AssignmentsHomeComp = () => {
     height: '0',
   }
 
-  // const navigate = useNavigate();
-
 
   const AssignmentToShow = 5;
-  const { open, handleOpen, handleClose } = useDialog();
 
   const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
+  const handleOpenDialog = () => {
+    setOpenDialog(true);
+  };
+
+  const handleCloseDialog = () => {
+
+    setSnackbarOpen(true); // Show a Snackbar notification
+    setOpenDialog(false);
+  };
+
+  const handleSnackbarClose = () => {
+    setSnackbarOpen(false);
+  };
+  
   return (
     <Grid spacing={gridSpacing}>
       <Grid item component={Paper} lg={12} md={12} sm={12} xs={12} sx={{ p: 3, display: 'flex', flexDirection: 'column', gap: '24px' , border:'1px solid #80808026' }}>
@@ -73,7 +88,7 @@ const AssignmentsHomeComp = () => {
          RECENT HOMEWORK & ASSIGNMENTS
         </Typography>
 
-
+{/* getting data and slicing */}
             {data.slice(0 , AssignmentToShow).map((item) => (
               <Grid container key={item.id} lg={12} sx={{ gap: '8px', borderBottom:'1px solid #80808040', paddingBottom:'10px'}}>
                   <Grid container lg={6} sx={{gap:'8px'}}>
@@ -126,19 +141,13 @@ const AssignmentsHomeComp = () => {
                   <Grid container lg={5} sx={{gap:'20px' , alignItems:'center', justifyContent:'end'}}>
             
 
-                      <Box sx={{display:'flex', gap:'20px'}}>
-                          
-                           {/* <Badge badgeContent={item.attachmentNo} color="primary" >
-                               <Attachment handleOpenDialog={handleOpen} />
-                           </Badge> */}
+                      <Box sx={{display:'flex', gap:'20px'}}>                          
 
-                           <ListItemDecorator>
-                              <Badge badgeContent={4} color="primary">
-                                    <Box sx={{ ...commonStyles, borderColor: 'primary.main' }} onClick={()=>navigate('/communication/inbox')} >
-                                        <Attachment handleOpenDialog={handleOpen}  />
-                                    </Box>
-                              </Badge>
-                          </ListItemDecorator>
+                          <Tooltip title="Attachment">
+                            <IconButton onClick={handleOpenDialog}>
+                                  <AttachmentIcon />
+                             </IconButton>
+                          </Tooltip>
 
 
                           <Tooltip title="Edit">
@@ -146,12 +155,6 @@ const AssignmentsHomeComp = () => {
                               <CreateIcon />
                             </IconButton>
                           </Tooltip>
-
-                          {/* <Tooltip title="Email" onClick={()=>navigate('../../communication/inbox')}>
-                            <IconButton>
-                              <MailOutlinedIcon  />
-                            </IconButton>
-                          </Tooltip> */}
 
                       </Box>
 
@@ -171,7 +174,7 @@ const AssignmentsHomeComp = () => {
 
 
       </Grid>
-        <Model openDialog={open} handleCloseDialog={handleClose} />
+        <Attcgment isOpen={openDialog} onClose={handleCloseDialog} snackOpen={snackbarOpen} snackBarClose={handleSnackbarClose} />
     </Grid>
   );
 }
