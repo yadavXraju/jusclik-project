@@ -8,7 +8,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
 
-export default function OtpDialog({ open, onClose, selectedLoginID }) {
+export default function OtpDialog({ open, onClose }) {
     const [otp, setOtp] = useState('');
 
     const handleClose = () => {
@@ -43,16 +43,6 @@ export default function OtpDialog({ open, onClose, selectedLoginID }) {
                         To verify your identity, please enter the OTP sent to your registered Mobile Number/ email.
                         If you didn&lsquo;t receive OTP, you can click Resend OTP.
                     </DialogContentText>
-                    <TextField
-                        disabled
-                        margin="dense"
-                        id="selectedLoginID"
-                        fullWidth
-                        variant="outlined"
-                        value={selectedLoginID || ''}
-                        label="Selected Login ID"
-                    />
-
                     <TextField
                         autoFocus
                         required

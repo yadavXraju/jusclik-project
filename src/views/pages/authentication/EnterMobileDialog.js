@@ -14,7 +14,6 @@ export default function EnterMobileDialog() {
   const [open, setOpen] = React.useState(false);
   const [country, setCountry] = React.useState('India');
   const [mobileNumber, setMobileNumber] = React.useState('');
-
   const [dialogOpen, setDialogOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -30,7 +29,6 @@ export default function EnterMobileDialog() {
   };
 
   const handleMobileNumberChange = (event) => {
-    // Allow only numeric input and limit to 10 digits
     const input = event.target.value.replace(/\D/g, '').slice(0, 10);
     setMobileNumber(input);
   };
@@ -48,7 +46,7 @@ export default function EnterMobileDialog() {
   return (
     <React.Fragment>
       <Typography variant="body2" sx={{ cursor: 'pointer', color: '#fff' }} onClick={handleClickOpen}>
-       Forgot Crdentials
+        Forgot Credentials
       </Typography>
       <Dialog
         open={open}
@@ -59,7 +57,7 @@ export default function EnterMobileDialog() {
           component: 'form',
           onSubmit: (event) => {
             event.preventDefault();
-            handleDialogSubmit(); 
+            handleDialogSubmit();
           },
         }}
       >
@@ -108,7 +106,7 @@ export default function EnterMobileDialog() {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button type="submit" onClick={handleClickOpen}>Submit</Button>
+          <Button type="submit">Submit</Button>
         </DialogActions>
       </Dialog>
       <SelectAccount open={dialogOpen} onClose={handleDialogToggle} />

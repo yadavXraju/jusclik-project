@@ -82,27 +82,30 @@ function ToggleGroupVariants({ navigate }) {
 
 export default function OtpLogin() {
     const navigate = useNavigate();
+    const [showPassword, setShowPassword] = React.useState(false);
+    const [selectedAccountId, setSelectedAccountId] = React.useState('');
+
+    // Set dialogOpen to true initially
+    const [dialogOpen, setDialogOpen] = React.useState(true);
+
+    const handleDialogToggle = () => {
+        setDialogOpen(!dialogOpen);
+    };
+
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
         console.log({
-            email: data.get('username'),
+            email: selectedAccountId,
             password: data.get('password'),
             otp: data.get('otp'),
         });
     };
-    const [showPassword, setShowPassword] = React.useState(false);
-
-     // Set dialogOpen to true initially
-  const [dialogOpen, setDialogOpen] = React.useState(true);
-
-  const handleDialogToggle = () => {
-    setDialogOpen(!dialogOpen);
-  };
 
     return (
         <ThemeProvider theme={defaultTheme}>
-            <SelectAccount open={dialogOpen} onClose={handleDialogToggle} />
+            <SelectAccount open={dialogOpen} onClose={handleDialogToggle} onOtpToggle={(accountId) => setSelectedAccountId(accountId)} />
+            
             <Grid container component="main" sx={{ minHeight: '100vh' }}>
                 <CssBaseline />
                 {/* left school logo start */}
@@ -163,7 +166,7 @@ export default function OtpLogin() {
                                 label="Phone number/ E-mail"
                                 name="Username"
                                 autoComplete="Username"
-                                autoFocus
+                                value={selectedAccountId}
                                 sx={{ backgroundColor: '#fff', borderRadius: '50px' }}
                             />
                             <TextField
@@ -189,6 +192,7 @@ export default function OtpLogin() {
                                 label="Enter OTP"
                                 type={showPassword ? 'text' : 'password'}
                                 id="password"
+                                autoFocus
                                 autoComplete="current-password"
                                 sx={{ backgroundColor: '#fff', borderRadius: '50px' }}
                             />
