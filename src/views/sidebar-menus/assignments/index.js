@@ -20,6 +20,7 @@ import CreateIcon from '@mui/icons-material/Create';
 import { data } from './AssignmentData';
 import Attcgment from './Attcgment';
 import Heading from './Heading';
+import SearchAssignment from './SearchAssignment';
 
 const Assignments = () => {
   const theme = useTheme();
@@ -78,6 +79,7 @@ const Assignments = () => {
 
   return (
     <Container maxWidth="xl" xs={12} style={{ marginTop: 20 }}>
+      <SearchAssignment/>
       <Paper style={{ padding: 20 }}>
         <Tabs
           value={value}
