@@ -58,7 +58,6 @@ function EnterMobileDialog({ open, onClose, onMobileEntered }) {
 }
 
 export default function OtpLogin() {
-<<<<<<< HEAD
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = React.useState(false);
   const [enterMobileOpen, setEnterMobileOpen] = React.useState(true);
@@ -73,7 +72,7 @@ export default function OtpLogin() {
   const handleSelectAccountClose = () => {
     setSelectAccountOpen(false);
   };
-=======
+
     const navigate = useNavigate();
     const [showPassword, setShowPassword] = React.useState(false);
     const [selectedAccountId, setSelectedAccountId] = React.useState('');
@@ -189,7 +188,7 @@ export default function OtpLogin() {
                                 autoComplete="current-password"
                                 sx={{ backgroundColor: '#fff', borderRadius: '50px' }}
                             />
->>>>>>> ebbee230373f099964c9bfce951fab8c7bd894d8
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
