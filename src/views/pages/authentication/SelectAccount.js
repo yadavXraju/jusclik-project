@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import Button from '@mui/material/Button';
 import BootstrapDialog from '@mui/material/Dialog';
@@ -17,9 +18,8 @@ const SelectAccount = ({ open, onClose, onOtpToggle }) => {
     const handleListItemClick = (item) => {
         setSelectedListItem(item);
 
-        // Check if the dialog was opened from OTP toggle
         if (onOtpToggle) {
-            onOtpToggle(item.id); // Pass the selected account ID to the OTP toggle handler
+            onOtpToggle(item.id);
         } else {
             setOtpDialogOpen(true);
         }
