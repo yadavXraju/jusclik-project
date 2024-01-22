@@ -1,28 +1,21 @@
-import * as React from 'react';
+EnterMobileDialog.js//
+
+import React, { useState } from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
-import { Typography, MenuItem, Select, InputAdornment } from '@mui/material';
+import { MenuItem, Select, InputAdornment } from '@mui/material';
 import PublicIcon from '@mui/icons-material/Public';
 import SmartphoneOutlinedIcon from '@mui/icons-material/SmartphoneOutlined';
 import SelectAccount from './SelectAccount';
 
-export default function EnterMobileDialog() {
-  const [open, setOpen] = React.useState(false);
+export default function EnterMobileDialog({ open, onClose, onMobileSubmit, onOtpToggle }) {
   const [country, setCountry] = React.useState('India');
   const [mobileNumber, setMobileNumber] = React.useState('');
-  const [dialogOpen, setDialogOpen] = React.useState(false);
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
+  const [otpDialogOpen, setOtpDialogOpen] = useState(false); // State for controlling OTP Dialog visibility
 
   const handleCountryChange = (event) => {
     setCountry(event.target.value);
@@ -33,24 +26,18 @@ export default function EnterMobileDialog() {
     setMobileNumber(input);
   };
 
-  const handleDialogToggle = () => {
-    setDialogOpen(!dialogOpen);
-  };
-
   const handleDialogSubmit = () => {
     console.log(`Selected Country: ${country}, Mobile Number: ${mobileNumber}`);
-    handleClose();
-    handleDialogToggle(); // Open the SelectAccount dialog
+    onMobileSubmit({ country, mobileNumber }); // Callback to handle mobile number submit
+    onClose(); // Close the dialog
+    setOtpDialogOpen(true); // Open the OTP Dialog
   };
 
   return (
     <React.Fragment>
-      <Typography variant="body2" sx={{ cursor: 'pointer', color: '#fff' }} onClick={handleClickOpen}>
-        Forgot Credentials
-      </Typography>
       <Dialog
         open={open}
-        onClose={handleClose}
+        onClose={onClose}
         maxWidth="xs"
         fullWidth
         PaperProps={{
@@ -105,11 +92,22 @@ export default function EnterMobileDialog() {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
+          <Button onClick={onClose}>Cancel</Button>
           <Button type="submit">Submit</Button>
         </DialogActions>
       </Dialog>
-      <SelectAccount open={dialogOpen} onClose={handleDialogToggle} />
+
+      {/* OTP Dialog */}
+      {otpDialogOpen && (
+        <SelectAccount
+          open={otpDialogOpen}
+          onClose={() => {
+            setOtpDialogOpen(false);
+            onClose();
+          }}
+          onOtpToggle={onOtpToggle}
+        />
+      )}
     </React.Fragment>
   );
 }

@@ -17,18 +17,22 @@ const SelectAccount = ({ open, onClose, onOtpToggle }) => {
     const handleListItemClick = (item) => {
         setSelectedListItem(item);
 
-        // Check if the dialog was opened from OTP toggle
         if (onOtpToggle) {
-            onOtpToggle(item.id); // Pass the selected account ID to the OTP toggle handler
+            onOtpToggle(item.id);
+            setOtpDialogOpen(true);
+            handleClose();
         } else {
             setOtpDialogOpen(true);
         }
-
-        handleClose();
     };
 
     const handleClose = () => {
         onClose(false);
+    };
+
+    const handleOtpDialogClose = () => {
+        setOtpDialogOpen(false);
+        handleClose();
     };
 
     return (
@@ -51,7 +55,6 @@ const SelectAccount = ({ open, onClose, onOtpToggle }) => {
                 </IconButton>
                 <DialogContent dividers>
                     <List sx={{ width: '100%', maxWidth: 400, bgcolor: 'background.paper' }}>
-                        {/* Map over your list items */}
                         {[
                             { id: 1, name: 'Shauryasoft Presentation 1' },
                             { id: 2, name: 'Shauryasoft Presentation 2' },
@@ -100,13 +103,10 @@ const SelectAccount = ({ open, onClose, onOtpToggle }) => {
                     </Button>
                 </DialogActions>
             </BootstrapDialog>
-            {selectedListItem && !onOtpToggle && (
+            {selectedListItem && otpDialogOpen && (
                 <OtpDialog
                     open={otpDialogOpen}
-                    onClose={() => {
-                        setOtpDialogOpen(false);
-                        // Additional logic you want to perform on OTP dialog close
-                    }}
+                    onClose={handleOtpDialogClose}
                     selectedListItem={selectedListItem}
                 />
             )}
