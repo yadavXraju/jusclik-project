@@ -1,30 +1,35 @@
 import * as React from 'react';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-// import Divider from '@mui/material/Divider';
-import ListItemText from '@mui/material/ListItemText';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListItemDecorator from '@mui/joy/ListItemDecorator';
-import Avatar from '@mui/material/Avatar';
 import MailOutlinedIcon from '@mui/icons-material/MailOutlined';
-import Typography from '@mui/material/Typography';
 import MainCard from 'ui-component/cards/MainCard';
-import Box from '@mui/material/Box';
-import Badge from '@mui/material/Badge';
 import { contactData } from 'views/sidebar-menus/communication-message/Contact-list';
 import { commonStyles } from 'views/sidebar-menus/communication-message/Contact-list';
 import { useNavigate } from 'react-router';
-import {  Grid } from '@mui/material';
 import { HeadingCss , boxHeight , subTitle , subtitle2} from './dashboard-css/CommonCss';
+import {
+  useMediaQuery , 
+  List ,
+  ListItem ,
+  ListItemText , 
+  ListItemAvatar ,
+  Avatar , 
+  Typography , 
+  Box ,
+  Badge ,
+  Grid 
+} from '@mui/material';
+
+
+
 
 
 const CommunicationHomeComp = () => {
-  
+  const isMobile = useMediaQuery('(max-width: 767px)');
 // const contactListToShow = 4
 const navigate = useNavigate();
   return (
     <>
-     <MainCard  sx={{ fontSize: '22px', fontWeight: 'bold' }} style={boxHeight} className='scrollbar'>
+     <MainCard  sx={{ fontSize: '22px', fontWeight: 'bold' , paddingLeft: isMobile ? '10px' : 'auto' }} style={boxHeight} className='scrollbar'>
         <Grid item>
             <Typography variant="h2" style={HeadingCss}>
                     communication
@@ -34,7 +39,7 @@ const navigate = useNavigate();
       <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
         {contactData.map((contact, index) => (
           <React.Fragment key={index}>
-            <ListItem sx={{borderBottom:'1px solid #80808024'}}>
+            <ListItem sx={{borderBottom:'1px solid #80808024' , paddingLeft: isMobile ? '0px' : 'auto' }}>
               <ListItemAvatar>
                 <Avatar src="/static/images/avatar/1.jpg" sx={{ width: 50, height: 50 }} />
               </ListItemAvatar>
