@@ -4,7 +4,6 @@ import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import SearchTwoToneIcon from '@mui/icons-material/SearchTwoTone';
-import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
@@ -38,17 +37,31 @@ const SearchFilter = ({ onSearch }) => {
         alignItems: 'end',
         justifyContent: 'start',
         gap: 2,
-        border: '1px solid black',
+        // border: '1px solid black',
         borderRadius: '30px',
         padding: '20px',
         mb: '15px',
         marginRight: '25px',
         marginLeft: '25px',
-        backgroundColor:'#fff'
+        backgroundColor: '#fff',
       }}
       noValidate
       autoComplete="off"
     >
+    
+
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <DatePicker
+          label="From"
+          value={startDate}
+          onChange={handleStartDateChange}
+        />
+        <DatePicker
+          label="To"
+          value={endDate}
+          onChange={handleEndDateChange}
+        />
+      </LocalizationProvider>
       <TextField
         id="outlined-search"
         label="Search"
@@ -56,22 +69,6 @@ const SearchFilter = ({ onSearch }) => {
         value={searchTerm}
         onChange={handleSearchChange}
       />
-
-      <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <DemoContainer components={['DatePicker']}>
-          <DatePicker
-            label="From"
-            value={startDate}
-            onChange={handleStartDateChange}
-          />
-          <DatePicker
-            label="To"
-            value={endDate}
-            onChange={handleEndDateChange}
-          />
-        </DemoContainer>
-      </LocalizationProvider>
-
       <Stack direction="row" spacing={2}>
         <Button
           variant="contained"

@@ -12,9 +12,21 @@ import Autocomplete from '@mui/material/Autocomplete';
 import parse from 'autosuggest-highlight/parse';
 import match from 'autosuggest-highlight/match';
 
-export default function FormPropsTextFields() {
+const subjects = [
+  { title: 'English' },
+  { title: 'Mathematics' },
+  { title: 'Hindi' },
+  { title: 'Music' },
+  { title: 'Science' },
+  { title: 'SST' },
+  { title: 'Computer' },
+];
+
+export default function SearchAssignment({ onSearch }) {
   const [startDate, setStartDate] = React.useState(null);
   const [endDate, setEndDate] = React.useState(null);
+  const [selectedSubject, setSelectedSubject] = React.useState(null);
+  const [searchText, setSearchText] = React.useState('');
 
   const handleStartDateChange = (date) => {
     setStartDate(date);
@@ -24,26 +36,44 @@ export default function FormPropsTextFields() {
     setEndDate(date);
   };
 
+  const handleSubjectChange = (event, newValue) => {
+    setSelectedSubject(newValue);
+  };
+
+  const handleSearchTextChange = (event) => {
+    setSearchText(event.target.value);
+  };
+    // You can perform the search logic here
+    const handleSearch = () => {
+      const searchCriteria = {
+        startDate,
+        endDate,
+        subject: selectedSubject ? selectedSubject.title : '',
+        searchText,
+      };
+
+    // Pass the search criteria to the parent component
+    onSearch(searchCriteria);
+  };
+
   return (
     <Box
       component="form"
       sx={{
         display: 'flex',
         alignItems: 'end',
-        justifyContent: 'center',
+        justifyContent: 'start',
         gap: 2,
-        border: '1px solid black', // Add border
-        borderRadius: '30px',      // Add border radius
-        padding: '20px',           // Add padding for better aesthetics
-        mb:'15px',
+        // border: '1px solid black',
+        borderRadius: '30px',
+        padding: '20px',
+        mb: '15px',
+        backgroundColor:'#fff'
       }}
       noValidate
       autoComplete="off"
     >
-      <div>
-        <TextField id="outlined-search" label="Search" type="search" />
-      </div>
-      {/* date picker range */}
+      {/* Date picker */}
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DemoContainer components={['DatePicker']}>
           <DatePicker
@@ -58,56 +88,59 @@ export default function FormPropsTextFields() {
           />
         </DemoContainer>
       </LocalizationProvider>
-      {/* subject */}
+      {/* date picker end */}
       <Autocomplete
-      id="highlights-demo"
-      sx={{ width: 300,marginTop:'8px',marginBottom:'-1px' }}
-      options={subjects}
-      getOptionLabel={(option) => option.title}
-      renderInput={(params) => (
-        <TextField {...params} label="Highlights" margin="normal" />
-      )}
-      renderOption={(props, option, { inputValue }) => {
-        const matches = match(option.title, inputValue, { insideWords: true });
-        const parts = parse(option.title, matches);
+        id="highlights-demo"
+        sx={{ width: 300, marginTop: '8px', marginBottom: '-1px' }}
+        options={subjects}
+        getOptionLabel={(option) => option.title}
+        onChange={handleSubjectChange}
+        renderInput={(params) => (
+          <TextField {...params} label="Subjects" margin="normal" sx={{ marginBottom: '0px', marginTop: '0px' }} />
+        )}
+        renderOption={(props, option, { inputValue }) => {
+          const matches = match(option.title, inputValue, { insideWords: true });
+          const parts = parse(option.title, matches);
 
-        return (
-          <li {...props}>
-            <div>
-              {parts.map((part, index) => (
-                <span
-                  key={index}
-                  style={{
-                    fontWeight: part.highlight ? 700 : 400,
-                  }}
-                >
-                  {part.text}
-                </span>
-              ))}
-            </div>
-          </li>
-        );
-      }}
-    />
-      {/* search field */}
+          return (
+            <li {...props}>
+              <div>
+                {parts.map((part, index) => (
+                  <span
+                    key={index}
+                    style={{
+                      fontWeight: part.highlight ? 700 : 400,
+                    }}
+                  >
+                    {part.text}
+                  </span>
+                ))}
+              </div>
+            </li>
+          );
+        }}
+      />
+      {/* search textField */}
+      <TextField
+        id="outlined-search"
+        label="Search"
+        type="search"
+        value={searchText}
+        onChange={handleSearchTextChange}
+      />
+{/* search textField  end*/}
+{/* search button */}
       <Stack direction="row" spacing={2}>
         <Button
           variant="contained"
           startIcon={<SearchTwoToneIcon />}
-          sx={{  height: '48px',borderRadius:'12px', marginTop:'-3px !important'}}
+          sx={{ height: '48px', borderRadius: '12px', marginTop: '-3px !important' }}
+          onClick={handleSearch}
         >
           Search
         </Button>
       </Stack>
+      {/* search button */}
     </Box>
   );
-}
-const subjects = [
-    { title: 'English'},
-    { title: 'Mathematics' },
-    { title: 'Hindi' },
-    { title: 'Music' },
-    { title: 'Science'},
-    { title: 'SST' },
-    { title: 'Computer' }
-  ];
+      }
