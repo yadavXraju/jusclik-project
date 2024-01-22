@@ -13,25 +13,25 @@ import { useNavigate } from 'react-router';
 
 const theme = createTheme();
 
- export const initialData = [
-    { id: 1, name: 'John Doe', message: 'Lorem ipsum dolor sit amet 1', unread: false, important: true },
-    { id: 2, name: 'Jane Smith', message: 'Lorem ipsum dolor sit amet 2', unread: true, important: false },
-    { id: 3, name: 'Bob Johnson', message: 'Lorem ipsum dolor sit amet 3', unread: false, important: true },
-    { id: 4, name: 'Alice Williams', message: 'Lorem ipsum dolor sit amet 4', unread: true, important: false },
-    { id: 5, name: 'Charlie Brown', message: 'Lorem ipsum dolor sit amet 5', unread: false, important: true },
-    { id: 6, name: 'Eva Davis', message: 'Lorem ipsum dolor sit amet 6', unread: false, important: false },
-    { id: 7, name: 'Frank White', message: 'Lorem ipsum dolor sit amet 7', unread: true, important: true },
-    { id: 8, name: 'Grace Miller', message: 'Lorem ipsum dolor sit amet 8', unread: false, important: false },
-    { id: 9, name: 'Henry Jackson', message: 'Lorem ipsum dolor sit amet 9', unread: true, important: true },
-    { id: 10, name: 'Ivy Lee', message: 'Lorem ipsum dolor sit amet 10', unread: false, important: false },
-    { id: 11, name: 'Charlie Brown', message: 'Lorem ipsum dolor sit amet 5', unread: false, important: true },
-    { id: 12, name: 'Eva Davis', message: 'Lorem ipsum dolor sit amet 6', unread: false, important: false },
-    { id: 13, name: 'Frank White', message: 'Lorem ipsum dolor sit amet 7', unread: true, important: true },
-    { id: 14, name: 'Grace Miller', message: 'Lorem ipsum dolor sit amet 8', unread: false, important: false },
-    { id: 15, name: 'Henry Jackson', message: 'Lorem ipsum dolor sit amet 9', unread: true, important: true },
-    { id: 16, name: 'Ivy Lee', message: 'Lorem ipsum dolor sit amet 10', unread: false, important: false },
-  ];
-  
+export const initialData = [
+  { id: 1, name: 'John Doe', message: 'Lorem ipsum dolor sit amet 1', unread: false, important: true },
+  { id: 2, name: 'Jane Smith', message: 'Lorem ipsum dolor sit amet 2', unread: true, important: false },
+  { id: 3, name: 'Bob Johnson', message: 'Lorem ipsum dolor sit amet 3', unread: false, important: true },
+  { id: 4, name: 'Alice Williams', message: 'Lorem ipsum dolor sit amet 4', unread: true, important: false },
+  { id: 5, name: 'Charlie Brown', message: 'Lorem ipsum dolor sit amet 5', unread: false, important: true },
+  { id: 6, name: 'Eva Davis', message: 'Lorem ipsum dolor sit amet 6', unread: false, important: false },
+  { id: 7, name: 'Frank White', message: 'Lorem ipsum dolor sit amet 7', unread: true, important: true },
+  { id: 8, name: 'Grace Miller', message: 'Lorem ipsum dolor sit amet 8', unread: false, important: false },
+  { id: 9, name: 'Henry Jackson', message: 'Lorem ipsum dolor sit amet 9', unread: true, important: true },
+  { id: 10, name: 'Ivy Lee', message: 'Lorem ipsum dolor sit amet 10', unread: false, important: false },
+  { id: 11, name: 'Charlie Brown', message: 'Lorem ipsum dolor sit amet 5', unread: false, important: true },
+  { id: 12, name: 'Eva Davis', message: 'Lorem ipsum dolor sit amet 6', unread: false, important: false },
+  { id: 13, name: 'Frank White', message: 'Lorem ipsum dolor sit amet 7', unread: true, important: true },
+  { id: 14, name: 'Grace Miller', message: 'Lorem ipsum dolor sit amet 8', unread: false, important: false },
+  { id: 15, name: 'Henry Jackson', message: 'Lorem ipsum dolor sit amet 9', unread: true, important: true },
+  { id: 16, name: 'Ivy Lee', message: 'Lorem ipsum dolor sit amet 10', unread: false, important: false },
+];
+
 const GmailInboxTemplate = () => {
   const getCurrentDateTime = () => {
     const currentDate = new Date();
@@ -134,7 +134,7 @@ const GmailInboxTemplate = () => {
   const EmailItem = ({ emailData }) => {
     const [isImportant, setIsImportant] = useState(emailData.important);
 
-    
+
     const handleStarClick = () => {
       setIsImportant(!isImportant);
     };
@@ -149,7 +149,7 @@ const GmailInboxTemplate = () => {
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
-  
+
   // const [isComposeOpen, setComposeOpen] = useState(true);
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(parseInt(event.target.value, 10));
@@ -198,12 +198,12 @@ const GmailInboxTemplate = () => {
                   anchorEl={anchorEl}
                   onClose={handleFilterClose}
                   anchorOrigin={{
-                    vertical: 'bottom',
-                    horizontal: 'right',
+                    // vertical: 'bottom',
+                    // horizontal: 'right', 
                   }}
                   transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
+                    // vertical: 'top',
+                    // horizontal: 'right', 
                   }}
                 >
                   <Box sx={{ p: 2 }}>
@@ -214,9 +214,10 @@ const GmailInboxTemplate = () => {
                   </Box>
                 </Popover>
               </FilterWrapper>
+
             </Grid>
-            <Grid sx={{ display: 'inline-flex'  }}>
-              <SearchWrapper sx={{justifyContent:'center'}}>
+            <Grid sx={{ display: 'inline-flex' }}>
+              <SearchWrapper sx={{ justifyContent: 'center' }}>
                 <SearchIconWrapper>
                   <SearchIcon />
                 </SearchIconWrapper>
@@ -241,7 +242,7 @@ const GmailInboxTemplate = () => {
           <List>
             {data.slice(page * rowsPerPage, (page + 1) * rowsPerPage).map((item) => (
               <React.Fragment key={item.id}>
-                <ListItem onClick={()=>navigate('/communication/inbox/message')}>
+                <ListItem onClick={() => navigate('/communication/inbox/message')}>
                   <ListItemAvatar>
                     <Avatar alt="User Avatar" src={`/static/images/avatar/1.jpg/${item.id}.jpg`} />
                   </ListItemAvatar>
