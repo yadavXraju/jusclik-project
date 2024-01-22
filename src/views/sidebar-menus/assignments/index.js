@@ -12,14 +12,11 @@ import {
 import { data } from './AssignmentData';
 import Attcgment from './Attcgment';
 import Heading from './Heading';
-<<<<<<< HEAD
 
 import SearchAssignment from './SearchAssignment';
-=======
 import AssignmentItem from './AssignmentItem';
 
 
->>>>>>> a6cb32344b793edb47d20f6d972e3567bd8aa93d
 
 import UrlPage from 'views/navigation-for-pages';
 
