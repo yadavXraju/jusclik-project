@@ -58,7 +58,6 @@ function EnterMobileDialog({ open, onClose, onMobileEntered }) {
 }
 
 export default function OtpLogin() {
-<<<<<<< HEAD
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = React.useState(false);
   const [enterMobileOpen, setEnterMobileOpen] = React.useState(true);
@@ -190,8 +189,6 @@ export default function OtpLogin() {
                                 sx={{ backgroundColor: '#fff', borderRadius: '50px' }}
                             />
 
-=======
->>>>>>> 5893516e537951857f07d4e4df42db5b0a500b8c
 
   const handleSubmit = (event) => {
     event.preventDefault();
