@@ -21,7 +21,7 @@ import LogoImg from '../../../assets/images/WhatsApp_Image_2020-03-21_at_8_04_53
 import PlayStoreImage from '../../../assets/images/Google-Play.png';
 import AppleStoreImage from '../../../assets/images/app-store.png';
 import CloudLogo from '../../../assets/images/Untitled-2.png';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import SelectAccount from './SelectAccount';
 // import EnterMobileDialog from './EnterMobileDialog';
 
@@ -58,6 +58,7 @@ function EnterMobileDialog({ open, onClose, onMobileEntered }) {
 }
 
 export default function OtpLogin() {
+<<<<<<< HEAD
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = React.useState(false);
   const [enterMobileOpen, setEnterMobileOpen] = React.useState(true);
@@ -189,6 +190,8 @@ export default function OtpLogin() {
                                 sx={{ backgroundColor: '#fff', borderRadius: '50px' }}
                             />
 
+=======
+>>>>>>> 5893516e537951857f07d4e4df42db5b0a500b8c
 
   const handleSubmit = (event) => {
     event.preventDefault();

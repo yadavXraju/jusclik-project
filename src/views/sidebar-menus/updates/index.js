@@ -28,7 +28,7 @@ export default function Update() {
               {/* {data.icon } */}
 
               <Typography variant="body2" sx={{ mt: 0, color: '#364152e0',paddingTop:'3px' }}>
-               {data.day} {data.date}
+               {data.day} {data.date} {data.month} {data.year}
               </Typography>
             </Grid>
             </Grid>

@@ -20,6 +20,7 @@ import CreateIcon from '@mui/icons-material/Create';
 import { data } from './AssignmentData';
 import Attcgment from './Attcgment';
 import Heading from './Heading';
+import UrlPage from 'views/navigation-for-pages';
 
 const Assignments = () => {
   const theme = useTheme();
@@ -77,6 +78,8 @@ const Assignments = () => {
 
 
   return (
+    <>
+    <UrlPage />
     <Container maxWidth="xl" xs={12} style={{ marginTop: 20 }}>
       <Paper style={{ padding: 20 }}>
         <Tabs
@@ -181,6 +184,7 @@ const Assignments = () => {
    <Attcgment isOpen={openDialog} onClose={handleCloseDialog} snackOpen={snackbarOpen} snackBarClose={handleSnackbarClose} />
   
     </Container>
+    </>
   );
 };
 

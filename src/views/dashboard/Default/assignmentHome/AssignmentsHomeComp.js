@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Grid, Paper, Typography, Box, IconButton, Tooltip, Button, } from '@mui/material';
+import { Grid, Paper, Typography, Box, IconButton, Tooltip, Button, Badge , useMediaQuery } from '@mui/material';
 import { gridSpacing } from 'store/constant';
 import { data } from 'views/sidebar-menus/assignments/AssignmentData';
 import CreateIcon from '@mui/icons-material/Create';
@@ -8,6 +8,7 @@ import { HeadingCss, subTitle, subtitle2 } from '../dashboard-css/CommonCss';
 import Checkbox from '@mui/material/Checkbox';
 import Attcgment from 'views/sidebar-menus/assignments/Attcgment';
 import AttachmentIcon from '@mui/icons-material/Attachment';
+import { commonStyles } from 'views/sidebar-menus/communication-message/Contact-list';
 
 const AssignmentsHomeComp = () => {
   const [selectedItems, setSelectedItems] = useState([]);
@@ -67,6 +68,7 @@ const AssignmentsHomeComp = () => {
   const AssignmentToShow = 5;
 
   const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
+  const isMobile = useMediaQuery('(max-width: 767px)');
 
 
   // function from assignments
@@ -150,33 +152,43 @@ const AssignmentsHomeComp = () => {
                         </Grid>
                   </Grid>
 
-                  <Grid container lg={5} sx={{gap:'20px' , alignItems:'center', justifyContent:'end'}}>
+                  <Grid container lg={5} sx={{gap:'20px' , alignItems:'center', justifyContent:'end' , marginTop: isMobile ? '20px' : '0' }}>
             
 
                       <Box sx={{display:'flex', gap:'20px'}}>                          
 
-                          <Tooltip title="Attachment">
+                          {/* <Tooltip title="Attachment">
                             <IconButton onClick={handleOpenDialog}>
                                   <AttachmentIcon />
                              </IconButton>
-                          </Tooltip>
+                          </Tooltip> */}
 
-                          {/* <Badge badgeContent={4} color="primary">
-                             <Box sx={{ ...commonStyles, borderColor: 'primary.main' }} onClick={()=>navigate('/communication/inbox')}>
+                          <Badge badgeContent={item.attachmentNo} color="primary" >
+                             <Box sx={{ ...commonStyles, borderColor: 'primary.main' }}>
                                   <Tooltip title="Attachment">
-                                  <IconButton onClick={handleOpenDialog}>
-                                        <AttachmentIcon />
-                                  </IconButton>
+                                    <IconButton onClick={handleOpenDialog} sx={{p:0}}>
+                                        <AttachmentIcon  color="primary"/>
+                                    </IconButton>
                                 </Tooltip> 
                              </Box>
-                          </Badge> */}
+                          </Badge>
 
 
-                          <Tooltip title="Edit">
+                          {/* <Tooltip title="Edit">
                             <IconButton>
                               <CreateIcon />
                             </IconButton>
-                          </Tooltip>
+                          </Tooltip> */}
+
+                          <Badge color="primary" >
+                             <Box sx={{ ...commonStyles, borderColor: 'primary.main' }}>
+                                  <Tooltip  title="Edit">
+                                    <IconButton  sx={{p:0}}>
+                                       <CreateIcon  color="primary" sx={{fontSize:'20px'}}/>
+                                    </IconButton>
+                                </Tooltip> 
+                             </Box>
+                          </Badge>
 
                       </Box>
 

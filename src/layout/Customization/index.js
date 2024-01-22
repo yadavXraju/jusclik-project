@@ -64,13 +64,21 @@ const Customization = () => {
     case `'Inter', sans-serif`:
       initialFont = 'Inter';
       break;
+
     case `'Poppins', sans-serif`:
       initialFont = 'Poppins';
       break;
-    case `'Roboto', sans-serif`:
-    default:
+
+      case `'Roboto', sans-serif`:
       initialFont = 'Roboto';
       break;
+
+    case `'Plus Jakarta Sans', sans-serif`:
+      break;
+
+    default:
+      initialFont = 'Plus Jakarta Sans';
+
   }
 
   // state - font family
@@ -81,13 +89,22 @@ const Customization = () => {
       case 'Inter':
         newFont = `'Inter', sans-serif`;
         break;
+
       case 'Poppins':
         newFont = `'Poppins', sans-serif`;
         break;
-      case 'Roboto':
-      default:
-        newFont = `'Roboto', sans-serif`;
+
+        case 'Roboto':
+          newFont = `'Roboto', sans-serif`;
+          break;
+
+      case 'Plus Jakarta Sans':
+        newFont = `'Plus Jakarta Sans', sans-serif`;
         break;
+
+      default:
+        newFont = `'Plus Jakarta Sans', sans-serif`;
+      
     }
     dispatch({ type: SET_FONT_FAMILY, fontFamily: newFont });
   }, [dispatch, fontFamily]);
@@ -144,6 +161,16 @@ const Customization = () => {
                     onChange={(e) => setFontFamily(e.target.value)}
                     name="row-radio-buttons-group"
                   >
+                    <FormControlLabel
+                      value="Plus Jakarta Sans"
+                      control={<Radio />}
+                      label="Plus Jakarta Sans"
+                      sx={{
+                        '& .MuiSvgIcon-root': { fontSize: 28 },
+                        '& .MuiFormControlLabel-label': { color: theme.palette.grey[900] }
+                      }}
+                    />
+
                     <FormControlLabel
                       value="Roboto"
                       control={<Radio />}
