@@ -4,7 +4,7 @@ import Button from '@mui/material/Button';
 import Documents from './Documents';
 import { Grid } from '@mui/material';
 import Policies from './policiesTable';
-//import PoliciesCounter from './policiesCounter';
+import PoliciesCounter from './policiesCounter';
 
 
 export default function DocumentTabs() {
@@ -21,7 +21,7 @@ export default function DocumentTabs() {
       <Grid item xs={12} sm={12} lg={2}>
       <Box sx={{ flex: '0 0 auto', display: 'flex', flexDirection: 'column', paddingRight:'15px' }}>
         <Button sx={{border:'1px solid #ccc'}} size='large'  onClick={() => handleButtonClick('Button1')}>Upload Documents</Button>
-        <Button sx={{border:'1px solid #ccc'}} size='large'  onClick={() => handleButtonClick('Button2')}>View Policiel</Button>
+        <Button sx={{border:'1px solid #ccc'}} size='large'  onClick={() => handleButtonClick('Button2')}>View Policies</Button>
       </Box>
       </Grid>
 
@@ -31,9 +31,9 @@ export default function DocumentTabs() {
         {selectedButton === 'Button1' && <Documents />}
         {selectedButton === 'Button2' && 
         <div>
-        {/* <Box pb={3}>
+        <Box pb={3}>
         <PoliciesCounter/>
-        </Box> */}
+        </Box>
         <Policies/>
         </div>}
       </Box>

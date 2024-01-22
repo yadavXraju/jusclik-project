@@ -1,3 +1,4 @@
+
 export const HeadingCss = {
     color: 'rgb(17, 25, 39)',
    //  letterSpacing: '.5px' ,
@@ -42,6 +43,12 @@ export const boxHeight = {
     fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji"',
     color: 'rgb(108, 115, 127)',
 
+ }
+
+
+ export const welcomeMsg = {
+   color:'#000',
+   fontFamily : '"Plus Jakarta Sans", "sans-serif"',
  }
 
 

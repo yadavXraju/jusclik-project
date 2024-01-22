@@ -20,7 +20,11 @@ import CreateIcon from '@mui/icons-material/Create';
 import { data } from './AssignmentData';
 import Attcgment from './Attcgment';
 import Heading from './Heading';
+<<<<<<< HEAD
 import SearchAssignment from './SearchAssignment';
+=======
+import UrlPage from 'views/navigation-for-pages';
+>>>>>>> 4d0155e25c42832ea9da419c3e54c9eefdbc3b2c
 
 const Assignments = () => {
   const theme = useTheme();
@@ -78,6 +82,8 @@ const Assignments = () => {
 
 
   return (
+    <>
+    <UrlPage />
     <Container maxWidth="xl" xs={12} style={{ marginTop: 20 }}>
       <SearchAssignment/>
       <Paper style={{ padding: 20 }}>
@@ -183,6 +189,7 @@ const Assignments = () => {
    <Attcgment isOpen={openDialog} onClose={handleCloseDialog} snackOpen={snackbarOpen} snackBarClose={handleSnackbarClose} />
   
     </Container>
+    </>
   );
 };
 
