@@ -32,7 +32,6 @@ const EncodeDecodeData = async (token) => {
         }
       );
       if (responseUsers.data !== null && responseUsers.data !== ''&& responseUsers.data  !== undefined ) {
-        alert("to save data in userprofile");
         UserProfile.setData(responseUsers.data);
       } else {
         alert('Invaild Authentication');

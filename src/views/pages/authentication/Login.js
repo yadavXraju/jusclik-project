@@ -25,7 +25,10 @@ import PlayStoreImage from '../../../assets/images/Google-Play.png';
 import AppleStoreImage from '../../../assets/images/app-store.png';
 import CloudLogo from '../../../assets/images/Untitled-2.png';
 import { useNavigate } from 'react-router-dom';
-import EnterMobileDialog from './EnterMobileDialog'
+import EnterMobileDialog from './EnterMobileDialog';
+import axios from 'axios';
+import Config from '../../../config';
+import SetSession from '../../../session/setsession';
 
 const defaultTheme = createTheme();
 
@@ -97,12 +100,38 @@ export default function LogInPage() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('Username'),
-      password: data.get('password'),
-      otp: data.get('otp'),
-    });
+    fetchData(data);
   };
+  const navigate = useNavigate(); 
+  const fetchData = async (Data) => {
+      const response = await axios.get(
+        Config.apiUrl+'/login',
+        { 
+          params: {
+            SCode: 6,
+            LoginID: Data.get('Username'),
+            Password: Data.get('password'),
+            DeviceType: 0,
+            DeviceID: '',
+            MobileApp: 0,
+          },
+         
+        }
+      );
+      var jResponse = JSON.parse(response.data);
+      if (jResponse.authcode !== null && jResponse.authcode !== '' && jResponse.authcode !== undefined) {
+        localStorage.setItem("token", jResponse.authcode);
+        SetSession();
+        navigate('/dashboard');
+      } else {
+        alert('Invalid Authentication');
+      }
+  
+  };
+  
+
+
+
   return (
     <ThemeProvider theme={defaultTheme}>
       <Grid container component="main" sx={{ minHeight: '100vh' }}>
