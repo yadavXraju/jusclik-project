@@ -8,6 +8,7 @@ import Typography from '@mui/material/Typography';
 import timeTableData from './TimeTableData';
 import Card from '@mui/material/Card';
 import UrlPage from 'views/navigation-for-pages';
+// import UrlPage from 'views/navigation-for-pages';
 
 const TimeTable = () => {
   const [value, setValue] = useState('Monday');
@@ -30,7 +31,8 @@ const TimeTable = () => {
     }
 
     return (
-      <div>
+      <>
+      {/* <UrlPage/> */}
         {/* <h2> Timetable</h2> */}
         {daySchedule.map((scheduleItem) => (
           <Grid container spacing={0.5} style={{ marginTop: '10px' }} key={scheduleItem.id}>
@@ -53,7 +55,7 @@ const TimeTable = () => {
             </Grid>
           </Grid>
         ))}
-      </div>
+      </>
     );
   };
 

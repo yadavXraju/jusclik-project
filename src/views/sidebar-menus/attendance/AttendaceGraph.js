@@ -18,21 +18,6 @@ import { gridSpacing } from 'store/constant';
 // chart data
 import chartData from './TotalAttendanceBar';
 
-// const status = [
-//   {
-//     value: 'today',
-//     label: 'Today'
-//   },
-//   {
-//     value: 'month',
-//     label: 'This Month'
-//   },
-//   {
-//     value: 'year',
-//     label: 'This Year'
-//   }
-// ];
-
 // ==============================|| DASHBOARD DEFAULT - TOTAL GROWTH BAR CHART ||============================== //
 
 const TotalGrowthBarChart = ({ isLoading }) => {
