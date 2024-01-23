@@ -16,6 +16,6 @@ const index = () => {
     </MainCard>
     </>
   )
-}
+};
 
 export default index
