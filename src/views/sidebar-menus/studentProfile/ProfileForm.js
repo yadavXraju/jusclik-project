@@ -20,7 +20,8 @@ export default function ProdileForm() {
       <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2}>
         <Grid item xs={12}>
-        <TextField id="outlined-basic" fullWidth disabled value={'Male'} label="Gender" variant="outlined" />
+        <TextField
+         id="outlined-basic" fullWidth disabled value={'Male'} label="Gender" variant="outlined" />
         </Grid>
         <Grid item xs={12}>
         <TextField id="outlined-basic" fullWidth disabled label="Address" variant="outlined" />

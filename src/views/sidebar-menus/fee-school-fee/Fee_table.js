@@ -6,30 +6,34 @@ import { visuallyHidden } from '@mui/utils';
 import PrintTwoToneIcon from '@mui/icons-material/PrintTwoTone';
 
 
+import Popover from '@mui/material/Popover';
+import Button from '@mui/material/Button';
+import rows from './Fee_tabledata';
 
-function createData(id, name, date, ldate, netpay, amtpay, bal, receiptno, receiptdate, paymode, status) {
-  return {
-    id,
-    name,
-    date,
-    ldate,
-    netpay,
-    amtpay,
-    bal,
-    receiptno,
-    receiptdate,
-    paymode,
-    status,
-  };
-}
 
-const rows = [
-  createData(1, 'Regular', '01/May/2024', '28/Feb/2024', 305, 4000, 40000, '1', '28/Jan/2024', 'Adj Entry', 'Overdue'),
-  createData(2, 'Tution', '01/Mar/2024', '22/Dec/2024', 30, 45000, 45000, '2', '28/Feb/2024', 'Demand Draft', 'paid'),
-  createData(3, 'Practical', '01/Jul/2024', '23/Jan/2024', 3067, 9000, 43000, '3', '28/Mar/2024', 'Adj Entry', 'Overdue'),
-  createData(4, 'Tution', '01/Jun/2024', '22/Sep/2024', 3088, 5000, 35000, '4', '28/Apr/2024', 'Credit/Debit Card', 'paid'),
-  createData(5, 'Regular', '01/Aug/2024', '21/Nov/2024', 3043, 8000, 54000, '5', '28/May/2024', 'Unpaid', 'paid'),
-];
+// function createData(id, name, date, ldate, netpay, amtpay, bal, receiptno, receiptdate, paymode, status) {
+//   return {
+//     id,
+//     name,
+//     date,
+//     ldate,
+//     netpay,
+//     amtpay,
+//     bal,
+//     receiptno,
+//     receiptdate,
+//     paymode,
+//     status,
+//   };
+// }
+
+// const rows = [
+//   createData(1, 'Regular', '01/May/2024', '28/Feb/2024', 305, 4000, 40000, '1', '28/Jan/2024', 'Adj Entry', 'Overdue'),
+//   createData(2, 'Tution', '01/Mar/2024', '22/Dec/2024', 30, 45000, 45000, '2', '28/Feb/2024', 'Demand Draft', 'paid'),
+//   createData(3, 'Practical', '01/Jul/2024', '23/Jan/2024', 3067, 9000, 43000, '3', '28/Mar/2024', 'Adj Entry', 'Overdue'),
+//   createData(4, 'Tution', '01/Jun/2024', '22/Sep/2024', 3088, 5000, 35000, '4', '28/Apr/2024', 'Credit/Debit Card', 'paid'),
+//   createData(5, 'Regular', '01/Aug/2024', '21/Nov/2024', 3043, 8000, 54000, '5', '28/May/2024', 'Unpaid', 'paid'),
+// ];
 
 
 function descendingComparator(a, b, orderBy) {
@@ -244,6 +248,33 @@ export default function FeeDataTable() {
   const [selected, setSelected] = useState([]);
   const [searchText, setSearchText] = useState('');
 
+
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const handlePrintClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handlePrintClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handlePrintReceipt = () => {
+    // Logic for printing receipt
+    // ...
+    handlePrintClose();
+  };
+
+  const handlePrintInvoice = () => {
+    // Logic for printing invoice
+    // ...
+    handlePrintClose();
+  };
+
+  const open = Boolean(anchorEl);
+  const id = open ? 'print-popover' : undefined;
+
+
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
     setOrder(isAsc ? 'desc' : 'asc');
@@ -375,8 +406,30 @@ export default function FeeDataTable() {
                         </Box>
                       </Box>
                     </TableCell>
-                    <TableCell align="right"><IconButton onClick={() => handlePrint(id)}><PrintTwoToneIcon /></IconButton>
+                    <TableCell align="right">
+                      <IconButton onClick={handlePrintClick}><PrintTwoToneIcon /></IconButton>
                     </TableCell>
+
+                    <Popover
+                      id={id}
+                      open={open}
+                      anchorEl={anchorEl}
+                      onClose={handlePrintClose}
+                      anchorOrigin={{
+                        vertical: 'bottom',
+                        horizontal: 'center',
+                      }}
+                      transformOrigin={{
+                        vertical: 'top',
+                        horizontal: 'center',
+                      }}
+                    >
+                      <Typography sx={{ p: 2 , display:'Grid'}}>
+                        <Button sx={{color:'black', borderBottom:'1px dotted #ccc'}} onClick={handlePrintReceipt}>Print Receipt</Button>
+                        <Button sx={{color:'black'}} onClick={handlePrintInvoice}>Print Invoice</Button>
+                      </Typography>
+                    </Popover>
+
                   </TableRow>
                 );
               })}
