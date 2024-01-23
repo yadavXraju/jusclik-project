@@ -8,10 +8,11 @@ import ListItemDecorator from '@mui/joy/ListItemDecorator';
 import Avatar from '@mui/material/Avatar';
 import MailOutlinedIcon from '@mui/icons-material/MailOutlined';
 import Typography from '@mui/material/Typography';
-import MainCard from 'ui-component/cards/MainCard';
+// import MainCard from 'ui-component/cards/MainCard';
 import Box from '@mui/material/Box';
 import Badge from '@mui/material/Badge';
 import { useNavigate } from 'react-router';
+import UrlPage from 'views/navigation-for-pages';
 
 export const commonStyles = {
   bgcolor: 'background.paper',
@@ -44,7 +45,9 @@ export default function AlignItemsList() {
   const navigate = useNavigate()
   
   return (
-    <MainCard title="CONTACT" sx={{ fontSize: '22px', fontWeight: 'bold' }}>
+    // <MainCard title="CONTACTS" sx={{ fontSize: '22px', fontWeight: 'bold' }}>
+    <>
+    <UrlPage/>
       <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
         {contactData.map((contact, index) => (
           <React.Fragment key={index}>
@@ -77,6 +80,6 @@ export default function AlignItemsList() {
           </React.Fragment>
         ))}
       </List>
-    </MainCard>
+    </>
   );
 }

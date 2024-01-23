@@ -8,7 +8,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
 
-export default function OtpDialog({ open, onClose, selectedLoginID }) {
+export default function OtpDialog({ open, onClose, selectedLoginID, dialogSource }) {
     const [otp, setOtp] = useState('');
 
     const handleClose = () => {
@@ -20,6 +20,17 @@ export default function OtpDialog({ open, onClose, selectedLoginID }) {
         // Validate OTP
         if (/^[0-9]{6}$/.test(otp)) {
             console.log('Valid OTP:', otp);
+
+            // Decide redirection based on the dialogSource
+            if (dialogSource === 'forgotCredentials') {
+                // Redirect to '/SetNewPassword' when opened through Forgot Credentials text
+                navigate('/SetNewPassword');
+            } else if (dialogSource === 'otpToggle') {
+                // Redirect to 'https://www.google.com' when opened through OTP toggle
+                window.location.href = 'https://www.google.com';
+            }
+
+            // If you want to close the dialog after submission, keep the next line
             handleClose();
         } else {
             console.log('Invalid OTP');
@@ -79,7 +90,7 @@ export default function OtpDialog({ open, onClose, selectedLoginID }) {
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose}>Cancel</Button>
-                    <Button type="submit" onClick={() => navigate('/SetNewPassword')}>Submit</Button>
+                    <Button type="submit">Submit</Button>
                 </DialogActions>
             </form>
         </Dialog>
