@@ -1,25 +1,26 @@
 import React, { useState } from 'react';
 import {
   Container,
-  Typography,
   Tabs,
   Tab,
   Paper,
-  Grid,
-  Tooltip,
-  IconButton,
   useMediaQuery,
   useTheme,
 
 } from '@mui/material';
-
-import AttachmentIcon from '@mui/icons-material/Attachment';
-import DownloadIcon from '@mui/icons-material/Download';
-import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
-import CreateIcon from '@mui/icons-material/Create';
+// icon from mui
 import { data } from './AssignmentData';
 import Attcgment from './Attcgment';
 import Heading from './Heading';
+<<<<<<< HEAD
+
+import SearchAssignment from './SearchAssignment';
+=======
+import AssignmentItem from './AssignmentItem';
+
+
+>>>>>>> a6cb32344b793edb47d20f6d972e3567bd8aa93d
+
 import UrlPage from 'views/navigation-for-pages';
 
 const Assignments = () => {
@@ -29,23 +30,29 @@ const Assignments = () => {
   const [openDialog, setOpenDialog] = useState(false);
   const [snackbarOpen, setSnackbarOpen] = useState(false);
 
+
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
   
-
+// current Date Function to check compare due date
   const currentDate = new Date();
 
+
+  // filter function to seprate upcoming assignment
   const upcomingAssignments = data.filter(item => {
     const dueDate = new Date(item.dueDate);
     return dueDate >= currentDate;
   });
-
+  // filter function to seprate past  assignment
   const previousAssignments = data.filter(item => {
     const dueDate = new Date(item.dueDate);
     return dueDate < currentDate;
   });
 
+
+// sort assignment based on due date
   const sortAssignmentsByDueDate = assignments => {
     return assignments.sort((a, b) => {
       const dueDateA = new Date(a.dueDate);
@@ -56,21 +63,26 @@ const Assignments = () => {
 
   const sortedUpcomingAssignments = sortAssignmentsByDueDate(upcomingAssignments);
 
+
+  // Date formatter 
   const getFormattedDate = dateString => {
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
 
+
+// open dialogbox where assigment upload function
   const handleOpenDialog = () => {
     setOpenDialog(true);
   };
 
+// close dialogbox where assigment upload function
   const handleCloseDialog = () => {
 
     setSnackbarOpen(true); // Show a Snackbar notification
     setOpenDialog(false);
   };
-
+// pop up notification for assignment submitted
   const handleSnackbarClose = () => {
     setSnackbarOpen(false);
   };
@@ -80,6 +92,7 @@ const Assignments = () => {
   return (
     <>
     <UrlPage />
+<<<<<<< HEAD
     <Grid container spacing={2} justifyContent="center" alignItems="center">
       <Grid item xs={12}>
         <Grid maxWidth="xl" xs={12} style={{ marginTop: 20 }}>
@@ -134,6 +147,43 @@ const Assignments = () => {
     </Grid>
               </Paper>
     ))}
+=======
+    <Container maxWidth="xl" xs={12} style={{ marginTop: 20 }}>
+      <SearchAssignment/>
+      <Paper style={{ padding: 20 }}>
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          centered={!isSmallScreen}
+          variant={isSmallScreen ? 'scrollable' : 'standard'}>
+          <Tab label="UPCOMING" value="UPCOMING" />
+          <Tab label="PAST" value="PAST" />
+        </Tabs>
+        <div className="tabs">
+          {value === 'UPCOMING' && (
+            <div className="panel">
+               <Container maxWidth="xl" style={{ marginTop: 20 }}>
+                 <Heading/>
+                   {sortedUpcomingAssignments.map((item,index) => (
+                          <AssignmentItem key={item.id} item={item} index={index} handleOpenDialog={handleOpenDialog} getFormattedDate={getFormattedDate}/>
+                     ))}
+               </Container>
+            </div>
+           )}
+
+          {value === 'PAST' && (
+            <div className="panel">
+               <Heading/>
+              {sortAssignmentsByDueDate(previousAssignments).map((item ,index)=> (
+                   <AssignmentItem key={item.id} item={item} index={index} handleOpenDialog={handleOpenDialog} getFormattedDate={getFormattedDate}/>
+              ))}
+            </div>
+          )}
+        </div>
+      </Paper>
+   <Attcgment isOpen={openDialog} onClose={handleCloseDialog} snackOpen={snackbarOpen} snackBarClose={handleSnackbarClose} />
+  
+>>>>>>> 05f6e916d47430cb13fe9efc34af79afe07a3fc6
     </Container>
                 </div>
               )}
