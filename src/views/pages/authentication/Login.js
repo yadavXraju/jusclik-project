@@ -37,6 +37,7 @@ export default function LoginPage() {
 
   const handleDialogToggle = () => {
     setDialogOpen(!dialogOpen);
+    setSelectAccountOpen(false); // Close SelectAccount dialog when opening EnterMobileDialog
   };
 
   const handleSelectAccountToggle = () => {
@@ -207,7 +208,7 @@ export default function LoginPage() {
                   Forgot Credentials
                 </Typography>
                 <EnterMobileDialog open={dialogOpen} onClose={handleDialogToggle} onMobileSubmit={handleMobileSubmit} />
-                <SelectAccount open={selectAccountOpen} onClose={handleSelectAccountToggle} />
+        <SelectAccount open={selectAccountOpen} onClose={handleSelectAccountToggle} />
               </Grid>
               <Box sx={{ display: 'flex', alignItems: 'end', justifyContent: 'end', mt: 4 }}>
                 <ToggleGroupVariants />

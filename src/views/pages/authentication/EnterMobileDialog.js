@@ -1,5 +1,3 @@
-EnterMobileDialog.js//
-
 import React, { useState } from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
@@ -15,7 +13,7 @@ import SelectAccount from './SelectAccount';
 export default function EnterMobileDialog({ open, onClose, onMobileSubmit, onOtpToggle }) {
   const [country, setCountry] = React.useState('India');
   const [mobileNumber, setMobileNumber] = React.useState('');
-  const [otpDialogOpen, setOtpDialogOpen] = useState(false); // State for controlling OTP Dialog visibility
+  const [otpDialogOpen, setOtpDialogOpen] = useState(false); // Use useState for OTP dialog visibility
 
   const handleCountryChange = (event) => {
     setCountry(event.target.value);
@@ -32,7 +30,7 @@ export default function EnterMobileDialog({ open, onClose, onMobileSubmit, onOtp
     onClose(); // Close the dialog
     setOtpDialogOpen(true); // Open the OTP Dialog
   };
-
+  
   return (
     <React.Fragment>
       <Dialog
@@ -101,10 +99,7 @@ export default function EnterMobileDialog({ open, onClose, onMobileSubmit, onOtp
       {otpDialogOpen && (
         <SelectAccount
           open={otpDialogOpen}
-          onClose={() => {
-            setOtpDialogOpen(false);
-            onClose();
-          }}
+          onClose={() => setOtpDialogOpen(false)}
           onOtpToggle={onOtpToggle}
         />
       )}
