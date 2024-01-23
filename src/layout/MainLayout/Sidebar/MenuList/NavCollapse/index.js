@@ -14,6 +14,9 @@ import NavItem from '../NavItem';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import { IconChevronDown, IconChevronUp } from '@tabler/icons';
 
+// new import for Tooltip
+import Tooltip from '@mui/material/Tooltip';
+
 // ==============================|| SIDEBAR MENU LIST COLLAPSE ITEMS ||============================== //
 
 const NavCollapse = ({ menu, level }) => {
@@ -90,41 +93,50 @@ const NavCollapse = ({ menu, level }) => {
     />
   );
 
+  // Custom tooltip content for submenu hover
+  const tooltipContent = (
+    <List component="div" sx={{ backgroundColor: '#ffffff !important', }}>
+      {menus}
+    </List>
+  );
+
   return (
     <>
-      <ListItemButton
-        sx={{
-          borderRadius: `${customization.borderRadius}px`,
-          mb: 0.5,
-          alignItems: 'flex-start',
-          backgroundColor: level > 1 ? 'transparent !important' : 'inherit',
-          py: level > 1 ? 1 : 1.25,
-          pl: `${level * 24}px`
-        }}
-        selected={selected === menu.id}
-        onClick={handleClick}
-      >
-        <ListItemIcon sx={{ my: 'auto', minWidth: !menu.icon ? 18 : 36 }}>{menuIcon}</ListItemIcon>
-        <ListItemText
-          primary={
-            <Typography variant={selected === menu.id ? 'h5' : 'body1'} color="inherit" sx={{ my: 'auto' }}>
-              {menu.title}
-            </Typography>
-          }
-          secondary={
-            menu.caption && (
-              <Typography variant="caption" sx={{ ...theme.typography.subMenuCaption }} display="block" gutterBottom>
-                {menu.caption}
+      <Tooltip title={tooltipContent}   placement="right" >
+        <ListItemButton
+          sx={{
+            borderRadius: `${customization.borderRadius}px`,
+            mb: 0.5,
+            alignItems: 'flex-start',
+            backgroundColor: level > 1 ? 'transparent !important' : 'inherit',
+            py: level > 1 ? 1 : 1.25,
+            pl: `${level * 24}px`
+          }}
+          selected={selected === menu.id}
+          onClick={handleClick}
+        >
+          <ListItemIcon sx={{ my: 'auto', minWidth: !menu.icon ? 18 : 36 }} className='findcc'>{menuIcon}</ListItemIcon>
+          <ListItemText
+            primary={
+              <Typography variant={selected === menu.id ? 'h5' : 'body1'} color="inherit" sx={{ my: 'auto' }}>
+                {menu.title}
               </Typography>
-            )
-          }
-        />
-        {open ? (
-          <IconChevronUp stroke={1.5} size="1rem" style={{ marginTop: 'auto', marginBottom: 'auto' }} />
-        ) : (
-          <IconChevronDown stroke={1.5} size="1rem" style={{ marginTop: 'auto', marginBottom: 'auto' }} />
-        )}
-      </ListItemButton>
+            }
+            secondary={
+              menu.caption && (
+                <Typography variant="caption" sx={{ ...theme.typography.subMenuCaption }} display="block" gutterBottom>
+                  {menu.caption}
+                </Typography>
+              )
+            }
+          />
+          {open ? (
+            <IconChevronUp stroke={1.5} size="1rem" style={{ marginTop: 'auto', marginBottom: 'auto' }} />
+          ) : (
+            <IconChevronDown stroke={1.5} size="1rem" style={{ marginTop: 'auto', marginBottom: 'auto' }} />
+          )}
+        </ListItemButton>
+      </Tooltip>
       <Collapse in={open} timeout="auto" unmountOnExit>
         <List
           component="div"
@@ -142,6 +154,7 @@ const NavCollapse = ({ menu, level }) => {
               background: theme.palette.primary.light
             }
           }}
+          className='submenutitle'
         >
           {menus}
         </List>

@@ -22,6 +22,7 @@ import sidebarMenu from 'menu-items/sidebar-menu';
 
 export default function Credentials() {
 
+  // ============= User Name textfield toggle code ===========
   const [displayItem, setDisplayItem] = useState('changeEmail')
   const handleDisplay = () => {
     if (displayItem === 'changeEmail') {
@@ -33,6 +34,7 @@ export default function Credentials() {
     }
   }
 
+   // ============= Password textfield toggle code ===========
   const [displayPassword, setDisplayPassword] = useState('showPassword')
   const handleDisplayPassword = () => {
     if (displayPassword === 'showPassword') {
@@ -44,6 +46,7 @@ export default function Credentials() {
     }
   }
 
+   // ============= Configure toggle code ===========
   const [displayStudentPre, setdisplayStudentPre] = useState('displayStudentPre')
   const handledisplayStudentPre = () => {
     if (displayStudentPre === 'displayStudentPre') {
@@ -55,6 +58,7 @@ export default function Credentials() {
     }
   }
 
+   // ============= User Name textfield toggle code ===========
   const [displayUseremail, setdisplayUseremail] = useState('displayUseremail')
   const handledisplayUseremail = () => {
     if (displayUseremail === 'displayUseremail') {
@@ -66,6 +70,7 @@ export default function Credentials() {
     }
   }
 
+   // ============= User Password textfield toggle code ===========
   const [displayUserpassword, setdisplayUserpassword] = useState('displayUserpassword')
   const handledisplayUserpassword = () => {
     if (displayUserpassword === 'displayUserpassword') {
@@ -80,6 +85,7 @@ export default function Credentials() {
 
   return (
     <>
+       {/* ============== Credentials component ============== */}
       <Card sx={{ border: '1px solid #ccc' }}>
         <Typography sx={{ p: 2, borderBottom: '1px solid #ccc' }} variant='h5' component="div">
           Credentials
@@ -192,6 +198,8 @@ export default function Credentials() {
       </Card>
        
        <br/><br/>
+
+
       <Box className={displayStudentPre} sx={{ display: displayStudentPre.includes('active') ? 'Block' : 'none' }}>
 
       <Card sx={{ border: '1px solid #ccc' }}>
@@ -285,6 +293,7 @@ export default function Credentials() {
       </Card>
       <br/><br/>
       
+      {/* =========== Student Deshboard Preferences ============= */}
       <Card sx={{ border: '1px solid #ccc' }}>
         <Typography sx={{ p: 2, borderBottom: '1px solid #ccc' }} variant='h5' component="div">
           Student Deshboard Preferences

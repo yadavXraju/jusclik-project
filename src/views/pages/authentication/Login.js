@@ -24,85 +24,117 @@ import LogoImg from '../../../assets/images/WhatsApp_Image_2020-03-21_at_8_04_53
 import PlayStoreImage from '../../../assets/images/Google-Play.png';
 import AppleStoreImage from '../../../assets/images/app-store.png';
 import CloudLogo from '../../../assets/images/Untitled-2.png';
+import { useNavigate } from 'react-router-dom';
 import EnterMobileDialog from './EnterMobileDialog';
+<<<<<<< HEAD
 import SelectAccount from './SelectAccount';
+=======
+import axios from 'axios';
+import Config from '../../../config';
+import SetSession from '../../../session/setsession';
+
+>>>>>>> 3d80b07f40996be8b9cabc315b2a3e38eaf170eb
 const defaultTheme = createTheme();
 
-export default function LoginPage() {
+function ToggleGroupVariants() {
+  const navigate = useNavigate();
+  const [value, setValue] = React.useState('plain');
+
+  return (
+    <FormControl>
+      <Grid container>
+        <Grid item>
+          <ToggleButtonGroup
+            value={value}
+            exclusive
+            onChange={(event, newValue) => {
+              setValue(newValue);
+              setSelectedVariant(newValue);
+            }}
+            style={{
+              borderRadius: '50px',
+              border: '2px solid #fff',
+            }}
+          >
+            <ToggleButton
+              style={{
+                borderRadius: '50px 0px 0px 50px',
+                width: '110px',
+                color: value === 'plain' ? '#000' : '#fff',
+                backgroundColor: value === 'plain' ? '#fff' : 'initial',
+                border: 'none', // Remove border for individual button
+              }}
+              value="plain"
+            >
+              Password
+            </ToggleButton>
+            <ToggleButton
+              onClick={() => navigate('/otplogin')}
+              style={{
+                borderRadius: '0px 50px 50px 0px',
+                width: '110px',
+                color: value === 'outlined' ? '#000' : '#fff',
+                backgroundColor: value === 'outlined' ? '#fff' : 'initial',
+                border: 'none', // Remove border for individual button
+              }}
+              value="outlined"
+            >
+              OTP
+            </ToggleButton>
+          </ToggleButtonGroup>
+        </Grid>
+      </Grid>
+    </FormControl>
+  );
+}
+
+export default function LogInPage() {
   const [showPassword, setShowPassword] = useState(false);
+
   const [dialogOpen, setDialogOpen] = useState(false);
-  const [selectAccountOpen, setSelectAccountOpen] = useState(false);
-  const [selectedVariant, setSelectedVariant] = useState('plain');
 
   const handleDialogToggle = () => {
     setDialogOpen(!dialogOpen);
-    setSelectAccountOpen(false); // Close SelectAccount dialog when opening EnterMobileDialog
   };
 
-  const handleSelectAccountToggle = () => {
-    setSelectAccountOpen(!selectAccountOpen);
-    setDialogOpen(false); // Close EnterMobileDialog when opening SelectAccount
-  };
-
-  const handleMobileSubmit = ({ country, mobileNumber }) => {
-    console.log(`Submitted Mobile Number: ${country} ${mobileNumber}`);
-    handleSelectAccountToggle();
+  const handleClickOpen = () => {
+    setDialogOpen(true);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log('Form submitted');
+    const data = new FormData(event.currentTarget);
+    fetchData(data);
   };
+  const navigate = useNavigate(); 
+  const fetchData = async (Data) => {
+      const response = await axios.get(
+        Config.apiUrl+'/login',
+        { 
+          params: {
+            SCode: 6,
+            LoginID: Data.get('Username'),
+            Password: Data.get('password'),
+            DeviceType: 0,
+            DeviceID: '',
+            MobileApp: 0,
+          },
+         
+        }
+      );
+      var jResponse = JSON.parse(response.data);
+      if (jResponse.authcode !== null && jResponse.authcode !== '' && jResponse.authcode !== undefined) {
+        localStorage.setItem("token", jResponse.authcode);
+        SetSession();
+        navigate('/dashboard');
+      } else {
+        alert('Invalid Authentication');
+      }
+  
+  };
+  
 
-  const ToggleGroupVariants = () => {
-    return (
-      <FormControl>
-        <Grid container>
-          <Grid item>
-            <ToggleButtonGroup
-              value={selectedVariant}
-              exclusive
-              onChange={(event, newValue) => {
-                setSelectedVariant(newValue);
-                if (newValue === 'outlined') {
-                  handleDialogToggle(); // Open the EnterMobileDialog
-                }
-              }}
-              style={{
-                borderRadius: '50px',
-                border: '2px solid #fff',
-              }}
-            >
-              <ToggleButton
-                style={{
-                  borderRadius: '50px 0px 0px 50px',
-                  width: '110px',
-                  color: selectedVariant === 'plain' ? '#000' : '#fff',
-                  backgroundColor: selectedVariant === 'plain' ? '#fff' : 'initial',
-                  border: 'none',
-                }}
-                value="plain"
-              >
-                Password
-              </ToggleButton>
-              <ToggleButton
-                style={{
-                  borderRadius: '0px 50px 50px 0px',
-                  width: '110px',
-                  color: selectedVariant === 'outlined' ? '#000' : '#fff',
-                  backgroundColor: selectedVariant === 'outlined' ? '#fff' : 'initial',
-                  border: 'none',
-                }}
-                value="outlined"
-              >
-                OTP
-              </ToggleButton>
-            </ToggleButtonGroup>
-          </Grid>
-        </Grid>
-      </FormControl>
-    );
-  };
+
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -202,12 +234,17 @@ export default function LoginPage() {
                 label={<Typography sx={{ color: '#fff' }}>Remember me</Typography>}
               />
               <Grid item xs sx={{ display: 'flex', justifyContent: 'end', alignItems: 'end', mt: -4 }} style={{ cursor: 'pointer' }}>
-
-                <Typography variant="body2" sx={{ cursor: 'pointer', color: '#fff' }} onClick={handleDialogToggle}>
+                
+                <EnterMobileDialog open={dialogOpen} onClose={handleDialogToggle} onClick={handleClickOpen}/>
+                  {/* <Typography variant="body2" sx={{ cursor: 'pointer', color: '#fff' }} onClick={handleClickOpen}>
                   Forgot Credentials
+<<<<<<< HEAD
                 </Typography>
                 <EnterMobileDialog open={dialogOpen} onClose={handleDialogToggle} onMobileSubmit={handleMobileSubmit} />
                 <SelectAccount open={selectAccountOpen} onClose={handleSelectAccountToggle} />
+=======
+                </Typography> */}
+>>>>>>> 3d80b07f40996be8b9cabc315b2a3e38eaf170eb
               </Grid>
               <Box sx={{ display: 'flex', alignItems: 'end', justifyContent: 'end', mt: 4 }}>
                 <ToggleGroupVariants />
