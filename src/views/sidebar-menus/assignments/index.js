@@ -12,14 +12,11 @@ import {
 import { data } from './AssignmentData';
 import Attcgment from './Attcgment';
 import Heading from './Heading';
-<<<<<<< HEAD
 import AssignmentItem from './AssignmentItem';
 
 
 
-=======
 import UrlPage from 'views/navigation-for-pages';
->>>>>>> 5a13726c70ddae23df5fecdc5c70ecc701cfff55
 
 const Assignments = () => {
   const theme = useTheme();
