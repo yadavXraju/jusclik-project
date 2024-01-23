@@ -1,5 +1,6 @@
 // Import necessary dependencies from Material-UI
-import React, { useState} from 'react';
+import React, { useState, useEffect } from 'react';
+
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import MainCard from 'ui-component/cards/MainCard';
@@ -7,12 +8,12 @@ import { useTheme, useMediaQuery, Box, Typography } from '@mui/material';
 import ProdileCard from './StudentProfile';
 import Grid from '@mui/material/Grid';
 import ProdileForm from './ProfileForm';
-// import Transport from './Transport';
 import FatherDetails from './FatherDetails';
 import MotherDetails from './MotherDetails';
 import GuardianDetails from './GuardianDetails';
 import Credentials from './Credentials';
 import DocumentTabs from './DocumentsTab';
+import { useLocation } from 'react-router';
 
 
 
@@ -49,7 +50,21 @@ function a11yProps(index) {
 
 // Main component for rendering the tab section
 function Profile() {
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState(0); 
+ // Get the location object from react-router-dom
+ const location = useLocation();
+
+ // Set the initial tab value from the state in the location object
+ 
+ useEffect(() => {
+  if (location.state && location.state.initialTab !== undefined) {
+    setValue(location.state.initialTab);
+  }
+}, [location.state]);
+
+
+
+  // const [value, setValue] = useState(0);
 
   // Event handler for tab change
   const handleChange = (event, newValue) => {
