@@ -1,13 +1,12 @@
-import { Typography } from '@mui/material'
+import { Typography , useMediaQuery } from '@mui/material'
 import { studentProfileDetails } from 'layout/MainLayout/Header/ProfileSection/ProfileDeatails'
 import React from 'react'
-
+import { welcomeMsg } from '../dashboard-css/CommonCss'
 const WelcomeMessage = () => {
+  const isMobile = useMediaQuery('(max-width: 767px)');
   return (
     <>
-     <Typography variant='h1' sx={{py:2,color:'#121926ab', fontSize: '45px' , '@media (max-width:767px)': {
-    fontSize: '32px',
-  },}}>   Hello {studentProfileDetails.StudentName} !</Typography>
+     <Typography  style={welcomeMsg}  variant='h1' sx={{py:2, fontSize: isMobile ? '32px' : '40px'}}>   Hello {studentProfileDetails.StudentName} !</Typography>
     </>
   )
 }

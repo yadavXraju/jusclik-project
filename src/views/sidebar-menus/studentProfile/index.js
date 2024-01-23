@@ -1,5 +1,5 @@
 // Import necessary dependencies from Material-UI
-import React, { useState } from 'react';
+import React, { useState} from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import MainCard from 'ui-component/cards/MainCard';
@@ -12,7 +12,7 @@ import FatherDetails from './FatherDetails';
 import MotherDetails from './MotherDetails';
 import GuardianDetails from './GuardianDetails';
 import Credentials from './Credentials';
-import Documents from './Documents';
+import DocumentTabs from './DocumentsTab';
 
 
 
@@ -56,6 +56,9 @@ function Profile() {
     setValue(newValue);
   };
 
+  
+
+
   // Render the tab section
   return (
     <MainCard title="Student Profile" >
@@ -95,7 +98,7 @@ function Profile() {
        <GuardianDetails/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={4}>
-       <Documents/>
+       <DocumentTabs/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={5}>
        <Credentials/>

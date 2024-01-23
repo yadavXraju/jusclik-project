@@ -10,18 +10,29 @@ import KeyboardArrowRightOutlinedIcon from '@mui/icons-material/KeyboardArrowRig
 import { Typography, ListItem, Divider, Avatar, ListItemAvatar, List, ListItemText, ListItemIcon } from '@mui/material';
 import OtpDialog from './OtpDialog';
 
-const SelectAccount = ({ open, onClose }) => {
+const SelectAccount = ({ open, onClose, onOtpToggle }) => {
     const [selectedListItem, setSelectedListItem] = useState(null);
     const [otpDialogOpen, setOtpDialogOpen] = useState(false);
 
     const handleListItemClick = (item) => {
         setSelectedListItem(item);
-        setOtpDialogOpen(true);
-        handleClose(); // Close the SelectAccount dialog
+
+        if (onOtpToggle) {
+            onOtpToggle(item.id);
+            setOtpDialogOpen(true);
+            handleClose();
+        } else {
+            setOtpDialogOpen(true);
+        }
     };
 
     const handleClose = () => {
         onClose(false);
+    };
+
+    const handleOtpDialogClose = () => {
+        setOtpDialogOpen(false);
+        handleClose();
     };
 
     return (
@@ -44,7 +55,6 @@ const SelectAccount = ({ open, onClose }) => {
                 </IconButton>
                 <DialogContent dividers>
                     <List sx={{ width: '100%', maxWidth: 400, bgcolor: 'background.paper' }}>
-                        {/* Map over your list items */}
                         {[
                             { id: 1, name: 'Shauryasoft Presentation 1' },
                             { id: 2, name: 'Shauryasoft Presentation 2' },
@@ -93,13 +103,10 @@ const SelectAccount = ({ open, onClose }) => {
                     </Button>
                 </DialogActions>
             </BootstrapDialog>
-            {selectedListItem && (
+            {selectedListItem && otpDialogOpen && (
                 <OtpDialog
                     open={otpDialogOpen}
-                    onClose={() => {
-                        setOtpDialogOpen(false); // Close the OtpDialog
-                        // Additional logic you want to perform on OTP dialog close
-                    }}
+                    onClose={handleOtpDialogClose}
                     selectedListItem={selectedListItem}
                 />
             )}

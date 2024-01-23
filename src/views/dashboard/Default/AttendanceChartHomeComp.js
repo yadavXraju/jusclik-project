@@ -1,21 +1,22 @@
 import React from 'react';
 import ApexCharts from 'react-apexcharts';
 import { present, absent } from './chart-data/AttandanceData';
-import { Grid, Paper, Typography , Button , Box } from '@mui/material';
+import { Grid, Paper, Typography , Button , Box ,useMediaQuery  } from '@mui/material';
 import { gridSpacing } from 'store/constant';
 import { HeadingCss } from './dashboard-css/CommonCss';
 import { useNavigate } from 'react-router';
 
 const AttandanceChartHomeComp = () => {
 const navigate = useNavigate();
+const isMobile = useMediaQuery('(max-width: 767px)');
+
+
   const AttendanceBox = {
-    // height:'100%',
-    // background:'#fff',
     display : 'flex',
-    // justifyContent:'center',
     flexDirection: 'column',
     padding : '20px',
-    paddingBottom:'0'
+    paddingBottom:'0',
+    alignItems: isMobile ? 'center' :'auto',
   }
   const chartData = {
     series: [parseFloat(present), parseFloat(absent)],
@@ -23,12 +24,12 @@ const navigate = useNavigate();
       type: 'donut',
     },
     labels: ['Present', 'Absent'],
-    colors: ['#00c853', '#f44336'],
+    colors: ['#61bb61d4', 'rgb(244, 67, 54)'],
     responsive: [{
       breakpoint: 480,
       options: {
         chart: {
-          width: 200,
+          width: '100%',
         },
         legend: {
           position: 'bottom',
@@ -50,11 +51,11 @@ const navigate = useNavigate();
               </Grid>
 
       
-              <Grid className='attandance-graph' style={AttendanceBox}>
-                  <ApexCharts options={chartData} series={chartData.series} type="donut" height={350} />
+              <Grid className='attandance-graph' style={AttendanceBox} >
+                  <ApexCharts options={chartData} series={chartData.series} type="donut" height={370} />
               </Grid>
 
-              <Box sx={{p:3, pt:0 , textAlign:'right'}}>
+              <Box sx={{p:3, pt:0 , textAlign:'right' , marginTop: isMobile ? '2rem' : '0'}}>
                   <Button variant="contained" onClick={() => navigate('/attendance')}>
                     View More
                   </Button>

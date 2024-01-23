@@ -24,87 +24,86 @@ import LogoImg from '../../../assets/images/WhatsApp_Image_2020-03-21_at_8_04_53
 import PlayStoreImage from '../../../assets/images/Google-Play.png';
 import AppleStoreImage from '../../../assets/images/app-store.png';
 import CloudLogo from '../../../assets/images/Untitled-2.png';
-import { useNavigate } from 'react-router-dom';
-import EnterMobileDialog from './EnterMobileDialog'
-
-
+import EnterMobileDialog from './EnterMobileDialog';
+import SelectAccount from './SelectAccount';
 
 const defaultTheme = createTheme();
 
-function ToggleGroupVariants() {
-  const navigate = useNavigate();
-  const [value, setValue] = React.useState('plain');
-
-  return (
-    <FormControl>
-      <Grid container>
-        <Grid item>
-          <ToggleButtonGroup
-            value={value}
-            exclusive
-            onChange={(event, newValue) => {
-              setValue(newValue);
-              setSelectedVariant(newValue);
-            }}
-            style={{
-              borderRadius: '50px',
-              border: '2px solid #fff',
-            }}
-          >
-            <ToggleButton
-              style={{
-                borderRadius: '50px 0px 0px 50px',
-                width: '110px',
-                color: value === 'plain' ? '#000' : '#fff',
-                backgroundColor: value === 'plain' ? '#fff' : 'initial',
-                border: 'none', // Remove border for individual button
-              }}
-              value="plain"
-            >
-              Password
-            </ToggleButton>
-            <ToggleButton
-              onClick={() => navigate('/otplogin')}
-              style={{
-                borderRadius: '0px 50px 50px 0px',
-                width: '110px',
-                color: value === 'outlined' ? '#000' : '#fff',
-                backgroundColor: value === 'outlined' ? '#fff' : 'initial',
-                border: 'none', // Remove border for individual button
-              }}
-              value="outlined"
-            >
-              OTP
-            </ToggleButton>
-          </ToggleButtonGroup>
-        </Grid>
-      </Grid>
-    </FormControl>
-  );
-}
-
-export default function LogInPage() {
+export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
-
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [selectAccountOpen, setSelectAccountOpen] = useState(false);
+  const [selectedVariant, setSelectedVariant] = useState('plain');
 
   const handleDialogToggle = () => {
     setDialogOpen(!dialogOpen);
   };
 
-  const handleClickOpen = () => {
-    setDialogOpen(true);
+  const handleSelectAccountToggle = () => {
+    setSelectAccountOpen(!selectAccountOpen);
+    setDialogOpen(false); // Close EnterMobileDialog when opening SelectAccount
+  };
+
+  const handleMobileSubmit = ({ country, mobileNumber }) => {
+    console.log(`Submitted Mobile Number: ${country} ${mobileNumber}`);
+    handleSelectAccountToggle();
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('Username'),
-      password: data.get('password'),
-      otp: data.get('otp'),
-    });
+    console.log('Form submitted');
   };
+
+  const ToggleGroupVariants = () => {
+    return (
+      <FormControl>
+        <Grid container>
+          <Grid item>
+            <ToggleButtonGroup
+              value={selectedVariant}
+              exclusive
+              onChange={(event, newValue) => {
+                setSelectedVariant(newValue);
+                if (newValue === 'outlined') {
+                  handleDialogToggle(); // Open the EnterMobileDialog
+                }
+              }}
+              style={{
+                borderRadius: '50px',
+                border: '2px solid #fff',
+              }}
+            >
+              <ToggleButton
+                style={{
+                  borderRadius: '50px 0px 0px 50px',
+                  width: '110px',
+                  color: selectedVariant === 'plain' ? '#000' : '#fff',
+                  backgroundColor: selectedVariant === 'plain' ? '#fff' : 'initial',
+                  border: 'none',
+                }}
+                value="plain"
+              >
+                Password
+              </ToggleButton>
+              <ToggleButton
+                style={{
+                  borderRadius: '0px 50px 50px 0px',
+                  width: '110px',
+                  color: selectedVariant === 'outlined' ? '#000' : '#fff',
+                  backgroundColor: selectedVariant === 'outlined' ? '#fff' : 'initial',
+                  border: 'none',
+                }}
+                value="outlined"
+              >
+                OTP
+              </ToggleButton>
+            </ToggleButtonGroup>
+          </Grid>
+        </Grid>
+      </FormControl>
+    );
+  };
+
   return (
     <ThemeProvider theme={defaultTheme}>
       <Grid container component="main" sx={{ minHeight: '100vh' }}>
@@ -203,11 +202,12 @@ export default function LogInPage() {
                 label={<Typography sx={{ color: '#fff' }}>Remember me</Typography>}
               />
               <Grid item xs sx={{ display: 'flex', justifyContent: 'end', alignItems: 'end', mt: -4 }} style={{ cursor: 'pointer' }}>
-                
-                <EnterMobileDialog open={dialogOpen} onClose={handleDialogToggle} onClick={handleClickOpen}/>
-                  {/* <Typography variant="body2" sx={{ cursor: 'pointer', color: '#fff' }} onClick={handleClickOpen}>
+
+                <Typography variant="body2" sx={{ cursor: 'pointer', color: '#fff' }} onClick={handleDialogToggle}>
                   Forgot Credentials
-                </Typography> */}
+                </Typography>
+                <EnterMobileDialog open={dialogOpen} onClose={handleDialogToggle} onMobileSubmit={handleMobileSubmit} />
+                <SelectAccount open={selectAccountOpen} onClose={handleSelectAccountToggle} />
               </Grid>
               <Box sx={{ display: 'flex', alignItems: 'end', justifyContent: 'end', mt: 4 }}>
                 <ToggleGroupVariants />

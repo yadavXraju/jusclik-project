@@ -2,11 +2,12 @@
   "name": "berry-free-material-react-cra",
   "version": "3.3.2",
   "private": true,
-  "homepage": "https://berrydashboard.io/free",
+  "homepage": "https://berrydashboard.io/dashboard",
   "dependencies": {
     "@emotion/cache": "^11.9.3",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "@fontsource/plus-jakarta-sans": "^5.0.18",
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
     "@fortawesome/free-brands-svg-icons": "^6.5.1",
     "@fortawesome/free-regular-svg-icons": "^6.5.1",
@@ -50,6 +51,7 @@
     "recharts": "^2.10.3",
     "redux": "^4.2.0",
     "slick-carousel": "^1.8.1",
+    "slick-slider": "^1.8.2",
     "use-history": "^1.4.1",
     "yup": "^0.32.11"
   },

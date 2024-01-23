@@ -9,10 +9,12 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper'
 import { Typography } from '@mui/material';
+import UrlPage from 'views/navigation-for-pages';
 
 export default function BasicDateCalendar() {
   return (
     <>
+    <UrlPage />
       <ProgressAttendance />
       <Box>
         <Grid container spacing={2} justifyContent="center" alignItems="center">

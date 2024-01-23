@@ -4,14 +4,13 @@ import Grid from '@mui/material/Grid';
 import { gridSpacing } from 'store/constant';
 import Profile from './Profile';
 import WelcomeAttandanceFeeComp from './WelcomeAttandanceFeeComp';
-// import TotalGrowthBarChart from './TotalGrowthBarChart';
-// import PopularCard from './PopularCard';
 import CircularAndNoticeHomeComp from './CircularAndNoticeHomeComp';
 import AssignmentsHomeComp from './assignmentHome/AssignmentsHomeComp';
 import TimeTableHome from './TimeTableHome';
 import CommunicationHomeComp from './CommunicationHomeComp';
 import AttandanceChartHomeComp from './AttendanceChartHomeComp';
 import Alert from './Alerts';
+// import BasicDateRangeCalendarNew from './cal-home-comp';
 
 
 const Dashboard = ({ isLoading }) => {
@@ -48,49 +47,36 @@ const Dashboard = ({ isLoading }) => {
       <Grid item xs={12}>
         <Grid container spacing={gridSpacing}>
           <Grid item xs={12} md={7} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
-            {/* <AttandanceChartHomeComp isLoading={isLoading} /> */}
             <CommunicationHomeComp isLoading={isLoading} />
           </Grid>
 
-          {/* <Grid item xs={12} md={7}>
-            <CircularAndNoticeHomeComp isLoading={isLoading} />
-          </Grid> */}
-
            <Grid item xs={12} md={5} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
-            {/* <AssignmentsHomeComp isLoading={isLoading} /> */}
             <Alert isLoading={isLoading} /> 
           </Grid>
 
 
           <Grid item xs={12} md={7} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
-             {/* <CircularAndNoticeHomeComp isLoading={isLoading} /> */}
              <AssignmentsHomeComp isLoading={isLoading} />
           </Grid>
           
 
-          {/* <Grid item xs={12} md={7} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
-            <AssignmentsHomeComp isLoading={isLoading} />
-          </Grid> */}
-
 
           <Grid item xs={12} md={5}>
-              {/* <TimeTableHome isLoading={isLoading} />  */}
               <AttandanceChartHomeComp isLoading={isLoading} />
           </Grid>
 
 
           <Grid item xs={12} md={7} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
-             {/* <AttandanceChartHomeComp isLoading={isLoading} /> */}
              <TimeTableHome isLoading={isLoading} /> 
           </Grid>
 
           <Grid item xs={12} md={5}>
-              {/* <Alert isLoading={isLoading} />  */}
-              {/* <AssignmentsHomeComp isLoading={isLoading} /> */}
               <CircularAndNoticeHomeComp isLoading={isLoading} />
           </Grid>
 
-
+          {/* <Grid item xs={12} md={12}>
+              <BasicDateRangeCalendarNew isLoading={isLoading} />
+          </Grid> */}
 
         </Grid>
       </Grid>
