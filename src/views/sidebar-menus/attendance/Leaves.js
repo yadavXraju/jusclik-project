@@ -28,6 +28,7 @@ export default function Leaves() {
                     p: 2,
                 }}
             >
+                {/* leave application */}
                 <Grid container wrap="nowrap" spacing={2}>
                     <Grid item xs zeroMinWidth >
                         <Typography noWrap>Marriage</Typography>
@@ -79,6 +80,7 @@ export default function Leaves() {
                 </Grid>
             </StyledPaper>
         </Box>
+        {/* Apply for leave */}
                <Stack direction="row" spacing={2} sx={{display:"flexbox", justifyContent:"flex-end", alignItems:"flex-end",m: 2 }} >
                   <Button variant="contained">Apply Leave +</Button>
                </Stack>
