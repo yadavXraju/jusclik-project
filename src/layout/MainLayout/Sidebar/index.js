@@ -1,23 +1,31 @@
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-
-// material-ui
 import { useTheme } from '@mui/material/styles';
-import { Box, Chip, Drawer, Stack, useMediaQuery } from '@mui/material';
-
-// third-party
+import { Box, Drawer, useMediaQuery } from '@mui/material';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import { BrowserView, MobileView } from 'react-device-detect';
-
-// project imports
 import MenuList from './MenuList';
 import LogoSection from '../LogoSection';
 import { drawerWidth } from 'store/constant';
-
-// ==============================|| SIDEBAR DRAWER ||============================== //
+import classnames from 'classnames';
 
 const Sidebar = ({ drawerOpen, drawerToggle, window }) => {
   const theme = useTheme();
   const matchUpMd = useMediaQuery(theme.breakpoints.up('md'));
+
+  useEffect(() => {
+    // Add 'drawerclose' class to body when drawer is closed
+    if (!drawerOpen) {
+      document.body.classList.add('drawercloseBody');
+    } else {
+      document.body.classList.remove('drawercloseBody');
+    }
+
+    // Clean up function to remove the class when the component unmounts
+    return () => {
+      document.body.classList.remove('drawercloseBody');
+    };
+  }, [drawerOpen]);
 
   const drawer = (
     <>
@@ -36,15 +44,11 @@ const Sidebar = ({ drawerOpen, drawerToggle, window }) => {
           }}
         >
           <MenuList />
-
         </PerfectScrollbar>
       </BrowserView>
       <MobileView>
         <Box sx={{ px: 2 }}>
           <MenuList />
-          <Stack direction="row" justifyContent="center" sx={{ mb: 2 }}>
-            <Chip label={process.env.REACT_APP_VERSION} disabled chipcolor="secondary" size="small" sx={{ cursor: 'pointer' }} />
-          </Stack>
         </Box>
       </MobileView>
     </>
@@ -59,6 +63,10 @@ const Sidebar = ({ drawerOpen, drawerToggle, window }) => {
         variant={matchUpMd ? 'persistent' : 'temporary'}
         anchor="left"
         open={drawerOpen}
+        className={classnames({
+          drawerOpen: drawerOpen,
+          drawerClose: !drawerOpen,
+        })}
         onClose={drawerToggle}
         sx={{
           '& .MuiDrawer-paper': {
@@ -68,9 +76,8 @@ const Sidebar = ({ drawerOpen, drawerToggle, window }) => {
             borderRight: 'none',
             [theme.breakpoints.up('md')]: {
               top: '124px',
-            
-            }
-          }
+            },
+          },
         }}
         ModalProps={{ keepMounted: true }}
         color="inherit"

@@ -127,3 +127,63 @@
     transform: translateX(10px);
   }
 }
+
+
+
+// this is for drawer sidebar css
+
+@media screen and (min-width: 1200px) {
+  
+  .drawerClose > div {
+    visibility: visible !important;
+    transform: translateX(0px) !important;
+    width: 70px !important;
+  }
+  
+
+  .drawerClose > div p , .drawerClose > div h5 
+   {
+    display: none;
+  }
+
+  .drawerClose > div .MuiButtonBase-root.MuiListItemButton-root.MuiListItemButton-gutters.MuiListItemButton-root.MuiListItemButton-gutters.css-126euq6-MuiButtonBase-root-MuiListItemButton-root ~  .MuiCollapse-root.MuiCollapse-vertical.MuiCollapse-entered.css-pwcg7p-MuiCollapse-root {
+    display: none;
+}
+
+.drawerClose > div .MuiButtonBase-root.MuiListItemButton-root.MuiListItemButton-gutters.Mui-selected.MuiListItemButton-root.MuiListItemButton-gutters.Mui-selected.css-18h3nxw-MuiButtonBase-root-MuiListItemButton-root:hover ~  .MuiCollapse-root.MuiCollapse-vertical.MuiCollapse-entered.css-pwcg7p-MuiCollapse-root ,
+
+.drawerClose > div .MuiButtonBase-root.MuiListItemButton-root.MuiListItemButton-gutters.MuiListItemButton-root.MuiListItemButton-gutters.css-18h3nxw-MuiButtonBase-root-MuiListItemButton-root:hover ~  .MuiCollapse-root.MuiCollapse-vertical.MuiCollapse-entered.css-pwcg7p-MuiCollapse-root ,
+
+
+.drawerClose > div .MuiButtonBase-root.MuiListItemButton-root.MuiListItemButton-gutters.MuiListItemButton-root.MuiListItemButton-gutters.css-18h3nxw-MuiButtonBase-root-MuiListItemButton-root:hover ~  .MuiCollapse-root.MuiCollapse-vertical.MuiCollapse-entered.css-pwcg7p-MuiCollapse-root  p.MuiTypography-root.MuiTypography-body1.css-v0k6rv-MuiTypography-root
+
+{
+  display: block;
+}
+
+  .drawerClose > div a.MuiButtonBase-root.MuiListItemButton-root.MuiListItemButton-gutters.MuiListItemButton-root.MuiListItemButton-gutters.css-126euq6-MuiButtonBase-root-MuiListItemButton-root ,
+  .drawerClose > div .MuiButtonBase-root.MuiListItemButton-root.MuiListItemButton-gutters.MuiListItemButton-root.MuiListItemButton-gutters.css-126euq6-MuiButtonBase-root-MuiListItemButton-root ,   .drawerClose > div  .MuiButtonBase-root.MuiListItemButton-root.MuiListItemButton-gutters.MuiListItemButton-root.MuiListItemButton-gutters.css-18h3nxw-MuiButtonBase-root-MuiListItemButton-root {
+    padding-left: 7px;
+}
+
+// this is tooltip for submenus
+
+.drawercloseBody .MuiTooltip-tooltip.MuiTooltip-tooltipPlacementRight.css-aqcrf3-MuiTooltip-tooltip{
+  background-color: #fff !important;
+  box-shadow: 2px 1px 5px black;
+}
+
+
+div#\:r3\: , div#\:r4\:, div#\:r5\: {
+  display: none !important;
+}
+
+.drawercloseBody div#\:r3\:,.drawercloseBody  div#\:r4\:,.drawercloseBody  div#\:r5\: {
+  display: block !important;
+}
+
+.drawercloseBody div a.MuiButtonBase-root.MuiListItemButton-root.MuiListItemButton-gutters.MuiListItemButton-root.MuiListItemButton-gutters.css-1jcglh9-MuiButtonBase-root-MuiListItemButton-root {
+  padding-left: 8px;
+}
+}
+

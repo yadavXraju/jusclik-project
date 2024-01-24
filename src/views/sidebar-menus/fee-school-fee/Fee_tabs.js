@@ -4,6 +4,7 @@ import Tab from '@mui/material/Tab';
 //import MainCard from 'ui-component/cards/MainCard';
 import { useTheme, useMediaQuery, Box, Typography } from '@mui/material';
 import FeeDataTable from './Fee_table';
+import Summary from './Summary';
 
 
 // Custom component for rendering the content of each tab panel
@@ -53,24 +54,28 @@ function Feetabs() {
       <Box sx={{ borderBottom: 1, borderColor: 'divider', '@media (max-width:600px)': { marginBottom: '15px' } }}>
         {/* Tabs for navigation */}
         <Tabs value={value} variant="scrollable" onChange={handleChange}>
-          <Tab aria-label="basic tabs example" label="School Fee" {...a11yProps(0)} />
-          <Tab aria-label="basic tabs example" label="Transport" {...a11yProps(1)} />
-          <Tab aria-label="basic tabs example" label="Donation" {...a11yProps(2)} />
-          <Tab aria-label="basic tabs example" label="Activity" {...a11yProps(3)} />
+          <Tab aria-label="basic tabs example" label="Summary" {...a11yProps(0)} />
+          <Tab aria-label="basic tabs example" label="School Fee" {...a11yProps(1)} />
+          <Tab aria-label="basic tabs example" label="Transport" {...a11yProps(2)} />
+          <Tab aria-label="basic tabs example" label="Donation" {...a11yProps(3)} />
+          <Tab aria-label="basic tabs example" label="Activity" {...a11yProps(4)} />
         </Tabs>
       </Box>
 
       {/* Content of each tab panel */}
       <CustomTabPanel value={value} index={0}>
-       <FeeDataTable/>
+       <Summary/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-        2
+       <FeeDataTable/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
-       3
+        2
       </CustomTabPanel>
       <CustomTabPanel value={value} index={3}>
+       3
+      </CustomTabPanel>
+      <CustomTabPanel value={value} index={4}>
        4
       </CustomTabPanel>
     </Box>

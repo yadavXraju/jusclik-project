@@ -5,7 +5,8 @@ const config = {
   defaultPath: '/dashboard',
   // fontFamily: `'Roboto', sans-serif`,
   fontFamily: `'plus-jakarta-sans', sans-serif`,
-  borderRadius: 12
+  borderRadius: 12,
+  apiUrl : "https://localhost:7249/api"
 };
 
 export default config;

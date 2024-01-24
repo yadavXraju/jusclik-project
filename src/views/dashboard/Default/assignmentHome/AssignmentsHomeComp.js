@@ -18,7 +18,7 @@ const AssignmentsHomeComp = () => {
 
   const navigate = useNavigate();
 
-  // checkbox id 
+  // checkbox id this is for identify 
 
   const handleCheckboxClick = (id) => {
     setSelectedItems((prevSelectedItems) =>

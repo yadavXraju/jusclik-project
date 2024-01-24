@@ -7,7 +7,13 @@ import { gridSpacing } from 'store/constant';
 import AttendanceHomeComp from './AttendanceHomeComp';
 import DueFee from './FeeDueHomeComp';
 
+
 // import { useMediaQuery } from '@mui/material';
+
+// this comp hold theree sub comp of dashboared which is 
+// 1- welcome
+// 2- attendance counter
+// 3- fee due counter
 
 
 const WelcomeAttandanceFeeComp = ({ isLoading }) => {

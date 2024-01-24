@@ -65,9 +65,12 @@ const TimeTableHome = () => {
             </Grid>
 
 
-            {/* period  if id is null then sub will printed*/}
+            {/* period  */}
 
             {scheduleItem.period !== null ? (
+
+              // if period is not  null then  print period and subject
+
               <Grid item lg={4} md={4} sm={4} xs={4} 
               sx={{ display: 'flex',
                gap: isMobile ? '1px' : '16px' , 
@@ -84,6 +87,8 @@ const TimeTableHome = () => {
               </Grid>
             ) 
             
+
+            // if period is null then subject will be printing in place of period
             : (
               <Grid item lg={4} md={4} sm={4} xs={4} sx={{ display: 'flex',  flexDirection: isMobile ? 'column' : 'row'   , flex: isSmallMobile ? '0 0 40%' : 'auto' ,}}>
                 <Typography variant='h5'  sx={{fontSize: isMobile ? '14px' : '14px' }}>
@@ -95,6 +100,9 @@ const TimeTableHome = () => {
               </Grid>
             )}
 
+
+             {/* if period is not null then teacher is printing */}
+             
             {scheduleItem.period !== null && (
               <Grid item lg={4} md={4} sm={4} xs={4} sx={{ display: 'flex', gap: '16px' , flexDirection: isMobile ? 'column' : 'row'  , flex: isSmallMobile ? '0 0 35%' : 'auto' , }}>
                 <Typography variant='h5' sx={{fontSize: isMobile ? '14px' : '14px'  ,}}>{scheduleItem.Teacher}</Typography>

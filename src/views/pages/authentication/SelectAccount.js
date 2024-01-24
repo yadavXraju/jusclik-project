@@ -19,11 +19,9 @@ const SelectAccount = ({ open, onClose, onOtpToggle }) => {
 
         if (onOtpToggle) {
             onOtpToggle(item.id);
-            setOtpDialogOpen(true);
-            handleClose();
-        } else {
-            setOtpDialogOpen(true);
         }
+
+        setOtpDialogOpen(true);
     };
 
     const handleClose = () => {
@@ -32,12 +30,11 @@ const SelectAccount = ({ open, onClose, onOtpToggle }) => {
 
     const handleOtpDialogClose = () => {
         setOtpDialogOpen(false);
-        handleClose();
+        handleClose(); // Close the SelectAccount dialog after OTP dialog is closed
     };
-
     return (
         <React.Fragment>
-            <BootstrapDialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
+           <BootstrapDialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
                 <DialogTitle sx={{ m: 0, p: 2 }} id="customized-dialog-title">
                     Select your account
                 </DialogTitle>

@@ -1,4 +1,3 @@
-// // OtpLogin.js
 // import * as React from 'react';
 // import Button from '@mui/material/Button';
 // import CssBaseline from '@mui/material/CssBaseline';
@@ -19,11 +18,12 @@
 // import Frame from '../../../assets/images/Frame.png';
 // import LoginImage from '../../../assets/images/Group-36.png';
 // import LogoImg from '../../../assets/images/WhatsApp_Image_2020-03-21_at_8_04_53_PM__1-removebg-preview 1.png';
-// // import PlayStoreImage from '../../../assets/images/Google-Play.png';
-// // import AppleStoreImage from '../../../assets/images/app-store.png';
+// import PlayStoreImage from '../../../assets/images/Google-Play.png';
+// import AppleStoreImage from '../../../assets/images/app-store.png';
 // import CloudLogo from '../../../assets/images/Untitled-2.png';
 // // import { useNavigate } from 'react-router-dom';
 // import SelectAccount from './SelectAccount';
+// // import EnterMobileDialog from './EnterMobileDialog';
 
 // const defaultTheme = createTheme();
 
@@ -61,12 +61,12 @@
 //   const navigate = useNavigate();
 //   const [showPassword, setShowPassword] = React.useState(false);
 //   const [enterMobileOpen, setEnterMobileOpen] = React.useState(true);
+//   const [selectAccountOpen, setSelectAccountOpen] = React.useState(false);
 
 //   const handleMobileEntered = (mobileNumber) => {
 //     console.log('Mobile Number Entered:', mobileNumber);
 //     setEnterMobileOpen(false);
-//     // Directly navigate to OtpLogin after entering mobile number
-//     navigate('/OtpLogin');
+//     setSelectAccountOpen(true);
 //   };
 
 //   const handleSelectAccountClose = () => {
@@ -186,11 +186,20 @@
 //                                 id="password"
 //                                 autoFocus
 //                                 autoComplete="current-password"
+<<<<<<< HEAD
 //                                 sx={{ backgroundColor: '#fff', borderRadius: '50px' }}//                             />
 
    
+=======
+//                                 sx={{ backgroundColor: '#fff', borderRadius: '50px' }}
+//                             />
+
+
+//   const handleSubmit = (event) => {
+>>>>>>> f4ee170e730dc80527c87227688f7bf92d5b7387
 //     event.preventDefault();
 //     // Handle form submission or other actions
+//     navigate('/OtpLogin');
 //   };
 
 //   return (
@@ -200,7 +209,7 @@
 //         onClose={() => setEnterMobileOpen(false)}
 //         onMobileEntered={handleMobileEntered}
 //       />
-//       <SelectAccount />
+//       <SelectAccount open={selectAccountOpen} onClose={handleSelectAccountClose} />
 //       <Grid container component="main" sx={{ minHeight: '100vh' }}>
 //         <CssBaseline />
 //         {/* Left school logo start */}
@@ -323,7 +332,7 @@
 //                 autoComplete="current-password"
 //                 sx={{ backgroundColor: '#fff', borderRadius: '50px' }}
 //               />
-//               {/* Resend OTP link */}
+
 //               <Grid
 //                 item
 //                 xs
@@ -334,7 +343,6 @@
 //                   Resend OTP
 //                 </Link>
 //               </Grid>
-//               {/* Additional components */}
 //               <Box sx={{ display: 'flex', alignItems: 'end', justifyContent: 'end', mt: 4 }}>
 //                 {/* Include the ToggleGroupVariants component here if needed */}
 //               </Box>
@@ -347,7 +355,6 @@
 //                   LOGIN
 //                 </Button>
 //               </Box>
-//               {/* Powered by */}
 //               <Grid
 //                 item
 //                 sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', mt: 3 }}
@@ -366,7 +373,6 @@
 //                 </Link>
 //               </Grid>
 //             </Box>
-//             {/* Get it on Google Play and Apple Store buttons */}
 //             <Box sx={{ mt: 2, display: 'flex', width: '100%', justifyContent: 'center', gap: '20px' }}>
 //               <Button
 //                 variant="contained"
@@ -376,6 +382,7 @@
 //                 rel="noopener noreferrer"
 //                 size="small"
 //                 sx={{ height: '50px', width: '150px', display: 'flex', backgroundColor: '#fff', color: '#000', borderRadius: '10px', lineHeight: '15px' }}
+//                 startIcon={<img src={PlayStoreImage} alt="Play Store" style={{ width: '20px', marginRight: '10px' }} />}
 //               >
 //                 GET IT ON Google Play
 //               </Button>
@@ -387,11 +394,11 @@
 //                 rel="noopener noreferrer"
 //                 size="small"
 //                 sx={{ height: '50px', width: '150px', display: 'flex', backgroundColor: '#fff', color: '#000', borderRadius: '10px', lineHeight: '15px' }}
+//                 startIcon={<img src={AppleStoreImage} alt="Apple Store" style={{ width: '25px', marginRight: '10px' }} />}
 //               >
 //                 GET IT ON Apple Store
 //               </Button>
 //             </Box>
-//             {/* Terms & Conditions */}
 //             <Typography variant="subtitle1" color="#fff" sx={{ mt: 1 }}>
 //               Online Fee Payment Policies/ Terms & Conditions
 //             </Typography>
