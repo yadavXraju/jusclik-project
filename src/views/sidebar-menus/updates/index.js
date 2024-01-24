@@ -3,11 +3,8 @@ import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import CalendarMonthTwoToneIcon from '@mui/icons-material/CalendarMonthTwoTone';
-<<<<<<< HEAD
 // import Container from '@mui/material/Container'; // Correct import
-=======
 import Container from '@mui/material/Container';
->>>>>>> 05f6e916d47430cb13fe9efc34af79afe07a3fc6
 import Box from '@mui/material/Box';
 import SearchFilter from './SearchFilter'; // Correct import path
 import { UpdatesData } from './UpdatesData';
@@ -51,7 +48,6 @@ const Update = () => {
   };
 
   return (
-<<<<<<< HEAD
     <>
         <UrlPage />
         <Grid maxWidth="xl" style={{ marginTop: 20 }}>
@@ -87,8 +83,6 @@ const Update = () => {
 
           </Box>
         </Grid>
-    </>
-=======
     <Container maxWidth="xl" style={{ marginTop: 20 }}>
       <SearchFilter onSearch={handleSearch} />
       <Box sx={{ flexGrow: 1, overflow: 'hidden', px: 3 }}>
@@ -139,7 +133,7 @@ const Update = () => {
         )}
       </Box>
     </Container>
->>>>>>> 05f6e916d47430cb13fe9efc34af79afe07a3fc6
+    </>
   );
 };
 export default Update;

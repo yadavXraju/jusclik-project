@@ -11,6 +11,7 @@ import MailCompose from './MailCompose';
 import { styled } from '@mui/system';
 import { useNavigate } from 'react-router';
 
+
 const theme = createTheme();
 
 export const initialData = [
@@ -177,89 +178,90 @@ const GmailInboxTemplate = () => {
   const navigate = useNavigate()
 
   return (
-    <ThemeProvider theme={theme}>
-      <Box sx={{ display: 'flex' }}>
-        <CssBaseline />
-        <Box sx={{ padding: '20px', flexGrow: 1 }}>
-          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
-            <Grid sx={{ display: 'inline-flex' }}>
-              <ComposeButtonWrapper onClick={handleComposeOpen}>
-                <Button variant="contained" color="primary">
-                  <AddCircleOutlineOutlinedIcon sx={{ marginRight: '7px' }} />
-                  Compose
-                </Button>
-              </ComposeButtonWrapper>
-              <FilterWrapper>
-                <IconButton aria-label="Filter" onClick={handleFilterClick}>
-                  <FilterListIcon />
-                </IconButton>
-                <Popover
-                  open={Boolean(anchorEl)}
-                  anchorEl={anchorEl}
-                  onClose={handleFilterClose}
-                  anchorOrigin={{
-                    // vertical: 'bottom',
-                    // horizontal: 'right', 
-                  }}
-                  transformOrigin={{
-                    // vertical: 'top',
-                    // horizontal: 'right', 
-                  }}
-                >
-                  <Box sx={{ p: 2 }}>
-                    <MenuItem onClick={() => handleFilterSelect('name')}>Name</MenuItem>
-                    <MenuItem onClick={() => handleFilterSelect('date')}>Date</MenuItem>
-                    <MenuItem onClick={() => handleFilterSelect('unread')}>Unread</MenuItem>
-                    <MenuItem onClick={() => handleFilterSelect('important')}>Important</MenuItem>
-                  </Box>
-                </Popover>
-              </FilterWrapper>
+   <ThemeProvider theme={theme}>
+        <Box sx={{ display: 'flex' }}>
+          <CssBaseline />
+          <Box sx={{ padding: '20px', flexGrow: 1 }}>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+              <Grid sx={{ display: 'inline-flex' }}>
+                <ComposeButtonWrapper onClick={handleComposeOpen}>
+                  <Button variant="contained" color="primary">
+                    <AddCircleOutlineOutlinedIcon sx={{ marginRight: '7px' }} />
+                    Compose
+                  </Button>
+                </ComposeButtonWrapper>
+                <FilterWrapper>
+                  <IconButton aria-label="Filter" onClick={handleFilterClick}>
+                    <FilterListIcon />
+                  </IconButton>
+                  <Popover
+                    open={Boolean(anchorEl)}
+                    anchorEl={anchorEl}
+                    onClose={handleFilterClose}
+                    anchorOrigin={{
+                      // vertical: 'bottom',
+                      // horizontal: 'right', 
+                    }}
+                    transformOrigin={{
+                      // vertical: 'top',
+                      // horizontal: 'right', 
+                    }}
+                  >
+                    <Box sx={{ p: 2 }}>
+                      <MenuItem onClick={() => handleFilterSelect('name')}>Name</MenuItem>
+                      <MenuItem onClick={() => handleFilterSelect('date')}>Date</MenuItem>
+                      <MenuItem onClick={() => handleFilterSelect('unread')}>Unread</MenuItem>
+                      <MenuItem onClick={() => handleFilterSelect('important')}>Important</MenuItem>
+                    </Box>
+                  </Popover>
+                </FilterWrapper>
 
-            </Grid>
-            <Grid sx={{ display: 'inline-flex' }}>
-              <SearchWrapper sx={{ justifyContent: 'center' }}>
-                <SearchIconWrapper>
-                  <SearchIcon />
-                </SearchIconWrapper>
-                <StyledInputBase
-                  placeholder="Search…"
-                  inputProps={{ 'aria-label': 'search' }}
-                  value={searchQuery}
-                  onChange={handleSearchChange}
+              </Grid>
+              <Grid sx={{ display: 'inline-flex' }}>
+                <SearchWrapper sx={{ justifyContent: 'center' }}>
+                  <SearchIconWrapper>
+                    <SearchIcon />
+                  </SearchIconWrapper>
+                  <StyledInputBase
+                    placeholder="Search…"
+                    inputProps={{ 'aria-label': 'search' }}
+                    value={searchQuery}
+                    onChange={handleSearchChange}
+                  />
+                </SearchWrapper>
+                <TablePagination
+                  component="div"
+                  count={data.length}
+                  page={page}
+                  onPageChange={handleChangePage}
+                  rowsPerPage={rowsPerPage}
+                  onRowsPerPageChange={handleChangeRowsPerPage}
+                  labelRowsPerPage=""
                 />
-              </SearchWrapper>
-              <TablePagination
-                component="div"
-                count={data.length}
-                page={page}
-                onPageChange={handleChangePage}
-                rowsPerPage={rowsPerPage}
-                onRowsPerPageChange={handleChangeRowsPerPage}
-                labelRowsPerPage=""
-              />
-            </Grid>
+              </Grid>
+            </Box>
+            <List>
+              {data.slice(page * rowsPerPage, (page + 1) * rowsPerPage).map((item) => (
+                <React.Fragment key={item.id}>
+                  <ListItem onClick={() => navigate('/communication/inbox/message')}>
+                    <ListItemAvatar>
+                      <Avatar alt="User Avatar" src={`/static/images/avatar/1.jpg/${item.id}.jpg`} />
+                    </ListItemAvatar>
+                    <EmailItem emailData={item} />
+                    <ListItemText primary={item.name} secondary={item.message} />
+                    <Typography variant="subtitle2" color="textSecondary">
+                      {getCurrentDateTime()}
+                    </Typography>
+                  </ListItem>
+                  <Divider />
+                </React.Fragment>
+              ))}
+            </List>
           </Box>
-          <List>
-            {data.slice(page * rowsPerPage, (page + 1) * rowsPerPage).map((item) => (
-              <React.Fragment key={item.id}>
-                <ListItem onClick={() => navigate('/communication/inbox/message')}>
-                  <ListItemAvatar>
-                    <Avatar alt="User Avatar" src={`/static/images/avatar/1.jpg/${item.id}.jpg`} />
-                  </ListItemAvatar>
-                  <EmailItem emailData={item} />
-                  <ListItemText primary={item.name} secondary={item.message} />
-                  <Typography variant="subtitle2" color="textSecondary">
-                    {getCurrentDateTime()}
-                  </Typography>
-                </ListItem>
-                <Divider />
-              </React.Fragment>
-            ))}
-          </List>
         </Box>
-      </Box>
-      <MailCompose open={isComposeOpen} onClose={handleComposeClose} onSend={handleComposeSend} />
-    </ThemeProvider>
+        <MailCompose open={isComposeOpen} onClose={handleComposeClose} onSend={handleComposeSend} />
+      </ThemeProvider>
+
   );
 };
 

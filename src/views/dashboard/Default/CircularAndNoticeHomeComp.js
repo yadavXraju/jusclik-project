@@ -40,7 +40,7 @@ const CircularAndNoticeHomeComp = ({ isLoading }) => {
   return (
     <>
       {isLoading ? (
-        <SkeletonPopularCard />
+        <SkeletonPopularCard /> 
       ) : (
         <MainCard style={boxHeight} className='scrollbar'> 
     
