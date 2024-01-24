@@ -9,15 +9,24 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import Autocomplete from '@mui/material/Autocomplete';
+<<<<<<< HEAD
 import parse from 'autosuggest-highlight/parse';
 import match from 'autosuggest-highlight/match';
+=======
+// import parse from 'autosuggest-highlight/parse';
+// import match from 'autosuggest-highlight/match';
+>>>>>>> 79e3037662ea3a7baed68f63f3e3ad19d396f946
 import { data } from './AssignmentData';
 const uniqueSubjects = [...new Set(data.map(item => item.name))];
 
 // Create subjects array
 const subjects = uniqueSubjects.map(subject => ({ title: subject }));
+<<<<<<< HEAD
 // import parse from 'autosuggest-highlight/parse';
 // import match from 'autosuggest-highlight/match';
+=======
+
+>>>>>>> 79e3037662ea3a7baed68f63f3e3ad19d396f946
 
 
 export default function SearchAssignment({ onSearch }) {

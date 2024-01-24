@@ -6,13 +6,30 @@ import {
   Paper,
   useMediaQuery,
   useTheme,
+
+
 } from '@mui/material';
+// icon from mui
 import { data } from './AssignmentData';
 import Attcgment from './Attcgment';
 import Heading from './Heading';
+<<<<<<< HEAD
 import SearchAssignment from './SearchAssignment';
 import AssignmentItem from './AssignmentItem';
+=======
+
+
+import SearchAssignment from './SearchAssignment';
+import AssignmentItem from './AssignmentItem';
+
+
+
+
+
+
+>>>>>>> 79e3037662ea3a7baed68f63f3e3ad19d396f946
 import UrlPage from 'views/navigation-for-pages';
+
 
 const Assignments = () => {
   const theme = useTheme();
@@ -21,29 +38,37 @@ const Assignments = () => {
   const [openDialog, setOpenDialog] = useState(false);
   const [snackbarOpen, setSnackbarOpen] = useState(false);
 
-  const [searchCriteria, setSearchCriteria] = useState({
-    startDate: null,
-    endDate: null,
-    selectedSubject: null,
-    searchText: '',
-  });
+
+
+
+
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
+ 
+// current Date Function to check compare due date
   const currentDate = new Date();
-  const upcomingAssignments = data.filter((item) => {
+
+
+
+
+  // filter function to seprate upcoming assignment
+  const upcomingAssignments = data.filter(item => {
     const dueDate = new Date(item.dueDate);
     return dueDate >= currentDate;
   });
-
-  const previousAssignments = data.filter((item) => {
+  // filter function to seprate past  assignment
+  const previousAssignments = data.filter(item => {
     const dueDate = new Date(item.dueDate);
     return dueDate < currentDate;
   });
 
-  const sortAssignmentsByDueDate = (assignments) => {
+
+
+
+// sort assignment based on due date
+  const sortAssignmentsByDueDate = assignments => {
     return assignments.sort((a, b) => {
       const dueDateA = new Date(a.dueDate);
       const dueDateB = new Date(b.dueDate);
@@ -51,26 +76,40 @@ const Assignments = () => {
     });
   };
 
+
   const sortedUpcomingAssignments = sortAssignmentsByDueDate(upcomingAssignments);
 
-  const getFormattedDate = (dateString) => {
+
+
+
+  // Date formatter
+  const getFormattedDate = dateString => {
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
 
+
+
+
+// open dialogbox where assigment upload function
   const handleOpenDialog = () => {
     setOpenDialog(true);
   };
 
+
+// close dialogbox where assigment upload function
   const handleCloseDialog = () => {
-    setSnackbarOpen(true);
+
+
+    setSnackbarOpen(true); // Show a Snackbar notification
     setOpenDialog(false);
   };
-
+// pop up notification for assignment submitted
   const handleSnackbarClose = () => {
     setSnackbarOpen(false);
   };
 
+<<<<<<< HEAD
   const handleSearch = (criteria) => {
     setSearchCriteria(criteria);
   };
@@ -98,13 +137,41 @@ const Assignments = () => {
                     .filter((item) => {
                       // Filter based on search criteria
                       const dueDate = new Date(item.dueDate);
+=======
 
-                      const isDateInRange =
-                        (!searchCriteria.startDate ||
-                          dueDate >= new Date(searchCriteria.startDate)) &&
-                        (!searchCriteria.endDate ||
-                          dueDate <= new Date(searchCriteria.endDate));
 
+
+
+
+  return (
+    <>
+    <UrlPage />
+    <Container maxWidth="xl" xs={12} style={{ marginTop: 20 }}>
+      <SearchAssignment/>
+      <Paper style={{ padding: 20 }}>
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          centered={!isSmallScreen}
+          variant={isSmallScreen ? 'scrollable' : 'standard'}>
+          <Tab label="UPCOMING" value="UPCOMING" />
+          <Tab label="PAST" value="PAST" />
+        </Tabs>
+        <div className="tabs">
+          {value === 'UPCOMING' && (
+            <div className="panel">
+               <Container maxWidth="xl" style={{ marginTop: 20 }}>
+                 <Heading/>
+                   {sortedUpcomingAssignments.map((item,index) => (
+                          <AssignmentItem key={item.id} item={item} index={index} handleOpenDialog={handleOpenDialog} getFormattedDate={getFormattedDate}/>
+                     ))}
+               </Container>
+            </div>
+           )}
+>>>>>>> 79e3037662ea3a7baed68f63f3e3ad19d396f946
+
+
+<<<<<<< HEAD
                       const isSubjectMatch =
                         !searchCriteria.selectedSubject ||
                         item.name.toLowerCase() ===
@@ -178,8 +245,29 @@ const Assignments = () => {
           snackBarClose={handleSnackbarClose}
         />
       </Container>
+=======
+          {value === 'PAST' && (
+            <div className="panel">
+               <Heading/>
+              {sortAssignmentsByDueDate(previousAssignments).map((item ,index)=> (
+                   <AssignmentItem key={item.id} item={item} index={index} handleOpenDialog={handleOpenDialog} getFormattedDate={getFormattedDate}/>
+              ))}
+            </div>
+          )}
+        </div>
+      </Paper>
+   <Attcgment isOpen={openDialog} onClose={handleCloseDialog} snackOpen={snackbarOpen} snackBarClose={handleSnackbarClose} />
+ 
+    </Container>
+>>>>>>> 79e3037662ea3a7baed68f63f3e3ad19d396f946
     </>
   );
 };
 
+<<<<<<< HEAD
 export default Assignments;
+=======
+
+export default Assignments;
+
+>>>>>>> 79e3037662ea3a7baed68f63f3e3ad19d396f946
