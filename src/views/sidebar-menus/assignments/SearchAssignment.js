@@ -11,16 +11,15 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import Autocomplete from '@mui/material/Autocomplete';
 import parse from 'autosuggest-highlight/parse';
 import match from 'autosuggest-highlight/match';
+import { data } from './AssignmentData';
 
-const subjects = [
-  { title: 'English' },
-  { title: 'Mathematics' },
-  { title: 'Hindi' },
-  { title: 'Music' },
-  { title: 'Science' },
-  { title: 'SST' },
-  { title: 'Computer' },
-];
+
+
+const uniqueSubjects = [...new Set(data.map(item => item.name))];
+
+// Create subjects array
+const subjects = uniqueSubjects.map(subject => ({ title: subject }));
+
 
 export default function SearchAssignment({ onSearch }) {
   const [startDate, setStartDate] = React.useState(null);
