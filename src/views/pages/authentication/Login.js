@@ -26,7 +26,7 @@ import AppleStoreImage from '../../../assets/images/app-store.png';
 import CloudLogo from '../../../assets/images/Untitled-2.png';
 import { useNavigate } from 'react-router-dom';
 import EnterMobileDialog from './EnterMobileDialog';
-import SelectAccount from './SelectAccount';
+// import SelectAccount from './SelectAccount';
 import axios from 'axios';
 import Config from '../../../config';
 import SetSession from '../../../session/setsession';
