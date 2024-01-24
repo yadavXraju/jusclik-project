@@ -2,6 +2,7 @@ import React from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 
+// ============= creation of tabs for timetable ================
 function CustomTabs({ value, onChange }) {
   const days = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
 

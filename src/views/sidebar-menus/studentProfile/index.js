@@ -13,6 +13,7 @@ import MotherDetails from './MotherDetails';
 import GuardianDetails from './GuardianDetails';
 import Credentials from './Credentials';
 import DocumentTabs from './DocumentsTab';
+import UrlPage from 'views/navigation-for-pages';
 import { useLocation } from 'react-router';
 
 
@@ -76,7 +77,9 @@ function Profile() {
 
   // Render the tab section
   return (
-    <MainCard title="Student Profile" >
+    <>
+    <UrlPage/>
+      <MainCard title="Student Profile" >
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider', '@media (max-width:600px)': { marginBottom: '15px' } }}>
         {/* Tabs for navigation */}
@@ -120,6 +123,7 @@ function Profile() {
       </CustomTabPanel>
     </Box>
     </MainCard>
+    </>
   );
 }
 

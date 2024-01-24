@@ -1,11 +1,14 @@
 import GmailInboxTemplate from '../MailBox';
-import MainCard from 'ui-component/cards/MainCard';
+import { Paper } from '@mui/material';
+// import MainCard from 'ui-component/cards/MainCard';
 
 const RecentMessage = () => {
   return (
-    <MainCard title="MAIL">
+    // <MainCard title="MAIL">
+    <Paper>
     <GmailInboxTemplate/>
-        </MainCard>
+    </Paper>
+        // </MainCard>
   )
 }
 

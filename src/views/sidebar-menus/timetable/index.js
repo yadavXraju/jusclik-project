@@ -7,6 +7,7 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import timeTableData from './TimeTableData';
 import Card from '@mui/material/Card';
+import UrlPage from 'views/navigation-for-pages';
 // import UrlPage from 'views/navigation-for-pages';
 
 const TimeTable = () => {
@@ -59,7 +60,9 @@ const TimeTable = () => {
   };
 
   return (
-    <Card sx={{ border: '1px solid #ccc' }}>
+    <>
+     <UrlPage/>
+      <Card >
     <Typography sx={{p:2,borderBottom: '1px solid #ccc'}} variant='h5'  component="div">
          Timetable
     </Typography>
@@ -87,6 +90,7 @@ const TimeTable = () => {
       </Box>
     </div>
     </Card>
+    </>
     
   );
 };

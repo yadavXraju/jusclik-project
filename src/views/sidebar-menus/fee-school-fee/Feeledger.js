@@ -32,13 +32,13 @@ function Feeledger() {
           </Box>
         </Grid>
         <Grid item xs={12} sm={6} lg={3}>
-          <Box p={3} sx={{ background: 'rgb(41, 49, 79)', borderRadius: '10px' }}>
+          <Box p={3} sx={{ background: 'rgb(124, 13, 175, .6)', borderRadius: '10px' }}>
             <Typography color={'white'} variant='h2'>7000</Typography>
             <Typography color={'white'} variant='h5'>Total Due </Typography>
           </Box>
         </Grid>
         <Grid item xs={12} sm={6} lg={3}>
-          <Box p={3} sx={{ background: 'rgb(244, 67, 54)', borderRadius: '10px' }}>
+          <Box p={3} sx={{ background: 'rgb(2, 136, 209, .7)', borderRadius: '10px' }}>
             <Typography color={'white'} variant='h2'>1000</Typography>
             <Typography color={'white'} variant='h5'>Late Fee </Typography>
           </Box>
