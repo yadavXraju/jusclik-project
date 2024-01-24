@@ -26,14 +26,11 @@ import AppleStoreImage from '../../../assets/images/app-store.png';
 import CloudLogo from '../../../assets/images/Untitled-2.png';
 import { useNavigate } from 'react-router-dom';
 import EnterMobileDialog from './EnterMobileDialog';
-<<<<<<< HEAD
 import SelectAccount from './SelectAccount';
-=======
 import axios from 'axios';
 import Config from '../../../config';
 import SetSession from '../../../session/setsession';
 
->>>>>>> 3d80b07f40996be8b9cabc315b2a3e38eaf170eb
 const defaultTheme = createTheme();
 
 function ToggleGroupVariants() {
@@ -238,13 +235,11 @@ export default function LogInPage() {
                 <EnterMobileDialog open={dialogOpen} onClose={handleDialogToggle} onClick={handleClickOpen}/>
                   {/* <Typography variant="body2" sx={{ cursor: 'pointer', color: '#fff' }} onClick={handleClickOpen}>
                   Forgot Credentials
-<<<<<<< HEAD
                 </Typography>
                 <EnterMobileDialog open={dialogOpen} onClose={handleDialogToggle} onMobileSubmit={handleMobileSubmit} />
                 <SelectAccount open={selectAccountOpen} onClose={handleSelectAccountToggle} />
 =======
                 </Typography> */}
->>>>>>> 3d80b07f40996be8b9cabc315b2a3e38eaf170eb
               </Grid>
               <Box sx={{ display: 'flex', alignItems: 'end', justifyContent: 'end', mt: 4 }}>
                 <ToggleGroupVariants />
