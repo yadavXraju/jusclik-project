@@ -102,7 +102,7 @@ const NavCollapse = ({ menu, level }) => {
 
   return (
     <>
-      <Tooltip title={tooltipContent}   placement="right" >
+      <Tooltip title={tooltipContent}  placement="right" >
         <ListItemButton
           sx={{
             borderRadius: `${customization.borderRadius}px`,

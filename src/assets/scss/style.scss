@@ -170,7 +170,7 @@
 
 .drawercloseBody .MuiTooltip-tooltip.MuiTooltip-tooltipPlacementRight.css-aqcrf3-MuiTooltip-tooltip{
   background-color: #fff !important;
-  box-shadow: 2px 1px 5px black;
+  box-shadow:0px 1px 4px #36415296;
 }
 
 
@@ -184,6 +184,16 @@ div#\:r3\: , div#\:r4\:, div#\:r5\: {
 
 .drawercloseBody div a.MuiButtonBase-root.MuiListItemButton-root.MuiListItemButton-gutters.MuiListItemButton-root.MuiListItemButton-gutters.css-1jcglh9-MuiButtonBase-root-MuiListItemButton-root {
   padding-left: 8px;
+}
+
+.drawercloseBody  circle {
+  display: none;
+}
+
+.drawercloseBody .MuiTooltip-tooltip.MuiTooltip-tooltipPlacementRight.css-aqcrf3-MuiTooltip-tooltip a.MuiButtonBase-root.MuiListItemButton-root.MuiListItemButton-gutters.MuiListItemButton-root.MuiListItemButton-gutters.css-1jcglh9-MuiButtonBase-root-MuiListItemButton-root {
+  flex-direction: column;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 }
 
