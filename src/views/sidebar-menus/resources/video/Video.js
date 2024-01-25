@@ -20,7 +20,7 @@ const Video = () => {
     <>
       <Grid container spacing={3} sx={{ mt: 3 }}>
         {VideoData.map((video, id) => (
-          <Grid lg={4} md={6} sm={12} key={id} sx={{padding:'20px'}}>
+          <Grid lg={3} md={6} sm={12} key={id} sx={{padding:'20px'}}>
             <Card sx={{boxShadow:'rgba(0, 0, 0, 0.2) 0px 2px 1px -1px, rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px'}}>
               <CardMedia>
                   <iframe
