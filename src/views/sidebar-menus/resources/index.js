@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import TabContext from '@mui/lab/TabContext';
+import { Paper , Box } from '@mui/material';
 import TabPanel from '@mui/lab/TabPanel';
 import TabLabel from './TabLabel';
 import Video from './video/Video';
-import { Paper , Box } from '@mui/material';
+import Document from './document/Document';
+
 
 
 const Resources =()=> {
@@ -11,6 +13,8 @@ const Resources =()=> {
   // for active first item when page load
   const [value, setValue] = useState('1')
 
+
+  // for change the setvalue into newvalue
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -24,7 +28,9 @@ const Resources =()=> {
             </Box>
             <TabPanel value="1">All</TabPanel>
             <TabPanel value="2"><Video/></TabPanel>
-            <TabPanel value="3">Item Three</TabPanel>
+            <TabPanel value="3">images</TabPanel>
+            <TabPanel value="4"><Document/></TabPanel>
+            <TabPanel value="5">Links</TabPanel>
           </TabContext>
       </Paper>
 

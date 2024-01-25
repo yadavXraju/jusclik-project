@@ -15,7 +15,7 @@ const AssignmentsHomeComp = () => {
   const [selectedItems, setSelectedItems] = useState([]);
   const [completedItems, setCompletedItems] = useState([]);
  
-  // this function in assignment  convert in custom hook 
+  // this function from assignment and  converted into custom hook 
   const { openDialog, snackbarOpen, handleOpenDialog , handleCloseDialog ,  handleSnackbarClose} = useDialog()
 
   const navigate = useNavigate();
