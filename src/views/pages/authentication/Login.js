@@ -27,7 +27,7 @@ import CloudLogo from '../../../assets/images/Untitled-2.png';
 import { useNavigate } from 'react-router-dom';
 import EnterMobileDialog from './EnterMobileDialog';
 // import SelectAccount from './SelectAccount';
-import axios from 'axios';
+// import axios from 'axios';
 import Config from '../../../config';
 import SetSession from '../../../session/setsession';
 
@@ -238,7 +238,6 @@ export default function LogInPage() {
                 </Typography>
                 <EnterMobileDialog open={dialogOpen} onClose={handleDialogToggle} onMobileSubmit={handleMobileSubmit} />
                 <SelectAccount open={selectAccountOpen} onClose={handleSelectAccountToggle} />
-=======
                 </Typography> */}
               </Grid>
               <Box sx={{ display: 'flex', alignItems: 'end', justifyContent: 'end', mt: 4 }}>

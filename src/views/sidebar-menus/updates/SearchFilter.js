@@ -44,6 +44,7 @@ const SearchFilter = ({ onSearch }) => {
         marginRight: '25px',
         marginLeft: '25px',
         backgroundColor: '#fff',
+        
       }}
       noValidate
       autoComplete="off"
