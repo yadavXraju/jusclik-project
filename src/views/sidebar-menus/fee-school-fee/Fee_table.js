@@ -389,7 +389,7 @@ export default function FeeDataTable() {
                           {/* {row.status} */}
                           {/* {new Date(row.lastDate) > new Date() ? 'overdue' : row.status} */}
                           
-                          {new Date(row.ldate) < new Date() ? 'overdue' : row.status}
+                          {new Date(row.ldate) < new Date() ? 'Overdue' : row.status}
                         </Box>
                       </Box>
                     </TableCell>
