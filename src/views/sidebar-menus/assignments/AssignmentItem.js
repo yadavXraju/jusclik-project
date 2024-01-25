@@ -5,7 +5,7 @@ import DownloadIcon from '@mui/icons-material/Download';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import CreateIcon from '@mui/icons-material/Create';
 
-const AssignmentItem = ({ item, index, handleOpenDialog }) => {
+const AssignmentItem = ({ item, index, handleOpenDialog ,getFormattedDate}) => {
   return (
     <Paper elevation={2} key={item.id} sx={{ padding: '0px 20px', marginBottom: '30px', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)' }}>
       <Grid className='tab' container spacing={2} sx={{
