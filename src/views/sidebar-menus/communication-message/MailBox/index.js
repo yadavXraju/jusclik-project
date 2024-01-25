@@ -196,6 +196,7 @@ const GmailInboxTemplate = () => {
 
   return (
    
+
     <>
     <UrlPage/>
     <ThemeProvider theme={theme}>
@@ -285,6 +286,7 @@ const GmailInboxTemplate = () => {
       {/* // <MailCompose open={isComposeOpen} onClose={handleComposeClose} onSend={handleComposeSend} /> */}
     </ThemeProvider>
     </>
+       
   );
 };
 

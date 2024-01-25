@@ -23,6 +23,7 @@ const subjects = uniqueSubjects.map(subject => ({ title: subject }));
 // import match from 'autosuggest-highlight/match';
 
 
+
 export default function SearchAssignment({ onSearch }) {
   const [startDate, setStartDate] = React.useState(null);
   const [endDate, setEndDate] = React.useState(null);
