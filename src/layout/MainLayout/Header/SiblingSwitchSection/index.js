@@ -7,7 +7,7 @@ const SiblingSwitch = () => {
   return (
     <div>
       <Tooltip sx={{cursor : 'pointer'}} title='Sibling Switch' arrow>
-      <Avatar alt="Abhishek" src="/static/images/avatar/1.jpg" />
+      <Avatar alt="Abhishek" src="" />
       </Tooltip>
     </div>
   );

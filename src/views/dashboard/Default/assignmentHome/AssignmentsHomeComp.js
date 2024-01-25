@@ -9,17 +9,18 @@ import Checkbox from '@mui/material/Checkbox';
 import Attcgment from 'views/sidebar-menus/assignments/Attcgment';
 import AttachmentIcon from '@mui/icons-material/Attachment';
 import { commonStyles } from 'views/sidebar-menus/communication-message/Contact-list';
+import useDialog from '../customHook/UseDialog';
 
 const AssignmentsHomeComp = () => {
   const [selectedItems, setSelectedItems] = useState([]);
   const [completedItems, setCompletedItems] = useState([]);
-  const [openDialog, setOpenDialog] = useState(false);
-  const [snackbarOpen, setSnackbarOpen] = useState(false);
+ 
+  // this function in assignment  convert in custom hook 
+  const { openDialog, snackbarOpen, handleOpenDialog , handleCloseDialog ,  handleSnackbarClose} = useDialog()
 
   const navigate = useNavigate();
 
-  // checkbox id this is for identify 
-
+  // checkbox id  for identify  which checkbox is  clicked
   const handleCheckboxClick = (id) => {
     setSelectedItems((prevSelectedItems) =>
       prevSelectedItems.includes(id)
@@ -65,29 +66,11 @@ const AssignmentsHomeComp = () => {
   }
 
 
-  const AssignmentToShow = 5;
+  const AssignmentToShow = 5; 
 
   const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
   const isMobile = useMediaQuery('(max-width: 767px)');
 
-
-  // function from assignments
-
-  const handleOpenDialog = () => {
-    setOpenDialog(true);
-  };
-
-  const handleCloseDialog = () => {
-
-    setSnackbarOpen(true); // Show a Snackbar notification
-    setOpenDialog(false);
-  };
-
-  const handleSnackbarClose = () => {
-    setSnackbarOpen(false);
-  };
-
-  
   return (
     <Grid spacing={gridSpacing}>
       <Grid item component={Paper} lg={12} md={12} sm={12} xs={12} sx={{ p: 3, display: 'flex', flexDirection: 'column', gap: '24px' , border:'1px solid #80808026' }}>
@@ -126,7 +109,7 @@ const AssignmentsHomeComp = () => {
 
                       </Grid>
                       
-                       {/* sub, date, title */}
+                       {/* subject, date, title */}
                         <Grid item col={9} sx={{display:'flex' , gap:'30px' , alignItems:'center'}}>
 
                             <Box>

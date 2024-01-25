@@ -1,7 +1,23 @@
-User
 import React, { useState } from 'react';
 import {
-  CssBaseline, Box, List, ListItem, ListItemAvatar, Avatar, ListItemIcon, ListItemText, Divider, Typography, Button, InputBase, ThemeProvider, createTheme, IconButton, Popover, MenuItem, Grid,
+  CssBaseline,
+  Box,
+  List,
+  ListItem,
+  ListItemAvatar,
+  Avatar,
+  ListItemIcon,
+  ListItemText,
+  Divider,
+  Typography,
+  Button,
+  InputBase,
+  ThemeProvider,
+  createTheme,
+  IconButton,
+  Popover,
+  MenuItem,
+  Grid
 } from '@mui/material';
 import TablePagination from '@mui/material/TablePagination';
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
@@ -11,7 +27,6 @@ import FilterListIcon from '@mui/icons-material/FilterList';
 import MailCompose from './MailCompose';
 import { styled } from '@mui/system';
 import { useNavigate } from 'react-router';
-import UrlPage from 'views/navigation-for-pages';
 
 const theme = createTheme();
 
@@ -31,7 +46,7 @@ export const initialData = [
   { id: 13, name: 'Frank White', message: 'Lorem ipsum dolor sit amet 7', unread: true, important: true },
   { id: 14, name: 'Grace Miller', message: 'Lorem ipsum dolor sit amet 8', unread: false, important: false },
   { id: 15, name: 'Henry Jackson', message: 'Lorem ipsum dolor sit amet 9', unread: true, important: true },
-  { id: 16, name: 'Ivy Lee', message: 'Lorem ipsum dolor sit amet 10', unread: false, important: false },
+  { id: 16, name: 'Ivy Lee', message: 'Lorem ipsum dolor sit amet 10', unread: false, important: false }
 ];
 
 const GmailInboxTemplate = () => {
@@ -43,12 +58,10 @@ const GmailInboxTemplate = () => {
       month: 'long',
       day: 'numeric',
       hour: 'numeric',
-      minute: 'numeric',
+      minute: 'numeric'
     };
     return currentDate.toLocaleString('en-US', options);
   };
-
-
 
   const [data, setData] = useState(initialData);
   const [anchorEl, setAnchorEl] = useState(null);
@@ -63,14 +76,14 @@ const GmailInboxTemplate = () => {
     backgroundColor: theme.palette.background.default,
     border: `1px solid ${theme.palette.divider}`,
     '&:hover': {
-      backgroundColor: theme.palette.background.paper,
+      backgroundColor: theme.palette.background.paper
     },
     marginLeft: 0,
     width: '100%',
     [theme.breakpoints.up('sm')]: {
       marginLeft: theme.spacing(1),
-      width: 'auto',
-    },
+      width: 'auto'
+    }
   });
 
   const SearchIconWrapper = styled('div')(({ theme }) => ({
@@ -81,7 +94,7 @@ const GmailInboxTemplate = () => {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    color: theme.palette.text.secondary,
+    color: theme.palette.text.secondary
   }));
 
   const StyledInputBase = styled(InputBase)(({ theme }) => ({
@@ -91,21 +104,21 @@ const GmailInboxTemplate = () => {
       padding: theme.spacing(1, 1, 1, 0),
       paddingLeft: `calc(1em + ${theme.spacing(4)})`,
       [theme.breakpoints.up('sm')]: {
-        width: '12ch',
-      },
-    },
+        width: '12ch'
+      }
+    }
   }));
 
   const ComposeButtonWrapper = styled('div')({
     display: 'flex',
     alignItems: 'center',
-    order: -1,
+    order: -1
   });
 
   const FilterWrapper = styled('div')({
     display: 'flex',
     alignItems: 'center',
-    marginRight: theme.spacing(2),
+    marginRight: theme.spacing(2)
   });
 
   const handleFilterClick = (event) => {
@@ -123,9 +136,9 @@ const GmailInboxTemplate = () => {
 
   const filterData = (filterType, filterValue) => {
     if (filterType === 'search') {
-      const filteredData = initialData.filter((item) =>
-        item.name.toLowerCase().includes(filterValue.toLowerCase()) ||
-        item.message.toLowerCase().includes(filterValue.toLowerCase())
+      const filteredData = initialData.filter(
+        (item) =>
+          item.name.toLowerCase().includes(filterValue.toLowerCase()) || item.message.toLowerCase().includes(filterValue.toLowerCase())
       );
       setData(filteredData);
     } else if (filterValue === 'name') {
@@ -146,35 +159,33 @@ const GmailInboxTemplate = () => {
       setIsImportant(!isImportant);
     };
 
-      const highlightMatch = (text, query) => {
-    if (!query || !text) return text;
+    const highlightMatch = (text, query) => {
+      if (!query || !text) return text;
 
-    const regex = new RegExp(`(${query})`, 'gi');
-    return text.split(regex).map((part, index) =>
-      regex.test(part) ? <span key={index} style={{ fontWeight: 'bold' }}>{part}</span> : part
-    );
-  };
-
-  const EmailItem = ({ emailData, searchQuery }) => {
-    const [isImportant, setIsImportant] = useState(emailData.important);
-
-    const handleStarClick = () => {
-      setIsImportant(!isImportant);
+      const regex = new RegExp(`(${query})`, 'gi');
+      return text.split(regex).map((part, index) =>
+        regex.test(part) ? (
+          <span key={index} style={{ fontWeight: 'bold' }}>
+            {part}
+          </span>
+        ) : (
+          part
+        )
+      );
     };
 
     return (
       <ListItemIcon onClick={handleStarClick}>
-        <StarBorderOutlinedIcon color={isImportant ? 'yellow' : 'inherit'} />
-        {highlightMatch(emailData.name, searchQuery)} - {highlightMatch(emailData.message, searchQuery)}
+       <StarBorderOutlinedIcon color={isImportant ? 'yellow' : 'inherit'} /> {highlightMatch(emailData.name, searchQuery)} -{' '}
+        {highlightMatch(emailData.message, searchQuery)}
       </ListItemIcon>
     );
   };
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
-  };
+  }; // const [isComposeOpen, setComposeOpen] = useState(true);
 
-  // const [isComposeOpen, setComposeOpen] = useState(true);
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
@@ -199,162 +210,124 @@ const GmailInboxTemplate = () => {
     handleComposeClose();
   };
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
-<<<<<<< HEAD
-    <>
-      <UrlPage />
-      <ThemeProvider theme={theme}>
-        <Box sx={{ display: 'flex' }}>
-          <CssBaseline />
-          <Box sx={{ padding: '20px', flexGrow: 1 }}>
-            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
-              <Grid sx={{ display: 'inline-flex' }}>
-                <ComposeButtonWrapper onClick={handleComposeOpen}>
-                  <Button variant="contained" color="primary">
-                    <AddCircleOutlineOutlinedIcon sx={{ marginRight: '7px' }} />
-                    Compose
-                  </Button>
-                </ComposeButtonWrapper>
-                <FilterWrapper>
-                  <IconButton aria-label="Filter" onClick={handleFilterClick}>
-                    <FilterListIcon />
-                  </IconButton>
-                  <Popover
-                    open={Boolean(anchorEl)}
-                    anchorEl={anchorEl}
-                    onClose={handleFilterClose}
-                    anchorOrigin={{
-                      // vertical: 'bottom',
-                      // horizontal: 'right', 
-                    }}
-                    transformOrigin={{
-                      // vertical: 'top',
-                      // horizontal: 'right', 
-                    }}
-                  >
-                    <Box sx={{ p: 2 }}>
-                      <MenuItem onClick={() => handleFilterSelect('name')}>Name</MenuItem>
-                      <MenuItem onClick={() => handleFilterSelect('date')}>Date</MenuItem>
-                      <MenuItem onClick={() => handleFilterSelect('unread')}>Unread</MenuItem>
-                      <MenuItem onClick={() => handleFilterSelect('important')}>Important</MenuItem>
-                    </Box>
-                  </Popover>
-                </FilterWrapper>
-=======
-
-    <>
-    <UrlPage/>
     <ThemeProvider theme={theme}>
+ 
       <Box sx={{ display: 'flex' }}>
-        <CssBaseline />
+    <CssBaseline />
         <Box sx={{ padding: '20px', flexGrow: 1 }}>
+       
           <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+           
             <Grid sx={{ display: 'inline-flex' }}>
+            
               <ComposeButtonWrapper onClick={handleComposeOpen}>
+                
                 <Button variant="contained" color="primary">
-                  <AddCircleOutlineOutlinedIcon sx={{ marginRight: '7px' }} />
-                  Compose
+                  <AddCircleOutlineOutlinedIcon sx={{ marginRight: '7px' }} /> Compose 
                 </Button>
+               
               </ComposeButtonWrapper>
+              
               <FilterWrapper>
+                
                 <IconButton aria-label="Filter" onClick={handleFilterClick}>
-                  <FilterListIcon />
+                  <FilterListIcon /> 
                 </IconButton>
+                
                 <Popover
                   open={Boolean(anchorEl)}
                   anchorEl={anchorEl}
                   onClose={handleFilterClose}
-                  anchorOrigin={{
-                    // vertical: 'bottom',
-                    // horizontal: 'right', 
-                  }}
-                  transformOrigin={{
-                    // vertical: 'top',
-                    // horizontal: 'right', 
-                  }}
+                  anchorOrigin={
+                    {
+                      // vertical: 'bottom',
+                      // horizontal: 'right',
+                    }
+                  }
+                  transformOrigin={
+                    {
+                      // vertical: 'top',
+                      // horizontal: 'right',
+                    }
+                  }
                 >
+                  
                   <Box sx={{ p: 2 }}>
-                    <MenuItem onClick={() => handleFilterSelect('name')}>Name</MenuItem>
-                    <MenuItem onClick={() => handleFilterSelect('date')}>Date</MenuItem>
-                    <MenuItem onClick={() => handleFilterSelect('unread')}>Unread</MenuItem>
-                    <MenuItem onClick={() => handleFilterSelect('important')}>Important</MenuItem>
+                    <MenuItem onClick={() => handleFilterSelect('name')}>Name</MenuItem> 
+                    <MenuItem onClick={() => handleFilterSelect('date')}>Date</MenuItem> 
+                    <MenuItem onClick={() => handleFilterSelect('unread')}>Unread</MenuItem> 
+                    <MenuItem onClick={() => handleFilterSelect('important')}>Important</MenuItem> 
                   </Box>
+                  
                 </Popover>
+                
               </FilterWrapper>
->>>>>>> 79e3037662ea3a7baed68f63f3e3ad19d396f946
-
-              </Grid>
-              <Grid sx={{ display: 'inline-flex' }}>
-                <SearchWrapper sx={{ justifyContent: 'center' }}>
-                  <SearchIconWrapper>
-                    <SearchIcon />
-                  </SearchIconWrapper>
-                  <StyledInputBase
-                    placeholder="Search…"
-                    inputProps={{ 'aria-label': 'search' }}
-                    value={searchQuery}
-                    onChange={handleSearchChange}
-                  />
-                </SearchWrapper>
-                <TablePagination
-                  component="div"
-                  count={data.length}
-                  page={page}
-                  onPageChange={handleChangePage}
-                  rowsPerPage={rowsPerPage}
-                  onRowsPerPageChange={handleChangeRowsPerPage}
-                  labelRowsPerPage=""
+             {' '}
+            </Grid>
+           {' '}
+            <Grid sx={{ display: 'inline-flex' }}>
+              
+              <SearchWrapper sx={{ justifyContent: 'center' }}>
+                
+                <SearchIconWrapper>
+                  <SearchIcon /> 
+                </SearchIconWrapper>
+                
+                <StyledInputBase
+                  placeholder="Search…"
+                  inputProps={{ 'aria-label': 'search' }}
+                  value={searchQuery}
+                  onChange={handleSearchChange}
                 />
-              </Grid>
-            </Box>
-            <List>
-              {data.slice(page * rowsPerPage, (page + 1) * rowsPerPage).map((item) => (
-                <React.Fragment key={item.id}>
-                  <ListItem onClick={() => navigate('/communication/inbox/message')}>
-<<<<<<< HEAD
+                
+              </SearchWrapper>
+              
+              <TablePagination
+                component="div"
+                count={data.length}
+                page={page}
+                onPageChange={handleChangePage}
+                rowsPerPage={rowsPerPage}
+                onRowsPerPageChange={handleChangeRowsPerPage}
+                labelRowsPerPage=""
+              />
+             {' '}
+            </Grid>
+           {' '}
+          </Box>
+         {' '}
+          <List>
+           {' '}
+            {data.slice(page * rowsPerPage, (page + 1) * rowsPerPage).map((item) => (
+              <React.Fragment key={item.id}>
+                
+                <ListItem onClick={() => navigate('/communication/inbox/message')}>
+                  
                   <ListItemAvatar>
-                    <Avatar alt="User Avatar" src={`/static/images/avatar/1.jpg/${item.id}.jpg`} />
+                    <Avatar alt="User Avatar" src={`/static/images/avatar/1.jpg/${item.id}.jpg`} /> 
                   </ListItemAvatar>
                   <EmailItem emailData={item} searchQuery={searchQuery} />
-                  <ListItemText
-                    primary={highlightMatch(item.name, searchQuery)}
-                    secondary={highlightMatch(item.message, searchQuery)}
-                  />
+                  <ListItemText primary={item.name} secondary={item.message} /> 
                   <Typography variant="subtitle2" color="textSecondary">
-                    {getCurrentDateTime()}
+                    {getCurrentDateTime()} 
                   </Typography>
+                  
                 </ListItem>
-                  <Divider />
-                </React.Fragment>
-              ))}
-
-=======
-                    <ListItemAvatar>
-                      <Avatar alt="User Avatar" src={`/static/images/avatar/1.jpg/${item.id}.jpg`} />
-                    </ListItemAvatar>
-                    <EmailItem emailData={item} />
-                    <ListItemText primary={item.name} secondary={item.message} />
-                    <Typography variant="subtitle2" color="textSecondary">
-                      {getCurrentDateTime()}
-                    </Typography>
-                  </ListItem>
-                  <Divider />
-                </React.Fragment>
-              ))}
->>>>>>> 79e3037662ea3a7baed68f63f3e3ad19d396f946
-            </List>
-          </Box>
+                <Divider />
+              </React.Fragment>
+            ))}
+           {' '}
+          </List>
+         {' '}
         </Box>
-        <MailCompose open={isComposeOpen} onClose={handleComposeClose} onSend={handleComposeSend} />
-      </ThemeProvider>
-<<<<<<< HEAD
-    </>
-=======
-</>
->>>>>>> 79e3037662ea3a7baed68f63f3e3ad19d396f946
+       {' '}
+      </Box>
+      <MailCompose open={isComposeOpen} onClose={handleComposeClose} onSend={handleComposeSend} />{' '}
+    </ThemeProvider>
   );
 };
-};
+
 export default GmailInboxTemplate;

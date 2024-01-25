@@ -18,6 +18,8 @@ const Dashboard = ({ isLoading }) => {
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
         <Grid container spacing={gridSpacing}>
+
+         {/* Welcome message , Attandance and fee due comp */}
           <Grid item lg={8} md={12} sm={12} xs={12} spacing={gridSpacing}>
             <Grid
               spacing={gridSpacing}
@@ -34,6 +36,7 @@ const Dashboard = ({ isLoading }) => {
             </Grid>
           </Grid>
 
+         {/* Profile comp */}
           <Grid item lg={4} md={12} sm={12} xs={12}>
             <Grid container spacing={gridSpacing}>
               <Grid item sm={6} xs={12} md={6} lg={12}>
@@ -41,42 +44,37 @@ const Dashboard = ({ isLoading }) => {
               </Grid>
             </Grid>
           </Grid>
-        </Grid>
-      </Grid>
 
-      <Grid item xs={12}>
-        <Grid container spacing={gridSpacing}>
+          {/* Communication comp */}
           <Grid item xs={12} md={7} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
             <CommunicationHomeComp isLoading={isLoading} />
           </Grid>
 
-           <Grid item xs={12} md={5} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
+           {/* Alert comp */}
+          <Grid item xs={12} md={5} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
             <Alert isLoading={isLoading} /> 
           </Grid>
 
-
+           {/* Assignment comp */}
           <Grid item xs={12} md={7} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
              <AssignmentsHomeComp isLoading={isLoading} />
           </Grid>
           
-
-
+           {/* Attandance chart comp */}
           <Grid item xs={12} md={5}>
               <AttandanceChartHomeComp isLoading={isLoading} />
           </Grid>
 
-
+           {/* Time Table comp */}
           <Grid item xs={12} md={7} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
              <TimeTableHome isLoading={isLoading} /> 
           </Grid>
 
+           {/* Circular and Notice or Updates comp */}
           <Grid item xs={12} md={5}>
               <CircularAndNoticeHomeComp isLoading={isLoading} />
           </Grid>
 
-          {/* <Grid item xs={12} md={12}>
-              <BasicDateRangeCalendarNew isLoading={isLoading} />
-          </Grid> */}
 
         </Grid>
       </Grid>
