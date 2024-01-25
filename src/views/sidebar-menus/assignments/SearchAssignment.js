@@ -9,8 +9,6 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import Autocomplete from '@mui/material/Autocomplete';
-// import parse from 'autosuggest-highlight/parse';
-// import match from 'autosuggest-highlight/match';
 
 const subjects = [
   { title: 'English' },
@@ -43,16 +41,15 @@ export default function SearchAssignment({ onSearch }) {
   const handleSearchTextChange = (event) => {
     setSearchText(event.target.value);
   };
-    // You can perform the search logic here
-    const handleSearch = () => {
-      const searchCriteria = {
-        startDate,
-        endDate,
-        subject: selectedSubject ? selectedSubject.title : '',
-        searchText,
-      };
 
-    // Pass the search criteria to the parent component
+  const handleSearch = () => {
+    const searchCriteria = {
+      startDate,
+      endDate,
+      subject: selectedSubject ? selectedSubject.title : '',
+      searchText,
+    };
+
     onSearch(searchCriteria);
   };
 
@@ -64,16 +61,14 @@ export default function SearchAssignment({ onSearch }) {
         alignItems: 'end',
         justifyContent: 'start',
         gap: 2,
-        // border: '1px solid black',
         borderRadius: '30px',
         padding: '20px',
         mb: '15px',
-        backgroundColor:'#fff'
+        backgroundColor: '#fff',
       }}
       noValidate
       autoComplete="off"
     >
-      {/* Date picker */}
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DemoContainer components={['DatePicker']}>
           <DatePicker
@@ -88,7 +83,6 @@ export default function SearchAssignment({ onSearch }) {
           />
         </DemoContainer>
       </LocalizationProvider>
-      {/* date picker end */}
       <Autocomplete
         id="highlights-demo"
         sx={{ width: 300, marginTop: '8px', marginBottom: '-1px' }}
@@ -96,31 +90,14 @@ export default function SearchAssignment({ onSearch }) {
         getOptionLabel={(option) => option.title}
         onChange={handleSubjectChange}
         renderInput={(params) => (
-          <TextField {...params} label="Subjects" margin="normal" sx={{ marginBottom: '0px', marginTop: '0px' }} />
+          <TextField
+            {...params}
+            label="Subjects"
+            margin="normal"
+            sx={{ marginBottom: '0px', marginTop: '0px' }}
+          />
         )}
-        renderOption={(props, option, { inputValue }) => {
-          const matches = match(option.title, inputValue, { insideWords: true });
-          const parts = parse(option.title, matches);
-
-          return (
-            <li {...props}>
-              <div>
-                {parts.map((part, index) => (
-                  <span
-                    key={index}
-                    style={{
-                      fontWeight: part.highlight ? 700 : 400,
-                    }}
-                  >
-                    {part.text}
-                  </span>
-                ))}
-              </div>
-            </li>
-          );
-        }}
       />
-      {/* search textField */}
       <TextField
         id="outlined-search"
         label="Search"
@@ -128,8 +105,6 @@ export default function SearchAssignment({ onSearch }) {
         value={searchText}
         onChange={handleSearchTextChange}
       />
-{/* search textField  end*/}
-{/* search button */}
       <Stack direction="row" spacing={2}>
         <Button
           variant="contained"
@@ -140,7 +115,6 @@ export default function SearchAssignment({ onSearch }) {
           Search
         </Button>
       </Stack>
-      {/* search button */}
     </Box>
   );
-      }
+}

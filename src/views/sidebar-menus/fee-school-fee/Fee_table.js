@@ -4,36 +4,9 @@ import { alpha, Box, Paper, Table, TableBody, TableCell, TableContainer, TableHe
 import DeleteIcon from '@mui/icons-material/Delete';
 import { visuallyHidden } from '@mui/utils';
 import PrintTwoToneIcon from '@mui/icons-material/PrintTwoTone';
-
-
 import Popover from '@mui/material/Popover';
 import Button from '@mui/material/Button';
 import rows from './Fee_tabledata';
-
-
-// function createData(id, name, date, ldate, netpay, amtpay, bal, receiptno, receiptdate, paymode, status) {
-//   return {
-//     id,
-//     name,
-//     date,
-//     ldate,
-//     netpay,
-//     amtpay,
-//     bal,
-//     receiptno,
-//     receiptdate,
-//     paymode,
-//     status,
-//   };
-// }
-
-// const rows = [
-//   createData(1, 'Regular', '01/May/2024', '28/Feb/2024', 305, 4000, 40000, '1', '28/Jan/2024', 'Adj Entry', 'Overdue'),
-//   createData(2, 'Tution', '01/Mar/2024', '22/Dec/2024', 30, 45000, 45000, '2', '28/Feb/2024', 'Demand Draft', 'paid'),
-//   createData(3, 'Practical', '01/Jul/2024', '23/Jan/2024', 3067, 9000, 43000, '3', '28/Mar/2024', 'Adj Entry', 'Overdue'),
-//   createData(4, 'Tution', '01/Jun/2024', '22/Sep/2024', 3088, 5000, 35000, '4', '28/Apr/2024', 'Credit/Debit Card', 'paid'),
-//   createData(5, 'Regular', '01/Aug/2024', '21/Nov/2024', 3043, 8000, 54000, '5', '28/May/2024', 'Unpaid', 'paid'),
-// ];
 
 
 function descendingComparator(a, b, orderBy) {
@@ -64,6 +37,7 @@ function stableSort(array, comparator) {
   return stabilizedThis.map((el) => el[0]);
 }
 
+// ============= Table Head cell ============
 const headCells = [
   {
     id: 'name',
@@ -129,6 +103,7 @@ function EnhancedTableHead(props) {
   };
 
   return (
+    // ============ Table head ==========
     <TableHead>
       <TableRow>
         <TableCell padding="checkbox">
@@ -325,7 +300,6 @@ export default function FeeDataTable() {
             sx={{ minWidth: 750, border: '1px solid rgba(224, 224, 224, 1)' }}
             aria-labelledby="tableTitle"
             size="medium"
-
           >
             <EnhancedTableHead
               numSelected={selected.length}
@@ -339,6 +313,9 @@ export default function FeeDataTable() {
               {visibleRows.map((row, index) => {
                 const isItemSelected = isSelected(row.id);
                 const labelId = `enhanced-table-checkbox-${index}`;
+
+                // ============= set status overdue if date is over =============
+                {new Date(row.ldate) < new Date() ? row.status = 'overdue' : row.status}
 
                 return (
                   <TableRow
@@ -389,12 +366,19 @@ export default function FeeDataTable() {
                       //color: row.paymode === 'paid' ? '#00cc5d' : (row.paymode === 'Demand Draft' ? '#00ffd0' : '#f5403c'),
                     }}>
                       <Box sx={{ width: '100%', display: 'flex', justifyContent: 'end' }}>
+                      
                         <Box sx={{
-                          color: row.status === 'paid' ? 'rgb(0, 200, 83)' : 'rgb(216, 67, 21)',
+                          // color: row.status === 'paid' ? 'rgb(0, 200, 83)' : 'rgb(216, 67, 21)',
+                          // borderRadius: '16px',
+                          // background: row.status === 'paid' ? 'rgba(147, 213, 166, 0.38)' : 'rgb(251, 233, 231)',
+                          // '&:hover': {
+                          //   background: row.status === 'paid' ? 'rgb(0, 200, 83)' : 'rgb(216, 67, 21)',
+                          //   color: 'white',
+                          color: row.status === 'paid' ? 'rgb(0, 200, 83)' : (row.status === 'overdue' ? '#433e1a' : 'rgb(216, 67, 21)'),
                           borderRadius: '16px',
-                          background: row.status === 'paid' ? 'rgba(147, 213, 166, 0.38)' : 'rgb(251, 233, 231)',
+                          background: row.status === 'paid' ? 'rgba(147, 213, 166, 0.38)' : (row.status === 'overdue' ? '#ffff003b' : 'rgb(251, 233, 231)'),
                           '&:hover': {
-                            background: row.status === 'paid' ? 'rgb(0, 200, 83)' : 'rgb(216, 67, 21)',
+                            background: row.status === 'paid' ? 'rgb(0, 200, 83)' : (row.status === 'overdue' ? '#b4aa10' : 'rgb(216, 67, 21)'),
                             color: 'white',
                           },
                           padding: '2px',
@@ -402,7 +386,10 @@ export default function FeeDataTable() {
                           paddingLeft: '8px',
                           textAlign: 'center'
                         }}>
-                          {row.status}
+                          {/* {row.status} */}
+                          {/* {new Date(row.lastDate) > new Date() ? 'overdue' : row.status} */}
+                          
+                          {new Date(row.ldate) < new Date() ? 'overdue' : row.status}
                         </Box>
                       </Box>
                     </TableCell>

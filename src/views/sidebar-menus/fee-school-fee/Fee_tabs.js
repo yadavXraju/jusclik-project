@@ -5,6 +5,7 @@ import Tab from '@mui/material/Tab';
 import { useTheme, useMediaQuery, Box, Typography } from '@mui/material';
 import FeeDataTable from './Fee_table';
 import Summary from './Summary';
+import ReceiptDetails from './ReceiptDetails';
 
 
 // Custom component for rendering the content of each tab panel
@@ -70,7 +71,7 @@ function Feetabs() {
        <FeeDataTable/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
-        2
+        <ReceiptDetails/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={3}>
        3
