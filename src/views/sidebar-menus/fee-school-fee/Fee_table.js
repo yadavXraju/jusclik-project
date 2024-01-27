@@ -374,11 +374,11 @@ export default function FeeDataTable() {
                           // '&:hover': {
                           //   background: row.status === 'paid' ? 'rgb(0, 200, 83)' : 'rgb(216, 67, 21)',
                           //   color: 'white',
-                          color: row.status === 'paid' ? 'rgb(0, 200, 83)' : (row.status === 'overdue' ? '#433e1a' : 'rgb(216, 67, 21)'),
+                          color: row.status === 'Paid' ? 'rgb(0, 200, 83)' : (row.status === 'overdue' ? '#433e1a' : 'rgb(216, 67, 21)'),
                           borderRadius: '16px',
-                          background: row.status === 'paid' ? 'rgba(147, 213, 166, 0.38)' : (row.status === 'overdue' ? '#ffff003b' : 'rgb(251, 233, 231)'),
+                          background: row.status === 'Paid' ? 'rgba(147, 213, 166, 0.38)' : (row.status === 'overdue' ? '#ffff003b' : 'rgb(251, 233, 231)'),
                           '&:hover': {
-                            background: row.status === 'paid' ? 'rgb(0, 200, 83)' : (row.status === 'overdue' ? '#b4aa10' : 'rgb(216, 67, 21)'),
+                            background: row.status === 'Paid' ? 'rgb(0, 200, 83)' : (row.status === 'overdue' ? '#b4aa10' : 'rgb(216, 67, 21)'),
                             color: 'white',
                           },
                           padding: '2px',
