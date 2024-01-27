@@ -1,19 +1,3 @@
-<<<<<<< HEAD
-// User
-// import React, { useState } from 'react';
-// import {
-//   CssBaseline, Box, List, ListItem, ListItemAvatar, Avatar, ListItemIcon, ListItemText, Divider, Typography, Button, InputBase, ThemeProvider, createTheme, IconButton, Popover, MenuItem, Grid,
-// } from '@mui/material';
-// import TablePagination from '@mui/material/TablePagination';
-// import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
-// import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
-// import SearchIcon from '@mui/icons-material/Search';
-// import FilterListIcon from '@mui/icons-material/FilterList';
-// import MailCompose from './MailCompose';
-// import { styled } from '@mui/system';
-// import { useNavigate } from 'react-router';
-// import UrlPage from 'views/navigation-for-pages';
-=======
 import React, { useState } from 'react';
 import {
   CssBaseline,
