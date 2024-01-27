@@ -49,14 +49,13 @@ const GmailInboxTemplate = () => {
     return currentDate.toLocaleString('en-US', options);
   };
 
-
-
-  const [data, setData] = useState(initialData);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [isComposeOpen, setComposeOpen] = useState(true);
   const [anchorEl, setAnchorEl] = useState(null);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [isComposeOpen, setComposeOpen] = useState(true);
+  const [searchResults, setSearchResults] = useState([]);
+  const [currentFilter, setCurrentFilter] = useState('');
 
   const SearchWrapper = styled('div')({
     position: 'relative',
@@ -139,257 +138,164 @@ const GmailInboxTemplate = () => {
   const highlightMatch = (text, query) => {
     if (!query || !text) return text;
 
-    const SearchWrapper = styled('div')({
-      position: 'relative',
-      borderRadius: theme.shape.borderRadius,
-      backgroundColor: theme.palette.background.default,
-      border: `1px solid ${theme.palette.divider}`,
-      '&:hover': {
-        backgroundColor: theme.palette.background.paper,
-      },
-      marginLeft: 0,
-      width: '100%',
-      [theme.breakpoints.up('sm')]: {
-        marginLeft: theme.spacing(1),
-        width: 'auto',
-      },
-    });
+    const regex = new RegExp(`(${query})`, 'gi');
+    return text.split(regex).map((part, index) =>
+      regex.test(part) ? <span key={index} style={{ fontWeight: 'bold' }}>{part}</span> : part
+    );
+  };
 
 
-    <Box sx={{ display: 'flex' }}>
-      <CssBaseline />
-      <Box sx={{ padding: '20px', flexGrow: 1 }}>
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
-          <Grid sx={{ display: 'inline-flex' }}>
-            <ComposeButtonWrapper onClick={handleComposeOpen}>
-              <Button variant="contained" color="primary">
-                <AddCircleOutlineOutlinedIcon sx={{ marginRight: '7px' }} />
-                Compose
-              </Button>
-            </ComposeButtonWrapper>
-            <FilterWrapper>
-              <IconButton
-                aria-label="Filter"
-                onClick={handleFilterClick}
-                color={currentFilter === 'important' ? 'primary' : 'default'} // Apply yellow color based on filter type
-              >
-                <FilterListIcon />
-              </IconButton>
-              <Popover
-                open={Boolean(anchorEl)}
-                anchorEl={anchorEl}
-                onClose={handleFilterClose}
-              >
-                <Box sx={{ p: 2 }}>
-                  <MenuItem onClick={() => handleFilterSelect('name')}>Name</MenuItem>
-                  <MenuItem onClick={() => handleFilterSelect('date')}>Date</MenuItem>
-                  <MenuItem onClick={() => handleFilterSelect('unread')}>Unread</MenuItem>
-                  <MenuItem onClick={() => handleFilterSelect('important')}>Important</MenuItem>
-                </Box>
-              </Popover>
-            </FilterWrapper>
-          </Grid>
-          <Grid sx={{ display: 'inline-flex' }}>
-            <SearchWrapper sx={{ justifyContent: 'center' }}>
-              <SearchIconWrapper>
-                <SearchIcon />
-              </SearchIconWrapper>
-              <StyledInputBase
-                placeholder="Search…"
-                inputProps={{ 'aria-label': 'search' }}
-                value={searchQuery}
-                onChange={handleSearchChange}
-              />
-            </SearchWrapper>
-            <TablePagination
-              component="div"
-              count={(searchResults.length || initialData.length)}
-              page={page}
-              onPageChange={handleChangePage}
-              rowsPerPage={rowsPerPage}
-              onRowsPerPageChange={handleChangeRowsPerPage}
-              labelRowsPerPage=""
-            />
-          </Grid>
-        </Box>
-        {(searchResults.length > 0 || searchQuery === '') && (
-          <List>
-            {(searchResults.length ? searchResults : initialData).slice(page * rowsPerPage, (page + 1) * rowsPerPage).map((item) => (
-              <React.Fragment key={item.id}>
-                <ListItem sx={{
-                  cursor: 'pointer', '&:hover': {
-                    boxShadow: theme.shadows[2],
-                  },
-                }} onClick={() => navigate('/communication/inbox/message')}>
-                  <ListItemAvatar onClick={(event) => event.stopPropagation()}>
-                    <Avatar alt="User Avatar" src={AvtarImg} />
-                  </ListItemAvatar>
-                  <ListItemIcon
-                    onClick={(event) => { event.stopPropagation(); handleStarClick(item); }}
-                  >
-                    <StarBorderOutlinedIcon style={{ color: item.important ? '#f3c74a' : 'inherit' }} />
-                  </ListItemIcon>
-                  <ListItemText
-                    primary={highlightMatch(item.name, searchQuery)}
-                    secondary={highlightMatch(item.message, searchQuery)}
-                  />
-                  <Typography variant="subtitle2" color="textSecondary" onClick={(event) => event.stopPropagation()}>
-                    {getCurrentDateTime()}
-                  </Typography>
-                </ListItem>
-                <Divider />
-              </React.Fragment>
-            ))}
-          </List>
-        )}
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
 
   const handleChangeRowsPerPage = (event) => {
-          setRowsPerPage(parseInt(event.target.value, 10));
-        setPage(0);
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
   };
 
   const handleComposeOpen = () => {
-          setComposeOpen(true);
+    setComposeOpen(true);
   };
 
   const handleComposeClose = () => {
-          setComposeOpen(false);
+    setComposeOpen(false);
   };
 
   const handleComposeSend = (mailData) => {
-          console.log('Sending mail:', mailData);
-        handleComposeClose();
+    console.log('Sending mail:', mailData);
+    handleComposeClose();
   };
 
   const handleFilterClick = (event) => {
-          setAnchorEl(event.currentTarget);
+    setAnchorEl(event.currentTarget);
   };
 
   const handleFilterClose = () => {
-          setAnchorEl(null);
+    setAnchorEl(null);
   };
 
   const handleFilterSelect = (filterValue) => {
-          handleFilterClose();
-        filterData(filterValue, filterValue);
+    handleFilterClose();
+    filterData(filterValue, filterValue);
   };
 
-        const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleStarClick = (item) => {
     const updatedData = searchResults.length
-      ? searchResults.map((d) => (d.id === item.id ? {...d, important: !d.important } : d))
-      : initialData.map((d) => (d.id === item.id ? {...d, important: !d.important } : d));
+      ? searchResults.map((d) => (d.id === item.id ? { ...d, important: !d.important } : d))
+      : initialData.map((d) => (d.id === item.id ? { ...d, important: !d.important } : d));
 
-        setSearchResults(updatedData);
+    setSearchResults(updatedData);
   };
 
 
-        return (
-        <>
-          <UrlPage />
-          <Paper>
-            <ThemeProvider theme={theme}>
+  return (
+    <>
+      <UrlPage />
+      <Paper>
+        <ThemeProvider theme={theme}>
 
-              <Box sx={{ display: 'flex' }}>
-                <CssBaseline />
-                <Box sx={{ padding: '20px', flexGrow: 1 }}>
-                  <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
-                    <Grid sx={{ display: 'inline-flex' }}>
-                      <ComposeButtonWrapper onClick={handleComposeOpen}>
-                        <Button variant="contained" color="primary">
-                          <AddCircleOutlineOutlinedIcon sx={{ marginRight: '7px' }} />
-                          Compose
-                        </Button>
-                      </ComposeButtonWrapper>
-                      <FilterWrapper>
-                        <IconButton
-                          aria-label="Filter"
-                          onClick={handleFilterClick}
-                          color={currentFilter === 'important' ? 'primary' : 'default'} // Apply yellow color based on filter type
-                        >
-                          <FilterListIcon />
-                        </IconButton>
-                        <Popover
-                          open={Boolean(anchorEl)}
-                          anchorEl={anchorEl}
-                          onClose={handleFilterClose}
-                        >
-                          <Box sx={{ p: 2 }}>
-                            <MenuItem onClick={() => handleFilterSelect('name')}>Name</MenuItem>
-                            <MenuItem onClick={() => handleFilterSelect('date')}>Date</MenuItem>
-                            <MenuItem onClick={() => handleFilterSelect('unread')}>Unread</MenuItem>
-                            <MenuItem onClick={() => handleFilterSelect('important')}>Important</MenuItem>
-                          </Box>
-                        </Popover>
-                      </FilterWrapper>
-                    </Grid>
-                    <Grid sx={{ display: 'inline-flex' }}>
-                      <SearchWrapper sx={{ justifyContent: 'center' }}>
-                        <SearchIconWrapper>
-                          <SearchIcon />
-                        </SearchIconWrapper>
-                        <StyledInputBase
-                          placeholder="Search…"
-                          inputProps={{ 'aria-label': 'search' }}
-                          value={searchQuery}
-                          onChange={handleSearchChange}
-                        />
-                      </SearchWrapper>
-                      <TablePagination
-                        component="div"
-                        count={(searchResults.length || initialData.length)}
-                        page={page}
-                        onPageChange={handleChangePage}
-                        rowsPerPage={rowsPerPage}
-                        onRowsPerPageChange={handleChangeRowsPerPage}
-                        labelRowsPerPage=""
-                      />
-                    </Grid>
-                  </Box>
-                  {(searchResults.length > 0 || searchQuery === '') && (
-                    <List>
-                      {(searchResults.length ? searchResults : initialData).slice(page * rowsPerPage, (page + 1) * rowsPerPage).map((item) => (
-                        <React.Fragment key={item.id}>
-                          <ListItem sx={{
-                            cursor: 'pointer', '&:hover': {
-                              boxShadow: theme.shadows[2],
-                            },
-                          }} onClick={() => navigate('/communication/inbox/message')}>
-                            <ListItemAvatar onClick={(event) => event.stopPropagation()}>
-                              <Avatar alt="User Avatar" src={AvtarImg} />
-                            </ListItemAvatar>
-                            <ListItemIcon
-                              onClick={(event) => { event.stopPropagation(); handleStarClick(item); }}
-                            >
-                              <StarBorderOutlinedIcon style={{ color: item.important ? '#f3c74a' : 'inherit' }} />
-                            </ListItemIcon>
-                            <ListItemText
-                              primary={highlightMatch(item.name, searchQuery)}
-                              secondary={highlightMatch(item.message, searchQuery)}
-                            />
-                            <Typography variant="subtitle2" color="textSecondary" onClick={(event) => event.stopPropagation()}>
-                              {getCurrentDateTime()}
-                            </Typography>
-                          </ListItem>
-                          <Divider />
-                        </React.Fragment>
-                      ))}
-                    </List>
-                  )}
-
-                  {searchResults.length === 0 && searchQuery !== '' && (
-                    <Typography variant="body1" color="textSecondary" textAlign="center">
-                      No data found.
-                    </Typography>
-                  )}
-                </Box>
+          <Box sx={{ display: 'flex' }}>
+            <CssBaseline />
+            <Box sx={{ padding: '20px', flexGrow: 1 }}>
+              <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+                <Grid sx={{ display: 'inline-flex' }}>
+                  <ComposeButtonWrapper onClick={handleComposeOpen}>
+                    <Button variant="contained" color="primary">
+                      <AddCircleOutlineOutlinedIcon sx={{ marginRight: '7px' }} />
+                      Compose
+                    </Button>
+                  </ComposeButtonWrapper>
+                  <FilterWrapper>
+                    <IconButton
+                      aria-label="Filter"
+                      onClick={handleFilterClick}
+                      color={currentFilter === 'important' ? 'primary' : 'default'} // Apply yellow color based on filter type
+                    >
+                      <FilterListIcon />
+                    </IconButton>
+                    <Popover
+                      open={Boolean(anchorEl)}
+                      anchorEl={anchorEl}
+                      onClose={handleFilterClose}
+                    >
+                      <Box sx={{ p: 2 }}>
+                        <MenuItem onClick={() => handleFilterSelect('name')}>Name</MenuItem>
+                        <MenuItem onClick={() => handleFilterSelect('date')}>Date</MenuItem>
+                        <MenuItem onClick={() => handleFilterSelect('unread')}>Unread</MenuItem>
+                        <MenuItem onClick={() => handleFilterSelect('important')}>Important</MenuItem>
+                      </Box>
+                    </Popover>
+                  </FilterWrapper>
+                </Grid>
+                <Grid sx={{ display: 'inline-flex' }}>
+                  <SearchWrapper sx={{ justifyContent: 'center' }}>
+                    <SearchIconWrapper>
+                      <SearchIcon />
+                    </SearchIconWrapper>
+                    <StyledInputBase
+                      placeholder="Search…"
+                      inputProps={{ 'aria-label': 'search' }}
+                      value={searchQuery}
+                      onChange={handleSearchChange}
+                    />
+                  </SearchWrapper>
+                  <TablePagination
+                    component="div"
+                    count={(searchResults.length || initialData.length)}
+                    page={page}
+                    onPageChange={handleChangePage}
+                    rowsPerPage={rowsPerPage}
+                    onRowsPerPageChange={handleChangeRowsPerPage}
+                    labelRowsPerPage=""
+                  />
+                </Grid>
               </Box>
-              <MailCompose open={isComposeOpen} onClose={handleComposeClose} onSend={handleComposeSend} />
-            </ThemeProvider>
-          </Paper>
-        </>
-        );
+              {(searchResults.length > 0 || searchQuery === '') && (
+                <List>
+                  {(searchResults.length ? searchResults : initialData).slice(page * rowsPerPage, (page + 1) * rowsPerPage).map((item) => (
+                    <React.Fragment key={item.id}>
+                      <ListItem sx={{
+                        cursor: 'pointer', '&:hover': {
+                          boxShadow: theme.shadows[2],
+                        },
+                      }} onClick={() => navigate('/communication/inbox/message')}>
+                        <ListItemAvatar onClick={(event) => event.stopPropagation()}>
+                          <Avatar alt="User Avatar" src={AvtarImg} />
+                        </ListItemAvatar>
+                        <ListItemIcon
+                          onClick={(event) => { event.stopPropagation(); handleStarClick(item); }}
+                        >
+                          <StarBorderOutlinedIcon style={{ color: item.important ? '#f3c74a' : 'inherit' }} />
+                        </ListItemIcon>
+                        <ListItemText
+                          primary={highlightMatch(item.name, searchQuery)}
+                          secondary={highlightMatch(item.message, searchQuery)}
+                        />
+                        <Typography variant="subtitle2" color="textSecondary" onClick={(event) => event.stopPropagation()}>
+                          {getCurrentDateTime()}
+                        </Typography>
+                      </ListItem>
+                      <Divider />
+                    </React.Fragment>
+                  ))}
+                </List>
+              )}
+
+              {searchResults.length === 0 && searchQuery !== '' && (
+                <Typography variant="body1" color="textSecondary" textAlign="center">
+                  No data found.
+                </Typography>
+              )}
+            </Box>
+          </Box>
+          <MailCompose open={isComposeOpen} onClose={handleComposeClose} onSend={handleComposeSend} />
+        </ThemeProvider>
+      </Paper>
+    </>
+  );
 };
 
-        export default GmailInboxTemplate;
+export default GmailInboxTemplate;
