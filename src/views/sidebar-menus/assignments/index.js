@@ -11,8 +11,21 @@ import {
 import { data } from './AssignmentData';
 import Attcgment from './Attcgment';
 import Heading from './Heading';
+<<<<<<< HEAD
 import SearchAssignment from './SearchAssignment';
 import AssignmentItem from './AssignmentItem';
+=======
+
+
+import SearchAssignment from './SearchAssignment';
+import AssignmentItem from './AssignmentItem';
+
+
+
+
+
+
+>>>>>>> bc93146ace78ae0cf26e5d71b2ace604f987c672
 import UrlPage from 'views/navigation-for-pages';
 
 const Assignments = () => {
@@ -72,6 +85,7 @@ const Assignments = () => {
     setSnackbarOpen(false);
   };
 
+<<<<<<< HEAD
   const handleSearch = criteria => {
     setSearchCriteria(criteria);
   };
@@ -129,8 +143,60 @@ const Assignments = () => {
         </Paper>
         <Attcgment isOpen={openDialog} onClose={handleCloseDialog} snackOpen={snackbarOpen} snackBarClose={handleSnackbarClose} />
       </Box>
+=======
+
+
+
+
+
+  return (
+    <>
+    <UrlPage />
+    <Container maxWidth="xl" xs={12} style={{ marginTop: 20 }}>
+      <SearchAssignment/>
+      <Paper style={{ padding: 20 }}>
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          centered={!isSmallScreen}
+          variant={isSmallScreen ? 'scrollable' : 'standard'}>
+          <Tab label="UPCOMING" value="UPCOMING" />
+          <Tab label="PAST" value="PAST" />
+        </Tabs>
+        <div className="tabs">
+          {value === 'UPCOMING' && (
+            <div className="panel">
+               <Container maxWidth="xl" style={{ marginTop: 20 }}>
+                 <Heading/>
+                   {sortedUpcomingAssignments.map((item,index) => (
+                          <AssignmentItem key={item.id} item={item} index={index} handleOpenDialog={handleOpenDialog} getFormattedDate={getFormattedDate}/>
+                     ))}
+               </Container>
+            </div>
+           )}
+
+
+          {value === 'PAST' && (
+            <div className="panel">
+               <Heading/>
+              {sortAssignmentsByDueDate(previousAssignments).map((item ,index)=> (
+                   <AssignmentItem key={item.id} item={item} index={index} handleOpenDialog={handleOpenDialog} getFormattedDate={getFormattedDate}/>
+              ))}
+            </div>
+          )}
+        </div>
+      </Paper>
+   <Attcgment isOpen={openDialog} onClose={handleCloseDialog} snackOpen={snackbarOpen} snackBarClose={handleSnackbarClose} />
+ 
+    </Container>
+>>>>>>> bc93146ace78ae0cf26e5d71b2ace604f987c672
     </>
   );
 };
 
+<<<<<<< HEAD
 export default Assignments;
+=======
+
+export default Assignments;
+>>>>>>> bc93146ace78ae0cf26e5d71b2ace604f987c672
