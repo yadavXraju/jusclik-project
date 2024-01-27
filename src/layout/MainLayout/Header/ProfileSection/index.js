@@ -184,11 +184,15 @@ const ProfileSection = () => {
                         </ListItemButton>
 
                         {/* Change Credentials */}
+
+                        {/* this is set state of student profile tab Credentials */}
                        
                         <ListItemButton sx={{ borderRadius: `${customization.borderRadius}px` }} onClick={() => {
                                     navigate('student-profile', { state: { initialTab: 5 } });
                                   }}
                                 >
+
+                               
                               <ListItemIcon>
                                 <IconSettings stroke={1.5} size="1.3rem" />
                               </ListItemIcon>
