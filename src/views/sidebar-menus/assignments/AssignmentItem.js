@@ -7,32 +7,7 @@ import DownloadIcon from '@mui/icons-material/Download';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import CreateIcon from '@mui/icons-material/Create';
 
-<<<<<<< HEAD
-const AssignmentItem = ({ item, index, handleOpenDialog, getFormattedDate, searchText }) => {
-  const formattedDate = getFormattedDate(item.date);
-
-  // Highlight search text in a string
-  const highlightSearchText = (text, searchText) => {
-    if (!searchText || !text) {
-      return text;
-    }
-
-    const parts = text.split(new RegExp(`(${searchText})`, 'gi'));
-
-    return (
-      <span>
-        {parts.map((part, i) => (
-          <span key={i} style={part.toLowerCase() === searchText.toLowerCase() ? { backgroundColor: 'yellow' } : {}}>
-            {part}
-          </span>
-        ))}
-      </span>
-    );
-  };
-
-=======
 const AssignmentItem = ({ item, index, handleOpenDialog ,getFormattedDate}) => {
->>>>>>> bc93146ace78ae0cf26e5d71b2ace604f987c672
   return (
     <Paper elevation={2} key={item.id} sx={{ padding: '0px 20px', marginBottom: '30px', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)' }}>
       <Grid className='tab' container spacing={2} sx={{
@@ -42,10 +17,10 @@ const AssignmentItem = ({ item, index, handleOpenDialog ,getFormattedDate}) => {
           <Typography variant="h4">{highlightSearchText(item.name, searchText)}</Typography>
           <Typography variant="subtitle2" color="textSecondary">
             <Grid sx={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'flex-start', mt: '10px' }}>
-              <CalendarTodayIcon sx={{ width: "16px", height: "16px" }} /> {formattedDate}
+              <CalendarTodayIcon sx={{ width: "16px", height: "16px" }} /> {getFormattedDate}
             </Grid>
           </Typography>
-          <Typography variant="subtitle2" color="textSecondary">Due Date: {highlightSearchText(formattedDate, searchText)}</Typography>
+          <Typography variant="subtitle2" color="textSecondary">Due Date: {highlightSearchText(getFormattedDate, searchText)}</Typography>
         </Grid>
         <Grid direction="row" alignItems="flex-start" justifyContent='flex-start' item xs={4} md={8}>
           <Typography variant='h6'>{highlightSearchText(item.homework, searchText)}</Typography>

@@ -25,16 +25,7 @@ import PlayStoreImage from '../../../assets/images/Google-Play.png';
 import AppleStoreImage from '../../../assets/images/app-store.png';
 import CloudLogo from '../../../assets/images/Untitled-2.png';
 import EnterMobileDialog from './EnterMobileDialog';
-<<<<<<< HEAD
-// import SelectAccount from './SelectAccount';
-// import SelectAccount from './SelectAccount';
-// import axios from 'axios';
-// import axios from 'axios';
-import Config from '../../../config';
-import SetSession from '../../../session/setsession';
-=======
 import SelectAccount from './SelectAccount';
->>>>>>> bc93146ace78ae0cf26e5d71b2ace604f987c672
 
 const defaultTheme = createTheme();
 

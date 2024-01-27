@@ -9,30 +9,24 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import Autocomplete from '@mui/material/Autocomplete';
-<<<<<<< HEAD
-=======
 
 
 // import parse from 'autosuggest-highlight/parse';
 // import match from 'autosuggest-highlight/match';
 
->>>>>>> bc93146ace78ae0cf26e5d71b2ace604f987c672
 import { data } from './AssignmentData';
 
 const uniqueSubjects = [...new Set(data.map(item => item.name))];
 const subjects = uniqueSubjects.map(subject => ({ title: subject }));
 
-<<<<<<< HEAD
 const SearchAssignment = ({ onSearch }) => {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [selectedSubject, setSelectedSubject] = useState(null);
   const [searchText, setSearchText] = useState('');
-=======
 
 
 
->>>>>>> bc93146ace78ae0cf26e5d71b2ace604f987c672
 
   const handleStartDateChange = date => {
     setStartDate(date);
@@ -97,27 +91,27 @@ const SearchAssignment = ({ onSearch }) => {
             sx={{ marginBottom: '0px', marginTop: '0px' }}
           />
         )}
-       renderOption={(props, option, { inputValue }) => {
-  const parts = option.title.split(new RegExp(`(${inputValue})`, 'gi'));
+        renderOption={(props, option, { inputValue }) => {
+          const parts = option.title.split(new RegExp(`(${inputValue})`, 'gi'));
 
-  return (
-    <li {...props}>
-      <div>
-        {parts.map((part, index) => (
-          <span
-            key={index}
-            style={{
-              fontWeight: part.toLowerCase() === inputValue.toLowerCase() ? 700 : 400,
-            }}
-          >
-            {part}
-          </span>
-        ))}
-      </div>
-    </li>
-  );
-}}
-/>
+          return (
+            <li {...props}>
+              <div>
+                {parts.map((part, index) => (
+                  <span
+                    key={index}
+                    style={{
+                      fontWeight: part.toLowerCase() === inputValue.toLowerCase() ? 700 : 400,
+                    }}
+                  >
+                    {part}
+                  </span>
+                ))}
+              </div>
+            </li>
+          );
+        }}
+      />
       <TextField
         id="outlined-search"
         label="Search"
