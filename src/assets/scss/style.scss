@@ -186,7 +186,11 @@ div#\:r3\: , div#\:r4\:, div#\:r5\: {
   padding-left: 8px;
 }
 
-.drawercloseBody  circle {
+// .drawercloseBody  circle {
+//   display: none;
+// }
+
+.drawercloseBody  a .MuiListItemIcon-root.css-a3bk4d-MuiListItemIcon-root svg circle {
   display: none;
 }
 

@@ -32,7 +32,7 @@ const ContactList = Loadable(lazy(() => import('views/sidebar-menus/communicatio
 const RecentMessage = Loadable(lazy(() => import('views/sidebar-menus/communication-message/Recent-Message')));
 const AddMetting = Loadable(lazy(() => import('views/sidebar-menus/request/AddMetting')));
 const ItemRequestGatePass = Loadable(lazy(() => import('views/sidebar-menus/request/ItemRequestGatePass')));
-const Resources = Loadable(lazy(() => import('views/sidebar-menus/resources/')));
+const Resources = Loadable(lazy(() => import('views/sidebar-menus/resources')));
 // const Setting = Loadable(lazy(() => import('views/sidebar-menus/settings')));
 const StudentProfile = Loadable(lazy(() => import('views/sidebar-menus/studentProfile')));
 const PhotoGallery = Loadable(lazy(() => import('views/sidebar-menus/photo-gallery')));

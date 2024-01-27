@@ -1,23 +1,15 @@
 import { useState } from 'react';
 
 const useDialog = () => {
-  const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [openDialog, setOpenDialog] = useState(false);
-
-  const handleOpen = () => {
-    setOpenDialog(true);
-  };
-
-  const handleClose = () => {
-    setOpenDialog(false);
-  };
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
 
   const handleOpenDialog = () => {
     setOpenDialog(true);
   };
 
   const handleCloseDialog = () => {
-    setSnackbarOpen(true); // Show a Snackbar notification
+    setSnackbarOpen(true);
     setOpenDialog(false);
   };
 
@@ -25,7 +17,18 @@ const useDialog = () => {
     setSnackbarOpen(false);
   };
 
-  return { snackbarOpen, openDialog, handleOpenDialog, handleOpen, handleClose, handleCloseDialog, handleSnackbarClose };
+
+  // return all functions
+  return {
+    openDialog,
+    snackbarOpen,
+    handleOpenDialog,
+    handleCloseDialog,
+    handleSnackbarClose,
+  };
 };
 
 export default useDialog;
+
+
+

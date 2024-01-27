@@ -7,9 +7,12 @@ const AlertData = [
     id: 1,
     icon: <CurrencyRupeeOutlinedIcon />,
     title: 'Fee Payment Due',
-    showButton: true,  // optional
+    // if you want any type of  button then make showButton : true
+    showButton: true, 
     buttonText : 'Pay',
     description: 'Fee Payment Due',
+    
+    // for bg color of icon
     bgColor : '#3c9f3cb5'
   },
 

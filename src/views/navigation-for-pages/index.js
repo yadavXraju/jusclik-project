@@ -9,16 +9,21 @@ import { useNavigate } from 'react-router-dom';
 
 const UrlPage = () => {
   const location = useLocation();
+  // to get currunt url of page
   const currentPath = location.pathname;
 
   const navigate = useNavigate();
 
   function capitalizeAndFormat(string) {
+      // to split in hyphen basis
     const words = string.split('-');
+
+    // to captial first letter hyphen and add empty string in place of hyphen
     const formattedWords = words.map((word) => word.charAt(0).toUpperCase() + word.slice(1));
     return formattedWords.join(' ');
   }
 
+  // for taking the last item of path after the / in title
   const pathSegments = currentPath.split('/');
   const lastSegment = pathSegments[pathSegments.length - 1];
   const pageTitle = capitalizeAndFormat(lastSegment);

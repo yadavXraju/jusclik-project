@@ -93,7 +93,7 @@ export default function ThemeTypography(theme) {
       width: '100%',
       minHeight: 'calc(100vh - 88px)',
       flexGrow: 1,
-      padding: '20px',
+      padding: '20px 40px',
       marginTop: isMobile ? '230px' : '130px',
       marginRight: '20px',
       borderRadius: `${theme?.customization?.borderRadius}px`
