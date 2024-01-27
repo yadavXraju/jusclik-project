@@ -1,3 +1,4 @@
+User
 import React, { useState } from 'react';
 import {
   CssBaseline, Box, List, ListItem, ListItemAvatar, Avatar, ListItemIcon, ListItemText, Divider, Typography, Button, InputBase, ThemeProvider, createTheme, IconButton, Popover, MenuItem, Grid,
@@ -11,7 +12,6 @@ import MailCompose from './MailCompose';
 import { styled } from '@mui/system';
 import { useNavigate } from 'react-router';
 import UrlPage from 'views/navigation-for-pages';
-
 
 const theme = createTheme();
 
@@ -146,13 +146,20 @@ const GmailInboxTemplate = () => {
       setIsImportant(!isImportant);
     };
 
-    const highlightMatch = (text, query) => {
-      if (!query || !text) return text;
+      const highlightMatch = (text, query) => {
+    if (!query || !text) return text;
 
-      const regex = new RegExp(`(${query})`, 'gi');
-      return text.split(regex).map((part, index) =>
-        regex.test(part) ? <span key={index} style={{ fontWeight: 'bold' }}>{part}</span> : part
-      );
+    const regex = new RegExp(`(${query})`, 'gi');
+    return text.split(regex).map((part, index) =>
+      regex.test(part) ? <span key={index} style={{ fontWeight: 'bold' }}>{part}</span> : part
+    );
+  };
+
+  const EmailItem = ({ emailData, searchQuery }) => {
+    const [isImportant, setIsImportant] = useState(emailData.important);
+
+    const handleStarClick = () => {
+      setIsImportant(!isImportant);
     };
 
     return (
@@ -195,7 +202,51 @@ const GmailInboxTemplate = () => {
   const navigate = useNavigate()
 
   return (
+<<<<<<< HEAD
    
+=======
+<<<<<<< HEAD
+    <>
+      <UrlPage />
+      <ThemeProvider theme={theme}>
+        <Box sx={{ display: 'flex' }}>
+          <CssBaseline />
+          <Box sx={{ padding: '20px', flexGrow: 1 }}>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+              <Grid sx={{ display: 'inline-flex' }}>
+                <ComposeButtonWrapper onClick={handleComposeOpen}>
+                  <Button variant="contained" color="primary">
+                    <AddCircleOutlineOutlinedIcon sx={{ marginRight: '7px' }} />
+                    Compose
+                  </Button>
+                </ComposeButtonWrapper>
+                <FilterWrapper>
+                  <IconButton aria-label="Filter" onClick={handleFilterClick}>
+                    <FilterListIcon />
+                  </IconButton>
+                  <Popover
+                    open={Boolean(anchorEl)}
+                    anchorEl={anchorEl}
+                    onClose={handleFilterClose}
+                    anchorOrigin={{
+                      // vertical: 'bottom',
+                      // horizontal: 'right', 
+                    }}
+                    transformOrigin={{
+                      // vertical: 'top',
+                      // horizontal: 'right', 
+                    }}
+                  >
+                    <Box sx={{ p: 2 }}>
+                      <MenuItem onClick={() => handleFilterSelect('name')}>Name</MenuItem>
+                      <MenuItem onClick={() => handleFilterSelect('date')}>Date</MenuItem>
+                      <MenuItem onClick={() => handleFilterSelect('unread')}>Unread</MenuItem>
+                      <MenuItem onClick={() => handleFilterSelect('important')}>Important</MenuItem>
+                    </Box>
+                  </Popover>
+                </FilterWrapper>
+=======
+>>>>>>> f80c3b970713ff3b95be224cb8d080e8b5d005d3
 
     <>
     <UrlPage/>
@@ -236,6 +287,7 @@ const GmailInboxTemplate = () => {
                   </Box>
                 </Popover>
               </FilterWrapper>
+>>>>>>> 79e3037662ea3a7baed68f63f3e3ad19d396f946
 
               </Grid>
               <Grid sx={{ display: 'inline-flex' }}>
@@ -265,6 +317,24 @@ const GmailInboxTemplate = () => {
               {data.slice(page * rowsPerPage, (page + 1) * rowsPerPage).map((item) => (
                 <React.Fragment key={item.id}>
                   <ListItem onClick={() => navigate('/communication/inbox/message')}>
+<<<<<<< HEAD
+                  <ListItemAvatar>
+                    <Avatar alt="User Avatar" src={`/static/images/avatar/1.jpg/${item.id}.jpg`} />
+                  </ListItemAvatar>
+                  <EmailItem emailData={item} searchQuery={searchQuery} />
+                  <ListItemText
+                    primary={highlightMatch(item.name, searchQuery)}
+                    secondary={highlightMatch(item.message, searchQuery)}
+                  />
+                  <Typography variant="subtitle2" color="textSecondary">
+                    {getCurrentDateTime()}
+                  </Typography>
+                </ListItem>
+                  <Divider />
+                </React.Fragment>
+              ))}
+
+=======
                     <ListItemAvatar>
                       <Avatar alt="User Avatar" src={`/static/images/avatar/1.jpg/${item.id}.jpg`} />
                     </ListItemAvatar>
@@ -277,7 +347,9 @@ const GmailInboxTemplate = () => {
                   <Divider />
                 </React.Fragment>
               ))}
+>>>>>>> 79e3037662ea3a7baed68f63f3e3ad19d396f946
             </List>
+<<<<<<< HEAD
             </Box>
             </Box>
            <MailCompose open={isComposeOpen} onClose={handleComposeClose} onSend={handleComposeSend} />
@@ -287,7 +359,18 @@ const GmailInboxTemplate = () => {
     </ThemeProvider>
     </>
        
+=======
+          </Box>
+        </Box>
+        <MailCompose open={isComposeOpen} onClose={handleComposeClose} onSend={handleComposeSend} />
+      </ThemeProvider>
+<<<<<<< HEAD
+    </>
+=======
+</>
+>>>>>>> 79e3037662ea3a7baed68f63f3e3ad19d396f946
+>>>>>>> f80c3b970713ff3b95be224cb8d080e8b5d005d3
   );
 };
-
+};
 export default GmailInboxTemplate;

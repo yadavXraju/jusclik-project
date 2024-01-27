@@ -29,34 +29,6 @@ import NotificationList from './NotificationList';
 // assets
 import { IconBell } from '@tabler/icons';
 
-// notification status options
-// const status = [
-//   {
-//     value: 'all',
-//     label: 'All Notification'
-//   },
-//   {
-//     value: 'new',
-//     label: 'New'
-//   },
-//   {
-//     value: 'unread',
-//     label: 'Unread'
-//   },
-//   {
-//     value: 'other',
-//     label: 'Other'
-//   }
-// ];
-
-
-
-// const status = [
-//   {
-//     value: 'all',
-//     label: 'All Notification'
-//   },
-// ]
 
 // ==============================|| NOTIFICATION ||============================== //
 
@@ -167,26 +139,7 @@ const NotificationSection = () => {
                     <Grid item xs={12}>
                       <PerfectScrollbar style={{ height: '100%', maxHeight: 'calc(100vh - 205px)', overflowX: 'hidden' }}>
                         <Grid container direction="column" spacing={2}>
-                          {/* <Grid item xs={12}>
-                            <Box sx={{ px: 2, pt: 0.25 }}>
-                              <TextField
-                                id="outlined-select-currency-native"
-                                select
-                                fullWidth
-                                value={value}
-                                onChange={handleChange}
-                                SelectProps={{
-                                  native: true
-                                }}
-                              >
-                                {status.map((option) => (
-                                  <option key={option.value} value={option.value}>
-                                    {option.label}
-                                  </option>
-                                ))}
-                              </TextField>
-                            </Box>
-                          </Grid> */}
+                         
                           <Grid item xs={12} p={0}>
                             <Divider sx={{ my: 0 }} />
                           </Grid>
