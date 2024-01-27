@@ -9,35 +9,16 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import Autocomplete from '@mui/material/Autocomplete';
-<<<<<<< HEAD
 import { data } from './AssignmentData';
 
-=======
-<<<<<<< HEAD
-import parse from 'autosuggest-highlight/parse';
-import match from 'autosuggest-highlight/match';
-=======
-// import parse from 'autosuggest-highlight/parse';
-// import match from 'autosuggest-highlight/match';
->>>>>>> 79e3037662ea3a7baed68f63f3e3ad19d396f946
-import { data } from './AssignmentData';
->>>>>>> f80c3b970713ff3b95be224cb8d080e8b5d005d3
 const uniqueSubjects = [...new Set(data.map(item => item.name))];
 const subjects = uniqueSubjects.map(subject => ({ title: subject }));
-<<<<<<< HEAD
-// import parse from 'autosuggest-highlight/parse';
-// import match from 'autosuggest-highlight/match';
-=======
 
-<<<<<<< HEAD
 const SearchAssignment = ({ onSearch }) => {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [selectedSubject, setSelectedSubject] = useState(null);
   const [searchText, setSearchText] = useState('');
-=======
->>>>>>> 79e3037662ea3a7baed68f63f3e3ad19d396f946
->>>>>>> f80c3b970713ff3b95be224cb8d080e8b5d005d3
 
   const handleStartDateChange = date => {
     setStartDate(date);

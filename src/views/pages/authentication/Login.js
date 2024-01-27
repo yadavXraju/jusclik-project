@@ -26,16 +26,10 @@ import AppleStoreImage from '../../../assets/images/app-store.png';
 import CloudLogo from '../../../assets/images/Untitled-2.png';
 import { useNavigate } from 'react-router-dom';
 import EnterMobileDialog from './EnterMobileDialog';
-<<<<<<< HEAD
-import SelectAccount from './SelectAccount';
-=======
 // import SelectAccount from './SelectAccount';
-<<<<<<< HEAD
+// import SelectAccount from './SelectAccount';
 // import axios from 'axios';
-=======
->>>>>>> 79e3037662ea3a7baed68f63f3e3ad19d396f946
-import axios from 'axios';
->>>>>>> f80c3b970713ff3b95be224cb8d080e8b5d005d3
+// import axios from 'axios';
 import Config from '../../../config';
 import SetSession from '../../../session/setsession';
 
