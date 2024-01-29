@@ -18,17 +18,13 @@ import {
 } from '@mui/material';
 import { IconSettings } from '@tabler/icons';
 
-// <<<<<<< HEAD
-// =======
-
-// >>>>>>> bb9075973686836a3daf0e8b4bf26e4d1372478c
 // third-party
 import PerfectScrollbar from 'react-perfect-scrollbar';
 
 // project imports
 import SubCard from 'ui-component/cards/SubCard';
 import AnimateButton from 'ui-component/extended/AnimateButton';
-import { SET_BORDER_RADIUS, SET_FONT_FAMILY } from 'store/actions';
+import { SET_BORDER_RADIUS, SET_FONT_FAMILY, SET_COLOR_THEME, SET_COLOR_THEME_V2 } from 'store/actions';
 import { gridSpacing } from 'store/constant';
 
 // concat 'px'
@@ -49,6 +45,8 @@ const Customization = () => {
     setOpen(!open);
   };
 
+  // ==============================|| bORDER||============================== //
+
   // state - border radius
   const [borderRadius, setBorderRadius] = useState(customization.borderRadius);
   const handleBorderRadius = (event, newValue) => {
@@ -58,6 +56,42 @@ const Customization = () => {
   useEffect(() => {
     dispatch({ type: SET_BORDER_RADIUS, borderRadius });
   }, [dispatch, borderRadius]);
+
+  // ==============================|| BACKGROUD COLOR ||============================== //
+
+  // 2 state for 2 layout colors
+  
+  // Set initial background color to the value of the first radio button
+  const [backgroundColor, setBackgroundColor] = useState('rgb(94, 53, 177)');
+  const [backgroundColorV2, setBackgroundColorV2] = useState('rgb(30, 136, 229)');
+
+  // function for first counter color
+  const handleBackgroundColor = (event) => {
+    const newBackgroundColor = event.target.value;
+    setBackgroundColor(newBackgroundColor);
+    dispatch({ type: SET_COLOR_THEME, backgroundColor: newBackgroundColor });
+    // Synchronize the selection
+    setBackgroundColorV2(newBackgroundColor === 'rgb(94, 53, 177)' ? 'rgb(30, 136, 229)' : 'rgb(84, 110, 122)');
+  };
+
+  useEffect(() => {
+    dispatch({ type: SET_COLOR_THEME, backgroundColor });
+  }, [dispatch, backgroundColor]);
+
+  // function for first second counter color
+  const handleBackgroundColorV2 = (event) => {
+    const newBackgroundColorV2 = event.target.value;
+    setBackgroundColorV2(newBackgroundColorV2);
+    dispatch({ type: SET_COLOR_THEME_V2, backgroundColor: newBackgroundColorV2 });
+    // Synchronize the selection
+    setBackgroundColor(newBackgroundColorV2 === 'rgb(30, 136, 229)' ? 'rgb(94, 53, 177)' : 'rgb(0, 137, 123)');
+  };
+
+  useEffect(() => {
+    dispatch({ type: SET_COLOR_THEME_V2, backgroundColorV2 });
+  }, [dispatch, backgroundColorV2]);
+
+  // ==============================|| fONT fAMILY||============================== //
 
   let initialFont;
   switch (customization.fontFamily) {
@@ -69,7 +103,7 @@ const Customization = () => {
       initialFont = 'Poppins';
       break;
 
-      case `'Roboto', sans-serif`:
+    case `'Roboto', sans-serif`:
       initialFont = 'Roboto';
       break;
 
@@ -78,11 +112,11 @@ const Customization = () => {
 
     default:
       initialFont = 'Plus Jakarta Sans';
-
   }
 
   // state - font family
   const [fontFamily, setFontFamily] = useState(initialFont);
+
   useEffect(() => {
     let newFont;
     switch (fontFamily) {
@@ -94,9 +128,9 @@ const Customization = () => {
         newFont = `'Poppins', sans-serif`;
         break;
 
-        case 'Roboto':
-          newFont = `'Roboto', sans-serif`;
-          break;
+      case 'Roboto':
+        newFont = `'Roboto', sans-serif`;
+        break;
 
       case 'Plus Jakarta Sans':
         newFont = `'Plus Jakarta Sans', sans-serif`;
@@ -104,10 +138,10 @@ const Customization = () => {
 
       default:
         newFont = `'Plus Jakarta Sans', sans-serif`;
-      
     }
     dispatch({ type: SET_FONT_FAMILY, fontFamily: newFont });
   }, [dispatch, fontFamily]);
+  
 
   return (
     <>
@@ -151,8 +185,8 @@ const Customization = () => {
       >
         <PerfectScrollbar component="div">
           <Grid container spacing={gridSpacing} sx={{ p: 3 }}>
+            {/* font family */}
             <Grid item xs={12}>
-              {/* font family */}
               <SubCard title="Font Family">
                 <FormControl>
                   <RadioGroup
@@ -202,8 +236,9 @@ const Customization = () => {
                 </FormControl>
               </SubCard>
             </Grid>
+
+            {/* border radius */}
             <Grid item xs={12}>
-              {/* border radius */}
               <SubCard title="Border Radius">
                 <Grid item xs={12} container spacing={2} alignItems="center" sx={{ mt: 2.5 }}>
                   <Grid item>
@@ -239,6 +274,43 @@ const Customization = () => {
                 </Grid>
               </SubCard>
             </Grid>
+
+            {/* =================== BACKGROUND COLOR =================== */}
+            <Grid item xs={12}>
+              <SubCard title="Color theme">
+                <FormControl component="fieldset">
+                  <RadioGroup
+                    aria-label="color-theme"
+                    name="color-theme"
+                    value={backgroundColor}
+                    onChange={handleBackgroundColor}
+                    sx={{ flexDirection: 'row', gap: '10px' }}
+                  >
+                    <FormControlLabel
+                      value="rgb(94, 53, 177)"
+                      control={<Radio sx={{ opacity: 0 }} checked={backgroundColor === 'rgb(94, 53, 177)'} />}
+                      label=""
+                      sx={{
+                        background: 'conic-gradient(rgb(94, 53, 177) 0deg 180deg, rgb(30, 136, 229) 180deg 360deg)',
+                        borderRadius: '50%',
+                        rotate: '208deg',
+                      }}
+                    />
+                    <FormControlLabel
+                      value="rgb(0, 137, 123)"
+                      control={<Radio sx={{ opacity: 0 }} checked={backgroundColor === 'rgb(0, 137, 123)'} />}
+                      sx={{
+                        background: 'conic-gradient(rgb(0, 137, 123) 0deg 180deg, rgb(84, 110, 122) 180deg 360deg)',
+                        borderRadius: '50%',
+                        rotate: '208deg',
+                      }}
+                      label=""
+                    />
+                  </RadioGroup>
+                </FormControl>
+              </SubCard>
+            </Grid>
+
           </Grid>
         </PerfectScrollbar>
       </Drawer>
