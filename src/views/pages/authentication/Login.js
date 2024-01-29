@@ -26,6 +26,7 @@ import AppleStoreImage from '../../../assets/images/app-store.png';
 import CloudLogo from '../../../assets/images/Untitled-2.png';
 import EnterMobileDialog from './EnterMobileDialog';
 import SelectAccount from './SelectAccount';
+import axios from 'axios';
 
 const defaultTheme = createTheme();
 
@@ -52,8 +53,39 @@ export default function LoginPage() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log('Form submitted');
+    const data = new FormData(event.currentTarget);
+    fetchData(data);
   };
+
+  const fetchData = async (Data) => {
+      const response = await axios.get(
+        'https://uat.shauryasoft.com/api/login',
+        { 
+          params: {
+            SCode: 6,
+            LoginID: Data.get('Username'),
+            Password: Data.get('password'),
+            DeviceType: 0,
+            DeviceID: '',
+            MobileApp: 0,
+          },
+          headers: {
+            ApiKey: 'CldbvvQeenSv5xs899AIgeN8r7fTtjOdf97cxPw4uMZ1nVfYyvkQsQ9Mn8zrOYyA',
+          },
+         
+        }
+      );
+      var jResponse = JSON.parse(response.data);
+      if (jResponse.authcode !== null && jResponse.authcode !== '' && jResponse.authcode !== undefined) {
+      alert('login successfull');
+        console.log(jResponse);
+      } else {
+       alert('login unsuccessfull');
+      }
+  
+  };
+  
+
 
   const ToggleGroupVariants = () => {
     return (

@@ -7,6 +7,7 @@ import SearchTwoToneIcon from '@mui/icons-material/SearchTwoTone';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import CalendarMonthTwoToneIcon from '@mui/icons-material/CalendarMonthTwoTone';
 
 const SearchFilter = ({ onSearch }) => {
   const [startDate, setStartDate] = React.useState(null);
@@ -56,11 +57,17 @@ const SearchFilter = ({ onSearch }) => {
           label="From"
           value={startDate}
           onChange={handleStartDateChange}
+          slots={{
+            openPickerIcon: CalendarMonthTwoToneIcon
+          }}
         />
         <DatePicker
           label="To"
           value={endDate}
           onChange={handleEndDateChange}
+          slots={{
+            openPickerIcon: CalendarMonthTwoToneIcon
+          }}
         />
       </LocalizationProvider>
       <TextField

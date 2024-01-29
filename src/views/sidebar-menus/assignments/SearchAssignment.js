@@ -7,23 +7,19 @@ import SearchTwoToneIcon from '@mui/icons-material/SearchTwoTone';
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import CalendarMonthTwoToneIcon from '@mui/icons-material/CalendarMonthTwoTone';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import Autocomplete from '@mui/material/Autocomplete';
-
-
-// import parse from 'autosuggest-highlight/parse';
-// import match from 'autosuggest-highlight/match';
 import { data } from './AssignmentData';
 
 const uniqueSubjects = [...new Set(data.map(item => item.name))];
 const subjects = uniqueSubjects.map(subject => ({ title: subject }));
 
-
-export default function SearchAssignment({ onSearch }) {
-  const [startDate, setStartDate] = React.useState(null);
-  const [endDate, setEndDate] = React.useState(null);
-  const [selectedSubject, setSelectedSubject] = React.useState(null);
-  const [searchText, setSearchText] = React.useState('');
+const SearchAssignment = ({ onSearch }) => {
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
+  const [selectedSubject, setSelectedSubject] = useState(null);
+  const [searchText, setSearchText] = useState('');
 
   const handleStartDateChange = date => {
     setStartDate(date);
@@ -70,8 +66,12 @@ export default function SearchAssignment({ onSearch }) {
     >
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DemoContainer components={['DatePicker']}>
-          <DatePicker label="From" value={startDate} onChange={handleStartDateChange} />
-          <DatePicker label="To" value={endDate} onChange={handleEndDateChange} />
+          <DatePicker label="From" value={startDate} onChange={handleStartDateChange} slots={{
+    openPickerIcon: CalendarMonthTwoToneIcon
+  }} />
+          <DatePicker label="To" value={endDate} onChange={handleEndDateChange} slots={{
+    openPickerIcon: CalendarMonthTwoToneIcon
+  }} />
         </DemoContainer>
       </LocalizationProvider>
       <Autocomplete
@@ -80,31 +80,35 @@ export default function SearchAssignment({ onSearch }) {
         options={subjects}
         getOptionLabel={option => option.title}
         onChange={handleSubjectChange}
-        renderInput={(params) => (
-          <TextField {...params} label="Subjects" margin="normal" sx={{ marginBottom: '0px', marginTop: '0px' }} />
+        renderInput={params => (
+          <TextField
+            {...params}
+            label="Subjects"
+            margin="normal"
+            sx={{ marginBottom: '0px', marginTop: '0px' }}
+          />
         )}
-        renderOption={(props, option, { inputValue }) => {
-          const matches = match(option.title, inputValue, { insideWords: true });
-          const parts = parse(option.title, matches);
+       renderOption={(props, option, { inputValue }) => {
+  const parts = option.title.split(new RegExp(`(${inputValue})`, 'gi'));
 
-          return (
-            <li {...props}>
-              <div>
-                {parts.map((part, index) => (
-                  <span
-                    key={index}
-                    style={{
-                      fontWeight: part.highlight ? 700 : 400,
-                    }}
-                  >
-                    {part.text}
-                  </span>
-                ))}
-              </div>
-            </li>
-          );
-        }}
-      />
+  return (
+    <li {...props}>
+      <div>
+        {parts.map((part, index) => (
+          <span
+            key={index}
+            style={{
+              fontWeight: part.toLowerCase() === inputValue.toLowerCase() ? 700 : 400,
+            }}
+          >
+            {part}
+          </span>
+        ))}
+      </div>
+    </li>
+  );
+}}
+/>
       <TextField
         id="outlined-search"
         label="Search"
@@ -124,6 +128,6 @@ export default function SearchAssignment({ onSearch }) {
       </Stack>
     </Box>
   );
-      }
+};
 
-// export default SearchAssignment;
+export default SearchAssignment;

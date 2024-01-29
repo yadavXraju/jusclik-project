@@ -9,6 +9,7 @@ import Box from '@mui/material/Box';
 import SearchFilter from './SearchFilter'; // Correct import path
 import { UpdatesData } from './UpdatesData';
 import UrlPage from 'views/navigation-for-pages';
+import MainCard from 'ui-component/cards/MainCard';
 
 
 
@@ -50,6 +51,7 @@ const Update = () => {
   return (
     <>
         <UrlPage />
+        <MainCard>
         <Grid container spacing={2} maxWidth="xl" style={{ marginTop: 20 }} >
        {/* <Container  > */}
       <SearchFilter onSearch={handleSearch} />
@@ -64,7 +66,7 @@ const Update = () => {
             }}
             key={index}
           >
-            <Grid container spacing={2} alignItems="center">
+            <Grid container spacing={2} alignItems="center" sx={{boxShadow: 'rgba(0, 0, 0, 0.09) 0px 5px 22px, rgba(0, 0, 0, 0.03) 0px 0px 0', paddingBottom:'16px', paddingRight:'16px'}}>
               <Grid item xs={12} sm container direction="column">
                 <Typography
                   gutterBottom
@@ -102,6 +104,7 @@ const Update = () => {
       </Box>
     {/* </Container> */}
     </Grid>
+    </MainCard>
     </>
   );
 };
