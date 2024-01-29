@@ -107,6 +107,14 @@ const MailCompose = ({ open, onClose, onSend }) => {
   const wordCount = message.trim() === '' ? 0 : message.trim().split(/\s+/).filter(Boolean).length;
   const isCharacterLimitReached = message.length >= maxCharacterLimit;
 
+  const formatBytes = (bytes) => {
+    if (bytes === 0) return '0 KB';
+    const k = 1024;
+    const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];  
+    const i = parseInt(Math.floor(Math.log(bytes) / Math.log(k)));
+    return Math.round((bytes / Math.pow(k, i)) * 100) / 100 + ' ' + sizes[i];
+  };
+
   return (
     <Dialog open={open} onClose={onClose} maxWidth="md" fullWidth>
       <Box>
@@ -158,7 +166,7 @@ const MailCompose = ({ open, onClose, onSend }) => {
           </Box>
         </DialogContent>
         <DialogActions style={{ justifyContent: 'space-between', padding: '10px' }}>
-          <Box>
+          <Box sx={{ display: 'inline-flex', alignItems: 'center' }}>
             <Tooltip title="Attachment" placement="right" arrow>
               <Box>
                 <label htmlFor="fileInput">
@@ -180,11 +188,11 @@ const MailCompose = ({ open, onClose, onSend }) => {
               <Box>
                 <ul style={{ listStyleType: 'none' }}>
                   {attachments.map((file, index) => (
-                    <li key={index}>
-                      <Paper>
-                        {file.name}
+                    <li key={index} style={{ display: 'flex' }}>
+                      <Paper sx={{ backgroundColor: '#90caf9', paddingX: '10px', marginY: '3px', justifyContent: 'space-between' }}>
+                        {file.name}- ({formatBytes(file.size)})
                         <IconButton size="small" onClick={() => handleRemoveAttachment(index)}>
-                          <CloseIcon />
+                          <CloseIcon color='grey' />
                         </IconButton>
                       </Paper>
                     </li>

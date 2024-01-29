@@ -9,8 +9,6 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import Autocomplete from '@mui/material/Autocomplete';
-
-
 // import parse from 'autosuggest-highlight/parse';
 // import match from 'autosuggest-highlight/match';
 import { data } from './AssignmentData';

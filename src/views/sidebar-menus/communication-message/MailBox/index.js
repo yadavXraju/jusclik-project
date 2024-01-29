@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect  } from 'react';
 import {
   CssBaseline, Box, List, ListItem, ListItemAvatar, Avatar, ListItemIcon, ListItemText, Divider, Typography, Button, InputBase, ThemeProvider, createTheme, IconButton, Popover, MenuItem, Grid, Paper
 } from '@mui/material';
@@ -36,6 +36,7 @@ export const initialData = [
 ];
 
 const GmailInboxTemplate = () => {
+  const searchInputRef = useRef(null);
   const getCurrentDateTime = () => {
     const currentDate = new Date();
     const options = {
@@ -190,6 +191,10 @@ const GmailInboxTemplate = () => {
     setSearchResults(updatedData);
   };
 
+   useEffect(() => {
+    // Set focus when the component mounts or searchQuery changes
+    searchInputRef.current.focus();
+  }, [searchQuery]);
 
   return (
     <>
@@ -200,7 +205,7 @@ const GmailInboxTemplate = () => {
           <Box sx={{ display: 'flex' }}>
             <CssBaseline />
             <Box sx={{ padding: '20px', flexGrow: 1 }}>
-              <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+              <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
                 <Grid sx={{ display: 'inline-flex' }}>
                   <ComposeButtonWrapper onClick={handleComposeOpen}>
                     <Button variant="contained" color="primary">
@@ -212,7 +217,7 @@ const GmailInboxTemplate = () => {
                     <IconButton
                       aria-label="Filter"
                       onClick={handleFilterClick}
-                      color={currentFilter === 'important' ? 'primary' : 'default'} // Apply yellow color based on filter type
+                      color={currentFilter === 'important' ? 'primary' : 'default'} 
                     >
                       <FilterListIcon />
                     </IconButton>
@@ -231,7 +236,7 @@ const GmailInboxTemplate = () => {
                   </FilterWrapper>
                 </Grid>
                 <Grid sx={{ display: 'inline-flex' }}>
-                  <SearchWrapper sx={{ justifyContent: 'center' }}>
+                  <SearchWrapper sx={{ display:'flex', justifyContent: 'flexStart' }}>
                     <SearchIconWrapper>
                       <SearchIcon />
                     </SearchIconWrapper>
@@ -240,6 +245,7 @@ const GmailInboxTemplate = () => {
                       inputProps={{ 'aria-label': 'search' }}
                       value={searchQuery}
                       onChange={handleSearchChange}
+                      inputRef={searchInputRef} 
                     />
                   </SearchWrapper>
                   <TablePagination
