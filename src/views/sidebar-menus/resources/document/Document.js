@@ -5,10 +5,12 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { documentData } from './DocumentData';
 import Grid from '@mui/system/Unstable_Grid/Grid';
-// import PDFViewer from './PdfViewer';
+
 
 
 export default function Document() {
+
+    // if you want to download file on click then you uncomment this line
 
     // const handleDownload = (url) => {
     //     fetch(url)
@@ -34,7 +36,7 @@ export default function Document() {
                     <Grid lg={4} md={6} sm={12} key={id} sx={{ padding: '20px' }}>
                         <Card elevation={3}  sx={{ display: 'flex' , alignItems:'center'}}>
                             <CardMedia>
-                                <img src={document.thumbnailUrl} alt={document.title} style={{ width: '100px', height: '90px', objectFit:'contain' }} />
+                                <img src={document.thumbnailUrl} alt={document.title} style={{ width: '100px', height: '90px', objectFit:'contain',padding:'10px' }} />
                             </CardMedia>
                             <CardContent>
                                 <Typography gutterBottom variant="h3" component="div">
@@ -43,9 +45,12 @@ export default function Document() {
                                 <Typography variant="body2" color="text.secondary">
                                     {document.subtitle}
                                 </Typography>
-                                {/* Integrate PDFViewer component */}
-                                {/* <PDFViewer url={document.url} /> */}
-                                <a href={document.url} download="document.pdf" target='_blank' rel='noopener noreferrer' onClick={(e) => handleDownload(e, document.url)} style={{color:'inherit',textDecoration:'#000',fontWeight:'500'}}>download</a>
+                                                    
+                                {/* if you want to download file on click then you uncomment this line */}
+
+                                {/* <a href={document.url} download="document.pdf" target='_blank' rel='noopener noreferrer' onClick={(e) => handleDownload(e, document.url)} style={{color:'inherit',textDecoration:'#000',fontWeight:'500'}}>download</a> */}
+
+                                <a href={document.url}  target='_blank' rel='noopener noreferrer' style={{color:'inherit',textDecoration:'#000',fontWeight:'500'}}>download</a>
                                 
 
                             </CardContent>

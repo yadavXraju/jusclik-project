@@ -5,8 +5,8 @@ import TabPanel from '@mui/lab/TabPanel';
 import TabLabel from './Tab/TabLabel';
 import Video from './video/Video';
 import Document from './document/Document';
-import UrlPage from 'views/navigation-for-pages';
 import Image from './images/Image';
+import Link from './links/Link';
 
 
 
@@ -14,7 +14,7 @@ import Image from './images/Image';
 const Resources =()=> {
 
   // for active first item when page load
-  const [value, setValue] = useState('2')
+  const [value, setValue] = useState('1')
 
 
   // for change the setvalue into newvalue
@@ -24,18 +24,17 @@ const Resources =()=> {
 
   return (
     <>
-    <UrlPage/>
     <Box sx={{ width: '100%', typography: 'body1' }}>
       <Paper>
           <TabContext value={value}>
             <Box sx={{ borderBottom: 1, borderColor: '#e3e8efad' }}>
               <TabLabel handleChange={handleChange}/>
             </Box>
-            {/* <TabPanel value="1">All</TabPanel> */}
-            <TabPanel value="2"><Video/></TabPanel>
-            <TabPanel value="3"><Image/></TabPanel>
-            <TabPanel value="4"><Document/></TabPanel>
-            <TabPanel value="5">Links</TabPanel>
+       
+            <TabPanel value="1"><Video/></TabPanel>
+            <TabPanel value="2"><Image/></TabPanel>
+            <TabPanel value="3"><Document/></TabPanel>
+            <TabPanel value="4"><Link/></TabPanel>
           </TabContext>
       </Paper>
 

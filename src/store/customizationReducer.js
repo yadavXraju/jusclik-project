@@ -38,6 +38,16 @@ const customizationReducer = (state = initialState, action) => {
         ...state,
         borderRadius: action.borderRadius
       };
+      case actionTypes.SET_COLOR_THEME:
+      return {
+        ...state,
+        backgroundColor: action.backgroundColor
+      };
+      case actionTypes.SET_COLOR_THEME_V2:
+        return {
+          ...state,
+          backgroundColorV2: action.backgroundColorV2
+        };
     default:
       return state;
   }

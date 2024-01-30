@@ -90,6 +90,7 @@ export default function ThemeTypography(theme) {
     },
     mainContent: {
       backgroundColor: theme.background,
+      // background: `${theme?.customization?.backgroundColor}`,
       width: '100%',
       minHeight: 'calc(100vh - 88px)',
       flexGrow: 1,

@@ -21,7 +21,8 @@ import ArrowForwardTwoToneIcon from '@mui/icons-material/ArrowForwardTwoTone';
 import { useNavigate } from 'react-router';
 
 const CardWrapper = styled(MainCard)(({ theme }) => ({
-  backgroundColor: theme.palette.primary.dark,
+  // backgroundColor: theme.palette.primary.dark,
+  background: theme?.customization?.backgroundColorV2,
   color: '#fff',
   overflow: 'hidden',
   position: 'relative',
@@ -34,7 +35,8 @@ const CardWrapper = styled(MainCard)(({ theme }) => ({
     position: 'absolute',
     width: 210,
     height: 210,
-    background: theme.palette.primary[800],
+    // background: theme.palette.primary[800],
+     background: theme?.customization?.backgroundColorV2,
     borderRadius: '50%',
     zIndex: 1,
     top: -85,
@@ -50,7 +52,8 @@ const CardWrapper = styled(MainCard)(({ theme }) => ({
     zIndex: 1,
     width: 210,
     height: 210,
-    background: theme.palette.primary[800],
+    // background: theme.palette.primary[800],
+    background: theme?.customization?.backgroundColorV2,
     borderRadius: '50%',
     top: -125,
     right: -15,
@@ -74,7 +77,7 @@ const DueFee = ({ isLoading }) => {
       {isLoading ? (
         <SkeletonTotalOrderCard />
       ) : (
-        <CardWrapper border={false} content={false}>
+        <CardWrapper border={false} content={false}  className='dynamicBgV2'>
           <Box sx={{ p: 2.25 }}>
             <Grid container direction="column">
               <Grid item>
@@ -83,10 +86,12 @@ const DueFee = ({ isLoading }) => {
                   <Grid item>
                     <Avatar
                       variant="rounded"
+                      className='dynamicBgV2'
                       sx={{
                         ...theme.typography.commonAvatar,
                         ...theme.typography.largeAvatar,
-                        backgroundColor: theme.palette.primary[800],
+                        // backgroundColor: theme.palette.primary[800],
+                        background: `${theme?.customization?.backgroundColorV2} `,
                         color: '#fff',
                         mt: 1
                       }}
@@ -98,10 +103,12 @@ const DueFee = ({ isLoading }) => {
                   <Grid item>
                   <Avatar
                       variant="rounded"
+                      className='dynamicBgV2'
                       sx={{
                         ...theme.typography.commonAvatar,
                         ...theme.typography.mediumAvatar,
-                        backgroundColor: '#1e88e5',
+                        // backgroundColor: '#1e88e5',
+                        background: `${theme?.customization?.backgroundColorV2} `,
                         color: theme.palette.secondary[200],
                         zIndex: 1
                       }}
