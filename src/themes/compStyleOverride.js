@@ -192,11 +192,34 @@ export default function componentStyleOverrides(theme) {
     },
     MuiTooltip: {
       styleOverrides: {
+        root: {
+          color: theme.colors?.primaryDark,
+          background: theme.colors?.primary200,
+          '&.dynamicBg': {
+            background: `${theme?.customization?.backgroundColor} `,
+          },
+          '&.dynamicBgV2': {
+            background: `${theme?.customization?.backgroundColorV2} `,
+          }
+          // background:`${theme?.customization?.backgroundColor} `,
+        },
         tooltip: {
           color: theme.paper,
           background: theme.colors?.grey700
         }
       }
-    }
+    },
+    MuiBox : {
+      styleOverrides: {
+        root: {
+          '&.dynamicBg': {
+            background: `${theme?.customization?.backgroundColor} `,
+          },
+          '&.dynamicBgV2': {
+            background: `${theme?.customization?.backgroundColorV2} `,
+          }
+        }
+      }
+    },
   };
 }
