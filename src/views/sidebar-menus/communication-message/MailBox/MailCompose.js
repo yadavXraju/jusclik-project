@@ -75,7 +75,6 @@ const MailCompose = ({ open, onClose, onSend, emailData  }) => {
   React.useEffect(() => {
     if (emailData) {
         setTo(emailData.to || ''); // Set the 'to' field to the provided recipient's email address
-        // ... (other fields if needed)
     }
 }, [emailData]);
 
