@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from 'react';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import Divider from '@mui/material/Divider';
@@ -8,7 +9,6 @@ import ListItemDecorator from '@mui/joy/ListItemDecorator';
 import Avatar from '@mui/material/Avatar';
 import MailOutlinedIcon from '@mui/icons-material/MailOutlined';
 import Typography from '@mui/material/Typography';
-// import MainCard from 'ui-component/cards/MainCard';
 import Box from '@mui/material/Box';
 import Badge from '@mui/material/Badge';
 import { useNavigate } from 'react-router';
@@ -41,45 +41,97 @@ export const contactData = [
 ];
 
 export default function AlignItemsList() {
+  const navigate = useNavigate();
+  const [selectedLetter, setSelectedLetter] = useState('');
 
-  const navigate = useNavigate()
-  
+  const handleLetterClick = (letter) => {
+    setSelectedLetter(letter);
+  };
+
+  const alphabetLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+  const groupedContacts = groupContactsByLetter(contactData);
+
+  function groupContactsByLetter(contacts) {
+    return contacts.reduce((groupedContacts, contact) => {
+      const firstLetter = contact.name.charAt(0).toUpperCase();
+      if (!groupedContacts[firstLetter]) {
+        groupedContacts[firstLetter] = [];
+      }
+      groupedContacts[firstLetter].push(contact);
+      return groupedContacts;
+    }, {});
+  }
+
   return (
-    // <MainCard title="CONTACTS" sx={{ fontSize: '22px', fontWeight: 'bold' }}>
     <>
-    <UrlPage/>
-      <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
-        {contactData.map((contact, index) => (
-          <React.Fragment key={index}>
-            <ListItem>
-              <ListItemAvatar>
-                <Avatar src="/static/images/avatar/1.jpg" sx={{ width: 50, height: 50 }} />
-              </ListItemAvatar>
-              <ListItemText sx={{ paddingLeft: '10px' }}>
-                <Typography variant="h4">{contact.name}</Typography>
-                <React.Fragment>
-                  <Typography
-                    sx={{ display: 'inline' }}
-                    component="span"
-                    variant="subtitle2"
-                    color="text.primary"
-                  >
-                    {contact.role}
-                  </Typography>
+      <UrlPage />
+      <Box sx={{ display: 'flex', height: '100%' }}>
+                {/* Contact List */}
+        <List sx={{ width: '98%', bgcolor: 'background.paper', flexGrow: 1, overflowY: 'auto' }}>
+          {Object.entries(groupedContacts).map(([letter, contacts], index) => (
+            <React.Fragment key={index}>
+              <Typography variant="h5" sx={{ fontWeight: 'bold', marginTop: '10px', marginBottom: '5px' }}>
+                {letter}
+              </Typography>
+              {contacts.map((contact, contactIndex) => (
+                <React.Fragment key={contactIndex}>
+                  <ListItem>
+                    <ListItemAvatar>
+                      <Avatar src="/static/images/avatar/1.jpg" sx={{ width: 50, height: 50 }} />
+                    </ListItemAvatar>
+                    <ListItemText sx={{ paddingLeft: '10px' }}>
+                      <Typography variant="h4">{contact.name}</Typography>
+                      <React.Fragment>
+                        <Typography
+                          sx={{ display: 'inline' }}
+                          component="span"
+                          variant="subtitle2"
+                          color="text.primary"
+                        >
+                          {contact.role}
+                        </Typography>
+                      </React.Fragment>
+                    </ListItemText>
+                    <ListItemDecorator>
+                      <Badge
+                        badgeContent={4}
+                        color="primary"
+                      >
+                        <Box
+                          sx={{ ...commonStyles, borderColor: 'primary.main' }}
+                          onClick={() => navigate('/communication/inbox')}
+                        >
+                          <MailOutlinedIcon color="primary" fontSize="small" />
+                        </Box>
+                      </Badge>
+                    </ListItemDecorator>
+                  </ListItem>
+                  {contactIndex < contacts.length - 1 && <Divider variant="middle" component="li" />}
                 </React.Fragment>
-              </ListItemText>
-              <ListItemDecorator>
-                <Badge badgeContent={4} color="primary">
-                  <Box sx={{ ...commonStyles, borderColor: 'primary.main' }} onClick={()=>navigate('/communication/inbox')}>
-                    <MailOutlinedIcon color="primary" fontSize="small" />
-                  </Box>
-                </Badge>
-              </ListItemDecorator>
-            </ListItem>
-            {index < contactData.length - 1 && <Divider variant="middle" component="li" />}
-          </React.Fragment>
-        ))}
-      </List>
+              ))}
+              {index < Object.entries(groupedContacts).length - 1 && <Divider variant="middle" />}
+            </React.Fragment>
+          ))}
+        </List>
+        {/* Alphabetical Filter */}
+        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flexShrink: 0 }}>
+          {Array.from(alphabetLetters).map((letter) => (
+            <Typography
+              key={letter}
+              variant="body2"
+              sx={{
+                cursor: 'pointer',
+                fontWeight: selectedLetter === letter ? 'bold' : 'normal',
+                marginBottom: '5px',
+              }}
+              onClick={() => handleLetterClick(letter)}
+            >
+              {letter}
+            </Typography>
+          ))}
+        </Box>
+      </Box>
     </>
   );
 }

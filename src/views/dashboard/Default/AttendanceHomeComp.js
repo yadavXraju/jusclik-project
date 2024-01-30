@@ -15,7 +15,8 @@ import { useNavigate } from 'react-router';
 import { present } from './chart-data/AttandanceData';
 
 const CardWrapper = styled(MainCard)(({ theme }) => ({
-  backgroundColor: theme.palette.secondary.dark,
+  // backgroundColor: theme.palette.secondary.dark,
+  background: theme?.customization?.backgroundColor,
   color: '#fff',
   overflow: 'hidden',
   position: 'relative',
@@ -24,7 +25,8 @@ const CardWrapper = styled(MainCard)(({ theme }) => ({
     position: 'absolute',
     width: 210,
     height: 210,
-    background: theme.palette.secondary[800],
+    // background: theme.palette.secondary[800],
+    background: theme?.customization?.backgroundColor,
     borderRadius: '50%',
     top: -85,
     right: -95,
@@ -38,7 +40,7 @@ const CardWrapper = styled(MainCard)(({ theme }) => ({
     position: 'absolute',
     width: 210,
     height: 210,
-    background: theme.palette.secondary[800],
+    // background: theme.palette.secondary[800],
     borderRadius: '50%',
     top: -125,
     right: -15,
@@ -47,7 +49,8 @@ const CardWrapper = styled(MainCard)(({ theme }) => ({
       top: -155,
       right: -70
     }
-  }
+  },
+  
 }));
 
 // ===========================|| DASHBOARD DEFAULT - EARNING CARD ||=========================== //
@@ -62,7 +65,7 @@ const AttendanceHomeComp = ({ isLoading }) => {
       {isLoading ? (
         <SkeletonAttendanceCard />
       ) : (
-        <CardWrapper border={false} content={false}>
+        <CardWrapper border={false} content={false} className='dynamicBg'>
           <Box sx={{ p: 2.25 }}>
             <Grid container direction="column">
               <Grid item>
@@ -73,10 +76,12 @@ const AttendanceHomeComp = ({ isLoading }) => {
                       sx={{
                         ...theme.typography.commonAvatar,
                         ...theme.typography.largeAvatar,
-                        backgroundColor: theme.palette.secondary[800],
+                        // backgroundColor: theme.palette.secondary[800],
+                        background: `${theme?.customization?.backgroundColor} `,
                         mt: 1,
                         color : '#fff'
                       }}
+                      className='dynamicBg'
                     >
                        <CalendarMonthTwoToneIcon />
                     </Avatar>
@@ -89,10 +94,12 @@ const AttendanceHomeComp = ({ isLoading }) => {
                       sx={{
                         ...theme.typography.commonAvatar,
                         ...theme.typography.mediumAvatar,
-                        backgroundColor: theme.palette.secondary.dark,
+                        // backgroundColor: theme.palette.secondary.dark,
+                        background: `${theme?.customization?.backgroundColor} `,
                         color: theme.palette.secondary[200],
                         zIndex: 1
                       }}
+                      className='dynamicBg'
                       aria-controls="menu-earning-card"
                       aria-haspopup="true"  
                       onClick={() => navigate('/attendance')}   

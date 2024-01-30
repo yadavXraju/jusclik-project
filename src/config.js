@@ -6,8 +6,8 @@ const config = {
   // fontFamily: `'Roboto', sans-serif`,
   fontFamily: `'plus-jakarta-sans', sans-serif`,
   borderRadius: 12,
-  apiUrl : "https://localhost:7249/api"
-  //apiUrl : "https://uat.shauryasoft.com"
+  //apiUrl : "https://uat.shauryasoft.com",
+  ApiKey : "CldbvvQeenSv5xs899AIgeN8r7fTtjOdf97cxPw4uMZ1nVfYyvkQsQ9Mn8zrOYyA"
 };
 
 export default config;
