@@ -27,6 +27,7 @@ import CloudLogo from '../../../assets/images/Untitled-2.png';
 import EnterMobileDialog from './EnterMobileDialog';
 import SelectAccount from './SelectAccount';
 import axios from 'axios';
+import config from "../../../config";
 
 const defaultTheme = createTheme();
 
@@ -70,7 +71,7 @@ export default function LoginPage() {
             MobileApp: 0,
           },
           headers: {
-            ApiKey: 'CldbvvQeenSv5xs899AIgeN8r7fTtjOdf97cxPw4uMZ1nVfYyvkQsQ9Mn8zrOYyA',
+            ApiKey: config.ApiKey,
           },
          
         }
