@@ -14,7 +14,7 @@ export const UpdatesData = [
 
 
 
-    {id:5 , title : 'St. Xavier School Gurugram' , description:'Your content here A single core framework and long term tool built on top of Bootstrap 5 for delivering limitless highly customized projects', date:'18', month:'Jan', year:'2024', day :'thu' , icon: CalendarMonthTwoToneIcon}
+    {id:5 , title : 'St. Xavier School Gurugram' , description:'Your content here A single core framework and long term tool built on top of Bootstrap 5 for delivering limitless highly customized projects', date:'18', month:'Jan', year:'2024', day :'Thur' , icon: CalendarMonthTwoToneIcon}
 
 
 ];
