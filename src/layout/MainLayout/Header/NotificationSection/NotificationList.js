@@ -78,15 +78,7 @@ const NotificationList = () => {
 
             </ListItem>
 
-            {/* <Grid container direction="column" className="list-container">
-              <Grid item xs={12} sx={{ pb: 2 }}>
-              <Typography variant="caption" display="block" gutterBottom>
-                     {alert.description}
-                    </Typography>
-              </Grid>
-        
-            </Grid> */}
-
+    
             {alert.showButton && (
              <Grid sx={{textAlign:'right' , pt:2}}>
                 <Grid container justifyContent="flex-end">

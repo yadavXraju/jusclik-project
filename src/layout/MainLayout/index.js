@@ -96,7 +96,8 @@ const MainLayout = () => {
         {/* breadcrumb */}
         <Breadcrumbs separator={IconChevronRight} navigation={navigation} icon title rightAlign />
         {/* url page */}
-        {location==='/dashboard' && <UrlPage/>}
+        {location.pathname !== '/dashboard' && <UrlPage />}
+
         {/* <UrlPage /> */}
         <Outlet />
       </Main>

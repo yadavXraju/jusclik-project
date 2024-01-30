@@ -209,17 +209,28 @@ export default function componentStyleOverrides(theme) {
         }
       }
     },
-    MuiBox : {
+    MuiBox: {
       styleOverrides: {
         root: {
           '&.dynamicBg': {
             background: `${theme?.customization?.backgroundColor} `,
           },
+        },
+      },
+    },
+    MuiSvgIcon: {
+      styleOverrides: {
+        root: {
+          // color: `${theme?.customization?.backgroundColor} `,
+          // You can add more specific styles for MuiIcon here
+          '&.dynamicBg': {
+            color: `${theme?.customization?.backgroundColor} `,
+          },
           '&.dynamicBgV2': {
-            background: `${theme?.customization?.backgroundColorV2} `,
-          }
-        }
-      }
+            color: `${theme?.customization?.backgroundColorV2} `,
+          },
+        },
+      },
     },
   };
 }
