@@ -13,12 +13,38 @@ import {
   Input,
   Paper,
   MenuItem,
+  FormControl,
+  Select,
+  OutlinedInput,
+  InputLabel
 } from '@mui/material';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import CloseIcon from '@mui/icons-material/Close';
 import SendIcon from '@mui/icons-material/Send';
 import AttachmentIcon from '@mui/icons-material/Attachment';
+import { useTheme } from '@mui/material/styles';
+import { contactData } from '../Contact-list';
+
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+const MenuProps = {
+  PaperProps: {
+    style: {
+      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      width: 250,
+    },
+  },
+};
+
+function getStyles(name, personName, theme) {
+  return {
+    fontWeight:
+      personName.indexOf(name) === -1
+        ? theme.typography.fontWeightRegular
+        : theme.typography.fontWeightMedium,
+  };
+}
 
 const Queries = [
   {
@@ -35,7 +61,9 @@ const Queries = [
   },
 ];
 
-const MailCompose = ({ open, onClose, onSend }) => {
+const MailCompose = ({ open, onClose, onSend, emailData  }) => {
+  const theme = useTheme();
+  const [personName, setPersonName] = useState([]);
   const [to, setTo] = useState('');
   const [subject, setSubject] = useState('');
   const [message, setMessage] = useState('');
@@ -43,6 +71,24 @@ const MailCompose = ({ open, onClose, onSend }) => {
   const [fileInputKey, setFileInputKey] = useState(Date.now());
 
   const maxCharacterLimit = 1500;
+
+  React.useEffect(() => {
+    if (emailData) {
+        setTo(emailData.to || ''); // Set the 'to' field to the provided recipient's email address
+        // ... (other fields if needed)
+    }
+}, [emailData]);
+
+  const handleChange = (event) => {
+    const {
+      target: { value },
+    } = event;
+    setPersonName(
+      // On autofill, we get a stringified value.
+      typeof value === 'string' ? value.split(',') : value,
+    );
+    setTo(value);
+  };
 
   const formats = [
     'header',
@@ -110,7 +156,7 @@ const MailCompose = ({ open, onClose, onSend }) => {
   const formatBytes = (bytes) => {
     if (bytes === 0) return '0 KB';
     const k = 1024;
-    const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];  
+    const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
     const i = parseInt(Math.floor(Math.log(bytes) / Math.log(k)));
     return Math.round((bytes / Math.pow(k, i)) * 100) / 100 + ' ' + sizes[i];
   };
@@ -123,14 +169,29 @@ const MailCompose = ({ open, onClose, onSend }) => {
           <Button onClick={onClose} color="secondary" startIcon={<CloseIcon />} />
         </DialogTitle>
         <DialogContent>
-          <TextField
-            fullWidth
-            label="To"
-            variant="outlined"
-            margin="normal"
-            value={to}
-            onChange={(e) => setTo(e.target.value)}
-          />
+          <FormControl fullWidth sx={{ my: 1}}>
+          <InputLabel id="demo-multiple-name-label">To</InputLabel>
+          <Select
+              labelId="demo-multiple-name-label"
+              id="demo-multiple-name"
+              multiple
+              value={personName}
+              input={<OutlinedInput label="To" />}
+              onChange={handleChange}
+              MenuProps={MenuProps}
+              renderValue={(selected) => selected.join(', ')}
+            >
+              {contactData.map((contact) => (
+                <MenuItem
+                  key={contact.name}
+                  value={contact.name}
+                  style={getStyles(contact.name, personName, theme)}
+                >
+                  {contact.name}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
           <TextField
             id="outlined-select-queries"
             select
@@ -149,6 +210,7 @@ const MailCompose = ({ open, onClose, onSend }) => {
             variant="outlined"
             margin="normal"
             value={subject}
+            id="demo-multiple-name-label"
             onChange={(e) => setSubject(e.target.value)}
           />
           <ReactQuill
