@@ -58,7 +58,7 @@ const Message = () => {
 
     return (
         <>
-        <UrlPage/>
+            <UrlPage />
             <Paper>
                 <Box style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px' }}>
                     <Box display="flex" alignItems="center">
@@ -82,7 +82,7 @@ const Message = () => {
 
                     </Box>
                     <Box>
-                        
+
                         <Typography variant="subtitle2">{currentDate}</Typography>
                     </Box>
                 </Box>
@@ -91,11 +91,11 @@ const Message = () => {
                         {emailData?.subject}
                         Update the subject to display everyone in the homepage of school website.
                     </Typography>
-                    <Typography padding="25px">
+                    <Typography padding="25px" lineHeight="25px">
                         {emailData?.message}
-                        Dear Lucas Farmer, <br /><br />
-                        Emjivuw mi adamhoc zam asicu ela ugo femnevos acfo zen faziz gegija ah vuroj jej nik keru ukowebe. Fah leozaefu rabe zi gommal iholake tacesa burziped muavi lew coogpu gu touhe puh ve ahikaape lanjedwu pettes. Ubodaf padaw nod sikap vohmaznin vud evebikgep do simufe kaeh fib du zic toflira pauzmol. Secjeid ciluw wo og vuwegci bugcuced ka mu pozew mabiban muik ulugik ot kaszodek mertip. Cikeeh menza hov amikeb zuzwo sajwiv suwu huumo zapil rufal fevcek tak. Mowut duggub kozcifa tucucmu moat aw dovihnu wop redzof batazo rapa acevu cifigiaf nisi geruni mem loktu su. <br /><br /><br />
-
+                        Dear Suraj Mishra, <br /><br />
+                        A visionary from the beginning, Rahul Mangla is synonymous with passion and drive. This reflects in all his educational and professional ventures. An alumnus of RV College of Engineering, Bangalore, he pursued his MBA in Family Managed Business (PGFMB) from S.P. Jain Institute of Management & Research, Mumbai.<br/>
+                        He has over 10 years of experience in setting up and leading organizations across diverse sectors such as hospitality, education, and F&B. He has a reputation for working against the edge of convention and delivering out-of-the-box ideas. He is known for his extensive work as the Executive Director of Gateway Education and the Co-Founder of Rishihood University. He is also the founder of Utsav Grand Resorts and HRM Foods. The progressive and high-spirited attitude of Rahul has been inspiring in all his successful ventures. <br /><br />
                         Regards,<br />
                         {initialData.slice(0, NameToShow).map((item, index) => {
                             return (
@@ -111,7 +111,7 @@ const Message = () => {
                         })}
                     </Typography>
                 </Box>
-                <Box sx={{display:'flex',paddingLeft:'25px' }}>
+                <Box sx={{ display: 'flex', paddingLeft: '25px' }}>
                     <AttachmentOutlinedIcon />
                     <Typography variant="h5" fontWeight="bold" paddingLeft="5px">0 Attachments</Typography>
                 </Box>
