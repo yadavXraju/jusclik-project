@@ -29,6 +29,7 @@ const TimeTable = () => {
     if (!daySchedule) {
       return null;
     }
+    
 
     return (
       <>
