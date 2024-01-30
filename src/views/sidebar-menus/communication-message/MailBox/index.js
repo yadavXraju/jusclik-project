@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect  } from 'react';
 import {
   CssBaseline, Box, List, ListItem, ListItemAvatar, Avatar, ListItemIcon, ListItemText, Divider, Typography, Button, InputBase, ThemeProvider, createTheme, IconButton, Popover, MenuItem, Grid, Paper
 } from '@mui/material';
@@ -17,25 +17,26 @@ import UrlPage from 'views/navigation-for-pages';
 const theme = createTheme();
 
 export const initialData = [
-  { id: 1, name: 'John Doe', message: 'Lorem ipsum dolor sit amet 1', unread: false, important: true },
-  { id: 2, name: 'Jane Smith', message: 'Lorem ipsum dolor sit amet 2', unread: true, important: false },
-  { id: 3, name: 'Bob Johnson', message: 'Lorem ipsum dolor sit amet 3', unread: false, important: true },
-  { id: 4, name: 'Alice Williams', message: 'Lorem ipsum dolor sit amet 4', unread: true, important: false },
-  { id: 5, name: 'Charlie Brown', message: 'Lorem ipsum dolor sit amet 5', unread: false, important: true },
-  { id: 6, name: 'Eva Davis', message: 'Lorem ipsum dolor sit amet 6', unread: false, important: false },
-  { id: 7, name: 'Frank White', message: 'Lorem ipsum dolor sit amet 7', unread: true, important: true },
-  { id: 8, name: 'Grace Miller', message: 'Lorem ipsum dolor sit amet 8', unread: false, important: false },
-  { id: 9, name: 'Henry Jackson', message: 'Lorem ipsum dolor sit amet 9', unread: true, important: true },
-  { id: 10, name: 'Ivy Lee', message: 'Lorem ipsum dolor sit amet 10', unread: false, important: false },
-  { id: 11, name: 'Charlie Brown', message: 'Lorem ipsum dolor sit amet 5', unread: false, important: true },
-  { id: 12, name: 'Eva Davis', message: 'Lorem ipsum dolor sit amet 6', unread: false, important: false },
-  { id: 13, name: 'Frank White', message: 'Lorem ipsum dolor sit amet 7', unread: true, important: true },
-  { id: 14, name: 'Grace Miller', message: 'Lorem ipsum dolor sit amet 8', unread: false, important: false },
-  { id: 15, name: 'Henry Jackson', message: 'Lorem ipsum dolor sit amet 9', unread: true, important: true },
-  { id: 16, name: 'Ivy Lee', message: 'Lorem ipsum dolor sit amet 10', unread: false, important: false },
+  { id: 1, name: 'John Doe', role:'Website Developer' ,message: 'Lorem ipsum dolor sit amet 1', unread: false, important: true },
+  { id: 2, name: 'Jane Smith', role:'Software Developer' ,message: 'Lorem ipsum dolor sit amet 2', unread: true, important: false },
+  { id: 3, name: 'Bob Johnson', role:'Front-end Developer' ,message: 'Lorem ipsum dolor sit amet 3', unread: false, important: true },
+  { id: 4, name: 'Alice Williams', role:'Developer' ,message: 'Lorem ipsum dolor sit amet 4', unread: true, important: false },
+  { id: 5, name: 'Charlie Brown', role:'Manager' ,message: 'Lorem ipsum dolor sit amet 5', unread: false, important: true },
+  { id: 6, name: 'Eva Davis', role:'CEO' ,message: 'Lorem ipsum dolor sit amet 6', unread: false, important: false },
+  { id: 7, name: 'Frank White', role:'Managing Director' ,message: 'Lorem ipsum dolor sit amet 7', unread: true, important: true },
+  { id: 8, name: 'Grace Miller', role:'Businessman' ,message: 'Lorem ipsum dolor sit amet 8', unread: false, important: false },
+  { id: 9, name: 'Henry Jackson', role:'Developer' ,message: 'Lorem ipsum dolor sit amet 9', unread: true, important: true },
+  { id: 10, name: 'Ivy Lee', role:'Developer' ,message: 'Lorem ipsum dolor sit amet 10', unread: false, important: false },
+  { id: 11, name: 'Charlie Brown', role:'Developer' ,message: 'Lorem ipsum dolor sit amet 5', unread: false, important: true },
+  { id: 12, name: 'Eva Davis', role:'Developer' ,message: 'Lorem ipsum dolor sit amet 6', unread: false, important: false },
+  { id: 13, name: 'Frank White', role:'Developer' ,message: 'Lorem ipsum dolor sit amet 7', unread: true, important: true },
+  { id: 14, name: 'Grace Miller', role:'Developer' ,message: 'Lorem ipsum dolor sit amet 8', unread: false, important: false },
+  { id: 15, name: 'Henry Jackson', role:'Developer' ,message: 'Lorem ipsum dolor sit amet 9', unread: true, important: true },
+  { id: 16, name: 'Ivy Lee', role:'Developer' ,message: 'Lorem ipsum dolor sit amet 10', unread: false, important: false },
 ];
 
 const GmailInboxTemplate = () => {
+  const searchInputRef = useRef(null);
   const getCurrentDateTime = () => {
     const currentDate = new Date();
     const options = {
@@ -190,6 +191,10 @@ const GmailInboxTemplate = () => {
     setSearchResults(updatedData);
   };
 
+   useEffect(() => {
+    // Set focus when the component mounts or searchQuery changes
+    searchInputRef.current.focus();
+  }, [searchQuery]);
 
   return (
     <>
@@ -200,7 +205,7 @@ const GmailInboxTemplate = () => {
           <Box sx={{ display: 'flex' }}>
             <CssBaseline />
             <Box sx={{ padding: '20px', flexGrow: 1 }}>
-              <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+              <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
                 <Grid sx={{ display: 'inline-flex' }}>
                   <ComposeButtonWrapper onClick={handleComposeOpen}>
                     <Button variant="contained" color="primary">
@@ -212,7 +217,7 @@ const GmailInboxTemplate = () => {
                     <IconButton
                       aria-label="Filter"
                       onClick={handleFilterClick}
-                      color={currentFilter === 'important' ? 'primary' : 'default'} // Apply yellow color based on filter type
+                      color={currentFilter === 'important' ? 'primary' : 'default'} 
                     >
                       <FilterListIcon />
                     </IconButton>
@@ -231,7 +236,7 @@ const GmailInboxTemplate = () => {
                   </FilterWrapper>
                 </Grid>
                 <Grid sx={{ display: 'inline-flex' }}>
-                  <SearchWrapper sx={{ justifyContent: 'center' }}>
+                  <SearchWrapper sx={{ display:'flex', justifyContent: 'flexStart' }}>
                     <SearchIconWrapper>
                       <SearchIcon />
                     </SearchIconWrapper>
@@ -240,6 +245,7 @@ const GmailInboxTemplate = () => {
                       inputProps={{ 'aria-label': 'search' }}
                       value={searchQuery}
                       onChange={handleSearchChange}
+                      inputRef={searchInputRef} 
                     />
                   </SearchWrapper>
                   <TablePagination
