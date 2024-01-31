@@ -50,6 +50,7 @@ const Message = () => {
         }
     };
 
+
     const navigate = useNavigate()
     const NameToShow = 1
 
@@ -130,11 +131,13 @@ const Message = () => {
                         Forward
                     </Button>
                 </Box>
+
                 <ReplyForwardBox
                     open={openReplyForwardBox}
                     onClose={() => setopenReplyForwardBox(false)}
                     onSend={handleEmailSend}
-                    emailData={emailData} />
+                    emailData={emailData}
+                />
             </Paper>
         </>
     );
