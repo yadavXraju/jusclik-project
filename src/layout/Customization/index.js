@@ -62,34 +62,34 @@ const Customization = () => {
   // 2 state for 2 layout colors
   
   // Set initial background color to the value of the first radio button
-  const [backgroundColor, setBackgroundColor] = useState('rgba(94, 53, 177 , 1)');
-  const [backgroundColorV2, setBackgroundColorV2] = useState('rgba(30, 136, 229 , 1)');
+  const [themeColor, setThemeColor] = useState('rgb(94, 53, 177 )');  // purple color
+  const [themeColorV2, setThemeColorV2] = useState('rgb(30, 136, 229 )'); // lite blue color
 
   // function for first counter color
-  const handleBackgroundColor = (event) => {
-    const newBackgroundColor = event.target.value;
-    setBackgroundColor(newBackgroundColor);
-    dispatch({ type: SET_COLOR_THEME, backgroundColor: newBackgroundColor });
+  const handleThemeColor = (event) => {
+    const newThemeColor = event.target.value;
+    setThemeColor(newThemeColor);
+    dispatch({ type: SET_COLOR_THEME, backgroundColor: newThemeColor });
     // Synchronize the selection
-    setBackgroundColorV2(newBackgroundColor === 'rgba(94, 53, 177, 1)' ? 'rgba(30, 136, 229, 1)' : 'rgba(84, 110, 122, 1)');
+    setThemeColorV2(newThemeColor === 'rgb(94, 53, 177)' ? 'rgb(30, 136, 229)' : 'rgb(84, 110, 122)');  // rgb(84, 110, 122)  =  Gray color
   };
 
   useEffect(() => {
-    dispatch({ type: SET_COLOR_THEME, backgroundColor });
-  }, [dispatch, backgroundColor]);
+    dispatch({ type: SET_COLOR_THEME, themeColor });
+  }, [dispatch, themeColor]);
 
   // function for first second counter color
   const handleBackgroundColorV2 = (event) => {
-    const newBackgroundColorV2 = event.target.value;
-    setBackgroundColorV2(newBackgroundColorV2);
-    dispatch({ type: SET_COLOR_THEME_V2, backgroundColor: newBackgroundColorV2 });
+    const newThemeColorV2 = event.target.value;
+    setThemeColorV2(newThemeColorV2);
+    dispatch({ type: SET_COLOR_THEME_V2, backgroundColor: newThemeColorV2 });
     // Synchronize the selection
-    setBackgroundColor(newBackgroundColorV2 === 'rgba(30, 136, 229, 1)' ? 'rgba(94, 53, 177, 1)' : 'rgba(0, 137, 123, 1)');
+    setThemeColor(newThemeColorV2 === 'rgb(30, 136, 229)' ? 'rgb(94, 53, 177)' : 'rgb(0, 137, 123)');  // rgb(0, 137, 123)   =  Green color
   };
 
   useEffect(() => {
-    dispatch({ type: SET_COLOR_THEME_V2, backgroundColorV2 });
-  }, [dispatch, backgroundColorV2]);
+    dispatch({ type: SET_COLOR_THEME_V2, themeColorV2 });
+  }, [dispatch, themeColorV2]);
 
   // ==============================|| fONT fAMILY||============================== //
 
@@ -163,7 +163,7 @@ const Customization = () => {
             top: '25%',
             position: 'fixed',
             right: 10,
-            zIndex: theme.zIndex.speedDial
+            zIndex: theme.zIndex.speedDial,
           }}
         >
           <AnimateButton type="rotate">
@@ -283,25 +283,25 @@ const Customization = () => {
                   <RadioGroup
                     aria-label="color-theme"
                     name="color-theme"
-                    value={backgroundColor}
-                    onChange={handleBackgroundColor}
+                    value={themeColor}
+                    onChange={handleThemeColor}
                     sx={{ flexDirection: 'row', gap: '10px' }}
                   >
                     <FormControlLabel
-                      value="rgb(94, 53, 177, 1)"
-                      control={<Radio sx={{ opacity: 0 }} checked={backgroundColor === 'rgba(94, 53, 177, 1)'} />}
+                      value="rgb(94, 53, 177)"
+                      control={<Radio sx={{ opacity: 0 }} checked={themeColor === 'rgb(94, 53, 177)'} />}
                       label=""
                       sx={{
-                        background: 'conic-gradient(rgba(94, 53, 177, 1) 0deg 180deg, rgba(30, 136, 229, 1) 180deg 360deg)',
+                        background: 'conic-gradient(rgb(94, 53, 177) 0deg 180deg, rgb(30, 136, 229) 180deg 360deg)',
                         borderRadius: '50%',
                         rotate: '208deg',
                       }}
                     />
                     <FormControlLabel
-                      value="rgba(0, 137, 123, 1)"
-                      control={<Radio sx={{ opacity: 0 }} checked={backgroundColor === 'rgba(0, 137, 123, 1)'} />}
+                      value="rgb(0, 137, 123)"
+                      control={<Radio sx={{ opacity: 0 }} checked={themeColor === 'rgb(0, 137, 123)'} />}
                       sx={{
-                        background: 'conic-gradient(rgba(0, 137, 123, 1) 0deg 180deg, rgba(84, 110, 122, 1) 180deg 360deg)',
+                        background: 'conic-gradient(rgb(0, 137, 123) 0deg 180deg, rgb(84, 110, 122) 180deg 360deg)',
                         borderRadius: '50%',
                         rotate: '208deg',
                       }}

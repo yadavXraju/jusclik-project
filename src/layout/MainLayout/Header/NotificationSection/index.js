@@ -25,9 +25,11 @@ import PerfectScrollbar from 'react-perfect-scrollbar';
 import MainCard from 'ui-component/cards/MainCard';
 import Transitions from 'ui-component/extended/Transitions';
 import NotificationList from './NotificationList';
+import { useSelector } from 'react-redux';
 
 // assets
-import { IconBell } from '@tabler/icons';
+// import { IconBell } from '@tabler/icons';
+import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
 
 
 // ==============================|| NOTIFICATION ||============================== //
@@ -62,9 +64,15 @@ const NotificationSection = () => {
     prevOpen.current = open;
   }, [open]);
 
-  // const handleChange = (event) => {
-  //   if (event?.target.value) setValue(event?.target.value);
-  // };
+
+  // to store state in this varible
+  const customization = useSelector((state) => state.customization);
+
+    
+  // Extract theme color and set opacity
+  const themeColor = customization.themeColor || 'rgb(94, 53, 177)';
+  const opacity = 0.2;
+
 
   return (
     <>
@@ -80,14 +88,16 @@ const NotificationSection = () => {
         <ButtonBase sx={{ borderRadius: '12px' }}>
           <Avatar
             variant="rounded"
+            className='themeColor'
             sx={{
               ...theme.typography.commonAvatar,
               ...theme.typography.mediumAvatar,
               transition: 'all .2s ease-in-out',
-              background: theme.palette.secondary.light,
+              // background: theme.palette.secondary.light,
+              backgroundColor: `${themeColor.slice(0, -1)}, ${opacity}) !important`, // Adding opacity
               color: theme.palette.secondary.dark,
               '&[aria-controls="menu-list-grow"],&:hover': {
-                background: theme.palette.secondary.dark,
+                // background: theme.palette.secondary.dark,
                 color: theme.palette.secondary.light
               }
             }}
@@ -97,10 +107,14 @@ const NotificationSection = () => {
             onClick={handleToggle}
             color="inherit"
           >
-            <IconBell stroke={1.5} size="1.3rem" />
+            <NotificationsNoneOutlinedIcon className='themeColor' sx={{
+             color:`${theme?.customization?.themeColor} ` ,
+             width: '20px'
+             }}/>
           </Avatar>
         </ButtonBase>
       </Box>
+      
       <Popper
         placement={matchesXs ? 'bottom' : 'bottom-end'}
         open={open}
