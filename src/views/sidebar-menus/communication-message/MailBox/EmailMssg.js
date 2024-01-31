@@ -10,9 +10,6 @@ import ForwardIcon from '@mui/icons-material/Forward';
 import { useNavigate } from 'react-router';
 import { initialData } from '.';
 import AvtarImg from '../../../../assets/images/avatar.png'
-import UrlPage from 'views/navigation-for-pages';
-
-
 
 const Message = () => {
     const currentDate = new Date().toLocaleDateString();
@@ -58,7 +55,6 @@ const Message = () => {
 
     return (
         <>
-            <UrlPage />
             <Paper>
                 <Box style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px' }}>
                     <Box display="flex" alignItems="center">
