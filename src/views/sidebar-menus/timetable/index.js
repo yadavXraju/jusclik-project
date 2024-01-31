@@ -123,7 +123,7 @@ const TimeTable = () => {
     setValue(daysOfWeek[currentDay]);
 
     // ========= function for get the data from TimeTableData ========
-    const fetchData = async () => {
+   const fetchData = async () => {
       try {
         const data = await timeTableData1;
         setTimeTableData(data);
