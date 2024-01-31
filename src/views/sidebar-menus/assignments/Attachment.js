@@ -9,7 +9,7 @@ Snackbar}
 from "@mui/material"
 
 
-function Attcgment({isOpen, onClose,snackOpen,snackBarClose }) {
+function Attachment({isOpen, onClose,snackOpen,snackBarClose }) {
   return (
     <>
       <Dialog maxWidth="xs" open={isOpen} onClose={onClose} fullWidth>
@@ -36,4 +36,4 @@ function Attcgment({isOpen, onClose,snackOpen,snackBarClose }) {
   )
 }
 
-export default Attcgment
+export default Attachment

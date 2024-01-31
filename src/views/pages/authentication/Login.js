@@ -23,7 +23,7 @@ import SelectAccount from './SelectAccount';
 import LeftLogo from './LeftLogo';
 import axios from 'axios';
 import config from "../../../config";
-import BottomLoginImg from '../../../assets/images/Common-Login-img.png'
+import BottomLoginImg from '../../../assets/images/bottomImg.png'
 
 
 const defaultTheme = createTheme();
@@ -222,6 +222,7 @@ export default function LoginPage() {
                   type="submit"
                   variant="contained"
                   sx={{ mt: 3, mb: 2, backgroundColor: '#fff', color: '#364152b5', borderRadius: '50px', width: "150px", margin: '15px', display: 'flex', height: '45px' }}
+                  
                 >
                   LOGIN
                 </Button>
