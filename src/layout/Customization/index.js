@@ -289,17 +289,17 @@ const Customization = () => {
                   >
                     <FormControlLabel
                       value="rgb(94, 53, 177)"
-                      control={<Radio sx={{ opacity: 0 }} checked={themeColor === 'rgb(94, 53, 177)'} />}
+                      control={<Radio sx={{ opacity: 0 }} checked={themeColor === 'rgb(94, 53, 177)'} /> }  // setting color by default
                       label=""
                       sx={{
-                        background: 'conic-gradient(rgb(94, 53, 177) 0deg 180deg, rgb(30, 136, 229) 180deg 360deg)',
+                        background: 'conic-gradient(rgb(94, 53, 177) 0deg 180deg, rgb(30, 136, 229) 180deg 360deg)',   // 
                         borderRadius: '50%',
                         rotate: '208deg',
                       }}
                     />
                     <FormControlLabel
                       value="rgb(0, 137, 123)"
-                      control={<Radio sx={{ opacity: 0 }} checked={themeColor === 'rgb(0, 137, 123)'} />}
+                      control={<Radio sx={{ opacity: 0 }} checked={themeColor === 'rgb(0, 137, 123)'} />}  // setting color by default
                       sx={{
                         background: 'conic-gradient(rgb(0, 137, 123) 0deg 180deg, rgb(84, 110, 122) 180deg 360deg)',
                         borderRadius: '50%',

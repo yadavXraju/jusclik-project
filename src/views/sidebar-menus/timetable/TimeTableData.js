@@ -90,7 +90,7 @@ const fetchTimeTableData = async () => {
           UserCode: 0,
           Class: 'IX',
           Section: 'A',
-          ECode: 102030,
+          ECode: 0,
           DateSpecific: '2023-08-05',
         },
         headers: {
