@@ -3,15 +3,10 @@ import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import CalendarMonthTwoToneIcon from '@mui/icons-material/CalendarMonthTwoTone';
-// import Container from '@mui/material/Container'; // Correct import
-// import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import SearchFilter from './SearchFilter'; // Correct import path
 import { UpdatesData } from './UpdatesData';
-import UrlPage from 'views/navigation-for-pages';
 import MainCard from 'ui-component/cards/MainCard';
-
-
 
 const Update = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -50,10 +45,8 @@ const Update = () => {
 
   return (
     <>
-        <UrlPage />
         <MainCard>
         <Grid container spacing={2} maxWidth="xl" style={{ marginTop: 20 }} >
-       {/* <Container  > */}
       <SearchFilter onSearch={handleSearch} />
       <Box sx={{ flexGrow: 1, overflow: 'hidden', px: 3 }}>
         {searchResults.map((data, index) => (
@@ -102,7 +95,6 @@ const Update = () => {
           </Typography>
         )}
       </Box>
-    {/* </Container> */}
     </Grid>
     </MainCard>
     </>
