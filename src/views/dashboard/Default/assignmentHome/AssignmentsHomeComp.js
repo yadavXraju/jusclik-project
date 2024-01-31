@@ -6,7 +6,7 @@ import CreateIcon from '@mui/icons-material/Create';
 import { useNavigate } from 'react-router';
 import { HeadingCss, subTitle, subtitle2 } from '../dashboard-css/CommonCss';
 import Checkbox from '@mui/material/Checkbox';
-import Attcgment from 'views/sidebar-menus/assignments/Attcgment';
+import Attcgment from 'views/sidebar-menus/assignments/Attachment';
 import AttachmentIcon from '@mui/icons-material/Attachment';
 import { commonStyles } from 'views/sidebar-menus/communication-message/Contact-list';
 import useDialog from '../customHook/UseDialog';

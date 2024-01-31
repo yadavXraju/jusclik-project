@@ -17,11 +17,11 @@ export default function componentStyleOverrides(theme) {
         root: {
           backgroundImage: 'none',
 
-           '&.themeColor, &.themeColor::before, &.themeColor::after': {
+           '&.themeColor, &.themeColor::before, &.themeColor::after': {  // this is only work when themeColor class is appended
             background: `${theme?.customization?.themeColor}`,
           },
 
-        '&.themeColorV2, &.themeColorV2::before, &.themeColorV2::after': {
+        '&.themeColorV2, &.themeColorV2::before, &.themeColorV2::after': {  // this is only work when themeColorV2 class is appended
             background: `${theme?.customization?.themeColorV2}`,
         },
 

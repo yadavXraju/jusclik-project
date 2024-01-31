@@ -23,7 +23,7 @@ import SelectAccount from './SelectAccount';
 import LeftLogo from './LeftLogo';
 import axios from 'axios';
 import config from "../../../config";
-import BottomLoginImg from '../../../assets/images/Common-Login-img.png'
+import BottomLoginImg from '../../../assets/images/bottomImg.png'
 
 
 const defaultTheme = createTheme();

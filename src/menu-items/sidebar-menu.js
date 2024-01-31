@@ -76,24 +76,6 @@ const sidebarMenu = {
         breadcrumbs: false
       },
 
-      // {
-      //   id: 'online-assessment',
-      //   title: 'Online Assessment',
-      //   type: 'item',
-      //   url: '/online-assessment',
-      //   icon:  NoteAltTwoToneIcon,
-      //   breadcrumbs: false
-      // },
-
-      // {
-      //   id: 'online-class',
-      //   title: 'Online Class',
-      //   type: 'item',
-      //   url: '/online-class',
-      //   icon: CategoryTwoToneIcon,
-      //   breadcrumbs: false
-      // },
-
       {
         id: 'digital-learning',
         title: 'Digital Learning',
@@ -144,6 +126,8 @@ const sidebarMenu = {
         ]
       },
 
+
+
     {
         id: 'request',
         title: 'Request',
@@ -187,23 +171,90 @@ const sidebarMenu = {
         breadcrumbs: false
       },
 
-      // {
-      //   id: 'settings',
-      //   title: 'Settings',
-      //   type: 'item',
-      //   url: '/settings',
-      //   icon: SettingsTwoToneIcon,
-      //   breadcrumbs: false
-      // },
 
-      // {
-      //   id: 'student-profile',
-      //   title: 'Student Profile',
-      //   type: 'item',
-      //   url: '/student-profile',
-      //   icon: PersonOutlineOutlinedIcon,
-      //   breadcrumbs: false
-      // }
+      // class Teacher menus
+
+      {
+        id: 'attendance-entry',
+        title: 'Attendance Entry',
+        type: 'item',
+        url: '/attendance-entry',
+        icon: CalendarMonthTwoToneIcon,
+        breadcrumbs: false
+      },
+
+      {
+        id: 'marks-entry-panel',
+        title: 'Marks Entry Panel',
+        type: 'item',
+        url: '/marks-entry-panel',
+        icon:   CameraAltTwoToneIcon,
+        breadcrumbs: false
+      },
+
+      {
+        id: 'time-table-entry',
+        title: 'Timetable Entry',
+        type: 'item',
+        url: '/time-table-entry',
+        icon: AlarmTwoToneIcon,
+        breadcrumbs: false
+      },
+
+      {
+        id: 'student-allocation',
+        title: 'Student Allocation',
+        type: 'item',
+        url: '/student-allocation',
+        icon:   CameraAltTwoToneIcon,
+        breadcrumbs: false
+      },
+
+      {
+        id: 'student-homework-upload',
+        title: 'Student Homework Upload',
+        type: 'item',
+        url: '/student-homework-upload',
+        icon:   CameraAltTwoToneIcon,
+        breadcrumbs: false
+      },
+
+      {
+        id: 'circular-upload',
+        title: 'Circular Upload',
+        type: 'item',
+        url: '/circular-upload',
+        icon:   CameraAltTwoToneIcon,
+        breadcrumbs: false
+      },
+
+      {
+        id: 'teacher-inbox',
+        title: 'Inbox',
+        type: 'item',
+        url: '/inbox',
+        icon: MarkUnreadChatAltTwoToneIcon,
+        breadcrumbs: false
+      },
+
+      {
+        id: 'biometric-details-or-attendance-details',
+        title: 'Biometric Details or Attendance Details',
+        type: 'item',
+        url: '/biometric-details',
+        icon:   CameraAltTwoToneIcon,
+        breadcrumbs: false
+      },
+
+      {
+        id: 'leave-application',
+        title: 'Leave Application',
+        type: 'item',
+        url: '/leave-application',
+        icon:   CameraAltTwoToneIcon,
+        breadcrumbs: false
+      },
+
 
   ]
 };
