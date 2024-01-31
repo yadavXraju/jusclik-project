@@ -16,12 +16,15 @@ export default function componentStyleOverrides(theme) {
       styleOverrides: {
         root: {
           backgroundImage: 'none',
-          '&.dynamicBg': {
-            background: `${theme?.customization?.backgroundColor} `,
+
+           '&.themeColor, &.themeColor::before, &.themeColor::after': {
+            background: `${theme?.customization?.themeColor}`,
           },
-          '&.dynamicBgV2': {
-            background: `${theme?.customization?.backgroundColorV2} `,
-          }
+
+        '&.themeColorV2, &.themeColorV2::before, &.themeColorV2::after': {
+            background: `${theme?.customization?.themeColorV2}`,
+        },
+
         },
         rounded: {
           borderRadius: `${theme?.customization?.borderRadius}px`
@@ -62,16 +65,16 @@ export default function componentStyleOverrides(theme) {
           paddingBottom: '10px',
           '&.Mui-selected': {
             color: theme.menuSelected,
-            backgroundColor: theme.menuSelectedBack,
+            themeColor: theme.menuSelectedBack,
             '&:hover': {
-              backgroundColor: theme.menuSelectedBack
+              themeColor: theme.menuSelectedBack
             },
             '& .MuiListItemIcon-root': {
               color: theme.menuSelected
             }
           },
           '&:hover': {
-            backgroundColor: theme.menuSelectedBack,
+            themeColor: theme.menuSelectedBack,
             color: theme.menuSelected,
             '& .MuiListItemIcon-root': {
               color: theme.menuSelected
@@ -149,7 +152,7 @@ export default function componentStyleOverrides(theme) {
           }
         },
         mark: {
-          backgroundColor: theme.paper,
+          themeColor: theme.paper,
           width: '4px'
         },
         valueLabel: {
@@ -170,13 +173,13 @@ export default function componentStyleOverrides(theme) {
         root: {
           color: theme.colors?.primaryDark,
           background: theme.colors?.primary200,
-          '&.dynamicBg': {
-            background: `${theme?.customization?.backgroundColor} `,
+          '&.themeColor': {
+            background: `${theme?.customization?.themeColor} `,
           },
-          '&.dynamicBgV2': {
-            background: `${theme?.customization?.backgroundColorV2} `,
+          '&.themeColorV2': {
+            background: `${theme?.customization?.themeColorV2} `,
           }
-          // background:`${theme?.customization?.backgroundColor} `,
+          // background:`${theme?.customization?.themeColor} `,
         },
  
       }
@@ -195,13 +198,13 @@ export default function componentStyleOverrides(theme) {
         root: {
           color: theme.colors?.primaryDark,
           background: theme.colors?.primary200,
-          '&.dynamicBg': {
-            background: `${theme?.customization?.backgroundColor} `,
+          '&.themeColor': {
+            background: `${theme?.customization?.themeColor} `,
           },
-          '&.dynamicBgV2': {
-            background: `${theme?.customization?.backgroundColorV2} `,
+          '&.themeColorV2': {
+            background: `${theme?.customization?.themeColorV2} `,
           }
-          // background:`${theme?.customization?.backgroundColor} `,
+          // background:`${theme?.customization?.themeColor} `,
         },
         tooltip: {
           color: theme.paper,
@@ -212,8 +215,8 @@ export default function componentStyleOverrides(theme) {
     MuiBox: {
       styleOverrides: {
         root: {
-          '&.dynamicBg': {
-            background: `${theme?.customization?.backgroundColor} `,
+          '&.themeColor': {
+            background: `${theme?.customization?.themeColor} `,
           },
         },
       },
@@ -221,13 +224,13 @@ export default function componentStyleOverrides(theme) {
     MuiSvgIcon: {
       styleOverrides: {
         root: {
-          // color: `${theme?.customization?.backgroundColor} `,
+          // color: `${theme?.customization?.themeColor} `,
           // You can add more specific styles for MuiIcon here
-          '&.dynamicBg': {
-            color: `${theme?.customization?.backgroundColor} `,
+          '&.themeColor': {
+            color: `${theme?.customization?.themeColor} `,
           },
-          '&.dynamicBgV2': {
-            color: `${theme?.customization?.backgroundColorV2} `,
+          '&.themeColorV2': {
+            color: `${theme?.customization?.themeColorV2} `,
           },
         },
       },

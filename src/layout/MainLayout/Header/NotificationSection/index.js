@@ -69,8 +69,8 @@ const NotificationSection = () => {
   const customization = useSelector((state) => state.customization);
 
     
-  // Extract background color and set opacity
-  const backgroundColor = customization.backgroundColor || 'rgb(94, 53, 177)';
+  // Extract theme color and set opacity
+  const themeColor = customization.themeColor || 'rgb(94, 53, 177)';
   const opacity = 0.2;
 
 
@@ -88,13 +88,13 @@ const NotificationSection = () => {
         <ButtonBase sx={{ borderRadius: '12px' }}>
           <Avatar
             variant="rounded"
-            className='dynamicBg'
+            className='themeColor'
             sx={{
               ...theme.typography.commonAvatar,
               ...theme.typography.mediumAvatar,
               transition: 'all .2s ease-in-out',
               // background: theme.palette.secondary.light,
-              backgroundColor: `${backgroundColor.slice(0, -1)}, ${opacity}) !important`, // Adding opacity
+              backgroundColor: `${themeColor.slice(0, -1)}, ${opacity}) !important`, // Adding opacity
               color: theme.palette.secondary.dark,
               '&[aria-controls="menu-list-grow"],&:hover': {
                 // background: theme.palette.secondary.dark,
@@ -107,8 +107,8 @@ const NotificationSection = () => {
             onClick={handleToggle}
             color="inherit"
           >
-            <NotificationsNoneOutlinedIcon className='dynamicBg' sx={{
-             color:`${theme?.customization?.backgroundColor} ` ,
+            <NotificationsNoneOutlinedIcon className='themeColor' sx={{
+             color:`${theme?.customization?.themeColor} ` ,
              width: '20px'
              }}/>
           </Avatar>

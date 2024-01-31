@@ -11,13 +11,9 @@ export const StyledContainer = styled('div')({
   width: '34px',
   height: '34px',
   borderRadius: '8px',
-  // backgroundColor: '#409ae9f5',
   cursor: 'pointer',
 });
 
-// const StyledIcon = styled(CalendarMonthIcon)({
-//   color: 'white',
-// });
 
 // this function for set acadmic year 
 
@@ -42,15 +38,15 @@ const AcademicYear = () => {
     const customization = useSelector((state) => state.customization);
 
 
-    // Extract background color and set opacity
-    const backgroundColor = customization.backgroundColorV2 || 'rgb(30, 136, 229)';
+    // Extract theme color and set opacity
+    const themeColorColor = customization.themeColorV2 || 'rgb(30, 136, 229)';
     const opacity = 0.2;  
 
   return (
     <Paper
-    className='dynamicBgV2'
+    className='themeColorV2'
     sx={{
-      backgroundColor: `${backgroundColor.slice(0, -1)}, ${opacity}) !important`, // Adding opacity
+      backgroundColor: `${themeColorColor.slice(0, -1)}, ${opacity}) !important`, // Adding opacity
       ml: 2,
       mr: 0,
       [theme.breakpoints.down('md')]: {
@@ -62,8 +58,8 @@ const AcademicYear = () => {
       <Tooltip title={`Academic Year ${academicYear}`} arrow>
         <StyledContainer>
           {/* <StyledIcon data-testid="CalendarMonthIcon" sx={{width:'20px'}} /> */}
-          <CalendarMonthIcon className='dynamicBgV2' sx={{
-             color:`${theme?.customization?.backgroundColorV2} ` ,
+          <CalendarMonthIcon className='themeColorV2' sx={{
+             color:`${theme?.customization?.themeColor} ` ,
              width: '20px'
              }}/>
         </StyledContainer>

@@ -1,11 +1,77 @@
-import React from 'react'
+import * as React from 'react';
+import { Box, Tab, Paper, useMediaQuery, useTheme,  IconButton } from '@mui/material';
+import { TabContext, TabPanel, TabList } from '@mui/lab';
+import Performance from './performanceComponent/Performance';
+import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
+// import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
+import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
+import MainCard from 'ui-component/cards/MainCard';
+export default function BasicTabs() {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
-const index = () => {
+  const [value, setValue] = React.useState('1');
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
   return (
-    <div>
-      index
-    </div>
-  )
+    <MainCard>
+      <Paper>
+      <Box>
+        <TabContext value={value}>
+          <Box>
+            <TabList
+              onChange={handleChange}
+              aria-label="lab API tabs example"
+              variant={isMobile ? 'scrollable' : 'fullWidth'}
+              scrollButtons={isMobile ? 'auto' : 'off'}
+              action={(actions) => {
+                return (
+                  <React.Fragment>
+                    {isMobile && (
+                      <IconButton
+                        {...actions}
+                        component="div"
+                        icon={<KeyboardArrowLeft />}
+                        sx={{ color: 'primary.main' }}
+                      />
+                    )}
+                    <TabList {...actions} />
+                    {isMobile && (
+                      <IconButton
+                        {...actions}
+                        component="div"
+                        icon={<ArrowRightAltIcon />}
+                        sx={{ color: 'primary.main' }}
+                      />
+                    )}
+                  </React.Fragment>
+                );
+              }}
+            >
+              <Tab label="Unit Test-1" value="1" sx={{margin:"5px 15px"}} />
+              <Tab label="Half Yearly" value="2"  sx={{margin:"5px 15px"}}/>
+              <Tab label="Unit Test-2" value="3"  sx={{margin:"5px 15px"}} />
+              <Tab label="Annual Exam" value="4" sx={{margin:"5px 15px"}} />
+            </TabList>
+          </Box>
+          <TabPanel value="1">
+            <Performance />
+          </TabPanel>
+          <TabPanel value="2">
+            <Performance />
+          </TabPanel>
+          <TabPanel value="3">
+            <Performance />
+          </TabPanel>
+          <TabPanel value="4">
+            
+          </TabPanel>
+        </TabContext>
+      </Box>
+    </Paper>
+    </MainCard>
+  );
 }
-
-export default index

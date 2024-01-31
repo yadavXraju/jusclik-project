@@ -17,23 +17,20 @@ const HelpSection = () => {
     cursor: 'pointer',
   });
 
-  // const StyledIcon = styled(QuestionMarkOutlinedIcon)({
-  //   color: `${theme?.customization?.backgroundColor} `,
-  // });
 
     // to store state in this varible
     const customization = useSelector((state) => state.customization);
 
     
-  // Extract background color and set opacity
-  const backgroundColor = customization.backgroundColor || 'rgb(94, 53, 177)';
+  // Extract theme color and set opacity
+  const themeColor = customization.themeColor || 'rgb(30, 136, 229)';
   const opacity = 0.2;
 
   return (
     <Paper
-      className='dynamicBg'
+      className='themeColor'
       sx={{
-        backgroundColor: `${backgroundColor.slice(0, -1)}, ${opacity}) !important`, // Adding opacity
+        backgroundColor: `${themeColor.slice(0, -1)}, ${opacity}) !important`, // Adding opacity
         ml: 2,
         mr: 0,
         [theme.breakpoints.down('md')]: {
@@ -45,8 +42,8 @@ const HelpSection = () => {
       <Tooltip title={'Help'} arrow>
         <StyledContainer>
           {/* <StyledIcon className='dynamicBg' data-testid="CalendarMonthIcon" sx={{ width: '20px' }} /> */}
-          <QuestionMarkOutlinedIcon className='dynamicBg' sx={{
-             color:`${theme?.customization?.backgroundColor} ` ,
+          <QuestionMarkOutlinedIcon className='themeColor' sx={{
+             color:`${theme?.customization?.themeColor} ` ,
              width: '20px'
              }}/>
         </StyledContainer>

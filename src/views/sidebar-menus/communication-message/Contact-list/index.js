@@ -11,7 +11,6 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Badge from '@mui/material/Badge';
 import { useNavigate } from 'react-router';
-import UrlPage from 'views/navigation-for-pages';
 import AvtarImg from '../../../../assets/images/avatar.png'
 
 export const commonStyles = {
@@ -60,11 +59,10 @@ export default function AlignItemsList() {
 
   return (
     <>
-      <UrlPage />
       <Box sx={{ display: 'flex', height: '100%' }}>
 
         {/* Contact List */}
-        <List sx={{ width: '100%', bgcolor: 'background.paper', paddingLeft:'10px'}}>
+        <List sx={{ width: '100%', bgcolor: 'background.paper', paddingLeft: '10px' }}>
           {Object.entries(groupedContacts)
             .sort(([a], [b]) => a.localeCompare(b)) // Sort letters
             .map(([letter, contacts], index) => (

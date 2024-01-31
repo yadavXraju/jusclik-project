@@ -1,7 +1,5 @@
 import React, { useState, useRef, useEffect  } from 'react';
-import {
-  CssBaseline, Box, List, ListItem, ListItemAvatar, Avatar, ListItemIcon, ListItemText, Divider, Typography, Button, InputBase, ThemeProvider, createTheme, IconButton, Popover, MenuItem, Grid, Paper
-} from '@mui/material';
+import {CssBaseline, Box, List, ListItem, ListItemAvatar, Avatar, ListItemIcon, ListItemText, Divider, Typography, Button, InputBase, ThemeProvider, createTheme, IconButton, Popover, MenuItem, Grid, Paper} from '@mui/material';
 import TablePagination from '@mui/material/TablePagination';
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
 import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
@@ -11,7 +9,6 @@ import MailCompose from './MailCompose';
 import { styled } from '@mui/system';
 import { useNavigate } from 'react-router';
 import AvtarImg from '../../../../assets/images/avatar.png'
-import UrlPage from 'views/navigation-for-pages';
 
 
 const theme = createTheme();
@@ -198,7 +195,6 @@ const GmailInboxTemplate = () => {
 
   return (
     <>
-      <UrlPage />
       <Paper>
         <ThemeProvider theme={theme}>
 
