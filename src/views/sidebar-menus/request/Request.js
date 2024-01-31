@@ -1,5 +1,6 @@
 import React from 'react'
 import Box from '@mui/material/Box';
+import Paper from '@mui/material/Paper';
 import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
@@ -21,6 +22,7 @@ function Request() {
   return (
    
     <Box sx={{ width: '100%', typography: 'body1' }}>
+    <Paper>
     <TabContext value={value}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <TabList onChange={handleChange} aria-label="lab API tabs example">
@@ -56,6 +58,7 @@ function Request() {
       <InterBranchTransfer/>
       </TabPanel>
     </TabContext>
+    </Paper>
   </Box>
   )
 }

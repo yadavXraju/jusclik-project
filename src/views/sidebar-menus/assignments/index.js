@@ -13,7 +13,7 @@ import Attcgment from './Attcgment';
 import Heading from './Heading';
 import SearchAssignment from './SearchAssignment';
 import AssignmentItem from './AssignmentItem';
-import UrlPage from 'views/navigation-for-pages';
+
 
 const Assignments = () => {
   const theme = useTheme();
@@ -78,7 +78,7 @@ const Assignments = () => {
 
   return (
     <>
-      <UrlPage />
+ 
       <SearchAssignment onSearch={handleSearch} />
       <Box maxWidth="xl" xs={12} style={{ marginTop: 20 }}>
         <Paper style={{ padding: 20 }}>
