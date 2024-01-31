@@ -87,5 +87,3 @@ export default ReceiptDetails
 // };
 
 // export default ClassDisplay;
-
-
