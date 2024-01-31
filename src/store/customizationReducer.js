@@ -12,6 +12,8 @@ export const initialState = {
   opened: true
 };
 
+
+
 // ==============================|| CUSTOMIZATION REDUCER ||============================== //
 
 const customizationReducer = (state = initialState, action) => {
@@ -41,12 +43,12 @@ const customizationReducer = (state = initialState, action) => {
       case actionTypes.SET_COLOR_THEME:
       return {
         ...state,
-        backgroundColor: action.backgroundColor
+        themeColor: action.themeColor
       };
       case actionTypes.SET_COLOR_THEME_V2:
         return {
           ...state,
-          backgroundColorV2: action.backgroundColorV2
+          themeColorV2: action.themeColorV2
         };
     default:
       return state;

@@ -13,51 +13,65 @@ import CalendarMonthTwoToneIcon from '@mui/icons-material/CalendarMonthTwoTone';
 import ArrowForwardTwoToneIcon from '@mui/icons-material/ArrowForwardTwoTone';
 import { useNavigate } from 'react-router';
 import { present } from './chart-data/AttandanceData';
+import { useSelector } from 'react-redux';
 
-const CardWrapper = styled(MainCard)(({ theme }) => ({
-  // backgroundColor: theme.palette.secondary.dark,
-  background: theme?.customization?.backgroundColor,
-  color: '#fff',
-  overflow: 'hidden',
-  position: 'relative',
-  '&:after': {
-    content: '""',
-    position: 'absolute',
-    width: 210,
-    height: 210,
-    // background: theme.palette.secondary[800],
-    background: theme?.customization?.backgroundColor,
-    borderRadius: '50%',
-    top: -85,
-    right: -95,
-    [theme.breakpoints.down('sm')]: {
-      top: -105,
-      right: -140
-    }
-  },
-  '&:before': {
-    content: '""',
-    position: 'absolute',
-    width: 210,
-    height: 210,
-    // background: theme.palette.secondary[800],
-    borderRadius: '50%',
-    top: -125,
-    right: -15,
-    opacity: 0.5,
-    [theme.breakpoints.down('sm')]: {
-      top: -155,
-      right: -70
-    }
-  },
-  
-}));
 
-// ===========================|| DASHBOARD DEFAULT - EARNING CARD ||=========================== //
+// ===========================|| DASHBOARD DEFAULT Attandance Counter||=========================== //
+
 
 const AttendanceHomeComp = ({ isLoading }) => {
   const theme = useTheme();
   const navigate = useNavigate();
+
+// ===========================|| Theme color and other setting ||=========================== //
+
+
+      // to store state in this varible
+      const customization = useSelector((state) => state.customization);
+
+    
+      // Extract background color and set opacity
+      const themeColor = customization.themeColor || 'rgb(94, 53, 177)';
+      const opacity = .95;
+
+
+  const CardWrapper = styled(MainCard)(({ theme }) => ({
+     backgroundColor: `${themeColor.slice(0, -1)}, ${opacity}) !important`, // Adding opacity
+    color: '#fff',
+    overflow: 'hidden',
+    position: 'relative',
+    '&:after': {
+      content: '""',
+      position: 'absolute',
+      width: 210,
+      height: 210,
+      background: theme?.customization?.themeColor,
+      borderRadius: '50%',
+      top: -85,
+      right: -95,
+      [theme.breakpoints.down('sm')]: {
+        top: -105,
+        right: -140
+      }
+    },
+    '&:before': {
+      content: '""',
+      position: 'absolute',
+      width: 210,
+      height: 210,
+      background: theme?.customization?.themeColor,
+      borderRadius: '50%',
+      top: -125,
+      right: -15,
+      opacity: 0.5,
+      [theme.breakpoints.down('sm')]: {
+        top: -155,
+        right: -70
+      }
+    },
+    
+  }));
+
 
 
   return (
@@ -65,7 +79,7 @@ const AttendanceHomeComp = ({ isLoading }) => {
       {isLoading ? (
         <SkeletonAttendanceCard />
       ) : (
-        <CardWrapper border={false} content={false} className='dynamicBg'>
+        <CardWrapper border={false} content={false} className='themeColor'>
           <Box sx={{ p: 2.25 }}>
             <Grid container direction="column">
               <Grid item>
@@ -81,7 +95,7 @@ const AttendanceHomeComp = ({ isLoading }) => {
                         mt: 1,
                         color : '#fff'
                       }}
-                      className='dynamicBg'
+                      className='themeColor'
                     >
                        <CalendarMonthTwoToneIcon />
                     </Avatar>
@@ -99,7 +113,7 @@ const AttendanceHomeComp = ({ isLoading }) => {
                         color: theme.palette.secondary[200],
                         zIndex: 1
                       }}
-                      className='dynamicBg'
+                      className='themeColor'
                       aria-controls="menu-earning-card"
                       aria-haspopup="true"  
                       onClick={() => navigate('/attendance')}   
@@ -124,7 +138,7 @@ const AttendanceHomeComp = ({ isLoading }) => {
                   sx={{
                     fontSize: '1rem',
                     fontWeight: 500,
-                    color: theme.palette.secondary[200],
+                    color: '#fff',
                     textTransform : 'uppercase'
                   }}
                 >
