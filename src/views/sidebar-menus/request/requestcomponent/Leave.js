@@ -7,7 +7,7 @@ import Datecomponet from './Datecomponet';
 const Leave = () => {
   return (
     <Box mt={4} mx={2}>
-      <Paper elevation={3} style={{ padding: '20px', borderRadius: '12px', boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)' }}>
+      <Paper style={{ padding: '20px', borderRadius: '12px' }}>
         <Grid container>
           <Grid item xs={12} container flexDirection="row" alignItems="center">
             <Grid item xs={12} md={6} style={{ padding: '5px 10px' }}>
