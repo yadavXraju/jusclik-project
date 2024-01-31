@@ -1,8 +1,6 @@
 // Message.jsx
 import React, { useState } from 'react';
 import { Box, Typography, Avatar, Paper, IconButton, Button } from '@mui/material';
-
-import MailCompose from './MailCompose';
 import ArrowBackIosNewOutlinedIcon from '@mui/icons-material/ArrowBackIosNewOutlined';
 import AttachmentOutlinedIcon from '@mui/icons-material/AttachmentOutlined';
 import ReplyIcon from '@mui/icons-material/Reply';
@@ -10,16 +8,18 @@ import ForwardIcon from '@mui/icons-material/Forward';
 import { useNavigate } from 'react-router';
 import { initialData } from '.';
 import AvtarImg from '../../../../assets/images/avatar.png'
+import ReplyForwardBox from './ReplyForwardBox';
+
 
 const Message = () => {
     const currentDate = new Date().toLocaleDateString();
     const [emailData, setEmailData] = useState(null);
-    const [openComposeDialog, setOpenComposeDialog] = useState(false);
+    const [openReplyForwardBox, setopenReplyForwardBox] = useState(false);
 
     // Function to handle the received data from MailCompose
     const handleEmailSend = (data) => {
         setEmailData(data);
-        setOpenComposeDialog(false);
+        setopenReplyForwardBox(false);
     };
 
     // Function to handle reply
@@ -31,7 +31,7 @@ const Message = () => {
                 subject: `Re: ${emailData?.subject}`,
                 message: replyContent,
             };
-            setOpenComposeDialog(true);
+            setopenReplyForwardBox(true);
             setEmailData(replyData);
         }
     };
@@ -45,7 +45,7 @@ const Message = () => {
                 message: forwardContent,
                 to: '', // Provide a default value or leave it empty based on your requirements
             };
-            setOpenComposeDialog(true);
+            setopenReplyForwardBox(true);
             setEmailData(forwardData);
         }
     };
@@ -90,7 +90,7 @@ const Message = () => {
                     <Typography padding="25px" lineHeight="25px">
                         {emailData?.message}
                         Dear Suraj Mishra, <br /><br />
-                        A visionary from the beginning, Rahul Mangla is synonymous with passion and drive. This reflects in all his educational and professional ventures. An alumnus of RV College of Engineering, Bangalore, he pursued his MBA in Family Managed Business (PGFMB) from S.P. Jain Institute of Management & Research, Mumbai.<br/>
+                        A visionary from the beginning, Rahul Mangla is synonymous with passion and drive. This reflects in all his educational and professional ventures. An alumnus of RV College of Engineering, Bangalore, he pursued his MBA in Family Managed Business (PGFMB) from S.P. Jain Institute of Management & Research, Mumbai.<br />
                         He has over 10 years of experience in setting up and leading organizations across diverse sectors such as hospitality, education, and F&B. He has a reputation for working against the edge of convention and delivering out-of-the-box ideas. He is known for his extensive work as the Executive Director of Gateway Education and the Co-Founder of Rishihood University. He is also the founder of Utsav Grand Resorts and HRM Foods. The progressive and high-spirited attitude of Rahul has been inspiring in all his successful ventures. <br /><br />
                         Regards,<br />
                         {initialData.slice(0, NameToShow).map((item, index) => {
@@ -130,15 +130,12 @@ const Message = () => {
                         Forward
                     </Button>
                 </Box>
-
+                <ReplyForwardBox
+                    open={openReplyForwardBox}
+                    onClose={() => setopenReplyForwardBox(false)}
+                    onSend={handleEmailSend}
+                    emailData={emailData} />
             </Paper>
-            {/* MailCompose Dialog */}
-            <MailCompose
-                open={openComposeDialog}
-                onClose={() => setOpenComposeDialog(false)}
-                onSend={handleEmailSend}
-                emailData={emailData}
-            />
         </>
     );
 };

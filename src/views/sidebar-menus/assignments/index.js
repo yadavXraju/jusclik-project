@@ -9,7 +9,7 @@ import {
   Container, 
 } from '@mui/material';
 import { data } from './AssignmentData';
-import Attcgment from './Attcgment';
+import Attachment from './Attachment';
 import Heading from './Heading';
 import SearchAssignment from './SearchAssignment';
 import AssignmentItem from './AssignmentItem';
@@ -127,7 +127,7 @@ const Assignments = () => {
             )}
           </div>
         </Paper>
-        <Attcgment isOpen={openDialog} onClose={handleCloseDialog} snackOpen={snackbarOpen} snackBarClose={handleSnackbarClose} />
+        <Attachment isOpen={openDialog} onClose={handleCloseDialog} snackOpen={snackbarOpen} snackBarClose={handleSnackbarClose} />
       </Box>
     </>
   );
