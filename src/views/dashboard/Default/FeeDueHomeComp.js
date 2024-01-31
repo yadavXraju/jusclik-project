@@ -5,79 +5,83 @@ import PropTypes from 'prop-types';
 import { useTheme, styled } from '@mui/material/styles';
 import { Avatar, Box,  Grid, Typography } from '@mui/material';
 
-// third-party
-// import Chart from 'react-apexcharts';
-
 // project imports
 import MainCard from 'ui-component/cards/MainCard';
 import SkeletonTotalOrderCard from 'ui-component/cards/Skeleton/CounterCard';
-
-// import ChartDataMonth from './chart-data/total-order-month-line-chart';
-// import ChartDataYear from './chart-data/total-order-year-line-chart';
 
 // assets
 import CreditCardTwoToneIcon from '@mui/icons-material/CreditCardTwoTone';
 import ArrowForwardTwoToneIcon from '@mui/icons-material/ArrowForwardTwoTone';
 import { useNavigate } from 'react-router';
+import { useSelector } from 'react-redux';
 
-const CardWrapper = styled(MainCard)(({ theme }) => ({
-  // backgroundColor: theme.palette.primary.dark,
-  background: theme?.customization?.backgroundColorV2,
-  color: '#fff',
-  overflow: 'hidden',
-  position: 'relative',
-  '&>div': {
-    position: 'relative',
-    zIndex: 5
-  },
-  '&:after': {
-    content: '""',
-    position: 'absolute',
-    width: 210,
-    height: 210,
-    // background: theme.palette.primary[800],
-     background: theme?.customization?.backgroundColorV2,
-    borderRadius: '50%',
-    zIndex: 1,
-    top: -85,
-    right: -95,
-    [theme.breakpoints.down('sm')]: {
-      top: -105,
-      right: -140
-    }
-  },
-  '&:before': {
-    content: '""',
-    position: 'absolute',
-    zIndex: 1,
-    width: 210,
-    height: 210,
-    // background: theme.palette.primary[800],
-    background: theme?.customization?.backgroundColorV2,
-    borderRadius: '50%',
-    top: -125,
-    right: -15,
-    opacity: 0.5,
-    [theme.breakpoints.down('sm')]: {
-      top: -155,
-      right: -70
-    }
-  }
-}));
 
 // ==============================|| DASHBOARD - TOTAL ORDER LINE CHART CARD ||============================== //
 
 const DueFee = ({ isLoading }) => {
   const theme = useTheme();
-
   const navigate = useNavigate();
+
+  // ===========================|| Theme color and other setting ||=========================== //
+
+
+      // to store state in this varible
+      const customization = useSelector((state) => state.customization);
+
+    
+      // Extract theme color and set opacity
+      const themeColor = customization.themeColorV2 || 'rgb(94, 53, 177)';
+      const opacity = .95;
+
+
+  const CardWrapper = styled(MainCard)(({ theme }) => ({
+    backgroundColor: `${themeColor.slice(0, -1)}, ${opacity}) !important`, // Adding opacity
+    color: '#fff',
+    overflow: 'hidden',
+    position: 'relative',
+    '&>div': {
+      position: 'relative',
+      zIndex: 5
+    },
+    '&:after': {
+      content: '""',
+      position: 'absolute',
+      width: 210,
+      height: 210,
+       background: theme?.customization?.themeColorV2,
+      borderRadius: '50%',
+      zIndex: 1,
+      top: -85,
+      right: -95,
+      [theme.breakpoints.down('sm')]: {
+        top: -105,
+        right: -140
+      }
+    },
+    '&:before': {
+      content: '""',
+      position: 'absolute',
+      zIndex: 1,
+      width: 210,
+      height: 210,
+      background: theme?.customization?.themeColorV2,
+      borderRadius: '50%',
+      top: -125,
+      right: -15,
+      opacity: 0.5,
+      [theme.breakpoints.down('sm')]: {
+        top: -155,
+        right: -70
+      }
+    }
+  }));
 
   return (
     <>
       {isLoading ? (
         <SkeletonTotalOrderCard />
       ) : (
-        <CardWrapper border={false} content={false}  className='dynamicBgV2'>
+        <CardWrapper border={false} content={false}  className='themeColorV2'>
           <Box sx={{ p: 2.25 }}>
             <Grid container direction="column">
               <Grid item>
@@ -86,12 +90,12 @@ const DueFee = ({ isLoading }) => {
                   <Grid item>
                     <Avatar
                       variant="rounded"
-                      className='dynamicBgV2'
+                      className='themeColorV2'
                       sx={{
                         ...theme.typography.commonAvatar,
                         ...theme.typography.largeAvatar,
                         // backgroundColor: theme.palette.primary[800],
-                        background: `${theme?.customization?.backgroundColorV2} `,
+                        background: `${theme?.customization?.themeColorV2} `,
                         color: '#fff',
                         mt: 1
                       }}
@@ -103,12 +107,12 @@ const DueFee = ({ isLoading }) => {
                   <Grid item>
                   <Avatar
                       variant="rounded"
-                      className='dynamicBgV2'
+                      className='themeColorV2'
                       sx={{
                         ...theme.typography.commonAvatar,
                         ...theme.typography.mediumAvatar,
                         // backgroundColor: '#1e88e5',
-                        background: `${theme?.customization?.backgroundColorV2} `,
+                        background: `${theme?.customization?.themeColorV2} `,
                         color: theme.palette.secondary[200],
                         zIndex: 1
                       }}
@@ -137,7 +141,7 @@ const DueFee = ({ isLoading }) => {
                           sx={{
                             fontSize: '1rem',
                             fontWeight: 500,
-                            color: theme.palette.primary[200],
+                            color: '#fff',
                             textTransform:'uppercase'
                           }}
                         >
@@ -145,11 +149,6 @@ const DueFee = ({ isLoading }) => {
                         </Typography>
                       </Grid>
                     </Grid>
-                  {/* </Grid> */}
-               
-                {/* </Grid> */}
-              {/* </Grid> */}
-            {/* </Grid> */}
           </Box>
         </CardWrapper>
       )}

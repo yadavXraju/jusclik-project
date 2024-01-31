@@ -1,58 +1,125 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CircularProgress from '@mui/material/CircularProgress';
-import Typography from '@mui/material/Typography';
+import CircularProgress, {
+  circularProgressClasses,
+} from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
+import { styled, useTheme } from '@mui/system';
 
-function PerformanceChart(props) {
+const ResponsiveCircularProgress = styled(CircularProgress)(({ theme }) => ({
+  width: '100%',
+  height: 'auto',
+  [theme.breakpoints.up('sm')]: {
+    width: theme.spacing(20),
+    height: theme.spacing(20),
+  },
+  [theme.breakpoints.up('md')]: {
+    width: theme.spacing(25),
+    height: theme.spacing(25),
+  },
+}));
 
-  
+const PerformanceChart = (props) => {
+  const theme = useTheme();
+
   return (
-    <Box sx={{ position: 'relative', display: 'inline-flex' }}>
-      <CircularProgress variant="determinate" {...props}  color="secondary" sx={{
-      
-      }}/>
+    <Box
+      sx={{
+        position: 'relative',
+        display: 'inline-flex',
+        width: '100%',
+        textAlign: 'center',
+      }}
+    >
+      <ResponsiveCircularProgress
+        variant="determinate"
+        {...props}
+        value={100}
+        color="error"
+        sx={{
+          color: '#DCDCDC',
+          margin: '0 auto',
+        }}
+      />
+      <ResponsiveCircularProgress
+        variant="determinate"
+        {...props}
+        disableShrink
+        sx={{
+          position: 'absolute',
+          left: 0,
+          top: 0,
+          bottom: 0,
+          right: 0,
+          margin: 'auto',
+          [`& .${circularProgressClasses.circle}`]: {
+            strokeLinecap: 'round',
+          },
+        }}
+      />
       <Box
         sx={{
+          position: 'absolute',
           top: 0,
           left: 0,
           bottom: 0,
           right: 0,
-          position: 'absolute',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
         }}
       >
-        <Grid sx={{textAlign:"center"}} >
-        <Typography  component="div" color="text.secondary"  sx={{fontSize:"31px",fontWeight:"500"}}>
-          {`${Math.round(props.value)}%`}
-        </Typography>
-        <Typography  component="div" color="text.secondary"  sx={{fontSize:"15px"}}>
-          {/* {`${Math.round(props.value)}%`} */}
-         Total marks : 450/500
-        </Typography>
+        <Grid>
+          <Typography
+            component="div"
+            color="text.secondary"
+            sx={{
+              fontSize: '31px',
+              fontWeight: '800',
+              [theme.breakpoints.down('xs')]: {
+                fontSize: '20px',
+              },
+              [theme.breakpoints.between('sm', 'md')]: {
+                fontSize: '25px',
+              },
+            }}
+          >
+            {`${Math.round(props.value)}%`}
+          </Typography>
+          <Typography
+            component="div"
+            color="text.secondary"
+            sx={{
+              fontSize: '15px',
+              fontWeight: '600',
+              paddingTop: '4px',
+              [theme.breakpoints.down('xs')]: {
+                fontSize: '12px',
+              },
+              [theme.breakpoints.between('sm', 'md')]: {
+                fontSize: '14px',
+              },
+            }}
+          >
+            Total marks: 450/500
+          </Typography>
         </Grid>
       </Box>
     </Box>
   );
-}
+};
 
 PerformanceChart.propTypes = {
-  /**
-   * The value of the progress indicator for the determinate variant.
-   * Value between 0 and 100.
-   * @default 0
-   */
   value: PropTypes.number.isRequired,
   size: PropTypes.number,
-  thickness: PropTypes.number
+  thickness: PropTypes.number,
 };
 
 PerformanceChart.defaultProps = {
-    size: 300, // Set a default size if not provided
-    thickness:1.4,
+  size: 300,
+  thickness: 1.4,
+};
 
-  };
 export default PerformanceChart;
