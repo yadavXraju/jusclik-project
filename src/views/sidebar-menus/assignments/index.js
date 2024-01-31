@@ -9,7 +9,7 @@ import {
   Container, 
 } from '@mui/material';
 import { data } from './AssignmentData';
-import Attcgment from './Attcgment';
+import Attcgment from './Attachment';
 import Heading from './Heading';
 import SearchAssignment from './SearchAssignment';
 import AssignmentItem from './AssignmentItem';
