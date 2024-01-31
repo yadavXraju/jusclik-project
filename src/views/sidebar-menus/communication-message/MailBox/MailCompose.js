@@ -1,23 +1,5 @@
 import React, { useState } from 'react';
-import {
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
-  Button,
-  TextField,
-  Typography,
-  Box,
-  Tooltip,
-  IconButton,
-  Input,
-  Paper,
-  MenuItem,
-  FormControl,
-  Select,
-  OutlinedInput,
-  InputLabel
-} from '@mui/material';
+import {Dialog,DialogTitle,DialogContent,DialogActions,Button,TextField,Typography,Box,Tooltip,IconButton,Input,Paper,MenuItem,FormControl,Select,OutlinedInput,InputLabel} from '@mui/material';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import CloseIcon from '@mui/icons-material/Close';
