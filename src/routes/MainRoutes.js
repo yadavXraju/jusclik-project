@@ -8,15 +8,6 @@ import Loadable from 'ui-component/Loadable';
 // dashboard routing
 const DashboardDefault = Loadable(lazy(() => import('views/dashboard/Default')));
 
-// utilities routing
-const UtilsTypography = Loadable(lazy(() => import('views/utilities/Typography')));
-const UtilsColor = Loadable(lazy(() => import('views/utilities/Color')));
-const UtilsShadow = Loadable(lazy(() => import('views/utilities/Shadow')));
-const UtilsMaterialIcons = Loadable(lazy(() => import('views/utilities/MaterialIcons')));
-const UtilsTablerIcons = Loadable(lazy(() => import('views/utilities/TablerIcons')));
-// const UtilsTimetable = Loadable(lazy(() => import('views/sidebar-menus/timetable/Timetable')));
-
-// sample page routing
 // const SamplePage = Loadable(lazy(() => import('views/sample-page')));
 // components page routing
 const Attendance = Loadable(lazy(() => import('views/sidebar-menus/attendance')));
@@ -33,13 +24,23 @@ const RecentMessage = Loadable(lazy(() => import('views/sidebar-menus/communicat
 const AddMetting = Loadable(lazy(() => import('views/sidebar-menus/request/AddMetting')));
 const ItemRequestGatePass = Loadable(lazy(() => import('views/sidebar-menus/request/ItemRequestGatePass')));
 const Resources = Loadable(lazy(() => import('views/sidebar-menus/resources')));
-// const Setting = Loadable(lazy(() => import('views/sidebar-menus/settings')));
 const StudentProfile = Loadable(lazy(() => import('views/sidebar-menus/studentProfile')));
 const PhotoGallery = Loadable(lazy(() => import('views/sidebar-menus/photo-gallery')));
 const EmailMsg = Loadable(lazy(() => import('views/sidebar-menus/communication-message/MailBox/EmailMssg')));
 
 
+// Class Teacher  Dashboard Menus
 
+ const AttendanceEntry = Loadable(lazy(() => import('views/sidebar-menus/attendance-entry')));
+ const MarksEntryPanel = Loadable(lazy(() => import('views/sidebar-menus/marks-entry-panel')));
+ const RemarksEntryPanel = Loadable(lazy(() => import('views/sidebar-menus/remarks-entry-panel')));
+ const TimeTableEntry = Loadable(lazy(() => import('views/sidebar-menus/time-table-entry')));
+ const StudentAllocation = Loadable(lazy(() => import('views/sidebar-menus/student-allocation')));
+ const StudentHomeWorkUpload = Loadable(lazy(() => import('views/sidebar-menus/Student-homework-upload')));
+ const CircularUpload = Loadable(lazy(() => import('views/sidebar-menus/circular-upload')));
+ const TeacherInbox = Loadable(lazy(() => import('views/sidebar-menus/teacher-inbox')));
+ const  BiometricDetailsOrAttendanceDetails = Loadable(lazy(() => import('views/sidebar-menus/biometric-details-attendance-details')));
+ const  LeaveApplication = Loadable(lazy(() => import('views/sidebar-menus/leave-application')));
 // ==============================|| MAIN ROUTING ||============================== //
 
 const MainRoutes = {
@@ -56,52 +57,6 @@ const MainRoutes = {
         {
           path: '/dashboard',
           element: <DashboardDefault />
-        }
-      ]
-    },
-    {
-      path: 'utils',
-      children: [
-        {
-          path: 'util-typography',
-          element: <UtilsTypography />
-        }
-      ]
-    },
-
-    {
-      path: 'utils',
-      children: [
-        {
-          path: 'util-color',
-          element: <UtilsColor />
-        }
-      ]
-    },
-    {
-      path: 'utils',
-      children: [
-        {
-          path: 'util-shadow',
-          element: <UtilsShadow />
-        }
-      ]
-    },
-    {
-      path: 'icons',
-      children: [
-        {
-          path: 'tabler-icons',
-          element: <UtilsTablerIcons />
-        }
-      ]
-    },
-    {
-      path: 'icons',
-      children: [
-        {
-          path: 'material-icons',
-          element: <UtilsMaterialIcons />
         }
       ]
     },
@@ -153,24 +108,6 @@ const MainRoutes = {
             }
           ]
         },
-
-
-
-        // {
-        //   path: 'online-assessment',
-        //   element: <OnlineAssessment />
-        // },
-
-        // {
-        //   path: 'online-class',
-        //   element: <OnlineClass />
-        // },
-
-        
-        // {
-        //   path: 'communication',
-        //   element: <CommunicationMessage />
-        // },
 
         {
           path: 'communication',
@@ -236,6 +173,73 @@ const MainRoutes = {
           path: '/student-profile',
           element: <StudentProfile/>
         },
+
+
+
+        // Class Teacher  Dashboard Menus
+
+  
+        {
+          path: '/attendance-entry',
+          element: <AttendanceEntry/>
+        },
+
+        
+        {
+          path: '/marks-entry-panel',
+          element: <MarksEntryPanel/>
+        },
+
+        {
+          path: '/remarks-entry-panel',
+          element: <RemarksEntryPanel/>
+        },
+
+        {
+          path: '/remarks-entry-panel',
+          element: <RemarksEntryPanel/>
+        },
+
+        {
+          path: '/time-table-entry',
+          element: <TimeTableEntry/>
+        },
+
+        {
+          path: '/student-allocation',
+          element: <StudentAllocation/>
+        },
+
+        {
+          path: '/student-homework-upload',
+          element: <StudentHomeWorkUpload/>
+        },
+
+        {
+          path: '/circular-upload',
+          element: <CircularUpload/>
+        },
+
+        {
+          path: '/inbox',
+          element: <TeacherInbox/>
+        },
+
+
+        {
+          path: '/biometric-details',
+          element: <BiometricDetailsOrAttendanceDetails/>
+        },
+        
+
+        {
+          path: '/leave-application',
+          element: <LeaveApplication/>
+        },
+
+       
+
+        
 
 
   ]
