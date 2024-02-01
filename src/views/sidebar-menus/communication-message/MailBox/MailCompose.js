@@ -1,11 +1,30 @@
-import React, { useState } from 'react';
-import {Dialog,DialogTitle,DialogContent,DialogActions,Button,TextField,Typography,Box,Tooltip,IconButton,Input,Paper,MenuItem,FormControl,Select,OutlinedInput,InputLabel} from '@mui/material';
+import React, { useState, useEffect } from 'react';
+import {
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  Button,
+  TextField,
+  Typography,
+  Box,
+  Tooltip,
+  IconButton,
+  Input,
+  Paper,
+  MenuItem,
+  FormControl,
+  Select,
+  OutlinedInput,
+  InputLabel,
+  useMediaQuery,
+  useTheme,
+} from '@mui/material';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import CloseIcon from '@mui/icons-material/Close';
 import SendIcon from '@mui/icons-material/Send';
 import AttachmentIcon from '@mui/icons-material/Attachment';
-import { useTheme } from '@mui/material/styles';
 import { contactData } from '../Contact-list';
 
 const ITEM_HEIGHT = 48;
@@ -43,8 +62,9 @@ const Queries = [
   },
 ];
 
-const MailCompose = ({ open, onClose, onSend, emailData  }) => {
+const MailCompose = ({ open, onClose, onSend, emailData }) => {
   const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const [personName, setPersonName] = useState([]);
   const [to, setTo] = useState('');
   const [subject, setSubject] = useState('');
@@ -54,11 +74,11 @@ const MailCompose = ({ open, onClose, onSend, emailData  }) => {
 
   const maxCharacterLimit = 1500;
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (emailData) {
-        setTo(emailData.to || ''); // Set the 'to' field to the provided recipient's email address
+      setTo(emailData.to || ''); // Set the 'to' field to the provided recipient's email address
     }
-}, [emailData]);
+  }, [emailData]);
 
   const handleChange = (event) => {
     const {
@@ -150,9 +170,9 @@ const MailCompose = ({ open, onClose, onSend, emailData  }) => {
           <Button onClick={onClose} color="secondary" startIcon={<CloseIcon />} />
         </DialogTitle>
         <DialogContent>
-          <FormControl fullWidth sx={{ my: 1}}>
-          <InputLabel id="demo-multiple-name-label">To</InputLabel>
-          <Select
+          <FormControl fullWidth sx={{ my: 1 }}>
+            <InputLabel id="demo-multiple-name-label">To</InputLabel>
+            <Select
               labelId="demo-multiple-name-label"
               id="demo-multiple-name"
               multiple
@@ -195,7 +215,7 @@ const MailCompose = ({ open, onClose, onSend, emailData  }) => {
             onChange={(e) => setSubject(e.target.value)}
           />
           <ReactQuill
-            style={{ height: '200px' }}
+            style={{ height: isMobile ? '150px' : '200px' }}
             value={message}
             onChange={handleQuillChange}
             formats={formats}
@@ -203,7 +223,9 @@ const MailCompose = ({ open, onClose, onSend, emailData  }) => {
             readOnly={isCharacterLimitReached}
           />
           <Box>
-            <Typography style={{ marginTop: '50px', fontSize: '12px', color: isCharacterLimitReached ? 'red' : 'inherit' }}>
+            <Typography
+              style={{ marginTop: '50px', fontSize: '12px', color: isCharacterLimitReached ? 'red' : 'inherit' }}
+            >
               Length: {wordCount} (max Character Limit: {maxCharacterLimit})
             </Typography>
           </Box>
@@ -232,10 +254,17 @@ const MailCompose = ({ open, onClose, onSend, emailData  }) => {
                 <ul style={{ listStyleType: 'none' }}>
                   {attachments.map((file, index) => (
                     <li key={index} style={{ display: 'flex' }}>
-                      <Paper sx={{ backgroundColor: '#90caf9', paddingX: '10px', marginY: '3px', justifyContent: 'space-between' }}>
+                      <Paper
+                        sx={{
+                          backgroundColor: '#90caf9',
+                          paddingX: '10px',
+                          marginY: '3px',
+                          justifyContent: 'space-between',
+                        }}
+                      >
                         {file.name}- ({formatBytes(file.size)})
                         <IconButton size="small" onClick={() => handleRemoveAttachment(index)}>
-                          <CloseIcon color='grey' />
+                          <CloseIcon color="grey" />
                         </IconButton>
                       </Paper>
                     </li>
@@ -245,7 +274,13 @@ const MailCompose = ({ open, onClose, onSend, emailData  }) => {
             )}
           </Box>
           <Box>
-            <Button onClick={handleSend} color="primary" variant="contained" endIcon={<SendIcon />} disabled={isCharacterLimitReached}>
+            <Button
+              onClick={handleSend}
+              color="primary"
+              variant="contained"
+              endIcon={<SendIcon />}
+              disabled={isCharacterLimitReached}
+            >
               Send
             </Button>
           </Box>
