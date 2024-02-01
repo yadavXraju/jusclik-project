@@ -1,6 +1,6 @@
 import React from 'react'
 import {TextField} from '@mui/material';
-function Datecomponet({label}) {
+function Datecomponent({label}) {
 
     // const getCurrentDate = () => {
     //     const today = new Date();
@@ -32,4 +32,4 @@ function Datecomponet({label}) {
   )
 }
 
-export default Datecomponet
+export default Datecomponent

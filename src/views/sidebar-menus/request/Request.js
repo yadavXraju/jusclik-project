@@ -49,7 +49,7 @@ function Request() {
         <ChangeSection/>
       </TabPanel>
       <TabPanel value="5">
-  <Widthrawal/>
+     <Widthrawal/>
       </TabPanel>
       <TabPanel value="6">
         <BookReservation/>

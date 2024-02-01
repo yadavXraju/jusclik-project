@@ -1,6 +1,6 @@
 import React from 'react';
 import { Typography, TextField, Grid, Box, Paper,MenuItem, Button } from '@mui/material';
-import Datecomponet from './Datecomponet';
+import Datecomponet from './Datecomponent';
 
 const options = [
   {

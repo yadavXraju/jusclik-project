@@ -2,7 +2,7 @@ import { Grid,  TextField, Paper, Button } from '@mui/material';
 import { Box } from '@mui/system';
 import React from 'react';
 import LeaveDrop from '../LeaveDrop';
-import Datecomponet from './Datecomponet';
+import Datecomponet from './Datecomponent';
 
 const Leave = () => {
   return (

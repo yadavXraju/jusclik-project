@@ -1,6 +1,6 @@
 import React from 'react'
 import {  TextField, Grid, Box, Paper, Button } from '@mui/material';
-import Datecomponet from './Datecomponet';
+import Datecomponet from './Datecomponent';
 
 function BookReservation() {
   return (
