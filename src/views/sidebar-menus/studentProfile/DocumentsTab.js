@@ -4,7 +4,8 @@ import Button from '@mui/material/Button';
 import { Grid } from '@mui/material';
 import Documents from './Documents';
 import Policies from './policiesTable';
-//import PoliciesCounter from './policiesCounter';
+import UploadFileTwoToneIcon from '@mui/icons-material/UploadFileTwoTone';
+import RemoveRedEyeTwoToneIcon from '@mui/icons-material/RemoveRedEyeTwoTone';
 
 export default function DocumentTabs() {
   const [selectedButton, setSelectedButton] = useState('Button1');
@@ -16,47 +17,53 @@ export default function DocumentTabs() {
   return (
     // ============= buttons tab for View Policies and Upload Documents =============
     <Grid container spacing={1} sx={{ display: 'flex', height: '100%' }}>
-      <Grid item xs={12} sm={12} lg={2}>
+      <Grid item xs={12} sm={12} lg={3}>
         <Box sx={{ flex: '0 0 auto', display: 'flex', flexDirection: 'column', paddingRight: '15px' }}>
           <Button
             sx={{
-              border: '1px solid #ccc',
-              backgroundColor: selectedButton === 'Button1' ? '#1976D2' : 'transparent',
-              color: selectedButton === 'Button1' ? 'black' : 'inherit',
-              '&:hover': {
-                backgroundColor: selectedButton === 'Button1' ? '#1976D2' : '#fafafa',
-              },
+              color: selectedButton === 'Button1' ? '#2196f3' : 'black',
+              justifyContent:'start',
+              fontSize:'14px',
             }}
+            startIcon={<UploadFileTwoToneIcon/>}
             size='large'
             onClick={() => handleButtonClick('Button1')}
           >
-            Upload Documents
+            <Box >
+            <div style={{ justifyContent:'start', display:'flex'}}>Upload Documents</div>
+            <p style={{fontSize:'12px', color:'rgb(105, 117, 134)', justifyContent:'start',
+            display:'flex', margin:'0px'}}>
+            Add & Upload File
+            </p>
+            </Box>
           </Button>
           <Button
             sx={{
-              border: '1px solid #ccc',
-              backgroundColor: selectedButton === 'Button2' ? '#1e88e5' : 'transparent',
-              color: selectedButton === 'Button2' ? 'black' : 'inherit',
-              '&:hover': {
-                backgroundColor: selectedButton === 'Button2' ? '#1e88e5' : '#fafafa',
-              },
+              color: selectedButton === 'Button2' ? '#2196f3' : 'black',
+              justifyContent:'start',
+              fontSize:'14px',
             }}
+            startIcon={<RemoveRedEyeTwoToneIcon/>}
             size='large'
             onClick={() => handleButtonClick('Button2')}
           >
-            View Policies
+          <Box >
+            <div style={{ justifyContent:'start', display:'flex'}}>View Policies</div>
+            <p style={{fontSize:'12px', color:'rgb(105, 117, 134)', justifyContent:'start',
+            display:'flex', margin:'0px'}}>
+            View Terms & Conditions
+            </p>
+            </Box>
+            
           </Button>
         </Box>
       </Grid>
 
-      <Grid item xs={12} sm={12} lg={10}>
+      <Grid item xs={12} sm={12} lg={9}>
         <Box sx={{ flex: '1', overflow: 'auto' }}>
           {selectedButton === 'Button1' && <Documents />}
           {selectedButton === 'Button2' && (
             <div>
-              {/* <Box pb={3}>
-                <PoliciesCounter />
-              </Box> */}
               <Policies />
             </div>
           )}
