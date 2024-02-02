@@ -7,22 +7,20 @@ import ReplyIcon from '@mui/icons-material/Reply';
 import ForwardIcon from '@mui/icons-material/Forward';
 import { useNavigate } from 'react-router';
 import { initialData } from '.';
-import AvtarImg from '../../../../assets/images/avatar.png'
+import AvtarImg from '../../../../assets/images/avatar.png';
 import ReplyForwardBox from './ReplyForwardBox';
-
 
 const Message = () => {
     const currentDate = new Date().toLocaleDateString();
     const [emailData, setEmailData] = useState(null);
-    const [openReplyForwardBox, setopenReplyForwardBox] = useState(false);
+    const [isBoxVisible, setIsBoxVisible] = useState(true);
 
     // Function to handle the received data from MailCompose
     const handleEmailSend = (data) => {
         setEmailData(data);
-        setopenReplyForwardBox(false);
+        setIsBoxVisible(false);
     };
 
-    // Function to handle reply
     const handleReply = () => {
         if (emailData) {
             const replyContent = `Replying to: ${emailData?.from}\n\n${emailData?.message}`;
@@ -31,12 +29,11 @@ const Message = () => {
                 subject: `Re: ${emailData?.subject}`,
                 message: replyContent,
             };
-            setopenReplyForwardBox(true);
+            setIsBoxVisible(true);
             setEmailData(replyData);
         }
     };
 
-    // Function to handle forward
     const handleForward = () => {
         if (emailData) {
             const forwardContent = `Forwarding: ${emailData?.from}\n\n${emailData?.message}`;
@@ -45,14 +42,14 @@ const Message = () => {
                 message: forwardContent,
                 to: '', // Provide a default value or leave it empty based on your requirements
             };
-            setopenReplyForwardBox(true);
+            setIsBoxVisible(true);
             setEmailData(forwardData);
         }
     };
 
 
-    const navigate = useNavigate()
-    const NameToShow = 1
+    const navigate = useNavigate();
+    const NameToShow = 1;
 
     return (
         <>
@@ -132,12 +129,14 @@ const Message = () => {
                     </Button>
                 </Box>
 
-                <ReplyForwardBox
-                    open={openReplyForwardBox}
-                    onClose={() => setopenReplyForwardBox(false)}
-                    onSend={handleEmailSend}
-                    emailData={emailData}
-                />
+                {isBoxVisible && (
+                    <ReplyForwardBox
+                        isBoxVisible={isBoxVisible}
+                        onClose={() => setIsBoxVisible(false)}
+                        onSend={handleEmailSend}
+                        emailData={emailData}
+                    />
+                )}
             </Paper>
         </>
     );

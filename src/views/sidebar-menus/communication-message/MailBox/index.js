@@ -1,5 +1,5 @@
-import React, { useState, useRef, useEffect  } from 'react';
-import {CssBaseline, Box, List, ListItem, ListItemAvatar, Avatar, ListItemIcon, ListItemText, Divider, Typography, Button, InputBase, ThemeProvider, createTheme, IconButton, Popover, MenuItem, Grid, Paper} from '@mui/material';
+import React, { useState, useRef, useEffect } from 'react';
+import { CssBaseline, Box, List, ListItem, ListItemAvatar, Avatar, ListItemIcon, ListItemText, Divider, Typography, Button, InputBase, ThemeProvider, createTheme, IconButton, Popover, MenuItem, Grid, Paper } from '@mui/material';
 import TablePagination from '@mui/material/TablePagination';
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
 import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
@@ -13,27 +13,30 @@ import AvtarImg from '../../../../assets/images/avatar.png'
 
 const theme = createTheme();
 
+// Sample data for initial inbox messages
 export const initialData = [
-  { id: 1, name: 'John Doe', role:'Website Developer' ,message: 'Lorem ipsum dolor sit amet 1', unread: false, important: true },
-  { id: 2, name: 'Jane Smith', role:'Software Developer' ,message: 'Lorem ipsum dolor sit amet 2', unread: true, important: false },
-  { id: 3, name: 'Bob Johnson', role:'Front-end Developer' ,message: 'Lorem ipsum dolor sit amet 3', unread: false, important: true },
-  { id: 4, name: 'Alice Williams', role:'Developer' ,message: 'Lorem ipsum dolor sit amet 4', unread: true, important: false },
-  { id: 5, name: 'Charlie Brown', role:'Manager' ,message: 'Lorem ipsum dolor sit amet 5', unread: false, important: true },
-  { id: 6, name: 'Eva Davis', role:'CEO' ,message: 'Lorem ipsum dolor sit amet 6', unread: false, important: false },
-  { id: 7, name: 'Frank White', role:'Managing Director' ,message: 'Lorem ipsum dolor sit amet 7', unread: true, important: true },
-  { id: 8, name: 'Grace Miller', role:'Businessman' ,message: 'Lorem ipsum dolor sit amet 8', unread: false, important: false },
-  { id: 9, name: 'Henry Jackson', role:'Developer' ,message: 'Lorem ipsum dolor sit amet 9', unread: true, important: true },
-  { id: 10, name: 'Ivy Lee', role:'Developer' ,message: 'Lorem ipsum dolor sit amet 10', unread: false, important: false },
-  { id: 11, name: 'Charlie Brown', role:'Developer' ,message: 'Lorem ipsum dolor sit amet 5', unread: false, important: true },
-  { id: 12, name: 'Eva Davis', role:'Developer' ,message: 'Lorem ipsum dolor sit amet 6', unread: false, important: false },
-  { id: 13, name: 'Frank White', role:'Developer' ,message: 'Lorem ipsum dolor sit amet 7', unread: true, important: true },
-  { id: 14, name: 'Grace Miller', role:'Developer' ,message: 'Lorem ipsum dolor sit amet 8', unread: false, important: false },
-  { id: 15, name: 'Henry Jackson', role:'Developer' ,message: 'Lorem ipsum dolor sit amet 9', unread: true, important: true },
-  { id: 16, name: 'Ivy Lee', role:'Developer' ,message: 'Lorem ipsum dolor sit amet 10', unread: false, important: false },
+  { id: 1, name: 'John Doe', role: 'Website Developer', message: 'Lorem ipsum dolor sit amet 1', unread: false, important: true },
+  { id: 2, name: 'Jane Smith', role: 'Software Developer', message: 'Lorem ipsum dolor sit amet 2', unread: true, important: false },
+  { id: 3, name: 'Bob Johnson', role: 'Front-end Developer', message: 'Lorem ipsum dolor sit amet 3', unread: false, important: true },
+  { id: 4, name: 'Alice Williams', role: 'Developer', message: 'Lorem ipsum dolor sit amet 4', unread: true, important: false },
+  { id: 5, name: 'Charlie Brown', role: 'Manager', message: 'Lorem ipsum dolor sit amet 5', unread: false, important: true },
+  { id: 6, name: 'Eva Davis', role: 'CEO', message: 'Lorem ipsum dolor sit amet 6', unread: false, important: false },
+  { id: 7, name: 'Frank White', role: 'Managing Director', message: 'Lorem ipsum dolor sit amet 7', unread: true, important: true },
+  { id: 8, name: 'Grace Miller', role: 'Businessman', message: 'Lorem ipsum dolor sit amet 8', unread: false, important: false },
+  { id: 9, name: 'Henry Jackson', role: 'Developer', message: 'Lorem ipsum dolor sit amet 9', unread: true, important: true },
+  { id: 10, name: 'Ivy Lee', role: 'Developer', message: 'Lorem ipsum dolor sit amet 10', unread: false, important: false },
+  { id: 11, name: 'Charlie Brown', role: 'Developer', message: 'Lorem ipsum dolor sit amet 5', unread: false, important: true },
+  { id: 12, name: 'Eva Davis', role: 'Developer', message: 'Lorem ipsum dolor sit amet 6', unread: false, important: false },
+  { id: 13, name: 'Frank White', role: 'Developer', message: 'Lorem ipsum dolor sit amet 7', unread: true, important: true },
+  { id: 14, name: 'Grace Miller', role: 'Developer', message: 'Lorem ipsum dolor sit amet 8', unread: false, important: false },
+  { id: 15, name: 'Henry Jackson', role: 'Developer', message: 'Lorem ipsum dolor sit amet 9', unread: true, important: true },
+  { id: 16, name: 'Ivy Lee', role: 'Developer', message: 'Lorem ipsum dolor sit amet 10', unread: false, important: false },
 ];
 
 const GmailInboxTemplate = () => {
   const searchInputRef = useRef(null);
+
+  // Function to get the current date and time
   const getCurrentDateTime = () => {
     const currentDate = new Date();
     const options = {
@@ -55,6 +58,7 @@ const GmailInboxTemplate = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [currentFilter, setCurrentFilter] = useState('');
 
+  // Styled components using MUI's styled utility
   const SearchWrapper = styled('div')({
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
@@ -106,6 +110,7 @@ const GmailInboxTemplate = () => {
     marginRight: theme.spacing(2),
   });
 
+  // Function to handle search input change
   const handleSearchChange = (event) => {
     const query = event.target.value;
     setSearchQuery(query);
@@ -113,6 +118,7 @@ const GmailInboxTemplate = () => {
   };
 
 
+  // Function to filter data based on different filters
   const filterData = (filterType, filterValue) => {
     if (filterType === 'search') {
       const filteredResults = initialData.filter((item) =>
@@ -143,6 +149,7 @@ const GmailInboxTemplate = () => {
   };
 
 
+  // Handlers for changing page and rows per page
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
@@ -152,6 +159,7 @@ const GmailInboxTemplate = () => {
     setPage(0);
   };
 
+  // Handlers for compose mail modal
   const handleComposeOpen = () => {
     setComposeOpen(true);
   };
@@ -165,6 +173,7 @@ const GmailInboxTemplate = () => {
     handleComposeClose();
   };
 
+  // Handlers for filter popover
   const handleFilterClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -178,8 +187,10 @@ const GmailInboxTemplate = () => {
     filterData(filterValue, filterValue);
   };
 
+  // Navigation hook
   const navigate = useNavigate();
 
+  // Handler for starring a message
   const handleStarClick = (item) => {
     const updatedData = searchResults.length
       ? searchResults.map((d) => (d.id === item.id ? { ...d, important: !d.important } : d))
@@ -188,7 +199,8 @@ const GmailInboxTemplate = () => {
     setSearchResults(updatedData);
   };
 
-   useEffect(() => {
+  // Effect to set focus on search input
+  useEffect(() => {
     // Set focus when the component mounts or searchQuery changes
     searchInputRef.current.focus();
   }, [searchQuery]);
@@ -196,105 +208,144 @@ const GmailInboxTemplate = () => {
   return (
     <>
       <Paper>
-        <ThemeProvider theme={theme}>
-
-          <Box sx={{ display: 'flex' }}>
-            <CssBaseline />
-            <Box sx={{ padding: '20px', flexGrow: 1 }}>
-              <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
-                <Grid sx={{ display: 'inline-flex' }}>
-                  <ComposeButtonWrapper onClick={handleComposeOpen}>
-                    <Button variant="contained" color="primary">
-                      <AddCircleOutlineOutlinedIcon sx={{ marginRight: '7px' }} />
-                      Compose
-                    </Button>
-                  </ComposeButtonWrapper>
-                  <FilterWrapper>
-                    <IconButton
-                      aria-label="Filter"
-                      onClick={handleFilterClick}
-                      color={currentFilter === 'important' ? 'primary' : 'default'} 
-                    >
-                      <FilterListIcon />
-                    </IconButton>
-                    <Popover
-                      open={Boolean(anchorEl)}
-                      anchorEl={anchorEl}
-                      onClose={handleFilterClose}
-                    >
-                      <Box sx={{ p: 2 }}>
-                        <MenuItem onClick={() => handleFilterSelect('name')}>Name</MenuItem>
-                        <MenuItem onClick={() => handleFilterSelect('date')}>Date</MenuItem>
-                        <MenuItem onClick={() => handleFilterSelect('unread')}>Unread</MenuItem>
-                        <MenuItem onClick={() => handleFilterSelect('important')}>Important</MenuItem>
-                      </Box>
-                    </Popover>
-                  </FilterWrapper>
-                </Grid>
-                <Grid sx={{ display: 'inline-flex' }}>
-                  <SearchWrapper sx={{ display:'flex', justifyContent: 'flexStart' }}>
-                    <SearchIconWrapper>
-                      <SearchIcon />
-                    </SearchIconWrapper>
-                    <StyledInputBase
-                      placeholder="Search…"
-                      inputProps={{ 'aria-label': 'search' }}
-                      value={searchQuery}
-                      onChange={handleSearchChange}
-                      inputRef={searchInputRef} 
-                    />
-                  </SearchWrapper>
-                  <TablePagination
-                    component="div"
-                    count={(searchResults.length || initialData.length)}
-                    page={page}
-                    onPageChange={handleChangePage}
-                    rowsPerPage={rowsPerPage}
-                    onRowsPerPageChange={handleChangeRowsPerPage}
-                    labelRowsPerPage=""
-                  />
-                </Grid>
-              </Box>
-              {(searchResults.length > 0 || searchQuery === '') && (
-                <List>
-                  {(searchResults.length ? searchResults : initialData).slice(page * rowsPerPage, (page + 1) * rowsPerPage).map((item) => (
-                    <React.Fragment key={item.id}>
-                      <ListItem sx={{
-                        cursor: 'pointer', '&:hover': {
+      <ThemeProvider theme={theme}>
+      <Box sx={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
+        <CssBaseline />
+        {/* Header Section */}
+        <Box
+          sx={{
+            padding: '20px',
+            borderBottom: `1px solid ${theme.palette.divider}`,
+            backgroundColor: theme.palette.background.paper,
+          }}
+        >
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <Grid sx={{display:'inline-flex'}}>
+              <ComposeButtonWrapper onClick={handleComposeOpen}>
+                <Button variant="contained" color="primary">
+                  <AddCircleOutlineOutlinedIcon sx={{ marginRight: '7px' }} />
+                  Compose
+                </Button>
+              </ComposeButtonWrapper>
+              <FilterWrapper>
+                <IconButton
+                  aria-label="Filter"
+                  onClick={handleFilterClick}
+                  color={currentFilter === 'important' ? 'primary' : 'default'}
+                >
+                  <FilterListIcon />
+                </IconButton>
+                <Popover
+                  open={Boolean(anchorEl)}
+                  anchorEl={anchorEl}
+                  onClose={handleFilterClose}
+                >
+                  <Box sx={{ p: 2 }}>
+                    <MenuItem onClick={() => handleFilterSelect('name')}>Name</MenuItem>
+                    <MenuItem onClick={() => handleFilterSelect('date')}>Date</MenuItem>
+                    <MenuItem onClick={() => handleFilterSelect('unread')}>Unread</MenuItem>
+                    <MenuItem onClick={() => handleFilterSelect('important')}>Important</MenuItem>
+                  </Box>
+                </Popover>
+              </FilterWrapper>
+            </Grid>
+            <Grid sx={{ display: 'inline-flex' }}>
+              {/* Search Section */}
+              <SearchWrapper sx={{display:'flex'}}>
+                <SearchIconWrapper>
+                  <SearchIcon />
+                </SearchIconWrapper>
+                <StyledInputBase
+                  placeholder="Search…"
+                  inputProps={{ 'aria-label': 'search' }}
+                  value={searchQuery}
+                  onChange={handleSearchChange}
+                  inputRef={searchInputRef}
+                />
+              </SearchWrapper>
+              {/* Pagination Section */}
+              <TablePagination
+                component="div"
+                count={(searchResults.length || initialData.length)}
+                page={page}
+                onPageChange={handleChangePage}
+                rowsPerPage={rowsPerPage}
+                onRowsPerPageChange={handleChangeRowsPerPage}
+                labelRowsPerPage="Pages"
+              />
+            </Grid>
+          </Box>
+        </Box>
+        {/* Main Content Section */}
+        <Box sx={{ flexGrow: 1, overflowY: 'auto' }}>
+          {(searchResults.length > 0 || searchQuery === '') && (
+            <List>
+              {(searchResults.length ? searchResults : initialData)
+                .slice(page * rowsPerPage, (page + 1) * rowsPerPage)
+                .map((item) => (
+                  <React.Fragment key={item.id}>
+                    {/* Message Item */}
+                    <ListItem
+                      sx={{
+                        cursor: 'pointer',
+                        '&:hover': {
                           boxShadow: theme.shadows[2],
                         },
-                      }} onClick={() => navigate('/communication/inbox/message')}>
-                        <ListItemAvatar onClick={(event) => event.stopPropagation()}>
-                          <Avatar alt="User Avatar" src={AvtarImg} />
-                        </ListItemAvatar>
-                        <ListItemIcon
-                          onClick={(event) => { event.stopPropagation(); handleStarClick(item); }}
-                        >
-                          <StarBorderOutlinedIcon style={{ color: item.important ? '#f3c74a' : 'inherit' }} />
-                        </ListItemIcon>
-                        <ListItemText
-                          primary={highlightMatch(item.name, searchQuery)}
-                          secondary={highlightMatch(item.message, searchQuery)}
+                        // Adjusting padding for better mobile responsiveness
+                        padding: '8px',
+                      }}
+                      onClick={() => navigate('/communication/inbox/message')}
+                    >
+                      {/* User Avatar */}
+                      <ListItemAvatar onClick={(event) => event.stopPropagation()}>
+                        <Avatar alt="User Avatar" src={AvtarImg} />
+                      </ListItemAvatar>
+                      {/* Star Icon */}
+                      <ListItemIcon
+                        onClick={(event) => {
+                          event.stopPropagation();
+                          handleStarClick(item);
+                        }}
+                        sx={{ marginRight: '5px' }}
+                      >
+                        <StarBorderOutlinedIcon
+                          style={{ color: item.important ? '#f3c74a' : 'inherit' }}
                         />
-                        <Typography variant="subtitle2" color="textSecondary" onClick={(event) => event.stopPropagation()}>
-                          {getCurrentDateTime()}
-                        </Typography>
-                      </ListItem>
-                      <Divider />
-                    </React.Fragment>
-                  ))}
-                </List>
-              )}
+                      </ListItemIcon>
+                      {/* Message Text */}
+                      <ListItemText
+                        primary={highlightMatch(item.name, searchQuery)}
+                        secondary={highlightMatch(item.message, searchQuery)}
+                        // Adjusting font size for better mobile readability
+                        primaryTypographyProps={{ variant: 'body1', fontSize: '16px' }}
+                        secondaryTypographyProps={{ variant: 'body2', fontSize: '14px' }}
+                      />
+                      {/* Timestamp */}
+                      <Typography
+                        variant="subtitle2"
+                        color="textSecondary"
+                        onClick={(event) => event.stopPropagation()}
+                      >
+                        {getCurrentDateTime()}
+                      </Typography>
+                    </ListItem>
+                    {/* Divider */}
+                    <Divider />
+                  </React.Fragment>
+                ))}
+            </List>
+          )}
 
-              {searchResults.length === 0 && searchQuery !== '' && (
-                <Typography variant="body1" color="textSecondary" textAlign="center">
-                  No data found.
-                </Typography>
-              )}
-            </Box>
-          </Box>
-          <MailCompose open={isComposeOpen} onClose={handleComposeClose} onSend={handleComposeSend} />
-        </ThemeProvider>
+          {searchResults.length === 0 && searchQuery !== '' && (
+            <Typography variant="body1" color="textSecondary" textAlign="center">
+              No data found.
+            </Typography>
+          )}
+        </Box>
+        {/* Compose Mail Section */}
+        <MailCompose open={isComposeOpen} onClose={handleComposeClose} onSend={handleComposeSend} />
+      </Box>
+    </ThemeProvider>
       </Paper>
     </>
   );
