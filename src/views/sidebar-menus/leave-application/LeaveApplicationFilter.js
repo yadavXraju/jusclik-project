@@ -7,5 +7,3 @@ function LeaveApplicationFilter() {
     </div>
   )
 }
-
-export default LeaveApplicationFilter
