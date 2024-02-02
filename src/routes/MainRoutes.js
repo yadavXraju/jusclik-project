@@ -30,7 +30,7 @@ const EmailMsg = Loadable(lazy(() => import('views/sidebar-menus/communication-m
 
 
 // Class Teacher  Dashboard Menus
-
+const ClassTeacherDashboard = Loadable(lazy(() => import('views/class-teacher-dashboard/')));
  const AttendanceEntry = Loadable(lazy(() => import('views/sidebar-menus/attendance-entry')));
  const MarksEntryPanel = Loadable(lazy(() => import('views/sidebar-menus/marks-entry-panel')));
  const RemarksEntryPanel = Loadable(lazy(() => import('views/sidebar-menus/remarks-entry-panel')));
@@ -41,6 +41,7 @@ const EmailMsg = Loadable(lazy(() => import('views/sidebar-menus/communication-m
  const TeacherInbox = Loadable(lazy(() => import('views/sidebar-menus/teacher-inbox')));
  const  BiometricDetailsOrAttendanceDetails = Loadable(lazy(() => import('views/sidebar-menus/biometric-details-attendance-details')));
  const  LeaveApplication = Loadable(lazy(() => import('views/sidebar-menus/leave-application')));
+ const  ApiTest = Loadable(lazy(() => import('views/sidebar-menus/ApiTest.js')));
 // ==============================|| MAIN ROUTING ||============================== //
 
 const MainRoutes = {
@@ -60,6 +61,22 @@ const MainRoutes = {
         }
       ]
     },
+
+    // Class Teacher  dashboard
+
+
+    {
+      path: 'class-teacher-dashboard',
+      children: [
+        {
+          path: '/class-teacher-dashboard',
+          element: <ClassTeacherDashboard />
+        }
+      ]
+    },
+
+
+    // Class Teacher  dashboard
 
         {
           path: 'attendance',
@@ -235,6 +252,11 @@ const MainRoutes = {
         {
           path: '/leave-application',
           element: <LeaveApplication/>
+        },
+
+        {
+          path: '/apitest',
+          element: <ApiTest/>
         },
 
        

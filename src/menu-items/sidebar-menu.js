@@ -254,6 +254,14 @@ const sidebarMenu = {
         icon:   CameraAltTwoToneIcon,
         breadcrumbs: false
       },
+      {
+        id: 'api-test',
+        title: 'API Test',
+        type: 'item',
+        url: '/apitest',
+        icon:   CameraAltTwoToneIcon,
+        breadcrumbs: false
+      },
 
 
   ]
