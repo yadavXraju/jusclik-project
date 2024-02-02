@@ -5,6 +5,6 @@ import User1 from 'assets/images/users/user-round.svg';
 export const TeacherProfileDetails = {
   TeacherImage: User1,
   TeacherName : 'Suraj Mishra',
-//   Class : 'V A',
+  ClassTeacherOf : 'V A',
 //   AdminNo :'(Adm No : D00158)',
 };
