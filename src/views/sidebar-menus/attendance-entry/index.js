@@ -1,5 +1,20 @@
-import * as React from 'react';
-import { Box, InputLabel, MenuItem, FormControl, Select, Divider, Typography, ListItem, Avatar, ListItemAvatar, ListItemText, Stack, Button, Paper } from '@mui/material';
+import React, { useEffect } from 'react';
+import {
+  Box,
+  InputLabel,
+  MenuItem,
+  FormControl,
+  Select,
+  Divider,
+  Typography,
+  ListItem,
+  Avatar,
+  ListItemAvatar,
+  ListItemText,
+  Stack,
+  Paper,
+  Button,
+} from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -13,12 +28,50 @@ import { StudentList } from './StudentList';
 export default function AttendanceEntry() {
   const [selectClass, setSelectClass] = React.useState('');
   const [selectSection, setSelectSection] = React.useState('');
-
+  const [selectedAvatars, setSelectedAvatars] = React.useState({});
+  const [filteredStudentList, setFilteredStudentList] = React.useState([]);
 
   const handleChange = (event) => {
-    setSelectClass(event.target.value);
-    setSelectSection(event.target.value);
+    const { name, value } = event.target;
+    if (name === 'class') {
+      setSelectClass(value);
+    } else if (name === 'section') {
+      setSelectSection(value);
+    }
   };
+
+  const handleAvatarClick = (avatar, studentId) => {
+    setSelectedAvatars((prevAvatars) => ({
+      ...prevAvatars,
+      [studentId]: avatar,
+    }));
+  };
+
+  const handleActionsClick = () => {
+    console.log('Selected Class:', selectClass);
+    console.log('Selected Section:', selectSection);
+
+    // Filter the student list based on the selected class and section
+    const filteredList = StudentList.filter(
+      (student) =>
+        student.class.trim().toLowerCase() === selectClass.trim().toLowerCase() &&
+        student.section.trim().toLowerCase() === selectSection.trim().toLowerCase()
+    );
+
+    console.log('Filtered List:', filteredList);
+
+    // Update the state directly with the filtered list
+    setFilteredStudentList(filteredList);
+    console.log('Filtered Student List:', filteredStudentList);
+  };
+
+  useEffect(() => {
+    console.log('Student List on Mount:', StudentList);
+  }, []);
+
+
+
+
 
   return (
     <Box>
@@ -26,14 +79,13 @@ export default function AttendanceEntry() {
         <Box sx={{ minWidth: 250, display: 'flex', alignItems: 'baseline', p: 3 }}>
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DemoContainer components={['DatePicker']}>
-              <DatePicker label="Select Date" slots={{
-                openPickerIcon: CalendarMonthTwoToneIcon
-              }} />
+              <DatePicker label="Select Date" slots={{ openPickerIcon: CalendarMonthTwoToneIcon }} />
             </DemoContainer>
           </LocalizationProvider>
           <FormControl sx={{ m: 1, minWidth: 250 }}>
             <InputLabel id="class-select-label">Select Class</InputLabel>
             <Select
+              name="class"
               labelId="class-select-label"
               id="class-select"
               value={selectClass}
@@ -47,9 +99,11 @@ export default function AttendanceEntry() {
               ))}
             </Select>
           </FormControl>
+
           <FormControl sx={{ m: 1, minWidth: 250 }}>
             <InputLabel id="section-select-label">Select Section</InputLabel>
             <Select
+              name="section"
               labelId="section-select-label"
               id="section-select"
               value={selectSection}
@@ -64,35 +118,22 @@ export default function AttendanceEntry() {
             </Select>
           </FormControl>
 
-          <FormControl sx={{ m: 1, minWidth: 250 }}>
-            <InputLabel id="section-select-label">Status</InputLabel>
-            <Select
-              labelId="section-select-label"
-              id="Status"
-              value={selectSection}
-              label="Status"
-              onChange={handleChange}
-            >
-              <MenuItem >
-                <ListItemText primary="Live" />
-              </MenuItem>
-              <MenuItem >
-                <ListItemText primary="Left" />
-              </MenuItem>
-            </Select>
-          </FormControl>
-
-          <Button variant="contained" size="large" sx={{ width: '250px', padding: '10px', margin: '0 0 6px 8px' }}>
+          <Button
+            variant="contained"
+            size="large"
+            sx={{ width: '250px', padding: '10px', margin: '0 0 6px 8px' }}
+            onClick={handleActionsClick}
+          >
             Actions
           </Button>
         </Box>
       </Paper>
       {/* Student List */}
       <Box sx={{ mt: 2 }}>
-        <Paper>
-          {StudentList.map((student) => (
+        <Paper sx={{ listStyleType: 'none', p: 0 }}>
+          {(filteredStudentList.length > 0 ? filteredStudentList : StudentList).map((student) => (
             <React.Fragment key={student.id}>
-              <ListItem>
+              <ListItem sx={{ display: 'flex', alignItems: 'center', p: 2 }}>
                 <ListItemAvatar>
                   <Avatar src={AvtarImg} sx={{ width: 50, height: 50 }} />
                 </ListItemAvatar>
@@ -110,12 +151,36 @@ export default function AttendanceEntry() {
                   </React.Fragment>
                 </ListItemText>
                 <Stack direction="row" spacing={2}>
-                  <Avatar sx={{ bgcolor: '#63d5a3' }}>P</Avatar>
-                  <Avatar sx={{ bgcolor: '#e2526b' }}>A</Avatar>
-                  <Avatar sx={{ bgcolor: '#eeb058' }}>L</Avatar>
+                  <Avatar
+                    sx={{
+                      bgcolor: selectedAvatars[student.id] === 'P' ? '#7bc67b' : '#ccc',
+                      cursor: 'pointer',
+                    }}
+                    onClick={() => handleAvatarClick('P', student.id)}
+                  >
+                    P
+                  </Avatar>
+                  <Avatar
+                    sx={{
+                      bgcolor: selectedAvatars[student.id] === 'A' ? '#e2526b' : '#ccc',
+                      cursor: 'pointer',
+                    }}
+                    onClick={() => handleAvatarClick('A', student.id)}
+                  >
+                    A
+                  </Avatar>
+                  <Avatar
+                    sx={{
+                      bgcolor: selectedAvatars[student.id] === 'L' ? '#eeb058' : '#ccc',
+                      cursor: 'pointer',
+                    }}
+                    onClick={() => handleAvatarClick('L', student.id)}
+                  >
+                    L
+                  </Avatar>
                 </Stack>
               </ListItem>
-              <Divider variant="middle" component="li" />
+              <Divider variant="middle" sx={{ width: '100%' }} component="li" />
             </React.Fragment>
           ))}
         </Paper>
