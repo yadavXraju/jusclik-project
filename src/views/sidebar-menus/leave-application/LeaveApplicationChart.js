@@ -2,11 +2,11 @@ import React from 'react';
 import ApexCharts from 'react-apexcharts';
 import { Grid, Paper, Button , Box ,useMediaQuery  } from '@mui/material';
 import { gridSpacing } from 'store/constant';
-import { useNavigate } from 'react-router';
+//import { useNavigate } from 'react-router';
 //import { HeadingCss } from 'views/dashboard/Default/dashboard-css/CommonCss';
 
 const LeaveChart = () => {
-const navigate = useNavigate();
+//const navigate = useNavigate();
 const isMobile = useMediaQuery('(max-width: 767px)');
 
 
@@ -22,7 +22,7 @@ const isMobile = useMediaQuery('(max-width: 767px)');
     chart: {
       type: 'donut',
     },
-    labels: ['Pending', 'Approved'],
+    labels: ['Approved', 'Pending'],
     colors: ['#61bb61d4', 'rgb(244, 67, 54)'],
     responsive: [{
       breakpoint: 480,
@@ -47,11 +47,11 @@ const isMobile = useMediaQuery('(max-width: 767px)');
           <Paper spacing={gridSpacing}>
            
               <Grid className='attandance-graph' style={AttendanceBox} >
-                  <ApexCharts options={chartData} series={chartData.series} type="donut" height={370} />
+                  <ApexCharts options={chartData} series={chartData.series} type="donut" height={320} />
               </Grid>
 
               <Box sx={{p:3, pt:0 , textAlign:'right' , marginTop: isMobile ? '2rem' : '0'}}>
-                  <Button variant="contained" onClick={() => navigate('/attendance')}>
+                  <Button variant="contained" >
                     View More
                   </Button>
               </Box>

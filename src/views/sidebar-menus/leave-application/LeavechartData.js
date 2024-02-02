@@ -1,7 +1,7 @@
 // ===========================|| DASHBOARD - TOTAL GROWTH BAR CHART ||=========================== //
 
 const LeavechartData = {
-    height: 480,
+    height: 330,
     type: 'bar',
     options: {
       chart: {

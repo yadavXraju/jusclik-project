@@ -79,7 +79,7 @@ const LeaveBarChart = ({ isLoading }) => {
         <SkeletonTotalGrowthBarChart />
       ) : (
         <MainCard>
-          <Grid container spacing={gridSpacing} height={500}>
+          <Grid container spacing={gridSpacing} height={375}>
             <Grid item xs={12}>
               <Chart {...chartData} />
             </Grid>
