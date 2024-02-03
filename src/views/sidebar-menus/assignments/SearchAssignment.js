@@ -67,11 +67,11 @@ const SearchAssignment = ({ onSearch }) => {
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DemoContainer components={['DatePicker']}>
           <DatePicker label="From" value={startDate} onChange={handleStartDateChange} slots={{
-    openPickerIcon: CalendarMonthTwoToneIcon
-  }} />
+            openPickerIcon: CalendarMonthTwoToneIcon
+          }} />
           <DatePicker label="To" value={endDate} onChange={handleEndDateChange} slots={{
-    openPickerIcon: CalendarMonthTwoToneIcon
-  }} />
+            openPickerIcon: CalendarMonthTwoToneIcon
+          }} />
         </DemoContainer>
       </LocalizationProvider>
       <Autocomplete
@@ -88,27 +88,27 @@ const SearchAssignment = ({ onSearch }) => {
             sx={{ marginBottom: '0px', marginTop: '0px' }}
           />
         )}
-       renderOption={(props, option, { inputValue }) => {
-  const parts = option.title.split(new RegExp(`(${inputValue})`, 'gi'));
+        renderOption={(props, option, { inputValue }) => {
+          const parts = option.title.split(new RegExp(`(${inputValue})`, 'gi'));
 
-  return (
-    <li {...props}>
-      <div>
-        {parts.map((part, index) => (
-          <span
-            key={index}
-            style={{
-              fontWeight: part.toLowerCase() === inputValue.toLowerCase() ? 700 : 400,
-            }}
-          >
-            {part}
-          </span>
-        ))}
-      </div>
-    </li>
-  );
-}}
-/>
+          return (
+            <li {...props}>
+              <div>
+                {parts.map((part, index) => (
+                  <span
+                    key={index}
+                    style={{
+                      fontWeight: part.toLowerCase() === inputValue.toLowerCase() ? 700 : 400,
+                    }}
+                  >
+                    {part}
+                  </span>
+                ))}
+              </div>
+            </li>
+          );
+        }}
+      />
       <TextField
         id="outlined-search"
         label="Search"
