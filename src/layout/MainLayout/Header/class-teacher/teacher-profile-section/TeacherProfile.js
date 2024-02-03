@@ -6,5 +6,5 @@ export const TeacherProfileDetails = {
   TeacherImage: User1,
   TeacherName : 'Suraj Mishra',
   ClassTeacherOf : 'V A',
-//   AdminNo :'(Adm No : D00158)',
+  SubjectTeacherOf : 'Math',
 };

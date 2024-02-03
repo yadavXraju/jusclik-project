@@ -9,6 +9,7 @@ import Alert from './Alerts/Alert';
 import FavPages from './fav-pages/FavPages';
 import UpcomingBirthday from './upcoming-birthday/UpcomingBirthday';
 import LowStudentAttendance from './low-student-attendance/LowStudentAttendance';
+import StudentStrength from './student-strength/StudentStrength';
 
 
 const Dashboard = ({ isLoading }) => {
@@ -64,13 +65,21 @@ const Dashboard = ({ isLoading }) => {
              <FavPages isLoading={isLoading} />
           </Grid>
 
-           {/* Low Students Attendance comp */}
-            <Grid item xs={12} md={5}>
+          {/* Low Students Attendance comp */}
+          <Grid item xs={12} md={7}>
              <LowStudentAttendance isLoading={isLoading} />
            </Grid>
 
+         {/* StudentStrength Comp */}
+          <Grid item xs={12} md={5} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>           
+             <StudentStrength isLoading={isLoading} />
+          </Grid>
 
-          
+
+
+      
+     
+           
         </Grid>
       </Grid>
     </Grid>
