@@ -8,6 +8,7 @@ import TableHead from '@mui/material/TableHead';
 
 import TableRow from '@mui/material/TableRow';
 import { TextField } from '@mui/material';
+import SearchFilter from '../updates/SearchFilter';
 
 function createData(name, code, population, size) {
   const density = population / size;
@@ -36,6 +37,7 @@ export default function ColumnGroupingTable() {
 
   return (
     <Paper sx={{ width: '100%' }}>
+      <SearchFilter/>
       <TableContainer sx={{ maxHeight: 440 }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>

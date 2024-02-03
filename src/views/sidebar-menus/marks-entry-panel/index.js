@@ -8,6 +8,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import TextField from '@mui/material/TextField';
 import { makeStyles, useTheme, ThemeProvider } from '@mui/styles';
+import SearchFilter from '../updates/SearchFilter';
 
 const useStyles = makeStyles((theme) => ({
   tableContainer: {
@@ -65,6 +66,7 @@ export default function MarksEntryPanel() {
 
   return (
     <ThemeProvider theme={theme}>
+      <SearchFilter />
       <Paper sx={{ width: '100%' }}>
         <TableContainer sx={{ maxHeight: 640 }}>
           <Table stickyHeader aria-label="sticky table">
