@@ -2,17 +2,6 @@ import React from 'react'
 import {TextField} from '@mui/material';
 function Datecomponent({label}) {
 
-    // const getCurrentDate = () => {
-    //     const today = new Date();
-    //     const year = today.getFullYear();
-    //     let month = today.getMonth() + 1;
-    //     let day = today.getDate();
-      
-    //     // Add leading zero if month or day is a single digit
-    //     month = month < 10 ? `0${month}` : month;
-    //     day = day < 10 ? `0${day}` : day;
-      
-    //     return `${year}-${month}-${day}`;}
   return (
  <>
    <TextField
@@ -24,9 +13,6 @@ function Datecomponent({label}) {
       InputLabelProps={{
         shrink: true,
       }}
-    //   InputProps={{
-    //     inputProps: { max: getCurrentDate() }, 
-    //   }}
     />
  </>
   )
