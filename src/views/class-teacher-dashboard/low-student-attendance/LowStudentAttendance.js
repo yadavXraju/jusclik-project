@@ -1,17 +1,23 @@
 import MainCard from 'ui-component/cards/MainCard';
 import { Typography , Grid} from '@mui/material';
-import { boxHeight , HeadingCss  } from 'views/dashboard/Default/dashboard-css/CommonCss';
+import {  HeadingCss  } from 'views/dashboard/Default/dashboard-css/CommonCss';
 import { gridSpacing } from 'store/constant';
-import { BirthdayList } from '../upcoming-birthday/BirthdayList';
 import {Divider , Box } from '@mui/material';
 import { subTitle , subtitle2 } from 'views/dashboard/Default/dashboard-css/CommonCss';
+import { studnetAttendancePercentage } from './Attendance';
 
 
-const LowStudentAttendance =()  => {
+
+const LowStudentAttendance = () => {
+
+  // Sort the array based on attendancePercentage in ascending order
+  const sortedAttendance = [...studnetAttendancePercentage].sort(
+    (a, b) => parseFloat(a.attendancePercentage) - parseFloat(b.attendancePercentage)
+  );
 
   return (
      <>
-       <MainCard  style={boxHeight} className='scrollbar' > 
+       <MainCard  > 
           <Grid container spacing={gridSpacing}>
             <Grid item xs={12} sx={{mb:3}}>
               <Grid  alignContent="center" justifyContent="space-between">
@@ -24,7 +30,7 @@ const LowStudentAttendance =()  => {
             </Grid>
      
            {/* maping data */}
-            {BirthdayList.map((item, index) => (
+            {sortedAttendance.slice(0 , 5).map((item, index) => (
                 <Grid item xs={12} key={index} sx={{paddingTop:'0 !important'}}>
                   <Grid container direction="column">
                     <Grid item>
@@ -41,7 +47,7 @@ const LowStudentAttendance =()  => {
                               display: 'flex',
                               justifyContent: 'center',
                            }}>
-                                  {item.icon}
+                                  {item.profile}
                            </Box>
 
                             {/* title */}
@@ -65,7 +71,7 @@ const LowStudentAttendance =()  => {
                           <Grid container alignItems="center" justifyContent="space-between">
                             <Grid item>
                               <Box>
-                                 <Typography variant='h4'>{item.birthday}</Typography>
+                                 <Typography variant='h4'>{item.attendancePercentage}</Typography>
                               </Box>
                             </Grid>
                           </Grid>
