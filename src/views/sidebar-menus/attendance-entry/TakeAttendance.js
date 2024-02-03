@@ -65,7 +65,11 @@ export default function ActionsPopover() {
                         </ListItemButton>
                     </ListItem>
                 </List>
-                <ConfirmationDialog open={isConfirmationDialogOpen} onClose={handleComposeClose} action={selectedAction} />
+                <ConfirmationDialog 
+                open={isConfirmationDialogOpen} 
+                onClose={handleComposeClose} 
+                action={selectedAction} 
+                />
             </Popover>
         </div>
     );
