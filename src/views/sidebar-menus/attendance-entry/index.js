@@ -1,15 +1,27 @@
 import React from 'react';
-import {Box,InputLabel,MenuItem,FormControl,Select,Divider,Typography,ListItem,Avatar,ListItemAvatar,ListItemText,Stack,Paper,Button,} from '@mui/material';
+import { Box, InputLabel, MenuItem, FormControl, Select, Divider, Typography, ListItem, Avatar, ListItemAvatar, ListItemText, Stack, Paper, Button, Grid } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import CalendarMonthTwoToneIcon from '@mui/icons-material/CalendarMonthTwoTone';
+import SearchTwoToneIcon from '@mui/icons-material/SearchTwoTone';
 import AvtarImg from '../../../assets/images/avatar.png';
 import { ClassList } from './ClassList';
 import { SectionList } from './SectionList';
 import { StudentList } from './StudentList';
-import TakeAttendance from './TakeAttendance'
+import TakeAttendance from './TakeAttendance';
+import { styled } from '@mui/material/styles';
+
+
+
+const Item = styled(Paper)(({ theme }) => ({
+  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: 'center',
+  color: theme.palette.text.secondary,
+}));
 
 export default function AttendanceEntry() {
   const [selectClass, setSelectClass] = React.useState('');
@@ -36,7 +48,7 @@ export default function AttendanceEntry() {
   const handleActionsClick = () => {
     // Sort the entire student list alphabetically by student name
     const StudentSortedList = [...StudentList].sort((a, b) => a.name.localeCompare(b.name));
-  
+
     // Update the state directly with the sorted list
     setFilteredStudentList(StudentSortedList);
   };
@@ -44,7 +56,7 @@ export default function AttendanceEntry() {
   return (
     <Box>
       <Paper sx={{ borderRadius: '30px' }}>
-        <Box sx={{ minWidth: 250, display: 'flex', alignItems: 'baseline', p: 3, justifyContent:'space-between' }}>
+        <Box sx={{ minWidth: 250, display: 'flex', alignItems: 'baseline', p: 3 }}>
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DemoContainer components={['DatePicker']}>
               <DatePicker label="Select Date" slots={{ openPickerIcon: CalendarMonthTwoToneIcon }} />
@@ -68,7 +80,7 @@ export default function AttendanceEntry() {
             </Select>
           </FormControl>
 
-          <FormControl sx={{ m: 1, minWidth: 250 }}>
+          <FormControl sx={{ minWidth: 250 }}>
             <InputLabel id="section-select-label">Select Section</InputLabel>
             <Select
               name="section"
@@ -86,19 +98,58 @@ export default function AttendanceEntry() {
             </Select>
           </FormControl>
 
-          <Button
-            variant="contained"
-            size="large"
-            sx={{ width: '250px', padding: '10px', margin: '0 0 6px 8px' }}
-            onClick={handleActionsClick}
-          >
-            Search
-          </Button>
-          <TakeAttendance/>
+        <Button
+          variant="contained"
+          startIcon={<SearchTwoToneIcon />}
+          sx={{ height: '50px', borderRadius: '12px', margin: '8px' }}
+          onClick={handleActionsClick}
+        >
+          Search
+        </Button>
+
         </Box>
       </Paper>
+
       {/* Student List */}
       <Box sx={{ mt: 2 }}>
+        <Paper sx={{ mb: 1, display:'flex', justifyContent:'space-between' }}>
+          <Grid container rowSpacing={1} direction="row" justifyContent="Center" alignItems="Center" columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+            <Grid item >
+              <Item>
+                <Typography variant='h4' color='#364152' display='flex' alignItems='center'>
+                  <Avatar sx={{ width: 30, height: 30, backgroundColor: '#7dceeb', color: '#000000', marginRight: '6px', fontSize: '16px' }}>H</Avatar>
+                  Holiday</Typography>
+              </Item>
+            </Grid>
+            <Grid item>
+              <Item>
+                <Typography variant='h4' color='#364152' display='flex' alignItems='center'>
+                  <Avatar sx={{ width: 30, height: 30, backgroundColor: '#7bc67b', color: '#000000', marginRight: '6px', fontSize: '16px' }}>P</Avatar>
+                  Present</Typography>
+              </Item>
+            </Grid>
+            <Grid item>
+              <Item>
+                <Typography variant='h4' color='#364152' display='flex' alignItems='center'>
+                  <Avatar sx={{ width: 30, height: 30, backgroundColor: '#e2526b', color: '#000000', marginRight: '6px', fontSize: '16px' }}>A</Avatar>
+                  Absent</Typography>
+              </Item>
+            </Grid>
+            <Grid item >
+              <Item>
+                <Typography variant='h4' color='#364152' display='flex' alignItems='center'>
+                  <Avatar sx={{ width: 30, height: 30, backgroundColor: '#eeb058', color: '#000000', marginRight: '6px', fontSize: '16px' }}>L</Avatar>
+                  Leave</Typography>
+              </Item>
+            </Grid>
+
+          </Grid>
+          <Grid sx={{marginRight:'60px', marginTop:'6px'}}>
+            <Item>
+              <TakeAttendance />
+            </Item>
+          </Grid>
+        </Paper>
         <Paper sx={{ listStyleType: 'none', p: 0 }}>
           <ListItem sx={{ display: 'flex', alignItems: 'center', p: 2 }}>
             <ListItemText sx={{ flex: '0 0 15%' }}>
@@ -106,16 +157,16 @@ export default function AttendanceEntry() {
                 Admn No.
               </Typography>
             </ListItemText>
-            <ListItemText sx={{flex: '0 0 50%' }}>
+            <ListItemText sx={{ flex: '0 0 50%' }}>
               <Typography variant="h4">Student Name</Typography>
             </ListItemText>
-            <ListItemText sx={{ flex: '0 0 20%', justifyContent:'center' }}>
+            <ListItemText sx={{ flex: '0 0 20%', justifyContent: 'center' }}>
               <Typography variant="h4" color="text.primary">
                 Status
               </Typography>
             </ListItemText>
           </ListItem>
-          <Divider  />
+          <Divider />
 
           {(filteredStudentList.length > 0 ? filteredStudentList : StudentList).map((student) => (
             <React.Fragment key={student.id}>
@@ -134,48 +185,48 @@ export default function AttendanceEntry() {
                 <ListItemText sx={{ paddingLeft: '10px', flex: '0 0 32%' }}>
                   <Typography variant="h4">{student.name}</Typography>
                 </ListItemText>
-                
+
                 <ListItemText sx={{ flex: '0 0 40%' }}>
                   <Typography variant="h4" color="text.secondary" >
-                   <Stack direction="row" spacing={2} sx={{ flex: '0 0 20%', justifyContent:'center' }}>
-                  <Avatar
-                    sx={{
-                      bgcolor: selectedAvatars[student.id] === 'H' ? '#7dceeb' : '#f1f1f1',
-                      cursor: 'pointer',
-                      color:'#000000'
-                    }}
-                    onClick={() => handleAvatarClick('H', student.id)}
-                  >H</Avatar>
-                  <Avatar
-                    sx={{
-                      bgcolor: selectedAvatars[student.id] === 'P' ? '#7bc67b' : '#f1f1f1',
-                      cursor: 'pointer',
-                      color:'#000000'
-                    }}
-                    onClick={() => handleAvatarClick('P', student.id)}
-                  >P</Avatar>
-                  <Avatar
-                    sx={{
-                      bgcolor: selectedAvatars[student.id] === 'A' ? '#e2526b' : '#f1f1f1',
-                      cursor: 'pointer',
-                      color:'#000000'
-                    }}
-                    onClick={() => handleAvatarClick('A', student.id)}
-                  >A</Avatar>
-                  <Avatar
-                    sx={{
-                      bgcolor: selectedAvatars[student.id] === 'L' ? '#eeb058' : '#f1f1f1',
-                      cursor: 'pointer',
-                      color:'#000000'
-                    }}
-                    onClick={() => handleAvatarClick('L', student.id)}
-                  >L</Avatar>
-                </Stack>
+                    <Stack direction="row" spacing={2} sx={{ flex: '0 0 20%', justifyContent: 'center' }}>
+                      <Avatar
+                        sx={{
+                          bgcolor: selectedAvatars[student.id] === 'H' ? '#7dceeb' : '#f1f1f1',
+                          cursor: 'pointer',
+                          color: '#000000'
+                        }}
+                        onClick={() => handleAvatarClick('H', student.id)}
+                      >H</Avatar>
+                      <Avatar
+                        sx={{
+                          bgcolor: selectedAvatars[student.id] === 'P' ? '#7bc67b' : '#f1f1f1',
+                          cursor: 'pointer',
+                          color: '#000000'
+                        }}
+                        onClick={() => handleAvatarClick('P', student.id)}
+                      >P</Avatar>
+                      <Avatar
+                        sx={{
+                          bgcolor: selectedAvatars[student.id] === 'A' ? '#e2526b' : '#f1f1f1',
+                          cursor: 'pointer',
+                          color: '#000000'
+                        }}
+                        onClick={() => handleAvatarClick('A', student.id)}
+                      >A</Avatar>
+                      <Avatar
+                        sx={{
+                          bgcolor: selectedAvatars[student.id] === 'L' ? '#eeb058' : '#f1f1f1',
+                          cursor: 'pointer',
+                          color: '#000000'
+                        }}
+                        onClick={() => handleAvatarClick('L', student.id)}
+                      >L</Avatar>
+                    </Stack>
                   </Typography>
                 </ListItemText>
 
               </ListItem>
-              <Divider/>
+              <Divider />
             </React.Fragment>
           ))}
         </Paper>
