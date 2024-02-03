@@ -1,13 +1,13 @@
 import React from 'react'
 import Grid from '@mui/system/Unstable_Grid/Grid'
-import Button from '@mui/material/Button';
-//import MainCard from 'ui-component/cards/MainCard'
-import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
+//import Button from '@mui/material/Button';
+//import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import { Box } from '@mui/system';
 import LeaveBarChart from './LeaveapplicationBar';
 import LeaveChart from './LeaveApplicationChart';
 import LeaveTabs from './LeaveApplicationFilter';
 import { Paper } from '@mui/material';
+import LeaveDrawer from './LeaveApplicationDrawer';
 
 
 const LeaveApplication = () => (
@@ -22,9 +22,10 @@ const LeaveApplication = () => (
 
           <Grid item xs={12} sm={4} lg={4} >
             <div style={{ display: 'flex', justifyContent: 'end', width: '100%' }}>
-              <Button variant="outlined" startIcon={<AddOutlinedIcon />}>
+              {/* <Button variant="outlined" startIcon={<AddOutlinedIcon />}>
                 Leave Application
-              </Button>
+              </Button> */}
+              <LeaveDrawer/>
             </div>
           </Grid>
         </Grid>
