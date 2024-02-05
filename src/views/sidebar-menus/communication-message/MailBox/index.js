@@ -51,6 +51,8 @@ const GmailInboxTemplate = () => {
     return currentDate.toLocaleString('en-US', options);
   };
 
+  
+
   const location = useLocation();
   const shouldOpenByDefault = location.pathname.includes('inbox');
   const [isComposeOpen, setComposeOpen] = useState(shouldOpenByDefault);
