@@ -9,6 +9,7 @@ import Popover from '@mui/material/Popover';
 import { IconButton } from '@mui/material';
 import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
+import { Divider, ListItem, ListItemText } from '@mui/material';
 
 
 const leavedata = [
@@ -77,61 +78,172 @@ export default function LeaveTabs() {
         <Tab label="Approved" />
       </Tabs>
 
+    
+      <Paper sx={{ listStyleType: 'none', p: 0 }}>
+        <ListItem sx={{ display: 'flex', alignItems: 'center', p: 2 }}>
+          <ListItemText sx={{ flex: '0 0 20%' }}>
+            <Typography variant="h4" >
+              Past Leave
+            </Typography>
+          </ListItemText>
+          <ListItemText sx={{ flex: '0 0 20%' }}>
+            <Typography variant="h4">Leave Type</Typography>
+          </ListItemText>
+          <ListItemText sx={{ flex: '0 0 20%', justifyContent: 'center' }}>
+            <Typography variant="h4">
+              Requested On
+            </Typography>
+          </ListItemText>
+          <ListItemText sx={{ flex: '0 0 20%', justifyContent: 'center' }}>
+            <Typography variant="h4">
+              Status
+            </Typography>
+          </ListItemText>
+          <ListItemText sx={{ flex: '0 0 20%', justifyContent: 'center' }}>
+            <Typography variant="h4">
+
+            </Typography>
+          </ListItemText>
+
+        </ListItem>
+        <Divider />
+      </Paper>
+
       {paginatedData.map((item, index) => (
-        <Paper sx={{ p: 2, borderRadius: '0px', border: '1px solid #ccc6', overflowX: 'auto', marginBottom: '4px' }} key={index}>
-          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-          <span style={{}}>
-                <span style={{ color: '#808080', fontSize: '12px' }}>Past Leave</span><br />
-                <span style={{ fontSize: '14px', fontWeight: 'bold' }}>Apr 20,2023 (1 day)</span>
-              </span>
-              <span>
-                <span style={{ color: '#808080', fontSize: '12px' }}>Leave Type</span><br />
-                <span style={{ fontSize: '14px', fontWeight: 'bold' }}>Paid Leave</span>
-              </span>
-              <span>
-                <span style={{ color: '#808080', fontSize: '12px' }}>Requested On</span><br />
-                <span style={{ fontSize: '14px', fontWeight: 'bold' }}>Apr 06,2023</span>
-              </span>
-              <span>
-                <span style={{ color: '#808080', fontSize: '12px' }}>Status</span><br />
-                <span style={{ fontSize: '14px', fontWeight: 'bold' }}>{item.status}</span>
-              </span>
-              <span>
-                <PopupState variant="popover" popupId="demo-popup-popover">
-                  {(popupState) => (
-                    <div>
-                      <IconButton {...bindTrigger(popupState)}>
-                        <MoreHorizIcon />
-                      </IconButton>
-                      <Popover
-                        {...bindPopover(popupState)}
-                        anchorOrigin={{
-                          vertical: 'bottom',
-                          horizontal: 'center',
-                        }}
-                        transformOrigin={{
-                          vertical: 'top',
-                          horizontal: 'center',
-                        }}
-                      >
-                        <Typography sx={{ p: 1, display: 'Grid' }}>
-                          <Button sx={{ color: 'black', borderBottom: '1px dotted #ccc' }}>View</Button>
-                          <Button sx={{ color: 'black', borderBottom: '1px dotted #ccc' }}>Edit</Button>
-                          <Button sx={{ color: 'black' }}>Cancel</Button>
-                        </Typography>
-                      </Popover>
-                    </div>
-                  )}
-                </PopupState>
-              </span>
-            {/* Add other fields as needed */}
-          </div>
-        </Paper>
+        <>
+
+
+
+          <Paper sx={{ listStyleType: 'none', p: 0 }} key={index}>
+            <ListItem sx={{ display: 'flex', alignItems: 'center', p: 2 }}>
+              <ListItemText sx={{ flex: '0 0 20%' }}>
+                <Typography variant="h5" >
+                  Apr 20,2023 (1 day)
+                </Typography>
+              </ListItemText>
+              <ListItemText sx={{ flex: '0 0 20%' }}>
+                <Typography variant="h5">Paid Leave</Typography>
+              </ListItemText>
+              <ListItemText sx={{ flex: '0 0 20%', justifyContent: 'center' }}>
+                <Typography variant="h5">
+                  Paid Leave
+                </Typography>
+              </ListItemText>
+              <ListItemText sx={{ flex: '0 0 20%', justifyContent: 'end' }}>
+                <Typography variant="h5">
+                  {item.status}
+                </Typography>
+              </ListItemText>
+              <ListItemText sx={{ flex: '0 0 20%', display:'flex', justifyContent: 'end' }}>
+                <Typography variant="h4">
+                  <PopupState variant="popover" popupId="demo-popup-popover">
+                    {(popupState) => (
+                      <div>
+                        <IconButton {...bindTrigger(popupState)}>
+                          <MoreHorizIcon />
+                        </IconButton>
+                        <Popover
+                          {...bindPopover(popupState)}
+                          anchorOrigin={{
+                            vertical: 'bottom',
+                            horizontal: 'center',
+                          }}
+                          transformOrigin={{
+                            vertical: 'top',
+                            horizontal: 'center',
+                          }}
+                        >
+                          <Typography sx={{ p: 1, display: 'Grid' }}>
+                            <Button sx={{ color: 'black', borderBottom: '1px dotted #ccc' }}>View</Button>
+                            <Button sx={{ color: 'black', borderBottom: '1px dotted #ccc' }}>Edit</Button>
+                            <Button sx={{ color: 'black' }}>Cancel</Button>
+                          </Typography>
+                        </Popover>
+                      </div>
+                    )}
+                  </PopupState>
+                </Typography>
+              </ListItemText>
+
+            </ListItem>
+            <Divider />
+          </Paper>
+
+
+        </>
       ))}
 
-      <Box sx={{ display: 'flex', justifyContent: 'center', mt: 2 }}>
+      <Box sx={{ display: 'flex', justifyContent: 'end', mt: 2 }}>
         <Pagination count={pageCount} page={currentPage} onChange={handlePageChange} />
       </Box>
     </Box>
   );
 }
+
+
+
+
+
+
+{/* <Paper sx={{ p: 2, borderRadius: '0px', border: '1px solid #ccc6', overflowX: 'auto', marginBottom: '4px' }}>
+<div style={{ display: 'flex', justifyContent: 'space-between' }}>
+  <span style={{}}>
+    <span style={{ color: '#808080', fontSize: '12px' }}>Past Leave</span><br />
+  </span>
+  <span>
+    <span style={{ color: '#808080', fontSize: '12px' }}>Leave Type</span><br />
+  </span>
+  <span>
+    <span style={{ color: '#808080', fontSize: '12px' }}>Requested On</span><br />
+  </span>
+  <span>
+    <span style={{ color: '#808080', fontSize: '12px' }}>Status</span><br />
+  </span>
+  <span></span>
+</div>
+</Paper> */}
+
+{/* <Paper sx={{ p: 1, borderRadius: '0px', border: '1px solid #ccc6', overflowX: 'auto', marginBottom: '4px' }} key={index}>
+<div style={{ display: 'flex', justifyContent: 'space-between' }}>
+  <span style={{}}>
+    <span style={{ fontSize: '14px', fontWeight: 'bold' }}>Apr 20,2023 (1 day)</span>
+  </span>
+  <span>
+    <span style={{ fontSize: '14px', fontWeight: 'bold' }}>Paid Leave</span>
+  </span>
+  <span>
+    <span style={{ fontSize: '14px', fontWeight: 'bold' }}>Apr 06,2023</span>
+  </span>
+  <span>
+    <span style={{ fontSize: '14px', fontWeight: 'bold' }}>{item.status}</span>
+  </span>
+  <span>
+    <PopupState variant="popover" popupId="demo-popup-popover">
+      {(popupState) => (
+        <div>
+          <IconButton {...bindTrigger(popupState)}>
+            <MoreHorizIcon />
+          </IconButton>
+          <Popover
+            {...bindPopover(popupState)}
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'center',
+            }}
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'center',
+            }}
+          >
+            <Typography sx={{ p: 1, display: 'Grid' }}>
+              <Button sx={{ color: 'black', borderBottom: '1px dotted #ccc' }}>View</Button>
+              <Button sx={{ color: 'black', borderBottom: '1px dotted #ccc' }}>Edit</Button>
+              <Button sx={{ color: 'black' }}>Cancel</Button>
+            </Typography>
+          </Popover>
+        </div>
+      )}
+    </PopupState>
+  </span>
+</div>
+</Paper> */}

@@ -7,8 +7,9 @@ import SearchIcon from '@mui/icons-material/Search';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import MailCompose from './MailCompose';
 import { styled } from '@mui/system';
-import { useNavigate } from 'react-router';
+import { useNavigate, useLocation } from 'react-router';
 import AvtarImg from '../../../../assets/images/avatar.png'
+
 
 
 const theme = createTheme();
@@ -50,8 +51,15 @@ const GmailInboxTemplate = () => {
     return currentDate.toLocaleString('en-US', options);
   };
 
+  
+
+  const location = useLocation();
+  const shouldOpenByDefault = location.pathname.includes('inbox');
+  const [isComposeOpen, setComposeOpen] = useState(shouldOpenByDefault);
+  
+
   const [searchQuery, setSearchQuery] = useState('');
-  const [isComposeOpen, setComposeOpen] = useState(true);
+  // const [isComposeOpen, setComposeOpen] = useState(shouldOpenByDefault);
   const [anchorEl, setAnchorEl] = useState(null);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);

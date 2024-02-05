@@ -13,7 +13,7 @@ import { useNavigate } from 'react-router-dom';
       <Box sx={{ textAlign: 'center',  border: ' 1px solid rgb(227 227 227)',borderRadius:'7px', padding: '2rem' , background:'#fff' }}>
         <Avatar alt="Remy Sharp" src={TeacherProfileDetails.TeacherImage} sx={{ width: 150, height: 150, margin: 'auto', marginBottom: '10px' }} />
         <Typography variant="h2">{TeacherProfileDetails.TeacherName}</Typography>
-        {/* <Typography variant="h5" sx={{lineHeight:'1.6'}}>{TeacherProfileDetails.AdminNo}</Typography> */}
+        <Typography variant="h5" sx={{lineHeight:'1.6'}}>Subject : {TeacherProfileDetails.SubjectTeacherOf}</Typography>
         <Typography variant="h5">Class : {TeacherProfileDetails.ClassTeacherOf}</Typography>
         <Button sx={{ textTransform: 'uppercase', background: 'rgb(33, 150, 243)', color: '#fff' , marginTop:'1rem' }} variant="contained"  onClick={() => navigate('/student-profile')}>
           View Profile

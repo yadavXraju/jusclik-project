@@ -1,5 +1,3 @@
-// assets
-// import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 
 // new icon
 import CalendarMonthTwoToneIcon from '@mui/icons-material/CalendarMonthTwoTone';
@@ -8,7 +6,6 @@ import DraftsTwoToneIcon from '@mui/icons-material/DraftsTwoTone';
 import AlarmTwoToneIcon from '@mui/icons-material/AlarmTwoTone';
 import InsertChartTwoToneIcon from '@mui/icons-material/InsertChartTwoTone';
 import CreditCardTwoToneIcon from '@mui/icons-material/CreditCardTwoTone';
-// import NoteAltTwoToneIcon from '@mui/icons-material/NoteAltTwoTone';
 import MarkUnreadChatAltTwoToneIcon from '@mui/icons-material/MarkUnreadChatAltTwoTone';
 import AssignmentIndTwoToneIcon from '@mui/icons-material/AssignmentIndTwoTone';
 import FolderCopyTwoToneIcon from '@mui/icons-material/FolderCopyTwoTone';
@@ -16,13 +13,15 @@ import CameraAltTwoToneIcon from '@mui/icons-material/CameraAltTwoTone';
 import CategoryTwoToneIcon from '@mui/icons-material/CategoryTwoTone';
 
 
+// setting userType static for  rendering teacher dashboard 
+
+// const userType = 'Teacher' 
 
 
 // ==============================||All MENU ITEMS Here ||============================== //
 
 const sidebarMenu = {
   id: 'sidebarMenu',
-  // title: 'sidebarMenu',
   type: 'group',
   children: [
     {

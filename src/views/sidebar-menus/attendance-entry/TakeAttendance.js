@@ -28,7 +28,6 @@ export default function ActionsPopover() {
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;
 
-    
     return (
         <div>
             <Button aria-describedby={id} variant="outlined" size="small" onClick={handleClick} sx={{ padding: '10px', margin: '0 0 6px 8px', width: '100px' }}>
@@ -48,19 +47,19 @@ export default function ActionsPopover() {
                     sx={{ width: '100%', bgcolor: 'background.paper' }}
                     aria-label="contacts"
                 >
-                    <ListItem disablePadding onClick={() => handleClickOpen()}>
+                    <ListItem disablePadding onClick={() => handleClickOpen("Mark all holiday")}>
                         <ListItemButton>
                             <ListItemText id='1' primary="Mark all holiday" />
                         </ListItemButton>
                     </ListItem>
 
-                    <ListItem disablePadding onClick={() => handleClickOpen()}>
+                    <ListItem disablePadding onClick={() => handleClickOpen("Mark all present")}>
                         <ListItemButton >
                             <ListItemText id='2' primary="Mark all present" />
                         </ListItemButton>
                     </ListItem>
 
-                    <ListItem disablePadding onClick={() => handleClickOpen()} >
+                    <ListItem disablePadding onClick={() => handleClickOpen("Mark all absent")} >
                         <ListItemButton>
                             <ListItemText id='3' primary="Mark all absent" />
                         </ListItemButton>
@@ -70,6 +69,7 @@ export default function ActionsPopover() {
                     open={isConfirmationDialogOpen}
                     onClose={handleComposeClose}
                     action={selectedAction}
+                    selectedText={selectedAction}
                 />
             </Popover>
         </div>

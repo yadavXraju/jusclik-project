@@ -214,7 +214,7 @@ const MailCompose = ({ open, onClose, onSend, emailData }) => {
           <Box sx={{ display: 'inline-flex', alignItems: 'center' }}>
             <Tooltip title="Attachment" placement="right" arrow>
               <Box>
-                <label htmlFor="fileInput">
+                {/* <label htmlFor="fileInput"> */}
                   <Input
                     id="fileInput"
                     type="file"
@@ -226,7 +226,7 @@ const MailCompose = ({ open, onClose, onSend, emailData }) => {
                   <IconButton component="span">
                     <AttachmentIcon />
                   </IconButton>
-                </label>
+                {/* </label> */}
               </Box>
             </Tooltip>
             {attachments.length > 0 && (
