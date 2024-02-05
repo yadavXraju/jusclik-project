@@ -14,8 +14,8 @@ export default function ConfirmationDialog({ open, onClose, action, onConfirm })
   };
 
   const handleYesClick = () => {
-    onConfirm(selectedText);
-    onClose();
+    onClose();  // Close the dialog first
+    onConfirm(selectedText);  // Then, perform any additional actions
   };
 
   return (
@@ -29,9 +29,9 @@ export default function ConfirmationDialog({ open, onClose, action, onConfirm })
       >
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            <Typography onClick={() => handleTextClick(action)} variant='h3' color={'#364152'}>
-              Do you really want to {action} ?
-            </Typography>
+              <Typography variant='h3' color={'#364152'} onClick={() => handleTextClick(action)}>
+                Do you really want to {action}?
+              </Typography>
           </DialogContentText>
         </DialogContent>
         <DialogActions>
