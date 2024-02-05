@@ -18,7 +18,7 @@ import TotalAttendance from './total-attendance/TotalAttendance';
 const WelcomeAttandanceCheckIn = ({ isLoading }) => {
   
   return (
-    <Grid container spacing={gridSpacing} sx={{pb:'15px'}}>
+    <Grid container spacing={gridSpacing} sx={{pb:'11px'}}>
       <Grid item lg={12} md={12} sm={12} xs={12}>
         <WelcomeMessage isLoading={isLoading} />
       </Grid>
