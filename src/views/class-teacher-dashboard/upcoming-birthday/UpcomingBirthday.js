@@ -17,7 +17,7 @@ const UpcomingBirthday =()  => {
               <Grid  alignContent="center" justifyContent="space-between">
                 <Grid item>
                   <Typography variant="h2" style={HeadingCss}>
-                     Upcoming Birthday&apos;s
+                     Upcoming Birthdays
                   </Typography>
                 </Grid>
               </Grid>

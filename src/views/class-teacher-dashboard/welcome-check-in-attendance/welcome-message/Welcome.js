@@ -6,7 +6,7 @@ const WelcomeMessage = () => {
   const isMobile = useMediaQuery('(max-width: 767px)');
   return (
     <>
-     <Typography  style={welcomeMsg}  variant='h1' sx={{padding : '2px 2px', fontSize: isMobile ? '32px' : '40px'}}>   Hello {TeacherProfileDetails.TeacherName} !</Typography>
+     <Typography  style={welcomeMsg}  variant='h1' sx={{py:2, fontSize: isMobile ? '32px' : '40px'}}>   Hello {TeacherProfileDetails.TeacherName} !</Typography>
     </>
   )
 }
