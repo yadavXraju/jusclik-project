@@ -1,0 +1,70 @@
+const subject=[{
+    value:"1",
+    label:"English"
+},
+{
+    value:"2",
+    label:"Hindi"
+},
+{
+    value:"3",
+    label:"Punjabi"
+},
+{
+    value:"5",
+    label:"Science"
+},
+{
+    value:"6",
+    label:"Social Studies"
+},
+{
+    value:"7",
+    label:"Science"
+},
+{
+    value:"8",
+    label:"History"
+},
+{
+    value:"9",
+    label:"Physics"
+},
+{
+    value:"9",
+    label:"Geography"
+}
+,
+{
+    value:"10",
+    label:"Economics"
+},
+{
+    value:"11",
+    label:"Civics"
+},
+{
+    value:"12",
+    label:"E.V.S"
+},
+{
+    value:"13",
+    label:"Math"
+},
+{
+    value:"14",
+    label:"Chemistry"
+},
+{
+    value:"15",
+    label:"Bio"
+},
+{
+    value:"16",
+    label:"Arts"
+}
+
+
+]
+
+export {subject}
