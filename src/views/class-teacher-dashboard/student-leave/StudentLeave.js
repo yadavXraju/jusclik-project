@@ -25,7 +25,7 @@ const StudentLeave = () => {
     <>
       <MainCard>
         <Grid container spacing={gridSpacing}>
-          <Grid item xs={12} sx={{ mb: 3, padding: '10px 40px !important' }}>
+          <Grid item xs={12} sx={{ mb: 3, padding: '10px 40px !important' , paddingTop:'24px !important'}}>
             <Grid alignContent="center" justifyContent="space-between" sx={{ marginBottom: '3rem' }}>
               <Grid sx={{ display: 'flex', justifyContent: 'space-between' }}>
                 <Typography variant="h2" style={HeadingCss}>
@@ -38,10 +38,10 @@ const StudentLeave = () => {
               </Grid>
             </Grid>
 
-            <Slider {...Settings}>
+            <Slider {...Settings}  >
               {currentLeaveData.map((student, index) => (
-                <Grid key={index}>
-                  <Grid>
+                <Grid key={index} >
+                  <Grid >
                     <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
                       {student.image}
                       <Typography variant="h3" style={subTitle}>
@@ -49,7 +49,7 @@ const StudentLeave = () => {
                        </Typography>
                     
                        <Typography variant="subtitle" style={subtitle2}>
-                                          {student.class}
+                               {student.class}
                          </Typography>
                     </Box>
                   </Grid>
