@@ -1,62 +1,170 @@
 import * as React from 'react';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-import { Button } from 'reactstrap';
-import Stack from '@mui/material/Stack';
-import MainCard from 'ui-component/cards/MainCard';
-
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
-}
-
-const rows = [
-  createData('Frozen yoghurt', 159, 6.0, 24),
-  createData('Ice cream sandwich', 237, 9.0, 37),
-  createData('Eclair', 262, 16.0, 24),
-  createData('Cupcake', 305, 3.7, 67),
-  createData('Gingerbread', 356, 16.0, 49),
-];
+import { Box, ListItem, ListItemText, Paper, Typography, Divider } from '@mui/material';
+import PictureAsPdfTwoToneIcon from '@mui/icons-material/PictureAsPdfTwoTone'; // Import the PDF icon
+// import MoreVertOutlinedIcon from '@mui/icons-material/MoreVertOutlined';
+import Popover from '@mui/material/Popover';
+import { IconButton } from '@mui/material';
+import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
+import { Button} from '@mui/material';
+import MoreVertOutlinedIcon from '@mui/icons-material/MoreVertOutlined';
+import NoteAddTwoToneIcon from '@mui/icons-material/NoteAddTwoTone';
+import AssignmentTwoToneIcon from '@mui/icons-material/AssignmentTwoTone';
 
 export default function BasicTable() {
   return (
-   <MainCard title='Circular'> 
-     <Stack spacing={2} direction="row" sx={{display:'flex', justifyContent:'end'}}>
-      <Button variant="outlined">Upload Circular</Button>
-    </Stack>
-     <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell>Attachment</TableCell>
-            <TableCell align="right">Course</TableCell>
-            <TableCell align="right">Date</TableCell>
-            <TableCell align="right">Action</TableCell>
-            {/* <TableCell align="right">Protein&nbsp;(g)</TableCell> */}
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <TableRow
-              key={row.name}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-            >
-              <TableCell component="th" scope="row">
-                {row.name}
-              </TableCell>
-              <TableCell align="right">{row.calories}</TableCell>
-              <TableCell align="right">{row.fat}</TableCell>
-              <TableCell align="right">{row.carbs}</TableCell>
-              <TableCell align="right">{row.protein}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
-   </MainCard>
+    <Box sx={{ mt: 2 }}>
+      <Paper sx={{ listStyleType: 'none', p: 0 }}>
+        <ListItem sx={{ display: 'flex',p: 3 }}>
+          <ListItemText>
+            <Typography variant="h4">Attachment</Typography>
+          </ListItemText>
+          <ListItemText>
+            <Typography variant="h4"sx={{ display: 'flex',justifyContent:'center'}}>Course|Topic</Typography>
+          </ListItemText>
+          <ListItemText>
+            <Typography variant="h4" sx={{ display: 'flex',justifyContent:'end'}}>Date</Typography>
+          </ListItemText>
+          <ListItemText>
+            <Typography variant="h4" sx={{ display: 'flex',justifyContent:'end'}}>Action</Typography>
+          </ListItemText>
+        </ListItem>
+        <Divider />
+{/* First list for upload circular */}
+        {/* Additional ListItem for PDF */}
+        <ListItem sx={{ display: 'flex', alignItems: 'center', p: 3 }}>
+          <PictureAsPdfTwoToneIcon fontSize="large" />
+          <ListItemText>
+            <Typography variant="h4">ClassPresentation.PDF</Typography>
+          </ListItemText>
+          <ListItemText >
+            <Typography variant="h4">Maths 101|Unit-2:Linear Programming</Typography> {/* Replace with the actual PDF file name */}
+          </ListItemText>
+          {/* Date */}
+          <ListItemText >
+            <Typography variant="h4">04-02-2024</Typography>
+          </ListItemText>
+          {/* Action */}
+          <span>
+                <PopupState variant="popover" popupId="demo-popup-popover">
+                  {(popupState) => (
+                    <div>
+                      <IconButton {...bindTrigger(popupState)}>
+                        <MoreVertOutlinedIcon />
+                      </IconButton>
+                      <Popover
+                        {...bindPopover(popupState)}
+                        anchorOrigin={{
+                          vertical: 'bottom',
+                          horizontal: 'center',
+                        }}
+                        transformOrigin={{
+                          vertical: 'top',
+                          horizontal: 'center',
+                        }}
+                      >
+                        <Typography sx={{ p: 1, display: 'Grid' }}>
+                          <Button sx={{ color: 'black', borderBottom: '1px dotted #ccc' }}>View</Button>
+                          <Button sx={{ color: 'black', borderBottom: '1px dotted #ccc' }}>Edit</Button>
+                          <Button sx={{ color: 'black' }}>Delete</Button>
+                        </Typography>
+                      </Popover>
+                    </div>
+                  )}
+                </PopupState>
+              </span>
+        </ListItem>
+        {/* First list for upload circular end*/}
+        <Divider />
+        {/* 2nd list for upload circular start*/}
+        <ListItem sx={{ display: 'flex', alignItems: 'center', p: 3 }}>
+          <NoteAddTwoToneIcon fontSize="large" />
+          <ListItemText>
+            <Typography variant="h4">SlideShow.PPT</Typography>
+          </ListItemText>
+          <ListItemText >
+            <Typography variant="h4">Maths 102|Unit-2:Add and Subtract</Typography> {/* Replace with the actual PDF file name */}
+          </ListItemText>
+          {/* Date */}
+          <ListItemText >
+            <Typography variant="h4">07-02-2024</Typography>
+          </ListItemText>
+          {/* Action */}
+          <span>
+                <PopupState variant="popover" popupId="demo-popup-popover">
+                  {(popupState) => (
+                    <div>
+                      <IconButton {...bindTrigger(popupState)}>
+                        <MoreVertOutlinedIcon />
+                      </IconButton>
+                      <Popover
+                        {...bindPopover(popupState)}
+                        anchorOrigin={{
+                          vertical: 'bottom',
+                          horizontal: 'center',
+                        }}
+                        transformOrigin={{
+                          vertical: 'top',
+                          horizontal: 'center',
+                        }}
+                      >
+                        <Typography sx={{ p: 1, display: 'Grid' }}>
+                          <Button sx={{ color: 'black', borderBottom: '1px dotted #ccc' }}>View</Button>
+                          <Button sx={{ color: 'black', borderBottom: '1px dotted #ccc' }}>Edit</Button>
+                          <Button sx={{ color: 'black' }}>Delete</Button>
+                        </Typography>
+                      </Popover>
+                    </div>
+                  )}
+                </PopupState>
+              </span>
+        </ListItem>
+         {/* 2nd list for upload circular end*/}
+         <Divider />
+        {/* 3rd list for upload circular start*/}
+        <ListItem sx={{ display: 'flex', alignItems: 'center', p: 3 }}>
+          <AssignmentTwoToneIcon fontSize="large" />
+          <ListItemText>
+            <Typography variant="h4">Solving Sheets.XLS</Typography>
+          </ListItemText>
+          <ListItemText >
+            <Typography variant="h4">Maths 103|Unit-2:Motion and Force</Typography> {/* Replace with the actual PDF file name */}
+          </ListItemText>
+          {/* Date */}
+          <ListItemText >
+            <Typography variant="h4">12-02-2024</Typography>
+          </ListItemText>
+          {/* Action */}
+          <span>
+                <PopupState variant="popover" popupId="demo-popup-popover">
+                  {(popupState) => (
+                    <div>
+                      <IconButton {...bindTrigger(popupState)}>
+                        <MoreVertOutlinedIcon />
+                      </IconButton>
+                      <Popover
+                        {...bindPopover(popupState)}
+                        anchorOrigin={{
+                          vertical: 'bottom',
+                          horizontal: 'center',
+                        }}
+                        transformOrigin={{
+                          vertical: 'top',
+                          horizontal: 'center',
+                        }}
+                      >
+                        <Typography sx={{ p: 1, display: 'Grid' }}>
+                          <Button sx={{ color: 'black', borderBottom: '1px dotted #ccc' }}>View</Button>
+                          <Button sx={{ color: 'black', borderBottom: '1px dotted #ccc' }}>Edit</Button>
+                          <Button sx={{ color: 'black' }}>Delete</Button>
+                        </Typography>
+                      </Popover>
+                    </div>
+                  )}
+                </PopupState>
+              </span>
+        </ListItem>
+         {/* 3rd list for upload circular end*/}
+      </Paper>
+    </Box>
   );
 }

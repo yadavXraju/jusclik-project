@@ -15,7 +15,8 @@ const Link = () => {
                         <Grid lg={4} md={6} sm={12} key={id} sx={{ padding: '20px' }}>
                             <Card elevation={3}  sx={{ display: 'flex' , alignItems:'center'}}>
                                 <CardMedia>
-                                    <img src={link.thumbnailUrl} alt={link.title} style={{ width: '78px', height: '65px', objectFit:'contain', padding:'10px', }} />
+                                    {/* <img src={link.thumbnailUrl} alt={link.title} style={{ width: '78px', height: '65px', objectFit:'contain', padding:'10px', }} /> */}
+                                    {link.thumbnailUrl}
                                 </CardMedia>
                                 <CardContent>
                                     <Typography gutterBottom variant="h3" component="div">
