@@ -4,19 +4,27 @@ import MenuItem from '@mui/material/MenuItem';
 
 
 
-  function DropDown({ data }) {
+  function DropDown({ data, onClassChange}) {
     // Check if data is not an array or is empty
     if (!Array.isArray(data) || data.length === 0) {
       return <div>No data available</div>;
     }
+    const handleChange = (event) => {
+      const selectedClass = event.target.value;
+  
+      // Call the onClassChange function with the selected class
+      onClassChange(selectedClass);
+    };
+
+    
   return (
-    <div>
+    <>
       <TextField
         id="outlined-select-currency"
         select
-        label="Select Class"
         value={data.length > 0 ? data[0].value : ''}
         sx={{margin:"0px 10px"}}
+        onChange={handleChange} 
       >
         {data.map((option) => (
           <MenuItem  sx={{position:"relative",zIndex:"222"}}key={option.value} value={option.value}>
@@ -24,7 +32,7 @@ import MenuItem from '@mui/material/MenuItem';
           </MenuItem>
         ))}
       </TextField>
-    </div>
+    </>
   );
 }
 
