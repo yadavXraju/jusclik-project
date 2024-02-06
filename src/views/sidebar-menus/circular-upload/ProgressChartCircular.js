@@ -2,6 +2,11 @@ import React from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 const CustomCircularProgress = ({ value, subject }) => {
   const normalizedValue = Math.min(Math.max(value, 0), 100);
@@ -9,7 +14,7 @@ const CustomCircularProgress = ({ value, subject }) => {
 
   return (
     <Paper
-      elevation={0}
+    
       sx={{
         display: 'flex',
         flexDirection: 'column',
@@ -24,7 +29,7 @@ const CustomCircularProgress = ({ value, subject }) => {
           variant="determinate"
           value={100}
           size={100}
-          thickness={3}
+          thickness={3} 
           style={{ color: '#aaaaaa' }}
         />
         <CircularProgress
@@ -32,14 +37,14 @@ const CustomCircularProgress = ({ value, subject }) => {
           value={normalizedValue}
           size={100}
           thickness={3}
-          style={{ color: strokeColor, position: 'absolute' }}
+          style={{ color: strokeColor, position: 'absolute' }} 
         />
-        <div style={{ position: 'absolute', fontSize: '16px', fontWeight: 'bold' }}>
+        <div style={{ position: 'absolute', fontSize: '16px', fontWeight: 'bold', zIndex: 2 }}>
           {`${Math.round(normalizedValue)}%`}
         </div>
       </Box>
       <div style={{ marginTop: '8px', fontSize: '16px', fontWeight: 'bold' }}>{subject}</div>
-      </Paper>
+    </Paper>
   );
 };
 
@@ -53,27 +58,27 @@ const ProgressChart = () => {
     { value: 30, subject: 'Maths 106' },
   ];
 
+  const settings = {
+    dots: false,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 5,
+    slidesToScroll: 1,
+    nextArrow: <ArrowForwardIosIcon sx={{ color : '#c8c8c8 !important',  width : '32px !important', height : '32px !important',borderRadius:'50%',right:'24px !important' }}/>,
+    prevArrow: <ArrowBackIosIcon sx={{ color : '#c8c8c8 !important',  width : '32px !important', height : '32px !important',borderRadius:'50%', zIndex:'1', left:'24px !important'}}/>,
+
+  };
+
   return (
-   <Box
-    sx={{
-      display: 'flex',
-      flexWrap: 'wrap',
-      '& > :not(style)': {
-        
-        width: '100%',
-        height: '50%',
-      },
-    }}
-  >
-    <Paper sx={{p:7}}>
-     <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around', marginTop: '20px' }}>
+    <Slider {...settings}>
       {progressData.map((data, index) => (
-        <CustomCircularProgress key={index} value={data.value} subject={data.subject} />
+        <Paper key={index} sx={{ p: 7, borderRadius:'0px' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around', marginTop: '20px' }}>
+            <CustomCircularProgress value={data.value} subject={data.subject} />
+          </div>
+        </Paper>
       ))}
-    </div>
-  </Paper>
-   
-  </Box>
+    </Slider>
   );
 };
 
