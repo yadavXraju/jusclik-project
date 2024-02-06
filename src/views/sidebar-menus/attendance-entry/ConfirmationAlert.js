@@ -7,15 +7,9 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 
 export default function ConfirmationDialog({ open, onClose, action, onConfirm }) {
-  const [selectedText, setSelectedText] = React.useState('');
-
-  const handleTextClick = (text) => {
-    setSelectedText(text);
-  };
-
   const handleYesClick = () => {
-    onClose();  // Close the dialog first
-    onConfirm(selectedText);  // Then, perform any additional actions
+    onConfirm(action);
+    onClose();  // Close the dialog
   };
 
   return (
@@ -29,9 +23,9 @@ export default function ConfirmationDialog({ open, onClose, action, onConfirm })
       >
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-              <Typography variant='h3' color={'#364152'} onClick={() => handleTextClick(action)}>
-                Do you really want to {action}?
-              </Typography>
+            <Typography variant='h3' color={'#364152'}>
+              Do you really want to {action}?
+            </Typography>
           </DialogContentText>
         </DialogContent>
         <DialogActions>
