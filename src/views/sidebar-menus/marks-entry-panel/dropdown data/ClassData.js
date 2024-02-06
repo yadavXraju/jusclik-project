@@ -1,23 +1,23 @@
 const currencies = [
     {
       value: '1',
-      label: 'I',
+      label: 'Select class',
     },
     {
       value: '2',
-      label: 'II',
+      label: 'I',
     },
     {
       value: '3',
-      label: 'III',
+      label: 'II',
     },
     {
       value: '4',
-      label: 'IV',
+      label: 'III',
     },
     {
         value: '5',
-        label: 'V',
+        label: 'IV',
       },
   ];
 
