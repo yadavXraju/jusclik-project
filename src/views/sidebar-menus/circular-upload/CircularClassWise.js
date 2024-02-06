@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Box, ListItem, ListItemText, Paper, Typography, Divider } from '@mui/material';
+import { Box, ListItem, ListItemText, Paper, Typography, Divider,Grid } from '@mui/material';
 import PictureAsPdfTwoToneIcon from '@mui/icons-material/PictureAsPdfTwoTone'; // Import the PDF icon
 // import MoreVertOutlinedIcon from '@mui/icons-material/MoreVertOutlined';
 import Popover from '@mui/material/Popover';
@@ -10,8 +10,19 @@ import MoreVertOutlinedIcon from '@mui/icons-material/MoreVertOutlined';
 import NoteAddTwoToneIcon from '@mui/icons-material/NoteAddTwoTone';
 import AssignmentTwoToneIcon from '@mui/icons-material/AssignmentTwoTone';
 
-export default function BasicTable() {
-  return (
+
+export default function CircularUpload() {
+  return ( 
+  <>
+  <Paper elevation={1} sx={{marginBottom:'16px', marginTop:'30px'}}>
+  <Grid container spacing={2} p={2} sx={{alignItems:'end'}}>
+    <Grid item xs={12} sm={8} lg={8} >
+        <div>
+          <h3>Upload Circular</h3>
+        </div>
+    </Grid>
+    </Grid>
+    
     <Box sx={{ mt: 2 }}>
       <Paper sx={{ listStyleType: 'none', p: 0 }}>
         <ListItem sx={{ display: 'flex',p: 3 }}>
@@ -166,5 +177,7 @@ export default function BasicTable() {
          {/* 3rd list for upload circular end*/}
       </Paper>
     </Box>
+    </Paper>
+    </>
   );
 }

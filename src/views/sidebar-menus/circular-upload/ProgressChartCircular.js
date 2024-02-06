@@ -38,7 +38,7 @@ const CustomCircularProgress = ({ value, subject }) => {
           {`${Math.round(normalizedValue)}%`}
         </div>
       </Box>
-      <div style={{ marginTop: '8px', fontSize: '14px' }}>{subject}</div>
+      <div style={{ marginTop: '8px', fontSize: '16px', fontWeight: 'bold' }}>{subject}</div>
       </Paper>
   );
 };
