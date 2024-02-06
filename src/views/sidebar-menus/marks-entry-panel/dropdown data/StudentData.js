@@ -4,6 +4,9 @@ const StudentData=[
   { name: 'Aman', admissionNo: '2434' },
   { name: 'Laksh', admissionNo: '2634' },
   { name: 'Archita', admissionNo: '2634' },
+  { name: 'Dexter', admissionNo: '2634' },
+  { name: 'Suraj', admissionNo: '2634' },
+  { name: 'Mixter', admissionNo: '2634' },
 ]
 
 export default StudentData

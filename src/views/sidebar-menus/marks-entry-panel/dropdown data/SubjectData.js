@@ -17,6 +17,10 @@ const subject=[{
 {
     value:"6",
     label:"Social Studies"
+},
+{
+    value:"7",
+    label:"Dexter"
 }
 ]
 
