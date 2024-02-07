@@ -1,5 +1,23 @@
+// Add this import statement at the top of your file
 import React, { useState, useEffect } from 'react';
-import {Box,InputLabel,MenuItem,FormControl,Select,Divider,Typography,ListItem,Avatar,ListItemAvatar,ListItemText,Stack,Paper,Button,Grid} from '@mui/material';
+import {
+  Box,
+  InputLabel,
+  MenuItem,
+  FormControl,
+  Select,
+  Divider,
+  Typography,
+  ListItem,
+  Avatar,
+  ListItemAvatar,
+  ListItemText,
+  Stack,
+  Paper,
+  Button,
+  Grid,
+  Badge
+} from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -11,6 +29,7 @@ import { ClassList } from './ClassList';
 import { SectionList } from './SectionList';
 import { StudentList } from './StudentList';
 import TakeAttendance from './TakeAttendance';
+import WarningBox from './WarningBox';
 import { styled } from '@mui/material/styles';
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -28,6 +47,7 @@ export default function AttendanceEntry() {
   const [filteredStudentList, setFilteredStudentList] = useState([]);
   const [isConfirmationDialogOpen, setConfirmationDialogOpen] = useState(false);
   const [globalAttendanceAction, setGlobalAttendanceAction] = useState('');
+  const [showWarningBox, setShowWarningBox] = useState(false);
 
   // Initialize filteredStudentList with the original StudentList when the component mounts, sorted alphabetically by student name
   useEffect(() => {
@@ -40,6 +60,12 @@ export default function AttendanceEntry() {
       defaultAvatars[student.id] = 'H';
     });
     setSelectedAvatars(defaultAvatars);
+
+    // Calculate absence percentage and show warning box if necessary
+    const absentCount = sortedStudentList.filter((student) => student.countSelectedStatus === 'Absent').length;
+    const totalStudents = sortedStudentList.length;
+    const absentPercentage = (absentCount / totalStudents) * 100;
+    setShowWarningBox(absentPercentage > 50);
   }, []);
 
   const handleChange = (event) => {
@@ -54,8 +80,13 @@ export default function AttendanceEntry() {
   const handleAvatarClick = (avatar, studentId) => {
     setSelectedAvatars((prevAvatars) => ({
       ...prevAvatars,
-      [studentId]: prevAvatars[studentId] === avatar ? '#f1f1f1' : avatar
+      [studentId]: prevAvatars[studentId] === avatar ? prevAvatars[studentId] : avatar
     }));
+  };
+
+
+  const countSelectedStatus = (status) => {
+    return Object.values(selectedAvatars).filter(avatar => avatar === status).length;
   };
   
 
@@ -106,6 +137,9 @@ export default function AttendanceEntry() {
 
   return (
     <Box>
+      <WarningBox showWarning={showWarningBox} onClose={() => setShowWarningBox(false)} />
+
+      {/* Search filter box */}
       <Paper sx={{ borderRadius: '30px' }}>
         <Box sx={{ minWidth: 250, display: 'flex', alignItems: 'baseline', p: 3 }}>
           <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -162,9 +196,10 @@ export default function AttendanceEntry() {
 
       {/* Student List */}
       <Box sx={{ mt: 2 }}>
-        <Paper sx={{ mb: 1, display: 'flex', justifyContent: 'space-between' }}>
+        <Paper sx={{ mb: 1, display: 'flex'}}>
           <Grid
             container
+            fullwidth
             rowSpacing={1}
             direction="row"
             justifyContent="Center"
@@ -174,11 +209,20 @@ export default function AttendanceEntry() {
             <Grid item>
               <Item>
                 <Typography variant="h4" color="#364152" display="flex" alignItems="center">
-                  <Avatar
-                    sx={{ width: 30, height: 30, backgroundColor: '#7dceeb', color: '#000000', marginRight: '6px', fontSize: '16px' }}
-                  >
-                    H
-                  </Avatar>
+                  <Badge color="primary" overlap="circular" badgeContent={countSelectedStatus('H')}>
+                    <Avatar
+                      sx={{
+                        width: 30,
+                        height: 30,
+                        backgroundColor: '#7dceeb',
+                        color: '#000000',
+                        marginRight: '6px',
+                        fontSize: '16px'
+                      }}
+                    >
+                      H
+                    </Avatar>
+                  </Badge>
                   Holiday
                 </Typography>
               </Item>
@@ -186,11 +230,20 @@ export default function AttendanceEntry() {
             <Grid item>
               <Item>
                 <Typography variant="h4" color="#364152" display="flex" alignItems="center">
-                  <Avatar
-                    sx={{ width: 30, height: 30, backgroundColor: '#7bc67b', color: '#000000', marginRight: '6px', fontSize: '16px' }}
-                  >
-                    P
-                  </Avatar>
+                  <Badge color="primary" overlap="circular" badgeContent={countSelectedStatus('P')}>
+                    <Avatar
+                      sx={{
+                        width: 30,
+                        height: 30,
+                        backgroundColor: '#7bc67b',
+                        color: '#000000',
+                        marginRight: '6px',
+                        fontSize: '16px'
+                      }}
+                    >
+                      P
+                    </Avatar>
+                  </Badge>
                   Present
                 </Typography>
               </Item>
@@ -198,11 +251,20 @@ export default function AttendanceEntry() {
             <Grid item>
               <Item>
                 <Typography variant="h4" color="#364152" display="flex" alignItems="center">
-                  <Avatar
-                    sx={{ width: 30, height: 30, backgroundColor: '#e2526b', color: '#000000', marginRight: '6px', fontSize: '16px' }}
-                  >
-                    A
-                  </Avatar>
+                  <Badge color="primary" overlap="circular" badgeContent={countSelectedStatus('A')}>
+                    <Avatar
+                      sx={{
+                        width: 30,
+                        height: 30,
+                        backgroundColor: '#e2526b',
+                        color: '#000000',
+                        marginRight: '6px',
+                        fontSize: '16px'
+                      }}
+                    >
+                      A
+                    </Avatar>
+                  </Badge>
                   Absent
                 </Typography>
               </Item>
@@ -210,17 +272,26 @@ export default function AttendanceEntry() {
             <Grid item>
               <Item>
                 <Typography variant="h4" color="#364152" display="flex" alignItems="center">
-                  <Avatar
-                    sx={{ width: 30, height: 30, backgroundColor: '#eeb058', color: '#000000', marginRight: '6px', fontSize: '16px' }}
-                  >
-                    L
-                  </Avatar>
+                  <Badge color="primary" overlap="circular" badgeContent={countSelectedStatus('L')}>
+                    <Avatar
+                      sx={{
+                        width: 30,
+                        height: 30,
+                        backgroundColor: '#eeb058',
+                        color: '#000000',
+                        marginRight: '6px',
+                        fontSize: '16px'
+                      }}
+                    >
+                      L
+                    </Avatar>
+                  </Badge>
                   Leave
                 </Typography>
               </Item>
             </Grid>
           </Grid>
-          <Grid sx={{ marginRight: '60px', marginTop: '6px' }}>
+          <Grid sx={{ marginTop: '6px' }}>
             <Item>
               <TakeAttendance
                 onConfirm={handleActionsConfirm}
