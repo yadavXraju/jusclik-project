@@ -1,10 +1,8 @@
 import React from 'react';
 import { Box, Typography, Divider, Grid, Paper, IconButton, Popover, Button } from '@mui/material';
-import MobileFriendlyTwoToneIcon from '@mui/icons-material/MobileFriendlyTwoTone';
 import MoreVertOutlinedIcon from '@mui/icons-material/MoreVertOutlined';
-import HourglassBottomTwoToneIcon from '@mui/icons-material/HourglassBottomTwoTone';
-import PendingActionsTwoToneIcon from '@mui/icons-material/PendingActionsTwoTone';
 import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
+import HomeworkDrawer from './HomeworkDrawer'
 
 export default function Homework() {
   const getStatusColor = (status, submissionRate) => {
@@ -29,7 +27,7 @@ export default function Homework() {
           </Grid>
           <Grid item xs={12} sm={4} lg={4}>
             <div style={{ display: 'flex', justifyContent: 'flex-end', width: '100%' }}>
-              {/* <CircularDrawer /> */}
+            <HomeworkDrawer/>
             </div>
           </Grid>
         </Grid>
@@ -38,16 +36,26 @@ export default function Homework() {
           <Paper sx={{ listStyleType: 'none', p: 0 }}>
             <Grid container spacing={0} p={3} >
               <Grid item xs={3}>
-                <Typography variant="h4">Course|Topic</Typography>
+                <Typography variant="h4">Subject</Typography>
               </Grid>
-              <Grid item xs={3}>
+              <Grid item xs={1}>
+                <Typography variant="h4" >
+               Class|Section
+                </Typography>
+              </Grid>
+              <Grid item xs={2}>
+                <Typography variant="h4" >
+               Homework Date
+                </Typography>
+              </Grid>
+              <Grid item xs={2}>
                 <Typography variant="h4" >
                 Due Date
                 </Typography>
               </Grid>
-              <Grid item xs={3}>
+              <Grid item xs={1}>
                 <Typography variant="h4">
-                 Submission Date
+                 Submission Rate
                 </Typography>
               </Grid>
               <Grid item xs={2}>
@@ -66,17 +74,22 @@ export default function Homework() {
             {/* First list for upload circular */}
             <Grid container p={3} alignItems="center">
               <Grid item xs={4} sm={3} sx={{display:'flex',alignItems:'center'}}>
-                <MobileFriendlyTwoToneIcon fontSize="large" />
-                <Typography variant="h4">Maths 101|Unit-2:Linear Programming</Typography>
+                <Typography variant="h5">Maths 101|Unit-2:Linear Programming</Typography>
+              </Grid> 
+              <Grid item xs={3} sm={1}>
+                <Typography variant="h5">V-A</Typography>
               </Grid>
-              <Grid item xs={3} sm={3}>
-                <Typography variant="h4">02/05/2024</Typography>
+              <Grid item xs={3} sm={2}>
+                <Typography variant="h5">01/05/2024</Typography>
               </Grid>
-              <Grid item xs={4} sm={3}>
-                <Typography variant="h4">69%</Typography>
+              <Grid item xs={3} sm={2}>
+                <Typography variant="h5">02/05/2024</Typography>
+              </Grid>
+              <Grid item xs={4} sm={1}>
+                <Typography variant="h5">69%</Typography>
               </Grid>
               <Grid item xs={4} sm={2}>
-                <Typography variant="h4" style={{ color: getStatusColor('No submission yet', 69) }}>No submission yet</Typography>
+                <Typography variant="h5" style={{ color: getStatusColor('Grade in progress', 69) }}>Grade in progress</Typography>
               </Grid>
               <Grid item xs={2} sm={1}>
                 <PopupState variant="popover" popupId="demo-popup-popover">
@@ -112,17 +125,22 @@ export default function Homework() {
             {/* 2nd list for upload circular start*/}
             <Grid container spacing={0} p={3} alignItems="center">
               <Grid xs={4} sm={3} sx={{display:'flex',alignItems:'center'}}>
-                <HourglassBottomTwoToneIcon fontSize="large" />
-                <Typography variant="h4">Maths 102|Unit-2:Add and Subtract</Typography>
+                <Typography variant="h5">Maths 102|Unit-2:Add and Subtract</Typography>
               </Grid>
-              <Grid item xs={4} sm={3}>
-                <Typography variant="h4">07-02-2024</Typography>
-              </Grid>
-              <Grid item xs={4} sm={3}>
-                <Typography variant="h4">95%</Typography>
+              <Grid item xs={4} sm={1}>
+                <Typography variant="h5">V-A</Typography>
               </Grid>
               <Grid item xs={4} sm={2}>
-                <Typography variant="h4" style={{ color: getStatusColor('Ready for grading', 95) }}>Ready for grading</Typography>
+                <Typography variant="h5">07-01-2024</Typography>
+              </Grid>
+              <Grid item xs={4} sm={2}>
+                <Typography variant="h5">07-02-2024</Typography>
+              </Grid>
+              <Grid item xs={4} sm={1}>
+                <Typography variant="h5">95%</Typography>
+              </Grid>
+              <Grid item xs={4} sm={2}>
+                <Typography variant="h5" style={{ color: getStatusColor('Ready for grading', 95) }}>Ready for grading</Typography>
               </Grid>
               <Grid item xs={2} sm={1}>
                 <PopupState variant="popover" popupId="demo-popup-popover">
@@ -158,17 +176,22 @@ export default function Homework() {
             {/* 3rd list for upload circular start*/}
             <Grid container spacing={0} p={3} alignItems="center">
               <Grid xs={4} sm={3} sx={{display:'flex',alignItems:'center'}}>
-                <PendingActionsTwoToneIcon fontSize="large" />
-                <Typography variant="h4">Maths 103|Unit-2:Motion and Force</Typography>
+                <Typography variant="h5">Maths 103|Unit-2:Motion and Force</Typography>
               </Grid>
-              <Grid item xs={4} sm={3}>
-                <Typography variant="h4">12-02-2024</Typography>
-              </Grid>
-              <Grid item xs={4} sm={3}>
-                <Typography variant="h4">100%</Typography>
+              <Grid item xs={4} sm={1}>
+                <Typography variant="h5">V-A</Typography>
               </Grid>
               <Grid item xs={4} sm={2}>
-                <Typography variant="h4" style={{ color: getStatusColor('Graded successfully', 100) }}>Graded successfully</Typography>
+                <Typography variant="h5">12-01-2024</Typography>
+              </Grid>
+              <Grid item xs={4} sm={2}>
+                <Typography variant="h5">12-02-2024</Typography>
+              </Grid>
+              <Grid item xs={4} sm={1}>
+                <Typography variant="h5">100%</Typography>
+              </Grid>
+              <Grid item xs={4} sm={2}>
+                <Typography variant="h5" style={{ color: getStatusColor('Graded successfully', 100) }}>Graded successfully</Typography>
               </Grid>
               <Grid item xs={2} sm={1}>
                 <PopupState variant="popover" popupId="demo-popup-popover">

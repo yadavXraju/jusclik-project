@@ -12,7 +12,7 @@ import Select from '@mui/material/Select';
 
 
 
-export default function LeaveDrawer() {
+export default function CircularDrawer() {
     const [state, setState] = React.useState({
         right: false,
     });

@@ -50,9 +50,9 @@ const HomeworkProgress = ({ value, subject }) => {
 
 const HomeworkProgressChart = () => {
   const progressData = [
-    { value: 75, subject: 'Maths 101' },
-    { value: 40, subject: 'Maths 102' },
-    { value: 60, subject: 'Maths 103' },
+    { value: 69, subject: 'Maths 101' },
+    { value: 95, subject: 'Maths 102' },
+    { value: 100, subject: 'Maths 103' },
     { value: 20, subject: 'Maths 104' },
     { value: 90, subject: 'Maths 105' },
     { value: 30, subject: 'Maths 106' },
