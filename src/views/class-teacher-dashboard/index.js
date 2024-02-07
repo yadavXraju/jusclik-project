@@ -10,7 +10,7 @@ import FavPages from './fav-pages/FavPages';
 import UpcomingBirthday from './upcoming-birthday/UpcomingBirthday';
 import LowStudentAttendance from './low-student-attendance/LowStudentAttendance';
 import StudentStrength from './student-strength/StudentStrength';
-// import StudentLeave from './student-leave/StudentLeave';
+import StudentLeave from './student-leave/StudentLeave';
 
 const Dashboard = ({ isLoading }) => {
   return (
@@ -76,9 +76,9 @@ const Dashboard = ({ isLoading }) => {
           </Grid>
 
          {/* Student on Leave Comp */}
-         {/* <Grid item xs={12} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>           
+         <Grid item xs={12} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>           
              <StudentLeave isLoading={isLoading} />
-          </Grid> */}
+          </Grid>
      
            
         </Grid>

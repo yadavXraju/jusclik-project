@@ -1,58 +1,32 @@
-import React, { useEffect, useState } from 'react';
-import timeTableData1 from './timetable/TimeTableData';
+// FavPage.js
 
-const ApiTest = () => {
-  const [timeTableData, setTimeTableData] = useState(null);
+import React, { useState, useEffect } from 'react';
+
+const FavPage = () => {
+  const [topPages, setTopPages] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const data = await timeTableData1;
-      setTimeTableData(data);
+    // Function to fetch and set the top 5 pages
+    const fetchTopPages = () => {
+      // Implement logic to fetch the top 5 pages from your usage tracking mechanism
+      // For example, you might fetch them from local storage
+      const storedPages = JSON.parse(localStorage.getItem('topPages')) || [];
+      setTopPages(storedPages.slice(0, 5)); // Display only the top 5 pages
     };
 
-    fetchData();
+    fetchTopPages();
   }, []);
 
-  // Check if data has been fetched
-  if (!timeTableData) {
-    return <p>Loading...</p>;
-  }
-
-  // Get the current day
-  const currentDay = new Date().toLocaleDateString('en-US', { weekday: 'long' });
-
-  // Access the array for the current day
-  const currentDayData = timeTableData[currentDay];
-
-  // Check if data is available for the current day
-  if (!currentDayData || currentDayData.length === 0) {
-    return <p>No schedule available for {currentDay}</p>;
-  }
-
-  // Map over the array and display details
   return (
-    <>
-      {currentDayData.map((item, index) => (
-        <div key={index}>
-          <p>Period: {item.period}</p>
-          {item.details.length > 0 ? (
-            <div>
-              <p>Details:</p>
-              <ul>
-                {item.details.map((detail, detailIndex) => (
-                  <li key={detailIndex}>
-                    Subject: {detail.subject}, Teacher: {detail.teacher}, Class: {detail.class}, Section: {detail.section} Time : {detail.time}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ) : (
-            <p>No details available for this period</p>
-          )}
-        </div>
-      ))}
-    </>
+    <div>
+      <h2>Top 5 Most Opened Pages</h2>
+      <ul>
+        {topPages.map((page, index) => (
+          <li key={index}>{page}</li>
+        ))}
+      </ul>
+    </div>
   );
 };
 
-export default ApiTest;
+export default FavPage;
