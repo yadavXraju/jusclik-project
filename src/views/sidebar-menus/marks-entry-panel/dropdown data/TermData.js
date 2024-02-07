@@ -1,7 +1,7 @@
 const Term=[
     {
         value:'1',
-        label:'select Term'
+        label:'Select Term'
     },
     {
         value:'2',

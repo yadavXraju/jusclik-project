@@ -1,7 +1,7 @@
 const currencies = [
     {
       value: '1',
-      label: 'Select class',
+      label: 'Select Class',
     },
     {
       value: '2',
