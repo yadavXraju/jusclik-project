@@ -1,9 +1,15 @@
-import React from 'react'
+
+import React from 'react';
+import Homework from './HomeWork';
+import HomeworkProgressChart from './HomeworkProgress';
 
 const StudentHomeworkUpload = () => {
   return (
-    <div>Student Home Work upload</div>
+    <>
+    <HomeworkProgressChart/>
+  <Homework/>
+  </>
   )
 }
 
-export default StudentHomeworkUpload
+export default StudentHomeworkUpload;
