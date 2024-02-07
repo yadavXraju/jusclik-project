@@ -2,7 +2,7 @@
   "name": "berry-free-material-react-cra",
   "version": "3.3.2",
   "private": true,
-  "homepage": "https://berrydashboard.io/dashboard",
+  "homepage": "https://berrydashboard.io/login",
   "dependencies": {
     "@ant-design/icons": "^5.2.6",
     "@date-io/date-fns": "^3.0.0",

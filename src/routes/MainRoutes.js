@@ -49,34 +49,13 @@ const MainRoutes = {
   element: <MainLayout />,
   children: [
     {
-      path: '/dashboard',
+      path: '/parent-dashboard',
       element: <DashboardDefault />
     },
-    {
-      path: 'dashboard',
-      children: [
-        {
-          path: '/dashboard',
-          element: <DashboardDefault />
-        }
-      ]
-    },
-
-    // Class Teacher  dashboard
+ 
 
 
-    {
-      path: 'class-teacher-dashboard',
-      children: [
-        {
-          path: '/class-teacher-dashboard',
-          element: <ClassTeacherDashboard />
-        }
-      ]
-    },
-
-
-    // Class Teacher  dashboard
+    // Parent  dashboard Menus
 
         {
           path: 'attendance',
@@ -194,6 +173,13 @@ const MainRoutes = {
 
 
         // Class Teacher  Dashboard Menus
+
+
+          {
+            path: '/class-teacher-dashboard',
+            element: <ClassTeacherDashboard />
+          },
+
 
   
         {
