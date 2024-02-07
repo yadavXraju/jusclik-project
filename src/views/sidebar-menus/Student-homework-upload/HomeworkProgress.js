@@ -8,7 +8,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
-const CustomCircularProgress = ({ value, subject }) => {
+const HomeworkProgress = ({ value, subject }) => {
   const normalizedValue = Math.min(Math.max(value, 0), 100);
   const strokeColor = normalizedValue >= 0 ? '#2196f3' : '#aaaaaa';
 
@@ -48,11 +48,11 @@ const CustomCircularProgress = ({ value, subject }) => {
   );
 };
 
-const ProgressChart = () => {
+const HomeworkProgressChart = () => {
   const progressData = [
-    { value: 75, subject: 'Maths 101' },
-    { value: 40, subject: 'Maths 102' },
-    { value: 60, subject: 'Maths 103' },
+    { value: 69, subject: 'Maths 101' },
+    { value: 95, subject: 'Maths 102' },
+    { value: 100, subject: 'Maths 103' },
     { value: 20, subject: 'Maths 104' },
     { value: 90, subject: 'Maths 105' },
     { value: 30, subject: 'Maths 106' },
@@ -74,7 +74,7 @@ const ProgressChart = () => {
       {progressData.map((data, index) => (
         <Paper key={index} sx={{ p: 7, borderRadius:'0px' }}>
           <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around', marginTop: '20px' }}>
-            <CustomCircularProgress value={data.value} subject={data.subject} />
+            <HomeworkProgress value={data.value} subject={data.subject} />
           </div>
         </Paper>
       ))}
@@ -82,4 +82,4 @@ const ProgressChart = () => {
   );
 };
 
-export default ProgressChart;
+export default HomeworkProgressChart;

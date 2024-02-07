@@ -21,18 +21,25 @@ import PoweredBy from './PoweredBy'
 import EnterMobileDialog from './EnterMobileDialog';
 import SelectAccount from './SelectAccount';
 import LeftLogo from './LeftLogo';
-import axios from 'axios';
-import config from "../../../config";
-import BottomLoginImg from '../../../assets/images/bottomImg.png'
+// import axios from 'axios';
+// import config from "../../../config";
+import BottomLoginImg from '../../../assets/images/bottomImg.png';
+// import { useNavigate } from 'react-router';
 
 
 const defaultTheme = createTheme();
 
+
+
 export default function LoginPage() {
+  // const navigate = useNavigate();
+
   const [showPassword, setShowPassword] = useState(false);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [selectAccountOpen, setSelectAccountOpen] = useState(false);
   const [selectedVariant, setSelectedVariant] = useState('plain');
+  const [userId, setUserId] = useState('');
+  const [userPassword, setUserPassword] = useState('');
 
   const handleDialogToggle = () => {
     setDialogOpen(!dialogOpen);
@@ -51,37 +58,60 @@ export default function LoginPage() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    fetchData(data);
+    // console.log("Submitted Username:", userId);
+    // console.log("Submitted Password:", userPassword);
+
+    // static id and pass
+
+    if(userId === 'parent' && userPassword === 'parent@123') {
+      // Redirect to parent dashboard after a slight delay
+      setTimeout(() => {
+        window.location.href = '/parent-dashboard';
+      }, 500); // Delay in milliseconds
+    }
+    else if (userId === 'cteacher' && userPassword === 'cteacher@123') {
+      // Redirect to class teacher dashboard after a slight delay
+      setTimeout(() => {
+        window.location.href = '/class-teacher-dashboard';
+      }, 500); // Delay in milliseconds
+    } 
+    else {
+      alert('Wrong Credentials');
+    }
+    
+    // Reload the page
+    // window.location.reload();
   };
 
-  const fetchData = async (Data) => {
-      const response = await axios.get(
-        'https://uat.shauryasoft.com/api/login',
-        { 
-          params: {
-            SCode: 6,
-            LoginID: Data.get('Username'),
-            Password: Data.get('password'),
-            DeviceType: 0,
-            DeviceID: '',
-            MobileApp: 0,
-          },
-          headers: {
-            ApiKey: config.ApiKey,
-          },
-         
-        }
-      );
-      var jResponse = JSON.parse(response.data);
-      if (jResponse.authcode !== null && jResponse.authcode !== '' && jResponse.authcode !== undefined) {
-      alert('login successfull');
-        console.log(jResponse);
-      } else {
-       alert('login unsuccessfull');
-      }
   
-  };
+
+  // const fetchData = async (Data) => {
+  //     const response = await axios.get(
+  //       'https://uat.shauryasoft.com/api/login',
+  //       { 
+  //         params: {
+  //           SCode: 6,
+  //           LoginID: Data.get('Username'),
+  //           Password: Data.get('password'),
+  //           DeviceType: 0,
+  //           DeviceID: '',
+  //           MobileApp: 0,
+  //         },
+  //         headers: {
+  //           ApiKey: config.ApiKey,
+  //         },
+         
+  //       }
+  //     );
+  //     var jResponse = JSON.parse(response.data);
+  //     if (jResponse.authcode !== null && jResponse.authcode !== '' && jResponse.authcode !== undefined) {
+  //     alert('login successfull');
+  //       console.log(jResponse);
+  //     } else {
+  //      alert('login unsuccessfull');
+  //     }
+  
+  // };
   
 
 
@@ -173,6 +203,8 @@ export default function LoginPage() {
                 autoComplete="Username"
                 autoFocus
                 sx={{ backgroundColor: '#fff', borderRadius: '50px' }}
+                value={userId}
+                onChange={(event) => setUserId(event.target.value)}
               />
               <TextField
                 InputProps={{
@@ -199,6 +231,8 @@ export default function LoginPage() {
                 id="password"
                 autoComplete="current-password"
                 sx={{ backgroundColor: '#fff', borderRadius: '50px' }}
+                value={userPassword}
+                onChange={(event) => setUserPassword(event.target.value)}
               />
 
               {/* Remember me */}

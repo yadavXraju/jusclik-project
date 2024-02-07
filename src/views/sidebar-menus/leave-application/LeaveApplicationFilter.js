@@ -13,30 +13,26 @@ import { Divider, ListItem, ListItemText } from '@mui/material';
 
 
 const leavedata = [
-  { status: 'Pending' },
-  { status: 'Approved' },
-  { status: 'Pending' },
-  { status: 'Approved' },
-  { status: 'Pending' },
-  { status: 'Approved' },
-  { status: 'Pending' },
-  { status: 'Approved' },
-  { status: 'Pending' },
-  { status: 'Approved' },
-  { status: 'Pending' },
-  { status: 'Approved' },
-  { status: 'Pending' },
-  { status: 'Approved' },
-  { status: 'Pending' },
-  { status: 'Approved' },
-  { status: 'Pending' },
-  { status: 'Approved' },
-  { status: 'Pending' },
-  { status: 'Approved' },
-  { status: 'Pending' },
-  { status: 'Approved' },
-  { status: 'Pending' },
-  { status: 'Approved' },
+  { Appno: 2723, leavetype: 'Casual Leave', Appdate: '02.Feb.2024', Details: 'Dear Sir/Ma`am, I am not feeling well today', plan: 'Planned', applied: '2 fullday', status: 'Pending' },
+  { Appno: 2724, leavetype: 'Casual Leave', Appdate: '08.Feb.2024', Details: 'Dear Sir/Ma`am, I am not feeling well today', plan: 'Planned', applied: '1 fullday', status: 'Approved' },
+  { Appno: 2723, leavetype: 'Casual Leave', Appdate: '02.Feb.2024', Details: 'Dear Sir/Ma`am, I am not feeling well today', plan: 'Planned', applied: '2 fullday', status: 'Pending' },
+  { Appno: 2724, leavetype: 'Casual Leave', Appdate: '08.Feb.2024', Details: 'Dear Sir/Ma`am, I am not feeling well today', plan: 'Planned', applied: '1 fullday', status: 'Approved' },
+  { Appno: 2723, leavetype: 'Casual Leave', Appdate: '02.Feb.2024', Details: 'Dear Sir/Ma`am, I am not feeling well today', plan: 'Planned', applied: '2 fullday', status: 'Pending' },
+  { Appno: 2724, leavetype: 'Casual Leave', Appdate: '08.Feb.2024', Details: 'Dear Sir/Ma`am, I am not feeling well today', plan: 'Planned', applied: '1 fullday', status: 'Approved' },
+  { Appno: 2723, leavetype: 'Casual Leave', Appdate: '02.Feb.2024', Details: 'Dear Sir/Ma`am, I am not feeling well today', plan: 'Planned', applied: '2 fullday', status: 'Pending' },
+  { Appno: 2724, leavetype: 'Casual Leave', Appdate: '08.Feb.2024', Details: 'Dear Sir/Ma`am, I am not feeling well today', plan: 'Planned', applied: '1 fullday', status: 'Approved' },
+  { Appno: 2723, leavetype: 'Casual Leave', Appdate: '02.Feb.2024', Details: 'Dear Sir/Ma`am, I am not feeling well today', plan: 'Planned', applied: '2 fullday', status: 'Pending' },
+  { Appno: 2724, leavetype: 'Casual Leave', Appdate: '08.Feb.2024', Details: 'Dear Sir/Ma`am, I am not feeling well today', plan: 'Planned', applied: '1 fullday', status: 'Approved' },
+  { Appno: 2723, leavetype: 'Casual Leave', Appdate: '02.Feb.2024', Details: 'Dear Sir/Ma`am, I am not feeling well today', plan: 'Planned', applied: '2 fullday', status: 'Pending' },
+  { Appno: 2724, leavetype: 'Casual Leave', Appdate: '08.Feb.2024', Details: 'Dear Sir/Ma`am, I am not feeling well today', plan: 'Planned', applied: '1 fullday', status: 'Approved' },
+  { Appno: 2723, leavetype: 'Casual Leave', Appdate: '02.Feb.2024', Details: 'Dear Sir/Ma`am, I am not feeling well today', plan: 'Planned', applied: '2 fullday', status: 'Pending' },
+  { Appno: 2724, leavetype: 'Casual Leave', Appdate: '08.Feb.2024', Details: 'Dear Sir/Ma`am, I am not feeling well today', plan: 'Planned', applied: '1 fullday', status: 'Approved' },
+  { Appno: 2723, leavetype: 'Casual Leave', Appdate: '02.Feb.2024', Details: 'Dear Sir/Ma`am, I am not feeling well today', plan: 'Planned', applied: '2 fullday', status: 'Pending' },
+  { Appno: 2724, leavetype: 'Casual Leave', Appdate: '08.Feb.2024', Details: 'Dear Sir/Ma`am, I am not feeling well today', plan: 'Planned', applied: '1 fullday', status: 'Approved' },
+  { Appno: 2723, leavetype: 'Casual Leave', Appdate: '02.Feb.2024', Details: 'Dear Sir/Ma`am, I am not feeling well today', plan: 'Planned', applied: '2 fullday', status: 'Pending' },
+  { Appno: 2724, leavetype: 'Casual Leave', Appdate: '08.Feb.2024', Details: 'Dear Sir/Ma`am, I am not feeling well today', plan: 'Planned', applied: '1 fullday', status: 'Approved' },
+  { Appno: 2723, leavetype: 'Casual Leave', Appdate: '02.Feb.2024', Details: 'Dear Sir/Ma`am, I am not feeling well today', plan: 'Planned', applied: '2 fullday', status: 'Pending' },
+  { Appno: 2724, leavetype: 'Casual Leave', Appdate: '08.Feb.2024', Details: 'Dear Sir/Ma`am, I am not feeling well today', plan: 'Planned', applied: '1 fullday', status: 'Approved' },
 ];
 
 const itemsPerPage = 5;
@@ -78,33 +74,47 @@ export default function LeaveTabs() {
         <Tab label="Approved" />
       </Tabs>
 
-    
+
       <Paper sx={{ listStyleType: 'none', p: 0 }}>
         <ListItem sx={{ display: 'flex', alignItems: 'center', p: 2 }}>
-          <ListItemText sx={{ flex: '0 0 20%' }}>
+          <ListItemText sx={{ flex: '0 0 10%' }}>
             <Typography variant="h4" >
-              Past Leave
+              App No
             </Typography>
           </ListItemText>
-          <ListItemText sx={{ flex: '0 0 20%' }}>
+          <ListItemText sx={{ flex: '0 0 10%' }}>
             <Typography variant="h4">Leave Type</Typography>
           </ListItemText>
-          <ListItemText sx={{ flex: '0 0 20%', justifyContent: 'center' }}>
+          <ListItemText sx={{ flex: '0 0 10%' }}>
             <Typography variant="h4">
-              Requested On
+              App Date
             </Typography>
           </ListItemText>
-          <ListItemText sx={{ flex: '0 0 20%', justifyContent: 'center' }}>
+          <ListItemText sx={{ flex: '0 0 30%' }}>
+            <Typography variant="h4">
+              Details
+            </Typography>
+          </ListItemText>
+          <ListItemText sx={{ flex: '0 0 10%' }}>
+            <Typography variant="h4">
+              Planned / Unplanned
+            </Typography>
+          </ListItemText>
+          <ListItemText sx={{ flex: '0 0 10%' }}>
+            <Typography variant="h4">
+              Applied
+            </Typography>
+          </ListItemText>
+          <ListItemText sx={{ flex: '0 0 10%' }}>
             <Typography variant="h4">
               Status
             </Typography>
           </ListItemText>
-          <ListItemText sx={{ flex: '0 0 20%', justifyContent: 'center' }}>
+          <ListItemText sx={{ flex: '0 0 10%', display: 'flex', justifyContent: 'center' }}>
             <Typography variant="h4">
-
+              Action
             </Typography>
           </ListItemText>
-
         </ListItem>
         <Divider />
       </Paper>
@@ -112,29 +122,57 @@ export default function LeaveTabs() {
       {paginatedData.map((item, index) => (
         <>
 
-
-
           <Paper sx={{ listStyleType: 'none', p: 0 }} key={index}>
             <ListItem sx={{ display: 'flex', alignItems: 'center', p: 2 }}>
-              <ListItemText sx={{ flex: '0 0 20%' }}>
+              <ListItemText sx={{ flex: '0 0 10%' }}>
                 <Typography variant="h5" >
-                  Apr 20,2023 (1 day)
+                  {item.Appno}
                 </Typography>
               </ListItemText>
-              <ListItemText sx={{ flex: '0 0 20%' }}>
-                <Typography variant="h5">Paid Leave</Typography>
+              <ListItemText sx={{ flex: '0 0 10%' }}>
+                <Typography variant="h5">{item.leavetype}</Typography>
               </ListItemText>
-              <ListItemText sx={{ flex: '0 0 20%', justifyContent: 'center' }}>
+              <ListItemText sx={{ flex: '0 0 10%' }}>
                 <Typography variant="h5">
-                  Paid Leave
+                  {item.Appdate}
                 </Typography>
               </ListItemText>
-              <ListItemText sx={{ flex: '0 0 20%', justifyContent: 'end' }}>
+              <ListItemText sx={{ flex: '0 0 30%' }}>
                 <Typography variant="h5">
-                  {item.status}
+                  {item.Details}
                 </Typography>
               </ListItemText>
-              <ListItemText sx={{ flex: '0 0 20%', display:'flex', justifyContent: 'end' }}>
+              <ListItemText sx={{ flex: '0 0 10%' }}>
+                <Typography variant="h5">
+                  {item.plan}
+                </Typography>
+              </ListItemText>
+              <ListItemText sx={{ flex: '0 0 10%' }}>
+                <Typography variant="h5">
+                  {item.applied}
+                </Typography>
+              </ListItemText>
+              <ListItemText sx={{ flex: '0 0 10%' }}>
+                <Typography variant="h5">
+                  <Box sx={{
+                    color: item.status === 'Approved' ? 'rgb(0, 200, 83)' : (item.status === 'overdue' ? '#433e1a' : 'rgb(216, 67, 21)'),
+                    borderRadius: '16px',
+                    background: item.status === 'Approved' ? 'rgba(147, 213, 166, 0.38)' : (item.status === 'overdue' ? '#ffff003b' : 'rgb(251, 233, 231)'),
+                    '&:hover': {
+                      background: item.status === 'Approved' ? 'rgb(0, 200, 83)' : (item.status === 'overdue' ? '#b4aa10' : 'rgb(216, 67, 21)'),
+                      color: 'white',
+                    },
+                    width:'70%',
+                    padding: '2px',
+                    paddingRight: '8px',
+                    paddingLeft: '8px',
+                    textAlign: 'center'
+                  }}>
+                   {item.status}
+                  </Box>
+                </Typography>
+              </ListItemText>
+              <ListItemText sx={{ flex: '0 0 10%', display: 'flex', justifyContent: 'center' }}>
                 <Typography variant="h4">
                   <PopupState variant="popover" popupId="demo-popup-popover">
                     {(popupState) => (
@@ -182,6 +220,23 @@ export default function LeaveTabs() {
 
 
 
+
+{/* <Box sx={{
+  color: row.status === 'Paid' ? 'rgb(0, 200, 83)' : (row.status === 'overdue' ? '#433e1a' : 'rgb(216, 67, 21)'),
+  borderRadius: '16px',
+  background: row.status === 'Paid' ? 'rgba(147, 213, 166, 0.38)' : (row.status === 'overdue' ? '#ffff003b' : 'rgb(251, 233, 231)'),
+  '&:hover': {
+    background: row.status === 'Paid' ? 'rgb(0, 200, 83)' : (row.status === 'overdue' ? '#b4aa10' : 'rgb(216, 67, 21)'),
+    color: 'white',
+  },
+  padding: '2px',
+  paddingRight: '8px',
+  paddingLeft: '8px',
+  textAlign: 'center'
+}}>
+
+  {new Date(row.ldate) < new Date() ? 'Overdue' : row.status}
+</Box> */}
 
 
 
