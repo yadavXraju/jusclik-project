@@ -1,23 +1,5 @@
-// Add this import statement at the top of your file
 import React, { useState, useEffect } from 'react';
-import {
-  Box,
-  InputLabel,
-  MenuItem,
-  FormControl,
-  Select,
-  Divider,
-  Typography,
-  ListItem,
-  Avatar,
-  ListItemAvatar,
-  ListItemText,
-  Stack,
-  Paper,
-  Button,
-  Grid,
-  Badge
-} from '@mui/material';
+import {Box,InputLabel,MenuItem,FormControl,Select,Divider,Typography,ListItem,Avatar,ListItemAvatar,ListItemText,Stack,Paper,Button,Grid,Badge} from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -38,6 +20,13 @@ const Item = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(1),
   textAlign: 'center',
   color: theme.palette.text.secondary
+}));
+
+
+const StyledBadge = styled(Badge)(() => ({
+  '& .MuiBadge-badge': {
+    opacity:'0.7'
+  },
 }));
 
 export default function AttendanceEntry() {
@@ -68,6 +57,7 @@ export default function AttendanceEntry() {
     setShowWarningBox(absentPercentage > 50);
   }, []);
 
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     if (name === 'class') {
@@ -77,18 +67,26 @@ export default function AttendanceEntry() {
     }
   };
 
+
   const handleAvatarClick = (avatar, studentId) => {
     setSelectedAvatars((prevAvatars) => ({
       ...prevAvatars,
       [studentId]: prevAvatars[studentId] === avatar ? prevAvatars[studentId] : avatar
     }));
-  };
-
-
-  const countSelectedStatus = (status) => {
-    return Object.values(selectedAvatars).filter(avatar => avatar === status).length;
+  
+    const absentCount = countSelectedStatus('A');
+    const totalStudents = filteredStudentList.length;
+    const absentPercentage = Math.floor((absentCount / totalStudents) * 100);
+    setShowWarningBox(absentPercentage > 50);
   };
   
+
+  const countSelectedStatus = (status) => {
+    const count = Object.values(selectedAvatars).filter((avatar) => avatar === status).length;
+    console.log(`Count of ${status}:`, count);
+    return count;
+  };
+
 
   const filterStudentList = (classValue, sectionValue) => {
     console.log('Filtering student list:', classValue, sectionValue);
@@ -97,25 +95,25 @@ export default function AttendanceEntry() {
     setFilteredStudentList(filteredStudents);
   };
 
+
   const handleSearchClick = () => {
     console.log('Search button clicked');
     filterStudentList(selectClass, selectSection);
   };
 
+
   const updateAvatars = (action) => {
     const updatedAvatars = {};
-
     // Set the background color based on the selected action
     filteredStudentList.forEach((student) => {
       updatedAvatars[student.id] = action.charAt(0).toUpperCase();
     });
-
     // Update the state with the new avatar colors
     setSelectedAvatars(updatedAvatars);
-
     // Set the global action
     setGlobalAttendanceAction(action);
   };
+
 
   const handleActionsConfirm = (selectedAction) => {
     if (selectedAction === 'mark all holiday') {
@@ -130,15 +128,12 @@ export default function AttendanceEntry() {
 
     // Reset the global action
     setGlobalAttendanceAction('');
-
     // Close the confirmation dialog
     setConfirmationDialogOpen(false);
   };
 
   return (
     <Box>
-      <WarningBox showWarning={showWarningBox} onClose={() => setShowWarningBox(false)} />
-
       {/* Search filter box */}
       <Paper sx={{ borderRadius: '30px' }}>
         <Box sx={{ minWidth: 250, display: 'flex', alignItems: 'baseline', p: 3 }}>
@@ -195,21 +190,21 @@ export default function AttendanceEntry() {
       </Paper>
 
       {/* Student List */}
-      <Box sx={{ mt: 2 }}>
-        <Paper sx={{ mb: 1, display: 'flex'}}>
+      <Box sx={{ mt: 1 }}>
+        <Paper sx={{ mb: 1, display: 'flex' }}>
           <Grid
             container
             fullwidth
-            rowSpacing={1}
             direction="row"
             justifyContent="Center"
+            marginRight="-150px"
             alignItems="Center"
             columnSpacing={{ xs: 1, sm: 2, md: 3 }}
           >
             <Grid item>
               <Item>
                 <Typography variant="h4" color="#364152" display="flex" alignItems="center">
-                  <Badge color="primary" overlap="circular" badgeContent={countSelectedStatus('H')}>
+                  <StyledBadge color="primary" overlap="circular"  badgeContent={countSelectedStatus('H')}>
                     <Avatar
                       sx={{
                         width: 30,
@@ -222,15 +217,15 @@ export default function AttendanceEntry() {
                     >
                       H
                     </Avatar>
-                  </Badge>
-                  Holiday
+                  </StyledBadge>
+                  -Holiday
                 </Typography>
               </Item>
             </Grid>
             <Grid item>
               <Item>
                 <Typography variant="h4" color="#364152" display="flex" alignItems="center">
-                  <Badge color="primary" overlap="circular" badgeContent={countSelectedStatus('P')}>
+                  <StyledBadge color="primary" overlap="circular" badgeContent={countSelectedStatus('P')}>
                     <Avatar
                       sx={{
                         width: 30,
@@ -243,15 +238,15 @@ export default function AttendanceEntry() {
                     >
                       P
                     </Avatar>
-                  </Badge>
-                  Present
+                  </StyledBadge>
+                  -Present
                 </Typography>
               </Item>
             </Grid>
             <Grid item>
               <Item>
                 <Typography variant="h4" color="#364152" display="flex" alignItems="center">
-                  <Badge color="primary" overlap="circular" badgeContent={countSelectedStatus('A')}>
+                  <StyledBadge color="primary" overlap="circular" badgeContent={countSelectedStatus('A')}>
                     <Avatar
                       sx={{
                         width: 30,
@@ -264,15 +259,15 @@ export default function AttendanceEntry() {
                     >
                       A
                     </Avatar>
-                  </Badge>
-                  Absent
+                  </StyledBadge>
+                  -Absent
                 </Typography>
               </Item>
             </Grid>
             <Grid item>
               <Item>
                 <Typography variant="h4" color="#364152" display="flex" alignItems="center">
-                  <Badge color="primary" overlap="circular" badgeContent={countSelectedStatus('L')}>
+                  <StyledBadge color="primary" overlap="circular" badgeContent={countSelectedStatus('L')}>
                     <Avatar
                       sx={{
                         width: 30,
@@ -285,14 +280,14 @@ export default function AttendanceEntry() {
                     >
                       L
                     </Avatar>
-                  </Badge>
-                  Leave
+                  </StyledBadge>
+                   -Leave
                 </Typography>
               </Item>
             </Grid>
           </Grid>
-          <Grid sx={{ marginTop: '6px' }}>
-            <Item>
+          <Grid>
+            <Item sx={{ marginRight: '40px' }}>
               <TakeAttendance
                 onConfirm={handleActionsConfirm}
                 open={isConfirmationDialogOpen}
@@ -302,6 +297,13 @@ export default function AttendanceEntry() {
             </Item>
           </Grid>
         </Paper>
+        <WarningBox
+        showWarning={showWarningBox}
+        onClose={() => setShowWarningBox(false)}
+        totalStudents={filteredStudentList.length}
+        absentCount={countSelectedStatus('A')}
+      />
+      
         <Paper sx={{ listStyleType: 'none', p: 0 }}>
           <ListItem sx={{ display: 'flex', alignItems: 'center', p: 2 }}>
             <ListItemText sx={{ flex: '0 0 15%' }}>
