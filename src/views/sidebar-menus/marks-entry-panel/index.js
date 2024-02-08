@@ -1,14 +1,12 @@
-import React,{ useState, useEffect } from 'react';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, TextField } from '@mui/material';
+import React, { useState, useEffect } from 'react';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper,  Button, Grid, Typography } from '@mui/material';
 import { makeStyles, useTheme, ThemeProvider } from '@mui/styles';
 import UpperTab from './UpperTab';
-import '../../dashboard/Default/dashboard-css/Overflow.css';
-import { subject } from './dropdown data/SubjectData';
-import { StudentData2, StudentData3,StudentData } from './dropdown data/StudentData'; // Import StudentData2 and StudentData3
 import MiddleBox from './MiddleBox';
-
-
-
+import { subject } from './dropdown data/SubjectData';
+import { StudentData, StudentData2, StudentData3 } from './dropdown data/StudentData'; // Import StudentData2 and StudentData3
+import "../../dashboard/Default/dashboard-css/Overflow.css"
+import NumericTextField from './TextFeild';
 const useStyles = makeStyles((theme) => ({
   tableContainer: {
     marginBottom: theme.spacing(2),
@@ -53,19 +51,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// Function to create data
-function createData(name, admissionNo) {
-  return { name, admissionNo };
-}
 
-
-
-// Main component
 export default function MarksEntryPanel() {
   const [selectedClass, setSelectedClass] = useState('');
-  
   const [students, setStudents] = useState([]);
-
+  const [isVerticalSwitchOn, setIsVerticalSwitchOn] = useState(true); // Default to true
   const theme = useTheme();
   const classes = useStyles(theme);
 
@@ -73,75 +63,98 @@ export default function MarksEntryPanel() {
     setSelectedClass(selectedClass);
   };
 
-   // Fetch student data when the selected class changes
+  const handleSwitchChange = (isVertical) => {
+    setIsVerticalSwitchOn(isVertical);
+  };
 
-   useEffect(() => {
-    // Choose the appropriate student data based on the selected class
-
-    console.log('StudentData:', StudentData);
+  useEffect(() => {
     let selectedStudentData = [];
-
     if (selectedClass === '4') {
-      
       selectedStudentData = StudentData;
     } else if (selectedClass === '2') {
       selectedStudentData = StudentData2;
     } else if (selectedClass === '3') {
       selectedStudentData = StudentData3;
     }
-
-    // Update the state with the selected student data
     setStudents(selectedStudentData);
   }, [selectedClass]);
 
+  const rows = students.map((student) => createData(student.name, student.admissionNo));
+
+  function createData(name, admissionNo) {
+    return { name, admissionNo };
+  }
+
+  const handleVerticalKeyPress = (event, rowIndex, cellIndex) => {
+    if (event.key === 'Enter') {
+      const nextRowIndex = rowIndex + 1;
+      const nextInput = document.getElementById(`textfield-${nextRowIndex}-${cellIndex}-${rows[nextRowIndex].admissionNo}`);
+      if (nextInput) {
+        nextInput.focus();
+      }
+    }
+  };
+
+  const handleHorizontalKeyPress = (event, rowIndex, cellIndex) => {
+    if (event.key === 'Enter') {
+      const nextCellIndex = cellIndex + 1;
+      const nextInput = document.getElementById(`textfield-${rowIndex}-${nextCellIndex}-${rows[rowIndex].admissionNo}`);
+      if (nextInput) {
+        nextInput.focus();
+      }
+    }
+  };
+
+  const handleTextFieldKeyPress = (event, rowIndex, cellIndex) => {
+    if (isVerticalSwitchOn) {
+      handleVerticalKeyPress(event, rowIndex, cellIndex);
+    } else {
+      handleHorizontalKeyPress(event, rowIndex, cellIndex);
+    }
+  };
 
 
-
-// Mapping StudentData to create rows
-const rows = students.map((student) => createData(student.name, student.admissionNo));
-
+  
   return (
-<ThemeProvider theme={theme}>
- {/* Pass the handleClassChange function and selectedClass state to UpperTab */}
- <UpperTab onClassChange={handleClassChange} selectedClass={selectedClass} />
- <MiddleBox/>
-      {/* Main Paper container */}
+    <ThemeProvider theme={theme}>
+      <UpperTab onClassChange={handleClassChange} selectedClass={selectedClass} />
+      <MiddleBox 
+        isVerticalSwitchOn={isVerticalSwitchOn} 
+        onSwitchChange={handleSwitchChange} 
+      />
       <Paper sx={{ width: '100%' }}>
-        {/* Table container with scrollbar */}
-        <TableContainer  sx={{ maxHeight: 640 }} className='scrollbar-2'>
-          {/* Sticky header table */}
+        <TableContainer sx={{ maxHeight: 640 }} className='scrollbar-2'>
           <Table stickyHeader aria-label="sticky table">
-            {/* Table Head */}
             <TableHead>
-              {/* Table Head Row */}
               <TableRow>
-                {/* Sticky first column */}
-                <TableCell className={classes.fixedIstColumn} sx={{ top: '0',width:"100px" }}>
+                <TableCell className={classes.fixedIstColumn} sx={{ top: '0', width: "100px" }}>
                   Student
                 </TableCell>
                 <TableCell className={classes.fixedIstColumn2} sx={{ top: '0' }}>
-                  Admission
+                  Adm.no
                 </TableCell>
-                {/* Mapping subject data to create table header cells */}
                 {subject.map((subjectData, index) => (
-                  <TableCell key={index} align="left">
-                    {subjectData.label} {/* Assuming 'value' is the key containing the subject name */}
+                  <TableCell key={`subject-${index}`} align="left">
+                    {subjectData.label}<br/>
+                    <Typography sx={{textAlign:"center"}}> {subjectData.tm}</Typography>
+                   
                   </TableCell>
                 ))}
               </TableRow>
             </TableHead>
-            {/* Table Body */}
             <TableBody>
-              {/* Mapping rows to create table rows */}
-              {rows.map((row) => (
-                <TableRow key={row.name} className={classes.rowHover}>
-                  {/* Fixed first column with student name and admission number */}
-                  <TableCell className={classes.fixedColumn}>{`${row.name} `}</TableCell>
-                  <TableCell className={classes.fixedColumn2}>{`(${row.admissionNo})`}</TableCell>
-                  {/* Mapping subject data to create table cells with TextField */}
-                  {subject.map(( index) => (
-                    <TableCell key={index} align="left">
-                      <TextField fullWidth variant="outlined" size="small" sx={{ width: '60px' }} />
+              {rows.map((row, rowIndex) => (
+                <TableRow key={`row-${rowIndex}`}>
+                  <TableCell className={classes.fixedColumn}>{row.name}</TableCell>
+                  <TableCell className={classes.fixedColumn2}>{row.admissionNo}</TableCell>
+                  {subject.map((_, cellIndex) => (
+                    <TableCell key={`cell-${rowIndex}-${cellIndex}`} align="left">
+                       <NumericTextField
+      rowIndex={rowIndex}
+      cellIndex={cellIndex}
+      admissionNo={row.admissionNo}
+      handleTextFieldKeyPress={handleTextFieldKeyPress}
+    />
                     </TableCell>
                   ))}
                 </TableRow>
@@ -149,6 +162,11 @@ const rows = students.map((student) => createData(student.name, student.admissio
             </TableBody>
           </Table>
         </TableContainer>
+        <Grid sx={{ textAlign: "left" }}>
+          <Button variant="contained" color="primary" sx={{ textAlign: "center", margin: "10px 20px" }}>
+            Submit
+          </Button>
+        </Grid>
       </Paper>
     </ThemeProvider>
   );

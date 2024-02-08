@@ -16,8 +16,9 @@ function UpperTab( { onClassChange}) {
             {/* Pass onClassChange function to handle class changes */}
         <DropDown data={currencies} onClassChange={onClassChange} sx={{ margin: '10px' }} />
         <DropDown  data={Term} />
-        <DropDown data={subject} onClassChange={onClassChange}/>
         <DropDown data={EXAM}/>
+        <DropDown data={subject} onClassChange={onClassChange}/>
+  
         <Button
           variant="contained"
           startIcon={<SearchTwoToneIcon />}
