@@ -48,14 +48,16 @@ const MainRoutes = {
   path: '/',
   element: <MainLayout />,
   children: [
-    {
-      path: '/parent-dashboard',
-      element: <DashboardDefault />
-    },
- 
 
 
     // Parent  dashboard Menus
+    {
+      path: '/parent',
+      children: [
+        {
+          path: 'dashboard',
+          element: <DashboardDefault />
+        },
 
         {
           path: 'attendance',
@@ -69,182 +71,155 @@ const MainRoutes = {
           path: 'timetable',
           element: <TimeTable />
         },
-
         {
           path: 'updates',
           element: <Updates />
         },
-
         {
           path: 'performance',
           element: <Performance />
         },
-
         {
           path: 'school-fee',
           element: <SchoolFee />
         },
-
         {
           path: 'digital-learning',
           children: [
             {
               path: 'online-assessment',
-              element: <OnlineAssessment/>
-            }
-          ]
-        },
-
-        {
-          path: 'digital-learning',
-          children: [
+              element: <OnlineAssessment />
+            },
             {
               path: 'online-class',
-              element: <OnlineClass/>
+              element: <OnlineClass />
             }
           ]
         },
-
         {
           path: 'communication',
           children: [
             {
               path: 'contact-list',
-              element: <ContactList/>
-            }
-          ]
-        },
-
-
-        {
-          path: 'communication',
-          children: [
+              element: <ContactList />
+            },
             {
               path: 'inbox',
-              element: <RecentMessage/>
+              element: <RecentMessage />
+            },
+            {
+              path: 'inbox/message',
+              element: <EmailMsg />
             }
           ]
         },
-
-
-        {
-          path: 'communication/inbox/message',
-          element: <EmailMsg />
-        },
-
-
         {
           path: 'request',
           children: [
             {
               path: 'add-meeting',
               element: <AddMetting />
-            }
-          ]
-        },
-
-        {
-          path: 'request',
-          children: [
+            },
             {
               path: 'item-request-gate-pass',
-              element: <ItemRequestGatePass/>
+              element: <ItemRequestGatePass />
             }
           ]
         },
-
         {
           path: 'resources',
           element: <Resources />
         },
-    
         {
           path: 'photo-gallery',
           element: <PhotoGallery />
         },
-
-     
-
         {
-          path: '/student-profile',
-          element: <StudentProfile/>
+          path: 'student-profile',
+          element: <StudentProfile />
         },
+      ]
+    },
 
 
 
         // Class Teacher  Dashboard Menus
 
-
+    {
+          path: '/class-teacher',
+          children: [
           {
-            path: '/class-teacher-dashboard',
+            path: 'dashboard',
             element: <ClassTeacherDashboard />
           },
 
 
   
         {
-          path: '/attendance-entry',
+          path: 'attendance-entry',
           element: <AttendanceEntry/>
         },
 
         
         {
-          path: '/marks-entry-panel',
+          path: 'marks-entry-panel',
           element: <MarksEntryPanel/>
         },
 
         {
-          path: '/remarks-entry-panel',
+          path: 'remarks-entry-panel',
           element: <RemarksEntryPanel/>
         },
 
         {
-          path: '/remarks-entry-panel',
+          path: 'remarks-entry-panel',
           element: <RemarksEntryPanel/>
         },
 
         {
-          path: '/time-table-entry',
+          path: 'time-table-entry',
           element: <TimeTableEntry/>
         },
 
         {
-          path: '/student-allocation',
+          path: 'student-allocation',
           element: <StudentAllocation/>
         },
 
         {
-          path: '/student-homework-upload',
+          path: 'student-homework-upload',
           element: <StudentHomeWorkUpload/>
         },
 
         {
-          path: '/circular-upload',
+          path: 'circular-upload',
           element: <CircularUpload/>
         },
 
         {
-          path: '/inbox',
+          path: 'inbox',
           element: <TeacherInbox/>
         },
 
 
         {
-          path: '/biometric-details',
+          path: 'biometric-details',
           element: <BiometricDetailsOrAttendanceDetails/>
         },
         
 
         {
-          path: '/leave-application',
+          path: 'leave-application',
           element: <LeaveApplication/>
         },
 
         {
-          path: '/apitest',
+          path: 'apitest',
           element: <ApiTest/>
         },
-
+          
+      ]
+    },
        
 
         
