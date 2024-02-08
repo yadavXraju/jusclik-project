@@ -42,6 +42,13 @@ const ClassTeacherDashboard = Loadable(lazy(() => import('views/class-teacher-da
  const  BiometricDetailsOrAttendanceDetails = Loadable(lazy(() => import('views/sidebar-menus/biometric-details-attendance-details')));
  const  LeaveApplication = Loadable(lazy(() => import('views/sidebar-menus/leave-application')));
  const  ApiTest = Loadable(lazy(() => import('views/sidebar-menus/ApiTest.js')));
+
+
+
+ // subject Teacher  Dashboard Menus
+
+ const SubjectTeacherDashboard = Loadable(lazy(() => import('views/subject-teacher-dashboard/')));
+
 // ==============================|| MAIN ROUTING ||============================== //
 
 const MainRoutes = {
@@ -221,6 +228,13 @@ const MainRoutes = {
       ]
     },
        
+
+    // subject teacher dashboard
+
+    {
+      path: 'subject-teacher/dashboard',
+      element: <SubjectTeacherDashboard />
+    },
 
         
 

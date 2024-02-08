@@ -56,7 +56,7 @@ const isMobile = useMediaQuery('(max-width: 767px)');
               </Grid>
 
               <Box sx={{p:3, pt:0 , textAlign:'right' , marginTop: isMobile ? '2rem' : '0'}}>
-                  <Button variant="contained" onClick={() => navigate('/attendance')}>
+                  <Button variant="contained" onClick={() => navigate('/parent/attendance')}>
                     View More
                   </Button>
               </Box>
