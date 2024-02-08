@@ -66,13 +66,13 @@ export default function LoginPage() {
     if(userId === 'parent' && userPassword === 'parent@123') {
       // Redirect to parent dashboard after a slight delay
       setTimeout(() => {
-        window.location.href = '/parent-dashboard';
+        window.location.href = '/parent/dashboard';
       }, 500); // Delay in milliseconds
     }
     else if (userId === 'cteacher' && userPassword === 'cteacher@123') {
       // Redirect to class teacher dashboard after a slight delay
       setTimeout(() => {
-        window.location.href = '/class-teacher-dashboard';
+        window.location.href = '/class-teacher/dashboard';
       }, 500); // Delay in milliseconds
     } 
     else {

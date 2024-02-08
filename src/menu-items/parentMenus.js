@@ -25,7 +25,7 @@ const parentMenu = {
       id: 'attendance',
       title: 'Attendance',
       type: 'item',
-      url: '/attendance',
+      url: '/parent/attendance',
       icon:CalendarMonthTwoToneIcon,
       breadcrumbs: false
     },
@@ -33,7 +33,7 @@ const parentMenu = {
       id: 'assignments',
       title: 'Assignments',
       type: 'item',
-      url: '/assignments',
+      url: '/parent/assignments',
       icon: LibraryBooksTwoToneIcon,
       breadcrumbs: false
     },
@@ -41,7 +41,7 @@ const parentMenu = {
       id: 'updates',
       title: 'Updates',
       type: 'item',
-      url: '/updates',
+      url: '/parent/updates',
       icon: DraftsTwoToneIcon,
       breadcrumbs: false
     },
@@ -49,7 +49,7 @@ const parentMenu = {
       id: 'timetable',
       title: 'Timetable',
       type: 'item',
-      url: '/timetable',
+      url: '/parent/timetable',
       icon: AlarmTwoToneIcon,
       breadcrumbs: false
       
@@ -58,7 +58,7 @@ const parentMenu = {
         id: 'performance',
         title: 'Performance',
         type: 'item',
-        url: '/performance',
+        url: '/parent/performance',
         icon:InsertChartTwoToneIcon,
         breadcrumbs: false
       },
@@ -67,7 +67,7 @@ const parentMenu = {
         id: 'school-fee',
         title: 'School Fee',
         type: 'item',
-        url: '/school-fee',
+        url: '/parent/school-fee',
         icon: CreditCardTwoToneIcon,
         breadcrumbs: false
       },
@@ -76,21 +76,21 @@ const parentMenu = {
         id: 'digital-learning',
         title: 'Digital Learning',
         type: 'collapse',
-        url: '/digital-learning',
+        url: '/parent/digital-learning',
         icon: CategoryTwoToneIcon,
         children: [
           {
             id: 'digital-learning-online-assessment',
             title: 'Online Assesment',
             type: 'item',
-            url: '/digital-learning/online-assessment',
+            url: '/parent/digital-learning/online-assessment',
             breadcrumbs: false
           },
           {
             id: 'digital-learning-online-class',
             title: 'Online Class',
             type: 'item',
-            url: '/digital-learning/online-class',
+            url: '/parent/digital-learning/online-class',
             breadcrumbs: false
           }
         ]
@@ -102,21 +102,21 @@ const parentMenu = {
         id: 'communication',
         title: 'Communication',
         type: 'collapse',
-        url: '/communication',
+        url: '/parent/communication',
         icon: MarkUnreadChatAltTwoToneIcon,
         children: [
           {
             id: 'communication-contact-list',
             title: 'Contact List',
             type: 'item',
-            url: '/communication/contact-list',
+            url: '/parent/communication/contact-list',
             breadcrumbs: false
           },
           {
             id: 'communication-inbox',
             title: 'Inbox',
             type: 'item',
-            url: '/communication/inbox',
+            url: '/parent/communication/inbox',
             breadcrumbs: false
           }
         ]
@@ -134,14 +134,14 @@ const parentMenu = {
             id: 'request-add-meeting',
             title: 'Add Meeting',
             type: 'item',
-            url: '/request/add-meeting',
+            url: '/parent/request/add-meeting',
             breadcrumbs: false
           },
           {
             id: 'item-request-gate-pass',
             title: 'Item Request Gate Pass',
             type: 'item',
-            url: '/request/item-request-gate-pass',
+            url: '/parent/request/item-request-gate-pass',
             breadcrumbs: false
           }
         ]
@@ -153,7 +153,7 @@ const parentMenu = {
         id: 'resources',
         title: 'Resources',
         type: 'item',
-        url: '/resources',
+        url: '/parent/resources',
         icon:   FolderCopyTwoToneIcon ,
         breadcrumbs: false
       },
@@ -162,7 +162,7 @@ const parentMenu = {
         id: 'photo-gallery',
         title: 'Photo Gallery',
         type: 'item',
-        url: '/photo-gallery',
+        url: '/parent/photo-gallery',
         icon:   CameraAltTwoToneIcon,
         breadcrumbs: false
       },

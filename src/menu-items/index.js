@@ -11,12 +11,14 @@ let menuItems = {
   items: [],
 };
 
-// Check if the URL contains "/class-teacher-dashboard" path
-if (containsPath('/class-teacher-dashboard')) {
-  // Push items into the items array
+// Check if the URL contains "/class-teacher/" path
+if (containsPath('/class-teacher/')) {
+  // Push items into the items array for class teacher
   menuItems.items.push(teacherDashboard, teacherMenu);
-} else if (containsPath('/parent-dashboard')) {
-  // Push items into the items array
+} 
+// Check if the URL contains "/parent/" path
+else if (containsPath('/parent/')) {
+  // Push items into the items array for parent
   menuItems.items.push(parentDashboard, parentMenu);
 }
 

@@ -13,7 +13,7 @@ const teacherDashboard = {
       id: 'class-teacher-dashboard',
       title: 'Dashboard',
       type: 'item',
-      url: 'class-teacher-dashboard',
+      url: 'class-teacher/dashboard',
       icon:HomeTwoToneIcon ,
       breadcrumbs: false
     }
