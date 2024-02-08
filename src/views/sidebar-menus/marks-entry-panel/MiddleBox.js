@@ -40,16 +40,16 @@ function MiddleBox({ isVerticalSwitchOn, onSwitchChange }) {
     <>
       <Box>
         <Paper sx={{ mb: 1, display: 'flex', justifyContent: 'space-between' }}>
-          <Grid container rowSpacing={1} direction="row" justifyContent="Center" alignItems="Center" columnSpacing={{ xs: 1, sm: 2, md: 3 }} sx={{ margin: "10px 0" }}>
-            <Grid item>
+          <Grid lg={12} container rowSpacing={1} direction="row" justifyContent="Center" alignItems="Center" columnSpacing={{ xs: 1, sm: 2, md: 3 }} sx={{ margin: "10px 0" }}>
+            <Grid item lg={6}>
               <Item>
-                <Typography variant='h4' color='red' display='flex' alignItems='center'>
-                  <InfoOutlinedIcon /> input AB for absent, input LV for leave, input - for any other reason 
+                <Typography variant='h4' color='primary' display='flex' alignItems='center'>
+                  <InfoOutlinedIcon sx={{marginRight:"5px"}} />  Enter  &apos;AB&apos; for absent, &apos;LV&apos; for leave, &apos;-&apos; for any other reason 
                 </Typography>
               </Item>
             </Grid>
           </Grid>
-          <Grid sx={{ marginRight: '60px', marginTop: '6px', display: "flex", justifyContent: "space-around", alignItems: 'center' }}>
+          <Grid lg={6}  sx={{ marginRight: '60px', marginTop: '6px', display: "flex", justifyContent: "space-around", alignItems: 'center' }}>
             <Item>
               <SwitchButton
                 handleVerticalKeyPress={handleTextFieldKeyPressVerticaly}

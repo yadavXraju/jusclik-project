@@ -4,7 +4,7 @@ import MenuItem from '@mui/material/MenuItem';
 
 
 
-  function DropDown({ data, onClassChange}) {
+  export function ClassDropDown({ data, onClassChange,selectedClass}) {
     // Check if data is not an array or is empty
     if (!Array.isArray(data) || data.length === 0) {
       return <div>No data available</div>;
@@ -22,7 +22,7 @@ import MenuItem from '@mui/material/MenuItem';
       <TextField
         id="outlined-select-currency"
         select
-        value={data.length > 0 ? data[0].value : ''}
+        value={selectedClass || (data.length > 0 ? data[0].value : '')}
         sx={{margin:"0px 10px"}}
         onChange={handleChange} 
       >
@@ -36,4 +36,98 @@ import MenuItem from '@mui/material/MenuItem';
   );
 }
 
-export default DropDown;
+
+export function SubjectDropDown({ data, selectedSubject, onSubjectChange }) {
+  // Check if data is not an array or is empty
+  if (!Array.isArray(data) || data.length === 0) {
+    return <div>No data available</div>;
+  }
+
+  const handleChange = (event) => {
+    const selectedSubject = event.target.value;
+    onSubjectChange(selectedSubject);
+  };
+
+  return (
+    <TextField
+      id="outlined-select-currency"
+      select
+      value={selectedSubject || (data.length > 0 ? data[0].value : '')} // Use selectedSubject instead of data[0].value
+      sx={{ margin: "0px 10px" }}
+      onChange={handleChange}
+    >
+      {data.map((option) => (
+        <MenuItem key={option.value} value={option.value}>
+          {option.label}
+        </MenuItem>
+      ))}
+    </TextField>
+  );
+}
+
+
+export function ExamDropDown({ data}) {
+  // Check if data is not an array or is empty
+  if (!Array.isArray(data) || data.length === 0) {
+    return <div>No data available</div>;
+  }
+  const handleChange = (event) => {
+    const selectedClass = event.target.value;
+
+    // Call the onClassChange function with the selected class
+    onClassChange(selectedClass);
+  };
+
+  
+return (
+  <>
+    <TextField
+      id="outlined-select-currency"
+      select
+      value={data.length > 0 ? data[0].value : ''}
+      sx={{margin:"0px 10px"}}
+      onChange={handleChange} 
+    >
+      {data.map((option) => (
+        <MenuItem  sx={{position:"relative",zIndex:"222"}}key={option.value} value={option.value}>
+          {option.label}
+        </MenuItem>
+      ))}
+    </TextField>
+  </>
+);
+}
+
+
+
+export function TermDropDown({ data}) {
+  // Check if data is not an array or is empty
+  if (!Array.isArray(data) || data.length === 0) {
+    return <div>No data available</div>;
+  }
+  const handleChange = (event) => {
+    const selectedClass = event.target.value;
+
+    // Call the onClassChange function with the selected class
+    onClassChange(selectedClass);
+  };
+
+  
+return (
+  <>
+    <TextField
+      id="outlined-select-currency"
+      select
+      value={data.length > 0 ? data[0].value : ''}
+      sx={{margin:"0px 10px"}}
+      onChange={handleChange} 
+    >
+      {data.map((option) => (
+        <MenuItem  sx={{position:"relative",zIndex:"222"}}key={option.value} value={option.value}>
+          {option.label}
+        </MenuItem>
+      ))}
+    </TextField>
+  </>
+);
+}

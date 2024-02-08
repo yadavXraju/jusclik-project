@@ -8,48 +8,49 @@ export default function NumericTextField({ rowIndex, cellIndex, admissionNo, han
     const inputValue = event.target.value;
     const regex = /^[0-9]*$/; // Regular expression to match only numbers
 
-    if (!regex.test(inputValue) && inputValue.length > 0 ) {
+    if (!regex.test(inputValue)) {
+      event.preventDefault(); // Prevent typing non-numeric characters
       setError(true); // Set error state to true if input contains non-numeric characters
     } else {
-      setError(false); // Reset error state if input is valid
+      // Check if the entered marks exceed the total marks
+      if (parseInt(inputValue) > 20) {
+        event.preventDefault(); // Prevent typing marks exceeding total marks
+        setError(true); // Set error state to true
+        alert(`Enter marks can not be greater than the marks of the subject `)
+      } else {
+        setError(false); // Reset error state if input is valid
+      }
     }
-
-    // Call the parent handler regardless of the input to handle other keypress events
     handleTextFieldKeyPress(event, rowIndex, cellIndex);
-  };
-
-  // Inline CSS for shaking animation
-  const shakeStyle = `
-    @keyframes shake {
-      0% { transform: translateX(0); }
-      10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
-      20%, 40%, 60%, 80%, 100% { transform: translateX(5px); }
-    }
-
-    .shake {
-      animation: shake 0.2s; /* Decrease animation duration */
-    }
-  `;
-
+  }
   return (
-    <>
-      {/* Add style tag with CSS for shake animation */}
-      <style>{shakeStyle}</style>
-      <TextField
-        fullWidth
-        variant="outlined"
-        inputProps={{ id: `textfield-${rowIndex}-${cellIndex}-${admissionNo}` }}
-        onKeyDown={handleKeyPress}
-        error={error} // Apply error state to change border color to red
-        sx={{
-          width: "50px",
-          textAlign: "center",
-          '& .MuiOutlinedInput-root': {
-            borderColor: error ? 'red' : '', // Change border color to red if there's an error
-          },
-        }}
-        className={error ? 'shake' : ''} // Add shake class if there's an error
-      />
-    </>
+    <TextField
+      fullWidth
+      variant="outlined"
+      inputProps={{ id: `textfield-${rowIndex}-${cellIndex}-${admissionNo}` }}
+      onKeyDown={handleKeyPress}
+      onInput={(event) => {
+        const userInput = event.target.value;
+        const numericRegex = /^[0-9]*$/; // Regular expression to match only numeric characters
+    
+        // Check if the input matches the numeric regex pattern
+        if (!numericRegex.test(userInput)) {
+          // If input doesn't match, remove non-numeric characters
+          const numericValue = userInput.replace(/[^0-9]/g, '');
+          event.target.value = numericValue; // Update the input value
+          event.target.style.border = '1px solid red'; // Change border color to red
+        } else {
+          event.target.style.border = ''; // Reset border color
+        }
+      }}
+      error={error} // Apply error state to change border color to red
+      sx={{
+        width: "50px",
+        textAlign: "center",
+        '& .MuiOutlinedInput-root': {
+          borderColor: error ? 'red' : '', // Change border color to red if there's an error
+        },
+      }}
+    />
   );
-}
+    }
