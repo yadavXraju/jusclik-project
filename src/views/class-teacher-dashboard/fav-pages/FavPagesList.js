@@ -2,14 +2,14 @@ export const FavPagesList = [
     {
       id :'attendance-entry',
       title : 'Attendance',
-      url:'/attendance',
+      url:'/parent/attendance',
       btnText : 'Click Here'
     },
 
     {
         id :2,
         title : 'Assignments',
-        url:'/assignments',
+        url:'/parent/assignments',
         btnText : 'Click Here'
       },
 
@@ -17,7 +17,7 @@ export const FavPagesList = [
       {
         id :3,
         title : 'Updates',
-        url:'/updates',
+        url:'/parent/updates',
         btnText : 'Click Here'
       },
 
@@ -26,7 +26,7 @@ export const FavPagesList = [
       {
         id :4,
         title : 'Timetable',
-        url:'/timetable',
+        url:'/parent/timetable',
         btnText : 'Click Here'
       },
 
@@ -34,7 +34,7 @@ export const FavPagesList = [
       {
         id :5,
         title : 'Performance',
-        url:'/performance',
+        url:'/parent/performance',
         btnText : 'Click Here'
       },
 
@@ -42,14 +42,14 @@ export const FavPagesList = [
       {
         id :6,
         title : 'School Fee',
-        url:'/school-fee',
+        url:'/parent/school-fee',
         btnText : 'Click Here'
       },
 
       {
         id :7,
         title : 'Online Assessment',
-        url:'/digital-learning/online-assessment',
+        url:'/parent/digital-learning/online-assessment',
         btnText : 'Click Here'
       },
 
@@ -57,7 +57,7 @@ export const FavPagesList = [
       {
         id :8,
         title : 'Online Class',
-        url:'/digital-learning/online-class',
+        url:'/parent/digital-learning/online-class',
         btnText : 'Click Here'
       },
 
@@ -65,7 +65,7 @@ export const FavPagesList = [
       {
         id :9,
         title : 'Contact List',
-        url:'/communication/contact-list',
+        url:'/parent/communication/contact-list',
         btnText : 'Click Here'
       },
 
@@ -73,14 +73,14 @@ export const FavPagesList = [
       {
         id :10,
         title : 'Inbox',
-        url:'/inbox',
+        url:'/parent/inbox',
         btnText : 'Click Here'
       },
 
       {
         id :11,
         title : 'Item Request Gate Pass',
-        url:'/item-request-gate-pass',
+        url:'/parent/item-request-gate-pass',
         btnText : 'Click Here'
       },
 
@@ -88,7 +88,7 @@ export const FavPagesList = [
       {
         id :12,
         title : 'Resources',
-        url:'/resources',
+        url:'/parent/resources',
         btnText : 'Click Here'
       },
 
@@ -97,7 +97,7 @@ export const FavPagesList = [
       {
         id :13,
         title : 'Photo Gallery',
-        url:'/photo-gallery',
+        url:'/parent/photo-gallery',
         btnText : 'Click Here'
       },
 

@@ -16,7 +16,7 @@ import { useState } from 'react';
 import TextField from '@mui/material/TextField';
 import { Label } from 'reactstrap';
 import Checkbox from '@mui/material/Checkbox';
-import sidebarMenu from 'menu-items/sidebar-menu';
+import sidebarMenu from 'menu-items/parentMenus';
 
 
 
