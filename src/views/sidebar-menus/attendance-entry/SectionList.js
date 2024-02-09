@@ -1,7 +1,7 @@
 export const SectionList = [
-    { id: 'A', value:'A', label: 'Section A' },
-    { id: 'B', value:'B', label: 'Section B' },
-    { id: 'C', value:'C', label: 'Section C' },
+    { id: 'A', value:'A', label: 'A', section:'A' },
+    { id: 'B', value:'B', label: 'B', section:'B' },
+    { id: 'C', value:'C', label: 'C', section:'C' },
     // Add more sections as needed
   ];
   
