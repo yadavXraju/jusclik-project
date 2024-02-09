@@ -22,7 +22,7 @@ const teacherMenu = {
                 id: 'attendance-entry',
                  title: 'Attendance',
                  type: 'item',
-                 url: '/attendance-entry',
+                 url: '/class-teacher/attendance-entry',
                  icon: CalendarMonthTwoToneIcon,
                  breadcrumbs: false
                },
@@ -31,7 +31,7 @@ const teacherMenu = {
                  id: 'marks-entry-panel',
                  title: 'Marks',
                  type: 'item',
-                 url: '/marks-entry-panel',
+                 url: '/class-teacher/marks-entry-panel',
                  icon:  DriveFileRenameOutlineTwoToneIcon,
                  breadcrumbs: false
                },
@@ -40,7 +40,7 @@ const teacherMenu = {
                  id: 'time-table-entry',
                  title: 'Timetable',
                  type: 'item',
-                 url: '/time-table-entry',
+                 url: '/class-teacher/time-table-entry',
                  icon: AlarmTwoToneIcon,
                  breadcrumbs: false
                },
@@ -49,7 +49,7 @@ const teacherMenu = {
                  id: 'student-allocation',
                  title: 'Student Allocation',
                  type: 'item',
-                 url: '/student-allocation',
+                 url: '/class-teacher/student-allocation',
                  icon:  CoPresentTwoToneIcon,
                  breadcrumbs: false
                },
@@ -58,7 +58,7 @@ const teacherMenu = {
                  id: 'student-homework-upload',
                  title: 'Homework',
                  type: 'item',
-                 url: '/student-homework-upload',
+                 url: '/class-teacher/student-homework-upload',
                  icon: LibraryBooksTwoToneIcon,
                  breadcrumbs: false
                },
@@ -67,7 +67,7 @@ const teacherMenu = {
                  id: 'circular-upload',
                  title: 'Circular',
                  type: 'item',
-                 url: '/circular-upload',
+                 url: '/class-teacher/circular-upload',
                  icon: DraftsTwoToneIcon,
                  breadcrumbs: false
               },
@@ -76,7 +76,7 @@ const teacherMenu = {
                 id: 'teacher-inbox',
                 title: 'Inbox',
                 type: 'item',
-                url: '/inbox',
+                url: '/class-teacher/inbox',
                 icon: MarkUnreadChatAltTwoToneIcon,
                 breadcrumbs: false
             },
@@ -85,7 +85,7 @@ const teacherMenu = {
                 id: 'biometric-details-or-attendance-details',
                 title: 'Biometric Details or Attendance Details',
                 type: 'item',
-                url: '/biometric-details',
+                url: '/class-teacher/biometric-details',
                 icon:    FingerprintTwoToneIcon,
                 breadcrumbs: false
             },
@@ -94,7 +94,7 @@ const teacherMenu = {
                 id: 'leave-application',
                 title: 'Leave Application',
                 type: 'item',
-                url: '/leave-application',
+                url: '/class-teacher/leave-application',
                 icon:  DocumentScannerTwoToneIcon,
                 breadcrumbs: false
              },
@@ -102,7 +102,7 @@ const teacherMenu = {
                  id: 'api-test',
                  title: 'API Test',
                  type: 'item',
-                 url: '/apitest',
+                 url: '/class-teacher/apitest',
                  icon:   CameraAltTwoToneIcon,
                  breadcrumbs: false
                },

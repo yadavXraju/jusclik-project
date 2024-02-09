@@ -55,7 +55,7 @@ const parentDashboard = {
       id: 'default',
       title: 'Dashboard',
       type: 'item',
-      url: 'parent-dashboard',
+      url: 'parent/dashboard',
       icon:HomeTwoToneIcon ,
       breadcrumbs: false
     },

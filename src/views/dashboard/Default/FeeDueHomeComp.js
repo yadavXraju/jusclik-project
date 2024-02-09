@@ -118,7 +118,7 @@ const DueFee = ({ isLoading }) => {
                       }}
                       aria-controls="menu-earning-card"
                       aria-haspopup="true"  
-                      onClick={() => navigate('/school-fee')}   
+                      onClick={() => navigate('/parent/school-fee')}   
                     >
                       <ArrowForwardTwoToneIcon fontSize="inherit" sx={{color:'#fff'}} />
                     </Avatar>           
