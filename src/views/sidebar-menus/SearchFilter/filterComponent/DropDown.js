@@ -21,6 +21,7 @@ import MenuItem from '@mui/material/MenuItem';
     <>
       <TextField
         id="outlined-select-currency"
+        label="class"
         select
         value={selectedClass || (data.length > 0 ? data[0].value : '')}
         sx={{margin:"0px 10px"}}
@@ -51,8 +52,9 @@ export function SubjectDropDown({ data, selectedSubject, onSubjectChange }) {
   return (
     <TextField
       id="outlined-select-currency"
+      label="Subject"
       select
-      value={selectedSubject || (data.length > 0 ? data[0].value : '')} // Use selectedSubject instead of data[0].value
+      value={selectedSubject ? selectedSubject.value : '0'} // Use selectedSubject.value instead of data[0].value
       sx={{ margin: "0px 10px" }}
       onChange={handleChange}
     >
@@ -66,16 +68,16 @@ export function SubjectDropDown({ data, selectedSubject, onSubjectChange }) {
 }
 
 
-export function ExamDropDown({ data}) {
+export function ExamDropDown({ data, onExamChange,selectedExam}) {
   // Check if data is not an array or is empty
   if (!Array.isArray(data) || data.length === 0) {
     return <div>No data available</div>;
   }
   const handleChange = (event) => {
-    const selectedClass = event.target.value;
+    const selectedExam = event.target.value;
 
     // Call the onClassChange function with the selected class
-    onClassChange(selectedClass);
+    onExamChange(selectedExam);
   };
 
   
@@ -84,7 +86,8 @@ return (
     <TextField
       id="outlined-select-currency"
       select
-      value={data.length > 0 ? data[0].value : ''}
+      label="Exam"
+      value={selectedExam || (data.length > 0 ? data[0].value : '')}
       sx={{margin:"0px 10px"}}
       onChange={handleChange} 
     >
@@ -100,34 +103,36 @@ return (
 
 
 
-export function TermDropDown({ data}) {
+export function TermDropDown({ data,  onTermChange, selectedTerm }) {
   // Check if data is not an array or is empty
   if (!Array.isArray(data) || data.length === 0) {
     return <div>No data available</div>;
   }
+
   const handleChange = (event) => {
-    const selectedClass = event.target.value;
+    const selectedTerm = event.target.value;
 
     // Call the onClassChange function with the selected class
-    onClassChange(selectedClass);
+    onTermChange(selectedTerm);
   };
 
-  
-return (
-  <>
-    <TextField
-      id="outlined-select-currency"
-      select
-      value={data.length > 0 ? data[0].value : ''}
-      sx={{margin:"0px 10px"}}
-      onChange={handleChange} 
-    >
-      {data.map((option) => (
-        <MenuItem  sx={{position:"relative",zIndex:"222"}}key={option.value} value={option.value}>
-          {option.label}
-        </MenuItem>
-      ))}
-    </TextField>
-  </>
-);
+  return (
+    <>
+      <TextField
+        id="outlined-select-term"
+        select
+        label="Term"
+        value={selectedTerm || (data.length > 0 ? data[0].value : '')}
+        sx={{ margin: "0px 10px" }}
+        onChange={handleChange}
+      >
+        {data.map((option) => (
+          <MenuItem key={option.value} value={option.value}>
+            {option.label}
+          </MenuItem>
+        ))}
+      </TextField>
+    </>
+  );
 }
+

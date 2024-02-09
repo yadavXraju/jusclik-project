@@ -57,10 +57,13 @@ const useStyles = makeStyles((theme) => ({
 
 
 export default function MarksEntryPanel() {
-  const [selectedClass, setSelectedClass] = useState('');
+  const [selectedClass, setSelectedClass] = useState('1');
   const [selectedSubject, setSelectedSubject] = useState(null); // State to keep track of selected subject
   const [students, setStudents] = useState([]);
   const [isVerticalSwitchOn, setIsVerticalSwitchOn] = useState(true);
+  const [selectedTerm, setSelectedTerm] = useState('1'); // State to keep track of selected term
+  const [selectedExam, setSelectedExam] = useState('1'); 
+  
   const theme = useTheme();
   const classes = useStyles(theme);
 
@@ -72,12 +75,21 @@ export default function MarksEntryPanel() {
     setIsVerticalSwitchOn(isVertical);
   };
 
-  const handleSubjectChange = (selectedSubject) => {
-    setSelectedSubject(selectedSubject);
-    console.log(setSelectedSubject);
+  const handleSubjectChange = (selectedSubjectId) => {
+    // Find the subject object corresponding to the selected ID
+    const selectedSubjectData = subject.find(subjectData => subjectData.value === selectedSubjectId);
+    setSelectedSubject(selectedSubjectData);
   };
   
+  const handleTermChange = (selectedTerm) => {
+    setSelectedTerm(selectedTerm);
+   
+  };
 
+  const handleExamChange = (selectedExam) => {
+    setSelectedExam(selectedExam);
+   
+  };
 
   useEffect(() => {
     let selectedStudentData = [];
@@ -87,7 +99,11 @@ export default function MarksEntryPanel() {
       selectedStudentData = StudentData2;
     } else if (selectedClass === '3') {
       selectedStudentData = StudentData3;
+    }else if (selectedClass === '1') { // Add condition for class '1'
+      selectedStudentData = StudentData; // Set selectedStudentData to StudentData
     }
+
+  
     setStudents(selectedStudentData);
   }, [selectedClass]);
 
@@ -141,7 +157,12 @@ export default function MarksEntryPanel() {
       <UpperTab onClassChange={handleClassChange}
         selectedClass={selectedClass}
         onSubjectChange={handleSubjectChange} // Pass the handleSubjectChange function
-        selectedSubject={selectedSubject} />
+        selectedSubject={selectedSubject}
+        onTermChange={handleTermChange} 
+        selectedTerm={selectedTerm}
+        onExamChange={handleExamChange} 
+        selectedExam={selectedExam}
+        />
       <MiddleBox
         isVerticalSwitchOn={isVerticalSwitchOn}
         onSwitchChange={handleSwitchChange}
@@ -158,12 +179,14 @@ export default function MarksEntryPanel() {
     <TableCell className={classes.fixedIstColumn2} sx={{ top: '0',textAlign:"center"  }}>
       Adm.no
     </TableCell>
-    {selectedSubject !== null && (
-      <TableCell align="left"  sx={{padding:"0px"}}>
-        {selectedSubject.label}<br/>
-        <Typography sx={{textAlign:"center"}}>({selectedSubject.tm})</Typography>
+    {selectedSubject && (
+    <React.Fragment>
+      <TableCell sx={{textAlign:"center"}}>
+      {selectedSubject.label}<br/>
+      <Typography sx={{textAlign:"center"}}>({selectedSubject.tm})</Typography>
       </TableCell>
-    )}
+    </React.Fragment>
+  )}
    {selectedSubject === null && subject.slice(1).map((subjectData, index) => (
   // Skip rendering the first subject
   

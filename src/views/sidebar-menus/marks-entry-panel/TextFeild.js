@@ -23,6 +23,7 @@ export default function NumericTextField({ rowIndex, cellIndex, admissionNo, han
     }
     handleTextFieldKeyPress(event, rowIndex, cellIndex);
   }
+
   return (
     <TextField
       fullWidth
@@ -46,11 +47,15 @@ export default function NumericTextField({ rowIndex, cellIndex, admissionNo, han
       error={error} // Apply error state to change border color to red
       sx={{
         width: "50px",
-        textAlign: "center",
+        textAlign: "center", // Align text to the center
+        '& .MuiInputBase-input': {
+          textAlign: 'center', // Center the text within the input field
+          cursor: 'text' // Ensure cursor appears in the center
+        },
         '& .MuiOutlinedInput-root': {
           borderColor: error ? 'red' : '', // Change border color to red if there's an error
         },
       }}
     />
   );
-    }
+}

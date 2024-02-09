@@ -6,7 +6,7 @@ import {Term }from './dropdown data/TermData'
 import { subject } from './dropdown data/SubjectData'
 import { EXAM } from './dropdown data/ExamData'
 import SearchTwoToneIcon from '@mui/icons-material/SearchTwoTone';
-function UpperTab( { onClassChange,selectedSubject, onSubjectChange,selectedClass}) {
+function UpperTab( { onClassChange,selectedSubject, onSubjectChange,selectedClass, selectedTerm,onTermChange,selectedExam,onExamChange}) {
 
 
   return (
@@ -19,8 +19,15 @@ function UpperTab( { onClassChange,selectedSubject, onSubjectChange,selectedClas
         onClassChange={onClassChange}
         selectedClass={selectedClass
         } sx={{ margin: '10px' }} />
-        <TermDropDown data={Term}     />
-        <ExamDropDown data={EXAM}/>
+          <TermDropDown // Use the adjusted TermDropDown component
+          data={Term}
+          onTermChange= {onTermChange}
+          selectedTerm={ selectedTerm}
+        />
+        <ExamDropDown data={EXAM}
+        onExamChange= {onExamChange}
+        selectedExam={ selectedExam}
+        />
         <SubjectDropDown 
   data={subject} 
   selectedSubject={selectedSubject} // Pass the selectedSubject
