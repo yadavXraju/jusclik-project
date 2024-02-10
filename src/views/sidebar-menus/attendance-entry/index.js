@@ -77,7 +77,7 @@ export default function AttendanceEntry() {
     const absentCount = countSelectedStatus('A');
     const totalStudents = filteredStudentList.length;
     const absentPercentage = Math.floor((absentCount / totalStudents) * 100);
-    setShowWarningBox(absentPercentage > 50);
+    setShowWarningBox(absentPercentage >= 50);
   };
   
 
@@ -118,19 +118,23 @@ export default function AttendanceEntry() {
   const handleActionsConfirm = (selectedAction) => {
     if (selectedAction === 'mark all holiday') {
       updateAvatars('H');
+      setShowWarningBox(false); // Hide warning box when marking all holidays
     } else if (selectedAction === 'mark all present') {
       updateAvatars('P');
+      setShowWarningBox(false); // Hide warning box when marking all presents
     } else if (selectedAction === 'mark all absent') {
       updateAvatars('A');
+      setShowWarningBox(true); // Show warning box when marking all absents
     } else {
       // Handle any other actions or provide a default behavior
     }
-
+  
     // Reset the global action
     setGlobalAttendanceAction('');
     // Close the confirmation dialog
     setConfirmationDialogOpen(false);
   };
+  
 
   return (
     <Box>

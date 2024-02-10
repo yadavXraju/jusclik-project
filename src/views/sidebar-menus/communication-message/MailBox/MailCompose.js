@@ -143,7 +143,7 @@ const MailCompose = ({ open, onClose, onSend, emailData }) => {
   };
 
   return (
-    <Dialog open={open} onClose={onClose} maxWidth="md" fullWidth>
+    <Dialog open={open} onClose={onClose} maxWidth="md" fullWidth>  
       <Box>
         <DialogTitle style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <div>New Message</div>

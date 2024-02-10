@@ -116,7 +116,7 @@ const AttendanceHomeComp = ({ isLoading }) => {
                       className='themeColor'
                       aria-controls="menu-earning-card"
                       aria-haspopup="true"  
-                      onClick={() => navigate('/attendance')}   
+                      onClick={() => navigate('/parent/attendance')}   
                     >
                       <ArrowForwardTwoToneIcon fontSize="inherit" sx={{color:'#fff'}} />
                     </Avatar>           
