@@ -31,9 +31,10 @@ const TextEditor = ({ value, onChange }) => {
   };
 
   return (
-    <Box className={classes.editorContainer}>
+    <Box className={classes.editorContainer} >
+  
       <ReactQuill
-        style={{ height: isMobile ? '150px' : '200px' }}
+        style={{ height: isMobile ? '150px' : '200px', paddingLeft:'11px', paddingRight:'3px' }}
         value={value}
         onChange={handleEditorChange}
         theme="snow"
