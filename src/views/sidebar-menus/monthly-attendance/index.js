@@ -8,27 +8,27 @@ import {
   Divider,
   Typography,
   ListItem,
-  ListItemAvatar,
   ListItemText,
-  Stack,
   Paper,
   Button,
   Grid,
   Badge,
-  Avatar
+  Avatar,
+  ListItemAvatar,
+  Stack
 } from '@mui/material';
+import dayjs from 'dayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import CalendarMonthTwoToneIcon from '@mui/icons-material/CalendarMonthTwoTone';
 import SearchTwoToneIcon from '@mui/icons-material/SearchTwoTone';
 import AvtarImg from '../../../assets/images/avatar.png';
-import { ClassList } from './ClassList';
-import { SectionList } from './SectionList';
-import { StudentList } from './StudentList';
-import TakeAttendance from './TakeAttendance';
-import WarningBox from './WarningBox';
+import { ClassList } from '../attendance-entry/ClassList';
+import { SectionList } from '../attendance-entry/SectionList';
+import { StudentList } from '../attendance-entry/StudentList';
+import AttendanceActions from './AttendanceActions';
+import WarningBox from '../attendance-entry/WarningBox';
 import { styled } from '@mui/material/styles';
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -54,6 +54,34 @@ export default function AttendanceEntry() {
   const [globalAttendanceAction, setGlobalAttendanceAction] = useState('');
   const [showWarningBox, setShowWarningBox] = useState(false);
   const [filteredSections, setFilteredSections] = useState([]);
+  const [selectedMonth, setSelectedMonth] = useState(dayjs());
+  const [dates, setDates] = useState([]); // Declare the dates state variable
+
+  const handleMonthChange = (date) => {
+    setSelectedMonth(date);
+  };
+
+  const formatDate = (date) => {
+    return dayjs(date).format('DD');
+  };
+
+  // Update generateDateList function to set the dates state
+  const generateDateList = () => {
+    const startDate = selectedMonth.clone().startOf('month');
+    const endDate = selectedMonth.clone().endOf('month');
+    const datesArray = [];
+    let currentDate = startDate;
+    while (currentDate.isBefore(endDate) || currentDate.isSame(endDate, 'day')) {
+      datesArray.push(dayjs(currentDate)); // Convert currentDate to dayjs object before pushing
+      currentDate = currentDate.add(1, 'day');
+    }
+    setDates(datesArray); // Set the state with the array of dates
+  };
+
+  // Call generateDateList function whenever the selectedMonth changes
+  useEffect(() => {
+    generateDateList();
+  }, [selectedMonth]);
 
   // Initialize filteredStudentList with the original StudentList when the component mounts, sorted alphabetically by student name
   useEffect(() => {
@@ -151,65 +179,77 @@ export default function AttendanceEntry() {
     setSelectSection(''); // Reset the selected section when the class changes
   }, [selectClass]);
 
+  const calculateHolidayCount = () => {
+    // Return the total number of days in the selected month
+    return dates.length;
+  };
+
   return (
     <Box>
-      {/* Search filter box */}
-      <Paper sx={{ borderRadius: '30px' }}>
-        <Box sx={{ minWidth: 250, display: 'flex', alignItems: 'baseline', p: 2 }}>
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DemoContainer components={['DatePicker']}>
-              <DatePicker label="Select Date" slots={{ openPickerIcon: CalendarMonthTwoToneIcon }} />
-            </DemoContainer>
-          </LocalizationProvider>
-          <FormControl sx={{ m: 1, minWidth: 250 }}>
-            <InputLabel id="class-select-label">Select Class</InputLabel>
-            <Select
-              name="class"
-              labelId="class-select-label"
-              id="class-select"
-              value={selectClass}
-              label="Select Class"
-              onChange={handleChange}
+      <Box>
+        {/* Search filter box */}
+        <Paper sx={{ borderRadius: '30px' }}>
+          <Box sx={{ minWidth: 250, display: 'flex', alignItems: 'baseline', p: 2 }}>
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <DatePicker
+                label="Select Month"
+                openTo="month"
+                views={['month', 'year']}
+                value={selectedMonth}
+                onChange={handleMonthChange}
+                slots={{ openPickerIcon: CalendarMonthTwoToneIcon }}
+              />
+            </LocalizationProvider>
+            <FormControl sx={{ m: 1, minWidth: 250 }}>
+              <InputLabel id="class-select-label">Select Class</InputLabel>
+              <Select
+                name="class"
+                labelId="class-select-label"
+                id="class-select"
+                value={selectClass}
+                label="Select Class"
+                onChange={handleChange}
+              >
+                {ClassList.map((classItem) => (
+                  <MenuItem key={classItem.value} value={classItem.value}>
+                    {classItem.class}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+
+            <FormControl sx={{ minWidth: 250 }}>
+              <InputLabel id="section-select-label">Select Section</InputLabel>
+              <Select
+                name="section"
+                labelId="section-select-label"
+                id="section-select"
+                value={selectSection}
+                label="Select Section"
+                onChange={handleChange}
+              >
+                {/* Display sections based on the selected class */}
+                {(selectClass && filteredSections.length > 0 ? filteredSections : SectionList).map((sectionItem) => (
+                  <MenuItem key={sectionItem.value} value={sectionItem.value}>
+                    {sectionItem.section}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+
+            <Button
+              variant="contained"
+              startIcon={<SearchTwoToneIcon />}
+              sx={{ height: '50px', borderRadius: '12px', margin: '8px' }}
+              onClick={handleSearchClick}
             >
-              {ClassList.map((classItem) => (
-                <MenuItem key={classItem.value} value={classItem.value}>
-                  {classItem.class}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
+              Search
+            </Button>
+          </Box>
+        </Paper>
+      </Box>
 
-          <FormControl sx={{ minWidth: 250 }}>
-            <InputLabel id="section-select-label">Select Section</InputLabel>
-            <Select
-              name="section"
-              labelId="section-select-label"
-              id="section-select"
-              value={selectSection}
-              label="Select Section"
-              onChange={handleChange}
-            >
-              {/* Display sections based on the selected class */}
-              {(selectClass && filteredSections.length > 0 ? filteredSections : SectionList).map((sectionItem) => (
-                <MenuItem key={sectionItem.value} value={sectionItem.value}>
-                  {sectionItem.section}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-
-          <Button
-            variant="contained"
-            startIcon={<SearchTwoToneIcon />}
-            sx={{ height: '50px', borderRadius: '12px', margin: '8px' }}
-            onClick={handleSearchClick}
-          >
-            Search
-          </Button>
-        </Box>
-      </Paper>
-
-      {/* Student List */}
+      {/* Legends */}
       <Box sx={{ mt: 1 }}>
         <Paper sx={{ mb: 1, display: 'flex' }}>
           <Grid
@@ -308,7 +348,7 @@ export default function AttendanceEntry() {
           </Grid>
           <Grid>
             <Item sx={{ marginRight: '40px' }}>
-              <TakeAttendance
+              <AttendanceActions
                 onConfirm={handleActionsConfirm}
                 open={isConfirmationDialogOpen}
                 onClose={() => setConfirmationDialogOpen(false)}
@@ -317,94 +357,106 @@ export default function AttendanceEntry() {
             </Item>
           </Grid>
         </Paper>
+      </Box>
+
+      {/* Warning Box */}
+      <Box sx={{ mt: 1 }}>
         <WarningBox
           showWarning={showWarningBox}
           onClose={() => setShowWarningBox(false)}
           totalStudents={filteredStudentList.length}
           absentCount={countSelectedStatus('A')}
         />
+      </Box>
 
-        <Paper sx={{ listStyleType: 'none', p: 0 }}>
-          <ListItem sx={{ display: 'flex', alignItems: 'center', p: 2 }}>
-            <ListItemText sx={{ flex: '0 0 15%' }}>
-              <Typography variant="h4" color="text.primary">
-                Admn No.
-              </Typography>
-            </ListItemText>
-            <ListItemText sx={{ flex: '0 0 50%' }}>
-              <Typography variant="h4">Student Name</Typography>
-            </ListItemText>
-            <ListItemText sx={{ flex: '0 0 20%', justifyContent: 'center' }}>
-              <Typography variant="h4" color="text.primary">
-                Status
-              </Typography>
-            </ListItemText>
-          </ListItem>
+      {/* Student List */}
+      <Box>
+        <Paper sx={{ listStyleType: 'none' }}>
+          <Box sx={{ display: 'inlineFlex', flexDirection: 'column', gap: 1 }}>
+            {/* Box for Admn No., Student Name, and Working Days */}
+            <Box sx={{ display: 'flex', flex: '0 0 30%' }}>
+              <ListItem sx={{ display: 'flex', p: 2 }}>
+                <ListItemText>
+                  <Typography variant="h4" color="text.primary">
+                    Admn No.
+                  </Typography>
+                </ListItemText>
+                <ListItemText>
+                  <Typography variant="h4">Student Name</Typography>
+                </ListItemText>
+                <ListItemText>
+                  <Typography variant="h4" color="text.primary">
+                    Working Days
+                  </Typography>
+                </ListItemText>
+              </ListItem>
+            </Box>
+            {/* Box for Dates with horizontal overflow */}
+            <Box sx={{ flex: '0 0 70%', display: 'flex', overflowX: 'auto' }}>
+              {dates.map((date) => (
+                <ListItem key={date.format('DD-MM-YYYY')} sx={{ display: 'block' }}>
+                  <ListItemText>
+                    <Typography variant="h4" color="text.primary">
+                      {formatDate(date)}
+                    </Typography>
+                  </ListItemText>
+                  <ListItemText>
+                    <Typography variant="h4" color="text.primary">
+                      {date.format('ddd')}
+                    </Typography>
+                  </ListItemText>
+                </ListItem>
+              ))}
+            </Box>
+          </Box>
+
           <Divider />
 
           {filteredStudentList.map((student) => (
             <React.Fragment key={student.id}>
               <ListItem sx={{ display: 'flex', alignItems: 'center', p: 2 }}>
-                <ListItemText sx={{ flex: '0 0 15%' }}>
-                  <Typography variant="h4" color="text.primary">
-                    {student.admnNo}
-                  </Typography>
-                </ListItemText>
+                <Box sx={{ display: 'flex', flex: '0 0 30%' }}>
+                  <ListItemText sx={{flex: '0 0 20%' }}>
+                    <Typography variant="h4" color="text.primary">
+                      {student.admnNo}
+                    </Typography>
+                  </ListItemText>
 
-                <ListItemAvatar sx={{ flex: '0 0 3%' }}>
-                  <Avatar src={AvtarImg} sx={{ width: 50, height: 50 }} />
-                </ListItemAvatar>
+                  <ListItemAvatar >
+                    <Avatar src={AvtarImg} sx={{ width: 40, height: 40 }} />
+                  </ListItemAvatar>
 
-                <ListItemText sx={{ paddingLeft: '10px', flex: '0 0 32%' }}>
-                  <Typography variant="h4">{student.name}</Typography>
-                </ListItemText>
+                  <ListItemText sx={{flex: '0 0 30%' }}>
+                    <Typography variant="h4">{student.name}</Typography>
+                  </ListItemText>
 
-                <ListItemText sx={{ flex: '0 0 40%' }}>
-                  <Typography variant="h4" color="text.secondary">
-                    <Stack direction="row" spacing={2} sx={{ flex: '0 0 20%', justifyContent: 'center' }}>
-                      <Avatar
-                        sx={{
-                          bgcolor: selectedAvatars[student.id] === 'H' ? '#7dceeb' : '#f1f1f1',
-                          cursor: 'pointer',
-                          color: '#000000'
-                        }}
-                        onClick={() => handleAvatarClick('H', student.id)}
-                      >
-                        H
-                      </Avatar>
-                      <Avatar
-                        sx={{
-                          bgcolor: selectedAvatars[student.id] === 'P' ? '#7bc67b' : '#f1f1f1',
-                          cursor: 'pointer',
-                          color: '#000000'
-                        }}
-                        onClick={() => handleAvatarClick('P', student.id)}
-                      >
-                        P
-                      </Avatar>
-                      <Avatar
-                        sx={{
-                          bgcolor: selectedAvatars[student.id] === 'A' ? '#e2526b' : '#f1f1f1',
-                          cursor: 'pointer',
-                          color: '#000000'
-                        }}
-                        onClick={() => handleAvatarClick('A', student.id)}
-                      >
-                        A
-                      </Avatar>
-                      <Avatar
-                        sx={{
-                          bgcolor: selectedAvatars[student.id] === 'L' ? '#eeb058' : '#f1f1f1',
-                          cursor: 'pointer',
-                          color: '#000000'
-                        }}
-                        onClick={() => handleAvatarClick('L', student.id)}
-                      >
-                        L
-                      </Avatar>
-                    </Stack>
-                  </Typography>
-                </ListItemText>
+                  <ListItemText>
+                    <Typography variant="h4">0P+3A</Typography>
+                  </ListItemText>
+                </Box>
+                <Box >
+                  <ListItemText sx={{ overflowX: 'auto' }}>
+                    <Typography variant="h4" color="text.secondary">
+                      <Stack direction="row" spacing={2}>
+                        {[...Array(calculateHolidayCount(student.id))].map((_, index) => (
+                          <Avatar
+                            key={index}
+                            sx={{
+                              bgcolor: '#7dceeb',
+                              width: 30,
+                              height: 30,
+                              cursor: 'pointer',
+                              color: '#000000'
+                            }}
+                            onClick={() => handleAvatarClick('H', student.id)}
+                          >
+                            H
+                          </Avatar>
+                        ))}
+                      </Stack>
+                    </Typography>
+                  </ListItemText>
+                </Box>
               </ListItem>
               <Divider />
             </React.Fragment>
