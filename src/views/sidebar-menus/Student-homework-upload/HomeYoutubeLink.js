@@ -16,9 +16,8 @@ function HomeYoutubeLink() {
 
   const handleAddLink = () => {
     if (currentLink.trim() !== '') {
-      setYoutubeLinks([...youtubeLinks, { link: currentLink, description }]);
+      setYoutubeLinks([...youtubeLinks, { link: currentLink }]);
       setCurrentLink('');
-      setDescription('');
     }
   };
 
@@ -35,13 +34,14 @@ function HomeYoutubeLink() {
         fullWidth
         variant="outlined"
         margin="normal"
+    
       />
       <Button
         variant="contained"
         color="primary"
         onClick={handleAddLink}
       >
-        Add
+        Add More Link
       </Button>
       <div>
         {youtubeLinks.map((linkObj, index) => (
@@ -49,7 +49,6 @@ function HomeYoutubeLink() {
             <IconButton onClick={() => handleDeleteLink(index)}>
               <CloseIcon />
             </IconButton>
-            <p>{linkObj.description}</p>
             <iframe
               width="560"
               height="315"

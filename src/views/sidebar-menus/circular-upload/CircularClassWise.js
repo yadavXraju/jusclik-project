@@ -5,7 +5,7 @@ import MoreVertOutlinedIcon from '@mui/icons-material/MoreVertOutlined';
 import NoteAddTwoToneIcon from '@mui/icons-material/NoteAddTwoTone';
 import AssignmentTwoToneIcon from '@mui/icons-material/AssignmentTwoTone';
 import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
-import CircularDrawer from './CircularDrawer';
+import CircularDrawer from './CircularDrawer/CircularDrawer';
 
 export default function CircularUpload() {
   return (
@@ -52,13 +52,13 @@ export default function CircularUpload() {
             <Grid container p={3} alignItems="center">
               <Grid item xs={4} sm={3} sx={{display:'flex',alignItems:'center'}}>
                 <PictureAsPdfTwoToneIcon fontSize="large" />
-                <Typography variant="h4">ClassPresentation.PDF</Typography>
+                <Typography variant="h5">ClassPresentation.PDF</Typography>
               </Grid>
               <Grid item xs={3} sm={4}>
-                <Typography variant="h4">Maths 101|Unit-2:Linear Programming</Typography>
+                <Typography variant="h5">Maths 101|Unit-2:Linear Programming</Typography>
               </Grid>
               <Grid item xs={4} sm={3}>
-                <Typography variant="h4">04-02-2024</Typography>
+                <Typography variant="h5">04-02-2024</Typography>
               </Grid>
               <Grid item xs={2} sm={2}>
                 <PopupState variant="popover" popupId="demo-popup-popover">
@@ -95,13 +95,13 @@ export default function CircularUpload() {
             <Grid container spacing={0} p={3} alignItems="center">
               <Grid xs={4} sm={3} sx={{display:'flex',alignItems:'center'}}>
                 <NoteAddTwoToneIcon fontSize="large" />
-                <Typography variant="h4">SlideShow.PPT</Typography>
+                <Typography variant="h5">SlideShow.PPT</Typography>
               </Grid>
               <Grid item xs={4} sm={4}>
-                <Typography variant="h4">Maths 102|Unit-2:Add and Subtract</Typography>
+                <Typography variant="h5">Maths 102|Unit-2:Add and Subtract</Typography>
               </Grid>
               <Grid item xs={4} sm={3}>
-                <Typography variant="h4">07-02-2024</Typography>
+                <Typography variant="h5">07-02-2024</Typography>
               </Grid>
               <Grid item xs={2} sm={2}>
                 <PopupState variant="popover" popupId="demo-popup-popover">
@@ -138,13 +138,13 @@ export default function CircularUpload() {
             <Grid container spacing={0} p={3} alignItems="center">
               <Grid xs={4} sm={3} sx={{display:'flex',alignItems:'center'}}>
                 <AssignmentTwoToneIcon fontSize="large" />
-                <Typography variant="h4">Solving Sheets.XLS</Typography>
+                <Typography variant="h5">Solving Sheets.XLS</Typography>
               </Grid>
               <Grid item xs={4} sm={4}>
-                <Typography variant="h4">Maths 103|Unit-2:Motion and Force</Typography>
+                <Typography variant="h5">Maths 103|Unit-2:Motion and Force</Typography>
               </Grid>
               <Grid item xs={4} sm={3}>
-                <Typography variant="h4">12-02-2024</Typography>
+                <Typography variant="h5">12-02-2024</Typography>
               </Grid>
               <Grid item xs={2} sm={2}>
                 <PopupState variant="popover" popupId="demo-popup-popover">
