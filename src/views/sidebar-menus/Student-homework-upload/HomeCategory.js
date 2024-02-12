@@ -5,73 +5,90 @@ import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import Checkbox from '@mui/material/Checkbox';
 import Paper from '@mui/material/Paper';
+import Grid from '@mui/system/Unstable_Grid/Grid';
 import { StudentList } from './StudentHomeworkList';
 import subjects from './HomeStudentDatalist';
 
 export default function HomeCategory() {
   const [selectedSubject, setSelectedSubject] = React.useState('');
-  const [selectedClass, setSelectedClass] = React.useState('');
+  const [selectedClass, setSelectedClass] = React.useState([]); // Initialize as empty array
   const [students, setStudents] = React.useState([]);
   const [isStudentListVisible, setIsStudentListVisible] = React.useState(false);
 
   const handleSubjectChange = (event) => {
     const subjectValue = event.target.value;
     setSelectedSubject(subjectValue);
-    setSelectedClass(''); // Reset selected class when subject changes
+    setSelectedClass([]); // Reset selected classes when subject changes
     setIsStudentListVisible(false); // Hide student list when subject changes
     filterStudents(subjectValue, '');
   };
 
   const handleClassChange = (event) => {
-    const classValue = event.target.value;
-    setSelectedClass(classValue);
+    const classValues = event.target.value;
+    setSelectedClass(classValues);
     setIsStudentListVisible(true); // Show student list when class is selected
-    filterStudents(selectedSubject, classValue);
+    filterStudents(selectedSubject, classValues);
   };
 
-  const filterStudents = (subject, classValue) => {
+  const filterStudents = (subject, classValues) => {
     let filteredStudents = StudentList;
-    if (subject && classValue) {
-      filteredStudents = StudentList.filter((student) => student.class === classValue);
+    if (subject && classValues.length > 0) {
+      filteredStudents = StudentList.filter((student) => classValues.includes(student.class));
     }
     setStudents(filteredStudents);
   };
 
   return (
     <form onSubmit={(e) => e.preventDefault()}>
-      <FormControl sx={{ width: '100%' }}>
-        <InputLabel id="subject-select-label">Select Subject</InputLabel>
-        <Select
-          labelId="subject-select-label"
-          id="subject-select"
-          value={selectedSubject}
-          label="Select Subject"
-          onChange={handleSubjectChange}
-        >
-          {subjects.map((subjectItem) => (
-            <MenuItem key={subjectItem.value} value={subjectItem.value}>
-              {subjectItem.label}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
-      <FormControl sx={{ width: '100%', mt: 2 }}>
-        <InputLabel id="class-select-label">Select Class</InputLabel>
-        <Select
-          labelId="class-select-label"
-          id="class-select"
-          value={selectedClass}
-          label="Select Class"
-          onChange={handleClassChange}
-          disabled={!selectedSubject}
-        >
-          {(subjects.find((subject) => subject.value === selectedSubject)?.classes || []).map((classItem) => (
-            <MenuItem key={`${classItem.class}-${classItem.section}`} value={classItem.class}>
-              {`${classItem.class}-${classItem.section}`}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
+      <Grid sx={{ display: 'flex', justifyContent: 'space-around' }}>
+        <Grid item sx={{ width: '180px' }}>
+          <FormControl sx={{ width: '100%' }}>
+            <InputLabel id="subject-select-label">Select Subject</InputLabel>
+            <Select
+              labelId="subject-select-label"
+              id="subject-select"
+              value={selectedSubject}
+              label="Select Subject"
+              onChange={handleSubjectChange}
+            >
+              {subjects.map((subjectItem) => (
+                <MenuItem key={subjectItem.value} value={subjectItem.value}>
+                  {subjectItem.label}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+        </Grid>
+        <Grid sx={{ width: '180px' }}>
+          <FormControl sx={{ width: '100%' }}>
+            <InputLabel id="class-select-label">Select Class</InputLabel>
+            <Select
+              labelId="class-select-label"
+              id="class-select"
+              value={selectedClass}
+              label="Select Class"
+              onChange={handleClassChange}
+              disabled={!selectedSubject}
+              multiple
+              renderValue={(selected) => (
+                <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+                  {selected.map((classItem) => (
+                    <div key={classItem} style={{ margin: '2px', padding: '4px', backgroundColor: '#e0e0e0', borderRadius: '4px' }}>
+                      {classItem}
+                    </div>
+                  ))}
+                </div>
+              )}
+            >
+              {(subjects.find((subject) => subject.value === selectedSubject)?.classes || []).map((classItem) => (
+                <MenuItem key={`${classItem.class}-${classItem.section}`} value={classItem.class}>
+                  {`${classItem.class}-${classItem.section}`}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+        </Grid>
+      </Grid>
       {isStudentListVisible && students.length > 0 && <StudentHomeworkList students={students} />}
       {isStudentListVisible && students.length === 0 && <p>No Data Found!</p>}
     </form>

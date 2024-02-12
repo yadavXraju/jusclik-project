@@ -13,8 +13,8 @@ export default function HomeworkTemplate() {
   };
 
   return (
-    <Box sx={{  }}>
-      <FormControl fullWidth>
+    <Box sx={{ paddingLeft:'11px' }} >
+      <FormControl fullWidth >
         <InputLabel id="demo-simple-select-label">Template</InputLabel>
         <Select
           labelId="demo-simple-select-label"

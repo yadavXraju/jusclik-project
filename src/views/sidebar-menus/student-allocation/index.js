@@ -1,8 +1,11 @@
 import React from 'react'
+import MonthlyAttendance from '../monthly-attendance'
 
 const index = () => {
   return (
-    <div>Student Allocation</div>
+    <div>
+      <MonthlyAttendance/>
+    </div>
   )
 }
 

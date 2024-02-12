@@ -51,6 +51,7 @@
     "react-phone-number-input": "^3.3.9",
     "react-quill": "^2.0.0",
     "react-redux": "^8.0.2",
+    "react-remove-scroll-bar": "^2.3.4",
     "react-router": "6.3.0",
     "react-router-dom": "6.3.0",
     "react-scripts": "^5.0.1",

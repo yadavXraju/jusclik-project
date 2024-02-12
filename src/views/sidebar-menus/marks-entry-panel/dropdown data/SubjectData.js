@@ -41,18 +41,18 @@ const subject = [
       label: "Science",
       tm:20
     },
-    // {
-    //   id: 7,
-    //   value: "8",
-    //   label: "History",
-    //   tm:20
-    // },
-    // {
-    //   id: 8,
-    //   value: "9",
-    //   label: "Physics",
-    //   tm:20
-    // },
+    {
+      id: 7,
+      value: "8",
+      label: "History",
+      tm:20
+    },
+    {
+      id: 8,
+      value: "9",
+      label: "Physics",
+      tm:20
+    },
     // {
     //   id: 9,
     //   value: "10",
