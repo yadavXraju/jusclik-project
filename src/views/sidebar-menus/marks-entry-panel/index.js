@@ -6,7 +6,7 @@ import MiddleBox from './MiddleBox';
 import { StudentData, StudentData2, StudentData3 } from './dropdown data/StudentData';
 import "../../dashboard/Default/dashboard-css/Overflow.css";
 import NumericTextField from './TextFeild';
-import { subject } from './dropdown data/SubjectData';
+import { subject} from './dropdown data/SubjectData';
 
 const useStyles = makeStyles((theme) => ({
   tableContainer: {
@@ -81,6 +81,7 @@ export default function MarksEntryPanel() {
 
   const handleExamChange = (selectedExam) => {
     setSelectedExam(selectedExam);
+    
   };
 
   useEffect(() => {
@@ -154,6 +155,7 @@ export default function MarksEntryPanel() {
       <MiddleBox
         isVerticalSwitchOn={isVerticalSwitchOn}
         onSwitchChange={handleSwitchChange}
+       
       />
       <Paper sx={{ width: '100%' }}>
         <TableContainer sx={{ maxHeight: 640 }} className='scrollbar-2'>
@@ -193,6 +195,7 @@ export default function MarksEntryPanel() {
                         cellIndex={0}
                         admissionNo={row.admissionNo}
                         handleTextFieldKeyPress={handleTextFieldKeyPress}
+                        
                       />
                     </TableCell>
                   ) : (
