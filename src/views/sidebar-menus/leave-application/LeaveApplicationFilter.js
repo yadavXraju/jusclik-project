@@ -59,17 +59,18 @@ export default function LeaveTabs() {
   // =========== Filter data if Pending & Approved =========
   const filteredData =
     value === 0
-      ? leavedata
+      ? leavedata.filter((item) => item.status === 'Pending')
       : value === 1
-        ? leavedata.filter((item) => item.status === 'Pending')
-        : leavedata.filter((item) => item.status === 'Approved');
+        ? leavedata.filter((item) => item.status === 'Approved')
+        : leavedata;
 
   return (
     <Box sx={{ width: '100%', bgcolor: 'background.paper', mb: 2 }}>
       <Tabs sx={{ mb: 2 }} value={value} onChange={handleChange}>
-        <Tab label="All" />
+        
         <Tab label="Pending" />
         <Tab label="Approved" />
+        <Tab label="All" />
       </Tabs>
 
       <Box sx={{ overflowX: 'auto' }}>
