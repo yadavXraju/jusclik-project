@@ -1,15 +1,14 @@
-import React from 'react'
-import WelcomeMessage from 'views/class-teacher-dashboard/welcome-check-in-attendance/welcome-message/Welcome'
+import React from "react";
+import WelcomeMessageTemplate from "views/class-teacher-dashboard/common-section/Welcome";
 
 
 const SubjectTeacherWelcomeMessage = () => {
-  // Define the name you want to display
-  const subjectTeacherName = 'Rubi Dhiman';
-
+  const teacherDetails = {
+    TeacherName : 'Rubi Dhiman'
+  }
   return (
     <>
-      {/* Pass the new name as a prop */}
-      <WelcomeMessage teacherName={subjectTeacherName} />
+      <WelcomeMessageTemplate teacherDetails={teacherDetails}/>
     </>
   )
 }

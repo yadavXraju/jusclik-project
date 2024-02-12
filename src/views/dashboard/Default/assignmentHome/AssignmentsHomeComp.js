@@ -71,6 +71,9 @@ const AssignmentsHomeComp = () => {
   const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
   const isMobile = useMediaQuery('(max-width: 767px)');
 
+  // Sort the data array based on the 'date' property in descending order
+  const sortedData = [...data].sort((a, b) => new Date(b.date) - new Date(a.date));
+
   return (
     <Grid spacing={gridSpacing}>
       <Grid item component={Paper} lg={12} md={12} sm={12} xs={12} sx={{ p: 3, display: 'flex', flexDirection: 'column', gap: '24px' , border:'1px solid #80808026' }}>
@@ -79,10 +82,13 @@ const AssignmentsHomeComp = () => {
         </Typography>
 
              {/* getting data and slicing */}
-            {data.slice(0 , AssignmentToShow).map((item) => (
+            {sortedData.slice(0 , AssignmentToShow).map((item) => (
               <Grid container key={item.id} lg={12} sx={{ gap: '8px', borderBottom:'1px solid #80808024', paddingBottom:'10px'}}>
-                  <Grid container lg={6} sx={{gap:'8px'}}>
-                      <Grid item col={3} sx={{ display: 'flex', gap: '3px', alignItems:'center' }}   className="notchecked" >
+                {/* left */}
+                  <Grid container lg={7} sx={{gap:'8px'}}>
+                      <Grid item  sx={{ display: 'flex', flex: '0 0 10%' , gap: '3px', alignItems:'center' }}   className="notchecked" >
+
+                        {/* blank div for verticle line */}
                         <Grid
                           sx={{
                             background: completedItems.includes(item.id) ? theme => theme.palette.success.main : theme => theme.palette.primary.main,
@@ -90,7 +96,9 @@ const AssignmentsHomeComp = () => {
                             height: '100%',
                             borderRadius: '3px'
                           }}
-                        ></Grid>
+                        >
+
+                        </Grid>
 
                          {/* checkbox */}
 
@@ -109,10 +117,11 @@ const AssignmentsHomeComp = () => {
 
                       </Grid>
                       
-                       {/* subject, date, title */}
-                        <Grid item col={9} sx={{display:'flex' , gap:'30px' , alignItems:'center'}}>
+                       {/* subject, date and status */}
+                        <Grid item  sx={{display:'flex' ,  flex:  isMobile ? '0 0 100%'  :  '0 0 80%' , gap:'10%' , alignItems:'center'}}>
 
-                            <Box>
+                      {/* this box is holding subject , date and description */}
+                            <Box sx={{flex : '0 0 60%'}}>
                                 {/* subject and date*/}
                                <Typography variant='body1' style={subTitle}>
                                   {item.name} -  {item.date}
@@ -125,26 +134,25 @@ const AssignmentsHomeComp = () => {
                               </Typography>
                             </Box>
 
-                            <Box>
-                                <Typography variant='body1' sx={{ color: completedItems.includes(item.id) ? '#00e676' : '#2196f3', fontWeight: '400', fontSize: '14px' , background : completedItems.includes(item.id) ? '#ccffdd' : '#2196f32e' , padding:'0 4px'}}>
+                      {/* this box is holding status */}
+
+                          <Box sx={{flex : '0 0 30%'}}>
+                                <Typography variant='body1' sx={{ color: completedItems.includes(item.id) ? '#00e676' : '#2196f3', fontWeight: '400', display:'inline', fontSize: '14px' , background : completedItems.includes(item.id) ? '#ccffdd' : '#2196f32e' , padding:'0 4px'}}>
                                 {completedItems.includes(item.id) ? 'Complete' : 'In Process'}
                               </Typography>
-                            </Box>
+                          </Box>
 
                       
                         </Grid>
                   </Grid>
 
-                  <Grid container lg={5} sx={{gap:'20px' , alignItems:'center', justifyContent:'end' , marginTop: isMobile ? '20px' : '0' }}>
+                   {/* right */}
+                  <Grid container lg={4} sx={{gap:'20px' , alignItems:'center', justifyContent:'end' , marginTop: isMobile ? '20px' : '0' }}>
             
 
                       <Box sx={{display:'flex', gap:'20px'}}>                          
 
-                          {/* <Tooltip title="Attachment">
-                            <IconButton onClick={handleOpenDialog}>
-                                  <AttachmentIcon />
-                             </IconButton>
-                          </Tooltip> */}
+                
 
                           <Badge badgeContent={item.attachmentNo} color="primary" >
                              <Box sx={{ ...commonStyles, borderColor: 'primary.main' }}>
@@ -157,11 +165,7 @@ const AssignmentsHomeComp = () => {
                           </Badge>
 
 
-                          {/* <Tooltip title="Edit">
-                            <IconButton>
-                              <CreateIcon />
-                            </IconButton>
-                          </Tooltip> */}
+               
 
                           <Badge color="primary" >
                              <Box sx={{ ...commonStyles, borderColor: 'primary.main' }}>

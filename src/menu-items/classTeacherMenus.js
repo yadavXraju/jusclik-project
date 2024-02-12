@@ -11,22 +11,42 @@ import LibraryBooksTwoToneIcon from '@mui/icons-material/LibraryBooksTwoTone';
 import DraftsTwoToneIcon from '@mui/icons-material/DraftsTwoTone';
 
 
-const teacherMenu = {
+const ClassTeacherMenu = {
     id: 'teacherMenu',
     type: 'group',
     children: [
   
         // class Teacher menus
-  
-            {
-                id: 'attendance-entry',
-                 title: 'Attendance',
-                 type: 'item',
-                 url: '/class-teacher/attendance-entry',
-                 icon: CalendarMonthTwoToneIcon,
-                 breadcrumbs: false
-               },
+
             
+               {
+                id: 'attendance',
+                title: 'Attendance',
+                type: 'collapse',
+                url: '/class-teacher/attendance',
+                icon: CalendarMonthTwoToneIcon,
+                children: [
+
+                  {
+                    id: 'attendance-daily-attendance',
+                     title: 'Daily Attendance',
+                     type: 'item',
+                     url: '/class-teacher/attendance/daily-attendance',
+                     breadcrumbs: false
+                   },
+    
+
+                   {
+                    id: 'attendance-monthly-attendance',
+                     title: 'Monthly Attendance',
+                     type: 'item',
+                     url: '/class-teacher/attendance/monthly-attendance',
+                     breadcrumbs: false
+                   },
+    
+                ]
+              },
+
                {
                  id: 'marks-entry-panel',
                  title: 'Marks',
@@ -111,5 +131,5 @@ const teacherMenu = {
     ]
   };
   
-  export default teacherMenu;
+  export default ClassTeacherMenu;
   

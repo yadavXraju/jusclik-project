@@ -1,0 +1,17 @@
+import { Typography , useMediaQuery } from '@mui/material'
+import React from 'react'
+import { welcomeMsg } from 'views/dashboard/Default/dashboard-css/CommonCss';
+
+// teacher detail is  props 
+const WelcomeMessageTemplate = ( { teacherDetails}) => {
+
+  const isMobile = useMediaQuery('(max-width: 767px)');
+
+  return (
+    <>
+     <Typography  style={welcomeMsg}  variant='h1' sx={{py:2, fontSize: isMobile ? '32px' : '40px'}}>   Hello {teacherDetails.TeacherName} !</Typography>
+    </>
+  )
+}
+
+export default WelcomeMessageTemplate
