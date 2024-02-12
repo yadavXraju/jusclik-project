@@ -14,7 +14,7 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-function MiddleBox({ isVerticalSwitchOn, onSwitchChange }) {
+function MiddleBox({ isVerticalSwitchOn, onSwitchChange, autoFocusEnabled }) {
   // Function to handle Enter key press on TextField vertically
   const handleTextFieldKeyPressVerticaly = (event, rowIndex, cellIndex) => {
     if (event.key === 'Enter') {
@@ -64,6 +64,7 @@ function MiddleBox({ isVerticalSwitchOn, onSwitchChange }) {
             handleHorizontalKeyPress={handleTextFieldKeyPressHorizontal}
             isVerticalSwitchOn={isVerticalSwitchOn}
             onSwitchChange={onSwitchChange}
+            autoFocusEnabled={autoFocusEnabled}
           />
         </Item>
         <Item>
@@ -79,4 +80,3 @@ function MiddleBox({ isVerticalSwitchOn, onSwitchChange }) {
 }
 
 export default MiddleBox;
-

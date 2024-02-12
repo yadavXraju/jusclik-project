@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { makeStyles } from '@mui/styles';
 import { Button, Typography, IconButton } from '@mui/material';
 import { AttachFile, Audiotrack, Description, PictureAsPdf, Theaters, Clear } from '@mui/icons-material';
+import CloudUploadTwoToneIcon from '@mui/icons-material/CloudUploadTwoTone';
 
 const useStyles = makeStyles(theme => ({
   input: {
@@ -97,6 +98,7 @@ const HomeWorkDragDrop = () => {
           multiple
         />
         <label htmlFor="file-input">
+          <CloudUploadTwoToneIcon/>
           <h3>Drag and drop a file here</h3>
           <Button variant="contained" component="span">
             Select Files

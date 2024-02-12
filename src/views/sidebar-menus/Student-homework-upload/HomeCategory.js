@@ -40,7 +40,7 @@ export default function HomeCategory() {
 
   return (
     <form onSubmit={(e) => e.preventDefault()}>
-      <Grid sx={{ display: 'flex', justifyContent: 'space-around' }}>
+      <Grid sx={{ display: 'flex', justifyContent: 'space-around',paddingLeft:'16px' }}>
         <Grid item sx={{ width: '180px' }}>
           <FormControl sx={{ width: '100%' }}>
             <InputLabel id="subject-select-label">Select Subject</InputLabel>
@@ -59,7 +59,7 @@ export default function HomeCategory() {
             </Select>
           </FormControl>
         </Grid>
-        <Grid sx={{ width: '180px' }}>
+        <Grid sx={{ width: '195px',paddingLeft:'17px'}}>
           <FormControl sx={{ width: '100%' }}>
             <InputLabel id="class-select-label">Select Class</InputLabel>
             <Select
@@ -107,18 +107,18 @@ function StudentHomeworkList({ students }) {
   };
 
   return (
-    <Paper elevation={3} sx={{ marginBottom: '16px', marginTop: '30px', padding: '20px' }}>
-      <form onSubmit={(e) => e.preventDefault()}>
+    <Paper elevation={3} sx={{ marginBottom: '16px', marginTop: '30px', padding: '20px', margin:'15px' }}>
+      <form onSubmit={(e) => e.preventDefault()}>Select Student
         <div style={{ border: '1px solid #dcdcdc', borderRadius: '4px', overflowY: 'auto', maxHeight: '200px' }}>
           {students.map((student) => (
-            <div key={student.admnNo} style={{ display: 'flex', alignItems: 'center', marginBottom: '8px', padding: '8px' }}>
+            <div key={student.admnNo} style={{ display: 'flex', alignItems: 'center' }}>
               <Checkbox
                 checked={selectedStudents.includes(student.admnNo)}
                 onChange={() => handleCheckboxChange(student.admnNo)}
                 sx={{ mr: 1 }}
               />
               <div>
-                <p style={{ margin: '0', fontSize: '16px', fontWeight: '500' }}>
+                <p style={{ margin: '0', fontSize: '14px', fontWeight: '500' }}>
                   {student.name} ({student.admnNo})
                 </p>
               </div>
