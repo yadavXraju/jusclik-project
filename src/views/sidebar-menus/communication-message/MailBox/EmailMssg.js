@@ -56,7 +56,7 @@ const Message = () => {
             <Paper>
                 <Box style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px' }}>
                     <Box display="flex" alignItems="center">
-                        <IconButton onClick={() => navigate('/communication/inbox')} color="primary">
+                        <IconButton onClick={() => navigate('/parent/communication/inbox')} color="primary">
                             <ArrowBackIosNewOutlinedIcon />
                         </IconButton>
                         <Avatar src={AvtarImg} alt='' sx={{ width: 40, height: 40, marginRight: 2 }} />

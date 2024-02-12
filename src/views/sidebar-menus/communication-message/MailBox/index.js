@@ -302,7 +302,7 @@ const GmailInboxTemplate = () => {
                         // Adjusting padding for better mobile responsiveness
                         padding: '8px',
                       }}
-                      onClick={() => navigate('/communication/inbox/message')}
+                      onClick={() => navigate('/parent/communication/inbox/message')}
                     >
                       {/* User Avatar */}
                       <ListItemAvatar onClick={(event) => event.stopPropagation()}>
