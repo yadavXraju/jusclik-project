@@ -96,7 +96,7 @@ export default function AlignItemsList() {
                         >
                           <Box
                             sx={{ ...commonStyles, borderColor: 'primary.main' }}
-                            onClick={() => navigate('/communication/inbox')}
+                            onClick={() => navigate('/parent/communication/inbox')}
                           >
                             <MailOutlinedIcon color="primary" fontSize="small" />
                           </Box>

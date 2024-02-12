@@ -41,18 +41,18 @@ const subject = [
       label: "Science",
       tm:20
     },
-    // {
-    //   id: 7,
-    //   value: "8",
-    //   label: "History",
-    //   tm:20
-    // },
-    // {
-    //   id: 8,
-    //   value: "9",
-    //   label: "Physics",
-    //   tm:20
-    // },
+    {
+      id: 7,
+      value: "8",
+      label: "History",
+      tm:20
+    },
+    {
+      id: 8,
+      value: "9",
+      label: "Physics",
+      tm:20
+    },
     // {
     //   id: 9,
     //   value: "10",
@@ -111,3 +111,62 @@ const subject = [
   
   export { subject };
   
+
+  const subject2 = [
+    {
+      id: 0,
+      value: "0",
+      label: "All",
+  
+    },
+      {
+        id: 1,
+        value: "1",
+        label: "English",
+        tm:50
+      },
+      {
+        id: 2,
+        value: "2",
+        label: "Hindi",
+        tm:50
+      },
+      {
+        id: 3,
+        value: "3",
+        label: "Punjabi",
+        tm:50
+      },
+      {
+        id: 4,
+        value: "5",
+        label: "Science",
+        tm:50
+      },
+      {
+        id: 5,
+        value: "6",
+        label: "Social Studies",
+        tm:50
+      },
+      {
+        id: 6,
+        value: "7",
+        label: "Science",
+        tm:50
+      },
+      {
+        id: 7,
+        value: "8",
+        label: "History",
+        tm:50
+      },
+      {
+        id: 8,
+        value: "9",
+        label: "Physics",
+        tm:50
+      }
+    ];
+    
+    export { subject2 };
