@@ -7,7 +7,7 @@ export default function NumericTextField({ rowIndex, cellIndex, admissionNo, han
   const handleKeyPress = (event) => {
     const inputValue = event.target.value;
     const regex = /^[0-9]*$/; // Regular expression to match only numbers
-
+  
     if (!regex.test(inputValue)) {
       event.preventDefault(); // Prevent typing non-numeric characters
       setError(true); // Set error state to true if input contains non-numeric characters
@@ -16,14 +16,19 @@ export default function NumericTextField({ rowIndex, cellIndex, admissionNo, han
       if (parseInt(inputValue) > 20) {
         event.preventDefault(); // Prevent typing marks exceeding total marks
         setError(true); // Set error state to true
-        alert(`Enter marks can not be greater than the marks of the subject `)
+        alert(`Enter marks cannot be greater than the marks of the subject`);
       } else {
         setError(false); // Reset error state if input is valid
       }
     }
+  
+    // Clear the input value if Enter key is pressed and the input exceeds the maximum value
+    if (event.key === 'Enter' && parseInt(inputValue) > 20) {
+      event.target.value = ''; // Clear the input value
+    }
+  
     handleTextFieldKeyPress(event, rowIndex, cellIndex);
   }
-
   return (
     <TextField
       fullWidth
