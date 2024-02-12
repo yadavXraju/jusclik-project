@@ -7,26 +7,35 @@ export default function NumericTextField({ rowIndex, cellIndex, admissionNo, han
   const handleKeyPress = (event) => {
     const inputValue = event.target.value;
     const regex = /^[0-9]*$/; // Regular expression to match only numbers
-
+  
     if (!regex.test(inputValue)) {
       event.preventDefault(); // Prevent typing non-numeric characters
       setError(true); // Set error state to true if input contains non-numeric characters
     } else {
       // Check if the entered marks exceed the total marks
-      if (parseInt(inputValue) > 20) {
+      if (event.key === 'Enter' && parseInt(inputValue) > 20) {
         event.preventDefault(); // Prevent typing marks exceeding total marks
         setError(true); // Set error state to true
-        alert(`Enter marks can not be greater than the marks of the subject `)
+        alert(`Enter marks cannot be greater than the marks of the subject`);
       } else {
         setError(false); // Reset error state if input is valid
       }
     }
-    handleTextFieldKeyPress(event, rowIndex, cellIndex);
+    
+    // Set a flag to indicate whether the input should be cleared
+    const clearInput = event.key === 'Enter' && parseInt(inputValue) > 20;
+
+    handleTextFieldKeyPress(event, rowIndex, cellIndex, clearInput);
+    if (clearInput && event.key === 'Backspace') {
+      event.target.value = ''; // Clear the input value
+    }
   }
 
   return (
     <TextField
       fullWidth
+      autoFocus={rowIndex === 0 && cellIndex === 0} // Autofocus only if the switch is on
+     
       variant="outlined"
       inputProps={{ id: `textfield-${rowIndex}-${cellIndex}-${admissionNo}` }}
       onKeyDown={handleKeyPress}

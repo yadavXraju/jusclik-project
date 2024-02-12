@@ -1,8 +1,7 @@
-import * as React from 'react';
-import { FormGroup, FormControlLabel, Switch, Tooltip, IconButton } from '@mui/material';
-import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+import React from 'react';
+import { FormGroup, FormControlLabel, Switch } from '@mui/material';
 
-export default function SwitchButton({ isVerticalSwitchOn, onSwitchChange }) {
+export default function SwitchButton({ isVerticalSwitchOn, onSwitchChange, autoFocusEnabled }) {
   const handleSwitchChange = (event) => {
     onSwitchChange(event.target.checked);
   };
@@ -10,18 +9,11 @@ export default function SwitchButton({ isVerticalSwitchOn, onSwitchChange }) {
   return (
     <FormGroup>
       <FormControlLabel
-        label={
-          <React.Fragment>
-            <Tooltip title="Enter Data verically">
-              <IconButton size="small" color='primary'>
-                <InfoOutlinedIcon />
-              </IconButton>
-            </Tooltip>
-            
-          </React.Fragment>
-        }
         control={<Switch defaultChecked={isVerticalSwitchOn} onChange={handleSwitchChange} />}
       />
+      {!autoFocusEnabled && (
+        <input type="text" style={{ position: 'absolute', left: '-9999px' }} />
+      )}
     </FormGroup>
   );
 }
