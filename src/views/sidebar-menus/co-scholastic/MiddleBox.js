@@ -80,7 +80,7 @@ function MiddleBox({ isVerticalSwitchOn, onSwitchChange}) {
           <Grid item xs={12} lg={7} >
             <Item>
               <Typography variant='h4' justifyContent="flex-end" color='primary' display='flex' alignItems='center'>
-                <InfoOutlinedIcon sx={{ marginRight: "5px" }} /> Enter 'AB' for absent, 'LV' for leave, '-' for any other reason
+                <InfoOutlinedIcon sx={{ marginRight: "5px" }} /> Enter &apos;AB&apos; for absent, &apos;LV&apos; for leave, &apos;-&apos; for any other reason
               </Typography>
             </Item>
           </Grid>
