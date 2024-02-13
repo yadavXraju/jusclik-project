@@ -57,6 +57,7 @@ export default function CoScholaistic() {
   const [students, setStudents] = useState([]);
   const [isVerticalSwitchOn, setIsVerticalSwitchOn] = useState(true);
   const [selectedTerm, setSelectedTerm] = useState('1');
+   const [selectedStudent, setSelectedStudent] = useState('All Students');
 
   const theme = useTheme();
   const classes = useStyles(theme);
@@ -67,6 +68,10 @@ export default function CoScholaistic() {
 
   const handleTermChange = (selectedTerm) => {
     setSelectedTerm(selectedTerm);
+  };
+
+  const handleStudentChange = (selectedStudent) => {
+    setSelectedStudent(selectedStudent);
   };
 
   useEffect(() => {
@@ -107,12 +112,28 @@ export default function CoScholaistic() {
 
   const handleHorizontalKeyPress = (event, rowIndex, columnIndex) => {
     const nextColumnIndex = columnIndex + 1;
-    const nextRowIndex = rowIndex < students.length - 1 ? rowIndex + 1 : 0;
-    const nextInputRef = inputRefs.current[nextRowIndex]?.[nextColumnIndex];
-    if (nextInputRef) {
-      const inputElement = nextInputRef.querySelector('input');
-      if (inputElement) {
-        inputElement.focus();
+    
+    // Check if there are more columns to move to in the current row
+    if (nextColumnIndex < students.length) {
+      const nextInputRef = inputRefs.current[rowIndex]?.[nextColumnIndex];
+      if (nextInputRef) {
+        const inputElement = nextInputRef.querySelector('input');
+        if (inputElement) {
+          inputElement.focus();
+          return; // Exit the function early if successful
+        }
+      }
+    }
+  
+    // If no more columns in the current row, move to the next row
+    const nextRowIndex = rowIndex + 1;
+    if (nextRowIndex < rows.length) {
+      const nextInputRef = inputRefs.current[nextRowIndex]?.[0]; // Move to the first column of the next row
+      if (nextInputRef) {
+        const inputElement = nextInputRef.querySelector('input');
+        if (inputElement) {
+          inputElement.focus();
+        }
       }
     }
   };
@@ -121,16 +142,6 @@ export default function CoScholaistic() {
     setIsVerticalSwitchOn(isVertical);
   };
 
-  const handleKeyDown = (event, rowIndex, columnIndex) => {
-    if (event.key === 'Enter') {
-      event.preventDefault();
-      if (isVerticalSwitchOn) {
-        handleVerticalKeyPress(event, rowIndex, columnIndex);
-      } else {
-        handleHorizontalKeyPress(event, rowIndex, columnIndex);
-      }
-    }
-  };
 
   return (
     <ThemeProvider theme={theme}>
@@ -139,6 +150,9 @@ export default function CoScholaistic() {
         selectedClass={selectedClass}
         onTermChange={handleTermChange}
         selectedTerm={selectedTerm}
+        selectedStudent={selectedStudent} // Pass selectedStudent state
+        onStudentChange={handleStudentChange} // Pass handleStudentChange function
+      
       />
       <MiddleBox
         isVerticalSwitchOn={isVerticalSwitchOn}
@@ -172,12 +186,14 @@ export default function CoScholaistic() {
                   </TableCell>
                   {students.map((_, columnIndex) => (
                     <TableCell key={`cell-${rowIndex}-${columnIndex}`} sx={{ textAlign: "center" }}>
-                     <CustomTextField
-                        rowIndex={rowIndex}
-                        columnIndex={columnIndex}
-                        inputRefs={inputRefs}
-                        handleKeyDown={handleKeyDown}
-                      />
+                    <CustomTextField
+                      rowIndex={rowIndex}
+                      columnIndex={columnIndex}
+                      inputRefs={inputRefs}
+                      handleVerticalKeyDown={handleVerticalKeyPress} // Pass vertical key press handler
+                       handleHorizontalKeyDown={handleHorizontalKeyPress} // Pass horizontal key press handler
+                       isVerticalSwitchOn={isVerticalSwitchOn} // Pass switch state
+/>
                         </TableCell>
                       ))}
                     </TableRow>
