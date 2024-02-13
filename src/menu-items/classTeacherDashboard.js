@@ -17,14 +17,7 @@ const ClassTeacherDashboard = {
       icon:HomeTwoToneIcon ,
       breadcrumbs: false
     },
-    {
-      id: 'subject-teacher-dashboard',
-      title: 'Dashboard',
-      type: 'item',
-      url: 'subject-teacher/dashboard',
-      icon:HomeTwoToneIcon ,
-      breadcrumbs: false
-    }
+   
 
   ]
 };
