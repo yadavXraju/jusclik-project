@@ -1,7 +1,8 @@
 import parentDashboard from './parentDashboard';
 import parentMenu from './parentMenus';
-import teacherDashboard from './teacherDashboard';
-import teacherMenu from './teacherMenus';
+import ClassTeacherDashboard from './classTeacherDashboard';
+import ClassTeacherMenu from './classTeacherMenus';
+import SubjectTeacherDashboard from './subjectTeacherDashboard';
 
 // Function to check if the URL contains a specific path
 const containsPath = (path) => window.location.pathname.includes(path);
@@ -14,7 +15,7 @@ let menuItems = {
 // Check if the URL contains "/class-teacher/" path
 if (containsPath('/class-teacher/')) {
   // Push items into the items array for class teacher
-  menuItems.items.push(teacherDashboard, teacherMenu);
+  menuItems.items.push(ClassTeacherDashboard, ClassTeacherMenu , SubjectTeacherDashboard);
 } 
 // Check if the URL contains "/parent/" path
 else if (containsPath('/parent/')) {
