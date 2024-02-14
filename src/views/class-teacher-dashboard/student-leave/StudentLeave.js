@@ -9,24 +9,13 @@ import { Grid, Typography, Box } from '@mui/material';
 import { gridSpacing } from 'store/constant';
 import { HeadingCss } from 'views/dashboard/Default/dashboard-css/CommonCss';
 import { subTitle, subtitle2 } from 'views/dashboard/Default/dashboard-css/CommonCss';
+import { getCurrentDate } from 'utils/timeUtils';
 
 const StudentLeave = () => {
-  // getting currunt date
-  const today = new Date();
+ // getting current date
+ const currentDate = getCurrentDate(); // Use getCurrentDate function
   
-  // getting currunt day
-  const day = String(today.getDate()).padStart(2, '0');
-
-  // getting currunt month
-  const month = String(today.getMonth() + 1).padStart(2, '0');
-
- // getting currunt year
-  const year = today.getFullYear();
-
-  // for getting date in this formate 12-02-2024
-  const currentDate = `${day}-${month}-${year}`;
-
-  const currentLeaveData = StudentLeaveData.filter(student => student.date === currentDate);
+ const currentLeaveData = StudentLeaveData.filter(student => student.date === currentDate);
 
   return (
     <>

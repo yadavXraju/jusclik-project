@@ -58,8 +58,6 @@ export default function LoginPage() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // console.log("Submitted Username:", userId);
-    // console.log("Submitted Password:", userPassword);
 
     // static id and pass
 
@@ -75,6 +73,15 @@ export default function LoginPage() {
         window.location.href = '/class-teacher/dashboard';
       }, 500); // Delay in milliseconds
     } 
+
+
+    else if (userId === 'steacher' && userPassword === 'steacher@123') {
+      // Redirect to class teacher dashboard after a slight delay
+      setTimeout(() => {
+        window.location.href = '/subject-teacher/dashboard';
+      }, 500); // Delay in milliseconds
+    } 
+
     else {
       alert('Wrong Credentials');
     }

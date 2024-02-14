@@ -14,8 +14,10 @@ const Communication = () => {
             <Typography variant="h2" style={HeadingCss}>
                   Recent  communication
               </Typography>
-              <GmailInboxTemplate />
         </Grid>
+
+        <GmailInboxTemplate />
+
         </MainCard>
     </>
   )

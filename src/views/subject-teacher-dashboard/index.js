@@ -9,6 +9,7 @@ import SubjectTeacherAlert from './alerts/Alert';
 import UpcomingBirthday from 'views/class-teacher-dashboard/upcoming-birthday/UpcomingBirthday';
 import FavPages from 'views/class-teacher-dashboard/fav-pages/FavPages';
 import StudentLeave from 'views/class-teacher-dashboard/student-leave/StudentLeave';
+import SubjectTeacherTimeTable from './time-table/TimeTable';
 
 
 const Dashboard = ({ isLoading }) => {
@@ -68,6 +69,11 @@ const Dashboard = ({ isLoading }) => {
           {/* Student on Leave Comp */}
           <Grid item xs={12} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>           
               <StudentLeave isLoading={isLoading} />
+          </Grid>
+      
+               {/* Subject teacher time table  Comp */}
+           <Grid item xs={12} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>           
+              <SubjectTeacherTimeTable isLoading={isLoading} />
           </Grid>
       
            
