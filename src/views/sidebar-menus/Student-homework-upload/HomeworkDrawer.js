@@ -10,8 +10,9 @@ import HomeworkTopic from './HomeworkTopic';
 import HomeworkTemplate from './HomeworkTemplate';
 import HomeReplyBox from './HomeReplyBox';
 import HomeWorkDragDrop from './HomeWorkDragDrop';
-import HomeYoutubeLink from './HomeYoutubeLink'
-import HomeDrawerSubmit from './HomeDrawerSubmit'
+import HomeYoutubeLink from './HomeYoutubeLink';
+import HomeDrawerSubmit from './HomeDrawerSubmit';
+import CancelTwoToneIcon from '@mui/icons-material/CancelTwoTone';
 
 export default function HomeworkDrawer() {
   const [state, setState] = React.useState({
@@ -31,15 +32,18 @@ export default function HomeworkDrawer() {
       sx={{ width: 650, padding: 2 }} // Adjust width as needed
       role="presentation"
     >
+      <Box sx={{ display: 'flex', justifyContent: 'end' }}>
       <Button onClick={toggleDrawer('right', false)} sx={{ alignSelf: 'flex-end' }}>
+      <CancelTwoToneIcon/>
         Close
       </Button>
+      </Box>
       <Grid item>
         <Grid sx={{ display: 'flex', justifyContent: 'space-around' }}>
-          <Grid item>
+          <Grid item sx={{width:'100%', paddingRight:'5px', paddingLeft:'5px'}}>
             <HomeDate label="Homework Date:" />
           </Grid>
-          <Grid item>
+          <Grid item sx={{width:'100%', paddingRight:'13px', paddingLeft:'5px'}}>
             <HomeDate label="Submission Date:" />
           </Grid>
         </Grid>
