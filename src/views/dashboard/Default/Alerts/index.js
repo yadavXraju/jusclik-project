@@ -4,7 +4,7 @@ import MainCard from 'ui-component/cards/MainCard';
 import { gridSpacing } from 'store/constant';
 import { HeadingCss, boxHeight, subTitle, subtitle2 } from '../dashboard-css/CommonCss';
 import { Box } from '@mui/system';
-import AlertData from './AlertData';
+import ParentAlertData from './AlertData';
 
 const Alert = () => {
 
@@ -23,7 +23,7 @@ const Alert = () => {
             </Grid>
      
            {/* maping data */}
-            {AlertData.map((alert, index) => (
+            {ParentAlertData.map((alert, index) => (
                 <Grid item xs={12} key={index} sx={{paddingTop:'0 !important'}}>
                   <Grid container direction="column">
                     <Grid item>

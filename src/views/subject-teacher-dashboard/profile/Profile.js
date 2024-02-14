@@ -1,11 +1,11 @@
 import React from 'react'
-import { TeacherProfileDetails } from 'layout/MainLayout/Header/subject-teacher/subject-teacher-profile-section/subjectTeacherProfile'
-import Profile from 'views/class-teacher-dashboard/common-section/Profile'
+import { SubjectTeacherProfileDetails } from 'layout/MainLayout/Header/subject-teacher/subject-teacher-profile-section/subjectTeacherProfile'
+import Profile from 'views/common-section/Profile'
 
 const SubjectTeacherProfile = () => {
   return (
     <>
-       <Profile  teacherDetails={TeacherProfileDetails}/>
+       <Profile  teacherDetails={SubjectTeacherProfileDetails}/>
     </>
   )
 }

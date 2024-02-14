@@ -1,6 +1,6 @@
 
 import React from 'react'
-import WelcomeMessageTemplate from 'views/class-teacher-dashboard/common-section/Welcome'
+import WelcomeMessageTemplate from 'views/common-section/Welcome'
 
 
 

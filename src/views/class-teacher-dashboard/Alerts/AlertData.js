@@ -9,7 +9,7 @@ import AvatarImg from '../../../assets/images/avatar.png'
 
 const recentData =  initialData[0]
 
-const AlertData = [
+const ClassTeacherAlertData = [
   {
     id: 1,
     icon: <img src={AvatarImg} alt="avatar" style={{ width: '24px', height: '24px', borderRadius: '50%' }} />,
@@ -99,4 +99,4 @@ const AlertData = [
  
 ];
 
-export default AlertData;
+export default ClassTeacherAlertData;
