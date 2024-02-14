@@ -3,6 +3,7 @@ import { Box, Paper, Grid, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import ActionButton from './ActionButton';
 import SwitchButton from './SwitchButton';
+import { Tooltip, IconButton } from '@mui/material';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -13,7 +14,7 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-function MiddleBox({ isVerticalSwitchOn, onSwitchChange }) {
+function MiddleBox({ isVerticalSwitchOn, onSwitchChange, autoFocusEnabled }) {
   // Function to handle Enter key press on TextField vertically
   const handleTextFieldKeyPressVerticaly = (event, rowIndex, cellIndex) => {
     if (event.key === 'Enter') {
@@ -38,35 +39,44 @@ function MiddleBox({ isVerticalSwitchOn, onSwitchChange }) {
 
   return (
     <>
-      <Box>
-        <Paper sx={{ mb: 1, display: 'flex', justifyContent: 'space-between' }}>
-          <Grid lg={12} container rowSpacing={1} direction="row" justifyContent="Center" alignItems="Center" columnSpacing={{ xs: 1, sm: 2, md: 3 }} sx={{ margin: "10px 0" }}>
-            <Grid item lg={6}>
-              <Item>
-                <Typography variant='h4' color='primary' display='flex' alignItems='center'>
-                  <InfoOutlinedIcon sx={{marginRight:"5px"}} />  Enter  &apos;AB&apos; for absent, &apos;LV&apos; for leave, &apos;-&apos; for any other reason 
-                </Typography>
-              </Item>
-            </Grid>
-          </Grid>
-          <Grid lg={6}  sx={{ marginRight: '60px', marginTop: '6px', display: "flex", justifyContent: "space-around", alignItems: 'center' }}>
-            <Item>
-              <SwitchButton
-                handleVerticalKeyPress={handleTextFieldKeyPressVerticaly}
-                handleHorizontalKeyPress={handleTextFieldKeyPressHorizontal}
-                isVerticalSwitchOn={isVerticalSwitchOn}
-                onSwitchChange={onSwitchChange}
-              />
-            </Item>
-            <Item>
-              <ActionButton />
-            </Item>
-          </Grid>
-        </Paper>
-      </Box>
+<Box>
+  <Paper sx={{ mb: 1, display: 'flex', justifyContent: 'space-between' }}>
+    <Grid container  rowSpacing={1} direction="row" alignItems="center" columnSpacing={{ xs: 1, sm: 2, md: 3 }} sx={{ margin: "10px 0" }}>
+      <Grid item xs={12} lg={7}  >
+        <Item>
+          <Typography variant='h4' justifyContent="flex-end" color='primary' display='flex' alignItems='center'>
+            <InfoOutlinedIcon sx={{ marginRight: "5px" }} /> Enter &apos;AB&apos; for absent, &apos;LV&apos; for leave, &apos;-&apos; for any other reason
+          </Typography>
+        </Item>
+      </Grid>
+      <Grid item xs={12} lg={5} container justifyContent="flex-end" alignItems="center">
+        <Item>
+          Enter Marks vertically
+          <Tooltip title="Enter Data vertically">
+            <IconButton size="small" color='primary'>
+              <InfoOutlinedIcon />
+            </IconButton>
+          </Tooltip>
+        </Item>
+        <Item>
+          <SwitchButton
+            handleVerticalKeyPress={handleTextFieldKeyPressVerticaly}
+            handleHorizontalKeyPress={handleTextFieldKeyPressHorizontal}
+            isVerticalSwitchOn={isVerticalSwitchOn}
+            onSwitchChange={onSwitchChange}
+            autoFocusEnabled={autoFocusEnabled}
+          />
+        </Item>
+        <Item>
+          <ActionButton />
+        </Item>
+      </Grid>
+    </Grid>
+  </Paper>
+</Box>
+
     </>
   )
 }
 
 export default MiddleBox;
-

@@ -136,3 +136,27 @@ export function TermDropDown({ data,  onTermChange, selectedTerm }) {
   );
 }
 
+
+
+export function StudentDropDown({ data }) {
+  // Check if data is not an array or is empty
+  if (!Array.isArray(data) || data.length === 0) {
+    return <div>No data available</div>;
+  }
+
+  return (
+    <TextField
+      id="outlined-select-student"
+      select
+      label="Student Name"
+      value="0"
+      sx={{ margin: "0px 10px" }}
+    >
+      {data.map((option) => (
+          <MenuItem key={option.value} value={option.value}>
+          {option.label}
+        </MenuItem>
+      ))}
+    </TextField>
+  );
+}

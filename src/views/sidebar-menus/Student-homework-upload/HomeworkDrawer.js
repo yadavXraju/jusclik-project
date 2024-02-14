@@ -66,7 +66,7 @@ export default function HomeworkDrawer() {
         <Grid>
           <HomeWorkDragDrop />
         </Grid>
-        <Grid>
+        <Grid sx={{paddingLeft:'10px', paddingRight:'8px'}}>
           <HomeYoutubeLink />
         </Grid>
         <Grid>

@@ -10,6 +10,7 @@ import { Paper } from '@mui/material';
 import LeaveDrawer from './LeaveApplicationDrawer';
 
 
+
 const LeaveApplication = () => (
   <>
     <Grid container spacing={2}>
@@ -46,7 +47,6 @@ const LeaveApplication = () => (
         <LeaveTabs />
       </Box>
     </Paper>
-
   </>
 )
 

@@ -3,14 +3,15 @@ import React from 'react';
 import Grid from '@mui/material/Grid';
 import { gridSpacing } from 'store/constant';
 import WelcomeAttandanceCheckIn from './welcome-check-in-attendance';
-import Profile from './profile';
+import ClassTeacherProfile from './profile';
 import Communication from './recent-communication/Communication';
-import Alert from './Alerts/Alert';
+import ClassTeacherAlert from './Alerts/Alert';
 import FavPages from './fav-pages/FavPages';
 import UpcomingBirthday from './upcoming-birthday/UpcomingBirthday';
 import LowStudentAttendance from './low-student-attendance/LowStudentAttendance';
 import StudentStrength from './student-strength/StudentStrength';
 import StudentLeave from './student-leave/StudentLeave';
+import ClassTeacherTimeTable from './time-table/TimeTable';
 
 const Dashboard = ({ isLoading }) => {
   return (
@@ -39,7 +40,7 @@ const Dashboard = ({ isLoading }) => {
            <Grid item lg={4} md={12} sm={12} xs={12}>
             <Grid container spacing={gridSpacing}>
               <Grid item sm={6} xs={12} md={6} lg={12}>
-                <Profile />
+                <ClassTeacherProfile/>
               </Grid>
             </Grid>
           </Grid>
@@ -52,15 +53,15 @@ const Dashboard = ({ isLoading }) => {
 
            {/* Alert comp */}
            <Grid item xs={12} md={5} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
-             <Alert isLoading={isLoading} /> 
+             <ClassTeacherAlert isLoading={isLoading} /> 
           </Grid>
 
-           {/* Fav pages comp */}
+            {/* Upcoming Birthday comp */}
            <Grid item xs={12} md={7} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>           
              <UpcomingBirthday isLoading={isLoading} />
           </Grid>
 
-          {/* Upcoming Birthday comp */}
+          {/* Fav pages comp */}
            <Grid item xs={12} md={5} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
              <FavPages isLoading={isLoading} />
           </Grid>
@@ -80,7 +81,10 @@ const Dashboard = ({ isLoading }) => {
              <StudentLeave isLoading={isLoading} />
           </Grid>
      
-           
+          <Grid item xs={12} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>           
+             <ClassTeacherTimeTable isLoading={isLoading} />
+          </Grid>
+
         </Grid>
       </Grid>
     </Grid>

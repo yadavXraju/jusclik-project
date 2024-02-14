@@ -15,10 +15,11 @@ import { Typography } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import TextArea from 'antd/es/input/TextArea';
 import ButtonGroup from '@mui/material/ButtonGroup';
-import { Divider, ListItem, ListItemText, Chip } from '@mui/material';
+import { Divider, ListItem, ListItemText } from '@mui/material';
 import Paper from '@mui/material/Paper';
 import dayjs from 'dayjs';
-//import { Cancel as CancelIcon } from '@mui/icons-material';
+import NotifyStudent from './Notify_student';
+//import QueryBuilderOutlinedIcon from '@mui/icons-material/QueryBuilderOutlined';
 
 
 const useStyles = makeStyles({
@@ -117,33 +118,28 @@ export default function LeaveDrawer() {
             leaveDuration: updatedLeaveDuration,
         });
     }
-
-    // ========= Multiple select in Notify ============
-    const [selectedItems, setSelectedItems] = React.useState([]);
-    const handleChange = (event) => {
-        setSelectedItems(event.target.value);
-    };
-
+    // ============ Single Day leave To Attendance Status Change method =======
+    const handleselectleavechange3 = (event) => {
+        const selectedValue = event.target.value;
+        let updatedLeaveDuration = state.leaveDuration;
+        if (selectedValue === 10) {
+            updatedLeaveDuration -= 0.75;
+        } else if (selectedValue === 20) {
+            updatedLeaveDuration -= 0.5;
+        } else if (selectedValue === 30) {
+            updatedLeaveDuration -= 0.5;
+        }
+        setState({
+            ...state,
+            leaveDuration: updatedLeaveDuration,
+        });
+    }
 
 
     // ============ render full day / custom =============
     const [selectedButton, setSelectedButton] = React.useState(1);
     const handleButtonClick = (buttonNumber) => {
         setSelectedButton(buttonNumber);
-    };
-
-    // ========= render list of leave =============
-    const [addleave, setaddleave] = React.useState(false);
-    const handleAddleave = () => {
-        event.preventDefault();
-        setaddleave(true);
-        setshowleaveform(false);
-    };
-    // ========= render leave application form =============
-    const [showleaveform, setshowleaveform] = React.useState(true);
-    const Showleaveapplication = () => {
-        event.preventDefault();
-        setshowleaveform(true);
     };
 
     // =============== Function to generate an array of dates between two dates ===========
@@ -163,6 +159,34 @@ export default function LeaveDrawer() {
     // Generate an array of dates between "Leave From" and "Leave To" dates
     const datesBetween = getDatesBetween(state.leaveFrom, state.leaveTo);
 
+    // ========= render list of leave =============
+    const [addleave, setaddleave] = React.useState(false);
+    const [selectedLeaveTypes, setSelectedLeaveTypes] = React.useState([]);
+    const handleAddleave = () => {
+        event.preventDefault();
+        if (datesBetween && selectedLeaveTypes) {
+            const newLeave = {
+                from: datesBetween,
+                type: leaveType
+            };
+            setSelectedLeaveTypes([...selectedLeaveTypes, newLeave]);
+        }
+        //setSelectedLeaveTypes([...selectedLeaveTypes, leaveType]);
+        setaddleave(true);
+        setshowleaveform(false);
+        setaddmoreleave(true);
+    };
+
+    // ========= render leave application form =============
+    const [showleaveform, setshowleaveform] = React.useState(true);
+    const [addmoreleave, setaddmoreleave] = React.useState(true);
+    const Showleaveapplication = () => {
+        event.preventDefault();
+        setshowleaveform(true);
+        setaddmoreleave(false);
+    };
+
+
     // Initialize leaveTypes1 with default values for each date
     const [leaveTypes1, setLeaveTypes1] = React.useState('');
     // ======== Function to handle changes in the leave type selection for a specific index ==========
@@ -179,7 +203,7 @@ export default function LeaveDrawer() {
             sx={{ width: 650, padding: 2 }}
             role="presentation"
         >
-            <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <Typography variant='h4'>Request Leave</Typography>
                 <Button onClick={toggleDrawer('right', false)} sx={{ alignSelf: 'flex-end' }}>
                     Close
@@ -212,48 +236,57 @@ export default function LeaveDrawer() {
                                 <Divider />
                             </Paper>
 
-                            {datesBetween.map((date, index) => (
-                                <Paper sx={{ listStyleType: 'none', p: 0 }} key={index}>
-                                    <ListItem sx={{ display: 'flex', alignItems: 'center', p: 1 }}>
-                                        {/* Your list item headers */}
-                                        <ListItemText sx={{ flex: '0 0 30%' }}>
-                                            <Typography variant="h5" >
-                                                {date}
-                                            </Typography>
-                                        </ListItemText>
-                                        <ListItemText sx={{ flex: '0 0 40%' }}>
-                                            <Typography variant="h5">
-                                                leave
-                                            </Typography>
-                                        </ListItemText>
-                                        <ListItemText sx={{ flex: '0 0 30%' }}>
-                                            <Typography variant="h5">
-                                                {/* {leaveType} */}
-                                                <FormControl fullWidth size='small'>
-                                                    <InputLabel id={`leave-type-label-${index}`}>Leave Type</InputLabel>
-                                                    <Select
-                                                        labelId={`leave-type-label-${index}`}
-                                                        id={`leave-type-select-${index}`}
-                                                        value={leaveTypes1[index] !== undefined ? leaveTypes1[index] : leaveType}
-                                                        label="Leave Type"
-                                                        onChange={(event) => handleLeaveTypeChange1(event, index)} // Handle change in leave type selection for this index
-                                                    >
-                                                        <MenuItem value={'Casual Leave'}>Casual Leave</MenuItem>
-                                                        <MenuItem value={'Earned Leave'}>Earned Leave</MenuItem>
-                                                        <MenuItem value={'Medical Leave'}>Medical Leave</MenuItem>
-                                                        <MenuItem value={'Festival Leave'}>Festival Leave</MenuItem>
-                                                        <MenuItem value={'Leave Without Pay'}>Leave Without Pay</MenuItem>
-                                                    </Select>
-                                                </FormControl>
-                                            </Typography>
-                                        </ListItemText>
-                                    </ListItem>
-                                    <Divider />
-                                </Paper>
+                            {selectedLeaveTypes.map((leave, index) => (
+                                <Box key={index}>
+                                    {leave.from.map((date, index) => (
+                                        <>
+                                            <Paper sx={{ display: 'flex', alignItems: 'center', p: 0 }} key={index}>
+                                                <ListItem>
+                                                    <ListItemText sx={{ flex: '0 0 30%' }}>
+                                                        <Typography variant="h5">
+                                                            {date}
+                                                        </Typography>
+                                                    </ListItemText>
+                                                    <ListItemText sx={{ flex: '0 0 40%' }}>
+                                                        <Typography variant="h5">
+                                                            leave
+                                                        </Typography>
+                                                    </ListItemText>
+                                                    <ListItemText sx={{ flex: '0 0 30%' }}>
+                                                        <Typography variant="h5">
+                                                            {/* {leave.type} */}
+                                                            <FormControl fullWidth size='small'>
+                                                                <InputLabel id={`leave-type-label-${index}`}>Leave Type</InputLabel>
+                                                                <Select
+                                                                    labelId={`leave-type-label-${index}`}
+                                                                    id={`leave-type-select-${index}`}
+                                                                    value={leaveTypes1[index] !== undefined ? leaveTypes1[index] : leave.type}
+                                                                    label="Leave Type"
+                                                                    onChange={(event) => handleLeaveTypeChange1(event, index)} // Handle change in leave type selection for this index
+                                                                >
+                                                                    <MenuItem value={'Casual Leave'}>Casual Leave</MenuItem>
+                                                                    <MenuItem value={'Earned Leave'}>Earned Leave</MenuItem>
+                                                                    <MenuItem value={'Medical Leave'}>Medical Leave</MenuItem>
+                                                                    <MenuItem value={'Festival Leave'}>Festival Leave</MenuItem>
+                                                                    <MenuItem value={'Leave Without Pay'}>Leave Without Pay</MenuItem>
+                                                                </Select>
+                                                            </FormControl>
+                                                        </Typography>
+                                                    </ListItemText>
+                                                </ListItem>
+                                            </Paper>
+                                            <Divider />
+                                        </>
+                                    ))}
+                                </Box>
                             ))}
-                            <Button sx={{ marginTop: '1rem' }} type="submit" variant="contained" size="small" onClick={Showleaveapplication} >
+
+                            {addmoreleave === true && (
+                                <Button sx={{ marginTop: '1rem' }} type="submit" variant="contained" size="small" onClick={Showleaveapplication} >
                                 Add More Leave
                             </Button>
+                            )}
+                            
                         </Box>
                     )
                 }
@@ -268,7 +301,7 @@ export default function LeaveDrawer() {
                             <Box mb={2} p={1} sx={{ border: '1px solid #ccc', borderRadius: '5px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                                 <Box >
                                     <Box pl={.5} pb={1}>Leave From</Box>
-                                    <LocalizationProvider sx={{background:'#ccc'}} dateAdapter={AdapterDayjs}>
+                                    <LocalizationProvider sx={{ background: '#ccc' }} dateAdapter={AdapterDayjs}>
                                         <DatePicker
                                             className={classes.datePicker}
                                             value={state.leaveFrom}
@@ -363,7 +396,7 @@ export default function LeaveDrawer() {
                                                                 </Select>
                                                             </FormControl>
                                                         </Box>
-                                                    </Grid>
+                                                    </Grid>``
                                                     <Grid item xs={6} md={6}>
                                                         <Box>
                                                             <Box p={.5}>To: {storedLeaveToDate ? storedLeaveToDate.format('DD-MM-YYYY') : ''} </Box>
@@ -385,14 +418,15 @@ export default function LeaveDrawer() {
                                                         </Box>
                                                     </Grid>
                                                 </Grid>
-
                                             </Box>
                                         ) : (
                                             <Box mt={2} mb={2}>
                                                 <FormControl fullWidth size='small'>
                                                     <InputLabel id="Attendance Status">Attendance Status</InputLabel>
                                                     <Select
+                                                        id="Attendance-Status_select"
                                                         label="Attendance Status"
+                                                        onChange={handleselectleavechange3}
                                                     >
                                                         <MenuItem value={10}>Short Leave(SL)</MenuItem>
                                                         <MenuItem value={20}>Half Day 1 Leave(H1)</MenuItem>
@@ -413,7 +447,11 @@ export default function LeaveDrawer() {
                         </Box>
                     )}
 
-
+                    {/* <Box pb={1}>
+                        <Typography variant='h5' sx={{display:'flex', alignItems:'center'}}>
+                         <QueryBuilderOutlinedIcon sx={{paddingRight:'5px'}} /> You are requesting for {state.leaveDuration > 0 ? state.leaveDuration + ' ' + 'days' : '0 days'} of leave
+                        </Typography>
+                    </Box> */}
 
                     <Box pb={2}>
                         <Box p={.5}>Note</Box>
@@ -423,36 +461,7 @@ export default function LeaveDrawer() {
                     </Box>
 
                     <Box>
-                        <FormControl fullWidth size='small'>
-                            <InputLabel id="notify-label">Notify</InputLabel>
-                            <Select
-                                labelId="notify-label"
-                                id="notify-select"
-                                multiple
-                                value={selectedItems}
-                                onChange={handleChange}
-                                renderValue={(selected) => (
-                                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px' }}>
-                                        {selected.map((value) => (
-                                            <Chip
-                                                key={value}
-                                                label={value}
-                                                // deleteIcon={<CancelIcon />}
-                                                style={{ margin: '2px' }}
-                                            />
-                                        ))}
-                                    </div>
-                                )}
-                                label="Notify"
-                            >
-                                <MenuItem value="Suraj">Suraj</MenuItem>
-                                <MenuItem value="Abhishek">Abhishek</MenuItem>
-                                <MenuItem value="Amit">Amit</MenuItem>
-                            </Select>
-                        </FormControl>
-
-
-                        
+                        <NotifyStudent />
                     </Box>
                     <Box sx={{ padding: 2 }}>
                         <Button type="submit" variant="contained">

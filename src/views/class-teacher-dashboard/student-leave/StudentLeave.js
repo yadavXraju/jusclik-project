@@ -8,24 +8,20 @@ import MainCard from 'ui-component/cards/MainCard';
 import { Grid, Typography, Box } from '@mui/material';
 import { gridSpacing } from 'store/constant';
 import { HeadingCss } from 'views/dashboard/Default/dashboard-css/CommonCss';
-import { subTitle , subtitle2 } from 'views/dashboard/Default/dashboard-css/CommonCss';
+import { subTitle, subtitle2 } from 'views/dashboard/Default/dashboard-css/CommonCss';
+import { getCurrentDate } from 'utils/timeUtils';
 
 const StudentLeave = () => {
-  // Get current date in 'dd-mm-yyyy' format
-  const today = new Date();
-  const day = String(today.getDate()).padStart(2, '0');
-  const month = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
-  const year = today.getFullYear();
-  const currentDate = `${day}-${month}-${year}`;
-
-  // Filter the StudentLeaveData based on current date
-  const currentLeaveData = StudentLeaveData.filter(student => student.date === currentDate);
+ // getting current date
+ const currentDate = getCurrentDate(); // Use getCurrentDate function
+  
+ const currentLeaveData = StudentLeaveData.filter(student => student.date === currentDate);
 
   return (
     <>
       <MainCard>
         <Grid container spacing={gridSpacing}>
-          <Grid item xs={12} sx={{ mb: 3, padding: '10px 40px !important' , paddingTop:'24px !important'}}>
+          <Grid item xs={12} sx={{ mb: 3, padding: '10px 40px !important', paddingTop: '24px !important' }}>
             <Grid alignContent="center" justifyContent="space-between" sx={{ marginBottom: '3rem' }}>
               <Grid sx={{ display: 'flex', justifyContent: 'space-between' }}>
                 <Typography variant="h2" style={HeadingCss}>
@@ -38,24 +34,36 @@ const StudentLeave = () => {
               </Grid>
             </Grid>
 
-            <Slider {...Settings}  >
-              {currentLeaveData.map((student, index) => (
-                <Grid key={index} >
-                  <Grid >
-                    <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
-                      {student.image}
-                      <Typography variant="h3" style={subTitle}>
-                         {student.name}
-                       </Typography>
-                    
-                       <Typography variant="subtitle" style={subtitle2}>
-                               {student.class}
-                         </Typography>
-                    </Box>
+         {/* setting  slider */}
+            {currentLeaveData.length > 0
+             ? (
+              <Slider {...Settings}>
+
+                {/* maping leave data */}
+                {currentLeaveData.map((student, index) => (
+                  <Grid key={index}>
+                    <Grid>
+                      <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
+                        {student.image}
+                        <Typography variant="h3" style={subTitle}>
+                          {student.name}
+                        </Typography>
+
+                        <Typography variant="subtitle" style={subtitle2}>
+                          {student.class}
+                        </Typography>
+                      </Box>
+                    </Grid>
                   </Grid>
-                </Grid>
-              ))}
-            </Slider>
+                ))}
+              </Slider>
+            ) 
+            
+            // show the msg when no student on leave
+            
+            : (
+              <Typography variant="h3">No students are on leave today.</Typography>
+            )}
           </Grid>
         </Grid>
       </MainCard>

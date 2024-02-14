@@ -1,9 +1,9 @@
 import React from 'react';
 import Grid from '@mui/system/Unstable_Grid/Grid';
 import { gridSpacing } from 'store/constant';
-import CheckIn from './check-in/CheckIn';
+import ClassTeacherCheckIn from './check-in/CheckIn';
 import WelcomeMessage from './welcome-message/Welcome';
-import TotalAttendance from './total-attendance/TotalAttendance';
+import ClassTeacherTotalAttendance from './total-attendance/TotalAttendance';
 
 
 // import { useMediaQuery } from '@mui/material';
@@ -23,10 +23,10 @@ const WelcomeAttandanceCheckIn = ({ isLoading }) => {
         <WelcomeMessage isLoading={isLoading} />
       </Grid>
       <Grid item lg={6} md={6} sm={6} xs={12}>
-        <CheckIn  isLoading={isLoading} />
+        <ClassTeacherCheckIn  isLoading={isLoading} />
       </Grid>
       <Grid item lg={6} md={6} sm={6} xs={12}>
-        <TotalAttendance isLoading={isLoading} />
+        <ClassTeacherTotalAttendance isLoading={isLoading} />
       </Grid>
     </Grid>
   );
