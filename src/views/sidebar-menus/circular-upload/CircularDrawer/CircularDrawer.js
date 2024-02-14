@@ -12,6 +12,8 @@ import HomeYoutubeLink from 'views/sidebar-menus/Student-homework-upload/HomeYou
 import CircularTopic from './CircularTopic';
 import HomeworkTemplate from 'views/sidebar-menus/Student-homework-upload/HomeworkTemplate';
 import CancelTwoToneIcon from '@mui/icons-material/CancelTwoTone';
+import CircularCategory from './CircularCategory'
+import CirclarSelectClass from './CircularSelectClass'
 
 
 export default function CircularDrawer() {
@@ -40,6 +42,12 @@ export default function CircularDrawer() {
         <Grid >
           <Grid item sx={{paddingLeft:'7px',paddingRight:'7px'}}>
             <CircularDate label="Circular Date:" />
+          </Grid> 
+          <Grid item>
+            <CircularCategory/>
+          </Grid>
+          <Grid item>
+            <CirclarSelectClass/>
           </Grid>
           <Grid item>
             <CircularTopic/>
