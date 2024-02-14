@@ -217,7 +217,7 @@ const GmailInboxTemplate = () => {
     <>
       <Paper>
       <ThemeProvider theme={theme}>
-      <Box sx={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
+      <Box sx={{ display: 'flex', flexDirection: 'column' }}>
         <CssBaseline />
         {/* Header Section */}
         <Box

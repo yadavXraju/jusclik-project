@@ -15,7 +15,7 @@ import {
   Badge,
   Avatar,
   ListItemAvatar,
-  Stack
+  Popover
 } from '@mui/material';
 import dayjs from 'dayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
@@ -28,6 +28,7 @@ import { ClassList } from '../attendance-entry/ClassList';
 import { SectionList } from '../attendance-entry/SectionList';
 import { StudentList } from '../attendance-entry/StudentList';
 import AttendanceActions from './AttendanceActions';
+import AttendanceAvatarsPopover from './AttendanceAvatarsPopover';
 import WarningBox from '../attendance-entry/WarningBox';
 import { styled } from '@mui/material/styles';
 
@@ -55,47 +56,40 @@ export default function AttendanceEntry() {
   const [showWarningBox, setShowWarningBox] = useState(false);
   const [filteredSections, setFilteredSections] = useState([]);
   const [selectedMonth, setSelectedMonth] = useState(dayjs());
-  const [dates, setDates] = useState([]); // Declare the dates state variable
+  const [dates, setDates] = useState([]);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [selectedAvatarDate, setSelectedAvatarDate] = useState(null);
 
   const handleMonthChange = (date) => {
     setSelectedMonth(date);
   };
 
-  const formatDate = (date) => {
-    return dayjs(date).format('DD');
-  };
-
-  // Update generateDateList function to set the dates state
   const generateDateList = () => {
     const startDate = selectedMonth.clone().startOf('month');
     const endDate = selectedMonth.clone().endOf('month');
     const datesArray = [];
     let currentDate = startDate;
     while (currentDate.isBefore(endDate) || currentDate.isSame(endDate, 'day')) {
-      datesArray.push(dayjs(currentDate)); // Convert currentDate to dayjs object before pushing
+      datesArray.push(dayjs(currentDate));
       currentDate = currentDate.add(1, 'day');
     }
-    setDates(datesArray); // Set the state with the array of dates
+    setDates(datesArray);
   };
 
-  // Call generateDateList function whenever the selectedMonth changes
   useEffect(() => {
     generateDateList();
   }, [selectedMonth]);
 
-  // Initialize filteredStudentList with the original StudentList when the component mounts, sorted alphabetically by student name
   useEffect(() => {
     const sortedStudentList = [...StudentList].sort((a, b) => a.name.localeCompare(b.name));
     setFilteredStudentList(sortedStudentList);
 
-    // Set default avatar selection to 'H' (holiday) for all students
     const defaultAvatars = {};
     sortedStudentList.forEach((student) => {
       defaultAvatars[student.id] = 'H';
     });
     setSelectedAvatars(defaultAvatars);
 
-    // Calculate absence percentage and show warning box if necessary
     const absentCount = sortedStudentList.filter((student) => student.countSelectedStatus === 'Absent').length;
     const totalStudents = sortedStudentList.length;
     const absentPercentage = (absentCount / totalStudents) * 100;
@@ -111,28 +105,43 @@ export default function AttendanceEntry() {
     }
   };
 
-  const handleAvatarClick = (avatar, studentId) => {
-    setSelectedAvatars((prevAvatars) => ({
-      ...prevAvatars,
-      [studentId]: prevAvatars[studentId] === avatar ? prevAvatars[studentId] : avatar
-    }));
-
-    const absentCount = countSelectedStatus('A');
-    const totalStudents = filteredStudentList.length;
-    const absentPercentage = Math.floor((absentCount / totalStudents) * 100);
-    setShowWarningBox(absentPercentage >= 50);
+  const handleAvatarClick = (avatar, studentId, date, event) => {
+    // Update the selected avatar for the individual student
+    const updatedAvatars = { ...selectedAvatars };
+    updatedAvatars[studentId] = avatar;
+  
+    // If the 'H' avatar is clicked, open the popover and set the selected date
+    if (avatar === 'H') {
+      setAnchorEl(event.currentTarget);
+      setSelectedAvatarDate(date);
+    } else {
+      // Close the popover if another avatar is clicked
+      setAnchorEl(null);
+      setSelectedAvatarDate(null);
+    }
+  
+    // Update the avatar in the list with the selected avatar
+    const updatedStudentList = filteredStudentList.map((student) => {
+      if (student.id === studentId) {
+        return { ...student, selectedAvatar: avatar };
+      }
+      return student;
+    });
+    setFilteredStudentList(updatedStudentList);
+  
+    // Update the selected avatars state
+    setSelectedAvatars(updatedAvatars);
   };
+  
+  
 
   const countSelectedStatus = (status) => {
     const count = Object.values(selectedAvatars).filter((avatar) => avatar === status).length;
-    console.log(`Count of ${status}:`, count);
     return count;
   };
 
   const filterStudentList = (classValue, sectionValue) => {
-    console.log('Filtering student list:', classValue, sectionValue);
     const filteredStudents = StudentList.filter((student) => student.class === classValue && student.section === sectionValue);
-    console.log('Filtered students:', filteredStudents);
     setFilteredStudentList(filteredStudents);
   };
 
@@ -141,53 +150,39 @@ export default function AttendanceEntry() {
     filterStudentList(selectClass, selectSection);
   };
 
-  const updateAvatars = (action) => {
+  const updateAvatars = (action, date) => {
     const updatedAvatars = {};
-    // Set the background color based on the selected action
+
     filteredStudentList.forEach((student) => {
       updatedAvatars[student.id] = action.charAt(0).toUpperCase();
     });
-    // Update the state with the new avatar colors
-    setSelectedAvatars(updatedAvatars);
-    // Set the global action
+    setSelectedAvatars((prevAvatars) => ({
+      ...prevAvatars,
+      [date.format('DD-MM-YYYY')]: updatedAvatars
+    }));
     setGlobalAttendanceAction(action);
   };
 
-  const handleActionsConfirm = (selectedAction) => {
+  const handleActionsConfirm = (selectedAction, date) => {
     if (selectedAction === 'mark all holiday') {
-      updateAvatars('H');
-      setShowWarningBox(false); // Hide warning box when marking all holidays
+      updateAvatars('H', date);
     } else if (selectedAction === 'mark all present') {
-      updateAvatars('P');
-      setShowWarningBox(false); // Hide warning box when marking all presents
+      updateAvatars('P', date);
     } else if (selectedAction === 'mark all absent') {
-      updateAvatars('A');
-      setShowWarningBox(true); // Show warning box when marking all absents
-    } else {
-      // Handle any other actions or provide a default behavior
+      updateAvatars('A', date);
     }
-
-    // Reset the global action
-    setGlobalAttendanceAction('');
-    // Close the confirmation dialog
     setConfirmationDialogOpen(false);
   };
 
   useEffect(() => {
     const filteredSections = SectionList.filter((section) => section.class === selectClass);
     setFilteredSections(filteredSections);
-    setSelectSection(''); // Reset the selected section when the class changes
+    setSelectSection('');
   }, [selectClass]);
-
-  const calculateHolidayCount = () => {
-    // Return the total number of days in the selected month
-    return dates.length;
-  };
 
   return (
     <Box>
       <Box>
-        {/* Search filter box */}
         <Paper sx={{ borderRadius: '30px' }}>
           <Box sx={{ minWidth: 250, display: 'flex', alignItems: 'baseline', p: 2 }}>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -228,7 +223,6 @@ export default function AttendanceEntry() {
                 label="Select Section"
                 onChange={handleChange}
               >
-                {/* Display sections based on the selected class */}
                 {(selectClass && filteredSections.length > 0 ? filteredSections : SectionList).map((sectionItem) => (
                   <MenuItem key={sectionItem.value} value={sectionItem.value}>
                     {sectionItem.section}
@@ -249,7 +243,6 @@ export default function AttendanceEntry() {
         </Paper>
       </Box>
 
-      {/* Legends */}
       <Box sx={{ mt: 1 }}>
         <Paper sx={{ mb: 1, display: 'flex' }}>
           <Grid
@@ -346,20 +339,9 @@ export default function AttendanceEntry() {
               </Item>
             </Grid>
           </Grid>
-          <Grid>
-            <Item sx={{ marginRight: '40px' }}>
-              <AttendanceActions
-                onConfirm={handleActionsConfirm}
-                open={isConfirmationDialogOpen}
-                onClose={() => setConfirmationDialogOpen(false)}
-                action={globalAttendanceAction}
-              />
-            </Item>
-          </Grid>
         </Paper>
       </Box>
 
-      {/* Warning Box */}
       <Box sx={{ mt: 1 }}>
         <WarningBox
           showWarning={showWarningBox}
@@ -369,98 +351,120 @@ export default function AttendanceEntry() {
         />
       </Box>
 
-      {/* Student List */}
       <Box>
-        <Paper sx={{ listStyleType: 'none' }}>
-          <Box sx={{ display: 'inlineFlex', flexDirection: 'column', gap: 1 }}>
-            {/* Box for Admn No., Student Name, and Working Days */}
-            <Box sx={{ display: 'flex', flex: '0 0 30%' }}>
-              <ListItem sx={{ display: 'flex', p: 2 }}>
-                <ListItemText>
-                  <Typography variant="h4" color="text.primary">
-                    Admn No.
-                  </Typography>
-                </ListItemText>
-                <ListItemText>
-                  <Typography variant="h4">Student Name</Typography>
-                </ListItemText>
-                <ListItemText>
-                  <Typography variant="h4" color="text.primary">
-                    Working Days
-                  </Typography>
-                </ListItemText>
-              </ListItem>
-            </Box>
-            {/* Box for Dates with horizontal overflow */}
-            <Box sx={{ flex: '0 0 70%', display: 'flex', overflowX: 'auto' }}>
-              {dates.map((date) => (
-                <ListItem key={date.format('DD-MM-YYYY')} sx={{ display: 'block' }}>
-                  <ListItemText>
-                    <Typography variant="h4" color="text.primary">
-                      {formatDate(date)}
-                    </Typography>
-                  </ListItemText>
-                  <ListItemText>
-                    <Typography variant="h4" color="text.primary">
-                      {date.format('ddd')}
-                    </Typography>
-                  </ListItemText>
-                </ListItem>
-              ))}
-            </Box>
-          </Box>
-
-          <Divider />
-
-          {filteredStudentList.map((student) => (
-            <React.Fragment key={student.id}>
-              <ListItem sx={{ display: 'flex', alignItems: 'center', p: 2 }}>
-                <Box sx={{ display: 'flex', flex: '0 0 30%' }}>
-                  <ListItemText sx={{flex: '0 0 20%' }}>
-                    <Typography variant="h4" color="text.primary">
-                      {student.admnNo}
-                    </Typography>
-                  </ListItemText>
-
-                  <ListItemAvatar >
-                    <Avatar src={AvtarImg} sx={{ width: 40, height: 40 }} />
-                  </ListItemAvatar>
-
-                  <ListItemText sx={{flex: '0 0 30%' }}>
-                    <Typography variant="h4">{student.name}</Typography>
-                  </ListItemText>
-
-                  <ListItemText>
-                    <Typography variant="h4">0P+3A</Typography>
-                  </ListItemText>
+        <Paper sx={{ listStyleType: 'none', pt: 1 }}>
+          <Grid container spacing={2}>
+            <Grid item xs={4}>
+              <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+                <Box sx={{ display: 'flex', p: 1 }}>
+                  <ListItem>
+                    <ListItemText sx={{ flex: '0 0 30%' }}>
+                      <Typography variant="h4" color="text.primary">
+                        Admn No.
+                      </Typography>
+                    </ListItemText>
+                    <ListItemText sx={{ flex: '0 0 42%' }}>
+                      <Typography variant="h4">Student Name</Typography>
+                    </ListItemText>
+                    <ListItemText sx={{ flex: '0 0 28%', justifyContent: 'center' }}>
+                      <Typography variant="h4" color="text.primary">
+                        Working Days
+                      </Typography>
+                    </ListItemText>
+                  </ListItem>
+                  <Divider />
                 </Box>
-                <Box >
-                  <ListItemText sx={{ overflowX: 'auto' }}>
-                    <Typography variant="h4" color="text.secondary">
-                      <Stack direction="row" spacing={2}>
-                        {[...Array(calculateHolidayCount(student.id))].map((_, index) => (
+                <Divider />
+                {filteredStudentList.map((student) => (
+                  <React.Fragment key={student.id}>
+                    <Box sx={{ display: 'flex', alignItems: 'center', p: 2 }}>
+                      <Typography sx={{ flex: '0 0 30%' }} variant="h4" color="text.primary">
+                        {student.admnNo}
+                      </Typography>
+                      <ListItemAvatar>
+                        <Avatar src={AvtarImg} sx={{ width: 40, height: 40 }} />
+                      </ListItemAvatar>
+                      <Typography sx={{ flex: '0 0 30%' }} variant="h4">
+                        {student.name}
+                      </Typography>
+                      <Typography variant="h4" sx={{ flex: '0 0 10%' }}>
+                        0P+3A
+                      </Typography>
+                    </Box>
+                    <Divider />
+                  </React.Fragment>
+                ))}
+              </Box>
+            </Grid>
+
+            <Grid item xs={8}>
+              <Box sx={{ display: 'flex', flexDirection: 'column', overflow: 'auto' }}>
+                <Box sx={{ flex: '0 0 70%', display: 'flex' }}>
+                  {dates.map((date) => (
+                    <ListItem key={date.format('DD-MM-YYYY')} sx={{ display: 'block', textAlign: 'center' }}>
+                      <ListItemText>
+                        <Typography variant="h4" color="text.primary" sx={{ cursor: 'pointer' }}>
+                          <AttendanceActions
+                            open={isConfirmationDialogOpen}
+                            action={globalAttendanceAction}
+                            onConfirm={handleActionsConfirm}
+                            date={date}
+                          />
+                        </Typography>
+                      </ListItemText>
+                    </ListItem>
+                  ))}
+                </Box>
+
+                <Divider />
+
+                {filteredStudentList.map((student, index) => (
+                  <React.Fragment key={student.id}>
+                    <ListItem sx={{ display: 'flex', gap: 2, p: 2 }}>
+                      {dates.map((date) => (
+                        <React.Fragment key={date.format('DD-MM-YYYY')}>
+                          <Popover
+                            id={`attendance-popover-${student.id}-${date.format('DD-MM-YYYY')}`}
+                            open={selectedAvatarDate === date && anchorEl !== null}
+                            anchorEl={anchorEl}
+                            onClose={() => setAnchorEl(null)}
+                            anchorOrigin={{
+                              vertical: 'bottom',
+                              horizontal: 'left'
+                            }}
+                            transformOrigin={{
+                              vertical: 'top',
+                              horizontal: 'left'
+                            }}
+                          >
+                            <AttendanceAvatarsPopover
+                              selectedAvatars={selectedAvatars}
+                              handleAvatarClick={(avatar) => handleAvatarClick(avatar, student.id, date)}
+                              student={student}
+                            />
+                          </Popover>
+
                           <Avatar
-                            key={index}
                             sx={{
                               bgcolor: '#7dceeb',
-                              width: 30,
-                              height: 30,
+                              width: 40,
+                              height: 40,
                               cursor: 'pointer',
                               color: '#000000'
                             }}
-                            onClick={() => handleAvatarClick('H', student.id)}
+                            onClick={(event) => handleAvatarClick('H', student.id, date, event)}
                           >
-                            H
+                            {selectedAvatars[student.id] || 'H'}
                           </Avatar>
-                        ))}
-                      </Stack>
-                    </Typography>
-                  </ListItemText>
-                </Box>
-              </ListItem>
-              <Divider />
-            </React.Fragment>
-          ))}
+                        </React.Fragment>
+                      ))}
+                    </ListItem>
+                    {index < filteredStudentList.length - 1 && <Divider />}
+                  </React.Fragment>
+                ))}
+              </Box>
+            </Grid>
+          </Grid>
         </Paper>
       </Box>
     </Box>
