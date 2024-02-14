@@ -8,7 +8,7 @@ import LeaveChart from './LeaveApplicationChart';
 import LeaveTabs from './LeaveApplicationFilter';
 import { Paper } from '@mui/material';
 import LeaveDrawer from './LeaveApplicationDrawer';
-import LeaveForm from './leavedemo';
+
 
 
 const LeaveApplication = () => (
@@ -47,7 +47,6 @@ const LeaveApplication = () => (
         <LeaveTabs />
       </Box>
     </Paper>
-    <LeaveForm/>
   </>
 )
 

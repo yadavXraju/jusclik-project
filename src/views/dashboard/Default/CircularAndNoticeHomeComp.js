@@ -17,13 +17,7 @@ const CircularAndNoticeHomeComp = ({ isLoading }) => {
   const navigate = useNavigate();
   const isMobile = useMediaQuery('(max-width: 767px)')
 
-  // const lineClamp = {
-  //   overflow: 'hidden',
-  //   textOverflow: 'ellipsis',
-  //   display: '-webkit-box',
-  //   WebkitBoxOrient: 'vertical',
-  //   WebkitLineClamp: 5,
-  // };
+
 
   const CirculatToShow = 4
 
@@ -78,7 +72,7 @@ const CircularAndNoticeHomeComp = ({ isLoading }) => {
                         </Grid>
 
                         {/* title */}
-                        <Grid item sx={{ flex: isMobile ? '0 0 100%' : '0 0 90%' , marginTop: isMobile ? '20px' : 'auto'}}>
+                        <Grid item sx={{ flex: isMobile ? '0 0 100%' : '0 0 86%' , marginTop: isMobile ? '20px' : 'auto'}}>
                           <Typography variant="h3" color="#000" sx={{fontWeight:'500', fontSize:'16px' , pb:'1'}}>
                             {data.title}
                           </Typography>

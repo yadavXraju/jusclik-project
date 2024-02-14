@@ -14,7 +14,7 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-function MiddleBox({ isVerticalSwitchOn, onSwitchChange}) {
+function MiddleBox({ isVerticalSwitchOn, onSwitchChange, onTextSelect,onConfirm}) {
 
   const handleSwitchChange = (event) => {
     onSwitchChange(event.target.checked);
@@ -86,15 +86,16 @@ function MiddleBox({ isVerticalSwitchOn, onSwitchChange}) {
           </Grid>
           <Grid item xs={12} lg={5} container justifyContent="flex-end" alignItems="center">
             <Item>
-              Enter Marks vertically
+             
               <Tooltip title="Enter Data vertically">
                 <IconButton size="small" color='primary'>
                   <InfoOutlinedIcon />
                 </IconButton>
               </Tooltip>
+              Enter Marks vertically
             </Item>
             <Item>
-              <SwitchButton
+            <SwitchButton
                            handleVerticalKeyPress={handleTextFieldKeyPressVerticaly}
                            handleHorizontalKeyPress={handleTextFieldKeyPressHorizontal}
                            isVerticalSwitchOn={isVerticalSwitchOn}
@@ -103,7 +104,7 @@ function MiddleBox({ isVerticalSwitchOn, onSwitchChange}) {
               />
             </Item>
             <Item>
-              <ActionButton />
+            <ActionButton onTextSelect={onTextSelect} onConfirm={onConfirm} />
             </Item>
           </Grid>
         </Grid>

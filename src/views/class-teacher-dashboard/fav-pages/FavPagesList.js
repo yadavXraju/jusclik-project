@@ -1,23 +1,23 @@
 export const FavPagesList = [
     {
       id :'attendance-entry',
-      title : 'Attendance',
-      url:'/parent/attendance',
+      title : 'Daily Attendance',
+      url:'/class-teacher/attendance/daily-attendance',
       btnText : 'Click Here'
     },
 
     {
         id :2,
-        title : 'Assignments',
-        url:'/parent/assignments',
+        title : 'Monthly Attendance',
+        url:'/class-teacher/attendance/monthly-attendance',
         btnText : 'Click Here'
       },
 
 
       {
         id :3,
-        title : 'Updates',
-        url:'/parent/updates',
+        title : 'Marks',
+        url:'/class-teacher/marks-entry-panel',
         btnText : 'Click Here'
       },
 
@@ -26,80 +26,80 @@ export const FavPagesList = [
       {
         id :4,
         title : 'Timetable',
-        url:'/parent/timetable',
+        url:'/class-teacher/time-table-entry',
         btnText : 'Click Here'
       },
 
 
       {
         id :5,
-        title : 'Performance',
-        url:'/parent/performance',
+        title : 'Student Allocation',
+        url:'/class-teacher/student-allocation',
         btnText : 'Click Here'
       },
 
 
       {
         id :6,
-        title : 'School Fee',
-        url:'/parent/school-fee',
+        title : 'HomeWork',
+        url:'/class-teacher/student-homework-upload',
         btnText : 'Click Here'
       },
 
       {
         id :7,
-        title : 'Online Assessment',
-        url:'/parent/digital-learning/online-assessment',
+        title : 'Circular',
+        url:'/class-teacher/circular-upload',
         btnText : 'Click Here'
       },
 
 
       {
         id :8,
-        title : 'Online Class',
-        url:'/parent/digital-learning/online-class',
+        title : 'Inbox',
+        url:'/class-teacher/inbox',
         btnText : 'Click Here'
       },
 
 
       {
         id :9,
-        title : 'Contact List',
-        url:'/parent/communication/contact-list',
+        title : 'Biometric Details',
+        url:'/class-teacher/biometric-details',
         btnText : 'Click Here'
       },
 
 
       {
         id :10,
-        title : 'Inbox',
-        url:'/parent/inbox',
+        title : 'Leave Application',
+        url:'/class-teacher/leave-application',
         btnText : 'Click Here'
       },
 
-      {
-        id :11,
-        title : 'Item Request Gate Pass',
-        url:'/parent/item-request-gate-pass',
-        btnText : 'Click Here'
-      },
+      // {
+      //   id :11,
+      //   title : 'Item Request Gate Pass',
+      //   url:'/parent/item-request-gate-pass',
+      //   btnText : 'Click Here'
+      // },
 
 
-      {
-        id :12,
-        title : 'Resources',
-        url:'/parent/resources',
-        btnText : 'Click Here'
-      },
+      // {
+      //   id :12,
+      //   title : 'Resources',
+      //   url:'/parent/resources',
+      //   btnText : 'Click Here'
+      // },
 
 
 
-      {
-        id :13,
-        title : 'Photo Gallery',
-        url:'/parent/photo-gallery',
-        btnText : 'Click Here'
-      },
+      // {
+      //   id :13,
+      //   title : 'Photo Gallery',
+      //   url:'/parent/photo-gallery',
+      //   btnText : 'Click Here'
+      // },
 
 
 

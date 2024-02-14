@@ -67,19 +67,19 @@ const TimeTableHome = () => {
 
 
                             <Grid item lg={3} md={3} sm={3} xs={3} style={timeTableHeader} >
-                                <Typography variant='span'   sx={{fontSize:'18px'}} >Period</Typography>
+                                <Typography variant='span'   sx={{fontSize: isMobile ? '14px' : '18px'}} >Period</Typography>
                             </Grid>
 
                             <Grid item lg={3} md={3} sm={3} xs={3} style={timeTableHeader} >
-                                <Typography variant='span'  sx={{fontSize:'18px'}}>Subject</Typography>
+                                <Typography variant='span'  sx={{fontSize: isMobile ? '14px' : '18px'}} >Subject</Typography>
                             </Grid>
 
                             <Grid item lg={3} md={3} sm={3} xs={3} style={timeTableHeader} >
-                                <Typography variant='span'  sx={{fontSize:'18px'}}>Teacher</Typography>
+                                <Typography variant='span'   sx={{fontSize: isMobile ? '14px' : '18px'}} >Teacher</Typography>
                             </Grid>
 
                             <Grid item lg={3} md={3} sm={3} xs={3} style={timeTableHeader}>
-                                <Typography variant='span'   sx={{fontSize:'18px'}} >Time</Typography>
+                                <Typography variant='span'    sx={{fontSize: isMobile ? '14px' : '18px'}} >Time</Typography>
                             </Grid>
                             
                         </Grid>
@@ -90,12 +90,12 @@ const TimeTableHome = () => {
                       {currentDayData.map((scheduleItem, index) => (
                         <Grid container  key={index}>
 
-                         {/* if period is Assembly or short break render only render period  cuz of bg color adjustment */}
+                         {/* if period is Assembly or short break render only  period  cuz of bg color adjustment */}
 
                           {scheduleItem.period === 'Assembly' ||  scheduleItem.period === 'Short Break'
                              ?
                               <Grid container sx={{ textAlign: 'left', display: 'flex', padding:'13px 24px',background:'rgba(128, 128, 128, 0.1)'}}>
-                                 <Grid item lg={3} md={3} sm={3} xs={3} 
+                                 <Grid item lg={12} md={12} sm={12} xs={12} 
                                   sx={{ display: 'flex',
                                   gap: isMobile ? '1px' : '16px' , 
                                   flexDirection: isMobile ? 'column' : 'row'  , 
@@ -125,7 +125,7 @@ const TimeTableHome = () => {
 
 
                                   {scheduleItem.details.length > 0 ? (
-                                        <Grid  item lg={9} >
+                                        <Grid  item lg={9} md={9} sm={9} xs={9} >
                               
                                           {scheduleItem.details.map((detail, detailIndex) => (
                                 

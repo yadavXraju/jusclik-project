@@ -1,6 +1,6 @@
 import { Button, Grid, Paper } from '@mui/material'
 import React from 'react'
-import  { ExamDropDown, SubjectDropDown, TermDropDown,ClassDropDown } from '../SearchFilter/filterComponent/DropDown'
+import  { ExamDropDown, SubjectDropDown, TermDropDown,ClassDropDown} from '../SearchFilter/filterComponent/DropDown'
 import {currencies} from './dropdown data/ClassData'
 import {Term }from './dropdown data/TermData'
 import { subject } from './dropdown data/SubjectData'
@@ -33,6 +33,7 @@ function UpperTab( { onClassChange,selectedSubject, onSubjectChange,selectedClas
   selectedSubject={selectedSubject} // Pass the selectedSubject
   onSubjectChange={onSubjectChange} // Pass the onSubjectChange function
 />
+
   
         <Button
           variant="contained"
