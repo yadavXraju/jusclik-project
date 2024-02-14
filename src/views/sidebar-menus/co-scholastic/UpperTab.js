@@ -1,18 +1,16 @@
 import { Button, Grid, Paper } from '@mui/material'
 import React from 'react'
-import  { TermDropDown,ClassDropDown, StudentDropDown } from '../SearchFilter/filterComponent/DropDown'
+import  { TermDropDown,ClassDropDown,StudentDropDown } from '../SearchFilter/filterComponent/DropDown'
 import {currencies} from '../marks-entry-panel/dropdown data/ClassData'
 import {Term }from '../marks-entry-panel/dropdown data/TermData'
 
 import SearchTwoToneIcon from '@mui/icons-material/SearchTwoTone';
-import { studentData } from './Data/studentData'
 function UpperTab( { onClassChange,
   selectedClass,
   onTermChange,
   selectedTerm,
-  selectedStudent,
-  onStudentChange,
-  students,}) {
+  data,
+  selectedStudent, onStudentChange}) {
 
 
   return (
@@ -31,7 +29,7 @@ function UpperTab( { onClassChange,
           selectedTerm={ selectedTerm}
         />
         
-         <StudentDropDown data={studentData} selectedStudent={selectedStudent}  onStudentChange={ onStudentChange} students={students} />
+       <StudentDropDown data={data}   selectedClass={selectedClass} selectedStudent={selectedStudent}   onStudentChange={ onStudentChange} />
   
         <Button
           variant="contained"

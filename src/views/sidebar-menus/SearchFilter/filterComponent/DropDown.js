@@ -137,24 +137,32 @@ export function TermDropDown({ data,  onTermChange, selectedTerm }) {
 }
 
 
-
-export function StudentDropDown({ data }) {
-  // Check if data is not an array or is empty
+export function StudentDropDown({ data, onStudentChange, selectedStudent}) {
+  // Check if students is undefined or not an array
   if (!Array.isArray(data) || data.length === 0) {
     return <div>No data available</div>;
   }
 
+  const handleChange = (event) => {
+    const selectedStudent = event.target.value;
+
+    // Call the onClassChange function with the selected class
+    onStudentChange(selectedStudent);
+  };
+
+  console.log("Data:", data);
   return (
     <TextField
       id="outlined-select-student"
       select
       label="Student Name"
-      value="0"
+      value={ selectedStudent|| (data.length > 0 ? data[0].value : '')}
       sx={{ margin: "0px 10px" }}
+      onChange={handleChange}
     >
-      {data.map((option) => (
-          <MenuItem key={option.value} value={option.value}>
-          {option.label}
+      {data.map((student) => (
+        <MenuItem key={student.id} value={student.id}>
+          {student.name}
         </MenuItem>
       ))}
     </TextField>
