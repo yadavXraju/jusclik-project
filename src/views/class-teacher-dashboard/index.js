@@ -11,6 +11,7 @@ import UpcomingBirthday from './upcoming-birthday/UpcomingBirthday';
 import LowStudentAttendance from './low-student-attendance/LowStudentAttendance';
 import StudentStrength from './student-strength/StudentStrength';
 import StudentLeave from './student-leave/StudentLeave';
+import ClassTeacherTimeTable from './time-table/TimeTable';
 
 const Dashboard = ({ isLoading }) => {
   return (
@@ -80,7 +81,10 @@ const Dashboard = ({ isLoading }) => {
              <StudentLeave isLoading={isLoading} />
           </Grid>
      
-           
+          <Grid item xs={12} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>           
+             <ClassTeacherTimeTable isLoading={isLoading} />
+          </Grid>
+
         </Grid>
       </Grid>
     </Grid>

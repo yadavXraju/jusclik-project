@@ -10,7 +10,6 @@ import Select from '@mui/material/Select';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { makeStyles } from '@mui/styles';
 import { Typography } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import TextArea from 'antd/es/input/TextArea';
@@ -19,17 +18,14 @@ import { Divider, ListItem, ListItemText } from '@mui/material';
 import Paper from '@mui/material/Paper';
 import dayjs from 'dayjs';
 import NotifyStudent from './Notify_student';
-//import QueryBuilderOutlinedIcon from '@mui/icons-material/QueryBuilderOutlined';
+import QueryBuilderOutlinedIcon from '@mui/icons-material/QueryBuilderOutlined';
 
 
-const useStyles = makeStyles({
-    datePicker: {
-        width: '100%',
-        fontSize: '0.5rem', // Adjust font size to make it smaller
-    },
-});
 
-export default function LeaveDrawer() {
+export default function LeaveDrawer1() {
+
+    //const isMobile = useMediaQuery('(max-width:767px)');
+
     const [state, setState] = React.useState({
         right: false,
         leaveFrom: null,
@@ -38,12 +34,16 @@ export default function LeaveDrawer() {
     });
     const [storedLeaveFromDate, setStoredLeaveFromDate] = React.useState(null);
     const [storedLeaveToDate, setStoredToFromDate] = React.useState(null);
-    const [leaveType, setLeaveType] = React.useState('');
+    const [leaveType, setLeaveType] = React.useState('Leave Without Pay');
     const [DefaultleaveType, setDefaultleaveType] = React.useState('Leave Without Pay');
+    const [leaveDays, setleaveDays] = React.useState('');
+    const [AttendanceStatus, setAttendanceStatus] = React.useState('Full Day Leave(LV)')
+    const [Statusfrom, setStatusfrom] = React.useState('Full Day Leave(LV)');
+    const [StatusTo, setStatusTo] = React.useState('');
 
     // ========= Update Default leave type =============
     const handleLeaveTypeChange = (event) => {
-        setLeaveType(event.target.value); // Update the leaveType state with the selected value
+        setLeaveType(event.target.value);
         setDefaultleaveType(event.target.value);
     };
 
@@ -75,8 +75,6 @@ export default function LeaveDrawer() {
         setStoredToFromDate(date);
     };
 
-    const classes = useStyles();
-
     // ========== calculate leave ============
     const calculateLeaveDuration = (startDate, endDate) => {
         if (startDate && endDate) {
@@ -86,55 +84,59 @@ export default function LeaveDrawer() {
         return null;
     };
 
+
     // ============ leave From Attendance Status Change method =======
     const handleselectleavechange1 = (event) => {
         const selectedValue = event.target.value;
         let updatedLeaveDuration = state.leaveDuration;
-        if (selectedValue === 20) {
-            updatedLeaveDuration -= 0;
-        } else if (selectedValue === 30) {
+        if (selectedValue === 'Short Leave(SL)') {
+            updatedLeaveDuration -= 0.75;
+        } else if (selectedValue === 'Half Day 1 Leave(H1)') {
             updatedLeaveDuration -= 0.5;
-        } else if (selectedValue === 40) {
+        } else if (selectedValue === 'Half Day 2 Leave(H2)') {
             updatedLeaveDuration -= 0.5;
         }
         setState({
             ...state,
             leaveDuration: updatedLeaveDuration,
         });
+        setStatusfrom(selectedValue);
     }
     // ============ leave To Attendance Status Change method =======
     const handleselectleavechange2 = (event) => {
         const selectedValue = event.target.value;
         let updatedLeaveDuration = state.leaveDuration;
-        if (selectedValue === 10) {
-            updatedLeaveDuration -= 0.25;
-        } else if (selectedValue === 20) {
+        if (selectedValue === 'Short Leave(SL)') {
+            updatedLeaveDuration -= 0.75;
+        } else if (selectedValue === 'Half Day 1 Leave(H1)') {
             updatedLeaveDuration -= 0.5;
-        } else if (selectedValue === 30) {
-            updatedLeaveDuration -= 0;
+        } else if (selectedValue === 'Half Day 2 Leave(H2)') {
+            updatedLeaveDuration -= 0.5;
         }
         setState({
             ...state,
             leaveDuration: updatedLeaveDuration,
         });
+        setStatusTo(selectedValue);
     }
-    // ============ Single Day leave To Attendance Status Change method =======
+    // ============ Single Day leave Attendance Status Change method =======
     const handleselectleavechange3 = (event) => {
         const selectedValue = event.target.value;
         let updatedLeaveDuration = state.leaveDuration;
-        if (selectedValue === 10) {
+        if (selectedValue === 'Short Leave(SL)') {
             updatedLeaveDuration -= 0.75;
-        } else if (selectedValue === 20) {
+        } else if (selectedValue === 'Half Day 1 Leave(H1)') {
             updatedLeaveDuration -= 0.5;
-        } else if (selectedValue === 30) {
+        } else if (selectedValue === 'Half Day 2 Leave(H2)') {
             updatedLeaveDuration -= 0.5;
         }
         setState({
             ...state,
             leaveDuration: updatedLeaveDuration,
         });
+        setAttendanceStatus(selectedValue);
+        setStatusfrom(selectedValue);
     }
-
 
     // ============ render full day / custom =============
     const [selectedButton, setSelectedButton] = React.useState(1);
@@ -152,7 +154,6 @@ export default function LeaveDrawer() {
             dates.push(currentDate.format('DD-MM-YYYY'));
             currentDate = currentDate.add(1, 'day');
         }
-
         return dates;
     };
 
@@ -167,14 +168,27 @@ export default function LeaveDrawer() {
         if (datesBetween && selectedLeaveTypes) {
             const newLeave = {
                 from: datesBetween,
-                type: leaveType
+                type: leaveType, 
+                status: AttendanceStatus,
+                statusfrom: Statusfrom,
+                statusto: StatusTo
             };
             setSelectedLeaveTypes([...selectedLeaveTypes, newLeave]);
         }
-        //setSelectedLeaveTypes([...selectedLeaveTypes, leaveType]);
         setaddleave(true);
         setshowleaveform(false);
         setaddmoreleave(true);
+        setDefaultleaveType('Leave Without Pay');
+        setStatusfrom('Full Day Leave(LV)');
+        setAttendanceStatus('Full Day Leave(LV)');
+        setStatusTo('');
+        setleaveDays(Number(leaveDays) + Number(state.leaveDuration));
+        setState({
+            ...state,
+            leaveFrom: null,
+            leaveTo: null,
+            leaveDuration: null,
+        });
     };
 
     // ========= render leave application form =============
@@ -184,6 +198,7 @@ export default function LeaveDrawer() {
         event.preventDefault();
         setshowleaveform(true);
         setaddmoreleave(false);
+     
     };
 
 
@@ -197,283 +212,285 @@ export default function LeaveDrawer() {
     };
 
 
-
     const form = (
-        <Box
-            sx={{ width: 650, padding: 2 }}
-            role="presentation"
-        >
-            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <Typography variant='h4'>Request Leave</Typography>
-                <Button onClick={toggleDrawer('right', false)} sx={{ alignSelf: 'flex-end' }}>
-                    Close
-                </Button>
-            </Box>
-
-            {/* ========= list of all added leaves =========== */}
-            <Box>
-                {
-                    addleave === true && (
-                        <Box m={2} p={1} sx={{ border: '1px solid #ccc', borderRadius: '5px' }}>
-                            {/* Render your list items here */}
-                            <Paper sx={{ listStyleType: 'none', p: 0 }}>
-                                <ListItem sx={{ display: 'flex', alignItems: 'center', p: 1 }}>
-                                    {/* Your list item headers */}
-                                    <ListItemText sx={{ flex: '0 0 30%' }}>
-                                        <Typography variant="h4" >
-                                            Leave Date
-                                        </Typography>
-                                    </ListItemText>
-                                    <ListItemText sx={{ flex: '0 0 40%' }}>
-                                        <Typography variant="h4">Attendance Status</Typography>
-                                    </ListItemText>
-                                    <ListItemText sx={{ flex: '0 0 30%' }}>
-                                        <Typography variant="h4">
-                                            Leave Status
-                                        </Typography>
-                                    </ListItemText>
-                                </ListItem>
-                                <Divider />
-                            </Paper>
-
-                            {selectedLeaveTypes.map((leave, index) => (
-                                <Box key={index}>
-                                    {leave.from.map((date, index) => (
-                                        <>
-                                            <Paper sx={{ display: 'flex', alignItems: 'center', p: 0 }} key={index}>
-                                                <ListItem>
-                                                    <ListItemText sx={{ flex: '0 0 30%' }}>
-                                                        <Typography variant="h5">
-                                                            {date}
-                                                        </Typography>
-                                                    </ListItemText>
-                                                    <ListItemText sx={{ flex: '0 0 40%' }}>
-                                                        <Typography variant="h5">
-                                                            leave
-                                                        </Typography>
-                                                    </ListItemText>
-                                                    <ListItemText sx={{ flex: '0 0 30%' }}>
-                                                        <Typography variant="h5">
-                                                            {/* {leave.type} */}
-                                                            <FormControl fullWidth size='small'>
-                                                                <InputLabel id={`leave-type-label-${index}`}>Leave Type</InputLabel>
-                                                                <Select
-                                                                    labelId={`leave-type-label-${index}`}
-                                                                    id={`leave-type-select-${index}`}
-                                                                    value={leaveTypes1[index] !== undefined ? leaveTypes1[index] : leave.type}
-                                                                    label="Leave Type"
-                                                                    onChange={(event) => handleLeaveTypeChange1(event, index)} // Handle change in leave type selection for this index
-                                                                >
-                                                                    <MenuItem value={'Casual Leave'}>Casual Leave</MenuItem>
-                                                                    <MenuItem value={'Earned Leave'}>Earned Leave</MenuItem>
-                                                                    <MenuItem value={'Medical Leave'}>Medical Leave</MenuItem>
-                                                                    <MenuItem value={'Festival Leave'}>Festival Leave</MenuItem>
-                                                                    <MenuItem value={'Leave Without Pay'}>Leave Without Pay</MenuItem>
-                                                                </Select>
-                                                            </FormControl>
-                                                        </Typography>
-                                                    </ListItemText>
-                                                </ListItem>
-                                            </Paper>
-                                            <Divider />
-                                        </>
-                                    ))}
-                                </Box>
-                            ))}
-
-                            {addmoreleave === true && (
-                                <Button sx={{ marginTop: '1rem' }} type="submit" variant="contained" size="small" onClick={Showleaveapplication} >
-                                Add More Leave
-                            </Button>
-                            )}
-                            
-                        </Box>
-                    )
-                }
-            </Box>
-
-            {/* ========== Leave Application Form =========== */}
-            <form>
-                <Box sx={{ padding: 2 }}>
-
-                    {showleaveform === true && (
-                        <Box mb={1}>
-                            <Box mb={2} p={1} sx={{ border: '1px solid #ccc', borderRadius: '5px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                <Box >
-                                    <Box pl={.5} pb={1}>Leave From</Box>
-                                    <LocalizationProvider sx={{ background: '#ccc' }} dateAdapter={AdapterDayjs}>
-                                        <DatePicker
-                                            className={classes.datePicker}
-                                            value={state.leaveFrom}
-                                            onChange={handleLeaveFromChange}
-                                            format="DD-MM-YYYY"
-                                        />
-                                    </LocalizationProvider>
-                                </Box>
-
-                                <Box mt={2.7} p={.5} sx={{ border: '1px solid #ccc', borderRadius: '5px' }}>{state.leaveDuration > 0 ? state.leaveDuration + ' ' + 'days' : '0 days'} </Box>
-
-                                <Box>
-                                    <Box pl={.5} pb={1}>Leave To</Box>
-                                    <LocalizationProvider dateAdapter={AdapterDayjs}>
-                                        <DatePicker
-                                            className={classes.datePicker}
-                                            value={state.leaveTo}
-                                            onChange={handleLeaveToChange}
-                                            format="DD-MM-YYYY"
-                                        />
-                                    </LocalizationProvider>
-                                </Box>
-                            </Box>
-
-                            <Box p={1} sx={{ border: '1px solid #ccc', borderRadius: '5px' }}>
-                                <Box mt={1} mb={2}>
-                                    <FormControl fullWidth size='small'>
-                                        <InputLabel id="demo-simple-select-label">Select Type Of Leave You Want to Apply</InputLabel>
-                                        <Select
-                                            labelId="demo-simple-select-label"
-                                            id="demo-simple-select"
-                                            value={DefaultleaveType}
-                                            label="Select Type Of Leave You Want to Apply"
-                                            onChange={handleLeaveTypeChange}
-                                        >
-                                            <MenuItem value={'Casual Leave'}>Casual Leave</MenuItem>
-                                            <MenuItem value={'Earned Leave'}>Earned Leave</MenuItem>
-                                            <MenuItem value={'Medical Leave'}>Medical Leave</MenuItem>
-                                            <MenuItem value={'Festival Leave'}>Festival Leave</MenuItem>
-                                            <MenuItem value={'Leave Without Pay'}>Leave Without Pay</MenuItem>
-                                        </Select>
-                                    </FormControl>
-                                </Box>
-
-
-                                <Box>
-                                    <ButtonGroup sx={{ padding: '5px', background: '#d3cfcf' }} aria-label="Basic button group">
-                                        <Button sx={{
-                                            color: selectedButton === 1 ? 'black' : 'black',
-                                            background: selectedButton === 1 ? '#ffffff' : '#d3cfcf',
-                                            border: 'none',
-                                            '&:hover': {
-                                                border: 'none'
-                                            },
-                                        }} onClick={() => handleButtonClick(1)}>Full Day</Button>
-                                        <Button sx={{
-                                            color: selectedButton === 2 ? 'black' : 'black',
-                                            background: selectedButton === 2 ? '#ffffff' : '#d3cfcf',
-                                            border: 'none',
-                                            '&:hover': {
-                                                border: 'none'
-                                            },
-                                        }} onClick={() => handleButtonClick(2)}>Custom</Button>
-                                    </ButtonGroup>
-
-                                    {selectedButton === 1 && (
-                                        <Box mt={2} p={1}>
-
-                                        </Box>
-                                    )}
-
-                                    {selectedButton === 2 && (
-                                        state.leaveDuration > 1 ? (
-                                            <Box mb={1} mt={2} p={1} sx={{ border: '1px solid #ccc', borderRadius: '5px' }}>
-                                                <Grid container spacing={2}>
-                                                    <Grid item xs={6} md={6}>
-                                                        <Box>
-                                                            <Box p={.5}>From: {storedLeaveFromDate ? storedLeaveFromDate.format('DD-MM-YYYY') : ''} </Box>
-                                                            <FormControl fullWidth size='small'>
-                                                                <InputLabel id="demo-simple-select-label">Attendance Status</InputLabel>
-                                                                <Select
-                                                                    labelId="demo-simple-select-label"
-                                                                    id="demo-simple-select"
-                                                                    label="Attendance Status"
-                                                                    onChange={handleselectleavechange1}
-                                                                >
-                                                                    <MenuItem value={10}>Short Leave(SL)</MenuItem>
-                                                                    <MenuItem value={20}>Half Day 1 Leave(H1)</MenuItem>
-                                                                    <MenuItem value={30}>Half Day 2 Leave(H2)</MenuItem>
-                                                                    <MenuItem value={40}>On Duty(OD)</MenuItem>
-                                                                    <MenuItem value={50}>Full Day Leave(LV)</MenuItem>
-                                                                </Select>
-                                                            </FormControl>
-                                                        </Box>
-                                                    </Grid>``
-                                                    <Grid item xs={6} md={6}>
-                                                        <Box>
-                                                            <Box p={.5}>To: {storedLeaveToDate ? storedLeaveToDate.format('DD-MM-YYYY') : ''} </Box>
-                                                            <FormControl fullWidth size='small'>
-                                                                <InputLabel id="Attendance_Status_custom">Attendance Status</InputLabel>
-                                                                <Select
-                                                                    labelId="Attendance_Status_custom_label"
-                                                                    id="Attendance-Status_custom-select"
-                                                                    label="Attendance Status"
-                                                                    onChange={handleselectleavechange2}
-                                                                >
-                                                                    <MenuItem value={10}>Short Leave(SL)</MenuItem>
-                                                                    <MenuItem value={20}>Half Day 1 Leave(H1)</MenuItem>
-                                                                    <MenuItem value={30}>Half Day 2 Leave(H2)</MenuItem>
-                                                                    <MenuItem value={40}>On Duty(OD)</MenuItem>
-                                                                    <MenuItem value={50}>Full Day Leave(LV)</MenuItem>
-                                                                </Select>
-                                                            </FormControl>
-                                                        </Box>
-                                                    </Grid>
-                                                </Grid>
-                                            </Box>
-                                        ) : (
-                                            <Box mt={2} mb={2}>
-                                                <FormControl fullWidth size='small'>
-                                                    <InputLabel id="Attendance Status">Attendance Status</InputLabel>
-                                                    <Select
-                                                        id="Attendance-Status_select"
-                                                        label="Attendance Status"
-                                                        onChange={handleselectleavechange3}
-                                                    >
-                                                        <MenuItem value={10}>Short Leave(SL)</MenuItem>
-                                                        <MenuItem value={20}>Half Day 1 Leave(H1)</MenuItem>
-                                                        <MenuItem value={30}>Half Day 2 Leave(H2)</MenuItem>
-                                                        <MenuItem value={40}>On Duty(OD)</MenuItem>
-                                                        <MenuItem value={50}>Full Day Leave(LV)</MenuItem>
-                                                    </Select>
-                                                </FormControl>
-                                            </Box>
-                                        )
-
-                                    )}
-                                </Box>
-                                <Button type="submit" variant="contained" size="small" onClick={handleAddleave}>
-                                    Add Leaves
-                                </Button>
-                            </Box>
-                        </Box>
-                    )}
-
-                    {/* <Box pb={1}>
-                        <Typography variant='h5' sx={{display:'flex', alignItems:'center'}}>
-                         <QueryBuilderOutlinedIcon sx={{paddingRight:'5px'}} /> You are requesting for {state.leaveDuration > 0 ? state.leaveDuration + ' ' + 'days' : '0 days'} of leave
-                        </Typography>
-                    </Box> */}
-
-                    <Box pb={2}>
-                        <Box p={.5}>Note</Box>
-                        <TextArea rows={4} placeholder="Enter your text here..."
-                            fullWidth variant="outlined"
-                        />
-                    </Box>
-
-                    <Box>
-                        <NotifyStudent />
-                    </Box>
-                    <Box sx={{ padding: 2 }}>
-                        <Button type="submit" variant="contained">
-                            Submit
-                        </Button>
-                        <Button sx={{ alignSelf: 'flex-end' }}>
-                            Cancal
-                        </Button>
-                    </Box>
+        <>
+            <Box
+                sx={{ width: { xs: '100%', sm: 650 }, padding: 2 }}
+                role="presentation"
+            >
+                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #ccc' }}>
+                    <Typography variant='h4'>Request Leave</Typography>
+                    <Button onClick={toggleDrawer('right', false)} sx={{ alignSelf: 'flex-end' }}>
+                        Close
+                    </Button>
                 </Box>
-            </form>
-        </Box>
+
+                {/* ========= list of all added leaves =========== */}
+                <Box>
+                    {
+                        addleave === true && (
+                            <Box m={2} p={1} sx={{ border: '1px solid #ccc' }}>
+                                <Paper sx={{ listStyleType: 'none', p: 0 }}>
+                                    <ListItem sx={{ display: 'flex', alignItems: 'center', p: 1 }}>
+                                        <ListItemText sx={{ flex: '0 0 30%' }}>
+                                            <Typography variant="h4" >
+                                                Leave Date
+                                            </Typography>
+                                        </ListItemText>
+                                        <ListItemText sx={{ flex: '0 0 40%' }}>
+                                            <Typography variant="h4">Attendance Status</Typography>
+                                        </ListItemText>
+                                        <ListItemText sx={{ flex: '0 0 30%' }}>
+                                            <Typography variant="h4">
+                                                Leave Status
+                                            </Typography>
+                                        </ListItemText>
+                                    </ListItem>
+                                    <Divider />
+                                </Paper>
+
+                                {selectedLeaveTypes.map((leave, index) => (
+                                    <Box key={index}>
+                                        {leave.from.map((date, index) => (
+                                            <>
+                                                <Paper sx={{ display: 'flex', alignItems: 'center', p: 0 }} key={index}>
+                                                    <ListItem>
+                                                        <ListItemText sx={{ flex: '0 0 30%' }}>
+                                                            <Typography variant="h5">
+                                                                {date}
+                                                            </Typography>
+                                                        </ListItemText>
+                                                        <ListItemText sx={{ flex: '0 0 40%' }}>
+                                                            <Typography variant="h5">
+                                                                {/* {leave.statusfrom !== 'Full Day Leave(LV)' ? leave.statusfrom : leave.status} */}
+                                                                {date === storedLeaveFromDate.format('DD-MM-YYYY') ? leave.statusfrom : 
+                                                                (date === storedLeaveToDate.format('DD-MM-YYYY') ? leave.statusto : leave.status)}
+                                                                {/* {leave.status} */}
+                                                            </Typography>
+                                                        </ListItemText>
+                                                        <ListItemText sx={{ flex: '0 0 30%' }}>
+                                                            <Typography variant="h5">
+                                                                {/* {leave.type} */}
+                                                                <FormControl fullWidth size='small'>
+                                                                    <InputLabel id={`leave-type-label-${index}`}>Leave Type</InputLabel>
+                                                                    <Select
+                                                                        labelId={`leave-type-label-${index}`}
+                                                                        id={`leave-type-select-${index}`}
+                                                                        value={leaveTypes1[index] !== undefined ? leaveTypes1[index] : leave.type}
+                                                                        label="Leave Type"
+                                                                        onChange={(event) => handleLeaveTypeChange1(event, index)} // Handle change in leave type selection for this index
+                                                                    >
+                                                                        <MenuItem value={'Casual Leave'}>Casual Leave</MenuItem>
+                                                                        <MenuItem value={'Earned Leave'}>Earned Leave</MenuItem>
+                                                                        <MenuItem value={'Medical Leave'}>Medical Leave</MenuItem>
+                                                                        <MenuItem value={'Festival Leave'}>Festival Leave</MenuItem>
+                                                                        <MenuItem value={'Leave Without Pay'}>Leave Without Pay</MenuItem>
+                                                                    </Select>
+                                                                </FormControl>
+                                                            </Typography>
+                                                        </ListItemText>
+                                                    </ListItem>
+                                                </Paper>
+                                                <Divider />
+                                            </>
+                                        ))}
+                                    </Box>
+                                ))}
+
+                                {addmoreleave === true && (
+                                    <Button sx={{ marginTop: '1rem' }} type="submit" variant="contained" size="small" onClick={Showleaveapplication} >
+                                        Add More Leave
+                                    </Button>
+                                )}
+
+                            </Box>
+                        )
+                    }
+                </Box>
+
+                {/* ========== Leave Application Form =========== */}
+                <form>
+                    <Box sx={{ padding: 2 }}>
+
+                        {showleaveform === true && (
+                            <Box mb={1}>
+                                <Box mb={2} p={1} sx={{ border: '1px solid #ccc', borderRadius: '5px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                    <Box mr={.5}>
+                                        <Box pl={.5} pb={1}>Leave From</Box>
+                                        <LocalizationProvider sx={{ background: '#ccc' }} dateAdapter={AdapterDayjs}>
+                                            <DatePicker
+                                                value={state.leaveFrom}
+                                                onChange={handleLeaveFromChange}
+                                                format="DD-MM-YYYY"
+                                            />
+                                        </LocalizationProvider>
+                                    </Box>
+
+                                    <Box mt={2.7} p={.5} sx={{ border: state.leaveDuration === null ? 'none' : '1px solid #ccc', borderRadius: '5px' }}>
+                                        {/* {state.leaveDuration > 0 ? state.leaveDuration + ' ' + 'days' : '0 day'}  */}
+                                        {state.leaveDuration === null ? '' : (state.leaveDuration === 1 ? state.leaveDuration + ' ' + 'day' : state.leaveDuration + ' ' + 'days')}
+                                    </Box>
+                                    <Box ml={.5}>
+                                        <Box pl={.5} pb={1}>Leave To</Box>
+                                        <LocalizationProvider dateAdapter={AdapterDayjs}>
+                                            <DatePicker
+                                                value={state.leaveTo}
+                                                onChange={handleLeaveToChange}
+                                                format="DD-MM-YYYY"
+                                            />
+                                        </LocalizationProvider>
+                                    </Box>
+                                </Box>
+
+                                <Box p={1} sx={{ border: '1px solid #ccc', borderRadius: '5px' }}>
+                                    <Box mt={1} mb={2}>
+                                        <FormControl fullWidth size='small'>
+                                            <InputLabel id="demo-simple-select-label">Select Type Of Leave You Want to Apply</InputLabel>
+                                            <Select
+                                                labelId="demo-simple-select-label"
+                                                id="demo-simple-select"
+                                                value={DefaultleaveType}
+                                                label="Select Type Of Leave You Want to Apply"
+                                                onChange={handleLeaveTypeChange}
+                                            >
+                                                <MenuItem value={'Casual Leave'}>Casual Leave</MenuItem>
+                                                <MenuItem value={'Earned Leave'}>Earned Leave</MenuItem>
+                                                <MenuItem value={'Medical Leave'}>Medical Leave</MenuItem>
+                                                <MenuItem value={'Festival Leave'}>Festival Leave</MenuItem>
+                                                <MenuItem value={'Leave Without Pay'}>Leave Without Pay</MenuItem>
+                                            </Select>
+                                        </FormControl>
+                                    </Box>
+
+
+                                    <Box>
+                                        <ButtonGroup sx={{ padding: '5px', background: '#d3cfcf' }} aria-label="Basic button group">
+                                            <Button sx={{
+                                                color: selectedButton === 1 ? 'black' : 'black',
+                                                background: selectedButton === 1 ? '#ffffff' : '#d3cfcf',
+                                                border: 'none',
+                                                '&:hover': {
+                                                    border: 'none'
+                                                },
+                                            }} onClick={() => handleButtonClick(1)}>Full Day</Button>
+                                            <Button sx={{
+                                                color: selectedButton === 2 ? 'black' : 'black',
+                                                background: selectedButton === 2 ? '#ffffff' : '#d3cfcf',
+                                                border: 'none',
+                                                '&:hover': {
+                                                    border: 'none'
+                                                },
+                                            }} onClick={() => handleButtonClick(2)}>Custom</Button>
+                                        </ButtonGroup>
+
+                                        {selectedButton === 1 && (
+                                            <Box mt={2} p={1}>
+
+                                            </Box>
+                                        )}
+
+                                        {selectedButton === 2 && (
+                                            state.leaveDuration > 1 ? (
+                                                <Box mb={1} mt={2} p={1} sx={{ border: '1px solid #ccc', borderRadius: '5px' }}>
+                                                    <Grid container spacing={2}>
+                                                        <Grid item xs={6} md={6}>
+                                                            <Box>
+                                                                <Box p={.5}>From: {storedLeaveFromDate ? storedLeaveFromDate.format('DD-MM-YYYY') : ''} </Box>
+                                                                <FormControl fullWidth size='small'>
+                                                                    <InputLabel id="demo-simple-select-label">Attendance Status</InputLabel>
+                                                                    <Select
+                                                                        labelId="demo-simple-select-label"
+                                                                        id="demo-simple-select"
+                                                                        label="Attendance Status"
+                                                                        onChange={handleselectleavechange1}
+                                                                    >
+                                                                        <MenuItem value={'Short Leave(SL)'}>Short Leave(SL)</MenuItem>
+                                                                        <MenuItem value={'Half Day 1 Leave(H1)'}>Half Day 1 Leave(H1)</MenuItem>
+                                                                        <MenuItem value={'Half Day 2 Leave(H2)'}>Half Day 2 Leave(H2)</MenuItem>
+                                                                        <MenuItem value={'On Duty(OD)'}>On Duty(OD)</MenuItem>
+                                                                        <MenuItem value={'Full Day Leave(LV)'}>Full Day Leave(LV)</MenuItem>
+                                                                    </Select>
+                                                                </FormControl>
+                                                            </Box>
+                                                        </Grid>
+                                                        <Grid item xs={6} md={6}>
+                                                            <Box>
+                                                                <Box p={.5}>To: {storedLeaveToDate ? storedLeaveToDate.format('DD-MM-YYYY') : ''} </Box>
+                                                                <FormControl fullWidth size='small'>
+                                                                    <InputLabel id="Attendance_Status_custom">Attendance Status</InputLabel>
+                                                                    <Select
+                                                                        labelId="Attendance_Status_custom_label"
+                                                                        id="Attendance-Status_custom-select"
+                                                                        label="Attendance Status"
+                                                                        onChange={handleselectleavechange2}
+                                                                    >
+                                                                        <MenuItem value={'Short Leave(SL)'}>Short Leave(SL)</MenuItem>
+                                                                        <MenuItem value={'Half Day 1 Leave(H1)'}>Half Day 1 Leave(H1)</MenuItem>
+                                                                        <MenuItem value={'Half Day 2 Leave(H2)'}>Half Day 2 Leave(H2)</MenuItem>
+                                                                        <MenuItem value={'On Duty(OD)'}>On Duty(OD)</MenuItem>
+                                                                        <MenuItem value={'Full Day Leave(LV)'}>Full Day Leave(LV)</MenuItem>
+                                                                    </Select>
+                                                                </FormControl>
+                                                            </Box>
+                                                        </Grid>
+                                                    </Grid>
+                                                </Box>
+                                            ) : (
+                                                <Box mt={2} mb={2}>
+                                                    <FormControl fullWidth size='small'>
+                                                        <InputLabel id="Attendance Status">Attendance Status</InputLabel>
+                                                        <Select
+                                                            id="Attendance-Status_select"
+                                                            label="Attendance Status"
+                                                            onChange={handleselectleavechange3}
+                                                        >
+                                                            <MenuItem value={'Short Leave(SL)'}>Short Leave(SL)</MenuItem>
+                                                            <MenuItem value={'Half Day 1 Leave(H1)'}>Half Day 1 Leave(H1)</MenuItem>
+                                                            <MenuItem value={'Half Day 2 Leave(H2)'}>Half Day 2 Leave(H2)</MenuItem>
+                                                            <MenuItem value={'On Duty(OD)'}>On Duty(OD)</MenuItem>
+                                                            <MenuItem value={'Full Day Leave(LV)'}>Full Day Leave(LV)</MenuItem>
+                                                        </Select>
+                                                    </FormControl>
+                                                </Box>
+                                            )
+
+                                        )}
+                                    </Box>
+                                    <Button type="submit" variant="contained" size="small" onClick={handleAddleave}>
+                                        Add Leaves
+                                    </Button>
+                                </Box>
+                            </Box>
+                        )}
+
+                        <Box pb={1}>
+                            <Typography variant='h5' sx={{ display: leaveDays > 0 ? 'flex' : 'none', alignItems: 'center' }}>
+                                <QueryBuilderOutlinedIcon sx={{ paddingRight: '5px' }} /> You are requesting for {leaveDays === 1 ? leaveDays + ' ' + 'day' : leaveDays + ' ' + 'days'} of leave
+                            </Typography>
+                        </Box>
+
+                        <Box pb={2}>
+                            <Box p={.5}>Note</Box>
+                            <TextArea rows={4} placeholder="Enter your text here..."
+                                fullWidth variant="outlined"
+                            />
+                        </Box>
+
+                        <Box>
+                            <NotifyStudent />
+                        </Box>
+                        <Box sx={{ padding: 2 }}>
+                            <Button type="submit" variant="contained">
+                                Submit
+                            </Button>
+                            <Button sx={{ alignSelf: 'flex-end' }}>
+                                Cancal
+                            </Button>
+                        </Box>
+                    </Box>
+                </form>
+            </Box>
+        </>
     );
 
     return (
