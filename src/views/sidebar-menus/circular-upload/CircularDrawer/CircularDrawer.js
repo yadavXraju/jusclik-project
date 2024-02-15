@@ -1,16 +1,13 @@
 
 import * as React from 'react';
-import Box from '@mui/material/Box';
-import Drawer from '@mui/material/Drawer';
-import Button from '@mui/material/Button';
+import {Box ,Drawer,Button, Grid, Typography } from '@mui/material';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
-import Grid from '@mui/system/Unstable_Grid/Grid';
 import CircularDate from './CircularDate';
-import HomeReplyBox from 'views/sidebar-menus/Student-homework-upload/HomeReplyBox';
-import HomeWorkDragDrop from 'views/sidebar-menus/Student-homework-upload/HomeWorkDragDrop';
-import HomeYoutubeLink from 'views/sidebar-menus/Student-homework-upload/HomeYoutubeLink';
+import HomeReplyBox from 'views/sidebar-menus/Student-homework-upload/HomeWorkDrawer/HomeReplyBox';
+import HomeWorkDragDrop from 'views/sidebar-menus/Student-homework-upload/HomeWorkDrawer/HomeWorkDragDrop';
+import HomeYoutubeLink from 'views/sidebar-menus/Student-homework-upload/HomeWorkDrawer/HomeYoutubeLink';
 import CircularTopic from './CircularTopic';
-import HomeworkTemplate from 'views/sidebar-menus/Student-homework-upload/HomeworkTemplate';
+import HomeworkTemplate from 'views/sidebar-menus/Student-homework-upload/HomeWorkDrawer/HomeworkTemplate';
 import CancelTwoToneIcon from '@mui/icons-material/CancelTwoTone';
 import CircularCategory from './CircularCategory'
 import CirclarSelectClass from './CircularSelectClass'
@@ -29,39 +26,43 @@ export default function CircularDrawer() {
         setState({ ...state, [anchor]: open });
     };
 
+    const isMobile = window.innerWidth < 600;
 
     const form = (
         <Box
-            sx={{ width: 650, padding: 2 }}
+        sx={{ width: isMobile ? '100%' : 650, padding: 2 }}
             role="presentation"
         >
-            <Button onClick={toggleDrawer('right', false)} sx={{ alignSelf: 'flex-end', marginBottom:'15px' }}>
-               <CancelTwoToneIcon/>
-            </Button>
-           
-        <Grid >
-          <Grid item sx={{paddingLeft:'7px',paddingRight:'7px'}}>
+             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #ccc' }}>
+            <Typography variant='h4'>Upload Circular</Typography>
+        <Button onClick={toggleDrawer('right', false)} sx={{ alignSelf: 'flex-end' }}>
+          <CancelTwoToneIcon />
+          Close
+        </Button>
+           </Box>
+        <Grid  >
+          <Grid item sx={{paddingLeft:'7px',paddingRight:'7px', paddingTop:'10px'}} xs={12}>
             <CircularDate label="Circular Date:" />
           </Grid> 
-          <Grid item>
+          <Grid item xs={12} sx={{paddingBottom:'10px', paddingTop:'5px'}} >
             <CircularCategory/>
           </Grid>
-          <Grid item>
+          <Grid item xs={12}>
             <CirclarSelectClass/>
           </Grid>
-          <Grid item>
+          <Grid item xs={12}>
             <CircularTopic/>
           </Grid>
-          <Grid item>
+          <Grid item xs={12}>
             <HomeworkTemplate/>
           </Grid>
-          <Grid item>
+          <Grid item xs={12}>
             <HomeReplyBox/>
           </Grid>
-          <Grid item>
+          <Grid item xs={12}>
             <HomeWorkDragDrop/>
           </Grid>
-          <Grid item sx={{paddingLeft:'10px', paddingRight:'8px'}}>
+          <Grid item sx={{paddingLeft:'10px', paddingRight:'8px'}} xs={12}>
             <HomeYoutubeLink/>
           </Grid>
           </Grid>

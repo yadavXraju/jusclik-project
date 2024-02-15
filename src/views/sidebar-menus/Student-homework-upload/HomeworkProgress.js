@@ -14,7 +14,6 @@ const HomeworkProgress = ({ value, subject }) => {
 
   return (
     <Paper
-    
       sx={{
         display: 'flex',
         flexDirection: 'column',
@@ -29,7 +28,7 @@ const HomeworkProgress = ({ value, subject }) => {
           variant="determinate"
           value={100}
           size={100}
-          thickness={3} 
+          thickness={3}
           style={{ color: '#aaaaaa' }}
         />
         <CircularProgress
@@ -37,7 +36,7 @@ const HomeworkProgress = ({ value, subject }) => {
           value={normalizedValue}
           size={100}
           thickness={3}
-          style={{ color: strokeColor, position: 'absolute' }} 
+          style={{ color: strokeColor, position: 'absolute' }}
         />
         <div style={{ position: 'absolute', fontSize: '16px', fontWeight: 'bold', zIndex: 2 }}>
           {`${Math.round(normalizedValue)}%`}
@@ -62,11 +61,30 @@ const HomeworkProgressChart = () => {
     dots: false,
     infinite: false,
     speed: 500,
-    slidesToShow: 5,
+    slidesToShow: 5, // Default slides to show
     slidesToScroll: 1,
     nextArrow: <ArrowForwardIosIcon sx={{ color : '#c8c8c8 !important',  width : '32px !important', height : '32px !important',borderRadius:'50%',right:'24px !important' }}/>,
     prevArrow: <ArrowBackIosIcon sx={{ color : '#c8c8c8 !important',  width : '32px !important', height : '32px !important',borderRadius:'50%', zIndex:'1', left:'24px !important'}}/>,
-
+    responsive: [
+      {
+        breakpoint: 1500, // Large devices (laptops/desktops)
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+      {
+        breakpoint: 500, // Medium devices (tablets, landscape phones)
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+      {
+        breakpoint: 480, // Small devices (phones)
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
   };
 
   return (

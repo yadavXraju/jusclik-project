@@ -5,7 +5,7 @@ import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import Chip from '@mui/material/Chip';
 import Grid from '@mui/system/Unstable_Grid/Grid';
-import { StudentList } from 'views/sidebar-menus/Student-homework-upload/StudentHomeworkList';
+import { StudentList } from 'views/sidebar-menus/Student-homework-upload/HomeWorkDrawer/StudentHomeworkList';
 
 const CircularSelectClass = () => {
   const [selectedClasses, setSelectedClasses] = React.useState([]); // Initialize as empty array
