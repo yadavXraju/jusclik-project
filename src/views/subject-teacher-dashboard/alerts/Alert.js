@@ -1,11 +1,11 @@
 import React from 'react'
-import AlertData from './AlertData'
-import Alert from 'views/class-teacher-dashboard/common-section/Alerts'
+import Alert from 'views/common-section/Alerts'
+import SubjectTeacherAlertData from './AlertData'
 
 const SubjectTeacherAlert = () => {
   return (
     <>
-      <Alert AlertData={AlertData}/>
+      <Alert AlertData={SubjectTeacherAlertData}/>
     </>
   )
 }

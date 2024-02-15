@@ -165,7 +165,7 @@ export default function MarksEntryPanel() {
                 <TableCell className={classes.fixedIstColumn} sx={{ top: '0', width: "100px", textAlign: "center", fontWeight: "800", paddingLeft: "40px" }}>
                   Student
                 </TableCell>
-                <TableCell className={classes.fixedIstColumn2} sx={{ top: '0', textAlign: "center", fontWeight: "800" }}>
+                <TableCell className={classes.fixedIstColumn2} sx={{ top: '0', textAlign: "center", fontWeight: "800",paddingLeft: "40px" }}>
                   Adm.no
                 </TableCell>
                 {selectedSubject && (
@@ -215,10 +215,12 @@ export default function MarksEntryPanel() {
             </TableBody>
           </Table>
         </TableContainer>
-        <Grid sx={{ textAlign: "left" }}>
-          <Button variant="contained" color="primary" sx={{ textAlign: "center", margin: "10px 20px" }}>
-            Submit
-          </Button>
+        <Grid container sx={{ textAlign: "left" }} spacing={2}>
+          <Grid item xs={12}>
+            <Button variant="contained" color="primary" sx={{ textAlign: "center", margin: "10px 0" }}>
+              Submit
+            </Button>
+          </Grid>
         </Grid>
       </Paper>
     </ThemeProvider>

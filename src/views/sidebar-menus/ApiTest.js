@@ -1,6 +1,6 @@
 // FavPage.js
 
-import CoScholaistic from "./co-scholastic/Index";
+import CoScholaistic from "./co-scholastic";
 
 // import React, { useState, useEffect } from 'react';
 

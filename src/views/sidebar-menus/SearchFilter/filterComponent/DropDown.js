@@ -1,8 +1,7 @@
 import React from 'react';
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
-
-
+import '../../../dashboard/Default/dashboard-css/Overflow.css'
 
   export function ClassDropDown({ data, onClassChange,selectedClass}) {
     // Check if data is not an array or is empty
@@ -119,10 +118,11 @@ export function TermDropDown({ data,  onTermChange, selectedTerm }) {
   return (
     <>
       <TextField
+      
         id="outlined-select-term"
         select
         label="Term"
-        value={selectedTerm || (data.length > 0 ? data[0].value : '')}
+        value={selectedTerm || (data.length > 0 ? data[0].value : '0')}
         sx={{ margin: "0px 10px" }}
         onChange={handleChange}
       >
@@ -137,24 +137,33 @@ export function TermDropDown({ data,  onTermChange, selectedTerm }) {
 }
 
 
-
-export function StudentDropDown({ data }) {
-  // Check if data is not an array or is empty
+export function StudentDropDown({ data, onStudentChange, selectedStudent}) {
+  // Check if students is undefined or not an array
   if (!Array.isArray(data) || data.length === 0) {
     return <div>No data available</div>;
   }
 
+  const handleChange = (event) => {
+    const selectedStudent = event.target.value;
+
+    // Call the onClassChange function with the selected class
+    onStudentChange(selectedStudent);
+  };
+
+  console.log("Data:", data);
   return (
     <TextField
+
       id="outlined-select-student"
       select
       label="Student Name"
-      value="0"
-      sx={{ margin: "0px 10px" }}
+      value={ selectedStudent|| (data.length > 0 ? data[0].value : 'All')}
+      sx={{ margin: "0px 10px", width:"100px" }}
+      onChange={handleChange}
     >
-      {data.map((option) => (
-          <MenuItem key={option.value} value={option.value}>
-          {option.label}
+      {data.map((student) => (
+        <MenuItem key={student.id} value={student.id}>
+          {student.name}
         </MenuItem>
       ))}
     </TextField>

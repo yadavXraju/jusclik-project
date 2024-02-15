@@ -1,40 +1,3 @@
-// import * as React from 'react';
-// import Box from '@mui/material/Box';
-// import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-// import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-// import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-
-// export default function CustomDatePicker() {
-//   const [leaveFrom, setLeaveFrom] = React.useState(null);
-//   const [background, setBackground] = React.useState('#ccc');
-
-//   const handleLeaveFromChange = (date) => {
-//     setLeaveFrom(date);
-//     setBackground('red');
-//   };
-
-//   const handleDatePickerClick = () => {
-//     setBackground('red'); // Change background color when date picker is clicked
-//   };
-
-//   return (
-//     <Box>
-//       <Box pl={0.5} pb={1}>Leave From</Box>
-//       <LocalizationProvider dateAdapter={AdapterDayjs}>
-//         <DatePicker
-//           value={leaveFrom}
-//           onChange={handleLeaveFromChange}
-//           format="DD-MM-YYYY"
-//           onClick={handleDatePickerClick} // Add onClick event to update background color
-//           sx={{ background: background, color: background }} // Set background color dynamically
-//         />
-//       </LocalizationProvider>
-//     </Box>
-//   );
-// }
-
-
-
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import FormControl from '@mui/material/FormControl';
@@ -43,76 +6,161 @@ import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
 export default function LeaveForm() {
-    const [defaultLeaveType, setDefaultLeaveType] = React.useState('');
-    const [selectedLeaveTypes, setSelectedLeaveTypes] = React.useState([]);
+  const [selectedLeaveFrom, setSelectedLeaveFrom] = React.useState(null);
+  const [selectedLeaveTo, setSelectedLeaveTo] = React.useState(null);
+  const [selectedLeaveType, setSelectedLeaveType] = React.useState('');
+  const [selectedLeaves, setSelectedLeaves] = React.useState([]);
 
-    const handleLeaveTypeChange = (event) => {
-        setDefaultLeaveType(event.target.value);
-    };
+  const handleLeaveFromChange = (date) => {
+    setSelectedLeaveFrom(date);
+  };
 
-    const handleAddLeave = () => {
-        setSelectedLeaveTypes([...selectedLeaveTypes, defaultLeaveType]);
-    };
+  const handleLeaveToChange = (date) => {
+    setSelectedLeaveTo(date);
+  };
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        // Logic to submit the form
-    };
+  const handleLeaveTypeChange = (event) => {
+    setSelectedLeaveType(event.target.value);
+  };
 
-    const handleCancel = () => {
-        // Logic to cancel the form
-    };
+  const handleAddLeave = () => {
+    if (selectedLeaveFrom && selectedLeaveTo && selectedLeaveType) {
+      const newLeave = {
+        from: selectedLeaveFrom,
+        to: selectedLeaveTo,
+        type: selectedLeaveType
+      };
+  
+      // Check if the selected date range overlaps with any existing leave
+      const isOverlapping = selectedLeaves.some(leave => (
+        (selectedLeaveFrom >= leave.from && selectedLeaveFrom <= leave.to) ||
+        (selectedLeaveTo >= leave.from && selectedLeaveTo <= leave.to) ||
+        (selectedLeaveFrom < leave.from && selectedLeaveTo > leave.to)
+      ));
+  
+      if (isOverlapping) {
+        // Show an alert or handle the overlapping case as required
+        alert("Selected date range overlaps with existing leave.");
+        return;
+      }
+  
+      setSelectedLeaves([...selectedLeaves, newLeave]);
+      // Clear selected values after adding a leave
+      setSelectedLeaveFrom(null);
+      setSelectedLeaveTo(null);
+      setSelectedLeaveType('');
+    }
+  };
+  
 
-    return (
-        <form onSubmit={handleSubmit}>
-            <Box sx={{ padding: 2 }}>
-                <Box mb={1}>
-                    <Box p={1} sx={{ border: '1px solid #ccc', borderRadius: '5px' }}>
-                        <Box mt={1} mb={2}>
-                            <FormControl fullWidth size='small'>
-                                <InputLabel id="demo-simple-select-label">Select Type Of Leave You Want to Apply</InputLabel>
-                                <Select
-                                    labelId="demo-simple-select-label"
-                                    id="demo-simple-select"
-                                    value={defaultLeaveType}
-                                    label="Select Type Of Leave You Want to Apply"
-                                    onChange={handleLeaveTypeChange}
-                                >
-                                    <MenuItem value={'Casual Leave'}>Casual Leave</MenuItem>
-                                    <MenuItem value={'Earned Leave'}>Earned Leave</MenuItem>
-                                    <MenuItem value={'Medical Leave'}>Medical Leave</MenuItem>
-                                    <MenuItem value={'Festival Leave'}>Festival Leave</MenuItem>
-                                    <MenuItem value={'Leave Without Pay'}>Leave Without Pay</MenuItem>
-                                </Select>
-                            </FormControl>
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // Logic to submit the form
+  };
 
-                        </Box>
-                        <Button type="button" variant="contained" size="small" onClick={handleAddLeave}>
-                            Add Leaves
-                        </Button>
-                    </Box>
-                </Box>
-                <Box mb={1}>
-                    <Typography variant="h6" gutterBottom>
-                        Selected Leave Types:
-                    </Typography>
-                    <ul>
-                        {selectedLeaveTypes.map((leaveType, index) => (
-                            <li key={index}>{leaveType}</li>
-                        ))}
-                    </ul>
-                </Box>
-                <Box sx={{ padding: 2 }}>
-                    <Button type="submit" variant="contained">
-                        Submit
-                    </Button>
-                    <Button onClick={handleCancel} sx={{ alignSelf: 'flex-end' }}>
-                        Cancel
-                    </Button>
-                </Box>
+  const handleCancel = () => {
+    // Logic to cancel the form
+  };
+
+  const getDatesInRange = (startDate, endDate) => {
+    const dates = [];
+    let currentDate = startDate.clone();
+    while (currentDate <= endDate) {
+      dates.push(currentDate.clone());
+      currentDate = currentDate.add(1, 'day');
+    }
+    return dates;
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <Box sx={{ padding: 2 }}>
+        <Box mb={1}>
+          <Box
+            mb={2}
+            p={1}
+            sx={{ border: '1px solid #ccc', borderRadius: '5px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
+          >
+            <Box>
+              <Box pl={0.5} pb={1}>
+                Leave From
+              </Box>
+              <LocalizationProvider sx={{ background: '#ccc' }} dateAdapter={AdapterDayjs}>
+                <DatePicker value={selectedLeaveFrom} onChange={handleLeaveFromChange} format="DD-MM-YYYY" />
+              </LocalizationProvider>
             </Box>
-        </form>
-    );
+
+            <Box mt={2.7} p={0.5} sx={{ border: '1px solid #ccc', borderRadius: '5px' }}>
+              {selectedLeaveTo && selectedLeaveFrom
+                ? `${(selectedLeaveTo - selectedLeaveFrom) / (1000 * 60 * 60 * 24) + 1} days`
+                : '0 days'}
+            </Box>
+
+            <Box>
+              <Box pl={0.5} pb={1}>
+                Leave To
+              </Box>
+              <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <DatePicker value={selectedLeaveTo} onChange={handleLeaveToChange} format="DD-MM-YYYY" />
+              </LocalizationProvider>
+            </Box>
+          </Box>
+          <Box p={1} sx={{ border: '1px solid #ccc', borderRadius: '5px' }}>
+            <Box mt={1} mb={2}>
+              <FormControl fullWidth size="small">
+                <InputLabel id="demo-simple-select-label">Select Type Of Leave You Want to Apply</InputLabel>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={selectedLeaveType}
+                  label="Select Type Of Leave You Want to Apply"
+                  onChange={handleLeaveTypeChange}
+                >
+                  <MenuItem value={'Casual Leave'}>Casual Leave</MenuItem>
+                  <MenuItem value={'Earned Leave'}>Earned Leave</MenuItem>
+                  <MenuItem value={'Medical Leave'}>Medical Leave</MenuItem>
+                  <MenuItem value={'Festival Leave'}>Festival Leave</MenuItem>
+                  <MenuItem value={'Leave Without Pay'}>Leave Without Pay</MenuItem>
+                </Select>
+              </FormControl>
+            </Box>
+            <Button type="button" variant="contained" size="small" onClick={handleAddLeave}>
+              Add Leaves
+            </Button>
+          </Box>
+        </Box>
+        <Box mb={1}>
+          <Typography variant="h6" gutterBottom>
+            Selected Leaves:
+          </Typography>
+          <ul>
+            {selectedLeaves.map((leave, index) => (
+              <li key={index}>
+                <ul>
+                  {getDatesInRange(leave.from, leave.to).map((date, idx) => (
+                    <li key={idx}>
+                      <span>{leave.type}</span>: {date.format('DD-MM-YYYY')}
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ul>
+        </Box>
+        <Box sx={{ padding: 2 }}>
+          <Button type="submit" variant="contained">
+            Submit
+          </Button>
+          <Button onClick={handleCancel} sx={{ alignSelf: 'flex-end' }}>
+            Cancel
+          </Button>
+        </Box>
+      </Box>
+    </form>
+  );
 }
