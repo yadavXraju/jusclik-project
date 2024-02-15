@@ -1,14 +1,9 @@
 import * as React from 'react';
-import { Typography } from '@mui/material';
-import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
+import { Typography, Button, Dialog, DialogActions, DialogContent, DialogContentText } from '@mui/material';
 
 export default function ConfirmAlert({ open, onClose, action, onConfirm }) {
   const handleYesClick = () => {
-    onConfirm(action);
+    onConfirm(action); // Call onConfirm with the action
     onClose();  
   };
 

@@ -3,21 +3,20 @@ import { Popover, List, ListItem, ListItemButton, ListItemText, Typography, Avat
 import ConfirmAlert from './ConfirmAlert';
 import KeyboardArrowDownOutlinedIcon from '@mui/icons-material/KeyboardArrowDownOutlined';
 
-export default function AttendanceActions({ onConfirm, date, selectedAvatars = {}, setSelectedAvatars }) {
+export default function AttendanceActions({ date, selectedAvatars = {}, setSelectedAvatars }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const [isConfirmationDialogOpen, setConfirmationDialogOpen] = React.useState(false);
   const [selectedAction, setSelectedAction] = React.useState('');
 
   const handleClickOpen = (action) => {
     setSelectedAction(action);
-    setConfirmationDialogOpen(true);
+    setAnchorEl(null); // Close the popover
   };
 
   const handleConfirm = () => {
-    // Pass the confirmed action to the parent component
-    onConfirm(selectedAction);
-    setConfirmationDialogOpen(false);
-    setAnchorEl(null);
+    // Implement confirmation logic here if needed
+    // For example, updating state, making API calls, etc.
+    setSelectedAction(''); // Reset selected action after confirming
+    setAnchorEl(null); // Close the popover
   };
 
   const handleAvatarClick = (selectedAvatar, studentId) => {
@@ -35,6 +34,7 @@ export default function AttendanceActions({ onConfirm, date, selectedAvatars = {
 
   const handleClose = () => {
     setAnchorEl(null);
+    setSelectedAction(''); // Reset selected action after closing popover
   };
 
   const open = Boolean(anchorEl);
@@ -75,13 +75,6 @@ export default function AttendanceActions({ onConfirm, date, selectedAvatars = {
             </ListItemButton>
           </ListItem>
         </List>
-        <ConfirmAlert
-          open={isConfirmationDialogOpen}
-          onClose={() => setConfirmationDialogOpen(false)}
-          onConfirm={handleConfirm}
-          action={selectedAction}
-          selectedText={selectedAction}
-        />
       </Popover>
       {/* Render avatars for each student */}
       {Object.keys(selectedAvatars).map(studentId => (
@@ -99,6 +92,15 @@ export default function AttendanceActions({ onConfirm, date, selectedAvatars = {
           {selectedAvatars[studentId]}
         </Avatar>
       ))}
+      {/* Render ConfirmAlert outside Popover */}
+      <ConfirmAlert
+        open={Boolean(selectedAction)}
+        onClose={() => setSelectedAction('')} // Reset selected action after closing ConfirmAlert
+        onConfirm={handleConfirm} // Pass handleConfirm as the onConfirm prop
+        action={selectedAction}
+        selectedText={selectedAction}
+      />
     </div>
   );
 }
+

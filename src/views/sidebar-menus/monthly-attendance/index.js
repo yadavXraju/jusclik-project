@@ -15,7 +15,6 @@ import {
   Badge,
   Avatar,
   ListItemAvatar,
-  Popover
 } from '@mui/material';
 import dayjs from 'dayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
@@ -28,7 +27,6 @@ import { ClassList } from '../attendance-entry/ClassList';
 import { SectionList } from '../attendance-entry/SectionList';
 import { StudentList } from '../attendance-entry/StudentList';
 import AttendanceActions from './AttendanceActions';
-import AttendanceAvatarsPopover from './AttendanceAvatarsPopover';
 import WarningBox from '../attendance-entry/WarningBox';
 import { styled } from '@mui/material/styles';
 
@@ -57,8 +55,7 @@ export default function AttendanceEntry() {
   const [filteredSections, setFilteredSections] = useState([]);
   const [selectedMonth, setSelectedMonth] = useState(dayjs());
   const [dates, setDates] = useState([]);
-  const [anchorEl, setAnchorEl] = useState(null);
-  const [selectedAvatarDate, setSelectedAvatarDate] = useState(null);
+
 
   const handleMonthChange = (date) => {
     setSelectedMonth(date);
@@ -105,35 +102,44 @@ export default function AttendanceEntry() {
     }
   };
 
-  const handleAvatarClick = (avatar, studentId, date, event) => {
-    // Update the selected avatar for the individual student
-    const updatedAvatars = { ...selectedAvatars };
-    updatedAvatars[studentId] = avatar;
-  
-    // If the 'H' avatar is clicked, open the popover and set the selected date
-    if (avatar === 'H') {
-      setAnchorEl(event.currentTarget);
-      setSelectedAvatarDate(date);
-    } else {
-      // Close the popover if another avatar is clicked
-      setAnchorEl(null);
-      setSelectedAvatarDate(null);
-    }
-  
-    // Update the avatar in the list with the selected avatar
-    const updatedStudentList = filteredStudentList.map((student) => {
-      if (student.id === studentId) {
-        return { ...student, selectedAvatar: avatar };
+  const handleAvatarClick = (currentAvatar, studentId, date) => {
+    // Define the possible avatar states
+    const avatarStates = ['P', 'A', 'L', 'H'];
+
+    // Find the index of the current avatar state
+    const currentIndex = avatarStates.indexOf(currentAvatar);
+
+    // Calculate the index of the next avatar state, looping back to the beginning if necessary
+    const nextIndex = (currentIndex + 1) % avatarStates.length;
+
+    // Get the next avatar state
+    const nextAvatar = avatarStates[nextIndex];
+
+    // Ensure that the selectedAvatars object is initialized for the selected date
+    const selectedDateKey = date.format('DD-MM-YYYY');
+    const updatedAvatars = {
+      ...selectedAvatars,
+      [selectedDateKey]: {
+        ...(selectedAvatars[selectedDateKey] || {})
       }
-      return student;
-    });
-    setFilteredStudentList(updatedStudentList);
-  
-    // Update the selected avatars state
+    };
+
+    // Update the avatar state for the clicked student and date
+    updatedAvatars[selectedDateKey][studentId] = nextAvatar;
+
+    // Update the state with the new avatar selection
     setSelectedAvatars(updatedAvatars);
+
   };
-  
-  
+
+  const calculateWorkingDays = (student) => {
+    const presentCount = Object.values(selectedAvatars[student.id] || {}).filter((avatar) => avatar === 'P').length;
+    const absentCount = Object.values(selectedAvatars[student.id] || {}).filter((avatar) => avatar === 'A').length;
+    const totalDays = presentCount + absentCount;
+    const presentString = presentCount > 0 ? `${presentCount}P` : '0P';
+    const absentString = absentCount > 0 ? `+${absentCount}A` : '+0A';
+    return `${presentString}${absentString}=${totalDays} Day${totalDays === 1 ? '' : 's'}`;
+  };
 
   const countSelectedStatus = (status) => {
     const count = Object.values(selectedAvatars).filter((avatar) => avatar === status).length;
@@ -352,15 +358,15 @@ export default function AttendanceEntry() {
       </Box>
 
       <Box>
-        <Paper sx={{ listStyleType: 'none', pt: 1 }}>
-          <Grid container spacing={2}>
+        <Paper sx={{ listStyleType: 'none' }}>
+          <Grid container>
             <Grid item xs={4}>
               <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-                <Box sx={{ display: 'flex', p: 1 }}>
+                <Box sx={{ display: 'flex', mt: 4 }}>
                   <ListItem>
                     <ListItemText sx={{ flex: '0 0 30%' }}>
                       <Typography variant="h4" color="text.primary">
-                        Admn No.
+                        Adm No.
                       </Typography>
                     </ListItemText>
                     <ListItemText sx={{ flex: '0 0 42%' }}>
@@ -378,17 +384,17 @@ export default function AttendanceEntry() {
                 {filteredStudentList.map((student) => (
                   <React.Fragment key={student.id}>
                     <Box sx={{ display: 'flex', alignItems: 'center', p: 2 }}>
-                      <Typography sx={{ flex: '0 0 30%' }} variant="h4" color="text.primary">
+                      <Typography sx={{ flex: '0 0 20%' }} variant="h5" color="text.primary">
                         {student.admnNo}
                       </Typography>
                       <ListItemAvatar>
                         <Avatar src={AvtarImg} sx={{ width: 40, height: 40 }} />
                       </ListItemAvatar>
-                      <Typography sx={{ flex: '0 0 30%' }} variant="h4">
+                      <Typography sx={{ flex: '0 0 40%' }} variant="h5">
                         {student.name}
                       </Typography>
-                      <Typography variant="h4" sx={{ flex: '0 0 10%' }}>
-                        0P+3A
+                      <Typography variant="h5" sx={{ flex: '0 0 25%' }}>
+                        {calculateWorkingDays(student)}
                       </Typography>
                     </Box>
                     <Divider />
@@ -401,7 +407,22 @@ export default function AttendanceEntry() {
               <Box sx={{ display: 'flex', flexDirection: 'column', overflow: 'auto' }}>
                 <Box sx={{ flex: '0 0 70%', display: 'flex' }}>
                   {dates.map((date) => (
-                    <ListItem key={date.format('DD-MM-YYYY')} sx={{ display: 'block', textAlign: 'center' }}>
+                    <ListItem
+                      key={date.format('DD-MM-YYYY')}
+                      sx={{
+                        display: 'block',
+                        textAlign: 'center',
+                        borderLeft: '1px solid #eef2f6',
+                        borderBottom: '1px solid #eef2f6',
+                        py: 0,
+                        pl: '22px',
+                        pr: '50px',
+                        width: '60px',
+                        '&:hover': {
+                          backgroundColor: '#F5F5F5' // Change background color on hover to grey
+                        }
+                      }}
+                    >
                       <ListItemText>
                         <Typography variant="h4" color="text.primary" sx={{ cursor: 'pointer' }}>
                           <AttendanceActions
@@ -416,50 +437,56 @@ export default function AttendanceEntry() {
                   ))}
                 </Box>
 
-                <Divider />
-
-                {filteredStudentList.map((student, index) => (
+                {/* Render "H" avatars with border */}
+                {filteredStudentList.map((student) => (
                   <React.Fragment key={student.id}>
-                    <ListItem sx={{ display: 'flex', gap: 2, p: 2 }}>
+                    <ListItem sx={{ display: 'flex', m: 0, p: 0 }}>
                       {dates.map((date) => (
                         <React.Fragment key={date.format('DD-MM-YYYY')}>
-                          <Popover
-                            id={`attendance-popover-${student.id}-${date.format('DD-MM-YYYY')}`}
-                            open={selectedAvatarDate === date && anchorEl !== null}
-                            anchorEl={anchorEl}
-                            onClose={() => setAnchorEl(null)}
-                            anchorOrigin={{
-                              vertical: 'bottom',
-                              horizontal: 'left'
-                            }}
-                            transformOrigin={{
-                              vertical: 'top',
-                              horizontal: 'left'
+                          {/* Wrap avatar with div for border */}
+                          <div
+                            style={{
+                              borderLeft: '1px solid #eef2f6',
+                              borderBottom: '1px solid #eef2f6',
+                              padding: '16px'
                             }}
                           >
-                            <AttendanceAvatarsPopover
-                              selectedAvatars={selectedAvatars}
-                              handleAvatarClick={(avatar) => handleAvatarClick(avatar, student.id, date)}
-                              student={student}
-                            />
-                          </Popover>
-
-                          <Avatar
-                            sx={{
-                              bgcolor: '#7dceeb',
-                              width: 40,
-                              height: 40,
-                              cursor: 'pointer',
-                              color: '#000000'
-                            }}
-                            onClick={(event) => handleAvatarClick('H', student.id, date, event)}
-                          >
-                            {selectedAvatars[student.id] || 'H'}
-                          </Avatar>
+                            <Avatar
+                              sx={{
+                                bgcolor:
+                                  selectedAvatars[date.format('DD-MM-YYYY')]?.[student.id] === 'P'
+                                    ? '#7bc67b'
+                                    : selectedAvatars[date.format('DD-MM-YYYY')]?.[student.id] === 'A'
+                                    ? '#e2526b'
+                                    : selectedAvatars[date.format('DD-MM-YYYY')]?.[student.id] === 'L'
+                                    ? '#eeb058'
+                                    : '#7dceeb80',
+                                '&:hover': {
+                                  bgcolor:
+                                    selectedAvatars[date.format('DD-MM-YYYY')]?.[student.id] === 'P'
+                                      ? '#7bc67b'
+                                      : selectedAvatars[date.format('DD-MM-YYYY')]?.[student.id] === 'A'
+                                      ? '#e2526b'
+                                      : selectedAvatars[date.format('DD-MM-YYYY')]?.[student.id] === 'L'
+                                      ? '#eeb058'
+                                      : '#7dceeb'
+                                },
+                                width: 40,
+                                height: 40,
+                                cursor: 'pointer',
+                                color: '#000000',
+                                fontWeight: 500
+                              }}
+                              onClick={() =>
+                                handleAvatarClick(selectedAvatars[date.format('DD-MM-YYYY')]?.[student.id] || 'H', student.id, date)
+                              } // Select Present avatar
+                            >
+                              {selectedAvatars[date.format('DD-MM-YYYY')]?.[student.id] || 'H'} {/* Display selected avatar or "H" */}
+                            </Avatar>
+                          </div>
                         </React.Fragment>
                       ))}
                     </ListItem>
-                    {index < filteredStudentList.length - 1 && <Divider />}
                   </React.Fragment>
                 ))}
               </Box>
