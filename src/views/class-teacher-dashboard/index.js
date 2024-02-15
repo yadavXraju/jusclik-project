@@ -39,40 +39,40 @@ const Dashboard = ({ isLoading }) => {
            {/* Profile comp */}
            <Grid item lg={4} md={12} sm={12} xs={12}>
             <Grid container spacing={gridSpacing}>
-              <Grid item sm={6} xs={12} md={6} lg={12}>
+              <Grid item sm={12} xs={12} md={12} lg={12}>
                 <ClassTeacherProfile/>
               </Grid>
             </Grid>
           </Grid>
 
          {/* Communication comp */}
-          <Grid item xs={12} md={7} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
+          <Grid item xs={12} lg={7} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
             <Communication isLoading={isLoading} />
           </Grid>
 
 
            {/* Alert comp */}
-           <Grid item xs={12} md={5} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
+           <Grid item xs={12} lg={5} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
              <ClassTeacherAlert isLoading={isLoading} /> 
           </Grid>
 
             {/* Upcoming Birthday comp */}
-           <Grid item xs={12} md={7} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>           
+           <Grid item xs={12} lg={7} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>           
              <UpcomingBirthday isLoading={isLoading} />
           </Grid>
 
           {/* Fav pages comp */}
-           <Grid item xs={12} md={5} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
+           <Grid item xs={12} lg={5} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
              <ClassTeacherFavPages isLoading={isLoading} />
           </Grid>
 
           {/* Low Students Attendance comp */}
-          <Grid item xs={12} md={7} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
+          <Grid item xs={12} lg={7} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
              <LowStudentAttendance isLoading={isLoading} />
            </Grid>
 
          {/* StudentStrength Comp */}
-          <Grid item xs={12} md={5} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>           
+          <Grid item xs={12} lg={5} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>           
              <StudentStrength isLoading={isLoading} />
           </Grid>
 

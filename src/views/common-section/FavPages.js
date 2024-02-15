@@ -31,7 +31,7 @@ const FavPages = ( { FavPagesList }) => {
     <MainCard style={boxHeight} className='scrollbar'>
       <Grid container spacing={gridSpacing}>
         <Grid item xs={12} sx={{ mb: 3 }}>
-          <Grid alignContent="center" justifyContent="space-between">
+          <Grid alignContent="center" justifyContent="space-between" >
             <Grid item>
               <Typography variant="h2" style={HeadingCss}>
                 Favorite Pages
@@ -49,7 +49,7 @@ const FavPages = ( { FavPagesList }) => {
             <Grid item xs={12} key={index} sx={{ paddingTop: '0 !important' }}>
               <Grid container direction="column">
                 <Grid item>
-                  <Grid container alignItems="center" justifyContent="space-between">
+                  <Grid container alignItems="center" justifyContent="space-between"  sx={{gap:'20px'}} className='finddiv'>
                     {/* title and icon */}
                     <Grid item sx={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
                       {/* Icon */}
