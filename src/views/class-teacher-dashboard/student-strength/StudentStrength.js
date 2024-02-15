@@ -31,7 +31,7 @@ const StudentStrength = () => {
     colors: ['#5e35b1cc', '#1e88e5bf'],
     responsive: [
       {
-        breakpoint: 768,
+        breakpoint: 1600,
         options: {
           chart: {
             width: '100%',
@@ -51,7 +51,7 @@ const StudentStrength = () => {
 
   return (
     <>
-      <Paper spacing={gridSpacing} style={boxHeight} className='scrollbar' sx={{display:'flex' , flexDirection:'column' , justifyContent :'space-between'}}>
+      <Paper spacing={gridSpacing} style={ isMobile ? null : boxHeight} className='scrollbar' sx={{display:'flex' , flexDirection:'column' , justifyContent :'space-between'}}>
         <Grid sx={{ padding: '24px' }}>
           <Typography variant="h2" style={HeadingCss}>
             Students Strength

@@ -54,6 +54,15 @@ const ClassTeacherMenu = {
                  icon:  DriveFileRenameOutlineTwoToneIcon,
                  breadcrumbs: false
                },
+
+               {
+                id: 'co-scholastic',
+                title: 'Co Scholastic',
+                type: 'item',
+                url: '/class-teacher/co-scholastic',
+                icon:  DriveFileRenameOutlineTwoToneIcon,
+                breadcrumbs: false
+              },
             
                {
                  id: 'time-table-entry',
@@ -111,7 +120,7 @@ const ClassTeacherMenu = {
             
             {
                 id: 'biometric-details-or-attendance-details',
-                title: 'Biometric Details or Attendance Details',
+                title: 'Biometric Details',
                 type: 'item',
                 url: '/class-teacher/biometric-details',
                 icon:    FingerprintTwoToneIcon,
