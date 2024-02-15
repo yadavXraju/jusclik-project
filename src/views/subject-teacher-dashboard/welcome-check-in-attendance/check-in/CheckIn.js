@@ -1,5 +1,5 @@
 import React from 'react'
-import CheckIn from 'views/class-teacher-dashboard/common-section/CheckIn'
+import CheckIn from 'views/common-section/CheckIn'
 import { CheckInAndCheckOutData } from './CheckInDetails'
 
 

@@ -3,7 +3,7 @@ import { Typography , Grid} from '@mui/material';
 import {  HeadingCss  } from 'views/dashboard/Default/dashboard-css/CommonCss';
 import { gridSpacing } from 'store/constant';
 import {Divider , Box } from '@mui/material';
-import { subTitle , subtitle2 } from 'views/dashboard/Default/dashboard-css/CommonCss';
+import { subTitle , subtitle2  , boxHeight} from 'views/dashboard/Default/dashboard-css/CommonCss';
 import { studnetAttendancePercentage } from './Attendance';
 
 
@@ -17,8 +17,8 @@ const LowStudentAttendance = () => {
 
   return (
      <>
-       <MainCard  > 
-          <Grid container spacing={gridSpacing}>
+       <MainCard  style={boxHeight} className='scrollbar'> 
+          <Grid container spacing={gridSpacing} >
             <Grid item xs={12} sx={{mb:3}}>
               <Grid  alignContent="center" justifyContent="space-between">
                 <Grid item>

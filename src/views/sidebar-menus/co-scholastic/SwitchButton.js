@@ -9,9 +9,9 @@ export default function SwitchButton({ isVerticalSwitchOn, onSwitchChange }) {
   // };
 
   return (
-    <FormGroup>
-      <FormControlLabel
-        control={<Switch checked={isVerticalSwitchOn} onChange={onSwitchChange} />}
+    <FormGroup sx={{marginRight:"0"}}>
+      <FormControlLabel sx={{marginRight:"0"}}
+        control={<Switch checked={isVerticalSwitchOn} onChange={onSwitchChange}  />}
       />
     </FormGroup>
   );

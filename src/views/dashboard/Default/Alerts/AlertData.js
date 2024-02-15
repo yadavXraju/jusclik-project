@@ -2,7 +2,7 @@ import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNone
 import CurrencyRupeeOutlinedIcon from '@mui/icons-material/CurrencyRupeeOutlined';
 import BookOutlinedIcon from '@mui/icons-material/BookOutlined';
 
-const AlertData = [
+const ParentAlertData = [
   {
     id: 1,
     icon: <CurrencyRupeeOutlinedIcon />,
@@ -65,4 +65,4 @@ const AlertData = [
  
 ];
 
-export default AlertData;
+export default ParentAlertData;

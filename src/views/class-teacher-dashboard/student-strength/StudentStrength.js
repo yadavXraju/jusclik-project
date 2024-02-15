@@ -2,8 +2,9 @@ import React from 'react';
 import ApexCharts from 'react-apexcharts';
 import { Grid, Paper, Typography, useMediaQuery } from '@mui/material';
 import { gridSpacing } from 'store/constant';
-import { HeadingCss } from 'views/dashboard/Default/dashboard-css/CommonCss';
+import { HeadingCss , boxHeight } from 'views/dashboard/Default/dashboard-css/CommonCss';
 import { StudentStrengthList } from './StudentStrengthList';
+
 
 const StudentStrength = () => {
   const isMobile = useMediaQuery('(max-width: 767px)');
@@ -30,7 +31,7 @@ const StudentStrength = () => {
     colors: ['#5e35b1cc', '#1e88e5bf'],
     responsive: [
       {
-        breakpoint: 480,
+        breakpoint: 768,
         options: {
           chart: {
             width: '100%',
@@ -50,7 +51,7 @@ const StudentStrength = () => {
 
   return (
     <>
-      <Paper spacing={gridSpacing}>
+      <Paper spacing={gridSpacing} style={boxHeight} className='scrollbar' sx={{display:'flex' , flexDirection:'column' , justifyContent :'space-between'}}>
         <Grid sx={{ padding: '24px' }}>
           <Typography variant="h2" style={HeadingCss}>
             Students Strength

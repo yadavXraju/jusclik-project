@@ -2,9 +2,9 @@ import User1 from 'assets/images/users/user-round.svg';
 
 // static profile Details
 
-export const ClassTeacherProfileDetails = {
+export const studentProfileDetails = {
   image: User1,
-  name : 'Suraj Mishra',
+  name : 'Abhishek Negi',
   class : 'V A',
-  subject : 'English',
+  AdminNo :'(Adm No : D00158)',
 };

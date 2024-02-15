@@ -56,28 +56,34 @@ function ActionButton({ onTextSelect,onConfirm }) {
       >
         <List sx={{ width: '100%', bgcolor: 'background.paper' }} aria-label="contacts">
           <ListItem>
-            <ListItemButton disablePadding onClick={() => handleClickOpen("A", "Mark all A")}>
-              <ListItemText primary="Mark all A" />
+            <ListItemButton sx={{padding:"4px 16px"}}
+            disablePadding onClick={() => handleClickOpen("A", "Mark all A")}>
+              <ListItemText  primary="Mark all A" />
             </ListItemButton>
           </ListItem>
           <ListItem>
-            <ListItemButton disablePadding onClick={() => handleClickOpen("B", "Mark all B")}>
+            <ListItemButton sx={{padding:"4px 16px"}}
+             disablePadding onClick={() => handleClickOpen("B", "Mark all B")}>
               <ListItemText primary="Mark all B" />
             </ListItemButton>
           </ListItem>
           <ListItem>
-            <ListItemButton  disablePadding onClick={() => handleClickOpen("C", "Mark all C")}>
+            <ListItemButton  sx={{padding:"4px 16px"}}
+            disablePadding onClick={() => handleClickOpen("C", "Mark all C")}>
               <ListItemText primary="Mark all C" />
             </ListItemButton>
           </ListItem>
           <ListItem>
-            <ListItemButton disablePadding onClick={() => handleClickOpen("D", "Mark all D")}>
+            <ListItemButton sx={{padding:"4px 16px"}}
+             disablePadding onClick={() => handleClickOpen("D", "Mark all D")}>
               <ListItemText primary="Mark all D" />
             </ListItemButton>
-            <ListItemButton disablePadding onClick={() => handleClickOpen("Clear All", "Clear All")}>
+          </ListItem>
+          <ListItem>
+          <ListItemButton sx={{padding:"4px 16px"}}
+            disablePadding onClick={() => handleClickOpen("Clear All", "Clear All")}>
               <ListItemText primary="Clear All" />
             </ListItemButton>
-     
           </ListItem>
         </List>
         <ConfirmationDialog

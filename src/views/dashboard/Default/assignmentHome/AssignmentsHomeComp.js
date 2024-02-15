@@ -9,6 +9,7 @@ import Checkbox from '@mui/material/Checkbox';
 import Attcgment from 'views/sidebar-menus/assignments/Attachment';
 import AttachmentIcon from '@mui/icons-material/Attachment';
 import { commonStyles } from 'views/sidebar-menus/communication-message/Contact-list';
+import { boxHeight } from '../dashboard-css/CommonCss';
 import useDialog from '../customHook/UseDialog';
 
 const AssignmentsHomeComp = () => {
@@ -70,13 +71,15 @@ const AssignmentsHomeComp = () => {
 
   const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
   const isMobile = useMediaQuery('(max-width: 767px)');
+  
 
   // Sort the data array based on the 'date' property in descending order
   const sortedData = [...data].sort((a, b) => new Date(b.date) - new Date(a.date));
 
   return (
     <Grid spacing={gridSpacing}>
-      <Grid item component={Paper} lg={12} md={12} sm={12} xs={12} sx={{ p: 3, display: 'flex', flexDirection: 'column', gap: '24px' , border:'1px solid #80808026' }}>
+      <Grid item component={Paper} lg={12} md={12} sm={12} xs={12} sx={{ p: 3, display: 'flex', flexDirection: 'column', gap: '24px' , border:'1px solid #80808026' }}
+      style={boxHeight} className='scrollbar' >
         <Typography variant='h2' sx={{ textAlign: 'left', }} style={HeadingCss}>
           recent homework & assignments
         </Typography>
@@ -85,7 +88,7 @@ const AssignmentsHomeComp = () => {
             {sortedData.slice(0 , AssignmentToShow).map((item) => (
               <Grid container key={item.id} lg={12} sx={{ gap: '8px', borderBottom:'1px solid #80808024', paddingBottom:'10px'}}>
                 {/* left */}
-                  <Grid container lg={7} sx={{gap:'8px'}}>
+                  <Grid container lg={7} md={7} sx={{gap:'8px'}}>
                       <Grid item  sx={{ display: 'flex', flex: '0 0 10%' , gap: '3px', alignItems:'center' }}   className="notchecked" >
 
                         {/* blank div for verticle line */}
@@ -147,7 +150,7 @@ const AssignmentsHomeComp = () => {
                   </Grid>
 
                    {/* right */}
-                  <Grid container lg={4} sx={{gap:'20px' , alignItems:'center', justifyContent:'end' , marginTop: isMobile ? '20px' : '0' }}>
+                  <Grid container lg={4} md={4} sx={{gap:'20px' , alignItems:'center', justifyContent:'end' , marginTop: isMobile ? '20px' : '0' }}>
             
 
                       <Box sx={{display:'flex', gap:'20px'}}>                          
