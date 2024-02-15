@@ -12,7 +12,7 @@ function UpperTab( { onClassChange,selectedSubject, onSubjectChange,selectedClas
   return (
     <div>
       <Paper sx={{padding:"20px 30px",margin:"10px 0px"}}>
-      <Grid spacing={2} sx={{display:'flex',flexDirection:"row"}}> 
+      <Grid spacing={2} sx={{display:'flex',flexDirection:"row",alignItems:"center"}}> 
             {/* Pass onClassChange function to handle class changes */}
         <ClassDropDown 
         data={currencies} 
