@@ -3,11 +3,12 @@ import ApexCharts from 'react-apexcharts';
 import { present, absent } from './chart-data/AttandanceData';
 import { Grid, Paper, Typography , Button , Box ,useMediaQuery  } from '@mui/material';
 import { gridSpacing } from 'store/constant';
-import { HeadingCss } from './dashboard-css/CommonCss';
+import { HeadingCss , boxHeight} from './dashboard-css/CommonCss';
 import { useNavigate } from 'react-router';
 
 const AttandanceChartHomeComp = () => {
 const navigate = useNavigate();
+const isMediumDesktop = useMediaQuery('(max-width: 1600px)');
 const isMobile = useMediaQuery('(max-width: 767px)');
 
 
@@ -26,7 +27,7 @@ const isMobile = useMediaQuery('(max-width: 767px)');
     labels: ['Present', 'Absent'],
     colors: ['#61bb61d4', 'rgb(244, 67, 54)'],
     responsive: [{
-      breakpoint: 480,
+      breakpoint: 768,
       options: {
         chart: {
           width: '100%',
@@ -45,14 +46,14 @@ const isMobile = useMediaQuery('(max-width: 767px)');
 
   return (
        <>
-          <Paper spacing={gridSpacing}>
+          <Paper spacing={gridSpacing} style={boxHeight} className='scrollbar' sx={{display:'flex' , flexDirection:'column' , justifyContent :'space-between'}}>
               <Grid sx={{padding:'24px'}}>
                     <Typography variant='h2' style={HeadingCss}>Attendance</Typography> 
               </Grid>
 
       
               <Grid className='attandance-graph' style={AttendanceBox} >
-                  <ApexCharts options={chartData} series={chartData.series} type="donut" height={370} />
+                  <ApexCharts options={chartData} series={chartData.series} type="donut"  height={ isMediumDesktop ? 370 : 370} />
               </Grid>
 
               <Box sx={{p:3, pt:0 , textAlign:'right' , marginTop: isMobile ? '2rem' : '0'}}>

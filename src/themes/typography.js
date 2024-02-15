@@ -5,7 +5,9 @@
 import { useMediaQuery } from "@mui/material";
 
 export default function ThemeTypography(theme) {
+  const isMediumDesktop = useMediaQuery('(max-width: 1600px)');
   const isMobile = useMediaQuery('(max-width: 767px)');
+  
   return {
     fontFamily: theme?.customization?.fontFamily,
     h6: {
@@ -94,7 +96,7 @@ export default function ThemeTypography(theme) {
       width: '100%',
       minHeight: 'calc(100vh - 88px)',
       flexGrow: 1,
-      padding: '20px 40px',
+      padding: isMediumDesktop ? '20px 10px'  :'20px 40px',
       marginTop: isMobile ? '230px' : '130px',
       marginRight: '20px',
       borderRadius: `${theme?.customization?.borderRadius}px`

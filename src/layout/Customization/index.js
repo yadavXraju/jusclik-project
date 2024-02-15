@@ -14,9 +14,11 @@ import {
   RadioGroup,
   Slider,
   Tooltip,
-  Typography
+  Typography,
+  useMediaQuery
 } from '@mui/material';
 import { IconSettings } from '@tabler/icons';
+
 
 // third-party
 import PerfectScrollbar from 'react-perfect-scrollbar';
@@ -38,6 +40,7 @@ const Customization = () => {
   const theme = useTheme();
   const dispatch = useDispatch();
   const customization = useSelector((state) => state.customization);
+  const isMobile = useMediaQuery('(max-width:767px)')
 
   // drawer on/off
   const [open, setOpen] = useState(false);
@@ -164,6 +167,7 @@ const Customization = () => {
             position: 'fixed',
             right: 10,
             zIndex: theme.zIndex.speedDial,
+            marginTop: isMobile  ?'5rem' : '0',
           }}
         >
           <AnimateButton type="rotate">
