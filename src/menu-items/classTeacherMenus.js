@@ -9,6 +9,7 @@ import CoPresentTwoToneIcon from '@mui/icons-material/CoPresentTwoTone';
 import DocumentScannerTwoToneIcon from '@mui/icons-material/DocumentScannerTwoTone';
 import LibraryBooksTwoToneIcon from '@mui/icons-material/LibraryBooksTwoTone';
 import DraftsTwoToneIcon from '@mui/icons-material/DraftsTwoTone';
+import FolderCopyTwoToneIcon from '@mui/icons-material/FolderCopyTwoTone';
 
 
 const ClassTeacherMenu = {
@@ -21,7 +22,7 @@ const ClassTeacherMenu = {
                 id: 'attendance',
                 title: 'Attendance',
                 type: 'collapse',
-                url: '/class-teacher/attendance',
+                url: '/class-teacher/attendance-entry',
                 icon: CalendarMonthTwoToneIcon,
                 children: [
 
@@ -29,7 +30,7 @@ const ClassTeacherMenu = {
                     id: 'attendance-daily-attendance',
                      title: 'Daily Attendance',
                      type: 'item',
-                     url: '/class-teacher/attendance/daily-attendance',
+                     url: '/class-teacher/attendance-entry/daily-attendance',
                      breadcrumbs: false
                    },
     
@@ -38,7 +39,7 @@ const ClassTeacherMenu = {
                     id: 'attendance-monthly-attendance',
                      title: 'Monthly Attendance',
                      type: 'item',
-                     url: '/class-teacher/attendance/monthly-attendance',
+                     url: '/class-teacher/attendance-entry/monthly-attendance',
                      breadcrumbs: false
                    },
     
@@ -90,6 +91,15 @@ const ClassTeacherMenu = {
                  breadcrumbs: false
               },
              
+              {
+                id: 'upload-resource',
+                title: 'Upload Resources',
+                type: 'item',
+                url: '/class-teacher/upload-resources',
+                icon:   FolderCopyTwoToneIcon ,
+                breadcrumbs: false
+             },
+
             {
                 id: 'teacher-inbox',
                 title: 'Inbox',

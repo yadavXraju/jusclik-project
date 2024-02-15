@@ -16,6 +16,7 @@ const TeacherInbox = Loadable(lazy(() => import('views/sidebar-menus/teacher-inb
 const BiometricDetailsOrAttendanceDetails = Loadable(lazy(() => import('views/sidebar-menus/biometric-details-attendance-details')));
 const LeaveApplication = Loadable(lazy(() => import('views/sidebar-menus/leave-application')));
 const ApiTest = Loadable(lazy(() => import('views/sidebar-menus/ApiTest')));
+const UploadResources = Loadable(lazy(() => import('views/sidebar-menus/Upload-Resources')));
 
 // Class Teacher Routes
 const classTeacherRoutes = [
@@ -31,7 +32,7 @@ const classTeacherRoutes = [
         
 
         {
-            path: 'attendance',
+            path: 'attendance-entry',
             children: [
             {
                 path: 'daily-attendance',
@@ -70,6 +71,10 @@ const classTeacherRoutes = [
         {
             path: 'circular-upload',
             element: <CircularUpload />
+        },
+        {
+            path: 'upload-resources',
+            element: <UploadResources />
         },
         {
             path: 'inbox',
