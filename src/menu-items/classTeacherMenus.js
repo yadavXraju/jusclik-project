@@ -16,9 +16,7 @@ const ClassTeacherMenu = {
     type: 'group',
     children: [
   
-        // class Teacher menus
-
-            
+        // class Teacher menus         
                {
                 id: 'attendance',
                 title: 'Attendance',
@@ -126,8 +124,6 @@ const ClassTeacherMenu = {
                  icon:   CameraAltTwoToneIcon,
                  breadcrumbs: false
                },
-  
-  
     ]
   };
   

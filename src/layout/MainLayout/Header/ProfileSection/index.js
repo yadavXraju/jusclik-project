@@ -29,9 +29,16 @@ import PerfectScrollbar from 'react-perfect-scrollbar';
 import MainCard from 'ui-component/cards/MainCard';
 import Transitions from 'ui-component/extended/Transitions';
 import { IconLogout, IconSettings, IconUser } from '@tabler/icons';
-import {  studentProfileDetails } from './ProfileDeatails';
+import { useLocation } from 'react-router-dom';
+// for parent
+import { studentProfileDetails } from '../parent/student-profile-section/StudentProfile';
+
+// for class teacher
+import { ClassTeacherProfileDetails } from '../class-teacher/teacher-profile-section/TeacherProfile';
 
 
+// for subject teacher
+import { SubjectTeacherProfileDetails } from '../subject-teacher/subject-teacher-profile-section/subjectTeacherProfile';
 
 // ==============================|| PROFILE MENU ||============================== //
 
@@ -68,6 +75,29 @@ const ProfileSection = () => {
   }, [open]);
 
 
+  // condtional rendring for profle sec in header
+
+  const location = useLocation();
+  const [profile, setProfile] = useState([]);
+
+  useEffect(() => {
+    const { pathname } = location;
+    let data;
+
+    if (pathname.includes('/parent/')) {
+      data = studentProfileDetails;
+    } else if (pathname.includes('/class-teacher/')) {
+      data = ClassTeacherProfileDetails;
+    } else if (pathname.includes('/subject-teacher/')) {
+      data = SubjectTeacherProfileDetails;
+    } else {
+      data = [];
+    }
+
+    setProfile(data);
+  }, [location]);
+
+
   return (
     <>
       <Chip
@@ -92,7 +122,7 @@ const ProfileSection = () => {
         }}
         icon={
           <Avatar
-            src={studentProfileDetails.StudentImage}
+            src={profile.image}
             sx={{
               ...theme.typography.mediumAvatar,
               margin: '8px 0 8px 8px !important',
@@ -140,7 +170,7 @@ const ProfileSection = () => {
                       <Stack direction="row" spacing={0.5} alignItems="center">
                         <Typography variant="h4">Hello,</Typography>
                         <Typography component="span" variant="h4">
-                        {studentProfileDetails.StudentName} !
+                        {profile.name} !
                         </Typography>
                       </Stack>
                       <Typography  variant="body2" sx={{pb:1}}>Last Login : 20-Jan-2024 2:23 PM </Typography>
@@ -167,7 +197,7 @@ const ProfileSection = () => {
                       >
                         {/* Profile */}
 
-                        <ListItemButton sx={{ borderRadius: `${customization.borderRadius}px` }} onClick={()=>navigate('student-profile')}>
+                        <ListItemButton sx={{ borderRadius: `${customization.borderRadius}px` }} onClick={()=>navigate('parent/student-profile')}>
                             <ListItemIcon>
                               <IconUser stroke={1.5} size="1.3rem" />
                             </ListItemIcon>
@@ -188,7 +218,7 @@ const ProfileSection = () => {
                         {/* this is set state of student profile tab Credentials */}
                        
                         <ListItemButton sx={{ borderRadius: `${customization.borderRadius}px` }} onClick={() => {
-                                    navigate('student-profile', { state: { initialTab: 5 } });
+                                    navigate('parent/student-profile', { state: { initialTab: 5 } });
                                   }}
                                 >
 

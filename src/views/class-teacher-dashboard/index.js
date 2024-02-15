@@ -6,7 +6,7 @@ import WelcomeAttandanceCheckIn from './welcome-check-in-attendance';
 import ClassTeacherProfile from './profile';
 import Communication from './recent-communication/Communication';
 import ClassTeacherAlert from './Alerts/Alert';
-import FavPages from './fav-pages/FavPages';
+import ClassTeacherFavPages from './fav-pages/FavPages';
 import UpcomingBirthday from './upcoming-birthday/UpcomingBirthday';
 import LowStudentAttendance from './low-student-attendance/LowStudentAttendance';
 import StudentStrength from './student-strength/StudentStrength';
@@ -63,7 +63,7 @@ const Dashboard = ({ isLoading }) => {
 
           {/* Fav pages comp */}
            <Grid item xs={12} md={5} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
-             <FavPages isLoading={isLoading} />
+             <ClassTeacherFavPages isLoading={isLoading} />
           </Grid>
 
           {/* Low Students Attendance comp */}

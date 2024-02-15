@@ -7,7 +7,8 @@ import SubjectTeacherProfile from './profile/Profile';
 import Communication from 'views/class-teacher-dashboard/recent-communication/Communication';
 import SubjectTeacherAlert from './alerts/Alert';
 import UpcomingBirthday from 'views/class-teacher-dashboard/upcoming-birthday/UpcomingBirthday';
-import FavPages from 'views/class-teacher-dashboard/fav-pages/FavPages';
+// import FavPages from 'views/class-teacher-dashboard/fav-pages/FavPages';
+import SubjectTeacherFavPages from './fav-pages/FavPages';
 import StudentLeave from 'views/class-teacher-dashboard/student-leave/StudentLeave';
 import SubjectTeacherTimeTable from './time-table/TimeTable';
 
@@ -63,7 +64,7 @@ const Dashboard = ({ isLoading }) => {
 
             {/* Fav pages comp */}
            <Grid item xs={12} md={5} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
-             <FavPages isLoading={isLoading} />
+             <SubjectTeacherFavPages isLoading={isLoading} />
           </Grid>
 
           {/* Student on Leave Comp */}
