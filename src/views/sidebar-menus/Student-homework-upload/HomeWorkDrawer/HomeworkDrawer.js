@@ -1,9 +1,6 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
-import Drawer from '@mui/material/Drawer';
-import Button from '@mui/material/Button';
+import {Box,Button,Grid,Drawer, Typography} from '@mui/material';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
-import Grid from '@mui/system/Unstable_Grid/Grid';
 import HomeDate from './HomeDate';
 import HomeCategory from './HomeCategory';
 import HomeworkTopic from './HomeworkTopic';
@@ -27,56 +24,51 @@ export default function HomeworkDrawer() {
     setState({ ...state, [anchor]: open });
   };
 
+  const isMobile = window.innerWidth < 600;
+
   const form = (
     <Box
-      sx={{ width: 650, padding: 2 }} // Adjust width as needed
+      sx={{ width: isMobile ? '100%' : 650, padding: 2 }} // Adjust width as needed for larger screens
       role="presentation"
     >
-      <Box sx={{ display: 'flex', justifyContent: 'end' }}>
-      <Button onClick={toggleDrawer('right', false)} sx={{ alignSelf: 'flex-end' }}>
-      <CancelTwoToneIcon/>
-        Close
-      </Button>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #ccc' }}>
+            <Typography variant='h4'>Homework</Typography>
+        <Button onClick={toggleDrawer('right', false)} sx={{ alignSelf: 'flex-end' }}>
+          <CancelTwoToneIcon />
+          Close
+        </Button>
       </Box>
-      <Grid item>
-        <Grid sx={{ display: 'flex', justifyContent: 'space-around' }}>
-          <Grid item sx={{width:'100%', paddingRight:'5px', paddingLeft:'5px'}}>
-            <HomeDate label="Homework Date:" />
-          </Grid>
-          <Grid item sx={{width:'100%', paddingRight:'13px', paddingLeft:'5px'}}>
-            <HomeDate label="Submission Date:" />
-          </Grid>
+      <Grid container spacing={1} justifyContent="space-around" sx={{ paddingLeft: isMobile ? '4px' : '5px', paddingRight: isMobile ? '11px' : '11px', paddingTop:'10px' }}>
+        <Grid item xs={12} sm={6}>
+          <HomeDate label="Homework Date:" />
         </Grid>
-
-        <Grid >
-          <Grid item>
-            <HomeCategory />
-          </Grid>
-        </Grid>
-
-        <Grid>
-          <Grid item>
-            <HomeworkTopic />
-          </Grid>
-          <Grid item>
-            <HomeworkTemplate />
-          </Grid>
-        </Grid>
-
-        <Grid>
-          <HomeReplyBox />
-        </Grid>
-
-        <Grid>
-          <HomeWorkDragDrop />
-        </Grid>
-        <Grid sx={{paddingLeft:'10px', paddingRight:'8px'}}>
-          <HomeYoutubeLink />
-        </Grid>
-        <Grid>
-          <HomeDrawerSubmit />
+        <Grid item xs={12} sm={6} >
+          <HomeDate label="Submission Date:" />
         </Grid>
       </Grid>
+
+      <HomeCategory />
+
+      <Grid container spacing={1}>
+        <Grid item xs={12}>
+          <HomeworkTopic />
+        </Grid>
+        <Grid item xs={12}>
+          <HomeworkTemplate />
+        </Grid>
+        <Grid item xs={12}>
+          <HomeReplyBox />
+        </Grid>
+        <Grid item xs={12}>
+          <HomeWorkDragDrop />
+        </Grid>
+      </Grid>
+        <Grid item xs={12} sx={{ paddingLeft: isMobile ? '10px' : '10px', paddingRight: isMobile ? '11px' : '8px' }}>
+          <HomeYoutubeLink />
+        </Grid>
+        <Grid item xs={12} sx={{ marginTop:'20px'}}>
+          <HomeDrawerSubmit />
+        </Grid>
     </Box>
   );
 
