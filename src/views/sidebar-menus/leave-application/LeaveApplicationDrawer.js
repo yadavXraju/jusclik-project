@@ -20,7 +20,7 @@ import dayjs from 'dayjs';
 import NotifyStudent from './Notify_student';
 import QueryBuilderOutlinedIcon from '@mui/icons-material/QueryBuilderOutlined';
 
-export default function LeaveDrawer1() {
+export default function LeaveDrawer() {
   //const isMobile = useMediaQuery('(max-width:767px)');
 
   const [state, setState] = React.useState({
@@ -153,6 +153,12 @@ export default function LeaveDrawer1() {
   // Generate an array of dates between "Leave From" and "Leave To" dates
   const datesBetween = getDatesBetween(state.leaveFrom, state.leaveTo);
 
+  const generateUniqueId = () => {
+    const timestamp = Date.now().toString(36); // Convert timestamp to base36 string
+    const randomString = Math.random().toString(36).substring(2); // Generate random string
+    return timestamp + randomString; // Combine timestamp and random string
+  };  
+
   // ========= render list of leave =============
   const [addleave, setaddleave] = React.useState(false);
   const [selectedLeaveTypes, setSelectedLeaveTypes] = React.useState([]);
@@ -176,6 +182,7 @@ export default function LeaveDrawer1() {
       }
 
       const newLeave = {
+        id: generateUniqueId(),
         from: datesBetween,
         type: leaveType,
         status: AttendanceStatus,
@@ -217,6 +224,7 @@ export default function LeaveDrawer1() {
     newLeaveTypes[index] = event.target.value;
     setLeaveTypes1(newLeaveTypes);
   };
+
 
   const form = (
     <>
@@ -272,7 +280,7 @@ export default function LeaveDrawer1() {
                               <FormControl fullWidth size="small">
                                 <InputLabel id={`leave-type-label-${index}`}>Leave Type</InputLabel>
                                 <Select
-                                  disabled
+                                  // disabled
                                   labelId={`leave-type-label-${index}`}
                                   id={`leave-type-select-${index}`}
                                   value={leaveTypes1[index] !== undefined ? leaveTypes1[index] : leave.type}
