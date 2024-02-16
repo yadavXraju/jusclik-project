@@ -27,7 +27,7 @@ const Alert = ({ AlertData }) => {
                 <Grid item xs={12} key={index} sx={{paddingTop:'0 !important'}}>
                   <Grid container direction="column">
                     <Grid item>
-                      <Grid container alignItems="center" justifyContent="space-between" >
+                      <Grid container alignItems="center" justifyContent="space-between" sx={{gap:'10px'}}>
                         {/* title and icon */}
                         <Grid item sx={{display:'flex' , gap:'16px' ,alignItems:'center',}}>
 
@@ -61,7 +61,7 @@ const Alert = ({ AlertData }) => {
 
                         {/* Button */}
                           {alert.showButton && (
-                              <Grid item>
+                              <Grid item sx={{marginLeft:'auto'}}>
                                 <Grid container alignItems="center" justifyContent="space-between">
                                   <Grid item>
                                     <Box>
