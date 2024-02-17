@@ -34,7 +34,7 @@ const FavPages = ( { FavPagesList }) => {
           <Grid alignContent="center" justifyContent="space-between" >
             <Grid item>
               <Typography variant="h2" style={HeadingCss}>
-                Favorite Pages
+                Most Visited Pages
               </Typography>
             </Grid>
           </Grid>
@@ -73,7 +73,7 @@ const FavPages = ( { FavPagesList }) => {
                     </Grid>
 
                     {/* Link */}
-                    <Grid item>
+                    <Grid item sx={{marginLeft:'auto'}}>
                       <Grid container alignItems="center" justifyContent="space-between">
                         <Grid item>
                           <Box>

@@ -1,12 +1,13 @@
 import React from 'react';
 import { Typography, ListItemText, Avatar, Stack, Paper } from '@mui/material';
 
-
 const AttendanceAvatarsPopover = ({ student, handleAvatarClick, selectedAvatarDate }) => {
-  const handleAvatarSelection = (selectedAvatar) => {
-    // Update the selected avatar for the individual student
-    handleAvatarClick(selectedAvatar, student.id, selectedAvatarDate);
-  }; 
+const handleAvatarSelection = (selectedAvatar, event) => {
+  // Update the selected avatar for the individual student
+  handleAvatarClick(selectedAvatar, student.id, selectedAvatarDate, event);
+};
+
+ 
   
   return (
     <Paper>
@@ -15,7 +16,7 @@ const AttendanceAvatarsPopover = ({ student, handleAvatarClick, selectedAvatarDa
           <Stack direction="row" spacing={2} sx={{ p: 1 }}>
             <Avatar
               sx={{
-                bgcolor: '#f1f1f1',
+                bgcolor: '#7bc67b',
                 width: 30,
                 height: 30,
                 cursor: 'pointer',
@@ -27,7 +28,7 @@ const AttendanceAvatarsPopover = ({ student, handleAvatarClick, selectedAvatarDa
             </Avatar>
             <Avatar
               sx={{
-                bgcolor: '#f1f1f1',
+                bgcolor: '#e2526b',
                 width: 30,
                 height: 30,
                 cursor: 'pointer',
@@ -39,7 +40,7 @@ const AttendanceAvatarsPopover = ({ student, handleAvatarClick, selectedAvatarDa
             </Avatar>
             <Avatar
               sx={{
-                bgcolor: '#f1f1f1',
+                bgcolor: '#eeb058',
                 width: 30,
                 height: 30,
                 cursor: 'pointer',

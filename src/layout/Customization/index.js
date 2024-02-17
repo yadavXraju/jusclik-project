@@ -56,96 +56,71 @@ const Customization = () => {
     setBorderRadius(newValue);
   };
 
+  // Effect to save border radius to local storage when it changes
   useEffect(() => {
     dispatch({ type: SET_BORDER_RADIUS, borderRadius });
+    localStorage.setItem('borderRadius', JSON.stringify(borderRadius));
   }, [dispatch, borderRadius]);
+
+  // Function to retrieve border radius from local storage or use default value
+  useEffect(() => {
+    const savedBorderRadius = JSON.parse(localStorage.getItem('borderRadius'));
+    if (savedBorderRadius) {
+      setBorderRadius(savedBorderRadius);
+    }
+  }, []);
 
   // ==============================|| BACKGROUD COLOR ||============================== //
 
   // 2 state for 2 layout colors
   
-  // Set initial background color to the value of the first radio button
-  const [themeColor, setThemeColor] = useState('rgb(94, 53, 177 )');  // purple color
-  const [themeColorV2, setThemeColorV2] = useState('rgb(30, 136, 229 )'); // lite blue color
+  // Retrieve theme color values from local storage or use defaults if not found
+  const initialThemeColor = localStorage.getItem('themeColor') || 'rgb(94, 53, 177)';
+  const initialThemeColorV2 = localStorage.getItem('themeColorV2') || 'rgb(30, 136, 229)';
 
-  // function for first counter color
+  // Set initial background color to the retrieved values
+  const [themeColor, setThemeColor] = useState(initialThemeColor);
+  const [themeColorV2, setThemeColorV2] = useState(initialThemeColorV2);
+
+  // function for changing theme color
   const handleThemeColor = (event) => {
-    const newThemeColor = event.target.value;
-    setThemeColor(newThemeColor);
-    dispatch({ type: SET_COLOR_THEME, backgroundColor: newThemeColor });
-    // Synchronize the selection
-    setThemeColorV2(newThemeColor === 'rgb(94, 53, 177)' ? 'rgb(30, 136, 229)' : 'rgb(84, 110, 122)');  // rgb(84, 110, 122)  =  Gray color
-  };
+    const newColor = event.target.value;
+    
+    setThemeColor(newColor);
+    dispatch({ type: SET_COLOR_THEME, backgroundColor: newColor });
+  
+    const newBackgroundColor = newColor === 'rgb(94, 53, 177)' ? 'rgb(30, 136, 229)' : 'rgb(84, 110, 122)';
+    setThemeColorV2(newBackgroundColor);
+    dispatch({ type: SET_COLOR_THEME_V2, backgroundColor: newBackgroundColor });
 
+    localStorage.setItem('themeColor', newColor);
+    localStorage.setItem('themeColorV2', newBackgroundColor);
+  };
+  
   useEffect(() => {
     dispatch({ type: SET_COLOR_THEME, themeColor });
   }, [dispatch, themeColor]);
-
-  // function for first second counter color
-  const handleBackgroundColorV2 = (event) => {
-    const newThemeColorV2 = event.target.value;
-    setThemeColorV2(newThemeColorV2);
-    dispatch({ type: SET_COLOR_THEME_V2, backgroundColor: newThemeColorV2 });
-    // Synchronize the selection
-    setThemeColor(newThemeColorV2 === 'rgb(30, 136, 229)' ? 'rgb(94, 53, 177)' : 'rgb(0, 137, 123)');  // rgb(0, 137, 123)   =  Green color
-  };
-
+  
   useEffect(() => {
     dispatch({ type: SET_COLOR_THEME_V2, themeColorV2 });
   }, [dispatch, themeColorV2]);
+  
 
   // ==============================|| fONT fAMILY||============================== //
 
-  let initialFont;
-  switch (customization.fontFamily) {
-    case `'Inter', sans-serif`:
-      initialFont = 'Inter';
-      break;
+  // Retrieve font family value from local storage or use default if not found
+  const initialFontFamily = localStorage.getItem('fontFamily') || `'Plus Jakarta Sans', sans-serif'`;
 
-    case `'Poppins', sans-serif`:
-      initialFont = 'Poppins';
-      break;
+  // State for font family
+  const [fontFamily, setFontFamily] = useState(initialFontFamily);
 
-    case `'Roboto', sans-serif`:
-      initialFont = 'Roboto';
-      break;
-
-    case `'Plus Jakarta Sans', sans-serif`:
-      break;
-
-    default:
-      initialFont = 'Plus Jakarta Sans';
-  }
-
-  // state - font family
-  const [fontFamily, setFontFamily] = useState(initialFont);
-
+  // Effect to save font family to local storage when it changes
   useEffect(() => {
-    let newFont;
-    switch (fontFamily) {
-      case 'Inter':
-        newFont = `'Inter', sans-serif`;
-        break;
-
-      case 'Poppins':
-        newFont = `'Poppins', sans-serif`;
-        break;
-
-      case 'Roboto':
-        newFont = `'Roboto', sans-serif`;
-        break;
-
-      case 'Plus Jakarta Sans':
-        newFont = `'Plus Jakarta Sans', sans-serif`;
-        break;
-
-      default:
-        newFont = `'Plus Jakarta Sans', sans-serif`;
-    }
-    dispatch({ type: SET_FONT_FAMILY, fontFamily: newFont });
+    dispatch({ type: SET_FONT_FAMILY, fontFamily });
+    localStorage.setItem('fontFamily', fontFamily);
   }, [dispatch, fontFamily]);
-  
-  console.log(handleBackgroundColorV2)
+
+  // ==============================|| RENDER ||============================== //
 
   return (
     <>
