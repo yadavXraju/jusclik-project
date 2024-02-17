@@ -34,7 +34,7 @@ const FavPages = ( { FavPagesList }) => {
           <Grid alignContent="center" justifyContent="space-between" >
             <Grid item>
               <Typography variant="h2" style={HeadingCss}>
-                Favorite Pages
+                Most Visited Pages
               </Typography>
             </Grid>
           </Grid>
