@@ -23,7 +23,7 @@ import '../../../dashboard/Default/dashboard-css/Overflow.css'
         label="class"
         select
         value={selectedClass || (data.length > 0 ? data[0].value : '')}
-        sx={{margin:"0px 10px"}}
+        sx={{margin:"0px 10px",width:"200px"}}
         onChange={handleChange} 
       >
         {data.map((option) => (
@@ -54,7 +54,7 @@ export function SubjectDropDown({ data, selectedSubject, onSubjectChange }) {
       label="Subject"
       select
       value={selectedSubject ? selectedSubject.value : '0'} // Use selectedSubject.value instead of data[0].value
-      sx={{ margin: "0px 10px" }}
+      sx={{ margin: "0px 10px",width:"200px" }}
       onChange={handleChange}
     >
       {data.map((option) => (
@@ -87,7 +87,7 @@ return (
       select
       label="Exam"
       value={selectedExam || (data.length > 0 ? data[0].value : '')}
-      sx={{margin:"0px 10px"}}
+      sx={{margin:"0px 10px",width:"200px"}}
       onChange={handleChange} 
     >
       {data.map((option) => (
@@ -123,7 +123,8 @@ export function TermDropDown({ data,  onTermChange, selectedTerm }) {
         select
         label="Term"
         value={selectedTerm || (data.length > 0 ? data[0].value : '0')}
-        sx={{ margin: "0px 10px" }}
+        sx={{ margin: "0px 10px" ,width:"200px"}}
+        xs={12}
         onChange={handleChange}
       >
         {data.map((option) => (
@@ -158,7 +159,8 @@ export function StudentDropDown({ data, onStudentChange, selectedStudent}) {
       select
       label="Student Name"
       value={ selectedStudent|| (data.length > 0 ? data[0].value : 'All')}
-      sx={{ margin: "0px 10px", width:"100px" }}
+      sx={{ margin: "0px 10px", width:"200px" }}
+      xs={12}
       onChange={handleChange}
     >
       {data.map((student) => (
