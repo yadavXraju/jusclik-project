@@ -48,7 +48,7 @@ const Customization = () => {
     setOpen(!open);
   };
 
-  // ==============================|| bORDER||============================== //
+  // ==============================|| BORDER ||============================== //
 
   // state - border radius
   const [borderRadius, setBorderRadius] = useState(customization.borderRadius);
@@ -70,7 +70,7 @@ const Customization = () => {
     }
   }, []);
 
-  // ==============================|| BACKGROUD COLOR ||============================== //
+  // ==============================|| BACKGROUND COLOR ||============================== //
 
   // 2 state for 2 layout colors
   
@@ -106,10 +106,10 @@ const Customization = () => {
   }, [dispatch, themeColorV2]);
   
 
-  // ==============================|| fONT fAMILY||============================== //
+  // ==============================|| FONT FAMILY ||============================== //
 
   // Retrieve font family value from local storage or use default if not found
-  const initialFontFamily = localStorage.getItem('fontFamily') || `'Plus Jakarta Sans', sans-serif'`;
+  const initialFontFamily = localStorage.getItem('fontFamily') || 'Plus Jakarta Sans';
 
   // State for font family
   const [fontFamily, setFontFamily] = useState(initialFontFamily);
@@ -142,7 +142,7 @@ const Customization = () => {
             position: 'fixed',
             right: 10,
             zIndex: theme.zIndex.speedDial,
-            marginTop: isMobile  ?'5rem' : '0',
+            marginTop: isMobile ? '5rem' : '0',
           }}
         >
           <AnimateButton type="rotate">
@@ -268,7 +268,7 @@ const Customization = () => {
                   >
                     <FormControlLabel
                       value="rgb(94, 53, 177)"
-                      control={<Radio sx={{ opacity: 0 }} checked={themeColor === 'rgb(94, 53, 177)'} /> }  // setting color by default
+                      control={<Radio sx={{ opacity: 0 }} checked={themeColor === 'rgb(94, 53, 177)'} />}  // setting color by default
                       label=""
                       sx={{
                         background: 'conic-gradient(rgb(94, 53, 177) 0deg 180deg, rgb(30, 136, 229) 180deg 360deg)',   // 
