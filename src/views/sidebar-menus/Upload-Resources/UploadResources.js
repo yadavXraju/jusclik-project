@@ -33,7 +33,7 @@ export default function Homework() {
             </div>
           </Grid>
         </Grid>
-        <TableContainer className='scrollbar-2'>
+        <TableContainer   className='scrollbar-2'>
           <Table>
             <TableHead>
               <TableRow>

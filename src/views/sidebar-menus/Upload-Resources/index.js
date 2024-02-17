@@ -1,9 +1,14 @@
 import React from 'react'
+import UploadResources from './UploadResources';
+import UploadProgress from './UploadProgress'
 
-const UploadResources = () => {
+const Upload = () => {
   return (
-    <div>index</div>
+    <>
+    <UploadProgress/>
+    <UploadResources/>
+    </>
   )
 }
 
-export default UploadResources
+export default Upload;

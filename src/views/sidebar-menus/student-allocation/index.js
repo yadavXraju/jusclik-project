@@ -1,9 +1,9 @@
 import React from 'react'
-
+import StudentData from './StudentData'
 const index = () => {
   return (
     <div>
-      Student Allocation
+      <StudentData/>
     </div>
   )
 }

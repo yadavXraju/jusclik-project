@@ -19,6 +19,7 @@ import Paper from '@mui/material/Paper';
 import dayjs from 'dayjs';
 import NotifyStudent from './Notify_student';
 import QueryBuilderOutlinedIcon from '@mui/icons-material/QueryBuilderOutlined';
+import {Dialog, DialogTitle , DialogContent ,DialogContentText ,DialogActions } from '@mui/material';
 
 export default function LeaveDrawer() {
   //const isMobile = useMediaQuery('(max-width:767px)');
@@ -151,13 +152,7 @@ export default function LeaveDrawer() {
   };
 
   // Generate an array of dates between "Leave From" and "Leave To" dates
-  const datesBetween = getDatesBetween(state.leaveFrom, state.leaveTo);
-
-  const generateUniqueId = () => {
-    const timestamp = Date.now().toString(36); // Convert timestamp to base36 string
-    const randomString = Math.random().toString(36).substring(2); // Generate random string
-    return timestamp + randomString; // Combine timestamp and random string
-  };  
+  const datesBetween = getDatesBetween(state.leaveFrom, state.leaveTo); 
 
   // ========= render list of leave =============
   const [addleave, setaddleave] = React.useState(false);
@@ -177,12 +172,12 @@ export default function LeaveDrawer() {
       });
 
       if (isOverlapping) {
-        alert('You Can Not Apply Leave For Same Date');
+        //alert('You Can Not Apply Leave For Same Date');
+        handleModalOpen();
         return;
       }
 
       const newLeave = {
-        id: generateUniqueId(),
         from: datesBetween,
         type: leaveType,
         status: AttendanceStatus,
@@ -225,6 +220,15 @@ export default function LeaveDrawer() {
     setLeaveTypes1(newLeaveTypes);
   };
 
+ // ========= render error model for duplicate date ==========
+  const [modalopen, setmodalOpen] = React.useState(false);
+  const handleModalOpen = () => {
+    setmodalOpen(true);
+  };
+  const handleModalClose = () => {
+    setmodalOpen(false);
+  };
+
 
   const form = (
     <>
@@ -255,14 +259,15 @@ export default function LeaveDrawer() {
                 <Divider />
               </Paper>
 
-              {selectedLeaveTypes.map((leave, index) => (
-                <Box key={index}>
+              {selectedLeaveTypes.map((leave, Oindex) => (
+                <Box key={Oindex}>
                   {leave.from.map((date, index) => (
                     <>
                       <Paper sx={{ display: 'flex', alignItems: 'center', p: 0 }} key={index}>
                         <ListItem>
                           <ListItemText sx={{ flex: '0 0 30%' }}>
                             <Typography variant="h5">{date}</Typography>
+                            
                           </ListItemText>
                           <ListItemText sx={{ flex: '0 0 40%' }}>
                             <Typography variant="h5">
@@ -511,6 +516,17 @@ export default function LeaveDrawer() {
       <Drawer anchor="right" open={state.right} onClose={toggleDrawer('right', false)}>
         {form}
       </Drawer>
+      <Dialog open={modalopen} onClose={handleModalClose}>
+        <DialogTitle>  Warning</DialogTitle>
+        <DialogContent>
+          <DialogContentText>You Can Not Apply Leave For Same Date</DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleModalClose} color="primary" autoFocus>
+            OK
+          </Button>
+        </DialogActions>
+      </Dialog>
     </div>
   );
 }
