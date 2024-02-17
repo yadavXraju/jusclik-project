@@ -8,13 +8,14 @@ import { gridSpacing } from 'store/constant';
 const LeaveChart = () => {
 //const navigate = useNavigate();
 const isMobile = useMediaQuery('(max-width: 767px)');
+const islaptop = useMediaQuery('(max-width: 1600px)');
 
 
   const AttendanceBox = {
     display : 'flex',
     flexDirection: 'column',
     padding : '20px',
-    paddingBottom:'0',
+    paddingBottom: islaptop ? '30px' : '0',
     alignItems: isMobile ? 'center' :'auto',
   }
   const chartData = {
@@ -25,7 +26,7 @@ const isMobile = useMediaQuery('(max-width: 767px)');
     labels: ['Approved', 'Pending'],
     colors: ['#61bb61d4', 'rgb(244, 67, 54)'],
     responsive: [{
-      breakpoint: 480,
+      breakpoint: 1600,
       options: {
         chart: {
           width: '100%',
@@ -61,5 +62,3 @@ const isMobile = useMediaQuery('(max-width: 767px)');
 };
 
 export default LeaveChart;
-
-

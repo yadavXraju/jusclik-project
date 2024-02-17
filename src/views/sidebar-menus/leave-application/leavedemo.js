@@ -28,6 +28,16 @@ export default function LeaveForm() {
     setSelectedLeaveType(event.target.value);
   };
 
+  // Initialize leaveTypes1 with default values for each date
+  const [leaveTypes1, setLeaveTypes1] = React.useState('');
+  // ======== Function to handle changes in the leave type selection for a specific index ==========
+  const handleLeaveTypeChange1 = (event, index) => {
+    const newLeaveTypes = [...leaveTypes1];
+    newLeaveTypes[index] = event.target.value;
+    setLeaveTypes1(newLeaveTypes);
+  };
+
+
   const handleAddLeave = () => {
     if (selectedLeaveFrom && selectedLeaveTo && selectedLeaveType) {
       const newLeave = {
@@ -142,9 +152,27 @@ export default function LeaveForm() {
             {selectedLeaves.map((leave, index) => (
               <li key={index}>
                 <ul>
-                  {getDatesInRange(leave.from, leave.to).map((date, idx) => (
-                    <li key={idx}>
-                      <span>{leave.type}</span>: {date.format('DD-MM-YYYY')}
+                  {getDatesInRange(leave.from, leave.to).map((date, index) => (
+                    <li key={index}>
+                      {/* <span>{leave.type}</span> */}
+                      : {date.format('DD-MM-YYYY')}
+                      <FormControl fullWidth size="small">
+                                <InputLabel id={`leave-type-label-${index}`}>Leave Type</InputLabel>
+                                <Select
+                                  // disabled
+                                  labelId={`leave-type-label-${index}`}
+                                  id={`leave-type-select-${index}`}
+                                  value={leaveTypes1[index] !== undefined ? leaveTypes1[index] : leave.type}
+                                  label="Leave Type"
+                                  onChange={(event) => handleLeaveTypeChange1(event, index)} // Handle change in leave type selection for this index
+                                >
+                                  <MenuItem value={'Casual Leave'}>Casual Leave</MenuItem>
+                                  <MenuItem value={'Earned Leave'}>Earned Leave</MenuItem>
+                                  <MenuItem value={'Medical Leave'}>Medical Leave</MenuItem>
+                                  <MenuItem value={'Festival Leave'}>Festival Leave</MenuItem>
+                                  <MenuItem value={'Leave Without Pay'}>Leave Without Pay</MenuItem>
+                                </Select>
+                              </FormControl>
                     </li>
                   ))}
                 </ul>
