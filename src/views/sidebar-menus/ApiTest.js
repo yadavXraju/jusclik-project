@@ -1,6 +1,6 @@
 // FavPage.js
 
-import CoScholaistic from "./co-scholastic";
+import RemarksEntryPanel from "./remarks-entry-panel";
 
 // import React, { useState, useEffect } from 'react';
 
@@ -27,7 +27,7 @@ const FavPage = () => {
           <li key={index}>{page}</li>
         ))}
       </ul> */
-      <CoScholaistic/>
+      <RemarksEntryPanel/>
       }
 
 

@@ -6,6 +6,7 @@ import NoteAddTwoToneIcon from '@mui/icons-material/NoteAddTwoTone';
 import AssignmentTwoToneIcon from '@mui/icons-material/AssignmentTwoTone';
 import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
 import CircularDrawer from './CircularDrawer/CircularDrawer';
+import "../../dashboard/Default/dashboard-css/Overflow.css";
 
 const CircularUpload = () => {
   return (
@@ -24,7 +25,7 @@ const CircularUpload = () => {
           </Grid>
         </Grid>
         <Box sx={{ mt: 2 }}>
-          <TableContainer component={Paper}>
+          <TableContainer component={Paper} className='scrollbar-2'>
             <Table sx={{ minWidth: 650 }}>
               <TableHead>
                 <TableRow>

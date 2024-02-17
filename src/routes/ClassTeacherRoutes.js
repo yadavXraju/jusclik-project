@@ -7,7 +7,7 @@ const ClassTeacherDashboard = Loadable(lazy(() => import('views/class-teacher-da
 const DailyAttendance = Loadable(lazy(() => import('views/sidebar-menus/attendance-entry')));
 const MonthlyAttendance = Loadable(lazy(() => import('views/sidebar-menus/monthly-attendance')));
 const MarksEntryPanel = Loadable(lazy(() => import('views/sidebar-menus/marks-entry-panel')));
-const Scholastic = Loadable(lazy(() => import('views/sidebar-menus/marks-entry-panel')));
+const Scholastic = Loadable(lazy(() => import('views/sidebar-menus/co-scholastic')));
 const RemarksEntryPanel = Loadable(lazy(() => import('views/sidebar-menus/co-scholastic')));
 const TimeTableEntry = Loadable(lazy(() => import('views/sidebar-menus/time-table-entry')));
 const StudentAllocation = Loadable(lazy(() => import('views/sidebar-menus/student-allocation')));

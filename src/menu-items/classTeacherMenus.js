@@ -19,7 +19,7 @@ const ClassTeacherMenu = {
   
         // class Teacher menus         
                {
-                id: 'attendance',
+                id: 'attendance-entry',
                 title: 'Attendance',
                 type: 'collapse',
                 url: '/class-teacher/attendance-entry',
