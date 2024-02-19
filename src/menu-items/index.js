@@ -4,6 +4,7 @@ import ClassTeacherDashboard from './classTeacherDashboard';
 import ClassTeacherMenu from './classTeacherMenus';
 import SubjectTeacherDashboard from './subjectTeacherDashboard';
 
+
 // Function to check if the URL contains a specific path
 const containsPath = (path) => window.location.pathname.includes(path);
 
