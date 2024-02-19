@@ -1,13 +1,14 @@
 import React from 'react';
-import {  Paper,TableCell,TableRow,TableContainer,Table,TableHead,TableBody,  Typography,  Grid } from '@mui/material';
+import { Paper, TableCell, TableRow, TableContainer, Table, TableHead, TableBody, Typography, Grid } from '@mui/material';
 import "../../dashboard/Default/dashboard-css/Overflow.css";
+import StudentDataList from './StudentDataList'
 
 export default function StudentData() {
 
   return (
     <>
-      <Paper elevation={1} sx={{ marginBottom: '16px', marginTop: '30px'}}>
-      <Grid container spacing={2} p={2} alignItems="end">
+      <Paper elevation={1} sx={{ marginBottom: '16px', marginTop: '30px' }}>
+        <Grid container spacing={2} p={2} alignItems="end">
           <Grid item xs={12} sm={8} lg={8}>
             <div>
               <Typography variant="h3">Student Details</Typography>
@@ -45,90 +46,35 @@ export default function StudentData() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {/* First list for upload circular */}
-              <TableRow>
-                <TableCell>1</TableCell>
-                <TableCell>D00158</TableCell>
-                <TableCell>01/05/2024</TableCell>
-                <TableCell>Aarav Joshi</TableCell>
-                <TableCell>V-A</TableCell>
-                <TableCell>Male</TableCell>
-                <TableCell>1</TableCell>
-                <TableCell>Staff Ward</TableCell>
-                <TableCell>05/02/2020</TableCell>
-                <TableCell>0123456789</TableCell>
-                <TableCell>0123456789</TableCell>
-                <TableCell>support@shauryasoft.com </TableCell>
-                <TableCell>Delhi</TableCell>
-                <TableCell>Deepak joshi</TableCell>
-                <TableCell>9999999999</TableCell>
-                <TableCell>Father@gmail.com</TableCell>
-                <TableCell>Mrs Joshi</TableCell>
-                <TableCell>9897969594</TableCell>
-                <TableCell>Father@gmail.com</TableCell>
-                <TableCell>O+</TableCell>
-                <TableCell>Red house</TableCell>
-                <TableCell>Hinduism</TableCell>
-                <TableCell>Station 1</TableCell>
-                <TableCell>Station 2</TableCell>
-                
-              </TableRow>
-              {/* Second list for upload circular */}
-              <TableRow>
-              <TableCell>1</TableCell>
-                <TableCell>D00158</TableCell>
-                <TableCell>01/05/2024</TableCell>
-                <TableCell>Aarav Joshi</TableCell>
-                <TableCell>V-A</TableCell>
-                <TableCell>Male</TableCell>
-                <TableCell>1</TableCell>
-                <TableCell>Staff Ward</TableCell>
-                <TableCell>05/02/2020</TableCell>
-                <TableCell>0123456789</TableCell>
-                <TableCell>0123456789</TableCell>
-                <TableCell>support@shauryasoft.com </TableCell>
-                <TableCell>Delhi</TableCell>
-                <TableCell>Deepak joshi</TableCell>
-                <TableCell>9999999999</TableCell>
-                <TableCell>Father@gmail.com</TableCell>
-                <TableCell>Mrs Joshi</TableCell>
-                <TableCell>9897969594</TableCell>
-                <TableCell>Father@gmail.com</TableCell>
-                <TableCell>O+</TableCell>
-                <TableCell>Red house</TableCell>
-                <TableCell>Hinduism</TableCell>
-                <TableCell>Station 1</TableCell>
-                <TableCell>Station 2</TableCell>
-                
-              </TableRow>
-              {/* Third list for upload circular */}
-              <TableRow>
-              <TableCell>1</TableCell>
-                <TableCell>D00158</TableCell>
-                <TableCell>01/05/2024</TableCell>
-                <TableCell>Aarav Joshi</TableCell>
-                <TableCell>V-A</TableCell>
-                <TableCell>Male</TableCell>
-                <TableCell>1</TableCell>
-                <TableCell>Staff Ward</TableCell>
-                <TableCell>05/02/2020</TableCell>
-                <TableCell>0123456789</TableCell>
-                <TableCell>0123456789</TableCell>
-                <TableCell>support@shauryasoft.com </TableCell>
-                <TableCell>Delhi</TableCell>
-                <TableCell>Deepak joshi</TableCell>
-                <TableCell>9999999999</TableCell>
-                <TableCell>Father@gmail.com</TableCell>
-                <TableCell>Mrs Joshi</TableCell>
-                <TableCell>9897969594</TableCell>
-                <TableCell>Father@gmail.com</TableCell>
-                <TableCell>O+</TableCell>
-                <TableCell>Red house</TableCell>
-                <TableCell>Hinduism</TableCell>
-                <TableCell>Station 1</TableCell>
-                <TableCell>Station 2</TableCell>
-                
-              </TableRow>
+              {/* Render each student's data dynamically */}
+              {StudentDataList.map(student => (
+                <TableRow key={student.srNo}>
+                  <TableCell>{student.srNo}</TableCell>
+                  <TableCell>{student.admNo}</TableCell>
+                  <TableCell>{student.admDate}</TableCell>
+                  <TableCell>{student.studentName}</TableCell>
+                  <TableCell>{student.class}</TableCell>
+                  <TableCell>{student.gender}</TableCell>
+                  <TableCell>{student.rollNo}</TableCell>
+                  <TableCell>{student.category}</TableCell>
+                  <TableCell>{student.birthDate}</TableCell>
+                  <TableCell>{student.mobile}</TableCell>
+                  <TableCell>{student.phone}</TableCell>
+                  <TableCell>{student.email}</TableCell>
+                  <TableCell>{student.address}</TableCell>
+                  <TableCell>{student.fatherName}</TableCell>
+                  <TableCell>{student.fatherMobile}</TableCell>
+                  <TableCell>{student.fatherEmail}</TableCell>
+                  <TableCell>{student.motherName}</TableCell>
+                  <TableCell>{student.motherMobile}</TableCell>
+                  <TableCell>{student.motherEmail}</TableCell>
+                  <TableCell>{student.bloodGroup}</TableCell>
+                  <TableCell>{student.house}</TableCell>
+                  <TableCell>{student.religion}</TableCell>
+                  <TableCell>{student.pickRoute}</TableCell>
+                  <TableCell>{student.dropRoute}</TableCell>
+                </TableRow>
+              ))}
             </TableBody>
           </Table>
         </TableContainer>

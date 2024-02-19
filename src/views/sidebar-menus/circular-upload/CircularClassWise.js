@@ -1,14 +1,15 @@
 import * as React from 'react';
 import { Box, Typography, Paper, IconButton, Popover, Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Grid } from '@mui/material';
-import PictureAsPdfTwoToneIcon from '@mui/icons-material/PictureAsPdfTwoTone';
 import MoreVertOutlinedIcon from '@mui/icons-material/MoreVertOutlined';
-import NoteAddTwoToneIcon from '@mui/icons-material/NoteAddTwoTone';
-import AssignmentTwoToneIcon from '@mui/icons-material/AssignmentTwoTone';
 import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
 import CircularDrawer from './CircularDrawer/CircularDrawer';
 import "../../dashboard/Default/dashboard-css/Overflow.css";
+import CircularData from './CircularDrawer/CircularData'
 
 const CircularUpload = () => {
+  // Sample circular data (you can fetch this data from an API or other source)
+
+
   return (
     <>
       <Paper elevation={1} sx={{ marginBottom: '16px', marginTop: '30px' }}>
@@ -36,29 +37,16 @@ const CircularUpload = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {/* First list for upload circular */}
-                <CircularUploadRow
-                  icon={<PictureAsPdfTwoToneIcon fontSize="large" />}
-                  name="ClassPresentation.PDF"
-                  course="Maths 101|Unit-2:Linear Programming"
-                  date="04-02-2024"
-                />
-
-                {/* Second list for upload circular */}
-                <CircularUploadRow
-                  icon={<NoteAddTwoToneIcon fontSize="large" />}
-                  name="SlideShow.PPT"
-                  course="Maths 102|Unit-2:Add and Subtract"
-                  date="07-02-2024"
-                />
-
-                {/* Third list for upload circular */}
-                <CircularUploadRow
-                  icon={<AssignmentTwoToneIcon fontSize="large" />}
-                  name="Solving Sheets.XLS"
-                  course="Maths 103|Unit-2:Motion and Force"
-                  date="12-02-2024"
-                />
+                {/* Render each circular's data dynamically */}
+                {CircularData.map((circular, index) => (
+                  <CircularUploadRow
+                    key={index}
+                    icon={circular.icon}
+                    name={circular.name}
+                    course={circular.course}
+                    date={circular.date}
+                  />
+                ))}
               </TableBody>
             </Table>
           </TableContainer>
