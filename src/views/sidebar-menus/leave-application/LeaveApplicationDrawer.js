@@ -212,12 +212,14 @@ export default function LeaveDrawer() {
   };
 
   // Initialize leaveTypes1 with default values for each date
-  const [leaveTypes1, setLeaveTypes1] = React.useState('');
+  const [leaveTypes1, setLeaveTypes1] = React.useState({});
+
   // ======== Function to handle changes in the leave type selection for a specific index ==========
   const handleLeaveTypeChange1 = (event, index) => {
-    const newLeaveTypes = [...leaveTypes1];
-    newLeaveTypes[index] = event.target.value;
-    setLeaveTypes1(newLeaveTypes);
+    setLeaveTypes1((prevLeaveTypes) => ({
+      ...prevLeaveTypes,
+      [index]: event.target.value
+    }));
   };
 
  // ========= render error model for duplicate date ==========
@@ -259,8 +261,8 @@ export default function LeaveDrawer() {
                 <Divider />
               </Paper>
 
-              {selectedLeaveTypes.map((leave, Oindex) => (
-                <Box key={Oindex}>
+              {selectedLeaveTypes.map((leave, Outerindex) => (
+                <Box key={Outerindex}>
                   {leave.from.map((date, index) => (
                     <>
                       <Paper sx={{ display: 'flex', alignItems: 'center', p: 0 }} key={index}>
@@ -285,12 +287,11 @@ export default function LeaveDrawer() {
                               <FormControl fullWidth size="small">
                                 <InputLabel id={`leave-type-label-${index}`}>Leave Type</InputLabel>
                                 <Select
-                                  // disabled
                                   labelId={`leave-type-label-${index}`}
                                   id={`leave-type-select-${index}`}
-                                  value={leaveTypes1[index] !== undefined ? leaveTypes1[index] : leave.type}
+                                  value={leaveTypes1[`${Outerindex}${index}`] !== undefined ? leaveTypes1[`${Outerindex}${index}`] : leave.type}
                                   label="Leave Type"
-                                  onChange={(event) => handleLeaveTypeChange1(event, index)} // Handle change in leave type selection for this index
+                                  onChange={(event) => handleLeaveTypeChange1(event, `${Outerindex}${index}`)} // Handle change in leave type selection for this index
                                 >
                                   <MenuItem value={'Casual Leave'}>Casual Leave</MenuItem>
                                   <MenuItem value={'Earned Leave'}>Earned Leave</MenuItem>
