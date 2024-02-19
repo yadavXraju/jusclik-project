@@ -4,15 +4,15 @@ const EXAM=[{
 },
 {
     value:"2",
-    label:"UT-2"
+    label:"TERM 1"
 },
 {
     value:"3",
-    label:"UT-3"
+    label:"UT-2"
 },
 {
     value:"5",
-    label:"UT-4"
+    label:"TERM 2"
 }
 ]
 

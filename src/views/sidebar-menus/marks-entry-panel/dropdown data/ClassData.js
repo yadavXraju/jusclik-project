@@ -1,4 +1,4 @@
-const currencies = [
+const ClassData = [
     {
       value: '1',
       label: 'I',
@@ -18,4 +18,4 @@ const currencies = [
    
   ];
 
-  export { currencies };
+  export { ClassData };
