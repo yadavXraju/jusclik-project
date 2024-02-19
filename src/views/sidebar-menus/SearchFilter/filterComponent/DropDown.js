@@ -171,3 +171,37 @@ export function StudentDropDown({ data, onStudentChange, selectedStudent}) {
     </TextField>
   );
 }
+
+
+export function AreaDropDown({ data, onStudentChange, selectedStudent}) {
+  // Check if students is undefined or not an array
+  if (!Array.isArray(data) || data.length === 0) {
+    return <div>No data available</div>;
+  }
+
+  const handleChange = (event) => {
+    const selectedStudent = event.target.value;
+
+    // Call the onClassChange function with the selected class
+    onStudentChange(selectedStudent);
+  };
+
+  return (
+    <TextField
+
+      id="outlined-select-student"
+      select
+      label="Area"
+      value={ selectedStudent|| (data.length > 0 ? data[0].value : 'All')}
+      sx={{ margin: "0px 10px", width:"200px" }}
+      xs={12}
+      onChange={handleChange}
+    >
+      {data.map((student) => (
+        <MenuItem key={student.id} value={student.id}>
+          {student.name}
+        </MenuItem>
+      ))}
+    </TextField>
+  );
+}

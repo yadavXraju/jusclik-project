@@ -1,7 +1,7 @@
 import { Button, Grid, Paper } from '@mui/material'
 import React from 'react'
 import  { ExamDropDown, SubjectDropDown, TermDropDown,ClassDropDown} from '../SearchFilter/filterComponent/DropDown'
-import {currencies} from './dropdown data/ClassData'
+import {ClassData} from './dropdown data/ClassData'
 import {Term }from './dropdown data/TermData'
 import { subject } from './dropdown data/SubjectData'
 import { EXAM } from './dropdown data/ExamData'
@@ -15,7 +15,7 @@ function UpperTab( { onClassChange,selectedSubject, onSubjectChange,selectedClas
       <Grid spacing={2} sx={{display:'flex',flexDirection:"row",alignItems:"center"}}> 
             {/* Pass onClassChange function to handle class changes */}
         <ClassDropDown 
-        data={currencies} 
+        data={ClassData} 
         onClassChange={onClassChange}
         selectedClass={selectedClass
         } sx={{ margin: '10px' }} />
