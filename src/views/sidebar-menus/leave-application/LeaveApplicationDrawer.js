@@ -19,6 +19,7 @@ import Paper from '@mui/material/Paper';
 import dayjs from 'dayjs';
 import NotifyStudent from './Notify_student';
 import QueryBuilderOutlinedIcon from '@mui/icons-material/QueryBuilderOutlined';
+import {Dialog, DialogTitle , DialogContent ,DialogContentText ,DialogActions } from '@mui/material';
 
 export default function LeaveDrawer() {
   //const isMobile = useMediaQuery('(max-width:767px)');
@@ -151,13 +152,7 @@ export default function LeaveDrawer() {
   };
 
   // Generate an array of dates between "Leave From" and "Leave To" dates
-  const datesBetween = getDatesBetween(state.leaveFrom, state.leaveTo);
-
-  const generateUniqueId = () => {
-    const timestamp = Date.now().toString(36); // Convert timestamp to base36 string
-    const randomString = Math.random().toString(36).substring(2); // Generate random string
-    return timestamp + randomString; // Combine timestamp and random string
-  };  
+  const datesBetween = getDatesBetween(state.leaveFrom, state.leaveTo); 
 
   // ========= render list of leave =============
   const [addleave, setaddleave] = React.useState(false);
@@ -177,12 +172,12 @@ export default function LeaveDrawer() {
       });
 
       if (isOverlapping) {
-        alert('You Can Not Apply Leave For Same Date');
+        //alert('You Can Not Apply Leave For Same Date');
+        handleModalOpen();
         return;
       }
 
       const newLeave = {
-        id: generateUniqueId(),
         from: datesBetween,
         type: leaveType,
         status: AttendanceStatus,
@@ -217,12 +212,23 @@ export default function LeaveDrawer() {
   };
 
   // Initialize leaveTypes1 with default values for each date
-  const [leaveTypes1, setLeaveTypes1] = React.useState('');
+  const [leaveTypes1, setLeaveTypes1] = React.useState({});
+
   // ======== Function to handle changes in the leave type selection for a specific index ==========
   const handleLeaveTypeChange1 = (event, index) => {
-    const newLeaveTypes = [...leaveTypes1];
-    newLeaveTypes[index] = event.target.value;
-    setLeaveTypes1(newLeaveTypes);
+    setLeaveTypes1((prevLeaveTypes) => ({
+      ...prevLeaveTypes,
+      [index]: event.target.value
+    }));
+  };
+
+ // ========= render error model for duplicate date ==========
+  const [modalopen, setmodalOpen] = React.useState(false);
+  const handleModalOpen = () => {
+    setmodalOpen(true);
+  };
+  const handleModalClose = () => {
+    setmodalOpen(false);
   };
 
 
@@ -255,14 +261,15 @@ export default function LeaveDrawer() {
                 <Divider />
               </Paper>
 
-              {selectedLeaveTypes.map((leave, index) => (
-                <Box key={index}>
+              {selectedLeaveTypes.map((leave, Outerindex) => (
+                <Box key={Outerindex}>
                   {leave.from.map((date, index) => (
                     <>
                       <Paper sx={{ display: 'flex', alignItems: 'center', p: 0 }} key={index}>
                         <ListItem>
                           <ListItemText sx={{ flex: '0 0 30%' }}>
                             <Typography variant="h5">{date}</Typography>
+                            
                           </ListItemText>
                           <ListItemText sx={{ flex: '0 0 40%' }}>
                             <Typography variant="h5">
@@ -280,12 +287,11 @@ export default function LeaveDrawer() {
                               <FormControl fullWidth size="small">
                                 <InputLabel id={`leave-type-label-${index}`}>Leave Type</InputLabel>
                                 <Select
-                                  // disabled
                                   labelId={`leave-type-label-${index}`}
                                   id={`leave-type-select-${index}`}
-                                  value={leaveTypes1[index] !== undefined ? leaveTypes1[index] : leave.type}
+                                  value={leaveTypes1[`${Outerindex}${index}`] !== undefined ? leaveTypes1[`${Outerindex}${index}`] : leave.type}
                                   label="Leave Type"
-                                  onChange={(event) => handleLeaveTypeChange1(event, index)} // Handle change in leave type selection for this index
+                                  onChange={(event) => handleLeaveTypeChange1(event, `${Outerindex}${index}`)} // Handle change in leave type selection for this index
                                 >
                                   <MenuItem value={'Casual Leave'}>Casual Leave</MenuItem>
                                   <MenuItem value={'Earned Leave'}>Earned Leave</MenuItem>
@@ -511,6 +517,17 @@ export default function LeaveDrawer() {
       <Drawer anchor="right" open={state.right} onClose={toggleDrawer('right', false)}>
         {form}
       </Drawer>
+      <Dialog open={modalopen} onClose={handleModalClose}>
+        <DialogTitle>  Warning</DialogTitle>
+        <DialogContent>
+          <DialogContentText>You Can Not Apply Leave For Same Date</DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleModalClose} color="primary" autoFocus>
+            OK
+          </Button>
+        </DialogActions>
+      </Dialog>
     </div>
   );
 }

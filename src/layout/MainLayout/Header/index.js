@@ -2,11 +2,10 @@ import PropTypes from 'prop-types';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
-import { Avatar, Box, ButtonBase } from '@mui/material';
+import { Avatar, Box, ButtonBase , useMediaQuery} from '@mui/material';
 
 // project imports
 import LogoSection from '../LogoSection';
-// import SearchSection from './SearchSection';
 import ProfileSection from './ProfileSection';
 import SchoolName from './SchoolNameAndLogoSection';
 import NotificationSection from './NotificationSection';
@@ -21,6 +20,8 @@ import HelpSection from './HelpSection';
 
 const Header = ({ handleLeftDrawerToggle }) => {
   const theme = useTheme();
+  const isMobile = useMediaQuery('(max-width:767px)')
+  const smallMobile = useMediaQuery('(max-width:425px)')
 
   return (
     <>
@@ -30,14 +31,15 @@ const Header = ({ handleLeftDrawerToggle }) => {
           width: 228,
           display: 'flex',
           [theme.breakpoints.down('md')]: {
-            width: 'auto'
+            width: 'auto',
+            marginLeft :'auto'
           }
         }}
       >
         <Box component="span" sx={{ display: { xs: 'none', md: 'block' }, flexGrow: 1 }}>
           <LogoSection />
         </Box>
-        <ButtonBase sx={{ borderRadius: '12px', overflow: 'hidden' }}>
+        <ButtonBase  sx={{ borderRadius: '12px', overflow: 'hidden',  }}>
           <Avatar
             variant="rounded"
             sx={{
@@ -59,26 +61,33 @@ const Header = ({ handleLeftDrawerToggle }) => {
         </ButtonBase>
       </Box>
 
-      {/* school Name and logo*/}
-      <SchoolName/>
+    
+       <Box style={{width:'100%'}} sx={{display:'flex', justifyContent:'space-between', flexWrap: isMobile ? 'wrap' : null }}>
+          {/* right side box */}
+          <Box sx={{flex: isMobile ? '0 0 100%' : '0 0 60%', flexWrap:'wrap'}}>
+            {/* school Name and logo*/}
+            <SchoolName/>
+          </Box>
+            
+          {/* left side box */}
+          <Box sx={{display:'flex', alignItems:'center' , flex: isMobile ? '0 0 100%' : '0 0 40%',  justifyContent:  smallMobile ? 'flex-start' : 'end', flexWrap:'wrap', marginLeft: smallMobile ? '1rem' : null}}>
+            {/* sibling switch */}
+            <SiblingSwitch />
 
-      {/* header search */}
-      {/* <SearchSection /> */}
-      <Box sx={{ flexGrow: 1 }} />
-      <Box sx={{ flexGrow: 1 }} />
+            {/* help section */}
+            <HelpSection/>
 
-      {/* sibling switch */}
-      <SiblingSwitch />
+            {/* acadmic section */}
+            <AcadmicYear/>
 
-      {/* help section */}
-      <HelpSection/>
-      
-      {/* acadmic section */}
-      <AcadmicYear/>
+            {/* notification */}
+            <NotificationSection />
 
-      {/* notification & profile */}
-      <NotificationSection />
-      <ProfileSection />
+            {/* profile */}
+            <ProfileSection />
+          </Box>
+
+       </Box>
     </>
   );
 };

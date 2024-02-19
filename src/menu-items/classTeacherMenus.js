@@ -143,6 +143,8 @@ const ClassTeacherMenu = {
                  icon:   CameraAltTwoToneIcon,
                  breadcrumbs: false
                },
+
+
     ]
   };
   
