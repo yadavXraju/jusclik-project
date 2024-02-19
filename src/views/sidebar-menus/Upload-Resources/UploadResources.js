@@ -4,7 +4,7 @@ import MoreVertOutlinedIcon from '@mui/icons-material/MoreVertOutlined';
 import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
 import HomeworkDrawer from '../Student-homework-upload/HomeWorkDrawer/HomeworkDrawer';
 import "../../dashboard/Default/dashboard-css/Overflow.css";
-import HomeworkData from './HomeworkData';
+import HomeworkData from '../Student-homework-upload/HomeworkData';
 
 export default function Homework() {
   // Sample homework data (you can fetch this data from an API or other source)
@@ -26,7 +26,7 @@ export default function Homework() {
         <Grid container spacing={2} p={2} alignItems="end">
           <Grid item xs={12} sm={8} lg={8}>
             <div>
-              <Typography variant="h3">Homework</Typography>
+              <Typography variant="h3">Upload Resources</Typography>
             </div>
           </Grid>
           <Grid item xs={12} sm={4} lg={4}>

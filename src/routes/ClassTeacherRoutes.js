@@ -94,6 +94,8 @@ const classTeacherRoutes = [
             path: 'apitest',
             element: <ApiTest />
         },
+
+
     ]
 }
 ];

@@ -98,7 +98,7 @@ export default function ThemeTypography(theme) {
       flexGrow: 1,
       padding: isMediumDesktop ? '20px 10px'  :'20px 40px',
       marginTop: isMobile ? '230px' : '130px',
-      marginRight: '20px',
+      marginRight: isMediumDesktop ? '0' : '20px',
       borderRadius: `${theme?.customization?.borderRadius}px`
     },
     menuCaption: {
