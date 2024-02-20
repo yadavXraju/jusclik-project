@@ -9,7 +9,7 @@ import { TextField , useMediaQuery } from '@mui/material'
 import Grid from '@mui/material/Grid';
 
 
-export default function ProdileForm() {
+export default function ProfileForm() {
 
   const isMobile = useMediaQuery('(max-width: 767px)')
 

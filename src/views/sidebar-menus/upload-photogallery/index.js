@@ -1,9 +1,10 @@
 import React from 'react'
+import UploadGalleryTable from './UploadGalleryTable'
 
 const UploadPhotoGallery = () => {
   return (
     <div>
-        <h1>Upload Photo gallery </h1>
+      <UploadGalleryTable/>
     </div>
   )
 }
