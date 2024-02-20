@@ -1,5 +1,7 @@
-// new icon
-import CalendarMonthTwoToneIcon from '@mui/icons-material/CalendarMonthTwoTone';
+// icons
+import ArticleTwoToneIcon from '@mui/icons-material/ArticleTwoTone';
+import BuildTwoToneIcon from '@mui/icons-material/BuildTwoTone';
+import GroupsTwoToneIcon from '@mui/icons-material/GroupsTwoTone';
 
 
 
@@ -14,7 +16,7 @@ const VisitorMenu = {
                 title: 'Visitor Management',
                 type: 'collapse',
                 url: '/visitor/visitor-management',
-                icon: CalendarMonthTwoToneIcon,
+                icon: GroupsTwoToneIcon,
                 children: [
 
                   {
@@ -42,7 +44,7 @@ const VisitorMenu = {
                 title: 'Dynamic Reports',
                 type: 'collapse',
                 url: '/visitor/dynamic-reports',
-                icon: CalendarMonthTwoToneIcon,
+                icon: ArticleTwoToneIcon,
                 children: [
 
                     {
@@ -70,7 +72,7 @@ const VisitorMenu = {
                 title: 'Tools',
                 type: 'collapse',
                 url: '/visitor/tools',
-                icon: CalendarMonthTwoToneIcon,
+                icon: BuildTwoToneIcon,
                 children: [
 
                     {
