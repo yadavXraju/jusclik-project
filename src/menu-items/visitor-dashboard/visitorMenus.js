@@ -37,6 +37,38 @@ const VisitorMenu = {
                 ]
               },
 
+
+
+              {
+                id: 'dynamic-reports',
+                title: 'Dynamic Reports',
+                type: 'collapse',
+                url: '/visitor/dynamic-reports',
+                icon: CalendarMonthTwoToneIcon,
+                children: [
+
+                    {
+                        id: 'visitor-details',
+                        title: 'Visitor Details',
+                        type: 'item',
+                        url: '/visitor/dynamic-reports/visitor-details',
+                        breadcrumbs: false
+                      },
+    
+                      
+                  {
+                     id: 'black-listed-visitor',
+                     title: 'Black Listed Visitor',
+                     type: 'item',
+                     url: '/visitor/dynamic-reports/black-listed-visitor',
+                     breadcrumbs: false
+                   },
+    
+
+         
+                ]
+              },
+
               
             //   {
             //      id: 'api-test',
