@@ -20,15 +20,15 @@ import { useSelector } from 'react-redux';
 // ===========================|| DASHBOARD DEFAULT Check in  Counter||=========================== //
 
 
-const CheckIn = ({ isLoading  ,  CheckInAndCheckOutData }) => {
+const Counter1 = ({ isLoading  ,  Counter1Data }) => {
 
 
     const theme = useTheme();
     const navigate = useNavigate();
 
 //    saving checkin data in this var
-    const time = CheckInAndCheckOutData[0].details;
-    // const date = CheckInAndCheckOutData[0];
+    // const time = CheckInAndCheckOutData[0].details;
+
 
 // ===========================|| Theme color and other setting ||=========================== //
 
@@ -135,7 +135,7 @@ const CheckIn = ({ isLoading  ,  CheckInAndCheckOutData }) => {
             <Grid item>
               <Grid container alignItems="center">
                 <Grid item>
-                  <Typography sx={{ fontSize: '2.125rem', fontWeight: 500, mr: 1, mt: 1.75, mb: 0.75 }}>  {time.checkIn}</Typography>
+                  <Typography sx={{ fontSize: '2.125rem', fontWeight: 500, mr: 1, mt: 1.75, mb: 0.75 }}>  {Counter1Data.counterValue}</Typography>
                 </Grid>
    
               </Grid>
@@ -149,7 +149,8 @@ const CheckIn = ({ isLoading  ,  CheckInAndCheckOutData }) => {
                   textTransform : 'uppercase'
                 }}
               >
-             CHECK IN TIME
+             {/* CHECK IN TIME */} 
+             {Counter1Data.counterTitle}
               </Typography>
             </Grid>
           </Grid>
@@ -161,8 +162,8 @@ const CheckIn = ({ isLoading  ,  CheckInAndCheckOutData }) => {
 }
 
 
-CheckIn.propTypes = {
+Counter1.propTypes = {
     isLoading: PropTypes.bool
   };
 
-export default CheckIn
+export default Counter1

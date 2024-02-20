@@ -37,8 +37,6 @@ const VisitorMenu = {
                 ]
               },
 
-
-
               {
                 id: 'dynamic-reports',
                 title: 'Dynamic Reports',
@@ -63,12 +61,27 @@ const VisitorMenu = {
                      url: '/visitor/dynamic-reports/black-listed-visitor',
                      breadcrumbs: false
                    },
-    
-
-         
+            
                 ]
               },
 
+              {
+                id: 'tools',
+                title: 'Tools',
+                type: 'collapse',
+                url: '/visitor/tools',
+                icon: CalendarMonthTwoToneIcon,
+                children: [
+
+                    {
+                        id: 'sms-delivery-report',
+                        title: 'SMS Delivery Report',
+                        type: 'item',
+                        url: '/visitor/tools/sms-delivery-report',
+                        breadcrumbs: false
+                      },       
+                ]
+              },
               
             //   {
             //      id: 'api-test',

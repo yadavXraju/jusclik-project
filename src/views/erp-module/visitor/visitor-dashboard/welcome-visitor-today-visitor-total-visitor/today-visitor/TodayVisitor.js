@@ -1,11 +1,11 @@
 import React from 'react'
-import CheckIn from 'views/common-section/CheckIn'
-import { CheckInAndCheckOutData } from 'views/class-teacher-dashboard/welcome-check-in-attendance/check-in/CheckInDeatils'
+import Counter1 from 'views/common-section/Counter1'
+import { TodayVisitorData } from './TodayVisitorData'
 
 const TodayVisitor = () => {
   return (
     <>
-          <CheckIn CheckInAndCheckOutData={CheckInAndCheckOutData} />
+          <Counter1 Counter1Data={TodayVisitorData} />
     </>
   )
 }

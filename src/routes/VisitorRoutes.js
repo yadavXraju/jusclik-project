@@ -7,6 +7,7 @@ const VisitorEntry = Loadable(lazy(() => import('views/erp-module/visitor/visito
 const ScheduledVisit = Loadable(lazy(() => import('views/erp-module/visitor/visitor-sidemenus/visitor-managment/scheduled-visit')));
 const VisitorDetails = Loadable(lazy(() => import('views/erp-module/visitor/visitor-sidemenus/dynamic-reports/visitor-details')));
 const BlackListedVisitor = Loadable(lazy(() => import('views/erp-module/visitor/visitor-sidemenus/dynamic-reports/black-listed-visitor')));
+const SmsDeliveryReport = Loadable(lazy(() => import('views/erp-module/visitor/tool-item/sms-delivery-report')));
 
 
 
@@ -52,7 +53,20 @@ const VisitorRoutes = [
             element: <BlackListedVisitor />
          }
         ]
-      },
+      }, 
+
+       
+      {
+        path: 'tools',
+        children: [
+          { 
+            path: 'sms-delivery-report', 
+            element: <SmsDeliveryReport  /> 
+          },
+
+        ]
+      }, 
+
 
 
     ]

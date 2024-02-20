@@ -3,7 +3,7 @@ import Grid from '@mui/system/Unstable_Grid/Grid';
 import { gridSpacing } from 'store/constant';
 import VisitorWelcomeMessage from './welcome-message/welcome';
 import TodayVisitor from './today-visitor/TodayVisitor';
-import ClassTeacherTotalAttendance from 'views/class-teacher-dashboard/welcome-check-in-attendance/total-attendance/TotalAttendance';
+import TotalVisitor from './total-visitor/TotalVisitor';
 
 
 // import { useMediaQuery } from '@mui/material';
@@ -26,7 +26,7 @@ const WelcomeTotalVisitor = ({ isLoading }) => {
         <TodayVisitor   isLoading={isLoading} />
       </Grid>
       <Grid item lg={6} md={6} sm={6} xs={12}>
-        <ClassTeacherTotalAttendance isLoading={isLoading} />
+        <TotalVisitor isLoading={isLoading} />
       </Grid>
     </Grid>
   );
