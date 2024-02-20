@@ -1,11 +1,17 @@
 import React from 'react'
+import RemarkTable from './component/RemarkTable'
+import { Box, Paper } from '@mui/material'
 
-const RemarkEntry = () => {
+const RemarksEntryPanel = () => {
   return (
-    <div>
-      
-    </div>
+    <>
+    <Paper>
+      <Box>
+      <RemarkTable/>
+      </Box>
+    </Paper>
+    </>
   )
 }
 
-export default RemarkEntry
+export default RemarksEntryPanel
