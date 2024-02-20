@@ -1,12 +1,12 @@
 import React from 'react'
-import CheckIn from 'views/common-section/CheckIn'
+import Counter1 from 'views/common-section/Counter1'
 import { CheckInAndCheckOutData } from './CheckInDetails'
 
 
 const SubjectTeacherCheckIn = () => {
   return (
     <>
-      <CheckIn CheckInAndCheckOutData={CheckInAndCheckOutData} />
+      <Counter1 Counter1Data={CheckInAndCheckOutData} />
     </>
   )
 }

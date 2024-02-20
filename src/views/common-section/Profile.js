@@ -11,7 +11,7 @@ const Profile = ({ teacherDetails }) => {
       <Typography variant="h2">{teacherDetails.name}</Typography>
       <Typography variant="h5" sx={{ lineHeight: '1.6' }}>Subject: {teacherDetails.subject}</Typography>
       <Typography variant="h5">Class: {teacherDetails.class}</Typography>
-      <Button sx={{ textTransform: 'uppercase', background: 'rgb(33, 150, 243)', color: '#fff', marginTop: '1rem' }} variant="contained" onClick={() => navigate('/student-profile')}>
+      <Button sx={{ textTransform: 'uppercase', background: 'rgb(33, 150, 243)', color: '#fff', marginTop: '1rem' }} variant="contained" onClick={() => navigate(teacherDetails.link)}>
         View Profile
       </Button>
     </Box>

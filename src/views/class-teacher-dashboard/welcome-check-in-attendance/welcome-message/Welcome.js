@@ -9,7 +9,7 @@ const ClassTeacherWelcomeMessage = () => {
   // sending teacher name as a props to the welcome msg template
 
   const teacherDetails = {
-    TeacherName: 'Suraj Mishra',
+    name: 'Suraj Mishra',
   };
 
   return (

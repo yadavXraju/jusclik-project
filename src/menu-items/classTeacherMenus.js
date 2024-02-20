@@ -109,6 +109,16 @@ const ClassTeacherMenu = {
                 breadcrumbs: false
              },
 
+             {
+              id: 'upload-photo-gallery',
+              title: 'Upload Photo Gallery',
+              type: 'item',
+              url: '/class-teacher/upload-photo-gallery',
+              icon:   FolderCopyTwoToneIcon ,
+              breadcrumbs: false
+           },
+
+
             {
                 id: 'teacher-inbox',
                 title: 'Inbox',

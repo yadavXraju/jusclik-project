@@ -17,7 +17,12 @@ const UploadResources = Loadable(lazy(() => import('views/sidebar-menus/Upload-R
 const TeacherInbox = Loadable(lazy(() => import('views/sidebar-menus/teacher-inbox')));
 const BiometricDetailsOrAttendanceDetails = Loadable(lazy(() => import('views/sidebar-menus/biometric-details-attendance-details')));
 const LeaveApplication = Loadable(lazy(() => import('views/sidebar-menus/leave-application')));
+const UploadPhotoGallery = Loadable(lazy(() => import('views/sidebar-menus/upload-photogallery')));
+const TeacherProfile = Loadable(lazy(() => import('views/sidebar-menus/class-teacher-profile')));
 const ApiTest = Loadable(lazy(() => import('views/sidebar-menus/ApiTest')));
+
+
+
 
 
 // Class Teacher Routes
@@ -79,6 +84,10 @@ const classTeacherRoutes = [
             element: <UploadResources />
         },
         {
+            path: 'upload-photo-gallery',
+            element: <UploadPhotoGallery />
+        },
+        {
             path: 'inbox',
             element: <TeacherInbox />
         },
@@ -94,6 +103,13 @@ const classTeacherRoutes = [
             path: 'apitest',
             element: <ApiTest />
         },
+
+        {
+            path: 'teacher-profile',
+            element: <TeacherProfile />
+        },
+
+  
 
 
     ]
