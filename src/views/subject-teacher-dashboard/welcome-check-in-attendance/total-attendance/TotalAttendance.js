@@ -1,11 +1,11 @@
 import React from 'react'
-import TotalAttendance from 'views/common-section/TotalAttendance'
+import Counter2 from 'views/common-section/Counter2'
 import { TotalAttendanceDeatails } from './AttendanceDetails'
 
 const SubjectTeacherTotalAttendance = () => {
   return (
     <>
-     <TotalAttendance TotalAttendanceDeatails={TotalAttendanceDeatails}/>
+     <Counter2 Counter2Data={TotalAttendanceDeatails}/>
     </>
   )
 }
