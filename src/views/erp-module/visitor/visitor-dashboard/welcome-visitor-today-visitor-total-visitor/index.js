@@ -1,9 +1,9 @@
 import React from 'react';
 import Grid from '@mui/system/Unstable_Grid/Grid';
 import { gridSpacing } from 'store/constant';
-import ClassTeacherCheckIn from './check-in/CheckIn';
-import ClassTeacherWelcomeMessage from './welcome-message/Welcome';
-import ClassTeacherTotalAttendance from './total-attendance/TotalAttendance';
+import VisitorWelcomeMessage from './welcome-message/welcome';
+import TodayVisitor from './today-visitor/TodayVisitor';
+import ClassTeacherTotalAttendance from 'views/class-teacher-dashboard/welcome-check-in-attendance/total-attendance/TotalAttendance';
 
 
 // import { useMediaQuery } from '@mui/material';
@@ -15,15 +15,15 @@ import ClassTeacherTotalAttendance from './total-attendance/TotalAttendance';
 // 3- Attendance Counter
 
 
-const WelcomeAttandanceCheckIn = ({ isLoading }) => {
+const WelcomeTotalVisitor = ({ isLoading }) => {
   
   return (
     <Grid container spacing={gridSpacing} sx={{pb:'11px'}}>
       <Grid item lg={12} md={12} sm={12} xs={12}>
-        <ClassTeacherWelcomeMessage isLoading={isLoading} />
+        <VisitorWelcomeMessage isLoading={isLoading} />
       </Grid>
       <Grid item lg={6} md={6} sm={6} xs={12}>
-        <ClassTeacherCheckIn  isLoading={isLoading} />
+        <TodayVisitor   isLoading={isLoading} />
       </Grid>
       <Grid item lg={6} md={6} sm={6} xs={12}>
         <ClassTeacherTotalAttendance isLoading={isLoading} />
@@ -32,4 +32,4 @@ const WelcomeAttandanceCheckIn = ({ isLoading }) => {
   );
 };
 
-export default WelcomeAttandanceCheckIn;
+export default  WelcomeTotalVisitor;

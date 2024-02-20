@@ -3,6 +3,7 @@ import parentMenu from './parentMenus';
 import ClassTeacherDashboard from './classTeacherDashboard';
 import ClassTeacherMenu from './classTeacherMenus';
 import SubjectTeacherDashboard from './subjectTeacherDashboard';
+import VisitorDashboard from './visitor-dashboard/visitorDashboard';
 
 
 // Function to check if the URL contains a specific path
@@ -31,7 +32,14 @@ else if (containsPath('/class-teacher/')) {
 // Check if the URL contains "/parent/" path
 else if (containsPath('/subject-teacher/')) {
   // Push items into the items array for parent
-  menuItems.items.push(SubjectTeacherDashboard, ClassTeacherMenu);
+  menuItems.items.push(SubjectTeacherDashboard);
+}
+
+
+// Check if the URL contains "/parent/" path
+else if (containsPath('/visitor/')) {
+  // Push items into the items array for parent
+  menuItems.items.push(VisitorDashboard);
 }
 
 

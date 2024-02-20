@@ -4,7 +4,7 @@ import WelcomeMessageTemplate from "views/common-section/Welcome";
 
 const SubjectTeacherWelcomeMessage = () => {
   const teacherDetails = {
-    TeacherName : 'Rubi Dhiman'
+    name : 'Rubi Dhiman'
   }
   return (
     <>

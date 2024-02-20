@@ -15,7 +15,7 @@ import { useNavigate } from 'react-router-dom';
         <Typography variant="h2">{studentProfileDetails.StudentName}</Typography>
         <Typography variant="h5" sx={{lineHeight:'1.6'}}>{studentProfileDetails.AdminNo}</Typography>
         <Typography variant="h5">Class : {studentProfileDetails.Class}</Typography>
-        <Button sx={{ textTransform: 'uppercase', background: 'rgb(33, 150, 243)', color: '#fff' , marginTop:'1rem' }} variant="contained"  onClick={() => navigate('/student-profile')}>
+        <Button sx={{ textTransform: 'uppercase', background: 'rgb(33, 150, 243)', color: '#fff' , marginTop:'1rem' }} variant="contained"  onClick={() => navigate('/parent/student-profile')}>
           View Profile
         </Button>
       </Box>

@@ -7,4 +7,5 @@ export const ClassTeacherProfileDetails = {
   name : 'Suraj Mishra',
   class : 'V A',
   subject : 'English',
+  link : '/class-teacher/teacher-profile'
 };
