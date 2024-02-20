@@ -27,8 +27,8 @@ const CheckIn = ({ isLoading  ,  CheckInAndCheckOutData }) => {
     const navigate = useNavigate();
 
 //    saving checkin data in this var
-    // const time = CheckInAndCheckOutData[0].details;
-
+    const time = CheckInAndCheckOutData[0].details;
+    // const date = CheckInAndCheckOutData[0];
 
 // ===========================|| Theme color and other setting ||=========================== //
 
@@ -43,7 +43,7 @@ const CheckIn = ({ isLoading  ,  CheckInAndCheckOutData }) => {
 
 
   const CardWrapper = styled(MainCard)(({ theme }) => ({
-    backgroundColor: `${themeColor.slice(0, -1)}, ${opacity}) !important`, // Adding opacity
+     backgroundColor: `${themeColor.slice(0, -1)}, ${opacity}) !important`, // Adding opacity
     color: '#fff',
     overflow: 'hidden',
     position: 'relative',
@@ -135,7 +135,7 @@ const CheckIn = ({ isLoading  ,  CheckInAndCheckOutData }) => {
             <Grid item>
               <Grid container alignItems="center">
                 <Grid item>
-                  <Typography sx={{ fontSize: '2.125rem', fontWeight: 500, mr: 1, mt: 1.75, mb: 0.75 }}>  {CheckInAndCheckOutData.checkIn}</Typography>
+                  <Typography sx={{ fontSize: '2.125rem', fontWeight: 500, mr: 1, mt: 1.75, mb: 0.75 }}>  {time.checkIn}</Typography>
                 </Grid>
    
               </Grid>
@@ -149,8 +149,7 @@ const CheckIn = ({ isLoading  ,  CheckInAndCheckOutData }) => {
                   textTransform : 'uppercase'
                 }}
               >
-             {/* CHECK IN TIME */}
-             {CheckInAndCheckOutData.counterTitle}
+             CHECK IN TIME
               </Typography>
             </Grid>
           </Grid>
