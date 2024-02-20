@@ -19,7 +19,7 @@ import { useSelector } from 'react-redux';
 
 
 
-const TotalAttendance = ({ TotalAttendanceDeatails , isLoading }) =>  {
+const Counter2 = ({ Counter2Data , isLoading }) =>  {
 
     const theme = useTheme();
     const navigate = useNavigate();
@@ -133,7 +133,7 @@ const TotalAttendance = ({ TotalAttendanceDeatails , isLoading }) =>  {
             <Grid item>
               <Grid container alignItems="center">
                   <Grid item>                
-                        <Typography sx={{ fontSize: '2.125rem', fontWeight: 500, mr: 1, mt: 1.75, mb: 0.75 }}>{TotalAttendanceDeatails.attendancePercentage}</Typography>
+                        <Typography sx={{ fontSize: '2.125rem', fontWeight: 500, mr: 1, mt: 1.75, mb: 0.75 }}>{Counter2Data.counterValue}</Typography>
                     </Grid>
                 </Grid>
             </Grid>
@@ -147,7 +147,9 @@ const TotalAttendance = ({ TotalAttendanceDeatails , isLoading }) =>  {
                           textTransform:'uppercase'
                         }}
                       >
-                        Total Attendance
+                        {/* Total Attendance */}
+
+                        {Counter2Data.counterTitle}
                       </Typography>
                     </Grid>
                   </Grid>
@@ -158,8 +160,8 @@ const TotalAttendance = ({ TotalAttendanceDeatails , isLoading }) =>  {
   )
 }
 
-TotalAttendance.propTypes = {
+Counter2.propTypes = {
     isLoading: PropTypes.bool
   };
 
-export default TotalAttendance
+export default Counter2
