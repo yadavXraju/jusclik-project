@@ -17,6 +17,7 @@ export default function RemarkDrawer() {
   const [remarkValue, setRemarkValue] = useState('');
   const [selectedExam, setSelectedExam] = useState(null);
   const [selectedStudent, setSelectedStudent] = useState(null);
+  const [selectedStudentIndex, setSelectedStudentIndex] = useState(0);
   const [selectedTemplate, setSelectedTemplate] = useState(''); // State to hold the selected template
 
 
@@ -48,11 +49,24 @@ export default function RemarkDrawer() {
     }
     setStudents(selectedStudentData);
   }, [selectedClass]);
+  
 
   const handleStudentChange = (selectedStudentId) => {
     const selectedStudentData = students.find(student => student.id === selectedStudentId);
+    const selectedIndex = students.findIndex(student => student.id === selectedStudentId);
     setSelectedStudent(selectedStudentData);
+    setSelectedStudentIndex(selectedIndex);
   };
+  
+  const handleNextStudent = () => {
+    const nextIndex = (selectedStudentIndex + 1) % students.length;
+    const selectedStudentData = students[nextIndex];
+    setSelectedStudent(selectedStudentData);
+    setSelectedStudentIndex(nextIndex);
+  };
+  
+  
+    
 
   const handleExamChange = (selectedExam) => {
     setSelectedExam(selectedExam); // Update selectedExam state
@@ -88,7 +102,8 @@ export default function RemarkDrawer() {
           <ExamDropDown  data={EXAM} onExamChange={handleExamChange} selectedExam={selectedExam}/>
         </Grid>
         <Grid item xs={12}>
-          <StudentDropDown data={students} onStudentChange={handleStudentChange} selectedStudent={selectedStudent}/>
+       <StudentDropDown data={students} onStudentChange={handleStudentChange} selectedStudent={selectedStudent} />
+
         </Grid>
         <Grid item xs={12}>
           <TextField
@@ -107,16 +122,7 @@ export default function RemarkDrawer() {
             ))}
           </TextField>
         </Grid>
-        {/* <Grid item xs={12}>
-          <TextField
-            fullWidth
-            label="REMARK"
-            multiline
-            sx={{ margin: '10px 0' }}
-            value={remarkValue}
-            onChange={handleRemarkInputChange}
-          />
-        </Grid> */}
+      
 
         <Grid item xs={12}>
           <RemarkEditor remarkValue={remarkValue} handleRemarkInputChange={handleRemarkInputChange} />
@@ -126,6 +132,9 @@ export default function RemarkDrawer() {
           <Box mt={9} display="flex" justifyContent="left" alignItems="center">
             <Button variant="contained" color="primary" >
               Submit
+            </Button>
+            <Button variant="contained" color="primary" sx={{margin:"0px 0px 0px 10px"}}  onClick={handleNextStudent} >
+              Next
             </Button>
           </Box>
         </Grid>

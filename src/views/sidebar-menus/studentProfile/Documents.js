@@ -49,19 +49,19 @@ export default function Documents() {
     setPage(0);
   };
 
-  const handleAttachmentButtonClick = (row) => {
+  const handleAttachmentButtonClick = () => {
     setAttachmentDialogOpen(true);
-    setSelectedRow(row);
+    //setSelectedRow(row);
   };
 
   const handleAttachmentDialogClose = () => {
     setAttachmentDialogOpen(false);
-    setSelectedRow(null);
+    //setSelectedRow(null);
   };
 
   const handleAttachmentUpload = () => {
     setAttachmentDialogOpen(false);
-    setSelectedRow(null);
+    //setSelectedRow(null);
   };
   // ============== code for handle upload attachment end ==============
 
