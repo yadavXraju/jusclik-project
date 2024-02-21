@@ -73,7 +73,7 @@ export function ExamDropDown({ data, onExamChange,selectedExam}) {
 
 
   
-  export function StudentDropDown({ data, onStudentChange }) {
+  export const StudentDropDown = ({ data, onStudentChange, selectedStudent }) => {
     const handleChange = (event) => {
       const selectedStudentId = event.target.value;
       onStudentChange(selectedStudentId);
@@ -86,6 +86,7 @@ export function ExamDropDown({ data, onExamChange,selectedExam}) {
         label="Student"
         select
         onChange={handleChange}
+        value={selectedStudent ? selectedStudent.id : ''}
       >
         {data.map((student) => (
           <MenuItem key={student.id} value={student.id}>
@@ -94,4 +95,4 @@ export function ExamDropDown({ data, onExamChange,selectedExam}) {
         ))}
       </TextField>
     );
-  }
+  };
