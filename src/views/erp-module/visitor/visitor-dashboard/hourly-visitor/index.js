@@ -1,8 +1,11 @@
-import React from 'react'
+import React from 'react';
+import HourlyChart from './HourlyChart';
 
 const HourlyVisior = () => {
   return (
-    <div>index</div>
+    <>
+    <HourlyChart />
+    </>
   )
 }
 
