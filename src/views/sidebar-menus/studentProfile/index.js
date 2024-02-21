@@ -7,7 +7,7 @@ import MainCard from 'ui-component/cards/MainCard';
 import { useTheme, useMediaQuery, Box, Typography } from '@mui/material';
 import ProdileCard from './StudentProfile';
 import Grid from '@mui/material/Grid';
-import ProdileForm from './ProfileForm';
+import ProfileForm from './ProfileForm';
 import FatherDetails from './FatherDetails';
 import MotherDetails from './MotherDetails';
 import GuardianDetails from './GuardianDetails';
@@ -99,7 +99,7 @@ function Profile() {
         <ProdileCard/>
         </Grid>
         <Grid item xs={12} sm={8}>
-          <ProdileForm/>
+          <ProfileForm/>
         </Grid>
       </Grid>
       </Box>
