@@ -1,24 +1,13 @@
 import * as React from 'react';
 import { Box, Drawer, Button, Typography } from '@mui/material';
-import TextArea from 'antd/es/input/TextArea';
-//import { TextField } from '@mui/material';
 import Popover from '@mui/material/Popover';
 import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import { makeStyles } from '@mui/styles';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
 import AssetsRequestForm from './AssetsRequestForm';
+import AssetReplacementForm from './AssetReplacementForm';
 
 export default function AssetsRequestDrawer() {
-  const [age, setAge] = React.useState('');
-
-  const handleChange = (event) => {
-    setAge(event.target.value);
-  };
-
   const [state, setState] = React.useState({
     right: false,
     replacementDrawerOpen: false 
@@ -46,7 +35,6 @@ export default function AssetsRequestDrawer() {
     }
   };
 
-  const isMobile = window.innerWidth < 600;
   const useStyles = makeStyles({
     popover: {
       borderRadius: '0px'
@@ -55,52 +43,34 @@ export default function AssetsRequestDrawer() {
   const classes = useStyles();
 
   const form = (
-    <Box sx={{ width: isMobile ? '100%' : 650, padding: 2 }} role="presentation">
+    <Box sx={{ width: { xs: '100vw', sm: 650 }, padding: 2 }} role="presentation">
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #ccc' }}>
         <Typography variant="h4">Request New Asset</Typography>
         <Button onClick={toggleDrawer('right', false)} sx={{ alignSelf: 'flex-end' }}>
           Close
         </Button>
       </Box>
+       {/* ========= import asset Request Form ========== */}
       <AssetsRequestForm/>
     </Box>
   );
 
   const Replacementform = (
-    <Box sx={{ width: isMobile ? '100%' : 650, padding: 2 }} role="presentation">
+    <Box sx={{ width: { xs: '100vw', sm: 650 }, padding: 2 }} role="presentation">
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #ccc' }}>
         <Typography variant="h4">Replacement Request</Typography>
         <Button onClick={toggleReplacementDrawer('replacementDrawerOpen', false)} sx={{ alignSelf: 'flex-end' }}>
           Close
         </Button>
       </Box>
-      <form>
-        <Box pt={2}>
-          <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label">Age</InputLabel>
-            <Select labelId="demo-simple-select-label" id="demo-simple-select" value={age} label="Age" onChange={handleChange}>
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
-            </Select>
-          </FormControl>
-        </Box>
-        <Box pb={2}>
-          <Box p={0.5}>Note</Box>
-          <TextArea rows={4} placeholder="Enter your text here..." fullWidth variant="outlined" />
-        </Box>
-        <Box sx={{ padding: 2 }}>
-          <Button type="submit" variant="contained">
-            Submit
-          </Button>
-        </Box>
-      </form>
+      {/* ========= import asset Replacement Form ========== */}
+      <AssetReplacementForm/>
     </Box>
   );
 
   return (
-    <div>
-      <Typography variant="h4" sx={{ display: 'flex', justifyContent: 'center' }}>
+    <>
+      <Box variant="h4" sx={{ display: 'flex', justifyContent: 'center' }}>
         <PopupState variant="popover" popupId="demo-popup-popover">
           {(popupState) => (
             <div>
@@ -134,16 +104,16 @@ export default function AssetsRequestDrawer() {
             </div>
           )}
         </PopupState>
-      </Typography>
-
+      </Box>
+      {/* ====== Asset Request Drawer ======= */}
       <Drawer anchor="right" open={state.right} onClose={toggleDrawer('right', false)}>
         {form}
       </Drawer>
 
-      {/* Replacement Drawer */}
+      {/* ====== Replacement Drawer ======= */}
       <Drawer anchor="right" open={state.replacementDrawerOpen} onClose={toggleReplacementDrawer('replacementDrawerOpen', false)}>
         {Replacementform}
       </Drawer>
-    </div>
+    </>
   );
 }

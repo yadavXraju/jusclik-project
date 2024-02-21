@@ -1,8 +1,8 @@
 import * as React from 'react';
-import {Box,Button,Grid,Drawer, Typography} from '@mui/material';
+import { Box, Button, Grid, Drawer, Typography } from '@mui/material';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import CancelTwoToneIcon from '@mui/icons-material/CancelTwoTone';
-import CreateNewDetails from './CreateNewDetails'
+import CreateNewDetails from './CreateNewDetails';
 
 export default function GalleryDrawer() {
   const [state, setState] = React.useState({
@@ -10,30 +10,30 @@ export default function GalleryDrawer() {
   });
 
   const toggleDrawer = (anchor, open) => (event) => {
-    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+    if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return;
     }
 
     setState({ ...state, [anchor]: open });
   };
 
-  const isMobile = window.innerWidth < 600;
+  // const isMobile = window.innerWidth < 600;
 
   const form = (
     <Box
-      sx={{ width: isMobile ? '100%' : 650, padding: 2 }} // Adjust width as needed for larger screens
+      sx={{ width: {xs:'100vw', sm:'650px'}, padding: 2 }} // Adjust width as needed for larger screens
       role="presentation"
     >
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #ccc' }}>
-            <Typography variant='h4'>Upload Photo Gallery</Typography>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #ccc' }}>
+        <Typography variant='h4'>Upload Photo Gallery</Typography>
         <Button onClick={toggleDrawer('right', false)} sx={{ alignSelf: 'flex-end' }}>
           <CancelTwoToneIcon />
           Close
         </Button>
-        </Box>
-        <Grid>
-            <CreateNewDetails/>
-        </Grid>
+      </Box>
+      <Grid>
+        <CreateNewDetails />
+      </Grid>
     </Box>
   );
 

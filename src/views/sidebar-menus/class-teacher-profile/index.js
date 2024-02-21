@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import MainCard from 'ui-component/cards/MainCard';
@@ -8,9 +7,10 @@ import { useTheme, useMediaQuery, Box, Typography } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import { useLocation } from 'react-router';
 import ClassTeacherCard from './ClassTeacherCard';
-import ProfileForm from '../studentProfile/ProfileForm';
 import DocumentTabs from '../studentProfile/DocumentsTab';
 import ClassTeacherAssets from './ClassTeacherAssets';
+import TeacherCredentials from './Teacher-Credentials';
+import TeacherProfileForm from './TeacherProfileForm';
 
 
 
@@ -82,7 +82,7 @@ function ClassTeacherProfile() {
           <Tab aria-label="basic tabs example" label="Profile" {...a11yProps(0)} />
           <Tab aria-label="basic tabs example" label="Documents" {...a11yProps(1)} />
           <Tab aria-label="basic tabs example" label="Asset Allocation" {...a11yProps(2)} />
-          <Tab aria-label="basic tabs example" label="About" {...a11yProps(3)} />
+          <Tab aria-label="basic tabs example" label="Credentials" {...a11yProps(3)} />
         </Tabs>
       </Box>
 
@@ -94,7 +94,7 @@ function ClassTeacherProfile() {
          <ClassTeacherCard/>
         </Grid>
         <Grid item xs={12} sm={8}>
-          <ProfileForm/>
+          <TeacherProfileForm/>
         </Grid>
       </Grid>
       </Box>
@@ -106,7 +106,7 @@ function ClassTeacherProfile() {
        <ClassTeacherAssets/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={3}>
-       jdklfjdlj
+       <TeacherCredentials/>
       </CustomTabPanel>
     </Box>
     </MainCard>
