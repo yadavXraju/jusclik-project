@@ -3,7 +3,7 @@ import {  styled } from '@mui/material/styles';
 import {  List, ListItem, Box, ListItemText , Divider } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { ErpModuleList } from './ErpModuleList';
-
+import { useNavigate } from 'react-router';
 
 
 
@@ -22,6 +22,7 @@ const ListItemWrapper = styled('div')(({ theme }) => ({
 const ErpModuleLayout = () => {
 
     const theme = useTheme();
+    const navigate = useNavigate();
 
   return (
     <List
@@ -48,8 +49,8 @@ const ErpModuleLayout = () => {
     >
       {ErpModuleList.map((erp, index) => (
         <React.Fragment key={index} >
-          <ListItemWrapper  sx={{flex:'0 0 50%' , borderBottom : '1px solid #8080801c'}}>
-            <ListItem alignItems="center"  sx={{ gap: '10px' , flexDirection:'column' }}>
+          <ListItemWrapper  sx={{flex:'0 0 50%' , borderBottom : '1px solid #8080801c' , display:'flex' , alignItems:'center'}}>
+            <ListItem alignItems="center"  sx={{ gap: '10px' , flexDirection:'column' }} onClick={()=>navigate(erp.url)}>
               <Box sx={{
                 // backgroundColor: alert.bgColor,
                 padding: '6px',

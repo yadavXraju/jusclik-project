@@ -6,7 +6,7 @@ export const ErpModuleList = [
         id:1,
         name:'Student Info & Fee ',
         icon : <LanguageOutlinedIcon sx={{margin:'auto'}}/>,
-        url: '',
+        url: '/erp/student-info-fee/dashboard',
     },
 
     {
@@ -56,7 +56,7 @@ export const ErpModuleList = [
         id:8,
         name:'Visitor',
          icon : <LanguageOutlinedIcon sx={{margin:'auto'}}/>,
-        url: '',
+         url: '/erp/visitor/dashboard',
     },
 
 
