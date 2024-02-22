@@ -6,6 +6,21 @@ import result from '../../../../assets/images/results.png'
 export const ErpModuleList = [
 
     {
+        id:12,
+        name:'Parent Dashboard',
+        icon : <LanguageOutlinedIcon sx={{margin:'auto'}}/>,
+        url: '/parent/dashboard',
+    },
+
+    {
+        id:13,
+        name:'class teacher dashboard',
+        icon : <LanguageOutlinedIcon sx={{margin:'auto'}}/>,
+        url: '/class-teacher/dashboard',
+    },
+
+
+    {
         id:1,
         name:'Student Info & Fee ',
         // icon : <LanguageOutlinedIcon sx={{margin:'auto'}}/>,
