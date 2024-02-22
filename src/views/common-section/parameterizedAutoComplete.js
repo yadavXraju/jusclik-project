@@ -1,14 +1,12 @@
 import {FormControl,Autocomplete,TextField} from '@mui/material';
 
-const ParameterizedAutoComplete = ({label,option,width="",height="",className="",onChange}) => {
+const ParameterizedAutoComplete = ({label,option,className="",onChange,customStyle}) => {
+    console.log(customStyle);
     return (
-        <FormControl >
+        <FormControl sx={customStyle}>
             <Autocomplete
                 disablePortal
-                id="combo-box-demo"
-                height={height}
-                width={width}
-                sx={{ width: "200px" }}
+                id="combo-box-demo"       
                 options={option}
                 className={className}
                 onChange={onChange}
