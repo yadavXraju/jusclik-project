@@ -26,11 +26,19 @@ export default function HomeCategory() {
 
 
   const handleClassDelete = (classToDelete) => {
+    // Filter out the classToDelete
     const updatedClasses = selectedClasses.filter(classItem => classItem !== classToDelete);
+  
+    // Update the state with the updatedClasses
     setSelectedClasses(updatedClasses);
+  
+    // Update visibility based on the length of updatedClasses
     setIsStudentListVisible(updatedClasses.length > 0);
+  
+    // Filter students based on the updated selected classes
     filterStudents(selectedSubject, updatedClasses);
   };
+  
   
   const handleClassChange = (event) => {
     const classValues = event.target.value;
@@ -85,12 +93,12 @@ export default function HomeCategory() {
               renderValue={(selected) => (
                 <div style={{ display: 'flex', flexWrap: 'wrap' }}>
                   {selected.map((classItem) => (
-                    <Chip
-                      key={classItem}
-                      label={classItem}
-                      onDelete={() => handleClassDelete(classItem)}
-                      style={{ margin: '2px', borderRadius: '4px' }}
-                    />
+                <Chip
+                key={classItem}
+                label={classItem}
+                onDelete={() => handleClassDelete(classItem)} // Pass classItem as argument
+                style={{ margin: '2px', borderRadius: '4px' }}
+              />
                   ))}
                 </div>
               )}
