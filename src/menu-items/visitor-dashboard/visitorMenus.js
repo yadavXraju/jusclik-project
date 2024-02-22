@@ -15,7 +15,7 @@ const VisitorMenu = {
                 id: 'visitor',
                 title: 'Visitor Management',
                 type: 'collapse',
-                url: '/visitor/visitor-management',
+                url: '/erp/visitor/visitor-management',
                 icon: GroupsTwoToneIcon,
                 children: [
 
@@ -23,7 +23,7 @@ const VisitorMenu = {
                      id: 'visitor-entry',
                      title: 'Visitor Entry',
                      type: 'item',
-                     url: '/visitor/visitor-management/visitor-entry',
+                     url: '/erp/visitor/visitor-management/visitor-entry',
                      breadcrumbs: false
                    },
     
@@ -32,7 +32,7 @@ const VisitorMenu = {
                      id: 'scheduled-visit',
                      title: 'Scheduled Visit',
                      type: 'item',
-                     url: '/visitor/visitor-management/scheduled-visit',
+                     url: '/erp/visitor/visitor-management/scheduled-visit',
                      breadcrumbs: false
                    },
     
@@ -43,7 +43,7 @@ const VisitorMenu = {
                 id: 'dynamic-reports',
                 title: 'Dynamic Reports',
                 type: 'collapse',
-                url: '/visitor/dynamic-reports',
+                url: '/erp/visitor/dynamic-reports',
                 icon: ArticleTwoToneIcon,
                 children: [
 
@@ -51,7 +51,7 @@ const VisitorMenu = {
                         id: 'visitor-details',
                         title: 'Visitor Details',
                         type: 'item',
-                        url: '/visitor/dynamic-reports/visitor-details',
+                        url: '/erp/visitor/dynamic-reports/visitor-details',
                         breadcrumbs: false
                       },
     
@@ -60,7 +60,7 @@ const VisitorMenu = {
                      id: 'black-listed-visitor',
                      title: 'Black Listed Visitor',
                      type: 'item',
-                     url: '/visitor/dynamic-reports/black-listed-visitor',
+                     url: '/erp/visitor/dynamic-reports/black-listed-visitor',
                      breadcrumbs: false
                    },
             
@@ -71,7 +71,7 @@ const VisitorMenu = {
                 id: 'tools',
                 title: 'Tools',
                 type: 'collapse',
-                url: '/visitor/tools',
+                url: '/erp/visitor/tools',
                 icon: BuildTwoToneIcon,
                 children: [
 
@@ -79,7 +79,7 @@ const VisitorMenu = {
                         id: 'sms-delivery-report',
                         title: 'SMS Delivery Report',
                         type: 'item',
-                        url: '/visitor/tools/sms-delivery-report',
+                        url: '/erp/visitor/tools/sms-delivery-report',
                         breadcrumbs: false
                       },       
                 ]
