@@ -188,7 +188,7 @@ const TimeTable = () => {
           <Box sx={{ width: '100%' }}>
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
               <Tabs variant="scrollable" value={value} onChange={handleChange} aria-label="wrapped label tabs example">
-                <Tab style={{ minWidth: '10%', padding: '10px' }} value="Sun" label="SUN" />
+                <Tab style={{ minWidth: '10%', padding: '10px' }} value="Sunday" label="SUN" />
                 <Tab style={{ minWidth: '10%', padding: '10px' }} value="Monday" label="MON" />
                 <Tab style={{ minWidth: '10%', padding: '10px' }} value="Tuesday" label="TUE" />
                 <Tab style={{ minWidth: '10%', padding: '10px' }} value="Wednesday" label="WED" />
