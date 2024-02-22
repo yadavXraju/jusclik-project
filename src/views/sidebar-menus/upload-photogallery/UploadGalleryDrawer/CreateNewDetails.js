@@ -234,7 +234,7 @@ const CreateNewDetails = () => {
                 paddingTop: '40px'
               }}
             >
-              <label
+              <Box
                 htmlFor="upload-media"
                 onDragOver={(e) => {
                   e.preventDefault();
@@ -278,7 +278,7 @@ const CreateNewDetails = () => {
                     Upload Files
                   </Button>
                 </Box>
-              </label>
+              </Box>
 
               <Box sx={{display:'flex',flexWrap:'wrap', }}>
               {selectedFiles.map((file, index) => (
