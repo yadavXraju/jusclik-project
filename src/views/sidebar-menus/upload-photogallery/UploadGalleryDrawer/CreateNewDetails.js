@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import {
   Stepper,
@@ -10,8 +11,11 @@ import {
   MenuItem,
   FormControl,
   IconButton,
-  Box,Paper,
-  Checkbox,FormControlLabel, InputLabel,
+  Box,
+  Paper,
+  Checkbox,
+  FormControlLabel,
+  InputLabel,
 } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { Delete } from '@mui/icons-material';
@@ -110,6 +114,7 @@ const CreateNewDetails = () => {
   const handleReview = () => {
     setActiveStep(2);
   };
+
   const handleFileDrop = (event) => {
     const droppedFiles = event.dataTransfer.files;
     const filesArray = Array.from(droppedFiles);
@@ -118,7 +123,7 @@ const CreateNewDetails = () => {
 
   return (
     <div>
-      <Stepper activeStep={activeStep} alternativeLabel  sx={{ paddingTop: '20px' }}>
+      <Stepper activeStep={activeStep} alternativeLabel sx={{ paddingTop: '20px' }}>
         {steps.map((label) => (
           <Step key={label}>
             <StepLabel>{label}</StepLabel>
@@ -128,7 +133,7 @@ const CreateNewDetails = () => {
       <div>
         {activeStep === 0 && (
           <div>
-             <Box sx={{ paddingLeft: '12px', paddingRight: '20px', paddingTop: '20px' }}>
+            <Box sx={{ paddingLeft: '12px', paddingRight: '20px', paddingTop: '20px' }}>
               <TextField
                 label="Album Name"
                 id="album-name"
@@ -140,7 +145,9 @@ const CreateNewDetails = () => {
             </Box>
             <Box sx={{ paddingBottom: '12px', paddingLeft: '12px', paddingRight: '20px' }}>
               <FormControl className={classes.formControl}>
-                <InputLabel id="class-name-label">Select Class</InputLabel>
+                <InputLabel id="class-name-label" htmlFor="class-name-select">
+                  Select Class
+                </InputLabel>
                 <Select
                   labelId="class-name-label"
                   id="class-name-select"
@@ -196,7 +203,7 @@ const CreateNewDetails = () => {
                 </Paper>
               </Box>
             )}
-             <Box sx={{ paddingBottom: '12px', paddingLeft: '20px', paddingRight: '15px' }}>
+            <Box sx={{ paddingBottom: '12px', paddingLeft: '20px', paddingRight: '15px' }}>
               <TextField
                 label="Description"
                 id="description"
@@ -218,7 +225,7 @@ const CreateNewDetails = () => {
                 alignItems: 'center',
                 textAlign: 'center',
                 justifyContent: 'center',
-                paddingTop: '40px'
+                paddingTop: '40px',
               }}
             >
               <label
@@ -250,23 +257,23 @@ const CreateNewDetails = () => {
                     border: '2px dashed #ccc',
                     borderRadius: '8px',
                     padding: '20px',
-                    width: {xs:'95vw', sm:'600px'},
-                    height: '150px'
+                    width: { xs: '95vw', sm: '600px' },
+                    height: '150px',
                   }}
                 >
                   <Typography variant="body1">Drag & Drop Files Here</Typography>
                   <Button
-                variant="outlined"
-                component="span"
-                className={classes.uploadButton}
-                onClick={() => document.getElementById('upload-media').click()}
-                style={{ marginTop: '35px' }}
-              >
-                Upload Files
-              </Button>
+                    variant="outlined"
+                    component="span"
+                    className={classes.uploadButton}
+                    onClick={() => document.getElementById('upload-media').click()}
+                    style={{ marginTop: '35px' }}
+                  >
+                    Upload Files
+                  </Button>
                 </Box>
               </label>
-             
+
               {selectedFiles.map((file, index) => (
                 <div key={index} className={classes.fileContainer}>
                   <Typography variant="body1">{file.name}</Typography>
@@ -280,56 +287,57 @@ const CreateNewDetails = () => {
         )}
         {activeStep === 2 && (
           <div>
-             <Box sx={{ padding: '20px' }}>
-             <Typography sx={{ padding: '20px' }}>Album Name: {albumName}</Typography>
+            <Box sx={{ padding: '20px' }}>
+              <Typography sx={{ padding: '20px' }}>Album Name: {albumName}</Typography>
               <Typography sx={{ padding: '20px' }}>Class: {className}</Typography>
               <Typography sx={{ padding: '20px' }}>Student Names: {selectedStudents.join(', ')}</Typography>
               <Typography sx={{ padding: '20px' }}>Description: {description}</Typography>
-            {selectedFiles.map((file, index) => (
-              <div key={index} className={classes.fileContainer}>
-                <Typography variant="body1">{file.name}</Typography>
-                <IconButton color="secondary" onClick={() => handleDeleteFile(index)}>
-                  <Delete />
-                </IconButton>
-              </div>
-            ))}
+              {selectedFiles.map((file, index) => (
+                <div key={index} className={classes.fileContainer}>
+                  <Typography variant="body1">{file.name}</Typography>
+                  <IconButton color="secondary" onClick={() => handleDeleteFile(index)}>
+                    <Delete />
+                  </IconButton>
+                </div>
+              ))}
             </Box>
           </div>
         )}
         <div>
           {activeStep === steps.length - 1 ? (
             <>
-            <Box sx={{ paddingTop: '20px', display: 'flex', justifyContent: 'end' }}>
-              <Button disabled={activeStep === 0} onClick={handleBack}>
-                Back
-              </Button>
-              <Button variant="contained" color="primary" onClick={handleSubmit}>
-                Post
-              </Button>
-            </Box>
-          </>
-        ) : (
-          <>
-            <Box sx={{ paddingTop: '20px', display: 'flex', justifyContent: 'end' }}>
-              <Button disabled={activeStep === 0} onClick={handleBack}>
-                Back
-              </Button>
-              {activeStep === 1 ? (
-                <Button variant="contained" color="primary" onClick={handleReview}>
-                  Review
+              <Box sx={{ paddingTop: '20px', display: 'flex', justifyContent: 'end' }}>
+                <Button disabled={activeStep === 0} onClick={handleBack}>
+                  Back
                 </Button>
-              ) : (
-                <Button variant="contained" color="primary" onClick={handleNext}>
-                  Next
+                <Button variant="contained" color="primary" onClick={handleSubmit}>
+                  Post
                 </Button>
-              )}
-            </Box>
-          </>
-        )}
+              </Box>
+            </>
+          ) : (
+            <>
+              <Box sx={{ paddingTop: '20px', display: 'flex', justifyContent: 'end' }}>
+                <Button disabled={activeStep === 0} onClick={handleBack}>
+                  Back
+                </Button>
+                {activeStep === 1 ? (
+                  <Button variant="contained" color="primary" onClick={handleReview}>
+                    Review
+                  </Button>
+                ) : (
+                  <Button variant="contained" color="primary" onClick={handleNext}>
+                    Next
+                  </Button>
+                )}
+              </Box>
+            </>
+          )}
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
 };
 
 export default CreateNewDetails;
+
