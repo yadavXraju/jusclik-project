@@ -27,7 +27,7 @@ const ErpModuleLayout = () => {
     <List
       sx={{
         width: '100%',
-        maxWidth: 450,
+        maxWidth: 350,
         py: 0,
         borderRadius: '10px',
         display:'flex',
@@ -48,16 +48,17 @@ const ErpModuleLayout = () => {
     >
       {ErpModuleList.map((erp, index) => (
         <React.Fragment key={index} >
-          <ListItemWrapper  sx={{flex:'0 0 50%' }}>
+          <ListItemWrapper  sx={{flex:'0 0 50%' , borderBottom : '1px solid #8080801c'}}>
             <ListItem alignItems="center"  sx={{ gap: '10px' , flexDirection:'column' }}>
               <Box sx={{
                 // backgroundColor: alert.bgColor,
                 padding: '6px',
                 borderRadius: '50%',
                 display: 'flex',
-                justifyContent: 'center',
+                justifyContent: 'left',
                 color:'rgb(30, 136, 229)',
-                flexDirection:'column'
+                flexDirection:'column',
+                textAlign:'center',
               }}>
                 {erp.icon}
                 <ListItemText primary={erp.name} />

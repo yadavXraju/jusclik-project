@@ -7,5 +7,6 @@ export const VisitorProfileDetails = {
   name : 'Vikash Poonia',
   class : '',
   subject : '',
+  accessLevel :'Visitor',
   link : '/visitor/visitor-profile'
 };
