@@ -1,11 +1,15 @@
 import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
+import fee from '../../../../assets/images/fee.png'
+import result from '../../../../assets/images/results.png'
+
 
 export const ErpModuleList = [
 
     {
         id:1,
         name:'Student Info & Fee ',
-        icon : <LanguageOutlinedIcon sx={{margin:'auto'}}/>,
+        // icon : <LanguageOutlinedIcon sx={{margin:'auto'}}/>,
+        icon : <img src={fee} alt='icon' style={{width:'34px', margin:'auto'}} />,
         url: '/erp/student-info-fee/dashboard',
     },
 
@@ -20,7 +24,8 @@ export const ErpModuleList = [
     {
         id:3,
         name:'Progress & Result',
-         icon : <LanguageOutlinedIcon sx={{margin:'auto'}}/>,
+        //  icon : <LanguageOutlinedIcon sx={{margin:'auto'}}/>,
+        icon : <img src={result} alt='icon' style={{width:'34px', margin:'auto'}} />,
         url: '',
     },
 
