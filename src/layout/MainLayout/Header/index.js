@@ -9,19 +9,28 @@ import LogoSection from '../LogoSection';
 import ProfileSection from './ProfileSection';
 import SchoolName from './SchoolNameAndLogoSection';
 import NotificationSection from './NotificationSection';
+import { useLocation } from 'react-router';
 
 // assets
 import { IconMenu2 } from '@tabler/icons';
 import SiblingSwitch from './SiblingSwitchSection';
 import AcadmicYear from './AcadmicYearSection';
 import HelpSection from './HelpSection';
+import ErpModule from './erp-module';
+
+
 
 // ==============================|| MAIN NAVBAR / HEADER ||============================== //
 
 const Header = ({ handleLeftDrawerToggle }) => {
+
+  const location = useLocation();
   const theme = useTheme();
   const isMobile = useMediaQuery('(max-width:767px)')
   const smallMobile = useMediaQuery('(max-width:425px)')
+
+  // check the url 
+  const isERP = location.pathname.includes('erp');
 
   return (
     <>
@@ -71,8 +80,10 @@ const Header = ({ handleLeftDrawerToggle }) => {
             
           {/* left side box */}
           <Box sx={{display:'flex', alignItems:'center' , flex: isMobile ? '0 0 100%' : '0 0 40%',  justifyContent:  smallMobile ? 'flex-start' : 'end', flexWrap:'wrap', marginLeft: smallMobile ? '1rem' : null}}>
-            {/* sibling switch */}
-            <SiblingSwitch />
+
+            {/* erp module  and sibling switch */}
+
+            { isERP ? <ErpModule />  : <SiblingSwitch />}
 
             {/* help section */}
             <HelpSection/>
@@ -85,6 +96,8 @@ const Header = ({ handleLeftDrawerToggle }) => {
 
             {/* profile */}
             <ProfileSection />
+
+
           </Box>
 
        </Box>

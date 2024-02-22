@@ -55,9 +55,23 @@ const ProfileSection = () => {
   const [open, setOpen] = useState(false);
     
   const anchorRef = useRef(null);
-  const handleLogout = async () => {
-    console.log('Logout');
+
+
+
+  // logout function
+
+  const handleLogout = () => {
+    // Remove user role and token from local storage
+    localStorage.removeItem('userRole');
+    localStorage.removeItem('userToken');
+  
+    // Navigate to the login page
+    navigate('/login');
   };
+
+
+
+
 
   const handleClose = (event) => {
     if (anchorRef.current && anchorRef.current.contains(event.target)) {

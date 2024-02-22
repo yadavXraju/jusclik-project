@@ -39,14 +39,14 @@ const AcademicYear = () => {
 
 
     // Extract theme color and set opacity
-    const themeColorColor = customization.themeColorV2 || 'rgb(30, 136, 229)';
+    const themeColor = customization.themeColorV2 || 'rgb(30, 136, 229)';
     const opacity = 0.2;  
 
   return (
     <Paper
     className='themeColorV2'
     sx={{
-      backgroundColor: `${themeColorColor.slice(0, -1)}, ${opacity}) !important`, // Adding opacity
+      backgroundColor: `${themeColor.slice(0, -1)}, ${opacity}) !important`, // Adding opacity
       ml: 2,
       mr: 0,
       [theme.breakpoints.down('md')]: {

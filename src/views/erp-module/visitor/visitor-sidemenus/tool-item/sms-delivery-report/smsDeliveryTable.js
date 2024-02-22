@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React,{ useState} from 'react';
 import Box from '@mui/material/Box';
 import { Paper } from '@mui/material';
 import Typography from '@mui/material/Typography';
@@ -18,7 +18,7 @@ const leavedata = [
     { status: 'Delivered', smsDate: { date: '17.Feb.2024', time: '4:02PM' }, mobileNo: '919873414141 ', smsText: 'Dear User (Abhinav Sharma) Your login credentials have been changed successfully. Please intimate us immediately in case you have not made the change. (Powered by Cloud9 School ERP)', count: '2', deliveryDate: { date: '21.Feb.2024', time: '1:02PM' }, sentBy: 'Bharat Bhushan', remarks: "", code: "SHSOFT", gateway: "GHUB" }
 ];
 
-export default function LeaveTabs() {
+ const  LeaveTabs=()=>{
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(5);
     const handleChangePage = (event, newPage) => {
@@ -32,7 +32,7 @@ export default function LeaveTabs() {
     };
 
     return (
-        <Box sx={{ width: '100%', bgcolor: 'background.paper', mb: 2 }}>
+        <Box sx={{ width: '100%', bgcolor: 'background.paper', mb: 2 }} >
             <TableContainer component={Paper}>
                 <Table>
                     <TableHead>
@@ -105,3 +105,5 @@ export default function LeaveTabs() {
         </Box>
     );
 }
+
+export default LeaveTabs;
