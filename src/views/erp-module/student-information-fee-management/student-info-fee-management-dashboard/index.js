@@ -2,10 +2,6 @@
 import React from 'react';
 import Grid from '@mui/material/Grid';
 import { gridSpacing } from 'store/constant';
-// import WelcomeTotalVisitor from './welcome-visitor-today-visitor-total-visitor';
-// import VisitorProfile from './profile/Profile';
-// import HourlyVisior from './hourly-visitor';
-// import FrequentlyReturningVisitor from './frequently-returning-visitors/index.';
 import WelcomeTotalVisitor from 'views/erp-module/visitor/visitor-dashboard/welcome-visitor-today-visitor-total-visitor';
 import VisitorProfile from 'views/erp-module/visitor/visitor-dashboard/profile/Profile';
 import HourlyVisior from 'views/erp-module/visitor/visitor-dashboard/hourly-visitor';
