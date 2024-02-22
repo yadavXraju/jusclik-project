@@ -10,8 +10,8 @@ const subjects = ["Delivered", "notdelivered", "yetto delivered"];
 
 const SmsDeliveryReport = () => {
   const [filterData, setfilterData] = useState({
-    "startDate": "",
-    "endDate": "",
+    "startDate": null,
+    "endDate": null,
     "mobileNo": "",
     "smsStatus": "",
     "loginName": "",
@@ -45,7 +45,6 @@ const SmsDeliveryReport = () => {
           <Button variant="outlined"><InsertDriveFileOutlinedIcon /></Button>
         </Box>
       </Box>
-
       < SmsDeliveryTable />
     </>
   )
