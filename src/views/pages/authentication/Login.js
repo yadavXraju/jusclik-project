@@ -93,7 +93,7 @@ export default function LoginPage() {
       else if (userId === 'visitor' && userPassword === 'visitor@123') {
       // Redirect to class teacher dashboard after a slight delay
       setTimeout(() => {
-        window.location.href = '/visitor/dashboard';
+        window.location.href = '/erp/visitor/dashboard';
       }, 500); // Delay in milliseconds
     } 
       

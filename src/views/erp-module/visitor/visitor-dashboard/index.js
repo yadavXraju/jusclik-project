@@ -4,6 +4,8 @@ import Grid from '@mui/material/Grid';
 import { gridSpacing } from 'store/constant';
 import WelcomeTotalVisitor from './welcome-visitor-today-visitor-total-visitor';
 import VisitorProfile from './profile/Profile';
+import HourlyVisior from './hourly-visitor';
+import FrequentlyReturningVisitor from './frequently-returning-visitors/index.';
 
 
 const Dashboard = ({ isLoading }) => {
@@ -36,6 +38,17 @@ const Dashboard = ({ isLoading }) => {
               </Grid>
             </Grid>
          </Grid>
+
+
+         {/* Hourly visited chart */}
+          <Grid item xs={12} lg={7} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
+            <HourlyVisior isLoading={isLoading} />
+          </Grid>
+
+                 {/* frequently returning visitors */}
+          <Grid item xs={12} lg={5}  md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
+              <FrequentlyReturningVisitor isLoading={isLoading} /> 
+          </Grid>
 
         </Grid>
       </Grid>

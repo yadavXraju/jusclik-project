@@ -13,7 +13,7 @@ const VisitorDashboard = {
       id: 'visitor-dashboard',
       title: 'Dashboard',
       type: 'item',
-      url: 'visitor/dashboard',
+      url: 'erp/visitor/dashboard',
       icon:HomeTwoToneIcon ,
       breadcrumbs: false
     },

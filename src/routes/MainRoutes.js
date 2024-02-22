@@ -12,7 +12,7 @@ import VisitorRoutes from './VisitorRoutes';
 
  // subject Teacher  Dashboard Menus
 
- const SubjectTeacherDashboard = Loadable(lazy(() => import('views/subject-teacher-dashboard/')));
+ const SubjectTeacherDashboard= Loadable(lazy(() => import('views/subject-teacher-dashboard/')));
 
 // ==============================|| MAIN ROUTING ||============================== //
 

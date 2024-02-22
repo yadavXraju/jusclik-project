@@ -16,7 +16,7 @@ const SmsDeliveryReport = Loadable(lazy(() => import('views/erp-module/visitor/v
 
 const VisitorRoutes = [
   {
-    path: '/visitor',
+    path: '/erp/visitor',
     children: [
       { 
         path: 'dashboard', 
