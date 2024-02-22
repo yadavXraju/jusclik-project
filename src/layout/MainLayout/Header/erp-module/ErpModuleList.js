@@ -4,80 +4,80 @@ export const ErpModuleList = [
 
     {
         id:1,
-        name:'Student Information & Fee Mgmt System',
-        icon : <LanguageOutlinedIcon/>,
-        url: '',
+        name:'Student Info & Fee ',
+        icon : <LanguageOutlinedIcon sx={{margin:'auto'}}/>,
+        url: '/erp/student-info-fee/dashboard',
     },
 
     {
         id:2,
-        name:'HR & Payroll Management System',
-        icon : <LanguageOutlinedIcon/>,
+        name:'HR & Payroll',
+         icon : <LanguageOutlinedIcon sx={{margin:'auto'}}/>,
         url: '',
     },
 
 
     {
         id:3,
-        name:'Progress & Result Management',
-        icon : <LanguageOutlinedIcon/>,
+        name:'Progress & Result',
+         icon : <LanguageOutlinedIcon sx={{margin:'auto'}}/>,
         url: '',
     },
 
     {
         id:4,
-        name:'Library Management System',
-        icon : <LanguageOutlinedIcon/>,
+        name:'Library',
+         icon : <LanguageOutlinedIcon sx={{margin:'auto'}}/>,
         url: '',
     },
 
     {
         id:5,
-        name:'Inventory Management',
-        icon : <LanguageOutlinedIcon/>,
+        name:'Inventory',
+         icon : <LanguageOutlinedIcon sx={{margin:'auto'}}/>,
         url: '',
     },
 
     {
         id:6,
         name:'Financial Accounting',
-        icon : <LanguageOutlinedIcon/>,
+         icon : <LanguageOutlinedIcon sx={{margin:'auto'}}/>,
         url: '',
     },
 
     {
         id:7,
-        name:'Website Management Console',
-        icon : <LanguageOutlinedIcon/>,
+        name:'Website ',
+         icon : <LanguageOutlinedIcon sx={{margin:'auto'}}/>,
         url: '',
     },
 
     {
         id:8,
-        name:'Visitor Management',
-        icon : <LanguageOutlinedIcon/>,
-        url: '',
+        name:'Visitor',
+         icon : <LanguageOutlinedIcon sx={{margin:'auto'}}/>,
+         url: '/erp/visitor/dashboard',
     },
 
 
     {
         id:9,
         name:'Medical Examination',
-        icon : <LanguageOutlinedIcon/>,
+         icon : <LanguageOutlinedIcon sx={{margin:'auto'}}/>,
         url: '',
     },
 
     {
         id:10,
-        name:'Parent Relationship Management',
-        icon : <LanguageOutlinedIcon/>,
+        name:'Parent Relationship',
+         icon : <LanguageOutlinedIcon sx={{margin:'auto'}}/>,
         url: '',
     },
 
     {
         id:11,
-        name:'Customer Relationship Management',
-        icon : <LanguageOutlinedIcon/>,
+        name:'Customer Relationship ',
+         icon : <LanguageOutlinedIcon sx={{margin:'auto'}}/>,
         url: '',
     },
 

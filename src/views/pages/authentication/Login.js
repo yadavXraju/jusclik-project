@@ -25,6 +25,7 @@ import LeftLogo from './LeftLogo';
 // import config from "../../../config";
 import BottomLoginImg from '../../../assets/images/bottomImg.png';
 // import { useNavigate } from 'react-router';
+import { Auth } from 'Auth';
 
 
 const defaultTheme = createTheme();
@@ -58,54 +59,47 @@ export default function LoginPage() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
+  
     // static id and pass for parent dashboard
-
-    if(userId === 'parent' && userPassword === 'parent@123') {
+    if (userId === 'parent' && userPassword === 'parent@123') {
+      // Save user role and token in local storage
+      const user = Auth.find(user => user.role === 'parent');
+      localStorage.setItem('userRole', user.role);
+      localStorage.setItem('userToken', user.token);
+  
       // Redirect to parent dashboard after a slight delay
       setTimeout(() => {
         window.location.href = '/parent/dashboard';
       }, 500); // Delay in milliseconds
     }
-
     // static id and pass for class teacher dashboard
-
-
     else if (userId === 'cteacher' && userPassword === 'cteacher@123') {
+      // Save user role and token in local storage
+      const user = Auth.find(user => user.role === 'class-teacher');
+      localStorage.setItem('userRole', user.role);
+      localStorage.setItem('userToken', user.token);
+  
       // Redirect to class teacher dashboard after a slight delay
       setTimeout(() => {
         window.location.href = '/class-teacher/dashboard';
       }, 500); // Delay in milliseconds
     } 
-
-
-     // static id and pass for subject teacher dashboard
-
-    else if (userId === 'steacher' && userPassword === 'steacher@123') {
-      // Redirect to class teacher dashboard after a slight delay
-      setTimeout(() => {
-        window.location.href = '/subject-teacher/dashboard';
-      }, 500); // Delay in milliseconds
-    } 
-
-      // static id and pass for visitor dashboard
-
-      else if (userId === 'visitor' && userPassword === 'visitor@123') {
-      // Redirect to class teacher dashboard after a slight delay
+    // static id and pass for visitor dashboard
+    else if (userId === 'visitor' && userPassword === 'visitor@123') {
+      // Save user role and token in local storage
+      const user = Auth.find(user => user.role === 'visitor');
+      localStorage.setItem('userRole', user.role);
+      localStorage.setItem('userToken', user.token);
+  
+      // Redirect to visitor dashboard after a slight delay
       setTimeout(() => {
         window.location.href = '/erp/visitor/dashboard';
       }, 500); // Delay in milliseconds
     } 
-      
-
     else {
       alert('Wrong Credentials');
     }
-    
-    // Reload the page
-    // window.location.reload();
   };
-
   
 
   // const fetchData = async (Data) => {
