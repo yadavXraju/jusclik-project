@@ -16,9 +16,11 @@ import {
   Checkbox,
   FormControlLabel,
   InputLabel,
+  Chip,
 } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import { Delete } from '@mui/icons-material';
+// import { Delete } from '@mui/icons-material';
+import CloseIcon from '@mui/icons-material/Close';
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -40,9 +42,11 @@ const steps = ['Enter Details', 'Upload Media', 'Review'];
 
 // Dummy data: Mapping of classes to student names
 const classToStudents = {
-  'Class I': ['John', 'Alice', 'Bob'],
-  'Class II': ['Sarah', 'David', 'Emma'],
-  'Class III': ['Michael', 'Olivia', 'William'],
+  'I': ['John', 'Alice', 'Bob'],
+  'II': ['Sarah', 'David', 'Emma'],
+  'III': ['Michael', 'Olivia', 'William'],
+  'IV': ['Jhon', 'Alex', 'Maxwell'],
+  'V': ['Jackson', 'Roman', 'Broke'],
 };
 
 const CreateNewDetails = () => {
@@ -57,6 +61,8 @@ const CreateNewDetails = () => {
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
+
+
 
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
@@ -225,7 +231,7 @@ const CreateNewDetails = () => {
                 alignItems: 'center',
                 textAlign: 'center',
                 justifyContent: 'center',
-                paddingTop: '40px',
+                paddingTop: '40px'
               }}
             >
               <label
@@ -258,7 +264,7 @@ const CreateNewDetails = () => {
                     borderRadius: '8px',
                     padding: '20px',
                     width: { xs: '95vw', sm: '600px' },
-                    height: '150px',
+                    height: '150px'
                   }}
                 >
                   <Typography variant="body1">Drag & Drop Files Here</Typography>
@@ -274,35 +280,48 @@ const CreateNewDetails = () => {
                 </Box>
               </label>
 
+              <Box sx={{display:'flex',flexWrap:'wrap', }}>
               {selectedFiles.map((file, index) => (
-                <div key={index} className={classes.fileContainer}>
-                  <Typography variant="body1">{file.name}</Typography>
+                <Box key={index} className={classes.fileContainer} m={3} >
+                    <Chip label={file.name} variant="outlined" onDelete={() => handleDeleteFile(index)}>
+                  <Typography variant="body1"  >{file.name}</Typography>
                   <IconButton color="secondary" onClick={() => handleDeleteFile(index)}>
-                    <Delete />
+                    <CloseIcon />
                   </IconButton>
-                </div>
+                 </Chip>
+                </Box>
               ))}
+              </Box>
             </Box>
           </div>
         )}
         {activeStep === 2 && (
           <div>
             <Box sx={{ padding: '20px' }}>
-              <Typography sx={{ padding: '20px' }}>Album Name: {albumName}</Typography>
-              <Typography sx={{ padding: '20px' }}>Class: {className}</Typography>
-              <Typography sx={{ padding: '20px' }}>Student Names: {selectedStudents.join(', ')}</Typography>
-              <Typography sx={{ padding: '20px' }}>Description: {description}</Typography>
-              {selectedFiles.map((file, index) => (
-                <div key={index} className={classes.fileContainer}>
-                  <Typography variant="body1">{file.name}</Typography>
-                  <IconButton color="secondary" onClick={() => handleDeleteFile(index)}>
-                    <Delete />
-                  </IconButton>
-                </div>
-              ))}
+              <Typography sx={{ padding: '20px' }}><span style={{fontWeight:'bold'}}>Album Name:</span> {albumName}</Typography>
+              <Typography sx={{ padding: '20px' }}><span style={{fontWeight:'bold'}}>Class:</span> {className}</Typography>
+              <Typography sx={{ padding: '20px' }}><span style={{fontWeight:'bold'}}>Student Names: </span>{selectedStudents.join(', ')}</Typography>
+              <Typography sx={{ padding: '20px' }}><span style={{fontWeight:'bold'}}>Description:</span> {description}</Typography>
             </Box>
+            <div style={{ overflowX: 'auto', maxHeight: '200px', padding: '20px', overflowY:'hidden' }}>
+              <div style={{ display: 'flex' }}>
+                {selectedFiles.map((file, index) => (
+                  <div key={index} className={classes.fileContainer} style={{ marginRight: '10px', position: 'relative' }}>
+                    <img src={URL.createObjectURL(file)} alt={file.name} style={{ width: '200px', height: '150px', objectFit: 'cover' }} />
+                    <IconButton
+                      color="secondary"
+                      onClick={() => handleDeleteFile(index)}
+                      style={{ position: 'absolute', top: '-4px', right: '-2px' }}
+                    >
+                      <CloseIcon sx={{color:'white', backgroundColor:'black', borderRadius:'18px', padding:'3px'}} />
+                    </IconButton>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         )}
+
         <div>
           {activeStep === steps.length - 1 ? (
             <>
