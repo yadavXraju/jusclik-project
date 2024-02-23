@@ -169,35 +169,6 @@ const VisitorDrawer = () => {
               }}
             >
               <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                {/* <Grid sx={{display:'inline-flex'}}>
-              <ComposeButtonWrapper onClick={handleComposeOpen}>
-                <Button variant="contained" color="primary">
-                  <AddCircleOutlineOutlinedIcon sx={{ marginRight: '7px' }} />
-                  Compose
-                </Button>
-              </ComposeButtonWrapper>
-              <FilterWrapper>
-                <IconButton
-                  aria-label="Filter"
-                  onClick={handleFilterClick}
-                  color={currentFilter === 'important' ? 'primary' : 'default'}
-                >
-                  <FilterListIcon />
-                </IconButton>
-                <Popover
-                  open={Boolean(anchorEl)}
-                  anchorEl={anchorEl}
-                  onClose={handleFilterClose}
-                >
-                  <Box sx={{ p: 2 }}>
-                    <MenuItem onClick={() => handleFilterSelect('name')}>Name</MenuItem>
-                    <MenuItem onClick={() => handleFilterSelect('date')}>Date</MenuItem>
-                    <MenuItem onClick={() => handleFilterSelect('unread')}>Unread</MenuItem>
-                    <MenuItem onClick={() => handleFilterSelect('important')}>Important</MenuItem>
-                  </Box>
-                </Popover>
-              </FilterWrapper>
-            </Grid> */}
                 <Grid sx={{ display: 'inline-flex' }}>
                   {/* Search Section */}
                   <SearchWrapper sx={{ display: 'flex' }}>
