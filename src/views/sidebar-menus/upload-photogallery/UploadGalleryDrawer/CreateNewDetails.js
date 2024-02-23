@@ -26,16 +26,16 @@ const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
     minWidth: 120,
-    width: '100%',
+    width: '100%'
   },
   uploadButton: {
-    marginTop: theme.spacing(2),
+    marginTop: theme.spacing(2)
   },
   fileContainer: {
     display: 'flex',
     alignItems: 'center',
-    marginBottom: theme.spacing(1),
-  },
+    marginBottom: theme.spacing(1)
+  }
 }));
 
 const steps = ['Enter Details', 'Upload Media', 'Review'];
@@ -90,10 +90,7 @@ const CreateNewDetails = () => {
     } else if (selectedIndex === selectedStudents.length - 1) {
       newSelectedStudents = newSelectedStudents.concat(selectedStudents.slice(0, -1));
     } else if (selectedIndex > 0) {
-      newSelectedStudents = newSelectedStudents.concat(
-        selectedStudents.slice(0, selectedIndex),
-        selectedStudents.slice(selectedIndex + 1)
-      );
+      newSelectedStudents = newSelectedStudents.concat(selectedStudents.slice(0, selectedIndex), selectedStudents.slice(selectedIndex + 1));
     }
 
     setSelectedStudents(newSelectedStudents);

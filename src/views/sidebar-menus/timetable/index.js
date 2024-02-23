@@ -149,7 +149,7 @@ const TimeTable = () => {
     return (
       <>
         {daySchedule.map((scheduleItem, index) => (
-          <Grid container spacing={0.5} style={{ marginTop: '10px' }} key={index}>
+          <Grid container spacing={0.5} style={{ marginTop: '6px' }} key={index}>
             <Grid item xs={12}>
               <Paper elevation={3} style={{ padding: scheduleItem.details.length === 0 ? '5px' : '10px', display: 'flex', lineHeight: '10px' }}>
                 <Typography variant="h6" sx={{ display: 'flex', alignItems: 'center' }}>

@@ -64,7 +64,7 @@ function TimetableTab() {
   // Render the tab section
   return (
     <>
-      <MainCard >
+    <MainCard >
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider', '@media (max-width:600px)': { marginBottom: '15px' } }}>
         {/* Tabs for navigation */}
@@ -76,7 +76,7 @@ function TimetableTab() {
 
       {/* Content of each tab panel */}
       <CustomTabPanel value={value} index={0}>
-      
+      <CustomTabPanel/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
         
