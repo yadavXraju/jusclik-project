@@ -37,7 +37,7 @@ const handleFileChange = (event) => {
         </Box>
 
         <Box p={0.5}>Asset Detail</Box>
-        <Box mb={2} bgcolor={'#f8fafc'} sx={{ border: '1px solid #ccc' }}>
+        <Box mb={1} bgcolor={'#f8fafc'} sx={{ border: '1px solid #ccc' }}>
           <Grid container spacing={1} p={2}>
             <Grid item xs={6} sm={4} lg={4}>
               <Box fontSize={10} color={'#8b8484'}>
@@ -57,8 +57,6 @@ const handleFileChange = (event) => {
               </Box>
               <Box fontSize={14}>01/02/2024</Box>
             </Grid>
-          </Grid>
-          <Grid container spacing={2} p={2}>
             <Grid item xs={6} sm={4} lg={4}>
               <Box fontSize={10} color={'#8b8484'}>
                 ASSET CATEGORY AND TYPE

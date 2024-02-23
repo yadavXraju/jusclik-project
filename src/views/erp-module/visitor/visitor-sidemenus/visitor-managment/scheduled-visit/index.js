@@ -57,31 +57,33 @@ const ComponentToPrint = React.forwardRef((props, ref) => {
   return (
     <div ref={ref}>
       <div>
-        <div>
+        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
           <h2>{props.school.name}</h2>
           <p>{props.school.address}</p>
           <p>{props.school.phone}</p>
         </div>
-        <div>
-          <h4>Visitor slip</h4>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <h4 style={{ textDecoration: 'underline' }}>Visitor Slip</h4>
         </div>
-        <div>
-          <div>
-            <ul>
-              <li>{`Visitor No: ${props.user.id}`}</li>
-              <li>{`Visitor Name: ${props.user.label}`}</li>
-              <li>{`Purpose: ${props.user.id}`}</li>
-              <li>{`To meet: ${props.user.id}`}</li>
-              <li>{`Address:  ${props.user.id}`}</li>
-              <li>{`Category: ${props.user.id}`}</li>
-              <li>{`Remarks: ${props.user.id}`}</li>
-              <li>{`Entry date: ${props.user.id}`}</li>
-              <li>{`Phone: ${props.user.id}`}</li>
-              <li>{`Time in: ${props.user.id}`}</li>
+        <div style={{display: 'flex', flexDirection: "row", justifyContent: "space-around", alignItems: "center"}}>
+          <div style={{ display: 'flex', flexDirection: 'row' }}>
+            <ul style={{ listStyle: 'none' }}>
+              <li style={{padding: '10px'}}>{`Visitor No: ${props.user.id}`}</li>
+              <li style={{padding: '10px'}}>{`Visitor Name: ${props.user.label}`}</li>
+              <li style={{padding: '10px'}}>{`Purpose: ${props.user.id}`}</li>
+              <li style={{padding: '10px'}}>{`To meet: ${props.user.id}`}</li>
+              <li style={{padding: '10px'}}>{`Address:  ${props.user.id}`}</li>
+            </ul>
+            <ul style={{ listStyle: 'none' }}>
+              <li style={{padding: '10px'}}>{`Category: ${props.user.id}`}</li>
+              <li style={{padding: '10px'}}>{`Remarks: ${props.user.id}`}</li>
+              <li style={{padding: '10px'}}>{`Entry date: ${props.user.id}`}</li>
+              <li style={{padding: '10px'}}>{`Phone: ${props.user.id}`}</li>
+              <li style={{padding: '10px'}}>{`Time in: ${props.user.id}`}</li>
             </ul>
           </div>
           <div>
-            <img src={AvatarImage} alt="avatar" />
+            <img src={AvatarImage} alt="avatar" style={{height: "90px", width: "auto"}}/>
           </div>
         </div>
       </div>
