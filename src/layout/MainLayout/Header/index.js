@@ -9,7 +9,7 @@ import LogoSection from '../LogoSection';
 import ProfileSection from './ProfileSection';
 import SchoolName from './SchoolNameAndLogoSection';
 import NotificationSection from './NotificationSection';
-import { useLocation } from 'react-router';
+// import { useLocation } from 'react-router';
 
 // assets
 import { IconMenu2 } from '@tabler/icons';
@@ -24,13 +24,13 @@ import ErpModule from './erp-module';
 
 const Header = ({ handleLeftDrawerToggle }) => {
 
-  const location = useLocation();
+  // const location = useLocation();
   const theme = useTheme();
   const isMobile = useMediaQuery('(max-width:767px)')
   const smallMobile = useMediaQuery('(max-width:425px)')
 
   // check the url 
-  const isERP = location.pathname.includes('erp');
+  // const isERP = location.pathname.includes('erp');
 
   return (
     <>
@@ -83,8 +83,11 @@ const Header = ({ handleLeftDrawerToggle }) => {
 
             {/* erp module  and sibling switch */}
 
-            { isERP ? <ErpModule />  : <SiblingSwitch />}
+            {/* { isERP ? <ErpModule />  : <SiblingSwitch />} */}
+            <SiblingSwitch />
 
+            <ErpModule />
+          
             {/* help section */}
             <HelpSection/>
 
