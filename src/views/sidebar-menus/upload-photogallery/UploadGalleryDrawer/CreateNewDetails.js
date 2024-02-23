@@ -17,9 +17,11 @@ import {
   FormControlLabel,
   InputLabel,
   Chip,
+  Grid
 } from '@mui/material';
+import { Table, TableBody, TableCell, TableContainer, TableRow } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-// import { Delete } from '@mui/icons-material';
+import BackupTwoToneIcon from '@mui/icons-material/BackupTwoTone';
 import CloseIcon from '@mui/icons-material/Close';
 
 const useStyles = makeStyles((theme) => ({
@@ -126,6 +128,15 @@ const CreateNewDetails = () => {
     const filesArray = Array.from(droppedFiles);
     setSelectedFiles([...selectedFiles, ...filesArray]);
   };
+  const truncateFileName = (fileName) => {
+    const words = fileName.split(' ');
+    if (words.length > 1) {
+      return words.slice(0, 1).join(' ') + '...';
+    } else {
+      return fileName;
+    }
+  };
+  
 
   return (
     <div>
@@ -149,7 +160,7 @@ const CreateNewDetails = () => {
                 className={classes.formControl}
               />
             </Box>
-            <Box sx={{ paddingBottom: '12px', paddingLeft: '12px', paddingRight: '20px' }}>
+            <Box sx={{ paddingBottom: '12px', paddingLeft: '12px', paddingRight: '20px', paddingTop:'6px' }}>
               <FormControl className={classes.formControl}>
                 <InputLabel id="class-name-label" htmlFor="class-name-select">
                   Select Class
@@ -223,6 +234,7 @@ const CreateNewDetails = () => {
           </div>
         )}
         {activeStep === 1 && (
+          // Upload Files or media start
           <div>
             <Box
               sx={{
@@ -264,46 +276,80 @@ const CreateNewDetails = () => {
                     borderRadius: '8px',
                     padding: '20px',
                     width: { xs: '95vw', sm: '600px' },
-                    height: '150px'
+                    height: '200px'
                   }}
                 >
-                  <Typography variant="body1">Drag & Drop Files Here</Typography>
-                  <Button
-                    variant="outlined"
-                    component="span"
-                    className={classes.uploadButton}
-                    onClick={() => document.getElementById('upload-media').click()}
-                    style={{ marginTop: '35px' }}
-                  >
-                    Upload Files
-                  </Button>
+                  <Grid>
+                    <BackupTwoToneIcon sx={{ width: '50px', height: '50px', opacity: '0.5' }} />
+                    <Typography variant="body1" sx={{ fontWeight: 'bold', paddingTop: '12px' }}>
+                      Drag & Drop Files Here
+                    </Typography>
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      component="span"
+                      className={classes.uploadButton}
+                      onClick={() => document.getElementById('upload-media').click()}
+                      style={{ marginTop: '25px' }}
+                    >
+                      Upload Files
+                    </Button>
+                  </Grid>
                 </Box>
               </Box>
 
-              <Box sx={{display:'flex',flexWrap:'wrap', }}>
-              {selectedFiles.map((file, index) => (
-                <Box key={index} className={classes.fileContainer} m={3} >
-                    <Chip label={file.name} variant="outlined" onDelete={() => handleDeleteFile(index)}>
-                  <Typography variant="body1"  >{file.name}</Typography>
-                  <IconButton color="secondary" onClick={() => handleDeleteFile(index)}>
-                    <CloseIcon />
-                  </IconButton>
-                 </Chip>
-                </Box>
-              ))}
+              <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
+                {selectedFiles.map((file, index) => (
+                  <Box key={index} className={classes.fileContainer} style={{ width: '100px', marginTop: '20px' }}>
+                    <Chip label={truncateFileName(file.name)} variant="outlined" onDelete={() => handleDeleteFile(index)}>
+                      <Typography variant="body1">{file.name}</Typography>
+                      <IconButton color="secondary" onClick={() => handleDeleteFile(index)}>
+                        <CloseIcon />
+                      </IconButton>
+                    </Chip>
+                  </Box>
+                ))}
               </Box>
             </Box>
           </div>
+           // Upload Files or media End
         )}
         {activeStep === 2 && (
+          // Review Last step start
           <div>
-            <Box sx={{ padding: '20px' }}>
-              <Typography sx={{ padding: '20px' }}><span style={{fontWeight:'bold'}}>Album Name:</span> {albumName}</Typography>
-              <Typography sx={{ padding: '20px' }}><span style={{fontWeight:'bold'}}>Class:</span> {className}</Typography>
-              <Typography sx={{ padding: '20px' }}><span style={{fontWeight:'bold'}}>Student Names: </span>{selectedStudents.join(', ')}</Typography>
-              <Typography sx={{ padding: '20px' }}><span style={{fontWeight:'bold'}}>Description:</span> {description}</Typography>
+            <Box sx={{ padding: '20px', border:'1px solid #ccc', marginTop:'30px' }}>
+              <TableContainer component={Paper}>
+                <Table>
+                  <TableBody>
+                    <TableRow>
+                      <TableCell>
+                        <span style={{ fontWeight: 'bold' }}>Album Name</span>
+                      </TableCell>
+                      <TableCell>{albumName}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell>
+                        <span style={{ fontWeight: 'bold' }}>Class</span>
+                      </TableCell>
+                      <TableCell>{className}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell>
+                        <span style={{ fontWeight: 'bold' }}>Student Names</span>
+                      </TableCell>
+                      <TableCell>{selectedStudents.join(', ')}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell>
+                        <span style={{ fontWeight: 'bold' }}>Description</span>
+                      </TableCell>
+                      <TableCell>{description}</TableCell>
+                    </TableRow>
+                  </TableBody>
+                </Table>
+              </TableContainer>
             </Box>
-            <div style={{ overflowX: 'auto', maxHeight: '200px', padding: '20px', overflowY:'hidden' }}>
+            <div style={{ overflowX: 'auto', maxHeight: '200px', padding: '20px', overflowY: 'hidden' }}>
               <div style={{ display: 'flex' }}>
                 {selectedFiles.map((file, index) => (
                   <div key={index} className={classes.fileContainer} style={{ marginRight: '10px', position: 'relative' }}>
@@ -313,13 +359,14 @@ const CreateNewDetails = () => {
                       onClick={() => handleDeleteFile(index)}
                       style={{ position: 'absolute', top: '-4px', right: '-2px' }}
                     >
-                      <CloseIcon sx={{color:'white', backgroundColor:'black', borderRadius:'18px', padding:'3px'}} />
+                      <CloseIcon sx={{ color: 'white', backgroundColor: 'black', borderRadius: '18px', padding: '3px' }} />
                     </IconButton>
                   </div>
                 ))}
               </div>
             </div>
           </div>
+          // Review Last step start
         )}
 
         <div>
