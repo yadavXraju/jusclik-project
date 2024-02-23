@@ -1,12 +1,31 @@
 import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
+import fee from '../../../../assets/images/fee.png'
+import result from '../../../../assets/images/results.png'
+
 
 export const ErpModuleList = [
 
     {
+        id:12,
+        name:'Parent Dashboard',
+        icon : <LanguageOutlinedIcon sx={{margin:'auto'}}/>,
+        url: '/parent/dashboard',
+    },
+
+    {
+        id:13,
+        name:'class teacher dashboard',
+        icon : <LanguageOutlinedIcon sx={{margin:'auto'}}/>,
+        url: '/class-teacher/dashboard',
+    },
+
+
+    {
         id:1,
         name:'Student Info & Fee ',
-        icon : <LanguageOutlinedIcon sx={{margin:'auto'}}/>,
-        url: '',
+        // icon : <LanguageOutlinedIcon sx={{margin:'auto'}}/>,
+        icon : <img src={fee} alt='icon' style={{width:'34px', margin:'auto'}} />,
+        url: '/erp/student-info-fee/dashboard',
     },
 
     {
@@ -20,7 +39,8 @@ export const ErpModuleList = [
     {
         id:3,
         name:'Progress & Result',
-         icon : <LanguageOutlinedIcon sx={{margin:'auto'}}/>,
+        //  icon : <LanguageOutlinedIcon sx={{margin:'auto'}}/>,
+        icon : <img src={result} alt='icon' style={{width:'34px', margin:'auto'}} />,
         url: '',
     },
 
@@ -56,7 +76,7 @@ export const ErpModuleList = [
         id:8,
         name:'Visitor',
          icon : <LanguageOutlinedIcon sx={{margin:'auto'}}/>,
-        url: '',
+         url: '/erp/visitor/dashboard',
     },
 
 
