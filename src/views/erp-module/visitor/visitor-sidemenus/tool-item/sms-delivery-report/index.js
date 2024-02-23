@@ -58,12 +58,12 @@ const SmsDeliveryReport = () => {
         <Typography className="info" sx={{ wordSpacing: "3px" }} variant="h4">129 Records : Total SMS Count = 249</Typography>
         <Box className="print-icons" sx={{dispaly:"flex !important "}}>
           <ReactToPrint variant="outlined" trigger={() => <Button><LocalPrintshopOutlinedIcon /></Button>}
-            content={() => ref.current} />
+            content={() => ref.current}  />
           <Button variant="outlined"><InsertDriveFileOutlinedIcon /></Button>
         </Box>
       </Box>
       < SmsDeliveryTable />
-      <Box sx={{ display: "none" }}>
+      <Box sx={{ display: "none"}}>
         <Report ref={ref} />
       </Box>
     </>

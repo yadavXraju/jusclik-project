@@ -19,15 +19,15 @@ const leavedata = [
 
  const  LeaveTabs=React.forwardRef((props,ref)=>{
     return (
-        <Box sx={{bgcolor: 'background.paper', mb: 2}} ref={ref}>
-            <TableContainer component={Paper}>
-                <Table>
+        <Box sx={{bgcolor: 'background.paper', mb: 2}}>
+            <TableContainer component={Paper} >
+                <Table  ref={ref}>
                     <TableHead>
                         <TableRow>
                             {
                                 tableHeadings.map((item, index) => {
                                     return <TableCell key={index}>
-                                        <Typography variant="h4" sx={{ display: 'flex', justifyContent: 'center' }} key={index}>{item}</Typography>
+                                        <Typography variant="h4" sx={{display: 'flex', justifyContent: 'center'}} key={index}>{item}</Typography>
                                     </TableCell>
                                 }
                                 )
