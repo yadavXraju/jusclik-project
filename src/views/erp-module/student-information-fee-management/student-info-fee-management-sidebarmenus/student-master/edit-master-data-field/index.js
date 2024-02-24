@@ -1,13 +1,21 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { Box, Paper, Button, useMediaQuery, TextField, Drawer } from '@mui/material';
 import ParameterizedAutoComplete from 'views/common-section/parameterizedAutoComplete';
 import SearchBox from 'views/common-section/SearchBox';
-import RightDrawer from 'views/common-section/RightDrawer';
+import  QuickSearchDrawer  from 'views/common-section/QuickSearchDrawer';
 
 const subjects = ["Delivered", "notdelivered", "yetto delivered"];
 
 const EditMasterDataField = () => {
-  const [state, setState] = React.useState({
+  const [editFields,seteditFields]=useState({
+     "field":"",
+     "class":"",
+     "section":"",
+     "status":"",
+     "admissionNo":"",
+     "studentName":"",
+  });
+  const [state, setState]=useState({
     right: false,
   });
 
@@ -27,6 +35,11 @@ const EditMasterDataField = () => {
     const toggleRightDrawer=toggleDrawer('right', false);
     toggleRightDrawer({type:'click'});
    }
+
+  const handleChange=(name,newData)=>{
+      seteditFields({...editFields,[name]:newData});
+      console.log(editFields);
+  }
 
   const matches = useMediaQuery('(max-width:500px)');
   const width = matches ? "90%" : "150px";
@@ -50,19 +63,19 @@ const EditMasterDataField = () => {
       onHover: '1px solid blue'
     }
   }
-
+ 
 
 
   return (
     <Paper>
       <Box container spacing={1} sx={{ padding: "20px 0px 20px 20px", display: "flex", flexWrap: "wrap", flexDirection: "row", gap: "20px" }}>
-        <ParameterizedAutoComplete option={subjects} label=" Field" onChange={(event, newData) => handleChange("Other Category", newData)} customStyle={style.filter} />
-        <ParameterizedAutoComplete option={subjects} label=" Class" onChange={(event, newData) => handleChange("Class", newData)} customStyle={style.filter} />
-        <ParameterizedAutoComplete option={subjects} label=" Section" onChange={(event, newData) => handleChange("Section", newData)} customStyle={style.filter} />
-        <ParameterizedAutoComplete option={subjects} label=" Status" onChange={(event, newData) => handleChange("Status", newData)} customStyle={style.filter} />
-        <TextField id="outlined-basic" label="" variant="outlined" inputProps={{ maxLength: 10 }} sx={style.filter} onChange={(event) => handleChange("Enter Adm No", event.target.value)} />
+        <ParameterizedAutoComplete option={subjects} label=" Field" onChange={(event, newData) => handleChange("field", newData)} customStyle={style.filter} />
+        <ParameterizedAutoComplete option={subjects} label=" Class" onChange={(event, newData) => handleChange("class", newData)} customStyle={style.filter} />
+        <ParameterizedAutoComplete option={subjects} label=" Section" onChange={(event, newData) => handleChange("section", newData)} customStyle={style.filter} />
+        <ParameterizedAutoComplete option={subjects} label=" Status" onChange={(event, newData) => handleChange("status", newData)} customStyle={style.filter} />
+        <TextField id="outlined-basic" label="" variant="outlined" inputProps={{ maxLength: 10 }} sx={style.filter} onChange={(event) => handleChange("admissionNo", event.target.value)} />
         <SearchBox buttonSx={style.buttonsx} inputSx={style.inputSx} onSearch={handleSearchClick} placeholder="  Enter Adm No" />
-        <ParameterizedAutoComplete option={subjects} label="Student Name" onChange={(event, newData) => handleChange("Status", newData)} customStyle={style.filter} />
+        <ParameterizedAutoComplete option={subjects} label="Student Name" onChange={(event, newData) => handleChange("studentName", newData)} customStyle={style.filter} />
         <Button sx={{ height: "40px", color: '#fff', margin: "auto 0px auto 0px" }} variant="contained">
           Show Data
         </Button>
@@ -71,7 +84,7 @@ const EditMasterDataField = () => {
         anchor="right"
         open={state.right}
       >
-        <RightDrawer onClose={handleDrawerClose} />
+        <QuickSearchDrawer onClose={handleDrawerClose} />
       </Drawer>
     </Paper>
   )
