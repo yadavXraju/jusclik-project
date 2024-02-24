@@ -20,7 +20,7 @@ export function ClassDropDown({ data, onClassChange,selectedClass}) {
       <TextField
         id="outlined-select-currency"
         fullWidth
-        label="class"
+        label="Class"
         select
         value={selectedClass || (data.length > 0 ? data[0].value : '')}
          sx={{margin:"10px 0"}}
@@ -86,6 +86,7 @@ export function ExamDropDown({ data, onExamChange,selectedExam}) {
         label="Student"
         select
         onChange={handleChange}
+        sx={{margin:"10px 0"}}
         value={selectedStudent ? selectedStudent.id : ''}
       >
         {data.map((student) => (
