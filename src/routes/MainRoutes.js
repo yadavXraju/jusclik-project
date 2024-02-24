@@ -5,13 +5,14 @@ import MainLayout from 'layout/MainLayout';
 import Loadable from 'ui-component/Loadable';
 import classTeacherRoutes from './ClassTeacherRoutes';
 import ParentRoutes from './ParentRoutes';
-
+import VisitorRoutes from './erp-routes/VisitorRoutes';
+import StudentInfoFeeRoutes from './erp-routes/StudentInfoFeeRoutes';
 
 
 
  // subject Teacher  Dashboard Menus
 
- const SubjectTeacherDashboard = Loadable(lazy(() => import('views/subject-teacher-dashboard/')));
+ const SubjectTeacherDashboard= Loadable(lazy(() => import('views/subject-teacher-dashboard/')));
 
 // ==============================|| MAIN ROUTING ||============================== //
 
@@ -21,12 +22,10 @@ const MainRoutes = {
   children: [
 
 
-    // Parent  dashboard Menus
+    // Parent Dashboard Menus (Include imported routes here)
      ...ParentRoutes,
  
-       // Class Teacher Dashboard Menus (Include imported routes here)
-
-   // Include imported routes from classTeacherRoutes.js
+    // Class Teacher Dashboard Menus (Include imported routes here)
     ...classTeacherRoutes,
  
       
@@ -37,7 +36,11 @@ const MainRoutes = {
       element: <SubjectTeacherDashboard />
     },
 
-        
+    // visitor Dashboard Menus (Include imported routes here)
+    ...VisitorRoutes,
+
+    // Student info and fee info Dashboard Menus (Include imported routes here)
+    ...StudentInfoFeeRoutes,
 
 
   ]

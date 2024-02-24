@@ -8,8 +8,11 @@ const DailyAttendance = Loadable(lazy(() => import('views/sidebar-menus/attendan
 const MonthlyAttendance = Loadable(lazy(() => import('views/sidebar-menus/monthly-attendance')));
 const MarksEntryPanel = Loadable(lazy(() => import('views/sidebar-menus/marks-entry-panel')));
 const Scholastic = Loadable(lazy(() => import('views/sidebar-menus/co-scholastic')));
-const RemarksEntryPanel = Loadable(lazy(() => import('views/sidebar-menus/co-scholastic')));
-const TimeTableEntry = Loadable(lazy(() => import('views/sidebar-menus/time-table-entry')));
+const RemarksEntryPanel = Loadable(lazy(() => import('views/sidebar-menus/remarks-entry-panel')));
+const TimeTableEntry  = Loadable(lazy(() => import('views/sidebar-menus/time-table-entry')));
+const Library =  Loadable(lazy(()=> import('views/sidebar-menus/library')))
+// const ClassTimeTable = Loadable(lazy(() => import('views/sidebar-menus/time-table-entry/class-time-table')));
+// const MyTimeTable = Loadable(lazy(() => import('views/sidebar-menus/time-table-entry/my-time-table')));
 const StudentAllocation = Loadable(lazy(() => import('views/sidebar-menus/student-allocation')));
 const StudentHomeWorkUpload = Loadable(lazy(() => import('views/sidebar-menus/Student-homework-upload')));
 const CircularUpload = Loadable(lazy(() => import('views/sidebar-menus/circular-upload')));
@@ -51,22 +54,64 @@ const classTeacherRoutes = [
             },
             ]
         },
+
+        // {
+        //     path: 'marks-entry-panel',
+        //     element: <MarksEntryPanel />
+        // },
+        // {
+        //     path: 'remarks-entry-panel',
+        //     element: <RemarksEntryPanel />
+        // },
+        // {
+        //     path: 'co-scholastic',
+        //     element: <Scholastic />
+        // },
+
         {
-            path: 'marks-entry-panel',
-            element: <MarksEntryPanel />
+            path: 'result',
+            children: [
+            {
+                path: 'marks-entry',
+                element: <MarksEntryPanel />
+            },
+            {
+                path: 'co-scholastic',
+                element: <Scholastic  />
+            },
+            {
+                path: 'remarks-entry',
+              element: <RemarksEntryPanel />
+             },
+            ]
         },
+
         {
-            path: 'remarks-entry-panel',
-            element: <RemarksEntryPanel />
+            path: 'library',
+            element: <Library />
         },
-        {
-            path: 'co-scholastic',
-            element: <Scholastic />
-        },
+
+
         {
             path: 'time-table-entry',
             element: <TimeTableEntry />
         },
+
+        // {
+        //     path: 'time-table-entry',
+        //     children: [
+        //     {
+        //         path: 'my-timetable',
+        //         element: <MyTimeTable />
+        //     },
+        //     {
+        //         path: 'class-timetable',
+        //         element: <ClassTimeTable />
+        //     },
+        //     ]
+        // },
+
+
         {
             path: 'student-allocation',
             element: <StudentAllocation />

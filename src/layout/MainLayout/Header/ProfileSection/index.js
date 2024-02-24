@@ -40,6 +40,11 @@ import { ClassTeacherProfileDetails } from '../class-teacher/teacher-profile-sec
 // for subject teacher
 import { SubjectTeacherProfileDetails } from '../subject-teacher/subject-teacher-profile-section/subjectTeacherProfile';
 
+
+
+// for visitor profile
+import { VisitorProfileDetails } from '../visitor-profile/visitor-profile-section/VisitorProfile';
+
 // ==============================|| PROFILE MENU ||============================== //
 
 const ProfileSection = () => {
@@ -50,9 +55,23 @@ const ProfileSection = () => {
   const [open, setOpen] = useState(false);
     
   const anchorRef = useRef(null);
-  const handleLogout = async () => {
-    console.log('Logout');
+
+
+
+  // logout function
+
+  const handleLogout = () => {
+    // Remove user role and token from local storage
+    localStorage.removeItem('userRole');
+    localStorage.removeItem('userToken');
+  
+    // Navigate to the login page
+    navigate('/login');
   };
+
+
+
+
 
   const handleClose = (event) => {
     if (anchorRef.current && anchorRef.current.contains(event.target)) {
@@ -90,6 +109,9 @@ const ProfileSection = () => {
       data = ClassTeacherProfileDetails;
     } else if (pathname.includes('/subject-teacher/')) {
       data = SubjectTeacherProfileDetails;
+    } 
+    else if (pathname.includes('/visitor/')) {
+      data = VisitorProfileDetails;
     } else {
       data = [];
     }

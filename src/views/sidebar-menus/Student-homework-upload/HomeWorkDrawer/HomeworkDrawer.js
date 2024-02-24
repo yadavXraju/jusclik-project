@@ -38,7 +38,7 @@ export default function HomeworkDrawer() {
           Close
         </Button>
       </Box>
-      <Grid container spacing={1} justifyContent="space-around" sx={{ paddingLeft: isMobile ? '4px' : '5px', paddingRight: isMobile ? '11px' : '11px', paddingTop:'10px' }}>
+      <Grid container spacing={1} justifyContent="space-around" sx={{ paddingLeft: isMobile ? '4px' : '5px', paddingRight: isMobile ? '11px' : '11px', paddingTop:'12px' }}>
         <Grid item xs={12} sm={6}>
           <HomeDate label="Homework Date:" />
         </Grid>
@@ -46,11 +46,11 @@ export default function HomeworkDrawer() {
           <HomeDate label="Submission Date:" />
         </Grid>
       </Grid>
-
+      <Grid item sx={{paddingTop:'12px'}}>
       <HomeCategory />
-
-      <Grid container spacing={1}>
-        <Grid item xs={12}>
+      </Grid>
+      <Grid container spacing={1} sx={{paddingTop:'11px'}}>
+        <Grid item xs={12} >
           <HomeworkTopic />
         </Grid>
         <Grid item xs={12}>
@@ -59,11 +59,11 @@ export default function HomeworkDrawer() {
         <Grid item xs={12}>
           <HomeReplyBox />
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={12} sx={{paddingTop: isMobile ? '30px' : '0px'}}>
           <HomeWorkDragDrop />
         </Grid>
       </Grid>
-        <Grid item xs={12} sx={{ paddingLeft: isMobile ? '10px' : '10px', paddingRight: isMobile ? '11px' : '8px' }}>
+        <Grid item xs={12} sx={{ paddingLeft: isMobile ? '10px' : '10px', paddingRight: isMobile ? '11px' : '8px' , paddingTop:'5px'}}>
           <HomeYoutubeLink />
         </Grid>
         <Grid item xs={12} sx={{ marginTop:'20px'}}>

@@ -20,7 +20,7 @@ export function ClassDropDown({ data, onClassChange,selectedClass}) {
       <TextField
         id="outlined-select-currency"
         fullWidth
-        label="class"
+        label="Class"
         select
         value={selectedClass || (data.length > 0 ? data[0].value : '')}
          sx={{margin:"10px 0"}}
@@ -73,31 +73,21 @@ export function ExamDropDown({ data, onExamChange,selectedExam}) {
 
 
   
-export function StudentDropDown({ data, onStudentChange, selectedStudent}) {
-    // Check if students is undefined or not an array
-    if (!Array.isArray(data) || data.length === 0) {
-      return <div>No data available</div>;
-    }
-  
+  export const StudentDropDown = ({ data, onStudentChange, selectedStudent }) => {
     const handleChange = (event) => {
-      const selectedStudent = event.target.value;
-  
-      // Call the onClassChange function with the selected class
-      onStudentChange(selectedStudent);
+      const selectedStudentId = event.target.value;
+      onStudentChange(selectedStudentId);
     };
   
-    console.log("Data:", data);
     return (
       <TextField
-  
         id="outlined-select-student"
-        select
         fullWidth
-        label="Student Name"
-        value={ selectedStudent|| (data.length > 0 ? data[0].value : 'All')}
-        sx={{margin:"10px 0"}}
-        xs={12}
+        label="Student"
+        select
         onChange={handleChange}
+        sx={{margin:"10px 0"}}
+        value={selectedStudent ? selectedStudent.id : ''}
       >
         {data.map((student) => (
           <MenuItem key={student.id} value={student.id}>
@@ -106,4 +96,4 @@ export function StudentDropDown({ data, onStudentChange, selectedStudent}) {
         ))}
       </TextField>
     );
-  }
+  };
