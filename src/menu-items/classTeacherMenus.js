@@ -72,6 +72,37 @@ const ClassTeacherMenu = {
                  icon: AlarmTwoToneIcon,
                  breadcrumbs: false
                },
+
+
+              // {
+              //   id: 'time-table-entry',
+              //   title: 'Timetable',
+              //   type: 'collapse',
+              //   url: '/class-teacher/time-table-entry',
+              //   icon: AlarmTwoToneIcon,
+              //   children: [
+
+              //     {
+              //       id: 'class-time-table',
+              //        title: 'Class Timetable',
+              //        type: 'item',
+              //        url: '/class-teacher/time-table-entry/class-timetable',
+              //        breadcrumbs: false
+              //      },
+    
+
+              //      {
+              //       id: 'my-time-table',
+              //        title: 'My Timetable',
+              //        type: 'item',
+              //        url: '/class-teacher/time-table-entry/my-timetable',
+              //        breadcrumbs: false
+              //      },
+    
+              //   ]
+              // },
+
+
             
                {
                  id: 'student-allocation',

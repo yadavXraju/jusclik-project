@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import MainCard from 'ui-component/cards/MainCard';
@@ -8,9 +7,11 @@ import { useTheme, useMediaQuery, Box, Typography } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import { useLocation } from 'react-router';
 import ClassTeacherCard from './ClassTeacherCard';
-import ProfileForm from '../studentProfile/ProfileForm';
 import DocumentTabs from '../studentProfile/DocumentsTab';
 import ClassTeacherAssets from './ClassTeacherAssets';
+import TeacherCredentials from './Teacher-Credentials';
+import TeacherProfileForm from './TeacherProfileForm';
+import TeacherContactDetails from './TeacherContactDetails';
 
 
 
@@ -80,9 +81,10 @@ function ClassTeacherProfile() {
         {/* Tabs for navigation */}
         <Tabs value={value} variant="scrollable" onChange={handleChange}>
           <Tab aria-label="basic tabs example" label="Profile" {...a11yProps(0)} />
-          <Tab aria-label="basic tabs example" label="Documents" {...a11yProps(1)} />
-          <Tab aria-label="basic tabs example" label="Asset Allocation" {...a11yProps(2)} />
-          <Tab aria-label="basic tabs example" label="About" {...a11yProps(3)} />
+          <Tab aria-label="basic tabs example" label="Contact Details" {...a11yProps(1)} />
+          <Tab aria-label="basic tabs example" label="Documents" {...a11yProps(2)} />
+          <Tab aria-label="basic tabs example" label="Asset Allocation" {...a11yProps(3)} />
+          <Tab aria-label="basic tabs example" label="Credentials" {...a11yProps(4)} />
         </Tabs>
       </Box>
 
@@ -94,19 +96,22 @@ function ClassTeacherProfile() {
          <ClassTeacherCard/>
         </Grid>
         <Grid item xs={12} sm={8}>
-          <ProfileForm/>
+          <TeacherProfileForm/>
         </Grid>
       </Grid>
       </Box>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-        <DocumentTabs/>
+        <TeacherContactDetails/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
-       <ClassTeacherAssets/>
+        <DocumentTabs/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={3}>
-       jdklfjdlj
+       <ClassTeacherAssets/>
+      </CustomTabPanel>
+      <CustomTabPanel value={value} index={4}>
+       <TeacherCredentials/>
       </CustomTabPanel>
     </Box>
     </MainCard>

@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import {
   Stepper,
@@ -10,35 +11,44 @@ import {
   MenuItem,
   FormControl,
   IconButton,
-  Box,Paper,
-  Checkbox,FormControlLabel, InputLabel,
+  Box,
+  Paper,
+  Checkbox,
+  FormControlLabel,
+  InputLabel,
+  Chip,
+  Grid
 } from '@mui/material';
+import { Table, TableBody, TableCell, TableContainer, TableRow } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import { Delete } from '@mui/icons-material';
+import BackupTwoToneIcon from '@mui/icons-material/BackupTwoTone';
+import CloseIcon from '@mui/icons-material/Close';
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
     minWidth: 120,
-    width: '100%',
+    width: '100%'
   },
   uploadButton: {
-    marginTop: theme.spacing(2),
+    marginTop: theme.spacing(2)
   },
   fileContainer: {
     display: 'flex',
     alignItems: 'center',
-    marginBottom: theme.spacing(1),
-  },
+    marginBottom: theme.spacing(1)
+  }
 }));
 
 const steps = ['Enter Details', 'Upload Media', 'Review'];
 
 // Dummy data: Mapping of classes to student names
 const classToStudents = {
-  'Class I': ['John', 'Alice', 'Bob'],
-  'Class II': ['Sarah', 'David', 'Emma'],
-  'Class III': ['Michael', 'Olivia', 'William'],
+  'I': ['John', 'Alice', 'Bob'],
+  'II': ['Sarah', 'David', 'Emma'],
+  'III': ['Michael', 'Olivia', 'William'],
+  'IV': ['Jhon', 'Alex', 'Maxwell'],
+  'V': ['Jackson', 'Roman', 'Broke'],
 };
 
 const CreateNewDetails = () => {
@@ -53,6 +63,8 @@ const CreateNewDetails = () => {
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
+
+
 
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
@@ -80,10 +92,7 @@ const CreateNewDetails = () => {
     } else if (selectedIndex === selectedStudents.length - 1) {
       newSelectedStudents = newSelectedStudents.concat(selectedStudents.slice(0, -1));
     } else if (selectedIndex > 0) {
-      newSelectedStudents = newSelectedStudents.concat(
-        selectedStudents.slice(0, selectedIndex),
-        selectedStudents.slice(selectedIndex + 1)
-      );
+      newSelectedStudents = newSelectedStudents.concat(selectedStudents.slice(0, selectedIndex), selectedStudents.slice(selectedIndex + 1));
     }
 
     setSelectedStudents(newSelectedStudents);
@@ -111,9 +120,24 @@ const CreateNewDetails = () => {
     setActiveStep(2);
   };
 
+  const handleFileDrop = (event) => {
+    const droppedFiles = event.dataTransfer.files;
+    const filesArray = Array.from(droppedFiles);
+    setSelectedFiles([...selectedFiles, ...filesArray]);
+  };
+  const truncateFileName = (fileName) => {
+    const words = fileName.split(' ');
+    if (words.length > 1) {
+      return words.slice(0, 1).join(' ') + '...';
+    } else {
+      return fileName;
+    }
+  };
+  
+
   return (
     <div>
-      <Stepper activeStep={activeStep} alternativeLabel>
+      <Stepper activeStep={activeStep} alternativeLabel sx={{ paddingTop: '20px' }}>
         {steps.map((label) => (
           <Step key={label}>
             <StepLabel>{label}</StepLabel>
@@ -123,7 +147,7 @@ const CreateNewDetails = () => {
       <div>
         {activeStep === 0 && (
           <div>
-            <Box sx={{ paddingLeft: '8px', paddingRight: '12px' }}>
+            <Box sx={{ paddingLeft: '12px', paddingRight: '20px', paddingTop: '20px' }}>
               <TextField
                 label="Album Name"
                 id="album-name"
@@ -133,10 +157,19 @@ const CreateNewDetails = () => {
                 className={classes.formControl}
               />
             </Box>
-            <Box sx={{ paddingBottom: '12px', paddingLeft:'12px', paddingRight:'12px' }}>
+            <Box sx={{ paddingBottom: '12px', paddingLeft: '12px', paddingRight: '20px', paddingTop:'6px' }}>
               <FormControl className={classes.formControl}>
-                <InputLabel id="class-name-label">Select Class</InputLabel>
-                <Select labelId="class-name-label" id="class-name-select" label="Select Class" value={className} onChange={handleChangeClassName} fullWidth>
+                <InputLabel id="class-name-label" htmlFor="class-name-select">
+                  Select Class
+                </InputLabel>
+                <Select
+                  labelId="class-name-label"
+                  id="class-name-select"
+                  label="Select Class"
+                  value={className}
+                  onChange={handleChangeClassName}
+                  fullWidth
+                >
                   {Object.keys(classToStudents).map((className) => (
                     <MenuItem key={className} value={className}>
                       {className}
@@ -184,7 +217,7 @@ const CreateNewDetails = () => {
                 </Paper>
               </Box>
             )}
-            <Box sx={{ paddingBottom: '12px' }}>
+            <Box sx={{ paddingBottom: '12px', paddingLeft: '20px', paddingRight: '15px' }}>
               <TextField
                 label="Description"
                 id="description"
@@ -198,65 +231,169 @@ const CreateNewDetails = () => {
           </div>
         )}
         {activeStep === 1 && (
+          // Upload Files or media start
           <div>
-            <input
-              type="file"
-              accept="image/*, video/*"
-              onChange={handleFileChange}
-              id="upload-media"
-              style={{ display: 'none' }}
-              multiple // Enable multiple file selection
-            />
-            <label htmlFor="upload-media">
-              <Button variant="outlined" component="span" className={classes.uploadButton}>
-                Upload Media
-              </Button>
-            </label>
-            {selectedFiles.map((file, index) => (
-              <div key={index} className={classes.fileContainer}>
-                <Typography variant="body1">{file.name}</Typography>
-                <IconButton color="secondary" onClick={() => handleDeleteFile(index)}>
-                  <Delete />
-                </IconButton>
-              </div>
-            ))}
+            <Box
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                textAlign: 'center',
+                justifyContent: 'center',
+                paddingTop: '40px'
+              }}
+            >
+              <Box
+                htmlFor="upload-media"
+                onDragOver={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                }}
+                onDragEnter={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                }}
+                onDrop={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  handleFileDrop(e);
+                }}
+              >
+                <input
+                  type="file"
+                  accept="image/*, video/*"
+                  onChange={handleFileChange}
+                  id="upload-media"
+                  style={{ display: 'none' }}
+                  multiple // Enable multiple file selection
+                />
+                <Box
+                  sx={{
+                    border: '2px dashed #ccc',
+                    borderRadius: '8px',
+                    padding: '20px',
+                    width: { xs: '95vw', sm: '600px' },
+                    height: '200px'
+                  }}
+                >
+                  <Grid>
+                    <BackupTwoToneIcon sx={{ width: '50px', height: '50px', opacity: '0.5' }} />
+                    <Typography variant="body1" sx={{ fontWeight: 'bold', paddingTop: '12px' }}>
+                      Drag & Drop Files Here
+                    </Typography>
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      component="span"
+                      className={classes.uploadButton}
+                      onClick={() => document.getElementById('upload-media').click()}
+                      style={{ marginTop: '25px' }}
+                    >
+                      Upload Files
+                    </Button>
+                  </Grid>
+                </Box>
+              </Box>
+
+              <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
+                {selectedFiles.map((file, index) => (
+                  <Box key={index} className={classes.fileContainer} style={{ width: '100px', marginTop: '20px' }}>
+                    <Chip label={truncateFileName(file.name)} variant="outlined" onDelete={() => handleDeleteFile(index)}>
+                      <Typography variant="body1">{file.name}</Typography>
+                      <IconButton color="secondary" onClick={() => handleDeleteFile(index)}>
+                        <CloseIcon />
+                      </IconButton>
+                    </Chip>
+                  </Box>
+                ))}
+              </Box>
+            </Box>
           </div>
+           // Upload Files or media End
         )}
         {activeStep === 2 && (
+          // Review Last step start
           <div>
-            <Typography>Album Name: {albumName}</Typography>
-            <Typography>Class: {className}</Typography>
-            <Typography>Student Names: {selectedStudents.join(', ')}</Typography>
-            <Typography>Description: {description}</Typography>
-            {selectedFiles.map((file, index) => (
-              <div key={index} className={classes.fileContainer}>
-                <Typography variant="body1">{file.name}</Typography>
-                <IconButton color="secondary" onClick={() => handleDeleteFile(index)}>
-                  <Delete />
-                </IconButton>
+            <Box sx={{ padding: '20px', border:'1px solid #ccc', marginTop:'30px' }}>
+              <TableContainer component={Paper}>
+                <Table>
+                  <TableBody>
+                    <TableRow>
+                      <TableCell>
+                        <span style={{ fontWeight: 'bold' }}>Album Name</span>
+                      </TableCell>
+                      <TableCell>{albumName}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell>
+                        <span style={{ fontWeight: 'bold' }}>Class</span>
+                      </TableCell>
+                      <TableCell>{className}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell>
+                        <span style={{ fontWeight: 'bold' }}>Student Names</span>
+                      </TableCell>
+                      <TableCell>{selectedStudents.join(', ')}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell>
+                        <span style={{ fontWeight: 'bold' }}>Description</span>
+                      </TableCell>
+                      <TableCell>{description}</TableCell>
+                    </TableRow>
+                  </TableBody>
+                </Table>
+              </TableContainer>
+            </Box>
+            <div style={{ overflowX: 'auto', maxHeight: '200px', padding: '20px', overflowY: 'hidden' }}>
+              <div style={{ display: 'flex' }}>
+                {selectedFiles.map((file, index) => (
+                  <div key={index} className={classes.fileContainer} style={{ marginRight: '10px', position: 'relative' }}>
+                    <img src={URL.createObjectURL(file)} alt={file.name} style={{ width: '200px', height: '150px', objectFit: 'cover' }} />
+                    <IconButton
+                      color="secondary"
+                      onClick={() => handleDeleteFile(index)}
+                      style={{ position: 'absolute', top: '-4px', right: '-2px' }}
+                    >
+                      <CloseIcon sx={{ color: 'white', backgroundColor: 'black', borderRadius: '18px', padding: '3px' }} />
+                    </IconButton>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
+          // Review Last step start
         )}
+
         <div>
           {activeStep === steps.length - 1 ? (
-            <Button variant="contained" color="primary" onClick={handleSubmit}>
-              Post
-            </Button>
+            <>
+              <Box sx={{ paddingTop: '20px', display: 'flex', justifyContent: 'end' }}>
+                <Button disabled={activeStep === 0} onClick={handleBack}>
+                  Back
+                </Button>
+                <Button variant="contained" color="primary" onClick={handleSubmit}>
+                  Post
+                </Button>
+              </Box>
+            </>
           ) : (
             <>
-              <Button disabled={activeStep === 0} onClick={handleBack}>
-                Back
-              </Button>
-              {activeStep === 1 ? (
-                <Button variant="contained" color="primary" onClick={handleReview}>
-                  Review
+              <Box sx={{ paddingTop: '20px', display: 'flex', justifyContent: 'end' }}>
+                <Button disabled={activeStep === 0} onClick={handleBack}>
+                  Back
                 </Button>
-              ) : (
-                <Button variant="contained" color="primary" onClick={handleNext}>
-                  Next
-                </Button>
-              )}
+                {activeStep === 1 ? (
+                  <Button variant="contained" color="primary" onClick={handleReview}>
+                    Review
+                  </Button>
+                ) : (
+                  <Button variant="contained" color="primary" onClick={handleNext}>
+                    Next
+                  </Button>
+                )}
+              </Box>
             </>
           )}
         </div>
@@ -266,3 +403,4 @@ const CreateNewDetails = () => {
 };
 
 export default CreateNewDetails;
+

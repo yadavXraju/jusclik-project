@@ -24,7 +24,7 @@ const students = [
     <>
       <Box>
         <form>
-          <Box pt={2}>
+          <Box pt={2} pb={1}>
             <Autocomplete
               id="student-autocomplete"
               options={students}

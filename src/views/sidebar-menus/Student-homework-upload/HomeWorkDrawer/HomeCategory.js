@@ -25,12 +25,13 @@ export default function HomeCategory() {
   };
 
 
-  const handleClassDelete = (classToDelete) => {
-    const updatedClasses = selectedClasses.filter(classItem => classItem !== classToDelete);
-    setSelectedClasses(updatedClasses);
-    setIsStudentListVisible(updatedClasses.length > 0);
-    filterStudents(selectedSubject, updatedClasses);
-  };
+  // const handleClassDelete = (classToDelete) => {
+  //   const updatedClasses = selectedClasses.filter(classItem => classItem !== classToDelete);
+  //   setSelectedClasses(updatedClasses);
+  //   setIsStudentListVisible(updatedClasses.length > 0);
+  //   filterStudents(selectedSubject, updatedClasses);
+  // };
+  
   
   const handleClassChange = (event) => {
     const classValues = event.target.value;
@@ -71,7 +72,7 @@ export default function HomeCategory() {
             </Select>
           </FormControl>
         </Grid>
-        <Grid sx={{ paddingLeft: '13px' }}>
+        <Grid sx={{ paddingLeft: '13px', paddingTop:'10px' }}>
           <FormControl sx={{ width: '100%' }}>
             <InputLabel id="class-select-label">Select Class</InputLabel>
             <Select
@@ -85,12 +86,18 @@ export default function HomeCategory() {
               renderValue={(selected) => (
                 <div style={{ display: 'flex', flexWrap: 'wrap' }}>
                   {selected.map((classItem) => (
-                    <Chip
-                      key={classItem}
-                      label={classItem}
-                      onDelete={() => handleClassDelete(classItem)}
-                      style={{ margin: '2px', borderRadius: '4px' }}
-                    />
+                <Chip
+                key={classItem}
+                label={classItem}
+                onDelete={
+                  () => {
+                    const delete1 = [...SelectedClasses];
+                    delete1.splice(index, 1);
+                    setSelectedClasses(delete1);
+                  }
+                } // Pass classItem as argument
+                style={{ margin: '2px', borderRadius: '4px' }}
+              />
                   ))}
                 </div>
               )}
