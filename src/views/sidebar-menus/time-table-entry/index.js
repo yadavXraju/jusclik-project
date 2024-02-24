@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import MainCard from 'ui-component/cards/MainCard';
+import Card from '@mui/material/Card';
 import { useTheme, useMediaQuery, Box, Typography } from '@mui/material';
 import { useLocation } from 'react-router';
+import ClassTimeTable from './ClassTimetable';
+import TeacherTimeTable from './TeacherTimetable';
 
 
 // Custom component for rendering the content of each tab panel
@@ -64,7 +66,7 @@ function TimetableTab() {
   // Render the tab section
   return (
     <>
-    <MainCard >
+    <Card  sx={{ padding: { xs: 1, md: 3 } }}>
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider', '@media (max-width:600px)': { marginBottom: '15px' } }}>
         {/* Tabs for navigation */}
@@ -75,14 +77,14 @@ function TimetableTab() {
       </Box>
 
       {/* Content of each tab panel */}
-      <CustomTabPanel value={value} index={0}>
-      <CustomTabPanel/>
+      <CustomTabPanel sx={{padding:'0px'}} value={value} index={0}>
+        <TeacherTimeTable />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-        
+      <ClassTimeTable/>
       </CustomTabPanel>
     </Box>
-    </MainCard>
+    </Card>
     </>
   );
 }

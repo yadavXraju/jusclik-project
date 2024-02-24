@@ -1,8 +1,8 @@
-// RemarkDrawer.js
 import * as React from 'react';
-import { Box, Drawer, Button, Grid, Typography, TextField, MenuItem } from '@mui/material';
+import { Box, Drawer, Button, Grid, Typography, TextField, MenuItem, Dialog, DialogTitle, DialogContent, DialogActions } from '@mui/material';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import CancelTwoToneIcon from '@mui/icons-material/CancelTwoTone';
+import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import { ClassDropDown, ExamDropDown, StudentDropDown } from './Dropdown';
 import { ClassData } from 'views/sidebar-menus/marks-entry-panel/dropdown data/ClassData';
 import { EXAM } from 'views/sidebar-menus/marks-entry-panel/dropdown data/ExamData'
@@ -18,18 +18,21 @@ export default function RemarkDrawer() {
   const [selectedExam, setSelectedExam] = useState(null);
   const [selectedStudent, setSelectedStudent] = useState(null);
   const [selectedStudentIndex, setSelectedStudentIndex] = useState(0);
-  const [selectedTemplate, setSelectedTemplate] = useState(''); // State to hold the selected template
+  const [selectedTemplate, setSelectedTemplate] = useState('');
+  const [isSettingOpen, setIsSettingOpen] = useState(false); // State to manage setting dialog
+  const [newTemplate, setNewTemplate] = useState('');
+  const [templateSubmitted, setTemplateSubmitted] = useState(false);
+  const [submittedData, setSubmittedData] = useState([]); // State to hold submitted data
 
-
-  const templateOptions = ["Excellent", "Good", "Average", "Needs Improvement", "Poor"];
+  let templateOptions = ["Excellent", "Good", "Average", "Needs Improvement", "Poor"];
 
   const handleRemarkInputChange = (event) => {
     setRemarkValue(event.target.value);
   };
 
   const handleTemplateSelect = (event) => {
-    setSelectedTemplate(event.target.value); // Update selected template state
-    setRemarkValue(event.target.value); // Also update remark value
+    setSelectedTemplate(event.target.value);
+    setRemarkValue(event.target.value);
   };
 
   const handleClassChange = (selectedClass) => {
@@ -49,27 +52,38 @@ export default function RemarkDrawer() {
     }
     setStudents(selectedStudentData);
   }, [selectedClass]);
-  
 
   const handleStudentChange = (selectedStudentId) => {
     const selectedStudentData = students.find(student => student.id === selectedStudentId);
     const selectedIndex = students.findIndex(student => student.id === selectedStudentId);
     setSelectedStudent(selectedStudentData);
     setSelectedStudentIndex(selectedIndex);
+    setTemplateSubmitted(false); // Reset template submission status when student changes
   };
   
   const handleNextStudent = () => {
-    const nextIndex = (selectedStudentIndex + 1) % students.length;
-    const selectedStudentData = students[nextIndex];
-    setSelectedStudent(selectedStudentData);
-    setSelectedStudentIndex(nextIndex);
+
+    setTemplateSubmitted(false);
+    if (!templateSubmitted) {
+      // Display message if template is not submitted
+      alert("Please submit template data before going to next student.");
+    } else {
+      const nextIndex = (selectedStudentIndex + 1) % students.length;
+      const selectedStudentData = students[nextIndex];
+      setSelectedStudent(selectedStudentData);
+      setSelectedStudentIndex(nextIndex);
+      setTemplateSubmitted(true);// Reset template submission status for the next student
+      if(selectedStudentData==students[nextIndex]){
+        setTemplateSubmitted(false);
+      } 
+      else{
+        setTemplateSubmitted(true);
+      }
+    }
   };
-  
-  
-    
 
   const handleExamChange = (selectedExam) => {
-    setSelectedExam(selectedExam); // Update selectedExam state
+    setSelectedExam(selectedExam);
   };
 
   const toggleDrawer = (anchor, open) => (event) => {
@@ -78,6 +92,51 @@ export default function RemarkDrawer() {
     }
 
     setState({ ...state, [anchor]: open });
+  };
+
+  const openSettingDialog = () => {
+    setIsSettingOpen(true);
+  };
+
+  const closeSettingDialog = () => {
+    setIsSettingOpen(false);
+  };
+
+  const handleAddTemplate = () => {
+    if (newTemplate.trim() !== '') {
+      setTemplateOptions([...templateOptions, newTemplate.trim()]);
+      setNewTemplate('');
+      setIsSettingOpen(false); // Close the dialog after adding the new template
+      setTemplateSubmitted(true); // Set template submission status to true
+    }
+    console.log(templateOptions)
+  };
+
+  const setTemplateOptions = (newOptions) => {
+    setSelectedTemplate(''); // Clear selected template
+    templateOptions = newOptions; // Update the template options array
+  };
+
+  const handleSubmit = () => {
+    console.log("Submitting data...");
+    console.log("Selected Class:", selectedClass);
+    console.log("Selected Student:", selectedStudent);
+    console.log("Selected Exam:", selectedExam);
+    console.log("Selected Template:", selectedTemplate);
+    setTemplateSubmitted((templateSubmitted)=> !templateSubmitted)
+    setSelectedTemplate('');
+    setRemarkValue('')
+    setSelectedStudent('')
+    const data = {
+      class: selectedClass,
+      studentName: selectedStudent?.name, // Ensure selectedStudent is not null
+      term: selectedExam,
+      template: selectedTemplate
+    };
+    console.log("Submitting Data:", data);
+  
+    setSubmittedData([...submittedData, data]);
+
   };
 
   const isMobile = window.innerWidth < 600;
@@ -94,26 +153,24 @@ export default function RemarkDrawer() {
           Close
         </Button>
       </Box>
-      <Grid  >
+      <Grid>
         <Grid item sx={{ paddingTop: '10px' }} xs={12}>
           <ClassDropDown data={ClassData} onClassChange={handleClassChange} selectedClass={selectedClass} />
         </Grid>
-        <Grid item xs={12}  >
-          <ExamDropDown  data={EXAM} onExamChange={handleExamChange} selectedExam={selectedExam}/>
+        <Grid item xs={12}>
+          <ExamDropDown data={EXAM} onExamChange={handleExamChange} selectedExam={selectedExam} />
         </Grid>
         <Grid item xs={12}>
-       <StudentDropDown data={students} onStudentChange={handleStudentChange} selectedStudent={selectedStudent} />
-
+          <StudentDropDown data={students} onStudentChange={handleStudentChange} selectedStudent={selectedStudent} />
         </Grid>
         <Grid item xs={12}>
           <TextField
             fullWidth
-            label="TEMPLATE"
+            label="Template"
             select
             sx={{ margin: '10px 0' }}
-            value={selectedTemplate} // Use selectedTemplate instead of remarkValue
+            value={selectedTemplate}
             onChange={handleTemplateSelect}
-            
           >
             {templateOptions.map((option, index) => (
               <MenuItem key={index} value={option}>
@@ -122,30 +179,26 @@ export default function RemarkDrawer() {
             ))}
           </TextField>
         </Grid>
-      
-
         <Grid item xs={12}>
           <RemarkEditor remarkValue={remarkValue} handleRemarkInputChange={handleRemarkInputChange} />
         </Grid>
-
         <Grid item xs={12}>
           <Box mt={9} display="flex" justifyContent="left" alignItems="center">
-            <Button variant="contained" color="primary" >
+            <Button variant="contained" color="primary" onClick={handleSubmit}>
               Submit
             </Button>
-            <Button variant="contained" color="primary" sx={{margin:"0px 0px 0px 10px"}}  onClick={handleNextStudent} >
+            <Button variant="contained" color="primary" sx={{ margin: "0px 0px 0px 10px" }} onClick={handleNextStudent}>
               Next
             </Button>
           </Box>
         </Grid>
-
       </Grid>
-
     </Box>
   );
 
   return (
     <div>
+      <Button variant="outlined" startIcon={<SettingsOutlinedIcon />} onClick={openSettingDialog} sx={{marginRight:'10px'}} >Setting</Button>
       <Button onClick={toggleDrawer('right', true)} variant="outlined" startIcon={<AddOutlinedIcon />}>Add Remark</Button>
       <Drawer
         anchor="right"
@@ -154,6 +207,22 @@ export default function RemarkDrawer() {
       >
         {form}
       </Drawer>
+      {/* Setting Dialog */}
+      <Dialog open={isSettingOpen} onClose={closeSettingDialog}>
+        <DialogTitle><Typography variant='h3'>Template Heading</Typography></DialogTitle>
+        <DialogContent>
+          
+          <TextField label="Template Heading" fullWidth margin="normal" />
+          <TextField label="Add Text"  fullWidth
+            value={newTemplate}
+            onChange={(e) => setNewTemplate(e.target.value)} 
+             margin="normal" />
+        </DialogContent>
+        <DialogActions>
+        <Button onClick={handleAddTemplate}>Submit</Button>
+          <Button onClick={closeSettingDialog}>Close</Button>
+        </DialogActions>
+      </Dialog>
     </div>
   );
 }

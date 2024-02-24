@@ -1,42 +1,18 @@
 import React, { useState } from 'react';
+import { Button, Typography, Box, Chip, IconButton, Grid } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
 import { makeStyles } from '@mui/styles';
-import { Button, Typography, IconButton } from '@mui/material';
-import { AttachFile, Audiotrack, Description, PictureAsPdf, Theaters, Clear } from '@mui/icons-material';
-import CloudUploadTwoToneIcon from '@mui/icons-material/CloudUploadTwoTone';
+import BackupTwoToneIcon from '@mui/icons-material/BackupTwoTone';
 
-const useStyles = makeStyles(theme => ({
-  input: {
-    display: 'none',
-  },
-  dropzone: {
-    border: '2px dashed #d7d7d7',
-    borderRadius: theme.shape.borderRadius,
-    padding: theme.spacing(2),
-    textAlign: 'center',
-    cursor: 'pointer',
-  },
-  icon: {
-    fontSize: 24,
-    color: theme.palette.primary.main,
-    marginRight: theme.spacing(1),
-  },
-  buttonContainer: {
-    marginTop: theme.spacing(1),
-    display: 'flex',
-    justifyContent: 'space-between',
+const useStyles = makeStyles((theme) => ({
+  uploadButton: {
+    marginTop: theme.spacing(2),
+   
   },
   fileContainer: {
     display: 'flex',
     alignItems: 'center',
-    marginBottom: theme.spacing(1), // Add margin bottom for spacing between files
-  },
-  fileName: {
-    fontSize: 14, // Decreased font size for selected file text
-    marginRight: theme.spacing(1),
-    flexGrow: 1, // Allow file name to grow and take remaining space
-  },
-  deleteButton: {
-    marginLeft: theme.spacing(1),
+    marginBottom: theme.spacing(1),
   },
 }));
 
@@ -45,26 +21,7 @@ const HomeWorkDragDrop = () => {
   const [selectedFiles, setSelectedFiles] = useState([]);
 
   const handleFileChange = (event) => {
-    setSelectedFiles(Array.from(event.target.files));
-  };
-
-  const handleDragOver = (event) => {
-    event.preventDefault();
-  };
-
-  const handleDrop = (event) => {
-    event.preventDefault();
-    const files = event.dataTransfer.files;
-    setSelectedFiles(Array.from(files));
-  };
-
-  const handleUpload = () => {
-    console.log("Uploading files:", selectedFiles);
-    setSelectedFiles([]);
-  };
-
-  const handleCancel = () => {
-    setSelectedFiles([]);
+    setSelectedFiles([...selectedFiles, ...event.target.files]);
   };
 
   const handleDeleteFile = (index) => {
@@ -73,63 +30,98 @@ const HomeWorkDragDrop = () => {
     setSelectedFiles(newFiles);
   };
 
-  const renderPreviewIcon = (file) => {
-    if (file.type.startsWith("video/")) return <Theaters className={classes.icon} />;
-    if (file.type.startsWith("audio/")) return <Audiotrack className={classes.icon} />;
-    if (file.type === "application/msword" || file.type === "application/vnd.openxmlformats-officedocument.wordprocessingml.document")
-      return <Description className={classes.icon} />;
-    if (file.type === "application/pdf") return <PictureAsPdf className={classes.icon} />;
-    return <AttachFile className={classes.icon} />;
+  const handleFileDrop = (event) => {
+    const droppedFiles = event.dataTransfer.files;
+    const filesArray = Array.from(droppedFiles);
+    setSelectedFiles([...selectedFiles, ...filesArray]);
+  };
+
+  const truncateFileName = (fileName) => {
+    const words = fileName.split(' ');
+    if (words.length > 2) {
+      return words.slice(0, 2).join(' ') + '...';
+    } else {
+      return fileName;
+    }
   };
 
   return (
-    <div style={{ marginTop: '4rem', paddingLeft:'11px', paddingRight:'5px' }}>
-      <div
-        className={classes.dropzone}
-        onDragOver={handleDragOver}
-        onDrop={handleDrop}
-      >
-        <input
-          accept="image/*, audio/*, video/*, application/pdf, .doc, .docx"
-          className={classes.input}
-          id="file-input"
-          type="file"
-          onChange={handleFileChange}
-          multiple
-        />
-        <label htmlFor="file-input">
-          <CloudUploadTwoToneIcon/>
-          <h3>Drag and drop a file here</h3>
-          <Button variant="contained" component="span">
-            Select Files
-          </Button>
-        </label>
-        {selectedFiles.map((file, index) => (
-          <div key={index} className={classes.fileContainer}>
-            <Typography variant="body1" className={classes.fileName}>
-              {file.name}
-            </Typography>
-            {renderPreviewIcon(file)}
-            <IconButton
-              aria-label="delete"
-              onClick={() => handleDeleteFile(index)}
-              className={classes.deleteButton}
+    <div style={{ paddingLeft: '11px', paddingRight: '5px' }}>
+      <div>
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            textAlign: 'center',
+            justifyContent: 'center',
+            paddingTop: '40px'
+          }}
+        >
+          <Box
+            htmlFor="upload-media"
+            onDragOver={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+            }}
+            onDragEnter={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+            }}
+            onDrop={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              handleFileDrop(e);
+            }}
+          >
+            <input
+              type="file"
+              accept="image/*, video/*"
+              onChange={handleFileChange}
+              id="upload-media"
+              style={{ display: 'none' }}
+              multiple // Enable multiple file selection
+            />
+            <Box
+              sx={{
+                border: '2px dashed #ccc',
+                borderRadius: '8px',
+                padding: '20px',
+                width: { xs: '95vw', sm: '600px' },
+                height: '200px'
+              }}
             >
-              <Clear />
-            </IconButton>
-          </div>
-        ))}
+             <Grid>
+             <BackupTwoToneIcon sx={{width:'50px', height:'50px', opacity:'0.5'}}/>
+             <Typography variant="body1" sx={{ fontWeight: 'bold',paddingTop:'12px' }}>Drag & Drop Files Here</Typography>
+             
+              <Button
+                 variant="contained"
+                 color="primary"
+                component="span"
+                className={classes.uploadButton}
+                onClick={() => document.getElementById('upload-media').click()}
+                style={{ marginTop: '25px' }}
+              >
+                Upload Files
+              </Button></Grid>
+            </Box>
+          </Box>
+
+          <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
+            {selectedFiles.map((file, index) => (
+              <Box key={index} className={classes.fileContainer} style={{ width: '100px', marginTop: '20px' }}>
+                <Chip label={truncateFileName(file.name)} variant="outlined" onDelete={() => handleDeleteFile(index)}>
+                  <Typography variant="body1">{file.name}</Typography>
+                  <IconButton color="secondary" onClick={() => handleDeleteFile(index)}>
+                    <CloseIcon />
+                  </IconButton>
+                </Chip>
+              </Box>
+            ))}
+          </Box>
+        </Box>
       </div>
-      {selectedFiles.length > 0 && (
-        <div className={classes.buttonContainer}>
-          <Button variant="contained" onClick={handleUpload}>
-            Upload
-          </Button>
-          <Button variant="contained" color="error" onClick={handleCancel}>
-            Cancel
-          </Button>
-        </div>
-      )}
     </div>
   );
 };
