@@ -127,8 +127,8 @@ const CreateNewDetails = () => {
   };
   const truncateFileName = (fileName) => {
     const words = fileName.split(' ');
-    if (words.length > 1) {
-      return words.slice(0, 1).join(' ') + '...';
+    if (words.length > 3) {
+      return words.slice(0, 3).join(' ') + '...';
     } else {
       return fileName;
     }

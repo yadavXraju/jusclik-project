@@ -38,8 +38,8 @@ const HomeWorkDragDrop = () => {
 
   const truncateFileName = (fileName) => {
     const words = fileName.split(' ');
-    if (words.length > 2) {
-      return words.slice(0, 2).join(' ') + '...';
+    if (words.length > 3) {
+      return words.slice(0, 3).join(' ') + '...';
     } else {
       return fileName;
     }
@@ -87,7 +87,7 @@ const HomeWorkDragDrop = () => {
                 border: '2px dashed #ccc',
                 borderRadius: '8px',
                 padding: '20px',
-                width: { xs: '95vw', sm: '600px' },
+                width: { xs: '90vw', sm: '600px' },
                 height: '200px'
               }}
             >
