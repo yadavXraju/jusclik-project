@@ -67,25 +67,25 @@ const ComponentToPrint = React.forwardRef((props, ref) => {
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
           <h4 style={{ textDecoration: 'underline' }}>Visitor Slip</h4>
         </div>
-        <div style={{display: 'flex', flexDirection: "row", justifyContent: "space-around", alignItems: "center"}}>
+        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center' }}>
           <div style={{ display: 'flex', flexDirection: 'row' }}>
             <ul style={{ listStyle: 'none' }}>
-              <li style={{padding: '10px'}}>{`Visitor No: ${props.user.id}`}</li>
-              <li style={{padding: '10px'}}>{`Visitor Name: ${props.user.label}`}</li>
-              <li style={{padding: '10px'}}>{`Purpose: ${props.user.id}`}</li>
-              <li style={{padding: '10px'}}>{`To meet: ${props.user.id}`}</li>
-              <li style={{padding: '10px'}}>{`Address:  ${props.user.id}`}</li>
+              <li style={{ padding: '10px' }}>{`Visitor No: ${props.user.id}`}</li>
+              <li style={{ padding: '10px' }}>{`Visitor Name: ${props.user.label}`}</li>
+              <li style={{ padding: '10px' }}>{`Purpose: ${props.user.id}`}</li>
+              <li style={{ padding: '10px' }}>{`To meet: ${props.user.id}`}</li>
+              <li style={{ padding: '10px' }}>{`Address:  ${props.user.id}`}</li>
             </ul>
             <ul style={{ listStyle: 'none' }}>
-              <li style={{padding: '10px'}}>{`Category: ${props.user.id}`}</li>
-              <li style={{padding: '10px'}}>{`Remarks: ${props.user.id}`}</li>
-              <li style={{padding: '10px'}}>{`Entry date: ${props.user.id}`}</li>
-              <li style={{padding: '10px'}}>{`Phone: ${props.user.id}`}</li>
-              <li style={{padding: '10px'}}>{`Time in: ${props.user.id}`}</li>
+              <li style={{ padding: '10px' }}>{`Category: ${props.user.id}`}</li>
+              <li style={{ padding: '10px' }}>{`Remarks: ${props.user.id}`}</li>
+              <li style={{ padding: '10px' }}>{`Entry date: ${props.user.id}`}</li>
+              <li style={{ padding: '10px' }}>{`Phone: ${props.user.id}`}</li>
+              <li style={{ padding: '10px' }}>{`Time in: ${props.user.id}`}</li>
             </ul>
           </div>
           <div>
-            <img src={AvatarImage} alt="avatar" style={{height: "90px", width: "auto"}}/>
+            <img src={AvatarImage} alt="avatar" style={{ height: '90px', width: 'auto' }} />
           </div>
         </div>
       </div>
@@ -188,13 +188,12 @@ const VisitorEntry = () => {
                       value={value}
                       onChange={(event, newValue) => {
                         // console.log(event.target.index)
-                        console.log("new value variable ", newValue);
-                        if(newValue != null){
+                        console.log('new value variable ', newValue);
+                        if (newValue != null) {
                           setValue(newValue);
-                        }else{
-                          setValue("")
+                        } else {
+                          setValue('');
                         }
-                        
                       }}
                       inputValue={inputValue}
                       onInputChange={(event, newValue) => {
@@ -376,7 +375,14 @@ const VisitorEntry = () => {
               <Grid item xs={6} sx={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center' }}>
                 <Box>
                   <Box>
-                    <Button component="label" role={undefined} variant="outlined" tabIndex={-1} startIcon={<CloudUploadIcon />} sx={{padding: "12px"}}>
+                    <Button
+                      component="label"
+                      role={undefined}
+                      variant="outlined"
+                      tabIndex={-1}
+                      startIcon={<CloudUploadIcon />}
+                      sx={{ padding: '12px' }}
+                    >
                       Upload Photo
                       <VisuallyHiddenInput type="file" accept="image/*" onChange={handlePhotoChange} />
                     </Button>
@@ -404,7 +410,7 @@ const VisitorEntry = () => {
                       variant="outlined"
                       tabIndex={-1}
                       startIcon={<CloudUploadIcon />}
-                      sx={{padding: "12px"}}
+                      sx={{ padding: '12px' }}
                     >
                       Upload ID proof
                       <VisuallyHiddenInput type="file" accept="image/*" onChange={handleIDChange} />
@@ -442,7 +448,6 @@ const VisitorEntry = () => {
                   </Select>
                 </FormControl>
               </Grid>
-              
             </Grid>
           </Paper>
         </Grid>
