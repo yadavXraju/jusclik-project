@@ -10,6 +10,7 @@ import DocumentScannerTwoToneIcon from '@mui/icons-material/DocumentScannerTwoTo
 import LibraryBooksTwoToneIcon from '@mui/icons-material/LibraryBooksTwoTone';
 import DraftsTwoToneIcon from '@mui/icons-material/DraftsTwoTone';
 import FolderCopyTwoToneIcon from '@mui/icons-material/FolderCopyTwoTone';
+import LocalLibraryTwoToneIcon from '@mui/icons-material/LocalLibraryTwoTone';
 
 
 const ClassTeacherMenu = {
@@ -46,23 +47,72 @@ const ClassTeacherMenu = {
                 ]
               },
 
-               {
-                 id: 'marks-entry-panel',
-                 title: 'Marks',
+
+              {
+                id: 'result',
+                title: 'Result',
+                type: 'collapse',
+                url: '/class-teacher/result',
+                icon: DriveFileRenameOutlineTwoToneIcon,
+                children: [
+
+                  {
+                    id: 'marks-entry-panel',
+                     title: 'Marks',
+                     type: 'item',
+                     url: '/class-teacher/result/marks-entry',
+                     breadcrumbs: false
+                   },
+    
+
+                   {
+                    id: 'co-scholastic',
+                     title: 'Co Scholastic',
+                     type: 'item',
+                     url: '/class-teacher/result/co-scholastic',
+                     breadcrumbs: false
+                   },
+
+                   {
+                    id: 'remark-entry-panel',
+                     title: 'Remark Entry',
+                     type: 'item',
+                     url: '/class-teacher/result/remarks-entry',
+                     breadcrumbs: false
+                   },
+    
+    
+                ]
+              },
+              
+              {
+                 id: 'library',
+                 title: 'Library',
                  type: 'item',
-                 url: '/class-teacher/marks-entry-panel',
-                 icon:  DriveFileRenameOutlineTwoToneIcon,
+                 url: '/class-teacher/library',
+                 icon:  LocalLibraryTwoToneIcon,
                  breadcrumbs: false
                },
 
-               {
-                id: 'co-scholastic',
-                title: 'Co Scholastic',
-                type: 'item',
-                url: '/class-teacher/co-scholastic',
-                icon:  DriveFileRenameOutlineTwoToneIcon,
-                breadcrumbs: false
-              },
+
+
+              //  {
+              //    id: 'marks-entry-panel',
+              //    title: 'Marks',
+              //    type: 'item',
+              //    url: '/class-teacher/marks-entry-panel',
+              //    icon:  DriveFileRenameOutlineTwoToneIcon,
+              //    breadcrumbs: false
+              //  },
+
+              //  {
+              //   id: 'co-scholastic',
+              //   title: 'Co Scholastic',
+              //   type: 'item',
+              //   url: '/class-teacher/co-scholastic',
+              //   icon:  DriveFileRenameOutlineTwoToneIcon,
+              //   breadcrumbs: false
+              // },
             
                {
                  id: 'time-table-entry',

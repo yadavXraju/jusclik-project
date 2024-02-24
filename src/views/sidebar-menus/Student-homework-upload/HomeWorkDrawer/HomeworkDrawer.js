@@ -59,7 +59,7 @@ export default function HomeworkDrawer() {
         <Grid item xs={12}>
           <HomeReplyBox />
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={12} sx={{paddingTop: isMobile ? '30px' : '0px'}}>
           <HomeWorkDragDrop />
         </Grid>
       </Grid>
