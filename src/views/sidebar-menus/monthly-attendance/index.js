@@ -14,7 +14,7 @@ import {
   Grid,
   Badge,
   Avatar,
-  ListItemAvatar,
+  ListItemAvatar
 } from '@mui/material';
 import dayjs from 'dayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
@@ -30,6 +30,7 @@ import AttendanceActions from './AttendanceActions';
 import WarningBox from '../attendance-entry/WarningBox';
 import { styled } from '@mui/material/styles';
 
+// Styled Paper component for custom styling
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
   ...theme.typography.body2,
@@ -38,6 +39,7 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary
 }));
 
+// Styled Badge component for custom styling
 const StyledBadge = styled(Badge)(() => ({
   '& .MuiBadge-badge': {
     opacity: '0.7'
@@ -45,6 +47,7 @@ const StyledBadge = styled(Badge)(() => ({
 }));
 
 export default function AttendanceEntry() {
+  // State variables declaration
   const [selectClass, setSelectClass] = useState('');
   const [selectSection, setSelectSection] = useState('');
   const [selectedAvatars, setSelectedAvatars] = useState({});
@@ -56,11 +59,12 @@ export default function AttendanceEntry() {
   const [selectedMonth, setSelectedMonth] = useState(dayjs());
   const [dates, setDates] = useState([]);
 
-
+  // Function to handle month change
   const handleMonthChange = (date) => {
     setSelectedMonth(date);
   };
 
+  // Function to generate date list for the selected month
   const generateDateList = () => {
     const startDate = selectedMonth.clone().startOf('month');
     const endDate = selectedMonth.clone().endOf('month');
@@ -73,10 +77,12 @@ export default function AttendanceEntry() {
     setDates(datesArray);
   };
 
+  // Effect hook to generate date list when selected month changes
   useEffect(() => {
     generateDateList();
   }, [selectedMonth]);
 
+  // Effect hook to initialize student list and avatar selection
   useEffect(() => {
     const sortedStudentList = [...StudentList].sort((a, b) => a.name.localeCompare(b.name));
     setFilteredStudentList(sortedStudentList);
@@ -93,6 +99,7 @@ export default function AttendanceEntry() {
     setShowWarningBox(absentPercentage > 50);
   }, []);
 
+  // Function to handle class and section change
   const handleChange = (event) => {
     const { name, value } = event.target;
     if (name === 'class') {
@@ -102,25 +109,19 @@ export default function AttendanceEntry() {
     }
   };
 
+  // Function to handle click on avatar
   const handleAvatarClick = (currentAvatar, studentId, date) => {
-    // Define the possible avatar states
     const avatarStates = ['P', 'A', 'L', 'H'];
-
-    // Find the index of the current avatar state
     const currentIndex = avatarStates.indexOf(currentAvatar);
-
-    // Calculate the index of the next avatar state, looping back to the beginning if necessary
     const nextIndex = (currentIndex + 1) % avatarStates.length;
-
-    // Get the next avatar state
     const nextAvatar = avatarStates[nextIndex];
 
-    // Ensure that the selectedAvatars object is initialized for the selected date
+    // Ensure selectedAvatars for the date is properly initialized
     const selectedDateKey = date.format('DD-MM-YYYY');
     const updatedAvatars = {
       ...selectedAvatars,
       [selectedDateKey]: {
-        ...(selectedAvatars[selectedDateKey] || {})
+        ...(selectedAvatars[selectedDateKey] || {}) // Preserve existing avatars for the date
       }
     };
 
@@ -129,57 +130,81 @@ export default function AttendanceEntry() {
 
     // Update the state with the new avatar selection
     setSelectedAvatars(updatedAvatars);
-
   };
 
   const calculateWorkingDays = (student) => {
-    const presentCount = Object.values(selectedAvatars[student.id] || {}).filter((avatar) => avatar === 'P').length;
-    const absentCount = Object.values(selectedAvatars[student.id] || {}).filter((avatar) => avatar === 'A').length;
+    let presentCount = 0;
+    let absentCount = 0;
+
+    // Iterate over dates and count 'P' and 'A' avatars for the student
+    dates.forEach((date) => {
+      const avatar = selectedAvatars[date.format('DD-MM-YYYY')]?.[student.id];
+      if (avatar === 'P') {
+        presentCount++;
+      } else if (avatar === 'A') {
+        absentCount++;
+      }
+    });
+
+    // Calculate total days and format the result
     const totalDays = presentCount + absentCount;
     const presentString = presentCount > 0 ? `${presentCount}P` : '0P';
     const absentString = absentCount > 0 ? `+${absentCount}A` : '+0A';
     return `${presentString}${absentString}=${totalDays} Day${totalDays === 1 ? '' : 's'}`;
   };
 
+  // Function to count selected status
   const countSelectedStatus = (status) => {
     const count = Object.values(selectedAvatars).filter((avatar) => avatar === status).length;
     return count;
   };
 
+  // Function to filter student list based on class and section
   const filterStudentList = (classValue, sectionValue) => {
     const filteredStudents = StudentList.filter((student) => student.class === classValue && student.section === sectionValue);
     setFilteredStudentList(filteredStudents);
   };
 
+  // Function to handle search button click
   const handleSearchClick = () => {
     console.log('Search button clicked');
     filterStudentList(selectClass, selectSection);
   };
 
-  const updateAvatars = (action, date) => {
-    const updatedAvatars = {};
+  const handleActionsConfirm = (selectedAction, date) => {
+    // Ensure date is a valid dayjs object
+    const formattedDate = dayjs(date); // Assuming date is already in the correct format
 
+    // Define a mapping of actions to avatar states
+    const actionToAvatar = {
+      'mark all holiday': 'H',
+      'mark all present': 'P',
+      'mark all absent': 'A'
+    };
+
+    // Get the corresponding avatar state for the selected action
+    const avatarState = actionToAvatar[selectedAction];
+
+    // Update the state with the new avatar selection for each student on the specified date
+    const updatedAvatars = {};
     filteredStudentList.forEach((student) => {
-      updatedAvatars[student.id] = action.charAt(0).toUpperCase();
+      updatedAvatars[student.id] = avatarState;
     });
+
+    // Update the avatar state only for the selected date
     setSelectedAvatars((prevAvatars) => ({
       ...prevAvatars,
-      [date.format('DD-MM-YYYY')]: updatedAvatars
+      [formattedDate.format('DD-MM-YYYY')]: updatedAvatars
     }));
-    setGlobalAttendanceAction(action);
-  };
 
-  const handleActionsConfirm = (selectedAction, date) => {
-    if (selectedAction === 'mark all holiday') {
-      updateAvatars('H', date);
-    } else if (selectedAction === 'mark all present') {
-      updateAvatars('P', date);
-    } else if (selectedAction === 'mark all absent') {
-      updateAvatars('A', date);
-    }
+    // Set the global attendance action
+    setGlobalAttendanceAction(selectedAction);
+
+    // Close the confirmation dialog
     setConfirmationDialogOpen(false);
   };
 
+  // Effect hook to filter sections when class changes
   useEffect(() => {
     const filteredSections = SectionList.filter((section) => section.class === selectClass);
     setFilteredSections(filteredSections);
@@ -188,6 +213,7 @@ export default function AttendanceEntry() {
 
   return (
     <Box>
+      {/* Month selection */}
       <Box>
         <Paper sx={{ borderRadius: '30px' }}>
           <Box sx={{ minWidth: 250, display: 'flex', alignItems: 'baseline', p: 2 }}>
@@ -201,6 +227,8 @@ export default function AttendanceEntry() {
                 slots={{ openPickerIcon: CalendarMonthTwoToneIcon }}
               />
             </LocalizationProvider>
+
+            {/* Class selection */}
             <FormControl sx={{ m: 1, minWidth: 250 }}>
               <InputLabel id="class-select-label">Select Class</InputLabel>
               <Select
@@ -219,6 +247,7 @@ export default function AttendanceEntry() {
               </Select>
             </FormControl>
 
+            {/* Section selection */}
             <FormControl sx={{ minWidth: 250 }}>
               <InputLabel id="section-select-label">Select Section</InputLabel>
               <Select
@@ -237,6 +266,7 @@ export default function AttendanceEntry() {
               </Select>
             </FormControl>
 
+            {/* Search button */}
             <Button
               variant="contained"
               startIcon={<SearchTwoToneIcon />}
@@ -249,6 +279,7 @@ export default function AttendanceEntry() {
         </Paper>
       </Box>
 
+      {/* Avatars legend */}
       <Box sx={{ mt: 1 }}>
         <Paper sx={{ mb: 1, display: 'flex' }}>
           <Grid
@@ -260,6 +291,8 @@ export default function AttendanceEntry() {
             alignItems="Center"
             columnSpacing={{ xs: 1, sm: 2, md: 3 }}
           >
+            {/* Render avatars legend */}
+            {/* H */}
             <Grid item>
               <Item>
                 <Typography variant="h4" color="#364152" display="flex" alignItems="center">
@@ -281,6 +314,7 @@ export default function AttendanceEntry() {
                 </Typography>
               </Item>
             </Grid>
+            {/* P */}
             <Grid item>
               <Item>
                 <Typography variant="h4" color="#364152" display="flex" alignItems="center">
@@ -302,6 +336,7 @@ export default function AttendanceEntry() {
                 </Typography>
               </Item>
             </Grid>
+            {/* A */}
             <Grid item>
               <Item>
                 <Typography variant="h4" color="#364152" display="flex" alignItems="center">
@@ -323,6 +358,7 @@ export default function AttendanceEntry() {
                 </Typography>
               </Item>
             </Grid>
+            {/* L */}
             <Grid item>
               <Item>
                 <Typography variant="h4" color="#364152" display="flex" alignItems="center">
@@ -349,6 +385,7 @@ export default function AttendanceEntry() {
       </Box>
 
       <Box sx={{ mt: 1 }}>
+        {/* Warning box for high absent percentage */}
         <WarningBox
           showWarning={showWarningBox}
           onClose={() => setShowWarningBox(false)}
@@ -357,6 +394,7 @@ export default function AttendanceEntry() {
         />
       </Box>
 
+      {/* Student list */}
       <Box>
         <Paper sx={{ listStyleType: 'none' }}>
           <Grid container>
@@ -381,6 +419,7 @@ export default function AttendanceEntry() {
                   <Divider />
                 </Box>
                 <Divider />
+                {/* Render filtered student list */}
                 {filteredStudentList.map((student) => (
                   <React.Fragment key={student.id}>
                     <Box sx={{ display: 'flex', alignItems: 'center', p: 2 }}>
@@ -403,9 +442,24 @@ export default function AttendanceEntry() {
               </Box>
             </Grid>
 
+            {/* Right section for avatar selection */}
             <Grid item xs={8}>
-              <Box sx={{ display: 'flex', flexDirection: 'column', overflow: 'auto' }}>
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  overflow: 'auto',
+                  '&::-webkit-scrollbar': {
+                    height: 7 // Set the height of the scrollbar to 0 to hide it
+                  },
+                  '&::-webkit-scrollbar-thumb': {
+                    backgroundColor: '#90caf9', // Set the height of the scrollbar to 0 to hide it
+                    borderRadius: '10px'
+                  }
+                }}
+              >
                 <Box sx={{ flex: '0 0 70%', display: 'flex' }}>
+                  {/* Render date headers */}
                   {dates.map((date) => (
                     <ListItem
                       key={date.format('DD-MM-YYYY')}
@@ -428,7 +482,7 @@ export default function AttendanceEntry() {
                           <AttendanceActions
                             open={isConfirmationDialogOpen}
                             action={globalAttendanceAction}
-                            onConfirm={handleActionsConfirm}
+                            onConfirm={(action) => handleActionsConfirm(action, date)} // Pass the selected date to the handleActionsConfirm function
                             date={date}
                           />
                         </Typography>
@@ -454,34 +508,30 @@ export default function AttendanceEntry() {
                             <Avatar
                               sx={{
                                 bgcolor:
-                                  selectedAvatars[date.format('DD-MM-YYYY')]?.[student.id] === 'P'
-                                    ? '#7bc67b'
-                                    : selectedAvatars[date.format('DD-MM-YYYY')]?.[student.id] === 'A'
-                                    ? '#e2526b'
-                                    : selectedAvatars[date.format('DD-MM-YYYY')]?.[student.id] === 'L'
-                                    ? '#eeb058'
-                                    : '#7dceeb80',
+                                  {
+                                    P: '#7bc67b',
+                                    A: '#e2526b',
+                                    L: '#eeb058'
+                                  }[selectedAvatars[date.format('DD-MM-YYYY')]?.[student.id]] || '#7dceeb80',
                                 '&:hover': {
                                   bgcolor:
-                                    selectedAvatars[date.format('DD-MM-YYYY')]?.[student.id] === 'P'
-                                      ? '#7bc67b'
-                                      : selectedAvatars[date.format('DD-MM-YYYY')]?.[student.id] === 'A'
-                                      ? '#e2526b'
-                                      : selectedAvatars[date.format('DD-MM-YYYY')]?.[student.id] === 'L'
-                                      ? '#eeb058'
-                                      : '#7dceeb'
+                                    {
+                                      P: '#7bc67b',
+                                      A: '#e2526b',
+                                      L: '#eeb058'
+                                    }[selectedAvatars[date.format('DD-MM-YYYY')]?.[student.id]] || '#7dceeb'
                                 },
                                 width: 40,
                                 height: 40,
                                 cursor: 'pointer',
-                                color: '#000000',
+                                color: '#000',
                                 fontWeight: 500
                               }}
                               onClick={() =>
                                 handleAvatarClick(selectedAvatars[date.format('DD-MM-YYYY')]?.[student.id] || 'H', student.id, date)
-                              } // Select Present avatar
+                              }
                             >
-                              {selectedAvatars[date.format('DD-MM-YYYY')]?.[student.id] || 'H'} {/* Display selected avatar or "H" */}
+                              {selectedAvatars[date.format('DD-MM-YYYY')]?.[student.id] || 'H'}
                             </Avatar>
                           </div>
                         </React.Fragment>
