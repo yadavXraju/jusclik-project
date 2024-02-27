@@ -7,8 +7,8 @@ import 'react-quill/dist/quill.snow.css';
 const useStyles = makeStyles((theme) => ({
   editorContainer: {
     marginTop: theme.spacing(2),
-    marginBottom: theme.spacing(2),
-  },
+    marginBottom: theme.spacing(2)
+  }
 }));
 
 const TextEditor = ({ value, onChange }) => {
@@ -22,19 +22,22 @@ const TextEditor = ({ value, onChange }) => {
 
   const modules = {
     toolbar: [
-      
-      ['bold', 'italic', 'underline', 'strike', { color: [] }, { background: [] },{ list: 'ordered' }, { list: 'bullet' }],
+      ['bold', 'italic', 'underline', 'strike', { color: [] }, { background: [] }, { list: 'ordered' }, { list: 'bullet' }],
       [{ header: [1, 2, 3, 4, false] }],
-      [{ font: [] }],
+      [{ font: [] }]
       // [{ size: ['10px', '12px', '14px', '16px', '18px', '20px', '24px', '28px', '32px', '36px'] }]
-    ],
+    ]
   };
 
   return (
-    <Box className={classes.editorContainer} >
-  
+    <Box className={classes.editorContainer}>
       <ReactQuill
-        style={{ height: isMobile ? '150px' : '200px', paddingLeft:'11px', paddingRight:'3px' }}
+        style={{
+          height: isMobile ? '150px' : '200px',
+          paddingLeft: '11px',
+          paddingRight: '3px',
+          paddingBottom: isMobile ? '25px' : '0px',
+        }}
         value={value}
         onChange={handleEditorChange}
         theme="snow"
