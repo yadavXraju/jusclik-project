@@ -1,14 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { CssBaseline, Box, List, ListItem, ListItemAvatar, Avatar, ListItemIcon, ListItemText, Divider, Typography, Button, InputBase, ThemeProvider, createTheme, IconButton, Popover, MenuItem, Grid, Paper } from '@mui/material';
-import TablePagination from '@mui/material/TablePagination';
-import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
+import { CssBaseline, Box, List, ListItem, ListItemAvatar, Avatar, ListItemIcon, ListItemText, Divider, Typography, InputBase, ThemeProvider, createTheme, Paper } from '@mui/material';
 import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
-import SearchIcon from '@mui/icons-material/Search';
-import FilterListIcon from '@mui/icons-material/FilterList';
 import MailCompose from './MailCompose';
 import { styled } from '@mui/system';
 import { useNavigate, useLocation } from 'react-router';
 import AvtarImg from '../../../../assets/images/avatar.png'
+import InboxHeader from './InboxHeader';
 
 
 
@@ -195,6 +192,13 @@ const GmailInboxTemplate = () => {
     filterData(filterValue, filterValue);
   };
 
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+  const id = open ? 'simple-popover' : undefined;
+
   // Navigation hook
   const navigate = useNavigate();
 
@@ -220,70 +224,31 @@ const GmailInboxTemplate = () => {
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
         <CssBaseline />
         {/* Header Section */}
-        <Box
-          sx={{
-            padding: '20px',
-            borderBottom: `1px solid ${theme.palette.divider}`,
-            backgroundColor: theme.palette.background.paper,
-          }}
-        >
-          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <Grid sx={{display:'inline-flex'}}>
-              <ComposeButtonWrapper onClick={handleComposeOpen}>
-                <Button variant="contained" color="primary">
-                  <AddCircleOutlineOutlinedIcon sx={{ marginRight: '7px' }} />
-                  Compose
-                </Button>
-              </ComposeButtonWrapper>
-              <FilterWrapper>
-                <IconButton
-                  aria-label="Filter"
-                  onClick={handleFilterClick}
-                  color={currentFilter === 'important' ? 'primary' : 'default'}
-                >
-                  <FilterListIcon />
-                </IconButton>
-                <Popover
-                  open={Boolean(anchorEl)}
-                  anchorEl={anchorEl}
-                  onClose={handleFilterClose}
-                >
-                  <Box sx={{ p: 2 }}>
-                    <MenuItem onClick={() => handleFilterSelect('name')}>Name</MenuItem>
-                    <MenuItem onClick={() => handleFilterSelect('date')}>Date</MenuItem>
-                    <MenuItem onClick={() => handleFilterSelect('unread')}>Unread</MenuItem>
-                    <MenuItem onClick={() => handleFilterSelect('important')}>Important</MenuItem>
-                  </Box>
-                </Popover>
-              </FilterWrapper>
-            </Grid>
-            <Grid sx={{ display: 'inline-flex' }}>
-              {/* Search Section */}
-              <SearchWrapper sx={{display:'flex'}}>
-                <SearchIconWrapper>
-                  <SearchIcon />
-                </SearchIconWrapper>
-                <StyledInputBase
-                  placeholder="Search…"
-                  inputProps={{ 'aria-label': 'search' }}
-                  value={searchQuery}
-                  onChange={handleSearchChange}
-                  inputRef={searchInputRef}
-                />
-              </SearchWrapper>
-              {/* Pagination Section */}
-              <TablePagination
-                component="div"
-                count={(searchResults.length || initialData.length)}
-                page={page}
-                onPageChange={handleChangePage}
-                rowsPerPage={rowsPerPage}
-                onRowsPerPageChange={handleChangeRowsPerPage}
-                labelRowsPerPage="Pages"
-              />
-            </Grid>
-          </Box>
-        </Box>
+        <InboxHeader
+            theme={theme}
+            handleComposeOpen={handleComposeOpen}
+            handleFilterClick={handleFilterClick}
+            currentFilter={currentFilter}
+            anchorEl={anchorEl}
+            handleFilterClose={handleFilterClose}
+            handleFilterSelect={handleFilterSelect}
+            searchQuery={searchQuery}
+            handleSearchChange={handleSearchChange}
+            searchInputRef={searchInputRef}
+            searchResults={searchResults}
+            initialData={initialData}
+            page={page}
+            handleChangePage={handleChangePage}
+            rowsPerPage={rowsPerPage}
+            handleChangeRowsPerPage={handleChangeRowsPerPage}
+            ComposeButtonWrapper={ComposeButtonWrapper}
+            FilterWrapper={FilterWrapper}
+            SearchWrapper={SearchWrapper}
+            SearchIconWrapper={SearchIconWrapper}
+            StyledInputBase={StyledInputBase}
+            handleClose={handleClose} 
+            id={id} 
+          />
         {/* Main Content Section */}
         <Box sx={{ flexGrow: 1, overflowY: 'auto' }}>
           {(searchResults.length > 0 || searchQuery === '') && (
