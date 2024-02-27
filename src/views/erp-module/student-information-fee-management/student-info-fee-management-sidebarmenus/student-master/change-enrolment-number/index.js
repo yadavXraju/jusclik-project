@@ -29,6 +29,8 @@ const ChangeEnrolmentNumber = () => {
     }
     setState({ ...state, [anchor]: open });
   };
+ 
+
 
   const handleSearchClick = () => {
     const toggleRightDrawer = toggleDrawer('right', true);
