@@ -109,4 +109,3 @@ const fetchTimeTableData = async () => {
 const timeTableData1 = fetchTimeTableData();
 
 export default timeTableData1;
-
