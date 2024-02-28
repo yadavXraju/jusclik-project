@@ -23,7 +23,7 @@ function AvatarLegend({ legendItems }) {
       >
         {legendItems.map((item) => (
           <Grid item key={item.avatar}>
-            <Paper sx={{ padding: '10px' }}>
+            <Paper sx={{ pt: '10px' }}>
               <Typography variant="h4" color="#364152" display="flex" alignItems="center">
                 <StyledBadge color="primary" overlap="circular" badgeContent={item.badgeContent}>
                   <Avatar

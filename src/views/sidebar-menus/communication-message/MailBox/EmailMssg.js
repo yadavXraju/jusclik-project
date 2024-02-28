@@ -1,4 +1,3 @@
-// Message.jsx
 import React, { useState } from 'react';
 import { Box, Typography, Avatar, Paper, IconButton, Button } from '@mui/material';
 import ArrowBackIosNewOutlinedIcon from '@mui/icons-material/ArrowBackIosNewOutlined';
@@ -13,7 +12,7 @@ import ReplyForwardBox from './ReplyForwardBox';
 const Message = () => {
     const currentDate = new Date().toLocaleDateString();
     const [emailData, setEmailData] = useState(null);
-    const [isBoxVisible, setIsBoxVisible] = useState(true);
+    const [isBoxVisible, setIsBoxVisible] = useState(false);
 
     // Function to handle the received data from MailCompose
     const handleEmailSend = (data) => {
@@ -22,29 +21,29 @@ const Message = () => {
     };
 
     const handleReply = () => {
-        if (emailData) {
-            const replyContent = `Replying to: ${emailData?.from}\n\n${emailData?.message}`;
-            const replyData = {
-                to: emailData?.fromEmail,
-                subject: `Re: ${emailData?.subject}`,
-                message: replyContent,
-            };
-            setIsBoxVisible(true);
-            setEmailData(replyData);
-        }
+        // if (emailData) {
+        //     const replyContent = `Replying to: ${emailData?.from}\n\n${emailData?.message}`;
+        //     const replyData = {
+        //         to: emailData?.fromEmail,
+        //         subject: `Re: ${emailData?.subject}`,
+        //         message: replyContent,
+        //     };
+        //     setEmailData(replyData);
+        // }
+        setIsBoxVisible(true);
     };
 
     const handleForward = () => {
-        if (emailData) {
-            const forwardContent = `Forwarding: ${emailData?.from}\n\n${emailData?.message}`;
-            const forwardData = {
-                subject: `Fwd: ${emailData?.subject}`,
-                message: forwardContent,
-                to: '', // Provide a default value or leave it empty based on your requirements
-            };
-            setIsBoxVisible(true);
-            setEmailData(forwardData);
-        }
+        // if (emailData) {
+        //     const forwardContent = `Forwarding: ${emailData?.from}\n\n${emailData?.message}`;
+        //     const forwardData = {
+        //         subject: `Fwd: ${emailData?.subject}`,
+        //         message: forwardContent,
+        //         to: '', // Provide a default value or leave it empty based on your requirements
+        //     };
+        //     setEmailData(forwardData);
+        // }
+        setIsBoxVisible(true);
     };
 
 
