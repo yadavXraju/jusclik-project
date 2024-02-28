@@ -6,6 +6,7 @@ import WelcomeTotalVisitor from './welcome-visitor-today-visitor-total-visitor';
 import VisitorProfile from './profile/Profile';
 import HourlyVisior from './hourly-visitor';
 import FrequentlyReturningVisitor from './frequently-returning-visitors/index.';
+import LastThirtyDayVisitor from './last-thirty-day-visitor';
 
 
 const Dashboard = ({ isLoading }) => {
@@ -45,9 +46,15 @@ const Dashboard = ({ isLoading }) => {
             <HourlyVisior isLoading={isLoading} />
           </Grid>
 
-                 {/* frequently returning visitors */}
+           {/* frequently returning visitors */}
           <Grid item xs={12} lg={5}  md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
               <FrequentlyReturningVisitor isLoading={isLoading} /> 
+          </Grid>
+
+
+           {/* last thirty day  visitors */}
+           <Grid item xs={12} lg={12}  md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
+              <LastThirtyDayVisitor isLoading={isLoading} /> 
           </Grid>
 
         </Grid>

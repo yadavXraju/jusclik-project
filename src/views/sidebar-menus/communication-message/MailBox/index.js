@@ -1,38 +1,18 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { CssBaseline, Box, List, ListItem, ListItemAvatar, Avatar, ListItemIcon, ListItemText, Divider, Typography, Button, InputBase, ThemeProvider, createTheme, IconButton, Popover, MenuItem, Grid, Paper } from '@mui/material';
-import TablePagination from '@mui/material/TablePagination';
-import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
+import { CssBaseline, Box, List, ListItem, ListItemAvatar, Avatar, ListItemIcon, ListItemText, Divider, Typography, InputBase, ThemeProvider, createTheme, Paper } from '@mui/material';
 import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
-import SearchIcon from '@mui/icons-material/Search';
-import FilterListIcon from '@mui/icons-material/FilterList';
 import MailCompose from './MailCompose';
 import { styled } from '@mui/system';
 import { useNavigate, useLocation } from 'react-router';
 import AvtarImg from '../../../../assets/images/avatar.png'
+import InboxHeader from './InboxHeader';
+import initialData from './InboxNameList';
 
 
 
 const theme = createTheme();
 
-// Sample data for initial inbox messages
-export const initialData = [
-  { id: 1, name: 'John Doe', role: 'Website Developer', message: 'Lorem ipsum dolor sit amet 1', unread: false, important: true },
-  { id: 2, name: 'Jane Smith', role: 'Software Developer', message: 'Lorem ipsum dolor sit amet 2', unread: true, important: false },
-  { id: 3, name: 'Bob Johnson', role: 'Front-end Developer', message: 'Lorem ipsum dolor sit amet 3', unread: false, important: true },
-  { id: 4, name: 'Alice Williams', role: 'Developer', message: 'Lorem ipsum dolor sit amet 4', unread: true, important: false },
-  { id: 5, name: 'Charlie Brown', role: 'Manager', message: 'Lorem ipsum dolor sit amet 5', unread: false, important: true },
-  { id: 6, name: 'Eva Davis', role: 'CEO', message: 'Lorem ipsum dolor sit amet 6', unread: false, important: false },
-  { id: 7, name: 'Frank White', role: 'Managing Director', message: 'Lorem ipsum dolor sit amet 7', unread: true, important: true },
-  { id: 8, name: 'Grace Miller', role: 'Businessman', message: 'Lorem ipsum dolor sit amet 8', unread: false, important: false },
-  { id: 9, name: 'Henry Jackson', role: 'Developer', message: 'Lorem ipsum dolor sit amet 9', unread: true, important: true },
-  { id: 10, name: 'Ivy Lee', role: 'Developer', message: 'Lorem ipsum dolor sit amet 10', unread: false, important: false },
-  { id: 11, name: 'Charlie Brown', role: 'Developer', message: 'Lorem ipsum dolor sit amet 5', unread: false, important: true },
-  { id: 12, name: 'Eva Davis', role: 'Developer', message: 'Lorem ipsum dolor sit amet 6', unread: false, important: false },
-  { id: 13, name: 'Frank White', role: 'Developer', message: 'Lorem ipsum dolor sit amet 7', unread: true, important: true },
-  { id: 14, name: 'Grace Miller', role: 'Developer', message: 'Lorem ipsum dolor sit amet 8', unread: false, important: false },
-  { id: 15, name: 'Henry Jackson', role: 'Developer', message: 'Lorem ipsum dolor sit amet 9', unread: true, important: true },
-  { id: 16, name: 'Ivy Lee', role: 'Developer', message: 'Lorem ipsum dolor sit amet 10', unread: false, important: false },
-];
+
 
 const GmailInboxTemplate = () => {
   const searchInputRef = useRef(null);
@@ -195,6 +175,13 @@ const GmailInboxTemplate = () => {
     filterData(filterValue, filterValue);
   };
 
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+  const id = open ? 'simple-popover' : undefined;
+
   // Navigation hook
   const navigate = useNavigate();
 
@@ -220,70 +207,31 @@ const GmailInboxTemplate = () => {
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
         <CssBaseline />
         {/* Header Section */}
-        <Box
-          sx={{
-            padding: '20px',
-            borderBottom: `1px solid ${theme.palette.divider}`,
-            backgroundColor: theme.palette.background.paper,
-          }}
-        >
-          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <Grid sx={{display:'inline-flex'}}>
-              <ComposeButtonWrapper onClick={handleComposeOpen}>
-                <Button variant="contained" color="primary">
-                  <AddCircleOutlineOutlinedIcon sx={{ marginRight: '7px' }} />
-                  Compose
-                </Button>
-              </ComposeButtonWrapper>
-              <FilterWrapper>
-                <IconButton
-                  aria-label="Filter"
-                  onClick={handleFilterClick}
-                  color={currentFilter === 'important' ? 'primary' : 'default'}
-                >
-                  <FilterListIcon />
-                </IconButton>
-                <Popover
-                  open={Boolean(anchorEl)}
-                  anchorEl={anchorEl}
-                  onClose={handleFilterClose}
-                >
-                  <Box sx={{ p: 2 }}>
-                    <MenuItem onClick={() => handleFilterSelect('name')}>Name</MenuItem>
-                    <MenuItem onClick={() => handleFilterSelect('date')}>Date</MenuItem>
-                    <MenuItem onClick={() => handleFilterSelect('unread')}>Unread</MenuItem>
-                    <MenuItem onClick={() => handleFilterSelect('important')}>Important</MenuItem>
-                  </Box>
-                </Popover>
-              </FilterWrapper>
-            </Grid>
-            <Grid sx={{ display: 'inline-flex' }}>
-              {/* Search Section */}
-              <SearchWrapper sx={{display:'flex'}}>
-                <SearchIconWrapper>
-                  <SearchIcon />
-                </SearchIconWrapper>
-                <StyledInputBase
-                  placeholder="Search…"
-                  inputProps={{ 'aria-label': 'search' }}
-                  value={searchQuery}
-                  onChange={handleSearchChange}
-                  inputRef={searchInputRef}
-                />
-              </SearchWrapper>
-              {/* Pagination Section */}
-              <TablePagination
-                component="div"
-                count={(searchResults.length || initialData.length)}
-                page={page}
-                onPageChange={handleChangePage}
-                rowsPerPage={rowsPerPage}
-                onRowsPerPageChange={handleChangeRowsPerPage}
-                labelRowsPerPage="Pages"
-              />
-            </Grid>
-          </Box>
-        </Box>
+        <InboxHeader
+            theme={theme}
+            handleComposeOpen={handleComposeOpen}
+            handleFilterClick={handleFilterClick}
+            currentFilter={currentFilter}
+            anchorEl={anchorEl}
+            handleFilterClose={handleFilterClose}
+            handleFilterSelect={handleFilterSelect}
+            searchQuery={searchQuery}
+            handleSearchChange={handleSearchChange}
+            searchInputRef={searchInputRef}
+            searchResults={searchResults}
+            initialData={initialData}
+            page={page}
+            handleChangePage={handleChangePage}
+            rowsPerPage={rowsPerPage}
+            handleChangeRowsPerPage={handleChangeRowsPerPage}
+            ComposeButtonWrapper={ComposeButtonWrapper}
+            FilterWrapper={FilterWrapper}
+            SearchWrapper={SearchWrapper}
+            SearchIconWrapper={SearchIconWrapper}
+            StyledInputBase={StyledInputBase}
+            handleClose={handleClose} 
+            id={id} 
+          />
         {/* Main Content Section */}
         <Box sx={{ flexGrow: 1, overflowY: 'auto' }}>
           {(searchResults.length > 0 || searchQuery === '') && (

@@ -6,7 +6,7 @@ import AttachmentOutlinedIcon from '@mui/icons-material/AttachmentOutlined';
 import ReplyIcon from '@mui/icons-material/Reply';
 import ForwardIcon from '@mui/icons-material/Forward';
 import { useNavigate } from 'react-router';
-import { initialData } from '.';
+import initialData from './InboxNameList';
 import AvtarImg from '../../../../assets/images/avatar.png';
 import ReplyForwardBox from './ReplyForwardBox';
 

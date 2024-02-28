@@ -3,7 +3,7 @@ import { Popover, List, ListItem, ListItemButton, ListItemText, Typography, Avat
 import ConfirmAlert from './ConfirmAlert';
 import KeyboardArrowDownOutlinedIcon from '@mui/icons-material/KeyboardArrowDownOutlined';
 
-export default function AttendanceActions({ date, selectedAvatars = {}, setSelectedAvatars }) {
+export default function AttendanceActions({ date, selectedAvatars = {}, setSelectedAvatars,onConfirm }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [selectedAction, setSelectedAction] = React.useState('');
 
@@ -16,6 +16,7 @@ export default function AttendanceActions({ date, selectedAvatars = {}, setSelec
     // Implement confirmation logic here if needed
     // For example, updating state, making API calls, etc.
     setSelectedAction(''); // Reset selected action after confirming
+    onConfirm(selectedAction);
     setAnchorEl(null); // Close the popover
   };
 
