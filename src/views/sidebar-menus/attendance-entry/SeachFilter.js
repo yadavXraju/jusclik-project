@@ -1,11 +1,12 @@
 import React from 'react';
-import { Paper, Box, FormControl, InputLabel, Select, MenuItem, Button } from '@mui/material';
+import { Paper, Box, FormControl, InputLabel, Select, MenuItem, Button, useMediaQuery } from '@mui/material';
 import SearchTwoToneIcon from '@mui/icons-material/SearchTwoTone';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DatePicker } from '@mui/x-date-pickers';
 import CalendarMonthTwoToneIcon from '@mui/icons-material/CalendarMonthTwoTone';
 import PropTypes from 'prop-types';
+import { useTheme } from '@emotion/react';
 
 export default function SearchFilterBox({
   selectClass,
@@ -19,11 +20,14 @@ export default function SearchFilterBox({
   datePickerValue,
   datePickerOpenTo,
   datePickerViews,
-  handleMonthChange 
+  handleMonthChange
 }) {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+
   return (
     <Paper sx={{ borderRadius: '30px' }}>
-      <Box sx={{ display: 'flex',flexWrap:'wrap', alignItems: 'baseline', p: 2, gap:1 }}>
+      <Box sx={{ display: 'flex', flexWrap: 'wrap', alignItems: 'baseline', p: 2, gap: 1, justifyContent: isMobile ? 'center' : 'left' }}>
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <DatePicker
             label={datePickerLabel}
@@ -35,7 +39,7 @@ export default function SearchFilterBox({
             sx={{ minWidth: '250px' }}
           />
         </LocalizationProvider>
-        <FormControl sx={{  minWidth: 250 }}>
+        <FormControl sx={{ minWidth: 250 }}>
           <InputLabel id="class-select-label">Select Class</InputLabel>
           <Select
             name="class"
@@ -74,7 +78,7 @@ export default function SearchFilterBox({
         <Button
           variant="contained"
           startIcon={<SearchTwoToneIcon />}
-          sx={{ height: '50px', borderRadius: '12px', margin: '8px' }}
+          sx={{ height: '50px', borderRadius: '12px', width: isMobile ? '250px' : '100px' }}
           onClick={handleSearchClick}
         >
           Search
@@ -85,16 +89,17 @@ export default function SearchFilterBox({
 }
 
 SearchFilterBox.propTypes = {
-    selectClass: PropTypes.string.isRequired, // The selected class.
-    selectSection: PropTypes.string.isRequired, // The selected section.
-    filteredSections: PropTypes.array.isRequired, // The list of filtered sections.
-    ClassList: PropTypes.array.isRequired, // The list of available classes.
-    SectionList: PropTypes.array.isRequired, // The list of available sections.
-    handleChange: PropTypes.func.isRequired, // Function to handle changes in class or section selection.
-    handleSearchClick: PropTypes.func.isRequired, // Function to handle the search button click event.
-    datePickerLabel: PropTypes.string.isRequired, // The label for the date picker.
-    datePickerValue: PropTypes.instanceOf(Date).isRequired, // The value of the date picker.
-    datePickerOpenTo: PropTypes.oneOf(['month']).isRequired, // The initial view for the date picker ('month' or 'year').
-    datePickerViews: PropTypes.arrayOf(PropTypes.oneOf(['month', 'year'])).isRequired, // The views available for the date picker ('month', 'year').
-    handleMonthChange: PropTypes.func.isRequired // Function to handle month changes in the date picker.
-  };
+  theme: PropTypes.object.isRequired, // Theme object from Material-UI
+  selectClass: PropTypes.string.isRequired,
+  selectSection: PropTypes.string.isRequired,
+  filteredSections: PropTypes.array.isRequired,
+  ClassList: PropTypes.array.isRequired,
+  SectionList: PropTypes.array.isRequired,
+  handleChange: PropTypes.func.isRequired,
+  handleSearchClick: PropTypes.func.isRequired,
+  datePickerLabel: PropTypes.string.isRequired,
+  datePickerValue: PropTypes.instanceOf(Date).isRequired,
+  datePickerOpenTo: PropTypes.oneOf(['month']).isRequired,
+  datePickerViews: PropTypes.arrayOf(PropTypes.oneOf(['month', 'year'])).isRequired,
+  handleMonthChange: PropTypes.func.isRequired
+};

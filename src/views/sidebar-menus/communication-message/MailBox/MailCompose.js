@@ -204,7 +204,7 @@ const MailCompose = ({ open, onClose, onSend, emailData }) => {
           />
           <Box>
             <Typography
-              style={{ marginTop: '50px', fontSize: '12px', color: isCharacterLimitReached ? 'red' : 'inherit' }}
+              style={{ marginTop: '70px', fontSize: '12px', color: isCharacterLimitReached ? 'red' : 'inherit' }}
             >
               Length: {wordCount} (max Character Limit: {maxCharacterLimit})
             </Typography>

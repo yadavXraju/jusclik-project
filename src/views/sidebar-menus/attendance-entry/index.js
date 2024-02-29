@@ -9,7 +9,8 @@ import {
   Stack,
   Paper,
   Grid,
-  Avatar
+  Avatar,
+  useMediaQuery
 } from '@mui/material';
 import AvtarImg from '../../../assets/images/avatar.png';
 import { ClassList } from './ClassList';
@@ -20,6 +21,7 @@ import WarningBox from './WarningBox';
 import { styled } from '@mui/material/styles';
 import AvatarLegend from './AvatarLegend'; 
 import SearchFilterBox from './SeachFilter';
+import { useTheme } from '@emotion/react';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -38,6 +40,9 @@ export default function AttendanceEntry() {
   const [globalAttendanceAction, setGlobalAttendanceAction] = useState('');
   const [showWarningBox, setShowWarningBox] = useState(false);
   const [filteredSections, setFilteredSections] = useState([]);
+
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
   // Initialize filteredStudentList with the original StudentList when the component mounts, sorted alphabetically by student name
   useEffect(() => {
@@ -166,7 +171,7 @@ export default function AttendanceEntry() {
                 />
               </Item>
             </Grid>
-            <Grid item sx={{ marginRight: '40px' }}>
+            <Grid item sx={{marginRight: isMobile ? '0px' : '40px',display:'flex', alignItems:'center' }}>
               <Item>
                 <TakeAttendance
                   onConfirm={handleActionsConfirm}

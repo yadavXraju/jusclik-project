@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Divider, Typography, ListItem, ListItemText, Paper, Grid, Avatar, ListItemAvatar } from '@mui/material';
+import { Box, Divider, Typography, ListItem, ListItemText, Paper, Grid, Avatar, ListItemAvatar, useMediaQuery } from '@mui/material';
 import dayjs from 'dayjs';
 import AvtarImg from '../../../assets/images/avatar.png';
+import { useTheme } from '@emotion/react';
 import { ClassList } from '../attendance-entry/ClassList';
 import { SectionList } from '../attendance-entry/SectionList';
 import { StudentList } from '../attendance-entry/StudentList';
@@ -32,6 +33,9 @@ export default function AttendanceEntry() {
   const [filteredSections, setFilteredSections] = useState([]);
   const [selectedMonth, setSelectedMonth] = useState(dayjs());
   const [dates, setDates] = useState([]);
+
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
   // Function to handle month change
   const handleMonthChange = (date) => {
@@ -201,7 +205,7 @@ export default function AttendanceEntry() {
             datePickerLabel={'Select-Month'}
             datePickerValue={selectedMonth}
             datePickerOpenTo={'month'}
-            datePickerViews={['month', 'year']} 
+            datePickerViews={['month', 'year']}
             handleMonthChange={handleMonthChange}
           />
         </Paper>
@@ -242,9 +246,9 @@ export default function AttendanceEntry() {
       <Box>
         <Paper sx={{ listStyleType: 'none' }}>
           <Grid container>
-            <Grid item xs={4}>
+            <Grid item xs={10} md={6} sm={8} lg={4}>
               <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-                <Box sx={{ display: 'flex', mt: 4 }}>
+                <Box sx={{ display: 'flex', marginTop: isMobile ? '12px' : '32px' }}>
                   <ListItem>
                     <ListItemText sx={{ flex: '0 0 30%' }}>
                       <Typography variant="h4" color="text.primary">
@@ -287,7 +291,7 @@ export default function AttendanceEntry() {
             </Grid>
 
             {/* Right section for avatar selection */}
-            <Grid item xs={8}>
+            <Grid item xs={2} md={6} sm={4} lg={8}>
               <Box
                 sx={{
                   display: 'flex',

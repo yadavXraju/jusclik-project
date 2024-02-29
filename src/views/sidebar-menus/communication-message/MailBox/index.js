@@ -1,18 +1,29 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { CssBaseline, Box, List, ListItem, ListItemAvatar, Avatar, ListItemIcon, ListItemText, Divider, Typography, InputBase, ThemeProvider, createTheme, Paper } from '@mui/material';
+import {
+  CssBaseline,
+  Box,
+  List,
+  ListItem,
+  ListItemAvatar,
+  Avatar,
+  ListItemIcon,
+  ListItemText,
+  Divider,
+  Typography,
+  InputBase,
+  ThemeProvider,
+  createTheme,
+  Paper
+} from '@mui/material';
 import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
 import MailCompose from './MailCompose';
 import { styled } from '@mui/system';
 import { useNavigate, useLocation } from 'react-router';
-import AvtarImg from '../../../../assets/images/avatar.png'
+import AvtarImg from '../../../../assets/images/avatar.png';
 import InboxHeader from './InboxHeader';
 import initialData from './InboxNameList';
 
-
-
 const theme = createTheme();
-
-
 
 const GmailInboxTemplate = () => {
   const searchInputRef = useRef(null);
@@ -26,17 +37,14 @@ const GmailInboxTemplate = () => {
       month: 'long',
       day: 'numeric',
       hour: 'numeric',
-      minute: 'numeric',
+      minute: 'numeric'
     };
     return currentDate.toLocaleString('en-US', options);
   };
 
-  
-
   const location = useLocation();
   const shouldOpenByDefault = location.pathname.includes('inbox');
   const [isComposeOpen, setComposeOpen] = useState(shouldOpenByDefault);
-  
 
   const [searchQuery, setSearchQuery] = useState('');
   // const [isComposeOpen, setComposeOpen] = useState(shouldOpenByDefault);
@@ -53,14 +61,14 @@ const GmailInboxTemplate = () => {
     backgroundColor: theme.palette.background.default,
     border: `1px solid ${theme.palette.divider}`,
     '&:hover': {
-      backgroundColor: theme.palette.background.paper,
+      backgroundColor: theme.palette.background.paper
     },
     marginLeft: 0,
     width: '100%',
     [theme.breakpoints.up('sm')]: {
       marginLeft: theme.spacing(1),
-      width: 'auto',
-    },
+      width: 'auto'
+    }
   });
 
   const SearchIconWrapper = styled('div')(({ theme }) => ({
@@ -71,7 +79,7 @@ const GmailInboxTemplate = () => {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    color: theme.palette.text.secondary,
+    color: theme.palette.text.secondary
   }));
 
   const StyledInputBase = styled(InputBase)(({ theme }) => ({
@@ -81,21 +89,21 @@ const GmailInboxTemplate = () => {
       padding: theme.spacing(1, 1, 1, 0),
       paddingLeft: `calc(1em + ${theme.spacing(4)})`,
       [theme.breakpoints.up('sm')]: {
-        width: '12ch',
-      },
-    },
+        width: '12ch'
+      }
+    }
   }));
 
   const ComposeButtonWrapper = styled('div')({
     display: 'flex',
     alignItems: 'center',
-    order: -1,
+    order: -1
   });
 
   const FilterWrapper = styled('div')({
     display: 'flex',
     alignItems: 'center',
-    marginRight: theme.spacing(2),
+    marginRight: theme.spacing(2)
   });
 
   // Function to handle search input change
@@ -105,13 +113,12 @@ const GmailInboxTemplate = () => {
     filterData('search', query);
   };
 
-
   // Function to filter data based on different filters
   const filterData = (filterType, filterValue) => {
     if (filterType === 'search') {
-      const filteredResults = initialData.filter((item) =>
-        item.name.toLowerCase().includes(filterValue.toLowerCase()) ||
-        item.message.toLowerCase().includes(filterValue.toLowerCase())
+      const filteredResults = initialData.filter(
+        (item) =>
+          item.name.toLowerCase().includes(filterValue.toLowerCase()) || item.message.toLowerCase().includes(filterValue.toLowerCase())
       );
       setSearchResults(filteredResults);
     } else if (filterType === 'name') {
@@ -132,10 +139,15 @@ const GmailInboxTemplate = () => {
 
     const regex = new RegExp(`(${query})`, 'gi');
     return text.split(regex).map((part, index) =>
-      regex.test(part) ? <span key={index} style={{ fontWeight: 'bold' }}>{part}</span> : part
+      regex.test(part) ? (
+        <span key={index} style={{ fontWeight: 'bold' }}>
+          {part}
+        </span>
+      ) : (
+        part
+      )
     );
   };
-
 
   // Handlers for changing page and rows per page
   const handleChangePage = (event, newPage) => {
@@ -203,105 +215,97 @@ const GmailInboxTemplate = () => {
   return (
     <>
       <Paper>
-      <ThemeProvider theme={theme}>
-      <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-        <CssBaseline />
-        {/* Header Section */}
-        <InboxHeader
-            theme={theme}
-            handleComposeOpen={handleComposeOpen}
-            handleFilterClick={handleFilterClick}
-            currentFilter={currentFilter}
-            anchorEl={anchorEl}
-            handleFilterClose={handleFilterClose}
-            handleFilterSelect={handleFilterSelect}
-            searchQuery={searchQuery}
-            handleSearchChange={handleSearchChange}
-            searchInputRef={searchInputRef}
-            searchResults={searchResults}
-            initialData={initialData}
-            page={page}
-            handleChangePage={handleChangePage}
-            rowsPerPage={rowsPerPage}
-            handleChangeRowsPerPage={handleChangeRowsPerPage}
-            ComposeButtonWrapper={ComposeButtonWrapper}
-            FilterWrapper={FilterWrapper}
-            SearchWrapper={SearchWrapper}
-            SearchIconWrapper={SearchIconWrapper}
-            StyledInputBase={StyledInputBase}
-            handleClose={handleClose} 
-            id={id} 
-          />
-        {/* Main Content Section */}
-        <Box sx={{ flexGrow: 1, overflowY: 'auto' }}>
-          {(searchResults.length > 0 || searchQuery === '') && (
-            <List>
-              {(searchResults.length ? searchResults : initialData)
-                .slice(page * rowsPerPage, (page + 1) * rowsPerPage)
-                .map((item) => (
-                  <React.Fragment key={item.id}>
-                    {/* Message Item */}
-                    <ListItem
-                      sx={{
-                        cursor: 'pointer',
-                        '&:hover': {
-                          boxShadow: theme.shadows[2],
-                        },
-                        // Adjusting padding for better mobile responsiveness
-                        padding: '8px',
-                      }}
-                      onClick={() => navigate('/parent/communication/inbox/message')}
-                    >
-                      {/* User Avatar */}
-                      <ListItemAvatar onClick={(event) => event.stopPropagation()}>
-                        <Avatar alt="User Avatar" src={AvtarImg} />
-                      </ListItemAvatar>
-                      {/* Star Icon */}
-                      <ListItemIcon
-                        onClick={(event) => {
-                          event.stopPropagation();
-                          handleStarClick(item);
+        <ThemeProvider theme={theme}>
+          <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+            <CssBaseline />
+            {/* Header Section */}
+            <InboxHeader
+              theme={theme}
+              handleComposeOpen={handleComposeOpen}
+              handleFilterClick={handleFilterClick}
+              currentFilter={currentFilter}
+              anchorEl={anchorEl}
+              handleFilterClose={handleFilterClose}
+              handleFilterSelect={handleFilterSelect}
+              searchQuery={searchQuery}
+              handleSearchChange={handleSearchChange}
+              searchInputRef={searchInputRef}
+              searchResults={searchResults}
+              initialData={initialData}
+              page={page}
+              handleChangePage={handleChangePage}
+              rowsPerPage={rowsPerPage}
+              handleChangeRowsPerPage={handleChangeRowsPerPage}
+              ComposeButtonWrapper={ComposeButtonWrapper}
+              FilterWrapper={FilterWrapper}
+              SearchWrapper={SearchWrapper}
+              SearchIconWrapper={SearchIconWrapper}
+              StyledInputBase={StyledInputBase}
+              handleClose={handleClose}
+              id={id}
+            />
+            {/* Main Content Section */}
+            <Box sx={{ flexGrow: 1, overflowY: 'auto' }}>
+              {(searchResults.length > 0 || searchQuery === '') && (
+                <List>
+                  {(searchResults.length ? searchResults : initialData).slice(page * rowsPerPage, (page + 1) * rowsPerPage).map((item) => (
+                    <React.Fragment key={item.id}>
+                      {/* Message Item */}
+                      <ListItem
+                        sx={{
+                          cursor: 'pointer',
+                          '&:hover': {
+                            boxShadow: theme.shadows[2]
+                          },
+                          // Adjusting padding for better mobile responsiveness
+                          padding: '8px'
                         }}
-                        sx={{ marginRight: '5px' }}
+                        onClick={() => navigate('/parent/communication/inbox/message')}
                       >
-                        <StarBorderOutlinedIcon
-                          style={{ color: item.important ? '#f3c74a' : 'inherit' }}
+                        {/* User Avatar */}
+                        <ListItemAvatar onClick={(event) => event.stopPropagation()}>
+                          <Avatar alt="User Avatar" src={AvtarImg} />
+                        </ListItemAvatar>
+                        {/* Star Icon */}
+                        <ListItemIcon
+                          onClick={(event) => {
+                            event.stopPropagation();
+                            handleStarClick(item);
+                          }}
+                          sx={{ marginRight: '5px' }}
+                        >
+                          <StarBorderOutlinedIcon style={{ color: item.important ? '#f3c74a' : 'inherit' }} />
+                        </ListItemIcon>
+                        {/* Message Text */}
+                        <ListItemText
+                          primary={highlightMatch(item.name, searchQuery)}
+                          secondary={highlightMatch(item.message, searchQuery)}
+                          // Adjusting font size for better mobile readability
+                          primaryTypographyProps={{ variant: 'body1', fontSize: '16px' }}
+                          secondaryTypographyProps={{ variant: 'body2', fontSize: '14px' }}
                         />
-                      </ListItemIcon>
-                      {/* Message Text */}
-                      <ListItemText
-                        primary={highlightMatch(item.name, searchQuery)}
-                        secondary={highlightMatch(item.message, searchQuery)}
-                        // Adjusting font size for better mobile readability
-                        primaryTypographyProps={{ variant: 'body1', fontSize: '16px' }}
-                        secondaryTypographyProps={{ variant: 'body2', fontSize: '14px' }}
-                      />
-                      {/* Timestamp */}
-                      <Typography
-                        variant="subtitle2"
-                        color="textSecondary"
-                        onClick={(event) => event.stopPropagation()}
-                      >
-                        {getCurrentDateTime()}
-                      </Typography>
-                    </ListItem>
-                    {/* Divider */}
-                    <Divider />
-                  </React.Fragment>
-                ))}
-            </List>
-          )}
+                        {/* Timestamp */}
+                        <Typography variant="subtitle2" color="textSecondary" onClick={(event) => event.stopPropagation()}>
+                          {getCurrentDateTime()}
+                        </Typography>
+                      </ListItem>
+                      {/* Divider */}
+                      <Divider />
+                    </React.Fragment>
+                  ))}
+                </List>
+              )}
 
-          {searchResults.length === 0 && searchQuery !== '' && (
-            <Typography variant="body1" color="textSecondary" textAlign="center">
-              No data found.
-            </Typography>
-          )}
-        </Box>
-        {/* Compose Mail Section */}
-        <MailCompose open={isComposeOpen} onClose={handleComposeClose} onSend={handleComposeSend} />
-      </Box>
-    </ThemeProvider>
+              {searchResults.length === 0 && searchQuery !== '' && (
+                <Typography variant="body1" color="textSecondary" textAlign="center">
+                  No data found.
+                </Typography>
+              )}
+            </Box>
+            {/* Compose Mail Section */}
+            <MailCompose open={isComposeOpen} onClose={handleComposeClose} onSend={handleComposeSend} />
+          </Box>
+        </ThemeProvider>
       </Paper>
     </>
   );
