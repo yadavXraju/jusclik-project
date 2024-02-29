@@ -5,11 +5,12 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
-import TeachertimeTableData from './TeacherTimetableData';
 
-const TeacherTimeTable = () => {
+
+const TeacherTimeTable = ({ timetableData }) => {
   const [value, setValue] = useState('Monday');
 
+   // ======== get the Current Day =============
   useEffect(() => {
     const currentDay = new Date().getDay();
     const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -21,7 +22,7 @@ const TeacherTimeTable = () => {
   };
 
   const renderTabContent = () => {
-    const daySchedule = TeachertimeTableData[value];
+    const daySchedule = timetableData[value];
 
     if (!daySchedule) {
       return null;
@@ -35,24 +36,22 @@ const TeacherTimeTable = () => {
               <Paper
                 elevation={3}
                 style={{
-                  padding: scheduleItem.id === null ? '5px' : '10px', 
+                  padding: scheduleItem.id === null ? '5px' : '10px',
                   display: 'flex',
                   lineHeight: '10px',
-                  color: scheduleItem.id === null ? 'green' : '#00000',
+                  color: scheduleItem.id === null ? 'green' : '#00000'
                 }}
               >
                 <Typography variant="h6" sx={{ display: 'flex', alignItems: 'center' }}>
-                  <Box sx={{ p: 1, background: scheduleItem.period === null ? '#fffff' : '#ede7f6' }}>
-                    {scheduleItem.period}
-                  </Box>
+                  <Box sx={{ p: 1, background: scheduleItem.period === null ? '#fffff' : '#ede7f6' }}>{scheduleItem.period}</Box>
                 </Typography>
                 <Typography variant="body1">
                   <Box sx={{ p: 1 }}>
-                    <Box>{scheduleItem.class}</Box>
+                   {scheduleItem.class ? scheduleItem.class : scheduleItem.Teacher}
                     <Box
                       sx={{
                         fontSize: scheduleItem.id === null ? '.875rem' : '.600rem',
-                        color: scheduleItem.id === null ? 'green' : 'gray',
+                        color: scheduleItem.id === null ? 'green' : 'gray'
                       }}
                     >
                       {scheduleItem.subject}
@@ -73,14 +72,9 @@ const TeacherTimeTable = () => {
   return (
     <>
       <div>
-        <Box sx={{ width: '100%'}}>
-          <Box sx={{ borderBottom: 1, borderColor: 'divider', '& .MuiTabs-root': { padding: 0 } }}>
-            <Tabs
-              variant="scrollable"
-              value={value}
-              onChange={handleChange}
-              aria-label="wrapped label tabs example"
-            >
+        <Box sx={{ width: '100%' }}>
+          <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+            <Tabs variant="scrollable" value={value} onChange={handleChange} aria-label="wrapped label tabs example">
               <Tab style={{ minWidth: '10%', padding: '10px' }} value="Sunday" label="SUN" />
               <Tab style={{ minWidth: '10%', padding: '10px' }} value="Monday" label="MON" />
               <Tab style={{ minWidth: '10%', padding: '10px' }} value="Tuesday" label="TUE" />
@@ -91,9 +85,7 @@ const TeacherTimeTable = () => {
             </Tabs>
           </Box>
         </Box>
-        <Box sx={{ p: 1, '& > div': { padding: 0 } }}>
-          {renderTabContent()}
-        </Box>
+        <Box sx={{ p: 1, '& > div': { padding: 0 } }}>{renderTabContent()}</Box>
       </div>
     </>
   );

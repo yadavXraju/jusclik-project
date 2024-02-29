@@ -1,8 +1,8 @@
-// Dashboard.js
+//Fee module Dashboard.js
 import React from 'react';
 import Grid from '@mui/material/Grid';
 import { gridSpacing } from 'store/constant';
-import WelcomeTotalVisitor from 'views/erp-module/visitor/visitor-dashboard/welcome-visitor-today-visitor-total-visitor';
+import WelcomeTotalVisitor from './welcome-stufee-boys-girls-strength';
 import VisitorProfile from 'views/erp-module/visitor/visitor-dashboard/profile/Profile';
 import HourlyVisior from 'views/erp-module/visitor/visitor-dashboard/hourly-visitor';
 import FrequentlyReturningVisitor from 'views/erp-module/visitor/visitor-dashboard/frequently-returning-visitors/index.';
@@ -41,16 +41,17 @@ const Dashboard = ({ isLoading }) => {
 
 
          {/* Hourly visited chart */}
-          <Grid item xs={12} lg={7} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
+         <Grid item xs={12} lg={7} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
             <HourlyVisior isLoading={isLoading} />
-          </Grid>
+         </Grid>
 
-                 {/* frequently returning visitors */}
+           {/* frequently returning visitors */}
           <Grid item xs={12} lg={5}  md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
               <FrequentlyReturningVisitor isLoading={isLoading} /> 
           </Grid>
 
         </Grid>
+
       </Grid>
     </Grid>
   );

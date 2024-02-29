@@ -6,6 +6,9 @@ import { HeadingCss, boxHeight, subTitle, subtitle2} from 'views/dashboard/Defau
 import { Box } from '@mui/system';
 import { useNavigate } from 'react-router';
 
+
+// this is a common section we can use this layout by sending alert data as a props
+
 const Alert = ({ AlertData }) => {
     const navigate = useNavigate()
   return (
@@ -22,7 +25,7 @@ const Alert = ({ AlertData }) => {
               </Grid>
             </Grid>
      
-           {/* maping data */}
+           {/* maping data  */}
             {AlertData.map((alert, index) => (
                 <Grid item xs={12} key={index} sx={{paddingTop:'0 !important'}}>
                   <Grid container direction="column">

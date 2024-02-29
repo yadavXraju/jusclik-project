@@ -252,3 +252,46 @@
 //     />
 //   );
 // }
+
+
+
+// import React, { useEffect, useState } from 'react';
+// import axios from 'axios';
+
+// const BiometricDetailsOrAttendanceDetails = () => {
+//   const [data, setData] = useState(null);
+//   const fatchdata = async() => {
+//     const response = await axios.get('https://uat.shauryasoft.com/api/student/leave',
+//     {
+//         params: {
+//             SCode: 6,
+//             Session: '2023-2024',
+//             ApplicationDateFrom: '2023-09-29',
+//             ApplicationDateTo: '2023-12-28',
+//             EnrollCode: 'D00023',
+//             Status: 'Pending / Approved / Rejected',
+//           },
+//           headers: {
+//             ApiKey: 'CldbvvQeenSv5xs899AIgeN8r7fTtjOdf97cxPw4uMZ1nVfYyvkQsQ9Mn8zrOYyA',
+//           }
+//     }
+//     )
+//     setData(response.data);
+// }
+// useEffect(() => {
+//     fatchdata();
+//   }, []); // Empty dependency array to run effect only once
+
+//   return (
+//     <div>
+//       {/* Display fetched data */}
+//       {data ? (
+//         <pre>{JSON.stringify(data, null, 2)}</pre>
+//       ) : (
+//         <p>Loading...</p>
+//       )}
+//     </div>
+//   )
+// }
+
+// export default BiometricDetailsOrAttendanceDetails

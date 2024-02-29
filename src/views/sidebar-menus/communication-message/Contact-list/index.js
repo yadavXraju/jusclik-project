@@ -22,21 +22,21 @@ export const commonStyles = {
 };
 
 export const contactData = [
-  { name: 'Suraj Mishra', role: 'Website Developer' },
-  { name: 'Abhishek Negi', role: 'Website Developer' },
-  { name: 'Shruti Sharma', role: 'Gamer' },
-  { name: 'Ruby Dhiman', role: 'Website Developer' },
-  { name: 'Megha', role: 'Website Designer (Paratha Junction)' },
-  { name: 'Amit', role: 'Graphic Designer & 3D Animation Creator' },
-  { name: 'Nitika', role: 'Graphic Designer' },
-  { name: 'Sangeeta', role: 'UI Designer' },
-  { name: 'Harsh', role: 'Data Scientist' },
-  { name: 'Kanika Kapoor Khan', role: 'Undefined' },
-  { name: 'Sahil Jain', role: 'Trainee Manager' },
-  { name: 'Ashish', role: 'Business Development Manager' },
-  { name: 'Rahul Sood', role: 'Business Development Manager' },
-  { name: 'Gaganraj', role: 'Software Engineer' },
-  { name: 'Narendra Modi', role: 'Prime Minister' },
+  { name: 'Vikaay', role: 'Business Owner' },
+  { name: 'Archana Sharma', role: 'Mathematics Teacher' },
+  { name: 'Tamanna Bhatia', role: 'English Teacher' },
+  { name: 'Bahadur Singh', role: 'Peon' },
+  { name: 'Sweccha Chaudhary', role: 'Receptionist' },
+  { name: 'Tarun Mishra', role: 'Lab Incharge' },
+  { name: 'Anuradha sigh', role: 'Accountant' },
+  { name: 'Simerpreet', role: 'Wardon' },
+  { name: 'Kartik Sharma', role: 'Librarian' },
+  { name: 'Arun Kaushik', role: 'Physics Teacher' },
+  { name: 'Jaspreet Singh', role: 'Sports Teacher' },
+  { name: 'Hariom Rai', role: 'History Teacher' },
+  { name: 'Riya Singh', role: 'Economics Teacher' },
+  { name: 'Ashshish Tiwari', role: 'Science Teacher' },
+  { name: 'Subhash Sharma', role: 'Hr Head' },
 ];
 
 export default function AlignItemsList() {

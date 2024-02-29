@@ -39,7 +39,7 @@ const LeaveBalProgress = ({ value, subject }) => {
           style={{ color: strokeColor, position: 'absolute' }}
         />
         <div style={{ position: 'absolute', fontSize: '16px', fontWeight: 'bold', zIndex: 2 }}>
-          {normalizedValue} {/* Display value directly */}
+          {normalizedValue + ' - 5'}  {/* Display value directly */}
         </div>
       </Box>
       <div style={{ marginTop: '8px', fontSize: '16px', fontWeight: 'bold' }}>{subject}</div>

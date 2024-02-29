@@ -10,6 +10,7 @@ import ClasstimeTableData from './ClassTimetableData';
 const ClassTimeTable = () => {
   const [value, setValue] = useState('Monday');
 
+  // ======== get the Current Day =============
   useEffect(() => {
     const currentDay = new Date().getDay();
     const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];

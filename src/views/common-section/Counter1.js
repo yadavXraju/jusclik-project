@@ -16,10 +16,9 @@ import { useNavigate } from 'react-router';
 import { useSelector } from 'react-redux';
 
 
+// ===========================|| DASHBOARD 1st Counter ||=========================== //
 
-// ===========================|| DASHBOARD DEFAULT Check in  Counter||=========================== //
-
-
+// Counter1Data is a props
 const Counter1 = ({ isLoading  ,  Counter1Data }) => {
 
 
@@ -41,6 +40,8 @@ const Counter1 = ({ isLoading  ,  Counter1Data }) => {
       const themeColor = customization.themeColor || 'rgb(94, 53, 177)';
       const opacity = .95;
 
+
+      // style for component
 
   const CardWrapper = styled(MainCard)(({ theme }) => ({
      backgroundColor: `${themeColor.slice(0, -1)}, ${opacity}) !important`, // Adding opacity
@@ -132,6 +133,7 @@ const Counter1 = ({ isLoading  ,  Counter1Data }) => {
               </Grid>
             </Grid>
             
+            {/* Counter Value */}
             <Grid item>
               <Grid container alignItems="center">
                 <Grid item>
@@ -140,6 +142,7 @@ const Counter1 = ({ isLoading  ,  Counter1Data }) => {
    
               </Grid>
             </Grid>
+
             <Grid item sx={{ mb: 1.25 }}>
               <Typography
                 sx={{
@@ -149,7 +152,7 @@ const Counter1 = ({ isLoading  ,  Counter1Data }) => {
                   textTransform : 'uppercase'
                 }}
               >
-             {/* CHECK IN TIME */} 
+                {/* Counter Title */}
              {Counter1Data.counterTitle}
               </Typography>
             </Grid>

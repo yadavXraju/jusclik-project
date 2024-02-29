@@ -4,11 +4,11 @@ import Tab from '@mui/material/Tab';
 import Card from '@mui/material/Card';
 import { useTheme, useMediaQuery, Box, Typography } from '@mui/material';
 import { useLocation } from 'react-router';
-import ClassTimeTable from './ClassTimetable';
 import TeacherTimeTable from './TeacherTimetable';
+import TeachertimeTableData from './TeacherTimetableData';
+import ClasstimeTableData from './ClassTimetableData';
 
-
-// Custom component for rendering the content of each tab panel
+// ====== Custom component for rendering the content of each tab panel ======
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
   const theme = useTheme();
@@ -23,7 +23,7 @@ function CustomTabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ p: isSmallScreen ? 1 : 3 }}>
+        <Box sx={{ p: isSmallScreen ? 0 : 1 }}>
           <Typography>{children}</Typography>
         </Box>
       )}
@@ -78,10 +78,10 @@ function TimetableTab() {
 
       {/* Content of each tab panel */}
       <CustomTabPanel sx={{padding:'0px'}} value={value} index={0}>
-        <TeacherTimeTable />
+      <TeacherTimeTable timetableData={TeachertimeTableData} />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-      <ClassTimeTable/>
+      <TeacherTimeTable timetableData={ClasstimeTableData} />
       </CustomTabPanel>
     </Box>
     </Card>

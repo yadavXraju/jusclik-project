@@ -1,34 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import {
-  Box,
-  InputLabel,
-  MenuItem,
-  FormControl,
-  Select,
-  Divider,
-  Typography,
-  ListItem,
-  ListItemText,
-  Paper,
-  Button,
-  Grid,
-  Badge,
-  Avatar,
-  ListItemAvatar
-} from '@mui/material';
+import { Box, Divider, Typography, ListItem, ListItemText, Paper, Grid, Avatar, ListItemAvatar, useMediaQuery } from '@mui/material';
 import dayjs from 'dayjs';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import CalendarMonthTwoToneIcon from '@mui/icons-material/CalendarMonthTwoTone';
-import SearchTwoToneIcon from '@mui/icons-material/SearchTwoTone';
 import AvtarImg from '../../../assets/images/avatar.png';
+import { useTheme } from '@emotion/react';
 import { ClassList } from '../attendance-entry/ClassList';
 import { SectionList } from '../attendance-entry/SectionList';
 import { StudentList } from '../attendance-entry/StudentList';
 import AttendanceActions from './AttendanceActions';
 import WarningBox from '../attendance-entry/WarningBox';
 import { styled } from '@mui/material/styles';
+import AvatarLegend from '../attendance-entry/AvatarLegend';
+import SearchFilterBox from '../attendance-entry/SeachFilter';
 
 // Styled Paper component for custom styling
 const Item = styled(Paper)(({ theme }) => ({
@@ -37,13 +19,6 @@ const Item = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(1),
   textAlign: 'center',
   color: theme.palette.text.secondary
-}));
-
-// Styled Badge component for custom styling
-const StyledBadge = styled(Badge)(() => ({
-  '& .MuiBadge-badge': {
-    opacity: '0.7'
-  }
 }));
 
 export default function AttendanceEntry() {
@@ -58,6 +33,9 @@ export default function AttendanceEntry() {
   const [filteredSections, setFilteredSections] = useState([]);
   const [selectedMonth, setSelectedMonth] = useState(dayjs());
   const [dates, setDates] = useState([]);
+
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
   // Function to handle month change
   const handleMonthChange = (date) => {
@@ -216,168 +194,38 @@ export default function AttendanceEntry() {
       {/* Month selection */}
       <Box>
         <Paper sx={{ borderRadius: '30px' }}>
-          <Box sx={{ minWidth: 250, display: 'flex', alignItems: 'baseline', p: 2 }}>
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
-              <DatePicker
-                label="Select Month"
-                openTo="month"
-                views={['month', 'year']}
-                value={selectedMonth}
-                onChange={handleMonthChange}
-                slots={{ openPickerIcon: CalendarMonthTwoToneIcon }}
-              />
-            </LocalizationProvider>
-
-            {/* Class selection */}
-            <FormControl sx={{ m: 1, minWidth: 250 }}>
-              <InputLabel id="class-select-label">Select Class</InputLabel>
-              <Select
-                name="class"
-                labelId="class-select-label"
-                id="class-select"
-                value={selectClass}
-                label="Select Class"
-                onChange={handleChange}
-              >
-                {ClassList.map((classItem) => (
-                  <MenuItem key={classItem.value} value={classItem.value}>
-                    {classItem.class}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-
-            {/* Section selection */}
-            <FormControl sx={{ minWidth: 250 }}>
-              <InputLabel id="section-select-label">Select Section</InputLabel>
-              <Select
-                name="section"
-                labelId="section-select-label"
-                id="section-select"
-                value={selectSection}
-                label="Select Section"
-                onChange={handleChange}
-              >
-                {(selectClass && filteredSections.length > 0 ? filteredSections : SectionList).map((sectionItem) => (
-                  <MenuItem key={sectionItem.value} value={sectionItem.value}>
-                    {sectionItem.section}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-
-            {/* Search button */}
-            <Button
-              variant="contained"
-              startIcon={<SearchTwoToneIcon />}
-              sx={{ height: '50px', borderRadius: '12px', margin: '8px' }}
-              onClick={handleSearchClick}
-            >
-              Search
-            </Button>
-          </Box>
+          <SearchFilterBox
+            selectClass={selectClass}
+            selectSection={selectSection}
+            filteredSections={filteredSections}
+            ClassList={ClassList}
+            SectionList={SectionList}
+            handleChange={handleChange}
+            handleSearchClick={handleSearchClick}
+            datePickerLabel={'Select-Month'}
+            datePickerValue={selectedMonth}
+            datePickerOpenTo={'month'}
+            datePickerViews={['month', 'year']}
+            handleMonthChange={handleMonthChange}
+          />
         </Paper>
       </Box>
 
       {/* Avatars legend */}
       <Box sx={{ mt: 1 }}>
         <Paper sx={{ mb: 1, display: 'flex' }}>
-          <Grid
-            container
-            fullwidth
-            direction="row"
-            justifyContent="Center"
-            marginRight="-150px"
-            alignItems="Center"
-            columnSpacing={{ xs: 1, sm: 2, md: 3 }}
-          >
-            {/* Render avatars legend */}
-            {/* H */}
+          {/* Avatar Legend */}
+          <Grid container justifyContent="center" alignItems="center">
             <Grid item>
               <Item>
-                <Typography variant="h4" color="#364152" display="flex" alignItems="center">
-                  <StyledBadge color="primary" overlap="circular" badgeContent={countSelectedStatus('H')}>
-                    <Avatar
-                      sx={{
-                        width: 30,
-                        height: 30,
-                        backgroundColor: '#7dceeb',
-                        color: '#000000',
-                        marginRight: '6px',
-                        fontSize: '16px'
-                      }}
-                    >
-                      H
-                    </Avatar>
-                  </StyledBadge>
-                  -Holiday
-                </Typography>
-              </Item>
-            </Grid>
-            {/* P */}
-            <Grid item>
-              <Item>
-                <Typography variant="h4" color="#364152" display="flex" alignItems="center">
-                  <StyledBadge color="primary" overlap="circular" badgeContent={countSelectedStatus('P')}>
-                    <Avatar
-                      sx={{
-                        width: 30,
-                        height: 30,
-                        backgroundColor: '#7bc67b',
-                        color: '#000000',
-                        marginRight: '6px',
-                        fontSize: '16px'
-                      }}
-                    >
-                      P
-                    </Avatar>
-                  </StyledBadge>
-                  -Present
-                </Typography>
-              </Item>
-            </Grid>
-            {/* A */}
-            <Grid item>
-              <Item>
-                <Typography variant="h4" color="#364152" display="flex" alignItems="center">
-                  <StyledBadge color="primary" overlap="circular" badgeContent={countSelectedStatus('A')}>
-                    <Avatar
-                      sx={{
-                        width: 30,
-                        height: 30,
-                        backgroundColor: '#e2526b',
-                        color: '#000000',
-                        marginRight: '6px',
-                        fontSize: '16px'
-                      }}
-                    >
-                      A
-                    </Avatar>
-                  </StyledBadge>
-                  -Absent
-                </Typography>
-              </Item>
-            </Grid>
-            {/* L */}
-            <Grid item>
-              <Item>
-                <Typography variant="h4" color="#364152" display="flex" alignItems="center">
-                  <StyledBadge color="primary" overlap="circular" badgeContent={countSelectedStatus('L')}>
-                    <Avatar
-                      sx={{
-                        width: 30,
-                        height: 30,
-                        backgroundColor: '#eeb058',
-                        color: '#000000',
-                        marginRight: '6px',
-                        fontSize: '16px'
-                      }}
-                    >
-                      L
-                    </Avatar>
-                  </StyledBadge>
-                  -Leave
-                </Typography>
+                <AvatarLegend
+                  legendItems={[
+                    { avatar: 'H', label: 'Holiday', avatarColor: '#7dceeb', badgeContent: countSelectedStatus('H') },
+                    { avatar: 'P', label: 'Present', avatarColor: '#7bc67b', badgeContent: countSelectedStatus('P') },
+                    { avatar: 'A', label: 'Absent', avatarColor: '#e2526b', badgeContent: countSelectedStatus('A') },
+                    { avatar: 'L', label: 'Leave', avatarColor: '#eeb058', badgeContent: countSelectedStatus('L') }
+                  ]}
+                />
               </Item>
             </Grid>
           </Grid>
@@ -398,9 +246,9 @@ export default function AttendanceEntry() {
       <Box>
         <Paper sx={{ listStyleType: 'none' }}>
           <Grid container>
-            <Grid item xs={4}>
+            <Grid item xs={10} md={6} sm={8} lg={4}>
               <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-                <Box sx={{ display: 'flex', mt: 4 }}>
+                <Box sx={{ display: 'flex', marginTop: isMobile ? '12px' : '32px' }}>
                   <ListItem>
                     <ListItemText sx={{ flex: '0 0 30%' }}>
                       <Typography variant="h4" color="text.primary">
@@ -443,7 +291,7 @@ export default function AttendanceEntry() {
             </Grid>
 
             {/* Right section for avatar selection */}
-            <Grid item xs={8}>
+            <Grid item xs={2} md={6} sm={4} lg={8}>
               <Box
                 sx={{
                   display: 'flex',
@@ -509,9 +357,9 @@ export default function AttendanceEntry() {
                               sx={{
                                 bgcolor:
                                   {
-                                    P: '#7bc67b',
-                                    A: '#e2526b',
-                                    L: '#eeb058'
+                                    P: '#7bc67b80',
+                                    A: '#e2526b80',
+                                    L: '#eeb05880'
                                   }[selectedAvatars[date.format('DD-MM-YYYY')]?.[student.id]] || '#7dceeb80',
                                 '&:hover': {
                                   bgcolor:

@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {
   Box,
-  InputLabel,
-  MenuItem,
-  FormControl,
-  Select,
   Divider,
   Typography,
   ListItem,
@@ -12,17 +8,10 @@ import {
   ListItemText,
   Stack,
   Paper,
-  Button,
   Grid,
-  Badge,
-  Avatar
+  Avatar,
+  useMediaQuery
 } from '@mui/material';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import CalendarMonthTwoToneIcon from '@mui/icons-material/CalendarMonthTwoTone';
-import SearchTwoToneIcon from '@mui/icons-material/SearchTwoTone';
 import AvtarImg from '../../../assets/images/avatar.png';
 import { ClassList } from './ClassList';
 import { SectionList } from './SectionList';
@@ -30,6 +19,9 @@ import { StudentList } from './StudentList';
 import TakeAttendance from './TakeAttendance';
 import WarningBox from './WarningBox';
 import { styled } from '@mui/material/styles';
+import AvatarLegend from './AvatarLegend'; 
+import SearchFilterBox from './SeachFilter';
+import { useTheme } from '@emotion/react';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -37,12 +29,6 @@ const Item = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(1),
   textAlign: 'center',
   color: theme.palette.text.secondary
-}));
-
-const StyledBadge = styled(Badge)(() => ({
-  '& .MuiBadge-badge': {
-    opacity: '0.7'
-  }
 }));
 
 export default function AttendanceEntry() {
@@ -54,6 +40,9 @@ export default function AttendanceEntry() {
   const [globalAttendanceAction, setGlobalAttendanceAction] = useState('');
   const [showWarningBox, setShowWarningBox] = useState(false);
   const [filteredSections, setFilteredSections] = useState([]);
+
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
   // Initialize filteredStudentList with the original StudentList when the component mounts, sorted alphabetically by student name
   useEffect(() => {
@@ -155,168 +144,45 @@ export default function AttendanceEntry() {
     <Box>
       {/* Search filter box */}
       <Paper sx={{ borderRadius: '30px' }}>
-        <Box sx={{ minWidth: 250, display: 'flex', alignItems: 'baseline', p: 2 }}>
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DemoContainer components={['DatePicker']}>
-              <DatePicker label="Select Date" slots={{ openPickerIcon: CalendarMonthTwoToneIcon }} />
-            </DemoContainer>
-          </LocalizationProvider>
-          <FormControl sx={{ m: 1, minWidth: 250 }}>
-            <InputLabel id="class-select-label">Select Class</InputLabel>
-            <Select
-              name="class"
-              labelId="class-select-label"
-              id="class-select"
-              value={selectClass}
-              label="Select Class"
-              onChange={handleChange}
-            >
-              {ClassList.map((classItem) => (
-                <MenuItem key={classItem.value} value={classItem.value}>
-                  {classItem.class}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-
-          <FormControl sx={{ minWidth: 250 }}>
-            <InputLabel id="section-select-label">Select Section</InputLabel>
-            <Select
-              name="section"
-              labelId="section-select-label"
-              id="section-select"
-              value={selectSection}
-              label="Select Section"
-              onChange={handleChange}
-            >
-              {/* Display sections based on the selected class */}
-              {(selectClass && filteredSections.length > 0 ? filteredSections : SectionList).map((sectionItem) => (
-                <MenuItem key={sectionItem.value} value={sectionItem.value}>
-                  {sectionItem.section}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-
-          <Button
-            variant="contained"
-            startIcon={<SearchTwoToneIcon />}
-            sx={{ height: '50px', borderRadius: '12px', margin: '8px' }}
-            onClick={handleSearchClick}
-          >
-            Search
-          </Button>
-        </Box>
+      <SearchFilterBox
+        selectClass={selectClass}
+        selectSection={selectSection}
+        filteredSections={filteredSections}
+        ClassList={ClassList}
+        SectionList={SectionList}
+        handleChange={handleChange}
+        handleSearchClick={handleSearchClick}
+      />
       </Paper>
 
       {/* Student List */}
       <Box sx={{ mt: 1 }}>
         <Paper sx={{ mb: 1, display: 'flex' }}>
-          <Grid
-            container
-            fullwidth
-            direction="row"
-            justifyContent="Center"
-            marginRight="-150px"
-            alignItems="Center"
-            columnSpacing={{ xs: 1, sm: 2, md: 3 }}
-          >
-            <Grid item>
+            {/* Avatar Legend */}
+            <Grid container justifyContent="center" alignItems="center" columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
               <Item>
-                <Typography variant="h4" color="#364152" display="flex" alignItems="center">
-                  <StyledBadge color="primary" overlap="circular" badgeContent={countSelectedStatus('H')}>
-                    <Avatar
-                      sx={{
-                        width: 30,
-                        height: 30,
-                        backgroundColor: '#7dceeb',
-                        color: '#000000',
-                        marginRight: '6px',
-                        fontSize: '16px'
-                      }}
-                    >
-                      H
-                    </Avatar>
-                  </StyledBadge>
-                  -Holiday
-                </Typography>
+                <AvatarLegend
+                  legendItems={[
+                    { avatar: 'H', label: 'Holiday', avatarColor: '#7dceeb', badgeContent: countSelectedStatus('H') },
+                    { avatar: 'P', label: 'Present', avatarColor: '#7bc67b', badgeContent: countSelectedStatus('P') },
+                    { avatar: 'A', label: 'Absent', avatarColor: '#e2526b', badgeContent: countSelectedStatus('A') },
+                    { avatar: 'L', label: 'Leave', avatarColor: '#eeb058', badgeContent: countSelectedStatus('L') }
+                  ]}
+                />
               </Item>
             </Grid>
-            <Grid item>
+            <Grid item sx={{marginRight: isMobile ? '0px' : '40px',display:'flex', alignItems:'center' }}>
               <Item>
-                <Typography variant="h4" color="#364152" display="flex" alignItems="center">
-                  <StyledBadge color="primary" overlap="circular" badgeContent={countSelectedStatus('P')}>
-                    <Avatar
-                      sx={{
-                        width: 30,
-                        height: 30,
-                        backgroundColor: '#7bc67b',
-                        color: '#000000',
-                        marginRight: '6px',
-                        fontSize: '16px'
-                      }}
-                    >
-                      P
-                    </Avatar>
-                  </StyledBadge>
-                  -Present
-                </Typography>
+                <TakeAttendance
+                  onConfirm={handleActionsConfirm}
+                  open={isConfirmationDialogOpen}
+                  onClose={() => setConfirmationDialogOpen(false)}
+                  action={globalAttendanceAction}
+                />
               </Item>
             </Grid>
-            <Grid item>
-              <Item>
-                <Typography variant="h4" color="#364152" display="flex" alignItems="center">
-                  <StyledBadge color="primary" overlap="circular" badgeContent={countSelectedStatus('A')}>
-                    <Avatar
-                      sx={{
-                        width: 30,
-                        height: 30,
-                        backgroundColor: '#e2526b',
-                        color: '#000000',
-                        marginRight: '6px',
-                        fontSize: '16px'
-                      }}
-                    >
-                      A
-                    </Avatar>
-                  </StyledBadge>
-                  -Absent
-                </Typography>
-              </Item>
-            </Grid>
-            <Grid item>
-              <Item>
-                <Typography variant="h4" color="#364152" display="flex" alignItems="center">
-                  <StyledBadge color="primary" overlap="circular" badgeContent={countSelectedStatus('L')}>
-                    <Avatar
-                      sx={{
-                        width: 30,
-                        height: 30,
-                        backgroundColor: '#eeb058',
-                        color: '#000000',
-                        marginRight: '6px',
-                        fontSize: '16px'
-                      }}
-                    >
-                      L
-                    </Avatar>
-                  </StyledBadge>
-                  -Leave
-                </Typography>
-              </Item>
-            </Grid>
-          </Grid>
-          <Grid>
-            <Item sx={{ marginRight: '40px' }}>
-              <TakeAttendance
-                onConfirm={handleActionsConfirm}
-                open={isConfirmationDialogOpen}
-                onClose={() => setConfirmationDialogOpen(false)}
-                action={globalAttendanceAction}
-              />
-            </Item>
-          </Grid>
         </Paper>
+
         <WarningBox
           showWarning={showWarningBox}
           onClose={() => setShowWarningBox(false)}
