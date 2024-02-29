@@ -10,7 +10,7 @@ const  ParameterizedDateComponent=({label, value, onChange,className="",customSt
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DatePicker
               label={label}
-              inputFormat="MM/dd/yyyy"
+              inputFormat="dd/mm/yyyy"
               value={value}
               sx={customStyle}
               onChange={onChange}
