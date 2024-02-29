@@ -16,10 +16,9 @@ import {
   Paper
 } from '@mui/material';
 import TablePagination from '@mui/material/TablePagination';
-
 import SearchIcon from '@mui/icons-material/Search';
 import { styled } from '@mui/system';
-import AvtarImg from '../../../../../../../assets/images/avatar.png';
+import AvtarImg from '../../../../../assets/images/avatar.png';
 
 const theme = createTheme();
 
@@ -35,11 +34,11 @@ export const initialData = [
   { id: 8, name: 'Grace Miller', role: 'Businessman', message: 'Lorem ipsum dolor sit amet 8', unread: false, important: false, phoneNumber: "7042469676" },
   { id: 9, name: 'Henry Jackson', role: 'Developer', message: 'Lorem ipsum dolor sit amet 9', unread: true, important: true, phoneNumber: "7042469676" },
   { id: 10, name: 'Ivy Lee', role: 'Developer', message: 'Lorem ipsum dolor sit amet 10', unread: false, important: false, phoneNumber: "7042469676" },
-  { id: 11, name: 'Charlie Brown', role: 'Developer', message: 'Lorem ipsum dolor sit amet 5', unread: false, important: true , phoneNumber: "7042469676"},
+  { id: 11, name: 'Charlie Brown', role: 'Developer', message: 'Lorem ipsum dolor sit amet 5', unread: false, important: true, phoneNumber: "7042469676" },
   { id: 12, name: 'Eva Davis', role: 'Developer', message: 'Lorem ipsum dolor sit amet 6', unread: false, important: false, phoneNumber: "7042469676" },
-  { id: 13, name: 'Frank White', role: 'Developer', message: 'Lorem ipsum dolor sit amet 7', unread: true, important: true , phoneNumber: "7042469676"},
+  { id: 13, name: 'Frank White', role: 'Developer', message: 'Lorem ipsum dolor sit amet 7', unread: true, important: true, phoneNumber: "7042469676" },
   { id: 14, name: 'Grace Miller', role: 'Developer', message: 'Lorem ipsum dolor sit amet 8', unread: false, important: false, phoneNumber: "7042469676" },
-  { id: 15, name: 'Henry Jackson', role: 'Developer', message: 'Lorem ipsum dolor sit amet 9', unread: true, important: true , phoneNumber: "7042469676"},
+  { id: 15, name: 'Henry Jackson', role: 'Developer', message: 'Lorem ipsum dolor sit amet 9', unread: true, important: true, phoneNumber: "7042469676" },
   { id: 16, name: 'Ivy Lee', role: 'Developer', message: 'Lorem ipsum dolor sit amet 10', unread: false, important: false, phoneNumber: "7042469676" }
 ];
 
@@ -79,7 +78,7 @@ const VisitorDrawer = () => {
     justifyContent: 'center',
     color: theme.palette.text.secondary
   }));
- 
+
   const StyledInputBase = styled(InputBase)(({ theme }) => ({
     color: 'inherit',
     width: '100%',

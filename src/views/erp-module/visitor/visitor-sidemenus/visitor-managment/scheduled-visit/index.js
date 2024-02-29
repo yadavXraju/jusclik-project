@@ -16,7 +16,7 @@ import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import { Delete } from '@mui/icons-material';
 import { styled } from '@mui/material/styles';
 import PeopleOutlineOutlinedIcon from '@mui/icons-material/PeopleOutlineOutlined';
-import VisitorDrawer from '../visitor-entry/rightDrawer';
+import VisitorDrawer from '../RightDrawer';
 import PrintIcon from '@mui/icons-material/Print';
 import { useReactToPrint } from 'react-to-print';
 import AvatarImage from '../../../../../../assets/images/avatar.png';
@@ -113,7 +113,6 @@ const ScheduledVisit = () => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return;
     }
-
     setState({ ...state, [anchor]: open });
   };
 

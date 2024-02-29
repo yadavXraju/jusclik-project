@@ -1,6 +1,6 @@
 import React,{useState} from 'react';
 import { Box, Paper, Button, useMediaQuery, TextField, Drawer } from '@mui/material';
-import ParameterizedAutoComplete from 'views/common-section/parameterizedAutoComplete';
+import ParameterizedAutoComplete from 'views/common-section/ParamAutoComplete';
 import SearchBox from 'views/common-section/SearchBox';
 import  QuickSearchDrawer  from 'views/common-section/QuickSearchDrawer';
 

@@ -4,11 +4,16 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 
-const ParamTime=()=>{
+const ParamTime = ({ label="", value=null, onChange,customStyle })=>{
   return (
-    <LocalizationProvider dateAdapter={AdapterDayjs} sx={{width:"40px"}}>
-      <DemoContainer components={['TimePicker']}>
-        <TimePicker label="Time picker" />
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
+      <DemoContainer components={['TimePicker']} sx={customStyle}>
+        <TimePicker
+          label={label}
+          value={value}
+          onChange={onChange}
+          sx={{width:"100%"}}
+        />
       </DemoContainer>
     </LocalizationProvider>
   );

@@ -1,42 +1,21 @@
-import React from 'react';
-import { useState, useRef } from 'react';
-import { Chip, Grid, IconButton, Paper, Box, Button, Typography, Drawer } from '@mui/material';
-import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import SkipNextIcon from '@mui/icons-material/SkipNext';
-import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
-import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
+import React, { useState, useRef } from 'react';
+import { Chip, Grid, Box, Paper, TextField, Typography, Button } from '@mui/material';
 import CheckBoxOutlinedIcon from '@mui/icons-material/CheckBoxOutlined';
-import { TextField } from '@mui/material';
-import Autocomplete from '@mui/material/Autocomplete';
-import InputAdornment from '@mui/material/InputAdornment';
-import ThermostatOutlinedIcon from '@mui/icons-material/ThermostatOutlined';
-import CloudUploadIcon from '@mui/icons-material/CloudUpload';
-import { Delete } from '@mui/icons-material';
-import { styled } from '@mui/material/styles';
-import PeopleOutlineOutlinedIcon from '@mui/icons-material/PeopleOutlineOutlined';
-import VisitorDrawer from './rightDrawer';
-import PrintIcon from '@mui/icons-material/Print';
-import { useReactToPrint } from 'react-to-print';
-import AvatarImage from '../../../../../../assets/images/avatar.png';
+import AvatarImage from 'assets/images/avatar.png';
+import ParameterizedAutoComplete from 'views/common-section/ParamAutoComplete';
+import SearchBar from 'views/common-section/SearchBox';
+import DateComponent from 'views/common-section/DateComponent';
+import ParamTime from 'views/common-section/ParamTime';
+import ParamAttachement from 'views/common-section/ParamAttachement';
+import ParamPrevAndNext from 'views/common-section/ParamPrevAndNext';
+import PrintPdf from 'views/common-section/withPrintPdf';
+import VisitorDetails from '../VisitorDetails';
+import ShowVisitorButton from '../ShowVisitorButton';
+import PrintVisitorButton from '../PrintVisitorButton';
 
-const VisuallyHiddenInput = styled('input')({
-  clip: 'rect(0 0 0 0)',
-  clipPath: 'inset(50%)',
-  height: 1,
-  overflow: 'hidden',
-  position: 'absolute',
-  bottom: 0,
-  left: 0,
-  whiteSpace: 'nowrap',
-  width: 1
-});
 
 //sample data
-const hundredOptions = [
+const visitorDetails = [
   { label: 'Aamir Khan', year: 1994, id: '686712729', index: 0 },
   { label: 'Shah Rukh Khan', year: 1972, id: '446712729', index: 1 },
   { label: 'Salman Khan', year: 1974, id: '126712729', index: 2 },
@@ -55,453 +34,150 @@ const hundredOptions = [
   { label: 'Varun Dhawan', year: 1975, id: '7906712729', index: 15 }
 ];
 
-const ComponentToPrint = React.forwardRef((props, ref) => {
-  return (
-    <div ref={ref}>
-      <div>
-        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-          <h2>{props.school.name}</h2>
-          <p>{props.school.address}</p>
-          <p>{props.school.phone}</p>
-        </div>
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-          <h4 style={{ textDecoration: 'underline' }}>Visitor Slip</h4>
-        </div>
-        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center' }}>
-          <div style={{ display: 'flex', flexDirection: 'row' }}>
-            <ul style={{ listStyle: 'none' }}>
-              <li style={{ padding: '10px' }}>{`Visitor No: ${props.user.id}`}</li>
-              <li style={{ padding: '10px' }}>{`Visitor Name: ${props.user.label}`}</li>
-              <li style={{ padding: '10px' }}>{`Purpose: ${props.user.id}`}</li>
-              <li style={{ padding: '10px' }}>{`To meet: ${props.user.id}`}</li>
-              <li style={{ padding: '10px' }}>{`Address:  ${props.user.id}`}</li>
-            </ul>
-            <ul style={{ listStyle: 'none' }}>
-              <li style={{ padding: '10px' }}>{`Category: ${props.user.id}`}</li>
-              <li style={{ padding: '10px' }}>{`Remarks: ${props.user.id}`}</li>
-              <li style={{ padding: '10px' }}>{`Entry date: ${props.user.id}`}</li>
-              <li style={{ padding: '10px' }}>{`Phone: ${props.user.id}`}</li>
-              <li style={{ padding: '10px' }}>{`Time in: ${props.user.id}`}</li>
-            </ul>
-          </div>
-          <div>
-            <img src={AvatarImage} alt="avatar" style={{ height: '90px', width: 'auto' }} />
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-});
-
 const VisitorEntry = () => {
-  const [template, setTemplate] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
-  const [selectedID, setSelectedID] = useState(null);
-  const [selectedPhoto, setSelectedPhoto] = useState(null);
-  const [state, setState] = useState({
-    top: false,
-    left: false,
-    bottom: false,
-    right: false
+  const printRef = useRef();
+  const [currVisitor, setCurrVisitor] = useState(visitorDetails[0]);
+  const [commentOpen, setCommentOpen] = useState(false);
+  const [visitorInfo,setVisitorInfo] = useState({
+    "name": "",
+    "address": "",
+    "phone": "",
+    "disableOtp": "",
+    "search": "",
+    "entryDate":null,
+    "entryCode": "",
+    "timeIn":null,
+    "timeOut":null,
+    "category":"",
+    "accompaniedBy":"",
+    "purpose":"",
+    "toMeet":"",
+    "temperature":"",
+    "remarks":""
   });
-  const [value, setValue] = useState(hundredOptions[0]);
-  const [inputValue, setInputValue] = useState('');
 
-  const componentRef = useRef();
-  const handlePrint = useReactToPrint({
-    content: () => componentRef.current
-  });
+  const handleChange = (name,value) => {
+    setVisitorInfo({...visitorInfo,[name]:value});
+    console.log(visitorInfo);
+  };
 
-  const toggleDrawer = (anchor, open) => (event) => {
-    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-      return;
+  const style = {
+    customStyle: {
+      width: "280px"
+    },
+    timePickerStyle: {
+      marginTop: "-10px",
+      width: "280px"
+    },
+    remarksBoxStyle: {
+      width: "280px",
+    },
+    AttachementStyle: {
+      display: "flex",
+      gap: "5px"
     }
-
-    setState({ ...state, [anchor]: open });
-  };
-
-  const handleChange = (event) => {
-    setTemplate(event.target.value);
-  };
-
-  const handleClickShowPassword = () => {
-    setShowPassword(!showPassword);
-  };
-
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
-
-  const handleIDChange = (event) => {
-    setSelectedID(event.target.files[0]);
-  };
-  const handlePhotoChange = (event) => {
-    setSelectedPhoto(event.target.files[0]);
-  };
-
-  const handleDeleteFileID = () => {
-    setSelectedID(null);
-  };
-  const handleDeletePhoto = () => {
-    setSelectedPhoto(null);
-  };
-
-  const handleFirst = () => {
-    setValue(hundredOptions[0]);
-  };
-  const handlePrevious = (index) => {
-    const finalIndex = index == 0 ? hundredOptions.length - 1 : index - 1;
-    setValue(hundredOptions[finalIndex]);
-  };
-  const handleNext = (index) => {
-    const finalIndex = index == hundredOptions.length - 1 ? 0 : index + 1;
-    setValue(hundredOptions[finalIndex]);
-  };
-  const handleLast = () => {
-    setValue(hundredOptions[hundredOptions.length - 1]);
-  };
+  }
 
   return (
     <>
-      <Grid container spacing={4} sx={{ marginTop: '20px' }}>
-        <Grid item xs={10}>
-          <Paper>
-            <Grid container spacing={3} sx={{ p: '25px' }}>
-              <Grid item xs={6}>
-                <Grid container spacing={2} sx={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center' }}>
-                  <Grid item xs={4}>
+      <Grid container spacing={3} >
+        {/*Visitor Entry */}
+        <Grid item xs={10} sm={10} md={10} lg={10}>
+          <Grid container spacing={3}>
+            <Grid item xs={10} sm={10} md={10} lg={12} >
+              <Paper sx={{ padding: "40px 40px 40px 40px" }}>
+                <Typography variant="h5">Visitor Details</Typography>
+                <Box>
+                  <Box sx={{ display: "flex", gap: "100px", marginTop: "20px", flexWrap: "wrap" }}>
+                    <img src={AvatarImage} alt="visitor-profile" width="60px" height="60px" />
                     <Chip
-                      label={value?.id}
+                      label={currVisitor?.id}
                       onClick={() => {
                         console.log('doing something');
                       }}
-                      sx={{ p: 1, width: '100%' }}
+                      sx={{ p: 1, width: '140px', height: "50px" }}
                       color="primary"
                     />
-                  </Grid>
-                  <Grid item xs={5}>
-                    <Autocomplete
-                      disablePortal
-                      id="combo-box-demo"
-                      options={hundredOptions}
-                      renderInput={(params) => <TextField {...params} label="Visiters" />}
-                      value={value}
-                      onChange={(event, newValue) => {
-                        // console.log(event.target.index)
-                        console.log('new value variable ', newValue);
-                        if (newValue != null) {
-                          setValue(newValue);
-                        } else {
-                          setValue('');
-                        }
-                      }}
-                      inputValue={inputValue}
-                      onInputChange={(event, newValue) => {
-                        setInputValue(newValue);
-                      }}
-                    />
-                  </Grid>
-                  <Grid item xs={3}>
-                    <Box sx={{ marginLeft: '10px' }}>
-                      <IconButton sx={{ p: 0 }} id="first" onClick={() => handleFirst()}>
-                        <SkipPreviousIcon sx={{ fontSize: '25px' }} />
-                      </IconButton>
-                      <IconButton sx={{ p: 0 }} id="previous" onClick={() => handlePrevious(value.index)}>
-                        <NavigateBeforeIcon sx={{ fontSize: '25px' }} />
-                      </IconButton>
-                      <IconButton sx={{ p: 0 }} id="next" onClick={() => handleNext(value.index)}>
-                        <NavigateNextIcon sx={{ fontSize: '25px' }} />
-                      </IconButton>
-                      <IconButton sx={{ p: 0 }} id="last" onClick={() => handleLast()}>
-                        <SkipNextIcon sx={{ fontSize: '25px' }} />
-                      </IconButton>
-                    </Box>
-                  </Grid>
-                </Grid>
-              </Grid>
-              <Grid item xs={6}>
-                <Grid container spacing={2} sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <Grid item xs={8}>
-                    <Box>
-                      <TextField
-                        id="outlined-select-option"
-                        type="date"
-                        fullWidth
-                        label="Entry Date"
-                        sx={{}}
-                        InputLabelProps={{
-                          shrink: true
-                        }}
-                      />
-                    </Box>
-                  </Grid>
-                  <Grid item xs={4}>
-                    <Box>
-                      <Chip
-                        icon={<CheckBoxOutlinedIcon sx={{ color: 'green !important' }} />}
-                        label="1874 Total visitors"
-                        variant="outlined"
-                        sx={{ fontSize: '12px' }}
-                      />
-                    </Box>
-                  </Grid>
-                </Grid>
-              </Grid>
-              <Grid item xs={6}>
-                <FormControl fullWidth>
-                  <InputLabel id="demo-simple-select-label">Gate Pass</InputLabel>
-                  <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    value={template}
-                    label="Gate Pass"
-                    onChange={handleChange}
-                  >
-                    <MenuItem value={1}>gate pass 1</MenuItem>
-                    <MenuItem value={2}>gate pass 2</MenuItem>
-                    <MenuItem value={3}>gate pass 3</MenuItem>
-                  </Select>
-                </FormControl>
-              </Grid>
-              <Grid item xs={6}>
-                <TextField id="outlined-basic" label="phone" variant="outlined" fullWidth inputProps={{ maxLength: 10 }} />
-              </Grid>
-              <Grid item xs={6}>
-                <Grid container spacing={3}>
-                  <Grid item xs={6}>
-                    <TextField
-                      id="outlined-select-option"
-                      type="time"
-                      fullWidth
-                      label="Time in"
-                      sx={{}}
-                      InputLabelProps={{
-                        shrink: true
-                      }}
-                    />
-                  </Grid>
-                  <Grid item xs={6}>
-                    <TextField
-                      id="outlined-select-option"
-                      type="time"
-                      fullWidth
-                      label="Time out"
-                      sx={{}}
-                      InputLabelProps={{
-                        shrink: true
-                      }}
-                    />
-                  </Grid>
-                </Grid>
-              </Grid>
-              <Grid item xs={6}>
-                <FormControl fullWidth>
-                  <InputLabel id="demo-simple-select-label">Category</InputLabel>
-                  <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    value={template}
-                    label="Category"
-                    onChange={handleChange}
-                  >
-                    <MenuItem value={1}>Interview</MenuItem>
-                    <MenuItem value={2}>Meeting</MenuItem>
-                    <MenuItem value={3}>Parents Meeting</MenuItem>
-                  </Select>
-                </FormControl>
-              </Grid>
-              <Grid item xs={6}>
-                <FormControl fullWidth>
-                  <InputLabel id="demo-simple-select-label">Accompanied by</InputLabel>
-                  <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    value={template}
-                    label="Accompanied by"
-                    onChange={handleChange}
-                  >
-                    <MenuItem value={1}>1</MenuItem>
-                    <MenuItem value={2}>2</MenuItem>
-                    <MenuItem value={3}>3</MenuItem>
-                    <MenuItem value={3}>None</MenuItem>
-                  </Select>
-                </FormControl>
-              </Grid>
-              <Grid item xs={6}>
-                <TextField
-                  label="Temprature"
-                  id="outlined-start-adornment"
-                  sx={{}}
-                  fullWidth
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">
-                        <IconButton
-                          aria-label="toggle password visibility"
-                          onClick={handleClickShowPassword}
-                          onMouseDown={handleMouseDownPassword}
-                          edge="end"
-                        >
-                          <ThermostatOutlinedIcon />
-                        </IconButton>
-                      </InputAdornment>
-                    )
-                  }}
-                  variant="outlined"
-                />
-              </Grid>
-              <Grid item xs={6}>
-                <TextField id="outlined-basic" label="Addresss (R)" variant="outlined" fullWidth />
-              </Grid>
-              <Grid item xs={6}>
-                <TextField id="outlined-basic" label="Remarks" variant="outlined" fullWidth />
-              </Grid>
-              <Grid item xs={6}>
-                <FormControl fullWidth>
-                  <InputLabel id="demo-simple-select-label">Purpose</InputLabel>
-                  <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    value={template}
-                    label="Purpose"
-                    onChange={handleChange}
-                  >
-                    <MenuItem value={1}>Interview</MenuItem>
-                    <MenuItem value={2}>Meeting</MenuItem>
-                    <MenuItem value={3}>Parents Meetingh</MenuItem>
-                  </Select>
-                </FormControl>
-              </Grid>
-              <Grid item xs={6} sx={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center' }}>
-                <Box>
-                  <Box>
-                    <Button
-                      component="label"
-                      role={undefined}
-                      variant="outlined"
-                      tabIndex={-1}
-                      startIcon={<CloudUploadIcon />}
-                      sx={{ padding: '12px' }}
-                    >
-                      Upload Photo
-                      <VisuallyHiddenInput type="file" accept="image/*" onChange={handlePhotoChange} />
+                    <ParamPrevAndNext value={currVisitor} data={visitorDetails} setCurrValue={setCurrVisitor} customStyle={{ marginTop: "11px" }} />
+                  </Box>
+                  <Box sx={{ display: "flex", gap: "20px", marginTop: "20px", flexWrap: "wrap" }}>
+                    <SearchBar placeholder="Name ..." rootSx={style.customStyle} />
+                    <TextField id="outlined-basic" label="Address" variant="outlined" inputProps={{ maxLength: 10 }} onChange={(event) => handleChange("address", event.target.value)} sx={style.customStyle} />
+                    <TextField id="outlined-basic" label="Phone" variant="outlined" inputProps={{ maxLength: 10 }} onChange={(event) => handleChange("phone", event.target.value)} sx={style.customStyle} />
+                    <TextField id="outlined-basic" label="Disable OTP" variant="outlined" inputProps={{ maxLength: 10 }} onChange={(event) => handleChange("disableOtp", event.target.value)} sx={style.customStyle} />
+                  </Box>
+                </Box>
+              </Paper>
+            </Grid>
+            {/* Visitor Dtails */}
+            <Grid item xs={10} sm={10} md={10} lg={12}>
+              <Paper sx={{ padding: "40px 40px 40px 40px" }}>
+                <Box sx={{ display: "flex", flexDirection: "row", gap: "60px" }}>
+                  <Typography variant="h5" sx={{ lineHeight: "42px" }}>Visitor Entry</Typography>
+                  <Chip icon={<CheckBoxOutlinedIcon sx={{ color: 'green !important' }} />}
+                    label="1874 Total visitors"
+                    variant="outlined"
+                    sx={{ fontSize: '12px', width: "150px", height: "50px" }}
+                  />
+                </Box>
+                <Box sx={{ display: "flex", gap: "20px", flexWrap: "wrap", marginTop: "20px" }}>
+                  <DateComponent option={visitorDetails} label="Entry Date" value={visitorDetails} onChange={(newDate) => handleChange("entryDate", newDate)} customStyle={style.customStyle} />
+                  <ParameterizedAutoComplete option={visitorDetails} label="Entry Code" onChange={(event, newData) => handleChange("entryCode", newData)} customStyle={style.customStyle} />
+                  <ParamTime customStyle={style.timePickerStyle} label="Time In" onChange={(time)=>handleChange("timeIn",time)} />
+                  <ParamTime customStyle={style.timePickerStyle} label="Time Out" onChange={(time)=>handleChange("timeOut",time)} />
+                  <ParameterizedAutoComplete option={visitorDetails} label="Category" onChange={(event, newData) => handleChange("Category", newData)} customStyle={style.customStyle} />
+                  <ParameterizedAutoComplete option={visitorDetails} label="Accompanied  By" onChange={(event, newData) => handleChange("AccompaniedBy", newData)} customStyle={style.customStyle} />
+                  <TextField id="outlined-basic" label="Purpose" variant="outlined" inputProps={{ maxLength: 10 }} onChange={(event) => handleChange("mobileNo", event.target.value)} sx={style.customStyle} />
+                  <ParameterizedAutoComplete option={visitorDetails} label="To meet" onChange={(event, newData) => handleChange("toMeet", newData)} customStyle={style.customStyle} />
+                  {/* Temperature */}
+                  <TextField id="outlined-basic" label="Temperature" variant="outlined" inputProps={{ maxLength: 10 }} onChange={(event) => handleChange("temperature", event.target.value)} sx={style.customStyle} />
+                  {/* Remarks */}
+                  {!commentOpen && <Box sx={{ color: "blue", cursor: "pointer", lineHeight: "50px" }} onClick={() => setCommentOpen(!commentOpen)}>+ Add Remarks</Box>}
+                  {commentOpen && <TextField
+                    id="comment"
+                    label="Reamrks"
+                    variant="outlined"
+                    sx={style.remarksBoxStyle}
+                    placeholder="Remarks ..."
+                  />}
+                </Box>
+                <Box sx={{ display: "flex", justifyContent: "space-between", marginTop: "20px" }}>
+                  <Box sx={{ display: "flex", gap: "60px", marginTop: "8px" }}>
+                    <ParamAttachement label="Photo" rootSx={style.AttachementStyle} />
+                    <ParamAttachement label="ID Proof" rootSx={style.AttachementStyle} />
+                  </Box>
+                  <Box sx={{ display: "flex", wrap: "no-wrap", gap: "20px" }}>
+                    <Button sx={{ height: "40px", color: '#fff', margin: "auto 0px auto 0px" }} variant="contained">
+                      Add
+                    </Button>
+                    <Button sx={{ height: "40px", color: '#fff', margin: "auto 0px auto 0px" }} variant="contained">
+                      Edit
+                    </Button>
+                    <Button sx={{ height: "40px", color: '#fff', margin: "auto 0px auto 0px" }} variant="contained" color="error">
+                      Delete
                     </Button>
                   </Box>
-                  {selectedPhoto != null ? (
-                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                      <Typography
-                        variant="body1"
-                        sx={{ width: '100px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}
-                      >
-                        {selectedPhoto?.name}
-                      </Typography>
-                      <IconButton color="primary" onClick={handleDeletePhoto}>
-                        <Delete />
-                      </IconButton>
-                    </Box>
-                  ) : null}
                 </Box>
-                <Box>
-                  <Box>
-                    <Button
-                      component="label"
-                      color="secondary"
-                      role={undefined}
-                      variant="outlined"
-                      tabIndex={-1}
-                      startIcon={<CloudUploadIcon />}
-                      sx={{ padding: '12px' }}
-                    >
-                      Upload ID proof
-                      <VisuallyHiddenInput type="file" accept="image/*" onChange={handleIDChange} />
-                    </Button>
-                  </Box>
-                  {selectedID != null ? (
-                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                      <Typography
-                        variant="body1"
-                        sx={{ width: '100px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}
-                      >
-                        {selectedID?.name}
-                      </Typography>
-                      <IconButton color="primary" onClick={handleDeleteFileID}>
-                        <Delete />
-                      </IconButton>
-                    </Box>
-                  ) : null}
-                </Box>
-              </Grid>
-              <Grid item xs={6}>
-                <FormControl fullWidth>
-                  <InputLabel id="demo-simple-select-label">To Meet</InputLabel>
-                  <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    value={template}
-                    label="Purpose"
-                    onChange={handleChange}
-                  >
-                    <MenuItem value={1}>Admin</MenuItem>
-                    <MenuItem value={2}>Teacher</MenuItem>
-                    <MenuItem value={3}>Principal</MenuItem>
-                    <MenuItem value={4}>Peon</MenuItem>
-                  </Select>
-                </FormControl>
-              </Grid>
+              </Paper>
             </Grid>
-          </Paper>
+          </Grid>
         </Grid>
-        <Grid item xs={2}>
-          <Paper>
-            <Grid container spacing={3} sx={{ p: '25px' }}>
-              <Grid item xs={12}>
-                <Box>
-                  <Box style={{ display: 'none' }}>
-                    <ComponentToPrint
-                      ref={componentRef}
-                      user={value}
-                      school={{
-                        name: 'SHAURYA INTERNATIONAL SCHOOL, GURUGRAM',
-                        address: 'Shree Awaas Apartment-Dwarka',
-                        phone: '011-45525909',
-                        other: 'other props mention here'
-                      }}
-                    />
-                  </Box>
-                  <Button
-                    variant="contained"
-                    color="secondary"
-                    endIcon={<PrintIcon />}
-                    fullWidth
-                    sx={{ display: 'flex', justifyContent: 'center' }}
-                    onClick={handlePrint}
-                  >
-                    Print
-                  </Button>
-                </Box>
-              </Grid>
-              <Grid item xs={12}>
-                <Box>
-                  <Button
-                    variant="contained"
-                    color="secondary"
-                    endIcon={<PeopleOutlineOutlinedIcon />}
-                    onClick={toggleDrawer('right', true)}
-                    fullWidth
-                  >
-                    Show Visitors
-                  </Button>
-                  <Drawer anchor={'right'} open={state['right']} onClose={toggleDrawer('right', false)}>
-                    <VisitorDrawer />
-                  </Drawer>
-                </Box>
-              </Grid>
-            </Grid>
+
+        {/* Action Buttons  */}
+        < Grid item xs={10} sm={10} md={2} lg={2}>
+          <Paper sx={{ padding: "20px 20px 20px 20px", textAlign: "center" }}>
+            <PrintPdf ref={printRef} Children={<PrintVisitorButton />} />
+            <ShowVisitorButton />
           </Paper>
-        </Grid>
-      </Grid>
+          <Box sx={{ display: "none" }}>
+            <VisitorDetails ref={printRef} />
+          </Box>
+        </Grid >
+      </Grid >
     </>
   );
 };
 
 export default VisitorEntry;
+
+

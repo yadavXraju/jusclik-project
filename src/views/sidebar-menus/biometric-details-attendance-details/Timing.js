@@ -90,23 +90,3 @@ function Timing() {
 }
 
 export default Timing;
-
-// import React from 'react';
-// import { Box, Typography, LinearProgress } from '@mui/material';
-
-// function Schedule() {
-//   return (
-//     <Box className="mt-auto">
-//       <Typography variant="body2" className="text-small">Today (9:00 AM - 6:00 PM)</Typography>
-//       <Box my={4}>
-//         <LinearProgress variant="determinate" value={25} sx={{ width: '100%', height: '8px', bgcolor: 'accent.aqua' }} />
-//       </Box>
-//       <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-//         <Typography variant="body2" className="text-label text-capitalize text-secondary">Duration: 9h 0m</Typography>
-//         <Typography variant="body2" className="text-label text-capitalize text-secondary">Break: 60 min</Typography>
-//       </Box>
-//     </Box>
-//   );
-// }
-
-// export default Schedule;
