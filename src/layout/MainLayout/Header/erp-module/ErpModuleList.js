@@ -1,6 +1,15 @@
 import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
-import fee from '../../../../assets/images/fee.png'
-import result from '../../../../assets/images/results.png'
+import stufee from '../../../../assets/images/stufee.svg';
+import hr from '../../../../assets/images/hr.svg';
+import progress from '../../../../assets/images/progress.svg';
+import library from '../../../../assets/images/library.svg';
+import inventory from '../../../../assets/images/inventory.svg'
+import finance from '../../../../assets/images/finance.svg'
+import website from '../../../../assets/images/website.svg'
+import visitor from '../../../../assets/images/visitor.svg'
+import medical from '../../../../assets/images/medical.svg'
+import admission from '../../../../assets/images/admission.svg'
+import relationship from '../../../../assets/images/relationship.svg'
 
 
 export const ErpModuleList = [
@@ -23,15 +32,14 @@ export const ErpModuleList = [
     {
         id:1,
         name:'Student Info & Fee ',
-        // icon : <LanguageOutlinedIcon sx={{margin:'auto'}}/>,
-        icon : <img src={fee} alt='icon' style={{width:'34px', margin:'auto'}} />,
+        icon : <img src={stufee} alt='icon' style={{width:'34px', margin:'auto'}} />,
         url: '/erp/student-info-fee/dashboard',
     },
 
     {
         id:2,
         name:'HR & Payroll',
-         icon : <LanguageOutlinedIcon sx={{margin:'auto'}}/>,
+        icon : <img src={hr} alt='icon' style={{width:'34px', margin:'auto'}} />,
         url: '',
     },
 
@@ -39,43 +47,42 @@ export const ErpModuleList = [
     {
         id:3,
         name:'Progress & Result',
-        //  icon : <LanguageOutlinedIcon sx={{margin:'auto'}}/>,
-        icon : <img src={result} alt='icon' style={{width:'34px', margin:'auto'}} />,
+        icon : <img src={progress} alt='icon' style={{width:'34px', margin:'auto'}} />,
         url: '',
     },
 
     {
         id:4,
         name:'Library',
-         icon : <LanguageOutlinedIcon sx={{margin:'auto'}}/>,
+        icon : <img src={library} alt='icon' style={{width:'34px', margin:'auto'}} />,
         url: '',
     },
 
     {
         id:5,
         name:'Inventory',
-         icon : <LanguageOutlinedIcon sx={{margin:'auto'}}/>,
+        icon : <img src={inventory} alt='icon' style={{width:'34px', margin:'auto'}} />,
         url: '',
     },
 
     {
         id:6,
         name:'Financial Accounting',
-         icon : <LanguageOutlinedIcon sx={{margin:'auto'}}/>,
+        icon : <img src={finance} alt='icon' style={{width:'34px', margin:'auto'}} />,
         url: '',
     },
 
     {
         id:7,
         name:'Website ',
-         icon : <LanguageOutlinedIcon sx={{margin:'auto'}}/>,
+        icon : <img src={website} alt='icon' style={{width:'34px', margin:'auto'}} />,
         url: '',
     },
 
     {
         id:8,
         name:'Visitor',
-         icon : <LanguageOutlinedIcon sx={{margin:'auto'}}/>,
+        icon : <img src={visitor} alt='icon' style={{width:'34px', margin:'auto'}} />,
          url: '/erp/visitor/dashboard',
     },
 
@@ -83,21 +90,21 @@ export const ErpModuleList = [
     {
         id:9,
         name:'Medical Examination',
-         icon : <LanguageOutlinedIcon sx={{margin:'auto'}}/>,
+        icon : <img src={medical} alt='icon' style={{width:'34px', margin:'auto'}} />,
         url: '',
     },
 
     {
         id:10,
-        name:'Parent Relationship',
-         icon : <LanguageOutlinedIcon sx={{margin:'auto'}}/>,
+        name:'Admission',
+        icon : <img src={admission} alt='icon' style={{width:'34px', margin:'auto'}} />,
         url: '',
     },
 
     {
         id:11,
         name:'Customer Relationship ',
-         icon : <LanguageOutlinedIcon sx={{margin:'auto'}}/>,
+        icon : <img src={relationship} alt='icon' style={{width:'34px', margin:'auto'}} />,
         url: '',
     },
 

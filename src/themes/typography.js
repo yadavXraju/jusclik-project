@@ -97,7 +97,7 @@ export default function ThemeTypography(theme) {
       minHeight: 'calc(100vh - 88px)',
       flexGrow: 1,
       padding: isMediumDesktop ? '20px 10px'  :'20px 40px',
-      marginTop: isMobile ? '230px' : '130px',
+      marginTop: isMobile ? '230px' : '110px',
       marginRight: isMediumDesktop ? '0' : '20px',
       borderRadius: `${theme?.customization?.borderRadius}px`
     },
