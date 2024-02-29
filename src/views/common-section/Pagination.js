@@ -1,6 +1,7 @@
 import React from 'react';
 import TablePagination from '@mui/material/TablePagination';
 
+// ============== Component for Table pagination ============
 export default function Pagination({ count, page,rowsPerPage,setRowsPerPage, setPage}) {
   
   const handleChangePage = (event, newPage) => {

@@ -5,7 +5,6 @@ import AttandanceStatus from './AttandanceStatus';
 import AttendanceLog from './AttandanceLog';
 import MainCard from 'ui-component/cards/MainCard';
 import ExpensesTravel from './ExpensesTravel';
-import { Box } from '@mui/material';
 
 const BiometricDetailsOrAttendanceDetails = () => {
   return (
@@ -21,9 +20,9 @@ const BiometricDetailsOrAttendanceDetails = () => {
       <MainCard>
       <AttendanceLog/>
       </MainCard>
-      <Box p={2}>
+      <MainCard>
       <ExpensesTravel/>
-      </Box>
+      </MainCard>
     </>
   );
 };
