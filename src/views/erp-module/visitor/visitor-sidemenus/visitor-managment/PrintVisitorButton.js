@@ -5,7 +5,7 @@ const PrintVisitorButton = () => {
     return (
       <Button variant="contained" color="secondary"
         endIcon={<PrintIcon />}
-        sx={{ display: 'flex', justifyContent: 'center',width:"200px"}}
+        sx={{width:"150px"}}
       >Print</Button>
     )
   }

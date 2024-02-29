@@ -6,7 +6,7 @@ import SkipNextIcon from '@mui/icons-material/SkipNext';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
 
-const ParamPrevAndNext = ({value,data,setCurrValue}) => {
+const ParamPrevAndNext = ({value,data,setCurrValue,customStyle}) => {
     const handleFirst = () => {
         setCurrValue(data[0]);
       };
@@ -27,7 +27,7 @@ const ParamPrevAndNext = ({value,data,setCurrValue}) => {
 
     return (
         <>
-            <Box sx={{ marginLeft: '10px' }}>
+            <Box sx={customStyle}>
                 <IconButton sx={{ p: 0 }} id="first" onClick={() => handleFirst()}>
                     <SkipPreviousIcon sx={{ fontSize: '25px' }} />
                 </IconButton>
