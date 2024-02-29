@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { Box, Paper, TextField, Drawer, Button } from '@mui/material';
-import ParameterizedAutoComplete from 'views/common-section/parameterizedAutoComplete';
+import ParameterizedAutoComplete from 'views/common-section/ParamAutoComplete';
 import SearchBar from 'views/common-section/SearchBox';
 import QuickSearchDrawer from 'views/common-section/QuickSearchDrawer'
 

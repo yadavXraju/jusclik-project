@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import {  Box, Paper, TextField, Button, Typography, useMediaQuery } from '@mui/material';
-import ParameterizedAutoComplete from 'views/common-section/parameterizedAutoComplete';
+import ParameterizedAutoComplete from 'views/common-section/ParamAutoComplete';
 import DateComponent from 'views/common-section/DateComponent';
 import SmsDeliveryTable from './smsDeliveryTable';
 import Report from './Report';

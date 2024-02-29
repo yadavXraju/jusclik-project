@@ -5,9 +5,12 @@ import LocalPrintshopOutlinedIcon from '@mui/icons-material/LocalPrintshopOutlin
 
 
 const PrintPdf = React.forwardRef((props,ref) => {
+    // console.log(props)
+    const {Children}=props;
+    
     return (
-        <Box className="print-icons" sx={{ dispaly: "flex !important " }}>
-            <ReactToPrint variant="outlined" trigger={() => <Button><LocalPrintshopOutlinedIcon /></Button>}
+        <Box className="print-icons" sx={{ dispaly: "flex !important" }}>
+            <ReactToPrint variant="outlined" trigger={() => <Button>{Children}</Button>}
                 content={() => ref.current} />
         </Box>
     )
