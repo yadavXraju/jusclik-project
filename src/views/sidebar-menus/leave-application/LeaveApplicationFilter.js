@@ -8,9 +8,8 @@ import Popover from '@mui/material/Popover';
 import { IconButton } from '@mui/material';
 import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
-//import { Divider } from '@mui/material';
-import TablePagination from '@mui/material/TablePagination'; // Import TablePagination component
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
+import Pagination from 'views/common-section/Pagination';
 
 // Leave data
 const leavedata = [
@@ -44,17 +43,6 @@ export default function LeaveTabs() {
   const handleChange = (event, newValue) => {
     setValue(newValue);
     setPage(0); // Reset page when changing tabs
-  };
-
-  // ========== Handle change in page ============
-  const handleChangePage = (event, newPage) => {
-    setPage(newPage);
-  };
-
-  // ============= Handle change in rows per page ==========
-  const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(parseInt(event.target.value, 10));
-    setPage(0); // Reset page when changing rows per page
   };
 
   // =========== Filter data if Pending & Approved =========
@@ -200,19 +188,13 @@ export default function LeaveTabs() {
     </TableContainer>
 
       {/* ======== Render TablePagination component  ========== */}
-      <TablePagination
-        component="div"
-        count={filteredData.length}
-        page={page}
-        onPageChange={handleChangePage}
-        rowsPerPage={rowsPerPage}
-        onRowsPerPageChange={handleChangeRowsPerPage}
-        SelectProps={{
-          inputProps: { 'aria-label': 'rows per page' },
-          native: true,
-        }}
-        rowsPerPageOptions={[5, 10, 25, 50]}
-      />
+      <Pagination
+          count={leavedata.length}
+          page={page}
+          rowsPerPage={rowsPerPage}
+          setRowsPerPage={setRowsPerPage}
+          setPage={setPage}
+        />
     </Box>
   );
 }
