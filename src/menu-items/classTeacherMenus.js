@@ -11,6 +11,7 @@ import LibraryBooksTwoToneIcon from '@mui/icons-material/LibraryBooksTwoTone';
 import DraftsTwoToneIcon from '@mui/icons-material/DraftsTwoTone';
 import FolderCopyTwoToneIcon from '@mui/icons-material/FolderCopyTwoTone';
 import LocalLibraryTwoToneIcon from '@mui/icons-material/LocalLibraryTwoTone';
+import MovingIcon from '@mui/icons-material/Moving';
 
 
 const ClassTeacherMenu = {
@@ -217,7 +218,16 @@ const ClassTeacherMenu = {
                 icon:    FingerprintTwoToneIcon,
                 breadcrumbs: false
             },
-            
+
+            {
+              id: 'expenses-travel',
+              title: 'Expense And Travel',
+              type: 'item',
+              url: '/class-teacher/expenses-travel',
+              icon: MovingIcon ,
+              breadcrumbs: false
+          },
+
              {
                 id: 'leave-application',
                 title: 'Leave Application',
