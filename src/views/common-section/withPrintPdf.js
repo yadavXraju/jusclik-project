@@ -4,7 +4,7 @@ import ReactToPrint from "react-to-print";
 
 
 
-const PrintPdf = React.forwardRef((props,ref) => {
+const withPrintPdf = React.forwardRef((props,ref) => {
     // console.log(props)
     const {Children}=props;
     
@@ -16,7 +16,7 @@ const PrintPdf = React.forwardRef((props,ref) => {
     )
 })
 
-export default PrintPdf;
+export default withPrintPdf;
 
 
 

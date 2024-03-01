@@ -12,7 +12,7 @@ const SchoolName = () => {
     <>
       <Box sx={{ mx: isMobile ? '0rem' : '2rem' , display: 'flex' , alignItems: 'center' }}>
             <Box  sx={{ mx: isMobile ? '0rem' : '1rem' , maxWidth:'300px' , maxHeight:'100px'  }}> 
-              <img src={SchoolData.logo} alt="School Logo"  style={{objectFit:'cover', width:'100%', height:'100px'}}/> 
+              <img src={SchoolData.logo} alt="School Logo"  style={{objectFit:'cover', width:'70px', height:'7 0px'}}/> 
             </Box>
         <Box > 
         <Typography variant='h2' sx={{ lineHeight: '1.2', fontSize: isMobile ? '18px' : (isMediumDesktop ? '20px' : '26px') }}>

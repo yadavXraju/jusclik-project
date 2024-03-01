@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { useTheme } from '@mui/material/styles';
 import { Box, Drawer, useMediaQuery } from '@mui/material';
@@ -9,23 +9,9 @@ import LogoSection from '../LogoSection';
 import { drawerWidth } from 'store/constant';
 import classnames from 'classnames';
 
-const Sidebar = ({ drawerOpen, drawerToggle, window }) => {
+const Sidebar = ({ drawerOpen, drawerToggle, window}) => {
   const theme = useTheme();
   const matchUpMd = useMediaQuery(theme.breakpoints.up('md'));
-
-  useEffect(() => {
-    // Add 'drawerclose' class to body when drawer is closed
-    if (!drawerOpen) {
-      document.body.classList.add('drawercloseBody');
-    } else {
-      document.body.classList.remove('drawercloseBody');
-    }
-
-    // Clean up function to remove the class when the component unmounts
-    return () => {
-      document.body.classList.remove('drawercloseBody');
-    };
-  }, [drawerOpen]);
 
   const drawer = (
     <>

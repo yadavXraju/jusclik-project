@@ -11,7 +11,7 @@ const ShowVisitorButton = () => {
     return (
         <>
             <Button variant="contained" color="secondary" endIcon={<PeopleOutlineOutlinedIcon />}
-                sx={{ marginTop: "20px",widht:"200px"}}
+                sx={{marginTop:"15px",width:"150px"}}
                 onClick={toggleDrawer('right', true)}
             >
                 Show Visitors
