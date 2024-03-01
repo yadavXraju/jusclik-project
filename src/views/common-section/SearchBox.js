@@ -17,7 +17,7 @@ const SearchBar = ({
 }) => {
     const handleChange = (event) => {
         if (onChange) {
-            onChange(event.target.value);
+            onChange(event);
         }
     };
 
