@@ -4,7 +4,7 @@ import TextArea from 'antd/es/input/TextArea';
 import { useState } from 'react';
 import SelectList from 'views/common-section/ParamSelectList';
 import TextField from '@mui/material/TextField';
-import ParameterizedDateComponent from 'views/common-section/DateComponent';
+import ParameterizedDateComponent from 'views/common-section/ParamDateComponent';
 
 function ExpenseDrawerContent() {
     const [expense, setexpense] = useState('');
