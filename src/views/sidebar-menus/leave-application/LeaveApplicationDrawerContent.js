@@ -36,8 +36,7 @@ function LeaveApplicationDrawerContent() {
   
     // ========= Update Default leave type =============
     const handleLeaveTypeChange = (event) => {
-      setLeaveType(event.target.value);
-      setDefaultleaveType(event.target.value);
+      setLeaveType(event.target.value); 
     };
   
     const handleLeaveFromChange = (date) => {

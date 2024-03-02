@@ -6,11 +6,11 @@ import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 
 const withParamDrawer = (WrappedComponent) => {
     const WithParamDrawer = (props) => {
-        const { anchor, toggleDrawer } = useDrawer();
+        const { anchor, toggleDrawer, customStyle={} } = useDrawer();
         const { buttonLabel, drawerTitle } = props;
         return (
             <>
-                <Button onClick={toggleDrawer('right', true)} variant="outlined" startIcon={<AddOutlinedIcon />}>
+                <Button onClick={toggleDrawer('right', true)} variant="outlined" sx={customStyle} startIcon={<AddOutlinedIcon />}>
                     {buttonLabel}
                 </Button>
                 <Drawer anchor={'right'} open={anchor.right} onClose={toggleDrawer('right', false)}>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Box, Typography, LinearProgress } from '@mui/material';
 import FingerprintIcon from '@mui/icons-material/Fingerprint';
 import SignalCellularAltOutlinedIcon from '@mui/icons-material/SignalCellularAltOutlined';
@@ -6,66 +6,71 @@ import Popper from '@mui/material/Popper';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 function Timing() {
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [currentDayIndex, setCurrentDayIndex] = useState(-1);
+  const [open, setOpen] = useState(false);
+  const [selectedDate, setSelectedDate] = useState(null);
 
-  const handleClick = (event) => {
-    setAnchorEl(anchorEl ? null : event.currentTarget);
+  const handleOpen = (index, event) => {
+    setCurrentDayIndex(index);
+    setAnchorEl(event.currentTarget);
+    setOpen(true);
+    // Get current date and add index days to it
+    const currentDate = new Date();
+    const currentDay = currentDate.getDay(); // Get current day (0-6)
+    const offset = index - currentDay; // Calculate offset to adjust the selected date
+    currentDate.setDate(currentDate.getDate() + offset);
+    setSelectedDate(currentDate);
   };
 
   const handleClose = () => {
-    setAnchorEl(null);
+    setOpen(false);
+    setCurrentDayIndex(-1);
   };
 
-  const open = Boolean(anchorEl);
-  const id = open ? 'simple-popper' : undefined;
-  // Array of weekdays
-  const weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-
-  // Get the current day
-  const currentDayIndex = new Date().getDay();
-
+  const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const currentDay = new Date().getDay();
   return (
     <>
       <Box sx={{ border: '1px solid #ccc', borderRadius: '5px' }} p={2} backgroundColor={'#fff'}>
         <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
           <Box>
-            {/* Rendering the list of weekdays */}
-            {weekdays.map((day, index) => (
+            {days.map((day, index) => (
               <Box
                 key={index}
-                onMouseEnter={handleClick}
+                onMouseEnter={(e) => handleOpen(index, e)}
                 onMouseLeave={handleClose}
                 sx={{
                   display: 'inline-flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  border: index === currentDayIndex ? 'none' : '1px solid #ccc',
+                  border: index === currentDayIndex ? '1px solid #64c3d1' : '1px solid #ccc',
                   borderRadius: '50%',
                   marginRight: '10px',
                   height: '24px',
                   width: '24px',
-                  backgroundColor: index === currentDayIndex ? '#64c3d1' : 'transparent'
+                  backgroundColor: index === currentDay ? '#64c3d1' : 'transparent'
                 }}
               >
                 <span style={{ margin: 'auto' }}>{day[0]}</span> {/* Center the text horizontally and vertically */}
               </Box>
             ))}
-            <Popper id={id} open={open} anchorEl={anchorEl} placement="top">
+            <Popper id="popper" open={open} anchorEl={anchorEl} placement="top">
               <Box sx={{ border: 1, p: 2, bgcolor: '#364152', color: '#fff', borderRadius: '5px' }}>
-              <Typography variant="body1" color={'#fff'} >
-                27-Feb-2024
-              </Typography>
-              <Typography variant="body1" color={'#fff'} >
-                Today (9:00 AM - 6:00 PM)
-              </Typography>
-                </Box>
-              
+                {selectedDate && <span>{selectedDate.toDateString()}</span>}
+                {/* <Typography variant="body1" color={'#fff'}>
+                  27-Feb-2024
+                </Typography> */}
+                <Typography variant="body1" color={'#fff'}>
+                  Today (9:00 AM - 6:00 PM)
+                </Typography>
+              </Box>
               <ArrowDropDownIcon sx={{ marginTop: '-10px', marginLeft: '95px' }} />
             </Popper>
           </Box>
           <Box>
             <SignalCellularAltOutlinedIcon />
-            <FingerprintIcon />
+            <FingerprintIcon />                                                                                                          
           </Box>
         </Box>
         <Box mt={'33px'}>
