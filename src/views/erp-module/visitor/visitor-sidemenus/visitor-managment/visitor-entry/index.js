@@ -4,7 +4,7 @@ import CheckBoxOutlinedIcon from '@mui/icons-material/CheckBoxOutlined';
 import AvatarImage from 'assets/images/avatar.png';
 import ParameterizedAutoComplete from 'views/common-section/ParamAutoComplete';
 import SearchBar from 'views/common-section/SearchBox';
-import DateComponent from 'views/common-section/DateComponent';
+import DateComponent from 'views/common-section/ParamDateComponent';
 import ParamTime from 'views/common-section/ParamTime';
 import ParamAttachement from 'views/common-section/ParamAttachement';
 import ParamPrevAndNext from 'views/common-section/ParamPrevAndNext';
@@ -16,48 +16,48 @@ import PrintVisitorButton from '../PrintVisitorButton';
 
 //sample data
 const visitorDetails = [
-  { label: 'Aamir Khan', year: 1994, id: '686712729', index: 0 },
-  { label: 'Shah Rukh Khan', year: 1972, id: '446712729', index: 1 },
-  { label: 'Salman Khan', year: 1974, id: '126712729', index: 2 },
-  { label: 'Rajinikanth', year: 2008, id: '456712729', index: 3 },
-  { label: 'Amitabh Bachchan', year: 1957, id: '906712729', index: 4 },
-  { label: 'Priyanka Chopra', year: 1993, id: '766712729', index: 5 },
-  { label: 'Deepika Padukone', year: 1994, id: '534712729', index: 6 },
-  { label: 'Hrithik Roshan', year: 2003, id: '68673652729', index: 7 },
-  { label: 'Kareena Kapoor Khan', year: 1966, id: '7626712729', index: 8 },
-  { label: 'Akshay Kumar', year: 1999, id: '621812729', index: 9 },
-  { label: 'Aishwarya', year: 2001, id: '123712729', index: 10 },
-  { label: 'Ranbir Kapoor', year: 1980, id: '2762112729', index: 11 },
-  { label: 'Alia Bhatt', year: 1994, id: '216112729', index: 12 },
-  { label: 'Ranveer Singh', year: 2010, id: '261712729', index: 13 },
-  { label: 'Katrina Kaif', year: 2002, id: '127712729', index: 14 },
-  { label: 'Varun Dhawan', year: 1975, id: '7906712729', index: 15 }
+  { label: 'Aamir Khan', year: 1994, id: '686712729' },
+  { label: 'Shah Rukh Khan', year: 1972, id: '446712729' },
+  { label: 'Salman Khan', year: 1974, id: '126712729' },
+  { label: 'Rajinikanth', year: 2008, id: '456712729' },
+  { label: 'Amitabh Bachchan', year: 1957, id: '906712729' },
+  { label: 'Priyanka Chopra', year: 1993, id: '766712729' },
+  { label: 'Deepika Padukone', year: 1994, id: '534712729' },
+  { label: 'Hrithik Roshan', year: 2003, id: '68673652729' },
+  { label: 'Kareena Kapoor Khan', year: 1966, id: '7626712729' },
+  { label: 'Akshay Kumar', year: 1999, id: '621812729' },
+  { label: 'Aishwarya', year: 2001, id: '123712729' },
+  { label: 'Ranbir Kapoor', year: 1980, id: '2762112729' },
+  { label: 'Alia Bhatt', year: 1994, id: '216112729' },
+  { label: 'Ranveer Singh', year: 2010, id: '261712729' },
+  { label: 'Katrina Kaif', year: 2002, id: '127712729' },
+  { label: 'Varun Dhawan', year: 1975, id: '7906712729' }
 ];
 
 const VisitorEntry = () => {
   const printRef = useRef();
   const [currVisitor, setCurrVisitor] = useState(visitorDetails[0]);
   const [commentOpen, setCommentOpen] = useState(false);
-  const [visitorInfo,setVisitorInfo] = useState({
+  const [visitorInfo, setVisitorInfo] = useState({
     "name": "",
     "address": "",
     "phone": "",
     "disableOtp": "",
-    "search": "",
-    "entryDate":null,
+    "entryDate": null,
     "entryCode": "",
-    "timeIn":null,
-    "timeOut":null,
-    "category":"",
-    "accompaniedBy":"",
-    "purpose":"",
-    "toMeet":"",
-    "temperature":"",
-    "remarks":""
+    "timeIn": null,
+    "timeOut": null,
+    "category": "",
+    "accompaniedBy": "",
+    "purpose": "",
+    "toMeet": "",
+    "temperature": "",
+    "remarks": ""
   });
 
-  const handleChange = (name,value) => {
-    setVisitorInfo({...visitorInfo,[name]:value});
+  const handleChange = (name, value) => {
+    console.log(name, value);
+    setVisitorInfo({ ...visitorInfo, [name]: value });
     console.log(visitorInfo);
   };
 
@@ -74,7 +74,8 @@ const VisitorEntry = () => {
     },
     AttachementStyle: {
       display: "flex",
-      gap: "5px"
+      flexDirection:"column",
+      textAlign:"flex-start"
     }
   }
 
@@ -101,7 +102,7 @@ const VisitorEntry = () => {
                     <ParamPrevAndNext value={currVisitor} data={visitorDetails} setCurrValue={setCurrVisitor} customStyle={{ marginTop: "11px" }} />
                   </Box>
                   <Box sx={{ display: "flex", gap: "20px", marginTop: "20px", flexWrap: "wrap" }}>
-                    <SearchBar placeholder="Name ..." rootSx={style.customStyle} />
+                    <SearchBar placeholder="Name ..." rootSx={style.customStyle} onChange={(event) => handleChange("name", event.target.value)} />
                     <TextField id="outlined-basic" label="Address" variant="outlined" inputProps={{ maxLength: 10 }} onChange={(event) => handleChange("address", event.target.value)} sx={style.customStyle} />
                     <TextField id="outlined-basic" label="Phone" variant="outlined" inputProps={{ maxLength: 10 }} onChange={(event) => handleChange("phone", event.target.value)} sx={style.customStyle} />
                     <TextField id="outlined-basic" label="Disable OTP" variant="outlined" inputProps={{ maxLength: 10 }} onChange={(event) => handleChange("disableOtp", event.target.value)} sx={style.customStyle} />
@@ -121,13 +122,13 @@ const VisitorEntry = () => {
                   />
                 </Box>
                 <Box sx={{ display: "flex", gap: "20px", flexWrap: "wrap", marginTop: "20px" }}>
-                  <DateComponent option={visitorDetails} label="Entry Date" value={visitorDetails} onChange={(newDate) => handleChange("entryDate", newDate)} customStyle={style.customStyle} />
+                  <DateComponent option={visitorInfo?.entryDate} label="Entry Date" value={visitorInfo?.entryDate} onChange={(newDate) => handleChange("entryDate", newDate)} customStyle={style.customStyle} />
                   <ParameterizedAutoComplete option={visitorDetails} label="Entry Code" onChange={(event, newData) => handleChange("entryCode", newData)} customStyle={style.customStyle} />
-                  <ParamTime customStyle={style.timePickerStyle} label="Time In" onChange={(time)=>handleChange("timeIn",time)} />
-                  <ParamTime customStyle={style.timePickerStyle} label="Time Out" onChange={(time)=>handleChange("timeOut",time)} />
-                  <ParameterizedAutoComplete option={visitorDetails} label="Category" onChange={(event, newData) => handleChange("Category", newData)} customStyle={style.customStyle} />
-                  <ParameterizedAutoComplete option={visitorDetails} label="Accompanied  By" onChange={(event, newData) => handleChange("AccompaniedBy", newData)} customStyle={style.customStyle} />
-                  <TextField id="outlined-basic" label="Purpose" variant="outlined" inputProps={{ maxLength: 10 }} onChange={(event) => handleChange("mobileNo", event.target.value)} sx={style.customStyle} />
+                  <ParamTime customStyle={style.timePickerStyle} label="Time In" onChange={(time) => handleChange("timeIn", time)} />
+                  <ParamTime customStyle={style.timePickerStyle} label="Time Out" onChange={(time) => handleChange("timeOut", time)} />
+                  <ParameterizedAutoComplete option={visitorDetails} label="Category" onChange={(event, newData) => handleChange("category", newData)} customStyle={style.customStyle} />
+                  <ParameterizedAutoComplete option={visitorDetails} label="Accompanied  By" onChange={(event, newData) => handleChange("accompaniedBy", newData)} customStyle={style.customStyle} />
+                  <TextField id="outlined-basic" label="Purpose" variant="outlined" inputProps={{ maxLength: 10 }} onChange={(event) => handleChange("purpose", event.target.value)} sx={style.customStyle} />
                   <ParameterizedAutoComplete option={visitorDetails} label="To meet" onChange={(event, newData) => handleChange("toMeet", newData)} customStyle={style.customStyle} />
                   {/* Temperature */}
                   <TextField id="outlined-basic" label="Temperature" variant="outlined" inputProps={{ maxLength: 10 }} onChange={(event) => handleChange("temperature", event.target.value)} sx={style.customStyle} />
@@ -138,6 +139,7 @@ const VisitorEntry = () => {
                     label="Reamrks"
                     variant="outlined"
                     sx={style.remarksBoxStyle}
+                    onChange={(event) => handleChange("remarks", event.target.value)}
                     placeholder="Remarks ..."
                   />}
                 </Box>
