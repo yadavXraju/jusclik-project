@@ -40,7 +40,7 @@ const Enquiry = () => {
             <Grid item xs={12}>
               <UpperComponent/>
             </Grid>
-            <Grid item xs={12} sx={{ marginTop: '40px' }}>
+            <Grid item xs={12} sx={{ marginTop: '10px' }}>
               <Paper>
                <PrimaryDetail/>
               </Paper>
@@ -64,6 +64,12 @@ const Enquiry = () => {
                     <TextField id="address-textfield" variant="outlined" fullWidth />
                   </Grid>
                 </Grid>
+                <Grid item  sx={{textAlign:"right", padding:"20px"}}>
+                <Button variant="contained" color="primary">
+                  Submit
+                </Button>
+                </Grid>
+                
               </Paper>
             </Grid>
           </Grid>
