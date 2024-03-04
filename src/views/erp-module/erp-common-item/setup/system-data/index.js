@@ -1,8 +1,11 @@
 import React from 'react'
+import SetupTabs from '../Setup'
 
 const SystemData = () => {
   return (
-    <div>SystemData</div>
+    <>
+    <SetupTabs/>
+    </>
   )
 }
 

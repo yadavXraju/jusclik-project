@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -38,17 +38,34 @@ function a11yProps(index) {
   };
 }
 
-export default function VerticalTabs() {
-  const [value, setValue] = React.useState(0);
+const tabs = [
+  "Class",
+  "Section",
+  "House",
+  "Cheque Category",
+  "Other Category",
+  "Concession Category",
+  "Invoice Type",
+  "Fee Group",
+  "Fee Head",
+  "Transport Slab",
+  "Bounce Email Notification Reason",
+  "Student Documents",
+  "Currency",
+  "Left Reasons",
+  "Gate pass Reasons",
+  "Gate pass Accompanied By"
+];
+
+export default function SetupTabs() {
+  const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
   return (
-    <Box
-      sx={{ flexGrow: 1, bgcolor: 'background.paper', display: 'flex', height: 224 }}
-    >
+    <Box sx={{ flexGrow: 1, bgcolor: 'background.paper', display: 'flex', height: 500 }}>
       <Tabs
         orientation="vertical"
         variant="scrollable"
@@ -57,22 +74,11 @@ export default function VerticalTabs() {
         aria-label="Vertical tabs example"
         sx={{ borderRight: 1, borderColor: 'divider' }}
       >
-        <Tab label="Item 1" {...a11yProps(0)} />
-        <Tab label="Item 2" {...a11yProps(1)} />
-        <Tab label="Item 3" {...a11yProps(2)} />
-        <Tab label="Item 4" {...a11yProps(3)} />
-        <Tab label="Item 5" {...a11yProps(4)} />
-        <Tab label="Item 6" {...a11yProps(5)} />
-        <Tab label="Item 7" {...a11yProps(6)} />
-        <Tab label="Item 8" {...a11yProps(7)} />
-        <Tab label="Item 9" {...a11yProps(8)} />
-        <Tab label="Item 10" {...a11yProps(9)} />
-        <Tab label="Item 11" {...a11yProps(10)} />
-        <Tab label="Item 12" {...a11yProps(11)} />
-        <Tab label="Item 13" {...a11yProps(12)} />
-        <Tab label="Item 14" {...a11yProps(13)} />
-        <Tab label="Item 15" {...a11yProps(14)} />
+        {tabs.map((tab, index) => (
+          <Tab key={index} label={tab} {...a11yProps(index)} />
+        ))}
       </Tabs>
+
       <TabPanel value={value} index={0}>
         Class
       </TabPanel>
@@ -118,10 +124,10 @@ export default function VerticalTabs() {
       <TabPanel value={value} index={14}>
         Gate pass Reasons
       </TabPanel>
-      <TabPanel value={value} index={14}>
+      <TabPanel value={value} index={15}>
         Gate pass Accompanied By
       </TabPanel>
+
     </Box>
   );
 }
-
