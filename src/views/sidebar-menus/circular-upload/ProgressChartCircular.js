@@ -61,7 +61,7 @@ const HomeworkProgressChart = () => {
     dots: false,
     infinite: false,
     speed: 500,
-    slidesToShow: 5, // Default slides to show
+    slidesToShow: 4, // Default slides to show
     slidesToScroll: 1,
     nextArrow: <ArrowForwardIosIcon sx={{ color : '#c8c8c8 !important',  width : '32px !important', height : '32px !important',borderRadius:'50%',right:'24px !important' }}/>,
     prevArrow: <ArrowBackIosIcon sx={{ color : '#c8c8c8 !important',  width : '32px !important', height : '32px !important',borderRadius:'50%', zIndex:'1', left:'24px !important'}}/>,
