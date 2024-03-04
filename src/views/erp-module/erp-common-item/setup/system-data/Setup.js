@@ -4,6 +4,22 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import Class from './tabPages/class';
+import Section from './tabPages/Section';
+import House from './tabPages/house';
+import ChequeCategory from './tabPages/cheque-category';
+import OtherCategory from './tabPages/other-category';
+import ConcessionCategory from './tabPages/concession-category';
+import InvoiceType from './tabPages/invoice-type';
+import FeeGroup from './tabPages/fee-group';
+import FeeHead from './tabPages/fee-head';
+import TransportSlab from './tabPages/transport-slab';
+import BounceEmailNotification from './tabPages/bounce-email-notification-reason';
+import StudentDocuments from './tabPages/student-documents';
+import Currency from './tabPages/currency';
+import LeftReason from './tabPages/left-reason';
+import GatePassAccompaniedBy from './tabPages/gate-pass-accompanied-by';
+import GatePassReason from './tabPages/gate-pass-reasons';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -78,56 +94,54 @@ export default function SetupTabs() {
           <Tab key={index} label={tab} {...a11yProps(index)} />
         ))}
       </Tabs>
-
       <TabPanel value={value} index={0}>
-        Class
+          <Class />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Section
+         <Section />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        House
+        <House />
       </TabPanel>
       <TabPanel value={value} index={3}>
-        Cheque Category
+       <ChequeCategory />
       </TabPanel>
       <TabPanel value={value} index={4}>
-        Other Category
+        <OtherCategory />
       </TabPanel>
       <TabPanel value={value} index={5}>
-        Concession Category
+       <ConcessionCategory />
       </TabPanel>
       <TabPanel value={value} index={6}>
-        Inviice Type
+        <InvoiceType />
       </TabPanel>
       <TabPanel value={value} index={7}>
-        Fee Group
+        <FeeGroup />
       </TabPanel>
       <TabPanel value={value} index={8}>
-        Fee Head
+        <FeeHead />
       </TabPanel>
       <TabPanel value={value} index={9}>
-        Transport Slab
+        <TransportSlab />
       </TabPanel>
       <TabPanel value={value} index={10}>
-        Bounce Email Notification Reason
+       <BounceEmailNotification />
       </TabPanel>
       <TabPanel value={value} index={11}>
-        Student Documents
+        <StudentDocuments/>
       </TabPanel>
       <TabPanel value={value} index={12}>
-        Currency
+        <Currency />
       </TabPanel>
       <TabPanel value={value} index={13}>
-        Left Reasons
+        <LeftReason/>
       </TabPanel>
       <TabPanel value={value} index={14}>
-        Gate pass Reasons
+       <GatePassReason />
       </TabPanel>
       <TabPanel value={value} index={15}>
-        Gate pass Accompanied By
+       <GatePassAccompaniedBy />
       </TabPanel>
-
     </Box>
   );
 }

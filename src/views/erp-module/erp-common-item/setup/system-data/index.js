@@ -5,9 +5,9 @@ import { Card } from '@mui/material'
 const SystemData = () => {
   return (
     <>
-    <Card padding={1}>
-    <SetupTabs/>
-    </Card>
+      <Card padding={1}>
+        <SetupTabs />
+      </Card>
     </>
   )
 }
