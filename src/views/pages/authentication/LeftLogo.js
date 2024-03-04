@@ -3,7 +3,6 @@ import React from 'react';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import LogoImg from '../../../assets/images/WhatsApp_Image_2020-03-21_at_8_04_53_PM__1-removebg-preview 1.png';
-import Frame from '../../../assets/images/Frame.png';
 
 const LeftLogo = () => {
   return (
@@ -13,8 +12,6 @@ const LeftLogo = () => {
       sm={4}
       md={4}
       sx={{
-        backgroundImage: `url(${Frame})`,
-        backgroundRepeat: 'no-repeat',
         backgroundColor: (t) =>
           t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
         backgroundSize: 'cover',
