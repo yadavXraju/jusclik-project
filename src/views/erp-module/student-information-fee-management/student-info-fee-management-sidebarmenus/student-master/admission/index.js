@@ -1,8 +1,11 @@
-import React from 'react'
+import React from 'react';
+import WhatsappDeliveryReport  from 'views/erp-module/tools/whatsapp-conversation';
 
 const Admission = () => {
   return (
-    <div>index</div>
+    <>
+     <WhatsappDeliveryReport />
+    </>
   )
 }
 
