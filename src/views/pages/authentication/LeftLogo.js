@@ -10,7 +10,7 @@ const LeftLogo = () => {
       item
       xs={false}
       sm={4}
-      md={4}
+      md={5}
       sx={{
         backgroundColor: (t) =>
           t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
@@ -22,9 +22,12 @@ const LeftLogo = () => {
       }}
     >
       <Grid item sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
-        <img src={LogoImg} alt="Logo" style={{ width: '200px', height: '200px' }} />
-        <Typography sx={{ fontWeight: '700', fontSize: { xs: '24px', md: '30px' }, color: '#364152b5' }}>
-          Arwachin Public School
+        <img src={LogoImg} alt="Logo" style={{ width: '200px', height: '200px', marginBottom:'15px' }} />
+        <Typography sx={{ fontWeight: '500', fontSize: { xs: '24px', md: '30px' }, color: '#E64B4C', textAlign:'center', lineHeight:'30px' }}>
+          Arwachin Public <br/> School
+        </Typography>
+        <Typography sx={{fontSize: { xs: '20px', md: '18px' }, color: '#364152b5' }}>
+         Vasundhara, Ghaziabad
         </Typography>
       </Grid>
     </Grid>

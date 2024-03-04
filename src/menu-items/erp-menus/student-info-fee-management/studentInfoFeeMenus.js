@@ -220,6 +220,107 @@ const StudentInfoFeeMenu = {
                 ]
               },
 
+              // tools
+
+
+
+              {
+                id: 'set-up' ,
+                title: 'Set Up',
+                type: 'collapse',
+                url: '/erp/student-info-fee/setup',
+                icon: GroupsTwoToneIcon,
+                children: [
+
+                  {
+                      id: 'system-data',
+                      title: 'System Data',
+                      type: 'item',
+                      url: '/erp/student-info-fee/setup/system-data',
+                      breadcrumbs: false
+                    },
+    
+
+                ]
+              },
+
+              
+
+              // system data
+
+              {
+                id: 'tools' ,
+                title: 'Tools',
+                type: 'collapse',
+                url: '/erp/student-info-fee/tools',
+                icon: GroupsTwoToneIcon,
+                children: [
+
+                  {
+                     id: 'gps-bus-tracking',
+                     title: 'GPS Bus Tracking',
+                     type: 'item',
+                     url: '/erp/student-info-fee/tools/gps-bus-tracking',
+                     breadcrumbs: false
+                   },
+
+                   {
+                    id: 'whatsapp-conversations',
+                    title: 'Whatsapp Conversations',
+                    type: 'item',
+                    url: '/erp/student-info-fee/tools/whatsapp-conversations',
+                    breadcrumbs: false
+                  },
+    
+
+                  {
+                    id: 'whatsapp-delivery-report',
+                    title: 'Whatsapp Delivery Report',
+                    type: 'item',
+                    url: '/erp/student-info-fee/tools/whatsapp-delivery-report',
+                    breadcrumbs: false
+                  },
+
+
+                  {
+                    id: 'whatsapp-excel-sheet',
+                    title: 'Whatsapp Excel Sheet',
+                    type: 'item',
+                    url: '/erp/student-info-fee/tools/whatsapp-excel-sheet',
+                    breadcrumbs: false
+                  },
+    
+    
+
+                ]
+              },
+
+
+ 
+              // post support ticket
+
+              {
+                id: 'post-support-ticket',
+                title: 'Post Support Ticket',
+                type: 'item',
+                url: '/erp/student-info-fee/post-support-ticket',
+                icon: GroupsTwoToneIcon,
+                breadcrumbs: false
+              },
+
+
+            // User and roles
+
+            {
+              id: 'user-and-roles',
+              title: 'User & Roles',
+              type: 'item',
+              url: '/erp/student-info-fee/user-and-roles',
+              icon: GroupsTwoToneIcon,
+              breadcrumbs: false
+            },
+           
+ 
 
     ]
   };

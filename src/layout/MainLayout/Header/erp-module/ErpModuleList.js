@@ -1,15 +1,17 @@
 import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
-import stufee from '../../../../assets/images/stufee.svg';
-import hr from '../../../../assets/images/hr.svg';
-import progress from '../../../../assets/images/progress.svg';
-import library from '../../../../assets/images/library.svg';
-import inventory from '../../../../assets/images/inventory.svg'
-import finance from '../../../../assets/images/finance.svg'
-import website from '../../../../assets/images/website.svg'
-import visitor from '../../../../assets/images/visitor.svg'
-import medical from '../../../../assets/images/medical.svg'
-import admission from '../../../../assets/images/admission.svg'
-import relationship from '../../../../assets/images/relationship.svg'
+// import stufee from '../../../../assets/images/stufee.svg';
+// import hr from '../../../../assets/images/hr.svg';
+import progress from '../../../../assets/images/erp-module-icon/progress.svg';
+import library from '../../../../assets/images/erp-module-icon/library.svg';
+import inventory from '../../../../assets/images/erp-module-icon/inventory.svg'
+import finance from '../../../../assets/images/erp-module-icon/finance.svg'
+import website from '../../../../assets/images/erp-module-icon/website.svg'
+import visitor from '../../../../assets/images/erp-module-icon/visitor.svg'
+import medical from '../../../../assets/images/erp-module-icon/medical.svg'
+import admission from '../../../../assets/images/erp-module-icon/admission.svg'
+import relationship from '../../../../assets/images/erp-module-icon/customer.svg'
+import stufee from '../../../../assets/images/erp-module-icon/fee.svg'
+import hr from '../../../../assets/images/erp-module-icon/hr.svg'
 
 
 export const ErpModuleList = [
@@ -19,6 +21,7 @@ export const ErpModuleList = [
         name:'Parent Dashboard',
         icon : <LanguageOutlinedIcon sx={{margin:'auto'}}/>,
         url: '/parent/dashboard',
+        role : 'parent',
     },
 
     {
@@ -26,6 +29,7 @@ export const ErpModuleList = [
         name:'class teacher dashboard',
         icon : <LanguageOutlinedIcon sx={{margin:'auto'}}/>,
         url: '/class-teacher/dashboard',
+        role : 'class-teacher',
     },
 
 
@@ -34,6 +38,7 @@ export const ErpModuleList = [
         name:'Student Info & Fee ',
         icon : <img src={stufee} alt='icon' style={{width:'34px', margin:'auto'}} />,
         url: '/erp/student-info-fee/dashboard',
+        role : 'stufee',
     },
 
     {
@@ -41,6 +46,7 @@ export const ErpModuleList = [
         name:'HR & Payroll',
         icon : <img src={hr} alt='icon' style={{width:'34px', margin:'auto'}} />,
         url: '',
+        role : 'hr-pay-roll',
     },
 
 
@@ -49,6 +55,7 @@ export const ErpModuleList = [
         name:'Progress & Result',
         icon : <img src={progress} alt='icon' style={{width:'34px', margin:'auto'}} />,
         url: '',
+        role : 'progress-result',
     },
 
     {
@@ -56,6 +63,7 @@ export const ErpModuleList = [
         name:'Library',
         icon : <img src={library} alt='icon' style={{width:'34px', margin:'auto'}} />,
         url: '',
+        role : 'library',
     },
 
     {
@@ -63,6 +71,7 @@ export const ErpModuleList = [
         name:'Inventory',
         icon : <img src={inventory} alt='icon' style={{width:'34px', margin:'auto'}} />,
         url: '',
+        role : 'inventory',
     },
 
     {
@@ -70,6 +79,7 @@ export const ErpModuleList = [
         name:'Financial Accounting',
         icon : <img src={finance} alt='icon' style={{width:'34px', margin:'auto'}} />,
         url: '',
+        role : 'financial-accounting',
     },
 
     {
@@ -77,6 +87,7 @@ export const ErpModuleList = [
         name:'Website ',
         icon : <img src={website} alt='icon' style={{width:'34px', margin:'auto'}} />,
         url: '',
+        role : 'website',
     },
 
     {
@@ -84,6 +95,7 @@ export const ErpModuleList = [
         name:'Visitor',
         icon : <img src={visitor} alt='icon' style={{width:'34px', margin:'auto'}} />,
          url: '/erp/visitor/dashboard',
+         role : 'visitor',
     },
 
 
@@ -92,6 +104,7 @@ export const ErpModuleList = [
         name:'Medical Examination',
         icon : <img src={medical} alt='icon' style={{width:'34px', margin:'auto'}} />,
         url: '',
+        role : 'medical-examination',
     },
 
     {
@@ -99,6 +112,7 @@ export const ErpModuleList = [
         name:'Admission',
         icon : <img src={admission} alt='icon' style={{width:'34px', margin:'auto'}} />,
         url: '',
+        role : 'admission',
     },
 
     {
@@ -106,6 +120,7 @@ export const ErpModuleList = [
         name:'Customer Relationship ',
         icon : <img src={relationship} alt='icon' style={{width:'34px', margin:'auto'}} />,
         url: '',
+        role : 'customer-relationship',
     },
 
 ]

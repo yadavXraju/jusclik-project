@@ -3,7 +3,7 @@ import MainCard from 'ui-component/cards/MainCard';
 import Expense from './Expense';
 import ExpenseDrawer from './ExpensesDrawer';
 import { Box, Typography } from '@mui/material';
-import Setup from './Setup';
+import UserAndRole from '../../erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/user-and-roles/UserAndRole';
 
 const index = () => {
   return (
@@ -19,9 +19,8 @@ const index = () => {
         </Box>
       </Box>
       <Expense/>
-      <Setup/>
       </MainCard>
-
+      <UserAndRole/>
     </>
   );
 };
