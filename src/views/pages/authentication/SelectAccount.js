@@ -58,7 +58,7 @@ const SelectAccount = ({ open, onClose, onOtpToggle }) => {
                             { id: 3, name: 'Shauryasoft Presentation 3' },
                         ].map((item) => (
                             <React.Fragment key={item.id}>
-                                <ListItem display='flex' alignItems='center' onClick={() => handleListItemClick(item)}>
+                                <ListItem  sx={{cursor:'pointer',display:'flex', alignItems:'center'}} onClick={() => handleListItemClick(item)} >
                                     <ListItemAvatar>
                                         <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
                                     </ListItemAvatar>
@@ -80,7 +80,7 @@ const SelectAccount = ({ open, onClose, onOtpToggle }) => {
                                                     variant="body2"
                                                     color="text.primary"
                                                 >
-                                                    Login ID: Shau1819 [School Admin]
+                                                    Login ID: Shau1819
                                                 </Typography>
                                             </React.Fragment>
                                         }
@@ -105,6 +105,7 @@ const SelectAccount = ({ open, onClose, onOtpToggle }) => {
                     open={otpDialogOpen}
                     onClose={handleOtpDialogClose}
                     selectedListItem={selectedListItem}
+                    selectedLoginID={selectedListItem.name}
                 />
             )}
         </React.Fragment>

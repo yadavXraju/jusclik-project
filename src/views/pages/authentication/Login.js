@@ -22,6 +22,7 @@ import EnterMobileDialog from './EnterMobileDialog';
 import SelectAccount from './SelectAccount';
 import LeftLogo from './LeftLogo';
 import { Auth } from 'Auth';
+import PoweredBySection from './PoweredBy';
 
 const defaultTheme = createTheme();
 
@@ -63,6 +64,8 @@ export default function LoginPage() {
   const [userPassword, setUserPassword] = useState('');
   const [value, setValue] = React.useState(0);
 
+  const bgColor = "#ffecec";
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -86,7 +89,7 @@ export default function LoginPage() {
     event.preventDefault();
 
     // static id and pass for parent dashboard
-    if (userId === 'parent' && userPassword === 'parent@123') {
+    if (userId === 'jusklik' && userPassword === 'jusklik@123') {
       // Save user role and token in local storage
       const user = Auth.find((user) => user.role === 'parent');
       localStorage.setItem('userRole', user.role);
@@ -125,59 +128,9 @@ export default function LoginPage() {
     }
   };
 
-  // const ToggleGroupVariants = () => {
-  //   return (
-  //     <FormControl>
-  //       <Grid container>
-  //         <Grid item>
-  //           <ToggleButtonGroup
-  //             value={selectedVariant}
-  //             exclusive
-  //             onChange={(event, newValue) => {
-  //               setSelectedVariant(newValue);
-  //               if (newValue === 'outlined') {
-  //                 handleDialogToggle(); // Open the EnterMobileDialog
-  //               }
-  //             }}
-  //             style={{
-  //               borderRadius: '50px',
-  //               border: '2px solid #fff'
-  //             }}
-  //           >
-  //             <ToggleButton
-  //               style={{
-  //                 borderRadius: '50px 0px 0px 50px',
-  //                 width: '110px',
-  //                 color: selectedVariant === 'plain' ? '#000' : '#fff',
-  //                 backgroundColor: selectedVariant === 'plain' ? '#fff' : 'initial',
-  //                 border: 'none'
-  //               }}
-  //               value="plain"
-  //             >
-  //               Password
-  //             </ToggleButton>
-  //             <ToggleButton
-  //               style={{
-  //                 borderRadius: '0px 50px 50px 0px',
-  //                 width: '110px',
-  //                 color: selectedVariant === 'outlined' ? '#000' : '#fff',
-  //                 backgroundColor: selectedVariant === 'outlined' ? '#fff' : 'initial',
-  //                 border: 'none'
-  //               }}
-  //               value="outlined"
-  //             >
-  //               OTP
-  //             </ToggleButton>
-  //           </ToggleButtonGroup>
-  //         </Grid>
-  //       </Grid>
-  //     </FormControl>
-  //   );
-  // };
-
   return (
     <ThemeProvider theme={defaultTheme}>
-      <Grid container component="main" sx={{ minHeight: '100vh' }}>
+      <Grid container component="main" sx={{ minHeight: '100vh', display:'flex', justifyContent:'space-between' }}>
         <CssBaseline />
         {/* Use the LeftLogo component here */}
         <LeftLogo />
@@ -186,18 +139,18 @@ export default function LoginPage() {
           item
           xs={12}
           sm={8}
-          md={8}
+          md={7}
           component={Paper}
           elevation={6}
           square
           sx={{
-            backgroundColor: '#ffecec',
+            backgroundColor: bgColor,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'bottom',
-            borderRadius: '20px 0px 0px 20px'
+            borderRadius: '20px 0px 0px 20px',
           }}
         >
           <Box
@@ -206,15 +159,15 @@ export default function LoginPage() {
               mx: 4,
               display: 'flex',
               flexDirection: 'column',
-              alignItems: 'center'
+              alignItems: 'left'
             }}
           >
-            <Box sx={{ display: 'block' }}>
+            <Box sx={{display:'flex', flexDirection:'column', alignItems:'flex-start', mb:1}}>
               <Typography component="h1" variant="h4" sx={{ color: '#6b6666', fontSize: '40px' }}>
-                Login to
+                Login to 
               </Typography>
               <Typography component="h1" variant="h4" sx={{ color: '#6b6666', fontSize: '40px' }}>
-                your dashboard
+                your dashboard!
               </Typography>
             </Box>
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
@@ -230,7 +183,7 @@ export default function LoginPage() {
                 <Tab label="Phone Number" {...a11yProps(1)} sx={{ width: '230px' }} onClick={handleDialogToggle}/>
               </Tabs>
             </Box>
-            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
               {/* phone no. */}
               <TextField
                 InputProps={{
@@ -239,6 +192,7 @@ export default function LoginPage() {
                   }
                 }}
                 margin="normal"
+                variant='outlined'
                 required
                 fullWidth
                 id="Username"
@@ -246,13 +200,13 @@ export default function LoginPage() {
                 name="Username"
                 autoComplete="Username"
                 autoFocus
-                sx={{ borderRadius: '50px' }}
+                sx={{ borderRadius: '50px', backgroundColor:'#ffffff', color:'#6b6666',mb:2}}
                 value={userId}
                 onChange={(event) => setUserId(event.target.value)}
               />
               <TextField
                 InputProps={{
-                  style: { borderRadius: '50px' },
+                  style: { borderRadius: '50px'},
                   endAdornment: (
                     <InputAdornment position="end">
                       <IconButton
@@ -267,6 +221,7 @@ export default function LoginPage() {
                   )
                 }}
                 margin="normal"
+                variant='outlined'
                 required
                 fullWidth
                 name="password"
@@ -274,7 +229,7 @@ export default function LoginPage() {
                 type={showPassword ? 'text' : 'password'}
                 id="password"
                 autoComplete="current-password"
-                sx={{ borderRadius: '50px' }}
+                sx={{ borderRadius: '50px', backgroundColor:'#ffffff', color:'#6b6666' }}
                 value={userPassword}
                 onChange={(event) => setUserPassword(event.target.value)}
               />
@@ -284,17 +239,18 @@ export default function LoginPage() {
                 <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flexStart' }}>
                   <Button
                     type="submit"
-                    // variant="contained"  
                     sx={{
-                      // mt: 3,
-                      // mb: 2,
                       backgroundColor: '#fff',
                       color: '#364152b5',
                       borderRadius: '50px',
+                      border:'1px solid #c4c4c4',
                       width: '150px',
-                      // margin: '15px',
                       display: 'flex',
-                      height: '56px'
+                      height: '56px',
+                      '&:hover': {
+                        backgroundColor: '#e64b4c', // Change color on hover
+                        color: '#fff', // Change text color on hover
+                      }
                     }}
                   >
                     LOGIN
@@ -306,10 +262,8 @@ export default function LoginPage() {
                 <EnterMobileDialog open={dialogOpen} onClose={handleDialogToggle} onMobileSubmit={handleMobileSubmit} />
                 <SelectAccount open={selectAccountOpen} onClose={handleSelectAccountToggle} />
               </Grid>
-              {/* <Box sx={{ display: 'flex', alignItems: 'end', justifyContent: 'end', mt: 4 }}>
-                <ToggleGroupVariants />
-              </Box> */}
             </Box>
+            <PoweredBySection/>
           </Box>
         </Grid>
       </Grid>
