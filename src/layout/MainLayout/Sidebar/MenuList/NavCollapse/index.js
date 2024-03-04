@@ -5,17 +5,23 @@ import { useLocation, useNavigate } from 'react-router';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
-import { Collapse, List, ListItemButton, ListItemIcon, ListItemText, Typography } from '@mui/material';
+
+// import Collapse if you want collapse menu  and below collpase component too
+import {  List, ListItemButton, ListItemIcon, ListItemText, Typography } from '@mui/material';
 
 // project imports
 import NavItem from '../NavItem';
 
 // assets
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
-import { IconChevronDown, IconChevronUp } from '@tabler/icons';
+
+// collapse menu icon
+
+// import { IconChevronDown, IconChevronUp } from '@tabler/icons';
 
 // new import for Tooltip
 import Tooltip from '@mui/material/Tooltip';
+import { IconChevronRight } from '@tabler/icons';
 
 // ==============================|| SIDEBAR MENU LIST COLLAPSE ITEMS ||============================== //
 
@@ -29,6 +35,7 @@ const NavCollapse = ({ menu, level }) => {
 
   const handleClick = () => {
     setOpen(!open);
+    
     setSelected(!selected ? menu.id : null);
     if (menu?.id !== 'authentication') {
       navigate(menu.children[0]?.url);
@@ -87,7 +94,8 @@ const NavCollapse = ({ menu, level }) => {
     <FiberManualRecordIcon
       sx={{
         width: selected === menu.id ? 8 : 6,
-        height: selected === menu.id ? 8 : 6
+        height: selected === menu.id ? 8 : 6,
+
       }}
       fontSize={level > 0 ? 'inherit' : 'medium'}
     />
@@ -95,7 +103,7 @@ const NavCollapse = ({ menu, level }) => {
 
   // Custom tooltip content for submenu hover
   const tooltipContent = (
-    <List component="div" sx={{ backgroundColor: '#ffffff !important', }}>
+    <List component="div" className='tooltip-menus' sx={{ backgroundColor: '#ffffff !important', }}>
       {menus}
     </List>
   );
@@ -104,6 +112,7 @@ const NavCollapse = ({ menu, level }) => {
     <>
       <Tooltip title={tooltipContent}  placement="right" >
         <ListItemButton
+         className='menu-wrapper'
           sx={{
             borderRadius: `${customization.borderRadius}px`,
             mb: 0.5,
@@ -115,29 +124,40 @@ const NavCollapse = ({ menu, level }) => {
           selected={selected === menu.id}
           onClick={handleClick}
         >
-          <ListItemIcon sx={{ my: 'auto', minWidth: !menu.icon ? 18 : 36 }} className='findcc'>{menuIcon}</ListItemIcon>
+          <ListItemIcon sx={{ my: 'auto', minWidth: !menu.icon ? 18 : 36 }} className='menu-icon'>{menuIcon} </ListItemIcon>
           <ListItemText
             primary={
-              <Typography variant={selected === menu.id ? 'h5' : 'body1'} color="inherit" sx={{ my: 'auto' }}>
+              <Typography variant={selected === menu.id ? 'h5' : 'body1'} color="inherit" sx={{ my: 'auto' }} className='menu-title'>
                 {menu.title}
               </Typography>
             }
             secondary={
               menu.caption && (
-                <Typography variant="caption" sx={{ ...theme.typography.subMenuCaption }} display="block" gutterBottom>
+                <Typography variant="caption" sx={{ ...theme.typography.subMenuCaption }} display="block" gutterBottom className='menu-caption'>
                   {menu.caption}
                 </Typography>
               )
             }
           />
-          {open ? (
+
+          {/* icon for collapse menus */}
+
+          <IconChevronRight stroke={1.5} size="1rem" style={{ marginTop: 'auto', marginBottom: 'auto' }} />
+
+          {/* {open ? (
             <IconChevronUp stroke={1.5} size="1rem" style={{ marginTop: 'auto', marginBottom: 'auto' }} />
           ) : (
             <IconChevronDown stroke={1.5} size="1rem" style={{ marginTop: 'auto', marginBottom: 'auto' }} />
-          )}
+          )} */}
+
+
         </ListItemButton>
       </Tooltip>
-      <Collapse in={open} timeout="auto" unmountOnExit>
+
+
+      {/* here is collapse menu */}
+
+      {/* <Collapse in={open} timeout="auto" unmountOnExit>
         <List
           component="div"
           disablePadding
@@ -158,7 +178,8 @@ const NavCollapse = ({ menu, level }) => {
         >
           {menus}
         </List>
-      </Collapse>
+      </Collapse> */}
+
     </>
   );
 };

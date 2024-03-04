@@ -5,7 +5,7 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import { Box, useMediaQuery } from '@mui/material';
 import SearchStudentMaster from 'views/common-section/SearchStudentMaster';
-import PrintPdf from 'views/common-section/PrintPdf';
+import PrintPdf from 'views/common-section/withPrintPdf';
 import PrintExcel from 'views/common-section/PrintExcel';
 import DownloadPdf from 'views/common-section/DownloadPdf';
 import StudentInfo from './StudentInfo';

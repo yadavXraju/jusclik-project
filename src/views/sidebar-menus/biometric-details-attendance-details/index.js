@@ -4,7 +4,6 @@ import Grid from '@mui/material/Grid';
 import AttandanceStatus from './AttandanceStatus';
 import AttendanceLog from './AttandanceLog';
 import MainCard from 'ui-component/cards/MainCard';
-import ExpensesTravel from './ExpensesTravel';
 
 const BiometricDetailsOrAttendanceDetails = () => {
   return (
@@ -19,9 +18,6 @@ const BiometricDetailsOrAttendanceDetails = () => {
       </Grid>
       <MainCard>
       <AttendanceLog/>
-      </MainCard>
-      <MainCard>
-      <ExpensesTravel/>
       </MainCard>
     </>
   );

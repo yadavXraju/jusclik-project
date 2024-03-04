@@ -32,9 +32,9 @@ const GmailInboxTemplate = () => {
   const getCurrentDateTime = () => {
     const currentDate = new Date();
     const options = {
-      weekday: 'long',
+      weekday: 'short',
       year: 'numeric',
-      month: 'long',
+      month: 'short',
       day: 'numeric',
       hour: 'numeric',
       minute: 'numeric'

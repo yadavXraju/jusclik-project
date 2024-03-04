@@ -1,10 +1,10 @@
 import React from 'react';
 import { Box,Button } from '@mui/material';
 import ReactToPrint from "react-to-print";
-import LocalPrintshopOutlinedIcon from '@mui/icons-material/LocalPrintshopOutlined';
 
 
-const PrintPdf = React.forwardRef((props,ref) => {
+
+const withPrintPdf = React.forwardRef((props,ref) => {
     // console.log(props)
     const {Children}=props;
     
@@ -16,7 +16,7 @@ const PrintPdf = React.forwardRef((props,ref) => {
     )
 })
 
-export default PrintPdf;
+export default withPrintPdf;
 
 
 

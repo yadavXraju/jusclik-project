@@ -38,7 +38,14 @@ const InboxHeader = ({
         backgroundColor: theme.palette.background.paper
       }}
     >
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: isMobile ? 'wrap' : 'noWrap' }}>
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: isMobile ? 'center' : 'space-between',
+          alignItems: 'center',
+          flexWrap: isMobile ? 'wrap' : 'noWrap'
+        }}
+      >
         <Grid sx={{ display: 'inline-flex' }} xs={12} sm={6} md={4}>
           <ComposeButtonWrapper onClick={handleComposeOpen}>
             <Button variant="contained" color="primary">
@@ -72,6 +79,7 @@ const InboxHeader = ({
         <Grid
           sx={{
             display: 'inline-flex',
+            alignItems: 'center',
             flexWrap: isMobile ? 'wrap' : 'noWrap',
             justifyContent: isMobile ? 'center' : 0,
             marginTop: isMobile ? 1 : 0
@@ -80,7 +88,7 @@ const InboxHeader = ({
           sm={6}
           md={4}
         >
-          <Grid xs={12} sm={6} md={4}>
+          <Grid>
             {/* Search Section */}
             <SearchWrapper sx={{ display: 'flex' }}>
               <SearchIconWrapper>
@@ -95,7 +103,7 @@ const InboxHeader = ({
               />
             </SearchWrapper>
           </Grid>
-          <Grid xs={12} sm={6} md={4}>
+          <Grid>
             {/* Pagination Section */}
             <TablePagination
               component="div"

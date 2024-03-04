@@ -1,11 +1,11 @@
 import React from 'react'
-// import PrimaryDetail from '../enquiry/enquirycomponent/PrimaryDetail'
-// import GardianComponent from '../enquiry/enquirycomponent/GardianComponent'
-import UpperComponent from '../enquiry/enquirycomponent/UpperComponent'
+import  WhatsappDeliveryReport from 'views/erp-module/tools/whatsapp-delivery-report';
 
 const Provisional = () => {
   return (
-    <div><UpperComponent/></div>
+    <div>
+      <WhatsappDeliveryReport />
+    </div>
   )
 }
 

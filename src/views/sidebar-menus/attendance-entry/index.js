@@ -42,7 +42,7 @@ export default function AttendanceEntry() {
   const [filteredSections, setFilteredSections] = useState([]);
 
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   // Initialize filteredStudentList with the original StudentList when the component mounts, sorted alphabetically by student name
   useEffect(() => {
@@ -190,9 +190,9 @@ export default function AttendanceEntry() {
           absentCount={countSelectedStatus('A')}
         />
 
-        <Paper sx={{ listStyleType: 'none', p: 0 }}>
+        <Paper sx={{ listStyleType: 'none', p: 0, overflow: isMobile?'auto':'none' }}>
           <ListItem sx={{ display: 'flex', alignItems: 'center', p: 2 }}>
-            <ListItemText sx={{ flex: '0 0 15%' }}>
+            <ListItemText sx={{ flex: isMobile?'0 0 25%' : '0 0 15%' }}>
               <Typography variant="h4" color="text.primary">
                 Admn No.
               </Typography>
@@ -211,7 +211,7 @@ export default function AttendanceEntry() {
           {filteredStudentList.map((student) => (
             <React.Fragment key={student.id}>
               <ListItem sx={{ display: 'flex', alignItems: 'center', p: 2 }}>
-                <ListItemText sx={{ flex: '0 0 15%' }}>
+                <ListItemText sx={{ flex: isMobile?'0 0 25%' : '0 0 15%' }}>
                   <Typography variant="h4" color="text.primary">
                     {student.admnNo}
                   </Typography>
@@ -221,11 +221,11 @@ export default function AttendanceEntry() {
                   <Avatar src={AvtarImg} sx={{ width: 50, height: 50 }} />
                 </ListItemAvatar>
 
-                <ListItemText sx={{ paddingLeft: '10px', flex: '0 0 32%' }}>
+                <ListItemText sx={{ paddingLeft: '10px', flex: isMobile?'0 0 60%' : '0 0 32%' }}>
                   <Typography variant="h4">{student.name}</Typography>
                 </ListItemText>
 
-                <ListItemText sx={{ flex: '0 0 40%' }}>
+                <ListItemText sx={{ flex: '0 0 37%' }}>
                   <Typography variant="h4" color="text.secondary">
                     <Stack direction="row" spacing={2} sx={{ flex: '0 0 20%', justifyContent: 'center' }}>
                       <Avatar

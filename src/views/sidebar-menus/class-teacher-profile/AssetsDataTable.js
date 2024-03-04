@@ -6,8 +6,8 @@ import Popover from '@mui/material/Popover';
 import { IconButton } from '@mui/material';
 import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
-import TablePagination from '@mui/material/TablePagination'; // Import TablePagination component
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
+import Pagination from 'views/common-section/Pagination';
 //import useMediaQuery from '@mui/material/useMediaQuery';
 
 // ============= Assets data ===========
@@ -25,17 +25,6 @@ export default function AssetsDataTable() {
   const [rowsPerPage, setRowsPerPage] = useState(5); // Rows per page state for TablePagination
 
   //const ismobile = useMediaQuery('(min-width:767px)');
-
-  // ========== Handle change in page ============
-  const handleChangePage = (event, newPage) => {
-    setPage(newPage);
-  };
-
-  // ============= Handle change in rows per page ==========
-  const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(parseInt(event.target.value, 10));
-    setPage(0); // Reset page when changing rows per page
-  };
 
   return (
     <Box sx={{ width: '100%', bgcolor: 'background.paper', mb: 2, borderTop:'1px solid #ccc' }}>
@@ -144,18 +133,12 @@ export default function AssetsDataTable() {
     </TableContainer>
 
       {/* ======== Render TablePagination component  ========== */}
-      <TablePagination
-        component="div"
+      <Pagination
         count={Assetsdata.length}
         page={page}
-        onPageChange={handleChangePage}
         rowsPerPage={rowsPerPage}
-        onRowsPerPageChange={handleChangeRowsPerPage}
-        SelectProps={{
-          inputProps: { 'aria-label': 'rows per page' },
-          native: true,
-        }}
-        rowsPerPageOptions={[5, 10, 25, 50]}
+        setRowsPerPage={setRowsPerPage}
+        setPage={setPage}
       />
     </Box>
   );

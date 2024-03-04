@@ -1,21 +1,24 @@
 import React from 'react';
 import { Box, Typography, MenuItem, Select, IconButton } from '@mui/material';
 import {  Info, Person, PersonOutline } from '@mui/icons-material';
+import { useState } from 'react';
 
 function AttandanceStatus() {
+  const [selectedValue, setSelectedValue] = useState('Last Week');
+
+  const handleChange = (event) => {
+    setSelectedValue(event.target.value);
+  };
+
   return (
     <Box>
       <Box sx={{ border: '1px solid #ccc', borderRadius: '5px' }} p={2} backgroundColor={'#fff'}>
         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <Select
-            value={'Last Week'}
+            value={selectedValue}
             size='small'
             sx={{ minWidth: 100 }}
-            renderValue={(value) => (
-              <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                <Typography>{value}</Typography>
-              </Box>
-            )}
+            onChange={handleChange}
           >
             <MenuItem value={'Last Week'}>Last Week</MenuItem>
             <MenuItem value={'Last Month'}>Last Month</MenuItem>

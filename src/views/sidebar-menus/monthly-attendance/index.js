@@ -35,7 +35,7 @@ export default function AttendanceEntry() {
   const [dates, setDates] = useState([]);
 
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   // Function to handle month change
   const handleMonthChange = (date) => {
@@ -244,9 +244,9 @@ export default function AttendanceEntry() {
 
       {/* Student list */}
       <Box>
-        <Paper sx={{ listStyleType: 'none' }}>
+        <Paper sx={{ listStyleType: 'none', overflow:isMobile?'auto':'none' }}>
           <Grid container>
-            <Grid item xs={10} md={6} sm={8} lg={4}>
+            <Grid item xs={11} md={6} sm={8} lg={4}>
               <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                 <Box sx={{ display: 'flex', marginTop: isMobile ? '12px' : '32px' }}>
                   <ListItem>
@@ -255,7 +255,7 @@ export default function AttendanceEntry() {
                         Adm No.
                       </Typography>
                     </ListItemText>
-                    <ListItemText sx={{ flex: '0 0 42%' }}>
+                    <ListItemText sx={{ flex:isMobile?'0 0 48%': '0 0 42%' }}>
                       <Typography variant="h4">Student Name</Typography>
                     </ListItemText>
                     <ListItemText sx={{ flex: '0 0 28%', justifyContent: 'center' }}>
@@ -291,12 +291,12 @@ export default function AttendanceEntry() {
             </Grid>
 
             {/* Right section for avatar selection */}
-            <Grid item xs={2} md={6} sm={4} lg={8}>
+            <Grid item xs={1} md={6} sm={4} lg={8}>
               <Box
                 sx={{
                   display: 'flex',
                   flexDirection: 'column',
-                  overflow: 'auto',
+                  overflow: isMobile? 'none': 'auto',
                   '&::-webkit-scrollbar': {
                     height: 7 // Set the height of the scrollbar to 0 to hide it
                   },
