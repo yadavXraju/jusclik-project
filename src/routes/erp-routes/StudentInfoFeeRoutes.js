@@ -61,6 +61,40 @@ const SecurityDeposit=  Loadable(lazy(() => import('views/erp-module/student-inf
 const TransferFeeEntry=  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/fee-accounting/transfer-fee-entry')));
 
 
+// system data
+
+const SystemData = Loadable(lazy(() => import('views/erp-module/erp-common-item/setup/system-data')));
+
+
+// tools
+const GpsBusTracking =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/tool/gps-bus-tracking')));
+
+
+const WhatshapConversations =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/tool/gps-bus-tracking')));
+
+
+const WhatshapDeliveryReport =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/tool/whatsapp-delivery-report')));
+
+
+
+const WhatshapExcelSheet =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/tool/whatsapp-excel-sheet')));
+
+
+
+// post support ticket
+
+const PostSupportTicket =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/post-support-ticket')));
+
+
+// student details
+
+const StudentDetails =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/student-master/registration/student-details')));
+
+
+// user details and roles
+const UserDetailsRoles =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/user-and-roles')));
+
+
 // ==============================|| Visitor MENUS ||============================== //
 
 const StudentInfoFeeRoutes = [
@@ -89,6 +123,14 @@ const StudentInfoFeeRoutes = [
             path: 'registration',
             element: <Registration />
          },
+
+          // student details
+
+          { 
+            path: 'registration/student-details', 
+            element: <StudentDetails /> 
+          },
+
 
          {
           path: 'registration-data',
@@ -206,6 +248,68 @@ const StudentInfoFeeRoutes = [
             ]
           },
 
+
+
+            // setup
+
+            {
+              path: 'setup',
+              children: [
+                { 
+                  path: 'system-data', 
+                  element: <SystemData /> 
+                },
+      
+      
+              ]
+            },
+
+            // tools
+
+            {
+              path: 'tools',
+              children: [
+                { 
+                  path: 'gps-bus-tracking', 
+                  element: <GpsBusTracking /> 
+                },
+
+                { 
+                  path: 'whatsapp-conversations', 
+                  element: <WhatshapConversations /> 
+                },
+
+
+                { 
+                  path: 'whatsapp-delivery-report', 
+                  element: <WhatshapDeliveryReport /> 
+                },
+
+
+                { 
+                  path: 'whatsapp-excel-sheet', 
+                  element: <WhatshapExcelSheet /> 
+                },
+      
+      
+              ]
+            },
+
+            
+   
+
+            // post support
+
+            { 
+              path: 'post-support-ticket', 
+              element: <PostSupportTicket /> 
+            },
+  
+            { 
+              path: 'user-and-roles', 
+              element: <UserDetailsRoles /> 
+            },
+  
 
 
     ]

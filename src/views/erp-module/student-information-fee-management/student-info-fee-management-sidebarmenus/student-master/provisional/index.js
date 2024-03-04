@@ -1,12 +1,12 @@
 import React from 'react'
-import  WhatsappDeliveryReport from 'views/erp-module/tools/whatsapp-delivery-report';
+
 
 const Provisional = () => {
   return (
     <div>
-      <WhatsappDeliveryReport />
+      <h1>hdhfhdfh</h1>
     </div>
   )
 }
 
-export default Provisional
+export default Provisional  
