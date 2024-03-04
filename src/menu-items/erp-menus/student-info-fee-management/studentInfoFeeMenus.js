@@ -296,8 +296,18 @@ const StudentInfoFeeMenu = {
               },
 
 
+ 
+              // post support ticket
 
-
+              {
+                id: 'post-support-ticket',
+                title: 'Post Support Ticket',
+                type: 'item',
+                url: '/erp/student-info-fee/post-support-ticket',
+                icon: GroupsTwoToneIcon,
+                breadcrumbs: false
+              },
+ 
 
     ]
   };

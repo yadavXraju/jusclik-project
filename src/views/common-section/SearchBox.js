@@ -31,12 +31,13 @@ const SearchBar = ({
     return (
         <Box sx={{ display: 'flex', alignItems: 'center', ...rootSx}}>
             <InputBase
+                id={id}
                 placeholder={placeholder}
                 onChange={handleChange}
                 onKeyPress={handleKeyPress}
                 sx={{flex: 1,border:'1px solid #a8adb1',borderRadius: '10px 0px 0px 10px', height: '50px',backgroundColor:'#f8fafc',borderRight:'none',paddingLeft:'10px', ...inputSx,}}
-                inputProps={inputProps}
-                id={id}
+                inputProps={inputProps}  
+                autoComplete='off'
             />
             <IconButton onClick={onSearch} aria-label="search" sx={{border:'1px solid #a8adb1',borderRadius: '0px 8px 8px 0px',height: '50px',backgroundColor:'#f8fafc',borderLeft:'none',...buttonSx,}} {...buttonProps}>
                 <SearchIcon />
