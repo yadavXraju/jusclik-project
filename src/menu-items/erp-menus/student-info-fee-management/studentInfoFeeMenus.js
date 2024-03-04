@@ -265,28 +265,28 @@ const StudentInfoFeeMenu = {
                    },
 
                    {
-                    id: 'whatshap-conversations',
-                    title: 'Whatshap Conversations',
+                    id: 'whatsapp-conversations',
+                    title: 'Whatsapp Conversations',
                     type: 'item',
-                    url: '/erp/student-info-fee/tools/whatshap-conversations',
+                    url: '/erp/student-info-fee/tools/whatsapp-conversations',
                     breadcrumbs: false
                   },
     
 
                   {
-                    id: 'whatshap-delivery-report',
-                    title: 'Whatshap Delivery Report',
+                    id: 'whatsapp-delivery-report',
+                    title: 'Whatsapp Delivery Report',
                     type: 'item',
-                    url: '/erp/student-info-fee/tools/whatshap-delivery-report',
+                    url: '/erp/student-info-fee/tools/whatsapp-delivery-report',
                     breadcrumbs: false
                   },
 
 
                   {
-                    id: 'whatshap-excel-sheet',
-                    title: 'Whatshap Excel Sheet',
+                    id: 'whatsapp-excel-sheet',
+                    title: 'Whatsapp Excel Sheet',
                     type: 'item',
-                    url: '/erp/student-info-fee/tools/whatshap-excel-sheet',
+                    url: '/erp/student-info-fee/tools/whatsapp-excel-sheet',
                     breadcrumbs: false
                   },
     
@@ -307,6 +307,19 @@ const StudentInfoFeeMenu = {
                 icon: GroupsTwoToneIcon,
                 breadcrumbs: false
               },
+
+
+            // User and roles
+
+            {
+              id: 'user-and-roles',
+              title: 'User & Roles',
+              type: 'item',
+              url: '/erp/student-info-fee/user-and-roles',
+              icon: GroupsTwoToneIcon,
+              breadcrumbs: false
+            },
+           
  
 
     ]

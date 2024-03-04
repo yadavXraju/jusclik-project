@@ -73,11 +73,11 @@ const GpsBusTracking =  Loadable(lazy(() => import('views/erp-module/student-inf
 const WhatshapConversations =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/tool/gps-bus-tracking')));
 
 
-const WhatshapDeliveryReport =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/tool/whatshap-delivery-report')));
+const WhatshapDeliveryReport =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/tool/whatsapp-delivery-report')));
 
 
 
-const WhatshapExcelSheet =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/tool/whatshap-excel-sheet')));
+const WhatshapExcelSheet =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/tool/whatsapp-excel-sheet')));
 
 
 
@@ -86,6 +86,13 @@ const WhatshapExcelSheet =  Loadable(lazy(() => import('views/erp-module/student
 const PostSupportTicket =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/post-support-ticket')));
 
 
+// student details
+
+const StudentDetails =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/student-master/registration/student-details')));
+
+
+// user details and roles
+const UserDetailsRoles =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/user-and-roles')));
 
 
 // ==============================|| Visitor MENUS ||============================== //
@@ -116,6 +123,14 @@ const StudentInfoFeeRoutes = [
             path: 'registration',
             element: <Registration />
          },
+
+          // student details
+
+          { 
+            path: 'registration/student-details', 
+            element: <StudentDetails /> 
+          },
+
 
          {
           path: 'registration-data',
@@ -260,25 +275,28 @@ const StudentInfoFeeRoutes = [
                 },
 
                 { 
-                  path: 'whatshap-conversations', 
+                  path: 'whatsapp-conversations', 
                   element: <WhatshapConversations /> 
                 },
 
 
                 { 
-                  path: 'whatshap-delivery-report', 
+                  path: 'whatsapp-delivery-report', 
                   element: <WhatshapDeliveryReport /> 
                 },
 
 
                 { 
-                  path: 'whatshap-excel-sheet', 
+                  path: 'whatsapp-excel-sheet', 
                   element: <WhatshapExcelSheet /> 
                 },
       
       
               ]
             },
+
+            
+   
 
             // post support
 
@@ -287,6 +305,12 @@ const StudentInfoFeeRoutes = [
               element: <PostSupportTicket /> 
             },
   
+            { 
+              path: 'user-and-roles', 
+              element: <UserDetailsRoles /> 
+            },
+  
+
 
     ]
   }
