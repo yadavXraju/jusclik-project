@@ -3,6 +3,7 @@ import MainCard from 'ui-component/cards/MainCard';
 import Expense from './Expense';
 import ExpenseDrawer from './ExpensesDrawer';
 import { Box, Typography } from '@mui/material';
+import Setup from './Setup';
 
 const index = () => {
   return (
@@ -18,7 +19,7 @@ const index = () => {
         </Box>
       </Box>
       <Expense/>
-      
+      <Setup/>
       </MainCard>
 
     </>
