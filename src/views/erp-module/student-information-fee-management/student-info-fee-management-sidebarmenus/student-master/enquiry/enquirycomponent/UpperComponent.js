@@ -41,7 +41,7 @@ const UpperComponent = () => {
   return (
     <div>
         <Paper>
-            <Grid container spacing={3} sx={{ padding: '25px', display: 'flex', alignItems: 'center' }}>
+            <Grid container spacing={2} sx={{ padding: '15px  15px 25px', display: 'flex', alignItems: 'center' }}>
                 <Grid item xs={2}>
                 <Grid item sx={{display: 'flex',justifyContent:"center", alignItems: 'center' }} >
                       <Box>
@@ -54,7 +54,7 @@ const UpperComponent = () => {
                     <Grid item xs={12} sx={{ display: 'flex' }}>
                      
                       <Grid item xs={6} sx={{display: 'flex',justifyContent:"center", alignItems: 'center' }}>
-                        <Box>
+                        <Box sx={{marginLeft:"-31px"}}>
                         <Chip
           label={value?.id}
           onClick={() => {
@@ -66,18 +66,18 @@ const UpperComponent = () => {
                         </Box>
                       </Grid>
                       <Grid item xs={6} sx={{display: 'flex',justifyContent:"center", alignItems: 'center' }}>
-                      <Box sx={{ marginLeft: '10px' }}>
-          <IconButton sx={{ p: 0 }} id="first" onClick={() => handleFirst()}>
-            <SkipPreviousIcon sx={{ fontSize: '25px' }} />
+                      <Box sx={{ marginLeft: '-66px' }}>
+          <IconButton sx={{ p: 0 ,border:"2px solid #C0C0C0",height:"40px",width:"40px" ,borderRadius:"0px" ,margin:"2px"}} id="first" onClick={() => handleFirst()}>
+            <SkipPreviousIcon sx={{ fontSize: '30px' }} />
           </IconButton>
-          <IconButton sx={{ p: 0 }} id="previous" onClick={() => handlePrevious(value.index)}>
-            <NavigateBeforeIcon sx={{ fontSize: '25px' }} />
+          <IconButton sx={{p: 0 ,border:"2px solid #C0C0C0",height:"40px",width:"40px" ,borderRadius:"0px" ,margin:"2px"}} id="previous" onClick={() => handlePrevious(value.index)}>
+            <NavigateBeforeIcon sx={{ fontSize: '30px' }} />
           </IconButton>
-          <IconButton sx={{ p: 0 }} id="next" onClick={() => handleNext(value.index)}>
-            <NavigateNextIcon sx={{ fontSize: '25px' }} />
+          <IconButton sx={{ p: 0 ,border:"2px solid #C0C0C0",height:"40px",width:"40px" ,borderRadius:"0px",margin:"2px"}} id="next" onClick={() => handleNext(value.index)}>
+            <NavigateNextIcon sx={{ fontSize: '30px' }} />
           </IconButton>
-          <IconButton sx={{ p: 0 }} id="last" onClick={() => handleLast()}>
-            <SkipNextIcon sx={{ fontSize: '25px' }} />
+          <IconButton sx={{ p: 0 ,border:"2px solid #C0C0C0",height:"40px",width:"40px" ,borderRadius:"0px",margin:"2px" }} id="last" onClick={() => handleLast()}>
+            <SkipNextIcon sx={{ fontSize: '30px' }} />
           </IconButton>
         </Box>
                     </Grid>
@@ -85,7 +85,7 @@ const UpperComponent = () => {
 
                   <Grid item xs={12}  sx={{display: 'flex',justifyContent:"center", alignItems: 'center' }} >
                   <Autocomplete
-                sx={{width:"472px"  ,margin:"10px 0"}}
+                sx={{width:"500px"  ,margin:"16px 0 0px -107px"}}
           disablePortal
           id="combo-box-demo"
           options={hundredOptions}
@@ -133,7 +133,7 @@ const UpperComponent = () => {
                                 onClick={() => {
                                   console.log('doing something');
                                 }}
-                                sx={{ p: 1, width: '60%' }}
+                                sx={{ p: 3, width: '100%' }}
                                 color="primary"
                               />
                             </Box>
