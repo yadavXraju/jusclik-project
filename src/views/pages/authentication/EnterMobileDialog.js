@@ -13,8 +13,7 @@ import SelectAccount from './SelectAccount';
 export default function EnterMobileDialog({ open, onClose, onMobileSubmit, onOtpToggle }) {
   const [country, setCountry] = React.useState('India');
   const [mobileNumber, setMobileNumber] = React.useState('');
-  const [otpDialogOpen, setOtpDialogOpen] = useState(false); // Use useState for OTP dialog visibility
-
+  const [otpDialogOpen, setOtpDialogOpen] = useState(false); 
   const handleCountryChange = (event) => {
     setCountry(event.target.value);
   };
