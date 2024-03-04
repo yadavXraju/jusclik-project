@@ -17,6 +17,3 @@ const withPrintPdf = React.forwardRef((props,ref) => {
 })
 
 export default withPrintPdf;
-
-
-
