@@ -1,5 +1,4 @@
 import React from 'react';
-import {Grid} from '@mui/material';
 import ParamTable from 'views/common-section/ParamTable';
 
 const tableHeading=[
@@ -47,12 +46,12 @@ const classData = [
           records: 'select',
           class: 'kg',
           wing: '',
-          academicYear: '',
+          academicYear:'',
           classIntials: '',
-          groupName: '',
-          show: '',
-          createdBy: '',
-          createdOn: ''
+          groupName:'',
+          show:'',
+          createdBy:'Umang Kumar',
+          createdOn:'09.Feb.2024'
         },
         {
           id: 2,
@@ -63,8 +62,8 @@ const classData = [
           classIntials: '',
           groupName: '',
           show: '',
-          createdBy: '',
-          createdOn: ''
+          createdBy: 'Shardul Kumar',
+          createdOn: '29.Sep.2023'
         },
         {
           id: 3,
@@ -127,18 +126,11 @@ const classData = [
           createdOn: ''
         }
       ];
-
+      	
 
 const Class = () => {
     return (
-        <Grid container spacing={2}>
-            <Grid xs={12} sm={12} md={12} lg={12}>
-                <ParamTable columns={tableHeading} data={classData} />
-            </Grid>
-            <Grid  xs={12} sm={12} md={12} lg={6}>
-
-            </Grid>
-        </Grid>
+          <ParamTable columns={tableHeading} data={classData} />
     )
 }
 

@@ -8,7 +8,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 
-const ReusableTable=({ columns, data })=>{
+const ReusableTable = ({ columns, data }) => {
   return (
     <TableContainer component={Paper}>
       <Table>
@@ -22,9 +22,11 @@ const ReusableTable=({ columns, data })=>{
         <TableBody>
           {data.map((row, index) => (
             <TableRow key={index}>
-              {columns.map((column) => (
-                <TableCell key={column.id}><Typography>{row[column.id]}</Typography></TableCell>
-              ))}
+              {
+                Object.keys(row).map((key) => {
+                 return key!="id"&&<TableCell key={row.id}><Typography>{row[key]}</Typography></TableCell>
+                })
+              }
             </TableRow>
           ))}
         </TableBody>
@@ -32,5 +34,5 @@ const ReusableTable=({ columns, data })=>{
     </TableContainer>
   );
 }
-      
+
 export default ReusableTable;
