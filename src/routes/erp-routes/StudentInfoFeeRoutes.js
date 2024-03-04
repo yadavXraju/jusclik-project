@@ -81,6 +81,12 @@ const WhatshapExcelSheet =  Loadable(lazy(() => import('views/erp-module/student
 
 
 
+// post support ticket
+
+const PostSupportTicket =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/post-support-ticket')));
+
+
+
 
 // ==============================|| Visitor MENUS ||============================== //
 
@@ -273,6 +279,14 @@ const StudentInfoFeeRoutes = [
       
               ]
             },
+
+            // post support
+
+            { 
+              path: 'post-support-ticket', 
+              element: <PostSupportTicket /> 
+            },
+  
 
     ]
   }
