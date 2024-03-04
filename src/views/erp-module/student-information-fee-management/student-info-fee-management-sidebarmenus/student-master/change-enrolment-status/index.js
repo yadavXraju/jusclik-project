@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Box, Paper, TextField, Drawer, Button,useMediaQuery} from '@mui/material';
 import ParameterizedAutoComplete from 'views/common-section/ParamAutoComplete';
-import DateComponent from 'views/common-section/DateComponent';
+import DateComponent from 'views/common-section/ParamDateComponent';
 import SearchBar from 'views/common-section/SearchBox';
 import QuickSearchDrawer from 'views/common-section/QuickSearchDrawer'
 

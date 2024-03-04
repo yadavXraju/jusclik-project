@@ -37,8 +37,9 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(({
           duration: theme.transitions.duration.leavingScreen
         }
   ),
+
   [theme.breakpoints.up('md')]: {
-    marginLeft: open ? 0 : -(200),
+    marginLeft: open ? 0 : -(140),  // for main  theme comp
     width: `calc(100% - ${drawerWidth}px)`
   },
   [theme.breakpoints.down('md')]: {
@@ -68,6 +69,8 @@ const MainLayout = () => {
     dispatch({ type: SET_MENU, opened: !leftDrawerOpened });
   };
 
+
+
   const isMobile = useMediaQuery('(max-width: 767px)');
   return (
     <Box  sx={{ display: 'flex' }}>
@@ -89,10 +92,20 @@ const MainLayout = () => {
       </AppBar>
 
       {/* drawer */}
-      <Sidebar  drawerOpen={!matchDownMd ? leftDrawerOpened : !leftDrawerOpened} drawerToggle={handleLeftDrawerToggle} />
+
+      {/* uncomment this line if you want to open menu bar by default */}
+      {/* <Sidebar  drawerOpen={!matchDownMd ? leftDrawerOpened : !leftDrawerOpened} drawerToggle={handleLeftDrawerToggle} /> */}
+
+      {/* closed menu by default  */}
+      <Sidebar  drawerOpen={matchDownMd ? leftDrawerOpened : !leftDrawerOpened} drawerToggle={handleLeftDrawerToggle} />
 
       {/* main content */}
-      <Main theme={theme} open={leftDrawerOpened}>
+
+      {/* and also uncomment  this line to open drawer by default */}
+      {/* <Main theme={theme} open={leftDrawerOpened}> */}
+
+      {/* menu closed by default */}
+      <Main theme={theme} open={!leftDrawerOpened}>
         {/* breadcrumb */}
         <Breadcrumbs separator={IconChevronRight} navigation={navigation} icon title rightAlign />
         {/* url page */}
