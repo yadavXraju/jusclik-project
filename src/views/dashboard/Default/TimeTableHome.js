@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import timeTableData1 from 'views/sidebar-menus/timetable/TimeTableData';
 import { Typography , Grid  , Paper ,  useMediaQuery } from '@mui/material';
 import { HeadingCss , boxHeight } from './dashboard-css/CommonCss';
-import { gridSpacing } from 'store/constant';
 import  './dashboard-css/Overflow.css'
 
 
@@ -58,7 +57,7 @@ const TimeTableHome = () => {
   return (
     <>
 
-        <Grid spacing={gridSpacing} sx={{border:'1px solid #80808026', borderRadius:'8px'}} style={boxHeight} className='scrollbar'>
+        <Grid sx={{border:'1px solid #80808026', borderRadius:'8px'}} style={boxHeight} className='scrollbar'>
               <Grid item component={Paper} lg={12} md={12} sm={12} xs={12} sx={{ textAlign: 'right', p: 0, display: 'flex', flexDirection: 'column', }}>
                 <Typography variant='h2' sx={{ textAlign: 'left' ,p:3}} style={HeadingCss}>today Timetable</Typography>
 

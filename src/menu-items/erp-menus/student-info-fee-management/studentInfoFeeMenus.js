@@ -220,6 +220,84 @@ const StudentInfoFeeMenu = {
                 ]
               },
 
+              // tools
+
+
+
+              {
+                id: 'set-up' ,
+                title: 'Set Up',
+                type: 'collapse',
+                url: '/erp/student-info-fee/setup',
+                icon: GroupsTwoToneIcon,
+                children: [
+
+                  {
+                      id: 'system-data',
+                      title: 'System Data',
+                      type: 'item',
+                      url: '/erp/student-info-fee/setup/system-data',
+                      breadcrumbs: false
+                    },
+    
+
+                ]
+              },
+
+              
+
+              // system data
+
+              {
+                id: 'tools' ,
+                title: 'Tools',
+                type: 'collapse',
+                url: '/erp/student-info-fee/tools',
+                icon: GroupsTwoToneIcon,
+                children: [
+
+                  {
+                     id: 'gps-bus-tracking',
+                     title: 'GPS Bus Tracking',
+                     type: 'item',
+                     url: '/erp/student-info-fee/tools/gps-bus-tracking',
+                     breadcrumbs: false
+                   },
+
+                   {
+                    id: 'whatshap-conversations',
+                    title: 'Whatshap Conversations',
+                    type: 'item',
+                    url: '/erp/student-info-fee/tools/whatshap-conversations',
+                    breadcrumbs: false
+                  },
+    
+
+                  {
+                    id: 'whatshap-delivery-report',
+                    title: 'Whatshap Delivery Report',
+                    type: 'item',
+                    url: '/erp/student-info-fee/tools/whatshap-delivery-report',
+                    breadcrumbs: false
+                  },
+
+
+                  {
+                    id: 'whatshap-excel-sheet',
+                    title: 'Whatshap Excel Sheet',
+                    type: 'item',
+                    url: '/erp/student-info-fee/tools/whatshap-excel-sheet',
+                    breadcrumbs: false
+                  },
+    
+    
+
+                ]
+              },
+
+
+
+
 
     ]
   };

@@ -61,6 +61,27 @@ const SecurityDeposit=  Loadable(lazy(() => import('views/erp-module/student-inf
 const TransferFeeEntry=  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/fee-accounting/transfer-fee-entry')));
 
 
+// system data
+
+const SystemData = Loadable(lazy(() => import('views/erp-module/erp-common-item/setup/system-data')));
+
+
+// tools
+const GpsBusTracking =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/tool/gps-bus-tracking')));
+
+
+const WhatshapConversations =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/tool/gps-bus-tracking')));
+
+
+const WhatshapDeliveryReport =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/tool/whatshap-delivery-report')));
+
+
+
+const WhatshapExcelSheet =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/tool/whatshap-excel-sheet')));
+
+
+
+
 // ==============================|| Visitor MENUS ||============================== //
 
 const StudentInfoFeeRoutes = [
@@ -207,6 +228,51 @@ const StudentInfoFeeRoutes = [
           },
 
 
+
+            // setup
+
+            {
+              path: 'setup',
+              children: [
+                { 
+                  path: 'system-data', 
+                  element: <SystemData /> 
+                },
+      
+      
+              ]
+            },
+
+            // tools
+
+            {
+              path: 'tools',
+              children: [
+                { 
+                  path: 'gps-bus-tracking', 
+                  element: <GpsBusTracking /> 
+                },
+
+                { 
+                  path: 'whatshap-conversations', 
+                  element: <WhatshapConversations /> 
+                },
+
+
+                { 
+                  path: 'whatshap-delivery-report', 
+                  element: <WhatshapDeliveryReport /> 
+                },
+
+
+                { 
+                  path: 'whatshap-excel-sheet', 
+                  element: <WhatshapExcelSheet /> 
+                },
+      
+      
+              ]
+            },
 
     ]
   }

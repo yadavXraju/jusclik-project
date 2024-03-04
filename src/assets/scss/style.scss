@@ -153,8 +153,11 @@
 
 // drawer close effect only
 
-.drawerClose .menu-icon{
+.drawerClose .menu-icon {
   justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .drawerClose  .menu-title{
@@ -171,6 +174,14 @@
   visibility: visible !important;
   transform: translateX(0px) !important;
   width: 120px !important;
+}
+
+.menu-wrapper .menu-animation , .drawerClose .menu-wrapper .menu-title{
+  display: none;
+}
+
+.drawerClose .menu-wrapper:hover .menu-animation{
+  display: block;
 }
 
 }
