@@ -24,7 +24,15 @@ import LeftLogo from './LeftLogo';
 import { Auth } from 'Auth';
 import PoweredBySection from './PoweredBy';
 
-const defaultTheme = createTheme();
+const defaultTheme = createTheme({
+  palette: {
+    secondary: {
+      main: '#e64b4c',
+    },
+  },
+});
+
+
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -52,6 +60,7 @@ function a11yProps(index) {
     'aria-controls': `simple-tabpanel-${index}`
   };
 }
+
 
 export default function LoginPage() {
   // const navigate = useNavigate();
