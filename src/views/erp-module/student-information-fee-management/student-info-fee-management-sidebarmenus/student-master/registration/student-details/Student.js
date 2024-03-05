@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
@@ -8,11 +8,24 @@ import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import EditIcon from '@mui/icons-material/Edit';
 import AvatarImage from '../../../../../../../assets/images/avatar.png';
+import FromPopUp from './data-forms/FromPopUp';
+
 
 const Student = () => {
+  const [open, setOpen] = useState(false);
+
+  const handleEditClick = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+
   return (
     <Paper variant="outlined" elevation={3} sx={{ padding: '20px', marginBottom: '20px', position: 'relative', backgroundColor: '#f5f5f5' }}>
-      <IconButton aria-label="edit" sx={{ position: 'absolute', top: '5px', right: '5px', zIndex: 1 }}>
+      <IconButton aria-label="edit" onClick={handleEditClick}  sx={{ position: 'absolute', top: '5px', right: '5px', zIndex: 1 }}>
         <EditIcon />
       </IconButton>
       <Grid container spacing={3} alignItems="center">
@@ -45,36 +58,63 @@ const Student = () => {
             <Box mt={2}>
               <Grid container spacing={2}>
                 <Grid item xs={4}>
-                  <Typography variant="body1" gutterBottom>
-                    <strong>D.O.B:</strong> 14-July-2000
+                  <Typography variant="subtitle1" gutterBottom>
+                    D.O.B: 
                   </Typography>
                   <Typography variant="body1" gutterBottom>
-                    <strong>House:</strong> Red
+                     14-July-2000
+                  </Typography>
+                  <Typography variant="subtitle1" gutterBottom>
+                    House:
                   </Typography>
                   <Typography variant="body1" gutterBottom>
-                    <strong>Contact:</strong> +1234567890
+                   Red
+                  </Typography>
+                  <Typography variant="subtitle1" gutterBottom>
+                    Contact:
                   </Typography>
                   <Typography variant="body1" gutterBottom>
-                    <strong>Address (Residential):</strong> Lorem Ipsum Street, City
+                   +1234567890
+                  </Typography>
+                  <Typography variant="subtitle1" gutterBottom>
+                    Address (Residential):
+                  </Typography>
+                  <Typography variant="body1" gutterBottom>
+                   Lorem Ipsum Street, City
                   </Typography>
                 </Grid>
                 <Grid item xs={4}>
-                  <Typography variant="body1" gutterBottom>
-                    <strong>Blood Group:</strong> A
+                  <Typography variant="subtitle1" gutterBottom>
+                   Blood Group:
                   </Typography>
                   <Typography variant="body1" gutterBottom>
-                    <strong>Nationality:</strong> Indian
+                  A
+                  </Typography>
+                  <Typography variant="subtitle1" gutterBottom>
+                   Nationality:
                   </Typography>
                   <Typography variant="body1" gutterBottom>
-                    <strong>Religion:</strong> Hindu
+                 Indian
+                  </Typography>
+                  <Typography variant="subtitle1" gutterBottom>
+                   Religion: 
+                  </Typography>
+                  <Typography variant="body1" gutterBottom>
+                    Hindu
                   </Typography>
                 </Grid>
                 <Grid item xs={4}>
-                  <Typography variant="body1" gutterBottom>
-                    <strong>Pay Mode:</strong> Yearly
+                  <Typography variant="subtitle1" gutterBottom>
+                   Pay Mode: 
                   </Typography>
                   <Typography variant="body1" gutterBottom>
-                    <strong>Join Class:</strong> 6
+                    Yearly
+                  </Typography>
+                  <Typography variant="subtitle1" gutterBottom>
+                    Join Class:
+                  </Typography>
+                  <Typography variant="body1" gutterBottom>
+                    6
                   </Typography>
                 </Grid>
               </Grid>
@@ -82,6 +122,7 @@ const Student = () => {
           </Box>
         </Grid>
       </Grid>
+      <FromPopUp open={open} handleClose={handleClose} />
     </Paper>
   );
 };
