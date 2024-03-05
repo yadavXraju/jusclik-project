@@ -72,18 +72,63 @@ export default function LoginPage() {
     handleSelectAccountToggle();
   };
 
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+
+  //   const user = Auth.find((user) => user.username === userId && user.password === userPassword);
+  //   if (user) {
+  //     localStorage.setItem('userRole', user.role);
+  //     localStorage.setItem('userToken', user.token);
+
+  //     setTimeout(() => {
+  //       window.location.href = `/${user.role.toLowerCase()}/dashboard`;
+  //     }, 500);
+  //   } else {
+  //     alert('Wrong Credentials');
+  //   }
+  // };
+
+
   const handleSubmit = (event) => {
     event.preventDefault();
-
-    const user = Auth.find((user) => user.username === userId && user.password === userPassword);
-    if (user) {
+  
+    // static id and pass for parent dashboard
+    if (userId === 'jusklik' && userPassword === 'jusklik@123') {
+      // Save user role and token in local storage
+      const user = Auth.find(user => user.role === 'parent');
       localStorage.setItem('userRole', user.role);
       localStorage.setItem('userToken', user.token);
-
+  
+      // Redirect to parent dashboard after a slight delay
       setTimeout(() => {
-        window.location.href = `/${user.role.toLowerCase()}/dashboard`;
-      }, 500);
-    } else {
+        window.location.href = '/parent/dashboard';
+      }, 500); // Delay in milliseconds
+    }
+    // static id and pass for class teacher dashboard
+    else if (userId === 'cteacher' && userPassword === 'cteacher@123') {
+      // Save user role and token in local storage
+      const user = Auth.find(user => user.role === 'class-teacher');
+      localStorage.setItem('userRole', user.role);
+      localStorage.setItem('userToken', user.token);
+  
+      // Redirect to class teacher dashboard after a slight delay
+      setTimeout(() => {
+        window.location.href = '/class-teacher/dashboard';
+      }, 500); // Delay in milliseconds
+    } 
+    // static id and pass for visitor dashboard
+    else if (userId === 'visitor' && userPassword === 'visitor@123') {
+      // Save user role and token in local storage
+      const user = Auth.find(user => user.role === 'visitor');
+      localStorage.setItem('userRole', user.role);
+      localStorage.setItem('userToken', user.token);
+  
+      // Redirect to visitor dashboard after a slight delay
+      setTimeout(() => {
+        window.location.href = '/erp/visitor/dashboard';
+      }, 500); // Delay in milliseconds
+    } 
+    else {
       alert('Wrong Credentials');
     }
   };
