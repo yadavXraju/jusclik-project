@@ -13,6 +13,7 @@ import { MENU_OPEN, SET_MENU } from 'store/actions';
 // assets
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 
+import { urlStore } from 'views/navigation-for-pages/UrlStore';
 // ==============================|| SIDEBAR MENU LIST ITEMS ||============================== //
 
 const NavItem = ({ item, level }) => {
@@ -50,6 +51,20 @@ const NavItem = ({ item, level }) => {
   const itemHandler = (id) => {
     dispatch({ type: MENU_OPEN, id });
     if (matchesSM) dispatch({ type: SET_MENU, opened: false });
+
+        // Output title and URL to the console
+        
+        // console.log("Clicked Menu Title:", item.title);
+        // console.log("Clicked Menu URL:", item.url);
+
+        urlStore.title=''
+        urlStore.url=''
+    
+
+        urlStore.children=''
+        urlStore.title = item.title ;
+        urlStore.url   =   item.url;
+
   };
 
   // active menu item on page load

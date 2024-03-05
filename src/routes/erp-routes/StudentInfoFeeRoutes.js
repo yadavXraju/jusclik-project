@@ -86,9 +86,19 @@ const WhatshapExcelSheet =  Loadable(lazy(() => import('views/erp-module/student
 const PostSupportTicket =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/post-support-ticket')));
 
 
-// student details
+// student details and forms
 
 const StudentDetails =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/student-master/registration/student-details')));
+
+const FatherDetailsForm =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/student-master/registration/student-details/data-forms/FatherDetails')));
+
+
+const MotherDetailsForm =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/student-master/registration/student-details/data-forms/MotherDetails')));
+
+
+
+const StudentDetailsForm =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/student-master/registration/student-details/data-forms/StudentDetails')));
+
 
 
 // user details and roles
@@ -124,12 +134,38 @@ const StudentInfoFeeRoutes = [
             element: <Registration />
          },
 
-          // student details
+          // student details main
 
           { 
             path: 'registration/student-details', 
             element: <StudentDetails /> 
           },
+
+           // father details
+
+           
+          { 
+            path: 'registration/father-details-form', 
+            element: <FatherDetailsForm/> 
+          },
+
+
+          // mother details
+
+                     
+          { 
+            path: 'registration/mother-details-form', 
+            element: <MotherDetailsForm /> 
+          },
+
+
+          //  student details
+                     
+          { 
+            path: 'registration/student-details-form', 
+            element: <StudentDetailsForm /> 
+          },
+
 
 
          {
