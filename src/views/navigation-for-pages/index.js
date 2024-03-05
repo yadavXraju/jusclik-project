@@ -30,7 +30,7 @@ const UrlPage = () => {
                                     {urlStore.children.map((child, index) => (
                                       <>
                                         {child.title && child.url && (
-                                          <Typography variant="h4" key={index}  sx={{ cursor: 'pointer' }} onClick={() => navigate(child.url)} > {child.title} </Typography>
+                                          <Typography variant="h4" key={index}  sx={{ cursor: 'pointer', fontSize:'14px'}} onClick={() => navigate(child.url)} > {child.title} </Typography>
                                         )}
                                       </>
                                     ))}
