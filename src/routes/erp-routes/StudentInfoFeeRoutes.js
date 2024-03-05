@@ -101,6 +101,12 @@ const StudentDetailsForm =  Loadable(lazy(() => import('views/erp-module/student
 
 
 
+// dashboard payroll
+
+
+const DashboardPayroll =  Loadable(lazy(() => import('views/common-section/dashboard-payroll')));
+
+
 // user details and roles
 const UserDetailsRoles =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/user-and-roles')));
 
@@ -117,6 +123,13 @@ const StudentInfoFeeRoutes = [
        },
 
       //  collapse menus
+
+         //  payroll dashboard
+
+         { 
+          path: 'dashboard-payroll', 
+          element: <DashboardPayroll /> 
+        },
 
 
       // student master
@@ -331,8 +344,6 @@ const StudentInfoFeeRoutes = [
               ]
             },
 
-            
-   
 
             // post support
 
