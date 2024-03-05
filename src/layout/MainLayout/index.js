@@ -93,19 +93,21 @@ const MainLayout = () => {
 
       {/* drawer */}
 
-      {/* uncomment this line if you want to open menu bar by default */}
-      {/* <Sidebar  drawerOpen={!matchDownMd ? leftDrawerOpened : !leftDrawerOpened} drawerToggle={handleLeftDrawerToggle} /> */}
+      {/*  if you want to open menu bar by default */}
+      <Sidebar  drawerOpen={!matchDownMd ? leftDrawerOpened : !leftDrawerOpened} drawerToggle={handleLeftDrawerToggle} />
 
       {/* closed menu by default  */}
-      <Sidebar  drawerOpen={matchDownMd ? leftDrawerOpened : !leftDrawerOpened} drawerToggle={handleLeftDrawerToggle} />
+      {/* <Sidebar  drawerOpen={matchDownMd ? leftDrawerOpened : !leftDrawerOpened} drawerToggle={handleLeftDrawerToggle} /> */}
 
       {/* main content */}
 
-      {/* and also uncomment  this line to open drawer by default */}
-      {/* <Main theme={theme} open={leftDrawerOpened}> */}
+      {/*  open drawer by default */}
+      <Main theme={theme} open={leftDrawerOpened}>
 
       {/* menu closed by default */}
-      <Main theme={theme} open={!leftDrawerOpened}>
+      
+      {/* <Main theme={theme} open={!leftDrawerOpened}> */}
+
         {/* breadcrumb */}
         <Breadcrumbs separator={IconChevronRight} navigation={navigation} icon title rightAlign />
         {/* url page */}

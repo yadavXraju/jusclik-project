@@ -27,12 +27,10 @@ import PoweredBySection from './PoweredBy';
 const defaultTheme = createTheme({
   palette: {
     secondary: {
-      main: '#e64b4c',
-    },
-  },
+      main: '#e64b4c'
+    }
+  }
 });
-
-
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -61,7 +59,6 @@ function a11yProps(index) {
   };
 }
 
-
 export default function LoginPage() {
   // const navigate = useNavigate();
 
@@ -73,7 +70,7 @@ export default function LoginPage() {
   const [userPassword, setUserPassword] = useState('');
   const [value, setValue] = React.useState(0);
 
-  const bgColor = "#ffecec";
+  const bgColor = '#ffecec';
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -139,7 +136,7 @@ export default function LoginPage() {
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <Grid container component="main" sx={{ minHeight: '100vh', display:'flex', justifyContent:'space-between' }}>
+      <Grid container component="main" sx={{ minHeight: '100vh', display: 'flex', justifyContent: 'space-between' }}>
         <CssBaseline />
         {/* Use the LeftLogo component here */}
         <LeftLogo />
@@ -159,7 +156,7 @@ export default function LoginPage() {
             justifyContent: 'center',
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'bottom',
-            borderRadius: '20px 0px 0px 20px',
+            borderRadius: '20px 0px 0px 20px'
           }}
         >
           <Box
@@ -171,9 +168,9 @@ export default function LoginPage() {
               alignItems: 'left'
             }}
           >
-            <Box sx={{display:'flex', flexDirection:'column', alignItems:'flex-start', mb:1}}>
+            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', mb: 1 }}>
               <Typography component="h1" variant="h4" sx={{ color: '#6b6666', fontSize: '40px' }}>
-                Login to 
+                Login to
               </Typography>
               <Typography component="h1" variant="h4" sx={{ color: '#6b6666', fontSize: '40px' }}>
                 your dashboard!
@@ -189,7 +186,7 @@ export default function LoginPage() {
                 sx={{ width: '100%' }}
               >
                 <Tab label="Username" {...a11yProps(0)} sx={{ width: '230px' }} />
-                <Tab label="Phone Number" {...a11yProps(1)} sx={{ width: '230px' }} onClick={handleDialogToggle}/>
+                <Tab label="Phone Number" {...a11yProps(1)} sx={{ width: '240px' }} onClick={handleDialogToggle} />
               </Tabs>
             </Box>
             <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
@@ -201,7 +198,7 @@ export default function LoginPage() {
                   }
                 }}
                 margin="normal"
-                variant='outlined'
+                variant="outlined"
                 required
                 fullWidth
                 id="Username"
@@ -209,13 +206,13 @@ export default function LoginPage() {
                 name="Username"
                 autoComplete="Username"
                 autoFocus
-                sx={{ borderRadius: '50px', backgroundColor:'#ffffff', color:'#6b6666',mb:2}}
+                sx={{ borderRadius: '50px', backgroundColor: '#ffffff', color: '#6b6666', mb: 2 }}
                 value={userId}
                 onChange={(event) => setUserId(event.target.value)}
               />
               <TextField
                 InputProps={{
-                  style: { borderRadius: '50px'},
+                  style: { borderRadius: '50px' },
                   endAdornment: (
                     <InputAdornment position="end">
                       <IconButton
@@ -230,7 +227,7 @@ export default function LoginPage() {
                   )
                 }}
                 margin="normal"
-                variant='outlined'
+                variant="outlined"
                 required
                 fullWidth
                 name="password"
@@ -238,13 +235,18 @@ export default function LoginPage() {
                 type={showPassword ? 'text' : 'password'}
                 id="password"
                 autoComplete="current-password"
-                sx={{ borderRadius: '50px', backgroundColor:'#ffffff', color:'#6b6666' }}
+                sx={{ borderRadius: '50px', backgroundColor: '#ffffff', color: '#6b6666' }}
                 value={userPassword}
                 onChange={(event) => setUserPassword(event.target.value)}
               />
 
               {/* Remember me */}
-              <Grid item xs sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mt: 4 }} style={{ cursor: 'pointer' }}>
+              <Grid
+                item
+                xs
+                sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mt: 4 }}
+                style={{ cursor: 'pointer' }}
+              >
                 <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flexStart' }}>
                   <Button
                     type="submit"
@@ -252,13 +254,13 @@ export default function LoginPage() {
                       backgroundColor: '#fff',
                       color: '#364152b5',
                       borderRadius: '50px',
-                      border:'1px solid #c4c4c4',
+                      border: '1px solid #c4c4c4',
                       width: '150px',
                       display: 'flex',
                       height: '56px',
                       '&:hover': {
                         backgroundColor: '#e64b4c', // Change color on hover
-                        color: '#fff', // Change text color on hover
+                        color: '#fff' // Change text color on hover
                       }
                     }}
                   >
@@ -272,7 +274,7 @@ export default function LoginPage() {
                 <SelectAccount open={selectAccountOpen} onClose={handleSelectAccountToggle} />
               </Grid>
             </Box>
-            <PoweredBySection/>
+            <PoweredBySection />
           </Box>
         </Grid>
       </Grid>

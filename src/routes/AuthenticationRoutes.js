@@ -15,9 +15,13 @@ const SetNewPassword = Loadable(lazy(() => import('views/pages/authentication/Se
 // ==============================|| AUTHENTICATION ROUTING ||============================== //
 
 const AuthenticationRoutes = {
-  path: '/', 
-  element: <Login />, // set login page to the first page in the domain
+  // set login page to the first page in the domain
   children: [
+    {
+      path: '/',
+      element: <Login />
+    },
+
     {
       path: '/login',
       element: <Login />
@@ -25,20 +29,18 @@ const AuthenticationRoutes = {
 
     {
       path: '/forgetpassword',
-      element: <ForgetPassword  />
+      element: <ForgetPassword />
     },
 
     {
       path: '/verifynumber',
-      element: <VerifyNumber  />
+      element: <VerifyNumber />
     },
 
     {
       path: '/setnewpassword',
-      element: <SetNewPassword  />
+      element: <SetNewPassword />
     }
-
-
   ]
 };
 
