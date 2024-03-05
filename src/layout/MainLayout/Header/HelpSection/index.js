@@ -3,9 +3,11 @@ import QuestionMarkOutlinedIcon from '@mui/icons-material/QuestionMarkOutlined';
 import { styled } from '@mui/system';
 import { useTheme, Tooltip, Paper } from '@mui/material';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router';
 
 const HelpSection = () => {
   const theme = useTheme();
+  const navigate = useNavigate();
 
   const StyledContainer = styled('div')({
     display: 'flex',
@@ -39,7 +41,7 @@ const HelpSection = () => {
         borderRadius: '7px',
       }}
     >
-      <Tooltip title={'Help'} arrow>
+      <Tooltip title={'Help'} arrow onClick={()=>{navigate('contact-support')}}>
         <StyledContainer>
           {/* <StyledIcon className='dynamicBg' data-testid="CalendarMonthIcon" sx={{ width: '20px' }} /> */}
           <QuestionMarkOutlinedIcon className='themeColor' sx={{

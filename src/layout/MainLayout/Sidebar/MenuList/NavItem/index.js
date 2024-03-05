@@ -60,10 +60,16 @@ const NavItem = ({ item, level }) => {
         urlStore.title=''
         urlStore.url=''
     
+        console.log( 'item' , item)
+
 
         urlStore.children=''
         urlStore.title = item.title ;
         urlStore.url   =   item.url;
+
+        if(item.childOf == item.id){
+          console.log('print all item with same child of ')
+        }
 
   };
 

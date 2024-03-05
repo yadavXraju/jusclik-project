@@ -1,13 +1,28 @@
 import React from 'react';
 import Box from '@mui/material/Box';
 import { Table, TableCell, TableContainer, TableHead, TableRow, Typography, TableBody } from '@mui/material';
+import AddRoleDrawer from './AddRoleDrawer';
 
 const UserDetailsData = [
   {
     id: '1',
     details: {
-      roleName: 'Rahul',
+      roleName: 'Admin',
       Description: 'Unrestricted access to all modules',
+    }
+  },
+  {
+    id: '2',
+    details: {
+      roleName: 'manager',
+      Description: 'Access to all modules except organisation settings',
+    }
+  },
+  {
+    id: '3',
+    details: {
+      roleName: 'senior manager',
+      Description: 'Access to all modules except organisation settings',
     }
   }
 ];
@@ -17,6 +32,9 @@ console.log(UserDetailsData);
 function RoleDetails() {
   return (
     <>
+    <Box sx={{display:'flex', justifyContent:'end'}}>
+      <AddRoleDrawer/>
+      </Box>
       <Box sx={{ width: '100%', bgcolor: 'background.paper' }}>
         <TableContainer>
           <Table>

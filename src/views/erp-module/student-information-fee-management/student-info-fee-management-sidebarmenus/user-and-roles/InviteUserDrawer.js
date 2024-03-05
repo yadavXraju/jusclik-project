@@ -13,8 +13,8 @@ const InviteUserDrawer = () => {
   const [role, setrole] = useState('');
   const roleOptions = [
     { value: 'Admin', label: 'Admin' },
-    { value: 'Reimbursements ', label: 'Books' },  
-    { value: 'Tour', label: 'Tour' },
+    { value: 'Manager ', label: 'Manager' },  
+    { value: 'senior manager', label: 'senior manager' },
   ];
 
   return (
@@ -23,7 +23,7 @@ const InviteUserDrawer = () => {
       Invite User
       </Button>
       <Drawer anchor={'right'} open={anchor.right} onClose={toggleDrawer('right', false)}>
-        <Box sx={{ width: { xs: '100%', sm: 650 }, padding: 2 }} role="presentation">
+        <Box sx={{ width: { xs: '100vw', sm: 650 }, padding: 2 }} role="presentation">
           <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #ccc' }}>
             <Typography variant="h4">Invite User</Typography>
             <Button onClick={toggleDrawer('right', false)} sx={{ alignSelf: 'flex-end' }}>
@@ -38,6 +38,9 @@ const InviteUserDrawer = () => {
             </Box>
             <Box pb={2}>
             <TextField id="outlined-basic" label="Email" variant="outlined" fullWidth />
+            </Box>
+            <Box pb={2}>
+            <TextField id="outlined-basic" label="Mobile" variant="outlined" fullWidth />
             </Box>
             <Box pb={2}>
             <SelectList label="Role" options={roleOptions} value={role} setValue={setrole}/>

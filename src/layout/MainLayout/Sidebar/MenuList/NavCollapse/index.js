@@ -48,7 +48,7 @@ const NavCollapse = ({ menu, level }) => {
     // console.log("Clicked Menu URL:", menu.url);
 
 
-    console.log(menu)
+    console.log( 'collapse' , menu)
     // Store title and URL in urlStore
 
     urlStore.title=''
@@ -138,7 +138,7 @@ const NavCollapse = ({ menu, level }) => {
 
   return (
     <>
-      <Tooltip title={tooltipContent}  placement="right" >
+      <Tooltip title={tooltipContent} placement="right" >
         <ListItemButton
          className='menu-wrapper'
           sx={{

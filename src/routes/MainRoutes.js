@@ -14,6 +14,10 @@ import StudentInfoFeeRoutes from './erp-routes/StudentInfoFeeRoutes';
 
  const SubjectTeacherDashboard= Loadable(lazy(() => import('views/subject-teacher-dashboard/')));
 
+
+//  common routes
+import CommonRoutes from './common-routes/CommonRoutes';
+
 // ==============================|| MAIN ROUTING ||============================== //
 
 const MainRoutes = {
@@ -42,6 +46,9 @@ const MainRoutes = {
     // Student info and fee info Dashboard Menus (Include imported routes here)
     ...StudentInfoFeeRoutes,
 
+    // common routes  
+
+    ...CommonRoutes
 
   ]
 };
