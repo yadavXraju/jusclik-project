@@ -1,10 +1,12 @@
 import React from 'react';
 import Box from '@mui/material/Box';
 import { Table, TableCell, TableContainer, TableHead, TableRow, Typography, TableBody, Button } from '@mui/material';
-//import { IconButton } from '@mui/material';
-//import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
-//import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
-//import { ClassTeacherProfileDetails } from 'layout/MainLayout/Header/class-teacher/teacher-profile-section/TeacherProfile';
+import InviteUserDrawer from './InviteUserDrawer'
+import Switch from '@mui/material/Switch';
+import VisibilityTwoToneIcon from '@mui/icons-material/VisibilityTwoTone';
+import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
+import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
+
 
 const UserDetailsData = [
   {
@@ -23,6 +25,9 @@ console.log(UserDetailsData);
 function UserDetails() {
   return (
     <>
+    <Box sx={{display:'flex', justifyContent:'end'}}>
+      <InviteUserDrawer/>
+      </Box>
       <Box sx={{ width: '100%', bgcolor: 'background.paper' }}>
         <TableContainer>
           <Table>
@@ -57,40 +62,19 @@ function UserDetails() {
                     <Typography variant="h5">{item.details.role}</Typography>
                   </TableCell>
                   <TableCell>
-                    <Typography color={'Green'} variant="h5">
-                      {item.details.status}
+                    <Typography  variant="h5">
+                      {/* {item.details.status} */}
+                      <Switch />
                     </Typography>
                   </TableCell>
                   <TableCell>
                     <Typography variant="h4" sx={{ display: 'flex', justifyContent: 'center' }}>
-                      <Button sx={{ color: 'black', borderBottom: '1px dotted #ccc' }}>View</Button>
-                      <Button sx={{ color: 'black', borderBottom: '1px dotted #ccc' }}>Edit</Button>
-                      <Button sx={{ color: 'black', borderBottom: '1px dotted #ccc' }}>Cancal</Button>
-                      {/* <PopupState variant="popover" popupId="demo-popup-popover">
-                        {(popupState) => (
-                          <div>
-                            <IconButton {...bindTrigger(popupState)}>
-                              <MoreHorizIcon />
-                            </IconButton>
-                            <Popover
-                              {...bindPopover(popupState)}
-                              anchorOrigin={{
-                                vertical: 'bottom',
-                                horizontal: 'center'
-                              }}
-                              transformOrigin={{
-                                vertical: 'top',
-                                horizontal: 'center'
-                              }}
-                            >
-                              <Typography sx={{ p: 1, display: 'Grid' }}>
-                                <Button sx={{ color: 'black', borderBottom: '1px dotted #ccc' }}>View</Button>
-                                <Button sx={{ color: 'black', borderBottom: '1px dotted #ccc' }}>Edit</Button>
-                              </Typography>
-                            </Popover>
-                          </div>
-                        )}
-                      </PopupState> */}
+                      {/* <Button sx={{ color: 'black', margin:'2px' }}>View</Button>
+                      <Button sx={{ color: 'black', margin:'2px' }}>Edit</Button>
+                      <Button sx={{ color: 'black', margin:'2px' }}>Cancel</Button> */}
+                      <Button sx={{ color: 'black' }}> <VisibilityTwoToneIcon/> </Button>
+                      <Button sx={{ color: 'black' }}> <EditTwoToneIcon/> </Button>
+                      <Button sx={{ color: 'black' }}> <DeleteTwoToneIcon/> </Button>
                     </Typography>
                   </TableCell>
                 </TableRow>
