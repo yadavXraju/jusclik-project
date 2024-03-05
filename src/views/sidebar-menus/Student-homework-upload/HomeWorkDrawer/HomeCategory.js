@@ -91,7 +91,7 @@ export default function HomeCategory() {
                 label={classItem}
                 onDelete={
                   () => {
-                    const delete1 = [...SelectedClasses];
+                    const delete1 = [...selectedClasses];
                     delete1.splice(index, 1);
                     setSelectedClasses(delete1);
                   }
