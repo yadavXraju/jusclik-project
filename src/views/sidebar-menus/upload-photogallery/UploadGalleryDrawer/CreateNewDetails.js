@@ -147,6 +147,7 @@ const CreateNewDetails = () => {
       <div>
         {activeStep === 0 && (
           <div>
+            <Box sx={{ width: { xs: '92vw', sm: '600px' }}}>
             <Box sx={{ paddingLeft: '12px', paddingRight: '20px', paddingTop: '20px' }}>
               <TextField
                 label="Album Name"
@@ -157,7 +158,7 @@ const CreateNewDetails = () => {
                 className={classes.formControl}
               />
             </Box>
-            <Box sx={{ paddingBottom: '12px', paddingLeft: '12px', paddingRight: '20px', paddingTop:'6px' }}>
+            <Box sx={{ paddingBottom: '12px', paddingLeft: '12px', paddingRight: '20px', paddingTop: '6px' }}>
               <FormControl className={classes.formControl}>
                 <InputLabel id="class-name-label" htmlFor="class-name-select">
                   Select Class
@@ -228,7 +229,8 @@ const CreateNewDetails = () => {
                 fullWidth
               />
             </Box>
-          </div>
+            </Box>
+            </div>
         )}
         {activeStep === 1 && (
           // Upload Files or media start
@@ -272,7 +274,7 @@ const CreateNewDetails = () => {
                     border: '2px dashed #ccc',
                     borderRadius: '8px',
                     padding: '20px',
-                    width: { xs: '95vw', sm: '600px' },
+                    width: { xs: '92vw', sm: '600px' },
                     height: '200px'
                   }}
                 >
@@ -309,36 +311,37 @@ const CreateNewDetails = () => {
               </Box>
             </Box>
           </div>
-           // Upload Files or media End
+          // Upload Files or media End
         )}
         {activeStep === 2 && (
           // Review Last step start
           <div>
-            <Box sx={{ padding: '20px', border:'1px solid #ccc', marginTop:'30px' }}>
+            <Box sx={{width: { xs: '92vw', sm: '600px' }}}>
+            <Box sx={{ padding: '20px', border: '1px solid #ccc', marginTop: '30px' }}>
               <TableContainer component={Paper}>
                 <Table>
                   <TableBody>
                     <TableRow>
                       <TableCell>
-                        <span style={{ fontWeight: 'bold' }}>Album Name</span>
+                        <span style={{ fontWeight: 'bold' }}>Album Name:</span>
                       </TableCell>
                       <TableCell>{albumName}</TableCell>
                     </TableRow>
                     <TableRow>
                       <TableCell>
-                        <span style={{ fontWeight: 'bold' }}>Class</span>
+                        <span style={{ fontWeight: 'bold' }}>Class:</span>
                       </TableCell>
                       <TableCell>{className}</TableCell>
                     </TableRow>
                     <TableRow>
                       <TableCell>
-                        <span style={{ fontWeight: 'bold' }}>Student Names</span>
+                        <span style={{ fontWeight: 'bold' }}>Student Names:</span>
                       </TableCell>
                       <TableCell>{selectedStudents.join(', ')}</TableCell>
                     </TableRow>
                     <TableRow>
                       <TableCell>
-                        <span style={{ fontWeight: 'bold' }}>Description</span>
+                        <span style={{ fontWeight: 'bold' }}>Description:</span>
                       </TableCell>
                       <TableCell>{description}</TableCell>
                     </TableRow>
@@ -346,23 +349,26 @@ const CreateNewDetails = () => {
                 </Table>
               </TableContainer>
             </Box>
-            <div style={{ overflowX: 'auto', maxHeight: '200px', padding: '20px', overflowY: 'hidden' }}>
+            <div style={{ overflowX: 'auto', padding: '20px', overflowY: 'hidden',  width: { xs: '92vw', sm: '600px' } }}>
               <div style={{ display: 'flex' }}>
                 {selectedFiles.map((file, index) => (
-                  <div key={index} className={classes.fileContainer} style={{ marginRight: '10px', position: 'relative' }}>
-                    <img src={URL.createObjectURL(file)} alt={file.name} style={{ width: '200px', height: '150px', objectFit: 'cover' }} />
-                    <IconButton
-                      color="secondary"
-                      onClick={() => handleDeleteFile(index)}
-                      style={{ position: 'absolute', top: '-4px', right: '-2px' }}
-                    >
-                      <CloseIcon sx={{ color: 'white', backgroundColor: 'black', borderRadius: '18px', padding: '3px' }} />
-                    </IconButton>
+                  <div key={index} style={{ flex: '0 0 auto', marginRight: '10px', width: '100%', maxWidth: '200px' }}>
+                    <div className={classes.fileContainer} style={{ position: 'relative', width: '100%', height: '150px' }}>
+                      <img src={URL.createObjectURL(file)} alt={file.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                      <IconButton
+                        color="secondary"
+                        onClick={() => handleDeleteFile(index)}
+                        style={{ position: 'absolute', top: '4px', right: '4px' }}
+                      >
+                        <CloseIcon sx={{ color: 'white', backgroundColor: 'black', borderRadius: '18px', padding: '3px' }} />
+                      </IconButton>
+                    </div>
                   </div>
                 ))}
               </div>
             </div>
-          </div>
+            </Box>
+            </div>
           // Review Last step start
         )}
 

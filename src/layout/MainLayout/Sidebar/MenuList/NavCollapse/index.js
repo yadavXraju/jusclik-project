@@ -23,6 +23,7 @@ import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import Tooltip from '@mui/material/Tooltip';
 import { IconChevronRight } from '@tabler/icons';
 
+import { urlStore } from 'views/navigation-for-pages/UrlStore';
 // ==============================|| SIDEBAR MENU LIST COLLAPSE ITEMS ||============================== //
 
 const NavCollapse = ({ menu, level }) => {
@@ -33,14 +34,41 @@ const NavCollapse = ({ menu, level }) => {
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState(null);
 
+
   const handleClick = () => {
     setOpen(!open);
-    
     setSelected(!selected ? menu.id : null);
     if (menu?.id !== 'authentication') {
       navigate(menu.children[0]?.url);
     }
+     
+    // Output title and URL to the console
+
+    // console.log("Clicked Menu Title:", menu.title);
+    // console.log("Clicked Menu URL:", menu.url);
+
+
+    console.log( 'collapse' , menu)
+    // Store title and URL in urlStore
+
+    urlStore.title=''
+    urlStore.url=''
+    urlStore.children=''
+
+    // urlStore.title = menu.title;
+    // urlStore.url = menu.url;
+  
+    // Store children titles and URLs in urlStore
+    if (menu.children) {
+      const childrenData = menu.children.map(child => ({
+        title: child.title,
+        url: child.url
+      }));
+      urlStore.children = childrenData;
+    }
   };
+  
+  
 
   const { pathname } = useLocation();
   const checkOpenForParent = (child, id) => {
@@ -110,7 +138,7 @@ const NavCollapse = ({ menu, level }) => {
 
   return (
     <>
-      <Tooltip title={tooltipContent}  placement="right" >
+      <Tooltip title={tooltipContent} placement="right" >
         <ListItemButton
          className='menu-wrapper'
           sx={{
@@ -124,7 +152,7 @@ const NavCollapse = ({ menu, level }) => {
           selected={selected === menu.id}
           onClick={handleClick}
         >
-          <ListItemIcon sx={{ my: 'auto', minWidth: !menu.icon ? 18 : 36 }} className='menu-icon'>{menuIcon} </ListItemIcon>
+          <ListItemIcon sx={{ my: 'auto', minWidth: !menu.icon ? 18 : 36 }} className='menu-icon'>{menuIcon} <Typography className='menu-animation'>{menu.title}</Typography> </ListItemIcon>
           <ListItemText
             primary={
               <Typography variant={selected === menu.id ? 'h5' : 'body1'} color="inherit" sx={{ my: 'auto' }} className='menu-title'>
