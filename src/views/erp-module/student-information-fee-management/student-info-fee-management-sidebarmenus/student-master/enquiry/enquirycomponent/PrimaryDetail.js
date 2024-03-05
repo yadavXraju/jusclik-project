@@ -56,7 +56,7 @@ const PrimaryDetail = () => {
     }, [dob]);
   return (
     <div>
-       <Grid item xs={12} sx={{ marginTop: '40px' }}>
+       <Grid item xs={12} sx={{ marginTop: '20px' }}>
               <Paper>
                 <h3 style={{ padding: '20px 20px 0px 20px', fontSize: '1.14rem' }}>Primary Details</h3>
                 <Grid container sx={{ padding: '25px' }} spacing={3}>
