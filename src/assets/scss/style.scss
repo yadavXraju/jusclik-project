@@ -141,6 +141,7 @@
 
   .MuiTooltip-tooltipPlacementRight {
     background: #fff;
+    // margin-top: 40%;
 }
 
 .tooltip-menus .menu-icon {
@@ -184,5 +185,25 @@
   display: block;
 }
 
+
+
+.drawerClose .menu-icon:hover svg{
+  transition: all .5s ease-in-out;
 }
+
+
+.drawerClose .menu-icon:hover svg{
+   transform: translateY(-3rem);
+   opacity: 0;
+}
+
+
+.drawerClose .menu-icon:hover .menu-animation {
+  transform: translateY(-10px);
+}
+
+
+
+}
+
 

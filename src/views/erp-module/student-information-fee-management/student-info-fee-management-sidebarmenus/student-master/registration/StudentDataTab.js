@@ -1,8 +1,7 @@
 import React from 'react'
 import { Box, Paper, Tab } from '@mui/material'
 import { TabContext, TabList, TabPanel } from '@mui/lab'
-// import Overview from './tabcomponent/Overview';
-import ProfileForm from 'views/sidebar-menus/studentProfile/ProfileForm';
+import StudentDetails from './student-details';
 const StudentDataTab = () => {
     const [value, setValue] = React.useState('1');
 
@@ -17,15 +16,15 @@ const StudentDataTab = () => {
                 <Box  sx={{ borderBottom: 1, borderColor: 'divider' }}>
                 <TabList onChange={handleChange} aria-label="lab API tabs example">
                   <Tab label="Overview" value="1" />
-                  <Tab label="Father detail" value="2" />
-                  <Tab label="Mother detail" value="3" />
-                  <Tab label="Fee Detail" value="4" />
-                  <Tab label="Transport- detail" value="5" />
+                  <Tab label="Fee detail" value="2" />
+                  <Tab label="Transport detail" value="3" />
+                  <Tab label="" value="4" />
+                  <Tab label="" value="5" />
 
                 </TabList>
                 </Box>
                 <TabPanel value='1'>
-                 <ProfileForm/>
+                 <StudentDetails/>
                 </TabPanel>
                 <TabPanel value='2'>Father detail</TabPanel>
                 <TabPanel value='3'>Mother detail</TabPanel>

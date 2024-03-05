@@ -1,8 +1,15 @@
 import React from 'react'
+import StudentDetail from './StudentDetail'
+import FatherDetail from './FatherDetail'
+import MotherDetail from './MotherDetail'
 
 const StudentDetails = () => {
   return (
-    <div>student</div>
+    <div>
+      <StudentDetail/>
+      <FatherDetail/>
+      <MotherDetail/>
+    </div>
   )
 }
 
