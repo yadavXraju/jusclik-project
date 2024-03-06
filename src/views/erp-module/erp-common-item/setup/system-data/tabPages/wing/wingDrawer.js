@@ -1,19 +1,12 @@
 import React from 'react';
 import useDrawer from 'hooks/useDrawer';
-import Drawer from '@mui/material/Drawer';
 import {Button, Typography, Box} from '@mui/material';
-import CloseFullscreenIcon from '@mui/icons-material/CloseFullscreen';
 import TextField from '@mui/material/TextField';
 
 const MargeDrawer = () => {
-  const { anchor, toggleDrawer } = useDrawer();
-
+   const{toggleDrawer}=useDrawer();
   return (
-    <>
-      <Button onClick={toggleDrawer('right', true)} variant="contained" endIcon={<CloseFullscreenIcon/>}>
-      Marge
-      </Button>
-      <Drawer anchor={'right'} open={anchor.right} onClose={toggleDrawer('right', false)}>
+    <>   
       <Box sx={{ width: { xs: '100%', sm: 650 }, padding: 2 }} role="presentation">
         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #ccc' }}>
           <Typography variant="h4">Marge</Typography>
@@ -43,9 +36,7 @@ const MargeDrawer = () => {
         </form>
          </Box>
       </Box>
-      </Drawer>
     </>
   );
 };
-
 export default  MargeDrawer

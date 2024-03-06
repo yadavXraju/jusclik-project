@@ -1,6 +1,6 @@
 import React from 'react';
 import ParamTable from 'views/common-section/ParamTable';
-
+import {Box} from '@mui/material';
 const tableHeading = [
   {
     id: 1,
@@ -37,6 +37,9 @@ const tableHeading = [
   {
     id: 9,
     tabHeading: "Created On"
+  },{
+    id:10,
+    tabHeading:"Action"
   }
 ]
 
@@ -129,7 +132,9 @@ const classData = [
 
 const Class = () => {
   return (
-    <ParamTable columns={tableHeading} data={classData} />
+    <Box>
+      <ParamTable columns={tableHeading} data={classData} />
+    </Box>
   )
 }
 

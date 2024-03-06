@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React from 'react';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
@@ -8,25 +8,16 @@ import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import EditIcon from '@mui/icons-material/Edit';
 import AvatarImage from '../../../../../../../assets/images/avatar.png';
-import FromPopUp from './data-forms/FromPopUp';
+// import FromPopUp from './data-forms/FromPopUp';
 
 
-const Student = () => {
-  const [open, setOpen] = useState(false);
-
-  const handleEditClick = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
+const Student = ({onEditClick}) => {
 
 
   return (
-    <Paper variant="outlined" elevation={3} sx={{ padding: '20px', marginBottom: '20px', position: 'relative', backgroundColor: '#f5f5f5' }}>
-      <IconButton aria-label="edit" onClick={handleEditClick}  sx={{ position: 'absolute', top: '5px', right: '5px', zIndex: 1 }}>
-        <EditIcon />
+    <Paper variant="outlined" elevation={0} sx={{ padding: '20px', marginBottom: '20px', position: 'relative', backgroundColor: '#f5f5f5' }}>
+      <IconButton onClick={()=>onEditClick()} aria-label="edit"   sx={{ position: 'absolute', top: '5px', right: '5px', zIndex: 1 }} >
+        <EditIcon/>
       </IconButton>
       <Grid container spacing={3} alignItems="center">
         <Grid item xs={3} display="flex" alignItems="center">
@@ -122,7 +113,7 @@ const Student = () => {
           </Box>
         </Grid>
       </Grid>
-      <FromPopUp open={open} handleClose={handleClose} />
+      
     </Paper>
   );
 };

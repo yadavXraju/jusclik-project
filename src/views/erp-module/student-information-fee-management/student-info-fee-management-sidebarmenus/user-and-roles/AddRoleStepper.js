@@ -127,9 +127,11 @@ import StepLabel from '@mui/material/StepLabel';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import RoleAccess from './RoleAccess';
+import RolePrivileges from './RolePrivileges';
+import RoleAuthorisation from './Role-Authorisation/RoleAuthorisation';
 
 const steps = ['MODULES', 'PRIVILEGES', 'AUTHORISATION'];
-const components = [RoleAccess, RoleAccess, RoleAccess];
+const components = [RoleAccess, RolePrivileges, RoleAuthorisation];
 
 export default function AddRoleStepper() {
   const [activeStep, setActiveStep] = React.useState(0);
@@ -182,7 +184,7 @@ export default function AddRoleStepper() {
   const ActiveComponent = components[activeStep];
 
   return (
-    <Box sx={{ width: '100%' }}>
+    <Box sx={{ width: '100%' , p:'0px'}}>
       <Box sx={{ justifyContent:'center', display:'flex'}}>
       <Stepper sx={{width:'50%'}} activeStep={activeStep}>
         {steps.map((label, index) => {
@@ -212,7 +214,7 @@ export default function AddRoleStepper() {
       ) : (
         <React.Fragment>
           {/* <Typography sx={{ mt: 2, mb: 1 }}>Step {activeStep + 1}</Typography> */}
-          <Box padding={2}>
+          <Box padding={3}>
           <ActiveComponent />
           </Box>
           <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
