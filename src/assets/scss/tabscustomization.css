@@ -1,0 +1,4 @@
+/* for left alignment of tabs */
+.css-lfwcke-MuiTabs-flexContainer{
+    align-items: flex-start;
+}

@@ -1,28 +1,39 @@
 import React from 'react';
-import { Grid } from '@mui/material';
-import Typography from '@mui/material/Typography';
-import Link from '@mui/material/Link';
+import { Typography, Link, Box } from '@mui/material';
 import CloudLogo from '../../../assets/images/Untitled-2.png';
-import Box from '@mui/material/Box';
 import AppStoreButtonsGroup from './AppStoreLogos';
+
+const commonTextStyle = {
+  color: '#a8a6a6',
+  fontFamily: 'plus Jakarta sans',
+  fontSize: '12px',
+  textAlign: 'center'
+};
 
 const PoweredBySection = () => {
   return (
     <>
-      <Grid item sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', mt: 5 }}>
+      <Box sx={{textAlign: 'center',position: 'fixed', bottom: '100px', transform: 'translateX(57%)'}}>
         <img src={CloudLogo} alt="Logo" />
-        <Typography sx={{ color: '#a8a6a6', mt: 1 }}>Powered by</Typography>
-        <Link href="http://www.shauryasoft.com" target="_blank" rel="noopener noreferrer" sx={{ color: '#a8a6a6', textDecoration: 'none' }}>
+        <Typography variant="body2" sx={{ ...commonTextStyle }}>
+          Powered by
+        </Typography>
+        <Link
+          href="http://www.shauryasoft.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          sx={{ ...commonTextStyle, textDecoration: 'none' }}
+        >
           www.shauryasoft.com
         </Link>
-      </Grid>
-      <Box sx={{mt:1,display:'flex', justifyContent: 'center'}}>
-        <Typography variant="subtitle1" color="#a8a6a6">
-          Fee Payment Policies/ Terms & Conditions
-        </Typography>
+
+        <Box sx={{ textAlign: 'center', mt: 1 }}>
+          <Typography variant="subtitle1" sx={{ ...commonTextStyle }}>
+            Fee Payment Policies/ Terms & Conditions
+          </Typography>
+        </Box>
       </Box>
       <AppStoreButtonsGroup />
-
     </>
   );
 };

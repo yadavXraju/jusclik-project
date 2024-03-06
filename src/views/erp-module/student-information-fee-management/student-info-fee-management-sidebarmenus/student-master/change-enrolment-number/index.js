@@ -49,9 +49,9 @@ const ChangeEnrolmentNumber = () => {
       width: "350px"
     }
   }
+  
   const handleChange = (name, newValue) => {
     setsearchData({ ...searchData, [name]: newValue });
-
   }
 
 
