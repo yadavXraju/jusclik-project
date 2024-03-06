@@ -5,7 +5,6 @@ import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
-import Button from '@mui/material/Button';
 import { Paper, Typography, Divider } from '@mui/material';
 
 const FatherDetailsForm = () => {

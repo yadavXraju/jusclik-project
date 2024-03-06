@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import FatherDetail from './FatherDetail';
 import MotherDetail from './MotherDetail';
 import Drawer from '@mui/material/Drawer';
