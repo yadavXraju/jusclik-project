@@ -1,9 +1,12 @@
-import React from 'react'
+import React from 'react';
+import PostSupportTabs from './post-support-tabs/PostSupportTabs';
 
 const PostSupportTicket = () => {
   return (
-    <div>PostSupportTicket</div>
-  )
-}
+    <>
+      <PostSupportTabs />
+    </>
+  );
+};
 
-export default PostSupportTicket
+export default PostSupportTicket;
