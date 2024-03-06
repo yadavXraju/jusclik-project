@@ -2,6 +2,7 @@ import React from 'react'
 import { Box, Paper, Tab } from '@mui/material'
 import { TabContext, TabList, TabPanel } from '@mui/lab'
 import StudentDetails from './student-details';
+// import StepperForm from './student-details/data-forms/StepperForm';
 const StudentDataTab = () => {
     const [value, setValue] = React.useState('1');
 
@@ -35,6 +36,7 @@ const StudentDataTab = () => {
                 
         </Box>
       </Paper>
+     
     </div>
   )
 }
