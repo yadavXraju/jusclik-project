@@ -9,6 +9,7 @@ const useDrawer = () => {
     });
 
     const toggleDrawer = (anchor, open) => (event) => {
+        console.log("hello this is tarun");
         if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
             return;
         }

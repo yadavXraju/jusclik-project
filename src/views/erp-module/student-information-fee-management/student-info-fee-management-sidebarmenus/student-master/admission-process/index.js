@@ -9,7 +9,7 @@ import PrintPdf from 'views/common-section/withPrintPdf';
 import PrintExcel from 'views/common-section/PrintExcel';
 import DownloadPdf from 'views/common-section/DownloadPdf';
 import StudentInfo from './StudentInfo';
-import './admission.css';
+import 'assets/scss/tabscustomization.css';
 
 const studentData=[
   {
