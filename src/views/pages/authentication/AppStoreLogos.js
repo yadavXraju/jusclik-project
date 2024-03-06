@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Button } from '@mui/material';
-import PlayStoreImage from '../../../../assets/images/Google-Play.png';
-import AppleStoreImage from '../../../../assets/images/app-store.png';
+import PlayStoreImage from '../../../assets/images/Google-Play.png';
+import AppleStoreImage from '../../../assets/images/app-store.png';
 
 const StoreButton = ({ href, storeImage, altText }) => (
   <Button
@@ -17,7 +17,10 @@ const StoreButton = ({ href, storeImage, altText }) => (
       borderRadius: '50%',
       display: 'flex',
       justifyContent: 'flex-start',
-      alignItems: 'center'
+      alignItems: 'center',
+      '&:hover': {
+        backgroundColor: '#f6f6f6',
+      }
     }}
     startIcon={<img src={storeImage} alt={altText} style={{ width: '40px', height: '40px'}} />}
   />

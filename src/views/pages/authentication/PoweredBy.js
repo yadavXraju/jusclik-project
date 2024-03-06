@@ -4,7 +4,7 @@ import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import CloudLogo from '../../../assets/images/Untitled-2.png';
 import Box from '@mui/material/Box';
-import AppStoreButtonsGroup from './authentication3/AppStoreLogos';
+import AppStoreButtonsGroup from './AppStoreLogos';
 
 const PoweredBySection = () => {
   return (

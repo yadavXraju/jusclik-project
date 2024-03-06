@@ -181,8 +181,9 @@
   display: none;
 }
 
-.drawerClose .menu-wrapper:hover .menu-animation{
+.drawerClose .menu-wrapper:hover .menu-animation {
   display: block;
+  text-align: center;
 }
 
 
@@ -191,10 +192,17 @@
   transition: all .5s ease-in-out;
 }
 
+.drawerClose .menu-icon .menu-wrapper{
+  display: none;
+}
 
-.drawerClose .menu-icon:hover svg{
-   transform: translateY(-3rem);
-   opacity: 0;
+
+// .drawerClose .menu-icon:hover svg{
+//    display: none;
+// }
+
+.drawerClose .menu-wrapper:hover svg{
+  display: none;
 }
 
 
