@@ -1,6 +1,6 @@
 import React from 'react';
 import ParamTable from 'views/common-section/ParamTable';
-
+// table headings
 const tableHeading=[
   {
   id:0,
@@ -68,5 +68,6 @@ const Section = () => {
    </> 
   )
 }
+
 
 export default Section;
