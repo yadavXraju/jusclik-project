@@ -53,14 +53,14 @@ const SelectAccount = ({ open, onClose, onOtpToggle }) => {
                 <DialogContent dividers>
                     <List sx={{ width: '100%', maxWidth: 400, bgcolor: 'background.paper' }}>
                         {[
-                            { id: 1, name: 'Shauryasoft Presentation 1' },
-                            { id: 2, name: 'Shauryasoft Presentation 2' },
-                            { id: 3, name: 'Shauryasoft Presentation 3' },
+                            { id: 1, name: 'Hrm Global School' },
+                            { id: 2, name: 'Green Crescent Public School' },
+                            { id: 3, name: 'DPS Knowledge Park - V' },
                         ].map((item) => (
                             <React.Fragment key={item.id}>
                                 <ListItem  sx={{cursor:'pointer',display:'flex', alignItems:'center'}} onClick={() => handleListItemClick(item)} >
                                     <ListItemAvatar>
-                                        <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+                                        <Avatar  />
                                     </ListItemAvatar>
                                     <ListItemText
                                         primary={item.name}

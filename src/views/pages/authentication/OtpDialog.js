@@ -6,9 +6,11 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Button from '@mui/material/Button';
+import { useNavigate } from 'react-router';
 
 export default function OtpDialog({ open, onClose, selectedLoginID }) {
   const [otp, setOtp] = useState('');
+  const navigate = useNavigate();
 
   const handleClose = () => {
     onClose();
@@ -74,7 +76,7 @@ export default function OtpDialog({ open, onClose, selectedLoginID }) {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button type="submit">Submit</Button>
+          <Button type="submit" onClick={() => navigate('/setnewpassword')}>Submit</Button>
         </DialogActions>
       </form>
     </Dialog>
