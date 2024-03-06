@@ -58,17 +58,25 @@ const NavCollapse = ({ menu, level }) => {
     // urlStore.title = menu.title;
     // urlStore.url = menu.url;
   
-    // Store children titles and URLs in urlStore
-    if (menu.children) {
-      const childrenData = menu.children.map(child => ({
-        title: child.title,
-        url: child.url
-      }));
-      urlStore.children = childrenData;
-    }
+// Store children titles in an array
+const childrenTitles = [];
+
+// Store children titles and URLs in urlStore
+if (menu.children) {
+  const childrenData = menu.children.map(child => {
+    childrenTitles.push(child.title); // Store child title
+    return {
+      title: child.title,
+      url: child.url
+    };
+    
+  });
+  urlStore.children = childrenData;
+}
+
   };
-  
-  
+
+
 
   const { pathname } = useLocation();
   const checkOpenForParent = (child, id) => {
@@ -138,7 +146,7 @@ const NavCollapse = ({ menu, level }) => {
 
   return (
     <>
-      <Tooltip title={tooltipContent} placement="right" >
+      <Tooltip title={tooltipContent} placement="right"  >
         <ListItemButton
          className='menu-wrapper'
           sx={{

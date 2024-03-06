@@ -6,6 +6,23 @@ import BuildTwoToneIcon from '@mui/icons-material/BuildTwoTone';
 import ConfirmationNumberTwoToneIcon from '@mui/icons-material/ConfirmationNumberTwoTone';
 import AccountBalanceWalletTwoToneIcon from '@mui/icons-material/AccountBalanceWalletTwoTone';
 
+// colleagueTitles
+
+const StudnetMasterColleagueTitles = {
+  0: 'Enquiry',
+  1: 'Registration',
+  2: 'Registration Data',
+  3: 'Admission Process',
+  4: 'Provisional',
+  5: 'Admission',
+  6: 'Custom Data',
+  7: 'Edit Master Data Field',
+  8: 'Edit Master Data Field',
+  9: 'Change Enrolment Status',
+  10: 'Change Enrolment Number',
+  11: 'Upload Documents',
+};
+
 const StudentInfoFeeMenu = {
     id: 'StudentInfoFeeMenu',
     type: 'group',
@@ -26,7 +43,7 @@ const StudentInfoFeeMenu = {
                   type: 'item',
                   url: '/erp/student-info-fee/student-master/enquiry',
                   breadcrumbs: false,
-                  childOf : 'student-master'
+                  colleagueTitle : StudnetMasterColleagueTitles,
                 },
 
 
@@ -36,7 +53,8 @@ const StudentInfoFeeMenu = {
                   type: 'item',
                   url: '/erp/student-info-fee/student-master/registration',
                   breadcrumbs: false,
-                  childOf : 'student-master'
+                  childOf : 'student-master',
+                  colleagueTitle : StudnetMasterColleagueTitles,
                 },
 
                 {
@@ -45,7 +63,8 @@ const StudentInfoFeeMenu = {
                 type: 'item',
                 url: '/erp/student-info-fee/student-master/registration-data',
                 breadcrumbs: false,
-                childOf : 'student-master'
+                childOf : 'student-master',
+                colleagueTitle : StudnetMasterColleagueTitles,
               },
 
               {
@@ -54,7 +73,8 @@ const StudentInfoFeeMenu = {
                 type: 'item',
                 url: '/erp/student-info-fee/student-master/admission-process',
                 breadcrumbs: false,
-                childOf : 'student-master'
+                childOf : 'student-master',
+                colleagueTitle : StudnetMasterColleagueTitles,
               },
 
 
@@ -64,7 +84,8 @@ const StudentInfoFeeMenu = {
                 type: 'item',
                 url: '/erp/student-info-fee/student-master/provisional',
                 breadcrumbs: false,
-                childOf : 'student-master'
+                childOf : 'student-master',
+                colleagueTitle : StudnetMasterColleagueTitles,
               },
 
               
@@ -74,7 +95,8 @@ const StudentInfoFeeMenu = {
                 type: 'item',
                 url: '/erp/student-info-fee/student-master/admission',
                 breadcrumbs: false,
-                childOf : 'student-master'
+                childOf : 'student-master',
+                colleagueTitle : StudnetMasterColleagueTitles,
               },
 
                                 
@@ -84,7 +106,8 @@ const StudentInfoFeeMenu = {
                 type: 'item',
                 url: '/erp/student-info-fee/student-master/custom-data',
                 breadcrumbs: false,
-                childOf : 'student-master'
+                childOf : 'student-master',
+                colleagueTitle : StudnetMasterColleagueTitles,
               },
 
               {
@@ -93,7 +116,8 @@ const StudentInfoFeeMenu = {
                 type: 'item',
                 url: '/erp/student-info-fee/student-master/edit-master-data-field',
                 breadcrumbs: false,
-                childOf : 'student-master'
+                childOf : 'student-master',
+                colleagueTitle : StudnetMasterColleagueTitles,
               },
 
                   
@@ -103,7 +127,8 @@ const StudentInfoFeeMenu = {
                 type: 'item',
                 url: '/erp/student-info-fee/student-master/change-enrolment-status',
                 breadcrumbs: false,
-                childOf : 'student-master'
+                childOf : 'student-master',
+                colleagueTitle : StudnetMasterColleagueTitles,
               },
 
               {
@@ -112,7 +137,8 @@ const StudentInfoFeeMenu = {
                 type: 'item',
                 url: '/erp/student-info-fee/student-master/change-enrolment-number',
                 breadcrumbs: false,
-                childOf : 'student-master'
+                childOf : 'student-master',
+                colleagueTitle : StudnetMasterColleagueTitles,
               },
 
               {
@@ -121,7 +147,8 @@ const StudentInfoFeeMenu = {
                 type: 'item',
                 url: '/erp/student-info-fee/student-master/upload-document',
                 breadcrumbs: false,
-                childOf : 'student-master'
+                childOf : 'student-master',
+                colleagueTitle : StudnetMasterColleagueTitles,
               },
 
 
@@ -327,9 +354,7 @@ const StudentInfoFeeMenu = {
               breadcrumbs: false
             },
 
-
             // User and roles
-
             {
               id: 'user-and-roles',
               title: 'User & Roles',

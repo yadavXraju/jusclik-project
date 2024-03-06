@@ -141,7 +141,7 @@
 
   .MuiTooltip-tooltipPlacementRight {
     background: #fff;
-    // margin-top: 40%;
+    margin-top: 50%;
 }
 
 .tooltip-menus .menu-icon {
@@ -177,9 +177,7 @@
   width: 120px !important;
 }
 
-.menu-wrapper .menu-animation , .drawerClose .menu-wrapper .menu-title{
-  display: none;
-}
+
 
 .drawerClose .menu-wrapper:hover .menu-animation {
   display: block;
@@ -196,18 +194,40 @@
   display: none;
 }
 
-
-// .drawerClose .menu-icon:hover svg{
-//    display: none;
-// }
-
-.drawerClose .menu-wrapper:hover svg{
+.drawerClose .menu-wrapper .menu-title{
   display: none;
 }
 
 
-.drawerClose .menu-icon:hover .menu-animation {
-  transform: translateY(-10px);
+
+
+.menu-animation{
+  display: none;
+}
+
+.drawerClose .menu-animation{
+  display: block;
+}
+
+.drawerClose .menu-wrapper .menu-icon svg , .menu-wrapper .menu-animation {
+  transition : .5s ease-in-out ; 
+  text-align: center;
+}
+
+.drawerClose .icon-tabler-chevron-right {
+  display: none;
+}
+
+// hover animation
+
+
+.drawerClose .menu-wrapper:hover .menu-icon svg {
+  opacity : 0;
+}
+
+
+.drawerClose .menu-wrapper:hover .menu-animation{
+  margin-top : -14px;
 }
 
 
