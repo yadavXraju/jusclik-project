@@ -9,6 +9,7 @@ const useDrawer = () => {
     });
 
     const toggleDrawer = (anchor, open) => (event) => {
+        console.log("heelo2")
         if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
             return;
         }

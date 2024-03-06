@@ -4,7 +4,8 @@ import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 import Button from '@mui/material/Button';
-import StudentDetailsForm from './StudentDetails';
+// import StudentDetailsForm from './StudentDetails';
+import StepperForm from './StepperForm';
 
 const FromPopUp = ({handleClose,open}) => {
   return (
@@ -12,7 +13,7 @@ const FromPopUp = ({handleClose,open}) => {
         <Dialog open={open} onClose={handleClose} maxWidth="xl">
         <DialogTitle>Edit Student</DialogTitle>
         <DialogContent>
-          <StudentDetailsForm/>
+        <StepperForm/>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
