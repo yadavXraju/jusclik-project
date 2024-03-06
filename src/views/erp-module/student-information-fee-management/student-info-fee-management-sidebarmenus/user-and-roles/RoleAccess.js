@@ -1,58 +1,49 @@
 import React, { useState } from 'react';
-import Card from '@mui/material/Card';
 import Table from '@mui/material/Table';
 import TableHead from '@mui/material/TableHead';
 import TableBody from '@mui/material/TableBody';
 import TableRow from '@mui/material/TableRow';
 import TableCell from '@mui/material/TableCell';
-import { Checkbox, Box } from '@mui/material';
-//import Switch from '@mui/material/Switch';
-// import {TextField} from '@mui/material';
-// import TextArea from 'antd/es/input/TextArea';
+import { Checkbox, Box, Card, Typography } from '@mui/material';
 
 function RoleAccess() {
-    const [isChecked, setIsChecked] = useState({
-        'full-access': false,
-        'view': false,
-        'create': false,
-        'edit': false,
-        'approve': false,
-    });
+    const [moduleAccess, setModuleAccess] = useState({});
 
-    // const handleSwitchChange = () => {
-    //     setIsChecked(prevState => {
-    //         const newState = {};
-    //         for (let key in prevState) {
-    //             newState[key] = !prevState[key];
-    //         }
-    //         return newState;
-    //     });
-    // };
+    const modulesData = [
+        { id: '1', details: { moduleName: 'Stufee' } },
+        { id: '2', details: { moduleName: 'Payroll' } },
+        { id: '3', details: { moduleName: 'Progress' } },
+        { id: '4', details: { moduleName: 'Library' } },
+        { id: '5', details: { moduleName: 'Inventory' } },
+        { id: '6', details: { moduleName: 'Website' } },
+        { id: '7', details: { moduleName: 'Visitor Mgmt' } },
+        { id: '8', details: { moduleName: 'Medical' } },
+    ];
 
-    const handleCheckboxChange = (id) => {
-        setIsChecked(prevState => ({
-            ...prevState,
-            [id]: !prevState[id]
-        }));
+    const handleFullAccessChange = (moduleId, checked) => {
+        const updatedModuleAccess = { ...moduleAccess };
+        updatedModuleAccess[moduleId] = {
+            fullAccess: checked,
+            view: checked,
+            create: checked,
+            edit: checked,
+            approve: checked,
+        };
+        setModuleAccess(updatedModuleAccess);
+    };
+
+    const handleCheckboxChange = (moduleId, key, checked) => {
+        const updatedModuleAccess = { ...moduleAccess };
+        updatedModuleAccess[moduleId] = { ...updatedModuleAccess[moduleId], [key]: checked };
+        setModuleAccess(updatedModuleAccess);
     };
 
     return (
-        <>
-         {/* <Box pb={2}>
-            <TextField id="outlined-basic" label="Role Name" variant="outlined" fullWidth />
-            </Box>
-            <Box pb={2}>
-              <Box p={0.5}>Description</Box>
-              <TextArea rows={4} placeholder="Enter your text here..." fullWidth variant="outlined" />
-            </Box> */}
-         <Card sx={{ width: { xs: '83vw', md: '100%' }, overflow: { xs: 'scroll', md: 'hidden' }, border: '1px solid #ccc', borderRadius: '5px', padding: '10px' }}>
-            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <Box>
-                    Access
-                </Box>
-                {/* <Box>
-                    <Switch checked={Object.values(isChecked).every(value => value)} onChange={handleSwitchChange} inputProps={{ 'aria-label': 'Switch demo' }} />
-                </Box> */}
+        <Card sx={{ width: { xs: '83vw', md: '100%' }, overflow: { xs: 'scroll', md: 'hidden' }, border: '1px solid #ccc', borderRadius: '5px', padding: '10px' }}>
+            <Box p={2} sx={{borderBottom:'1px solid #ccc'}}>
+                <Typography variant='h4'>
+                    Modules Access
+                </Typography>
             </Box>
             <Table>
                 <TableHead>
@@ -66,18 +57,49 @@ function RoleAccess() {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    <TableRow>
-                        <TableCell>Website</TableCell>
-                        {Object.entries(isChecked).map(([id, value]) => (
-                            <TableCell style={{ paddingLeft: '14px'}} key={id}>
-                                <Checkbox id={id} size='small' checked={value} onChange={() => handleCheckboxChange(id)} />
+                    {modulesData.map(module => (
+                        <TableRow key={module.id}>
+                            <TableCell sx={{fontWeight:'bold'}}>{module.details.moduleName}</TableCell>
+                            <TableCell style={{ paddingLeft: '14px' }}>
+                                <Checkbox
+                                    size='small'
+                                    checked={moduleAccess[module.id]?.fullAccess || false}
+                                    onChange={(e) => handleFullAccessChange(module.id, e.target.checked)}
+                                />
                             </TableCell>
-                        ))}
-                    </TableRow>
+                            <TableCell>
+                                <Checkbox
+                                    size='small'
+                                    checked={moduleAccess[module.id]?.view || false}
+                                    onChange={(e) => handleCheckboxChange(module.id, 'view', e.target.checked)}
+                                />
+                            </TableCell>
+                            <TableCell>
+                                <Checkbox
+                                    size='small'
+                                    checked={moduleAccess[module.id]?.create || false}
+                                    onChange={(e) => handleCheckboxChange(module.id, 'create', e.target.checked)}
+                                />
+                            </TableCell>
+                            <TableCell>
+                                <Checkbox
+                                    size='small'
+                                    checked={moduleAccess[module.id]?.edit || false}
+                                    onChange={(e) => handleCheckboxChange(module.id, 'edit', e.target.checked)}
+                                />
+                            </TableCell>
+                            <TableCell>
+                                <Checkbox
+                                    size='small'
+                                    checked={moduleAccess[module.id]?.approve || false}
+                                    onChange={(e) => handleCheckboxChange(module.id, 'approve', e.target.checked)}
+                                />
+                            </TableCell>
+                        </TableRow>
+                    ))}
                 </TableBody>
             </Table>
         </Card>
-        </>
     );
 }
 

@@ -5,7 +5,7 @@ import InviteUserDrawer from './InviteUserDrawer'
 import Switch from '@mui/material/Switch';
 import VisibilityTwoToneIcon from '@mui/icons-material/VisibilityTwoTone';
 import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
-import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
+//import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 
 
 const UserDetailsData = [
@@ -74,7 +74,7 @@ function UserDetails() {
                       <Button sx={{ color: 'black', margin:'2px' }}>Cancel</Button> */}
                       <Button sx={{ color: 'black' }}> <VisibilityTwoToneIcon/> </Button>
                       <Button sx={{ color: 'black' }}> <EditTwoToneIcon/> </Button>
-                      <Button sx={{ color: 'black' }}> <DeleteTwoToneIcon/> </Button>
+                      {/* <Button sx={{ color: 'black' }}> <DeleteTwoToneIcon/> </Button> */}
                     </Typography>
                   </TableCell>
                 </TableRow>
