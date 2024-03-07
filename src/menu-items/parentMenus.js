@@ -15,6 +15,35 @@ import CategoryTwoToneIcon from '@mui/icons-material/CategoryTwoTone';
 // ==============================||All MENU ITEMS Here ||============================== //
 
 
+// ==================== colleagueTitles  ==================== 
+
+//  digital-learning
+
+const  DigitalLearningColleagueTitles  = [
+  {title : 'Online Assessment' , url : '/parent/digital-learning/online-assessment'}, 
+  {title : 'Online Class' , url : '/parent/digital-learning/online-class'}, 
+
+];
+
+
+//  communication
+
+const  CommunicationColleagueTitles  = [
+  {title : 'Contact List' , url : '/parent/communication/contact-list'}, 
+  {title : 'Inbox' , url : '/parent/communication/inbox'}, 
+
+];
+
+
+//  request
+
+const  RequestColleagueTitles  = [
+  {title : 'Add Meeting' , url : '/parent/request/add-meeting'}, 
+  {title : 'Item Request Gate Pass' , url : '/parent/request/item-request-gate-pass'}, 
+];
+
+
+
 const parentMenu = {
   id: 'parent-Menu',
   type: 'group',
@@ -82,14 +111,16 @@ const parentMenu = {
             title: 'Online Assesment',
             type: 'item',
             url: '/parent/digital-learning/online-assessment',
-            breadcrumbs: false
+            breadcrumbs: false,
+            colleagueTitle : DigitalLearningColleagueTitles,
           },
           {
             id: 'digital-learning-online-class',
             title: 'Online Class',
             type: 'item',
             url: '/parent/digital-learning/online-class',
-            breadcrumbs: false
+            breadcrumbs: false,
+            colleagueTitle : DigitalLearningColleagueTitles,
           }
         ]
       },
@@ -108,14 +139,17 @@ const parentMenu = {
             title: 'Contact List',
             type: 'item',
             url: '/parent/communication/contact-list',
-            breadcrumbs: false
+            breadcrumbs: false,
+            colleagueTitle : CommunicationColleagueTitles,
+      
           },
           {
             id: 'communication-inbox',
             title: 'Inbox',
             type: 'item',
             url: '/parent/communication/inbox',
-            breadcrumbs: false
+            breadcrumbs: false,
+            colleagueTitle : CommunicationColleagueTitles,
           }
         ]
       },
@@ -133,14 +167,16 @@ const parentMenu = {
             title: 'Add Meeting',
             type: 'item',
             url: '/parent/request/add-meeting',
-            breadcrumbs: false
+            breadcrumbs: false,
+            colleagueTitle : RequestColleagueTitles,
           },
           {
             id: 'item-request-gate-pass',
             title: 'Item Request Gate Pass',
             type: 'item',
             url: '/parent/request/item-request-gate-pass',
-            breadcrumbs: false
+            breadcrumbs: false,
+            colleagueTitle : RequestColleagueTitles,
           }
         ]
       },

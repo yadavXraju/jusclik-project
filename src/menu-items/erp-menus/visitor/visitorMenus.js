@@ -5,6 +5,32 @@ import GroupsTwoToneIcon from '@mui/icons-material/GroupsTwoTone';
 
 
 
+// ==================== colleagueTitles  ==================== 
+
+//  Visitor
+
+const  VisitorColleagueTitles  = [
+  {title : 'Visitor Entry' , url : '/erp/visitor/visitor-management/visitor-entry'}, 
+  {title : 'Scheduled Visit' , url : '/erp/visitor/visitor-management/scheduled-visit'}, 
+];
+
+
+//  dynamic reports
+
+const  DynamicReportColleagueTitles  = [
+  {title : 'Visitor Details' , url : '/erp/visitor/dynamic-reports/visitor-details'}, 
+  {title : 'Black Listed Visitor' , url : '/erp/visitor/dynamic-reports/black-listed-visitor'}, 
+];
+
+
+//  Tools
+
+const  ToolsColleagueTitles  = [
+  {title : 'SMS Delivery Report' , url : '/erp/visitor/tools/sms-delivery-report'}, 
+];
+
+
+
 const VisitorMenu = {
     id: 'visitorMenu',
     type: 'group',
@@ -24,7 +50,8 @@ const VisitorMenu = {
                      title: 'Visitor Entry',
                      type: 'item',
                      url: '/erp/visitor/visitor-management/visitor-entry',
-                     breadcrumbs: false
+                     breadcrumbs: false,
+                     colleagueTitle : VisitorColleagueTitles,
                    },
     
 
@@ -33,7 +60,8 @@ const VisitorMenu = {
                      title: 'Scheduled Visit',
                      type: 'item',
                      url: '/erp/visitor/visitor-management/scheduled-visit',
-                     breadcrumbs: false
+                     breadcrumbs: false,
+                     colleagueTitle : VisitorColleagueTitles,
                    },
     
                 ]
@@ -52,7 +80,8 @@ const VisitorMenu = {
                         title: 'Visitor Details',
                         type: 'item',
                         url: '/erp/visitor/dynamic-reports/visitor-details',
-                        breadcrumbs: false
+                        breadcrumbs: false,
+                        colleagueTitle : DynamicReportColleagueTitles,
                       },
     
                       
@@ -61,7 +90,8 @@ const VisitorMenu = {
                      title: 'Black Listed Visitor',
                      type: 'item',
                      url: '/erp/visitor/dynamic-reports/black-listed-visitor',
-                     breadcrumbs: false
+                     breadcrumbs: false,
+                     colleagueTitle : DynamicReportColleagueTitles,
                    },
             
                 ]
@@ -80,7 +110,8 @@ const VisitorMenu = {
                         title: 'SMS Delivery Report',
                         type: 'item',
                         url: '/erp/visitor/tools/sms-delivery-report',
-                        breadcrumbs: false
+                        breadcrumbs: false,
+                        colleagueTitle : ToolsColleagueTitles,
                       },       
                 ]
               },
