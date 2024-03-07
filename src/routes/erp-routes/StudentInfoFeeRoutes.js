@@ -79,12 +79,9 @@ const WhatshapDeliveryReport =  Loadable(lazy(() => import('views/erp-module/stu
 
 const WhatshapExcelSheet =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/tool/whatsapp-excel-sheet')));
 
+// setting
 
-
-// post support ticket
-
-const PostSupportTicket =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/post-support-ticket')));
-
+const Setting =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/settings/setting')));
 
 // student details and forms
 
@@ -299,11 +296,17 @@ const StudentInfoFeeRoutes = [
 
 
 
-            // setup
+            // setting
 
             {
-              path: 'setup',
+              path: 'settings',
               children: [
+
+                { 
+                  path: 'setting', 
+                  element: <Setting /> 
+                },
+
                 { 
                   path: 'system-data', 
                   element: <SystemData /> 
@@ -344,13 +347,7 @@ const StudentInfoFeeRoutes = [
               ]
             },
 
-
-            // post support
-
-            { 
-              path: 'post-support-ticket', 
-              element: <PostSupportTicket /> 
-            },
+            // user and roles
   
             { 
               path: 'user-and-roles', 

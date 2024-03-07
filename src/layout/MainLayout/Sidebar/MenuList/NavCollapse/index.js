@@ -48,7 +48,8 @@ const NavCollapse = ({ menu, level }) => {
     // console.log("Clicked Menu URL:", menu.url);
 
 
-    console.log( 'collapse' , menu)
+    // console.log( 'collapse' , menu)
+    
     // Store title and URL in urlStore
 
     urlStore.title=''
