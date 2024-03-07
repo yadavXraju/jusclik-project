@@ -1,5 +1,5 @@
 export { default as Class } from './class';
-export { default as Section } from './section';
+export { default as Section } from './Section';
 export { default as House } from './house';
 export { default as ChequeCategory } from './cheque-category';
 export { default as OtherCategory } from './other-category';
