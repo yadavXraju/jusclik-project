@@ -14,6 +14,27 @@ import LocalLibraryTwoToneIcon from '@mui/icons-material/LocalLibraryTwoTone';
 import MovingIcon from '@mui/icons-material/Moving';
 
 
+// ==================== colleagueTitles  ==================== 
+
+//  attndance
+
+const  AttendanceColleagueTitles  = [
+  {title : 'Daily Attendance' , url : '/class-teacher/attendance-entry/daily-attendance'}, 
+  {title : 'Monthly Attendance' , url : '/class-teacher/attendance-entry/monthly-attendance'}, 
+];
+
+
+//  result
+
+const  ResultColleagueTitles  = [
+  {title : 'Marks' , url : '/class-teacher/result/marks-entry'}, 
+  {title : 'Co Scholastic' , url : '/class-teacher/result/co-scholastic'}, 
+  {title : 'Remark Entry' , url : '/class-teacher/result/remarks-entry'}, 
+];
+
+
+
+
 const ClassTeacherMenu = {
     id: 'teacherMenu',
     type: 'group',
@@ -33,7 +54,8 @@ const ClassTeacherMenu = {
                      title: 'Daily Attendance',
                      type: 'item',
                      url: '/class-teacher/attendance-entry/daily-attendance',
-                     breadcrumbs: false
+                     breadcrumbs: false,
+                     colleagueTitle : AttendanceColleagueTitles,
                    },
     
 
@@ -42,7 +64,8 @@ const ClassTeacherMenu = {
                      title: 'Monthly Attendance',
                      type: 'item',
                      url: '/class-teacher/attendance-entry/monthly-attendance',
-                     breadcrumbs: false
+                     breadcrumbs: false,
+                     colleagueTitle : AttendanceColleagueTitles,
                    },
     
                 ]
@@ -62,7 +85,8 @@ const ClassTeacherMenu = {
                      title: 'Marks',
                      type: 'item',
                      url: '/class-teacher/result/marks-entry',
-                     breadcrumbs: false
+                     breadcrumbs: false,
+                     colleagueTitle : ResultColleagueTitles,
                    },
     
 
@@ -71,7 +95,8 @@ const ClassTeacherMenu = {
                      title: 'Co Scholastic',
                      type: 'item',
                      url: '/class-teacher/result/co-scholastic',
-                     breadcrumbs: false
+                     breadcrumbs: false,
+                     colleagueTitle : ResultColleagueTitles,
                    },
 
                    {
@@ -79,7 +104,8 @@ const ClassTeacherMenu = {
                      title: 'Remark Entry',
                      type: 'item',
                      url: '/class-teacher/result/remarks-entry',
-                     breadcrumbs: false
+                     breadcrumbs: false,
+                     colleagueTitle : ResultColleagueTitles,
                    },
     
     

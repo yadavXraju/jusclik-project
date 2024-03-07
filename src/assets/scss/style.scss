@@ -154,11 +154,16 @@
 
 // drawer close effect only
 
+.drawerClose  .menu-wrapper{
+  margin-top: -12px;
+}
+
 .drawerClose .menu-icon {
   justify-content: center;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 12px;
 }
 
 .drawerClose  .menu-title{
@@ -184,29 +189,12 @@
   text-align: center;
 }
 
-
-
-.drawerClose .menu-icon:hover svg{
-  transition: all .5s ease-in-out;
-}
-
 .drawerClose .menu-icon .menu-wrapper{
   display: none;
 }
 
-.drawerClose .menu-wrapper .menu-title{
+.drawerClose .menu-wrapper .menu-title , .menu-animation{
   display: none;
-}
-
-
-
-
-.menu-animation{
-  display: none;
-}
-
-.drawerClose .menu-animation{
-  display: block;
 }
 
 .drawerClose .menu-wrapper .menu-icon svg , .menu-wrapper .menu-animation {
@@ -221,15 +209,25 @@
 // hover animation
 
 
-.drawerClose .menu-wrapper:hover .menu-icon svg {
-  opacity : 0;
+.drawerClose .menu-wrapper:hover .menu-icon svg  {
+  opacity: 0;
+  visibility: hidden;
+  height: 0;
 }
 
-
-.drawerClose .menu-wrapper:hover .menu-animation{
-  margin-top : -14px;
+.drawerClose  .menu-wrapper:hover .menu-animation {
+  opacity: 1;
+  visibility: visible;
+  height: auto;
+  overflow: hidden;
+  transition: opacity 0.5s ease, height 0.5s ease;
 }
 
+.drawerClose .menu-animation {
+  opacity: 0;
+  visibility: hidden;
+  height: 0;
+}
 
 
 }

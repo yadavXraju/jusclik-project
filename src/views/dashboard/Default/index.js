@@ -10,7 +10,7 @@ import TimeTableHome from './TimeTableHome';
 import CommunicationHomeComp from './CommunicationHomeComp';
 import AttandanceChartHomeComp from './AttendanceChartHomeComp';
 import Alert from './Alerts';
-// import BasicDateRangeCalendarNew from './cal-home-comp';
+
 
 
 const Dashboard = ({ isLoading }) => {
