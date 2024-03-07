@@ -95,7 +95,7 @@ export default function LoginPage() {
             autoComplete="Mobilenumber"
             value={mobileNumber}
             onChange={handleMobileNumberChange}
-            autoFocus
+            autoFocus={step === 0}
             sx={{ borderRadius: '50px', backgroundColor: '#ffffff', color: '#6b6666', mb: 2 }}
           />
           <TextField
@@ -118,12 +118,12 @@ export default function LoginPage() {
             margin="normal"
             variant="outlined"
             fullWidth
-            autoFocus={step === 1}
+            autoFocus={step === 2}
             required={step === 1}
             id="otp"
             name="otp"
-            type={showPassword ? 'text' : 'password'} // Set type to 'text' or 'password' based on showPassword state
-            style={{ borderRadius: '50px', display: step === 1 ? 'block' : 'none' }}
+            type={showPassword ? 'text' : 'password'} 
+            style={{ borderRadius: '50px', display: step === 0 ? 'none' : 'block' }}
             value={otp}
             onChange={handleOtpChange}
             error={!/^[0-9]{6}$/.test(otp) && otp.length > 0}
@@ -140,8 +140,7 @@ export default function LoginPage() {
           <Grid
             item
             xs
-            sx={{ display: 'flex', alignItems: 'center', mt: 2 }}
-            style={{ cursor: 'pointer' }}
+            sx={{cursor: 'pointer', display: 'block', alignItems: 'center', mt: 4 }}
           >
             <Box sx={{ display: 'flex', alignItems: 'center', mt: 2, justifyContent: 'space-between' }}>
               <Button
@@ -159,13 +158,12 @@ export default function LoginPage() {
                   '&:hover': {
                     backgroundColor: '#e64b4c',
                     color: '#fff'
-                  },
-                  display: step === 2 ? 'none' : 'block'
+                  }
                 }}
               >
                 {step === 0 ? 'Next' : 'Submit'}
               </Button>
-              {step === 1 && (
+              {step === 2 && (
                 <Typography
                   sx={{ display: 'block', alignItems: 'center', justifyContent: 'flexStart', cursor: 'pointer' }}
                   onClick={handleResendOtp}
