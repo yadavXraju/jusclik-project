@@ -7,6 +7,10 @@ import Box from '@mui/material/Box';
 import ModuleFormsEvents from './ModuleFormsEvents';
 import DescriptionTwoToneIcon from '@mui/icons-material/DescriptionTwoTone';
 import AcademicSessions from './AcademicSessions';
+import ClassResultCoOrdinator from './ClassResultCoOrdinator';
+import ManageLibraryGroup from './ManageLibraryGroup';
+import ManageHostelUser from './ManageHostelUser';
+import ManageInventoryGroup from './ManageInventoryGroup';
 
 
 function CustomTabPanel(props) {
@@ -15,7 +19,7 @@ function CustomTabPanel(props) {
   return (
     <div role="tabpanel" hidden={value !== index} id={`simple-tabpanel-${index}`} aria-labelledby={`simple-tab-${index}`} {...other}>
       {value === index && (
-        <Box sx={{ p: 3 }}>
+        <Box sx={{marginTop:'20px'}} padding={{xs:'0', md:'3'}}>
           <Typography>{children}</Typography>
         </Box>
       )}
@@ -46,7 +50,7 @@ export default function RoleAuthorisation() {
   return (
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+        <Tabs value={value} onChange={handleChange} variant="scrollable" aria-label="basic tabs example">
           <Tab sx={{width:'200px'}}
           label={
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
@@ -68,16 +72,16 @@ export default function RoleAuthorisation() {
         <AcademicSessions/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
-        Manage Classes of Result Co-Ordinator
+        <ClassResultCoOrdinator/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={3}>
-        Manage Library Group User
+       <ManageLibraryGroup/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={4}>
-        Manage Inventory Group User
+        <ManageInventoryGroup/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={5}>
-        Manage Hostel User Group
+        <ManageHostelUser/>
       </CustomTabPanel>
     </Box>
   );

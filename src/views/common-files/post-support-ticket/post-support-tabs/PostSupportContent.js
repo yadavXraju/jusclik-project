@@ -104,10 +104,10 @@ function PostSupportContent() {
         <FormControl fullWidth>
           <InputLabel id="demo-simple-select-label">How critical is your request?</InputLabel>
           <Select labelId="demo-simple-select-label" id="demo-simple-select" value={requestCriticality} label="How critical is your request?" onChange={handleRequestCriticalityChange}>
-            <MenuItem value={1}>None</MenuItem>
-            <MenuItem value={2}>Just FYI</MenuItem>
-            <MenuItem value={3}>Nothing urgent, can wait</MenuItem>
-            <MenuItem value={4}>I am stuck, need assistance</MenuItem>
+            <MenuItem value={1}>Not critical</MenuItem>
+            <MenuItem value={2}>For informational purposes only</MenuItem>
+            <MenuItem value={3}>Low priority</MenuItem>
+            <MenuItem value={4}>Urgent assistance required</MenuItem>
           </Select>
         </FormControl>
       </Grid>

@@ -1,27 +1,64 @@
 // icons
 import PersonOutlineTwoToneIcon from '@mui/icons-material/PersonOutlineTwoTone';
-import RecentActorsTwoToneIcon from '@mui/icons-material/RecentActorsTwoTone';
-import PhonelinkSetupTwoToneIcon from '@mui/icons-material/PhonelinkSetupTwoTone';
+import CreditCardTwoToneIcon from '@mui/icons-material/CreditCardTwoTone';
+import MapsHomeWorkTwoToneIcon from '@mui/icons-material/MapsHomeWorkTwoTone';
+import DescriptionTwoToneIcon from '@mui/icons-material/DescriptionTwoTone';
+import FindInPageTwoToneIcon from '@mui/icons-material/FindInPageTwoTone';
+import SettingsTwoToneIcon from '@mui/icons-material/SettingsTwoTone';
 import BuildTwoToneIcon from '@mui/icons-material/BuildTwoTone';
-import ConfirmationNumberTwoToneIcon from '@mui/icons-material/ConfirmationNumberTwoTone';
-import AccountBalanceWalletTwoToneIcon from '@mui/icons-material/AccountBalanceWalletTwoTone';
+import AdminPanelSettingsTwoToneIcon from '@mui/icons-material/AdminPanelSettingsTwoTone';
 
-// colleagueTitles
+// ==================== colleagueTitles  ==================== 
 
-const StudnetMasterColleagueTitles = {
-  0: 'Enquiry',
-  1: 'Registration',
-  2: 'Registration Data',
-  3: 'Admission Process',
-  4: 'Provisional',
-  5: 'Admission',
-  6: 'Custom Data',
-  7: 'Edit Master Data Field',
-  8: 'Edit Master Data Field',
-  9: 'Change Enrolment Status',
-  10: 'Change Enrolment Number',
-  11: 'Upload Documents',
-};
+// student master
+const StudnetMasterColleagueTitles = [
+ {title : 'Enquiry' , url : '/erp/student-info-fee/student-master/enquiry'}, 
+ {title : 'Registration' , url : '/erp/student-info-fee/student-master/registration'}, 
+ {title : 'Registration Data' , url : '/erp/student-info-fee/student-master/registration-data'}, 
+ {title : 'Admission Process' , url : '/erp/student-info-fee/student-master/admission-process'}, 
+ {title :  'Provisional' , url : '/erp/student-info-fee/student-master/provisional'}, 
+ {title :  'Admission' , url : '/erp/student-info-fee/student-master/admission'}, 
+ {title :  'Custom Data' , url : '/erp/student-info-fee/student-master/custom-data'}, 
+ {title :  'Edit Master Data Field' , url : '/erp/student-info-fee/student-master/edit-master-data-field'}, 
+ {title :  'Change Enrolment Number' , url : '/erp/student-info-fee/student-master/change-enrolment-number'}, 
+ {title :  'Change Enrolment Status' , url : '/erp/student-info-fee/student-master/change-enrolment-status'}, 
+ {title :   'Upload Documents' , url : '/erp/student-info-fee/student-master/upload-document'}, 
+];
+
+
+// Fee Accounting
+
+const FeeAccountingColleagueTitles = [
+  {title : 'Invoice Creation' , url : '/erp/student-info-fee/fee-accounting/invoice-creation'}, 
+  {title : 'Invoice Modification' , url : '/erp/student-info-fee/fee-accounting/invoice-modification'}, 
+  {title : 'Fee Transaction Entry' , url : '/erp/student-info-fee/fee-accounting/fee-transaction-entry'}, 
+  {title : 'Transport Details Entry' , url : '/erp/student-info-fee/fee-accounting/transport-details-entry'}, 
+  {title :  'Optional Fee Heads Entry' , url : '/erp/student-info-fee/fee-accounting/optional-fee-heads-entry'}, 
+  {title :  'Dishonoured Cheque Entry' , url : '/erp/student-info-fee/fee-accounting/dishonoured-cheque-entry'}, 
+  {title :  'Student Fee Ledger Details' , url : '/erp/student-info-fee/fee-accounting/student-fee-ledger-details'}, 
+  {title :  'Head Wise Fee Adjustment Entry' , url : '/erp/student-info-fee/fee-accounting/head-wise-fee-adjustment-entry'}, 
+  {title :  'Fee Clearance Entry' , url : '/erp/student-info-fee/fee-accounting/fee-clearance-entry'}, 
+  {title :  'Security Deposit' , url : '/erp/student-info-fee/fee-accounting/security-deposit'}, 
+  {title :   'Transfer Fee Entry' , url : '/erp/student-info-fee/fee-accounting/transfer-fee-entry'}, 
+];
+
+
+//  setting
+// const  SetUpColleagueTitles  = [
+//   {title : 'Setting' , url : '/erp/student-info-fee/settings/setting'}, 
+//   {title : 'System Data' , url : '/erp/student-info-fee/settings/system-data'}, 
+// ];
+
+
+//  tools
+const  ToolsColleagueTitles  = [
+  {title : 'GPS Bus Tracking' , url : '/erp/student-info-fee/tools/gps-bus-tracking'}, 
+  {title : 'Whatsapp Conversations' , url : '/erp/student-info-fee/tools/whatsapp-conversations'}, 
+  {title : 'Whatsapp Delivery Report' , url : '/erp/student-info-fee/tools/whatsapp-delivery-report'}, 
+  {title : 'Whatsapp Excel Sheet' , url : '/erp/student-info-fee/tools/whatsapp-excel-sheet'}, 
+];
+
+
 
 const StudentInfoFeeMenu = {
     id: 'StudentInfoFeeMenu',
@@ -31,7 +68,7 @@ const StudentInfoFeeMenu = {
        // Studnet master      
           {
             id: 'student-master',
-            title: 'Student Master',
+            title: 'Student',
             type: 'collapse',
             url: '/erp/student-info-fee/student-master',
             icon: PersonOutlineTwoToneIcon,
@@ -53,29 +90,26 @@ const StudentInfoFeeMenu = {
                   type: 'item',
                   url: '/erp/student-info-fee/student-master/registration',
                   breadcrumbs: false,
-                  childOf : 'student-master',
                   colleagueTitle : StudnetMasterColleagueTitles,
                 },
 
-                {
-                id: 'registration-data',
-                title: 'Registration Data',
-                type: 'item',
-                url: '/erp/student-info-fee/student-master/registration-data',
-                breadcrumbs: false,
-                childOf : 'student-master',
-                colleagueTitle : StudnetMasterColleagueTitles,
-              },
+              //   {
+              //   id: 'registration-data',
+              //   title: 'Registration Data',
+              //   type: 'item',
+              //   url: '/erp/student-info-fee/student-master/registration-data',
+              //   breadcrumbs: false,
+              //   colleagueTitle : StudnetMasterColleagueTitles,
+              // },
 
-              {
-                id: 'admission-process',
-                title: 'Admission Process',
-                type: 'item',
-                url: '/erp/student-info-fee/student-master/admission-process',
-                breadcrumbs: false,
-                childOf : 'student-master',
-                colleagueTitle : StudnetMasterColleagueTitles,
-              },
+              // {
+              //   id: 'admission-process',
+              //   title: 'Admission Process',
+              //   type: 'item',
+              //   url: '/erp/student-info-fee/student-master/admission-process',
+              //   breadcrumbs: false,
+              //   colleagueTitle : StudnetMasterColleagueTitles,
+              // },
 
 
               {
@@ -84,7 +118,6 @@ const StudentInfoFeeMenu = {
                 type: 'item',
                 url: '/erp/student-info-fee/student-master/provisional',
                 breadcrumbs: false,
-                childOf : 'student-master',
                 colleagueTitle : StudnetMasterColleagueTitles,
               },
 
@@ -95,20 +128,18 @@ const StudentInfoFeeMenu = {
                 type: 'item',
                 url: '/erp/student-info-fee/student-master/admission',
                 breadcrumbs: false,
-                childOf : 'student-master',
                 colleagueTitle : StudnetMasterColleagueTitles,
               },
 
                                 
-              {
-                id: 'custom-data',
-                title: 'Custom Data',
-                type: 'item',
-                url: '/erp/student-info-fee/student-master/custom-data',
-                breadcrumbs: false,
-                childOf : 'student-master',
-                colleagueTitle : StudnetMasterColleagueTitles,
-              },
+              // {
+              //   id: 'custom-data',
+              //   title: 'Custom Data',
+              //   type: 'item',
+              //   url: '/erp/student-info-fee/student-master/custom-data',
+              //   breadcrumbs: false,
+              //   colleagueTitle : StudnetMasterColleagueTitles,
+              // },
 
               {
                 id: 'edit-master-data-field',
@@ -116,7 +147,6 @@ const StudentInfoFeeMenu = {
                 type: 'item',
                 url: '/erp/student-info-fee/student-master/edit-master-data-field',
                 breadcrumbs: false,
-                childOf : 'student-master',
                 colleagueTitle : StudnetMasterColleagueTitles,
               },
 
@@ -127,7 +157,6 @@ const StudentInfoFeeMenu = {
                 type: 'item',
                 url: '/erp/student-info-fee/student-master/change-enrolment-status',
                 breadcrumbs: false,
-                childOf : 'student-master',
                 colleagueTitle : StudnetMasterColleagueTitles,
               },
 
@@ -137,7 +166,6 @@ const StudentInfoFeeMenu = {
                 type: 'item',
                 url: '/erp/student-info-fee/student-master/change-enrolment-number',
                 breadcrumbs: false,
-                childOf : 'student-master',
                 colleagueTitle : StudnetMasterColleagueTitles,
               },
 
@@ -147,7 +175,6 @@ const StudentInfoFeeMenu = {
                 type: 'item',
                 url: '/erp/student-info-fee/student-master/upload-document',
                 breadcrumbs: false,
-                childOf : 'student-master',
                 colleagueTitle : StudnetMasterColleagueTitles,
               },
 
@@ -158,10 +185,10 @@ const StudentInfoFeeMenu = {
         // Fee accounting
           {
             id: 'fee-accounting',
-            title: 'Fee Accounting ',
+            title: 'Fee ',
             type: 'collapse',
             url: '/erp/student-info-fee/fee-accounting',
-            icon: RecentActorsTwoToneIcon,
+            icon: CreditCardTwoToneIcon,
             children: [
 
               {
@@ -170,7 +197,7 @@ const StudentInfoFeeMenu = {
                   type: 'item',
                   url: '/erp/student-info-fee/fee-accounting/invoice-creation',
                   breadcrumbs: false,
-                  childOf: 'fee-accounting'
+                  colleagueTitle : FeeAccountingColleagueTitles,
                 },
 
 
@@ -180,7 +207,7 @@ const StudentInfoFeeMenu = {
                   type: 'item',
                   url: '/erp/student-info-fee/fee-accounting/invoice-modification',
                   breadcrumbs: false,
-                  childOf: 'fee-accounting'
+                  colleagueTitle : FeeAccountingColleagueTitles,
                 },
 
                 {
@@ -189,7 +216,7 @@ const StudentInfoFeeMenu = {
                 type: 'item',
                 url: '/erp/student-info-fee/fee-accounting/fee-transaction-entry',
                 breadcrumbs: false,
-                childOf: 'fee-accounting'
+                colleagueTitle : FeeAccountingColleagueTitles,
               },
 
               {
@@ -198,7 +225,7 @@ const StudentInfoFeeMenu = {
                 type: 'item',
                 url: '/erp/student-info-fee/fee-accounting/transport-details-entry',
                 breadcrumbs: false,
-                childOf: 'fee-accounting'
+                colleagueTitle : FeeAccountingColleagueTitles,
               },
 
 
@@ -208,7 +235,7 @@ const StudentInfoFeeMenu = {
                 type: 'item',
                 url: '/erp/student-info-fee/fee-accounting/optional-fee-heads-entry',
                 breadcrumbs: false,
-                childOf: 'fee-accounting'
+                colleagueTitle : FeeAccountingColleagueTitles,
               },
 
               
@@ -218,7 +245,7 @@ const StudentInfoFeeMenu = {
                 type: 'item',
                 url: '/erp/student-info-fee/fee-accounting/dishonoured-cheque-entry',
                 breadcrumbs: false,
-                childOf: 'fee-accounting'
+                colleagueTitle : FeeAccountingColleagueTitles,
               },
 
                                 
@@ -228,7 +255,7 @@ const StudentInfoFeeMenu = {
                 type: 'item',
                 url: '/erp/student-info-fee/fee-accounting/student-fee-ledger-details',
                 breadcrumbs: false,
-                childOf: 'fee-accounting'
+                colleagueTitle : FeeAccountingColleagueTitles,
               },
 
               {
@@ -237,7 +264,7 @@ const StudentInfoFeeMenu = {
                 type: 'item',
                 url: '/erp/student-info-fee/fee-accounting/head-wise-fee-adjustment-entry',
                 breadcrumbs: false,
-                childOf: 'fee-accounting'
+                colleagueTitle : FeeAccountingColleagueTitles,
               },
 
                   
@@ -247,7 +274,7 @@ const StudentInfoFeeMenu = {
                 type: 'item',
                 url: '/erp/student-info-fee/fee-accounting/fee-clearance-entry',
                 breadcrumbs: false,
-                childOf: 'fee-accounting'
+                colleagueTitle : FeeAccountingColleagueTitles,
               },
 
               {
@@ -256,7 +283,7 @@ const StudentInfoFeeMenu = {
                 type: 'item',
                 url: '/erp/student-info-fee/fee-accounting/security-deposit',
                 breadcrumbs: false,
-                childOf: 'fee-accounting'
+                colleagueTitle : FeeAccountingColleagueTitles,
               },
 
               {
@@ -265,29 +292,76 @@ const StudentInfoFeeMenu = {
                 type: 'item',
                 url: '/erp/student-info-fee/fee-accounting/transfer-fee-entry',
                 breadcrumbs: false,
-                childOf: 'fee-accounting'
+                colleagueTitle : FeeAccountingColleagueTitles,
               },
 
 
             ]
           },
 
-          // set up
+          
+          // hostel
           {
-            id: 'set-up' ,
-            title: 'Set Up',
+            id: 'hostel' ,
+            title: 'Hostel',
             type: 'collapse',
-            url: '/erp/student-info-fee/setup',
-            icon: PhonelinkSetupTwoToneIcon,
+            url: '/erp/student-info-fee/hostel',
+            icon: MapsHomeWorkTwoToneIcon,
             children: [
 
               {
-                  id: 'system-data',
-                  title: 'System Data',
+                  id: 'dorm-entry',
+                  title: ' Dorm Entry',
                   type: 'item',
-                  url: '/erp/student-info-fee/setup/system-data',
+                  url: '/erp/student-info-fee/hostel/dorm-entry',
                   breadcrumbs: false,
-                  childOf : 'set-up',
+                  // colleagueTitle : SetUpColleagueTitles,
+                },
+
+
+            ]
+          },
+
+           // reports
+
+          {
+            id: 'reports' ,
+            title: 'Reports',
+            type: 'collapse',
+            url: '/erp/student-info-fee/reports',
+            icon: DescriptionTwoToneIcon,
+            children: [
+
+              {
+                  id: 'invoice-printing',
+                  title: 'Invoice Printing',
+                  type: 'item',
+                  url: '/erp/student-info-fee/reports/invoice-printing',
+                  breadcrumbs: false,
+                  // colleagueTitle : SetUpColleagueTitles,
+                },
+
+
+            ]
+          },
+
+       // search
+
+          {
+            id: 'search' ,
+            title: 'Search',
+            type: 'collapse',
+            url: '/erp/student-info-fee/search',
+            icon: FindInPageTwoToneIcon,
+            children: [
+
+              {
+                  id: 'enquiry',
+                  title: 'Enquiry',
+                  type: 'item',
+                  url: '/erp/student-info-fee/search/enquiry',
+                  breadcrumbs: false,
+                  // colleagueTitle : SetUpColleagueTitles,
                 },
 
 
@@ -295,7 +369,6 @@ const StudentInfoFeeMenu = {
           },
 
           // tools
-
           {
             id: 'tools' ,
             title: 'Tools',
@@ -309,7 +382,8 @@ const StudentInfoFeeMenu = {
                   title: 'GPS Bus Tracking',
                   type: 'item',
                   url: '/erp/student-info-fee/tools/gps-bus-tracking',
-                  breadcrumbs: false
+                  breadcrumbs: false,
+                  colleagueTitle : ToolsColleagueTitles,
                 },
 
                 {
@@ -317,7 +391,8 @@ const StudentInfoFeeMenu = {
                 title: 'Whatsapp Conversations',
                 type: 'item',
                 url: '/erp/student-info-fee/tools/whatsapp-conversations',
-                breadcrumbs: false
+                breadcrumbs: false,
+                colleagueTitle : ToolsColleagueTitles,
               },
 
 
@@ -326,7 +401,8 @@ const StudentInfoFeeMenu = {
                 title: 'Whatsapp Delivery Report',
                 type: 'item',
                 url: '/erp/student-info-fee/tools/whatsapp-delivery-report',
-                breadcrumbs: false
+                breadcrumbs: false,
+                colleagueTitle : ToolsColleagueTitles,
               },
 
 
@@ -335,7 +411,8 @@ const StudentInfoFeeMenu = {
                 title: 'Whatsapp Excel Sheet',
                 type: 'item',
                 url: '/erp/student-info-fee/tools/whatsapp-excel-sheet',
-                breadcrumbs: false
+                breadcrumbs: false,
+                colleagueTitle : ToolsColleagueTitles,
               },
 
 
@@ -343,24 +420,58 @@ const StudentInfoFeeMenu = {
             ]
           },
 
-           // post support ticket
 
-            {
-              id: 'post-support-ticket',
-              title: 'Post Support Ticket',
-              type: 'item',
-              url: '/erp/student-info-fee/post-support-ticket',
-              icon: ConfirmationNumberTwoToneIcon,
-              breadcrumbs: false
-            },
+     // set up
+          // {
+          //   id: 'setting' ,
+          //   title: 'Settings',
+          //   type: 'collapse',
+          //   url: '/erp/student-info-fee/settings',
+          //   icon: SettingsTwoToneIcon,
+          //   children: [
 
+          //     {
+          //       id: 'setting',
+          //       title: 'Setting',
+          //       type: 'item',
+          //       url: '/erp/student-info-fee/settings/setting',
+          //       breadcrumbs: false,
+          //       colleagueTitle : SetUpColleagueTitles,
+          //     },
+
+
+          //     {
+          //       id: 'system-data',
+          //       title: 'System Data',
+          //       type: 'item',
+          //       url: '/erp/student-info-fee/settings/system-data',
+          //       breadcrumbs: false,
+          //       colleagueTitle : SetUpColleagueTitles,
+          //     },
+
+
+
+          //   ]
+          // },
+
+          {
+            id: 'setting',
+            title: 'Setting',
+            type: 'item',
+            url: '/erp/student-info-fee/setting',
+            icon: SettingsTwoToneIcon,
+            breadcrumbs: false
+          },
+         
+
+          
             // User and roles
             {
               id: 'user-and-roles',
               title: 'User & Roles',
               type: 'item',
               url: '/erp/student-info-fee/user-and-roles',
-              icon: AccountBalanceWalletTwoToneIcon,
+              icon: AdminPanelSettingsTwoToneIcon,
               breadcrumbs: false
             },
            

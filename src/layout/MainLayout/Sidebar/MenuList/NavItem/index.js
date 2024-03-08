@@ -48,32 +48,66 @@ const NavItem = ({ item, level , }) => {
     listItemProps = { component: 'a', href: item.url, target: itemTarget };
   }
 
-const itemHandler = (id) => {
+// const itemHandler = (id) => {
     
-    dispatch({ type: MENU_OPEN, id });
-    if (matchesSM) dispatch({ type: SET_MENU, opened: false });
+//     dispatch({ type: MENU_OPEN, id });
+//     if (matchesSM) dispatch({ type: SET_MENU, opened: false });
 
-    // Output title and URL to the console
-    // console.log("Clicked Menu Title:", item.title);
-    // console.log("Clicked Menu URL:", item.url);
+//     // Output title and URL to the console
+//     // console.log("Clicked Menu Title:", item.title);
+//     // console.log("Clicked Menu URL:", item.url);
 
-    // Update URL store
-    urlStore.title = '';
-    urlStore.url = '';
+//     // Update URL store
+//     urlStore.title = '';
+//     urlStore.url = '';
 
-    console.log('item', item);
+//     console.log('item', item);
 
-    urlStore.children = '';
+//     urlStore.children = '';
+//     urlStore.title = item.title;
+//     urlStore.url = item.url;
+
+//     console.log(item.colleagueTitle)
+
+// };
+
+
+
+
+const itemHandler = (id) => {
+  dispatch({ type: MENU_OPEN, id });
+  if (matchesSM) dispatch({ type: SET_MENU, opened: false });
+
+  // Clear existing children
+  urlStore.children = [];
+
+  // Update URL store with the main title
+  urlStore.url = item.url;
+
+  // Check if colleagueTitle exists
+  if (item.colleagueTitle) {
+    // Iterate over the colleagueTitle array
+    item.colleagueTitle.forEach((colleague) => {
+      // Add each title to the children array with its respective URL
+      urlStore.children.push({
+        title: colleague.title,
+        url: colleague.url
+      });
+    });
+  } else {
+    // If colleagueTitle does not exist, save item title directly into urlStore.title
     urlStore.title = item.title;
-    urlStore.url = item.url;
 
-    // console.log(item.colleagueTitle)
-
+    // Add item title to the children array with its respective URL
+    urlStore.children.push({
+      title: item.title,
+      url: item.url
+    });
+  }
 };
 
 
 
-  
 
   // active menu item on page load
   useEffect(() => {
@@ -85,11 +119,6 @@ const itemHandler = (id) => {
       dispatch({ type: MENU_OPEN, id: item.id });
     }
 
-
-
-
-    
-    
 
     // eslint-disable-next-line
   }, [pathname]);

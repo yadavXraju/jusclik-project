@@ -132,12 +132,19 @@
 
 // this is for drawer sidebar css
 
-@media screen and (min-width: 991px) {
+.submenutitle::after {
+  display: none;
+}
+
+@media screen and (min-width: 900px) {
   
   .menu-wrapper{
-    padding: 7px;
+    padding: 5px 7px;
   }
 
+  .MuiSvgIcon-fontSizeInherit {
+    display: none;
+}
 
   .MuiTooltip-tooltipPlacementRight {
     background: #fff;
@@ -154,11 +161,16 @@
 
 // drawer close effect only
 
+.drawerClose  .menu-wrapper{
+  margin-top: -12px;
+}
+
 .drawerClose .menu-icon {
   justify-content: center;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 12px;
 }
 
 .drawerClose  .menu-title{
@@ -184,29 +196,12 @@
   text-align: center;
 }
 
-
-
-.drawerClose .menu-icon:hover svg{
-  transition: all .5s ease-in-out;
-}
-
 .drawerClose .menu-icon .menu-wrapper{
   display: none;
 }
 
-.drawerClose .menu-wrapper .menu-title{
+.drawerClose .menu-wrapper .menu-title , .menu-animation{
   display: none;
-}
-
-
-
-
-.menu-animation{
-  display: none;
-}
-
-.drawerClose .menu-animation{
-  display: block;
 }
 
 .drawerClose .menu-wrapper .menu-icon svg , .menu-wrapper .menu-animation {
@@ -221,17 +216,67 @@
 // hover animation
 
 
-.drawerClose .menu-wrapper:hover .menu-icon svg {
-  opacity : 0;
+.drawerClose .menu-wrapper:hover .menu-icon svg  {
+  opacity: 0;
+  visibility: hidden;
+  height: 0;
+}
+
+.drawerClose  .menu-wrapper:hover .menu-animation {
+  opacity: 1;
+  visibility: visible;
+  height: auto;
+  overflow: hidden;
+  transition: opacity 0.5s ease, height 0.5s ease;
+}
+
+.drawerClose .menu-animation {
+  opacity: 0;
+  visibility: hidden;
+  height: 0;
 }
 
 
-.drawerClose .menu-wrapper:hover .menu-animation{
-  margin-top : -14px;
+}
+
+@media  (max-width:900px) {
+  .drawerOpen .menu-animation {
+    display: none;
+  }
 }
 
 
 
+// overflow css
+
+/* Custom CSS for the scrollbar */
+.scrollbar {
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #90caf9 #f0f0f0;
+}
+.scrollbar-2 {
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #90caf9 #f0f0f0;
+  overflow-x: auto;
+}
+/* Track */
+.scrollbar::-webkit-scrollbar {
+  width: 5px; /* Adjust the width as needed */
 }
 
+/* Handle */
+.scrollbar::-webkit-scrollbar-thumb {
+  background-color: #90caf9;
+}
 
+/* Handle on hover */
+.scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: #90caf9;
+}
+
+/* Track */
+.scrollbar::-webkit-scrollbar-track {
+  background: #f0f0f0;
+}

@@ -8,7 +8,6 @@ const ContactSupport = Loadable(lazy(() => import('views/common-files/post-suppo
 
 
 
-
 // Class Teacher Routes
 const CommonRoutes = [
 
@@ -20,6 +19,8 @@ const CommonRoutes = [
         path: 'contact-support', 
         element: <ContactSupport />
         },
+
+  
 
 
     ]
