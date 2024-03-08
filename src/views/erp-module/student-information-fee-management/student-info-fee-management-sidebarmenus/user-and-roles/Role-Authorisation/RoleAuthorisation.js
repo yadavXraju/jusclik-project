@@ -66,7 +66,7 @@ export default function RoleAuthorisation() {
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
-        <ModuleFormsEvents/>
+      <ModuleFormsEvents/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
         <AcademicSessions/>

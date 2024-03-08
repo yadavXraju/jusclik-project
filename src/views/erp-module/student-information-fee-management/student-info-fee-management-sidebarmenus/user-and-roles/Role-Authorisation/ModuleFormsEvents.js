@@ -4,12 +4,13 @@ import TableHead from '@mui/material/TableHead';
 import TableBody from '@mui/material/TableBody';
 import TableRow from '@mui/material/TableRow';
 import TableCell from '@mui/material/TableCell';
-import { Checkbox, Box, Card, Typography } from '@mui/material';
+import { Checkbox, Box, Typography } from '@mui/material';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { Grid } from '@mui/material';
+import { Container } from '@mui/system';
 
 function ModuleFormsEvents() {
   const [moduleAccess, setModuleAccess] = useState({});
@@ -19,6 +20,8 @@ function ModuleFormsEvents() {
 
   const handleChange = (event) => {
     setBranch(event.target.value);
+  };
+  const handleChange1 = (event) => {
     setModule(event.target.value);
   };
 
@@ -50,12 +53,13 @@ function ModuleFormsEvents() {
 
   return (
     <>
+      <Container>
       <Grid container spacing={2} pb={2}>
         <Grid item xs={12} md={6}>
           <Box sx={{ minWidth: 120 }}>
             <FormControl fullWidth>
-              <InputLabel id="demo-simple-select-label">Branch</InputLabel>
-              <Select labelId="demo-simple-select-label" id="demo-simple-select" value={Branch} label="Branch" onChange={handleChange}>
+              <InputLabel id="demo-simple-select-Branch">Branch</InputLabel>
+              <Select labelId="demo-simple-select-Branch" id="demo-simple-select-Branch" value={Branch} label="Branch" onChange={handleChange}>
                 <MenuItem value={10}>GURUGRAM [SHAURYA INTERNATIONAL sCHOOL]</MenuItem>
                 <MenuItem value={20}>Twenty</MenuItem>
                 <MenuItem value={30}>Thirty</MenuItem>
@@ -66,19 +70,18 @@ function ModuleFormsEvents() {
         <Grid item xs={12} md={6}>
           <Box sx={{ minWidth: 120 }}>
             <FormControl fullWidth>
-              <InputLabel id="demo-simple-select-label">Module</InputLabel>
-              <Select labelId="demo-simple-select-label" id="demo-simple-select" value={Module} label="Module" onChange={handleChange}>
-                <MenuItem value={10}>Ten</MenuItem>
-                <MenuItem value={20}>Twenty</MenuItem>
-                <MenuItem value={30}>Thirty</MenuItem>
+              <InputLabel id="demo-simple-select-Module">Module</InputLabel>
+              <Select labelId="demo-simple-select-Module" id="demo-simple-select-Module" value={Module} label="Module" onChange={handleChange1}>
+                <MenuItem value={1}>Stufee</MenuItem>
+                <MenuItem value={2}>Website</MenuItem>
+                <MenuItem value={3}>Thirty</MenuItem>
               </Select>
             </FormControl>
           </Box>
         </Grid>
       </Grid>
-      <Card
+      <Box
         sx={{
-          width: { xs: '83vw', md: '100%' },
           overflow: { xs: 'scroll', md: 'hidden' },
           border: '1px solid #ccc',
           borderRadius: '5px',
@@ -158,7 +161,8 @@ function ModuleFormsEvents() {
             ))}
           </TableBody>
         </Table>
-      </Card>
+      </Box>
+      </Container>
     </>
   );
 }
