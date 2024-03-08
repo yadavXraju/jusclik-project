@@ -14,9 +14,13 @@ const DashboardMain = () => {
   return (
     <>
       <Box sx={{ width: '65%', display: 'flex', justifyContent: 'center', alignItem: 'center', flexDirection: 'column', margin: 'auto' }}>
+        <Box sx={{display:'flex', flexDirection:'column', textAlign:'center', paddingBottom:'50px'}}>
+          <Typography variant='h2' sx={{paddingBottom:'10px', marginTop:'5px', color:' #333'}}>Welcome Abhishek Negi!</Typography>
+          <Typography sx={{color:'#6c757d'}}>Set up your organisation before you run your first payroll.</Typography>
+        </Box>
         <MainCard sx={{ backgroundColor: 'rgb(30, 136, 229)' }}>
           <Typography variant="h3" sx={{ color: 'white' }}>
-            Get started with Zoho Payroll
+            Get started with Jusklik Payroll
           </Typography>
           <Grid sx={{ display: 'flex', justifyContent: 'end' }}>
             <ProgressBar sx={{}} />
