@@ -11,7 +11,9 @@ import Paper from '@mui/material/Paper';
 import Checkbox from '@mui/material/Checkbox';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import WidgetsIcon from '@mui/icons-material/Widgets';
 import { useNavigate } from 'react-router-dom';
+import Button from '@mui/material/Button'
 
 function createData(adm_no, adm_date, name, class_name, birth_day, category, house, status) {
   return {
@@ -111,7 +113,7 @@ export default function MasterStudentTable() {
 
   const handleClick = () => {
     // Navigate to the student details page
-    navigate('student-details');
+    navigate('../registration-data');
   };
 
   const handleChangePage = (event, newPage) => {
@@ -126,13 +128,20 @@ export default function MasterStudentTable() {
   const emptyRows =
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
 
+
+    const Click=()=>{
+      navigate('../registration');
+    }
   return (
     <Box sx={{ width: '100%' }}>
       <Paper sx={{ width: '100%', mb: 2 }}>
-        <Toolbar>
-          <Typography variant="subtitle1" id="tableTitle" component="div">
-            Students List
+        <Toolbar sx={{display:"flex",justifyContent:"space-between"}}>
+          <Typography variant="subtitle1" id="tableTitle" component="div" sx={{display:"flex", alignItems:"center"}}>
+           <WidgetsIcon/> Students List
           </Typography>
+          <Button onClick={Click} variant="contained" color="primary">
+            Add
+          </Button>
         </Toolbar>
         <TableContainer>
           <Table

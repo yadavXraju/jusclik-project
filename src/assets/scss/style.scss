@@ -139,9 +139,12 @@
 @media screen and (min-width: 900px) {
   
   .menu-wrapper{
-    padding: 7px;
+    padding: 5px 7px;
   }
 
+  .MuiSvgIcon-fontSizeInherit {
+    display: none;
+}
 
   .MuiTooltip-tooltipPlacementRight {
     background: #fff;
@@ -243,3 +246,37 @@
 }
 
 
+
+// overflow css
+
+/* Custom CSS for the scrollbar */
+.scrollbar {
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #90caf9 #f0f0f0;
+}
+.scrollbar-2 {
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #90caf9 #f0f0f0;
+  overflow-x: auto;
+}
+/* Track */
+.scrollbar::-webkit-scrollbar {
+  width: 5px; /* Adjust the width as needed */
+}
+
+/* Handle */
+.scrollbar::-webkit-scrollbar-thumb {
+  background-color: #90caf9;
+}
+
+/* Handle on hover */
+.scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: #90caf9;
+}
+
+/* Track */
+.scrollbar::-webkit-scrollbar-track {
+  background: #f0f0f0;
+}

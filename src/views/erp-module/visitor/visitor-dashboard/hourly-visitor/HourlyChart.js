@@ -1,35 +1,3 @@
-// import React from 'react';
-// import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
-
-
-// export default function HourlyChart() {
-//   const data = [
-//     { hour: '6AM', visitors: 2 },
-//     { hour: '7AM', visitors: 3 },
-//     { hour: '8AM', visitors: 5},
-//     { hour: '9AM', visitors: 7 },
-//     { hour: '10AM', visitors: 1 },
-//     { hour: '11AM', visitors: 5 },
-//     { hour: '12PM', visitors: 1 },
-//     { hour: '1PM', visitors: 4 },
-//     { hour: '2PM', visitors: 3 },
-//     { hour: '3PM', visitors: 6 },
-//     { hour: '4PM', visitors: 5 },
-//     { hour: '5PM', visitors: 3 },
-//     { hour: '6PM', visitors: 0 },
-//   ];
-
-//   return (
-//     <LineChart width={500} height={300} data={data} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
-//       <XAxis dataKey="hour" />
-//       <YAxis />
-//       <CartesianGrid strokeDasharray="3 3"  />
-//       <Tooltip />
-//       <Legend />
-//       <Line type="monotone" dataKey="visitors" stroke="rgb(30, 136, 229)" strokeWidth={3} activeDot={{ r: 8 }} />
-//     </LineChart>
-//   );
-// }
 
 import React from 'react';
 import Chart from 'react-apexcharts';
@@ -58,10 +26,7 @@ export default function HourlyChart() {
     stroke: {
       curve: 'straight'
     },
-    // title: {
-    //   text: 'Hourly Visitors',
-    //   align: 'left'
-    // },
+
     xaxis: {
       categories: ['6AM', '7AM', '8AM', '9AM', '10AM', '11AM', '12PM', '1PM', '2PM', '3PM', '4PM', '5PM', '6PM']
     },

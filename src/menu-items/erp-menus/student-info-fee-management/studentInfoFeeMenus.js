@@ -44,10 +44,10 @@ const FeeAccountingColleagueTitles = [
 
 
 //  setting
-const  SetUpColleagueTitles  = [
-  {title : 'Setting' , url : '/erp/student-info-fee/settings/setting'}, 
-  {title : 'System Data' , url : '/erp/student-info-fee/settings/system-data'}, 
-];
+// const  SetUpColleagueTitles  = [
+//   {title : 'Setting' , url : '/erp/student-info-fee/settings/setting'}, 
+//   {title : 'System Data' , url : '/erp/student-info-fee/settings/system-data'}, 
+// ];
 
 
 //  tools
@@ -93,23 +93,23 @@ const StudentInfoFeeMenu = {
                   colleagueTitle : StudnetMasterColleagueTitles,
                 },
 
-                {
-                id: 'registration-data',
-                title: 'Registration Data',
-                type: 'item',
-                url: '/erp/student-info-fee/student-master/registration-data',
-                breadcrumbs: false,
-                colleagueTitle : StudnetMasterColleagueTitles,
-              },
+              //   {
+              //   id: 'registration-data',
+              //   title: 'Registration Data',
+              //   type: 'item',
+              //   url: '/erp/student-info-fee/student-master/registration-data',
+              //   breadcrumbs: false,
+              //   colleagueTitle : StudnetMasterColleagueTitles,
+              // },
 
-              {
-                id: 'admission-process',
-                title: 'Admission Process',
-                type: 'item',
-                url: '/erp/student-info-fee/student-master/admission-process',
-                breadcrumbs: false,
-                colleagueTitle : StudnetMasterColleagueTitles,
-              },
+              // {
+              //   id: 'admission-process',
+              //   title: 'Admission Process',
+              //   type: 'item',
+              //   url: '/erp/student-info-fee/student-master/admission-process',
+              //   breadcrumbs: false,
+              //   colleagueTitle : StudnetMasterColleagueTitles,
+              // },
 
 
               {
@@ -132,14 +132,14 @@ const StudentInfoFeeMenu = {
               },
 
                                 
-              {
-                id: 'custom-data',
-                title: 'Custom Data',
-                type: 'item',
-                url: '/erp/student-info-fee/student-master/custom-data',
-                breadcrumbs: false,
-                colleagueTitle : StudnetMasterColleagueTitles,
-              },
+              // {
+              //   id: 'custom-data',
+              //   title: 'Custom Data',
+              //   type: 'item',
+              //   url: '/erp/student-info-fee/student-master/custom-data',
+              //   breadcrumbs: false,
+              //   colleagueTitle : StudnetMasterColleagueTitles,
+              // },
 
               {
                 id: 'edit-master-data-field',
@@ -305,15 +305,15 @@ const StudentInfoFeeMenu = {
             id: 'hostel' ,
             title: 'Hostel',
             type: 'collapse',
-            url: '/erp/student-info-fee/setup',
+            url: '/erp/student-info-fee/hostel',
             icon: MapsHomeWorkTwoToneIcon,
             children: [
 
               {
-                  id: 'dorm -entry',
-                  title: ' Dorm Entrya',
+                  id: 'dorm-entry',
+                  title: ' Dorm Entry',
                   type: 'item',
-                  url: '/erp/student-info-fee/hostel/dorm -entry',
+                  url: '/erp/student-info-fee/hostel/dorm-entry',
                   breadcrumbs: false,
                   // colleagueTitle : SetUpColleagueTitles,
                 },
@@ -422,37 +422,48 @@ const StudentInfoFeeMenu = {
 
 
      // set up
+          // {
+          //   id: 'setting' ,
+          //   title: 'Settings',
+          //   type: 'collapse',
+          //   url: '/erp/student-info-fee/settings',
+          //   icon: SettingsTwoToneIcon,
+          //   children: [
+
+          //     {
+          //       id: 'setting',
+          //       title: 'Setting',
+          //       type: 'item',
+          //       url: '/erp/student-info-fee/settings/setting',
+          //       breadcrumbs: false,
+          //       colleagueTitle : SetUpColleagueTitles,
+          //     },
+
+
+          //     {
+          //       id: 'system-data',
+          //       title: 'System Data',
+          //       type: 'item',
+          //       url: '/erp/student-info-fee/settings/system-data',
+          //       breadcrumbs: false,
+          //       colleagueTitle : SetUpColleagueTitles,
+          //     },
+
+
+
+          //   ]
+          // },
+
           {
-            id: 'setting' ,
-            title: 'Settings',
-            type: 'collapse',
-            url: '/erp/student-info-fee/settings',
+            id: 'setting',
+            title: 'Setting',
+            type: 'item',
+            url: '/erp/student-info-fee/setting',
             icon: SettingsTwoToneIcon,
-            children: [
-
-              {
-                id: 'setting',
-                title: 'Setting',
-                type: 'item',
-                url: '/erp/student-info-fee/settings/setting',
-                breadcrumbs: false,
-                colleagueTitle : SetUpColleagueTitles,
-              },
-
-
-              {
-                id: 'system-data',
-                title: 'System Data',
-                type: 'item',
-                url: '/erp/student-info-fee/settings/system-data',
-                breadcrumbs: false,
-                colleagueTitle : SetUpColleagueTitles,
-              },
-
-
-
-            ]
+            breadcrumbs: false
           },
+         
+
           
             // User and roles
             {

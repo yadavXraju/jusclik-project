@@ -5,8 +5,6 @@ import Loadable from 'ui-component/Loadable';
 // Class Teacher  Dashboard Menus
 const ContactSupport = Loadable(lazy(() => import('views/common-files/post-support-ticket')));
 
-// main dashboard
-const MainDashboard = Loadable(lazy(() => import('views/common-files/main-dashboard')));
 
 
 
@@ -22,10 +20,7 @@ const CommonRoutes = [
         element: <ContactSupport />
         },
 
-        { 
-          path: 'main-dashboard', 
-          element: <MainDashboard />
-          },
+  
 
 
     ]
