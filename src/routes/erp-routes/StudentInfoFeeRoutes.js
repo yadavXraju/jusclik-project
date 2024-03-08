@@ -19,6 +19,7 @@ const Provisional =  Loadable(lazy(() => import('views/erp-module/student-inform
 
 const Admission =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/student-master/admission')));
 
+const AdmissionForm =Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/student-master/admission/admission-form')));
 // const CustomeData =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/student-master/custom-data')));
 
 const EditMasterDataField =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/student-master/edit-master-data-field')));
@@ -211,6 +212,12 @@ const StudentInfoFeeRoutes = [
         path: 'admission',
         element: <Admission />
      },
+
+     {
+      path: 'admission-form',
+      element: <AdmissionForm />
+    },
+ 
 
 
       // {

@@ -7,7 +7,7 @@ import { TabItem } from './TabItem';
 const TabLabel = ({ handleChange }) => {
   return (
     <Box sx={{ borderBottom: 0, borderColor: '#e3e8ef' }}>
-      <TabList onChange={handleChange} aria-label="tabs">
+      <TabList onChange={handleChange} aria-label="tabs" >
         {TabItem.map((label) => (
           <Tab
             key={label.id}
