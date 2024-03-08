@@ -1,9 +1,6 @@
 import { Grid, Box, Card,Typography , Container } from '@mui/material'
 import React from 'react'
 import CorporateFareRoundedIcon from '@mui/icons-material/CorporateFareRounded';
-// import LowPriorityRoundedIcon from '@mui/icons-material/LowPriorityRounded';
-// import StorefrontRoundedIcon from '@mui/icons-material/StorefrontRounded';
-// import PeopleAltRoundedIcon from '@mui/icons-material/PeopleAltRounded';
 import TipsAndUpdatesRoundedIcon from '@mui/icons-material/TipsAndUpdatesRounded';
 import WebhookRoundedIcon from '@mui/icons-material/WebhookRounded';
 import SmsOutlinedIcon from '@mui/icons-material/SmsOutlined';
@@ -19,7 +16,7 @@ const Organisation = () => {
      <Container>
      <Box sx={{ }}>
      <Grid container spacing={5} sx={{}}>
-     <Grid item xs={3}>
+     <Grid item xs={3} sx={{paddingBottom:'2rem'}}>
       <Card sx={{border:'1px solid #ebeaf2', padding:'36px', height:'110%', backgroundColor:'#f9f9fb'}}>
           <Box>
             <Box sx={{display:'flex',}}>
@@ -38,7 +35,7 @@ const Organisation = () => {
             </Box>
       </Card>
               </Grid>
-      <Grid item xs={3}>
+      <Grid item xs={3} sx={{paddingBottom:'2rem'}}>
       <Card sx={{border:'1px solid #ebeaf2', padding:'36px', height:'110%', backgroundColor:'#f9f9fb'}}>
           <Box>
             <Box sx={{display:'flex',}}>
@@ -57,24 +54,8 @@ const Organisation = () => {
             </Box>
       </Card>
       </Grid>
-      {/* <Grid item xs={3}>
-      <Card sx={{border:'1px solid #ebeaf2', padding:'36px', height:'110%', backgroundColor:'#f9f9fb'}}>
-          <Box>
-            <Box sx={{display:'flex',}}>
-              <LowPriorityRoundedIcon sx={{ color:'#838195'}}/>
-              <Typography variant='h5' sx={{ paddingLeft:'7px', paddingTop:'3px'}}>
-              Preferences
-            </Typography>
-            </Box>
-            <Box sx={{paddingTop:'14px'}}>
-            <Typography sx={{paddingTop:'14px'}}>General</Typography>
-            <Typography sx={{paddingTop:'14px'}}>Custmers and Vandors</Typography>
-           
-            </Box>
-            </Box>
-      </Card>
-      </Grid> */}
-      <Grid item xs={3}>
+   
+      <Grid item xs={3} sx={{paddingBottom:'2rem'}}>
       <Card sx={{border:'1px solid #ebeaf2', padding:'36px', height:'110%', backgroundColor:'#f9f9fb'}}>
           <Box>
             <Box sx={{display:'flex',}}>
@@ -92,7 +73,7 @@ const Organisation = () => {
             </Box>
       </Card>
       </Grid>
-      <Grid item xs={3}>
+      <Grid item xs={3} sx={{paddingBottom:'2rem'}}>
       <Card sx={{border:'1px solid #ebeaf2', padding:'36px', height:'110%', backgroundColor:'#f9f9fb'}}>
           <Box>
             <Box sx={{display:'flex',}}>
@@ -106,52 +87,20 @@ const Organisation = () => {
             <Typography sx={{paddingTop:'14px'}}>Fee Structure</Typography>
             <Typography sx={{paddingTop:'14px'}}>Concession</Typography>
             <Typography sx={{paddingTop:'14px'}}>Discount</Typography>
-            <Typography sx={{paddingTop:'14px'}}>Fee Account</Typography>
+            <Typography sx={{paddingTop:'14px'}}>Fee Account</Typography> 
             <Typography sx={{paddingTop:'14px'}}>Invoice</Typography>
             </Box>
             </Box>
       </Card>
               </Grid>
-      </Grid>
+      {/* </Grid> */}
 
       {/* 2nd row start*/}
-   <Box sx={{paddingTop:'4rem'}}>
-   <Grid container spacing={5} >
+   {/* <Box sx={{paddingTop:'4rem'}}>
+   <Grid container spacing={5} > */}
     
-      {/* <Grid item xs={3}>
-      <Card sx={{border:'1px solid #ebeaf2', padding:'36px', height:'110%', backgroundColor:'#f9f9fb'}}>
-          <Box>
-            <Box sx={{display:'flex',}}>
-              <StorefrontRoundedIcon sx={{ color:'#838195'}}/>
-              <Typography variant='h5' sx={{ paddingLeft:'7px', paddingTop:'3px'}}>
-              Purchases 
-            </Typography>
-            </Box>
-            <Box sx={{paddingTop:'14px'}}>
-            <Typography sx={{paddingTop:'14px'}}>Purchase Orders</Typography>
-            
-            </Box>
-            </Box>
-      </Card>
-      </Grid> */}
-      {/* <Grid item xs={3}>
-      <Card sx={{border:'1px solid #ebeaf2', padding:'36px', height:'110%', backgroundColor:'#f9f9fb'}}>
-          <Box>
-            <Box sx={{display:'flex',}}>
-              <PeopleAltRoundedIcon sx={{ color:'#838195'}}/>
-              <Typography variant='h5' sx={{ paddingLeft:'7px', paddingTop:'3px'}}>
-              Users & Roles
-            </Typography>
-            </Box>
-            <Box sx={{paddingTop:'14px'}}>
-            <Typography sx={{paddingTop:'14px'}}>Users</Typography>
-            <Typography sx={{paddingTop:'14px'}}>Roles</Typography>
-           
-            </Box>
-            </Box>
-      </Card>
-      </Grid> */}
-      <Grid item xs={3}>
+   
+      <Grid item xs={3} sx={{paddingBottom:'2rem'}}>
       <Card sx={{border:'1px solid #ebeaf2', padding:'36px', height:'110%', backgroundColor:'#f9f9fb'}}>
           <Box>
             <Box sx={{display:'flex',}}>
@@ -168,7 +117,7 @@ const Organisation = () => {
             </Box>
       </Card>
       </Grid>
-      <Grid item xs={3}>
+      <Grid item xs={3} sx={{paddingBottom:'2rem'}}>
       <Card sx={{border:'1px solid #ebeaf2', padding:'36px', height:'110%', backgroundColor:'#f9f9fb'}}>
           <Box>
             <Box sx={{display:'flex',}}>
@@ -187,7 +136,7 @@ const Organisation = () => {
             </Box>
       </Card>
       </Grid>
-      <Grid item xs={3}>
+      <Grid item xs={3} sx={{paddingBottom:'2rem'}}>
       <Card sx={{border:'1px solid #ebeaf2', padding:'36px', height:'110%', backgroundColor:'#f9f9fb'}}>
           <Box>
             <Box sx={{display:'flex',}}>
@@ -205,46 +154,13 @@ const Organisation = () => {
       </Card>
       </Grid>
       </Grid>
-   </Box>
-       {/* 3rd row start*/}
+   {/* </Box> */}
+       {/* 3rd row start
        <Box sx={{paddingTop:'4rem', paddingBottom:'4rem'}}>
    <Grid container spacing={5} >
-     {/* <Grid item xs={3}>
-      <Card sx={{border:'1px solid #ebeaf2', padding:'36px', height:'110%', backgroundColor:'#f9f9fb'}}>
-          <Box>
-            <Box sx={{display:'flex',}}>
-              <PaymentRoundedIcon sx={{ color:'#838195'}}/>
-              <Typography variant='h5' sx={{ paddingLeft:'7px', paddingTop:'3px'}}>
-              Online Payments
-            </Typography>
-            </Box>
-            <Box sx={{paddingTop:'14px'}}>
-            <Typography sx={{paddingTop:'14px'}}>Payment Gateways</Typography>
-           
-            </Box>
-            </Box>
-      </Card>
-              </Grid> */}
-    
-      {/* <Grid item xs={3}>
-      <Card sx={{border:'1px solid #ebeaf2', padding:'36px', height:'110%', backgroundColor:'#f9f9fb'}}>
-          <Box>
-            <Box sx={{display:'flex',}}>
-              <SettingsSuggestRoundedIcon sx={{ color:'#838195'}}/>
-              <Typography variant='h5' sx={{ paddingLeft:'7px', paddingTop:'3px'}}>
-              Custom Modules
-            </Typography>
-            </Box>
-            <Box sx={{paddingTop:'14px'}}>
-            <Typography sx={{paddingTop:'14px'}}>Overviews</Typography>
-            
-          
-            </Box>
-            </Box>
-      </Card>
-      </Grid> */}
+     
       </Grid>
-   </Box>
+   </Box> */}
     </Box>
      </Container>
       
