@@ -17,7 +17,7 @@ const defaultTheme = createTheme({
     secondary: {
       main: '#e64b4c'
     }
-  }
+  } 
 });
 
 const textFieldStyles = {
@@ -56,7 +56,7 @@ function CustomTabPanel({ children, value, index }) {
   return (
     <div role="tabpanel" hidden={value !== index} id={`simple-tabpanel-${index}`} aria-labelledby={`simple-tab-${index}`}>
       {value === index && (
-        <Box sx={{ p: 3 }}>
+        <Box sx={{ pt: 3 }}>
           <Typography>{children}</Typography>
         </Box>
       )}
@@ -169,7 +169,7 @@ export default function LoginPage() {
             borderRadius: '20px 0px 0px 20px'
           }}
         >
-          <Box sx={{height:'450px'}}>
+          <Box sx={{ height: '450px' }}>
             <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', mb: 1 }}>
               <Typography
                 component="h1"
@@ -188,6 +188,8 @@ export default function LoginPage() {
             </Box>
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
               <Tabs
+             
+
                 value={value}
                 onChange={handleChange}
                 textColor="secondary"
@@ -200,7 +202,7 @@ export default function LoginPage() {
               </Tabs>
             </Box>
             <CustomTabPanel value={value} index={0}>
-              <Box component="form" noValidate onSubmit={handleSubmit}>
+              <Box component="form" noValidate onSubmit={handleSubmit} >
                 <TextField
                   InputProps={{
                     style: textFieldStyles,
@@ -266,7 +268,7 @@ export default function LoginPage() {
               <MobileLogin />
             </CustomTabPanel>
 
-            <PoweredBySection  />
+            <PoweredBySection />
           </Box>
         </Grid>
       </Grid>

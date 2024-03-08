@@ -111,7 +111,7 @@ export default function StepperForm() {
                   <Button onClick={handleComplete}>
                     {completedSteps() === totalSteps() - 1
                       ? 'Finish'
-                      : 'Complete Step'}
+                      : 'Submit'}
                   </Button>
                 ))}
             </Box>

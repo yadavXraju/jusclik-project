@@ -1,43 +1,29 @@
 import React, { useState } from 'react';
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import { Paper, Typography, Divider } from '@mui/material';
+import { Paper, Typography, Divider,FormControl,InputLabel,Select,MenuItem } from '@mui/material';
 
 const StudentDetailsForm = () => {
   const [formData, setFormData] = useState({
-    personalInfo: {
-      name: '',
-      studentId: '',
-      regDate: '',
-      className: '',
-      image: '',
-      dob: '',
-      age: '',
-      nationality: '',
-      religion: '',
-      bloodGroup: '',
-      house: '',
-    },
-    address: {
-      address: '',
-      area: '',
-      city: '',
-      pin: '',
-    },
-    contact: {
-      contact: '',
-      mobile: '',
-      email: '',
-    },
-    otherDetails: {
-      adhaarNo: '',
-      panNo: '',
-      payMode: '',
-      concession: '',
-      category: '',
-      familyId: '',
-    },
+    category: '',
+    firstName: '',
+    middleName: '',
+    lastName: '',
+    title: '',
+    dateOfBirth: '',
+    occupation: '',
+    education: '',
+    company: '',
+    designation: '',
+    address: '',
+    area: '',
+    city: '',
+    pin: '',
+    mobile: '',
+    email: '',
+    alternateMobile: '',
+    aadhaarNo: '',
+    pan: '',
   });
 
   const handleChange = (event, category) => {
@@ -58,59 +44,110 @@ const StudentDetailsForm = () => {
   };
 
   return (
-    <Paper elevation={0} sx={{ padding: "20px", position: 'relative' }}>
-
+    <Paper elevation={0} sx={{ padding: "20px" }}>
       {/* Personal Info */}
       <Typography variant="h6" color="initial" gutterBottom style={{ marginTop: '20px', marginBottom: '10px' }}>Personal Info</Typography>
       <Divider variant="middle" />
       <form onSubmit={handleSubmit}>
         <Grid container spacing={2}>
           <Grid item xs={12} sm={4}>
+            <FormControl fullWidth>
+              <InputLabel>Category</InputLabel>
+              <Select
+                value={formData.category}
+                onChange={handleChange}
+                name="category"
+              >
+                <MenuItem value="Single">Single</MenuItem>
+                <MenuItem value="Married">Married</MenuItem>
+                <MenuItem value="Divorced">Divorced</MenuItem>
+              </Select>
+            </FormControl>
+          </Grid>
+          <Grid item xs={12} sm={4}>
             <TextField
               fullWidth
-              label="Name"
-              name="name"
-              value={formData.personalInfo.name}
-              onChange={(e) => handleChange(e, 'personalInfo')}
+              label="First Name"
+              name="firstName"
+              value={formData.firstName}
+              onChange={handleChange}
             />
           </Grid>
           <Grid item xs={12} sm={4}>
             <TextField
               fullWidth
-              label="Student ID"
-              name="studentId"
-              value={formData.personalInfo.studentId}
-              onChange={(e) => handleChange(e, 'personalInfo')}
+              label="Middle Name"
+              name="middleName"
+              value={formData.middleName}
+              onChange={handleChange}
             />
           </Grid>
           <Grid item xs={12} sm={4}>
             <TextField
               fullWidth
-              label="Registration Date"
-              name="regDate"
+              label="Last Name"
+              name="lastName"
+              value={formData.lastName}
+              onChange={handleChange}
+            />
+          </Grid>
+          <Grid item xs={12} sm={4}>
+            <TextField
+              fullWidth
+              label="Date of Birth"
+              name="dateOfBirth"
               type="date"
-              value={formData.personalInfo.regDate}
-              onChange={(e) => handleChange(e, 'personalInfo')}
+              value={formData.dateOfBirth}
+              onChange={handleChange}
               InputLabelProps={{
                 shrink: true,
               }}
             />
           </Grid>
+        </Grid>
+        {/* Occupation and Education */}
+        <Typography variant="h6" color="initial" gutterBottom style={{ marginTop: '20px', marginBottom: '10px' }}>Occupation and Education</Typography>
+        <Divider variant="middle" />
+        <Grid container spacing={2}>
           <Grid item xs={12} sm={4}>
             <TextField
               fullWidth
-              label="Class Name"
-              name="className"
-              value={formData.personalInfo.className}
-              onChange={(e) => handleChange(e, 'personalInfo')}
+              label="Occupation"
+              name="occupation"
+              value={formData.occupation}
+              onChange={handleChange}
             />
           </Grid>
-          {/* Add other personal info fields here */}
-
+          <Grid item xs={12} sm={4}>
+            <TextField
+              fullWidth
+              label="Education"
+              name="education"
+              value={formData.education}
+              onChange={handleChange}
+            />
+          </Grid>
+          <Grid item xs={12} sm={4}>
+            <TextField
+              fullWidth
+              label="Company"
+              name="company"
+              value={formData.company}
+              onChange={handleChange}
+            />
+          </Grid>
+          <Grid item xs={12} sm={4}>
+            <TextField
+              fullWidth
+              label="Designation"
+              name="designation"
+              value={formData.designation}
+              onChange={handleChange}
+            />
+          </Grid>
         </Grid>
-
-        {/* Address */}
-        <Typography variant="h6" color="initial" gutterBottom style={{ marginTop: '20px', marginBottom: '10px' }}>Address</Typography>
+        {/* Address Info */}
+        <Typography variant="h6" color="initial" gutterBottom style={{ marginTop: '20px', marginBottom: '10px' }}>Address Info</Typography>
         <Divider variant="middle" />
         <Grid container spacing={2}>
           <Grid item xs={12} sm={4}>
@@ -118,8 +155,8 @@ const StudentDetailsForm = () => {
               fullWidth
               label="Address"
               name="address"
-              value={formData.address.address}
-              onChange={(e) => handleChange(e, 'address')}
+              value={formData.address}
+              onChange={handleChange}
             />
           </Grid>
           <Grid item xs={12} sm={4}>
@@ -127,14 +164,29 @@ const StudentDetailsForm = () => {
               fullWidth
               label="Area"
               name="area"
-              value={formData.address.area}
-              onChange={(e) => handleChange(e, 'address')}
+              value={formData.area}
+              onChange={handleChange}
             />
           </Grid>
-          {/* Add other address fields here */}
-
+          <Grid item xs={12} sm={4}>
+            <TextField
+              fullWidth
+              label="City"
+              name="city"
+              value={formData.city}
+              onChange={handleChange}
+            />
+          </Grid>
+          <Grid item xs={12} sm={4}>
+            <TextField
+              fullWidth
+              label="PIN"
+              name="pin"
+              value={formData.pin}
+              onChange={handleChange}
+            />
+          </Grid>
         </Grid>
-
         {/* Contact */}
         <Typography variant="h6" color="initial" gutterBottom style={{ marginTop: '20px', marginBottom: '10px' }}>Contact</Typography>
         <Divider variant="middle" />
@@ -142,59 +194,55 @@ const StudentDetailsForm = () => {
           <Grid item xs={12} sm={4}>
             <TextField
               fullWidth
-              label="Contact"
-              name="contact"
-              value={formData.contact.contact}
-              onChange={(e) => handleChange(e, 'contact')}
+              label="Mobile"
+              name="mobile"
+              value={formData.mobile}
+              onChange={handleChange}
             />
           </Grid>
           <Grid item xs={12} sm={4}>
             <TextField
               fullWidth
-              label="Mobile"
-              name="mobile"
-              value={formData.contact.mobile}
-              onChange={(e) => handleChange(e, 'contact')}
+              label="Email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
             />
           </Grid>
-          {/* Add other contact fields here */}
-
+          <Grid item xs={12} sm={4}>
+            <TextField
+              fullWidth
+              label="Alternate Mobile"
+              name="alternateMobile"
+              value={formData.alternateMobile}
+              onChange={handleChange}
+            />
+          </Grid>
         </Grid>
-
-        {/* Other Details */}
-        <Typography variant="h6" color="initial" gutterBottom style={{ marginTop: '20px', marginBottom: '10px' }}>Other Details</Typography>
+        {/* Other */}
+        <Typography variant="h6" color="initial" gutterBottom style={{ marginTop: '20px', marginBottom: '10px' }}>Other</Typography>
         <Divider variant="middle" />
         <Grid container spacing={2}>
           <Grid item xs={12} sm={4}>
             <TextField
               fullWidth
               label="Aadhaar No"
-              name="adhaarNo"
-              value={formData.otherDetails.adhaarNo}
-              onChange={(e) => handleChange(e, 'otherDetails')}
+              name="aadhaarNo"
+              value={formData.aadhaarNo}
+              onChange={handleChange}
             />
           </Grid>
           <Grid item xs={12} sm={4}>
             <TextField
               fullWidth
-              label="PAN No"
-              name="panNo"
-              value={formData.otherDetails.panNo}
-              onChange={(e) => handleChange(e, 'otherDetails')}
+              label="PAN"
+              name="pan"
+              value={formData.pan}
+              onChange={handleChange}
             />
           </Grid>
-          {/* Add other details fields here */}
-
         </Grid>
 
-        <Grid item xs={12}>
-          <Button variant="contained" type="submit">
-            Submit
-          </Button>
-          <Button variant="text" type="">
-            Skip
-          </Button>
-        </Grid>
       </form>
     </Paper>
   )

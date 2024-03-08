@@ -1,11 +1,9 @@
 import React from 'react'
 import ParamTable from 'views/common-section/ParamTable';
-
-const tableHeading = [
-  {
-    id: 1,
-    tabHeading: "Records"
-  }, {
+import DrawerContent from './DrawerContent';
+import Drawer from '@mui/material/Drawer';
+const tableHeadings = [
+   {
     id: 2,
     tabHeading: "Fee Head"
   }, {
@@ -30,14 +28,16 @@ const tableHeading = [
   }, {
     id: 9,
     tabHeading: "Tally Ledger Name"
+  },{
+    id:10,
+    tabHeading:"Action"
   }
 ]
 
-const data=
+const data =
   [
     {
       "id": 1,
-      "records": "R001",
       "feeHead": "Tuition Fee",
       "feeGroup": "Group A",
       "feeType": "Regular",
@@ -49,7 +49,6 @@ const data=
     },
     {
       "id": 2,
-      "records": "R002",
       "feeHead": "Library Fee",
       "feeGroup": "Group B",
       "feeType": "Regular",
@@ -61,7 +60,6 @@ const data=
     },
     {
       "id": 3,
-      "records": "R003",
       "feeHead": "Transportation Fee",
       "feeGroup": "Group C",
       "feeType": "Regular",
@@ -73,7 +71,6 @@ const data=
     },
     {
       "id": 4,
-      "records": "R004",
       "feeHead": "Hostel Fee",
       "feeGroup": "Group D",
       "feeType": "Regular",
@@ -85,7 +82,6 @@ const data=
     },
     {
       "id": 5,
-      "records": "R005",
       "feeHead": "Admission Fee",
       "feeGroup": "Group E",
       "feeType": "One-time",
@@ -98,11 +94,14 @@ const data=
   ]
 
 
-const FeeHead = () => {
+const FeeHead = ({toggleAddDrawer, toggleDrawer}) => {
   return (
-   <>
-   <ParamTable columns={tableHeading} data={data}/>
-   </>
+    <>
+      <ParamTable columns={tableHeadings} data={data} />
+      <Drawer anchor={'right'} open={toggleAddDrawer.right} onClose={toggleDrawer('right', false)}>
+        <DrawerContent  data={tableHeadings} toggleDrawer={toggleDrawer} name="Wing {Restricted}" />
+      </Drawer>
+    </>
   )
 }
 

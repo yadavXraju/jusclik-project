@@ -1,12 +1,10 @@
 import React from 'react'
 import ParamTable from 'views/common-section/ParamTable';
+import Drawer from '@mui/material/Drawer';
+import DrawerContent from './DrawerContent';
 
 
-const tableHeading = [
-  {
-    id: 1,
-    tabHeading: "Records"
-  },
+const tableHeadings= [
   {
     id: 2,
     tabHeading: "Concession"
@@ -41,13 +39,15 @@ const tableHeading = [
   }, {
     id: 11,
     tabHeading: "Created On"
+  },{
+    id:12,
+    tabHeading:"Action"
   }
 ]
 
 const data=[
   {
     "id": 1,
-    "records": "123",
     "Concession": "50%",
     "Category": "Scholarship",
     "Academic": "High School",
@@ -61,7 +61,6 @@ const data=[
   },
   {
     "id": 2,
-    "records": "456",
     "Concession": "25%",
     "Category": "Financial Aid",
     "Academic": "Undergraduate",
@@ -75,7 +74,6 @@ const data=[
   },
   {
     "id": 3,
-    "records": "789",
     "Concession": "10%",
     "Category": "Grant",
     "Academic": "Graduate",
@@ -89,7 +87,6 @@ const data=[
   },
   {
     "id": 4,
-    "records": "101112",
     "Concession": "75%",
     "Category": "Fellowship",
     "Academic": "PhD",
@@ -103,7 +100,6 @@ const data=[
   },
   {
     "id": 5,
-    "records": "131415",
     "Concession": "15%",
     "Category": "Scholarship",
     "Academic": "High School",
@@ -117,7 +113,6 @@ const data=[
   },
   {
     "id": 6,
-    "records": "161718",
     "Concession": "30%",
     "Category": "Financial Aid",
     "Academic": "Undergraduate",
@@ -131,7 +126,6 @@ const data=[
   },
   {
     "id": 7,
-    "records": "192021",
     "Concession": "20%",
     "Category": "Grant",
     "Academic": "Graduate",
@@ -145,7 +139,6 @@ const data=[
   },
   {
     "id": 8,
-    "records": "222324",
     "Concession": "60%",
     "Category": "Fellowship",
     "Academic": "PhD",
@@ -159,7 +152,6 @@ const data=[
   },
   {
     "id": 9,
-    "records": "252627",
     "Concession": "40%",
     "Category": "Scholarship",
     "Academic": "High School",
@@ -173,7 +165,6 @@ const data=[
   },
   {
     "id": 10,
-    "records": "282930",
     "Concession": "35%",
     "Category": "Financial Aid",
     "Academic": "Undergraduate",
@@ -188,10 +179,13 @@ const data=[
 ]
 
 
-const ConcessionCategory = () => {
+const ConcessionCategory = ({ toggleAddDrawer, toggleDrawer }) => {
   return (
     <>
-      <ParamTable columns={tableHeading} data={data} />
+      <ParamTable columns={tableHeadings} data={data} />
+      <Drawer anchor={'right'} open={toggleAddDrawer.right} onClose={toggleDrawer('right', false)}>
+        <DrawerContent  data={tableHeadings} toggleDrawer={toggleDrawer} />
+      </Drawer>
     </>
   )
 }

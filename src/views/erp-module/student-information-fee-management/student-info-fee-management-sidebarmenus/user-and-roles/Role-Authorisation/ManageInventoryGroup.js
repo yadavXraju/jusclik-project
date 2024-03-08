@@ -3,8 +3,8 @@ import ParamChackboxSelectAll from './ParamChackboxSelectAll';
 
 
 const InventoryGroupData = [
-  { id: '1', details: { inventoryGroup: 'Primary ' } },
-  { id: '2', details: { inventoryGroup: 'Secondary' } },
+  { id: '1', details: { inventoryGroup: 'Primary ', checked: true } },
+  { id: '2', details: { inventoryGroup: 'Secondary', checked: false } },
 ];
 
 function ManageInventoryGroup() {

@@ -5,38 +5,41 @@ import Divider from '@mui/material/Divider';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListItemDecorator from '@mui/joy/ListItemDecorator';
-import Avatar from '@mui/material/Avatar';
 import MailOutlinedIcon from '@mui/icons-material/MailOutlined';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Badge from '@mui/material/Badge';
 import { useNavigate } from 'react-router';
-import AvtarImg from '../../../../assets/images/avatar.png'
+import Image1 from '../../../../assets/images/Avatar-images/IMG_01.png';
+import Image2 from '../../../../assets/images/Avatar-images/IMG_02.png';
+import Image3 from '../../../../assets/images/Avatar-images/IMG_04.png';
+import Image4 from '../../../../assets/images/Avatar-images/IMG_05.png';
+import Image5 from '../../../../assets/images/Avatar-images/IMG_06.png';
 
 export const commonStyles = {
   bgcolor: 'background.paper',
   borderRadius: '5px',
   border: 1,
   padding: '5px',
-  height: '30px',
+  height: '30px'
 };
 
 export const contactData = [
-  { name: 'Vikaay', role: 'Business Owner' },
-  { name: 'Archana Sharma', role: 'Mathematics Teacher' },
-  { name: 'Tamanna Bhatia', role: 'English Teacher' },
-  { name: 'Bahadur Singh', role: 'Peon' },
-  { name: 'Sweccha Chaudhary', role: 'Receptionist' },
-  { name: 'Tarun Mishra', role: 'Lab Incharge' },
-  { name: 'Anuradha sigh', role: 'Accountant' },
-  { name: 'Simerpreet', role: 'Wardon' },
-  { name: 'Kartik Sharma', role: 'Librarian' },
-  { name: 'Arun Kaushik', role: 'Physics Teacher' },
-  { name: 'Jaspreet Singh', role: 'Sports Teacher' },
-  { name: 'Hariom Rai', role: 'History Teacher' },
-  { name: 'Riya Singh', role: 'Economics Teacher' },
-  { name: 'Ashshish Tiwari', role: 'Science Teacher' },
-  { name: 'Subhash Sharma', role: 'Hr Head' },
+  { name: 'Vikaay', role: 'Business Owner', avatar: Image2 },
+  { name: 'Archana Sharma', role: 'Mathematics Teacher', avatar: Image5 },
+  { name: 'Tamanna Bhatia', role: 'English Teacher', avatar: Image4 },
+  { name: 'Bahadur Singh', role: 'HR Manager', avatar: Image2 },
+  { name: 'Sweccha Chaudhary', role: 'Receptionist', avatar: Image5 },
+  { name: 'Tarun Mishra', role: 'Lab Incharge', avatar: Image1 },
+  { name: 'Anurag Singh', role: 'Accountant', avatar: Image1 },
+  { name: 'Simerpreet', role: 'Wardon', avatar: Image1 },
+  { name: 'Kartik Sharma', role: 'Librarian', avatar: Image2 },
+  { name: 'Aruna Kaushik', role: 'Physics Teacher', avatar: Image3 },
+  { name: 'Jaspreet Singh', role: 'Sports Teacher', avatar: Image1 },
+  { name: 'Hariom Rai', role: 'History Teacher', avatar: Image1 },
+  { name: 'Riya Singh', role: 'Economics Teacher', avatar: Image5 },
+  { name: 'Asha Tiwari', role: 'Science Teacher', avatar: Image4 },
+  { name: 'Supriya Sharma', role: 'HR Head', avatar: Image3 }
 ];
 
 export default function AlignItemsList() {
@@ -60,7 +63,6 @@ export default function AlignItemsList() {
   return (
     <>
       <Box sx={{ display: 'flex', height: '100%' }}>
-
         {/* Contact List */}
         <List sx={{ width: '100%', bgcolor: 'background.paper', paddingLeft: '10px' }}>
           {Object.entries(groupedContacts)
@@ -74,26 +76,19 @@ export default function AlignItemsList() {
                   <React.Fragment key={contactIndex}>
                     <ListItem>
                       <ListItemAvatar>
-                        <Avatar src={AvtarImg} sx={{ width: 50, height: 50 }} />
+                        <img src={contact.avatar} style={{ width: 50, height: 50 }} alt="Avatar" />
                       </ListItemAvatar>
+
                       <ListItemText sx={{ paddingLeft: '10px' }}>
                         <Typography variant="h4">{contact.name}</Typography>
                         <React.Fragment>
-                          <Typography
-                            sx={{ display: 'inline' }}
-                            component="span"
-                            variant="subtitle2"
-                            color="text.primary"
-                          >
+                          <Typography sx={{ display: 'inline' }} component="span" variant="subtitle2" color="text.primary">
                             {contact.role}
                           </Typography>
                         </React.Fragment>
                       </ListItemText>
                       <ListItemDecorator>
-                        <Badge
-                          badgeContent={4}
-                          color="primary"
-                        >
+                        <Badge badgeContent={4} color="primary">
                           <Box
                             sx={{ ...commonStyles, borderColor: 'primary.main' }}
                             onClick={() => navigate('/parent/communication/inbox')}
