@@ -2,23 +2,22 @@ import React from 'react';
 import FatherDetail from './FatherDetail';
 import MotherDetail from './MotherDetail';
 import Drawer from '@mui/material/Drawer';
-import StepperForm from './data-forms/StepperForm';
+// import StepperForm from './data-forms/StepperForm';
 import Student from './Student';
 import useDrawer from 'hooks/useDrawer';
+import Mainform from './data-forms/Mainform';
 const StudentDetails = () => {
     const {anchor,toggleDrawer}=useDrawer();
   return (
     <div>
-      <Student onEditClick={toggleDrawer('right',true)} />
+      <Student onEditClick={toggleDrawer('top',true)} />
       <FatherDetail />
       <MotherDetail />
 
-      {/* Component containing the click function */}
-      {/* <button onClick={toggleDrawer('right',true)}>Open Drawer</button> */}
 
-      {/* Component containing the drawer */}
-      <Drawer anchor={"right"} open={anchor.right} onClose={toggleDrawer('right',false)}>
-     <StepperForm/>
+      <Drawer anchor={"top"} open={anchor.top} onClose={toggleDrawer('top',false)}>
+     {/* <StepperForm/> */}
+     <Mainform />
       </Drawer>
     </div>
   );  

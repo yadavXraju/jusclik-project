@@ -5,19 +5,21 @@ import TableBody from '@mui/material/TableBody';
 import TableRow from '@mui/material/TableRow';
 import TableCell from '@mui/material/TableCell';
 import { Checkbox, Box, Card, Typography } from '@mui/material';
+import { Grid } from '@mui/material';
+import RoleForm from './Role-Authorisation/RoleForm';
 
 function RoleAccess() {
   const [moduleAccess, setModuleAccess] = useState({});
 
   const modulesData = [
-    { id: '1', details: { moduleName: 'Stufee', chacked:'false' } },
-    { id: '2', details: { moduleName: 'Payroll', chacked:'true' } },
-    { id: '3', details: { moduleName: 'Progress', chacked:'false' } },
-    { id: '4', details: { moduleName: 'Library', chacked:'true' } },
-    { id: '5', details: { moduleName: 'Inventory', chacked:'false' } },
-    { id: '6', details: { moduleName: 'Website', chacked:'true' } },
-    { id: '7', details: { moduleName: 'Visitor Mgmt', chacked:'false' } },
-    { id: '8', details: { moduleName: 'Medical', chacked:'true' } }
+    { id: '1', details: { moduleName: 'Stufee', chacked: false } },
+    { id: '2', details: { moduleName: 'Payroll', chacked: true } },
+    { id: '3', details: { moduleName: 'Progress', chacked:false } },
+    { id: '4', details: { moduleName: 'Library', chacked: true } },
+    { id: '5', details: { moduleName: 'Inventory', chacked:false } },
+    { id: '6', details: { moduleName: 'Website', chacked: true } },
+    { id: '7', details: { moduleName: 'Visitor Mgmt', chacked:false } },
+    { id: '8', details: { moduleName: 'Medical', chacked: true } }
   ];
 
   const handleFullAccessChange = (moduleId, checked) => {
@@ -41,12 +43,19 @@ function RoleAccess() {
 
   return (
     <>
+       <Grid container spacing={2}>
+        <Grid item xs={12} md={4}>
+         <Box pt={4.3}>
+         <RoleForm/>
+         </Box>
+        </Grid>
+        <Grid item xs={12} md={8}>
+        <Box>
       <Box p={2}>
         <Typography variant="h4">Modules Access</Typography>
       </Box>
       <Card
         sx={{
-          width: { xs: '83vw', md: '100%' },
           overflow: { xs: 'scroll', md: 'hidden' },
           border: '1px solid #ccc',
           borderRadius: '5px',
@@ -116,6 +125,10 @@ function RoleAccess() {
           </TableBody>
         </Table>
       </Card>
+      </Box>
+        </Grid>
+      </Grid>
+      
     </>
   );
 }

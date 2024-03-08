@@ -2,8 +2,8 @@ import React from 'react';
 import Grid from '@mui/system/Unstable_Grid/Grid';
 import { gridSpacing } from 'store/constant';
 import VisitorWelcomeMessage from 'views/erp-module/visitor/visitor-dashboard/welcome-visitor-today-visitor-total-visitor/welcome-message/welcome';
-import BoyStrength from './boys-strength/BoyStrength';
-import GirlStrength from './girls-strength/GirlStrength';
+import BoyStrength from './boys-strength-counter/BoyStrength';
+import GirlStrength from './girls-strength-counter/GirlStrength';
 
 
 // import { useMediaQuery } from '@mui/material';
