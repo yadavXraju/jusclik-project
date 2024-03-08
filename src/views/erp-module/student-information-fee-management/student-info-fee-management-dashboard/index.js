@@ -26,7 +26,9 @@ const Dashboard =()=> {
 
           <TabContext value={value}>
           <Paper sx={{mx:'24px'}}>
-            <Box sx={{ borderBottom: 0, borderColor: '#e3e8efad' , background:'rgb(30, 136, 229)' , borderRadius:'10px' , padding:'10px'}}>
+            <Box sx={{ borderBottom: 0, borderColor: '#e3e8efad' ,
+            //  background:'rgb(30, 136, 229)' , 
+             borderRadius:'10px' , padding:'10px'}}>
               <TabLabel handleChange={handleChange}/>
             </Box>
           </Paper>

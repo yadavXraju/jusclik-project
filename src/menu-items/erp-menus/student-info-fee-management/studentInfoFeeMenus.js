@@ -324,26 +324,37 @@ const StudentInfoFeeMenu = {
 
            // reports
 
+          // {
+          //   id: 'reports' ,
+          //   title: 'Reports',
+          //   type: 'collapse',
+          //   url: '/erp/student-info-fee/reports',
+          //   icon: DescriptionTwoToneIcon,
+          //   children: [
+
+          //     {
+          //         id: 'invoice-printing',
+          //         title: 'Invoice Printing',
+          //         type: 'item',
+          //         url: '/erp/student-info-fee/reports/invoice-printing',
+          //         breadcrumbs: false,
+          //         // colleagueTitle : SetUpColleagueTitles,
+          //       },
+
+
+          //   ]
+          // },
+
           {
-            id: 'reports' ,
+            id: 'reports',
             title: 'Reports',
-            type: 'collapse',
+            type: 'item',
             url: '/erp/student-info-fee/reports',
             icon: DescriptionTwoToneIcon,
-            children: [
-
-              {
-                  id: 'invoice-printing',
-                  title: 'Invoice Printing',
-                  type: 'item',
-                  url: '/erp/student-info-fee/reports/invoice-printing',
-                  breadcrumbs: false,
-                  // colleagueTitle : SetUpColleagueTitles,
-                },
-
-
-            ]
+            breadcrumbs: false
           },
+         
+
 
        // search
 
