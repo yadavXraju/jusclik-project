@@ -7,27 +7,23 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
-import MoreHorizOutlinedIcon from '@mui/icons-material/MoreHorizOutlined';
-import Button from '@mui/material/Button';
+import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
+import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutlined';
 
 const ReusableTable = ({ columns, data }) => {
   return (
-    <TableContainer component={Paper}>
+    <TableContainer component={Paper} sx={{ width: "100%", overflowX: 'auto' }}>
       <Table>
         <TableHead sx={{ width: "100%", backgroundColor: "#1219260f" }}>
           <TableRow >
             {columns.map((column) => (
-              column.tabHeading !== "Records" ? (
-                <TableCell key={column.id}>{column.tabHeading}</TableCell>
-              ) : (
-                <TableCell key={column.id} sx={{ color: "#2196f3" }}>{data.length} {column.tabHeading}</TableCell>
-              )
+              <TableCell key={column.id}>{column.tabHeading}</TableCell>
             ))}
           </TableRow>
         </TableHead>
         <TableBody>
-          {data.map((row, index) => (
-            <TableRow key={index}>
+          {data.map((row, index) => {
+            return <TableRow key={index}>
               {
                 Object.keys(row).map((key) => {
                   if (key === "id") {
@@ -35,18 +31,19 @@ const ReusableTable = ({ columns, data }) => {
                   }
                   return (
                     <TableCell key={row.id}>
-                      {key !== "records" ? (
-                        <Typography>{row[key]}</Typography>
-                      ) : (
-                        <Button sx={{ height: "40px", color: '#fff' }} variant="contained">Select</Button>
-                      )}
+                      <Typography>{row[key]}</Typography>
                     </TableCell>
                   );
                 })
               }
-              <TableCell><Typography><MoreHorizOutlinedIcon /></Typography></TableCell>
+              <TableCell>
+                <Typography sx={{ display: "flex", gap: "15px" }}>
+                  <ModeEditOutlineOutlinedIcon />
+                  <DeleteOutlineOutlinedIcon />
+                </Typography>
+              </TableCell>
             </TableRow>
-          ))}
+          })}
         </TableBody>
       </Table>
     </TableContainer>

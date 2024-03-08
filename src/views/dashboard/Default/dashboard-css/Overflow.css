@@ -1,5 +1,5 @@
 /* Custom CSS for the scrollbar */
-.scrollbar {
+.scrollbar{
     overflow-y: auto;
     scrollbar-width: thin;
     scrollbar-color: #90caf9 #f0f0f0;
