@@ -1,47 +1,45 @@
 import React from 'react';
 import ParamTable from 'views/common-section/ParamTable';
+import Drawer from '@mui/material/Drawer';
+import DrawerContent from './DrawerContent';
 
-const tableHeading = [
+const tableHeadings = [
   {
     id: 1,
-    tabHeading: "Records"
-  },
-  {
-    id: 2,
     tabHeading: "Transport Stop"
   },
   {
-    id: 3,
+    id: 2,
     tabHeading: "Distance(in Kms)"
   },
   {
-    id: 4,
+    id: 3,
     tabHeading: "Pick Time"
   },
   {
-    id: 5,
+    id: 4,
     tabHeading: "Drop Time"
   }, {
-    id: 6,
+    id: 5,
     tabHeading: "Academic Year Upto"
-  }, {
-    id: 7,
-    tabHeading: "Created Year Upto"
   },
   {
-    id: 8,
+    id: 7,
     tabHeading: "Created by"
   },
   {
-    id: 9,
+    id: 8,
     tabHeding: "Created On"
+  },
+  {
+    id:9,
+    tabHeading:"Action"
   }
 ];
 
 
 const data = [
   {
-    "records": "R001",
     "transportStop": "Delhi Cantt",
     "Distance (in Kms)": 12,
     "pickTime": "8:15am",
@@ -51,7 +49,6 @@ const data = [
     "createdOn": "08.Feb.2024"
   },
   {
-    "records": "R002",
     "transportStop": "New Delhi",
     "Distance (in Kms)": 15,
     "pickTime": "7:45am",
@@ -61,7 +58,6 @@ const data = [
     "createdOn": "09.Feb.2024"
   },
   {
-    "records": "R003",
     "transportStop": "Gurgaon",
     "Distance (in Kms)": 20,
     "pickTime": "7:30am",
@@ -71,7 +67,6 @@ const data = [
     "createdOn": "10.Feb.2024"
   },
   {
-    "records": "R004",
     "transportStop": "Noida",
     "Distance (in Kms)": 25,
     "pickTime": "7:00am",
@@ -81,7 +76,6 @@ const data = [
     "createdOn": "11.Feb.2024"
   },
   {
-    "records": "R005",
     "transportStop": "Faridabad",
     "Distance (in Kms)": 30,
     "pickTime": "6:45am",
@@ -93,10 +87,13 @@ const data = [
 ]
 
 
-const TransportStop = () => {
+const TransportStop = ({toggleAddDrawer, toggleDrawer }) => {
   return (
     <>
-      <ParamTable columns={tableHeading} data={data} />
+      <ParamTable columns={tableHeadings} data={data} />
+      <Drawer anchor={'right'} open={toggleAddDrawer.right} onClose={toggleDrawer('right', false)}>
+        <DrawerContent  data={tableHeadings} toggleDrawer={toggleDrawer} />
+      </Drawer>
     </>
   )
 }

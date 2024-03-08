@@ -67,7 +67,7 @@ function RequestAMeeting() {
         <PostDate />
       </Grid>
       <Grid sx={{ width: isMobile ? '100%' : '55ch', paddingLeft: '8px', paddingTop: '16px' }}>
-        <TextArea rows={6} placeholder="How can we help you today?" label="Message" variant="outlined" />
+        <TextArea rows={6} placeholder="Anything in particular you would like to discuss ?" label="Message" variant="outlined" />
       </Grid>
       <Grid item sm={6} xs={12} sx={{  width: isMobile ? '100%' : '55ch', paddingLeft: '7px', paddingTop: '18px' }}>
         <TextField

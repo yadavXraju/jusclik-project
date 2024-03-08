@@ -1,11 +1,9 @@
 import React from 'react'
 import ParamTable from 'views/common-section/ParamTable';
+import DrawerContent from './DrawerContent';
+import Drawer from '@mui/material/Drawer';
 
-const tableHeading = [
-  {
-    id: 1,
-    tabHeading: "records"
-  },
+const tableHeadings= [
   {
     id: 2,
     tabHeading: "Transport Slab"
@@ -20,13 +18,16 @@ const tableHeading = [
   }, {
     id: 5,
     tabHeading: "Created On"
-  }
+  },
+  {
+    id:6,
+    tabHeading:"Action"
+  },
 ];
 
 const data = [
   {
     id: 1,
-    "records": "R001",
     "TransportSlab": "Slab A",
     "AcademicYear": "2023-2024",
     "CreatedBy": "Admin",
@@ -34,7 +35,6 @@ const data = [
   },
   {
     id: 2,
-    "records": "R002",
     "TransportSlab": "Slab B",
     "AcademicYear": "2023-2024",
     "CreatedBy": "Admin",
@@ -42,7 +42,6 @@ const data = [
   },
   {
     id: 3,
-    "records": "R003",
     "TransportSlab": "Slab C",
     "AcademicYear": "2023-2024",
     "CreatedBy": "Admin",
@@ -50,7 +49,6 @@ const data = [
   },
   {
     id: 4,
-    "records": "R004",
     "TransportSlab": "Slab D",
     "AcademicYear": "2023-2024",
     "CreatedBy": "Admin",
@@ -58,17 +56,19 @@ const data = [
   },
   {
     id: 5,
-    "records": "R005",
     "TransportSlab": "Slab E",
     "AcademicYear": "2023-2024",
     "CreatedBy": "Admin",
     "CreatedOn": "2024-03-04T13:00:00Z"
   }];
 
-const TransportSlab = () => {
+const TransportSlab = ({toggleAddDrawer,toggleDrawer}) => {
   return (
     <>
-      <ParamTable columns={tableHeading} data={data} />
+      <ParamTable columns={tableHeadings} data={data} />
+      <Drawer anchor={'right'} open={toggleAddDrawer.right} onClose={toggleDrawer('right', false)}>
+        <DrawerContent  data={tableHeadings} toggleDrawer={toggleDrawer}  />
+      </Drawer>
     </>
   )
 }

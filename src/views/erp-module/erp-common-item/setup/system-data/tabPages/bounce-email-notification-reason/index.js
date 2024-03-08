@@ -1,7 +1,9 @@
 import React from 'react';
 import ParamTable from 'views/common-section/ParamTable';
+import Drawer from '@mui/material/Drawer';
+import DrawerContent from './DrawerContent';
 
-const tableHeading = [
+const tableHeadings = [
   {
     id: 1,
     tabHeading: "Records"
@@ -13,6 +15,10 @@ const tableHeading = [
   {
     id: 3,
     tabHeading: "Created On"
+  },
+  {
+    id:4,
+    tabHeading:"Action"
   }
 ];
 
@@ -49,10 +55,13 @@ const data = [
     }
   ];
 
-const BounceEmailNotification = () => {
+const BounceEmailNotification = ({toggleAddDrawer, toggleDrawer}) => {
   return (
     <>
-      <ParamTable columns={tableHeading} data={data} />
+      <ParamTable columns={tableHeadings} data={data} />
+      <Drawer anchor={'right'} open={toggleAddDrawer.right} onClose={toggleDrawer('right', false)}>
+        <DrawerContent  data={tableHeadings} toggleDrawer={toggleDrawer} name="Wing {Restricted}" />
+      </Drawer>
     </>
   )
 }

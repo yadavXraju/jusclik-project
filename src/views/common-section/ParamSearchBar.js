@@ -2,7 +2,7 @@ import React from 'react';
 import { Paper, InputBase, IconButton } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 
-const SearchBar = () => {
+const SearchBar = ({onChange}) => {
   const paperStyle = {
     width:"100%",
     padding: '2px 4px',
@@ -32,6 +32,7 @@ const SearchBar = () => {
         sx={inputStyle}
         placeholder="Search..."
         inputProps={{ 'aria-label': 'search' }}
+        onChange={onChange}
       />
     </Paper>
   );

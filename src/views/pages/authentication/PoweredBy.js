@@ -13,7 +13,7 @@ const commonTextStyle = {
 const PoweredBySection = () => {
   return (
     <>
-      <Box sx={{textAlign: 'center',position: 'fixed', bottom: '100px', transform: 'translateX(57%)'}}>
+      <Box sx={{textAlign: 'center',position: 'fixed', bottom: '100px', transform: 'translateX(56%)'}}>
         <img src={CloudLogo} alt="Logo" />
         <Typography variant="body2" sx={{ ...commonTextStyle }}>
           Powered by
