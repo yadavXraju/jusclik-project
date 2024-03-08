@@ -1,60 +1,45 @@
-//Fee module Dashboard.js
-import React from 'react';
-import Grid from '@mui/material/Grid';
-import { gridSpacing } from 'store/constant';
-import WelcomeTotalVisitor from './welcome-stufee-boys-girls-strength';
-import VisitorProfile from 'views/erp-module/visitor/visitor-dashboard/profile/Profile';
-import HourlyVisior from 'views/erp-module/visitor/visitor-dashboard/hourly-visitor';
-import FrequentlyReturningVisitor from 'views/erp-module/visitor/visitor-dashboard/frequently-returning-visitors/index.';
+import { useState } from 'react';
+import TabContext from '@mui/lab/TabContext';
+import { Paper , Box } from '@mui/material';
+import TabPanel from '@mui/lab/TabPanel';
+import TabLabel from './tabs/TabLabel';
+import DashboardContent from './dashboard';
+import DashboardPayRoll from 'views/common-section/dashboard-payroll';
 
 
-const Dashboard = ({ isLoading }) => {
+
+
+const Dashboard =()=> {
+
+  // for active first item when page load
+  const [value, setValue] = useState('1')
+
+
+  // for change the setvalue into newvalue
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
   return (
-    <Grid container spacing={gridSpacing}>
-      <Grid item xs={12}>
-        <Grid container spacing={gridSpacing}>
+    <>
+    <Box sx={{ width: '100%', typography: 'body1' }}>
 
-        {/* Welcome message , today visitor , total visitor */}
-        <Grid item lg={8} md={12} sm={12} xs={12} spacing={gridSpacing}>
-                    <Grid
-                      spacing={gridSpacing}
-                      sx={{
-                        backgroundColor: '#fff',
-                        border: '1px solid rgb(227 227 227)',
-                        borderRadius: '7px',
-                        px: 4,
-                        py: 3,
-                      }}
-                    >
-                      <WelcomeTotalVisitor  isLoading={isLoading} />
-                    </Grid>
-        </Grid>
+          <TabContext value={value}>
+          <Paper sx={{mx:'24px'}}>
+            <Box sx={{ borderBottom: 1, borderColor: '#e3e8efad' , background:'rgb(30, 136, 229)' }}>
+              <TabLabel handleChange={handleChange}/>
+            </Box>
+          </Paper>
+            <TabPanel value="1"><DashboardContent/></TabPanel>
+            <TabPanel value="2"><DashboardPayRoll /> </TabPanel>
+            <TabPanel value="3"></TabPanel>
+            <TabPanel value="4"></TabPanel>
+          </TabContext>
+  
 
-         {/* Profile comp */}
-         <Grid item lg={4} md={12} sm={12} xs={12}>
-            <Grid container spacing={gridSpacing}>
-              <Grid item sm={12} xs={12} md={12} lg={12}>
-                <VisitorProfile />
-              </Grid>
-            </Grid>
-         </Grid>
-
-
-         {/* Hourly visited chart */}
-         <Grid item xs={12} lg={7} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
-            <HourlyVisior isLoading={isLoading} />
-         </Grid>
-
-           {/* frequently returning visitors */}
-          <Grid item xs={12} lg={5}  md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
-              <FrequentlyReturningVisitor isLoading={isLoading} /> 
-          </Grid>
-
-        </Grid>
-
-      </Grid>
-    </Grid>
+    </Box>
+    </>
   );
-};
+}
 
-export default Dashboard;
+export default Dashboard

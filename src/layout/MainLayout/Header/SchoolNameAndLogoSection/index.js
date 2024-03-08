@@ -15,7 +15,7 @@ const SchoolName = () => {
               <img src={SchoolData.logo} alt="School Logo"  style={{objectFit:'cover', width:'70px', height:'7 0px'}}/> 
             </Box>
         <Box > 
-        <Typography variant='h2' sx={{ lineHeight: '1.2', fontSize: isMobile ? '18px' : (isMediumDesktop ? '20px' : '26px') }}>
+        <Typography variant='h2' sx={{ lineHeight: '1.2', fontSize: isMobile ? '18px' : (isMediumDesktop ? '18px' : '21px') }}>
                {SchoolData.name}
           </Typography>
         </Box>

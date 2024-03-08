@@ -11,7 +11,7 @@ const Enquiry = Loadable(lazy(() => import('views/erp-module/student-information
 
 const Registration = Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/student-master/registration')));
 
-const RegistrationData =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/student-master/registration-data')));
+// const RegistrationData =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/student-master/registration-data')));
 
 const AdmissionProcess =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/student-master/admission-process')));
 
@@ -19,7 +19,7 @@ const Provisional =  Loadable(lazy(() => import('views/erp-module/student-inform
 
 const Admission =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/student-master/admission')));
 
-const CustomeData =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/student-master/custom-data')));
+// const CustomeData =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/student-master/custom-data')));
 
 const EditMasterDataField =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/student-master/edit-master-data-field')));
 
@@ -61,10 +61,23 @@ const SecurityDeposit=  Loadable(lazy(() => import('views/erp-module/student-inf
 const TransferFeeEntry=  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/fee-accounting/transfer-fee-entry')));
 
 
+// hostel
+
+const DormEntry=  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/hostel/dorm-entry')));
+
+
 // system data
 
 const SystemData = Loadable(lazy(() => import('views/erp-module/erp-common-item/setup/system-data')));
 
+
+// reports
+
+const InvoicePrinting = Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/reports/invoice-printing')));
+
+
+// search
+const SearchEnquiry= Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/search/enquiry')));
 
 // tools
 const GpsBusTracking =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/tool/gps-bus-tracking')));
@@ -178,10 +191,10 @@ const StudentInfoFeeRoutes = [
 
 
 
-         {
-          path: 'registration-data',
-          element: <RegistrationData />
-       },
+      //    {
+      //     path: 'registration-data',
+      //     element: <RegistrationData />
+      //  },
 
         {
           path: 'admission-process',
@@ -200,10 +213,10 @@ const StudentInfoFeeRoutes = [
      },
 
 
-      {
-        path: 'custom-data',
-        element: <CustomeData />
-      },
+      // {
+      //   path: 'custom-data',
+      //   element: <CustomeData />
+      // },
 
       {
         path: 'edit-master-data-field',
@@ -228,6 +241,50 @@ const StudentInfoFeeRoutes = [
         ]
       },
 
+      // hostel
+
+      {
+        path: 'hostel',
+        children: [
+
+          { 
+            path: 'dorm-entry', 
+            element: <DormEntry/> 
+          },
+
+
+        ]
+      },
+
+      // reports
+
+      {
+        path: 'reports',
+        children: [
+
+          { 
+            path: 'invoice-printing', 
+            element: <InvoicePrinting/> 
+          },
+
+
+        ]
+      },
+
+      // search
+
+      {
+        path: 'search',
+        children: [
+
+          { 
+            path: 'enquiry', 
+            element: <SearchEnquiry/> 
+          },
+
+
+        ]
+      },
 
           // Fee Acounting
 
@@ -297,15 +354,20 @@ const StudentInfoFeeRoutes = [
 
 
             // setting
+            { 
+              path: 'setting', 
+              element: <Setting /> 
+            },
+
 
             {
               path: 'settings',
               children: [
 
-                { 
-                  path: 'setting', 
-                  element: <Setting /> 
-                },
+                // { 
+                //   path: 'setting', 
+                //   element: <Setting /> 
+                // },
 
                 { 
                   path: 'system-data', 
