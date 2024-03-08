@@ -7,7 +7,7 @@ import { useLocation, useNavigate } from 'react-router';
 import { useTheme } from '@mui/material/styles';
 
 // import Collapse if you want collapse menu  and below collpase component too
-import {  List, ListItemButton, ListItemIcon, ListItemText, Typography } from '@mui/material';
+import { Collapse ,List, ListItemButton, ListItemIcon, ListItemText, Typography } from '@mui/material';
 
 // project imports
 import NavItem from '../NavItem';
@@ -17,12 +17,7 @@ import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 
 // collapse menu icon
 
-// import { IconChevronDown, IconChevronUp } from '@tabler/icons';
-
-// new import for Tooltip
-import Tooltip from '@mui/material/Tooltip';
-import { IconChevronRight } from '@tabler/icons';
-
+import { IconChevronDown, IconChevronUp } from '@tabler/icons';
 import { urlStore } from 'views/navigation-for-pages/UrlStore';
 // ==============================|| SIDEBAR MENU LIST COLLAPSE ITEMS ||============================== //
 
@@ -138,16 +133,11 @@ if (menu.children) {
     />
   );
 
-  // Custom tooltip content for submenu hover
-  const tooltipContent = (
-    <List component="div" className='tooltip-menus' sx={{ backgroundColor: '#ffffff !important', }}>
-      {menus}
-    </List>
-  );
+
 
   return (
     <>
-      <Tooltip title={tooltipContent} placement="right"  >
+
         <ListItemButton
          className='menu-wrapper'
           sx={{
@@ -179,22 +169,20 @@ if (menu.children) {
 
           {/* icon for collapse menus */}
 
-          <IconChevronRight stroke={1.5} size="1rem" style={{ marginTop: 'auto', marginBottom: 'auto' }} />
-
-          {/* {open ? (
+          {open ? (
             <IconChevronUp stroke={1.5} size="1rem" style={{ marginTop: 'auto', marginBottom: 'auto' }} />
           ) : (
             <IconChevronDown stroke={1.5} size="1rem" style={{ marginTop: 'auto', marginBottom: 'auto' }} />
-          )} */}
+          )}
 
 
         </ListItemButton>
-      </Tooltip>
+
 
 
       {/* here is collapse menu */}
 
-      {/* <Collapse in={open} timeout="auto" unmountOnExit>
+      <Collapse in={open} timeout="auto" unmountOnExit>
         <List
           component="div"
           disablePadding
@@ -215,7 +203,7 @@ if (menu.children) {
         >
           {menus}
         </List>
-      </Collapse> */}
+      </Collapse>
 
     </>
   );

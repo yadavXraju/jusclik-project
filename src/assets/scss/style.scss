@@ -132,7 +132,11 @@
 
 // this is for drawer sidebar css
 
-@media screen and (min-width: 991px) {
+.submenutitle::after {
+  display: none;
+}
+
+@media screen and (min-width: 900px) {
   
   .menu-wrapper{
     padding: 7px;
@@ -230,6 +234,12 @@
 }
 
 
+}
+
+@media  (max-width:900px) {
+  .drawerOpen .menu-animation {
+    display: none;
+  }
 }
 
 

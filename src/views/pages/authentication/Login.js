@@ -37,7 +37,7 @@ const buttonStyles = {
   display: 'flex',
   height: '56px',
   fontFamily: 'plus Jakarta sans',
-  fontSize: '20px',
+  fontSize: '15px',
   textTransform: 'none',
   '&:hover': {
     backgroundColor: '#e64b4c',
@@ -169,7 +169,7 @@ export default function LoginPage() {
             borderRadius: '20px 0px 0px 20px'
           }}
         >
-          <Box>
+          <Box sx={{height:'450px'}}>
             <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', mb: 1 }}>
               <Typography
                 component="h1"
@@ -220,37 +220,36 @@ export default function LoginPage() {
                   onChange={(event) => setUserId(event.target.value)}
                 />
 
-<TextField
-  InputProps={{
-    style: { ...textFieldStyles, borderRadius: '50px' },
-    startAdornment: <InputAdornment position="start" style={{ paddingLeft: '10px' }} />,
-    endAdornment: (
-      <InputAdornment position="end">
-        <IconButton
-          aria-label="toggle password visibility"
-          onClick={() => setShowPassword(!showPassword)}
-          edge="end"
-          sx={{ color: '#364152b5', marginRight: '2px' }}
-        >
-          {showPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
-        </IconButton>
-      </InputAdornment>
-    )
-  }}
-  margin="normal"
-  variant="outlined"
-  required
-  fullWidth
-  name="password"
-  placeholder="Password"
-  type={showPassword ? 'text' : 'password'}
-  id="password"
-  autoComplete="current-password"
-  sx={textFieldStyles}
-  value={userPassword}
-  onChange={(event) => setUserPassword(event.target.value)}
-/>
-
+                <TextField
+                  InputProps={{
+                    style: { ...textFieldStyles, borderRadius: '50px' },
+                    startAdornment: <InputAdornment position="start" style={{ paddingLeft: '10px' }} />,
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <IconButton
+                          aria-label="toggle password visibility"
+                          onClick={() => setShowPassword(!showPassword)}
+                          edge="end"
+                          sx={{ color: '#364152b5', marginRight: '2px' }}
+                        >
+                          {showPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
+                        </IconButton>
+                      </InputAdornment>
+                    )
+                  }}
+                  margin="normal"
+                  variant="outlined"
+                  required
+                  fullWidth
+                  name="password"
+                  placeholder="Password"
+                  type={showPassword ? 'text' : 'password'}
+                  id="password"
+                  autoComplete="current-password"
+                  sx={textFieldStyles}
+                  value={userPassword}
+                  onChange={(event) => setUserPassword(event.target.value)}
+                />
 
                 <Grid item xs sx={{ cursor: 'pointer', display: 'flex', alignItems: 'center', mt: 2 }}>
                   <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flexStart' }}>
@@ -267,7 +266,7 @@ export default function LoginPage() {
               <MobileLogin />
             </CustomTabPanel>
 
-            <PoweredBySection sx={{ display: 'flex', position: 'absolute', bottom: '150px' }} />
+            <PoweredBySection  />
           </Box>
         </Grid>
       </Grid>
