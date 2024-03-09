@@ -1,8 +1,11 @@
 import React from 'react'
+import ReportTabs from './ReportTabs'
 
 const InvoicePrinting = () => {
   return (
-    <div>InvoicePrinting</div>
+    <>
+    <ReportTabs/>
+    </>
   )
 }
 
