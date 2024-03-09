@@ -37,14 +37,15 @@ export default function LoginPage() {
       setStep(2); // Move to the next step
       handleSelectAccountToggle(); // Open the SelectAccount dialog
     } else {
-      alert('Invalid OTP');
+      console.log('Enter Your OTP');
       // Handle invalid OTP, e.g., show an error message
     }
   };
+  
 
   const handleResendOtp = () => {
     // Logic for resending OTP
-    alert('Resend OTP');
+    alert('OTP Sent Successfully!');
   };
 
   const handleMobileNumberChange = (event) => {
@@ -95,14 +96,18 @@ export default function LoginPage() {
               sx={{ borderRadius: '50px', backgroundColor: '#ffffff', color: '#6b6666', mb: 2 }}
             />
           )}
-          {step > 0 && <Typography variant="subtitle1">Enter OTP code sent to +91 976xxxx78</Typography>}
+          {step > 0 && (
+            <Typography  sx={{ fontFamily: 'plus Jakarta sans',fontSize:'15px',color:'#878787', fontWeight:500 }}>
+              Enter OTP code sent to +91 9761xxxx78
+            </Typography>
+          )}
           {step > 0 && (
             <Grid container spacing={1}>
               {otp.map((digit, index) => (
                 <Grid item key={index}>
                   <TextField
                     InputProps={{
-                      style: { borderRadius: '5px', fontSize: '15px', fontFamily: 'plus Jakarta sans' }
+                      style: { borderRadius: '10px', fontSize: '15px', fontFamily: 'plus Jakarta sans' }
                     }}
                     margin="normal"
                     variant="outlined"
@@ -111,17 +116,20 @@ export default function LoginPage() {
                     value={digit}
                     onChange={(event) => handleOtpChange(index, event.target.value, event)}
                     onKeyDown={(event) => handleOtpChange(index, digit, event)}
-                    error={!/^[0-9]{1}$/.test(digit)}
+                    // error={!/^[0-9]{1}$/.test(digit)}
                     inputProps={{ maxLength: 1 }}
                     sx={{
                       backgroundColor: '#ffffff',
                       width: '56px',
                       color: '#6b6666',
                       fontSize: '15px',
+                      borderRadius: '10px',
                       fontFamily: 'plus Jakarta sans',
                       '& .MuiInputBase-input': {
                         textAlign: 'center', // Center the text within the input field
-                        cursor: 'text' // Ensure cursor appears in the center
+                        cursor: 'text', // Ensure cursor appears in the center
+                        fontSize:'15px',
+                        color:''
                       }
                     }}
                     inputRef={(input) => {
@@ -133,36 +141,43 @@ export default function LoginPage() {
             </Grid>
           )}
           <Grid item xs sx={{ cursor: 'pointer', display: 'block', alignItems: 'center', mt: 3 }}>
-            <Box sx={{ display: 'flex', alignItems: 'center' }}>
-              {step > 0 && <Typography>Didn’t receive OTP?</Typography>}
+            <Box sx={{ display: 'flex', alignItems: 'center', }}>
+              <Button
+                type="submit"
+                sx={{
+                  backgroundColor: '#fff',
+                  color: '#364152b5',
+                  borderRadius: '50px',
+                  border: '1px solid #c4c4c4',
+                  width: '170px',
+                  height: '56px',
+                  fontSize: '15px',
+                  fontFamily: 'plus Jakarta sans',
+                  '&:hover': {
+                    backgroundColor: '#e64b4c',
+                    color: '#fff'
+                  }
+                }}
+              >
+                {step === 0 ? 'Next' : 'Submit'}
+              </Button>
               {step > 0 && (
-                <Button
-                  sx={{ display: 'block', alignItems: 'center', justifyContent: 'flexStart', cursor: 'pointer' }}
+                <Typography
+                  sx={{
+                    color:'#E64B4C',
+                    fontSize:'15px',
+                    fontWeight:500,
+                    cursor: 'pointer',
+                    textTransform:'none',
+                    paddingLeft:'60px',
+                    fontFamily: 'plus Jakarta sans'
+                  }}
                   onClick={handleResendOtp}
                 >
                   Resend OTP
-                </Button>
+                </Typography>
               )}
             </Box>
-            <Button
-              type="submit"
-              sx={{
-                backgroundColor: '#fff',
-                color: '#364152b5',
-                borderRadius: '50px',
-                border: '1px solid #c4c4c4',
-                width: '170px',
-                height: '56px',
-                fontSize: '15px',
-                fontFamily: 'plus Jakarta sans',
-                '&:hover': {
-                  backgroundColor: '#e64b4c',
-                  color: '#fff'
-                }
-              }}
-            >
-              {step === 0 ? 'Next' : 'Submit'}
-            </Button>
             {/* Render the SelectAccount component only in step 2 */}
             {step === 2 && (
               <Grid item xs>

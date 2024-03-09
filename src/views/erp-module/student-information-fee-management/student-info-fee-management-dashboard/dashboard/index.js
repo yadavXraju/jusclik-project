@@ -40,7 +40,7 @@ const DashboardContent = ({ isLoading }) => {
          </Grid> */}
 
          {/* counter */}
-          <Grid item xs={12} lg={7} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
+          <Grid item xs={12} lg={12} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
             <Counter1 />
          </Grid>
 

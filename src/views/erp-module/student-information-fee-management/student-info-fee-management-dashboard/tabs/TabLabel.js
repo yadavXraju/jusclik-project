@@ -13,14 +13,14 @@ const TabLabel = ({ handleChange }) => {
             key={label.id}
             label={label.label}
             value={label.value}
-            sx={{
-              color: '#fff',
-              '&.Mui-selected': {
-                color: 'rgb(30, 136, 229)', // Change the color of the selected tab
-                background: '#fff'
-              },
+            // sx={{
+            //   color: '#fff',
+            //   '&.Mui-selected': {
+            //     color: 'rgb(30, 136, 229)', // Change the color of the selected tab
+            //     background: '#fff'
+            //   },
   
-            }}
+            // }}
           />
         ))}
       </TabList>
