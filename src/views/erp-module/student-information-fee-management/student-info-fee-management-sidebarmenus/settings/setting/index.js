@@ -1,33 +1,37 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 import Organisation from './Organisation'
 import ParamSearchBar from 'views/common-section/ParamSearchBar';
+import SettingData from './SettingData';
+import Typography from '@mui/material/Typography';
 
 const Setting = () => {
-  const [searchTerm,setSearchTerm]=useState("");
-
-  const handleSearch=(value)=>{
-          console.log(searchTerm);
-         setSearchTerm(value);
-  }
-
-  //  const searchData=[
-  //   {
-  //     "organizatioin":"abc",
-  //     "class":"2nd",
-  //     "fees":"50"
-  //   },
-  //   {
-  //     "organizatioin":"abc",
-  //     "class":"2nd",
-  //     "fees":"50"
-  //   }
-  //  ]
- 
-
+  const [searchTerm, setSearchTerm] = useState('');
+  const filterData = searchTerm.trim() !== '' ? SettingData.filter(item => {
+    if (item.title.toLowerCase().includes(searchTerm)) {
+      return true;
+    } else {
+      return item?.items.some(submenu =>
+        submenu.toLowerCase().includes(searchTerm)
+      );
+    }
+  }) : [];
+  
   return (
     <div>
-      <ParamSearchBar onChange={()=>handleSearch}/>
-      <Organisation/>
+      <ParamSearchBar onChange={(e) => setSearchTerm(e.target.value)} />
+      {
+        filterData.map((item, index) => {
+          return (
+            <React.Fragment key={index}>
+              <Typography>{item?.title}</Typography>
+              {item?.items.map((submenu, subIndex) =>
+                <Typography key={subIndex}>{submenu}</Typography>
+              )}
+            </React.Fragment>
+          );
+        })
+      }
+      <Organisation />
     </div>
   )
 }
