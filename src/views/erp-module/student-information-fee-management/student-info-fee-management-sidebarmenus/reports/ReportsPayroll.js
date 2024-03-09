@@ -9,11 +9,11 @@ import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
 import CreditCardOutlinedIcon from '@mui/icons-material/CreditCardOutlined';
 import GraphicEqOutlinedIcon from '@mui/icons-material/GraphicEqOutlined';
 import NaturePeopleOutlinedIcon from '@mui/icons-material/NaturePeopleOutlined';
-
+import {useNavigate} from 'react-router-dom';
 
 const ReportsPayroll = () => {
     const [favorites, setFavorites] = useState([]);
-    
+    const navigate=useNavigate();
     const sections = [
         {
             title: 'Overview',
@@ -68,8 +68,8 @@ const ReportsPayroll = () => {
             {favorites.length > 0 && (
                 <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
                     {favorites.map((page, index) => (
-                        <Typography key={index} sx={{ paddingRight: '10px', paddingBottom:'40px' }}>
-                            <a href={`#${page}`} style={{ textDecoration: 'none', textTransform: 'none', color:'#408dfb', paddingRight:'70px' }}>{page}</a>
+                        <Typography key={index} sx={{ paddingRight: '10px', paddingBottom:'40px' }} onClick={()=>navigate(`/erp/student-info-fee/reports/${path}`)}>
+                            <a  style={{ textDecoration: 'none', textTransform: 'none', color:'#408dfb', paddingRight:'70px' }}>{page}</a>
                         </Typography>
                     ))}
                 </Box>
@@ -89,7 +89,7 @@ const ReportsPayroll = () => {
                                     ) : (
                                         <StarBorderIcon onClick={() => toggleFavorite(page)} sx={{ color: '#f8cb01', paddingTop: '7px' }} />
                                     )}
-                                    <a href={`#${page}`} style={{ textDecoration: 'none', textTransform: 'none', color:'#408dfb'  }}>{page}</a>
+                                    <a href={`/erp/student-info-fee/reports/${page}`} style={{ textDecoration: 'none', textTransform: 'none', color:'#408dfb'  }}>{page}</a>
                                 </Typography>
                             ))}
                         </Box>
