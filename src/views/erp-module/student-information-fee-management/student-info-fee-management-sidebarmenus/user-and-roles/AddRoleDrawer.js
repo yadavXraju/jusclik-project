@@ -7,6 +7,7 @@ import AddRoleStepper from './AddRoleStepper';
 //import RoleAccess from './RoleAccess';
 
 const AddRoleDrawer = () => {
+  // ========= call custom hook for toggle drawer ==========
   const { anchor, toggleDrawer } = useDrawer();
 
 
@@ -23,7 +24,8 @@ const AddRoleDrawer = () => {
               Close
             </Button>
           </Box>
-          <Box pt={2}>
+          <Box pt={3}>
+            {/* ========== Render Drawer Contant ============ */}
           <AddRoleStepper/>
           </Box>
         </Box>
