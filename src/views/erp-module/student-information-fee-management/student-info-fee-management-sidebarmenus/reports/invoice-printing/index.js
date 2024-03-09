@@ -1,12 +1,11 @@
 import React from 'react'
-import ReportTabs from './ReportTabs'
 
-const InvoicePrinting = () => {
+const index = () => {
   return (
-    <>
-    <ReportTabs/>
-    </>
+    <div>
+      
+    </div>
   )
 }
 
-export default InvoicePrinting
+export default index
