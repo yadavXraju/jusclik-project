@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Card, Checkbox, List, ListItem, Typography } from '@mui/material';
+import { Box, Checkbox, List, ListItem, Paper, Typography } from '@mui/material';
 import { Container } from '@mui/system';
 
 function ParamChackboxSelectAll({ data, onSelect, heading }) {
@@ -38,21 +38,21 @@ function ParamChackboxSelectAll({ data, onSelect, heading }) {
   return (
     <>
       <Container>
-        <List sx={{ padding: 0 }}>
-          <ListItem sx={{ padding: 0 }}>
-            <Checkbox size="small" checked={Object.values(checkedItems).every((isChecked) => isChecked)} onChange={handleSelectAll} />
-            <Typography variant="body1">{heading}</Typography>
-          </ListItem>
-        </List>
-        <Card
+        <Paper elevation={1}
           sx={{
             width: { xs: '83vw', md: '100%' },
             overflow: { xs: 'scroll', md: 'hidden' },
-            border: '1px solid #ccc',
+            // border: '1px solid #ccc',
             borderRadius: '5px',
             padding: '10px'
           }}
         >
+          <List sx={{ padding: 0, borderBottom:'1px solid #ccc' }}>
+          <ListItem sx={{ padding: 0 }}>
+            <Checkbox size="small" checked={Object.values(checkedItems).every((isChecked) => isChecked)} onChange={handleSelectAll} />
+            <Typography variant="h4">{heading}</Typography>
+          </ListItem>
+        </List>
           <Box>
             {data.map((item) => (
               <List key={item.id} sx={{ padding: 0 }}>
@@ -74,7 +74,7 @@ function ParamChackboxSelectAll({ data, onSelect, heading }) {
               </List>
             ))}
           </Box>
-        </Card>
+        </Paper>
       </Container>
     </>
   );
