@@ -130,10 +130,10 @@ export default function LoginPage() {
     }
   };
 
-  const isMobile = useMediaQuery(theme.breakpoints.up('sm'));
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
   const tabStyles = {
-    width: isMobile ? '260px' : '180px',
+    width: isMobile ? '260px' : '200px',
     textTransform: 'none',
     fontSize: '15px',
     fontFamily: 'plus Jakarta sans'
@@ -183,11 +183,11 @@ export default function LoginPage() {
             alignItems: 'center',
             justifyContent: 'center',
             backgroundRepeat: 'no-repeat',
-            borderRadius: isMobile ? '20px 0px 0px 20px' : '20px 20px 0px 0px', 
+            borderRadius: isMobile ? '20px 0px 0px 20px' : '20px 20px 0px 0px',
             padding: isMobile ? '0px' : '0px 35px'
           }}
         >
-          <Box sx={{ height: '450px' }}>
+          <Box sx={{ height: '450px', width: isMobile ? '330px' : '500px' }}>
             <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', mb: 1 }}>
               <Typography
                 component="h1"
