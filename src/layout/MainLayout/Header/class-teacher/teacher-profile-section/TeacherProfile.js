@@ -1,4 +1,5 @@
-import User1 from 'assets/images/users/user-round.svg';
+// import User1 from 'assets/images/users/user-round.svg';
+import User1 from 'assets/images/Avatar-images/IMG_07.png';
 
 // static profile Details
 

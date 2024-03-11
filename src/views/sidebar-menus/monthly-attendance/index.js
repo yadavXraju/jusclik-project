@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Divider, Typography, ListItem, ListItemText, Paper, Grid, Avatar, ListItemAvatar, useMediaQuery } from '@mui/material';
 import dayjs from 'dayjs';
-import AvtarImg from '../../../assets/images/avatar.png';
+// import AvtarImg from '../../../assets/images/avatar.png';
 import { useTheme } from '@emotion/react';
 import { ClassList } from '../attendance-entry/ClassList';
 import { SectionList } from '../attendance-entry/SectionList';
@@ -275,7 +275,7 @@ export default function AttendanceEntry() {
                         {student.admnNo}
                       </Typography>
                       <ListItemAvatar>
-                        <Avatar src={AvtarImg} sx={{ width: 40, height: 40 }} />
+                        <Avatar src={student.avatar} sx={{ width: 40, height: 40, background:'none' }} />
                       </ListItemAvatar>
                       <Typography sx={{ flex: '0 0 40%' }} variant="h5">
                         {student.name}

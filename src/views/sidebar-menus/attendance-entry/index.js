@@ -12,7 +12,7 @@ import {
   Avatar,
   useMediaQuery
 } from '@mui/material';
-import AvtarImg from '../../../assets/images/avatar.png';
+// import AvtarImg from '../../../assets/images/avatar.png';
 import { ClassList } from './ClassList';
 import { SectionList } from './SectionList';
 import { StudentList } from './StudentList';
@@ -218,7 +218,7 @@ export default function AttendanceEntry() {
                 </ListItemText>
 
                 <ListItemAvatar sx={{ flex: '0 0 3%' }}>
-                  <Avatar src={AvtarImg} sx={{ width: 50, height: 50 }} />
+                  <Avatar src={student.avatar} sx={{ width: 50, height: 50, background:'none' }} />
                 </ListItemAvatar>
 
                 <ListItemText sx={{ paddingLeft: '10px', flex: isMobile?'0 0 60%' : '0 0 32%' }}>

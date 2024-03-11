@@ -12,9 +12,10 @@ import Badge from '@mui/material/Badge';
 import { useNavigate } from 'react-router';
 import Image1 from '../../../../assets/images/Avatar-images/IMG_01.png';
 import Image2 from '../../../../assets/images/Avatar-images/IMG_02.png';
-import Image3 from '../../../../assets/images/Avatar-images/IMG_04.png';
-import Image4 from '../../../../assets/images/Avatar-images/IMG_05.png';
-import Image5 from '../../../../assets/images/Avatar-images/IMG_06.png';
+import Image3 from '../../../../assets/images/Avatar-images/IMG_03.png';
+import Image4 from '../../../../assets/images/Avatar-images/IMG_04.png';
+import Image5 from '../../../../assets/images/Avatar-images/IMG_05.png';
+
 
 export const commonStyles = {
   bgcolor: 'background.paper',
