@@ -8,6 +8,7 @@ import SelectList from 'views/common-section/ParamSelectList';
 import { useState } from 'react';
 
 const InviteUserDrawer = () => {
+  // ========= call custom hook for toggle drawer ==========
   const { anchor, toggleDrawer } = useDrawer();
 
   const [role, setrole] = useState('');
@@ -31,6 +32,7 @@ const InviteUserDrawer = () => {
             </Button>
           </Box>
           <Box>
+            {/* ========== Render Drawer Contant Form ============ */}
           <form>
           <Box sx={{ padding: 2 }}>
             <Box pb={2}>

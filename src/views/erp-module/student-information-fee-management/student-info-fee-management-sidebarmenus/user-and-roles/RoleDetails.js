@@ -32,6 +32,7 @@ console.log(UserDetailsData);
 function RoleDetails() {
   return (
     <>
+    {/* ============== Role details tables ========== */}
     <Box sx={{display:'flex', justifyContent:'end'}}>
       <AddRoleDrawer/>
       </Box>

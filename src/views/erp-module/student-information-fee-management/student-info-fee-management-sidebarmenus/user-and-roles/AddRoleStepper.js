@@ -11,9 +11,10 @@ import RoleAuthorisation from './Role-Authorisation/RoleAuthorisation';
 import { makeStyles } from "@mui/styles";
 
 
-const steps = ['MODULES', 'PRIVILEGES', 'AUTHORISATION'];
-const components = [RoleAccess, RolePrivileges, RoleAuthorisation];
+const steps = ['MODULES', 'AUTHORISATION', 'PREFRENCES'];
+const components = [RoleAccess, RoleAuthorisation, RolePrivileges];
 
+// =========== Style for Decrease font size for mobile responsive ==========
 const useStyles = makeStyles((theme) => ({
   customLabelStyle: {
     fontSize: '11px', // Default font size
@@ -32,6 +33,7 @@ export default function AddRoleStepper() {
     return skipped.has(step);
   };
 
+  // ============= handle Next button ===========
   const handleNext = () => {
     let newSkipped = skipped;
     if (isStepSkipped(activeStep)) {
@@ -43,14 +45,17 @@ export default function AddRoleStepper() {
     setSkipped(newSkipped);
   };
 
+  // ============= handle Back button ===========
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
+  // ============= handle Reset button ===========
   const handleReset = () => {
     setActiveStep(0);
   };
 
+  // ============= handle Finish button ===========
   const handleFinish = () => {
     setActiveStep(steps.length);
   };
@@ -63,11 +68,9 @@ export default function AddRoleStepper() {
         <Stepper sx={{ width: { xs: '100%', md: '50%' } }} activeStep={activeStep}>
           {steps.map((label, index) => {
             const stepProps = {};
-            const labelProps = {};
             if (isStepSkipped(index)) {
               stepProps.completed = false;
             }
-            labelProps.sx = { fontSize: '0.5rem' };
             return (
               
                 <Step key={label} {...stepProps}>

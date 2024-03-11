@@ -22,6 +22,7 @@ function RoleAccess() {
     { id: '8', details: { moduleName: 'Medical', chacked: true } }
   ];
 
+  // ========== Function For Giving Full Access  =========
   const handleFullAccessChange = (moduleId, checked) => {
     const updatedModuleAccess = { ...moduleAccess };
     updatedModuleAccess[moduleId] = {
@@ -35,6 +36,7 @@ function RoleAccess() {
     setModuleAccess(updatedModuleAccess);
   };
 
+  // ========== function for handle every chackbox change ==========
   const handleCheckboxChange = (moduleId, key, checked) => {
     const updatedModuleAccess = { ...moduleAccess };
     updatedModuleAccess[moduleId] = { ...updatedModuleAccess[moduleId], [key]: checked };
