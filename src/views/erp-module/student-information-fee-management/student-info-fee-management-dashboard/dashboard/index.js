@@ -8,6 +8,7 @@ import BoyStrength from './counter/boys-strength/BoysStrength';
 import GirlStrength from './counter/girls-strength/GirlsStrength';
 import SmsBalance from './counter/sms-balance/SmsBalance';
 import InvoiceRaised from './invoice-raised';
+import FeeCollection from './fee-collection';
 
 
 const DashboardContent = ({ isLoading }) => {
@@ -16,30 +17,7 @@ const DashboardContent = ({ isLoading }) => {
       <Grid item xs={12}>
         <Grid container spacing={gridSpacing} sx={{padding:'24px'}}>
 
-        {/* Welcome message , today visitor , total visitor */}
-        {/* <Grid item lg={8} md={12} sm={12} xs={12} spacing={gridSpacing}>
-                    <Grid
-                      spacing={gridSpacing}
-                      sx={{
-                        backgroundColor: '#fff',
-                        border: '1px solid rgb(227 227 227)',
-                        borderRadius: '7px',
-                        px: 4,
-                        py: 3,
-                      }}
-                    >
-                      <WelcomeTotalVisitor  isLoading={isLoading} />
-                    </Grid>
-        </Grid> */}
 
-         {/* Profile comp */}
-         {/* <Grid item lg={4} md={12} sm={12} xs={12}>
-            <Grid container spacing={gridSpacing}>
-              <Grid item sm={12} xs={12} md={12} lg={12}>
-                <VisitorProfile />
-              </Grid>
-            </Grid>
-         </Grid> */}
 
          {/* counter */}
           <Grid item xs={12} lg={12} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' , display:'flex' , gap:'40px' , padding:'24px'} }}>
@@ -50,13 +28,18 @@ const DashboardContent = ({ isLoading }) => {
          </Grid>
 
          
-         {/* Student Strength chart */}
+         {/* invoice raised */}
          <Grid item xs={12} lg={7} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
             <InvoiceRaised />
          </Grid>
 
+         {/* fee collection */}
+         <Grid item xs={12} lg={5}  md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
+              <FeeCollection/> 
+          </Grid>
+
            {/* fee defaulter */}
-          <Grid item xs={12} lg={5}  md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
+           <Grid item xs={12} lg={7} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
               <FeeDefaulter isLoading={isLoading} /> 
           </Grid>
 

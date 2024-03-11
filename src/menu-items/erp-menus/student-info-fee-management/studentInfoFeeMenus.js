@@ -486,6 +486,15 @@ const StudentInfoFeeMenu = {
               breadcrumbs: false
             },
            
+                // visitor reg
+                {
+                  id: 'visitor-registration',
+                  title: 'Visitor Registration',
+                  type: 'item',
+                  url: '/visitor-registration',
+                  icon: AdminPanelSettingsTwoToneIcon,
+                  breadcrumbs: false
+                },
  
 
     ]
