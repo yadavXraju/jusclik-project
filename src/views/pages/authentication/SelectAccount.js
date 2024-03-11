@@ -3,75 +3,124 @@ import Button from '@mui/material/Button';
 import BootstrapDialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
-import DialogActions from '@mui/material/DialogActions';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
-import KeyboardArrowRightOutlinedIcon from '@mui/icons-material/KeyboardArrowRightOutlined';
-import { Typography, ListItem, Divider, Avatar, ListItemAvatar, List, ListItemText, ListItemIcon } from '@mui/material';
+import ArrowRightAltOutlinedIcon from '@mui/icons-material/ArrowRightAltOutlined';
+import DefaultAvatar from '../../../assets/images/defaultAvatar.png'
+import { Typography, ListItem, Divider, ListItemAvatar, List, ListItemText, ListItemIcon, Avatar,useMediaQuery, useTheme } from '@mui/material';
+import { useNavigate } from 'react-router';
+
 
 const SelectAccount = ({ open, onClose }) => {
+  const theme = useTheme(); // Accessing theme object using useTheme hook
+
+  const isMobile = useMediaQuery(theme.breakpoints.up('sm'));
   const handleClose = () => {
     onClose(false);
   };
 
+  const navigate = useNavigate();
+
+  const handleItemClick = (path) => {
+    navigate(path);
+    handleClose();
+  };
+
+  // Define common styles
+const styles = {
+  dialogTitle: {
+    // p: 2,
+    textAlign: 'center',
+    backgroundColor: '#E64B4C',
+    borderRadius: '50px',
+    color: '#ffffff',
+    fontFamily: 'plus Jakarta sans',
+    fontSize:isMobile? '25px':'18px',
+    fontWeight: 500
+  },
+  closeButton: {
+    position: 'absolute',
+    right: 8,
+    top: 8,
+    color: (theme) => theme.palette.grey[500]
+  },
+  listItemText: {
+    color: '#9c9c9c',
+    fontSize: '13px',
+    fontFamily: 'plus Jakarta sans'
+  },
+  button: {
+    color: '#E64B4C',
+    fontFamily: 'plus Jakarta sans',
+    fontSize: '12px',
+    fontWeight: 500,
+    padding:'10px',
+    justifyContent:'end'
+  },
+  listItem: {
+    cursor: 'pointer',
+    display: 'flex',
+    alignItems: 'center'
+  }
+};
+
+
   return (
     <React.Fragment>
-      <BootstrapDialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
-        <DialogTitle sx={{ m: 0, p: 2 }} id="customized-dialog-title">
-          Select your account
+      <BootstrapDialog
+        onClose={handleClose}
+        aria-labelledby="customized-dialog-title"
+        open={open}
+        PaperProps={{
+          style: {
+            borderRadius: '31px'
+          }
+        }}
+      >
+        <DialogTitle sx={styles.dialogTitle} id="customized-dialog-title">
+          Choose Profile
         </DialogTitle>
-        <IconButton
-          aria-label="close"
-          onClick={handleClose}
-          sx={{
-            position: 'absolute',
-            right: 8,
-            top: 8,
-            color: (theme) => theme.palette.grey[500]
-          }}
-        >
+        <IconButton aria-label="close" onClick={handleClose} sx={styles.closeButton}>
           <CloseIcon />
         </IconButton>
-        <DialogContent dividers>
-          <List sx={{ width: '100%', maxWidth: 400, bgcolor: 'background.paper' }}>
+        <DialogContent>
+          <List sx={{ width: '100%', minWidth: 350, bgcolor: 'background.paper' }}>
             {[
-              { id: 1, name: 'Hrm Global School' },
-              { id: 2, name: 'Green Crescent Public School' },
-              { id: 3, name: 'DPS Knowledge Park - V' }
+              { id: 1, name: 'Anurag Singh', description: 'SSPL', loginId: 'Shau1819', path: '/parent/dashboard' },
+              { id: 2, name: 'Tamanna Bhatia', description: 'SSPL', loginId: 'Shau1819', path: '/class-teacher/dashboard' },
+              { id: 3, name: 'Jaspreet Singh', description: 'SSPL', loginId: 'Shau1819', path: '/erp/visitor/dashboard' }
             ].map((item) => (
               <React.Fragment key={item.id}>
-                <ListItem sx={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
+                <ListItem sx={styles.listItem} onClick={() => handleItemClick(item.path)}>
                   <ListItemAvatar>
-                    <Avatar />
+                    <Avatar src={DefaultAvatar} sx={{height:'50px',width:'50px'}}/>
                   </ListItemAvatar>
                   <ListItemText
+                    sx={{paddingLeft:'10px'}}
                     primary={item.name}
                     secondary={
                       <React.Fragment>
-                        <Typography sx={{ display: 'inline' }} component="span" variant="body2" color="text.primary">
-                          SSPL
-                        </Typography>{' '}
-                        <br />
-                        <Typography sx={{ display: 'inline' }} component="span" variant="body2" color="text.primary">
-                          Login ID: Shau1819
+                        <Typography variant="body2" sx={styles.listItemText}>
+                          {item.description}
+                        </Typography>
+                        <Typography variant="body2" sx={styles.listItemText}>
+                          Login ID: {item.loginId}
                         </Typography>
                       </React.Fragment>
                     }
                   />
-                  <ListItemIcon sx={{ flexDirection: 'row-reverse' }}>
-                    <KeyboardArrowRightOutlinedIcon />
-                  </ListItemIcon>
                 </ListItem>
-                <Divider variant="inset" component="li" />
+                <Divider variant="inset" component="li" sx={{borderStyle:'dashed'}}/>
               </React.Fragment>
             ))}
           </List>
         </DialogContent>
-        <DialogActions>
-          <Button autoFocus onClick={handleClose}>
-            Select
-          </Button>
-        </DialogActions>
+        <Button autoFocus onClick={handleClose} sx={styles.button}>
+          Done
+          <ListItemIcon sx={styles.button}>
+            <ArrowRightAltOutlinedIcon />
+          </ListItemIcon>
+        </Button>
       </BootstrapDialog>
     </React.Fragment>
   );
