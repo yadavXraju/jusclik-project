@@ -8,24 +8,6 @@ import useDrawer from 'hooks/useDrawer';
 import DrawerContent from './EnquiryDrawer';
 import ReportTable from '../report-table';
 
-const tableHeadings = [
-    { id: 'enqNo', field: 'Enq No', headerName: "Enq NO", editable: true },
-    { id: 'enqDate', field: 'Enq Date', headerName: "Enq Date", editable: true },
-    { id: 'studentName', field: 'Student Name', headerName: "Student Name", editable: true },
-    { id: 'class', field: 'Class', headerName: "Last Name", editable: true },
-    { id: 'section', field: 'Section', headerName: "Section", editable: true },
-    { id: 'classSection', field: 'Class Section', headerName: 'classSection', editable: true },
-    { id: 'gender', field: 'Gender', headerName: 'classSection', editable: true },
-    { id: 'birthDate', field: 'Birth Date', headerName: 'classSection', editable: true },
-    { id: 'age', field: 'Age (Today)', headerName: 'classSection', editable: true },
-    { id: 'address', field: 'Address (Complete)', headerName: 'classSection', editable: true },
-    { id: 'commPhone', field: 'Comm Phone (M)', headerName: 'classSection', editable: true },
-    { id: 'commEmail', field: 'Comm Email', headerName: 'classSection', editable: true },
-    { id: 'joinClass', field: 'Join Class', headerName: 'classSection', editable: true },
-    { id: 'concessionCategory', field: 'Concession Category', headerName: 'classSection', editable: true },
-    { id: 'fatherName', field: 'Father Name', headerName: 'classSection', editable: true },
-    { id: 'motherName', field: 'Mother Name', headerName: 'classSection', editable: true },
-];
 
 const studentData = [
     {
