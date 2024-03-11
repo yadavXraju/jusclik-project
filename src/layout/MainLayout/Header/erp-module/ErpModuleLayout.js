@@ -26,7 +26,7 @@ const ErpModuleLayout = () => {
     localStorage.setItem('userRole', role);
     // Navigate to the specified URL
     navigate(url);
-    window.location.reload()
+    // window.location.reload()
   };
 
   return (

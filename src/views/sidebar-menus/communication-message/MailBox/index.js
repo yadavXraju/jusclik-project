@@ -5,7 +5,7 @@ import {
   List,
   ListItem,
   ListItemAvatar,
-  Avatar,
+  // Avatar,
   ListItemIcon,
   ListItemText,
   Divider,
@@ -19,7 +19,7 @@ import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
 import MailCompose from './MailCompose';
 import { styled } from '@mui/system';
 import { useNavigate, useLocation } from 'react-router';
-import AvtarImg from '../../../../assets/images/avatar.png';
+// import AvtarImg from '../../../../assets/images/avatar.png';
 import InboxHeader from './InboxHeader';
 import initialData from './InboxNameList';
 
@@ -264,7 +264,7 @@ const GmailInboxTemplate = () => {
                       >
                         {/* User Avatar */}
                         <ListItemAvatar onClick={(event) => event.stopPropagation()}>
-                          <Avatar alt="User Avatar" src={AvtarImg} />
+                        <img src={item.avatar} style={{ width: 50, height: 50 }} alt="Avatar" />
                         </ListItemAvatar>
                         {/* Star Icon */}
                         <ListItemIcon
@@ -285,7 +285,7 @@ const GmailInboxTemplate = () => {
                           secondaryTypographyProps={{ variant: 'body2', fontSize: '14px' }}
                         />
                         {/* Timestamp */}
-                        <Typography variant="subtitle2" color="textSecondary" onClick={(event) => event.stopPropagation()}>
+                        <Typography variant="subtitle2" color="textSecondary" paddingRight='10px' onClick={(event) => event.stopPropagation()}>
                           {getCurrentDateTime()}
                         </Typography>
                       </ListItem>

@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { Box, Button, Grid, TextField, InputAdornment, Typography } from '@mui/material';
+import { Box, Button, Grid, TextField, InputAdornment, MenuItem, Select, Typography, useMediaQuery, useTheme } from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import SelectAccount from './SelectAccount';
 
@@ -11,12 +11,29 @@ const defaultTheme = createTheme({
   }
 });
 
+function CountrySelect({ country, handleCountryChange }) {
+  return (
+    <Select value={country} onChange={handleCountryChange} variant="standard" sx={{ borderBottom: 'none' }}>
+      <MenuItem selected value="India">
+        IN (+91)
+      </MenuItem>
+      <MenuItem value="Dubai">UAE (+971)</MenuItem>
+      <MenuItem value="USA">USA (+1)</MenuItem>
+    </Select>
+  );
+}
+
 export default function LoginPage() {
   const [mobileNumber, setMobileNumber] = useState('');
   const [selectAccountOpen, setSelectAccountOpen] = useState(false);
   const [otp, setOtp] = useState(['', '', '', '']);
   const [step, setStep] = useState(0);
   const otpInputsRef = useRef(Array(4).fill(null));
+  const [mobileError, setMobileError] = useState(false);
+  const [country, setCountry] = React.useState('India');
+  const handleCountryChange = (event) => {
+    setCountry(event.target.value);
+  };
 
   const handleSelectAccountToggle = () => {
     setSelectAccountOpen(!selectAccountOpen);
@@ -24,8 +41,17 @@ export default function LoginPage() {
 
   const handleMobileSubmit = (event) => {
     event.preventDefault(); // Prevent form submission
-    console.log(`Submitted Mobile Number: ${mobileNumber}`);
-    setStep(1); // Move to the next step
+    if (mobileNumber.length === 10) {
+      console.log(`Submitted Mobile Number: ${mobileNumber}`);
+      setStep(1); // Move to the next step
+    } else {
+      setMobileError(true); // Show error if mobile number is not 10 digits
+    }
+  };
+
+  const handleResendOtp = () => {
+    // Logic for resending OTP
+    alert('OTP Sent Successfully!');
   };
 
   const handleSubmit = (event) => {
@@ -41,18 +67,15 @@ export default function LoginPage() {
       // Handle invalid OTP, e.g., show an error message
     }
   };
-  
 
-  const handleResendOtp = () => {
-    // Logic for resending OTP
-    alert('OTP Sent Successfully!');
-  };
-
+  // Function to handle changing mobile number
   const handleMobileNumberChange = (event) => {
-    const input = event.target.value.replace(/\D/g, '').slice(0, 10);
+    const input = event.target.value.replace(/\D/g, '').slice(0, 10); // Remove non-digit characters and limit to 10 digits
     setMobileNumber(input);
+    setMobileError(false); // Reset mobile number error
   };
 
+  // Function to handle changing OTP input
   const handleOtpChange = (index, value, e) => {
     // If the backspace key is pressed and the field is empty, move focus to the previous input field
     if (e.keyCode === 8 && value === '') {
@@ -72,32 +95,45 @@ export default function LoginPage() {
     }
   };
 
+  const theme = useTheme(); // Accessing theme object using useTheme hook
+
+  const isMobile = useMediaQuery(theme.breakpoints.up('sm'));
+
   return (
     <ThemeProvider theme={defaultTheme}>
       <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'left' }}>
         <Box component="form" noValidate onSubmit={step === 0 ? handleMobileSubmit : handleSubmit}>
           {step === 0 && (
-            <TextField
-              InputProps={{
-                style: { borderRadius: '50px', fontSize: '15px', fontFamily: 'plus Jakarta sans' },
-                startAdornment: <InputAdornment position="start" style={{ width: '10px' }} />
-              }}
-              margin="normal"
-              variant="outlined"
-              required
-              fullWidth
-              id="Mobilenumber"
-              placeholder="Mobile Number"
-              name="Mobilenumber"
-              autoComplete="Mobilenumber"
-              value={mobileNumber}
-              onChange={handleMobileNumberChange}
-              autoFocus={step === 0}
-              sx={{ borderRadius: '50px', backgroundColor: '#ffffff', color: '#6b6666', mb: 2 }}
-            />
+            <Box>
+              <TextField
+                InputProps={{
+                  disableUnderline: true,
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <CountrySelect country={country} handleCountryChange={handleCountryChange} />
+                    </InputAdornment>
+                  ),
+                  style: { borderRadius: '50px', fontSize: '15px', fontFamily: 'plus Jakarta sans', backgroundColor: '#ffffff' }
+                }}
+                margin="normal"
+                variant="outlined"
+                required
+                fullWidth
+                error={mobileError} // Set error state
+                id="Mobilenumber"
+                helperText={mobileError ? 'Mobile number must be 10 digits' : 'Enter your registered mobile number'} // Error message
+                placeholder="Mobile Number"
+                name="Mobilenumber"
+                autoComplete="Mobilenumber"
+                value={mobileNumber}
+                onChange={handleMobileNumberChange}
+                autoFocus={step === 0}
+                sx={{ borderRadius: '50px', color: '#6b6666', mb: isMobile ? 2 : 1 }}
+              />
+            </Box>
           )}
           {step > 0 && (
-            <Typography  sx={{ fontFamily: 'plus Jakarta sans',fontSize:'15px',color:'#878787', fontWeight:500 }}>
+            <Typography sx={{ fontFamily: 'plus Jakarta sans', fontSize: '15px', color: '#878787', fontWeight: 500 }}>
               Enter OTP code sent to +91 9761xxxx78
             </Typography>
           )}
@@ -128,8 +164,8 @@ export default function LoginPage() {
                       '& .MuiInputBase-input': {
                         textAlign: 'center', // Center the text within the input field
                         cursor: 'text', // Ensure cursor appears in the center
-                        fontSize:'15px',
-                        color:''
+                        fontSize: '15px',
+                        color: ''
                       }
                     }}
                     inputRef={(input) => {
@@ -141,7 +177,7 @@ export default function LoginPage() {
             </Grid>
           )}
           <Grid item xs sx={{ cursor: 'pointer', display: 'block', alignItems: 'center', mt: 3 }}>
-            <Box sx={{ display: 'flex', alignItems: 'center', }}>
+            <Box sx={{ display: 'flex', alignItems: 'center' }}>
               <Button
                 type="submit"
                 sx={{
@@ -149,7 +185,7 @@ export default function LoginPage() {
                   color: '#364152b5',
                   borderRadius: '50px',
                   border: '1px solid #c4c4c4',
-                  width: '170px',
+                  width: isMobile ? '170px' : '130px',
                   height: '56px',
                   fontSize: '15px',
                   fontFamily: 'plus Jakarta sans',
@@ -164,12 +200,12 @@ export default function LoginPage() {
               {step > 0 && (
                 <Typography
                   sx={{
-                    color:'#E64B4C',
-                    fontSize:'15px',
-                    fontWeight:500,
+                    color: '#E64B4C',
+                    fontSize: '15px',
+                    fontWeight: 500,
                     cursor: 'pointer',
-                    textTransform:'none',
-                    paddingLeft:'60px',
+                    textTransform: 'none',
+                    paddingLeft: isMobile?'60px':'30px',
                     fontFamily: 'plus Jakarta sans'
                   }}
                   onClick={handleResendOtp}

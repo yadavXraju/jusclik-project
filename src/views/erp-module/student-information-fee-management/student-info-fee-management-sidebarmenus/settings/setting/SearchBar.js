@@ -1,85 +1,42 @@
-import React, { useState } from 'react';
-import { styled, alpha } from '@mui/material/styles';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import InputBase from '@mui/material/InputBase';
+import React from 'react';
+import { Paper, InputBase, IconButton } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 
-const Search = styled('div')(({ theme }) => ({
-  position: 'relative',
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
-  '&:hover': {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
-  },
-  marginLeft: 0,
-  width: '100%',
-  [theme.breakpoints.up('sm')]: {
-    marginLeft: theme.spacing(1),
-    width: 'auto',
-  },
-}));
-
-const SearchIconWrapper = styled('div')(({ theme }) => ({
-  padding: theme.spacing(0, 2),
-  height: '100%',
-  position: 'absolute',
-  pointerEvents: 'none',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-}));
-
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: 'inherit',
-  width: '100%',
-  '& .MuiInputBase-input': {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create('width'),
-    [theme.breakpoints.up('sm')]: {
-      width: '12ch',
-      '&:focus': {
-        width: '20ch',
-      },
-    },
-  },
-}));
-
-const SearchAppBar = ({ onSearch }) => {
-  const [searchText, setSearchText] = useState('');
-
-  const handleSearch = () => {
-    onSearch(searchText);
+const SearchBar = ({onChange}) => {
+  const paperStyle = {
+    width:"75%",
+    padding: '2px 4px',
+    display: 'flex',
+    alignItems: 'center',
+    margin: 'auto',
+    border:'1px solid #eef2f6',
+    borderRadius:"none",
+    paddingTop:"5px",
+    
   };
 
-  const handleChange = (event) => {
-    setSearchText(event.target.value);
+  const inputStyle = {
+    marginLeft: '8px', // Adjust as needed
+    flex: 1,
+  };
+
+  const iconButtonStyle = {
+    padding: '10px', // Adjust as needed
   };
 
   return (
-    <AppBar position="static">
-      <Toolbar>
-        <Search>
-          <SearchIconWrapper>
-            <SearchIcon />
-          </SearchIconWrapper>
-          <StyledInputBase
-            placeholder="Search…"
-            inputProps={{ 'aria-label': 'search' }}
-            value={searchText}
-            onChange={handleChange}
-            onKeyPress={(event) => {
-              if (event.key === 'Enter') {
-                handleSearch();
-              }
-            }}
-          />
-        </Search>
-      </Toolbar>
-    </AppBar>
+    <Paper component="form" sx={paperStyle}>
+      <IconButton sx={iconButtonStyle} aria-label="search">
+        <SearchIcon />
+      </IconButton>
+      <InputBase
+        sx={inputStyle}
+        placeholder="Search..."
+        inputProps={{ 'aria-label': 'search' }}
+        onChange={onChange}
+      />
+    </Paper>
   );
 };
 
-export default SearchAppBar;
+export default SearchBar;
