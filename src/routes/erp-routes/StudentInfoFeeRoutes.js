@@ -77,6 +77,8 @@ const Reports = Loadable(lazy(() => import('views/erp-module/student-information
 // const InvoicePrinting = Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/reports/invoice-printing')));
 const EnquiryReport =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/reports/enquiry')));
 
+const EnquiryRegister =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/reports/register')));
+
 // search
 const SearchEnquiry= Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/search/enquiry')));
 
@@ -288,7 +290,13 @@ const StudentInfoFeeRoutes = [
           {
           path:'enquiry',
           element:<EnquiryReport />
-          }
+          },
+
+          {
+            path:'register',
+            element:<EnquiryRegister />
+            }
+
          ]
        },
 
