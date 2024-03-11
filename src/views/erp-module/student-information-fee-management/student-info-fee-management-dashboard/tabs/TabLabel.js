@@ -13,6 +13,7 @@ const TabLabel = ({ handleChange }) => {
             key={label.id}
             label={label.label}
             value={label.value}
+            icon={label.icon}
             // sx={{
             //   color: '#fff',
             //   '&.Mui-selected': {
