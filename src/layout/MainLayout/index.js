@@ -12,7 +12,9 @@ import Breadcrumbs from 'ui-component/extended/Breadcrumbs';
 import Header from './Header';
 import Sidebar from './Sidebar';
 import Customization from '../Customization';
-import navigation from 'menu-items';
+// import navigation from 'menu-items';
+import { getMenuItems } from 'menu-items';
+
 import { drawerWidth } from 'store/constant';
 import { SET_MENU } from 'store/actions';
 
@@ -109,7 +111,7 @@ const MainLayout = () => {
       {/* <Main theme={theme} open={!leftDrawerOpened}> */}
 
         {/* breadcrumb */}
-        <Breadcrumbs separator={IconChevronRight} navigation={navigation} icon title rightAlign />
+        <Breadcrumbs separator={IconChevronRight} navigation={getMenuItems} icon title rightAlign />
         {/* url page */}
         {location.pathname !== '/parent/dashboard' && location.pathname !== '/class-teacher/dashboard'  && location.pathname !== '/subject-teacher/dashboard' && location.pathname !== '/erp/visitor/dashboard' && location.pathname !== '/erp/student-info-fee/dashboard' && <UrlPage />}
 

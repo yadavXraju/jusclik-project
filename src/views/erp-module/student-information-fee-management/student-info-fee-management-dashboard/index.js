@@ -5,6 +5,7 @@ import TabPanel from '@mui/lab/TabPanel';
 import TabLabel from './tabs/TabLabel';
 import DashboardContent from './dashboard';
 import DashboardPayRoll from 'views/common-section/dashboard-payroll';
+import PhoneIcon from '@mui/icons-material/Phone';
 
 
 
@@ -32,7 +33,7 @@ const Dashboard =()=> {
               <TabLabel handleChange={handleChange}/>
             </Box>
           </Paper>
-            <TabPanel value="1"><DashboardContent/></TabPanel>
+            <TabPanel  icon={<PhoneIcon />} value="1"><DashboardContent/></TabPanel>
             <TabPanel value="2"><DashboardPayRoll /> </TabPanel>
             <TabPanel value="3"></TabPanel>
             <TabPanel value="4"></TabPanel>
