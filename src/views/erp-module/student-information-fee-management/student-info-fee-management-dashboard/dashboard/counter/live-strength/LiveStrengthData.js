@@ -1,6 +1,6 @@
 import CheckOutlinedIcon from '@mui/icons-material/CheckOutlined';
 
-const Counter1Data = [
+const LiveStrengthData = [
     {
         counterTitle: 'LIVE STRENGTH',
         CounterNumber: '99',
@@ -8,4 +8,4 @@ const Counter1Data = [
     }
 ];
 
-export default Counter1Data;
+export default LiveStrengthData;

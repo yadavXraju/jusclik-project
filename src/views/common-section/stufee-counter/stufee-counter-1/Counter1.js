@@ -1,17 +1,21 @@
 import React from 'react';
 import { Grid, Box, Typography ,} from '@mui/material';
-import Counter1Data from './Counter1Data';
 
 
-const Counter1 = () => {
+
+const Counter1 = ( {Counter1Data } ) => {
     return (
-        <Grid container spacing={2}>
+        <Grid container spacing={2} 
+         sx={{background:'#fff', borderRadius:'10px' ,
+        //  boxShadow:'rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px' ,
+        }}
+         >
             {Counter1Data.map((item, index) => 
-                <Grid item xs={12} lg={3} md={6} key={index} sx={{background:'#fff', borderRadius:'10px' ,boxShadow:'rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px' ,}} >
+                <Grid key={index} >
                     
                     <Box sx={{display:'flex', alignItems:'center' , gap:'20px' , padding:'16px' }}>
-                        <Box sx={{background:'rgb(94, 53, 177)' , padding:'10px' , borderRadius:'50%'}}>
-                         {<item.icon sx={{fontSize:'40px' , color:'#fff'}} />} {/* Render the icon component */}
+                        <Box sx={{background:'rgb(94, 53, 177)' , padding:'8px' , borderRadius:'10px'}}>
+                         {<item.icon sx={{fontSize:'30px' , color:'#fff'}} />} {/* Render the icon component */}
                         </Box>
 
                         <Box>
