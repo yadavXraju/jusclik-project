@@ -2,14 +2,12 @@
 import React from 'react';
 import Grid from '@mui/material/Grid';
 import { gridSpacing } from 'store/constant';
-// import WelcomeTotalVisitor from '../welcome-stufee-boys-girls-strength';
-// import VisitorProfile from 'views/erp-module/visitor/visitor-dashboard/profile/Profile';
-import StudentStrength from './student-strength';
 import FeeDefaulter from './fee-defaulter';
 import LiveStrength from './counter/live-strength/LiveStrength';
 import BoyStrength from './counter/boys-strength/BoysStrength';
 import GirlStrength from './counter/girls-strength/GirlsStrength';
 import SmsBalance from './counter/sms-balance/SmsBalance';
+import InvoiceRaised from './invoice-raised';
 
 
 const DashboardContent = ({ isLoading }) => {
@@ -54,7 +52,7 @@ const DashboardContent = ({ isLoading }) => {
          
          {/* Student Strength chart */}
          <Grid item xs={12} lg={7} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
-            <StudentStrength isLoading={isLoading} />
+            <InvoiceRaised />
          </Grid>
 
            {/* fee defaulter */}

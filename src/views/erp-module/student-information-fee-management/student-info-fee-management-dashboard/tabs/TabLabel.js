@@ -14,6 +14,11 @@ const TabLabel = ({ handleChange }) => {
             label={label.label}
             value={label.value}
             icon={label.icon}
+            sx={{
+              flexDirection:'row',
+              gap:'6px',
+              paddingBottom:'0'
+            }}
             // sx={{
             //   color: '#fff',
             //   '&.Mui-selected': {

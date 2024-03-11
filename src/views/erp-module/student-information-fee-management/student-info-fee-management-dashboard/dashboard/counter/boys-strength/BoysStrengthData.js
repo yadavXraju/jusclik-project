@@ -1,10 +1,10 @@
-import PermIdentityOutlinedIcon from '@mui/icons-material/PermIdentityOutlined';
+import ManTwoToneIcon from '@mui/icons-material/ManTwoTone';
 
 const BoysStrengthData = [
     {
         counterTitle: 'Boys STRENGTH',
         CounterNumber: '83',
-        icon: PermIdentityOutlinedIcon,
+        icon: ManTwoToneIcon,
     }
 ];
 
