@@ -1,7 +1,20 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import CssBaseline from '@mui/material/CssBaseline';
-import { Box, Button, Grid, Paper, TextField, Typography, Tabs, Tab, InputAdornment, IconButton } from '@mui/material';
+import {
+  Box,
+  Button,
+  Grid,
+  Paper,
+  TextField,
+  Typography,
+  Tabs,
+  Tab,
+  InputAdornment,
+  IconButton,
+  useMediaQuery,
+  useTheme
+} from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
@@ -17,40 +30,8 @@ const defaultTheme = createTheme({
     secondary: {
       main: '#e64b4c'
     }
-  } 
-});
-
-const textFieldStyles = {
-  borderRadius: '50px',
-  backgroundColor: '#ffffff',
-  color: '#6b6666',
-  mb: 2,
-  fontFamily: 'plus Jakarta sans'
-};
-
-const buttonStyles = {
-  backgroundColor: '#fff',
-  color: '#364152b5',
-  borderRadius: '50px',
-  border: '1px solid #c4c4c4',
-  width: '170px',
-  display: 'flex',
-  height: '56px',
-  fontFamily: 'plus Jakarta sans',
-  fontSize: '15px',
-  textTransform: 'none',
-  '&:hover': {
-    backgroundColor: '#e64b4c',
-    color: '#fff'
   }
-};
-
-const tabStyles = {
-  width: '260px',
-  textTransform: 'none',
-  fontSize: '15px',
-  fontFamily: 'plus Jakarta sans'
-};
+});
 
 function CustomTabPanel({ children, value, index }) {
   return (
@@ -78,6 +59,8 @@ function a11yProps(index) {
 }
 
 export default function LoginPage() {
+  const theme = useTheme(); // Accessing theme object using useTheme hook
+
   const [showPassword, setShowPassword] = useState(false);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [selectAccountOpen, setSelectAccountOpen] = useState(false);
@@ -147,6 +130,40 @@ export default function LoginPage() {
     }
   };
 
+  const isMobile = useMediaQuery(theme.breakpoints.up('sm'));
+
+  const tabStyles = {
+    width: isMobile ? '260px' : '180px',
+    textTransform: 'none',
+    fontSize: '15px',
+    fontFamily: 'plus Jakarta sans'
+  };
+
+  const textFieldStyles = {
+    borderRadius: '50px',
+    backgroundColor: '#ffffff',
+    color: '#6b6666',
+    mb: isMobile ? 2 : 1,
+    fontFamily: 'plus Jakarta sans'
+  };
+
+  const buttonStyles = {
+    backgroundColor: '#fff',
+    color: '#364152b5',
+    borderRadius: '50px',
+    border: '1px solid #c4c4c4',
+    width: isMobile ? '170px' : '130px',
+    display: 'flex',
+    height: '56px',
+    fontFamily: 'plus Jakarta sans',
+    fontSize: '15px',
+    textTransform: 'none',
+    '&:hover': {
+      backgroundColor: '#e64b4c',
+      color: '#fff'
+    }
+  };
+
   return (
     <ThemeProvider theme={defaultTheme}>
       <Grid container component="main" sx={{ minHeight: '100vh', display: 'flex', justifyContent: 'space-between' }}>
@@ -166,7 +183,8 @@ export default function LoginPage() {
             alignItems: 'center',
             justifyContent: 'center',
             backgroundRepeat: 'no-repeat',
-            borderRadius: '20px 0px 0px 20px'
+            borderRadius: isMobile ? '20px 0px 0px 20px' : '20px 20px 0px 0px', 
+            padding: isMobile ? '0px' : '0px 35px'
           }}
         >
           <Box sx={{ height: '450px' }}>
@@ -188,8 +206,6 @@ export default function LoginPage() {
             </Box>
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
               <Tabs
-             
-
                 value={value}
                 onChange={handleChange}
                 textColor="secondary"
@@ -202,7 +218,7 @@ export default function LoginPage() {
               </Tabs>
             </Box>
             <CustomTabPanel value={value} index={0}>
-              <Box component="form" noValidate onSubmit={handleSubmit} >
+              <Box component="form" noValidate onSubmit={handleSubmit}>
                 <TextField
                   InputProps={{
                     style: textFieldStyles,
@@ -267,7 +283,6 @@ export default function LoginPage() {
             <CustomTabPanel value={value} index={1}>
               <MobileLogin />
             </CustomTabPanel>
-
             <PoweredBySection />
           </Box>
         </Grid>

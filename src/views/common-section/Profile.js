@@ -8,7 +8,7 @@ const Profile = ({ teacherDetails }) => {
   return (
     <Box sx={{ textAlign: 'center', border: '1px solid rgb(227 227 227)', borderRadius: '7px', padding: '2rem', background: '#fff' , height : '350px' , display : 'flex' , alignItems : 'center' , justifyContent : 'center', flexDirection:'column' }}>
       {/* Display avatar */}
-      <Avatar alt="Remy Sharp" src={teacherDetails.image} sx={{ width: 150, height: 150, margin: 'auto', marginBottom: '10px' , marginTop : '0' }} />
+      <Avatar alt="Remy Sharp" src={teacherDetails.image} sx={{ width: 150, height: 150, margin: 'auto', marginBottom: '10px' , marginTop : '0', background:'none' }} />
 
       {/* Display teacher's name */}
       <Typography variant="h2">{teacherDetails.name}</Typography>
