@@ -1,13 +1,14 @@
 import React from 'react';
 import MasterStudentTable from '../registration/Test';
+import { Box } from '@mui/material';
 
 
 const Admission = () => {
   return (
     <>
-     <h1>
+     <Box>
       <MasterStudentTable/>
-     </h1>
+     </Box>
     </>
   )
 }

@@ -1,18 +1,19 @@
 import React from 'react';
-import Button from '@mui/material/Button';
+// import Button from '@mui/material/Button';
 import BootstrapDialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import ArrowRightAltOutlinedIcon from '@mui/icons-material/ArrowRightAltOutlined';
-import DefaultAvatar from '../../../assets/images/defaultAvatar.jpeg';
+import DefaultAvatar from '../../../assets/images/defaultAvatars.jpeg';
 import {
   Typography,
   ListItem,
   Divider,
   ListItemAvatar,
   List,
+  // Box,
   ListItemText,
   ListItemIcon,
   Avatar,
@@ -20,11 +21,12 @@ import {
   useTheme
 } from '@mui/material';
 import { useNavigate } from 'react-router';
+import { DialogActions } from '@mui/joy';
 
 const SelectAccount = ({ open, onClose }) => {
   const theme = useTheme(); // Accessing theme object using useTheme hook
 
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const isMobile = useMediaQuery(theme.breakpoints.only('xs'));
   const handleClose = () => {
     onClose(false);
   };
@@ -49,7 +51,7 @@ const SelectAccount = ({ open, onClose }) => {
     },
     closeButton: {
       position: 'absolute',
-      right: '5px',
+      right: '15px',
       top: '15px',
       color: (theme) => theme.palette.common.white
     },
@@ -60,11 +62,15 @@ const SelectAccount = ({ open, onClose }) => {
     },
     button: {
       color: '#E64B4C',
+      cursor: 'pointer',
       fontFamily: 'plus Jakarta sans',
       fontSize: '12px',
       fontWeight: 500,
-      padding: '10px',
-      justifyContent: 'end'
+      padding: '0 20px 20px 0',
+      justifyContent: 'end',
+      gap:1,
+      display: 'flex',
+      alignItems: 'center'
     },
     listItem: {
       cursor: 'pointer',
@@ -101,7 +107,7 @@ const SelectAccount = ({ open, onClose }) => {
               <React.Fragment key={item.id}>
                 <ListItem sx={styles.listItem} onClick={() => handleItemClick(item.path)}>
                   <ListItemAvatar>
-                    <Avatar src={DefaultAvatar} sx={{ height: '50px', width: '50px' }} />
+                    <Avatar src={DefaultAvatar} sx={{ height: '50px', width: '50px', backgroundColor:'#fff' }} />
                   </ListItemAvatar>
                   <ListItemText
                     sx={{ paddingLeft: '10px' }}
@@ -123,12 +129,12 @@ const SelectAccount = ({ open, onClose }) => {
             ))}
           </List>
         </DialogContent>
-        <Button autoFocus onClick={handleClose} sx={styles.button}>
-          Done
-          <ListItemIcon sx={styles.button}>
+        <DialogActions>
+          <ListItemIcon sx={styles.button} onClick={handleClose}>
+            DONE
             <ArrowRightAltOutlinedIcon />
           </ListItemIcon>
-        </Button>
+        </DialogActions>
       </BootstrapDialog>
     </React.Fragment>
   );

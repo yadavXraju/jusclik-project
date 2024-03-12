@@ -1,12 +1,17 @@
 import React from 'react'
-import MobileNumber from './mobile-number'
 import OtpVerification from './otp-verification'
+import { MobileNumber2 } from './mobile-number/index2'
 
 const VisitorRegistration = () => {
   return (
-    <>
-    <MobileNumber />
+    < >
+    
+    <div style={{justifyContent:'center',alignItems:'center',height:'100vh',display:'flex',backgroundColor:'#eef2f6'}}>
+    <MobileNumber2/>
     <OtpVerification />
+      </div>     
+
+
     </>
   )
 }
