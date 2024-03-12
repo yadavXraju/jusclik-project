@@ -40,7 +40,7 @@ function ParamChackboxSelectAll({ data, onSelect, heading }) {
       <Container>
         <Paper elevation={1}
           sx={{
-            width: { xs: '83vw', md: '100%' },
+            width: { xs: '100%', md: '100%' },
             overflow: { xs: 'scroll', md: 'hidden' },
             // border: '1px solid #ccc',
             borderRadius: '5px',

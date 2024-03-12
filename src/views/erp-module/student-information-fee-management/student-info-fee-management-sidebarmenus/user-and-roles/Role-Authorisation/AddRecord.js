@@ -1,5 +1,5 @@
 import React from 'react';
-import ParamChackboxSelectAll from './ParamChackboxSelectAll';
+import ParamChackboxSelectAll from '../../../../../common-section/ParamChackboxSelectAll';
 
 
 const AllRecordData = [

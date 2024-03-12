@@ -1,5 +1,5 @@
 import React from 'react';
-import ParamChackboxSelectAll from './Role-Authorisation/ParamChackboxSelectAll';
+import ParamChackboxSelectAll from '../../../../common-section/ParamChackboxSelectAll';
 import { Typography } from '@mui/material';
 
 
