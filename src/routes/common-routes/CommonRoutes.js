@@ -8,7 +8,7 @@ const ContactSupport = Loadable(lazy(() => import('views/common-files/post-suppo
 
 // visitor reg
 
-const VisitorRegistration = Loadable(lazy(() => import('views/erp-module/visitor/visitor-sidemenus/visitor-registration')));
+// const VisitorRegistration = Loadable(lazy(() => import('views/erp-module/visitor/visitor-sidemenus/visitor-registration')));
 
 
 
@@ -25,10 +25,10 @@ const CommonRoutes = [
         element: <ContactSupport />
         },
 
-        { 
-          path: 'visitor-registration', 
-          element: <VisitorRegistration/>
-          },
+        // { 
+        //   path: 'visitor-registration', 
+        //   element: <VisitorRegistration/>
+        //   },
   
     ]
 }

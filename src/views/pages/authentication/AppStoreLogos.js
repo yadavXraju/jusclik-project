@@ -28,10 +28,10 @@ const StoreButton = ({ href, storeImage, altText, isMobile }) => (
 
 const AppStoreButtonsGroup = () => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.up('sm'));
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
   return (
-    <Box sx={{ display: 'flex', gap: 1, position: 'absolute', right: isMobile?'30px':'20px', bottom:isMobile? '25px':'15px' }}> 
+    <Box sx={{ display: 'flex', gap: 1, position: 'absolute', right: isMobile?'15px':'30px', bottom:isMobile? '10px':'25px' }}> 
       <StoreButton
         href="https://play.google.com/store/apps/details?id=com.shauryasoft.cloud9app&hl=en&gl=US&pli=1"
         storeImage={PlayStoreImage}

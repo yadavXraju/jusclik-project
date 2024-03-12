@@ -97,7 +97,7 @@ export default function LoginPage() {
 
   const theme = useTheme(); // Accessing theme object using useTheme hook
 
-  const isMobile = useMediaQuery(theme.breakpoints.up('sm'));
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
   return (
     <ThemeProvider theme={defaultTheme}>
