@@ -13,6 +13,7 @@ const VerifyNumber = Loadable(lazy(() => import('views/pages/authentication/Veri
 const SetNewPassword = Loadable(lazy(() => import('views/pages/authentication/SetNewPassword')));
 const VisitorRegistration =  Loadable(lazy(() => import('views/pages/authentication/visitor-registration')));
 const VisitorAppointementPass = Loadable(lazy(() => import('views/pages/authentication/visitor-registration/appointment-pass')));
+const SelfieVerification = Loadable(lazy(() => import('views/pages/authentication/visitor-registration/selfie-verification')));
 
 // ==============================|| AUTHENTICATION ROUTING ||============================== //
 
@@ -54,6 +55,11 @@ const AuthenticationRoutes = {
       element: <VisitorAppointementPass/>
     },
 
+
+    {
+      path:'/selfie-verification',
+      element: <SelfieVerification/>
+    },
 
 
   ]
