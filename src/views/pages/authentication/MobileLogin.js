@@ -1,7 +1,8 @@
 import React, { useState, useRef } from 'react';
 import { Box, Button, Grid, TextField, InputAdornment, MenuItem, Select, Typography, useMediaQuery, useTheme } from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-// import SelectAccount from './SelectAccount';
+import SelectAccount from './SelectAccount';
+import { withStyles } from '@mui/styles';
 
 const defaultTheme = createTheme({
   palette: {
@@ -11,9 +12,21 @@ const defaultTheme = createTheme({
   }
 });
 
-function CountrySelect({ country, handleCountryChange }) {
+// Define custom styles for the Select component
+const styles = {
+  select: {
+    '&:before': {
+      borderBottom: 'none' // Remove the underline
+    },
+    '&:after': {
+      borderBottom: 'none' // Remove the underline after selection
+    }
+  }
+};
+
+function CountrySelect({ country, handleCountryChange, classes }) {
   return (
-    <Select value={country} onChange={handleCountryChange} variant="standard" sx={{ borderBottom: 'none' }}>
+    <Select value={country} onChange={handleCountryChange} variant="standard" className={classes.select}>
       <MenuItem selected value="India">
         IN (+91)
       </MenuItem>
@@ -22,6 +35,9 @@ function CountrySelect({ country, handleCountryChange }) {
     </Select>
   );
 }
+
+// Apply styles to CountrySelect component
+const StyledCountrySelect = withStyles(styles)(CountrySelect);
 
 export default function LoginPage() {
   const [mobileNumber, setMobileNumber] = useState('');
@@ -49,10 +65,10 @@ export default function LoginPage() {
     }
   };
 
-  // const handleResendOtp = () => {
-  //   // Logic for resending OTP
-  //   alert('OTP Sent Successfully!');
-  // };
+  const handleResendOtp = () => {
+    // Logic for resending OTP
+    alert('OTP Sent Successfully!');
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault(); // Prevent form submission
@@ -97,7 +113,7 @@ export default function LoginPage() {
 
   const theme = useTheme(); // Accessing theme object using useTheme hook
 
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const isMobile = useMediaQuery(theme.breakpoints.only('xs'));
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -110,7 +126,7 @@ export default function LoginPage() {
                   disableUnderline: true,
                   startAdornment: (
                     <InputAdornment position="start">
-                      <CountrySelect country={country} handleCountryChange={handleCountryChange} />
+                      <StyledCountrySelect country={country} handleCountryChange={handleCountryChange} />
                     </InputAdornment>
                   ),
                   style: { borderRadius: '50px', fontSize: '15px', fontFamily: 'plus Jakarta sans', backgroundColor: '#ffffff' }
@@ -128,17 +144,17 @@ export default function LoginPage() {
                 value={mobileNumber}
                 onChange={handleMobileNumberChange}
                 autoFocus={step === 0}
-                sx={{ borderRadius: '50px', color: '#6b6666', mb: isMobile ? 2 : 1 }}
+                sx={{ borderRadius: '50px', color: '#6b6666', mb: isMobile ? 2 : 0 }}
               />
             </Box>
           )}
           {step > 0 && (
-            <Typography sx={{ fontFamily: 'plus Jakarta sans', fontSize: '15px', color: '#878787', fontWeight: 500 }}>
+            <Typography sx={{ fontFamily: 'plus Jakarta sans', fontSize: '15px', color: '#878787', fontWeight: 500, mt: 1, textAlign:isMobile?'center':'left' }}>
               Enter OTP code sent to +91 9761xxxx78
             </Typography>
           )}
           {step > 0 && (
-            <Grid container spacing={1}>
+            <Grid container spacing={1} sx={{justifyContent:isMobile?'center':'flex-start'}}>
               {otp.map((digit, index) => (
                 <Grid item key={index}>
                   <TextField
@@ -162,8 +178,8 @@ export default function LoginPage() {
                       borderRadius: '10px',
                       fontFamily: 'plus Jakarta sans',
                       '& .MuiInputBase-input': {
-                        textAlign: 'center', // Center the text within the input field
-                        cursor: 'text', // Ensure cursor appears in the center
+                        textAlign: 'center',
+                        cursor: 'text',
                         fontSize: '15px',
                         color: ''
                       }
@@ -176,8 +192,15 @@ export default function LoginPage() {
               ))}
             </Grid>
           )}
-          <Grid item xs sx={{ cursor: 'pointer', display: 'block', alignItems: 'center', mt: 3 }}>
-            <Box sx={{ display: 'flex', alignItems: 'center' }}>
+          <Grid item xs sx={{ display: 'block', mt: isMobile ? 1 : 3 }}>
+            <Box
+              sx={{
+                display: isMobile ? 'block' : 'flex',
+                textAlign: 'center',
+                alignItems: 'center',
+                justifyContent: isMobile ? 'center' : 'left'
+              }}
+            >
               <Button
                 type="submit"
                 sx={{
@@ -185,10 +208,11 @@ export default function LoginPage() {
                   color: '#364152b5',
                   borderRadius: '50px',
                   border: '1px solid #c4c4c4',
-                  width: isMobile ? '170px' : '130px',
-                  height: '56px',
+                  width: isMobile ? '130px' : '170px',
+                  height: isMobile ? '50px' : '56px',
                   fontSize: '15px',
                   fontFamily: 'plus Jakarta sans',
+                  cursor: 'pointer',
                   '&:hover': {
                     backgroundColor: '#e64b4c',
                     color: '#fff'
@@ -200,26 +224,26 @@ export default function LoginPage() {
               {step > 0 && (
                 <Typography
                   sx={{
+                    pt: isMobile ? 1 : 0,
                     color: '#E64B4C',
                     fontSize: '15px',
                     fontWeight: 500,
                     cursor: 'pointer',
-                    textTransform: 'none',
-                    paddingLeft: isMobile?'60px':'30px',
+                    paddingLeft: isMobile ? '0px' : '30px',
                     fontFamily: 'plus Jakarta sans'
                   }}
-                  // onClick={handleResendOtp}
+                  onClick={handleResendOtp}
                 >
                   Resend OTP
                 </Typography>
               )}
             </Box>
             {/* Render the SelectAccount component only in step 2 */}
-            {/* {step === 2 && (
+            {step === 2 && (
               <Grid item xs>
                 <SelectAccount open={selectAccountOpen} onClose={handleSelectAccountToggle} onSubmit={handleSelectAccountToggle} />
               </Grid>
-            )} */}
+            )}
           </Grid>
         </Box>
       </Box>

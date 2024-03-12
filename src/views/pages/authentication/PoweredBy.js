@@ -13,10 +13,17 @@ const commonTextStyle = {
 const PoweredBySection = () => {
   const theme = useTheme(); // Accessing theme object using useTheme hook
 
-  const isMobile = useMediaQuery(theme.breakpoints.between('md', 'sm'));
-  return (
+  const isMobile = useMediaQuery(theme.breakpoints.only('xs'));
+  return (  
     <>
-      <Box sx={{textAlign: 'center',position: 'fixed', bottom: isMobile?'10%':'3%', transform: isMobile?'translateX(25%)':'translateX(56%)'}}>
+      <Box
+        sx={{
+          textAlign: 'center',
+          position: 'fixed',
+          bottom: isMobile ? '7%' : '13%',
+          transform: isMobile ? 'translateX(19%)' : 'translateX(55%)'
+        }}
+      >
         <img src={CloudLogo} alt="Logo" />
         <Typography variant="body2" sx={{ ...commonTextStyle }}>
           Powered by

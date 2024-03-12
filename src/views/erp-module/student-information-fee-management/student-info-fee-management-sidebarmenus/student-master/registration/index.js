@@ -1,5 +1,5 @@
 import React from 'react'
-import Mainform from './student-details/data-forms/Mainform'
+import StudentDetails from './student-details'
 
 const Registration = () => {
 
@@ -7,7 +7,7 @@ const Registration = () => {
  
   return (
     <div>
-        <Mainform/>
+      <StudentDetails/>
     </div>
   )
 }

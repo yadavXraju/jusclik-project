@@ -5,7 +5,7 @@ import Drawer from '@mui/material/Drawer';
 // import StepperForm from './data-forms/StepperForm';
 import Student from './Student';
 import useDrawer from 'hooks/useDrawer';
-import Mainform from './data-forms/Mainform';
+import Mainform from '../../admission/admission-form/Forms.js/Mainform';
 const StudentDetails = () => {
     const {anchor,toggleDrawer}=useDrawer();
   return (

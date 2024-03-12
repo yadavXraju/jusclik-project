@@ -5,8 +5,10 @@ import { Box } from '@mui/system';
 import { TabItem } from './TabItem';
 
 const TabLabel = ({ handleChange }) => {
+  // sx={{borderBottom:'1px solid rgb(227, 227, 227),'}}
+  
   return (
-    <Box sx={{ borderBottom: 0, borderColor: '#e3e8ef' }}>
+    <Box sx={{  borderColor: '#e3e8ef',borderBottom:'1px solid rgb(227, 227, 227)', }}>
       <TabList onChange={handleChange} aria-label="tabs" >
         {TabItem.map((label) => (
           <Tab
@@ -17,7 +19,9 @@ const TabLabel = ({ handleChange }) => {
             sx={{
               flexDirection:'row',
               gap:'6px',
-              paddingBottom:'0'
+              paddingBottom:'0',
+              color:'#000',
+              fontWeight:'500',
             }}
             // sx={{
             //   color: '#fff',

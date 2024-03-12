@@ -34,10 +34,12 @@ const defaultTheme = createTheme({
 });
 
 function CustomTabPanel({ children, value, index }) {
+  const theme = useTheme(); // Accessing theme object using useTheme hook
+  const isMobile = useMediaQuery(theme.breakpoints.only('xs'));
   return (
     <div role="tabpanel" hidden={value !== index} id={`simple-tabpanel-${index}`} aria-labelledby={`simple-tab-${index}`}>
       {value === index && (
-        <Box sx={{ pt: 3 }}>
+        <Box sx={{ pt: isMobile ? 1 : 3 }}>
           <Typography>{children}</Typography>
         </Box>
       )}
@@ -130,21 +132,23 @@ export default function LoginPage() {
     }
   };
 
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const isMobile = useMediaQuery(theme.breakpoints.only('xs'));
 
   const tabStyles = {
     width: isMobile ? '260px' : '200px',
     textTransform: 'none',
     fontSize: '15px',
-    fontFamily: 'plus Jakarta sans'
+    fontFamily: 'plus Jakarta sans',
+    paddingTop: '21px'
   };
 
   const textFieldStyles = {
     borderRadius: '50px',
     backgroundColor: '#ffffff',
     color: '#6b6666',
-    mb: isMobile ? 2 : 1,
-    fontFamily: 'plus Jakarta sans'
+    mb: isMobile ? 1 : 2,
+    fontFamily: 'plus Jakarta sans',
+    height: isMobile ? '50px' : '56px'
   };
 
   const buttonStyles = {
@@ -152,11 +156,13 @@ export default function LoginPage() {
     color: '#364152b5',
     borderRadius: '50px',
     border: '1px solid #c4c4c4',
-    width: isMobile ? '170px' : '130px',
+    width: isMobile ? '130px' : '170px',
     display: 'flex',
-    height: '56px',
+    height: isMobile ? '50px' : '56px',
     fontFamily: 'plus Jakarta sans',
     fontSize: '15px',
+    alignItems: 'center',
+    justifyContent: 'flexStart',
     textTransform: 'none',
     '&:hover': {
       backgroundColor: '#e64b4c',
@@ -166,13 +172,13 @@ export default function LoginPage() {
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <Grid container component="main" sx={{ minHeight: '100vh', display: 'flex', justifyContent: 'space-between' }}>
+      <Grid container component="main" sx={{ minHeight: '100vh', display: 'flex' }}>
         <CssBaseline />
         <LeftLogo />
         <Grid
           item
           xs={12}
-          sm={8}
+          sm={7}
           md={7}
           component={Paper}
           elevation={6}
@@ -183,23 +189,29 @@ export default function LoginPage() {
             alignItems: 'center',
             justifyContent: 'center',
             backgroundRepeat: 'no-repeat',
-            borderRadius: isMobile ? '20px 0px 0px 20px' : '20px 20px 0px 0px',
+            borderRadius: isMobile ? '20px 20px 0px 0px' : '20px 0px 0px 20px',
             padding: isMobile ? '0px' : '0px 35px'
           }}
         >
           <Box sx={{ height: '450px', width: isMobile ? '330px' : '500px' }}>
-            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', mb: 1 }}>
+            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', mb: isMobile ? 0 : 1 }}>
               <Typography
                 component="h1"
                 variant="h4"
-                sx={{ color: '#3a3a3a', fontSize: { xs: '20px', md: '30px' }, fontFamily: 'plus Jakarta sans' }}
+                sx={{
+                  color: '#3a3a3a',
+                  fontWeight: 500,
+                  fontSize: { xs: '20px', md: '30px' },
+                  fontFamily: 'plus Jakarta sans',
+                  paddingBottom: '5px'
+                }}
               >
                 Login to
               </Typography>
               <Typography
                 component="h1"
                 variant="h4"
-                sx={{ color: '#3a3a3a', fontSize: { xs: '20px', md: '30px' }, fontFamily: 'plus Jakarta sans' }}
+                sx={{ color: '#3a3a3a', fontWeight: 500, fontSize: { xs: '19px', md: '30px' }, fontFamily: 'plus Jakarta sans' }}
               >
                 your dashboard!
               </Typography>
@@ -269,12 +281,14 @@ export default function LoginPage() {
                   onChange={(event) => setUserPassword(event.target.value)}
                 />
 
-                <Grid item xs sx={{ cursor: 'pointer', display: 'flex', alignItems: 'center', mt: 2 }}>
-                  <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flexStart' }}>
-                    <Button type="submit" sx={buttonStyles}>
-                      LOGIN
-                    </Button>
-                  </Box>
+                <Grid
+                  item
+                  xs
+                  sx={{ display: 'flex', alignItems: 'center', justifyContent: isMobile ? 'center' : 'left', mt: isMobile ? 1 : 2 }}
+                >
+                  <Button type="submit" sx={buttonStyles}>
+                    LOGIN
+                  </Button>
                   <EnterMobileDialog open={dialogOpen} onClose={handleDialogToggle} onMobileSubmit={handleMobileSubmit} />
                   <SelectAccount open={selectAccountOpen} onClose={handleSelectAccountToggle} />
                 </Grid>
