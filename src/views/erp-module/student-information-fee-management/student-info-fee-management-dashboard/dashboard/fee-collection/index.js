@@ -1,6 +1,6 @@
 import React from 'react';
 import ApexCharts from 'react-apexcharts';
-import { Grid, Paper, Typography ,useMediaQuery  } from '@mui/material';
+import { Grid, Paper, Typography ,useMediaQuery , Box ,Button } from '@mui/material';
 import { gridSpacing } from 'store/constant';
 import { HeadingCss , boxHeight } from 'views/dashboard/Default/dashboard-css/CommonCss';
 
@@ -53,7 +53,12 @@ const isMobile = useMediaQuery('(max-width: 767px)');
                   <ApexCharts options={chartData} series={chartData.series} type="donut"  height={ isMediumDesktop ? 370 : 370} />
               </Grid>
 
-             
+              <Box sx={{p:3, pt:0 , textAlign:'right' , marginTop: isMobile ? '2rem' : '0'}}>
+                  <Button variant="contained" onClick={() => navigate('/parent/attendance')}>
+                    View More
+                  </Button>
+              </Box>
+
           </Paper>
        </>
   );
