@@ -1,13 +1,13 @@
-import React, { useRef } from 'react'
-import { Box, Paper, Button, Drawer } from '@mui/material';
+import React, { useState, useRef } from 'react'
+import { Box, Paper, Button} from '@mui/material';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import WithPrintPdf from 'views/common-section/withPrintPdf';
 import LocalPrintshopOutlinedIcon from '@mui/icons-material/LocalPrintshopOutlined';
 import ArrowDropDownOutlinedIcon from '@mui/icons-material/ArrowDropDownOutlined';
-import useDrawer from 'hooks/useDrawer';
-import DrawerContent from './EnquiryDrawer';
+// import useDrawer from 'hooks/useDrawer';
+import EnquiryDrawer from './EnquiryDrawer';
 import ReportTable from '../report-table';
-
+import '../drawer-set.css';
 
 const studentData = [
     {
@@ -28,7 +28,6 @@ const studentData = [
         concessionCategory: 'Category A',
         fatherName: 'Michael Doe',
         motherName: 'Emily Doe',
-        // Additional data
         nationality: 'American',
         religion: 'Christian',
         previousSchool: 'ABC School',
@@ -56,7 +55,6 @@ const studentData = [
         concessionCategory: 'Category B',
         fatherName: 'John Smith',
         motherName: 'Mary Smith',
-        // Additional data
         nationality: 'British',
         religion: 'Catholic',
         previousSchool: 'XYZ School',
@@ -84,7 +82,6 @@ const studentData = [
         concessionCategory: 'Category B',
         fatherName: 'John Smith',
         motherName: 'Mary Smith',
-        // Additional data
         nationality: 'British',
         religion: 'Catholic',
         previousSchool: 'XYZ School',
@@ -112,7 +109,6 @@ const studentData = [
         concessionCategory: 'Category B',
         fatherName: 'John Smith',
         motherName: 'Mary Smith',
-        // Additional data
         nationality: 'British',
         religion: 'Catholic',
         previousSchool: 'XYZ School',
@@ -140,7 +136,6 @@ const studentData = [
         concessionCategory: 'Category B',
         fatherName: 'John Smith',
         motherName: 'Mary Smith',
-        // Additional data
         nationality: 'British',
         religion: 'Catholic',
         previousSchool: 'XYZ School',
@@ -150,7 +145,6 @@ const studentData = [
         guardianPhone: '123-456-7890',
         guardianEmail: 'john@example.com',
     },
-    // Add more student data objects here
 ];
 
 const columns = [
@@ -170,7 +164,6 @@ const columns = [
     { id: 'concessionCategory', field: 'concessionCategory', headerName: 'Concession Category', editable: true },
     { id: 'fatherName', field: 'fatherName', headerName: 'Father Name', editable: true },
     { id: 'motherName', field: 'motherName', headerName: 'Mother Name', editable: true },
-    // Additional fields
     { id: 'nationality', field: 'nationality', headerName: 'Nationality', editable: true },
     { id: 'religion', field: 'religion', headerName: 'Religion', editable: true },
     { id: 'previousSchool', field: 'previousSchool', headerName: 'Previous School', editable: true },
@@ -183,27 +176,27 @@ const columns = [
 
 const Enquiry = () => {
     const printRef = useRef();
-    const { anchor, toggleDrawer } = useDrawer();
+    const [clickedCustomize, setClickedCustomize] = useState(false);
     return (
         <>
             <Paper sx={{ height: "50px", padding: "10px 20px 10px 20px", position: "relative" }}>
                 <Box sx={{ display: "flex", justifyContent: "space-between" }}>
                     <Box>
-                        <Button endIcon={<SettingsOutlinedIcon sx={{ width: "15px", height: "15px" }} onClick={toggleDrawer('top', true)} />}>Customize Report</Button>
+                        <Button endIcon={<SettingsOutlinedIcon sx={{ width: "15px", height: "15px" }} onClick={() => setClickedCustomize(true)} />}>Customize Report</Button>
                     </Box>
                     <Box sx={{ display: 'flex' }}>
-                        <WithPrintPdf Children={<LocalPrintshopOutlinedIcon />} ref={printRef}/>
+                        <WithPrintPdf Children={<LocalPrintshopOutlinedIcon />} ref={printRef} />
                         <Button endIcon={<ArrowDropDownOutlinedIcon />} >Export As</Button>
                     </Box>
                 </Box>
-                <Drawer anchor={'top'} open={anchor.top} onClose={toggleDrawer('top', false)} sx={{ width: "80%", marginLeft: "auto", postion: "absolute", top: "0px" }} className="breakpoint1">
-                    <DrawerContent toggleDrawer={toggleDrawer} />
-                </Drawer>
+                <Box className={clickedCustomize ? "afterClick" : "beforeClick"}>
+                    <EnquiryDrawer name="Customize Report" setClickedCustomize={setClickedCustomize} />
+                </Box>
             </Paper>
             <ReportTable rows={studentData} columns={columns} ref={printRef} />
         </>
     )
 }
 
-// columns={tableHeadings} studentData={studentData}
+
 export default Enquiry;
