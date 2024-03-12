@@ -11,27 +11,42 @@ const StoreButton = ({ href, storeImage, altText, isMobile }) => (
     target="_blank"
     rel="noopener noreferrer"
     sx={{
-      height: isMobile ? '60px' : '60px',
-      width: isMobile ? '60px' : '60px',
+      height: isMobile ? '40px' : '60px',
+      width: isMobile ? '40px' : '60px',
       backgroundColor: '#ffffff',
       borderRadius: '50%',
       display: 'flex',
+      minWidth: '40px',
       justifyContent: 'flex-start',
       alignItems: 'center',
       '&:hover': {
-        backgroundColor: '#f6f6f6',
+        backgroundColor: '#f6f6f6'
       }
     }}
-    startIcon={<img src={storeImage} alt={altText} style={{ width: isMobile ? '40px' : '35px', height: isMobile ? '40px' : '35px' }} />}
+    startIcon={
+      <img
+        src={storeImage}
+        alt={altText}
+        style={{ width: isMobile ? '30px' : '40px', height: isMobile ? '30px' : '40px', marginLeft: isMobile ? '-6px' : '0px' }}
+      />
+    }
   />
 );
 
 const AppStoreButtonsGroup = () => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const isMobile = useMediaQuery(theme.breakpoints.only('xs'));
 
   return (
-    <Box sx={{ display: 'flex', gap: 1, position: 'absolute', right: isMobile?'15px':'30px', bottom:isMobile? '10px':'25px' }}> 
+    <Box
+      sx={{
+        display: 'flex',
+        gap: 1,
+        position: 'absolute',
+        right: isMobile ? '39%' : '30px',
+        bottom: isMobile ? '10px' : '25px',
+      }}
+    >
       <StoreButton
         href="https://play.google.com/store/apps/details?id=com.shauryasoft.cloud9app&hl=en&gl=US&pli=1"
         storeImage={PlayStoreImage}
