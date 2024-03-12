@@ -113,7 +113,7 @@ export default function MasterStudentTable() {
 
   const handleClick = () => {
     // Navigate to the student details page
-    navigate('../registration-data');
+    navigate('../registration');
   };
 
   const handleChangePage = (event, newPage) => {
@@ -130,7 +130,7 @@ export default function MasterStudentTable() {
 
 
     const Click=()=>{
-      navigate('../registration');
+      navigate('../admission-form');
     }
   return (
     <Box sx={{ width: '100%' }}>
@@ -156,6 +156,8 @@ export default function MasterStudentTable() {
                 return (
                   <TableRow
                     hover
+                    //onChange={(event) => handleClick(event, row.adm_no)}
+                    //onClick={(event) => event.stopPropagation()}
                     onClick={(event) => handleClick(event, row.adm_no)} // Navigate on click
                     role="checkbox"
                     tabIndex={-1}
@@ -164,6 +166,7 @@ export default function MasterStudentTable() {
                   >
                     <TableCell padding="checkbox">
                       <Checkbox
+                        onClick={(event) => event.stopPropagation()}
                         color="primary"
                         inputProps={{ 'aria-labelledby': labelId }}
                       />
