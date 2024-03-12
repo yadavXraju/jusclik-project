@@ -6,8 +6,10 @@ import { Grid, Box, Typography ,} from '@mui/material';
 const Counter1 = ( {Counter1Data } ) => {
     return (
         <Grid container spacing={2} 
-         sx={{background:'#fff', borderRadius:'10px' ,
-        //  boxShadow:'rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px' ,
+         sx={{
+          background:'#fff', borderRadius:'10px' ,
+          border:'1px solid rgb(227, 227, 227)',
+          //  boxShadow:'rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px' ,
         }}
          >
             {Counter1Data.map((item, index) => 

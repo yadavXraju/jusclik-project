@@ -1,8 +1,11 @@
 import React from 'react'
+import Mainform from './Forms.js/Mainform'
 
 const AdmissionForm = () => {
   return (
-    <div>AdmissionForm</div>
+    <div>
+      <Mainform/>
+    </div>
   )
 }
 
