@@ -57,7 +57,7 @@ const Mainform = () => {
              startIcon={< AddAPhotoOutlinedIcon/>}
             sx={{ height:"100px",width:"100px",borderRadius:"50%" }}
              > <VisuallyHiddenInput type="file" /></Button>
-             <Typography variant="caption" color="initial"  sx={{margin:"2px 4px"}}>Allowed &apos;image/*' 
+             <Typography variant="caption" color="initial"  sx={{margin:"2px 4px"}}>Allowed &apos;image/*&apos; 
                                                     *.png, *.jpeg, *.jpg, *.gif</Typography>
             </CardContent>
           </Card>
