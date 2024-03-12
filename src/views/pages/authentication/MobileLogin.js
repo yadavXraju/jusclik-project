@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { Box, Button, Grid, TextField, InputAdornment, MenuItem, Select, Typography, useMediaQuery, useTheme } from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import SelectAccount from './SelectAccount';
+// import SelectAccount from './SelectAccount';
 
 const defaultTheme = createTheme({
   palette: {
@@ -49,10 +49,10 @@ export default function LoginPage() {
     }
   };
 
-  const handleResendOtp = () => {
-    // Logic for resending OTP
-    alert('OTP Sent Successfully!');
-  };
+  // const handleResendOtp = () => {
+  //   // Logic for resending OTP
+  //   alert('OTP Sent Successfully!');
+  // };
 
   const handleSubmit = (event) => {
     event.preventDefault(); // Prevent form submission
@@ -208,18 +208,18 @@ export default function LoginPage() {
                     paddingLeft: isMobile?'60px':'30px',
                     fontFamily: 'plus Jakarta sans'
                   }}
-                  onClick={handleResendOtp}
+                  // onClick={handleResendOtp}
                 >
                   Resend OTP
                 </Typography>
               )}
             </Box>
             {/* Render the SelectAccount component only in step 2 */}
-            {step === 2 && (
+            {/* {step === 2 && (
               <Grid item xs>
                 <SelectAccount open={selectAccountOpen} onClose={handleSelectAccountToggle} onSubmit={handleSelectAccountToggle} />
               </Grid>
-            )}
+            )} */}
           </Grid>
         </Box>
       </Box>
