@@ -50,7 +50,7 @@ const isMobile = useMediaQuery('(max-width: 767px)');
 
       
               <Grid className='attandance-graph' style={AttendanceBox} >
-                  <ApexCharts options={chartData} series={chartData.series} type="donut"  height={ isMediumDesktop ? 200 : 240} />
+                  <ApexCharts options={chartData} series={chartData.series} type="donut"  height={ isMediumDesktop ? 270 : 340} />
               </Grid>
 
               {/* <Box sx={{p:3, pt:0 , textAlign:'right' , marginTop: isMobile ? '2rem' : '0'}}>

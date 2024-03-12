@@ -9,7 +9,7 @@ import GirlStrength from './counter/girls-strength/GirlsStrength';
 // import LiveStudent from './live-student';
 import InvoiceRaised from './invoice-raised';
 import FeeCollection from './fee-collection';
-
+import NeedSupport from 'views/common-section/support/Support';
 
 
 const DashboardContent = ({ isLoading }) => {
@@ -21,10 +21,10 @@ const DashboardContent = ({ isLoading }) => {
 
 
          {/* counter */}
-          <Grid item xs={12} lg={12} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' , } ,padding:'40px !important' , display:'flex' , gap:'40px' ,}}>
+          <Grid item xs={12} lg={12} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' , } ,padding:'40px !important' ,paddingBottom:'0 !important', display:'flex' , gap:'40px' ,}}>
              <LiveStrength />
-             <BoyStrength />
-             <GirlStrength />
+             <BoyStrength sx={{flex:'0 0 33.3%'}}/>
+             <GirlStrength sx={{flex:'0 0 33.3%'}}/>
          </Grid>
 
          
@@ -33,18 +33,23 @@ const DashboardContent = ({ isLoading }) => {
         </Grid> */}
 
          {/* invoice raised */}
-         <Grid item xs={12} lg={7} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
+         <Grid item xs={12} lg={6} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
             <InvoiceRaised />
          </Grid>
 
          {/* fee collection */}
-         <Grid item xs={12} lg={5}  md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
+         <Grid item xs={12} lg={6}  md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
               <FeeCollection/> 
           </Grid>
 
            {/* fee defaulter */}
-           <Grid item xs={12} lg={7} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
+           <Grid item xs={12} lg={8} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
               <FeeDefaulter isLoading={isLoading} /> 
+          </Grid>
+
+          {/* need support */}
+          <Grid item xs={12} lg={4} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
+              <NeedSupport isLoading={isLoading} /> 
           </Grid>
 
         </Grid>
