@@ -1,5 +1,5 @@
 import React from 'react';
-import { Typography, Link, Box } from '@mui/material';
+import { Typography, Link, Box, useMediaQuery, useTheme } from '@mui/material';
 import CloudLogo from '../../../assets/images/Untitled-2.png';
 import AppStoreButtonsGroup from './AppStoreLogos';
 
@@ -11,9 +11,12 @@ const commonTextStyle = {
 };
 
 const PoweredBySection = () => {
+  const theme = useTheme(); // Accessing theme object using useTheme hook
+
+  const isMobile = useMediaQuery(theme.breakpoints.between('md', 'sm'));
   return (
     <>
-      <Box sx={{textAlign: 'center',position: 'fixed', bottom: '100px', transform: 'translateX(56%)'}}>
+      <Box sx={{textAlign: 'center',position: 'fixed', bottom: isMobile?'10%':'3%', transform: isMobile?'translateX(25%)':'translateX(56%)'}}>
         <img src={CloudLogo} alt="Logo" />
         <Typography variant="body2" sx={{ ...commonTextStyle }}>
           Powered by

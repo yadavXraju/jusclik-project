@@ -1,12 +1,9 @@
 import React from 'react'
-import ParamTable from 'views/common-section/ParamTable';
+import ParamTable from 'views/erp-module/erp-common-item/setup/system-data/ParamTable';
+import DrawerContent from './DrawerContent';
+import Drawer from '@mui/material/Drawer';
 
-
-const tableHeading=[
-  {
-    id:1,
-    tabHeading:"records"
-  },
+const tableHeadings=[
   {
     id:2,
     tabHeading:"Student Documents {Restricted}"
@@ -42,19 +39,21 @@ const tableHeading=[
   {
     id:10,
     tabHeading:"Created On"
+  },
+  {
+    id:11,
+    tabHeading:"Action"
   }
 ]
 	
 const data=[
   {
     "id": 1,
-    "records": "R001",
     "sudentDocuments": "Document A",
     "onlineDoc": "documentA",
     "offlineDoc": "Physical Document A",
     "showOn": "Student Portal",
     "shwoOnParent": "Parent Portal",
-    "singleParent": true,
     "AcademicYearFrom": "2023",
     "AcademicYearTo": "2024",
     "CreatedBy": "Admin",
@@ -62,13 +61,11 @@ const data=[
   },
   {
     "id": 2,
-    "records": "R002",
     "sudentDocuments": "Document B",
     "onlineDoc": "documentB",
     "offlineDoc": "Physical Document B",
     "showOn": "Student Portal",
     "shwoOnParent": "Parent Portal",
-    "singleParent": false,
     "AcademicYearFrom": "2023",
     "AcademicYearTo": "2024",
     "CreatedBy": "Admin",
@@ -76,13 +73,12 @@ const data=[
   },
   {
     "id": 3,
-    "records": "R003",
     "sudentDocuments": "Document C",
     "onlineDoc": "documentC",
     "offlineDoc": "Physical Document C",
     "showOn": "Student Portal",
     "shwoOnParent": "Parent Portal",
-    "singleParent": true,
+
     "AcademicYearFrom": "2023",
     "AcademicYearTo": "2024",
     "CreatedBy": "Admin",
@@ -90,13 +86,11 @@ const data=[
   },
   {
     "id": 4,
-    "records": "R004",
     "sudentDocuments": "Document D",
     "onlineDoc": "documentD",
     "offlineDoc": "Physical Document D",
     "showOn": "Student Portal",
     "shwoOnParent": "Parent Portal",
-    "singleParent": false,
     "AcademicYearFrom": "2023",
     "AcademicYearTo": "2024",
     "CreatedBy": "Admin",
@@ -104,13 +98,11 @@ const data=[
   },
   {
     "id": 5,
-    "records": "R005",
     "sudentDocuments": "Document E",
     "onlineDoc": "documentE",
     "offlineDoc": "Physical Document E",
     "showOn": "Student Portal",
     "shwoOnParent": "Parent Portal",
-    "singleParent": true,
     "AcademicYearFrom": "2023",
     "AcademicYearTo": "2024",
     "CreatedBy": "Admin",
@@ -119,10 +111,13 @@ const data=[
 ]
 
 
-const StudentDocuments = () => {
+const StudentDocuments = ({toggleAddDrawer, toggleDrawer}) => {
   return (
     <>
-       <ParamTable columns={tableHeading} data={data}/>
+       <ParamTable columns={tableHeadings} data={data}/>
+       <Drawer anchor={'right'} open={toggleAddDrawer.right} onClose={toggleDrawer('right', false)}>
+        <DrawerContent  data={tableHeadings} toggleDrawer={toggleDrawer}  />
+      </Drawer>
     </>
     )
 

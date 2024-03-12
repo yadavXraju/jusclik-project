@@ -1,12 +1,9 @@
 import React from 'react'
-import ParamTable from 'views/common-section/ParamTable';
-import {Box} from '@mui/material'
+import ParamTable from 'views/erp-module/erp-common-item/setup/system-data/ParamTable';
+import Drawer from '@mui/material/Drawer';
+import DrawerContent from './DrawerContent';
 
-const tableHeading=[
-  {
-    id:0,
-    tabHeading:"Records"
-  },
+const tableHeadings=[
   {
     id:1,
     tabHeading:"Invoice Type  {Restricted}"
@@ -80,12 +77,15 @@ const tableHeading=[
   {
     id:19,
     tabHeading:"Created On"
+  },
+  {
+    id:20,
+    tabHeading:"Action"
   }
 ]
 
 const data = [
   {
-    "Records": "Roo1",
     "InvoiceTypeRestricted": "Type1",
     "FeePeriodRequired": "Period1",
     "InvoiceType": "Type1",
@@ -102,10 +102,11 @@ const data = [
     "ShowNoOfDaysTimesHead": "7",
     "AmountToBeCharged": "Amount1",
     "ApplicablePayMode": "Mode1",
-    "IsAdvancePaymentNextSession": "No"
+    "IsAdvancePaymentNextSession": "No",
+    "creatdOn":"19/03/2022",
+     "createdBy":"Admin"
   },
   {
-    "Records": "Roo2",
     "InvoiceTypeRestricted": "Type2",
     "FeePeriodRequired": "Period2",
     "InvoiceType": "Type2",
@@ -122,10 +123,11 @@ const data = [
     "ShowNoOfDaysTimesHead": "5",
     "AmountToBeCharged": "Amount2",
     "ApplicablePayMode": "Mode2",
-    "IsAdvancePaymentNextSession": "Yes"
+    "IsAdvancePaymentNextSession": "Yes",
+    "creatdOn":"19/03/2022",
+    "createdBy":"Admin"
   },
   {
-    "Records": "Roo3",
     "InvoiceTypeRestricted": "Type3",
     "FeePeriodRequired": "Period3",
     "InvoiceType": "Type3",
@@ -142,10 +144,11 @@ const data = [
     "ShowNoOfDaysTimesHead": "10",
     "AmountToBeCharged": "Amount3",
     "ApplicablePayMode": "Mode3",
-    "IsAdvancePaymentNextSession": "No"
+    "IsAdvancePaymentNextSession": "No",
+    "creatdOn":"19/03/2022",
+    "createdBy":"Admin"
   },
   {
-    "Records": "Roo4",
     "InvoiceTypeRestricted": "Type4",
     "FeePeriodRequired": "Period4",
     "InvoiceType": "Type4",
@@ -162,10 +165,11 @@ const data = [
     "ShowNoOfDaysTimesHead": "3",
     "AmountToBeCharged": "Amount4",
     "ApplicablePayMode": "Mode4",
-    "IsAdvancePaymentNextSession": "Yes"
+    "IsAdvancePaymentNextSession": "Yes",
+    "creatdOn":"19/03/2022",
+    "createdBy":"Admin"
   },
   {
-    "Records": "Roo5",
     "InvoiceTypeRestricted": "Type5",
     "FeePeriodRequired": "Period5",
     "InvoiceType": "Type5",
@@ -182,17 +186,22 @@ const data = [
     "ShowNoOfDaysTimesHead": "15",
     "AmountToBeCharged": "Amount5",
     "ApplicablePayMode": "Mode5",
-    "IsAdvancePaymentNextSession": "No"
+    "IsAdvancePaymentNextSession": "No",
+    "creatdOn":"19/03/2022",
+    "createdBy":"Admin"
   }
 ];
 
   
  
-const InvoiceType = () => {
+const InvoiceType = ({ toggleAddDrawer, toggleDrawer }) => {
   return (
-    <Box sx={{width:"100%",overflowX:"auto"}}>
-      <ParamTable columns={tableHeading} data={data} />
-    </Box>
+    <>
+      <ParamTable columns={tableHeadings} data={data} />
+      <Drawer anchor={'right'} open={toggleAddDrawer.right} onClose={toggleDrawer('right', false)}>
+        <DrawerContent data={tableHeadings} toggleDrawer={toggleDrawer} name="Wing {Restricted}" />
+      </Drawer>
+    </>
   )
 }
 

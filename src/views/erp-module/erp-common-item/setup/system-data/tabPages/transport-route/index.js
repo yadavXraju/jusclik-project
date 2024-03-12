@@ -1,17 +1,15 @@
 import React from 'react'
-import ParamTable from 'views/common-section/ParamTable';
+import ParamTable from 'views/erp-module/erp-common-item/setup/system-data/ParamTable';
+import Drawer from '@mui/material/Drawer';
+import DrawerContent from './DrawerContent';
 
-const tableHeading=[
+const tableHeadings=[
   {
-    id:1,
-    tabHeading:"Records"
-  },
-  {
-   id:2,
+   id:1,
    tabHeading:"Transport Route"
   },
   {
-   id:3,
+   id:2,
    tabHeading:"Academic Year Upto"
   },
   {
@@ -21,61 +19,58 @@ const tableHeading=[
   {
     id:5,
     tabHeading:"Created On"
+  },
+  {
+    id:6,
+    tabHeading:"Action"
   }
 ]
 
 const data=[
   {
     "id": 1,
-    "Records": "R001",
     "transportRoute": "Route 1",
-    "AcademicYear": "2024-2025",
     "AcademicYearUpto": "2025-2026",
     "createBy": "John Doe",
     "createdOn": "2024-03-05"
   },
   {
     "id": 2,
-    "Records": "R002",
     "transportRoute": "Route 2",
-    "AcademicYear": "2024-2025",
     "AcademicYearUpto": "2025-2026",
     "createBy": "Jane Smith",
     "createdOn": "2024-03-05"
   },
   {
     "id": 3,
-    "Records": "R003",
     "transportRoute": "Route 3",
-    "AcademicYear": "2024-2025",
     "AcademicYearUpto": "2025-2026",
     "createBy": "Alice Johnson",
     "createdOn": "2024-03-05"
   },
   {
     "id": 4,
-    "Records": "R004",
     "transportRoute": "Route 4",
-    "AcademicYear": "2024-2025",
     "AcademicYearUpto": "2025-2026",
     "createBy": "Bob Brown",
     "createdOn": "2024-03-05"
   },
   {
     "id": 5,
-    "Records": "R005",
     "transportRoute": "Route 5",
-    "AcademicYear": "2024-2025",
     "AcademicYearUpto": "2025-2026",
     "createBy": "Emma Wilson",
     "createdOn": "2024-03-05"
   }
 ];
 
-const TransportRoute = () => {
+const TransportRoute = ({ toggleAddDrawer, toggleDrawer}) => {
   return (
     <>
-     <ParamTable columns={tableHeading} data={data}/>
+     <ParamTable columns={tableHeadings} data={data}/>
+     <Drawer anchor={'right'} open={toggleAddDrawer.right} onClose={toggleDrawer('right', false)}>
+        <DrawerContent  data={tableHeadings} toggleDrawer={toggleDrawer} />
+      </Drawer>
     </>
   )
 }

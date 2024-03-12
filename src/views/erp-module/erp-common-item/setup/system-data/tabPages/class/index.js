@@ -1,18 +1,16 @@
 import React from 'react';
-import ParamTable from 'views/common-section/ParamTable';
-import {Box} from '@mui/material';
-const tableHeading = [
-  {
-    id: 1,
-    tabHeading: "Records"
-  },
+import ParamTable from 'views/erp-module/erp-common-item/setup/system-data/ParamTable';
+import DrawerContent from './DrawerContent';
+import Drawer from '@mui/material/Drawer';
+
+const tableHeadings = [
   {
     id: 2,
-    tabHeading: "Class"
+    tabHeading: "Class",
   },
   {
     id: 3,
-    tabHeading: "Wing"
+    tabHeading: "Wing",
   },
   {
     id: 4,
@@ -37,16 +35,15 @@ const tableHeading = [
   {
     id: 9,
     tabHeading: "Created On"
-  },{
-    id:10,
-    tabHeading:"Action"
+  }, {
+    id: 10,
+    tabHeading: "Action"
   }
 ]
 
 const classData = [
   {
     id: 1,
-    records: 'select',
     class: 'kg',
     wing: '',
     academicYear: '',
@@ -58,7 +55,6 @@ const classData = [
   },
   {
     id: 2,
-    records: 'select',
     class: 'kg',
     wing: '',
     academicYear: '',
@@ -70,7 +66,6 @@ const classData = [
   },
   {
     id: 3,
-    records: 'select',
     class: 'kg',
     wing: '',
     academicYear: '',
@@ -82,7 +77,6 @@ const classData = [
   },
   {
     id: 4,
-    records: 'select',
     class: 'kg',
     wing: '',
     academicYear: '',
@@ -94,7 +88,6 @@ const classData = [
   },
   {
     id: 5,
-    records: 'select',
     class: 'kg',
     wing: '',
     academicYear: '',
@@ -106,7 +99,6 @@ const classData = [
   },
   {
     id: 6,
-    records: 'select',
     class: 'kg',
     wing: '',
     academicYear: '',
@@ -118,7 +110,6 @@ const classData = [
   },
   {
     id: 7,
-    records: 'select',
     class: 'kg',
     wing: '',
     academicYear: '',
@@ -130,12 +121,16 @@ const classData = [
   }
 ];
 
-const Class = () => {
+const Class = ({toggleAddDrawer, toggleDrawer}) => {
   return (
-    <Box>
-      <ParamTable columns={tableHeading} data={classData} />
-    </Box>
+    <>
+      <ParamTable columns={tableHeadings} data={classData} />
+      <Drawer anchor={'right'} open={toggleAddDrawer.right} onClose={toggleDrawer('right', false)}>
+        <DrawerContent  data={tableHeadings} toggleDrawer={toggleDrawer} name="Wing {Restricted}" />
+      </Drawer>
+    </>
   )
 }
 
 export default Class
+

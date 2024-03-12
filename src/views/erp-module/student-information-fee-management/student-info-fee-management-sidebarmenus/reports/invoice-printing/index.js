@@ -1,9 +1,11 @@
 import React from 'react'
 
-const InvoicePrinting = () => {
+const index = () => {
   return (
-    <div>InvoicePrinting</div>
+    <div>
+      
+    </div>
   )
 }
 
-export default InvoicePrinting
+export default index

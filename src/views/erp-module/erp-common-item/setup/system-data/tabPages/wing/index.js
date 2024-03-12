@@ -1,12 +1,10 @@
 import React from 'react';
-import ParamTable from 'views/common-section/ParamTable';
+import ParamTable from 'views/erp-module/erp-common-item/setup/system-data/ParamTable';
+import Drawer from '@mui/material/Drawer';
+import DrawerContent from './DrawerContent';
 
 
 const tableHeadings = [
-  {
-    id: 1,
-    tabHeading: "Records"
-  },
   {
     id: 2,
     tabHeading: "Wing{Restricted}"
@@ -20,38 +18,33 @@ const tableHeadings = [
     tabHeading: "Created On"
   },
   {
-    id:5,
-    tabHeading:"Action"
+    id: 5,
+    tabHeading: "Action"
   }
 ]
 
 const data = [
   {
-    "records": "R001",
     "wing": "A",
     "createdBy": "John Doe",
     "createdOn": "2024-03-05"
   },
   {
-    "records": "R002",
     "wing": "B",
     "createdBy": "Jane Smith",
     "createdOn": "2024-03-06"
   },
   {
-    "records": "R003",
     "wing": "C",
     "createdBy": "Alice Johnson",
     "createdOn": "2024-03-07"
   },
   {
-    "records": "R004",
     "wing": "D",
     "createdBy": "Bob Brown",
     "createdOn": "2024-03-08"
   },
   {
-    "records": "R005",
     "wing": "E",
     "createdBy": "Emma Wilson",
     "createdOn": "2024-03-09"
@@ -59,10 +52,17 @@ const data = [
 ];
 
 
-const Wing = () => {
+const Wing = ({ toggleAddDrawer, toggleDrawer}) => {
+  const handleChange=()=>{
+
+  }
+
   return (
     <>
       <ParamTable columns={tableHeadings} data={data} />
+      <Drawer anchor={'right'} open={toggleAddDrawer.right} onClose={toggleDrawer('right', false)}>
+        <DrawerContent handleChange={handleChange} data={tableHeadings} toggleDrawer={toggleDrawer} name="Wing {Restricted}"/>
+      </Drawer>
     </>
   )
 }

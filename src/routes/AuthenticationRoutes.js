@@ -11,6 +11,7 @@ const Login = Loadable(lazy(() => import('views/pages/authentication/Login')));
 const ForgetPassword = Loadable(lazy(() => import('views/pages/authentication/ForgetPassword')));
 const VerifyNumber = Loadable(lazy(() => import('views/pages/authentication/VerifyNumber')));
 const SetNewPassword = Loadable(lazy(() => import('views/pages/authentication/SetNewPassword')));
+const VisitorRegistration =  Loadable(lazy(() => import('views/pages/authentication/visitor-registration')));
 
 // ==============================|| AUTHENTICATION ROUTING ||============================== //
 
@@ -40,6 +41,11 @@ const AuthenticationRoutes = {
     {
       path: '/setnewpassword',
       element: <SetNewPassword />
+    },
+
+    {
+      path:'/visitor-registration',
+      element: <VisitorRegistration />
     }
   ]
 };

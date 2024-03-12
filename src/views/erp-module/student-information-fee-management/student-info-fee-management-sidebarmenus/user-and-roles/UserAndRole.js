@@ -33,6 +33,7 @@ CustomTabPanel.propTypes = {
   value: PropTypes.number.isRequired,
 };
 
+// =========== Function for hendle tabs index ============
 function a11yProps(index) {
   return {
     id: `simple-tab-${index}`,
@@ -43,6 +44,7 @@ function a11yProps(index) {
 export default function UserAndRole() {
   const [value, setValue] = React.useState(0);
 
+  // =========== Function for hendle tabs click ============
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -56,9 +58,11 @@ export default function UserAndRole() {
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
+        {/* =========== Render User Details table ========== */}
         <UserDetails/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
+        {/* =========== Render Role Details table ========== */}
           <RoleDetails/>
       </CustomTabPanel>
     </Box>

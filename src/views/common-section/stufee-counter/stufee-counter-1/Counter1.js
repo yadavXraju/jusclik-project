@@ -1,32 +1,42 @@
 import React from 'react';
-import { Grid, Box, Typography } from '@mui/material';
-import Counter1Data from './Counter1Data';
+import { Grid, Box, Typography ,} from '@mui/material';
 
 
-const Counter1 = () => {
+
+const Counter1 = ( {Counter1Data } ) => {
     return (
-        <Grid container spacing={2}>
-            {Counter1Data.map((item, index) => <Grid item key={index}>
-                    <Box>
-                        {<item.icon />} {/* Render the icon component */}
-                    </Box>
-                    <Box>
+        <Grid container spacing={2} 
+         sx={{background:'#fff', borderRadius:'10px' ,
+        //  boxShadow:'rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px' ,
+        }}
+         >
+            {Counter1Data.map((item, index) => 
+                <Grid key={index} >
+                    
+                    <Box sx={{display:'flex', alignItems:'center' , gap:'20px' , padding:'16px' }}>
+                        <Box sx={{background:'rgb(94, 53, 177)' , padding:'8px' , borderRadius:'10px'}}>
+                         {<item.icon sx={{fontSize:'30px' , color:'#fff'}} />} {/* Render the icon component */}
+                        </Box>
 
-                        {/* Counter number */}
-                        <Typography sx={{ fontSize: '2.125rem', fontWeight: 500, mr: 1, mt: 1.75, mb: 0.75 }}>  {item.CounterNumber}</Typography>
+                        <Box>
+                            {/* Counter number */}
+                            <Typography sx={{ fontSize: '2.125rem', fontWeight: 500, mr: 1, mt: 0, mb: 0.75 }}>  
+                            {item.CounterNumber}
+                            </Typography>
 
-                        {/* Counter Title */}
-                        <Typography
-                            sx={{
-                                fontSize: '1rem',
-                                fontWeight: 500,
-                                color: '#000',
-                                textTransform: 'uppercase'
-                            }}
-                        >
-                            {item.counterTitle}
-                        </Typography>
+                            {/* Counter Title */}
+                            <Typography
+                                sx={{
+                                    fontSize: '1rem',
+                                    fontWeight: 500,
+                                    color: '#000',
+                                    textTransform: 'uppercase'
+                                }}
+                            >
+                                {item.counterTitle}
+                            </Typography>
 
+                        </Box>
                     </Box>
                 </Grid>
             )}

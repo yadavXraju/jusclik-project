@@ -1,33 +1,34 @@
 import React from 'react'
-import ParamTable from 'views/common-section/ParamTable';
+import ParamTable from 'views/erp-module/erp-common-item/setup/system-data/ParamTable';
+import Drawer from '@mui/material/Drawer';
+import DrawerContent from './DrawerContent';
 
-const tabHeadings=[
+const tableHeadings = [
   {
-    id:1,
-    tabHeading:"Records"
+    id: 2,
+    tabHeading: "Gate Pass Accompanied By"
   },
   {
-    id:2,
-    tabHeading:"Gate Pass Accompanied By"
+    id: 3,
+    tabHeading: "Enable Custom Remarks"
   },
   {
-    id:3,
-    tabHeading:"Enable Custom Remarks"
+    id: 4,
+    tabHeading: "Created by"
   },
   {
-    id:4,
-    tabHeading:"Created by"
+    id: 5,
+    tabHeading: "Created On"
   },
   {
-    id:5,
-    tabHeading:"Created On"
+    id:6,
+    tabHeading:"Action"
   }
 ]
 
 const data = [
   {
     id: 1,
-    records: "ROO1",
     gatePass: "Father",
     enableCustom: false,
     createdBy: "Aatur Bansal",
@@ -35,7 +36,6 @@ const data = [
   },
   {
     id: 2,
-    records: "ROO2",
     gatePass: "Mother",
     enableCustom: true,
     createdBy: "Priya Sharma",
@@ -43,7 +43,6 @@ const data = [
   },
   {
     id: 3,
-    records: "ROO3",
     gatePass: "Guardian",
     enableCustom: false,
     createdBy: "Rahul Singh",
@@ -51,7 +50,6 @@ const data = [
   },
   {
     id: 4,
-    records: "ROO4",
     gatePass: "Parent",
     enableCustom: true,
     createdBy: "Anjali Gupta",
@@ -59,7 +57,6 @@ const data = [
   },
   {
     id: 5,
-    records: "ROO5",
     gatePass: "Sibling",
     enableCustom: false,
     createdBy: "Siddharth Patel",
@@ -68,10 +65,13 @@ const data = [
 ];
 
 
-const GatePass= () => {
+const GatePass = ({toggleAddDrawer, toggleDrawer}) => {
   return (
     <>
-    <ParamTable columns={tabHeadings} data={data}/>
+      <ParamTable columns={tableHeadings} data={data} />
+      <Drawer anchor={'right'} open={toggleAddDrawer.right} onClose={toggleDrawer('right', false)}>
+        <DrawerContent data={tableHeadings} toggleDrawer={toggleDrawer} name="Wing {Restricted}" />
+      </Drawer>
     </>
   )
 }

@@ -73,9 +73,11 @@ const SystemData = Loadable(lazy(() => import('views/erp-module/erp-common-item/
 
 
 // reports
+const Reports = Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/reports/')));
+// const InvoicePrinting = Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/reports/invoice-printing')));
+const EnquiryReport =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/reports/enquiry')));
 
-const InvoicePrinting = Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/reports/invoice-printing')));
-
+const EnquiryRegister =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/reports/register')));
 
 // search
 const SearchEnquiry= Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/search/enquiry')));
@@ -265,18 +267,40 @@ const StudentInfoFeeRoutes = [
 
       // reports
 
-      {
-        path: 'reports',
-        children: [
+      // {
+      //   path: 'reports',
+      //   children: [
 
-          { 
-            path: 'invoice-printing', 
-            element: <InvoicePrinting/> 
+      //     { 
+      //       path: 'invoice-printing', 
+      //       element: <InvoicePrinting/> 
+      //     },
+
+
+      //   ]
+      // },
+
+      { 
+         path: 'reports', 
+         children:[
+          {
+            path:'',
+            element: <Reports/>,
+          },
+          {
+          path:'enquiry',
+          element:<EnquiryReport />
           },
 
+          {
+            path:'register',
+            element:<EnquiryRegister />
+            }
 
-        ]
-      },
+         ]
+       },
+
+
 
       // search
 
