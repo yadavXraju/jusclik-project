@@ -9,6 +9,7 @@ import ReceiptOutlinedIcon from '@mui/icons-material/ReceiptOutlined';
 import CreditCardOutlinedIcon from '@mui/icons-material/CreditCardOutlined';
 import FolderOpenOutlinedIcon from '@mui/icons-material/FolderOpenOutlined';
 import ManageHistoryOutlinedIcon from '@mui/icons-material/ManageHistoryOutlined';
+import VerifiedOutlinedIcon from '@mui/icons-material/VerifiedOutlined';
 
 const ReportsPayroll = () => {
     const [favorites, setFavorites] = useState([]);
@@ -62,10 +63,13 @@ const ReportsPayroll = () => {
     return (
         <Box sx={{ paddingLeft: '30px', paddingRight: '40px', paddingTop: '20px' }}>
             {favorites.length > 0 && (
-                <Typography variant='h4' sx={{paddingBottom:'10px'}}>Favorites:</Typography>
+                <Box sx={{display:'flex', paddingBottom:'20px'}}>
+                    <VerifiedOutlinedIcon/>
+                <Typography variant='h4' sx={{paddingBottom:'10px', marginTop:'3px', paddingLeft:'10px'}}>Favorites:</Typography>
+                </Box>
             )}
             {favorites.length > 0 && (
-                <Grid container spacing={5}>
+                <Grid container spacing={2} sx={{paddingBottom:'30px'}}>
                     {favorites.map((page, index) => (
                         <Grid item xs={12} sm={6} md={4} lg={3} key={index} sx={{paddingBottom:'20px'}}>
                             <Typography sx={{ paddingBottom: '10px',borderBottom: '1px dashed #cbcbcb' }}>
