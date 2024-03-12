@@ -1,0 +1,27 @@
+.beforeClick{
+  transform:translateY(-100vh);
+  margin-left:-59px;
+}
+
+.afterClick{
+  position: fixed;
+  margin-left:-59px;
+  margin-top:-140px;
+  border-radius:10px;
+  transform:translateY(0vh);
+  background-color: #fff;
+  z-index: 99;
+  width:calc(100vw - 280px);
+  height: 100vh;
+  transition: 0.3s all ease-in-out;
+}
+
+.enquiry-customize-report{
+   width:calc(100vw-280px);
+}
+
+@media screen and (max-width: 900px) {
+  .enquiry-customize-report{
+    width:100vw;
+  }
+}
