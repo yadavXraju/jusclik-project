@@ -113,7 +113,7 @@ export default function MasterStudentTable() {
 
   const handleClick = () => {
     // Navigate to the student details page
-    navigate('../registration-data');
+    navigate('../registration');
   };
 
   const handleChangePage = (event, newPage) => {
@@ -130,7 +130,7 @@ export default function MasterStudentTable() {
 
 
     const Click=()=>{
-      navigate('../registration');
+      navigate('../admission-form');
     }
   return (
     <Box sx={{ width: '100%' }}>
