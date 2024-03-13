@@ -6,6 +6,7 @@ import Avatar from '@mui/material/Avatar';
 import DP from 'assets/images/pro-3.png';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import Divider from '@mui/material/Divider';
+import QRCODE from 'assets/images/Demo_QR.jpg'
 
 
 
@@ -45,6 +46,11 @@ const VisitorAppointmentPass = () => {
 
     <Typography variant='h5' color='white' marginTop={1}  > <strong> Address:</strong> Abc Delhi</Typography>
     <Typography variant='h5' color='white'  ><strong>Visitor&apos;s Company:</strong> Abc Tech  </Typography>
+    <Typography variant='h5' color='white' marginTop={5} ><strong>POC Details</strong></Typography>
+    <Typography variant='h6' color='white'  ><strong>Name: Visior Name , Number: Visitor Number</strong></Typography>
+    <img src={QRCODE} alt="QRCODE" style={{ width: '90px', height: '90px', alignSelf: 'center!important', marginTop:'20px'}}/>
+
+
 
 
     </Box>
