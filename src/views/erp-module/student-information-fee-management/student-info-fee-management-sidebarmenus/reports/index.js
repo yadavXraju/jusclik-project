@@ -1,5 +1,5 @@
 import React from 'react'
-import ReportTabs from './ReportTabs'
+import ReportTabs from './ReportTabs';
 
 const InvoicePrinting = () => {
   return (

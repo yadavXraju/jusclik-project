@@ -23,9 +23,12 @@ const InvoiceRaised = () => {
     
           {/* Single progress bar indicating both paid and due amounts */}
 
-          <Box sx={{padding:'48px 24px 60px 24px'}}>
+           {/* paid */}
+          <Typography variant='h4' sx={{textAlign:'center', padding:'2rem 0 0rem 0'}}> {paidPercentage}%</Typography>
+
+          <Box sx={{padding:'14px 24px 72px 24px'}}>
               <LinearProgress variant="determinate" value={paidPercentage} sx={{
-                height :'30px'
+                height :'4px'
               }} />
           </Box>
 
@@ -38,20 +41,22 @@ const InvoiceRaised = () => {
                 <Box sx={{
                   flex:'0 0 50%',
                   borderRight:'1px solid rgb(227, 227, 227)',
-                  padding:'3rem 24px',
-                  
+                  padding:'3rem 24px',               
                 }}>
 
 
-                 <Typography variant="h3" sx={{fontSize:'18px'}}>
+                 <Typography variant="h3" sx={{
+                  fontSize:'16px',
+                  }}>
+
                   {/* blank typography for labels */}
                     <Typography variant='span' sx={{
                         background:'rgb(30, 136, 229) !important',
                         display:'inline-block',
-                        width:'14px',
-                        height:'14px',
+                        width:'10px',
+                        height:'10px',
                         borderRadius:'50%',
-                        marginRight:'12px'
+                        marginRight:'8px',
                     }}>
 
                     </Typography>
@@ -62,19 +67,19 @@ const InvoiceRaised = () => {
 
                 <Box sx={{
                   flex:'0 0 50%',
-                  borderRight:'1px solid rgb(227, 227, 227)',
+                  // borderRight:'1px solid rgb(227, 227, 227)',
                   padding:'3rem 24px',
                 }}>
 
-                  <Typography variant="h3" sx={{fontSize:'18px'}}>
+                  <Typography variant="h3" sx={{fontSize:'16px'}}>
                        {/* blank typography for labels */}
                        <Typography variant='span' sx={{
                         background:'rgb(170, 215, 250) !important',
                         display:'inline-block',
-                        width:'14px',
-                        height:'14px',
+                        width:'10px',
+                        height:'10px',
                         borderRadius:'50%',
-                        marginRight:'12px'
+                        marginRight:'8px',
                     }}>
 
                     </Typography>

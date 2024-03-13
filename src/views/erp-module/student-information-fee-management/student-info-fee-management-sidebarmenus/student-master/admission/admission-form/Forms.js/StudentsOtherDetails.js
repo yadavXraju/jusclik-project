@@ -1,61 +1,54 @@
 import React from 'react';
-import { TextField, Grid,  Box,  Card, CardContent,CardHeader } from '@mui/material';
-import { makeStyles } from '@mui/styles';
+import { Grid,  TextField, Card, useMediaQuery, Typography } from '@mui/material';
+//import ParameterizedDateComponent from 'views/common-section/ParamDateComponent';
 
-const useStyles = makeStyles((theme) => ({
-  formContainer: {
-    padding: theme.spacing(2),
-    backgroundColor: '#f5f5f5',
-    borderRadius: theme.spacing(1),
-  },
-  title: {
-    marginBottom: theme.spacing(2),
-  },
-  divider: {
-    margin: theme.spacing(2, 0),
-  },
-}));
+function StudentsOtherDetails() {
 
-const StudentsOtherDetails = () => {
-  const classes = useStyles();
+  const isMobile = useMediaQuery('(max-width: 767px)')
 
   return (
-    <Box className={classes.formContainer}>
-        <Card variant="outlined">
-        <CardHeader title=" Other Details"/>
-          <CardContent>
-          <Grid container spacing={2}>
-        <Grid item xs={12} sm={6} md={4}>
-          <TextField fullWidth label="Blood Group" variant="outlined" />
-        </Grid>
-        <Grid item xs={12} sm={6} md={4}>
-          <TextField fullWidth label="House" variant="outlined" />
-        </Grid>
-        <Grid item xs={12} sm={6} md={4}>
-          <TextField fullWidth label="Nationality" variant="outlined" />
-        </Grid>
-        <Grid item xs={12} sm={6} md={4}>
-          <TextField fullWidth label="Religion" variant="outlined" />
-        </Grid>
-        <Grid item xs={12} sm={6} md={4}>
-          <TextField fullWidth label="Aadhaar No." variant="outlined" />
-        </Grid>
-        <Grid item xs={12} sm={6} md={4}>
-          <TextField fullWidth label="PEN No." variant="outlined" />
-        </Grid>
-        <Grid item xs={12} sm={6} md={4}>
-          <TextField fullWidth label="SRN No." variant="outlined" />
-        </Grid>
-        <Grid item xs={12} sm={6} md={4}>
-          <TextField fullWidth label="Family ID" variant="outlined" />
-        </Grid>
+    <>
+    {/* Other Details */}
+    <Card sx={{padding:'10px'}}>
+      <Typography variant={'h4'} p={1} mb={2} sx={{borderBottom:'1px solid #ccc'}}>
+      Other Details
+      </Typography>
+    <Grid container spacing={1} sx={{ display: 'flex', height: '100%' }}>
+      <Grid item xs={12} sm={12} lg={6}>
+       <TextField size={isMobile  ? 'small' : 'normal' } id="outlined-basic" fullWidth label="Family Id" variant="outlined" />
       </Grid>
-          </CardContent>
-        </Card>
-     
+      <Grid item xs={12} sm={12} lg={6}>
+      <TextField size={isMobile  ? 'small' : 'normal' } id="outlined-basic" fullWidth label="Aadhaar No." variant="outlined" />
+      </Grid>
+      <Grid item xs={12} sm={12} lg={6}>
+      <TextField size={isMobile  ? 'small' : 'normal' } id="outlined-basic" fullWidth label="Nationality" variant="outlined" />
+      </Grid>
+      <Grid item xs={12} sm={12} lg={6}>
+      <TextField size={isMobile  ? 'small' : 'normal' } id="outlined-basic" fullWidth label="Religion" variant="outlined" />
+      </Grid>
+      <Grid item xs={12} sm={12} lg={6}>
+      <TextField size={isMobile  ? 'small' : 'normal' } id="outlined-basic" fullWidth label="House" variant="outlined" />
+      </Grid>
+      <Grid item xs={12} sm={12} lg={6}>
+      <TextField size={isMobile  ? 'small' : 'normal' } id="outlined-basic" fullWidth label="Blood Group" variant="outlined" />
+      </Grid>
+      <Grid item xs={12} sm={12} lg={6}>
+      <TextField size={isMobile  ? 'small' : 'normal' } id="outlined-basic" fullWidth label="SRN. No." variant="outlined" />
+      </Grid>
+      <Grid item xs={12} sm={12} lg={6}>
+      <TextField size={isMobile  ? 'small' : 'normal' } id="outlined-basic" fullWidth label="PEN. No." variant="outlined" />
+      </Grid>
+      <Grid item xs={12} sm={12} lg={6}>
+      <TextField size={isMobile  ? 'small' : 'normal' } id="outlined-basic" fullWidth label="Category" variant="outlined" />
+      </Grid>
+      <Grid item xs={12} sm={12} lg={6}>
+      <TextField size={isMobile  ? 'small' : 'normal' } id="outlined-basic" fullWidth label="Pay Mode" variant="outlined" />
+      </Grid>
+    </Grid>
+    </Card>
     
 
-    </Box>
+    </>
   );
 }
 
