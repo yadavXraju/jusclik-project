@@ -11,10 +11,13 @@ import QRCODE from 'assets/images/Demo_QR.jpg'
 
 
 const VisitorAppointmentPass = () => {
+
+  
   return (
     
     <Box  sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop:'50px' }}
   >
+    
     <Box  width={390}  my={2} display="flex"  justifyContent="center" gap={2} p={2}   sx={{ border: '1px solid grey', marginTop:'0px' }}
     >
       
