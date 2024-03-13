@@ -21,10 +21,17 @@ const DashboardContent = ({ isLoading }) => {
 
 
          {/* counter */}
-          <Grid item xs={12} lg={12} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' , } ,padding:'40px !important' ,paddingBottom:'0 !important', display:'flex' , gap:'40px' ,}}>
+          <Grid item xs={12} lg={12} md={12} sx={{ 
+            // marginTop: { md: '0px', lg: '0rem' , } ,
+            paddingBottom:'0',
+            marginTop:'20px',
+            display:'flex' ,
+            gap:'40px' ,
+            marginLeft:'14px'
+            }}>
              <LiveStrength />
-             <BoyStrength sx={{flex:'0 0 33.3%'}}/>
-             <GirlStrength sx={{flex:'0 0 33.3%'}}/>
+             <BoyStrength />
+             <GirlStrength />
          </Grid>
 
          

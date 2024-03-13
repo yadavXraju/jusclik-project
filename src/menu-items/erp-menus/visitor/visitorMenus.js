@@ -125,9 +125,21 @@ const VisitorMenu = {
             //      breadcrumbs: false
             //    },
 
+           //  visitor registration
+
+                  {
+                  id: 'visitor-registration',
+                  title: 'Visitor Registration',
+                  type: 'item',
+                  url: '/visitor-registration',
+                  icon:  GroupsTwoToneIcon,
+                  breadcrumbs: false
+                },
 
     ]
   };
+
+  
   
   export default VisitorMenu;
   
