@@ -23,7 +23,7 @@ const defaultTheme = createTheme({
     }
   }
 });
-export const MobileNumber = () => {
+export const MobileNumber2 = () => {
  
 {
   const theme = useTheme(); // Accessing theme object using useTheme hook
@@ -37,60 +37,30 @@ export const MobileNumber = () => {
 
 
   
-const css={
-  center:{
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  }
-}
+// const css={
+//   center:{
+//     display: 'flex',
+//     alignItems: 'center',
+//     justifyContent: 'center',
+//   }
+// }
   return (
     <ThemeProvider theme={defaultTheme}>
       <Box sx={{maxWidth:'80%', margin: '0 auto',}}>
-      <Grid container component="main" sx={{ minHeight: '100vh',...css.center,
+      <Grid container component="main" sx={{ minHeight: '100vh',
      }}>
         <CssBaseline />
-        {/* left side school logo */}
-        <Grid
-      item
-      xs={12}
-      sm={4}
-      md={5}
-      sx={{
-        backgroundColor: (t) => (t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900]),
-        backgroundSize: 'cover',
-        backgroundPosition: 'bottom',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        height:'100vh'
-      }}
-    >
-      <Grid item sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
-        <img
-          src={LogoImg}
-          alt="Logo"
-          style={{ width: isMobile ? '200px' : '100px', height: isMobile ? '200px' : '100px', marginBottom: '15px' }}
-        />
-        <Typography
-          sx={{ fontWeight: '500', fontSize: { xs: '24px', md: '30px' }, color: '#E64B4C', textAlign: 'center', lineHeight: '30px' }}
-        >
-          Arwachin Public <br /> School
-        </Typography>
-        <Typography sx={{ fontSize: { sm:'14px', md: '18px' }, color: '#364152b5' }}>Vasundhara, Ghaziabad</Typography>
-      </Grid>
-    </Grid>
-  
         {/* school logo over*/}
         <Grid
           item
-          xs={6}
-          sm={8}
-          md={7}
+          xs={12}
+          sm={10}
+          md={14}
           component={Paper}
           elevation={6}
           square
-          sx={{...css.center,
+          sx={{
+            display:'flex',
             backgroundColor: '#ffecec',
             backgroundRepeat: 'no-repeat',
             borderRadius: isMobile ? '20px 0px 0px 20px' : '20px 20px 0px 0px',
@@ -98,6 +68,11 @@ const css={
           }}
         >          
           <Box sx={{ height: '100vh', width: isMobile ? '330px' : '500px',display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+         <img
+          src={LogoImg}
+          alt="Logo"
+          style={{ width: isMobile ? '200px' : '100px', height: isMobile ? '200px' : '100px', marginBottom: '15px' ,justifyContent:'flex-start'}}
+        />
             <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', mb: 1 }}>
               
             <Box
@@ -135,15 +110,10 @@ const css={
              
             </Box>
             {/* mobile number input box */}
-            <Box>
+            <Box sx={{marginTop:'10rem'}}>
               <TextField
                 InputProps={{
                   disableUnderline: true,
-                  // startAdornment: (
-                  //   <InputAdornment position="start">
-                  //     {/* <CountrySelect country={country} handleCountryChange={handleCountryChange} /> */}
-                  //   </InputAdornment>
-                  // ),
                   style: { borderRadius: '50px', fontSize: '15px', fontFamily: 'plus Jakarta sans', backgroundColor: '#ffffff',width:'25rem' }
                 }}
                 margin="normal"
@@ -187,4 +157,3 @@ const css={
 }
 }
 
-  

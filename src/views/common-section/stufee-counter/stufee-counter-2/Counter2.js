@@ -8,9 +8,12 @@ const Counter2 = ( {Counter2Data } ) => {
         <Grid container spacing={2} 
          sx={{
             background:'#fff',
-            borderRadius:'10px' ,
+            borderRadius:'16px' ,
             border:'1px solid rgb(227, 227, 227)',
          //  boxShadow:'rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px' ,
+            padding:'1rem',
+            boxShadow:'1px 4px 9px -8px black',
+            flex:'0 0 33.3%',
         }}
          >
             {Counter2Data.map((item, index) => 

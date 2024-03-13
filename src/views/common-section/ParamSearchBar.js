@@ -1,35 +1,43 @@
 import React from 'react';
-import { Paper, InputBase, IconButton } from '@mui/material';
+import Paper from '@mui/material/Paper';
+import InputBase from '@mui/material/InputBase';
+import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 
-const SearchBar = ({onChange}) => {
-  const paperStyle = {
-    width:"100%",
-    padding: '2px 4px',
+const SearchBar = ({
+  onChange,
+  paperStyle,
+  iconButtonStyle,
+  searchIconStyle,
+  inputStyle,
+}) => {
+  const defaultPaperStyle = {
+    width: "100%",
     display: 'flex',
     alignItems: 'center',
-    margin: 'auto',
-    border:'1px solid #eef2f6',
-    borderRadius:"none",
-    paddingTop:"5px"
+    border: '1px solid #eef2f6',
   };
 
-  const inputStyle = {
-    marginLeft: '8px', // Adjust as needed
+  const defaultIconButtonStyle = {
+    padding:"10px"
+  };
+
+  const defaultInputStyle = {
+    marginLeft: '8px',
     flex: 1,
   };
 
-  const iconButtonStyle = {
-    padding: '10px', // Adjust as needed
-  };
+  const mergedPaperStyle = { ...defaultPaperStyle, ...paperStyle };
+  const mergedIconButtonStyle = { ...defaultIconButtonStyle, ...iconButtonStyle };
+  const mergedInputStyle = { ...defaultInputStyle, ...inputStyle };
 
   return (
-    <Paper component="form" sx={paperStyle}>
-      <IconButton sx={iconButtonStyle} aria-label="search">
-        <SearchIcon />
+    <Paper component="form" sx={mergedPaperStyle}>
+      <IconButton sx={mergedIconButtonStyle} aria-label="search" className="search-button">
+        <SearchIcon sx={searchIconStyle} />
       </IconButton>
       <InputBase
-        sx={inputStyle}
+        sx={mergedInputStyle}
         placeholder="Search..."
         inputProps={{ 'aria-label': 'search' }}
         onChange={onChange}

@@ -1,24 +1,53 @@
-import React from 'react';
-import { Button, Typography, Box, TextField } from '@mui/material';
+import React, { useState } from 'react';
+import ParamStepper from 'views/common-section/ParamStepper';
+import { Box, Typography, Button } from '@mui/material';
+import GeneralReport from '../general-report';
+import ShowHide from '../show-hide';
+import ReportLayout from '../report-layout';
+import ReportReference from '../report-reference';
 
-const EnquiryDrawer = ({ toggleDrawer}) =>{
+const steps = [
+    'General',
+    'Show/Hide Columns',
+    'Report Layout',
+    'Report Preference'
+];
+
+const tabPage = [
+    {
+      id: 1,
+      name: "GeneralReport",
+      component:GeneralReport,
+    },
+    {
+      id: 2,
+      name: "Show / Hide Columns",
+      component:ShowHide
+    }, {
+      id: 3,
+      name: "Report Layout",
+      component:ReportLayout 
+    },
+    {
+      id: 4,
+      name: "Report Reference",
+      component:ReportReference ,
+    },
+  ]
+
+const EnquiryDrawer = ({ name, setClickedCustomize }) => {
+    const [activeStep, setActiveStep] = useState(1);
     return (
         <>
-            <Box  role="presentation"  className="breakpoint2" >
+            <Box className="enquiry-customize-report" sx={{ marginLeft: "5%", width: "80%", justifyContent: "space-around" }}>
                 <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #ccc' }}>
-                    <Typography variant="h4">Class</Typography>
-                    <Button onClick={toggleDrawer('right', false)} sx={{ alignSelf: 'flex-end' }}>
+                    <Typography variant="h4">{name}</Typography>
+                    <Button sx={{ alignSelf: 'flex-end' }} onClick={() => setClickedCustomize(false)}>
                         Close
                     </Button>
                 </Box>
-                <Box sx={{ marginTop: "20px",display:"flex",flexDirection:"column",gap:"20px" }}>
-                    <TextField id={name} label="Class" variant="outlined"
-                        inputProps={{ maxLength: 10 }}
-                        onChange={(event) => handleChange("Wing", event.target.value)}
-                        fullWidth
-                        autoComplete="off" />
-                </Box>
             </Box>
+            <ParamStepper tabPage={tabPage} steps={steps} acitveStep={activeStep} setActiveStep={setActiveStep} customStyle={{}}  />
         </>
     );
 };
