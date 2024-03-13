@@ -23,7 +23,7 @@ const InvoiceRaised = () => {
     
           {/* Single progress bar indicating both paid and due amounts */}
 
-          <Box sx={{padding:'48px 24px 60px 24px'}}>
+          <Box sx={{padding:'104px 24px'}}>
               <LinearProgress variant="determinate" value={paidPercentage} sx={{
                 height :'30px'
               }} />
