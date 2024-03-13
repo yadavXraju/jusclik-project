@@ -36,10 +36,15 @@ const defaultTheme = createTheme({
 function CustomTabPanel({ children, value, index }) {
   const theme = useTheme(); // Accessing theme object using useTheme hook
   const isMobile = useMediaQuery(theme.breakpoints.only('xs'));
+
+  const tabPanelStyles = {
+    pt: isMobile ? 1 : 3
+  };
+
   return (
     <div role="tabpanel" hidden={value !== index} id={`simple-tabpanel-${index}`} aria-labelledby={`simple-tab-${index}`}>
       {value === index && (
-        <Box sx={{ pt: isMobile ? 1 : 3 }}>
+        <Box sx={tabPanelStyles}>
           <Typography>{children}</Typography>
         </Box>
       )}
@@ -134,36 +139,32 @@ export default function LoginPage() {
 
   const isMobile = useMediaQuery(theme.breakpoints.only('xs'));
 
-  const tabStyles = {
-    width: isMobile ? '260px' : '200px',
-    textTransform: 'none',
-    fontSize: '15px',
+  const commonStyles = {
     fontFamily: 'plus Jakarta sans',
-    paddingTop: '21px'
-  };
-
-  const textFieldStyles = {
     borderRadius: '50px',
     backgroundColor: '#ffffff',
     color: '#6b6666',
     mb: isMobile ? 1 : 2,
-    fontFamily: 'plus Jakarta sans',
-    height: isMobile ? '50px' : '56px'
+    height: isMobile ? '50px' : '56px',
+    fontSize: '15px'
+  };
+
+  const tabStyles = {
+    width: isMobile ? '260px' : '200px',
+    paddingTop: '21px',
+    textTransform:'none'
   };
 
   const buttonStyles = {
     backgroundColor: '#fff',
     color: '#364152b5',
-    borderRadius: '50px',
     border: '1px solid #c4c4c4',
     width: isMobile ? '130px' : '170px',
     display: 'flex',
     height: isMobile ? '50px' : '56px',
-    fontFamily: 'plus Jakarta sans',
-    fontSize: '15px',
     alignItems: 'center',
     justifyContent: 'flexStart',
-    textTransform: 'none',
+    ...commonStyles,
     '&:hover': {
       backgroundColor: '#e64b4c',
       color: '#fff'
@@ -172,7 +173,7 @@ export default function LoginPage() {
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <Grid container component="main" sx={{ minHeight: '100vh', display: 'flex' }}>
+      <Grid container sx={{ height: '100vh', display: 'flex' }}>
         <CssBaseline />
         <LeftLogo />
         <Grid
@@ -193,7 +194,7 @@ export default function LoginPage() {
             padding: isMobile ? '0px' : '0px 35px'
           }}
         >
-          <Box sx={{ height: '450px', width: isMobile ? '330px' : '500px' }}>
+          <Box sx={{ height: isMobile ? '500px' : '450px', width: isMobile ? '100%' : '500px', padding:isMobile?'25px':'0px' }}>
             <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', mb: isMobile ? 0 : 1 }}>
               <Typography
                 component="h1"
@@ -233,8 +234,7 @@ export default function LoginPage() {
               <Box component="form" noValidate onSubmit={handleSubmit}>
                 <TextField
                   InputProps={{
-                    style: textFieldStyles,
-                    startAdornment: <InputAdornment position="start" style={{ width: '10px' }} />
+                    style: { ...commonStyles}
                   }}
                   margin="normal"
                   variant="outlined"
@@ -245,15 +245,14 @@ export default function LoginPage() {
                   name="Username"
                   autoComplete="Username"
                   autoFocus
-                  sx={textFieldStyles}
                   value={userId}
                   onChange={(event) => setUserId(event.target.value)}
                 />
 
                 <TextField
                   InputProps={{
-                    style: { ...textFieldStyles, borderRadius: '50px' },
-                    startAdornment: <InputAdornment position="start" style={{ paddingLeft: '10px' }} />,
+                    style: { ...commonStyles, borderRadius: '50px' },
+                    // startAdornment: <InputAdornment position="start" style={{ paddingLeft: '10px' }} />,
                     endAdornment: (
                       <InputAdornment position="end">
                         <IconButton
@@ -276,7 +275,6 @@ export default function LoginPage() {
                   type={showPassword ? 'text' : 'password'}
                   id="password"
                   autoComplete="current-password"
-                  sx={textFieldStyles}
                   value={userPassword}
                   onChange={(event) => setUserPassword(event.target.value)}
                 />
@@ -297,7 +295,10 @@ export default function LoginPage() {
             <CustomTabPanel value={value} index={1}>
               <MobileLogin />
             </CustomTabPanel>
+            <Box>
+
             <PoweredBySection />
+            </Box>
           </Box>
         </Grid>
       </Grid>
