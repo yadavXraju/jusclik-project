@@ -1,10 +1,12 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
-import {Tab, Card} from '@mui/material';
+import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import ReportsPayroll from './ReportsPayroll';
+import SearchBar from 'views/common-section/ParamSearchBar';
+import Card from '@mui/material/Card';
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -48,20 +50,25 @@ export default function ReportTabs() {
 
   return (
     <Card>
-    <Box sx={{ width: '100%' }}>
-      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-          <Tab label="General Reports" {...a11yProps(0)} />
-          <Tab label="Custom Reports" {...a11yProps(1)} />
-        </Tabs>
+      <Box sx={{ display: 'flex', width: '100%' }}>
+        <Box sx={{ flexGrow: 1 }}>
+          <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+            <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+              <Tab label="General Reports" {...a11yProps(0)} />
+              <Tab label="Custom Reports" {...a11yProps(1)} />
+            </Tabs>
+          </Box>
+        </Box>
+        <Box>
+          <SearchBar onChange={(e)=>console.log(e.target.value)}/>
+        </Box>
       </Box>
       <CustomTabPanel value={value} index={0}>
-     <ReportsPayroll/>
+        <ReportsPayroll />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-      Custom Reports
+        Custom Reports
       </CustomTabPanel>
-    </Box>
     </Card>
   );
 }

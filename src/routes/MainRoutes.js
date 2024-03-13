@@ -8,6 +8,8 @@ import ParentRoutes from './ParentRoutes';
 import VisitorRoutes from './erp-routes/VisitorRoutes';
 import StudentInfoFeeRoutes from './erp-routes/StudentInfoFeeRoutes';
 
+// library dashboard
+import LibraryRoutes from './erp-routes/LibraryRoutes';
 
 
  // subject Teacher  Dashboard Menus
@@ -46,8 +48,10 @@ const MainRoutes = {
     // Student info and fee info Dashboard Menus (Include imported routes here)
     ...StudentInfoFeeRoutes,
 
-    // common routes  
+    // library Dashboard Menus (Include imported routes here)
+    ...LibraryRoutes , 
 
+    // common routes  
     ...CommonRoutes
 
   ]

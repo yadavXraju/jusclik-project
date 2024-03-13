@@ -62,7 +62,7 @@ export const ErpModuleList = [
         id:4,
         name:'Library',
         icon : <img src={library} alt='icon' style={{width:'34px', margin:'auto'}} />,
-        url: '',
+        url: '/erp/library/dashboard',
         role : 'library',
     },
 

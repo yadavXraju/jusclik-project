@@ -1,94 +1,88 @@
-// dummy data
+// ===========================|| DASHBOARD - TOTAL GROWTH BAR CHART ||=========================== //
 
-export const FeeDefaulterData = [
-    {
-       id:1,
-       name:'AVINASH ARYAN',
-       class: 'Nursery',
-       visitTimes : '88',
-       mobileNo : '9644347100',
+const FeeDefaulterData = {
+    height: 480,
+    type: 'bar',
+    options: {
+      chart: {
+        id: 'bar-chart',
+        stacked: true,
+        toolbar: {
+          show: true
+        },
+        zoom: {
+          enabled: true
+        }
+      },
+      responsive: [
+        {
+          breakpoint: 480,
+          options: {
+            legend: {
+              position: 'bottom',
+              offsetX: -10,
+              offsetY: 0
+            }
+          }
+        }
+      ],
+      plotOptions: {
+        bar: {
+          horizontal: false,
+          columnWidth: '50%'
+        }
+      },
+      xaxis: {
+        type: 'category',
+        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+      },
+      legend: {
+        show: true,
+        fontSize: '14px',
+        fontFamily: `'Roboto', sans-serif`,
+        position: 'bottom',
+        offsetX: 20,
+        labels: {
+          useSeriesColors: false
+        },
+        markers: {
+          width: 16,
+          height: 16,
+          radius: 5
+        },
+        itemMargin: {
+          horizontal: 15,
+          vertical: 8
+        }
+      },
+      fill: {
+        type: 'solid'
+      },
+      dataLabels: {
+        enabled: false
+      },
+      grid: {
+        show: true
+      }
     },
-
-    {
-        id:2,
-        name:'Rajeev Chauhan',
-        visitTimes : '70',
-        mobileNo : '9644347900',
-        class: 'Nursery',
-     },
-
-
-     {
-        id:3,
-        name:'Himesh Mehta',
-        visitTimes : '58',
-        mobileNo : '9646747100',
-        class: 'Nursery',
-     },
-
-
-     {
-        id:4,
-        name:'Darshan Bhandari',
-        visitTimes : '40',
-        mobileNo : '9644308100',
-        class: 'Nursery',
-     },
-
-
-     {
-        id:5,
-        name:'Aman Rawat',
-        visitTimes : '89',
-        mobileNo : '9654347600',
-        class: 'Nursery',
-     },
-
-
-     {
-        id:6,
-        name:'Rahul Singh',
-        visitTimes : '78',
-        mobileNo : '9674347100',
-        class: 'Nursery',
-     },
-
-
-     {
-        id:7,
-        name:'Aditya Panwar',
-        visitTimes : '50',
-        mobileNo : '9644347550',
-     },
-
-
-     {
-        id:8,
-        name:'Dinesh Rana',
-        visitTimes : '38',
-        mobileNo : '9644347980',
-     },
-
-
-     {
-        id:9,
-        name:'Mukesh Thakur',
-        visitTimes : '58',
-        mobileNo : '9644347980',
-     },
-
-
-     {
-        id:10,
-        name:'Sumit Singh',
-        visitTimes : '48',
-        mobileNo : '9644347980',
-     },
-
-     {
-        id:11,
-        name:'Hitesh Bisht',
-        visitTimes : '65',
-        mobileNo : '9644347764',
-     },
-]
+    series: [
+      // {
+      //   name: 'Investment',
+      //   data: [35, 125, 35, 35, 35, 80, 35, 20, 35, 45, 15, 75]
+      // },
+      {
+        name: 'Absent',
+        data: [35, 15, 15, 35, 65, 40, 80, 25, 15, 85, 25, 75]
+      },
+      {
+        name: 'Present',
+        data: [35, 145, 35, 35, 20, 105, 100, 10, 65, 45, 30, 10]
+      },
+      // {
+      //   name: 'Leave',
+      //   data: [0, 0, 75, 0, 0, 115, 0, 0, 0, 0, 150, 0]
+      // }
+    ]
+  };
+  export default FeeDefaulterData;
+  
