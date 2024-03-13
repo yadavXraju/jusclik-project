@@ -14,14 +14,14 @@ const PoweredBySection = () => {
   const theme = useTheme(); // Accessing theme object using useTheme hook
 
   const isMobile = useMediaQuery(theme.breakpoints.only('xs'));
-  return (  
+  return (
     <>
       <Box
         sx={{
           textAlign: 'center',
           position: 'fixed',
-          bottom: isMobile ? '7%' : '13%',
-          transform: isMobile ? 'translateX(19%)' : 'translateX(55%)'
+          bottom: isMobile ? '60px' : '130px',
+          transform: isMobile ? 'translateX(20%)' : 'translateX(55%)'
         }}
       >
         <img src={CloudLogo} alt="Logo" />
@@ -43,7 +43,9 @@ const PoweredBySection = () => {
           </Typography>
         </Box>
       </Box>
-      <AppStoreButtonsGroup />
+      <Box>
+        <AppStoreButtonsGroup />
+      </Box>
     </>
   );
 };
