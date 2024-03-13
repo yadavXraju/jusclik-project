@@ -10,7 +10,7 @@ const steps = [
     'General',
     'Show/Hide Columns',
     'Report Layout',
-    'Report Preference'
+    'Report Preferences'
 ];
 
 const tabPage = [
@@ -30,7 +30,7 @@ const tabPage = [
     },
     {
       id: 4,
-      name: "Report Reference",
+      name: "Report Preferences",
       component:ReportReference ,
     },
   ]
