@@ -1,71 +1,142 @@
-import * as React from 'react';
-import { styled } from '@mui/material/styles';
+
+import React, { useState } from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
-import TableCell, { tableCellClasses } from '@mui/material/TableCell';
+import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import InputBase from '@mui/material/InputBase';
+import IconButton from '@mui/material/IconButton';
+import DeleteIcon from '@mui/icons-material/Delete';
+import AddIcon from '@mui/icons-material/Add';
+import EditIcon from '@mui/icons-material/Edit';
+import { Box } from '@mui/system';
+import { Button } from '@mui/material';
 
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
-  [`&.${tableCellClasses.head}`]: {
-    backgroundColor: theme.palette.primary.main, // Change header background color
-    color: theme.palette.common.white,
-    fontWeight: 'bold', // Make header text bold
-    fontSize: 16, // Increase header font size
-  },
-  [`&.${tableCellClasses.body}`]: {
-    fontSize: 14,
-  },
-}));
+const initialRow = { id: null, name: '', email: '', age: '', phone: '' };
 
-const StyledTableRow = styled(TableRow)(({ theme }) => ({
-  '&:nth-of-type(odd)': {
-    backgroundColor: theme.palette.action.hover,
-  },
-  // hide last border
-  '&:last-child td, &:last-child th': {
-    border: 0,
-  },
-}));
-
-function createData(salutation, firstName, lastName, email, workPhone, mobile) {
-  return { salutation, firstName, lastName, email, workPhone, mobile };
-}
-
-const rows = [
-  createData('Mr', 'John', 'Doe', 'john.doe@example.com', '123-456-7890', '987-654-3210'),
-  createData('Ms', 'Jane', 'Smith', 'jane.smith@example.com', '234-567-8901', '876-543-2109'),
+const data = [
+  { id: 1, name: 'tarun', email: 'abc@gmail.com', age: '25', phone: '34789753975' },
+  { id: 2, name: 'suraj', email: 'abc@gmail.com', age: '25', phone: '34789753975' },
+  { id: 3, name: 'pawant', email: 'abc@gmail.com', age: '25', phone: '34789753975' },
+  { id: 4, name: 'mukesh', email: 'abc@gmail.com', age: '25', phone: '34789753975' },
 ];
 
-export default function CustomizedTables() {
+export default function StudentsContactPerson() {
+  const [rows, setRows] = useState(data);
+  const [editingId, setEditingId] = useState(null);
+  const [newRow, setNewRow] = useState({ ...initialRow });
+
+  const handleEdit = (id, field, value) => {
+    const updatedRows = rows.map((row) => (row.id === id ? { ...row, [field]: value } : row));
+    setRows(updatedRows);
+  };
+
+  const handleSave = () => {
+    setEditingId(null);
+    handleAddRow(); // Call handleAddRow inside handleSave
+  };
+
+  const handleDelete = (id) => {
+    const updatedRows = rows.filter((row) => row.id !== id);
+    setRows(updatedRows);
+  };
+
+  const handleAddRow = () => {
+    if (newRow.name && newRow.email && newRow.age && newRow.phone) {
+      setRows([...rows, { ...newRow, id: Date.now() }]);
+      setNewRow({ ...initialRow });
+    }
+  };
+
+  const handleAddRowAndSave = () => {
+    handleAddRow();
+    handleSave();
+  };
+
   return (
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 700 }} aria-label="customized table">
-        <TableHead>
-          <TableRow>
-            <StyledTableCell>Salutation</StyledTableCell>
-            <StyledTableCell>First Name</StyledTableCell>
-            <StyledTableCell>Last Name</StyledTableCell>
-            <StyledTableCell>Email Address</StyledTableCell>
-            <StyledTableCell>Work Phone</StyledTableCell>
-            <StyledTableCell>Mobile</StyledTableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row, index) => (
-            <StyledTableRow key={index} style={{ backgroundColor: index % 2 === 0 ? '#f3f3f3' : 'inherit' }}>
-              <StyledTableCell component="th" scope="row">{row.salutation}</StyledTableCell>
-              <StyledTableCell>{row.firstName}</StyledTableCell>
-              <StyledTableCell>{row.lastName}</StyledTableCell>
-              <StyledTableCell>{row.email}</StyledTableCell>
-              <StyledTableCell>{row.workPhone}</StyledTableCell>
-              <StyledTableCell>{row.mobile}</StyledTableCell>
-            </StyledTableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+    <>
+      <TableContainer component={Paper}>
+        <Table sx={{ minWidth: 650 }} aria-label="editable table">
+          <TableHead>
+            <TableRow>
+              <TableCell>Name</TableCell>
+              <TableCell>Email</TableCell>
+              <TableCell>Age</TableCell>
+              <TableCell>Phone</TableCell>
+              <TableCell align="right">Actions</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {rows.map((row) => (
+              <TableRow key={row.id}>
+                <TableCell component="th" scope="row">
+                  {editingId === row.id ? (
+                    <InputBase value={row.name} onChange={(e) => handleEdit(row.id, 'name', e.target.value)} />
+                  ) : (
+                    row.name
+                  )}
+                </TableCell>
+                <TableCell>
+                  {editingId === row.id ? (
+                    <InputBase value={row.email} onChange={(e) => handleEdit(row.id, 'email', e.target.value)} />
+                  ) : (
+                    row.email
+                  )}
+                </TableCell>
+                <TableCell>
+                  {editingId === row.id ? (
+                    <InputBase type="number" value={row.age} onChange={(e) => handleEdit(row.id, 'age', parseInt(e.target.value))} />
+                  ) : (
+                    row.age
+                  )}
+                </TableCell>
+                <TableCell>
+                  {editingId === row.id ? (
+                    <InputBase value={row.phone} onChange={(e) => handleEdit(row.id, 'phone', e.target.value)} />
+                  ) : (
+                    row.phone
+                  )}
+                </TableCell>
+                <TableCell align="right">
+                  {editingId !== row.id && (
+                    <IconButton onClick={() => setEditingId(row.id)}>
+                      <EditIcon />
+                    </IconButton>
+                  )}
+                  <IconButton onClick={() => handleDelete(row.id)}>
+                    <DeleteIcon />
+                  </IconButton>
+                </TableCell>
+              </TableRow>
+            ))}
+            <TableRow>
+              <TableCell>
+                <InputBase placeholder="Name" value={newRow.name} onChange={(e) => setNewRow({ ...newRow, name: e.target.value })} />
+              </TableCell>
+              <TableCell>
+                <InputBase placeholder="Email" value={newRow.email} onChange={(e) => setNewRow({ ...newRow, email: e.target.value })} />
+              </TableCell>
+              <TableCell>
+                <InputBase placeholder="Age" type="number" value={newRow.age} onChange={(e) => setNewRow({ ...newRow, age: parseInt(e.target.value) })} />
+              </TableCell>
+              <TableCell>
+                <InputBase placeholder="Phone" value={newRow.phone} onChange={(e) => setNewRow({ ...newRow, phone: e.target.value })} />
+              </TableCell>
+              <TableCell align="right">
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </TableContainer>
+
+      <Box pt={3}>
+        <Button startIcon={<AddIcon />} onClick={handleAddRowAndSave}>Add Contact</Button>
+      </Box>
+    </>
   );
 }
+
+
