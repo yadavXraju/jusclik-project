@@ -30,7 +30,7 @@ const Setting = () => {
   return (
     <div>
       <SearchBar onChange={(e) => setSearchTerm(e.target.value)} />
-      <Card
+      <Card className='scrollbar '
         sx={{ 
           overflowY: 'scroll', 
           maxHeight: '300px',

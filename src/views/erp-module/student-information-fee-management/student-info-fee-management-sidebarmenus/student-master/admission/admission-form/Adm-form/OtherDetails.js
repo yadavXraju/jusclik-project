@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid,  TextField, Card, useMediaQuery, Typography } from '@mui/material';
 //import ParameterizedDateComponent from 'views/common-section/ParamDateComponent';
 
-function StudentsOtherDetails() {
+function OtherDetails() {
 
   const isMobile = useMediaQuery('(max-width: 767px)')
 
@@ -52,4 +52,4 @@ function StudentsOtherDetails() {
   );
 }
 
-export default StudentsOtherDetails;
+export default OtherDetails;
