@@ -3,7 +3,7 @@ import { Grid,  TextField, Card, useMediaQuery, Typography, Box } from '@mui/mat
 import TextArea from 'antd/es/input/TextArea';
 //import ParameterizedDateComponent from 'views/common-section/ParamDateComponent';
 
-function StudentAddressForm() {
+function AddressForm() {
 
   const isMobile = useMediaQuery('(max-width: 767px)')
 
@@ -43,4 +43,4 @@ function StudentAddressForm() {
   );
 }
 
-export default StudentAddressForm;
+export default AddressForm;
