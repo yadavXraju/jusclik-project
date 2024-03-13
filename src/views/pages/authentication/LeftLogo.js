@@ -3,10 +3,30 @@ import { Grid, useMediaQuery, useTheme } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import LogoImg from '../../../assets/images/WhatsApp_Image_2020-03-21_at_8_04_53_PM__1-removebg-preview 1.png';
 
-const LeftLogo = () => {
-  const theme = useTheme(); // Accessing theme object using useTheme hook
+const commonStyles = (isMobile) => ({
+  logoImage: {
+    width: isMobile ? '200px' : '100px',
+    height: isMobile ? '200px' : '100px',
+    marginBottom: '15px',
+  },
+  title: {
+    fontWeight: '500',
+    fontSize: { xs: '24px', md: '30px' },
+    color: '#E64B4C',
+    textAlign: 'center',
+    lineHeight: '30px',
+  },
+  subtitle: {
+    fontSize: isMobile ? { sm: '14px', md: '18px' } : { md: '18px' },
+    color: '#364152b5',
+  },
+});
 
+const LeftLogo = () => {
+  const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.up('sm'));
+  const styles = commonStyles(isMobile);
+
   return (
     <Grid
       item
@@ -19,21 +39,13 @@ const LeftLogo = () => {
         backgroundPosition: 'bottom',
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
       }}
     >
       <Grid item sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
-        <img
-          src={LogoImg}
-          alt="Logo"
-          style={{ width: isMobile ? '200px' : '100px', height: isMobile ? '200px' : '100px', marginBottom: '15px' }}
-        />
-        <Typography
-          sx={{ fontWeight: '500', fontSize: { xs: '24px', md: '30px' }, color: '#E64B4C', textAlign: 'center', lineHeight: '30px' }}
-        >
-          Arwachin Public <br /> School
-        </Typography>
-        <Typography sx={{ fontSize: { sm:'14px', md: '18px' }, color: '#364152b5' }}>Vasundhara, Ghaziabad</Typography>
+        <img src={LogoImg} alt="Logo" style={styles.logoImage} />
+        <Typography sx={styles.title}>Arwachin Public <br /> School</Typography>
+        <Typography sx={styles.subtitle}>Vasundhara, Ghaziabad</Typography>
       </Grid>
     </Grid>
   );
