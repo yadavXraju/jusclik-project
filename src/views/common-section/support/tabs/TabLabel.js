@@ -12,6 +12,7 @@ const TabLabel = ({ handleChange }) => {
       <TabList onChange={handleChange} aria-label="tabs" >
         {TabItem.map((label) => (
           <Tab
+          className={'testc'}
             key={label.id}
             label={label.label}
             value={label.value}

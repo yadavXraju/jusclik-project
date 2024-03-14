@@ -2,7 +2,6 @@ import React from 'react'
 import {  Grid , Typography , Paper , Box } from '@mui/material'
 import { HeadingCss,} from 'views/dashboard/Default/dashboard-css/CommonCss'
 import { gridSpacing } from 'store/constant';
-import MainCard from 'ui-component/cards/MainCard';
 import { useState } from 'react';
 import TabContext from '@mui/lab/TabContext';
 import TabPanel from '@mui/lab/TabPanel';
@@ -25,7 +24,10 @@ const NeedSupport = () => {
 
   return (
     <>
-       <MainCard> 
+       <Paper  elevation={1} sx={{
+        p:'24px',
+        border:'1px solid rgb(227, 227, 227)',
+        }}> 
           <Grid container spacing={gridSpacing}>
             {/* heading */}
              <Grid item xs={12} sx={{mb:0}}>
@@ -38,7 +40,7 @@ const NeedSupport = () => {
 
 
                {/* tabs */}
-               <Box sx={{ width: '100%', typography: 'body1' }}>
+               <Box sx={{ width: '100%', typography: 'body1' , }}>
 
                     <TabContext value={value}>
                         <Paper sx={{mx:'24px'}}>
@@ -57,7 +59,7 @@ const NeedSupport = () => {
 
                 </Box>
            </Grid>
-       </MainCard> 
+       </Paper> 
 
    </>
   )

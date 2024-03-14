@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Box, Typography ,} from '@mui/material';
+import { Grid, Box, Typography ,Paper} from '@mui/material';
 
 
 
@@ -7,15 +7,14 @@ const Counter2 = ( {Counter2Data } ) => {
     return (
         <Grid item container spacing={2} 
          sx={{
-          background:'#fff', borderRadius:'16px' ,
-          border:'1px solid rgb(227, 227, 227)',
-          padding:'1rem',
-          boxShadow:'1px 4px 9px -8px black',
-          flexDirection:'column'
-       
+          flexDirection:'column' 
         }}
         lg={4}
          >
+                 <Paper elevation={1} sx={{
+                border:'1px solid rgb(227, 227, 227)',
+                padding:'1rem',
+            }}>
             {Counter2Data.map((item, index) => 
                 <Grid key={index} >
                     
@@ -54,6 +53,7 @@ const Counter2 = ( {Counter2Data } ) => {
                     </Box>
                 </Grid>
             )}
+            </Paper>
         </Grid>
     );
 }

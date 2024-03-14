@@ -25,6 +25,7 @@ const FeeDefaulter = ({ isLoading }) => {
         zoom: {
           enabled: false
         },
+        stroke: false, // Set stroke to false to remove the stroke
       },
       responsive: [
         {
@@ -96,7 +97,7 @@ const FeeDefaulter = ({ isLoading }) => {
     series: [
       {
         name: 'Amount',
-        data: [4500 , 9540 , 1116 , 2034 , 1093 , 3357, 5260, 6652, 3728, 4732, 1116 , 2034 , 1093 ,]
+        data: [4500 , 4540 , 3116 , 2034 , 1093 , 3357, 5260, 3652, 3728, 4732, 1116 , 2034 , 1093 ,]
       },
     
     ]
@@ -107,7 +108,7 @@ const FeeDefaulter = ({ isLoading }) => {
       {isLoading ? (
         <SkeletonTotalGrowthBarChart />
       ) : (
-        <Paper sx={{display:'flex' , flexWrap:'wrap' , border:'1px solid rgb(227, 227, 227)' }}>
+        <Paper  elevation={1} sx={{display:'flex' , flexWrap:'wrap' , border:'1px solid rgb(227, 227, 227)' , }}>
           {/* <Box sx={{ padding: '24px' }}>
              <Typography variant='h2' style={HeadingCss}>FEE DEFAULTERS</Typography>
           </Box> */}
@@ -115,17 +116,17 @@ const FeeDefaulter = ({ isLoading }) => {
           <Box sx={{
             flex:'0 0 30%' ,
             display:'flex' ,
-            justifyContent:'space-around' ,
+            justifyContent:'space-between' ,
             flexDirection:'column' ,
             padding:'20px',
             }}>
             <Box>
-                 <Typography variant='h3'>FEE DEFAULTERS</Typography>
-                 <Typography variant='h4'>increase in app usage with 6,521 new products purchased</Typography>
+                 <Typography variant='h3' sx={{mb:'10px'}}>FEE DEFAULTERS</Typography>
+                 <Typography variant='p' sx={{fontWeight:'500'}}>increase in app usage with 6,521 new products purchased</Typography>
             </Box>
 
             <Box>
-               <Typography variant='h4'>This year is forecasted to increase in your traffic by the end of the current month</Typography>
+               <Typography variant='p' sx={{fontWeight:'500'}} >This year is forecasted to increase in your traffic by the end of the current month</Typography>
             </Box>
 
           </Box>
