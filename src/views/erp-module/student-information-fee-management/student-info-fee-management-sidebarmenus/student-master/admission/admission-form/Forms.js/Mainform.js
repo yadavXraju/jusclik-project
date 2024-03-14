@@ -10,6 +10,8 @@ import StudentAddressForm from './StudentAdressForm'
 import StudentsOtherDetails from './StudentsOtherDetails'
 import StudentsContactPerson from './StudentsContactPerson'
 import AddAPhotoOutlinedIcon from '@mui/icons-material/AddAPhotoOutlined';
+import ParameterizedDateComponent from 'views/common-section/ParamDateComponent'
+import Remark from './Remark'
 
 
 const VisuallyHiddenInput = styled('input')({
@@ -37,7 +39,7 @@ const Mainform = () => {
  
   return (
     <>
-      <Paper >
+      <Paper sx={{overflow:"hidden"}}>
         <Box >
         <Grid container spacing={1} sx={{ flexDirection: 'column', padding: '20px' }}>
           {/* upload image */}
@@ -55,7 +57,7 @@ const Mainform = () => {
               variant="outlined"
              tabIndex={-1}
              startIcon={< AddAPhotoOutlinedIcon/>}
-            sx={{ height:"100px",width:"100px",borderRadius:"50%" }}
+            sx={{ height:"100px",width:"100px",borderRadius:"50%",display:"flex",justifyContent:"center",alignItems:"center" }}
              > <VisuallyHiddenInput type="file" /></Button>
              <Typography variant="caption" color="initial"  sx={{margin:"2px 4px"}}>Allowed &apos;image/*&apos; 
                                                     *.png, *.jpeg, *.jpg, *.gif</Typography>
@@ -67,7 +69,7 @@ const Mainform = () => {
     <Grid item md={8}>
         <Paper>
           <Card>
-            <CardHeader title="A .Admission Details"  sx={{padding:"10px 5px"}} />
+            <CardHeader title="Admission Details"  sx={{padding:"10px 5px"}} />
     
             <CardContent   sx={{padding:"0px 5px",'&:last-child': { pb: 0 }}}>
               <Grid container spacing={1}>
@@ -76,12 +78,12 @@ const Mainform = () => {
                   <TextField label="Adm no." variant="outlined" fullWidth />
                 </Grid>
                 <Grid item xs={4} md={6}>
+                <ParameterizedDateComponent label="Amd. Date" customStyle={{width:'100%'}} />
                  
-                  <TextField type="date" variant="outlined" fullWidth />
                 </Grid>
                 <Grid item xs={4} md={6}>
-                
-                  <TextField type="date" variant="outlined" fullWidth />
+                <ParameterizedDateComponent label="Joining Date" customStyle={{width:'100%'}} />
+                  {/* <TextField type="date" variant="outlined" fullWidth /> */}
                 </Grid>
               </Grid>
             </CardContent>
@@ -96,7 +98,7 @@ const Mainform = () => {
       <Grid item>
         <Paper>
           <Card>
-            <CardHeader title="B. Primary Contact"  sx={{padding:"10px 5px"}} />
+            <CardHeader title="Primary Contact"  sx={{padding:"10px 5px"}} />
             <CardContent   sx={{padding:"0px 5px",'&:last-child': { pb: 0 }}}>
               <Grid container spacing={1}>
                 <Grid item xs={4}>
@@ -117,7 +119,7 @@ const Mainform = () => {
       <Grid item>
         <Paper>
           <Card>
-            <CardHeader title="C. Personal Details"  sx={{padding:"10px 5px"}} />
+            <CardHeader title="Personal Details"  sx={{padding:"10px 5px"}} />
             <CardContent  sx={{padding:"0px 5px",'&:last-child': { pb: 0 }}}>
               <Grid container spacing={1}>
                 <Grid item xs={4}>
@@ -125,8 +127,8 @@ const Mainform = () => {
                   <TextField label="Gender" variant="outlined" fullWidth />
                 </Grid>
                 <Grid item xs={4}>
-                 
-                  <TextField type="date" variant="outlined" fullWidth />
+                 <ParameterizedDateComponent label="D.O.B" customStyle={{width:'100%'}} />
+                  {/* // <TextField type="date" variant="outlined" fullWidth /> */}
                 </Grid>
                 <Grid item xs={4}>
                  
@@ -142,7 +144,7 @@ const Mainform = () => {
       <Grid item>
         <Paper>
           <Card>
-            <CardHeader title="D. Class details"   sx={{padding:"10px 5px"}}/>
+            <CardHeader title="Class details"   sx={{padding:"10px 5px"}}/>
           
             <CardContent   sx={{padding:"0px 5px",'&:last-child': { pb: 0 }}}>
               <Grid container spacing={1}>
@@ -163,7 +165,7 @@ const Mainform = () => {
       <Grid item>
         <Paper>
           <Card>
-            <CardHeader title="E. Contact details"  sx={{padding:"10px 5px"}} />
+            <CardHeader title="Contact details"  sx={{padding:"10px 5px"}} />
         
             <CardContent  sx={{padding:"0px 5px",'&:last-child': { pb: 0 }}}>
               <Grid container spacing={1}>
@@ -198,26 +200,28 @@ const Mainform = () => {
         <TabPanel value="1">
           <StudentsOtherDetails/>
         </TabPanel>
-        <TabPanel value="2"><StudentAddressForm/></TabPanel>
+        <TabPanel value="2">
+          <StudentAddressForm/>
+        </TabPanel>
         <TabPanel value="3"><StudentsContactPerson/></TabPanel>
         <TabPanel value="4">Item Four</TabPanel>
-        <TabPanel value="5">Item Five</TabPanel>
+        <TabPanel value="5"><Remark/></TabPanel>
       </TabContext>
     </Box>
           </Grid>
         </Box>
-        <Paper sx={{ position: "fixed", bottom: "0", width: "100%", backgroundColor: "#C0C0C0",zIndex:"3" }}>
-    <Box sx={{ background: "#c1c1c1", padding:"20px"}}>
-        <Grid container spacing={1}>
-            <Button variant="contained" color="primary">
+        <Paper sx={{overflow:"hidden"}}>
+           <Box sx={{ background: "#e0e8f6", width: "100%",  padding:"20px", position:'fixed',bottom:'0',zIndex:"3"}}>
+               <Grid container spacing={1}>
+            <Button variant="contained" color="primary" sx={{marginRight:"20px" }}>
                 Submit
             </Button>
-            <Button variant="contained" color="secondary">
+            <Button variant="contained" color="secondary" >
                 Save
             </Button>
         </Grid>
-    </Box>
-</Paper>
+            </Box>
+            </Paper>
       </Paper>
       
     </>

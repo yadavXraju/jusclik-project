@@ -29,16 +29,16 @@ function createData(adm_no, adm_date, name, class_name, birth_day, category, hou
 }
 
 const rows = [
-  createData(123, '2024-03-01', 'John Doe', '10th A', '2005-05-15', 'General', 'Green', 'Active'),
-  createData(124, '2024-03-02', 'Jane Smith', '11th A', '2004-08-20', 'Sports', 'Blue', 'Active'),
-  createData(125, '2024-03-03', 'Michael Johnson', '9th A', '2006-01-10', 'Academic', 'Red', 'Inactive'),
-  createData(126, '2024-03-04', 'Emily Brown', '12th A', '2003-11-30', 'Music', 'Yellow', 'Active'),
-  createData(127, '2024-03-05', 'David Wilson', '10th Grade', '2005-04-25', 'General', 'Green', 'Inactive'),
-  createData(128, '2024-03-06', 'Emma Taylor', '11th Grade', '2004-09-05', 'Sports', 'Blue', 'Active'),
-  createData(129, '2024-03-07', 'Christopher Lee', '9th Grade', '2006-02-20', 'Academic', 'Red', 'Active'),
-  createData(130, '2024-03-08', 'Olivia Martinez', '12th Grade', '2003-12-10', 'Music', 'Yellow', 'Inactive'),
-  createData(131, '2024-03-09', 'William Davis', '10th Grade', '2005-05-05', 'General', 'Green', 'Active'),
-  createData(132, '2024-03-10', 'Sophia Rodriguez', '11th Grade', '2004-08-15', 'Sports', 'Blue', 'Inactive'),
+  createData(123, '01-03-2024', 'John Doe', '10th A', '15-05-2005', 'General', 'Green', 'Active'),
+  createData(124, '02-03-2024', 'Jane Smith', '11th A', '15-05-2005', 'Sports', 'Blue', 'Active'),
+  createData(125, '03-2024-03', 'Michael Johnson', '9th A', '15-05-2005', 'Academic', 'Red', 'Inactive'),
+  createData(126, '03-2024-03', 'Emily Brown', '12th A', '15-05-2005', 'Music', 'Yellow', 'Active'),
+  createData(127, '03-2024-03', 'David Wilson', '10th Grade', '15-05-2005', 'General', 'Green', 'Inactive'),
+  createData(128, '03-2024-03', 'Emma Taylor', '11th Grade', '15-05-2005', 'Sports', 'Blue', 'Active'),
+  createData(129, '03-2024-03', 'Christopher Lee', '9th Grade', '15-05-2005', 'Academic', 'Red', 'Active'),
+  createData(130, '03-2024-03', 'Olivia Martinez', '12th Grade', '15-05-2005', 'Music', 'Yellow', 'Inactive'),
+  createData(131, '03-2024-03', 'William Davis', '10th Grade', '15-05-2005', 'General', 'Green', 'Active'),
+  createData(132, '03-2024-03', 'Sophia Rodriguez', '11th Grade', '15-05-2005', 'Sports', 'Blue', 'Inactive'),
 ];
 
 const headCells = [

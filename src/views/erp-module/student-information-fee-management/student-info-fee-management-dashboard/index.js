@@ -23,7 +23,7 @@ const Dashboard =()=> {
 
   return (
     <>
-    <Box sx={{ width: '100%', typography: 'body1' }}>
+    <Box sx={{ width: '100%', typography: 'body1' , background:'#fff'}}>
 
           <TabContext value={value}>
           <Paper sx={{mx:'24px'}}>
