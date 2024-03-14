@@ -10,7 +10,7 @@ function OtherDetails() {
     <>
     {/* Other Details */}
     <Card sx={{padding:'10px'}}>
-      <Typography variant={'h4'} p={1} mb={2} sx={{borderBottom:'1px solid #ccc'}}>
+      <Typography variant={'h4'} p={1.4} mb={2} sx={{borderBottom:'1px solid #ccc'}}>
       Other Details
       </Typography>
     <Grid container spacing={1} sx={{ display: 'flex', height: '100%' }}>

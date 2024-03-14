@@ -9,7 +9,7 @@ const withPrintPdf = React.forwardRef((props,ref) => {
     const {Children}=props;
     
     return (
-        <Box className="print-icons" sx={{ dispaly: "flex !important" }}>
+        <Box className="print-icons" sx={{ display: "flex !important" }}>
             <ReactToPrint variant="outlined" trigger={() => <Button>{Children}</Button>}
                 content={() => ref.current} />
         </Box>

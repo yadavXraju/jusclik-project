@@ -4,7 +4,7 @@ import EditableTable from './EditableTable'
 const ContactPerson = () => {
  return (
    <div>
-     ContactPerson
+    
     <EditableTable/>
    </div>
  )

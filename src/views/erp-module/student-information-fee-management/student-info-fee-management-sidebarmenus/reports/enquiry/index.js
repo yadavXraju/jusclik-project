@@ -179,7 +179,7 @@ const Enquiry = () => {
     const [clickedCustomize, setClickedCustomize] = useState(false);
     return (
         <>
-            <Paper sx={{ height: "50px", padding: "10px 20px 10px 20px", position: "relative" }}>
+            <Paper sx={{ height: "50px", position: "relative" }}>
                 <Box sx={{ display: "flex", justifyContent: "space-between" }}>
                     <Box>
                         <Button endIcon={<SettingsOutlinedIcon sx={{ width: "15px", height: "15px" }} onClick={() => setClickedCustomize(true)} />}>Customize Report</Button>
