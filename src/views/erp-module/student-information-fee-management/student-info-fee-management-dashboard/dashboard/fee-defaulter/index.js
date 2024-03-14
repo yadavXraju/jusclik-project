@@ -1,12 +1,12 @@
 
 import PropTypes from 'prop-types';
-import { Grid , } from '@mui/material';
-// import { HeadingCss } from 'views/dashboard/Default/dashboard-css/CommonCss';
+import { Grid , Box , Typography , Paper} from '@mui/material';
 import Chart from 'react-apexcharts';
+
 
 // project imports
 import SkeletonTotalGrowthBarChart from 'ui-component/cards/Skeleton/TotalGrowthBarChart';
-import MainCard from 'ui-component/cards/MainCard';
+// import MainCard from 'ui-component/cards/MainCard';
 import { gridSpacing } from 'store/constant';
 
 
@@ -86,6 +86,11 @@ const FeeDefaulter = ({ isLoading }) => {
       },
       grid: {
         show: true
+      },
+      yaxis: {
+        labels: {
+          show: false // Hide the left side amount labels
+        }
       }
     },
     series: [
@@ -102,17 +107,36 @@ const FeeDefaulter = ({ isLoading }) => {
       {isLoading ? (
         <SkeletonTotalGrowthBarChart />
       ) : (
-        <MainCard>
+        <Paper sx={{display:'flex' , flexWrap:'wrap' , border:'1px solid rgb(227, 227, 227)' }}>
           {/* <Box sx={{ padding: '24px' }}>
              <Typography variant='h2' style={HeadingCss}>FEE DEFAULTERS</Typography>
           </Box> */}
 
-          <Grid container spacing={gridSpacing} height={500}>
-            <Grid item xs={12}>
+          <Box sx={{
+            flex:'0 0 30%' ,
+            display:'flex' ,
+            justifyContent:'space-around' ,
+            flexDirection:'column' ,
+            padding:'20px',
+            }}>
+            <Box>
+                 <Typography variant='h3'>FEE DEFAULTERS</Typography>
+                 <Typography variant='h4'>increase in app usage with 6,521 new products purchased</Typography>
+            </Box>
+
+            <Box>
+               <Typography variant='h4'>This year is forecasted to increase in your traffic by the end of the current month</Typography>
+            </Box>
+
+          </Box>
+
+          <Grid sx={{flex:'0 0 68%' , flexDirection:'column'}}  spacing={gridSpacing} height={500}>
+            <Grid item >
               <Chart {...FeeDefaulterData} />
             </Grid>
           </Grid>
-        </MainCard>
+
+        </Paper>
       )}
     </>
   );
