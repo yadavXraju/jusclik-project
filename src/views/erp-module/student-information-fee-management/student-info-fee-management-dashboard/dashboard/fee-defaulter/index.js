@@ -131,7 +131,7 @@ const FeeDefaulter = ({ isLoading }) => {
 
           </Box>
 
-          <Grid sx={{flex:'0 0 68%' , flexDirection:'column'}}  spacing={gridSpacing} height={500}>
+          <Grid sx={{flex:'0 0 68%' , flexDirection:'column'}}  spacing={gridSpacing} height={490}>
             <Grid item >
               <Chart {...FeeDefaulterData} />
             </Grid>
