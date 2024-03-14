@@ -1,8 +1,8 @@
 
 import PropTypes from 'prop-types';
-import { Grid , Box , Typography , Paper} from '@mui/material';
+import { Grid  , Paper,Typography,Box} from '@mui/material';
 import Chart from 'react-apexcharts';
-
+import { HeadingCss } from 'views/dashboard/Default/dashboard-css/CommonCss';
 
 // project imports
 import SkeletonTotalGrowthBarChart from 'ui-component/cards/Skeleton/TotalGrowthBarChart';
@@ -10,10 +10,10 @@ import SkeletonTotalGrowthBarChart from 'ui-component/cards/Skeleton/TotalGrowth
 import { gridSpacing } from 'store/constant';
 
 
-const FeeDefaulter = ({ isLoading }) => {
+const OverDueBook = ({ isLoading }) => {
 
   const FeeDefaulterData = {
-    height: 480,
+    height: 380,
     type: 'bar',
     options: {
       chart: {
@@ -42,9 +42,14 @@ const FeeDefaulter = ({ isLoading }) => {
       plotOptions: {
         bar: {
           horizontal: false,
-          columnWidth: '50%',
+          columnWidth: '60%',
           borderRadius:5,
+          dataLabels:{
+            position:"bottom",
+
         }
+        },
+      
       },
       xaxis: {
         type: 'category',
@@ -82,9 +87,11 @@ const FeeDefaulter = ({ isLoading }) => {
         colors: ['rgba(94, 53, 177, 0.9)'] ,
         borderRadius:'12px',
       },
-      dataLabels: {
-        enabled: false
-      },
+    //   dataLabels: {
+    //     enabled: false,
+ 
+       
+    //   },
       grid: {
         show: true
       },
@@ -96,55 +103,44 @@ const FeeDefaulter = ({ isLoading }) => {
     },
     series: [
       {
-        name: 'Amount',
-        data: [4500 , 4540 , 3116 , 2034 , 1093 , 3357, 5260, 3652, 3728, 4732, 1116 , 2034 , 1093 ,]
+        name: 'Overdue',
+        data: [174 , 140 , 301 , 134 , 193 , 348, 520, 512, 138, 472, 116 , 234 , 193 ,]
       },
     
     ]
   };
+  const totalOverDueBooks = FeeDefaulterData.series[0].data.reduce(
+    (total, currentValue) => total + currentValue,
+    0
+  );
 
   return (
     <>
       {isLoading ? (
         <SkeletonTotalGrowthBarChart />
       ) : (
-        <Paper  elevation={1} sx={{display:'flex' , flexWrap:'wrap' , border:'1px solid rgb(227, 227, 227)' , }}>
-          {/* <Box sx={{ padding: '24px' }}>
-             <Typography variant='h2' style={HeadingCss}>FEE DEFAULTERS</Typography>
-          </Box> */}
-
-          <Box sx={{
-            flex:'0 0 30%' ,
-            display:'flex' ,
-            justifyContent:'space-between' ,
-            flexDirection:'column' ,
-            padding:'20px',
-            }}>
-            <Box>
-                 <Typography variant='h3' sx={{mb:'10px'}}>FEE DEFAULTERS</Typography>
-                 <Typography variant='p' sx={{fontWeight:'500'}}>increase in app usage with 6,521 new products purchased</Typography>
-            </Box>
-
-            <Box>
-               <Typography variant='p' sx={{fontWeight:'500'}} >This year is forecasted to increase in your traffic by the end of the current month</Typography>
-            </Box>
-
-          </Box>
-
-          <Grid sx={{flex:'0 0 68%' , flexDirection:'column'}}  spacing={gridSpacing} height={490}>
+        <Paper   spacing={gridSpacing}  sx={{display:'flex' , flexDirection:'column' , justifyContent :'space-between' , border:'1px solid rgb(227, 227, 227)'}}>
+             <Grid sx={{padding:'24px 24px 22px 24px'}}>
+                    <Typography variant='h2' style={HeadingCss}>Overdue Books</Typography> 
+              </Grid>
+          <Grid  spacing={gridSpacing} height={420}>
             <Grid item >
               <Chart {...FeeDefaulterData} />
             </Grid>
           </Grid>
-
+      
+          <Box sx={{ p: 2, textAlign: 'center' }}>
+          <Typography variant="body1">Total Books: {totalOverDueBooks}</Typography>
+        </Box>
         </Paper>
+        
       )}
     </>
   );
 };
 
-FeeDefaulter.propTypes = {
+OverDueBook.propTypes = {
   isLoading: PropTypes.bool
 };
 
-export default FeeDefaulter;
+export default OverDueBook;

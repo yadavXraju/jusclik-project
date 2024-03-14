@@ -11,6 +11,7 @@ import StudentsOtherDetails from './StudentsOtherDetails'
 import StudentsContactPerson from './StudentsContactPerson'
 import AddAPhotoOutlinedIcon from '@mui/icons-material/AddAPhotoOutlined';
 import ParameterizedDateComponent from 'views/common-section/ParamDateComponent'
+import Remark from './Remark'
 
 
 const VisuallyHiddenInput = styled('input')({
@@ -204,7 +205,7 @@ const Mainform = () => {
         </TabPanel>
         <TabPanel value="3"><StudentsContactPerson/></TabPanel>
         <TabPanel value="4">Item Four</TabPanel>
-        <TabPanel value="5">Item Five</TabPanel>
+        <TabPanel value="5"><Remark/></TabPanel>
       </TabContext>
     </Box>
           </Grid>

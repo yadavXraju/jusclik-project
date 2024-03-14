@@ -40,22 +40,22 @@ const DashboardContent = ({ isLoading }) => {
         </Grid> */}
 
          {/* invoice raised */}
-         <Grid item xs={12} lg={6} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
+         <Grid item xs={12} lg={6} md={12} sx={{ marginTop: { md: '0px', lg: '2rem' } }}>
             <InvoiceRaised />
          </Grid>
 
          {/* fee collection */}
-         <Grid item xs={12} lg={6}  md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
+         <Grid item xs={12} lg={6}  md={12} sx={{ marginTop: { md: '0px', lg: '2rem' } }}>
               <FeeCollection/> 
           </Grid>
 
            {/* fee defaulter */}
-           <Grid item xs={12} lg={8} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
+           <Grid item xs={12} lg={8} md={12} sx={{ marginTop: { md: '0px', lg: '2rem' } }}>
               <FeeDefaulter isLoading={isLoading} /> 
           </Grid>
 
           {/* need support */}
-          <Grid item xs={12} lg={4} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
+          <Grid item xs={12} lg={4} md={12} sx={{ marginTop: { md: '0px', lg: '2rem' } }}>
               <NeedSupport isLoading={isLoading} /> 
           </Grid>
 

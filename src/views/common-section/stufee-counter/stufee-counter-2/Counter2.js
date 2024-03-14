@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Box, Typography ,} from '@mui/material';
+import { Grid, Box, Typography ,Paper} from '@mui/material';
 
 
 
@@ -7,15 +7,14 @@ const Counter2 = ( {Counter2Data } ) => {
     return (
         <Grid item container spacing={2} 
          sx={{
-          background:'#fff', borderRadius:'16px' ,
-          border:'1px solid rgb(227, 227, 227)',
-          padding:'1rem',
-          boxShadow:'1px 4px 9px -8px black',
-          flexDirection:'column'
-       
+          flexDirection:'column' 
         }}
         lg={4}
          >
+                 <Paper elevation={1} sx={{
+                border:'1px solid rgb(227, 227, 227)',
+                padding:'1rem',
+            }}>
             {Counter2Data.map((item, index) => 
                 <Grid key={index} >
                     
@@ -23,8 +22,8 @@ const Counter2 = ( {Counter2Data } ) => {
                         {/* icon and title */}
 
                         <Box sx={{display:'flex' , flexDirection:'column' , alignItems:'baseline' , gap:'10px' ,}}>
-                            <Box sx={{background:'rgb(30, 136, 229)' , padding:'8px' , borderRadius:'50%' , display:'flex'}}>
-                            {<item.icon sx={{fontSize:'26px' , color:'#fff'}} />} {/* Render the icon component */}
+                            <Box sx={{background:'rgb(229, 231, 235)' , padding:'8px' , borderRadius:'50%' , display:'flex'}}>
+                            {<item.icon sx={{fontSize:'26px' , color:'#000000d6'}} />} {/* Render the icon component */}
                             </Box>
 
                             <Box>
@@ -54,6 +53,7 @@ const Counter2 = ( {Counter2Data } ) => {
                     </Box>
                 </Grid>
             )}
+            </Paper>
         </Grid>
     );
 }

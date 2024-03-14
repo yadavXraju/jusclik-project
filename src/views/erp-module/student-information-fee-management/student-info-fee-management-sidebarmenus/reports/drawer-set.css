@@ -6,7 +6,7 @@
 .afterClick{
   position: fixed;
   margin-left:-59px;
-  margin-top:-140px;
+  margin-top:-150px;
   border-radius:10px;
   transform:translateY(0vh);
   background-color: #fff;

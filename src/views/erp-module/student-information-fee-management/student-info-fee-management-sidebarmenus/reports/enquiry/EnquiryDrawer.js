@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ParamStepper from 'views/common-section/ParamStepper';
+import ParamStepper from 'views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/reports/ParamStepper';
 import { Box, Typography, Button } from '@mui/material';
 import GeneralReport from '../general-report';
 import ShowHide from '../show-hide';
@@ -16,7 +16,7 @@ const steps = [
 const tabPage = [
     {
       id: 1,
-      name: "GeneralReport",
+      name: "General Report",
       component:GeneralReport,
     },
     {
@@ -38,8 +38,8 @@ const tabPage = [
 const EnquiryDrawer = ({ name, setClickedCustomize }) => {
     const [activeStep, setActiveStep] = useState(1);
     return (
-        <>
-            <Box className="enquiry-customize-report" sx={{ marginLeft: "5%", width: "80%", justifyContent: "space-around" }}>
+        <Box sx={{marginLeft:"5%",height:"500px"}} className="enquiry-customize-report">
+            <Box  sx={{width: "80%", justifyContent: "space-around",marginTop:"20px"}}>
                 <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #ccc' }}>
                     <Typography variant="h4">{name}</Typography>
                     <Button sx={{ alignSelf: 'flex-end' }} onClick={() => setClickedCustomize(false)}>
@@ -48,7 +48,7 @@ const EnquiryDrawer = ({ name, setClickedCustomize }) => {
                 </Box>
             </Box>
             <ParamStepper tabPage={tabPage} steps={steps} acitveStep={activeStep} setActiveStep={setActiveStep} customStyle={{}}  />
-        </>
+        </Box>
     );
 };
 export default EnquiryDrawer;

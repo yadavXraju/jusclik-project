@@ -15,7 +15,7 @@ const InvoiceRaised = () => {
 
   return (
     <>
-      <Paper spacing={gridSpacing} className='scrollbar' sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' , border:'1px solid rgb(227, 227, 227)'}}>
+      <Paper spacing={gridSpacing} className='scrollbar' elevation={1} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' , border:'1px solid rgb(227, 227, 227)'}}>
         <Grid >
           <Box sx={{ padding: '24px' }}>
              <Typography variant='h2' style={HeadingCss}>Invoice Raised</Typography>
