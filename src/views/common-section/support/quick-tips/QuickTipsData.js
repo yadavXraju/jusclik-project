@@ -34,19 +34,12 @@ export const QuickTipsData = [
         bgColor:'rgba(60, 159, 60, 0.71)',
     },
     {
-        id:2,
+        id:5,
         icon: <PersonAddAltOutlinedIcon/>,
         title:'How to add client',
         btnText:'View',
         bgColor:'rgb(118, 185, 239)',
     },
 
-    {
-        id:3,
-        icon: <ReceiptLongOutlinedIcon/>,
-        title:'How to add bill',
-        btnText:'View',
-        bgColor:'rgba(94, 53, 177, 0.64)',
-    },
 
 ] 

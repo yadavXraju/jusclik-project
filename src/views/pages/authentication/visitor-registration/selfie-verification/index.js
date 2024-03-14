@@ -2,7 +2,7 @@ import React from 'react'
 import { Typography, Box, Paper, Button } from '@mui/material';
 import UploadAvatar from './uploadAvatar';
 
-const selfieCheckin = () => {
+const SelfieVerification = () => {
 
 
 
@@ -22,7 +22,7 @@ const selfieCheckin = () => {
 
                      <Typography variant='h4'  sx={{ display: 'flex', justifyContent: 'center', mb: '20px', fontWeight: '600' }}>Self Check-In
                      </Typography>
-                     <Typography variant='h2'>Shaurya Software, Hermitage Plaza </Typography>
+                     <Typography variant='h2' ml={2}>Shaurya Software, Hermitage Plaza </Typography>
                      <Typography variant='h3' pb={6} sx={{ display: 'flex', justifyContent: 'center', marginTop: '20px', fontWeight: '400' }}>Managed by jusklik</Typography>
                   </Box>
                </Box>
@@ -32,7 +32,7 @@ const selfieCheckin = () => {
                         <Typography variant="h4" sx={{ fontWeight: '200' }}>please upload your selfie</Typography>
                      </Box>
 
-                     <Box sx={{ py: '20px', px: '150px', textAlign: 'center', width: '100', height: '100 ' }}>
+                     <Box sx={{ py: '20px', px: '140px', textAlign: 'center', width: '100', height: '100 ' }}>
                         <UploadAvatar />
                      </Box>
                      <Box>
@@ -53,30 +53,5 @@ const selfieCheckin = () => {
       </>
    )
 }
-export default selfieCheckin; 
-// import * as React from 'react';
-// import {Box,Button, Paper} from '@mui/material';
-// import TextField from '@mui/material/TextField';
-
-// export default function BasicTextFields() {
-//   return (
-//    <>
-//    <Box  >
-//    <Paper sx={{ p:'100px', margin: 2}} elevation={4}>
-//     <Box
-//       component="form"
-//       sx={{
-//         '& > :not(style)': { m: 1, width: '25ch' },
-//       }}
-//       noValidate
-//       autoComplete="off"
-//     >
-//       <TextField id="outlined-basic" label="Name*" variant="outlined" sx={{width:'100%' ,display:'block'}}/>
-//       <TextField id="outlined-basic" label="Address*" variant="outlined" />
-//       <Button variant="contained" size="large" color="primary" sx={{ mt: '50px', width: '100%' , display:'block'}}>SUBMIT</Button>
-//     </Box>
-//     </Paper>
-//     </Box>
-//     </>
-//   );
-// }                                                
+export default SelfieVerification; 
+                                                
