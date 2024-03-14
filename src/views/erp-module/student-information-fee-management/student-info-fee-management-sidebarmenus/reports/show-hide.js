@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { Box, Typography, IconButton } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
+import ArrowCircleRightOutlinedIcon from '@mui/icons-material/ArrowCircleRightOutlined';
 import ParamSearchBar from 'views/common-section/ParamSearchBar';
+
 
 
 const availableColumns = [
@@ -34,18 +36,18 @@ const availableColumns = [
 
 const ShowHide = () => {
     const [selectedFields, setSelectedFields] = useState(availableColumns);
-    const [isHovered, setIsHovered] = useState(-1);
+    const [hoveredItemId, setHoveredItemId] = useState(-1);
     const [searchTerm, setSearchTerm] = useState('');
 
-    const handleSelect = (id) => {
+    const handleSelectField = (id) => {
         const updatedFields = selectedFields.map(field =>
             field.id === id ? { ...field, selected: true } : field
         );
         setSelectedFields(updatedFields);
-        filterEnquiryData();
+        filterAvailableFields();
     };
 
-    const handleUnselect = (id) => {
+    const handleUnselectField = (id) => {
         const updatedFields = selectedFields.map(field =>
             field.id === id ? { ...field, selected: false } : field
         );
@@ -53,21 +55,47 @@ const ShowHide = () => {
     };
 
     const handleMouseEnter = (id) => {
-        setIsHovered(id);
+        setHoveredItemId(id);
     };
 
     const handleMouseLeave = () => {
-        setIsHovered(-1);
+        setHoveredItemId(-1);
     };
 
-
     const style = {
-        searchBarStyle: {
+        showHideContainer: {
+            display: "flex",
+            gap: "100px",
+            alignItems: "center",
+        },
+        availableColumnsContainer: {
+             height:"600px",
+        },
+        availableFieldsContainer: {
+            marginTop: "20px",
+            border: '1px solid #dadada',
+            width: "300px",
+            borderRadius: "10px",
+            height: "520px",
+            overflowY: 'auto',
+        },
+        selectedField:{
+                marginLeft: "5%",
+                height: "30px",
+                width: "90%",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                cursor: 'pointer'
+        },
+        arrowIcon: {
+            fontSize: "40px",
+            strokeWidth: 200
+        },
+        searchBar: {
             paperStyle: {
-                height: "40px"
-            },
-            inputStyle: {
-
+                height: "40px",
+                marginBottom:"5px",
             },
             iconButtonStyle: {
                 width: "40px",
@@ -81,54 +109,72 @@ const ShowHide = () => {
                 height: "20px"
             }
         }
-    }
+    };
 
-
-    const filterEnquiryData = () => {
+    const filterAvailableFields = () => {
         return selectedFields.filter((column) =>
-          column.headerName.toLowerCase().includes(searchTerm.toLowerCase()) && !column.selected
+            column.headerName.toLowerCase().includes(searchTerm.toLowerCase()) && !column.selected
         );
-      };
+    };
 
     return (
-        <Box sx={{ display: "flex", gap: "100px" }}>
-            <Box>
-                <Typography variant="h5"> AVAILABLE Fields</Typography>
-                <Box sx={{ marginTop: "20px", overflowY: 'auto', border: '1px solid #dadada', width: "300px", borderRadius: "10px", height: "600px", overflowX: "auto" }}>
-                    <ParamSearchBar paperStyle={style?.searchBarStyle?.paperStyle} iconButtonStyle={style?.searchBarStyle?.iconButtonStyle} searchIconStyle={style?.searchBarStyle?.searchIconStyle} onChange={e => setSearchTerm(e.target.value)} />
-                    {console.log(filterEnquiryData())}
-                    {filterEnquiryData().map((item) => (
+        <Box sx={style.showHideContainer}>
+            {/* Available Fields */}
+            <Box sx={style.availableColumnsContainer}>
+                <Typography variant="h5"> AVAILABLE COLUMNS</Typography>
+                <Box className="scrollbar" sx={style.availableFieldsContainer}>
+                    <ParamSearchBar
+                        paperStyle={style.searchBar.paperStyle}
+                        iconButtonStyle={style.searchBar.iconButtonStyle}
+                        searchIconStyle={style.searchBar.searchIconStyle}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                    />
+                    {filterAvailableFields().map((item) => (
                         !item.selected && (
-                            <Box key={item.id} onMouseEnter={() => handleMouseEnter(item?.id)}
-                                onMouseLeave={() => handleMouseLeave()} sx={{ marginLeft: "5%", height: "30px", width: "90%", display: "flex", alignItems: "center", justifyContent: "space-between", cursor: 'pointer' }}>
+                            <Box
+                                key={item.id}
+                                onMouseEnter={() => handleMouseEnter(item?.id)}
+                                onMouseLeave={() => handleMouseLeave()}
+                                sx={style?.selectedField}
+                            >
                                 <Typography variant="h5">{item.id}: {item.headerName}</Typography>
                                 <IconButton
-                                    onClick={() => handleSelect(item.id)}
+                                    onClick={() => handleSelectField(item.id)}
                                     sx={{
                                         color: "#bdbdbd",
-                                        padding: '10px',
                                     }}
                                 >
-                                    <AddIcon sx={{ visibility: isHovered === item?.id ? 'visible' : 'hidden' }} />
+                                    <AddIcon sx={{ visibility: hoveredItemId === item?.id ? 'visible' : 'hidden' }} />
                                 </IconButton>
                             </Box>
                         )
                     ))}
                 </Box>
             </Box>
+            {/* Right Arrow Icons */}
             <Box>
-                <Typography variant="h5"> Selected Fields</Typography>
-                <Box sx={{ display: "flex", flexDirection: "column", marginTop: "20px", overflowY: 'auto', border: '1px solid #dadada', width: "300px", borderRadius: "10px", height: "600px", overflowX: "auto" }}>
+                <ArrowCircleRightOutlinedIcon sx={style.arrowIcon} />
+            </Box>
+            {/* Selected Fields */}
+            <Box sx={style.availableColumnsContainer}>
+                <Typography variant="h5">SELECTED COLUMNS</Typography>
+                <Box className="scrollbar" sx={style.availableFieldsContainer}>
                     {selectedFields.map((item) => (
                         item.selected && (
-                            <Box key={item.id} onMouseEnter={() => handleMouseEnter(item?.id)}
-                                onMouseLeave={() => handleMouseLeave()} sx={{ marginLeft: "5%", height: "30px", width: "90%", display: "flex", alignItems: "center", justifyContent: "space-between", cursor: 'pointer' }}>
+                            <Box
+                                key={item.id}
+                                onMouseEnter={() => handleMouseEnter(item?.id)}
+                                onMouseLeave={() => handleMouseLeave()}
+                                sx={style?.selectedField}
+                            >
                                 <Typography variant="h5">{item.id}: {item.headerName}</Typography>
-                                <IconButton onClick={() => handleUnselect(item.id)} sx={{
-                                    color: "#bdbdbd",
-                                    padding: '10px',
-                                }}>
-                                    <RemoveIcon sx={{ visibility: isHovered === item?.id ? 'visible' : 'hidden' }} />
+                                <IconButton
+                                    onClick={() => handleUnselectField(item.id)}
+                                    sx={{
+                                        color: "#bdbdbd",
+                                    }}
+                                >
+                                    <RemoveIcon sx={{ visibility: hoveredItemId === item?.id ? 'visible' : 'hidden' }} />
                                 </IconButton>
                             </Box>
                         )
