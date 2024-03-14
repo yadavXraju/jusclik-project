@@ -1,6 +1,6 @@
 // ===========================|| DASHBOARD - TOTAL GROWTH BAR CHART ||=========================== //
 
-const FeeDefaulterData = {
+const OverDueBooks = {
     height: 480,
     type: 'bar',
     options: {
@@ -34,7 +34,7 @@ const FeeDefaulterData = {
       },
       xaxis: {
         type: 'category',
-        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+        categories: ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'Sep', 'Oct', 'Nov', 'Dec']
       },
       legend: {
         show: true,

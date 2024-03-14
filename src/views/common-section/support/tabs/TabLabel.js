@@ -9,7 +9,7 @@ const TabLabel = ({ handleChange }) => {
   
   return (
     <Box sx={{  borderColor: '#e3e8ef',borderBottom:'1px solid rgb(227, 227, 227)', }}>
-      <TabList onChange={handleChange} aria-label="tabs" >
+      <TabList onChange={handleChange} aria-label="tabs"    variant="scrollable" scrollButtons="auto" >
         {TabItem.map((label) => (
           <Tab
             key={label.id}
