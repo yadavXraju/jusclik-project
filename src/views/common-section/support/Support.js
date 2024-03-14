@@ -7,6 +7,7 @@ import TabContext from '@mui/lab/TabContext';
 import TabPanel from '@mui/lab/TabPanel';
 import TabLabel from './tabs/TabLabel';
 import QuickTips from './quick-tips';
+import MakeInvoiceVideo from './make-invoice-video';
 
 
 const NeedSupport = () => {
@@ -51,9 +52,9 @@ const NeedSupport = () => {
                                 <TabLabel handleChange={handleChange}/>
                             </Box>
                         </Paper>
-                        <TabPanel  value="1"> <QuickTips /> </TabPanel>
+                        <TabPanel  value="1" sx={{padding:'24px 24px 0px 24px'}}> <QuickTips /> </TabPanel>
                         <TabPanel value="2"></TabPanel>
-                        <TabPanel value="3"></TabPanel>
+                        <TabPanel value="3"> <MakeInvoiceVideo />  </TabPanel>
                         <TabPanel value="4"></TabPanel>
                     </TabContext>
 

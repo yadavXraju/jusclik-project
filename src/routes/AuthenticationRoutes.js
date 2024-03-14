@@ -3,6 +3,7 @@ import { lazy } from 'react';
 // project imports
 import Loadable from 'ui-component/Loadable';
 
+
 // minimal layout for  without sidebar and header
 // import MinimalLayout from 'layout/MinimalLayout';
 
@@ -15,6 +16,7 @@ const VisitorRegistration =  Loadable(lazy(() => import('views/pages/authenticat
 const VisitorAppointementPass = Loadable(lazy(() => import('views/pages/authentication/visitor-registration/appointment-pass')));
 const SelfieVerification = Loadable(lazy(() => import('views/pages/authentication/visitor-registration/selfie-verification')));
 const VisitorDetails = Loadable(lazy(() => import('views/pages/authentication/visitor-registration/visitor-details')));
+const VisitPurpose =  Loadable(lazy(() => import('views/pages/authentication/visitor-registration/visit-purpose')));
 
 // ==============================|| AUTHENTICATION ROUTING ||============================== //
 
@@ -65,6 +67,11 @@ const AuthenticationRoutes = {
     {
       path:'/visitor-details',
       element: <VisitorDetails />
+    },
+
+    {
+      path:'/visit-purpose',
+      element: <VisitPurpose />
     },
 
 
