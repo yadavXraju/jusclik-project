@@ -14,7 +14,7 @@ const isMobile = useMediaQuery('(max-width: 767px)');
   const AttendanceBox = {
     display : 'flex',
     flexDirection: 'column',
-    padding : '0 20px',
+    padding : '0 20px 8px 20px',
     // paddingBottom:'0',
     alignItems: isMobile ? 'center' :'auto',
   }

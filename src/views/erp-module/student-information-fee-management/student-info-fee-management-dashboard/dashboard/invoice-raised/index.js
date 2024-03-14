@@ -28,10 +28,14 @@ const InvoiceRaised = () => {
 
           <Box sx={{padding:'14px 24px 72px 24px'}}>
               <LinearProgress variant="determinate" value={paidPercentage} sx={{
-                height :'4px'
+                height :'8px',
+                background:'#2196f361',
+                '& .MuiLinearProgress-barColorPrimary': {
+                  backgroundColor: '#2196f391', // Change the color of the progress bar here
+                },
               }} />
           </Box>
-
+         
           {/* due ammount and paid amount */}
          <Box sx={{ borderTop:'1px solid rgb(227, 227, 227)'}}>
             <Grid sx={{
