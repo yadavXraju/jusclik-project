@@ -22,6 +22,7 @@ const TabLabel = ({ handleChange }) => {
               paddingBottom:'0',
               color:'#000',
               fontWeight:'500',
+              minHeight:'48px'
             }}
             // sx={{
             //   color: '#fff',

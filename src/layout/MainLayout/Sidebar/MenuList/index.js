@@ -38,8 +38,10 @@ import { getMenuItems } from 'menu-items';
 // ==============================|| SIDEBAR MENU LIST ||============================== //
 
 const MenuList = () => {
-  console.log('Calling getMenuItems');
+  // console.log('Calling getMenuItems');
+
   const menuItems = getMenuItems();
+  
   // console.log('menuItems:', menuItems);
 
   const navItems = menuItems.items.map((item) => {

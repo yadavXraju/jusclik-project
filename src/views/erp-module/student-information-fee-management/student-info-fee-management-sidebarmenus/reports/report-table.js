@@ -2,16 +2,12 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import { DataGrid } from '@mui/x-data-grid';
 
-
-
-
-
- const DataGridDemo=React.forwardRef((props,ref)=>{
-    const {rows,columns}=props;
+const DataGridDemo = React.forwardRef((props, ref) => {
+  const { rows, columns } = props;
   return (
-    <Box sx={{width: '100%',marginTop:"50px"}} >
+    <Box sx={{ width: '100%', marginTop: "50px",overflowX:"auto"}} className="scrollbar">
       <DataGrid
-        sx={{width:"100%"}}
+        sx={{ width: "100%" }}
         ref={ref}
         rows={rows}
         columns={columns}
@@ -22,10 +18,9 @@ import { DataGrid } from '@mui/x-data-grid';
             },
           },
         }}
-       
         pageSizeOptions={[5]}
-        disableSelectionOnClick 
-        disableRowSelectionOnClick 
+        disableSelectionOnClick
+        disableRowSelectionOnClick
       />
     </Box>
   );

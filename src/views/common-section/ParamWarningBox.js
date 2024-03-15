@@ -4,16 +4,17 @@ import Collapse from '@mui/material/Collapse';
 import CloseIcon from '@mui/icons-material/Close';
 import Alert from '@mui/material/Alert';
 
-const Alerts = ({ label, severity,customStyle={}}) => {
+const Alerts = ({ label, severity,customStyle={},cancelIcon={}}) => {
   const [open, setOpen] = useState(true);
-  return (
-    <Collapse in={open}>
+  return ( 
+    <Collapse in={open} >
       <Alert severity={severity}
         action={
           <IconButton
             aria-label="close"
             color="inherit"
             size="small"
+            sx={cancelIcon}
             onClick={() => {
               setOpen(false);
             }}

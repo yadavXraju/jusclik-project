@@ -22,7 +22,7 @@ const Counter2 = ( {Counter2Data } ) => {
                         {/* icon and title */}
 
                         <Box sx={{display:'flex' , flexDirection:'column' , alignItems:'baseline' , gap:'10px' ,}}>
-                            <Box sx={{background:'rgb(229, 231, 235)' , padding:'8px' , borderRadius:'50%' , display:'flex'}}>
+                            <Box sx={{background:'rgb(229 231 235 / 65%)' , padding:'8px' , borderRadius:'50%' , display:'flex'}}>
                             {<item.icon sx={{fontSize:'26px' , color:'#000000d6'}} />} {/* Render the icon component */}
                             </Box>
 
