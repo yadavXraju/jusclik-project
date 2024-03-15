@@ -1,27 +1,33 @@
 .beforeClick{
-  transform:translateY(-100vh);
-  margin-left:-59px;
+  transform:translateY(-120vh);
+  left:260px;
 }
 
 .afterClick{
-  position: fixed;
-  margin-left:-59px;
-  margin-top:-150px;
+  position: absolute;
+  height: 100vh;
+  width: calc(100vw - 260px);
+  left:244px;
+  top:110px;
   border-radius:10px;
   transform:translateY(0vh);
   background-color: #fff;
   z-index: 99;
-  width:calc(100vw - 280px);
-  height: 100vh;
   transition: 0.3s all ease-in-out;
 }
 
 .enquiry-customize-report{
-   width:calc(100vw-280px);
+   width: calc(100vw - 300px);
 }
 
+
 @media screen and (max-width: 900px) {
-  .enquiry-customize-report{
+  .beforeClick{
+    left:0px;
+    width:100vw;
+  }
+  .afterClick{
+    left:0px;
     width:100vw;
   }
 }
