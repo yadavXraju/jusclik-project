@@ -42,7 +42,21 @@ const SelfieVerification = () => {
                      </Box>
 
 
-                     <Box p={2}><Button variant="contained" size="large" color="primary" sx={{ mt: '50px', width: '100%' }}>SUBMIT</Button></Box>
+                     <Box p={2}><Button variant="contained" size="large" color="primary"
+                        sx={{
+                           mt: '50px', width: '100%',
+                           backgroundColor: '#fff',
+                           color: '#364152b5',
+                           borderRadius: '50px',
+                           border: '1px solid #c4c4c4',
+                           fontSize: '15px',
+                           fontFamily: 'plus Jakarta sans',
+                           cursor: 'pointer',
+                           '&:hover': {
+                              backgroundColor: '#e64b4c',
+                              color: '#fff'
+                           }
+                        }}>SUBMIT</Button></Box>
                   </Paper>
                </Box>
             </Box>
