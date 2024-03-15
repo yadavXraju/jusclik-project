@@ -4,11 +4,12 @@ import {AdapterDayjs} from '@mui/x-date-pickers/AdapterDayjs';
 import {LocalizationProvider} from '@mui/x-date-pickers/LocalizationProvider';
 // import TextField from '@mui/material/TextField';
 
-const  ParameterizedDateComponent=({label, value, onChange,className="",customStyle={}})=>{
+const  ParameterizedDateComponent=({label, value, onChange,className="",customStyle={},id=""})=>{
     return (
         <>
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DatePicker
+              id={id}
               label={label}
               inputFormat="dd/mm/yyyy"
               value={value}
