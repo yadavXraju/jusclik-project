@@ -64,12 +64,13 @@ const ShowHide = () => {
 
     const style = {
         showHideContainer: {
+            height:"550px",
             display: "flex",
             gap: "100px",
             alignItems: "center",
         },
         availableColumnsContainer: {
-             height:"600px",
+             height:"550px",
         },
         availableFieldsContainer: {
             marginTop: "20px",

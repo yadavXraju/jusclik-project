@@ -105,7 +105,7 @@ function AddressForm() {
       <Card sx={{ padding: '10px' }}>
         <Typography variant={'h4'} p={1} mb={2} sx={{ borderBottom: '1px solid #ccc' }}>
           Permanent Address ({' '}
-          <Checkbox label="checkbox" size="small" checked={!!formData.permanentAddress} onChange={handleCheckboxChange} />
+          <Checkbox sx={{padding:'0px', marginRight:'5px'}} label="checkbox" size="small" checked={!!formData.permanentAddress} onChange={handleCheckboxChange} />
           <span style={{ fontSize: '12px', fontWeight: '500' }}>Same As Current Address</span> )
         </Typography>
         <Grid container spacing={1} sx={{ display: 'flex', height: '100%' }}>
@@ -175,6 +175,11 @@ function AddressForm() {
 }
 
 export default AddressForm;
+
+
+
+
+
 
 
 
