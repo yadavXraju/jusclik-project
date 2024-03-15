@@ -5,137 +5,218 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import InputBase from '@mui/material/InputBase';
 import IconButton from '@mui/material/IconButton';
-import DeleteIcon from '@mui/icons-material/Delete';
+import HighlightOffOutlinedIcon from '@mui/icons-material/HighlightOffOutlined';
 import AddIcon from '@mui/icons-material/Add';
-import EditIcon from '@mui/icons-material/Edit';
 import { Box } from '@mui/system';
-import { Button, Typography, Card } from '@mui/material';
+import { Button, TextField } from '@mui/material';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 
-const initialRow = { id: null, name: '', email: '', age: '', phone: '' };
+//import InputBase from '@mui/material/InputBase';
+
+
 
 const data = [
-  { id: 1, name: 'tarun', email: 'abc@gmail.com', age: '25', phone: '34789753975' },
+  { id: 1, Adm_No: 1234, name: 'Rohit', class: 'VI', Section: 'A' },
+  { id: 2, Adm_No: 5678, name: 'Pawan', class: 'V', Section: 'B' },
+  { id: 3, Adm_No: 9012, name: 'Suraj', class: 'IV', Section: 'A' },
+  { id: 4, Adm_No: 3456, name: 'Sonu', class: 'II', Section: 'C' },
+  { id: 5, Adm_No: 6789, name: 'Rahul', class: 'VIII', Section: 'B' }
 ];
+//const initialRow = { id: null, Branch: '', enrollmentType: '', admissionNo: '', name: '', class: '', Section: '' };
 
 export default function EditableTable() {
-  const [rows, setRows] = useState(data);
-  const [editingId, setEditingId] = useState(null);
-  const [newRow, setNewRow] = useState({ ...initialRow });
+  const [enrollmentType, setEnrollmentType] = useState('Admission');
+  const [Branch, setBranch] = React.useState('Dwarka');
+  const [enrollmentType1, setEnrollmentType1] = useState();
+  const [Branch1, setBranch1] = React.useState();
+  const [admissionNo, setAdmissionNo] = useState('');
+  const [showSecondRow, setShowSecondRow] = useState(false);
 
-  const handleEdit = (id, field, value) => {
-    const updatedRows = rows.map((row) => (row.id === id ? { ...row, [field]: value } : row));
-    setRows(updatedRows);
+  // const [rows, setRows] = useState(data);
+  // const [newRow, setNewRow] = useState({ ...initialRow });
+
+  //   const handleSave = () => {
+  //   handleAddRow(); // Call handleAddRow inside handleSave
+  // };
+
+  // const handleAddRow = () => {
+  //   if (newRow.Branch && newRow.enrollmentType && newRow.admissionNo && newRow.name && newRow.class && newRow.Section) {
+  //     setRows([...rows, { ...newRow, id: Date.now() }]);
+  //     setNewRow({ ...initialRow });
+  //   }
+  // };
+
+  // const handleAddRowAndSave = () => {
+  //   handleAddRow();
+  //   handleSave();
+  // };
+
+
+
+
+
+  const handleEnrollmentType = (event) => {
+    setEnrollmentType(event.target.value);
   };
 
-  const handleSave = () => {
-    setEditingId(null);
-    handleAddRow(); // Call handleAddRow inside handleSave
+  const handleBranch = (event) => {
+    setBranch(event.target.value);
   };
 
-  const handleDelete = (id) => {
-    const updatedRows = rows.filter((row) => row.id !== id);
-    setRows(updatedRows);
+  const handleAdmissionNoChange = (event) => {
+    setAdmissionNo(event.target.value);
+  };
+  const handleBranch1 = (event) => {
+    setBranch1(event.target.value);
+  };
+  const handleEnrollmentType1 = (event) => {
+    setEnrollmentType1(event.target.value);
   };
 
-  const handleAddRow = () => {
-    if (newRow.name && newRow.email && newRow.age && newRow.phone) {
-      setRows([...rows, { ...newRow, id: Date.now() }]);
-      setNewRow({ ...initialRow });
-    }
-  };
+  const filteredData = data.filter((item) => item.Adm_No === parseInt(admissionNo));
 
-  const handleAddRowAndSave = () => {
-    handleAddRow();
-    handleSave();
+  const handleAddSibling = () => {
+    setShowSecondRow(true); // Show the second row when "Add Sibling" button is clicked
   };
 
   return (
     <>
-     <Card sx={{padding:'10px'}}>
-     <Typography variant={'h4'} p={1.4} mb={2} sx={{borderBottom:'1px solid #ccc'}}>
-      Contact Details
-      </Typography>
-      <TableContainer>
-        <Table sx={{ minWidth: 650 }} aria-label="editable table">
-          <TableHead>
-            <TableRow>
-              <TableCell sx={{ padding: 1, border: '1px solid #ccc' }}>Name</TableCell>
-              <TableCell sx={{ padding: 1, border: '1px solid #ccc' }}>Email</TableCell>
-              <TableCell sx={{ padding: 1, border: '1px solid #ccc' }}>Age</TableCell>
-              <TableCell sx={{ padding: 1, border: '1px solid #ccc' }}>Phone</TableCell>
-              {/* <TableCell sx={{ padding: 1, border: '1px solid #ccc' }}>Actions</TableCell> */}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {rows.map((row) => (
-              <TableRow key={row.id}>
-                <TableCell sx={{ padding: 1, border: '1px solid #ccc' }} component="th" scope="row">
-                  {editingId === row.id ? (
-                    <InputBase value={row.name} onChange={(e) => handleEdit(row.id, 'name', e.target.value)} />
-                  ) : (
-                    row.name
-                  )}
-                </TableCell>
-                <TableCell sx={{ padding: 1, border: '1px solid #ccc' }}>
-                  {editingId === row.id ? (
-                    <InputBase value={row.email} onChange={(e) => handleEdit(row.id, 'email', e.target.value)} />
-                  ) : (
-                    row.email
-                  )}
-                </TableCell>
-                <TableCell sx={{ padding: 1, border: '1px solid #ccc' }}>
-                  {editingId === row.id ? (
-                    <InputBase type="number" value={row.age} onChange={(e) => handleEdit(row.id, 'age', parseInt(e.target.value))} />
-                  ) : (
-                    row.age
-                  )}
-                </TableCell>
-                <TableCell sx={{ padding: 1, border: '1px solid #ccc' }}>
-                  {editingId === row.id ? (
-                    <InputBase value={row.phone} onChange={(e) => handleEdit(row.id, 'phone', e.target.value)} />
-                  ) : (
-                    row.phone
-                  )}
-                </TableCell>
-                {editingId !== row.id && (
-                    <IconButton sx={{padding:'0px', marginTop:'8px'}} onClick={() => setEditingId(row.id)}>
-                      <EditIcon />
-                    </IconButton>
-                  )}
-                  <IconButton sx={{padding:'0px', marginTop:'8px'}} onClick={() => handleDelete(row.id)}>
-                    <DeleteIcon sx={{color:'#f16f6f'}} />
-                  </IconButton>
-                {/* <TableCell align="right" sx={{ padding: 1, border: '1px solid #ccc' }}>
-                 
-                </TableCell> */}
+      <Box>
+        <TableContainer>
+          <Table sx={{ minWidth: 650 }} aria-label="editable table">
+            <TableHead>
+              <TableRow>
+                <TableCell sx={{ padding: 1, border: '1px solid #ccc' }}>Branch</TableCell>
+                <TableCell sx={{ padding: 1, border: '1px solid #ccc' }}>Enrollment Type</TableCell>
+                <TableCell sx={{ padding: 1, border: '1px solid #ccc' }}>Admission No.</TableCell>
+                <TableCell sx={{ padding: 1, border: '1px solid #ccc' }}>Name</TableCell>
+                <TableCell sx={{ padding: 1, border: '1px solid #ccc' }}>Class</TableCell>
+                <TableCell sx={{ padding: 1, border: '1px solid #ccc' }}>Section</TableCell>
               </TableRow>
-            ))}
-            <TableRow>
-              <TableCell sx={{ padding: 1, border: '1px solid #ccc' }}>
-                <InputBase placeholder="Name" value={newRow.name} onChange={(e) => setNewRow({ ...newRow, name: e.target.value })} />
-              </TableCell>
-              <TableCell sx={{ padding: 1, border: '1px solid #ccc' }}>
-                <InputBase placeholder="Email" value={newRow.email} onChange={(e) => setNewRow({ ...newRow, email: e.target.value })} />
-              </TableCell>
-              <TableCell sx={{ padding: 1, border: '1px solid #ccc' }}>
-                <InputBase placeholder="Age" type="number" value={newRow.age} onChange={(e) => setNewRow({ ...newRow, age: parseInt(e.target.value) })} />
-              </TableCell>
-              <TableCell sx={{ padding: 1, border: '1px solid #ccc' }}>
-                <InputBase placeholder="Phone" value={newRow.phone} onChange={(e) => setNewRow({ ...newRow, phone: e.target.value })} />
-              </TableCell>
-              {/* <TableCell align="right" sx={{ padding: 1, border: '1px solid #ccc' }}>
-              </TableCell> */}
-            </TableRow>
-          </TableBody>
-        </Table>
-      </TableContainer>
+            </TableHead>
+            <TableBody>
 
-      <Box pt={3}>
-        <Button startIcon={<AddIcon />} onClick={handleAddRowAndSave}>Add Contact</Button>
+               <TableRow >
+               <TableCell width={'150px'} sx={{ padding: 1, border: '1px solid #ccc' }}>
+                 <FormControl fullWidth>
+                   <Select labelId="Branch-select-label" id="Branch-simple-select" value={Branch} onChange={handleBranch}>
+                     <MenuItem value={'Dwarka'}>Dwarka</MenuItem>
+                     <MenuItem value={'Noida'}>Noida</MenuItem>
+                     <MenuItem value={'Delhi'}>Delhi</MenuItem>
+                   </Select>
+                 </FormControl>
+               </TableCell>
+               <TableCell width={'150px'} sx={{ padding: 1, border: '1px solid #ccc' }}>
+                 <FormControl fullWidth>
+                   <Select
+                     labelId="EnrollmentType-select-label"
+                     id="EnrollmentType-simple-select"
+                     value={enrollmentType}
+                     onChange={handleEnrollmentType}
+                   >
+                     <MenuItem value={'Enquiry'}>Enquiry</MenuItem>
+                     <MenuItem value={'Registration'}>Registration</MenuItem>
+                     <MenuItem value={'Provisional'}>Provisional</MenuItem>
+                     <MenuItem value={'Admission'}>Admission</MenuItem>
+                   </Select>
+                 </FormControl>
+               </TableCell>
+               <TableCell width={'150px'} sx={{ padding: 1, border: '1px solid #ccc' }}>
+                 <TextField id="outlined-basic" variant="outlined" value={admissionNo} onChange={handleAdmissionNoChange} />
+               </TableCell>
+               <TableCell width={'250px'} sx={{ padding: 1, border: '1px solid #ccc' }}>
+                 {filteredData.length > 0 && <div>{filteredData[0].name}</div>}
+               </TableCell>
+               <TableCell width={'100px'} sx={{ padding: 1, border: '1px solid #ccc' }}>
+                 {filteredData.length > 0 && <div>{filteredData[0].class}</div>}
+               </TableCell>
+               <TableCell width={'100px'} sx={{ padding: 1, border: '1px solid #ccc' }}>
+                 {filteredData.length > 0 && <div>{filteredData[0].Section}</div>}
+               </TableCell>
+               <IconButton sx={{ marginTop: '15px' }}>
+                 <HighlightOffOutlinedIcon sx={{ color: '#f19e9e' }} />
+               </IconButton>
+             </TableRow>
+             
+
+              {showSecondRow && (
+                <TableRow>
+                  <TableCell width={'150px'} sx={{ padding: 1, border: '1px solid #ccc' }}>
+                    <FormControl fullWidth>
+                      <Select labelId="Branch-select-label" id="Branch-simple-select" value={Branch1} onChange={handleBranch1}>
+                        <MenuItem value={'Dwarka'}>Dwarka</MenuItem>
+                        <MenuItem value={'Noida'}>Noida</MenuItem>
+                        <MenuItem value={'Delhi'}>Delhi</MenuItem>
+                      </Select>
+                    </FormControl>
+                  </TableCell>
+                  <TableCell width={'150px'} sx={{ padding: 1, border: '1px solid #ccc' }}>
+                    <FormControl fullWidth>
+                      <Select
+                        labelId="EnrollmentType-select-label"
+                        id="EnrollmentType-simple-select"
+                        value={enrollmentType1}
+                        onChange={handleEnrollmentType1}
+                      >
+                        <MenuItem value={'Enquiry'}>Enquiry</MenuItem>
+                        <MenuItem value={'Registration'}>Registration</MenuItem>
+                        <MenuItem value={'Provisional'}>Provisional</MenuItem>
+                        <MenuItem value={'Admission'}>Admission</MenuItem>
+                      </Select>
+                    </FormControl>
+                  </TableCell>
+                  <TableCell width={'150px'} sx={{ padding: 1, border: '1px solid #ccc' }}>
+                    <TextField
+                      id="outlined-basic"
+                      variant="outlined"
+                      // onChange={handleAdmissionNoChange}
+                    />
+                  </TableCell>
+                  <TableCell width={'250px'} sx={{ padding: 1, border: '1px solid #ccc' }}></TableCell>
+                  <TableCell width={'100px'} sx={{ padding: 1, border: '1px solid #ccc' }}></TableCell>
+                  <TableCell width={'100px'} sx={{ padding: 1, border: '1px solid #ccc' }}></TableCell>
+                </TableRow>
+              )}
+
+              {/* <TableRow>
+                <TableCell sx={{ padding: 1, border: '1px solid #ccc' }}>
+                  <InputBase placeholder="Branch" value={newRow.Branch} onChange={(e) => setNewRow({ ...newRow, Branch: e.target.value })} />
+                </TableCell>
+                <TableCell sx={{ padding: 1, border: '1px solid #ccc' }}>
+                  <InputBase placeholder="Enrollment Type" value={newRow.enrollmentType} onChange={(e) => setNewRow({ ...newRow, enrollmentType: e.target.value })} />
+                </TableCell>
+                <TableCell sx={{ padding: 1, border: '1px solid #ccc' }}>
+                  <InputBase placeholder="Admission No" value={newRow.admissionNo} onChange={(e) => setNewRow({ ...newRow, admissionNo: e.target.value })} />
+                </TableCell>
+                <TableCell sx={{ padding: 1, border: '1px solid #ccc' }}>
+                  <InputBase placeholder="Name" value={newRow.name} onChange={(e) => setNewRow({ ...newRow, name: e.target.value })} />
+                </TableCell>
+                <TableCell sx={{ padding: 1, border: '1px solid #ccc' }}>
+                  <InputBase placeholder="Class" value={newRow.class} onChange={(e) => setNewRow({ ...newRow, class: e.target.value })} />
+                </TableCell>
+                <TableCell sx={{ padding: 1, border: '1px solid #ccc' }}>
+                  <InputBase placeholder="Section" value={newRow.Section} onChange={(e) => setNewRow({ ...newRow, Section: e.target.value })} />
+                </TableCell>
+              </TableRow> */}
+
+              {/* <Box pt={3}>
+                <Button startIcon={<AddIcon />} onClick={handleAddRowAndSave}>
+                  Add Contact
+                </Button>
+              </Box> */}
+            </TableBody>
+          </Table>
+        </TableContainer>
+
+        <Box pt={1}>
+          <Button startIcon={<AddIcon />} onClick={handleAddSibling}>
+            Add Sibling
+          </Button>
+        </Box>
       </Box>
-     </Card>
     </>
   );
 }
@@ -149,6 +230,20 @@ export default function EditableTable() {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // import React, { useState } from 'react';
 // import Table from '@mui/material/Table';
 // import TableBody from '@mui/material/TableBody';
@@ -156,293 +251,244 @@ export default function EditableTable() {
 // import TableContainer from '@mui/material/TableContainer';
 // import TableHead from '@mui/material/TableHead';
 // import TableRow from '@mui/material/TableRow';
-// import InputBase from '@mui/material/InputBase';
 // import IconButton from '@mui/material/IconButton';
-// import DeleteIcon from '@mui/icons-material/Delete';
+// import HighlightOffOutlinedIcon from '@mui/icons-material/HighlightOffOutlined';
 // import AddIcon from '@mui/icons-material/Add';
-// import EditIcon from '@mui/icons-material/Edit';
 // import { Box } from '@mui/system';
-// import { Button, Typography, Card } from '@mui/material';
-
-// const initialRow = { id: null, name: '', email: '', age: '', phone: '' };
+// import { Button, TextField } from '@mui/material';
+// import MenuItem from '@mui/material/MenuItem';
+// import FormControl from '@mui/material/FormControl';
+// import Select from '@mui/material/Select';
 
 // const data = [
-//   { id: 1, name: 'tarun', email: 'abc@gmail.com', age: '25', phone: '34789753975' },
+//   { id: 1, Adm_No: 1234, name: 'Rohit', class: 'VI', Section: 'A' },
+//   { id: 2, Adm_No: 5678, name: 'Pawan', class: 'V', Section: 'B' },
+//   { id: 3, Adm_No: 9012, name: 'Suraj', class: 'IV', Section: 'A' },
+//   { id: 4, Adm_No: 3456, name: 'Sonu', class: 'II', Section: 'C' },
+//   { id: 5, Adm_No: 6789, name: 'Rahul', class: 'VIII', Section: 'B' },
 // ];
 
 // export default function EditableTable() {
-//   const [rows, setRows] = useState(data);
-//   const [editingId, setEditingId] = useState(null);
-//   const [newRow, setNewRow] = useState({ ...initialRow });
+//   const [enrollmentType, setEnrollmentType] = useState('Admission');
+//   const [Branch, setBranch] = React.useState('Dwarka');
+//   const [admissionNo, setAdmissionNo] = useState('');
 
-//   const handleEdit = (id, field, value) => {
-//     const updatedRows = rows.map((row) => (row.id === id ? { ...row, [field]: value } : row));
-//     setRows(updatedRows);
+//   const handleEnrollmentType = (event) => {
+//     setEnrollmentType(event.target.value);
 //   };
 
-//   const handleSave = () => {
-//     setEditingId(null);
-//     handleAddRow(); // Call handleAddRow inside handleSave
+//   const handleBranch = (event) => {
+//     setBranch(event.target.value);
 //   };
 
-//   const handleDelete = (id) => {
-//     const updatedRows = rows.filter((row) => row.id !== id);
-//     setRows(updatedRows);
+//   const handleAdmissionNoChange = (event) => {
+//     setAdmissionNo(event.target.value);
 //   };
 
-//   const handleAddRow = () => {
-//     if (newRow.name && newRow.email && newRow.age && newRow.phone) {
-//       setRows([...rows, { ...newRow, id: Date.now() }]);
-//       setNewRow({ ...initialRow });
-//     }
-//   };
-
-//   const handleAddRowAndSave = () => {
-//     handleAddRow();
-//     handleSave();
-//   };
+//   const filteredData = data.filter((item) => item.Adm_No === parseInt(admissionNo));
 
 //   return (
 //     <>
-//      <Card sx={{padding:'10px'}}>
-//      <Typography variant={'h4'} p={1.4} mb={2} sx={{borderBottom:'1px solid #ccc'}}>
-//       Contact Details
-//       </Typography>
+//       <Box>
+//         <TableContainer>
+//           <Table sx={{ minWidth: 650 }} aria-label="editable table">
+//             <TableHead>
+//               <TableRow>
+//                 <TableCell sx={{ padding: 1, border: '1px solid #ccc' }}>Branch</TableCell>
+//                 <TableCell sx={{ padding: 1, border: '1px solid #ccc' }}>Enrollment Type</TableCell>
+//                 <TableCell sx={{ padding: 1, border: '1px solid #ccc' }}>Admission No.</TableCell>
+//                 <TableCell sx={{ padding: 1, border: '1px solid #ccc' }}>Name</TableCell>
+//                 <TableCell sx={{ padding: 1, border: '1px solid #ccc' }}>Class</TableCell>
+//                 <TableCell sx={{ padding: 1, border: '1px solid #ccc' }}>Section</TableCell>
+//               </TableRow>
+//             </TableHead>
+//             <TableBody>
+//               <TableRow>
+//                 <TableCell width={'150px'} sx={{ padding: 1, border: '1px solid #ccc' }}>
+//                   <FormControl fullWidth>
+//                     <Select
+//                       labelId="Branch-select-label"
+//                       id="Branch-simple-select"
+//                       value={Branch}
+//                       onChange={handleBranch}
+//                     >
+//                       <MenuItem value={'Dwarka'}>Dwarka</MenuItem>
+//                       <MenuItem value={'Noida'}>Noida</MenuItem>
+//                       <MenuItem value={'Delhi'}>Delhi</MenuItem>
+//                     </Select>
+//                   </FormControl>
+//                 </TableCell>
+//                 <TableCell width={'150px'} sx={{ padding: 1, border: '1px solid #ccc' }}>
+//                   <FormControl fullWidth>
+//                     <Select
+//                       labelId="EnrollmentType-select-label"
+//                       id="EnrollmentType-simple-select"
+//                       value={enrollmentType}
+//                       onChange={handleEnrollmentType}
+//                     >
+//                       <MenuItem value={'Enquiry'}>Enquiry</MenuItem>
+//                       <MenuItem value={'Registration'}>Registration</MenuItem>
+//                       <MenuItem value={'Provisional'}>Provisional</MenuItem>
+//                       <MenuItem value={'Admission'}>Admission</MenuItem>
+//                     </Select>
+//                   </FormControl>
+//                 </TableCell>
+//                 <TableCell width={'150px'} sx={{ padding: 1, border: '1px solid #ccc' }}>
+//                   <TextField
+//                     id="outlined-basic"
+//                     variant="outlined"
+//                     value={admissionNo}
+//                     onChange={handleAdmissionNoChange}
+//                   />
+//                 </TableCell>
+//                 <TableCell width={'250px'} sx={{ padding: 1, border: '1px solid #ccc' }}>
+//                   {filteredData.length > 0 && (
+//                     <div>
+//                       {filteredData[0].name}
+//                     </div>)}
+
+//                 </TableCell>
+//                 <TableCell width={'100px'} sx={{ padding: 1, border: '1px solid #ccc' }}>
+//                 {filteredData.length > 0 && (
+//                     <div>
+//                       {filteredData[0].class}
+//                     </div>)}
+//                 </TableCell>
+//                 <TableCell width={'100px'} sx={{ padding: 1, border: '1px solid #ccc' }}>
+//                 {filteredData.length > 0 && (
+//                     <div>
+//                       {filteredData[0].Section}
+//                     </div>)}
+//                 </TableCell>
+//                 <IconButton sx={{ marginTop: '15px' }}>
+//                   <HighlightOffOutlinedIcon sx={{ color: '#f19e9e' }} />
+//                 </IconButton>
+//               </TableRow>
+
+//             </TableBody>
+//           </Table>
+//         </TableContainer>
+
+//         <Box pt={3}>
+//           <Button startIcon={<AddIcon />}>Add Sibling</Button>
+//         </Box>
+//       </Box>
+//     </>
+//   );
+// }
+
+// import React from 'react';
+// import Table from '@mui/material/Table';
+// import TableBody from '@mui/material/TableBody';
+// import TableCell from '@mui/material/TableCell';
+// import TableContainer from '@mui/material/TableContainer';
+// import TableHead from '@mui/material/TableHead';
+// import TableRow from '@mui/material/TableRow';
+// import IconButton from '@mui/material/IconButton';
+// import HighlightOffOutlinedIcon from '@mui/icons-material/HighlightOffOutlined';
+// import AddIcon from '@mui/icons-material/Add';
+// import { Box } from '@mui/system';
+// import { Button, TextField } from '@mui/material';
+// import MenuItem from '@mui/material/MenuItem';
+// import FormControl from '@mui/material/FormControl';
+// import Select from '@mui/material/Select';
+
+// const data = [
+//   { id: 1, Adm_No: 1234, name: 'Rohit', class: 'VI', Section:'A' },
+//   { id: 2, Adm_No: 5678, name: 'Pawan', class: 'V', Section:'B' },
+//   { id: 3, Adm_No: 9012, name: 'Suraj', class: 'IV', Section:'A' },
+//   { id: 4, Adm_No: 3456, name: 'Sonu', class: 'II', Section:'C' },
+//   { id: 5, Adm_No: 6789, name: 'Rahul', class: 'VIII', Section:'B' },
+// ];
+
+// export default function EditableTable() {
+//   const [enrollmentType, setEnrollmentType] = React.useState('Admission');
+
+//   const handleEnrollmentType = (event) => {
+//     setEnrollmentType(event.target.value);
+//   };
+//   const [Branch, setBranch] = React.useState('Dwarka');
+
+//   const handleBranch = (event) => {
+//     setBranch(event.target.value);
+//   };
+
+//   console.log(enrollmentType)
+//   return (
+//     <>
+//      <Box>
 //       <TableContainer>
 //         <Table sx={{ minWidth: 650 }} aria-label="editable table">
 //           <TableHead>
 //             <TableRow>
+//               <TableCell sx={{ padding: 1, border: '1px solid #ccc' }}>Branch</TableCell>
+//               <TableCell sx={{ padding: 1, border: '1px solid #ccc' }}>Enrollment Type</TableCell>
+//               <TableCell sx={{ padding: 1, border: '1px solid #ccc' }}>Admission No.</TableCell>
 //               <TableCell sx={{ padding: 1, border: '1px solid #ccc' }}>Name</TableCell>
-//               <TableCell sx={{ padding: 1, border: '1px solid #ccc' }}>Email</TableCell>
-//               <TableCell sx={{ padding: 1, border: '1px solid #ccc' }}>Age</TableCell>
-//               <TableCell sx={{ padding: 1, border: '1px solid #ccc' }}>Phone</TableCell>
-//               <TableCell sx={{ padding: 1, border: '1px solid #ccc' }}>Actions</TableCell>
+//               <TableCell sx={{ padding: 1, border: '1px solid #ccc' }}>Class</TableCell>
+//               <TableCell sx={{ padding: 1, border: '1px solid #ccc' }}>Section</TableCell>
+//               {/* <TableCell sx={{ padding: 1, border: '1px solid #ccc' }}>Actions</TableCell> */}
 //             </TableRow>
 //           </TableHead>
 //           <TableBody>
-//             {rows.map((row) => (
-//               <TableRow key={row.id}>
-//                 <TableCell sx={{ padding: 1, border: '1px solid #ccc' }} component="th" scope="row">
-//                   {editingId === row.id ? (
-//                     <InputBase value={row.name} onChange={(e) => handleEdit(row.id, 'name', e.target.value)} />
-//                   ) : (
-//                     row.name
-//                   )}
+//               <TableRow >
+//                 <TableCell width={'150px'} sx={{ padding: 1, border: '1px solid #ccc' }} component="th" scope="row">
+//                     <FormControl fullWidth>
+//                     <Select
+//                       labelId="Branch-select-label"
+//                       id="Branch-simple-select"
+//                       value={Branch}
+//                       onChange={handleBranch}
+//                     >
+//                       <MenuItem value={"Dwarka"}>Dwarka</MenuItem>
+//                       <MenuItem value={"Noida"}>Noida</MenuItem>
+//                       <MenuItem value={"Delhi"}>Delhi</MenuItem>
+//                     </Select>
+//                   </FormControl>
 //                 </TableCell>
-//                 <TableCell sx={{ padding: 1, border: '1px solid #ccc' }}>
-//                   {editingId === row.id ? (
-//                     <InputBase value={row.email} onChange={(e) => handleEdit(row.id, 'email', e.target.value)} />
-//                   ) : (
-//                     row.email
-//                   )}
+//                 <TableCell width={'150px'} sx={{ padding: 1, border: '1px solid #ccc' }} component="th" scope="row">
+
+//                      {/* row.name */}
+//                     <FormControl fullWidth>
+//                     <Select
+//                       labelId="EnrollmentType-select-label"
+//                       id="EnrollmentType-simple-select"
+//                       value={enrollmentType}
+//                       onChange={handleEnrollmentType}
+//                     >
+//                       <MenuItem value={'Enquiry'}>Enquiry</MenuItem>
+//                       <MenuItem value={'Registration'}>Registration</MenuItem>
+//                       <MenuItem value={'Provisional'}>Provisional</MenuItem>
+//                       <MenuItem value={'Admission'}>Admission</MenuItem>
+//                     </Select>
+//                   </FormControl>
 //                 </TableCell>
-//                 <TableCell sx={{ padding: 1, border: '1px solid #ccc' }}>
-//                   {editingId === row.id ? (
-//                     <InputBase type="number" value={row.age} onChange={(e) => handleEdit(row.id, 'age', parseInt(e.target.value))} />
-//                   ) : (
-//                     row.age
-//                   )}
+//                 <TableCell width={'150px'} sx={{ padding: 1, border: '1px solid #ccc' }}>
+//                     <TextField  id="outlined-basic" variant="outlined" />
 //                 </TableCell>
-//                 <TableCell sx={{ padding: 1, border: '1px solid #ccc' }}>
-//                   {editingId === row.id ? (
-//                     <InputBase value={row.phone} onChange={(e) => handleEdit(row.id, 'phone', e.target.value)} />
-//                   ) : (
-//                     row.phone
-//                   )}
+//                 <TableCell width={'250px'} sx={{ padding: 1, border: '1px solid #ccc' }}>
+
 //                 </TableCell>
-//                 <TableCell align="right" sx={{ padding: 1, border: '1px solid #ccc' }}>
-//                   {editingId !== row.id && (
-//                     <IconButton onClick={() => setEditingId(row.id)}>
-//                       <EditIcon />
-//                     </IconButton>
-//                   )}
-//                   <IconButton onClick={() => handleDelete(row.id)}>
-//                     <DeleteIcon />
+//                 <TableCell width={'100px'} sx={{ padding: 1, border: '1px solid #ccc' }}>
+
+//                 </TableCell>
+//                 <TableCell width={'100px'} sx={{ padding: 1, border: '1px solid #ccc' }}>
+
+//                 </TableCell>
+//                   <IconButton sx={{marginTop:'15px'}}>
+//                     <HighlightOffOutlinedIcon sx={{color:'#f19e9e'}} />
 //                   </IconButton>
-//                 </TableCell>
 //               </TableRow>
-//             ))}
 //             <TableRow>
-//               <TableCell sx={{ padding: 1, border: '1px solid #ccc' }}>
-//                 <InputBase placeholder="Name" value={newRow.name} onChange={(e) => setNewRow({ ...newRow, name: e.target.value })} />
-//               </TableCell>
-//               <TableCell sx={{ padding: 1, border: '1px solid #ccc' }}>
-//                 <InputBase placeholder="Email" value={newRow.email} onChange={(e) => setNewRow({ ...newRow, email: e.target.value })} />
-//               </TableCell>
-//               <TableCell sx={{ padding: 1, border: '1px solid #ccc' }}>
-//                 <InputBase placeholder="Age" type="number" value={newRow.age} onChange={(e) => setNewRow({ ...newRow, age: parseInt(e.target.value) })} />
-//               </TableCell>
-//               <TableCell sx={{ padding: 1, border: '1px solid #ccc' }}>
-//                 <InputBase placeholder="Phone" value={newRow.phone} onChange={(e) => setNewRow({ ...newRow, phone: e.target.value })} />
-//               </TableCell>
-//               <TableCell align="right" sx={{ padding: 1, border: '1px solid #ccc' }}>
-//               </TableCell>
 //             </TableRow>
 //           </TableBody>
 //         </Table>
 //       </TableContainer>
 
 //       <Box pt={3}>
-//         <Button startIcon={<AddIcon />} onClick={handleAddRowAndSave}>Add Contact</Button>
+//         <Button startIcon={<AddIcon />} >Add Sibling</Button>
 //       </Box>
-//      </Card>
+//      </Box>
 //     </>
 //   );
 // }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import React, { useState } from 'react';
-// import Table from '@mui/material/Table';
-// import TableBody from '@mui/material/TableBody';
-// import TableCell from '@mui/material/TableCell';
-// import TableContainer from '@mui/material/TableContainer';
-// import TableHead from '@mui/material/TableHead';
-// import TableRow from '@mui/material/TableRow';
-// import Paper from '@mui/material/Paper';
-// import InputBase from '@mui/material/InputBase';
-// import IconButton from '@mui/material/IconButton';
-// import DeleteIcon from '@mui/icons-material/Delete';
-// import AddIcon from '@mui/icons-material/Add';
-// import EditIcon from '@mui/icons-material/Edit';
-// import { Box } from '@mui/system';
-// import { Button } from '@mui/material';
-
-// const initialRow = { id: null, name: '', email: '', age: '', phone: '' };
-
-// const data = [
-//   { id: 1, name: 'tarun', email: 'abc@gmail.com', age: '25', phone: '34789753975' },
-//   { id: 2, name: 'suraj', email: 'abc@gmail.com', age: '25', phone: '34789753975' },
-// //   { id: 3, name: 'pawant', email: 'abc@gmail.com', age: '25', phone: '34789753975' },
-// //   { id: 4, name: 'mukesh', email: 'abc@gmail.com', age: '25', phone: '34789753975' },
-// ];
-
-// export default function EditableTable() {
-//   const [rows, setRows] = useState(data);
-//   const [editingId, setEditingId] = useState(null);
-//   const [newRow, setNewRow] = useState({ ...initialRow });
-
-//   const handleEdit = (id, field, value) => {
-//     const updatedRows = rows.map((row) => (row.id === id ? { ...row, [field]: value } : row));
-//     setRows(updatedRows);
-//   };
-
-//   const handleSave = () => {
-//     setEditingId(null);
-//     handleAddRow(); // Call handleAddRow inside handleSave
-//   };
-
-//   const handleDelete = (id) => {
-//     const updatedRows = rows.filter((row) => row.id !== id);
-//     setRows(updatedRows);
-//   };
-
-//   const handleAddRow = () => {
-//     if (newRow.name && newRow.email && newRow.age && newRow.phone) {
-//       setRows([...rows, { ...newRow, id: Date.now() }]);
-//       setNewRow({ ...initialRow });
-//     }
-//   };
-
-//   const handleAddRowAndSave = () => {
-//     handleAddRow();
-//     handleSave();
-//   };
-
-//   return (
-//     <>
-//       <TableContainer component={Paper}>
-//         <Table sx={{ minWidth: 650 }} aria-label="editable table">
-//           <TableHead>
-//             <TableRow>
-//               <TableCell>Name</TableCell>
-//               <TableCell>Email</TableCell>
-//               <TableCell>Age</TableCell>
-//               <TableCell>Phone</TableCell>
-//               <TableCell align="right">Actions</TableCell>
-//             </TableRow>
-//           </TableHead>
-//           <TableBody>
-//             {rows.map((row) => (
-//               <TableRow key={row.id}>
-//                 <TableCell component="th" scope="row">
-//                   {editingId === row.id ? (
-//                     <InputBase value={row.name} onChange={(e) => handleEdit(row.id, 'name', e.target.value)} />
-//                   ) : (
-//                     row.name
-//                   )}
-//                 </TableCell>
-//                 <TableCell>
-//                   {editingId === row.id ? (
-//                     <InputBase value={row.email} onChange={(e) => handleEdit(row.id, 'email', e.target.value)} />
-//                   ) : (
-//                     row.email
-//                   )}
-//                 </TableCell>
-//                 <TableCell>
-//                   {editingId === row.id ? (
-//                     <InputBase type="number" value={row.age} onChange={(e) => handleEdit(row.id, 'age', parseInt(e.target.value))} />
-//                   ) : (
-//                     row.age
-//                   )}
-//                 </TableCell>
-//                 <TableCell>
-//                   {editingId === row.id ? (
-//                     <InputBase value={row.phone} onChange={(e) => handleEdit(row.id, 'phone', e.target.value)} />
-//                   ) : (
-//                     row.phone
-//                   )}
-//                 </TableCell>
-//                 <TableCell align="right">
-//                   {editingId !== row.id && (
-//                     <IconButton onClick={() => setEditingId(row.id)}>
-//                       <EditIcon />
-//                     </IconButton>
-//                   )}
-//                   <IconButton onClick={() => handleDelete(row.id)}>
-//                     <DeleteIcon />
-//                   </IconButton>
-//                 </TableCell>
-//               </TableRow>
-//             ))}
-//             <TableRow>
-//               <TableCell>
-//                 <InputBase placeholder="Name" value={newRow.name} onChange={(e) => setNewRow({ ...newRow, name: e.target.value })} />
-//               </TableCell>
-//               <TableCell>
-//                 <InputBase placeholder="Email" value={newRow.email} onChange={(e) => setNewRow({ ...newRow, email: e.target.value })} />
-//               </TableCell>
-//               <TableCell>
-//                 <InputBase placeholder="Age" type="number" value={newRow.age} onChange={(e) => setNewRow({ ...newRow, age: parseInt(e.target.value) })} />
-//               </TableCell>
-//               <TableCell>
-//                 <InputBase placeholder="Phone" value={newRow.phone} onChange={(e) => setNewRow({ ...newRow, phone: e.target.value })} />
-//               </TableCell>
-//               <TableCell align="right">
-//               </TableCell>
-//             </TableRow>
-//           </TableBody>
-//         </Table>
-//       </TableContainer>
-
-//       <Box pt={3}>
-//         <Button startIcon={<AddIcon />} onClick={handleAddRowAndSave}>Add Contact</Button>
-//       </Box>
-//     </>
-//   );
-// }
-
