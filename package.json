@@ -39,6 +39,8 @@
     "express": "^4.18.2",
     "formik": "^2.2.9",
     "framer-motion": "^6.3.16",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^2.5.1",
     "material-ui-popup-state": "^4.0.1",
     "mui-rte": "^2.0.1",
     "prop-types": "^15.8.1",
