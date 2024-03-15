@@ -108,7 +108,7 @@ const FeeDefaulter = ({ isLoading }) => {
       {isLoading ? (
         <SkeletonTotalGrowthBarChart />
       ) : (
-        <Paper  elevation={1} sx={{display:'flex' , flexWrap:'wrap' , border:'1px solid rgb(227, 227, 227)' , }}>
+        <Paper  elevation={0} sx={{display:'flex' , flexWrap:'wrap' , border:'1px solid rgb(227, 227, 227)' , boxShadow:'4px 4px 9px 2px #ddddddc2' }}>
           {/* <Box sx={{ padding: '24px' }}>
              <Typography variant='h2' style={HeadingCss}>FEE DEFAULTERS</Typography>
           </Box> */}
@@ -121,7 +121,7 @@ const FeeDefaulter = ({ isLoading }) => {
             padding:'20px',
             }}>
             <Box>
-                 <Typography variant='h3' sx={{mb:'10px'}}>FEE DEFAULTERS</Typography>
+                 <Typography variant='h3' sx={{mb:'10px'}}>Fee Defaulters</Typography>
                  <Typography variant='p' sx={{fontWeight:'500'}}>increase in app usage with 6,521 new products purchased</Typography>
             </Box>
 

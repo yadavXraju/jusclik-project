@@ -2,7 +2,7 @@
 import CalendarMonthTwoToneIcon from '@mui/icons-material/CalendarMonthTwoTone';
 import AlarmTwoToneIcon from '@mui/icons-material/AlarmTwoTone';
 import MarkUnreadChatAltTwoToneIcon from '@mui/icons-material/MarkUnreadChatAltTwoTone';
-import CameraAltTwoToneIcon from '@mui/icons-material/CameraAltTwoTone';
+// import CameraAltTwoToneIcon from '@mui/icons-material/CameraAltTwoTone';
 import FingerprintTwoToneIcon from '@mui/icons-material/FingerprintTwoTone';
 import DriveFileRenameOutlineTwoToneIcon from '@mui/icons-material/DriveFileRenameOutlineTwoTone';
 import CoPresentTwoToneIcon from '@mui/icons-material/CoPresentTwoTone';
@@ -262,14 +262,14 @@ const ClassTeacherMenu = {
                 icon:  DocumentScannerTwoToneIcon,
                 breadcrumbs: false
              },
-              {
-                 id: 'api-test',
-                 title: 'API Test',
-                 type: 'item',
-                 url: '/class-teacher/apitest',
-                 icon:   CameraAltTwoToneIcon,
-                 breadcrumbs: false
-               },
+              // {
+              //    id: 'api-test',
+              //    title: 'API Test',
+              //    type: 'item',
+              //    url: '/class-teacher/apitest',
+              //    icon:   CameraAltTwoToneIcon,
+              //    breadcrumbs: false
+              //  },
 
 
     ]

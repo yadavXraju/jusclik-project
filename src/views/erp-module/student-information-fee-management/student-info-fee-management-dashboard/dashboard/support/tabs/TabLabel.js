@@ -12,6 +12,9 @@ const TabLabel = ({ handleChange }) => {
       <TabList onChange={handleChange} aria-label="tabs"    variant="scrollable" scrollButtons="auto" sx={{
         '& .MuiSvgIcon-root':{
           marginTop:'16px',
+        },
+        '& .Mui-disabled':{
+          display:'none'
         }
       }} >
         {TabItem.map((label) => (
