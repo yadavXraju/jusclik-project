@@ -461,8 +461,8 @@ const VisitorDetails = () => {
                       }
                     }}
                   />
-                </Grid>
-                <Grid item xs={12}>
+               
+             
                   <TextField
                     id="outlined-basic-address"
                     label="Address"
@@ -488,8 +488,7 @@ const VisitorDetails = () => {
                       }
                     }}
                   />
-                </Grid>
-                <Grid item xs={12}>
+              
                   <FormControl fullWidth variant="outlined" sx={{ mt: 0 }}>
                     <InputLabel id="purpose-label">Purpose*</InputLabel>
                     <Select
@@ -512,8 +511,8 @@ const VisitorDetails = () => {
                       <MenuItem value="Other">Other</MenuItem>
                     </Select>
                   </FormControl>
-                </Grid>
-                <Grid item xs={12}>
+             
+               
                   <FormControl fullWidth variant="outlined">
                     <InputLabel id="want-to-meet-label">Want to Meet*</InputLabel>
                     <Select
