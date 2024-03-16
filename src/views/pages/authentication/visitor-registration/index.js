@@ -12,4 +12,4 @@ const VisitorRegistration = () => {
   )
 }
 
-export default VisitorRegistration
+export default VisitorRegistration;

@@ -29,7 +29,9 @@ const SelfieVerification = () => {
             </Paper>
          </Box>
       </>
-   )
-}
-export default SelfieVerification; 
+   );
+};
+
+export default SelfieVerification;
+
                                                 
