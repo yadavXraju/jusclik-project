@@ -1,19 +1,17 @@
 import React, { useState, useRef } from 'react';
 import { Typography, Button, Paper, TextField, Grid } from '@mui/material';
 import { useNavigate } from "react-router-dom";
-import ScreenLockPortraitOutlinedIcon from '@mui/icons-material/ScreenLockPortraitOutlined';
 import { Box } from '@mui/system';
-
+import { css } from '../css';
 const OtpVerification = () => {
-  const navigate = useNavigate();
-  const [otp, setOtp] = useState(['', '', '', '']);
-  const inputRefs = useRef([]);
+const navigate = useNavigate();
+const [otp, setOtp] = useState(['', '', '', '']);
+const inputRefs = useRef([]);
 
-  const handleOtpChange = (index, value) => {
+const handleOtpChange = (index, value) => {
     const newOtp = [...otp];
     newOtp[index] = value.replace(/\D/g, '').slice(0, 1); // Allow only digits
     setOtp(newOtp);
-
     if (value === '' && index > 0) {
       // Move focus to the previous input field if backspace is pressed and field is empty
       inputRefs.current[index - 1].focus();
@@ -22,23 +20,11 @@ const OtpVerification = () => {
       inputRefs.current[index + 1].focus();
     }
   };
-
-  return (
-    <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-      <Paper sx={{ p:'20px', margin: 2, textAlign: 'center' }} elevation={4}>
-        <ScreenLockPortraitOutlinedIcon sx={{
-          width: '100px',
-          height: '100px',
-          padding: '1rem',
-          fontSize: '40px',
-          color: 'white',
-          borderRadius: '70%',
-          bgcolor: 'rgb(30, 136, 229)',
-          margin: 'auto'
-        }} />
-
-        <Typography variant="h3" sx={{ mt: '25px', letterSpacing: '0.5px' }}>Verification</Typography>
-        <Typography sx={{ mt: '30px', fontWeight: '500' }}>You will get an OTP via SMS</Typography>
+return (
+    <Box sx={{...css.center }}>
+      <Paper sx={{ ...css.mobilePaper,width:'100%'}} elevation={4}>
+        <Typography variant="h6" sx={{ padding:'1rem 0',sm:'14px',...css.horizontalCenter }}>Verification</Typography>
+        <Typography sx={{ padding: '0', fontWeight: '500',...css.horizontalCenter }}>You will get an OTP via SMS</Typography>
         <Grid container spacing={1} justifyContent="center">
           {otp.map((digit, index) => (
             <Grid item key={index}>
@@ -77,30 +63,18 @@ const OtpVerification = () => {
         </Grid>
         <Button variant="contained" size="large" color="primary" 
           sx={{
-            mt: '20px', backgroundColor: '#fff',
-            color: '#364152b5',
-            borderRadius: '50px',
-            border: '1px solid #c4c4c4',
-            width:  '130px',
-            height:'50px',
-            fontSize: '15px',
-            fontFamily: 'plus Jakarta sans',
-            cursor: 'pointer',
-            '&:hover': {
-              backgroundColor: '#e64b4c',
-              color: '#fff'
-            }
+            ...css.center, ...css.marginAuto,
+            ...css.submitButton,...css.button
           }}
         >VERIFY</Button>
-        <Typography variant="body1" sx={{ mt: '20px' }}>
+        <Typography variant="body1" sx={{ mt: '20px',...css.horizontalCenter }}>
           Didnt Receive the Verification OTP?{' '}
-          <Typography variant='span' sx={{ fontWeight: "600", "&:hover": { textDecoration: 'underline', cursor: 'pointer' } }} onClick={() => navigate('/parent/dashboard')}>
+        </Typography>
+          <Typography variant='span' sx={{ fontWeight: "600", "&:hover": { textDecoration: 'underline', cursor: 'pointer' },...css.horizontalCenter }} onClick={() => navigate('/parent/dashboard')}>
             Resend again
           </Typography>
-        </Typography>
       </Paper>
     </Box>
   );
 }
-
 export default OtpVerification;

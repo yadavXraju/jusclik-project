@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import CameraAltOutlinedIcon from '@mui/icons-material/CameraAltOutlined';
 import { Box } from '@mui/system';
+import {css} from '../css'
 const SelfieCamera = () => {
   const videoRef = useRef(null);
   const photoRef = useRef(null);
@@ -22,17 +23,15 @@ const SelfieCamera = () => {
   };
 
   return (
-    <div>
+    <>
       {/* <button onClick={startCamera}>Upload</button> */}
-      <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+      <Box sx={{ ...css.horizontalCenter }}>
         <Box sx={{
-          width: '150px',
-          height: '150px',
+          width: '100px',
+          height: '100px',
           backgroundColor: '#EDE6F6',
           borderRadius: '50%',
-          border: '2px dotted #5E35B1', display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center'
+          border: '2px dotted #5E35B1',...css.center,
         }}>
 
           <CameraAltOutlinedIcon color='secondary'
@@ -50,7 +49,7 @@ const SelfieCamera = () => {
           <button onClick={takePhoto}>Take Photo</button>
         </>
       )}
-    </div>
+    </>
   );
 };
 

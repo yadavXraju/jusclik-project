@@ -12,7 +12,6 @@ export const MobileNumber = () => {
     return (<>
 
       <Box sx={{ ...css.center }}></Box>
-
       <Paper sx={{ ...css.mobilePaper }} elevation={4}>
         <Box>
           <FormControl fullWidth>

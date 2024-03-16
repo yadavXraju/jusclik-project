@@ -143,16 +143,22 @@
 
 
 import React, { useState } from 'react';
-import { Box, Button, Paper, Typography, TextField,  Toolbar, InputAdornment ,IconButton,AppBar} from '@mui/material';
-import { useNavigate } from 'react-router';
+import { Box, Button, Paper,
+  //  Typography,
+    TextField,
+    // Toolbar,
+     InputAdornment ,IconButton
+    //  ,AppBar
+    } from '@mui/material';
+// import { useNavigate } from 'react-router';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import ArrowBackIosNewOutlinedIcon from '@mui/icons-material/ArrowBackIosNewOutlined';
+// import ArrowBackIosNewOutlinedIcon from '@mui/icons-material/ArrowBackIosNewOutlined';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
-
+import {css} from '../css'
 
 
 
@@ -164,7 +170,7 @@ const VisitorDetails = () => {
   const [purpose, setPurpose] = useState('');
   const [meet, setMeet] = useState('');
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -198,28 +204,28 @@ const VisitorDetails = () => {
 
   return (
     <>
-     <AppBar position="static">
+     {/* <AppBar position="static">
         <Toolbar>
           <ArrowBackIosNewOutlinedIcon sx={{ "&:hover": { cursor: 'pointer' } }} onClick={() => navigate('/selfie-verification')}> </ArrowBackIosNewOutlinedIcon>
           <Typography variant="h6" sx={{ flexGrow: 1 }}></Typography>
           <Button color="inherit" onClick={() => navigate('/visitor-registration')}>Logout</Button>
         </Toolbar>
-        </AppBar>
-      <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '90vh' }}>
-        <Box>
-          <Box>
-            <Typography variant='h3' sx={{ display: 'flex', justifyContent: 'center', mb: '20px', fontWeight: '600' }}>
+        </AppBar> */}
+      <Box sx={{ ...css.center}}>
+        
+          {/* <Box>
+            <Typography variant='h6' sx={{ ...css.horizontalCenter, mb: '20px', fontWeight: '600' }}>
               Self Check-In
             </Typography>
             <Typography variant='h2' sx={{ display: 'flex', justifyContent: 'center' }}>Shaurya Software, Hermitage Plaza</Typography>
             <Typography variant='h3' pb={6} sx={{ display: 'flex', justifyContent: 'center', marginTop: '20px', fontWeight: '400' }}>
               Managed by jusklik
             </Typography>
-          </Box>
-          <Box sx={{ display: 'flex' }}>
-            <Paper elevation={4} sx={{ p: '20px', width: '100%' }}>
+          </Box> */}
+          
+            <Paper elevation={4} sx={{ ...css.mobilePaper,width:'100%'}}>
               <form onSubmit={handleSubmit}>
-                <Box p={1}>
+                <Box sx={{padding:'1rem 0'}}>
                   <TextField
                     id="outlined-basic-name"
                     label="Name"
@@ -331,25 +337,16 @@ const VisitorDetails = () => {
                 </Box>
                 <Box sx={{ textAlign: 'center' }}>
                   <Button type="submit" variant="contained" size="large" color="primary" sx={{
-                    mt: '15px', width: '100%', backgroundColor: '#fff',
-                    color: '#364152b5',
-                    borderRadius: '50px',
-                    border: '1px solid #c4c4c4',
-                   fontSize: '15px',
-                    fontFamily: 'plus Jakarta sans',
-                    cursor: 'pointer',
-                    '&:hover': {
-                      backgroundColor: '#e64b4c',
-                      color: '#fff'
-                    }
+                   ...css.center, ...css.marginAuto,
+                   ...css.submitButton,...css.button
                   }}>
                     SUBMIT
                   </Button>
                 </Box>
               </form>
             </Paper>
-          </Box>
-        </Box>
+          
+        
       </Box>
     </>
   );
