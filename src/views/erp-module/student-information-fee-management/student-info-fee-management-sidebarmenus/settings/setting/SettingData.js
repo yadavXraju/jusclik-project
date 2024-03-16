@@ -6,6 +6,7 @@ import SmsOutlinedIcon from '@mui/icons-material/SmsOutlined';
 import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
 import CreditCardOutlinedIcon from '@mui/icons-material/CreditCardOutlined';
 import TuneOutlinedIcon from '@mui/icons-material/TuneOutlined';
+import FolderOpenOutlinedIcon from '@mui/icons-material/FolderOpenOutlined';
 
 
 const SettingData = [
@@ -28,6 +29,11 @@ const SettingData = [
       icon: <CreditCardOutlinedIcon sx={{ color: '#838195' }} />,
       title: 'Fee',
       items: ['Fee Heads', 'Fee Structure', 'Concession', 'Discount', 'Fee Account', 'Invoice']
+    },
+    {
+      icon: <FolderOpenOutlinedIcon sx={{ color: '#838195' }} />,
+      title: 'Student Records',
+      items: ['Tuition Fee Certificate', 'School Learning Certificate', 'Gate Pass', 'Identity Card']
     },
     {
       icon: <TipsAndUpdatesRoundedIcon sx={{ color: '#838195' }} />,

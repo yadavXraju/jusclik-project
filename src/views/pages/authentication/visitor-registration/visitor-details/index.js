@@ -359,11 +359,24 @@
 
 
 import React, { useState } from 'react';
-import { Grid, Paper, Typography, TextField, Button, Toolbar,  InputAdornment, IconButton, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
-import { useNavigate } from 'react-router';
-import ArrowBackIosNewOutlinedIcon from '@mui/icons-material/ArrowBackIosNewOutlined';
+import { Box, Button, Paper,
+  //  Typography,
+    TextField,
+    // Toolbar,
+     InputAdornment ,IconButton
+    //  ,AppBar
+    } from '@mui/material';
+// import { useNavigate } from 'react-router';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+// import ArrowBackIosNewOutlinedIcon from '@mui/icons-material/ArrowBackIosNewOutlined';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
+import {css} from '../css'
+
+
 
 const VisitorDetails = () => {
   const [name, setName] = useState('');
@@ -373,7 +386,7 @@ const VisitorDetails = () => {
   const [purpose, setPurpose] = useState('');
   const [meet, setMeet] = useState('');
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -401,30 +414,28 @@ const VisitorDetails = () => {
 
   return (
     <>
-      
+     {/* <AppBar position="static">
         <Toolbar>
           <ArrowBackIosNewOutlinedIcon sx={{ "&:hover": { cursor: 'pointer' } }} onClick={() => navigate('/selfie-verification')} />
           <Typography variant="h6" sx={{ flexGrow: 1 }}></Typography>
           <Button color="inherit" onClick={() => navigate('/visitor-registration')}>Logout</Button>
         </Toolbar>
-      
-      <Grid container justifyContent="center" alignItems="center" style={{ minHeight: '61vh' }}>
-        <Grid item xs={12} sm={8} md={6} lg={4}>
-          <Grid item xs={12}>
-            
-            <Typography variant='h4' sx={{ display: 'flex', justifyContent: 'center', mb: '20px', fontWeight: '600' }}>
+        </AppBar> */}
+      <Box sx={{ ...css.center}}>
+        
+          {/* <Box>
+            <Typography variant='h6' sx={{ ...css.horizontalCenter, mb: '20px', fontWeight: '600' }}>
               Self Check-In
             </Typography>
             <Typography variant='h2' sx={{ textAlign: 'center' }}>Shaurya Software, Hermitage Plaza</Typography>
             <Typography variant='h3' pb={6} sx={{ display: 'flex', justifyContent: 'center', marginTop: '20px', fontWeight: '400' }}>
               Managed by jusklik
             </Typography>
-          </Grid>
-          <Paper elevation={4} sx={{ p: '20px', width: '100%' }}>
-            <form onSubmit={handleSubmit}>
-              <Grid container spacing={2} justifyContent="center">
-
-                <Grid item xs={12}>
+          </Box> */}
+          
+            <Paper elevation={4} sx={{ ...css.mobilePaper,width:'100%'}}>
+              <form onSubmit={handleSubmit}>
+                <Box sx={{padding:'1rem 0'}}>
                   <TextField
                     id="outlined-basic-name"
                     label="Name"
@@ -450,8 +461,8 @@ const VisitorDetails = () => {
                       }
                     }}
                   />
-                </Grid>
-                <Grid item xs={12}>
+               
+             
                   <TextField
                     id="outlined-basic-address"
                     label="Address"
@@ -477,8 +488,7 @@ const VisitorDetails = () => {
                       }
                     }}
                   />
-                </Grid>
-                <Grid item xs={12}>
+              
                   <FormControl fullWidth variant="outlined" sx={{ mt: 0 }}>
                     <InputLabel id="purpose-label">Purpose*</InputLabel>
                     <Select
@@ -501,8 +511,8 @@ const VisitorDetails = () => {
                       <MenuItem value="Other">Other</MenuItem>
                     </Select>
                   </FormControl>
-                </Grid>
-                <Grid item xs={12}>
+             
+               
                   <FormControl fullWidth variant="outlined">
                     <InputLabel id="want-to-meet-label">Want to Meet*</InputLabel>
                     <Select
@@ -524,30 +534,20 @@ const VisitorDetails = () => {
                       {/* Add more options as needed */}
                     </Select>
                   </FormControl>
-                </Grid>
-                <Grid item xs={12} sx={{ textAlign: 'center' }}>
-                  <Button type="submit" variant="contained" size="large" color="primary"
-                    sx={{
-                      mt: '15px', width: '100%', backgroundColor: '#fff',
-                      color: '#364152b5',
-                      borderRadius: '50px',
-                      border: '1px solid #c4c4c4',
-                      fontSize: '15px',
-                      fontFamily: 'plus Jakarta sans',
-                      cursor: 'pointer',
-                      '&:hover': {
-                        backgroundColor: '#e64b4c',
-                        color: '#fff'
-                      }
-                    }}>
+                </Box>
+                <Box sx={{ textAlign: 'center' }}>
+                  <Button type="submit" variant="contained" size="large" color="primary" sx={{
+                   ...css.center, ...css.marginAuto,
+                   ...css.submitButton,...css.button
+                  }}>
                     SUBMIT
                   </Button>
-                </Grid>
-              </Grid>
-            </form>
-          </Paper>
-        </Grid>
-      </Grid>
+                </Box>
+              </form>
+            </Paper>
+          
+        
+      </Box>
     </>
   );
 }

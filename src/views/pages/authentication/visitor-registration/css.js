@@ -111,7 +111,7 @@ export const css = {
    borderRadius:'12px',
    padding:'0 1rem' ,
    '@media (max-width: 600px)': {
-    padding:'0 1rem',
+    padding:'1rem',
     margin:'0 1.5rem'
   },
   },
@@ -125,6 +125,6 @@ export const css = {
     },
   },
   button:{
-    margin:'1rem auto'
+    margin:'1rem auto',
   }
 }
