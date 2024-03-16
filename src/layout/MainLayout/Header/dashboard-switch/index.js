@@ -25,7 +25,7 @@ import MainCard from 'ui-component/cards/MainCard';
 import Transitions from 'ui-component/extended/Transitions';
 import GridViewOutlinedIcon from '@mui/icons-material/GridViewOutlined';
 import { useSelector } from 'react-redux';
-import ErpModuleLayout from './ErpModuleLayout';
+import DashboardSwitchLayout from './DashboardSwitchLayout';
 
 
 
@@ -62,7 +62,7 @@ const DashboardSwitch = () => {
 
     
   // Extract theme color and set opacity
-  const themeColor = customization.themeColorV2 || 'rgb(30, 136, 229)';
+  const themeColor = customization.themeColor || '';
   const opacity = 0.2;
 
 
@@ -97,7 +97,7 @@ const DashboardSwitch = () => {
             onClick={handleToggle}
             color="inherit"
           >
-            <GridViewOutlinedIcon className='themeColorV2' sx={{
+            <GridViewOutlinedIcon className='themeColor' sx={{
              color:`${theme?.customization?.themeColor} ` ,
              width: '20px'
              }}/>
@@ -133,7 +133,7 @@ const DashboardSwitch = () => {
                       <Grid container alignItems="center" justifyContent="space-between" sx={{ pt: 2, px: 2 }}>
                         <Grid item>
                           <Stack direction="row" spacing={2}>
-                            <Typography variant="subtitle1">ERP Modules </Typography>
+                            <Typography variant="subtitle1"> Dashboard </Typography>
                             
                           </Stack>
                         </Grid>
@@ -149,9 +149,9 @@ const DashboardSwitch = () => {
                           </Grid>
                         </Grid>
 
-                        {/* erp modules  start */}
-                            <ErpModuleLayout />
-                         {/* erp modules  end */}
+                        {/* dashbaord start */}
+                            <DashboardSwitchLayout />
+                         {/* dashbaord  end */}
 
                       </PerfectScrollbar>
                     </Grid>

@@ -13,10 +13,11 @@ import NotificationSection from './NotificationSection';
 
 // assets
 import { IconMenu2 } from '@tabler/icons';
-import SiblingSwitch from './SiblingSwitchSection';
+// import SiblingSwitch from './SiblingSwitchSection';
 import AcadmicYear from './AcadmicYearSection';
 import HelpSection from './HelpSection';
 import ErpModule from './erp-module';
+import DashboardSwitch from './dashboard-switch';
 
 
 
@@ -84,7 +85,8 @@ const Header = ({ handleLeftDrawerToggle }) => {
             {/* erp module  and sibling switch */}
 
             {/* { isERP ? <ErpModule />  : <SiblingSwitch />} */}
-            <SiblingSwitch />
+            {/* <SiblingSwitch /> */}
+            <DashboardSwitch />
 
             <ErpModule />
           

@@ -10,7 +10,8 @@ import LiveStudent from './live-student';
 import InvoiceRaised from './invoice-raised';
 import FeeCollection from './fee-collection';
 import NeedSupport from './support/Support';
-
+// import Counters from './counters/Counters';
+// import StudentStrength from './student-strength';
 
 const DashboardContent = ({ isLoading }) => {
   return (
@@ -35,9 +36,18 @@ const DashboardContent = ({ isLoading }) => {
          </Grid> */}
 
          
-        <Grid item xs={12} lg={12} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' , display:'flex' , flexDirection:'column', gap:'40px' ,} }}>
+        <Grid item xs={12} lg={12} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' , display:'flex' , flexDirection:'column', gap:'24px' ,} }}>
            <LiveStudent />
+           {/* <Counters /> */}
         </Grid>
+
+
+          {/* student strength */}
+
+          {/* <Grid item xs={12} lg={6} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
+            <StudentStrength />
+         </Grid> */}
+
 
          {/* invoice raised */}
          <Grid item xs={12} lg={6} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>

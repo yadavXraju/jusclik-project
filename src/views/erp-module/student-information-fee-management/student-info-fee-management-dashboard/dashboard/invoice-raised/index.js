@@ -46,7 +46,7 @@ const InvoiceRaised = () => {
                 <Box sx={{
                   flex:'0 0 50%',
                   borderRight:'1px solid rgb(227, 227, 227)',
-                  padding:'3rem 24px',   
+                  padding:'2rem 24px',   
                   textAlign:'center',            
                 }}>
 
@@ -80,7 +80,7 @@ const InvoiceRaised = () => {
                 {/* due amount */}
                 <Box sx={{
                   flex:'0 0 50%',
-                  padding:'3rem 24px',
+                  padding:'2rem 24px',
                   textAlign:'center',
                 }}>
 
