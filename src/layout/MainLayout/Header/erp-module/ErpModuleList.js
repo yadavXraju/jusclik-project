@@ -1,4 +1,4 @@
-import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
+
 // import stufee from '../../../../assets/images/stufee.svg';
 // import hr from '../../../../assets/images/hr.svg';
 import progress from '../../../../assets/images/erp-module-icon/progress.svg';
@@ -13,21 +13,24 @@ import relationship from '../../../../assets/images/erp-module-icon/customer.svg
 import stufee from '../../../../assets/images/erp-module-icon/fee.svg'
 import hr from '../../../../assets/images/erp-module-icon/hr.svg'
 
+import parent from '../../../../assets/images/dashboard-icon/parent-dashboard.svg'
+import teacher from '../../../../assets/images/dashboard-icon/teacher-dashboard.svg'
+
 
 export const ErpModuleList = [
 
     {
         id:12,
-        name:'Parent Dashboard',
-        icon : <LanguageOutlinedIcon sx={{margin:'auto'}}/>,
+        name:'Parent',
+        icon :  <img src={parent} alt='icon' style={{width:'34px', margin:'auto'}} />,
         url: '/parent/dashboard',
         role : 'parent',
     },
 
     {
         id:13,
-        name:'class teacher dashboard',
-        icon : <LanguageOutlinedIcon sx={{margin:'auto'}}/>,
+        name:'Teacher',
+        icon :  <img src={teacher} alt='icon' style={{width:'34px', margin:'auto'}} />,
         url: '/class-teacher/dashboard',
         role : 'class-teacher',
     },

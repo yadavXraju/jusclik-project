@@ -25,16 +25,18 @@ const NeedSupport = () => {
 
   return (
     <>
-       <Paper  elevation={1} sx={{
+       <Paper  elevation={0} sx={{
         p:'24px',
+        paddingRight:'0',
         border:'1px solid rgb(227, 227, 227)',
+        boxShadow:'4px 4px 9px 2px #ddddddc2'
         }}> 
           <Grid container spacing={gridSpacing}>
             {/* heading */}
-             <Grid item xs={12} sx={{mb:0}}>
+             <Grid item xs={12} sx={{padding: '0 ' , background:'#f9f9fb' , borderBottom:'1px solid rgba(128, 128, 128, 0.25)' , mb:0 , borderRadius:'12px 12px 0px 0'}} >
                 <Grid  alignContent="center" justifyContent="space-between">
-                    <Grid item sx={{mb:0}}>
-                        <Typography variant='h2' style={HeadingCss}>Support & Help </Typography> 
+                    <Grid item sx={{  mb:'0'}} >
+                        <Typography variant='h2' style={{...HeadingCss , border:'none'}}>Support & Help </Typography> 
                     </Grid>
                 </Grid>
              </Grid>
