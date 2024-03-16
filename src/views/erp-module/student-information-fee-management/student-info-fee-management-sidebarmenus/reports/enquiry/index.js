@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react'
-import { Box, Paper, Button} from '@mui/material';
+import { Box, Paper, Button } from '@mui/material';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import WithPrintPdf from 'views/common-section/withPrintPdf';
 import LocalPrintshopOutlinedIcon from '@mui/icons-material/LocalPrintshopOutlined';
@@ -179,10 +179,11 @@ const Enquiry = () => {
     const [clickedCustomize, setClickedCustomize] = useState(false);
     return (
         <>
-            <Paper sx={{ height: "50px", padding: "10px 20px 10px 20px", position: "relative" }}>
-                <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-                    <Box>
-                        <Button endIcon={<SettingsOutlinedIcon sx={{ width: "15px", height: "15px" }} onClick={() => setClickedCustomize(true)} />}>Customize Report</Button>
+            {/* Customize report and action button(printPdf) */}
+            <Paper sx={{ height: "50px"}}>
+                <Box sx={{height:"50px",display: "flex", justifyContent: "space-between", marginTop: "7px" }}>
+                    <Box sx={{height:"20px",marginTop:"8px"}}>
+                        <Button endIcon={<SettingsOutlinedIcon sx={{marginTop:"2px",width: "15px"}} onClick={() => setClickedCustomize(true)} />}>Customize Report</Button>
                     </Box>
                     <Box sx={{ display: 'flex' }}>
                         <WithPrintPdf Children={<LocalPrintshopOutlinedIcon />} ref={printRef} />
@@ -193,7 +194,10 @@ const Enquiry = () => {
                     <EnquiryDrawer name="Customize Report" setClickedCustomize={setClickedCustomize} />
                 </Box>
             </Paper>
-            <ReportTable rows={studentData} columns={columns} ref={printRef} />
+            {/* Report Table  */}
+            <Paper>
+                <ReportTable rows={studentData} columns={columns} ref={printRef} />
+            </Paper>
         </>
     )
 }

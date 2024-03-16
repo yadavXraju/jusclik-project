@@ -9,7 +9,14 @@ const TabLabel = ({ handleChange }) => {
   
   return (
     <Box sx={{  borderColor: '#e3e8ef',borderBottom:'1px solid rgb(227, 227, 227)', }}>
-      <TabList onChange={handleChange} aria-label="tabs" >
+      <TabList onChange={handleChange} aria-label="tabs"    variant="scrollable" scrollButtons="auto" sx={{
+        '& .MuiSvgIcon-root':{
+          marginTop:'16px',
+        },
+        '& .Mui-disabled':{
+          display:'none'
+        }
+      }} >
         {TabItem.map((label) => (
           <Tab
             key={label.id}

@@ -1,66 +1,76 @@
-// Dashboard.js
+//Fee module Dashboard.js
 import React from 'react';
 import Grid from '@mui/material/Grid';
 import { gridSpacing } from 'store/constant';
-import WelcomeTotalVisitor from 'views/erp-module/visitor/visitor-dashboard/welcome-visitor-today-visitor-total-visitor';
-import VisitorProfile from 'views/erp-module/visitor/visitor-dashboard/profile/Profile';
-import HourlyVisior from 'views/erp-module/visitor/visitor-dashboard/hourly-visitor';
-import FrequentlyReturningVisitor from 'views/erp-module/visitor/visitor-dashboard/frequently-returning-visitors/index.';
-import LastThirtyDayVisitor from 'views/erp-module/visitor/visitor-dashboard/last-thirty-day-visitor';
+// import FeeDefaulter from './fee-defaulter';
+
+import TotalBook from './counter/totalBooks';
+import IssuedBook from './counter/issuedBooks';
+import BookDetailPieChart from './LibraryBook';
+import AvialabelBooks from './counter/avialabelBook';
+import Reservation from './counter/reservation';
+import IssueReturn from './issuedRetun/IssuedReturnPiechart';
+import OverDueBook from './OverDueBooks';
 
 
-const Dashboard = ({ isLoading }) => {
+
+const Dashboard = () => {
   return (
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
-        <Grid container spacing={gridSpacing}>
+        <Grid container spacing={gridSpacing} >
 
-        {/* Welcome message , today visitor , total visitor */}
-        <Grid item lg={8} md={12} sm={12} xs={12} spacing={gridSpacing}>
-                    <Grid
-                      spacing={gridSpacing}
-                      sx={{
-                        backgroundColor: '#fff',
-                        border: '1px solid rgb(227 227 227)',
-                        borderRadius: '7px',
-                        px: 4,
-                        py: 3,
-                      }}
-                    >
-                      <WelcomeTotalVisitor  isLoading={isLoading} />
-                    </Grid>
-        </Grid>
 
-         {/* Profile comp */}
-         <Grid item lg={4} md={12} sm={12} xs={12}>
-            <Grid container spacing={gridSpacing}>
-              <Grid item sm={12} xs={12} md={12} lg={12}>
-                <VisitorProfile />
-              </Grid>
-            </Grid>
+
+         {/* counter */}
+          <Grid item xs={12} lg={12} md={12} sx={{ 
+            // marginTop: { md: '0px', lg: '0rem' , } ,
+            paddingBottom:'0',
+            marginTop:'20px',
+            display:'flex' ,
+            gap:'40px' ,
+            marginLeft:'14px'
+            }}>
+             {/* <LiveStrength /> */}
+             <TotalBook />
+             <AvialabelBooks/>
+            <IssuedBook />
+            <Reservation />
          </Grid>
 
+         
+        {/* <Grid item xs={12} lg={12} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' , display:'flex' , flexDirection:'column', gap:'40px' ,} }}>
+           <LiveStudent />
+        </Grid> */}
 
-         {/* Hourly visited chart */}
-          <Grid item xs={12} lg={7} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
-            <HourlyVisior isLoading={isLoading} />
+         {/* Books Detail Pie chart */}
+         <Grid item xs={12} lg={6} md={12} sx={{ marginTop: { md: '0px', lg: '1rem' } }}>
+            {/* <InvoiceRaised /> */}
+            <BookDetailPieChart/>
+         </Grid>
+
+         {/* fee collection */}
+         <Grid item xs={12} lg={6}  md={12} sx={{ marginTop: { md: '0px', lg: '1rem' } }}>
+              {/* <FeeCollection/>  */}
+              <IssueReturn/>
           </Grid>
 
-           {/* frequently returning visitors */}
-          <Grid item xs={12} lg={5}  md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
-              <FrequentlyReturningVisitor isLoading={isLoading} /> 
+           {/* fee defaulter */}
+           <Grid item xs={12} lg={6} md={12} sx={{ marginTop: { md: '0px', lg: '1rem' } }}>
+              {/* <FeeDefaulter isLoading={isLoading} />  */}
+              <OverDueBook/>
           </Grid>
 
-
-           {/* last thirty day  visitors */}
-           <Grid item xs={12} lg={12}  md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
-              <LastThirtyDayVisitor isLoading={isLoading} /> 
+          {/* need support */}
+          <Grid item xs={12} lg={4} md={12} sx={{ marginTop: { md: '0px', lg: '2rem' } }}>
+              {/* <NeedSupport isLoading={isLoading} />  */}
           </Grid>
 
         </Grid>
+
       </Grid>
     </Grid>
   );
 };
 
-export default Dashboard;
+export default Dashboard

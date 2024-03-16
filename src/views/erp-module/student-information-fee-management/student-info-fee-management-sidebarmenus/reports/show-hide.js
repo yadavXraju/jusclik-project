@@ -1,68 +1,102 @@
 import React, { useState } from 'react';
 import { Box, Typography, IconButton } from '@mui/material';
-import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
-import RemoveOutlinedIcon from '@mui/icons-material/RemoveOutlined';
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
+import ArrowCircleRightOutlinedIcon from '@mui/icons-material/ArrowCircleRightOutlined';
 import ParamSearchBar from 'views/common-section/ParamSearchBar';
+
+
 
 const availableColumns = [
     { id: '001', field: 'enqNo', headerName: 'Enq No', selected: false },
-    { id: '002', field: 'enqDate', headerName: 'Enq Date', selected: true },
-    { id: '003', field: 'studentName', headerName: 'Student Name', selected: true },
-    { id: '004', field: 'class', headerName: 'Class', selected: true },
-    { id: '005', field: 'section', headerName: 'Section', selected: true },
-    { id: '006', field: 'classSection', headerName: 'Class Section', selected: true },
-    { id: '007', field: 'gender', headerName: 'Gender', selected: true },
-    { id: '008', field: 'birthDate', headerName: 'Birth Date', selected: true },
-    { id: '009', field: 'age', headerName: 'Age (Today)', selected: true },
-    { id: '010', field: 'address', headerName: 'Address (Complete)', selected: true },
-    { id: '011', field: 'commPhone', headerName: 'Comm Phone (M)', selected: true },
-    { id: '012', field: 'commEmail', headerName: 'Comm Email', selected: true },
-    { id: '013', field: 'joinClass', headerName: 'Join Class', selected: true },
-    { id: '014', field: 'concessionCategory', headerName: 'Concession Category', selected: true },
-    { id: '015', field: 'fatherName', headerName: 'Father Name', selected: true },
-    { id: '015', field: 'motherName', headerName: 'Mother Name', selected: true },
-    { id: '017', field: 'nationality', headerName: 'Nationality', selected: true },
-    { id: '018', field: 'religion', headerName: 'Religion', selected: true },
-    { id: '019', field: 'previousSchool', headerName: 'Previous School', selected: true },
-    { id: '020', field: 'lastGradeCompleted', headerName: 'Last Grade Completed', selected: true },
-    { id: '021', field: 'guardianName', headerName: 'Guardian Name', selected: true },
-    { id: '022', field: 'guardianRelationship', headerName: 'Guardian Relationship', selected: true },
-    { id: '023', field: 'guardianPhone', headerName: 'Guardian Phone', selected: true },
-    { id: '024', field: 'guardianEmail', headerName: 'Guardian Email', selected: true },
+    { id: '002', field: 'enqDate', headerName: 'Enq Date', selected: false },
+    { id: '003', field: 'studentName', headerName: 'Student Name', selected: false },
+    { id: '004', field: 'class', headerName: 'Class', selected: false },
+    { id: '005', field: 'section', headerName: 'Section', selected: false },
+    { id: '006', field: 'classSection', headerName: 'Class Section', selected: false },
+    { id: '007', field: 'gender', headerName: 'Gender', selected: false },
+    { id: '008', field: 'birthDate', headerName: 'Birth Date', selected: false },
+    { id: '009', field: 'age', headerName: 'Age (Today)', selected: false },
+    { id: '010', field: 'address', headerName: 'Address (Complete)', selected: false },
+    { id: '011', field: 'commPhone', headerName: 'Comm Phone (M)', selected: false },
+    { id: '012', field: 'commEmail', headerName: 'Comm Email', selected: false },
+    { id: '013', field: 'joinClass', headerName: 'Join Class', selected: false },
+    { id: '014', field: 'concessionCategory', headerName: 'Concession Category', selected: false },
+    { id: '015', field: 'fatherName', headerName: 'Father Name', selected: false },
+    { id: '016', field: 'motherName', headerName: 'Mother Name', selected: false },
+    { id: '017', field: 'nationality', headerName: 'Nationality', selected: false },
+    { id: '018', field: 'religion', headerName: 'Religion', selected: false },
+    { id: '019', field: 'previousSchool', headerName: 'Previous School', selected: false },
+    { id: '020', field: 'lastGradeCompleted', headerName: 'Last Grade Completed', selected: false },
+    { id: '021', field: 'guardianName', headerName: 'Guardian Name', selected: false },
+    { id: '022', field: 'guardianRelationship', headerName: 'Guardian Relationship', selected: false },
+    { id: '023', field: 'guardianPhone', headerName: 'Guardian Phone', selected: false },
+    { id: '024', field: 'guardianEmail', headerName: 'Guardian Email', selected: false },
 ];
 
 const ShowHide = () => {
     const [selectedFields, setSelectedFields] = useState(availableColumns);
-    const [isHovered, setIsHovered] = useState(false);
-    const handleSelect = (id) => {
+    const [hoveredItemId, setHoveredItemId] = useState(-1);
+    const [searchTerm, setSearchTerm] = useState('');
+
+    const handleSelectField = (id) => {
         const updatedFields = selectedFields.map(field =>
             field.id === id ? { ...field, selected: true } : field
         );
         setSelectedFields(updatedFields);
+        filterAvailableFields();
     };
 
-    const handleUnselect = (id) => {
+    const handleUnselectField = (id) => {
         const updatedFields = selectedFields.map(field =>
             field.id === id ? { ...field, selected: false } : field
         );
         setSelectedFields(updatedFields);
     };
 
-    const handleMouseEnter = () => {
-        setIsHovered(true);
+    const handleMouseEnter = (id) => {
+        setHoveredItemId(id);
     };
 
     const handleMouseLeave = () => {
-        setIsHovered(false);
+        setHoveredItemId(-1);
     };
 
     const style = {
-        searchBarStyle: {
+        showHideContainer: {
+            height:"550px",
+            display: "flex",
+            gap: "100px",
+            alignItems: "center",
+        },
+        availableColumnsContainer: {
+             height:"550px",
+        },
+        availableFieldsContainer: {
+            marginTop: "20px",
+            border: '1px solid #dadada',
+            width: "300px",
+            borderRadius: "10px",
+            height: "520px",
+            overflowY: 'auto',
+        },
+        selectedField:{
+                marginLeft: "5%",
+                height: "30px",
+                width: "90%",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                cursor: 'pointer'
+        },
+        arrowIcon: {
+            fontSize: "40px",
+            strokeWidth: 200
+        },
+        searchBar: {
             paperStyle: {
-                height: "40px"
-            },
-            inputStyle: {
-
+                height: "40px",
+                marginBottom:"5px",
             },
             iconButtonStyle: {
                 width: "40px",
@@ -76,43 +110,72 @@ const ShowHide = () => {
                 height: "20px"
             }
         }
-    }
+    };
+
+    const filterAvailableFields = () => {
+        return selectedFields.filter((column) =>
+            column.headerName.toLowerCase().includes(searchTerm.toLowerCase()) && !column.selected
+        );
+    };
 
     return (
-        <Box sx={{ display: "flex", gap: "100px" }}>
-            <Box>
-                <Typography variant="h5"> AVAILABLE Fields</Typography>
-                <Box sx={{ marginTop: "20px", overflowY: 'auto', border: '1px solid #dadada', width: "300px", borderRadius: "10px", height: "600px", overflowX: "auto" }}>
-                    <ParamSearchBar paperStyle={style?.searchBarStyle?.paperStyle} iconButtonStyle={style?.searchBarStyle?.iconButtonStyle} searchIconStyle={style?.searchBarStyle?.searchIconStyle} />
-                    {selectedFields.map((item) => (
+        <Box sx={style.showHideContainer}>
+            {/* Available Fields */}
+            <Box sx={style.availableColumnsContainer}>
+                <Typography variant="h5"> AVAILABLE COLUMNS</Typography>
+                <Box className="scrollbar" sx={style.availableFieldsContainer}>
+                    <ParamSearchBar
+                        paperStyle={style.searchBar.paperStyle}
+                        iconButtonStyle={style.searchBar.iconButtonStyle}
+                        searchIconStyle={style.searchBar.searchIconStyle}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                    />
+                    {filterAvailableFields().map((item) => (
                         !item.selected && (
-                            <Box onMouseEnter={handleMouseEnter}
-                                onMouseLeave={handleMouseLeave} sx={{ marginLeft: "5%", width: "90%", display: "flex", alignItems: "center", justifyContent: "space-between",cursor: 'pointer' }} key={item.id}>
+                            <Box
+                                key={item.id}
+                                onMouseEnter={() => handleMouseEnter(item?.id)}
+                                onMouseLeave={() => handleMouseLeave()}
+                                sx={style?.selectedField}
+                            >
                                 <Typography variant="h5">{item.id}: {item.headerName}</Typography>
                                 <IconButton
-                                    onClick={() => handleSelect(item.id)}
+                                    onClick={() => handleSelectField(item.id)}
                                     sx={{
                                         color: "#bdbdbd",
-                                        padding: '10px',
-                                        visibility: isHovered ? 'visible' : 'hidden',
                                     }}
                                 >
-                                    <AddOutlinedIcon />
+                                    <AddIcon sx={{ visibility: hoveredItemId === item?.id ? 'visible' : 'hidden' }} />
                                 </IconButton>
                             </Box>
                         )
                     ))}
                 </Box>
             </Box>
+            {/* Right Arrow Icons */}
             <Box>
-                <Typography variant="h5"> Selected Fields</Typography>
-                <Box sx={{ marginTop: "20px", overflowY: 'auto', border: '1px solid #dadada', width: "300px", borderRadius: "10px", height: "600px", overflowX: "auto" }}>
+                <ArrowCircleRightOutlinedIcon sx={style.arrowIcon} />
+            </Box>
+            {/* Selected Fields */}
+            <Box sx={style.availableColumnsContainer}>
+                <Typography variant="h5">SELECTED COLUMNS</Typography>
+                <Box className="scrollbar" sx={style.availableFieldsContainer}>
                     {selectedFields.map((item) => (
                         item.selected && (
-                            <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }} key={item.id}>
-                                <Typography>{item.id}: {item.headerName}</Typography>
-                                <IconButton onClick={() => handleUnselect(item.id)} sx={{ color: "#bdbdbd" }}>
-                                    <RemoveOutlinedIcon />
+                            <Box
+                                key={item.id}
+                                onMouseEnter={() => handleMouseEnter(item?.id)}
+                                onMouseLeave={() => handleMouseLeave()}
+                                sx={style?.selectedField}
+                            >
+                                <Typography variant="h5">{item.id}: {item.headerName}</Typography>
+                                <IconButton
+                                    onClick={() => handleUnselectField(item.id)}
+                                    sx={{
+                                        color: "#bdbdbd",
+                                    }}
+                                >
+                                    <RemoveIcon sx={{ visibility: hoveredItemId === item?.id ? 'visible' : 'hidden' }} />
                                 </IconButton>
                             </Box>
                         )

@@ -10,15 +10,12 @@ function OtherDetails() {
     <>
     {/* Other Details */}
     <Card sx={{padding:'10px'}}>
-      <Typography variant={'h4'} p={1} mb={2} sx={{borderBottom:'1px solid #ccc'}}>
+      <Typography variant={'h4'} p={1.4} mb={2} sx={{borderBottom:'1px solid #ccc'}}>
       Other Details
       </Typography>
-    <Grid container spacing={1} sx={{ display: 'flex', height: '100%' }}>
+    <Grid container spacing={2} sx={{ display: 'flex', height: '100%' }}>
       <Grid item xs={12} sm={12} lg={6}>
        <TextField size={isMobile  ? 'small' : 'normal' } id="outlined-basic" fullWidth label="Family Id" variant="outlined" />
-      </Grid>
-      <Grid item xs={12} sm={12} lg={6}>
-      <TextField size={isMobile  ? 'small' : 'normal' } id="outlined-basic" fullWidth label="Aadhaar No." variant="outlined" />
       </Grid>
       <Grid item xs={12} sm={12} lg={6}>
       <TextField size={isMobile  ? 'small' : 'normal' } id="outlined-basic" fullWidth label="Nationality" variant="outlined" />
@@ -35,15 +32,7 @@ function OtherDetails() {
       <Grid item xs={12} sm={12} lg={6}>
       <TextField size={isMobile  ? 'small' : 'normal' } id="outlined-basic" fullWidth label="SRN. No." variant="outlined" />
       </Grid>
-      <Grid item xs={12} sm={12} lg={6}>
-      <TextField size={isMobile  ? 'small' : 'normal' } id="outlined-basic" fullWidth label="PEN. No." variant="outlined" />
-      </Grid>
-      <Grid item xs={12} sm={12} lg={6}>
-      <TextField size={isMobile  ? 'small' : 'normal' } id="outlined-basic" fullWidth label="Category" variant="outlined" />
-      </Grid>
-      <Grid item xs={12} sm={12} lg={6}>
-      <TextField size={isMobile  ? 'small' : 'normal' } id="outlined-basic" fullWidth label="Pay Mode" variant="outlined" />
-      </Grid>
+      
     </Grid>
     </Card>
     

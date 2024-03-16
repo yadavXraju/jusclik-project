@@ -22,7 +22,7 @@ const BiometricDetailsOrAttendanceDetails = Loadable(lazy(() => import('views/si
 const LeaveApplication = Loadable(lazy(() => import('views/sidebar-menus/leave-application')));
 const UploadPhotoGallery = Loadable(lazy(() => import('views/sidebar-menus/upload-photogallery')));
 const TeacherProfile = Loadable(lazy(() => import('views/sidebar-menus/class-teacher-profile')));
-const ApiTest = Loadable(lazy(() => import('views/sidebar-menus/ApiTest')));
+// const ApiTest = Loadable(lazy(() => import('views/sidebar-menus/ApiTest')));
 const ExpenseAndTravel = Loadable(lazy(() => import('views/sidebar-menus/expenses-and-travel')));
 
 
@@ -149,10 +149,10 @@ const classTeacherRoutes = [
             path: 'leave-application',
             element: <LeaveApplication />
         },
-        {
-            path: 'apitest',
-            element: <ApiTest />
-        },
+        // {
+        //     path: 'apitest',
+        //     element: <ApiTest />
+        // },
 
         {
             path: 'teacher-profile',

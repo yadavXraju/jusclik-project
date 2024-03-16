@@ -1,46 +1,73 @@
 import React from 'react';
-import { Grid,  TextField, Card, useMediaQuery, Typography, Box } from '@mui/material';
-import TextArea from 'antd/es/input/TextArea';
-//import ParameterizedDateComponent from 'views/common-section/ParamDateComponent';
+import TextField from '@mui/material/TextField';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card'
+import CardContent from '@mui/material/CardContent'
+import CardHeader from '@mui/material/CardHeader'
 
-function StudentAddressForm() {
 
-  const isMobile = useMediaQuery('(max-width: 767px)')
-
+const StudentAddressForm = () => {
   return (
-    <>
-    {/* Other Details */}
-    <Card sx={{padding:'10px'}}>
-      <Typography variant={'h4'} p={1} mb={2} sx={{borderBottom:'1px solid #ccc'}}>
-      Address Details
-      </Typography>
-    <Grid container spacing={1} sx={{ display: 'flex', height: '100%' }}>
-    <Grid item xs={12} sm={12} lg={12}>
-    <Box pb={1}>
-              <Box p={0.5}>Address</Box>
-              <TextArea rows={4} placeholder="Enter your text here..." fullWidth variant="outlined" />
-            </Box>
-            {/* <TextArea rows={4} placeholder="Enter your text here..." fullWidth variant="outlined" /> */}
-      </Grid>
-      <Grid item xs={12} sm={12} lg={6}>
-       <TextField size={isMobile  ? 'small' : 'normal' } id="outlined-basic" fullWidth label="Countory/Region" variant="outlined" />
-      </Grid>
-      <Grid item xs={12} sm={12} lg={6}>
-      <TextField size={isMobile  ? 'small' : 'normal' } id="outlined-basic" fullWidth label="City" variant="outlined" />
-      </Grid>
-      <Grid item xs={12} sm={12} lg={6}>
-      <TextField size={isMobile  ? 'small' : 'normal' } id="outlined-basic" fullWidth label="State" variant="outlined" />
-      </Grid>
-      <Grid item xs={12} sm={12} lg={6}>
-      <TextField size={isMobile  ? 'small' : 'normal' } id="outlined-basic" fullWidth label="Zip Code" variant="outlined" />
-      </Grid>
-      
-    </Grid>
-    </Card>
-    
+    <Box sx={{ padding: '20px', backgroundColor: '#f5f5f5', borderRadius: '8px', boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)' }}>
+      <Card variant="outlined">
+        <CardHeader
+          title=" Address Information"
+        />
+        <CardContent>
+        <Grid container spacing={2}>
+        <Grid item xs={12} md={4}>
+          <TextField
+            fullWidth
+            label="Country / Region"
+            name="country"
+            variant="outlined"
+            // Add necessary onChange and value props as needed
+          />
+        </Grid>
+        <Grid item xs={12} md={4}>
+          <TextField
+            fullWidth
+            label="Address"
+            name="address"
+            variant="outlined"
+            // Add necessary onChange and value props as needed
+          />
+        </Grid>
+        <Grid item xs={12} md={4}>
+          <TextField
+            fullWidth
+            label="City"
+            name="city"
+            variant="outlined"
+            // Add necessary onChange and value props as needed
+          />
+        </Grid>
+        <Grid item xs={12} md={4}>
+          <TextField
+            fullWidth
+            label="State"
+            name="state"
+            variant="outlined"
+            // Add necessary onChange and value props as needed
+          />
+        </Grid>
+        <Grid item xs={12} md={4}>
+          <TextField
+            fullWidth
+            label="Zip Code"
+            name="zipCode"
+            variant="outlined"
+            // Add necessary onChange and value props as needed
+          />
+        </Grid>
+      </Grid> 
+        </CardContent>
+      </Card>
+     
 
-    </>
+    </Box>
   );
-}
+};
 
 export default StudentAddressForm;
