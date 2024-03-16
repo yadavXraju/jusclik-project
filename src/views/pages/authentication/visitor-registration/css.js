@@ -53,7 +53,10 @@ export const css = {
   imageContainer:{backgroundSize: 'cover',
   backgroundPosition: 'bottom',
   height: '100vh',
-  padding:'0 10rem'
+  padding:'0 10rem',
+  '@media (max-width: 600px)': {
+    display: 'none', // Hide the component on small screens (sm viewport)
+  },
   },
   parentPaper:{
     backgroundColor: '#ffecec',
@@ -97,21 +100,31 @@ export const css = {
   },
   parentPaperBox:{
     paddingTop:'6rem',
-    paddingBottom:'3rem'
+    paddingBottom:'3rem',
+    '@media (max-width: 600px)': {
+      display: 'none', // Hide the component on small screens (sm viewport)
+    },
+   
   },
   mobilePaper:{
    minHeight:'10rem',
    borderRadius:'12px',
-   padding:'0 1rem' 
+   padding:'0 1rem' ,
+   '@media (max-width: 600px)': {
+    padding:'1rem',
+    margin:'0 1.5rem'
   },
-  hideSpinButtons: {
-    '& input[type="number"]::-webkit-inner-spin-button, & input[type="number"]::-webkit-outer-spin-button': {
-      '-webkit-appearance': 'none',
-      margin: 0,
-    },
-    '& input[type="number"]': {
-      '-moz-appearance': 'textfield',
+  },
+  mobileNumber:{
+    borderRadius: '50px', color: '#6b6666'
+  },
+  mobileLogoImage:{
+    margin: '3rem 0',
+    '@media (min-width: 600px)': {
+      display:'none'
     },
   },
-
+  button:{
+    margin:'1rem auto',
+  }
 }

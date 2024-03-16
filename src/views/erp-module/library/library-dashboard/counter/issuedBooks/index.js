@@ -1,10 +1,12 @@
 import React from 'react'
-import Counter1 from 'views/common-section/stufee-counter/stufee-counter-1/Counter1'
+// import Counter1 from 'views/common-section/stufee-counter/stufee-counter-1/Counter1'
 import issuedBookeddata from './issuedbookData'
+import Counter3 from 'views/common-section/stufee-counter/stufee-counter-3/Counter3'
 const  IssuedBook = () => {
   return (
     <>
-      <Counter1 Counter1Data={issuedBookeddata}/>
+      {/* <Counter1 Counter1Data={issuedBookeddata}/> */}
+      <Counter3 Counter3Data={issuedBookeddata}/>
     </>
   )
 }
