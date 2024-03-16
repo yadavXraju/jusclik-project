@@ -1,4 +1,6 @@
 import React from 'react'
+
+import OtpVerification from './otp-verification'
 // import OtpVerification from './otp-verification'
 // import { MobileNumber } from './mobile-number/index'
 import VisitorRegistrationTemplate from './visitor-registration'

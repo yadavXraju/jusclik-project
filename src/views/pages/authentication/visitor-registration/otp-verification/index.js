@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Typography, Button, Paper, TextField, Grid } from '@mui/material';
 import { useNavigate } from "react-router-dom";
 import ScreenLockPortraitOutlinedIcon from '@mui/icons-material/ScreenLockPortraitOutlined';
@@ -7,11 +7,20 @@ import { Box } from '@mui/system';
 const OtpVerification = () => {
   const navigate = useNavigate();
   const [otp, setOtp] = useState(['', '', '', '']);
+  const inputRefs = useRef([]);
 
   const handleOtpChange = (index, value) => {
     const newOtp = [...otp];
     newOtp[index] = value.replace(/\D/g, '').slice(0, 1); // Allow only digits
     setOtp(newOtp);
+
+    if (value === '' && index > 0) {
+      // Move focus to the previous input field if backspace is pressed and field is empty
+      inputRefs.current[index - 1].focus();
+    } else if (value && index < otp.length - 1) {
+      // Move focus to the next input field if available
+      inputRefs.current[index + 1].focus();
+    }
   };
 
   return (
@@ -29,7 +38,7 @@ const OtpVerification = () => {
         }} />
 
         <Typography variant="h3" sx={{ mt: '25px', letterSpacing: '0.5px' }}>Verification</Typography>
-        <Typography sx={{ mt: '30px', fontWeight: '500' }}>You will get a OTP via SMS</Typography>
+        <Typography sx={{ mt: '30px', fontWeight: '500' }}>You will get an OTP via SMS</Typography>
         <Grid container spacing={1} justifyContent="center">
           {otp.map((digit, index) => (
             <Grid item key={index}>
@@ -43,7 +52,14 @@ const OtpVerification = () => {
                 autoFocus={index === 0}
                 value={digit}
                 onChange={(event) => handleOtpChange(index, event.target.value)}
+                onKeyDown={(event) => {
+                  if (event.key === 'Backspace' && digit === '') {
+                    event.preventDefault(); // Prevent default backspace behavior
+                    handleOtpChange(index, ''); // Handle backspace manually
+                  }
+                }}
                 inputProps={{ maxLength: 1 }}
+                inputRef={(el) => (inputRefs.current[index] = el)}
                 sx={{
                   backgroundColor: '#ffffff',
                   width: '56px',
@@ -59,9 +75,25 @@ const OtpVerification = () => {
             </Grid>
           ))}
         </Grid>
-        <Button variant="contained" size="large" color="primary" sx={{ mt: '20px' }}>VERIFY</Button>
+        <Button variant="contained" size="large" color="primary" 
+          sx={{
+            mt: '20px', backgroundColor: '#fff',
+            color: '#364152b5',
+            borderRadius: '50px',
+            border: '1px solid #c4c4c4',
+            width:  '130px',
+            height:'50px',
+            fontSize: '15px',
+            fontFamily: 'plus Jakarta sans',
+            cursor: 'pointer',
+            '&:hover': {
+              backgroundColor: '#e64b4c',
+              color: '#fff'
+            }
+          }}
+        >VERIFY</Button>
         <Typography variant="body1" sx={{ mt: '20px' }}>
-          Didn&apos;t Receive the Verification OTP?{' '}
+          Didnt Receive the Verification OTP?{' '}
           <Typography variant='span' sx={{ fontWeight: "600", "&:hover": { textDecoration: 'underline', cursor: 'pointer' } }} onClick={() => navigate('/parent/dashboard')}>
             Resend again
           </Typography>
