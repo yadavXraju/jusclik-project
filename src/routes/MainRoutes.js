@@ -1,20 +1,31 @@
-import { lazy } from 'react';
 
 // project imports
 import MainLayout from 'layout/MainLayout';
-import Loadable from 'ui-component/Loadable';
-import classTeacherRoutes from './ClassTeacherRoutes';
+
+// import { lazy } from 'react';
+// import Loadable from 'ui-component/Loadable';
+
+// parent routes
 import ParentRoutes from './ParentRoutes';
+
+// class teacher routes
+import classTeacherRoutes from './ClassTeacherRoutes';
+
+// visitor dashboard
 import VisitorRoutes from './erp-routes/VisitorRoutes';
+
+// stufee dashboard
 import StudentInfoFeeRoutes from './erp-routes/StudentInfoFeeRoutes';
 
 // library dashboard
 import LibraryRoutes from './erp-routes/LibraryRoutes';
 
+// inventory dashboard
+import InventoryRoutes from './erp-routes/InventoryRoutes';
 
  // subject Teacher  Dashboard Menus
 
- const SubjectTeacherDashboard= Loadable(lazy(() => import('views/subject-teacher-dashboard/')));
+//  const SubjectTeacherDashboard= Loadable(lazy(() => import('views/subject-teacher-dashboard/')));
 
 
 //  common routes
@@ -35,12 +46,12 @@ const MainRoutes = {
     ...classTeacherRoutes,
  
       
-    // subject teacher dashboard
+    // subject Dashboard Menus (Include imported routes here)
 
-    {
-      path: 'subject-teacher/dashboard',
-      element: <SubjectTeacherDashboard />
-    },
+    // {
+    //   path: 'subject-teacher/dashboard',
+    //   element: <SubjectTeacherDashboard />
+    // },
 
     // visitor Dashboard Menus (Include imported routes here)
     ...VisitorRoutes,
@@ -50,6 +61,10 @@ const MainRoutes = {
 
     // library Dashboard Menus (Include imported routes here)
     ...LibraryRoutes , 
+
+
+    // inventory Dashboard Menus (Include imported routes here)
+    ...InventoryRoutes , 
 
     // common routes  
     ...CommonRoutes

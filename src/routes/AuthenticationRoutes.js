@@ -13,10 +13,11 @@ const ForgetPassword = Loadable(lazy(() => import('views/pages/authentication/Fo
 const VerifyNumber = Loadable(lazy(() => import('views/pages/authentication/VerifyNumber')));
 const SetNewPassword = Loadable(lazy(() => import('views/pages/authentication/SetNewPassword')));
 const VisitorRegistration =  Loadable(lazy(() => import('views/pages/authentication/visitor-registration')));
-const VisitorAppointementPass = Loadable(lazy(() => import('views/pages/authentication/visitor-registration/appointment-pass')));
-const SelfieVerification = Loadable(lazy(() => import('views/pages/authentication/visitor-registration/selfie-verification')));
-const VisitorDetails = Loadable(lazy(() => import('views/pages/authentication/visitor-registration/visitor-details')));
-const VisitPurpose =  Loadable(lazy(() => import('views/pages/authentication/visitor-registration/visit-purpose')));
+
+// const VisitorAppointementPass = Loadable(lazy(() => import('views/pages/authentication/visitor-registration/appointment-pass')));
+// const SelfieVerification = Loadable(lazy(() => import('views/pages/authentication/visitor-registration/selfie-verification')));
+// const VisitorDetails = Loadable(lazy(() => import('views/pages/authentication/visitor-registration/visitor-details')));
+// const VisitPurpose =  Loadable(lazy(() => import('views/pages/authentication/visitor-registration/visit-purpose')));
 
 // ==============================|| AUTHENTICATION ROUTING ||============================== //
 
@@ -53,26 +54,26 @@ const AuthenticationRoutes = {
       element: <VisitorRegistration />
     },
 
-    {
-      path:'/appointment-pass',
-      element: <VisitorAppointementPass/>
-    },
+    // {
+    //   path:'/appointment-pass',
+    //   element: <VisitorAppointementPass/>
+    // },
 
 
-    {
-      path:'/selfie-verification',
-      element: <SelfieVerification/>
-    },
+    // {
+    //   path:'/selfie-verification',
+    //   element: <SelfieVerification/>
+    // },
 
-    {
-      path:'/visitor-details',
-      element: <VisitorDetails />
-    },
+    // {
+    //   path:'/visitor-details',
+    //   element: <VisitorDetails />
+    // },
 
-    {
-      path:'/visit-purpose',
-      element: <VisitPurpose />
-    },
+    // {
+    //   path:'/visit-purpose',
+    //   element: <VisitPurpose />
+    // },
 
 
   ]

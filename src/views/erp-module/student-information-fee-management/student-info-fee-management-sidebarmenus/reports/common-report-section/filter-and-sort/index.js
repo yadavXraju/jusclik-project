@@ -3,8 +3,8 @@ import Box from '@mui/material/Box';
 const General = () => {
   return (
     <Box >
-      General
-      </Box>
+      filter and sort
+    </Box>
   )
 }
 

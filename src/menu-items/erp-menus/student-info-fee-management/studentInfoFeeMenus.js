@@ -5,8 +5,10 @@ import MapsHomeWorkTwoToneIcon from '@mui/icons-material/MapsHomeWorkTwoTone';
 import DescriptionTwoToneIcon from '@mui/icons-material/DescriptionTwoTone';
 import FindInPageTwoToneIcon from '@mui/icons-material/FindInPageTwoTone';
 import SettingsTwoToneIcon from '@mui/icons-material/SettingsTwoTone';
-import BuildTwoToneIcon from '@mui/icons-material/BuildTwoTone';
+import ReceiptLongTwoToneIcon from '@mui/icons-material/ReceiptLongTwoTone';
+// import BuildTwoToneIcon from '@mui/icons-material/BuildTwoTone';
 import AdminPanelSettingsTwoToneIcon from '@mui/icons-material/AdminPanelSettingsTwoTone';
+import DirectionsBusTwoToneIcon from '@mui/icons-material/DirectionsBusTwoTone';
 
 // ==================== colleagueTitles  ==================== 
 
@@ -51,12 +53,12 @@ const FeeAccountingColleagueTitles = [
 
 
 //  tools
-const  ToolsColleagueTitles  = [
-  {title : 'GPS Bus Tracking' , url : '/erp/student-info-fee/tools/gps-bus-tracking'}, 
-  {title : 'Whatsapp Conversations' , url : '/erp/student-info-fee/tools/whatsapp-conversations'}, 
-  {title : 'Whatsapp Delivery Report' , url : '/erp/student-info-fee/tools/whatsapp-delivery-report'}, 
-  {title : 'Whatsapp Excel Sheet' , url : '/erp/student-info-fee/tools/whatsapp-excel-sheet'}, 
-];
+// const  ToolsColleagueTitles  = [
+//   {title : 'GPS Bus Tracking' , url : '/erp/student-info-fee/tools/gps-bus-tracking'}, 
+//   {title : 'Whatsapp Conversations' , url : '/erp/student-info-fee/tools/whatsapp-conversations'}, 
+//   {title : 'Whatsapp Delivery Report' , url : '/erp/student-info-fee/tools/whatsapp-delivery-report'}, 
+//   {title : 'Whatsapp Excel Sheet' , url : '/erp/student-info-fee/tools/whatsapp-excel-sheet'}, 
+// ];
 
 
 
@@ -182,23 +184,24 @@ const StudentInfoFeeMenu = {
             ]
           },
 
-        // Fee accounting
+
+          // Fee invoice
           {
-            id: 'fee-accounting',
-            title: 'Fee ',
+            id: 'invoice',
+            title: 'Invoice',
             type: 'collapse',
-            url: '/erp/student-info-fee/fee-accounting',
-            icon: CreditCardTwoToneIcon,
+            url: '/erp/student-info-fee/fee-invoice', //change
+            icon: ReceiptLongTwoToneIcon,
             children: [
 
-              {
-                  id: 'invoice-creation',
-                  title: 'Invoice Creation',
-                  type: 'item',
-                  url: '/erp/student-info-fee/fee-accounting/invoice-creation',
-                  breadcrumbs: false,
-                  colleagueTitle : FeeAccountingColleagueTitles,
-                },
+              // {
+              //     id: 'invoice-creation',
+              //     title: 'Invoice Creation',
+              //     type: 'item',
+              //     url: '/erp/student-info-fee/fee-accounting/invoice-creation',
+              //     breadcrumbs: false,
+              //     colleagueTitle : FeeAccountingColleagueTitles,
+              //   },
 
 
                 {
@@ -211,56 +214,64 @@ const StudentInfoFeeMenu = {
                 },
 
                 {
-                id: 'fee-transaction-entry',
-                title: 'Fee Transaction Entry',
-                type: 'item',
-                url: '/erp/student-info-fee/fee-accounting/fee-transaction-entry',
-                breadcrumbs: false,
-                colleagueTitle : FeeAccountingColleagueTitles,
-              },
+                  id: 'student-fee-ledger',
+                  title: ' Student Fee Ledger ',
+                  type: 'item',
+                  url: '/erp/student-info-fee/fee-accounting/student-fee-ledger-details',
+                  breadcrumbs: false,
+                  colleagueTitle : FeeAccountingColleagueTitles,
+                },
 
+                
               {
-                id: 'transport-details-entry',
-                title: 'Transport Details Entry',
-                type: 'item',
-                url: '/erp/student-info-fee/fee-accounting/transport-details-entry',
-                breadcrumbs: false,
-                colleagueTitle : FeeAccountingColleagueTitles,
-              },
-
-
-              {
-                id: 'optional-fee-heads-entry',
-                title: 'Optional Fee Heads Entry',
+                id: 'optional-fee-heads',
+                title: 'Optional Fee Heads',
                 type: 'item',
                 url: '/erp/student-info-fee/fee-accounting/optional-fee-heads-entry',
                 breadcrumbs: false,
                 colleagueTitle : FeeAccountingColleagueTitles,
-              },
-
+              },    
               
+
+              // {
+              //   id: 'transfer-fee-entry',
+              //   title: 'Transfer Fee Entry',
+              //   type: 'item',
+              //   url: '/erp/student-info-fee/fee-accounting/transfer-fee-entry',
+              //   breadcrumbs: false,
+              //   colleagueTitle : FeeAccountingColleagueTitles,
+              // },
+
+
+            ]
+          },
+
+          // recipt
+
+          {
+            id: 'fee-recipt',
+            title: 'Fee Recipt ',
+            type: 'collapse',
+            url: '/erp/student-info-fee/fee-recipt',
+            icon: CreditCardTwoToneIcon,
+            children: [
+
               {
-                id: 'dishonoured-cheque-entry',
-                title: 'Dishonoured Cheque Entry',
-                type: 'item',
-                url: '/erp/student-info-fee/fee-accounting/dishonoured-cheque-entry',
+                id: 'fee-transaction',
+                title: 'Fee Transaction ',
+                 type: 'item',
+                url: '/erp/student-info-fee/fee-accounting/fee-transaction-entry',  //change
                 breadcrumbs: false,
                 colleagueTitle : FeeAccountingColleagueTitles,
               },
 
-                                
-              {
-                id: 'student-fee-ledger-details',
-                title: ' Student Fee Ledger Details',
-                type: 'item',
-                url: '/erp/student-info-fee/fee-accounting/student-fee-ledger-details',
-                breadcrumbs: false,
-                colleagueTitle : FeeAccountingColleagueTitles,
-              },
+
+
+                  
 
               {
-                id: 'head-wise-fee-adjustment-entry',
-                title: 'Head Wise Fee Adjustment Entry',
+                id: 'head-wise-fee-adjustment',
+                title: 'Head Wise Fee Adjustment ',
                 type: 'item',
                 url: '/erp/student-info-fee/fee-accounting/head-wise-fee-adjustment-entry',
                 breadcrumbs: false,
@@ -269,8 +280,8 @@ const StudentInfoFeeMenu = {
 
                   
               {
-                id: 'fee-clearance-entry',
-                title: 'Fee Clearance Entry',
+                id: 'fee-clearance',
+                title: 'Fee Clearance ',
                 type: 'item',
                 url: '/erp/student-info-fee/fee-accounting/fee-clearance-entry',
                 breadcrumbs: false,
@@ -285,19 +296,10 @@ const StudentInfoFeeMenu = {
                 breadcrumbs: false,
                 colleagueTitle : FeeAccountingColleagueTitles,
               },
-
-              {
-                id: 'transfer-fee-entry',
-                title: 'Transfer Fee Entry',
-                type: 'item',
-                url: '/erp/student-info-fee/fee-accounting/transfer-fee-entry',
-                breadcrumbs: false,
-                colleagueTitle : FeeAccountingColleagueTitles,
-              },
+              ]
+            },
 
 
-            ]
-          },
 
           
           // hostel
@@ -322,28 +324,16 @@ const StudentInfoFeeMenu = {
             ]
           },
 
-           // reports
+          // transport
 
-          // {
-          //   id: 'reports' ,
-          //   title: 'Reports',
-          //   type: 'collapse',
-          //   url: '/erp/student-info-fee/reports',
-          //   icon: DescriptionTwoToneIcon,
-          //   children: [
-
-          //     {
-          //         id: 'invoice-printing',
-          //         title: 'Invoice Printing',
-          //         type: 'item',
-          //         url: '/erp/student-info-fee/reports/invoice-printing',
-          //         breadcrumbs: false,
-          //         // colleagueTitle : SetUpColleagueTitles,
-          //       },
-
-
-          //   ]
-          // },
+          {
+            id: 'transport',
+            title: 'Transport',
+            type: 'item',
+            url: '/erp/student-info-fee/transport',
+            icon: DirectionsBusTwoToneIcon,
+            breadcrumbs: false
+          },
 
           {
             id: 'reports',
@@ -354,7 +344,6 @@ const StudentInfoFeeMenu = {
             breadcrumbs: false
           },
          
-
 
        // search
 
@@ -379,92 +368,8 @@ const StudentInfoFeeMenu = {
             ]
           },
 
-          // tools
-          {
-            id: 'tools' ,
-            title: 'Tools',
-            type: 'collapse',
-            url: '/erp/student-info-fee/tools',
-            icon: BuildTwoToneIcon,
-            children: [
 
-              {
-                  id: 'gps-bus-tracking',
-                  title: 'GPS Bus Tracking',
-                  type: 'item',
-                  url: '/erp/student-info-fee/tools/gps-bus-tracking',
-                  breadcrumbs: false,
-                  colleagueTitle : ToolsColleagueTitles,
-                },
-
-                {
-                id: 'whatsapp-conversations',
-                title: 'Whatsapp Conversations',
-                type: 'item',
-                url: '/erp/student-info-fee/tools/whatsapp-conversations',
-                breadcrumbs: false,
-                colleagueTitle : ToolsColleagueTitles,
-              },
-
-
-              {
-                id: 'whatsapp-delivery-report',
-                title: 'Whatsapp Delivery Report',
-                type: 'item',
-                url: '/erp/student-info-fee/tools/whatsapp-delivery-report',
-                breadcrumbs: false,
-                colleagueTitle : ToolsColleagueTitles,
-              },
-
-
-              {
-                id: 'whatsapp-excel-sheet',
-                title: 'Whatsapp Excel Sheet',
-                type: 'item',
-                url: '/erp/student-info-fee/tools/whatsapp-excel-sheet',
-                breadcrumbs: false,
-                colleagueTitle : ToolsColleagueTitles,
-              },
-
-
-
-            ]
-          },
-
-
-     // set up
-          // {
-          //   id: 'setting' ,
-          //   title: 'Settings',
-          //   type: 'collapse',
-          //   url: '/erp/student-info-fee/settings',
-          //   icon: SettingsTwoToneIcon,
-          //   children: [
-
-          //     {
-          //       id: 'setting',
-          //       title: 'Setting',
-          //       type: 'item',
-          //       url: '/erp/student-info-fee/settings/setting',
-          //       breadcrumbs: false,
-          //       colleagueTitle : SetUpColleagueTitles,
-          //     },
-
-
-          //     {
-          //       id: 'system-data',
-          //       title: 'System Data',
-          //       type: 'item',
-          //       url: '/erp/student-info-fee/settings/system-data',
-          //       breadcrumbs: false,
-          //       colleagueTitle : SetUpColleagueTitles,
-          //     },
-
-
-
-          //   ]
-          // },
-
+          //  setting
           {
             id: 'setting',
             title: 'Setting',

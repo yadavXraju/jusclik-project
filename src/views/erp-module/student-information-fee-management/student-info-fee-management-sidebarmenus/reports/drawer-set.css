@@ -7,6 +7,7 @@
   position: absolute;
   height: 100vh;
   width: calc(100vw - 260px);
+  height:calc(100vh - 110px);
   left:244px;
   top:110px;
   border-radius:10px;
@@ -14,6 +15,7 @@
   background-color: #fff;
   z-index: 99;
   transition: 0.3s all ease-in-out;
+  overflow-x: hidden;
 }
 
 .enquiry-customize-report{
