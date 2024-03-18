@@ -64,7 +64,6 @@ const SetupTabs = ({ tabPage }) => {
   const [value, setValue] = useState(0);
 
   const handleChange = (event,newValue) => {
-    console.log(newValue);
     setValue(newValue);
   };
 
@@ -76,7 +75,7 @@ const SetupTabs = ({ tabPage }) => {
           value={value}
           onChange={handleChange}
           aria-label="Vertical tabs example"
-          sx={{alignItems:"flex-start", borderBottom: "1px solid #eef2f6", bgcolor: 'background.paper', display: "flex" }}
+          sx={{ display: "flex",flexWrap:"wrap",borderBottom: "1px solid #eef2f6", bgcolor: 'background.paper',gap:"40px"}}
         >
           {tabPage.map((tab, index) => (
             <Tab
@@ -84,7 +83,8 @@ const SetupTabs = ({ tabPage }) => {
             
               label={<TabsName name={tab.name} number={index} />}
               {...a11yProps(index)}
-              sx={{ width: "250px", borderBottom: "1px solid #eef2f6", alignItems: "baseline" }}
+              sx={{width:"fit-content",borderBottom: "1px solid #eef2f6", alignItems: "baseline",paddingLeft:'0px',marginRight:"40px" }}
+              className="testf"
             />
           ))}
         </Tabs>
@@ -93,7 +93,7 @@ const SetupTabs = ({ tabPage }) => {
             key={tab?.id}
             value={value}
             index={index}
-            sx={{width: "100%",padding:"20px 20px 20px 20px",height:"600px",bgcolor: 'background.paper', borderRadius: "10px", overflowY: "auto" }}
+            sx={{width: "100%",padding:"0px 20px 20px 20px",bgcolor: 'background.paper', borderRadius: "10px",overflowY: "auto",height: 'calc(100vh - 250px)'}}
           >
             <tab.component />
           </TabPanel>

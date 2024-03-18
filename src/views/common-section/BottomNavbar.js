@@ -13,13 +13,12 @@ const BottomNavbar = ({ tabPageLength, value, setValue }) => {
         BottomNavbar: {
             width: "97.2%",
             display: 'flex',
-            justifyContent: "space-between",
             paddingRight: "40px",
             paddingLeft: "20px",
             alignItems: 'center',
             gap: "20px",
             position: "fixed",
-            bottom: "110px",
+            bottom: "0px",
             backgroundColor: "#fafafa",
             height: "60px",
             borderBottom: '1px solid #eee',
@@ -30,19 +29,19 @@ const BottomNavbar = ({ tabPageLength, value, setValue }) => {
     return (
         <Paper sx={style?.BottomNavbar}>
             <Box sx={{ display: "flex", gap: "20px" }}>
-                {value!=0&&<Button variant="contained" sx={{ height: "38px", marginTop: "10px", width: "100px" }} onClick={() => handlePrev()}>
-                    Previous
-                </Button>}
-                {value != tabPageLength - 1 && <Button variant="contained" sx={{ height: "38px", marginTop: "10px", width: "100px" }} onClick={() => handleNext()}>
-                    Next
+                {value != tabPageLength - 1 && <Button variant="contained" sx={{ height: "38px",marginTop: "auto",marginBottom:"auto",width: "144px" }} onClick={() => handleNext()}>
+                   Save and Next
                 </Button>}
                 {
-                   value==tabPageLength-1&&<Button variant="contained" sx={{ height: "38px", marginTop: "10px", width: "100px" }} onClick={() => handleNext()}>
+                   value==tabPageLength-1&&<Button variant="contained" sx={{ height: "38px",marginTop: "auto",marginBottom:"auto", width: "144px" }} onClick={() => handleNext()}>
                         Submit
                     </Button>
                 }
+                {value!=0&&<Button variant="contained" sx={{ height: "38px", marginTop: "auto",marginBottom:"auto", width: "144px" }} onClick={() => handlePrev()}>
+                    Previous
+                </Button>}
             </Box>
-            <Button variant="outlined" sx={{ height: "38px", marginTop: "10px", width: "100px" }}>
+            <Button variant="outlined" sx={{ height: "38px",marginTop: "auto",marginBottom:"auto", width: "144px" }}>
                 Cancel
             </Button>
         </Paper>
