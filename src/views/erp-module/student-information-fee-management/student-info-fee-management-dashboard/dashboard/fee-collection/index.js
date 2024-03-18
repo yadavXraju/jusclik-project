@@ -44,7 +44,7 @@ const FeeCollection = () => {
 
         {/* ================================= heading  =================================  */}
         <Grid sx={{ padding: '24px 24px 0 24px', background: '#f9f9fb', borderBottom: '1px solid rgba(128, 128, 128, 0.25)', borderRadius: '12px 12px 0px 0' }}>
-          <Typography variant='h2' style={{ ...HeadingCss, border: 'none' }}>payment gateway wise collection</Typography>
+          <Typography variant='h2' style={{ ...HeadingCss, border: 'none' }}>fee collection</Typography>
         </Grid>
 
        {/* ================================= content  =================================  */}

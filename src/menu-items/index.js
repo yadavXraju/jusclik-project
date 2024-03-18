@@ -18,6 +18,9 @@ import VisitorMenu from './erp-menus/visitor/visitorMenus';
 import StudentInfoFeeDashboard from './erp-menus/student-info-fee-management/studnetInfoFeeDashboard';
 import StudentInfoFeeMenu from './erp-menus/student-info-fee-management/studentInfoFeeMenus';
 
+// inventory
+import InventoryDashboard from './erp-menus/inventory/inventoryDashboard';
+
 // library
 import LibraryDashboard from './erp-menus/library/libraryDashboard';
 
@@ -61,6 +64,11 @@ const generateMenuItems = (userRole) => {
       // library
       case 'library':
         menuItems.items.push(LibraryDashboard,);
+        break;
+
+      // inventory
+      case 'inventory':
+        menuItems.items.push(InventoryDashboard,);
         break;
 
     default:

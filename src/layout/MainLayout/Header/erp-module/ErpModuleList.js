@@ -54,7 +54,7 @@ export const ErpModuleList = [
         id:5,
         name:'Inventory',
         icon : <img src={inventory} alt='icon' style={{width:'34px', margin:'auto'}} />,
-        url: '',
+        url: '/erp/inventory/dashboard',
         role : 'inventory',
     },
 
