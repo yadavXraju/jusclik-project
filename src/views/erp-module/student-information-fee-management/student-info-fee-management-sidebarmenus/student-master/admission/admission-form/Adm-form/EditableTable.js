@@ -16,8 +16,6 @@ import Select from '@mui/material/Select';
 
 //import InputBase from '@mui/material/InputBase';
 
-
-
 const data = [
   { id: 1, Adm_No: 1234, name: 'Rohit', class: 'VI', Section: 'A' },
   { id: 2, Adm_No: 5678, name: 'Pawan', class: 'V', Section: 'B' },
@@ -25,7 +23,7 @@ const data = [
   { id: 4, Adm_No: 3456, name: 'Sonu', class: 'II', Section: 'C' },
   { id: 5, Adm_No: 6789, name: 'Rahul', class: 'VIII', Section: 'B' }
 ];
-//const initialRow = { id: null, Branch: '', enrollmentType: '', admissionNo: '', name: '', class: '', Section: '' };
+
 
 export default function EditableTable() {
   const [enrollmentType, setEnrollmentType] = useState('Admission');
@@ -34,27 +32,6 @@ export default function EditableTable() {
   const [Branch1, setBranch1] = React.useState();
   const [admissionNo, setAdmissionNo] = useState('');
   const [showSecondRow, setShowSecondRow] = useState(false);
-
-  // const [rows, setRows] = useState(data);
-  // const [newRow, setNewRow] = useState({ ...initialRow });
-
-  //   const handleSave = () => {
-  //   handleAddRow(); // Call handleAddRow inside handleSave
-  // };
-
-  // const handleAddRow = () => {
-  //   if (newRow.Branch && newRow.enrollmentType && newRow.admissionNo && newRow.name && newRow.class && newRow.Section) {
-  //     setRows([...rows, { ...newRow, id: Date.now() }]);
-  //     setNewRow({ ...initialRow });
-  //   }
-  // };
-
-  // const handleAddRowAndSave = () => {
-  //   handleAddRow();
-  //   handleSave();
-  // };
-
-
 
 
 
@@ -98,49 +75,47 @@ export default function EditableTable() {
               </TableRow>
             </TableHead>
             <TableBody>
-
-               <TableRow >
-               <TableCell width={'150px'} sx={{ padding: 1, border: '1px solid #ccc' }}>
-                 <FormControl fullWidth>
-                   <Select labelId="Branch-select-label" id="Branch-simple-select" value={Branch} onChange={handleBranch}>
-                     <MenuItem value={'Dwarka'}>Dwarka</MenuItem>
-                     <MenuItem value={'Noida'}>Noida</MenuItem>
-                     <MenuItem value={'Delhi'}>Delhi</MenuItem>
-                   </Select>
-                 </FormControl>
-               </TableCell>
-               <TableCell width={'150px'} sx={{ padding: 1, border: '1px solid #ccc' }}>
-                 <FormControl fullWidth>
-                   <Select
-                     labelId="EnrollmentType-select-label"
-                     id="EnrollmentType-simple-select"
-                     value={enrollmentType}
-                     onChange={handleEnrollmentType}
-                   >
-                     <MenuItem value={'Enquiry'}>Enquiry</MenuItem>
-                     <MenuItem value={'Registration'}>Registration</MenuItem>
-                     <MenuItem value={'Provisional'}>Provisional</MenuItem>
-                     <MenuItem value={'Admission'}>Admission</MenuItem>
-                   </Select>
-                 </FormControl>
-               </TableCell>
-               <TableCell width={'150px'} sx={{ padding: 1, border: '1px solid #ccc' }}>
-                 <TextField id="outlined-basic" variant="outlined" value={admissionNo} onChange={handleAdmissionNoChange} />
-               </TableCell>
-               <TableCell width={'250px'} sx={{ padding: 1, border: '1px solid #ccc' }}>
-                 {filteredData.length > 0 && <div>{filteredData[0].name}</div>}
-               </TableCell>
-               <TableCell width={'100px'} sx={{ padding: 1, border: '1px solid #ccc' }}>
-                 {filteredData.length > 0 && <div>{filteredData[0].class}</div>}
-               </TableCell>
-               <TableCell width={'100px'} sx={{ padding: 1, border: '1px solid #ccc' }}>
-                 {filteredData.length > 0 && <div>{filteredData[0].Section}</div>}
-               </TableCell>
-               <IconButton sx={{ marginTop: '15px' }}>
-                 <HighlightOffOutlinedIcon sx={{ color: '#f19e9e' }} />
-               </IconButton>
-             </TableRow>
-             
+              <TableRow>
+                <TableCell width={'150px'} sx={{ padding: 1, border: '1px solid #ccc' }}>
+                  <FormControl fullWidth>
+                    <Select labelId="Branch-select-label" id="Branch-simple-select" value={Branch} onChange={handleBranch}>
+                      <MenuItem value={'Dwarka'}>Dwarka</MenuItem>
+                      <MenuItem value={'Noida'}>Noida</MenuItem>
+                      <MenuItem value={'Delhi'}>Delhi</MenuItem>
+                    </Select>
+                  </FormControl>
+                </TableCell>
+                <TableCell width={'150px'} sx={{ padding: 1, border: '1px solid #ccc' }}>
+                  <FormControl fullWidth>
+                    <Select
+                      labelId="EnrollmentType-select-label"
+                      id="EnrollmentType-simple-select"
+                      value={enrollmentType}
+                      onChange={handleEnrollmentType}
+                    >
+                      <MenuItem value={'Enquiry'}>Enquiry</MenuItem>
+                      <MenuItem value={'Registration'}>Registration</MenuItem>
+                      <MenuItem value={'Provisional'}>Provisional</MenuItem>
+                      <MenuItem value={'Admission'}>Admission</MenuItem>
+                    </Select>
+                  </FormControl>
+                </TableCell>
+                <TableCell width={'150px'} sx={{ padding: 1, border: '1px solid #ccc' }}>
+                  <TextField id="outlined-basic" variant="outlined" value={admissionNo} onChange={handleAdmissionNoChange} />
+                </TableCell>
+                <TableCell width={'250px'} sx={{ padding: 1, border: '1px solid #ccc' }}>
+                  {filteredData.length > 0 && <div>{filteredData[0].name}</div>}
+                </TableCell>
+                <TableCell width={'100px'} sx={{ padding: 1, border: '1px solid #ccc' }}>
+                  {filteredData.length > 0 && <div>{filteredData[0].class}</div>}
+                </TableCell>
+                <TableCell width={'100px'} sx={{ padding: 1, border: '1px solid #ccc' }}>
+                  {filteredData.length > 0 && <div>{filteredData[0].Section}</div>}
+                </TableCell>
+                <IconButton sx={{ marginTop: '15px' }}>
+                  <HighlightOffOutlinedIcon sx={{ color: '#f19e9e' }} />
+                </IconButton>
+              </TableRow>
 
               {showSecondRow && (
                 <TableRow>
@@ -178,35 +153,11 @@ export default function EditableTable() {
                   <TableCell width={'250px'} sx={{ padding: 1, border: '1px solid #ccc' }}></TableCell>
                   <TableCell width={'100px'} sx={{ padding: 1, border: '1px solid #ccc' }}></TableCell>
                   <TableCell width={'100px'} sx={{ padding: 1, border: '1px solid #ccc' }}></TableCell>
+                  <IconButton sx={{ marginTop: '15px' }}>
+                    <HighlightOffOutlinedIcon sx={{ color: '#f19e9e' }} />
+                  </IconButton>
                 </TableRow>
               )}
-
-              {/* <TableRow>
-                <TableCell sx={{ padding: 1, border: '1px solid #ccc' }}>
-                  <InputBase placeholder="Branch" value={newRow.Branch} onChange={(e) => setNewRow({ ...newRow, Branch: e.target.value })} />
-                </TableCell>
-                <TableCell sx={{ padding: 1, border: '1px solid #ccc' }}>
-                  <InputBase placeholder="Enrollment Type" value={newRow.enrollmentType} onChange={(e) => setNewRow({ ...newRow, enrollmentType: e.target.value })} />
-                </TableCell>
-                <TableCell sx={{ padding: 1, border: '1px solid #ccc' }}>
-                  <InputBase placeholder="Admission No" value={newRow.admissionNo} onChange={(e) => setNewRow({ ...newRow, admissionNo: e.target.value })} />
-                </TableCell>
-                <TableCell sx={{ padding: 1, border: '1px solid #ccc' }}>
-                  <InputBase placeholder="Name" value={newRow.name} onChange={(e) => setNewRow({ ...newRow, name: e.target.value })} />
-                </TableCell>
-                <TableCell sx={{ padding: 1, border: '1px solid #ccc' }}>
-                  <InputBase placeholder="Class" value={newRow.class} onChange={(e) => setNewRow({ ...newRow, class: e.target.value })} />
-                </TableCell>
-                <TableCell sx={{ padding: 1, border: '1px solid #ccc' }}>
-                  <InputBase placeholder="Section" value={newRow.Section} onChange={(e) => setNewRow({ ...newRow, Section: e.target.value })} />
-                </TableCell>
-              </TableRow> */}
-
-              {/* <Box pt={3}>
-                <Button startIcon={<AddIcon />} onClick={handleAddRowAndSave}>
-                  Add Contact
-                </Button>
-              </Box> */}
             </TableBody>
           </Table>
         </TableContainer>
@@ -220,6 +171,13 @@ export default function EditableTable() {
     </>
   );
 }
+
+
+
+
+
+
+
 
 
 

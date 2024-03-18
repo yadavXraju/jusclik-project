@@ -23,14 +23,21 @@ const Dashboard =()=> {
 
   return (
     <>
-    <Box sx={{ width: '100%', typography: 'body1' , background:'#fff'}}>
+    <Box sx={{ width: '100%', typography: 'body1' ,}}>
 
           <TabContext value={value}>
-          <Paper sx={{mx:'24px'}}>
-            <Box sx={{ borderBottom: 0, borderColor: '#e3e8efad' ,
+          <Paper sx={{mx:'24px' , background:'none'}}>
+            <Box sx={{ 
+              borderBottom: 0,
+              borderColor: '#e3e8efad' ,
             //  background:'rgb(30, 136, 229)' , 
-             borderRadius:'10px' , padding:'10px'}}>
-              <TabLabel handleChange={handleChange}/>
+             borderRadius:'10px' , 
+             padding:'10px',
+             '& .MuiBox-root':{
+              marginBottom:'10px'
+             }
+             }}>
+              <TabLabel handleChange={handleChange} />
             </Box>
           </Paper>
             <TabPanel  icon={<PhoneIcon />} value="1"><DashboardContent/></TabPanel>

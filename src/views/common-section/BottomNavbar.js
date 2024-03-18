@@ -1,6 +1,6 @@
 import { Box, Paper, Button } from '@mui/material';
 
-const BottomNavbar = ({ tabPageLength, value, setValue }) => {
+const BottomNavbar = ({ tabPageLength, value, setValue, customStyle }) => {
     const handlePrev = () => {
         setValue(Math.max(0, value - 1));
     };
@@ -23,11 +23,12 @@ const BottomNavbar = ({ tabPageLength, value, setValue }) => {
             height: "60px",
             borderBottom: '1px solid #eee',
             borderTop: '1px solid #eee',
+            zIndex:'999',
         }
     };
 
     return (
-        <Paper sx={style?.BottomNavbar}>
+        <Paper sx={{ ...style.BottomNavbar, ...customStyle }}>
             <Box sx={{ display: "flex", gap: "20px" }}>
                 {value != tabPageLength - 1 && <Button variant="contained" sx={{ height: "38px",marginTop: "auto",marginBottom:"auto",width: "144px" }} onClick={() => handleNext()}>
                    Save and Next

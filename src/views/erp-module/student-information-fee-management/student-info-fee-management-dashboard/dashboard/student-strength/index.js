@@ -1,59 +1,150 @@
-import React from 'react';
-import Chart from 'react-apexcharts';
-import { Paper, Grid, Typography , Box , Button , useMediaQuery} from '@mui/material';
-import { boxHeight, HeadingCss } from 'views/dashboard/Default/dashboard-css/CommonCss';
-import { gridSpacing } from 'store/constant';
-import { useNavigate } from 'react-router';
+import React from 'react'
+import { Paper, Typography , Box , Grid} from '@mui/material';
+import LiveHelpTwoToneIcon from '@mui/icons-material/LiveHelpTwoTone';
+import AssignmentTurnedInTwoToneIcon from '@mui/icons-material/AssignmentTurnedInTwoTone';
+import BadgeTwoToneIcon from '@mui/icons-material/BadgeTwoTone';
+import NoAccountsTwoToneIcon from '@mui/icons-material/NoAccountsTwoTone';
 
-export default function StudentStrength() {
-const navigate = useNavigate();
-const isMobile = useMediaQuery('(max-width: 767px)');
-
-  const options = {
-    series: [{
-      name: "Boys",
-      data: [12, 13, 15, 17, 11, 15, 11, 14, 13, 16, 15, 13, 10]
-    }, {
-      name: "Girls",
-      data: [10, 12, 13, 12,15, 14, 13, 12, 14, 16, 13, 12, 11]
-    }],
-    chart: {
-      height: 300,
-      type: 'bar', // Keeping the chart type as 'bar'
-      zoom: {
-        enabled: false
-      },
-      fontFamily: 'Plus Jakarta Sans, sans-serif',
-    },
-    dataLabels: {
-      enabled: false
-    },
-    xaxis: {
-      categories: ['Nursery', 'I', 'II', 'III', 'IV', 'V', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII']
-    },
-    legend: {
-      labels: {
-        colors: 'blue !important'
-      }
-    },
-    colors: ['rgb(94, 53, 177)', 'rgb(30, 136, 229)'] // Custom colors for boys and girls bars
-  };
-
+const StudentStrength = () => {
   return (
-    <Paper spacing={gridSpacing} style={boxHeight} className='scrollbar'>
-      <Grid sx={{ padding: '24px' }}>
-        <Typography variant='h2' style={HeadingCss}>STUDENTS STRENGTH</Typography>
-      </Grid>
+    <>
 
-      <Grid className='attendance-graph'>
-        <Chart options={options} series={options.series} type="bar" height={360} />
-      </Grid>
+        {/* counter 2 */}
+        <Paper  sx={{
+            border:'1px solid rgb(227, 227, 227)',
+            boxShadow:'4px 4px 9px 2px #ddddddc2',
+        }}>
+            {/* counter grid 2 */}
+                <Grid sx={{
+                        display:'flex' ,
+                        borderTop:'1px solid rgb(227, 227, 227)'
+                }}>
 
-      <Box sx={{p:3, pt:0 , textAlign:'right' , marginTop: isMobile ? '2rem' : '0'}}>
-          <Button variant="contained" onClick={() => navigate('/parent/attendance')}>
-            View More
-          </Button>
-      </Box>
-    </Paper>
-  );
+                    {/* =========================  grid 1  enquiry and registration =========================   */}
+                    <Grid sx={{flex:'0 0 50%'}}>
+
+                        {/* enquiry */}
+                        <Box sx={{
+                            flex:'0 0 50%' ,
+                            flexDirection:'column',
+                            textAlign:'center',
+                            display:'flex', gap:'20px',
+                            alignItems:'center',
+                            borderRight:'1px solid rgb(227, 227, 227)',
+                            padding:'2rem',
+                            borderBottom:'1px solid rgb(227, 227, 227)',
+                            }}>
+
+                            {/* icon and title */}
+                                <Grid sx={{display:'flex' , alignItems:'center' , justifyContent:'center' , width:'100%'}}>
+                                    {/* icon */}
+                                    <Box sx={{padding:'10px' , borderRadius:'12px' , background:'rgb(227, 242, 253)' , display:'flex'}}>
+                                    <LiveHelpTwoToneIcon sx={{color:'rgb(94, 53, 177)' ,  fontSize:'30px'}} />
+                                    </Box>
+
+                                    {/* stats */}
+                                    <Box sx={{flex:'0 0 65%'}}>
+                                        <Typography variant='h3' sx={{fontSize:'24px' ,  }}>25</Typography>         
+                                        <Typography variant='h3' sx={{fontSize:'16px' , fontWeight:'400' ,  paddingTop:'7px'}}>Enquiries</Typography>           
+                                    </Box>
+                                </Grid>
+                        </Box>
+
+                        {/* Registration */}
+                        <Box sx={{
+                            flex:'0 0 25%' ,
+                            display:'flex', 
+                            flexDirection:'column',
+                            textAlign:'center',
+                            gap:'20px',
+                            alignItems:'center',
+                            borderRight:'1px solid rgb(227, 227, 227)',
+                            padding:'2rem',
+                            }}>
+
+                            {/* icon and title */}
+                            <Grid sx={{display:'flex' , alignItems:'center' , justifyContent:'center' , width:'100%'}}>
+
+                                {/* icon */}
+                                <Box sx={{padding:'10px' , borderRadius:'12px' , background:'rgb(227, 242, 253)' , display:'flex'}}>
+                                    <AssignmentTurnedInTwoToneIcon  sx={{color:'rgb(94, 53, 177)' ,  fontSize:'30px'}} />
+                                </Box>
+
+                                {/* stats */}
+                                <Box sx={{flex:'0 0 65%'}}>
+                                <Typography variant='h3' sx={{fontSize:'24px',}}>76</Typography>         
+                                    <Typography variant='h3' sx={{fontSize:'16px' , fontWeight:'400' , paddingTop:'7px'}}>Registration</Typography>       
+                                </Box>
+                            </Grid>
+                        </Box>
+                    </Grid>
+
+                    {/* =========================   grid 2  withdrawl and admission  =========================  */}
+                    <Grid sx={{flex:'0 0 50%'}}>
+
+                        {/* admission */}
+                            <Box sx={{
+                            flex:'0 0 25%' ,
+                            display:'flex',
+                            flexDirection:'column',
+                            textAlign:'center',
+                            gap:'20px',
+                            alignItems:'center',
+                            // borderRight:'1px solid rgb(227, 227, 227)',
+                            borderBottom:'1px solid rgb(227, 227, 227)',
+                            padding:'2rem',
+                            }}>
+                                
+                                {/* icon and title */}
+                                <Grid sx={{display:'flex' , alignItems:'center' , justifyContent:'center' , width:'100%'}}>
+                                    {/* icon */}
+                                    <Box sx={{padding:'10px' , borderRadius:'12px' , background:'rgb(227, 242, 253)' , display:'flex'}}>
+                                            <BadgeTwoToneIcon  sx={{color:'rgb(94, 53, 177)' ,  fontSize:'30px'}} />
+                                    </Box>
+
+                                    {/* stats */}
+                                    <Box sx={{flex:'0 0 65%'}}>
+                                        <Typography variant='h3' sx={{fontSize:'24px' ,  }}>281</Typography>    
+                                        <Typography variant='h3' sx={{fontSize:'16px' , fontWeight:'400' ,  paddingTop:'7px'}}>Admission</Typography>
+                                    </Box>
+                                </Grid>
+                            </Box>
+
+                            {/* withdrawl */}
+
+                        
+                                <Box sx={{
+                                    flex:'0 0 25%' ,
+                                    display:'flex',
+                                    flexDirection:'column',
+                                    textAlign:'center',
+                                    gap:'20px',
+                                    alignItems:'center',
+                                    padding:'2rem',
+                            
+                                    }}>
+
+                                {/* icon and title */}
+                                <Grid sx={{display:'flex' , alignItems:'center' , justifyContent:'center' , width:'100%'}}>
+                                    {/* icon */}
+                                    <Box sx={{padding:'10px' , borderRadius:'12px' , background:'rgb(227, 242, 253)' , display:'flex'}}>
+                                            <NoAccountsTwoToneIcon sx={{color:'rgb(94, 53, 177)' , fontSize:'30px'}} />
+                                    </Box>
+                                    {/* stats */}
+                                    <Box sx={{flex:'0 0 65%'}}>
+                                            <Typography variant='h3' sx={{fontSize:'24px' , }}>27</Typography>    
+                                            <Typography variant='h3' sx={{fontSize:'16px' , fontWeight:'400' ,  paddingTop:'7px'}}>Withdrawals</Typography>
+                                        </Box> 
+                                    </Grid>
+                                </Box>
+                    
+                        </Grid>
+                        
+                </Grid>
+        </Paper>
+    </>
+  )
+    
 }
+
+export default StudentStrength

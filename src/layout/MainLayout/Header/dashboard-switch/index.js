@@ -23,16 +23,15 @@ import PerfectScrollbar from 'react-perfect-scrollbar';
 // project imports
 import MainCard from 'ui-component/cards/MainCard';
 import Transitions from 'ui-component/extended/Transitions';
+import GridViewOutlinedIcon from '@mui/icons-material/GridViewOutlined';
 import { useSelector } from 'react-redux';
-import ErpModuleLayout from './ErpModuleLayout';
+import DashboardSwitchLayout from './DashboardSwitchLayout';
 
-// icon
-import AppsTwoToneIcon from '@mui/icons-material/AppsTwoTone';
 
 
 // ==============================|| NOTIFICATION ||============================== //
 
-const ErpModule = () => {
+const DashboardSwitch = () => {
   const theme = useTheme();
   const matchesXs = useMediaQuery(theme.breakpoints.down('md'));
 
@@ -63,7 +62,7 @@ const ErpModule = () => {
 
     
   // Extract theme color and set opacity
-  const themeColor = customization.themeColorV2 || 'rgb(30, 136, 229)';
+  const themeColor = customization.themeColor || '';
   const opacity = 0.2;
 
 
@@ -98,7 +97,7 @@ const ErpModule = () => {
             onClick={handleToggle}
             color="inherit"
           >
-            <AppsTwoToneIcon className='themeColorV2' sx={{
+            <GridViewOutlinedIcon className='themeColor' sx={{
              color:`${theme?.customization?.themeColor} ` ,
              width: '20px'
              }}/>
@@ -134,7 +133,7 @@ const ErpModule = () => {
                       <Grid container alignItems="center" justifyContent="space-between" sx={{ pt: 2, px: 2 }}>
                         <Grid item>
                           <Stack direction="row" spacing={2}>
-                            <Typography variant="subtitle1">ERP Modules </Typography>
+                            <Typography variant="subtitle1"> Dashboard </Typography>
                             
                           </Stack>
                         </Grid>
@@ -150,9 +149,9 @@ const ErpModule = () => {
                           </Grid>
                         </Grid>
 
-                        {/* erp modules  start */}
-                            <ErpModuleLayout />
-                         {/* erp modules  end */}
+                        {/* dashbaord start */}
+                            <DashboardSwitchLayout />
+                         {/* dashbaord  end */}
 
                       </PerfectScrollbar>
                     </Grid>
@@ -168,4 +167,4 @@ const ErpModule = () => {
   );
 };
 
-export default ErpModule;
+export default DashboardSwitch;

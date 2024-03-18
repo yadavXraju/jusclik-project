@@ -25,10 +25,10 @@ function ProfileDetail() {
       </Typography>
     <Grid container spacing={2} sx={{ display: 'flex', height: '100%' }}>
       <Grid item xs={12} sm={12} lg={6}>
-       <TextField size={isMobile  ? 'small' : 'normal' } id="outlined-basic" fullWidth label="Adm No." variant="outlined" />
+       <TextField size={isMobile  ? 'small' : 'normal' } id="outlined-basic" fullWidth label="Admission No." variant="outlined" />
       </Grid>
       <Grid item xs={12} sm={12} lg={6}>
-       <ParameterizedDateComponent customStyle={{width:'100%'}} label={'Adm Date'}/>
+       <ParameterizedDateComponent customStyle={{width:'100%'}} label={'Admission Date'}/>
       </Grid>
       <Grid item xs={12} sm={12} lg={6}>
       <TextField size={isMobile  ? 'small' : 'normal' } id="outlined-basic" fullWidth label="Joining Class" variant="outlined" />
@@ -66,13 +66,7 @@ function ProfileDetail() {
       <TextField size={isMobile  ? 'small' : 'normal' } id="outlined-basic" fullWidth label="Aadhaar No." variant="outlined" />
       </Grid>
       <Grid item xs={12} sm={12} md={6} lg={4}>
-      <TextField size={isMobile  ? 'small' : 'normal' } id="outlined-basic" fullWidth label="PEN. No." variant="outlined" />
-      </Grid>
-      <Grid item xs={12} sm={12} md={6} lg={4}>
-      <TextField size={isMobile  ? 'small' : 'normal' } id="outlined-basic" fullWidth label="Category" variant="outlined" />
-      </Grid>
-      <Grid item xs={12} sm={12} md={6} lg={4}>
-      <TextField size={isMobile  ? 'small' : 'normal' } id="outlined-basic" fullWidth label="Pay Mode" variant="outlined" />
+      <TextField size={isMobile  ? 'small' : 'normal' } id="outlined-basic" fullWidth label="PEN No." variant="outlined" />
       </Grid>
     </Grid>
     </Card>
@@ -112,14 +106,14 @@ function ProfileDetail() {
     {/* Other Detail */}
     <Card sx={{padding:'10px'}}>
       <Typography variant={'h4'} p={1} mb={2} sx={{borderBottom:'1px solid #ccc'}}>
-      Other Details
+      Fee Details
       </Typography>
     <Grid container spacing={1} sx={{ display: 'flex', height: '100%' }}>
-      <Grid item xs={12} sm={12} md={6} lg={4}>
-       <TextField size={isMobile  ? 'small' : 'normal' } id="outlined-basic" fullWidth label="Class" variant="outlined" />
+    <Grid item xs={12} sm={12} md={6} lg={4}>
+      <TextField size={isMobile  ? 'small' : 'normal' } id="outlined-basic" fullWidth label="Category" variant="outlined" />
       </Grid>
       <Grid item xs={12} sm={12} md={6} lg={4}>
-      <TextField size={isMobile  ? 'small' : 'normal' } id="outlined-basic" fullWidth label="Section" variant="outlined" />
+      <TextField size={isMobile  ? 'small' : 'normal' } id="outlined-basic" fullWidth label="Pay Mode" variant="outlined" />
       </Grid>
       <Grid item xs={12} sm={12} md={6} lg={4}>
       <TextField size={isMobile  ? 'small' : 'normal' } id="outlined-basic" fullWidth label="Concession" variant="outlined" />

@@ -1,11 +1,13 @@
 import React from 'react'
-import Mainform from './Forms.js/Mainform'
+import Mainform1 from './Adm-form/MainForm1'
+// import Mainform from './Forms.js/Mainform'
 
 
 const AdmissionForm = () => {
   return (
     <div>
-     <Mainform/>
+     {/* <Mainform/> */}
+     <Mainform1/>
     </div>
   )
 }

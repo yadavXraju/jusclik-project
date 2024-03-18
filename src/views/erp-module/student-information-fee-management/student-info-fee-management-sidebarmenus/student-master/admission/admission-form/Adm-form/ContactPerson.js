@@ -7,11 +7,14 @@ function ContactPerson() {
   const isMobile = useMediaQuery('(max-width: 767px)');
   const [contactPersons, setContactPersons] = useState([{ id: 1 }]); // Initial contact person
 
+  // =========== Handle add person =============
   const handleAddPersonClick = () => {
     const newId = contactPersons.length + 1;
     setContactPersons([...contactPersons, { id: newId }]);
+    console.log(newId)
   };
 
+  // ============== handle remove person ============
   const handleRemovePerson = (id) => {
     const updatedPersons = contactPersons.filter((person) => person.id !== id);
     setContactPersons(updatedPersons);
@@ -58,7 +61,7 @@ function ContactPerson() {
                 <TextField size={isMobile ? 'small' : 'normal'} id={`Designation-${person.id}`} fullWidth label="Designation" variant="outlined" />
               </Grid>
               <Grid item xs={12} sm={12} lg={12}>
-                <TextField size={isMobile ? 'small' : 'normal'} id={`address-${person.id}`} fullWidth label="Address" variant="outlined" />
+                <TextField size={isMobile ? 'small' : 'normal'} id={`address-${person.id}`} fullWidth label="Address (Office)" variant="outlined" />
               </Grid>
               <Grid item xs={12} sm={12} lg={6}>
                 <TextField size={isMobile ? 'small' : 'normal'} id={`Aadhaar-${person.id}`} fullWidth label="Aadhaar No" variant="outlined" />
@@ -73,7 +76,7 @@ function ContactPerson() {
               </Grid>
               {contactPersons.length > 1 && (
                 <Grid item xs={12}>
-                  <Button startIcon={<HighlightOffOutlinedIcon/>} sx={{ color: '#f19e9e' }} onClick={() => handleRemovePerson(person.id)}>Remove Contact Person</Button>
+                  <Button startIcon={<HighlightOffOutlinedIcon/>} id={`button-${person.id}`} sx={{ color: '#f19e9e', display: `button-${person.id}` === 'button-1' ? 'none' : '' }} onClick={() => handleRemovePerson(person.id)}>Remove Contact Person</Button>
                 </Grid>
               )}
             </Grid>

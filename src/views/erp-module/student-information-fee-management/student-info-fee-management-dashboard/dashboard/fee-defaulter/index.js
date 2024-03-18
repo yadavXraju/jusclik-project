@@ -1,8 +1,8 @@
 
 import PropTypes from 'prop-types';
-import { Grid , Box , Typography , Paper} from '@mui/material';
+import { Grid  , Typography , Paper} from '@mui/material';
 import Chart from 'react-apexcharts';
-
+import { HeadingCss } from 'views/dashboard/Default/dashboard-css/CommonCss';
 
 // project imports
 import SkeletonTotalGrowthBarChart from 'ui-component/cards/Skeleton/TotalGrowthBarChart';
@@ -13,7 +13,7 @@ import { gridSpacing } from 'store/constant';
 const FeeDefaulter = ({ isLoading }) => {
 
   const FeeDefaulterData = {
-    height: 480,
+    height: 430,
     type: 'bar',
     options: {
       chart: {
@@ -103,35 +103,24 @@ const FeeDefaulter = ({ isLoading }) => {
     ]
   };
 
+  // Calculate total amount
+  const totalAmount = FeeDefaulterData.series[0].data.reduce((acc, cur) => acc + cur, 0);
+  console.log(totalAmount);
+  
   return (
     <>
       {isLoading ? (
         <SkeletonTotalGrowthBarChart />
       ) : (
-        <Paper  elevation={1} sx={{display:'flex' , flexWrap:'wrap' , border:'1px solid rgb(227, 227, 227)' , }}>
-          {/* <Box sx={{ padding: '24px' }}>
-             <Typography variant='h2' style={HeadingCss}>FEE DEFAULTERS</Typography>
-          </Box> */}
+        <Paper  elevation={0} sx={{display:'flex' , flexWrap:'wrap' , border:'1px solid rgb(227, 227, 227)' , boxShadow:'4px 4px 9px 2px #ddddddc2' , flexDirection:'column' }}>
 
-          <Box sx={{
-            flex:'0 0 30%' ,
-            display:'flex' ,
-            justifyContent:'space-between' ,
-            flexDirection:'column' ,
-            padding:'20px',
-            }}>
-            <Box>
-                 <Typography variant='h3' sx={{mb:'10px'}}>FEE DEFAULTERS</Typography>
-                 <Typography variant='p' sx={{fontWeight:'500'}}>increase in app usage with 6,521 new products purchased</Typography>
-            </Box>
+ 
+              <Grid sx={{ padding: '24px 24px 0 24px' , background:'#f9f9fb' , borderBottom:'1px solid rgba(128, 128, 128, 0.25)' , borderRadius:'12px 12px 0px 0'}} >
+                    <Typography variant='h2' style={{...HeadingCss , border:'none'}}>fee defaulter</Typography> 
+              </Grid>
 
-            <Box>
-               <Typography variant='p' sx={{fontWeight:'500'}} >This year is forecasted to increase in your traffic by the end of the current month</Typography>
-            </Box>
-
-          </Box>
-
-          <Grid sx={{flex:'0 0 68%' , flexDirection:'column'}}  spacing={gridSpacing} height={490}>
+ 
+          <Grid spacing={gridSpacing} height={430}>
             <Grid item >
               <Chart {...FeeDefaulterData} />
             </Grid>
