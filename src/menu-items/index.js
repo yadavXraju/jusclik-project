@@ -20,9 +20,11 @@ import StudentInfoFeeMenu from './erp-menus/student-info-fee-management/studentI
 
 // inventory
 import InventoryDashboard from './erp-menus/inventory/inventoryDashboard';
+import InventoryMenu from './erp-menus/inventory/inventoryMenus';
 
 // library
 import LibraryDashboard from './erp-menus/library/libraryDashboard';
+import LibraryMenu from './erp-menus/library/libraryMenus';
 
 // Function to retrieve user role from local storage
 const getUserRole = () => {
@@ -63,12 +65,12 @@ const generateMenuItems = (userRole) => {
 
       // library
       case 'library':
-        menuItems.items.push(LibraryDashboard,);
+        menuItems.items.push(LibraryDashboard, LibraryMenu);
         break;
 
       // inventory
       case 'inventory':
-        menuItems.items.push(InventoryDashboard,);
+        menuItems.items.push(InventoryDashboard, InventoryMenu);
         break;
 
     default:

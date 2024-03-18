@@ -413,7 +413,7 @@ const StudentInfoFeeRoutes = [
             { 
               path: 'kulwinder', 
               element: <Kulwinder /> 
-            },
+            },    
 
             { 
               path: 'harsh', 

@@ -15,10 +15,10 @@ function CountrySelect({state,stateHandler }) {
       </Select>
     );
   }
-const MobileNumberTextfeild = ({countrySelectCss,mobileNumberCss}) => {
+const MobileNumberTextfeild = ({countrySelectCss,mobileNumberCss,error,setError}) => {
     const [state,setState]=useState({
         mobileNumber:'',
-        mobileError:'false',
+        // mobileError:false,
         country:'India'
     })
     const stateHandler=(key,value)=>{
@@ -26,7 +26,10 @@ const MobileNumberTextfeild = ({countrySelectCss,mobileNumberCss}) => {
             ...state,
             [key]:value,
         }))}
+        
+    
     const StyledCountrySelect = withStyles(countrySelectCss)(CountrySelect)
+    console.log(state.mobileError);
   return (
     <TextField
                 InputProps={{
@@ -42,9 +45,9 @@ const MobileNumberTextfeild = ({countrySelectCss,mobileNumberCss}) => {
                 variant="outlined"
                 required
                 fullWidth
-                error={state.mobileError} // Set error state
+                error={error} // Set error state
                 id="Mobilenumber"
-                helperText={state.mobileError ? 'Mobile number must be 10 digits' : 'Enter your registered mobile number'} // Error message
+                helperText={error ? 'Mobile number must be 10 digits' : 'Enter your registered mobile number'} // Error message
                 placeholder="Mobile Number"
                 name="Mobilenumber"
                 autoComplete="Mobilenumber"
@@ -52,7 +55,7 @@ const MobileNumberTextfeild = ({countrySelectCss,mobileNumberCss}) => {
                 onChange={ (e) => {
                     const input = e.target.value.replace(/\D/g, '').slice(0, 10); // Remove non-digit characters and limit to 10 digits        
                     stateHandler('mobileNumber',input)
-                    stateHandler('mobileError',false)
+                    setError(false)
                   }}                
                 sx={{...mobileNumberCss,'& .MuiInput-underline:before': {
                   borderBottom: 'none',
