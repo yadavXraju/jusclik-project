@@ -124,6 +124,16 @@ const DashboardPayroll =  Loadable(lazy(() => import('views/common-section/dashb
 const UserDetailsRoles =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/user-and-roles')));
 
 
+
+// temp routes will be deleted
+
+const Daman =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/settings/setting/invoice-template/daman')));
+
+const Kulwinder =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/settings/setting/invoice-template/kulwinder')));
+
+
+const Harsh =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/settings/setting/invoice-template/harsh')));
+
 // ==============================|| Visitor MENUS ||============================== //
 
 const StudentInfoFeeRoutes = [
@@ -265,20 +275,7 @@ const StudentInfoFeeRoutes = [
         ]
       },
 
-      // reports
 
-      // {
-      //   path: 'reports',
-      //   children: [
-
-      //     { 
-      //       path: 'invoice-printing', 
-      //       element: <InvoicePrinting/> 
-      //     },
-
-
-      //   ]
-      // },
 
       { 
          path: 'reports', 
@@ -404,6 +401,24 @@ const StudentInfoFeeRoutes = [
                   path: 'system-data', 
                   element: <SystemData /> 
                 },
+
+                
+            // temp routes
+  
+            { 
+              path: 'daman', 
+              element: <Daman/> 
+            },
+
+            { 
+              path: 'kulwinder', 
+              element: <Kulwinder /> 
+            },    
+
+            { 
+              path: 'harsh', 
+              element: <Harsh /> 
+            },
       
       
               ]
@@ -446,7 +461,7 @@ const StudentInfoFeeRoutes = [
               path: 'user-and-roles', 
               element: <UserDetailsRoles /> 
             },
-  
+
 
 
     ]
