@@ -48,7 +48,13 @@ const FeeDefaulter = ({ isLoading }) => {
       },
       xaxis: {
         type: 'category',
-        categories: ['Nursery', 'I', 'II', 'III', 'Iv', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI' , 'XII']
+        categories: ['Nursery', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII'],
+        labels: {
+          style: {
+            fontFamily: 'Plus Jakarta Sans, sans-serif', // Specify your desired font family
+            fontWeight: 600, // Specify the font weight (e.g., normal: 400, bold: 700)
+          },
+        },
       },
 
 
@@ -71,17 +77,13 @@ const FeeDefaulter = ({ isLoading }) => {
           vertical: 8
         }
       },
-    //   fill: {
-    //     type: 'solid'
-    //   },
-
       
-      fill: {
-        type: 'solid',
-        // opacity: 0.7,
-        colors: ['rgba(94, 53, 177, 0.9)'] ,
-        borderRadius:'12px',
-      },
+    fill: {
+      type: 'solid',
+      colors: ['rgba(94, 53, 177, 0.9)'],
+      borderRadius: '12px',
+      display:'none'
+    },
       dataLabels: {
         enabled: false
       },
@@ -90,8 +92,13 @@ const FeeDefaulter = ({ isLoading }) => {
       },
       yaxis: {
         labels: {
-          show: false // Hide the left side amount labels
+          show: true, // show the left side amount labels
+          style: {
+            fontFamily: 'Plus Jakarta Sans, sans-serif', // Specify your desired font family
+            fontWeight: 600, // Specify the font weight (e.g., normal: 400, bold: 700)
+          },
         }
+        
       }
     },
     series: [
@@ -105,7 +112,7 @@ const FeeDefaulter = ({ isLoading }) => {
 
   // Calculate total amount
   const totalAmount = FeeDefaulterData.series[0].data.reduce((acc, cur) => acc + cur, 0);
-  console.log(totalAmount);
+
   
   return (
     <>
@@ -115,9 +122,12 @@ const FeeDefaulter = ({ isLoading }) => {
         <Paper  elevation={0} sx={{display:'flex' , flexWrap:'wrap' , border:'1px solid rgb(227, 227, 227)' , boxShadow:'4px 4px 9px 2px #ddddddc2' , flexDirection:'column' }}>
 
  
-              <Grid sx={{ padding: '24px 24px 0 24px' , background:'#f9f9fb' , borderBottom:'1px solid rgba(128, 128, 128, 0.25)' , borderRadius:'12px 12px 0px 0'}} >
-                    <Typography variant='h2' style={{...HeadingCss , border:'none'}}>fee defaulter</Typography> 
-              </Grid>
+        <Grid sx={{ padding: '24px 24px 0 24px' , background:'#f9f9fb' , borderBottom:'1px solid rgba(128, 128, 128, 0.25)' , borderRadius:'12px 12px 0px 0' , display:'flex' , justifyContent:'space-between'}} >
+              <Typography variant='h2' style={{...HeadingCss , border:'none'}}>fee defaulter</Typography>
+
+              <Typography variant='h2' style={{...HeadingCss , border:'none'}}>Total : ₹ {totalAmount}</Typography>
+
+        </Grid>
 
  
           <Grid spacing={gridSpacing} height={430}>

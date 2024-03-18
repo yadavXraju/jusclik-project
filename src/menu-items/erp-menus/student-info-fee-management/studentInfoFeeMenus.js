@@ -6,7 +6,6 @@ import DescriptionTwoToneIcon from '@mui/icons-material/DescriptionTwoTone';
 import FindInPageTwoToneIcon from '@mui/icons-material/FindInPageTwoTone';
 import SettingsTwoToneIcon from '@mui/icons-material/SettingsTwoTone';
 import ReceiptLongTwoToneIcon from '@mui/icons-material/ReceiptLongTwoTone';
-// import BuildTwoToneIcon from '@mui/icons-material/BuildTwoTone';
 import AdminPanelSettingsTwoToneIcon from '@mui/icons-material/AdminPanelSettingsTwoTone';
 import DirectionsBusTwoToneIcon from '@mui/icons-material/DirectionsBusTwoTone';
 
@@ -43,22 +42,6 @@ const FeeAccountingColleagueTitles = [
   {title :  'Security Deposit' , url : '/erp/student-info-fee/fee-accounting/security-deposit'}, 
   {title :   'Transfer Fee Entry' , url : '/erp/student-info-fee/fee-accounting/transfer-fee-entry'}, 
 ];
-
-
-//  setting
-// const  SetUpColleagueTitles  = [
-//   {title : 'Setting' , url : '/erp/student-info-fee/settings/setting'}, 
-//   {title : 'System Data' , url : '/erp/student-info-fee/settings/system-data'}, 
-// ];
-
-
-//  tools
-// const  ToolsColleagueTitles  = [
-//   {title : 'GPS Bus Tracking' , url : '/erp/student-info-fee/tools/gps-bus-tracking'}, 
-//   {title : 'Whatsapp Conversations' , url : '/erp/student-info-fee/tools/whatsapp-conversations'}, 
-//   {title : 'Whatsapp Delivery Report' , url : '/erp/student-info-fee/tools/whatsapp-delivery-report'}, 
-//   {title : 'Whatsapp Excel Sheet' , url : '/erp/student-info-fee/tools/whatsapp-excel-sheet'}, 
-// ];
 
 
 
@@ -194,16 +177,6 @@ const StudentInfoFeeMenu = {
             icon: ReceiptLongTwoToneIcon,
             children: [
 
-              // {
-              //     id: 'invoice-creation',
-              //     title: 'Invoice Creation',
-              //     type: 'item',
-              //     url: '/erp/student-info-fee/fee-accounting/invoice-creation',
-              //     breadcrumbs: false,
-              //     colleagueTitle : FeeAccountingColleagueTitles,
-              //   },
-
-
                 {
                   id: 'invoice-modification',
                   title: 'Invoice Modification',
@@ -230,29 +203,19 @@ const StudentInfoFeeMenu = {
                 url: '/erp/student-info-fee/fee-accounting/optional-fee-heads-entry',
                 breadcrumbs: false,
                 colleagueTitle : FeeAccountingColleagueTitles,
-              },    
-              
-
-              // {
-              //   id: 'transfer-fee-entry',
-              //   title: 'Transfer Fee Entry',
-              //   type: 'item',
-              //   url: '/erp/student-info-fee/fee-accounting/transfer-fee-entry',
-              //   breadcrumbs: false,
-              //   colleagueTitle : FeeAccountingColleagueTitles,
-              // },
+              },   
 
 
             ]
           },
 
-          // recipt
+          // receipt
 
           {
-            id: 'fee-recipt',
-            title: 'Fee Recipt ',
+            id: 'fee-receipt',
+            title: 'Fee Receipt ',
             type: 'collapse',
-            url: '/erp/student-info-fee/fee-recipt',
+            url: '/erp/student-info-fee/fee-receipt',
             icon: CreditCardTwoToneIcon,
             children: [
 
