@@ -1,10 +1,10 @@
 import React from 'react'
 import { Paper, Typography , Box , Grid} from '@mui/material'
-// import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
+import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 
-// import EditNoteIcon from '@mui/icons-material/EditNote';
-// import LocalLibraryIcon from '@mui/icons-material/LocalLibrary';
-
+import EditNoteIcon from '@mui/icons-material/EditNote';
+import LocalLibraryIcon from '@mui/icons-material/LocalLibrary';
+import MenuBookIcon from '@mui/icons-material/MenuBook';
 
 const BookDetail = () => {
 
@@ -30,7 +30,7 @@ const BookDetail = () => {
                             borderRadius:'50%',
                             padding:'7px' 
                             }}>
-                            {/* <PeopleOutlineIcon sx={{color:'rgb(16 185 129)',fontSize:'30px' , display:'flex'}}/> */}
+                            <LocalLibraryIcon sx={{color:'rgb(16 185 129)',fontSize:'30px' , display:'flex'}}/>
                         </Box>
 
                     <Box>
@@ -46,7 +46,7 @@ const BookDetail = () => {
                             borderRadius:'50%',
                             padding:'7px',
                             }}>
-                            {/* <PermIdentityOutlinedIcon sx={{fontSize:'30px' , display:'flex' , color:'rgb(247, 144, 9)'}}/> */}
+                            <LibraryBooksIcon sx={{fontSize:'30px' , display:'flex' , color:'rgb(247, 144, 9)'}}/>
                         </Box>
 
                     <Box>
@@ -62,7 +62,7 @@ const BookDetail = () => {
                             borderRadius:'50%',
                             padding:'7px'
                             }}>
-                            {/* <Person2OutlinedIcon sx={{fontSize:'30px' , display:'flex' , color:'rgb(42, 101, 191)'}}/> */}
+                            <MenuBookIcon sx={{fontSize:'30px' , display:'flex' , color:'rgb(42, 101, 191)'}}/>
                         </Box>
 
                         <Box>
@@ -73,11 +73,11 @@ const BookDetail = () => {
 
                     <Box sx={{flex:'0 0 24%' , display:'flex', gap:'40px',alignItems:'center', padding:'2rem',background:'#f9f9fb' , borderRadius:'12px' ,  boxShadow:'4px 4px 9px 2px #ddddddc2',}}>
                         <Box sx={{
-                            background:'rgb(42 101 191 / 15%)',
+                            background:'#FF08004f',
                             borderRadius:'50%',
                             padding:'7px'
                             }}>
-                            {/* <Person2OutlinedIcon sx={{fontSize:'30px' , display:'flex' , color:'rgb(42, 101, 191)'}}/> */}
+                            <EditNoteIcon sx={{fontSize:'30px' , display:'flex' , color:'#FF0800'}}/>
                         </Box>
 
                         <Box>
