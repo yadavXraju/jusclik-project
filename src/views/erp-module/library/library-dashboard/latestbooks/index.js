@@ -4,6 +4,7 @@ import{Paper,Grid,Typography,Box,Tab}  from '@mui/material'
 import {TabContext,TabList,TabPanel } from '@mui/lab';
 import { HeadingCss } from 'views/dashboard/Default/dashboard-css/CommonCss';
 import NewArrivals from './NewArrivals';
+// import NewArrivals from './NewArrivals';
 
 
 const LastestUpdatesOfBooks = () => {
@@ -15,14 +16,7 @@ const LastestUpdatesOfBooks = () => {
     };
   
 
-    const newArrivalsData = [
-        { id: 1, name: 'The New Story 1', date: '15-03-2024', author: 'John Doe' },
-        { id: 2, name: 'The New Story 2', date: '16-03-2024', author: 'Jane Smith' },
-        { id: 3, name: 'The New Story 3', date: '17-03-2024', author: 'Alex Johnson' },
-        { id: 4, name: 'The New Story 4', date: '18-03-2024', author: 'Emily Davis' },
-        { id: 5, name: 'The New Story 5', date: '19-03-2024', author: 'Michael Wilson' },
-      
-      ];
+
   return (
     <>
       <Paper variant="elevation" elevation="3">
@@ -40,10 +34,12 @@ const LastestUpdatesOfBooks = () => {
 
           <TabList onChange={handleChange} aria-label="lab API tabs example">
             <Tab label="New Arrivals" value="1"  sx={{color:"black",paddingBottom:"0px"}}/>
-            <Tab label="Popluar Books" value="2"   sx={{color:"black",paddingBottom:"0px"}}/>
+            <Tab label="Popular Books" value="2"   sx={{color:"black",paddingBottom:"0px"}}/>
           </TabList>
         </Box>
-        <TabPanel value="1" sx={{padding:'24px 0px 0px 0px'}}><NewArrivals data={newArrivalsData}/></TabPanel>
+        <TabPanel value="1" sx={{padding:'4px 0px 0px 0px'}}>
+          <NewArrivals/>
+        </TabPanel>
         <TabPanel value="2" sx={{padding:'24px 24px 0px 24px'}}>Item Two</TabPanel>
       </TabContext>
     </Box>
