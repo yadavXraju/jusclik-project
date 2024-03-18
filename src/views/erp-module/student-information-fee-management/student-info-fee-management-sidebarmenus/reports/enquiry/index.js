@@ -6,7 +6,7 @@ import LocalPrintshopOutlinedIcon from '@mui/icons-material/LocalPrintshopOutlin
 import ArrowDropDownOutlinedIcon from '@mui/icons-material/ArrowDropDownOutlined';
 // import useDrawer from 'hooks/useDrawer';
 import EnquiryDrawer from './EnquiryDrawer';
-import ReportTable from '../report-table';
+import ReportTable from '../common-report-section/report-table';
 import '../drawer-set.css';
 
 const studentData = [
@@ -183,7 +183,7 @@ const Enquiry = () => {
             <Paper sx={{ height: "50px"}}>
                 <Box sx={{height:"50px",display: "flex", justifyContent: "space-between", marginTop: "7px" }}>
                     <Box sx={{height:"20px",marginTop:"8px"}}>
-                        <Button endIcon={<SettingsOutlinedIcon sx={{marginTop:"2px",width: "15px"}} onClick={() => setClickedCustomize(true)} />}>Customize Report</Button>
+                        <Button endIcon={<SettingsOutlinedIcon sx={{marginTop:"2px",width: "15px"}}  />} onClick={() => setClickedCustomize(true)}>Customize Report</Button>
                     </Box>
                     <Box sx={{ display: 'flex' }}>
                         <WithPrintPdf Children={<LocalPrintshopOutlinedIcon />} ref={printRef} />

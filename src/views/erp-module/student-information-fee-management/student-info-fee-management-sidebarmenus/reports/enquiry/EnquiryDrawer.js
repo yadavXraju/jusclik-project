@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import ParamStepper from 'views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/reports/ParamStepper';
 import { Box, Typography, Button } from '@mui/material';
-import GeneralReport from '../general-report';
-import ShowHide from '../show-hide';
-import ReportLayout from '../report-layout';
-import ReportReference from '../report-reference';
+import FilterAndSort from '../common-report-section/filter-and-sort';
+import ShowHide from '../common-report-section/selected-column';
+import ReportLayout from '../common-report-section/report-layout';
+import ReportReference from '../common-report-section/report-preference';
+import ParamStepper from '../common-report-section/param-stepper';
 
 const steps = [
   'Report Preferences',
@@ -26,7 +26,7 @@ const tabPage = [
   }, {
     id: 3,
     name: "Filter & Sort",
-    component: GeneralReport
+    component: FilterAndSort
   },
   {
     id: 4,

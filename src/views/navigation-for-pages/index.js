@@ -12,12 +12,12 @@ const UrlPage = () => {
 
   return (
     <>
-        <MainCard sx={{ mb: 3 }}>
+        <MainCard sx={{ mb: 3 , background:'none' , border:'none' ,}}>
             <Grid container spacing={gridSpacing}>
-                <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'space-between' , flexDirection:'column'}}>
                     <Grid alignContent="center" justifyContent="space-between">
 
-                      <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '20px' }}>
+                      <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '20px' , borderBottom:'2px solid #b7b7b742' , }}>
                           {/* mapping the children menus */}
                           {urlStore.children.map((child, index) => (
                             <Typography
@@ -26,7 +26,10 @@ const UrlPage = () => {
                               sx={{
                                 cursor: 'pointer',
                                 fontSize: '14px',
-                                color: child.url === pathname ? 'rgb(94, 53, 177)' : 'inherit', // Change color if URL matches current pathname
+                                paddingBottom:'14px',
+                                color: child.url === pathname ? '#2196f3' : 'inherit', // Change color if URL matches current pathname
+                                borderBottom: child.url === pathname ? '2px solid #2196f3' : 'none', // add border bottom of  current url
+                                // transition:'.3s all ease-in-out'
                               }}
                               onClick={() => navigate(child.url)}
                             >

@@ -13,27 +13,8 @@ import relationship from '../../../../assets/images/erp-module-icon/customer.svg
 import stufee from '../../../../assets/images/erp-module-icon/fee.svg'
 import hr from '../../../../assets/images/erp-module-icon/hr.svg'
 
-import parent from '../../../../assets/images/dashboard-icon/parent-dashboard.svg'
-import teacher from '../../../../assets/images/dashboard-icon/teacher-dashboard.svg'
-
-
 export const ErpModuleList = [
 
-    {
-        id:12,
-        name:'Parent',
-        icon :  <img src={parent} alt='icon' style={{width:'34px', margin:'auto'}} />,
-        url: '/parent/dashboard',
-        role : 'parent',
-    },
-
-    {
-        id:13,
-        name:'Teacher',
-        icon :  <img src={teacher} alt='icon' style={{width:'34px', margin:'auto'}} />,
-        url: '/class-teacher/dashboard',
-        role : 'class-teacher',
-    },
 
 
     {
@@ -73,7 +54,7 @@ export const ErpModuleList = [
         id:5,
         name:'Inventory',
         icon : <img src={inventory} alt='icon' style={{width:'34px', margin:'auto'}} />,
-        url: '',
+        url: '/erp/inventory/dashboard',
         role : 'inventory',
     },
 
