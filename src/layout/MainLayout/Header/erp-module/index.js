@@ -23,10 +23,11 @@ import PerfectScrollbar from 'react-perfect-scrollbar';
 // project imports
 import MainCard from 'ui-component/cards/MainCard';
 import Transitions from 'ui-component/extended/Transitions';
-import GridViewOutlinedIcon from '@mui/icons-material/GridViewOutlined';
 import { useSelector } from 'react-redux';
 import ErpModuleLayout from './ErpModuleLayout';
 
+// icon
+import AppsTwoToneIcon from '@mui/icons-material/AppsTwoTone';
 
 
 // ==============================|| NOTIFICATION ||============================== //
@@ -97,7 +98,7 @@ const ErpModule = () => {
             onClick={handleToggle}
             color="inherit"
           >
-            <GridViewOutlinedIcon className='themeColorV2' sx={{
+            <AppsTwoToneIcon className='themeColorV2' sx={{
              color:`${theme?.customization?.themeColor} ` ,
              width: '20px'
              }}/>

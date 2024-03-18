@@ -9,14 +9,15 @@ import Loadable from 'ui-component/Loadable';
 
 // login option 3 routing
 const Login = Loadable(lazy(() => import('views/pages/authentication/Login')));
-const ForgetPassword = Loadable(lazy(() => import('views/pages/authentication/ForgetPassword')));
-const VerifyNumber = Loadable(lazy(() => import('views/pages/authentication/VerifyNumber')));
-const SetNewPassword = Loadable(lazy(() => import('views/pages/authentication/SetNewPassword')));
+// const ForgetPassword = Loadable(lazy(() => import('views/pages/authentication/ForgetPassword')));
+// const VerifyNumber = Loadable(lazy(() => import('views/pages/authentication/VerifyNumber')));
+// const SetNewPassword = Loadable(lazy(() => import('views/pages/authentication/SetNewPassword')));
 const VisitorRegistration =  Loadable(lazy(() => import('views/pages/authentication/visitor-registration')));
-const VisitorAppointementPass = Loadable(lazy(() => import('views/pages/authentication/visitor-registration/appointment-pass')));
-const SelfieVerification = Loadable(lazy(() => import('views/pages/authentication/visitor-registration/selfie-verification')));
-const VisitorDetails = Loadable(lazy(() => import('views/pages/authentication/visitor-registration/visitor-details')));
-const VisitPurpose =  Loadable(lazy(() => import('views/pages/authentication/visitor-registration/visit-purpose')));
+
+// const VisitorAppointementPass = Loadable(lazy(() => import('views/pages/authentication/visitor-registration/appointment-pass')));
+// const SelfieVerification = Loadable(lazy(() => import('views/pages/authentication/visitor-registration/selfie-verification')));
+// const VisitorDetails = Loadable(lazy(() => import('views/pages/authentication/visitor-registration/visitor-details')));
+// const VisitPurpose =  Loadable(lazy(() => import('views/pages/authentication/visitor-registration/visit-purpose')));
 
 // ==============================|| AUTHENTICATION ROUTING ||============================== //
 
@@ -33,46 +34,46 @@ const AuthenticationRoutes = {
       element: <Login />
     },
 
-    {
-      path: '/forgetpassword',
-      element: <ForgetPassword />
-    },
+    // {
+    //   path: '/forgetpassword',
+    //   element: <ForgetPassword />
+    // },
 
-    {
-      path: '/verifynumber',
-      element: <VerifyNumber />
-    },
+    // {
+    //   path: '/verifynumber',
+    //   element: <VerifyNumber />
+    // },
 
-    {
-      path: '/setnewpassword',
-      element: <SetNewPassword />
-    },
+    // {
+    //   path: '/setnewpassword',
+    //   element: <SetNewPassword />
+    // },
 
     {
       path:'/visitor-registration',
       element: <VisitorRegistration />
     },
 
-    {
-      path:'/appointment-pass',
-      element: <VisitorAppointementPass/>
-    },
+    // {
+    //   path:'/appointment-pass',
+    //   element: <VisitorAppointementPass/>
+    // },
 
 
-    {
-      path:'/selfie-verification',
-      element: <SelfieVerification/>
-    },
+    // {
+    //   path:'/selfie-verification',
+    //   element: <SelfieVerification/>
+    // },
 
-    {
-      path:'/visitor-details',
-      element: <VisitorDetails />
-    },
+    // {
+    //   path:'/visitor-details',
+    //   element: <VisitorDetails />
+    // },
 
-    {
-      path:'/visit-purpose',
-      element: <VisitPurpose />
-    },
+    // {
+    //   path:'/visit-purpose',
+    //   element: <VisitPurpose />
+    // },
 
 
   ]

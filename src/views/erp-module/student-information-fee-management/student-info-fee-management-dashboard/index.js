@@ -26,7 +26,7 @@ const Dashboard =()=> {
     <Box sx={{ width: '100%', typography: 'body1' ,}}>
 
           <TabContext value={value}>
-          <Paper sx={{mx:'24px'}}>
+          <Paper sx={{mx:'24px' , background:'none'}}>
             <Box sx={{ 
               borderBottom: 0,
               borderColor: '#e3e8efad' ,

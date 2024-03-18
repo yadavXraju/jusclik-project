@@ -112,8 +112,9 @@ const MainLayout = () => {
 
         {/* breadcrumb */}
         <Breadcrumbs separator={IconChevronRight} navigation={getMenuItems} icon title rightAlign />
+
         {/* url page */}
-        {location.pathname !== '/parent/dashboard' && location.pathname !== '/class-teacher/dashboard'  && location.pathname !== '/subject-teacher/dashboard' && location.pathname !== '/erp/visitor/dashboard' && location.pathname !== '/erp/student-info-fee/dashboard' && <UrlPage />}
+        {location.pathname !== '/parent/dashboard' && location.pathname !== '/class-teacher/dashboard'  && location.pathname !== '/subject-teacher/dashboard' && location.pathname !== '/erp/visitor/dashboard' && location.pathname !== '/erp/student-info-fee/dashboard' && location.pathname !== '/erp/inventory/dashboard' && location.pathname !== '/erp/library/dashboard' && <UrlPage />}
 
 
         {/* <UrlPage /> */}

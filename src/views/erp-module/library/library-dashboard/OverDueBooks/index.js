@@ -1,146 +1,99 @@
-
 import PropTypes from 'prop-types';
-import { Grid  , Paper,Typography,Box} from '@mui/material';
+import { Grid, Paper, Typography} from '@mui/material';
 import Chart from 'react-apexcharts';
 import { HeadingCss } from 'views/dashboard/Default/dashboard-css/CommonCss';
-
-// project imports
 import SkeletonTotalGrowthBarChart from 'ui-component/cards/Skeleton/TotalGrowthBarChart';
-// import MainCard from 'ui-component/cards/MainCard';
 import { gridSpacing } from 'store/constant';
 
-
 const OverDueBook = ({ isLoading }) => {
-
   const FeeDefaulterData = {
-    height: 380,
+    height: 300,
     type: 'bar',
     options: {
       chart: {
         id: 'bar-chart',
         stacked: true,
-        toolbar: {
-          show: false
-        },
-        zoom: {
-          enabled: false
-        },
-        stroke: false, // Set stroke to false to remove the stroke
+        toolbar: { show: false },
+        zoom: { enabled: false },
+        stroke: false,
       },
       responsive: [
         {
           breakpoint: 480,
           options: {
-            legend: {
-              position: 'bottom',
-              offsetX: -10,
-              offsetY: 0
-            }
-          }
-        }
+            legend: { position: 'bottom', offsetX: 0, offsetY: 0 },
+          },
+        },
       ],
       plotOptions: {
         bar: {
           horizontal: false,
-          columnWidth: '60%',
-          borderRadius:5,
-          dataLabels:{
-            position:"bottom",
-
-        }
+          columnWidth: '50%',
+          borderRadius: 5,
+          dataLabels: { position: 'bottom',
+          color:'#ABB5E6',
+          fontWeight:"400" },
         },
-      
       },
       xaxis: {
         type: 'category',
-        categories: ['Nursery', 'I', 'II', 'III', 'Iv', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI' , 'XII']
-      },
-
-
-      legend: {
-        show: true,
-        fontSize: '14px',
-        // fontFamily: `'Roboto', sans-serif`,
-        position: 'bottom',
-        offsetX: 20,
+        categories: [
+          'Nursery', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII'
+        ],
         labels: {
-          useSeriesColors: false
+          style: {
+            fontSize: '12px', // Adjust x-axis labels font size
+          },
         },
-        markers: {
-          width: 16,
-          height: 16,
-          radius: 5
-        },
-        itemMargin: {
-          horizontal: 15,
-          vertical: 8
-        }
-      },
-    //   fill: {
-    //     type: 'solid'
-    //   },
-
-      
-      fill: {
-        type: 'solid',
-        // opacity: 0.7,
-        colors: ['rgba(94, 53, 177, 0.9)'] ,
-        borderRadius:'12px',
-      },
-    //   dataLabels: {
-    //     enabled: false,
- 
-       
-    //   },
-      grid: {
-        show: true
       },
       yaxis: {
+        show:false,
         labels: {
-          show: false // Hide the left side amount labels
-        }
-      }
-    },
-    series: [
-      {
-        name: 'Overdue',
-        data: [174 , 140 , 301 , 134 , 193 , 348, 520, 512, 138, 472, 116 , 234 , 193 ,]
+          style: {
+            fontSize: '14px', // Adjust y-axis labels font size
+          },
+        },
       },
-    
-    ]
+      legend: {
+        show: false,
+      },
+      fill: {
+        type: 'solid',
+        colors: ['#987ECD'], // Customize bar colors
+        opacity: 0.9, // Set opacity for the bars
+      },
+      grid: { show: false },
+    },
+    series: [{ name: 'Overdue', data: [174, 140, 301, 134, 193, 348, 520, 512, 138, 472, 116, 234, 193] ,
+  fontWeight:"400"}],
   };
-  const totalOverDueBooks = FeeDefaulterData.series[0].data.reduce(
-    (total, currentValue) => total + currentValue,
-    0
-  );
+
+
 
   return (
     <>
       {isLoading ? (
         <SkeletonTotalGrowthBarChart />
       ) : (
-        <Paper   spacing={gridSpacing}  sx={{display:'flex' , flexDirection:'column' , justifyContent :'space-between' , border:'1px solid rgb(227, 227, 227)'}}>
-             <Grid sx={{padding:'24px 24px 22px 24px'}}>
-                    <Typography variant='h2' style={HeadingCss}>Overdue Books</Typography> 
+        <Paper elevation={3} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', border: '1px solid rgb(227, 227, 227)', borderRadius: '12px' }}>
+
+               <Grid sx={{ padding: '24px 24px 0 24px' , background:'#f9f9fb' , borderBottom:'1px solid rgba(128, 128, 128, 0.25)' , borderRadius:'12px 12px 0px 0'}} >
+                    <Typography variant='h2' style={{...HeadingCss , border:'none'}}>fee defaulter</Typography> 
               </Grid>
-          <Grid  spacing={gridSpacing} height={420}>
-            <Grid item >
+          <Grid container spacing={gridSpacing} height={340}>
+            <Grid item xs={12}>
               <Chart {...FeeDefaulterData} />
             </Grid>
           </Grid>
-      
-          <Box sx={{ p: 2, textAlign: 'center' }}>
-          <Typography variant="body1">Total Books: {totalOverDueBooks}</Typography>
-        </Box>
+
         </Paper>
-        
       )}
     </>
   );
 };
 
 OverDueBook.propTypes = {
-  isLoading: PropTypes.bool
+  isLoading: PropTypes.bool,
 };
 
 export default OverDueBook;
