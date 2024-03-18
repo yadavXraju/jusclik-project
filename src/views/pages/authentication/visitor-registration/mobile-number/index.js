@@ -7,7 +7,9 @@ import {
   FormControl,
 } from '@mui/material';
 import MobileNumberTextfeild from 'views/common-section/mobileNumberTextfeild';
-export const MobileNumber = () => {
+import { useState } from 'react';
+export const MobileNumber = ({step,handleSteps}) => {
+const [error,setError]=useState(false)
   {
     return (<>
 
@@ -15,7 +17,7 @@ export const MobileNumber = () => {
       <Paper sx={{ ...css.mobilePaper }} elevation={4}>
         <Box>
           <FormControl fullWidth>
-            <MobileNumberTextfeild countrySelectCss={styles} mobileNumberCss={css.mobileNumber} />
+            <MobileNumberTextfeild countrySelectCss={styles} mobileNumberCss={css.mobileNumber} error={error} setError={setError}  />
           </FormControl>
         </Box>
         {/* mobile number input feild over */}
@@ -25,6 +27,7 @@ export const MobileNumber = () => {
             ...css.center, ...css.marginAuto,
             ...css.submitButton,...css.button
           }}
+          onClick={error?()=>{}:()=>handleSteps(step)}
         >
           {'Next'}
         </Button>
