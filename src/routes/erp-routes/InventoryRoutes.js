@@ -4,6 +4,11 @@ import Loadable from 'ui-component/Loadable';
 // project imports
 const DashboardDefault = Loadable(lazy(() => import('views/erp-module/inventory-management/inventory-management-dashboard')));
 
+// report
+const Reports = Loadable(lazy(() => import('views/erp-module/inventory-management/inventory-managment-sidebar/report')));
+
+// setting
+const Setting = Loadable(lazy(() => import('views/erp-module/inventory-management/inventory-managment-sidebar/setting')));
 
 // ==============================|| Visitor MENUS ||============================== //
 
@@ -25,23 +30,28 @@ const InventoryRoutes = [
         // },
 
 
-            // {
-            //   path: 'settings',
-            //   children: [
+        //     {
+        //       path: 'settings',
+        //       children: [
 
-            //     { 
-            //       path: 'system-data', 
-            //       element: <SystemData /> 
-            //     },
+        //         { 
+        //           path: 'system-data', 
+        //           element: <SystemData /> 
+        //         },
       
       
-            //   ]
-            // },
+        //       ]
+        //     },
 
-            // tools
+            {
+               path: 'settings', 
+               element: <Setting /> 
+            },
 
-
-            // user and roles
+            {
+              path: 'reports', 
+              element: <Reports /> 
+           },
 
     ]
   }

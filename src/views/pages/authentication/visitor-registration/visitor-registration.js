@@ -27,7 +27,10 @@ const defaultTheme = createTheme({
 const VisitorRegistrationTemplate = () => {
     const theme = useTheme(); // Accessing theme object using useTheme hook
     const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+
+    const md= useMediaQuery(theme.breakpoints.down('md'));
     const [step, setStep] = useState(0)
+    const [mobileNumber,setMobileNumber]=useState('')
     const handleSteps = (step) => {
         setStep(step + 1)
     }
@@ -37,22 +40,13 @@ const VisitorRegistrationTemplate = () => {
         {/* this will be our template */}
         {/* this will be the static template for or registration process */}
         {/* parent container box */}
-        <Box sx={{ justifyContent: 'center', alignItems: 'center', height: '100vh', display: 'flex', backgroundColor: '#eef2f6' }}>
+        <Box sx={{ ...css.center, height: '100%', backgroundColor: '#eef2f6' }}>
             <ThemeProvider theme={defaultTheme}>
-                <Box sx={{ minHeight: '100vh' }}>
+                <Box sx={{ minHeight: '100%' }}>
                     <Grid container component="main" >
                         <CssBaseline />
                         {/* left side school logo */}
-                        <Grid
-
-                            item
-                            sx={{
-                                backgroundColor: (t) => (t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900]),
-                                ...css.imageContainer,
-                                ...css.center,
-
-                            }}
-                        >
+                        <Grid item sx={{backgroundColor: (t) => (t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900]),...css.imageContainer,...css.center,}}>
                             <Grid item sx={{ ...css.center, flexDirection: 'column' }}>
                                 <img
                                     src={LogoImg}
@@ -68,18 +62,8 @@ const VisitorRegistrationTemplate = () => {
                             </Grid>
                         </Grid>
                         {/* school logo over*/}
-                        <Grid
-                            item
-                            // component={Paper}
-                            elevation={6}
-                            square
-                            sx={{
-                                ...css.horizontalCenter,
-                                ...css.parentPaper,
-                                justifyContent:'center'
-                            }}
-
-                        >
+                        <Grid item elevation={6}>
+                            <Box sx={{...css.parentPaper,...css.horizontalCenter}}>                            
                             <Box sx={{ ...css.parentPaperBox, ...css.displayNoneOnMd }}>
                                 <Typography
                                     component="h1"
@@ -103,6 +87,8 @@ const VisitorRegistrationTemplate = () => {
                                     Managed By Jusklik
                                 </Typography>
                             </Box>
+                            
+                            <Box sc={{display:'flex',flexDirection:'column'}}>
 
                             <Box sx={{ ...css.center, flexDirection: 'column', ...css.mobileLogoImage }}>
                                 {/* logo image for mobile devices */}
@@ -128,15 +114,16 @@ const VisitorRegistrationTemplate = () => {
 
                             {/* ============= Static Part Over =================== */}
                             {/* ================mobile number modal ===============  */}
-                            {step == 0 && <MobileNumber step={step} handleSteps={handleSteps} />}
+                            {step == 0 && <MobileNumber step={step} handleSteps={handleSteps}  setMobileNumber={setMobileNumber} />}
                             {/* ============= Otp Modal ========================  */}
-                            {step == 1 && <OtpVerification step={step} handleSteps={handleSteps} />}
+                            {step == 1 && <OtpVerification step={step} handleSteps={handleSteps}  mobileNumber={mobileNumber} />}
                             {/* ============= Selfie ============================ */}
-                            {step == 2 && <SelfieVerification step={step} handleSteps={handleSteps} />}
+                            {step == 2 && <SelfieVerification step={step} handleSteps={handleSteps} md={md}/>}
                             {/* ============= Purpose/Details =========================== */}
                             {step == 3 && <VisitorDetails step={step} handleSteps={handleSteps} />}
                             {/* ============= Get Pass ========================== */}
-                                
+                            </Box>
+                            </Box>      
                         </Grid>
                     </Grid>
                 </Box>

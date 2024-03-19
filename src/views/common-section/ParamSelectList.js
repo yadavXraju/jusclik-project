@@ -4,7 +4,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
-const SelectList = ({ label, options, value, setValue, size,customSytle={}, disabled=null }) => {
+const SelectList = ({ label, options, value, setValue, size="small",customSytle={}, disabled=null }) => {
     const handleChange = (event) => {
         setValue(event.target.value);
       };
