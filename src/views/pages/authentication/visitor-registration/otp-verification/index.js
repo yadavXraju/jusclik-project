@@ -1,15 +1,19 @@
 import React, { useState, useRef } from 'react';
-import { Typography, Button, Paper, TextField, Grid } from '@mui/material';
+import { Typography, Button, Paper, TextField, Grid, Link } from '@mui/material';
 import { useNavigate } from "react-router-dom";
 import { Box } from '@mui/system';
 import { css } from '../css';
-const OtpVerification = () => {
+
+
+const OtpVerification = ({step,handleSteps,mobileNumber}) => {
 const navigate = useNavigate();
 const [otp, setOtp] = useState(['', '', '', '']);
 const inputRefs = useRef([]);
+const secureOtp=['1','1','1','1']
+const newOtp = [...otp];
+
 
 const handleOtpChange = (index, value) => {
-    const newOtp = [...otp];
     newOtp[index] = value.replace(/\D/g, '').slice(0, 1); // Allow only digits
     setOtp(newOtp);
     if (value === '' && index > 0) {
@@ -19,12 +23,26 @@ const handleOtpChange = (index, value) => {
       // Move focus to the next input field if available
       inputRefs.current[index + 1].focus();
     }
+
+  };
+
+
+  const handleVerify = () => {
+    // Check if otp matches secureOtp
+    const isOtpValid = otp.every((digit, index) => digit === secureOtp[index]);
+    if (isOtpValid) {
+      handleSteps(step);
+    } else {
+      // Handle invalid OTP
+      console.log('Invalid OTP');
+    }
   };
 return (
-    <Box sx={{...css.center }}>
-      <Paper sx={{ ...css.mobilePaper,width:'100%'}} elevation={4}>
-        <Typography variant="h6" sx={{ padding:'1rem 0',sm:'14px',...css.horizontalCenter }}>Verification</Typography>
-        <Typography sx={{ padding: '0', fontWeight: '500',...css.horizontalCenter }}>You will get an OTP via SMS</Typography>
+    <Box sx={{...css.center}}>
+      <Paper sx={{ ...css.mobilePaper, minWidth:'20rem'}} elevation={2}>
+        <Typography variant="h6" sx={{ ...css.formTextColor,padding:'1rem 0',sm:'14px',...css.horizontalCenter }}>Verification</Typography>
+        <Typography sx={{ ...css.formTextColor, fontWeight: '400',...css.horizontalCenter,textAlign:'center' }}>OTP has been sent to {mobileNumber}</Typography>
+        <Link href='' onClick={handleSteps(step-1)} sx={{py:'1rem', fontWeight: '400',...css.horizontalCenter,textAlign:'center'}}>Edit Number</Link>
         <Grid container spacing={1} justifyContent="center">
           {otp.map((digit, index) => (
             <Grid item key={index}>
@@ -46,6 +64,7 @@ return (
                 }}
                 inputProps={{ maxLength: 1 }}
                 inputRef={(el) => (inputRefs.current[index] = el)}
+                type="tel"
                 sx={{
                   backgroundColor: '#ffffff',
                   width: '56px',
@@ -66,11 +85,12 @@ return (
             ...css.center, ...css.marginAuto,
             ...css.submitButton,...css.button
           }}
+          onClick={handleVerify}
         >VERIFY</Button>
-        <Typography variant="body1" sx={{ mt: '20px',...css.horizontalCenter }}>
+        <Typography variant="body1" sx={{ ...css.formTextColor,pt:'1rem',...css.horizontalCenter }}>
           Didnt Receive the Verification OTP?{' '}
         </Typography>
-          <Typography variant='span' sx={{ fontWeight: "600", "&:hover": { textDecoration: 'underline', cursor: 'pointer' },...css.horizontalCenter }} onClick={() => navigate('/parent/dashboard')}>
+          <Typography variant='span' sx={{ ...css.formTextColor,fontWeight: "500", "&:hover": { textDecoration: 'underline', cursor: 'pointer' },...css.horizontalCenter,py:'1rem' }} onClick={() => navigate('/parent/dashboard')}>
             Resend again
           </Typography>
       </Paper>

@@ -45,16 +45,15 @@ export const css = {
     fontSize: '15px',
     fontFamily: 'plus Jakarta sans',
     backgroundColor: '#ffffff',
-    width: '25rem'
+    width: '20rem'
   },
   parentContainer:{
-    minWidth:'80%'
+    minWidth:'100%'
   },
   imageContainer:{backgroundSize: 'cover',
   backgroundPosition: 'bottom',
-  height: '100vh',
   padding:'0 10rem',
-  '@media (max-width: 600px)': {
+  '@media (max-width: 1024px)': {
     display: 'none', // Hide the component on small screens (sm viewport)
   },
   },
@@ -63,43 +62,59 @@ export const css = {
     backgroundRepeat: 'no-repeat',
     borderRadius:  '20px 20px 0px 0px',
     padding: '0px 35px',
-    width:'500px',
-    height:'100vh',
+    '@media (min-width: 768px)': {
+      // width:'500px', // Hide the component on small screens (sm viewport)
+      justifyContent:'center'
+    },
+    '@media (max-width: 768px)': {
+      width:'100vw',
+      justifyContent:'start',
+    },
+    minHeight:'100vh',
+    height:'100%',
     display:'flex',
     flexDirection:'column',
-    justifyContent:'start',
+      
   },
   parentPaperHeading:{
     welcome:{
-      color: '#3a3a3a',
+      // color: '#3a3a3a',
+      color:'#E64B4C',
       fontSize: { xs: '1rem', md: '1.5rem' },
       fontFamily: 'plus Jakarta sans',
-      textAlign: 'center', marginBottom: '10px' 
+      textAlign: 'center',
+      marginBottom: '10px',
+      fontWeight:'500' 
     },
     school:{
-      color: '#3a3a3a',
-      fontSize: { xs: '20px', md: '3rem' },
+      // color: '#3a3a3a',
+      color:'#E64B4C',
+      fontSize: { xs: '20px', md: '2.5rem' },
       fontFamily: 'plus Jakarta sans',
       textAlign: 'center',
-      marginBottom: '20px' 
+      marginBottom: '20px',
+      fontWeight:'500' 
     },
     address:{
-      color: '#3a3a3a',
+
+      color:'#364152b5',
       fontSize: { xs: '1rem', md: '1.5rem' },
       fontFamily: 'plus Jakarta sans', 
       textAlign: 'center', 
-      marginBottom: '10px' 
+      marginBottom: '10px',
+      fontWeight:'500' 
     },
     managedBy:{
-       color: '#3a3a3a', 
+       color:'#364152b5',
        fontSize: { xs: '1rem', md: '1rem' }, 
        fontFamily: 'plus Jakarta sans', 
        textAlign: 'center', 
-       marginBottom: '10px' 
+       marginBottom: '10px',
+       fontWeight:'500',
     },
   },
   parentPaperBox:{
-    paddingTop:'6rem',
+    paddingTop:'0rem',
     paddingBottom:'3rem',
     '@media (max-width: 600px)': {
       display: 'none', // Hide the component on small screens (sm viewport)
@@ -109,10 +124,10 @@ export const css = {
   mobilePaper:{
    minHeight:'10rem',
    borderRadius:'12px',
-   padding:'0 1rem' ,
+   padding:'1rem' ,
    '@media (max-width: 600px)': {
     padding:'1rem',
-    margin:'0 1.5rem'
+    margin:'0 0 1rem 0'
   },
   },
   mobileNumber:{
@@ -120,11 +135,24 @@ export const css = {
   },
   mobileLogoImage:{
     margin: '3rem 0',
-    '@media (min-width: 600px)': {
+    '@media (min-width: 1025px)': {
       display:'none'
     },
   },
   button:{
     margin:'1rem auto',
-  }
+  },
+  video:{
+    '@media (min-width: 768px)': {
+      display:'none'
+    },
+  },
+  displayNoneOnMd:{
+    '@media (max-width: 1024px)': {
+      display:'none'
+    },
+  },
+  formTextColor:{
+    color:'rgba(0, 0, 0, 0.6)'
+  },
 }

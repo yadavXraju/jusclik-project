@@ -1,13 +1,14 @@
 import React, { useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { alpha, Box, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TableSortLabel, Toolbar, Typography, Checkbox, IconButton, Tooltip } from '@mui/material';
-import DeleteIcon from '@mui/icons-material/Delete';
+
 import { visuallyHidden } from '@mui/utils';
-import PrintTwoToneIcon from '@mui/icons-material/PrintTwoTone';
-import Popover from '@mui/material/Popover';
-import Button from '@mui/material/Button';
 import rows from './StudentFeeLedgerData';
 
+// icons
+import DeleteIcon from '@mui/icons-material/Delete';
+import PaymentTwoToneIcon from '@mui/icons-material/PaymentTwoTone';
+import ArticleTwoToneIcon from '@mui/icons-material/ArticleTwoTone';
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -96,76 +97,76 @@ const headCells = [
   },
 
   {
-    id: 'entry-no',
+    id: 'entry-no-date',
     numeric: true,
     disablePadding: false,
-    label: 'Entry No',
+    label: 'Entry Details',
   },
 
-  {
-    id: 'entry-date',
-    numeric: true,
-    disablePadding: false,
-    label: 'Entry Date',
-  },
-
-
-  {
-    id: 'chq-no',
-    numeric: true,
-    disablePadding: false,
-    label: 'Chq No',
-  },
+  // {
+  //   id: 'entry-date',
+  //   numeric: true,
+  //   disablePadding: false,
+  //   label: 'Entry Date',
+  // },
 
 
   {
-    id: 'chq-date',
+    id: 'chq-no-date',
     numeric: true,
     disablePadding: false,
-    label: 'Chq Date',
+    label: 'Chq Details',
   },
+
+
+  // {
+  //   id: 'chq-date',
+  //   numeric: true,
+  //   disablePadding: false,
+  //   label: 'Chq Date',
+  // },
 
 
   {
-    id: 'bank',
-    numeric: true,
+    id: 'bank-detail',
+    numeric: false,
     disablePadding: false,
-    label: 'Bank',
+    label: 'Bank Details',
   },
 
-  {
-    id: 'branch',
-    numeric: true,
-    disablePadding: false,
-    label: 'Branch	',
-  },
+  // {
+  //   id: 'branch',
+  //   numeric: true,
+  //   disablePadding: false,
+  //   label: 'Branch	',
+  // },
 
 
   {
     id: 'remarks',
-    numeric: true,
+    numeric: false,
     disablePadding: false,
     label: 'Remarks',
   },
 
   {
-    id: 'ref-no',
+    id: 'ref-details',
     numeric: true,
     disablePadding: false,
-    label: 'Ref No',
+    label: 'Ref Details',
   },
 
-  {
-    id: 'ref-date',
-    numeric: true,
-    disablePadding: false,
-    label: 'Ref Date',
-  },
+  // {
+  //   id: 'ref-date',
+  //   numeric: true,
+  //   disablePadding: false,
+  //   label: 'Ref Date',
+  // },
 
 
   {
     id: 'payment-cat',
-    numeric: true,
+    numeric: false,
     disablePadding: false,
     label: 'Payment Cat',
   },
@@ -197,7 +198,7 @@ function EnhancedTableHead(props) {
         {headCells.map((headCell) => (
           <TableCell
             key={headCell.id}
-            align={headCell.numeric ? 'right' : 'left'}
+            align={headCell.numeric ? 'right' : 'left'} 
             padding={headCell.disablePadding ? 'none' : 'normal'}
             sortDirection={orderBy === headCell.id ? order : false}
           >
@@ -235,6 +236,7 @@ function EnhancedTableToolbar(props) {
   const { numSelected } = props;
 
   return (
+    // tool bar for select and delete number
     <Toolbar
       sx={{
         pl: { sm: 2 },
@@ -265,12 +267,33 @@ function EnhancedTableToolbar(props) {
         </Typography>
       )}
 
+       {/* actions */}
       {numSelected > 0 ? (
-        <Tooltip title="Delete">
-          <IconButton>
-            <DeleteIcon />
-          </IconButton>
-        </Tooltip>
+        <>
+
+        {/* delete */}
+              <Tooltip title="Delete">
+                <IconButton>
+                  <DeleteIcon />
+                </IconButton>
+              </Tooltip>
+
+            {/* fee payment */}
+              <Tooltip title="Fee Payment">
+              <IconButton>
+                <PaymentTwoToneIcon />
+              </IconButton>
+              </Tooltip>
+
+         {/* Transfer Entry */}
+
+          <Tooltip title="Transfer Entry">
+                <IconButton>
+                  <ArticleTwoToneIcon />
+                </IconButton>
+            </Tooltip>
+        </>
+
       ) : (
         <>
           {/* Add the icons inside the Tooltip component */}
@@ -301,31 +324,6 @@ export default function StudentFeeLedgerDetails() {
   const [selected, setSelected] = useState([]);
   const [searchText, setSearchText] = useState('');
 
-
-  const [anchorEl, setAnchorEl] = useState(null);
-
-  const handlePrintClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handlePrintClose = () => {
-    setAnchorEl(null);
-  };
-
-  const handlePrintReceipt = () => {
-    // Logic for printing receipt
-    // ...
-    handlePrintClose();
-  };
-
-  const handlePrintInvoice = () => {
-    // Logic for printing invoice
-    // ...
-    handlePrintClose();
-  };
-
-  const open = Boolean(anchorEl);
-  const id = open ? 'print-popover' : undefined;
 
 
   const handleRequestSort = (event, property) => {
@@ -388,14 +386,15 @@ export default function StudentFeeLedgerDetails() {
               rowCount={rows.length}
             />
             <TableBody>
+
+              {/* mapping table rows data */}
               {visibleRows.map((row, index) => {
                 const isItemSelected = isSelected(row.id);
                 const labelId = `enhanced-table-checkbox-${index}`;
 
-                // ============= set status overdue if date is over =============
-                {new Date(row.ldate) < new Date() ? row.status = 'overdue' : row.status}
-
                 return (
+
+                  // table data
                   <TableRow
                     hover
                     //onClick={(event) => handleClick(event, row.id)}
@@ -421,48 +420,77 @@ export default function StudentFeeLedgerDetails() {
                       id={labelId}
                       scope="row"
                     >
-                      <div>
+                      <Box>
                         <span style={{ fontWeight: 'bold' }}>{row.name}</span><br />
                         {row.date}
-                      </div>
-                      {/* {`${row.name}`}<br />
-                       {`${row.date}`} */}
+                      </Box>
                     </TableCell>
                     <TableCell align="right">{row.ldate}</TableCell>
                     <TableCell align="right">{row.netpay}</TableCell>
                     <TableCell align="right">{row.amtpay}</TableCell>
                     <TableCell align="right">{row.bal}</TableCell>
                     <TableCell align="right">{row.mop}</TableCell>
-                    <TableCell align="right">{row.entryNo}</TableCell>
-                    <TableCell align="right">{row.entryDate}</TableCell>
 
-              
-                    <TableCell align="right">{row.paymode}</TableCell>
-
-                    <TableCell align="right">
-                      <IconButton onClick={handlePrintClick}><PrintTwoToneIcon /></IconButton>
+                    {/* entry number and entry date */}
+                   <TableCell
+                      component="th"
+                      id={labelId}
+                      scope="row"
+                      align="right"
+                    >
+                      <Box>
+                        <span style={{ fontWeight: '600' }}>#{row.entryNo}</span><br />
+                        {row.entryDate}
+                      </Box>
                     </TableCell>
 
-                    <Popover
-                      id={id}
-                      open={open}
-                      anchorEl={anchorEl}
-                      onClose={handlePrintClose}
-                      anchorOrigin={{
-                        vertical: 'bottom',
-                        horizontal: 'center',
-                      }}
-                      transformOrigin={{
-                        vertical: 'top',
-                        horizontal: 'center',
-                      }}
-                    >
-                      <Typography sx={{ p: 2 , display:'Grid'}}>
-                        <Button sx={{color:'black', borderBottom:'1px dotted #ccc'}} onClick={handlePrintReceipt}>Print Receipt</Button>
-                        <Button sx={{color:'black'}} onClick={handlePrintInvoice}>Print Invoice</Button>
-                      </Typography>
-                    </Popover>
 
+                    {/* chq number and chq date */}
+                      <TableCell
+                        component="th"
+                        id={labelId}
+                        scope="row"
+                        align="right"
+                      >
+                        <Box>
+                          <span style={{ fontWeight: '600' }}>{row.chqNo}</span><br />
+                          {row.chqDate}
+                        </Box>
+                      </TableCell>
+
+
+                      {/* bank details */}
+
+                      <TableCell
+                        component="th"
+                        id={labelId}
+                        scope="row"
+                        align="right"
+                      >
+                        <Box>
+                          <span style={{ fontWeight: '600' }}>{row.bank}</span><br />
+                          {row.branch}
+                        </Box>
+                      </TableCell>
+
+                    <TableCell align="left"   className='find-comp'>{row.remarks}</TableCell>  
+
+                    {/* Ref details */}
+                    
+                    <TableCell
+                        component="th"
+                        id={labelId}
+                        scope="row"
+                        align="right"
+                      >
+                        <Box>
+                          <span style={{ fontWeight: '600' }}>{row.refNo}</span><br />
+                          {row.refDate}
+                        </Box>
+                    </TableCell>
+
+                    <TableCell align="left" sx={{textTransform:'uppercase'}}>{row.paymentCat}</TableCell>   
+  
                   </TableRow>
                 );
               })}

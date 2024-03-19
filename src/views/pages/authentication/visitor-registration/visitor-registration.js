@@ -5,11 +5,9 @@ import CssBaseline from '@mui/material/CssBaseline';
 import {
     Box,
     Grid,
-    Paper,
     Typography,
     useMediaQuery,
     useTheme,
-
 } from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import LogoImg from '../../../../assets/images/WhatsApp_Image_2020-03-21_at_8_04_53_PM__1-removebg-preview 1.png';
@@ -18,6 +16,7 @@ import SelfieVerification from './selfie-verification';
 import { MobileNumber } from './mobile-number/index';
 import OtpVerification from './otp-verification/index';
 import VisitorAppointmentPass from './appointment-pass/index'
+import { useState } from 'react';
 const defaultTheme = createTheme({
     palette: {
         secondary: {
@@ -28,29 +27,37 @@ const defaultTheme = createTheme({
 const VisitorRegistrationTemplate = () => {
     const theme = useTheme(); // Accessing theme object using useTheme hook
     const isMobile = useMediaQuery(theme.breakpoints.down('md'));
-    const step=0
-    if(step==4)
-    return (<><VisitorAppointmentPass/></>)
+    const xs= useMediaQuery(theme.breakpoints.down('xs'));    
+    const sm= useMediaQuery(theme.breakpoints.down('sm'));
+    const md= useMediaQuery(theme.breakpoints.down('md'));
+    const lg= useMediaQuery(theme.breakpoints.down('lg'));
+    const xl= useMediaQuery(theme.breakpoints.down('xl'));
+
+    console.log(""+ xs);
+    console.log(""+ sm);
+    console.log(""+ md);
+    console.log(""+ lg);
+    console.log(""+ xl);
+    console.error('')
+
+    const [step, setStep] = useState(0)
+    const [mobileNumber,setMobileNumber]=useState('')
+    const handleSteps = (step) => {
+        setStep(step + 1)
+    }
+    if (step == 4)
+        return (<><VisitorAppointmentPass /></>)
     return (<>
         {/* this will be our template */}
         {/* this will be the static template for or registration process */}
         {/* parent container box */}
-        <Box sx={{ justifyContent: 'center', alignItems: 'center', height: '100vh', display: 'flex', backgroundColor: '#eef2f6' }}>
+        <Box sx={{ ...css.center, height: '100%', backgroundColor: '#eef2f6' }}>
             <ThemeProvider theme={defaultTheme}>
-                <Box sx={{ minHeight: '100vh' }}>
+                <Box sx={{ minHeight: '100%' }}>
                     <Grid container component="main" >
                         <CssBaseline />
                         {/* left side school logo */}
-                        <Grid
-
-                            item
-                            sx={{
-                                backgroundColor: (t) => (t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900]),
-                                ...css.imageContainer,
-                                ...css.center,
-
-                            }}
-                        >
+                        <Grid item sx={{backgroundColor: (t) => (t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900]),...css.imageContainer,...css.center,}}>
                             <Grid item sx={{ ...css.center, flexDirection: 'column' }}>
                                 <img
                                     src={LogoImg}
@@ -66,18 +73,9 @@ const VisitorRegistrationTemplate = () => {
                             </Grid>
                         </Grid>
                         {/* school logo over*/}
-                        <Grid
-                            item
-                            component={Paper}
-                            elevation={6}
-                            square
-                            sx={{
-                                ...css.horizontalCenter,
-                                ...css.parentPaper
-                            }}
-
-                        >
-                            <Box sx={{ ...css.parentPaperBox }}>
+                        <Grid item elevation={6}>
+                            <Box sx={{...css.parentPaper,...css.horizontalCenter}}>                            
+                            <Box sx={{ ...css.parentPaperBox, ...css.displayNoneOnMd }}>
                                 <Typography
                                     component="h1"
                                     variant="h1"
@@ -90,7 +88,7 @@ const VisitorRegistrationTemplate = () => {
                                     variant="h4"
                                     sx={{ ...css.parentPaperHeading.address }}
                                 >
-                                    Vasundhara Ghaziabad
+                                    Vasundhara Ghaziabad,
                                 </Typography>
                                 <Typography
                                     component="h4"
@@ -100,6 +98,8 @@ const VisitorRegistrationTemplate = () => {
                                     Managed By Jusklik
                                 </Typography>
                             </Box>
+                            
+                            <Box sc={{display:'flex',flexDirection:'column'}}>
 
                             <Box sx={{ ...css.center, flexDirection: 'column', ...css.mobileLogoImage }}>
                                 {/* logo image for mobile devices */}
@@ -125,14 +125,16 @@ const VisitorRegistrationTemplate = () => {
 
                             {/* ============= Static Part Over =================== */}
                             {/* ================mobile number modal ===============  */}
-                            {step==0&&<MobileNumber />}
+                            {step == 0 && <MobileNumber step={step} handleSteps={handleSteps}  setMobileNumber={setMobileNumber} />}
                             {/* ============= Otp Modal ========================  */}
-                            {step==1&&<OtpVerification/>}
+                            {step == 1 && <OtpVerification step={step} handleSteps={handleSteps}  mobileNumber={mobileNumber} />}
                             {/* ============= Selfie ============================ */}
-                            {step==2&&<SelfieVerification/>}
+                            {step == 2 && <SelfieVerification step={step} handleSteps={handleSteps} md={md}/>}
                             {/* ============= Purpose/Details =========================== */}
-                            {step==3&&<VisitorDetails/>}
+                            {step == 3 && <VisitorDetails step={step} handleSteps={handleSteps} />}
                             {/* ============= Get Pass ========================== */}
+                            </Box>
+                            </Box>      
                         </Grid>
                     </Grid>
                 </Box>

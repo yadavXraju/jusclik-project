@@ -7,7 +7,7 @@ import ProfileDetail from './ProfileDetail';
 import AddressForm from './Address';
 import ContactPerson from './ContactPerson';
 import OtherDetails from './OtherDetails';
-import MainCard from 'ui-component/cards/MainCard';
+//import MainCard from 'ui-component/cards/MainCard';
 import Remarks from './Remarks';
 import CustomFields from './CustomFields';
 import PersonAddAltTwoToneIcon from '@mui/icons-material/PersonAddAltTwoTone';
@@ -59,10 +59,11 @@ const Mainform1 = () => {
       cardComponent = null;
   }
 
+
   return (
     <>
-      <MainCard>
-        <Grid container spacing={3} mb={3} sx={{ display: 'flex', height: '100%' }}>
+      <Card >
+        <Grid container spacing={3} mb={8} sx={{ display: 'flex', height: '100%' }}>
           <Grid item xs={12} sm={12} lg={3}>
             <Box sx={{ border: '1px solid #ccc', borderRadius: '10px' }}>
               <Card>
@@ -99,8 +100,8 @@ const Mainform1 = () => {
             </Box>
           </Grid>
         </Grid>
-      </MainCard>
-      <BottomNavbar tabPageLength={buttonsData.length}  value={selectedButton} setValue={setSelectedButton} customStyle={{width:'81.1%', bottom:'0', borderRadius:'1px'}}/>
+      </Card>
+      <BottomNavbar tabPageLength={buttonsData.length}  value={selectedButton} setValue={setSelectedButton} customStyle={{width:'100%', bottom:'0', borderRadius:'1px'}}/>
     </>
   );
 };

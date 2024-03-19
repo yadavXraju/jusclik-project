@@ -376,9 +376,7 @@ import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import {css} from '../css'
 
-
-
-const VisitorDetails = () => {
+const VisitorDetails = ({step,handleSteps}) => {
   const [name, setName] = useState('');
   const [address, setAddress] = useState('');
   const [nameError, setNameError] = useState(false);
@@ -414,26 +412,8 @@ const VisitorDetails = () => {
 
   return (
     <>
-     {/* <AppBar position="static">
-        <Toolbar>
-          <ArrowBackIosNewOutlinedIcon sx={{ "&:hover": { cursor: 'pointer' } }} onClick={() => navigate('/selfie-verification')} />
-          <Typography variant="h6" sx={{ flexGrow: 1 }}></Typography>
-          <Button color="inherit" onClick={() => navigate('/visitor-registration')}>Logout</Button>
-        </Toolbar>
-        </AppBar> */}
-      <Box sx={{ ...css.center}}>
-        
-          {/* <Box>
-            <Typography variant='h6' sx={{ ...css.horizontalCenter, mb: '20px', fontWeight: '600' }}>
-              Self Check-In
-            </Typography>
-            <Typography variant='h2' sx={{ textAlign: 'center' }}>Shaurya Software, Hermitage Plaza</Typography>
-            <Typography variant='h3' pb={6} sx={{ display: 'flex', justifyContent: 'center', marginTop: '20px', fontWeight: '400' }}>
-              Managed by jusklik
-            </Typography>
-          </Box> */}
-          
-            <Paper elevation={4} sx={{ ...css.mobilePaper,width:'100%'}}>
+      <Box sx={{ ...css.center,maxWidth:'25rem'}}>                  
+            <Paper elevation={2} sx={{ ...css.mobilePaper,}}>
               <form onSubmit={handleSubmit}>
                 <Box sx={{padding:'1rem 0'}}>
                   <TextField
@@ -458,11 +438,10 @@ const VisitorDetails = () => {
                     sx={{
                       '& .MuiOutlinedInput-notchedOutline': {
                         borderRadius: '50px'
-                      }
+                      },
+                      mt:'1rem'
                     }}
-                  />
-               
-             
+                  />                           
                   <TextField
                     id="outlined-basic-address"
                     label="Address"
@@ -485,11 +464,11 @@ const VisitorDetails = () => {
                     sx={{
                       '& .MuiOutlinedInput-notchedOutline': {
                         borderRadius: '50px'
-                      }
+                      },
+                      mt:'1rem'
                     }}
-                  />
-              
-                  <FormControl fullWidth variant="outlined" sx={{ mt: 0 }}>
+                  />              
+                  <FormControl fullWidth variant="outlined" sx={{ mt: '1rem' }}>
                     <InputLabel id="purpose-label">Purpose*</InputLabel>
                     <Select
                       labelId="purpose-label"
@@ -501,7 +480,7 @@ const VisitorDetails = () => {
                       sx={{
                         '& .MuiOutlinedInput-notchedOutline': {
                           borderRadius: '50px'
-                        }
+                        }                        
                       }}
                     >
                       <MenuItem value="I Work Here">I Work Here</MenuItem>
@@ -510,10 +489,8 @@ const VisitorDetails = () => {
                       <MenuItem value="Service">Service</MenuItem>
                       <MenuItem value="Other">Other</MenuItem>
                     </Select>
-                  </FormControl>
-             
-               
-                  <FormControl fullWidth variant="outlined">
+                  </FormControl>                            
+                  <FormControl fullWidth variant="outlined" sx={{mt:'1rem'}}>
                     <InputLabel id="want-to-meet-label">Want to Meet*</InputLabel>
                     <Select
                       labelId="want-to-meet-label"
@@ -525,7 +502,8 @@ const VisitorDetails = () => {
                       sx={{
                         '& .MuiOutlinedInput-notchedOutline': {
                           borderRadius: '50px'
-                        }
+                        },
+                        
                       }}
                     >
                       <MenuItem value="John Doe">John Doe</MenuItem>
@@ -539,14 +517,13 @@ const VisitorDetails = () => {
                   <Button type="submit" variant="contained" size="large" color="primary" sx={{
                    ...css.center, ...css.marginAuto,
                    ...css.submitButton,...css.button
-                  }}>
+                  }}
+                  onClick={()=>handleSteps(step)}>
                     SUBMIT
                   </Button>
                 </Box>
               </form>
-            </Paper>
-          
-        
+            </Paper>                  
       </Box>
     </>
   );
