@@ -4,6 +4,7 @@ import{Paper,Grid,Typography,Box,Tab}  from '@mui/material'
 import {TabContext,TabList,TabPanel } from '@mui/lab';
 import { HeadingCss } from 'views/dashboard/Default/dashboard-css/CommonCss';
 import NewArrivals from './NewArrivals';
+import PopularBook from './PopularBook';
 // import NewArrivals from './NewArrivals';
 
 
@@ -26,7 +27,7 @@ const LastestUpdatesOfBooks = () => {
         
 
         {/* list  */}
-        <Grid sx={{display:"flex"}}>
+        <Grid sx={{display:"flex",height:"410px"}}>
         <Box sx={{ width: '100%', typography: 'body1',padding:"10px" }}>
       <TabContext value={value}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
@@ -40,7 +41,7 @@ const LastestUpdatesOfBooks = () => {
         <TabPanel value="1" sx={{padding:'4px 0px 0px 0px'}}>
           <NewArrivals/>
         </TabPanel>
-        <TabPanel value="2" sx={{padding:'24px 24px 0px 24px'}}>Item Two</TabPanel>
+        <TabPanel value="2" sx={{padding:'4px 0px 0px 0px'}}><PopularBook/></TabPanel>
       </TabContext>
     </Box>
         </Grid>
