@@ -1,8 +1,7 @@
 // icons
-import PersonOutlineTwoToneIcon from '@mui/icons-material/PersonOutlineTwoTone';
-import SettingsTwoToneIcon from '@mui/icons-material/SettingsTwoTone';
-import AdminPanelSettingsTwoToneIcon from '@mui/icons-material/AdminPanelSettingsTwoTone';
 
+import SettingsTwoToneIcon from '@mui/icons-material/SettingsTwoTone';
+import DescriptionTwoToneIcon from '@mui/icons-material/DescriptionTwoTone';
 
 
 
@@ -13,49 +12,47 @@ const InventoryMenu = {
     children: [
   
        // Studnet master      
-          {
-            id: 'student-master',
-            title: 'Student',
-            type: 'collapse',
-            url: '/erp/student-info-fee/student-master',
-            icon: PersonOutlineTwoToneIcon,
-            children: [
+          // {
+          //   id: 'student-master',
+          //   title: 'Student',
+          //   type: 'collapse',
+          //   url: '/erp/student-info-fee/student-master',
+          //   icon: PersonOutlineTwoToneIcon,
+          //   children: [
 
-              {
-                  id: 'enquiry',
-                  title: 'Enquiry',
-                  type: 'item',
-                  url: '/erp/student-info-fee/student-master/enquiry',
-                  breadcrumbs: false,
+          //     {
+          //         id: 'enquiry',
+          //         title: 'Enquiry',
+          //         type: 'item',
+          //         url: '/erp/student-info-fee/student-master/enquiry',
+          //         breadcrumbs: false,
             
-                },
+          //       },
 
-            ]
-          },
+          //   ]
+          // },
 
+        // report
+        {
+          id: 'reports',
+          title: 'Reports',
+          type: 'item',
+          url: '/erp/inventory/reports',
+          icon:  DescriptionTwoToneIcon ,
+          breadcrumbs: false
+        },
+
+
+        // setting
           {
             id: 'setting',
-            title: 'Setting',
+            title: 'Settings',
             type: 'item',
-            url: '/erp/student-info-fee/setting',
+            url: '/erp/inventory/settings',
             icon: SettingsTwoToneIcon,
             breadcrumbs: false
           },
          
-
-          
-            // User and roles
-            {
-              id: 'user-and-roles',
-              title: 'User & Roles',
-              type: 'item',
-              url: '/erp/student-info-fee/user-and-roles',
-              icon: AdminPanelSettingsTwoToneIcon,
-              breadcrumbs: false
-            },
-           
-
- 
 
     ]
   };

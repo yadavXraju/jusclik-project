@@ -12,6 +12,8 @@ import IssueReturn2 from './issuedRetun';
 
 import NeedSupport from 'views/erp-module/student-information-fee-management/student-info-fee-management-dashboard/dashboard/support/Support';
 import LastestUpdatesOfBooks from './latestbooks';
+import OverDueBook from './OverDueBooks';
+import LateFine from './LateFine';
 
 const Dashboard = () => {
   return (
@@ -40,14 +42,23 @@ const Dashboard = () => {
           </Grid>
 
            {/* fee defaulter */}
-           <Grid item xs={12} lg={6} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
+           <Grid item xs={12} lg={8} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
+            <OverDueBook/>
               {/* <FeeDefaulter isLoading={isLoading} />  */}
-             <LastestUpdatesOfBooks/>
+          
           </Grid>
 
           {/* need support */}
-          <Grid item xs={12} lg={6} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
-              <NeedSupport /> 
+          <Grid item xs={12} lg={4} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
+             
+              <LastestUpdatesOfBooks/>
+          </Grid>
+          <Grid item xs={12} lg={8} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
+          {/* <NeedSupport />  */}
+          <LateFine />
+          </Grid>
+          <Grid item xs={12} lg={4} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
+          <NeedSupport /> 
           </Grid>
 
         </Grid>
@@ -56,5 +67,7 @@ const Dashboard = () => {
     </Grid>
   );
 };
+
+
 
 export default Dashboard

@@ -32,35 +32,27 @@ const ChangeEnrolmentNumber =  Loadable(lazy(() => import('views/erp-module/stud
 const UploadDocument =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/student-master/upload-document')));
 
 
-// Fee accounting
-
-const InvoiceCreation =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/fee-accounting/invoice-creation')));
-
+// Fee invoice
 
 const InvoiceModification =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/fee-accounting/invoice-modification')));
 
-const FeeTransactionEntry =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/fee-accounting/fee-transaction-entry')));
 
-
-const TransportDetailsEntry =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/fee-accounting/transport-details-entry')));
+const StudentFeeLedgerDetails =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/fee-accounting/student-fee-ledger-details')));
 
 
 const OptionalFeeHeadsEntry =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/fee-accounting/optional-fee-heads-entry')));
 
+// fee receipt
 
-const DishonouredChequeEntry =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/fee-accounting/dishonoured-cheque-entry')));
+const FeeTransactionEntry =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/fee-accounting/fee-transaction-entry')));
 
-
-const StudentFeeLedgerDetails =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/fee-accounting/student-fee-ledger-details')));
 
 const HeadWiseFeeAdjustmentEntry =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/fee-accounting/headwise-fee-adjustment-entry')));
 
 const FeeClearanceEntry=  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/fee-accounting/fee-clearance-entry')));
 
+
 const SecurityDeposit=  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/fee-accounting/security-deposit')));
-
-const TransferFeeEntry=  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/fee-accounting/transfer-fee-entry')));
-
 
 // hostel
 
@@ -319,10 +311,6 @@ const StudentInfoFeeRoutes = [
           {
             path: 'fee-accounting',
             children: [
-              { 
-                path: 'invoice-creation', 
-                element: <InvoiceCreation /> 
-              },
     
               {
                 path: 'invoice-modification',
@@ -334,10 +322,6 @@ const StudentInfoFeeRoutes = [
               element: <FeeTransactionEntry />
            },
     
-            {
-              path: 'transport-details-entry',
-              element: <TransportDetailsEntry />
-           },
     
     
            {
@@ -345,11 +329,7 @@ const StudentInfoFeeRoutes = [
             element: <OptionalFeeHeadsEntry />
           },
     
-          {
-            path: 'dishonoured-cheque-entry',
-            element: <DishonouredChequeEntry />
-         },
-    
+
     
           {
             path: 'student-fee-ledger-details',
@@ -370,11 +350,7 @@ const StudentInfoFeeRoutes = [
             path: 'security-deposit',
             element: <SecurityDeposit />
           },
-    
-          {
-            path: 'transfer-fee-entry',
-            element: <TransferFeeEntry />
-          },
+  
     
             ]
           },

@@ -6,7 +6,6 @@ import DescriptionTwoToneIcon from '@mui/icons-material/DescriptionTwoTone';
 import FindInPageTwoToneIcon from '@mui/icons-material/FindInPageTwoTone';
 import SettingsTwoToneIcon from '@mui/icons-material/SettingsTwoTone';
 import ReceiptLongTwoToneIcon from '@mui/icons-material/ReceiptLongTwoTone';
-// import BuildTwoToneIcon from '@mui/icons-material/BuildTwoTone';
 import AdminPanelSettingsTwoToneIcon from '@mui/icons-material/AdminPanelSettingsTwoTone';
 import DirectionsBusTwoToneIcon from '@mui/icons-material/DirectionsBusTwoTone';
 
@@ -28,37 +27,25 @@ const StudnetMasterColleagueTitles = [
 ];
 
 
-// Fee Accounting
+// Fee receipt
 
-const FeeAccountingColleagueTitles = [
-  {title : 'Invoice Creation' , url : '/erp/student-info-fee/fee-accounting/invoice-creation'}, 
-  {title : 'Invoice Modification' , url : '/erp/student-info-fee/fee-accounting/invoice-modification'}, 
-  {title : 'Fee Transaction Entry' , url : '/erp/student-info-fee/fee-accounting/fee-transaction-entry'}, 
-  {title : 'Transport Details Entry' , url : '/erp/student-info-fee/fee-accounting/transport-details-entry'}, 
-  {title :  'Optional Fee Heads Entry' , url : '/erp/student-info-fee/fee-accounting/optional-fee-heads-entry'}, 
-  {title :  'Dishonoured Cheque Entry' , url : '/erp/student-info-fee/fee-accounting/dishonoured-cheque-entry'}, 
-  {title :  'Student Fee Ledger Details' , url : '/erp/student-info-fee/fee-accounting/student-fee-ledger-details'}, 
-  {title :  'Head Wise Fee Adjustment Entry' , url : '/erp/student-info-fee/fee-accounting/head-wise-fee-adjustment-entry'}, 
-  {title :  'Fee Clearance Entry' , url : '/erp/student-info-fee/fee-accounting/fee-clearance-entry'}, 
+const FeeReceiptColleagueTitles = [
+  {title : 'Fee Transaction ' , url : '/erp/student-info-fee/fee-accounting/fee-transaction-entry'}, 
+  {title :  'Head Wise Fee Adjustment ' , url : '/erp/student-info-fee/fee-accounting/head-wise-fee-adjustment-entry'}, 
+  {title :  'Fee Clearance ' , url : '/erp/student-info-fee/fee-accounting/fee-clearance-entry'}, 
   {title :  'Security Deposit' , url : '/erp/student-info-fee/fee-accounting/security-deposit'}, 
-  {title :   'Transfer Fee Entry' , url : '/erp/student-info-fee/fee-accounting/transfer-fee-entry'}, 
 ];
 
 
-//  setting
-// const  SetUpColleagueTitles  = [
-//   {title : 'Setting' , url : '/erp/student-info-fee/settings/setting'}, 
-//   {title : 'System Data' , url : '/erp/student-info-fee/settings/system-data'}, 
-// ];
+// invoice modification
 
+const InvoiceModificationColleagueTitles = [
+  {title : 'Invoice Modification' , url : '/erp/student-info-fee/fee-accounting/invoice-modification'}, 
+  {title :  'Student Fee Ledger ' , url : '/erp/student-info-fee/fee-accounting/student-fee-ledger-details'}, 
+  {title :  'Optional Fee Heads ' , url : '/erp/student-info-fee/fee-accounting/optional-fee-heads-entry'}, 
 
-//  tools
-// const  ToolsColleagueTitles  = [
-//   {title : 'GPS Bus Tracking' , url : '/erp/student-info-fee/tools/gps-bus-tracking'}, 
-//   {title : 'Whatsapp Conversations' , url : '/erp/student-info-fee/tools/whatsapp-conversations'}, 
-//   {title : 'Whatsapp Delivery Report' , url : '/erp/student-info-fee/tools/whatsapp-delivery-report'}, 
-//   {title : 'Whatsapp Excel Sheet' , url : '/erp/student-info-fee/tools/whatsapp-excel-sheet'}, 
-// ];
+];
+
 
 
 
@@ -194,23 +181,13 @@ const StudentInfoFeeMenu = {
             icon: ReceiptLongTwoToneIcon,
             children: [
 
-              // {
-              //     id: 'invoice-creation',
-              //     title: 'Invoice Creation',
-              //     type: 'item',
-              //     url: '/erp/student-info-fee/fee-accounting/invoice-creation',
-              //     breadcrumbs: false,
-              //     colleagueTitle : FeeAccountingColleagueTitles,
-              //   },
-
-
                 {
                   id: 'invoice-modification',
                   title: 'Invoice Modification',
                   type: 'item',
                   url: '/erp/student-info-fee/fee-accounting/invoice-modification',
                   breadcrumbs: false,
-                  colleagueTitle : FeeAccountingColleagueTitles,
+                  colleagueTitle : InvoiceModificationColleagueTitles,
                 },
 
                 {
@@ -219,7 +196,7 @@ const StudentInfoFeeMenu = {
                   type: 'item',
                   url: '/erp/student-info-fee/fee-accounting/student-fee-ledger-details',
                   breadcrumbs: false,
-                  colleagueTitle : FeeAccountingColleagueTitles,
+                  colleagueTitle : InvoiceModificationColleagueTitles,
                 },
 
                 
@@ -229,30 +206,20 @@ const StudentInfoFeeMenu = {
                 type: 'item',
                 url: '/erp/student-info-fee/fee-accounting/optional-fee-heads-entry',
                 breadcrumbs: false,
-                colleagueTitle : FeeAccountingColleagueTitles,
-              },    
-              
-
-              // {
-              //   id: 'transfer-fee-entry',
-              //   title: 'Transfer Fee Entry',
-              //   type: 'item',
-              //   url: '/erp/student-info-fee/fee-accounting/transfer-fee-entry',
-              //   breadcrumbs: false,
-              //   colleagueTitle : FeeAccountingColleagueTitles,
-              // },
+                colleagueTitle : InvoiceModificationColleagueTitles,
+              },   
 
 
             ]
           },
 
-          // recipt
+          // receipt
 
           {
-            id: 'fee-recipt',
-            title: 'Fee Recipt ',
+            id: 'fee-receipt',
+            title: 'Fee Receipt ',
             type: 'collapse',
-            url: '/erp/student-info-fee/fee-recipt',
+            url: '/erp/student-info-fee/fee-receipt',
             icon: CreditCardTwoToneIcon,
             children: [
 
@@ -262,7 +229,7 @@ const StudentInfoFeeMenu = {
                  type: 'item',
                 url: '/erp/student-info-fee/fee-accounting/fee-transaction-entry',  //change
                 breadcrumbs: false,
-                colleagueTitle : FeeAccountingColleagueTitles,
+                colleagueTitle : FeeReceiptColleagueTitles,
               },
 
 
@@ -275,7 +242,7 @@ const StudentInfoFeeMenu = {
                 type: 'item',
                 url: '/erp/student-info-fee/fee-accounting/head-wise-fee-adjustment-entry',
                 breadcrumbs: false,
-                colleagueTitle : FeeAccountingColleagueTitles,
+                colleagueTitle : FeeReceiptColleagueTitles,
               },
 
                   
@@ -285,7 +252,7 @@ const StudentInfoFeeMenu = {
                 type: 'item',
                 url: '/erp/student-info-fee/fee-accounting/fee-clearance-entry',
                 breadcrumbs: false,
-                colleagueTitle : FeeAccountingColleagueTitles,
+                colleagueTitle : FeeReceiptColleagueTitles,
               },
 
               {
@@ -294,7 +261,7 @@ const StudentInfoFeeMenu = {
                 type: 'item',
                 url: '/erp/student-info-fee/fee-accounting/security-deposit',
                 breadcrumbs: false,
-                colleagueTitle : FeeAccountingColleagueTitles,
+                colleagueTitle : FeeReceiptColleagueTitles,
               },
               ]
             },
@@ -379,7 +346,7 @@ const StudentInfoFeeMenu = {
             breadcrumbs: false
           },
          
-
+  
           
             // User and roles
             {
