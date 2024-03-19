@@ -9,11 +9,12 @@ import PersonRoundedIcon from '@mui/icons-material/PersonRounded';
 import MainCard from 'ui-component/cards/MainCard';
 import ProgressBar from './ProgressBar';
 import FaqEnquiry from './FaqEnquiry';
+import { useState } from 'react';
 
 const stepsData = [
   { title: 'Add Organisation Details', completed: true, path: '/organisation-details' },
   { title: 'Upload Student Data', completed: false, path: '/upload-student-data' },
-  { title: 'Create Classes in Section', completed: false, path: '/create-classes-in-section' },
+  { title: 'Create Class and Section', completed: false, path: '/create-class-and-section' },
   { title: 'Configure Fee Structure', completed: false, path: '/configure-fee-structure' },
   { title: 'Add Concession Category', completed: false, path: '/add-concession-category' },
   { title: 'Create Transport roots & Slabs', completed: true, path: '/createtransport-roots-&-Slabs' },
@@ -29,6 +30,15 @@ const featuresData = [
 
 const DashboardMain = () => {
   const theme = useTheme();
+
+  const [steps, setSteps] = useState(stepsData);
+  const [hoveredStep, setHoveredStep] = useState(null);
+
+  const markAsComplete = (index) => {
+    const updatedSteps = [...steps];
+    updatedSteps[index].completed = true;
+    setSteps(updatedSteps);
+  };
 
   return (
     <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', margin: 'auto' }}>
@@ -52,7 +62,7 @@ const DashboardMain = () => {
         }}
       >
         <Typography variant="h3" sx={{ color: 'white' }}>
-          Get started with Jusklik Student info & Fee
+          Get started with Jusklik Student Info & Fee
         </Typography>
         <Grid container justifyContent="flex-end">
           <ProgressBar sx={{}} />
@@ -66,66 +76,75 @@ const DashboardMain = () => {
           Complete the following steps to have a hassle-free payroll experience
         </Typography>
       </MainCard>
-      <Paper
-        elevation={1}
-        sx={{
-          padding: '50px',
+{/* getting started titles */}
+
+      <Paper elevation={1} sx={{ padding: '50px',
           marginTop: '-16px',
           width: '100%',
           [theme.breakpoints.up('sm')]: {
             width: 'calc(65% - 20px)'
-          }
-        }}
-      >
-        {stepsData.map((step, index) => (
-          <Box
-            key={index}
-            sx={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              borderBottom: '1px solid #ccc',
-              paddingBottom: '20px',
-              color: step.completed ? '#35AB91' : '#627282',
-              paddingTop: '25px'
-            }}
-          >
+          } }}>
+      {stepsData.map((step, index) => (
+        <Box
+        key={index}
+        onMouseEnter={() => setHoveredStep(index)}
+        onMouseLeave={() => setHoveredStep(null)}
+          sx={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            borderBottom: '1px solid #ccc',
+            paddingBottom: '20px',
+            color: step.completed ? '#35AB91' : '#627282',
+            paddingTop: '25px',
+          }}
+        >
             <Link to={step.completed ? step.path : '/'} style={{ textDecoration: 'none' }}>
-              <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                <CheckOutlinedIcon
-                  sx={{ backgroundColor: step.completed ? '#14B474' : '#D4DADD', borderRadius: '50%', color: 'white', padding: '2px' }}
-                />
-                <Typography
-                  variant="h4"
-                  sx={{
-                    paddingLeft: '15px'
-                  }}
-                >
-                  {step.title}
-                </Typography>
-              </Box>
-            </Link>
-            {!step.completed && (
+          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+            <CheckOutlinedIcon sx={{ backgroundColor: step.completed ? '#14B474' : '#D4DADD', borderRadius: '50%', color: 'white', padding: '2px' }} />
+            <Typography variant="h4" sx={{ paddingLeft: '15px' }}>
+              {step.title}
+            </Typography>
+          </Box>
+          </Link>
+          {step.completed ? (
+            <Typography variant="h5" sx={{ color: '#35AB91' }}>
+              Completed
+            </Typography>
+          ) : (
+            <Box sx={{display:'flex', alignItems:'center'}}>
+                {!step.completed && hoveredStep === index && (
+            <Button
+            
+              onClick={() => markAsComplete(index)}
+              sx={{
+                color: '#2b76d2',
+                backgroundColor:'#cedae98a',
+              marginRight:'19rem',
+                '&:hover': { color: '#000', cursor: 'pointer' },
+                
+              }}
+            >
+              Mark as Complete
+            </Button>
+          )}
               <Link to={step.path} style={{ textDecoration: 'none' }}>
                 <Button
                   variant="contained"
                   sx={{
                     backgroundColor: '#408DFB1F',
                     color: '#2b76d2',
-                    '&:hover': { backgroundColor: 'rgb(64, 141, 251)', color: 'white' }
+                    '&:hover': { backgroundColor: 'rgb(64, 141, 251)', color: 'white' },
                   }}
                 >
                   Complete Now
                 </Button>
               </Link>
-            )}
-            {step.completed && (
-              <Typography variant="h5" sx={{ color: '#35AB91' }}>
-                Completed
-              </Typography>
-            )}
-          </Box>
-        ))}
-      </Paper>
+            </Box>
+          )}
+        </Box>
+      ))}
+    </Paper>
       <Paper
         elevation={1}
         sx={{
@@ -158,7 +177,7 @@ const DashboardMain = () => {
               >
                 {feature.icon}
               </Box>
-              <Typography sx={{ paddingTop: '8px' }}>{feature.text}</Typography>
+              <Typography sx={{ paddingTop: '8px' , color:'#000'}}>{feature.text}</Typography>
               </Link>
             </Grid>
           ))}

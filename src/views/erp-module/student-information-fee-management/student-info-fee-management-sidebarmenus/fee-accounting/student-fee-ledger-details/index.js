@@ -8,7 +8,7 @@ import rows from './StudentFeeLedgerData';
 // icons
 import DeleteIcon from '@mui/icons-material/Delete';
 import PaymentTwoToneIcon from '@mui/icons-material/PaymentTwoTone';
-import MoveDownTwoToneIcon from '@mui/icons-material/MoveDownTwoTone';
+import ArticleTwoToneIcon from '@mui/icons-material/ArticleTwoTone';
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -289,7 +289,7 @@ function EnhancedTableToolbar(props) {
 
           <Tooltip title="Transfer Entry">
                 <IconButton>
-                  <MoveDownTwoToneIcon />
+                  <ArticleTwoToneIcon />
                 </IconButton>
             </Tooltip>
         </>
