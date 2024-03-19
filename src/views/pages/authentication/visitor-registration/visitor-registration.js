@@ -27,19 +27,8 @@ const defaultTheme = createTheme({
 const VisitorRegistrationTemplate = () => {
     const theme = useTheme(); // Accessing theme object using useTheme hook
     const isMobile = useMediaQuery(theme.breakpoints.down('md'));
-    const xs= useMediaQuery(theme.breakpoints.down('xs'));    
-    const sm= useMediaQuery(theme.breakpoints.down('sm'));
+
     const md= useMediaQuery(theme.breakpoints.down('md'));
-    const lg= useMediaQuery(theme.breakpoints.down('lg'));
-    const xl= useMediaQuery(theme.breakpoints.down('xl'));
-
-    console.log(""+ xs);
-    console.log(""+ sm);
-    console.log(""+ md);
-    console.log(""+ lg);
-    console.log(""+ xl);
-    console.error('')
-
     const [step, setStep] = useState(0)
     const [mobileNumber,setMobileNumber]=useState('')
     const handleSteps = (step) => {
