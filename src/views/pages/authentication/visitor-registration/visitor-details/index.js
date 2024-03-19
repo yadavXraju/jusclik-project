@@ -412,8 +412,8 @@ const VisitorDetails = ({step,handleSteps}) => {
 
   return (
     <>
-      <Box sx={{ ...css.center}}>                  
-            <Paper elevation={4} sx={{ ...css.mobilePaper,width:'100%'}}>
+      <Box sx={{ ...css.center,maxWidth:'25rem'}}>                  
+            <Paper elevation={2} sx={{ ...css.mobilePaper,}}>
               <form onSubmit={handleSubmit}>
                 <Box sx={{padding:'1rem 0'}}>
                   <TextField

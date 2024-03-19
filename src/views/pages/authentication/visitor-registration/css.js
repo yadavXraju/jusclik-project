@@ -45,10 +45,10 @@ export const css = {
     fontSize: '15px',
     fontFamily: 'plus Jakarta sans',
     backgroundColor: '#ffffff',
-    width: '25rem'
+    width: '20rem'
   },
   parentContainer:{
-    minWidth:'80%'
+    minWidth:'100%'
   },
   imageContainer:{backgroundSize: 'cover',
   backgroundPosition: 'bottom',
@@ -62,13 +62,19 @@ export const css = {
     backgroundRepeat: 'no-repeat',
     borderRadius:  '20px 20px 0px 0px',
     padding: '0px 35px',
-    '@media (min-width: 767px)': {
-      width:'500px', // Hide the component on small screens (sm viewport)
+    '@media (min-width: 768px)': {
+      // width:'500px', // Hide the component on small screens (sm viewport)
+      justifyContent:'center'
     },
-    height:'100vh',
+    '@media (max-width: 768px)': {
+      width:'100vw',
+      justifyContent:'start',
+    },
+    minHeight:'100vh',
+    height:'100%',
     display:'flex',
     flexDirection:'column',
-    justifyContent:'start',
+      
   },
   parentPaperHeading:{
     welcome:{
@@ -90,8 +96,7 @@ export const css = {
       fontWeight:'500' 
     },
     address:{
-      // color: '#3a3a3a',
-      // color:'#E64B4C',
+
       color:'#364152b5',
       fontSize: { xs: '1rem', md: '1.5rem' },
       fontFamily: 'plus Jakarta sans', 
@@ -100,9 +105,7 @@ export const css = {
       fontWeight:'500' 
     },
     managedBy:{
-      //  color: '#3a3a3a',
-      // color:'#E64B4C',
-      color:'#364152b5',
+       color:'#364152b5',
        fontSize: { xs: '1rem', md: '1rem' }, 
        fontFamily: 'plus Jakarta sans', 
        textAlign: 'center', 
@@ -121,10 +124,10 @@ export const css = {
   mobilePaper:{
    minHeight:'10rem',
    borderRadius:'12px',
-   padding:'0 1rem' ,
+   padding:'1rem' ,
    '@media (max-width: 600px)': {
     padding:'1rem',
-    margin:'0 1.5rem'
+    margin:'0 0 1rem 0'
   },
   },
   mobileNumber:{
@@ -151,5 +154,5 @@ export const css = {
   },
   formTextColor:{
     color:'rgba(0, 0, 0, 0.6)'
-  }
+  },
 }
