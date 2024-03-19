@@ -28,7 +28,7 @@ const IssueReturn2 = () => {
     ],
     chart: {
       type: 'line',
-      height: 280,
+      height: 300,
       stacked: true,
       events: {
         selection: function (chart, e) {
@@ -53,14 +53,31 @@ const IssueReturn2 = () => {
       opacity: 1, // Ensure opacity is 1 for solid border
     },
     legend: {
-      position: 'top',
-      horizontalAlign: 'left',
+      position: 'bottom',
+      horizontalAlign: 'center',
+      fontSize:'14px',
+      margin:"20px"
+     
     },
     xaxis: {
       categories: ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'], // Example week labels
+      labels: {
+        style: {
+          fontSize: '12px',
+        },
+      },
+      
+    },
+    yaxis: {
+      show: true,
+      labels: {
+        style: {
+          fontSize: '14px',
+        },
+      },
     },
     grid:{
-        show:false,
+        show:true,
     }
   };
 
@@ -72,7 +89,7 @@ const IssueReturn2 = () => {
         </Grid>
 
       <Grid className="attendance-graph" style={AttendanceBox}>
-        <ApexCharts options={ChartData} series={ChartData.series} type="line" height={isMediumDesktop ? 200 : 300} />
+        <ApexCharts options={ChartData} series={ChartData.series} type="line" height={isMediumDesktop ? 200 : 320} />
       </Grid>
     </Paper>
   );

@@ -1,13 +1,16 @@
+import React from 'react';
 import PropTypes from 'prop-types';
-import { Grid, Paper, Typography, Box } from '@mui/material';
+import { Grid, Paper, Typography, Box, useMediaQuery } from '@mui/material';
 import Chart from 'react-apexcharts';
 import { HeadingCss } from 'views/dashboard/Default/dashboard-css/CommonCss';
 import SkeletonTotalGrowthBarChart from 'ui-component/cards/Skeleton/TotalGrowthBarChart';
 import { gridSpacing } from 'store/constant';
 
 const OverDueBook = ({ isLoading }) => {
+  const isMobile = useMediaQuery('(max-width: 767px)');
+
   const FeeDefaulterData = {
-    height: 380,
+    height: isMobile ? 300 : 380,
     type: 'bar',
     options: {
       chart: {
@@ -38,7 +41,17 @@ const OverDueBook = ({ isLoading }) => {
             fontWeight: '400',
           },
         },
+        dataLabels: { 
+          position: isMobile ? 'top' : 'bottom', // Display labels at the top for small screens
+          orientation: isMobile ? 'vertical' : 'horizontal', // Change orientation based on screen size
+          offsetY: isMobile ? -20 : 20, // Adjust offset based on screen size
+          style: {
+            fontSize: isMobile ? '9px' : '12px', // Adjust font size based on screen size
+            color: '#ABB5E6',
+            fontWeight: '100',
+          },
       },
+    },
       xaxis: {
         type: 'category',
         categories: [
@@ -74,7 +87,7 @@ const OverDueBook = ({ isLoading }) => {
     },
     series: [{ name: 'Overdue', data: [174, 140, 301, 134, 193, 348, 520, 512, 138, 472, 116, 234, 193] }],
   };
-
+  
   const totalOverdue = FeeDefaulterData.series[0].data.reduce((acc, curr) => acc + curr, 0);
 
   return (
@@ -88,13 +101,13 @@ const OverDueBook = ({ isLoading }) => {
             <Typography variant='h2' style={{ ...HeadingCss, border: 'none' }}>Overdue</Typography>
           </Grid>
 
-          <Grid container spacing={gridSpacing} height={410}>
+          <Grid sx={{ padding: '0 20px' }} container spacing={gridSpacing} height={isMobile ? 'auto' : 410}>
             <Grid item xs={12}>
               <Chart {...FeeDefaulterData} />
             </Grid>
           </Grid>
 
-          <Box sx={{ textAlign: "center" }}>
+          <Box sx={{ textAlign: "center", paddingBottom: "5px" }}>
             <Typography variant="body1" color="initial">Total Overdue: {totalOverdue}</Typography>
           </Box>
         </Paper>

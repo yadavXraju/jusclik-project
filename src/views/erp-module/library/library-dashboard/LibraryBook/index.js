@@ -38,12 +38,12 @@ const BookDetailPieChart = () => {
       },
     },
     labels: [
-      'Avialable',
+      'Available',
       'Issued',
       'Widthraw',
       'Damaged',
       'Binding',
-      'Not Avialable',
+      'Not Available',
       'Lost & Paid',
       'Lost/Missing',
       'Lost by Student',
@@ -105,9 +105,9 @@ const BookDetailPieChart = () => {
         {/* ================================= content  =================================  */}
         <Grid sx={{ display: 'flex' }}>
           {/* =================================  chart =================================   */}
-          <Grid lg={6} sx={{ borderRight: '1px solid rgb(227, 227, 227)' }}>
-            <Grid style={{ display: 'flex', flexDirection: 'column', padding: '0 20px 8px 20px', alignItems: isMobile ? 'center' : 'auto' }}>
-              <ApexCharts options={chartData} series={chartData.series} type="donut" height={isMediumDesktop ? 200 : 330} />
+          <Grid lg={6}  xs={12} sx={{ borderRight: '1px solid rgb(227, 227, 227)' }}>
+            <Grid style={{ display: 'flex', flexDirection: 'column', padding: isMobile ? "0px":'20px 20px 18px 20px', alignItems: isMobile ? 'center' : 'auto' }}>
+              <ApexCharts options={chartData} series={chartData.series} type="donut" height={isMediumDesktop ? 200 : 320} />
             </Grid>
           </Grid>
 
@@ -115,7 +115,7 @@ const BookDetailPieChart = () => {
           <Grid lg={6} sx={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', paddingLeft: '40px', gap: '20px' }}>
               <Grid container spacing={0}>
               {/* detail left */}
-                <Grid item xs={6}>
+                <Grid lg={6} item xs={12}>
                 {/* avialable */}
                 <Box sx={{ display: 'flex', flexDirection: 'row',alignItems:"center" }}>
               
@@ -126,7 +126,7 @@ const BookDetailPieChart = () => {
               <Typography variant='body1' className='labels'>{chartData.labels[0]}</Typography>
                 </Box>
             {/* Issued */}
-            <Box sx={{ display: 'flex', flexDirection: 'row',alignItems:"center" }}>
+                <Box sx={{ display: 'flex', flexDirection: 'row',alignItems:"center" }}>
               
               
                 <Box sx={{width:"10px",height:"10px",borderRadius:"50%" ,marginRight:"15px",background:chartData.colors[1]}}>
@@ -163,7 +163,7 @@ const BookDetailPieChart = () => {
               </Box>
                 </Grid>
                 {/* detail right */}
-                <Grid item xs={6}>
+                <Grid lg={6} item xs={12}>
                                   {/*  */}
                                   <Box sx={{ display: 'flex', flexDirection: 'row',alignItems:"center" }}>
               
