@@ -67,7 +67,8 @@ function a11yProps(index) {
 
 export default function LoginPage() {
   const theme = useTheme(); // Accessing theme object using useTheme hook
-
+  const [usernameError, setUsernameError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [selectAccountOpen, setSelectAccountOpen] = useState(false);
@@ -92,6 +93,19 @@ export default function LoginPage() {
   const handleMobileSubmit = ({ country, mobileNumber }) => {
     console.log(`Submitted Mobile Number: ${country} ${mobileNumber}`);
     handleSelectAccountToggle();
+  };
+
+  
+  const handleChangeUsername = (event) => {
+    const { value } = event.target;
+    setUserId(value);
+    setUsernameError(false); // Reset username error state
+  };
+
+  const handleChangePassword = (event) => {
+    const { value } = event.target;
+    setUserPassword(value);
+    setPasswordError(false); // Reset password error state
   };
 
   const handleSubmit = (event) => {
@@ -133,8 +147,21 @@ export default function LoginPage() {
         window.location.href = '/erp/visitor/dashboard';
       }, 500); // Delay in milliseconds
     } else {
-      alert('Wrong Credentials');
+      // alert('Wrong Credentials');
+      setUsernameError(true) 
+      setPasswordError(true) 
     }
+
+       // Check for empty username or password
+       if (userId.trim() === '') {
+        setUsernameError(true);
+        return;
+      }
+  
+      if (userPassword.trim() === '') {
+        setPasswordError(true);
+        return;
+      }
   };
 
   const isMobile = useMediaQuery(theme.breakpoints.only('xs'));
@@ -246,7 +273,9 @@ export default function LoginPage() {
                   autoComplete="Username"
                   autoFocus
                   value={userId}
-                  onChange={(event) => setUserId(event.target.value)}
+                  error={usernameError}
+                  helperText={usernameError?'Enter the username' : ''}
+                  onChange={handleChangeUsername}
                 />
 
                 <TextField
@@ -276,7 +305,9 @@ export default function LoginPage() {
                   id="password"
                   autoComplete="current-password"
                   value={userPassword}
-                  onChange={(event) => setUserPassword(event.target.value)}
+                  error={passwordError}
+                  helperText={passwordError?'Enter your password':''}
+                  onChange={handleChangePassword}
                 />
 
                 <Grid
