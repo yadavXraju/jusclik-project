@@ -4,11 +4,11 @@ import { LocalizationProvider } from '@mui/x-date-pickers-pro';
 import { AdapterDayjs } from '@mui/x-date-pickers-pro/AdapterDayjs';
 import { DateRangePicker } from '@mui/x-date-pickers-pro/DateRangePicker';
 
- const ParamDateRangePicker=()=>{
+ const ParamDateRangePicker=({start,end})=>{
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <DemoContainer components={['DateRangePicker']}>
-        <DateRangePicker localeText={{ start: 'Check-in', end: 'Check-out' }} />
+        <DateRangePicker localeText={{ start:start, end:end}} />
       </DemoContainer>
     </LocalizationProvider>
   );
