@@ -1,11 +1,11 @@
 import React, { useState, useRef } from 'react';
-import { Typography, Button, Paper, TextField, Grid } from '@mui/material';
+import { Typography, Button, Paper, TextField, Grid, Link } from '@mui/material';
 import { useNavigate } from "react-router-dom";
 import { Box } from '@mui/system';
 import { css } from '../css';
 
 
-const OtpVerification = ({step,handleSteps}) => {
+const OtpVerification = ({step,handleSteps,mobileNumber}) => {
 const navigate = useNavigate();
 const [otp, setOtp] = useState(['', '', '', '']);
 const inputRefs = useRef([]);
@@ -37,13 +37,12 @@ const handleOtpChange = (index, value) => {
       console.log('Invalid OTP');
     }
   };
-
-console.log(newOtp===secureOtp);
 return (
-    <Box sx={{...css.center }}>
-      <Paper sx={{ ...css.mobilePaper,width:'100%'}} elevation={4}>
+    <Box sx={{...css.center}}>
+      <Paper sx={{ ...css.mobilePaper, minWidth:'20rem'}} elevation={2}>
         <Typography variant="h6" sx={{ ...css.formTextColor,padding:'1rem 0',sm:'14px',...css.horizontalCenter }}>Verification</Typography>
-        <Typography sx={{ ...css.formTextColor,py:'1rem', fontWeight: '400',...css.horizontalCenter }}>OTP has been sent to 87xxxxx531</Typography>
+        <Typography sx={{ ...css.formTextColor, fontWeight: '400',...css.horizontalCenter,textAlign:'center' }}>OTP has been sent to {mobileNumber}</Typography>
+        <Link href='' onClick={handleSteps(step-1)} sx={{py:'1rem', fontWeight: '400',...css.horizontalCenter,textAlign:'center'}}>Edit Number</Link>
         <Grid container spacing={1} justifyContent="center">
           {otp.map((digit, index) => (
             <Grid item key={index}>
@@ -65,6 +64,7 @@ return (
                 }}
                 inputProps={{ maxLength: 1 }}
                 inputRef={(el) => (inputRefs.current[index] = el)}
+                type="tel"
                 sx={{
                   backgroundColor: '#ffffff',
                   width: '56px',
