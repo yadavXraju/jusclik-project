@@ -53,8 +53,11 @@ const IssueReturn2 = () => {
       opacity: 1, // Ensure opacity is 1 for solid border
     },
     legend: {
-      position: 'top',
-      horizontalAlign: 'left',
+      position: 'bottom',
+      horizontalAlign: 'center',
+      fontSize:'14px',
+      margin:"20px"
+     
     },
     xaxis: {
       categories: ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'], // Example week labels
@@ -74,7 +77,7 @@ const IssueReturn2 = () => {
       },
     },
     grid:{
-        show:false,
+        show:true,
     }
   };
 
