@@ -13,7 +13,7 @@ const OverDueBook = ({ isLoading }) => {
       chart: {
         id: 'bar-chart',
         stacked: true,
-        toolbar: { show: false },
+        toolbar: { show: true },
         zoom: { enabled: false },
         stroke: false,
       },
@@ -21,7 +21,7 @@ const OverDueBook = ({ isLoading }) => {
         {
           breakpoint: 480,
           options: {
-            legend: { position: 'bottom', offsetX: -10, offsetY: 0 },
+            legend: { position: 'bottom', offsetX: 0, offsetY: 90 },
           },
         },
       ],
@@ -30,9 +30,13 @@ const OverDueBook = ({ isLoading }) => {
           horizontal: false,
           columnWidth: '50%',
           borderRadius: 5,
-          dataLabels: { position: 'bottom',
-          color:'#ABB5E6',
-          fontWeight:"400" },
+          marginBottom: 20, // Increase the gap between bars and x-axis label
+          dataLabels: { 
+            position: 'bottom',
+            offsetY: 20, // Move labels away from bars
+            color: '#ABB5E6',
+            fontWeight: '400',
+          },
         },
       },
       xaxis: {
@@ -42,15 +46,20 @@ const OverDueBook = ({ isLoading }) => {
         ],
         labels: {
           style: {
-            fontSize: '14px', // Adjust x-axis labels font size
+            fontSize: '12px',
           },
         },
       },
       yaxis: {
+        show: true,
         labels: {
           style: {
-            fontSize: '14px', // Adjust y-axis labels font size
+            fontSize: '14px',
           },
+        },
+        padding: {
+          top: 20, // Increase padding between labels and axis
+          bottom: 20, // Increase padding between bars and x-axis
         },
       },
       legend: {
@@ -58,16 +67,15 @@ const OverDueBook = ({ isLoading }) => {
       },
       fill: {
         type: 'solid',
-        colors: ['#B5B7F1'], // Customize bar colors
-        opacity: 0.9, // Set opacity for the bars
+        colors: ['#987ECD'],
+        opacity: 0.9,
       },
-      grid: { show: true },
+      grid: { show: false },
     },
-    series: [{ name: 'Overdue', data: [174, 140, 301, 134, 193, 348, 520, 512, 138, 472, 116, 234, 193] ,
-  fontWeight:"400"}],
+    series: [{ name: 'Overdue', data: [174, 140, 301, 134, 193, 348, 520, 512, 138, 472, 116, 234, 193] }],
   };
 
-  const totalOverDueBooks = FeeDefaulterData.series[0].data.reduce((total, currentValue) => total + currentValue, 0);
+  const totalOverdue = FeeDefaulterData.series[0].data.reduce((acc, curr) => acc + curr, 0);
 
   return (
     <>
@@ -75,18 +83,19 @@ const OverDueBook = ({ isLoading }) => {
         <SkeletonTotalGrowthBarChart />
       ) : (
         <Paper elevation={3} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', border: '1px solid rgb(227, 227, 227)', borderRadius: '12px' }}>
-          <Grid sx={{ padding: '24px' }}>
-            <Typography variant="h2" sx={HeadingCss}>
-              Overdue Books
-            </Typography>
+
+          <Grid sx={{ padding: '24px 24px 0 24px', background: '#f9f9fb', borderBottom: '1px solid rgba(128, 128, 128, 0.25)', borderRadius: '12px 12px 0px 0' }}>
+            <Typography variant='h2' style={{ ...HeadingCss, border: 'none' }}>Overdue</Typography>
           </Grid>
-          <Grid container spacing={gridSpacing}>
+
+          <Grid container spacing={gridSpacing} height={410}>
             <Grid item xs={12}>
               <Chart {...FeeDefaulterData} />
             </Grid>
           </Grid>
-          <Box sx={{ p: 2, textAlign: 'center', borderTop: '1px solid rgb(227, 227, 227)' }}>
-            <Typography variant="body1">Total Books: {totalOverDueBooks}</Typography>
+
+          <Box sx={{ textAlign: "center" }}>
+            <Typography variant="body1" color="initial">Total Overdue: {totalOverdue}</Typography>
           </Box>
         </Paper>
       )}

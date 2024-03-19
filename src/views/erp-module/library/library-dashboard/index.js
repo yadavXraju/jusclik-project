@@ -6,11 +6,13 @@ import { gridSpacing } from 'store/constant';
 import BookDetailPieChart from './LibraryBook';
 
 // import IssueReturn from './issuedRetun/IssuedReturnPiechart';
-import OverDueBook from './OverDueBooks';
+// import OverDueBook from './OverDueBooks';
 import BookDetail from './bookDetail/BookDetail';
-// import IssueReturn2 from './issuedRetun/IssuedReturn2';
+import IssueReturn2 from './issuedRetun';
 
 import NeedSupport from 'views/erp-module/student-information-fee-management/student-info-fee-management-dashboard/dashboard/support/Support';
+import LastestUpdatesOfBooks from './latestbooks';
+import OverDueBook from './OverDueBooks';
 
 const Dashboard = () => {
   return (
@@ -28,27 +30,30 @@ const Dashboard = () => {
          {/* Books Detail Pie chart */}
          <Grid item xs={12} lg={6} md={12} sx={{ marginTop: { md: '0px', lg: '1rem' } }}>
             {/* <InvoiceRaised /> */}
-           
-            <OverDueBook/>
+               <IssueReturn2/>
+            {/* <OverDueBook/> */}
          </Grid>
 
          {/* fee collection */}
          <Grid item xs={12} lg={6}  md={12} sx={{ marginTop: { md: '0px', lg: '1rem' } }}>
-              {/* <FeeCollection/>  */}
-              {/* <IssueReturn/> */}
-              {/* <IssueReturn2/> */}
+    
               <BookDetailPieChart/>
           </Grid>
 
            {/* fee defaulter */}
-           <Grid item xs={12} lg={8} md={12} sx={{ marginTop: { md: '0px', lg: '1rem' } }}>
+           <Grid item xs={12} lg={8} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
+            <OverDueBook/>
               {/* <FeeDefaulter isLoading={isLoading} />  */}
-            
+          
           </Grid>
 
           {/* need support */}
           <Grid item xs={12} lg={4} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
-              <NeedSupport /> 
+             
+              <LastestUpdatesOfBooks/>
+          </Grid>
+          <Grid item xs={12} lg={6} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
+          <NeedSupport /> 
           </Grid>
 
         </Grid>
@@ -57,5 +62,7 @@ const Dashboard = () => {
     </Grid>
   );
 };
+
+
 
 export default Dashboard

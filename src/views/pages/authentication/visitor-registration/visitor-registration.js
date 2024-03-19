@@ -5,11 +5,9 @@ import CssBaseline from '@mui/material/CssBaseline';
 import {
     Box,
     Grid,
-    Paper,
     Typography,
     useMediaQuery,
     useTheme,
-
 } from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import LogoImg from '../../../../assets/images/WhatsApp_Image_2020-03-21_at_8_04_53_PM__1-removebg-preview 1.png';
@@ -18,6 +16,7 @@ import SelfieVerification from './selfie-verification';
 import { MobileNumber } from './mobile-number/index';
 import OtpVerification from './otp-verification/index';
 import VisitorAppointmentPass from './appointment-pass/index'
+import { useState } from 'react';
 const defaultTheme = createTheme({
     palette: {
         secondary: {
@@ -28,9 +27,12 @@ const defaultTheme = createTheme({
 const VisitorRegistrationTemplate = () => {
     const theme = useTheme(); // Accessing theme object using useTheme hook
     const isMobile = useMediaQuery(theme.breakpoints.down('md'));
-    const step=0
-    if(step==4)
-    return (<><VisitorAppointmentPass/></>)
+    const [step, setStep] = useState(0)
+    const handleSteps = (step) => {
+        setStep(step + 1)
+    }
+    if (step == 4)
+        return (<><VisitorAppointmentPass /></>)
     return (<>
         {/* this will be our template */}
         {/* this will be the static template for or registration process */}
@@ -68,16 +70,17 @@ const VisitorRegistrationTemplate = () => {
                         {/* school logo over*/}
                         <Grid
                             item
-                            component={Paper}
+                            // component={Paper}
                             elevation={6}
                             square
                             sx={{
                                 ...css.horizontalCenter,
-                                ...css.parentPaper
+                                ...css.parentPaper,
+                                justifyContent:'center'
                             }}
 
                         >
-                            <Box sx={{ ...css.parentPaperBox }}>
+                            <Box sx={{ ...css.parentPaperBox, ...css.displayNoneOnMd }}>
                                 <Typography
                                     component="h1"
                                     variant="h1"
@@ -90,7 +93,7 @@ const VisitorRegistrationTemplate = () => {
                                     variant="h4"
                                     sx={{ ...css.parentPaperHeading.address }}
                                 >
-                                    Vasundhara Ghaziabad
+                                    Vasundhara Ghaziabad,
                                 </Typography>
                                 <Typography
                                     component="h4"
@@ -125,14 +128,15 @@ const VisitorRegistrationTemplate = () => {
 
                             {/* ============= Static Part Over =================== */}
                             {/* ================mobile number modal ===============  */}
-                            {step==0&&<MobileNumber />}
+                            {step == 0 && <MobileNumber step={step} handleSteps={handleSteps} />}
                             {/* ============= Otp Modal ========================  */}
-                            {step==1&&<OtpVerification/>}
+                            {step == 1 && <OtpVerification step={step} handleSteps={handleSteps} />}
                             {/* ============= Selfie ============================ */}
-                            {step==2&&<SelfieVerification/>}
+                            {step == 2 && <SelfieVerification step={step} handleSteps={handleSteps} />}
                             {/* ============= Purpose/Details =========================== */}
-                            {step==3&&<VisitorDetails/>}
+                            {step == 3 && <VisitorDetails step={step} handleSteps={handleSteps} />}
                             {/* ============= Get Pass ========================== */}
+                                
                         </Grid>
                     </Grid>
                 </Box>

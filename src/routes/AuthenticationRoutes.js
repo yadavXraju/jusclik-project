@@ -9,9 +9,9 @@ import Loadable from 'ui-component/Loadable';
 
 // login option 3 routing
 const Login = Loadable(lazy(() => import('views/pages/authentication/Login')));
-const ForgetPassword = Loadable(lazy(() => import('views/pages/authentication/ForgetPassword')));
-const VerifyNumber = Loadable(lazy(() => import('views/pages/authentication/VerifyNumber')));
-const SetNewPassword = Loadable(lazy(() => import('views/pages/authentication/SetNewPassword')));
+// const ForgetPassword = Loadable(lazy(() => import('views/pages/authentication/ForgetPassword')));
+// const VerifyNumber = Loadable(lazy(() => import('views/pages/authentication/VerifyNumber')));
+// const SetNewPassword = Loadable(lazy(() => import('views/pages/authentication/SetNewPassword')));
 const VisitorRegistration =  Loadable(lazy(() => import('views/pages/authentication/visitor-registration')));
 
 // const VisitorAppointementPass = Loadable(lazy(() => import('views/pages/authentication/visitor-registration/appointment-pass')));
@@ -34,20 +34,20 @@ const AuthenticationRoutes = {
       element: <Login />
     },
 
-    {
-      path: '/forgetpassword',
-      element: <ForgetPassword />
-    },
+    // {
+    //   path: '/forgetpassword',
+    //   element: <ForgetPassword />
+    // },
 
-    {
-      path: '/verifynumber',
-      element: <VerifyNumber />
-    },
+    // {
+    //   path: '/verifynumber',
+    //   element: <VerifyNumber />
+    // },
 
-    {
-      path: '/setnewpassword',
-      element: <SetNewPassword />
-    },
+    // {
+    //   path: '/setnewpassword',
+    //   element: <SetNewPassword />
+    // },
 
     {
       path:'/visitor-registration',
