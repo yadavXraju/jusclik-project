@@ -105,9 +105,9 @@ const BookDetailPieChart = () => {
         {/* ================================= content  =================================  */}
         <Grid sx={{ display: 'flex' }}>
           {/* =================================  chart =================================   */}
-          <Grid lg={6} sx={{ borderRight: '1px solid rgb(227, 227, 227)' }}>
-            <Grid style={{ display: 'flex', flexDirection: 'column', padding: '0 20px 8px 20px', alignItems: isMobile ? 'center' : 'auto' }}>
-              <ApexCharts options={chartData} series={chartData.series} type="donut" height={isMediumDesktop ? 200 : 335} />
+          <Grid lg={6}  xs={12} sx={{ borderRight: '1px solid rgb(227, 227, 227)' }}>
+            <Grid style={{ display: 'flex', flexDirection: 'column', padding: isMobile ? "0px":'20px 20px 18px 20px', alignItems: isMobile ? 'center' : 'auto' }}>
+              <ApexCharts options={chartData} series={chartData.series} type="donut" height={isMediumDesktop ? 200 : 320} />
             </Grid>
           </Grid>
 
@@ -115,60 +115,100 @@ const BookDetailPieChart = () => {
           <Grid lg={6} sx={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', paddingLeft: '40px', gap: '20px' }}>
               <Grid container spacing={0}>
               {/* detail left */}
-                <Grid item xs={6}>
+                <Grid lg={6} item xs={12}>
                 {/* avialable */}
-                <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-              <Typography variant='h4' sx={{ color: chartData.colors[0], fontSize: '28px'  }} className="series" >{chartData.series[0]}</Typography>
-              <Typography variant='h4' className='labels'>{chartData.labels[0]}</Typography>
-            </Box>
+                <Box sx={{ display: 'flex', flexDirection: 'row',alignItems:"center" }}>
+              
+              
+                <Box sx={{width:"10px",height:"10px",borderRadius:"50%" ,marginRight:"15px",background:chartData.colors[0]}}>
+                </Box>
+          
+              <Typography variant='body1' className='labels'>{chartData.labels[0]}</Typography>
+                </Box>
             {/* Issued */}
-            <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-              <Typography variant='h4' sx={{ color: chartData.colors[1], fontSize: '28px'  }} className="series" >{chartData.series[1]}</Typography>
-              <Typography variant='h4' className='labels'>{chartData.labels[1]}</Typography>
-            </Box>
+                <Box sx={{ display: 'flex', flexDirection: 'row',alignItems:"center" }}>
+              
+              
+                <Box sx={{width:"10px",height:"10px",borderRadius:"50%" ,marginRight:"15px",background:chartData.colors[1]}}>
+                </Box>
+          
+              <Typography variant='body1' className='labels'>{chartData.labels[1]}</Typography>
+                </Box>
                         {/* Issued */}
-                        <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-              <Typography variant='h4' sx={{ color: chartData.colors[2], fontSize: '28px'  }} className="series" >{chartData.series[2]}</Typography>
-              <Typography variant='h4' className='labels'>{chartData.labels[2]}</Typography>
-            </Box>
+                        <Box sx={{ display: 'flex', flexDirection: 'row',alignItems:"center" }}>
+              
+              
+              <Box sx={{width:"10px",height:"10px",borderRadius:"50%" ,marginRight:"15px",background:chartData.colors[2]}}>
+              </Box>
+        
+            <Typography variant='body1' className='labels'>{chartData.labels[2]}</Typography>
+              </Box>
                                     {/* Issued */}
-                                    <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-              <Typography variant='h4' sx={{ color: chartData.colors[3], fontSize: '28px'  }} className="series" >{chartData.series[3]}</Typography>
-              <Typography variant='h4' className='labels'>{chartData.labels[3]}</Typography>
-            </Box>
+                                    <Box sx={{ display: 'flex', flexDirection: 'row',alignItems:"center" }}>
+              
+              
+              <Box sx={{width:"10px",height:"10px",borderRadius:"50%" ,marginRight:"15px",background:chartData.colors[3]}}>
+              </Box>
+        
+            <Typography variant='body1' className='labels'>{chartData.labels[3]}</Typography>
+              </Box>
                                     {/* Issued */}
-                                    <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-              <Typography variant='h4' sx={{ color: chartData.colors[4], fontSize: '28px'  }} className="series" >{chartData.series[4]}</Typography>
-              <Typography variant='h4' className='labels'>{chartData.labels[4]}</Typography>
-            </Box>
+                                    <Box sx={{ display: 'flex', flexDirection: 'row',alignItems:"center" }}>
+              
+              
+              <Box sx={{width:"10px",height:"10px",borderRadius:"50%" ,marginRight:"15px",background:chartData.colors[4]}}>
+              </Box>
+        
+            <Typography variant='body1' className='labels'>{chartData.labels[4]}</Typography>
+              </Box>
                 </Grid>
                 {/* detail right */}
-                <Grid item xs={6}>
+                <Grid lg={6} item xs={12}>
                                   {/*  */}
-                <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-              <Typography variant='h4' sx={{ color: chartData.colors[5], fontSize: '28px'  }} className="series" >{chartData.series[5]}</Typography>
-              <Typography variant='h4' className='labels'>{chartData.labels[5]}</Typography>
-            </Box>
+                                  <Box sx={{ display: 'flex', flexDirection: 'row',alignItems:"center" }}>
+              
+              
+              <Box sx={{width:"10px",height:"10px",borderRadius:"50%" ,marginRight:"15px",background:chartData.colors[5]}}>
+              </Box>
+        
+            <Typography variant='body1' className='labels'>{chartData.labels[5]}</Typography>
+              </Box>
             {/*  */}
-            <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-              <Typography variant='h4' sx={{ color: chartData.colors[6], fontSize: '28px'  }} className="series" >{chartData.series[6]}</Typography>
-              <Typography variant='h4' className='labels'>{chartData.labels[6]}</Typography>
-            </Box>
+            <Box sx={{ display: 'flex', flexDirection: 'row',alignItems:"center" }}>
+              
+              
+              <Box sx={{width:"10px",height:"10px",borderRadius:"50%" ,marginRight:"15px",background:chartData.colors[6]}}>
+              </Box>
+        
+            <Typography variant='body1' className='labels'>{chartData.labels[6]}</Typography>
+              </Box>
                    {/*  */}
-                   <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-              <Typography variant='h4' sx={{ color: chartData.colors[7], fontSize: '28px'  }} className="series" >{chartData.series[7]}</Typography>
-              <Typography variant='h4' className='labels'>{chartData.labels[7]}</Typography>
-            </Box>
+                   <Box sx={{ display: 'flex', flexDirection: 'row',alignItems:"center" }}>
+              
+              
+              <Box sx={{width:"10px",height:"10px",borderRadius:"50%" ,marginRight:"15px",background:chartData.colors[7]}}>
+              </Box>
+        
+            <Typography variant='body1' className='labels'>{chartData.labels[7]}</Typography>
+              </Box>
                    {/*  */}
-                   <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-              <Typography variant='h4' sx={{ color: chartData.colors[8], fontSize: '28px'  }} className="series" >{chartData.series[8]}</Typography>
-              <Typography variant='h4' className='labels'>{chartData.labels[8]}</Typography>
-            </Box>
+                   <Box sx={{ display: 'flex', flexDirection: 'row',alignItems:"center" }}>
+              
+              
+              <Box sx={{width:"10px",height:"10px",borderRadius:"50%" ,marginRight:"15px",background:chartData.colors[8]}}>
+              </Box>
+        
+            <Typography variant='body1' className='labels'>{chartData.labels[8]}</Typography>
+              </Box>
                    {/*  */}
-                   <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-              <Typography variant='h4' sx={{ color: chartData.colors[9], fontSize: '28px'  }} className="series" >{chartData.series[9]}</Typography>
-              <Typography variant='h4' className='labels'>{chartData.labels[9]}</Typography>
-            </Box>
+                   <Box sx={{ display: 'flex', flexDirection: 'row',alignItems:"center" }}>
+              
+              
+              <Box sx={{width:"10px",height:"10px",borderRadius:"50%" ,marginRight:"15px",background:chartData.colors[9]}}>
+              </Box>
+        
+            <Typography variant='body1' className='labels'>{chartData.labels[9]}</Typography>
+              </Box>
                   </Grid>
               </Grid>
           

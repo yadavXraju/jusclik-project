@@ -136,5 +136,4 @@ const VisitorAppointmentPass = ({ handleDownload }) => {
   );
 };
 
- DownloadpdfwithCanvas(VisitorAppointmentPass); //Wrap the component for downloding 
-export default VisitorAppointmentPass
+export default DownloadpdfwithCanvas(VisitorAppointmentPass); //Wrap the component for downloding 
