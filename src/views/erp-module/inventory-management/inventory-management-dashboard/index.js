@@ -3,13 +3,13 @@
 import React from 'react';
 import Grid from '@mui/material/Grid';
 import { gridSpacing } from 'store/constant';
+import CounterData from './CounterData';
+import StockCategory from './StockCategory';
+import StockStatus from './StockStatus'
 import FeeDefaulter from 'views/erp-module/student-information-fee-management/student-info-fee-management-dashboard/dashboard/fee-defaulter';
 import InvoiceRaised from 'views/erp-module/student-information-fee-management/student-info-fee-management-dashboard/dashboard/invoice-raised';
 import FeeCollection from 'views/erp-module/student-information-fee-management/student-info-fee-management-dashboard/dashboard/fee-collection';
 import NeedSupport from 'views/erp-module/student-information-fee-management/student-info-fee-management-dashboard/dashboard/support/Support';
-import Counters from 'views/erp-module/student-information-fee-management/student-info-fee-management-dashboard/dashboard/counters/Counters';
-import EnrollmentStatistics from 'views/erp-module/student-information-fee-management/student-info-fee-management-dashboard/dashboard/enrollment-statistics/EnrollmentStatistics';
-import ParentLoginStatus from 'views/erp-module/student-information-fee-management/student-info-fee-management-dashboard/dashboard/parent-login-status/ParentLoginStatus';
 
 
 const Dashboard = ({ isLoading }) => {
@@ -18,23 +18,23 @@ const Dashboard = ({ isLoading }) => {
       <Grid item xs={12}>
         <Grid container spacing={gridSpacing} >
 
-
-
          {/* counter */}  
         <Grid item xs={12} lg={12} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' , display:'flex' , flexDirection:'column', gap:'24px' ,} }}>
-           <Counters />
+           <CounterData />
         </Grid>
+
+        {/* Stock Category */}
+        <Grid item xs={12} lg={6} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
+                <StockCategory/>
+          </Grid>
 
 
           {/* enrollment stats */}
           <Grid item xs={12} lg={6} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
-            <EnrollmentStatistics />
+            <StockStatus />
          </Grid>
 
-        {/* parent login */}
-        <Grid item xs={12} lg={6} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
-                <ParentLoginStatus/>
-          </Grid>
+
 
          {/* invoice raised */}
          <Grid item xs={12} lg={6} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
