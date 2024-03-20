@@ -11,7 +11,7 @@ const IssueReturn2 = () => {
   const AttendanceBox = {
     display: 'flex',
     flexDirection: 'column',
-    padding: '0 20px',
+    padding: isMobile? "0 0":'0 20px',
     alignItems: isMobile ? 'center' : 'auto',
   };
 
@@ -77,7 +77,8 @@ const IssueReturn2 = () => {
       },
     },
     grid:{
-        show:true,
+        show:false,
+       
     }
   };
 

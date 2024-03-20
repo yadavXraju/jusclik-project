@@ -21,7 +21,7 @@ const LowStockItemList = () => {
         </Grid>
 
         {/* list  */}
-        <Grid sx={{ display: 'flex', height: '425px' }}>
+        <Grid sx={{ display: 'flex'}}>
           <Box sx={{ width: '100%', typography: 'body1', padding: '10px' }}>
             <StockList />
           </Box>

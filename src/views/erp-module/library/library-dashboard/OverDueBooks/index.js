@@ -83,7 +83,13 @@ const OverDueBook = ({ isLoading }) => {
         colors: ['#987ECD'],
         opacity: 0.9,
       },
-      grid: { show: false },
+      grid: { 
+        show: false,
+        margin:{
+          bottom:"-30px"
+        }
+       
+       },
     },
     series: [{ name: 'Overdue', data: [174, 140, 301, 134, 193, 348, 520, 512, 138, 472, 116, 234, 193] }],
   };

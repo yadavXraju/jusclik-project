@@ -103,19 +103,19 @@ const BookDetailPieChart = () => {
         </Grid>
 
         {/* ================================= content  =================================  */}
-        <Grid sx={{ display: 'flex' }}>
+        <Grid sx={{ display:'flex',flexDirection:isMobile?"column":"row" }}>
           {/* =================================  chart =================================   */}
-          <Grid lg={6}  xs={12} sx={{ borderRight: '1px solid rgb(227, 227, 227)' }}>
+          <Grid lg={6} md={6} sm={6} xs={12} sx={{ borderRight: '1px solid rgb(227, 227, 227)' }}>
             <Grid style={{ display: 'flex', flexDirection: 'column', padding: isMobile ? "0px":'20px 20px 18px 20px', alignItems: isMobile ? 'center' : 'auto' }}>
               <ApexCharts options={chartData} series={chartData.series} type="donut" height={isMediumDesktop ? 200 : 320} />
             </Grid>
           </Grid>
 
           {/* =================================  book detail =================================   */}
-          <Grid lg={6} sx={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', paddingLeft: '40px', gap: '20px' }}>
-              <Grid container spacing={0}>
+          <Grid lg={6}  md={6} sm={6} sx={{ display: 'flex', justifyContent: 'center', alignItems:"center",paddingLeft: isMobile?"20px": '40px', gap: '20px' }}>
+              <Grid container spacing={0} sx={{display:"flex"}}>
               {/* detail left */}
-                <Grid lg={6} item xs={12}>
+                <Grid lg={6} item xs={6} md={6}>
                 {/* avialable */}
                 <Box sx={{ display: 'flex', flexDirection: 'row',alignItems:"center" }}>
               
@@ -163,7 +163,7 @@ const BookDetailPieChart = () => {
               </Box>
                 </Grid>
                 {/* detail right */}
-                <Grid lg={6} item xs={12}>
+                <Grid lg={6} item xs={6} md={6}>
                                   {/*  */}
                                   <Box sx={{ display: 'flex', flexDirection: 'row',alignItems:"center" }}>
               

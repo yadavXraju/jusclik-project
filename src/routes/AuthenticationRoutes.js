@@ -8,7 +8,7 @@ import Loadable from 'ui-component/Loadable';
 // import MinimalLayout from 'layout/MinimalLayout';
 
 // login option 3 routing
-const Login = Loadable(lazy(() => import('views/pages/authentication/Login')));
+const Login = Loadable(lazy(() => import('views/pages/authentication')));
 // const ForgetPassword = Loadable(lazy(() => import('views/pages/authentication/ForgetPassword')));
 // const VerifyNumber = Loadable(lazy(() => import('views/pages/authentication/VerifyNumber')));
 // const SetNewPassword = Loadable(lazy(() => import('views/pages/authentication/SetNewPassword')));

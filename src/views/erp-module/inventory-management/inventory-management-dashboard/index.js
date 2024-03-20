@@ -2,10 +2,10 @@
 import React from 'react';
 import Grid from '@mui/material/Grid';
 import { gridSpacing } from 'store/constant';
-import CounterData from './counter-data/CounterData';
-import StockStatus from './stock-status/StockStatus';
-import StockDetailPieChart from './category-wise-stock/StockDetailPieChart';
-import LowStockItemList from './low-stock-items/LowStockItem';
+import CounterData from './counter-data';
+import StockStatus from './stock-status';
+import StockDetailPieChart from './category-wise-stock';
+import LowStockItemList from './low-stock-items';
 import FrequentlyItems from './frequently-issued-items';
 import NeedSupport from 'views/erp-module/student-information-fee-management/student-info-fee-management-dashboard/dashboard/support/Support';
 
