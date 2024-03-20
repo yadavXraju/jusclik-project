@@ -128,11 +128,7 @@ const ReportTabs = () => {
     setValue(newValue);
   };
 
-  const highlightSearchTerm = (text) => {
-    if (!searchTerm.trim()) {
-      return text;
-    }
-  }
+
 
     const filterData = searchTerm.trim() !== '' ? sections.filter(item => {
       if (item.title.toLowerCase().includes(searchTerm)) {
@@ -167,19 +163,15 @@ const ReportTabs = () => {
                   paddingLeft: '30px'
                 }}> */}
                 {
-                  filterData.map((item, index) => {
-                    return (
-                      <React.Fragment key={index}>
-                        <Box>
-                          <Typography component="div" sx={{ paddingBottom: '10px', paddingTop: '10px' }}>
-                            <span style={{ fontWeight: 'bold', }} dangerouslySetInnerHTML={{ __html: highlightSearchTerm(item.title) }}></span>
-                          </Typography>
-                          {item?.pages.map((submenu, subIndex) =>
-                            <Typography sx={{ padding: '4px 0' }} key={subIndex} dangerouslySetInnerHTML={{ __html: highlightSearchTerm(submenu.name) }}></Typography>
-                          )}
-                        </Box>
-                      </React.Fragment>
-                    );
+                  filterData.map((item) => {
+                      return <>
+                         <p key={item}>{item?.title}</p>
+                         {
+                          item.pages.map((submenu)=><Typography key={submenu?.name}>
+                             {submenu?.name}
+                          </Typography>)
+                         }
+                       </>
                   })
                 }
               {/* </Card> */}
