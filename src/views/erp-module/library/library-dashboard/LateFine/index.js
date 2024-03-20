@@ -1,5 +1,5 @@
 import React from 'react';
-import { Paper, Typography, Grid, Table, TableRow, TableCell, TableBody, Avatar, Box, TableHead } from '@mui/material';
+import { Paper, Typography, Grid, Table, TableRow, TableCell, TableBody, Avatar, Box, TableHead,useMediaQuery } from '@mui/material';
 
 import { HeadingCss } from 'views/dashboard/Default/dashboard-css/CommonCss';
 import { gridSpacing } from 'store/constant';
@@ -7,6 +7,8 @@ import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 
 const LateFine = () => {
 
+
+  const isMobile = useMediaQuery('(max-width: 767px)');
 
   // Dummy data for table rows
   const tableData = [
@@ -64,7 +66,7 @@ const LateFine = () => {
        <Grid sx={{ padding: '24px 24px 0 24px', background: '#f9f9fb', borderBottom: '1px solid rgba(128, 128, 128, 0.25)', borderRadius: '12px 12px 0px 0' }}>
           <Typography variant='h2' style={{ ...HeadingCss, border: 'none' }}>Late Fine</Typography>
         </Grid>
-        <Grid container height="424px">
+        <Grid container height="424px" className='scrollbar-2' sx={{overflow: isMobile ? 'scroll' : 'hidden'}}>
           <Table>
             <TableHead>
               <TableRow>
