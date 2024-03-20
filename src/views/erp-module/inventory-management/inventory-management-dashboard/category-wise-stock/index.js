@@ -100,21 +100,26 @@ const StockDetailPieChart = () => {
         </Grid>
 
         {/* ================================= content  =================================  */}
-        <Grid sx={{ display: 'flex' }}>
+        <Grid sx={{ display: isMobile?'block': 'flex', padding: isMobile?'20px': '' }}>
           {/* =================================  chart =================================   */}
-          <Grid lg={6} sx={{ borderRight: '1px solid rgb(227, 227, 227)' }}>
+          <Grid lg={6} sx={{ borderRight:isMobile?'none': '1px solid rgb(227, 227, 227)' }}>
             <Grid
-              style={{ display: 'flex', flexDirection: 'column', padding: '0 20px 8px 20px', alignItems: isMobile ? 'center' : 'auto' }}
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                padding: isMobile ? '0px' : '20px 20px 18px 20px',
+                alignItems: isMobile ? 'center' : 'auto'
+              }}
             >
               <ApexCharts options={chartData} series={chartData.series} type="donut" height={isMediumDesktop ? 200 : 330} />
             </Grid>
           </Grid>
 
           {/* =================================  book detail =================================   */}
-          <Grid lg={6} sx={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', paddingLeft: '40px', gap: '20px' }}>
+          <Grid lg={6} sx={{ display:isMobile?'grid': 'flex', justifyContent: 'center', flexDirection: 'column', paddingLeft: isMobile?'0px':'40px', gap: '20px' }}>
             <Grid container spacing={0}>
               {/* detail left */}
-              <Grid item xs={6}>
+              <Grid item xs={12}>
                 {/* avialable */}
                 <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                   <Box
@@ -145,80 +150,8 @@ const StockDetailPieChart = () => {
                     {chartData.labels[2]}
                   </Typography>
                 </Box>
-                {/* Issued */}
-                <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-                  <Box
-                    sx={{ width: '10px', height: '10px', borderRadius: '50%', marginRight: '15px', background: chartData.colors[3] }}
-                  ></Box>
-
-                  <Typography variant="body1" className="labels">
-                    {chartData.labels[3]}
-                  </Typography>
-                </Box>
-                {/* Issued */}
-                <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-                  <Box
-                    sx={{ width: '10px', height: '10px', borderRadius: '50%', marginRight: '15px', background: chartData.colors[4] }}
-                  ></Box>
-
-                  <Typography variant="body1" className="labels">
-                    {chartData.labels[4]}
-                  </Typography>
-                </Box>
               </Grid>
               {/* detail right */}
-              <Grid item xs={6}>
-                {/*  */}
-                <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-                  <Box
-                    sx={{ width: '10px', height: '10px', borderRadius: '50%', marginRight: '15px', background: chartData.colors[5] }}
-                  ></Box>
-
-                  <Typography variant="body1" className="labels">
-                    {chartData.labels[5]}
-                  </Typography>
-                </Box>
-                {/*  */}
-                <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-                  <Box
-                    sx={{ width: '10px', height: '10px', borderRadius: '50%', marginRight: '15px', background: chartData.colors[6] }}
-                  ></Box>
-
-                  <Typography variant="body1" className="labels">
-                    {chartData.labels[6]}
-                  </Typography>
-                </Box>
-                {/*  */}
-                <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-                  <Box
-                    sx={{ width: '10px', height: '10px', borderRadius: '50%', marginRight: '15px', background: chartData.colors[7] }}
-                  ></Box>
-
-                  <Typography variant="body1" className="labels">
-                    {chartData.labels[7]}
-                  </Typography>
-                </Box>
-                {/*  */}
-                <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-                  <Box
-                    sx={{ width: '10px', height: '10px', borderRadius: '50%', marginRight: '15px', background: chartData.colors[8] }}
-                  ></Box>
-
-                  <Typography variant="body1" className="labels">
-                    {chartData.labels[8]}
-                  </Typography>
-                </Box>
-                {/*  */}
-                <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-                  <Box
-                    sx={{ width: '10px', height: '10px', borderRadius: '50%', marginRight: '15px', background: chartData.colors[9] }}
-                  ></Box>
-
-                  <Typography variant="body1" className="labels">
-                    {chartData.labels[9]}
-                  </Typography>
-                </Box>
-              </Grid>
             </Grid>
           </Grid>
         </Grid>
