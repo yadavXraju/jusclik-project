@@ -151,30 +151,30 @@ const ReportTabs = () => {
               </Tabs>
             </Box>
           </Box>
-          <Box>
+          <Box sx={{width:'40%', borderBottom:'1px solid #cbcbcb85'}}>
             <SearchBar onChange={(e) => setSearchTerm(e.target.value)} />
             <Box>
-              {/* <Card className='scrollbar '
+              <Card className='scrollbar '
                 sx={{
                   overflowY: 'scroll',
-                  maxHeight: '300px',
-                  width: '75%',
+                  maxHeight: '200px',
                   margin: 'auto',
                   paddingLeft: '30px'
-                }}> */}
+                }}>
                 {
                   filterData.map((item) => {
                       return <>
-                         <p key={item}>{item?.title}</p>
+                         <p key={item} style={{paddingBottom:'10px',paddingTop:'10px',fontWeight: 'bold' }}>{item?.title}</p>
                          {
-                          item.pages.map((submenu)=><Typography key={submenu?.name}>
+                          item.pages.map((submenu)=>
+                          <Typography key={submenu?.name}>
                              {submenu?.name}
                           </Typography>)
                          }
                        </>
                   })
                 }
-              {/* </Card> */}
+              </Card>
             </Box>
           </Box>
         </Box>
