@@ -42,7 +42,10 @@ return (
       <Paper sx={{ ...css.mobilePaper, minWidth:'20rem'}} elevation={2}>
         <Typography variant="h6" sx={{ ...css.formTextColor,padding:'1rem 0',sm:'14px',...css.horizontalCenter }}>Verification</Typography>
         <Typography sx={{ ...css.formTextColor, fontWeight: '400',...css.horizontalCenter,textAlign:'center' }}>OTP has been sent to {mobileNumber}</Typography>
-        <Link href='' onClick={handleSteps(step-1)} sx={{py:'1rem', fontWeight: '400',...css.horizontalCenter,textAlign:'center'}}>Edit Number</Link>
+        
+        <Link component='button' variant='body1' onClick={()=>{
+    handleSteps(-1)
+  }} sx={{py:'1rem', fontWeight: '400',...css.horizontalCenter,textAlign:'center'}}>Edit Number</Link>
         <Grid container spacing={1} justifyContent="center">
           {otp.map((digit, index) => (
             <Grid item key={index}>
