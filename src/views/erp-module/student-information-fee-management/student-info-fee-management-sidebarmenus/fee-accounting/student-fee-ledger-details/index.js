@@ -37,8 +37,8 @@ export default function StudentFeeLedgerDetails() {
   const [orderBy, setOrderBy] = useState('calories');
   const [selected, setSelected] = useState([]);
   const [searchText, setSearchText] = useState('');
-
-  const [totalNetPay, setTotalNetPay] = useState(0); // State to track total net pay
+ 
+    
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
@@ -50,11 +50,9 @@ export default function StudentFeeLedgerDetails() {
     if (event.target.checked) {
       const newSelected = rows.map((n) => n.id);
       setSelected(newSelected);
-      updateTotalNetPay(newSelected);
       return;
     }
     setSelected([]);
-    setTotalNetPay(0);
   };
 
   const handleClick = (event, id) => {
@@ -74,42 +72,10 @@ export default function StudentFeeLedgerDetails() {
       );
     }
     setSelected(newSelected);
-    updateTotalNetPay(newSelected);
   };
 
   
   const isSelected = (id) => selected.indexOf(id) !== -1;
-
-
-
-  // const updateTotalNetPay = (selectedRows) => {
-  //   const total = selectedRows.reduce((acc, currId) => {
-  //     const selectedRow = rows.find(row => row.id === currId);
-  //     if (selectedRow) {
-  //       return acc + selectedRow.netpay;
-  //     }
-  //     return acc;
-  //   }, 0);
-  //   setTotalNetPay(total);
-  //   console.log(totalNetPay);
-  // };
-
-
-  // calculate net pay amount of selected rows
-
-  const updateTotalNetPay = (selectedRows) => {
-    const total = selectedRows.reduce((acc, currId) => {
-      const selectedRow = rows.find(row => row.id === currId);
-      if (selectedRow) {
-        return acc + selectedRow.netpay;
-      }
-      return acc;
-    }, 0);
-    setTotalNetPay(total);
-    console.log(totalNetPay);
-  };
-  
-
 
 
   const visibleRows = useMemo(
@@ -120,7 +86,7 @@ export default function StudentFeeLedgerDetails() {
   return (
     <Box sx={{ width: '100%' }}>
       <Paper sx={{ width: '100%', mb: 2 }}>
-        <EnhancedTableToolbar numSelected={selected.length} onSearchChange={(e) => setSearchText(e.target.value)}    totalNetPay={totalNetPay}/>
+        <EnhancedTableToolbar numSelected={selected.length} onSearchChange={(e) => setSearchText(e.target.value)} />
         <TableContainer>
           <Table
             sx={{ minWidth: 750, border: '1px solid rgba(224, 224, 224, 1)' }}
