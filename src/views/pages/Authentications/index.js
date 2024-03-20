@@ -1,4 +1,4 @@
-import Logins from '../authentication/Login';
+import Logins from '../authentication';
 
 const Authentications = () => {
   return (

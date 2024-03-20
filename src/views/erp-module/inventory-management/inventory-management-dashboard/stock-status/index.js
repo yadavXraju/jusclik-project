@@ -39,7 +39,7 @@ const StockStatus = () => {
       sx={{
         border: '1px solid rgb(227, 227, 227)',
         boxShadow: '4px 4px 9px 2px #ddddddc2',
-        height:'100%'
+        height: '100%'
       }}
     >
       <Box
@@ -57,21 +57,21 @@ const StockStatus = () => {
 
       <Grid container spacing={0}>
         {EnrollmentData.map((item, index) => (
-          <Grid key={index} item xs={4} sm={4} md={4}>
+          <Grid key={index} item xs={4}>
             <Box
               sx={{
                 flexDirection: 'column',
                 textAlign: 'center',
-                display: 'block',
+                display: 'flex',
                 gap: '30px',
                 alignItems: 'center',
                 padding: '6rem 2rem',
                 justifyContent: 'center',
-                borderRight: '1px solid rgb(227, 227, 227)' 
+                borderRight: '1px solid rgb(227, 227, 227)'
               }}
             >
               {/* icon */}
-              <Box sx={{ padding: '10px', borderRadius: '12px' }}>{item.icon}</Box>
+              <Box sx={{ background: `rgb(227, 242, 253)`, padding: '10px', borderRadius: '12px', display: 'flex' }}>{item.icon}</Box>
 
               {/* title and number */}
               <Box>

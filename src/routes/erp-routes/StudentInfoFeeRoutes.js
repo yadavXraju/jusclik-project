@@ -115,7 +115,8 @@ const DashboardPayroll =  Loadable(lazy(() => import('views/common-section/dashb
 // user details and roles
 const UserDetailsRoles =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/user-and-roles')));
 
-
+// invoice template
+const InvoiceTemplate =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/settings/setting/invoice-template')));
 
 // temp routes will be deleted
 
@@ -378,24 +379,29 @@ const StudentInfoFeeRoutes = [
                   element: <SystemData /> 
                 },
 
+                 
+                {
+                  path:'invoice-template',
+                  element : <InvoiceTemplate />
+                },
                 
-            // temp routes
-  
-            { 
-              path: 'daman', 
-              element: <Daman/> 
-            },
+                  // temp routes
+        
+                  { 
+                    path: 'daman', 
+                    element: <Daman/> 
+                  },
 
-            { 
-              path: 'kulwinder', 
-              element: <Kulwinder /> 
-            },    
+                  { 
+                    path: 'kulwinder', 
+                    element: <Kulwinder /> 
+                  },    
 
-            { 
-              path: 'harsh', 
-              element: <Harsh /> 
-            },
-      
+                  { 
+                    path: 'harsh', 
+                    element: <Harsh /> 
+                  },
+                
       
               ]
             },

@@ -78,16 +78,15 @@ const ClassOption = [
 
 const style = {
     mainStyle: {
-        borderBottom: "2px solid #e5ebef",
-        borderTop: "2px solid #e5ebef",
+        borderBottom: "1px solid #e5ebef",
         borderRadius: "5px",
         height: "100px",
-        width: "100%"
+        width: "100%",
+        padding: '5px 20px'
     },
     filterFieldStyle: {
         display: "flex",
         flexDirection: "row",
-        justifyContent: 'center',
         gap: "10px", width: "100%",
         alignItems: "center",
         marginTop: "10px"
@@ -100,7 +99,7 @@ const FilterByEnquiryNo = () => {
         <Box sx={style?.mainStyle}>
             <Typography>Enq No</Typography>
             <Box sx={style?.filterFieldStyle}>
-                <ParamSelectList label="= equal to" options={compareOptions} value={value} setValue={setValue} size="medium" customSytle={{ width: "110px" }} />
+                <ParamSelectList label="= equal to" options={compareOptions} value={value} setValue={setValue} size="medium" customSytle={{ width: "200px" }} />
                 <ParamDateComponent label="From" value={null} />
                 <ParamDateComponent label="To" value={null} />
             </Box>
