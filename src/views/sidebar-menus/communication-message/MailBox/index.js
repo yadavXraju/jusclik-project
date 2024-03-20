@@ -13,7 +13,8 @@ import {
   InputBase,
   ThemeProvider,
   createTheme,
-  Paper
+  Paper,
+  useMediaQuery
 } from '@mui/material';
 import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
 import MailCompose from './MailCompose';
@@ -28,19 +29,47 @@ const theme = createTheme();
 const GmailInboxTemplate = () => {
   const searchInputRef = useRef(null);
 
+  // State to hold mobile view status
+  const [isMobileView, setIsMobileView] = useState(false);
+
+  // Hook to detect mobile view
+  useMediaQuery('(max-width:600px)', {
+    // This callback will be called whenever the media query matches or unmatches
+    // Here, we update the state to reflect the current viewport width
+    onChange: (matches) => {
+      setIsMobileView(matches);
+    },
+  });
+
   // Function to get the current date and time
   const getCurrentDateTime = () => {
     const currentDate = new Date();
-    const options = {
-      weekday: 'short',
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric',
-      hour: 'numeric',
-      minute: 'numeric'
-    };
+    let options;
+  
+    // Check viewport width or use media queries here to determine mobile view
+    const isMobileView = window.innerWidth < 600; // Example threshold for mobile view
+  
+    if (isMobileView) {
+      options = {
+        day: 'numeric',
+        month: 'short',
+        year: 'numeric',
+      };
+    } else {
+      options = {
+        weekday: 'short',
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric',
+        hour12: false,
+      };
+    }
+  
     return currentDate.toLocaleString('en-US', options);
   };
+  
 
   const location = useLocation();
   const shouldOpenByDefault = location.pathname.includes('inbox');
@@ -134,11 +163,15 @@ const GmailInboxTemplate = () => {
     setCurrentFilter(filterType);
   };
 
-  const highlightMatch = (text, query) => {
+  const highlightMatch = (text, query, isMobileView) => {
     if (!query || !text) return text;
-
+  
+    const maxLength = isMobileView ? 25 : 50; // Adjust the maximum length based on the viewport width
+  
+    const truncatedText = text.length > maxLength ? `${text.slice(0, maxLength)}...` : text;
+  
     const regex = new RegExp(`(${query})`, 'gi');
-    return text.split(regex).map((part, index) =>
+    return truncatedText.split(regex).map((part, index) =>
       regex.test(part) ? (
         <span key={index} style={{ fontWeight: 'bold' }}>
           {part}
@@ -148,6 +181,7 @@ const GmailInboxTemplate = () => {
       )
     );
   };
+  
 
   // Handlers for changing page and rows per page
   const handleChangePage = (event, newPage) => {
@@ -212,6 +246,8 @@ const GmailInboxTemplate = () => {
     searchInputRef.current.focus();
   }, [searchQuery]);
 
+  const isMobile = useMediaQuery(theme.breakpoints.only('xs'));
+
   return (
     <>
       <Paper>
@@ -264,7 +300,7 @@ const GmailInboxTemplate = () => {
                       >
                         {/* User Avatar */}
                         <ListItemAvatar onClick={(event) => event.stopPropagation()}>
-                        <img src={item.avatar} style={{ width: 50, height: 50 }} alt="Avatar" />
+                          <img src={item.avatar} style={{ width: 50, height: 50 }} alt="Avatar" />
                         </ListItemAvatar>
                         {/* Star Icon */}
                         <ListItemIcon
@@ -272,20 +308,35 @@ const GmailInboxTemplate = () => {
                             event.stopPropagation();
                             handleStarClick(item);
                           }}
-                          sx={{ marginRight: '5px' }}
+                          sx={{ marginRight: '5px', minWidth: isMobile ? '30px' : '56px' }}
                         >
                           <StarBorderOutlinedIcon style={{ color: item.important ? '#f3c74a' : 'inherit' }} />
                         </ListItemIcon>
                         {/* Message Text */}
                         <ListItemText
-                          primary={highlightMatch(item.name, searchQuery)}
-                          secondary={highlightMatch(item.message, searchQuery)}
-                          // Adjusting font size for better mobile readability
-                          primaryTypographyProps={{ variant: 'body1', fontSize: '16px' }}
-                          secondaryTypographyProps={{ variant: 'body2', fontSize: '14px' }}
-                        />
+  primary={highlightMatch(item.name, searchQuery, isMobileView)}
+  secondary={highlightMatch(item.message, searchQuery, isMobileView)}
+  primaryTypographyProps={{ variant: 'body1', fontSize: '16px' }}
+  secondaryTypographyProps={{ variant: 'body2', fontSize: '14px' }}
+  sx={{
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap',
+  }}
+/>
+
                         {/* Timestamp */}
-                        <Typography variant="subtitle2" color="textSecondary" paddingRight='10px' onClick={(event) => event.stopPropagation()}>
+                        <Typography
+                          variant="subtitle2"
+                          color="textSecondary"
+                          sx={{
+                            // paddingRight: isMobile ? '0px' : '10px',
+                            textAlign:'right',
+                            fontSize: isMobile ? '11px' : '14px',
+                            flex: isMobile ? '0 0 20%' : '0 0 20%'
+                          }}
+                          onClick={(event) => event.stopPropagation()}
+                        >
                           {getCurrentDateTime()}
                         </Typography>
                       </ListItem>
