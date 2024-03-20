@@ -20,9 +20,9 @@ const InvoiceTemplate = () => {
   return (
     <Box p={1}>
       <Box >
-        <Grid container spacing={3}>
+        <Grid container spacing={2}>
           <Grid item xs={12} lg={4}>
-           <Box borderRight={'2px dotted'} p={2}>
+           <Box borderRight={'2px dotted'} sx={{paddingRight:"16px"}}>
           
            <Box
               width={'100%'}
@@ -139,7 +139,7 @@ const InvoiceTemplate = () => {
            </Box>
          </Grid>
           <Grid item xs={12} lg={4}>
-          <Box borderRight={'2px dotted'} p={2}>
+          <Box borderRight={'2px dotted'}  sx={{paddingRight:"16px"}}>
             <Box
              
               width={'100%'}
@@ -257,8 +257,8 @@ const InvoiceTemplate = () => {
           </Grid>
           <Grid item xs={12} lg={4}>
             <Box
-           
               width={'100%'}
+              p={2}
               sx={{ border: '2px solid grey' }}>
                <Box sx={{ borderBottom: '2px solid ', display: 'flex', justifyContent: 'center' }}>
                 <Box p={2} sx={{ width: '220px' }}>
