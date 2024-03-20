@@ -4,7 +4,7 @@ import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import ArrowCircleRightOutlinedIcon from '@mui/icons-material/ArrowCircleRightOutlined';
 import ParamSearchBar from 'views/common-section/ParamSearchBar';
-
+import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 
 
 const availableColumns = [
@@ -38,6 +38,7 @@ const ShowHide = () => {
     const [selectedFields, setSelectedFields] = useState(availableColumns);
     const [hoveredItemId, setHoveredItemId] = useState(-1);
     const [searchTerm, setSearchTerm] = useState('');
+    const [filterItem, setFilterItem] = useState(selectedFields);
 
     const handleSelectField = (id) => {
         const updatedFields = selectedFields.map(field =>
@@ -64,13 +65,13 @@ const ShowHide = () => {
 
     const style = {
         showHideContainer: {
-            height:"550px",
+            height: "550px",
             display: "flex",
             gap: "100px",
             alignItems: "center",
         },
         availableColumnsContainer: {
-             height:"550px",
+            height: "550px",
         },
         availableFieldsContainer: {
             marginTop: "20px",
@@ -80,14 +81,14 @@ const ShowHide = () => {
             height: "520px",
             overflowY: 'auto',
         },
-        selectedField:{
-                marginLeft: "5%",
-                height: "30px",
-                width: "90%",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-                cursor: 'pointer'
+        selectedField: {
+            marginLeft: "5%",
+            height: "30px",
+            width: "90%",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            cursor: 'pointer'
         },
         arrowIcon: {
             fontSize: "40px",
@@ -96,7 +97,7 @@ const ShowHide = () => {
         searchBar: {
             paperStyle: {
                 height: "40px",
-                marginBottom:"5px",
+                marginBottom: "5px",
             },
             iconButtonStyle: {
                 width: "40px",
@@ -112,77 +113,134 @@ const ShowHide = () => {
         }
     };
 
-    const filterAvailableFields = () => {
-        return selectedFields.filter((column) =>
+    const handleDragAndDrop = (results) => {
+        const { type, destination, source } = results;
+        console.log(results);
+        // console.log(type, destination, source)
+        // when destination is not specified
+        if (!destination)
+            return;
+        // for the case when element is dragged inside own box and same place
+        if (source.droppableId == destination.droppableId && source.index == destination.index)
+            return;
+        //reordered the list
+        if (type == "group1") {
+            const reorderedStores = [...filterItem];
+            const storeSourceIndex = source.index;
+            const storeDestinatonIndex = destination.index;
+            const [removedStore] = reorderedStores.splice(storeSourceIndex, 1);
+            reorderedStores.splice(storeDestinatonIndex, 0, removedStore);
+            setFilterItem(reorderedStores);
+            return;
+        }
+    }
+
+    const filterAvailableFields = (filterData) => {
+        filterData = filterData ? filterData : '';
+        setSearchTerm(filterData)
+        setFilterItem(selectedFields.filter((column) =>
             column.headerName.toLowerCase().includes(searchTerm.toLowerCase()) && !column.selected
-        );
+        ))
     };
 
     return (
         <Box sx={style.showHideContainer}>
-            {/* Available Fields */}
-            <Box sx={style.availableColumnsContainer}>
-                <Typography variant="h5"> AVAILABLE COLUMNS</Typography>
-                <Box className="scrollbar" sx={style.availableFieldsContainer}>
-                    <ParamSearchBar
-                        paperStyle={style.searchBar.paperStyle}
-                        iconButtonStyle={style.searchBar.iconButtonStyle}
-                        searchIconStyle={style.searchBar.searchIconStyle}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                    />
-                    {filterAvailableFields().map((item) => (
-                        !item.selected && (
-                            <Box
-                                key={item.id}
-                                onMouseEnter={() => handleMouseEnter(item?.id)}
-                                onMouseLeave={() => handleMouseLeave()}
-                                sx={style?.selectedField}
-                            >
-                                <Typography variant="h5">{item.id}: {item.headerName}</Typography>
-                                <IconButton
-                                    onClick={() => handleSelectField(item.id)}
-                                    sx={{
-                                        color: "#bdbdbd",
-                                    }}
-                                >
-                                    <AddIcon sx={{ visibility: hoveredItemId === item?.id ? 'visible' : 'hidden' }} />
-                                </IconButton>
-                            </Box>
-                        )
-                    ))}
+            <DragDropContext onDragEnd={handleDragAndDrop}>
+                {/* Available Fields */}
+                <Box sx={style.availableColumnsContainer}>
+                    <Typography variant="h5"> AVAILABLE COLUMNS</Typography>
+                    <Box className="scrollbar" sx={style.availableFieldsContainer}>
+                        <ParamSearchBar
+                            paperStyle={style.searchBar.paperStyle}
+                            iconButtonStyle={style.searchBar.iconButtonStyle}
+                            searchIconStyle={style.searchBar.searchIconStyle}
+                            onChange={(e) => filterAvailableFields(e.target.value)}
+                        />
+                        <Droppable droppableId='available' type='group1'>
+                            {(provided) => (
+                                <Box  {...provided.droppableProps} ref={provided.innerRef}>
+                                    {
+                                        filterItem.map((item, index) => (
+                                            !item.selected && (
+                                                <Draggable draggableId={item.id} index={index} key={item.id} type="group1">
+                                                    {(provided) => (
+                                                        <Box
+                                                            key={item.id}
+                                                            onMouseEnter={() => handleMouseEnter(item?.id)}
+                                                            onMouseLeave={() => handleMouseLeave()}
+                                                            sx={style?.selectedField}
+                                                            {...provided.dragHandleProps}
+                                                            {...provided.draggableProps}
+                                                            ref={provided.innerRef}
+                                                        >
+                                                            <Typography variant="h5">{item.id}: {item.headerName}</Typography>
+                                                            <IconButton
+                                                                onClick={() => handleSelectField(item.id)}
+                                                                sx={{
+                                                                    color: "#bdbdbd",
+                                                                }}
+                                                            >
+                                                                <AddIcon sx={{ visibility: hoveredItemId === item?.id ? 'visible' : 'hidden' }} />
+                                                            </IconButton>
+                                                        </Box>
+                                                    )}
+                                                </Draggable>
+                                            )
+                                        ))
+                                    }
+                                    {provided.placeholder}
+                                </Box>
+                            )}
+                        </Droppable>
+                    </Box>
                 </Box>
-            </Box>
-            {/* Right Arrow Icons */}
-            <Box>
-                <ArrowCircleRightOutlinedIcon sx={style.arrowIcon} />
-            </Box>
-            {/* Selected Fields */}
-            <Box sx={style.availableColumnsContainer}>
-                <Typography variant="h5">SELECTED COLUMNS</Typography>
-                <Box className="scrollbar" sx={style.availableFieldsContainer}>
-                    {selectedFields.map((item) => (
-                        item.selected && (
-                            <Box
-                                key={item.id}
-                                onMouseEnter={() => handleMouseEnter(item?.id)}
-                                onMouseLeave={() => handleMouseLeave()}
-                                sx={style?.selectedField}
-                            >
-                                <Typography variant="h5">{item.id}: {item.headerName}</Typography>
-                                <IconButton
-                                    onClick={() => handleUnselectField(item.id)}
-                                    sx={{
-                                        color: "#bdbdbd",
-                                    }}
-                                >
-                                    <RemoveIcon sx={{ visibility: hoveredItemId === item?.id ? 'visible' : 'hidden' }} />
-                                </IconButton>
-                            </Box>
-                        )
-                    ))}
+                {/* Right Arrow Icons */}
+                <Box>
+                    <ArrowCircleRightOutlinedIcon sx={style.arrowIcon} />
                 </Box>
-            </Box>
-        </Box>
+                {/* Selected Fields */}
+
+                <Box sx={style.availableColumnsContainer} >
+                    <Typography variant="h5">SELECTED COLUMNS</Typography>
+                    <Droppable droppableId="selected" type="group2">
+                        {(provided) => (
+                            <Box className="scrollbar" sx={style.availableFieldsContainer} {...provided.droppableProps} ref={provided.innerRef}>
+                                {selectedFields.map((item,index) => (
+                                    item.selected && (
+                                        <Draggable draggableId={item?.id} index={index} key={item?.id} type="group2">
+                                            {(provided) => (
+                                                <Box
+                                                    key={item.id}
+                                                    onMouseEnter={() => handleMouseEnter(item?.id)}
+                                                    onMouseLeave={() => handleMouseLeave()}
+                                                    sx={style?.selectedField}
+                                                    {...provided.dragHandleProps}
+                                                    {...provided.draggableProps}
+                                                    ref={provided.innerRef}
+                                                >
+                                                    <Typography variant="h5">{item.id}: {item.headerName}</Typography>
+                                                    <IconButton
+                                                        onClick={() => handleUnselectField(item.id)}
+                                                        sx={{
+                                                            color: "#bdbdbd",
+                                                        }}
+                                                    >
+                                                        <RemoveIcon sx={{ visibility: hoveredItemId === item?.id ? 'visible' : 'hidden' }} />
+                                                    </IconButton>
+                                                </Box>
+                                            )}
+                                        </Draggable>
+                                    )
+                                ))}
+                                {provided.placeholder}
+                            </Box>
+                        )}
+                    </Droppable>
+                </Box>
+
+
+            </DragDropContext>
+        </Box >
     );
 };
 
