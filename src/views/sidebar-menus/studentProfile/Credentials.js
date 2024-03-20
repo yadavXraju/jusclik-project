@@ -188,7 +188,7 @@ export default function Credentials() {
                   <Box>
                     <Typography variant="h4">Create Student Account</Typography>
                     <Typography variant='body2'>
-                      Configure Student Account to share limited access of the dashbord  with your word.
+                      Configure Student Account to share limited access of the dashbord  with your child.
                     </Typography>
                   </Box>
                 </Grid>
@@ -313,14 +313,15 @@ export default function Credentials() {
 
           {sidebarMenu.children.map((item) => (
             <Box key={item.id}>
-              <Box sx={{ display: 'flex', p: 2, borderBottom: '1px dotted #7d828e' }}>
+              <Box sx={{ display: 'flex', alignItems:'center', p: 2, borderBottom: '1px dotted #7d828e' }}>
                 <Checkbox defaultChecked />
-                <Box>
+                <Typography variant="h4">{item.title}</Typography>
+                {/* <Box>
                   <Typography variant="h4">{item.title}</Typography>
                   <Typography variant='body2'>
                     Configure Student Account to share limited access of the dashbord  with your word.
                   </Typography>
-                </Box>
+                </Box> */}
               </Box>
             </Box>
           ))}

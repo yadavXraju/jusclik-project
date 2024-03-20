@@ -1,5 +1,5 @@
 import React from 'react'
-import{Paper,Grid,Typography,Box,Tab}  from '@mui/material'
+import{Paper,Grid,Typography,Box,Tab,useMediaQuery}  from '@mui/material'
 // import { gridSpacing } from 'store/constant';
 import {TabContext,TabList,TabPanel } from '@mui/lab';
 import { HeadingCss } from 'views/dashboard/Default/dashboard-css/CommonCss';
@@ -9,6 +9,8 @@ import PopularBook from './PopularBook';
 
 
 const LastestUpdatesOfBooks = () => {
+  const isMobile = useMediaQuery('(max-width: 767px)');
+
 
     const [value, setValue] = React.useState('1');
 
@@ -28,7 +30,7 @@ const LastestUpdatesOfBooks = () => {
 
         {/* list  */}
         <Grid sx={{display:"flex",height:"410px"}}>
-        <Box sx={{ width: '100%', typography: 'body1',padding:"10px" }}>
+        <Box sx={{ width: '100%', typography: 'body1',padding:isMobile?"0px":"10px" }}>
       <TabContext value={value}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
 
