@@ -207,7 +207,7 @@ const ShowHide = () => {
                             <Box className="scrollbar" sx={style.availableFieldsContainer} {...provided.droppableProps} ref={provided.innerRef}>
                                 {selectedFields.map((item,index) => (
                                     item.selected && (
-                                        <Draggable draggableId={item?.id} index={index} key={item?.id} type="group2">
+                                        <Draggable draggableId={item.id} index={index} key={item?.id} type="group2">
                                             {(provided) => (
                                                 <Box
                                                     key={item.id}
