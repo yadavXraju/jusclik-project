@@ -8,7 +8,7 @@ const StockList = () => {
     { title: 'Golden Paper', department: ' Stationary', status: '6 Remaining' },
     { title: 'Hard Broom', department: ' Utility', status: '1 Remaining' },
     { title: 'Scissor Medium', department: ' Stationary', status: '2 Remaining' },
-    { title: 'Poem Books 1st Class', department: ' Stationary', status: '3 Remaining' }
+    { title: 'Poem Books 1st Class', department: ' Stationary', status: '3 Remaining' },
   ];
 
   return (

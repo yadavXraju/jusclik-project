@@ -20,7 +20,8 @@ const FrequentlyItems = () => {
     { value: 20, label: 'Table Calender', color: "#f50057" }, 
     { value: 60, label: 'Highlighter', color: "#00897b" }, 
     { value: 85, label: 'Chalk Box', color: "#4caf50" },
-    { value: 18, label: 'Dusters', color: "#9c27b0" } 
+    { value: 18, label: 'Dusters', color: "#9c27b0" },
+    { value: 4, label: 'Lab Equipments', color: "#4caf50" },
   ];
 
   return (
@@ -38,7 +39,7 @@ const FrequentlyItems = () => {
           </Typography>
         </Grid>
 
-      <Box sx={{ width: '100%', padding: '24px' }}>
+      <Box height="425px" className='scrollbar-2' sx={{overflow: 'scroll', width: '100%', padding: '24px' }} >
         {/* Iterate over the progressBars array and render each progress bar */}
         {progressBars.map((progress, index) => (
           <Box key={index} sx={{ marginBottom: 4 }}>
