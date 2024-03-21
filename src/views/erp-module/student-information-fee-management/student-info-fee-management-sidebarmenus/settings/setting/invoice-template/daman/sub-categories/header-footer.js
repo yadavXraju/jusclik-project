@@ -29,7 +29,6 @@ const HeaderFooter = ({ state, setState }) => {
     bottomRight: 'Bottom Right'
   };
 
-  console.log(state.headerFooter);
   return (
     <>
       {/* ====================================== HEADER SECTION ========================================= */}

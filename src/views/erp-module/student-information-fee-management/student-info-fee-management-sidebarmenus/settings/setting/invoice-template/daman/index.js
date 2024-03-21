@@ -70,9 +70,6 @@ const Index = () => {
     otherDetails: {},
   });
 
-console.log(state);
- 
-
   return (
     <>
     <Grid container>
