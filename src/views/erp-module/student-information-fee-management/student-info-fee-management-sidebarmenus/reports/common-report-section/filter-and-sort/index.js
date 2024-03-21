@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TextField, InputAdornment, IconButton, Box, Grid, Typography } from '@mui/material';
+import { TextField, InputAdornment, IconButton, Box, Grid, Typography, Button } from '@mui/material';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import useOutsideClick from 'hooks/useClickOutside';
 import {
@@ -173,17 +173,18 @@ const SearchBar = () => {
     ) : [];
   };
 
+  const marginBottom = window.innerWidth < 1200 ? "20px" : "0px"
 
   return (
-    <Grid container spacing={4} sx={{ marginLeft: "-24px", height: 'calc(100vh - 350px)' }}>
+    <Grid container spacing={4} sx={{ marginTop: "10px", marginLeft: "-24px",minHeight: 'calc(100vh - 400px)' }}>
       {/*Filter Section*/}
-      <Grid xs={12} sm={12} md={6} sx={{ border: "1px solid #e5ebef", backgroundColor: "#eef2f629" }}>
-        <Typography variant="h2" sx={{margin:"20px 0px 20px 20px"}}>Filter</Typography>
-        <Box sx={{ position: "relative", border: "1px solid #f0f5f8", width: "100%" }} ref={ref}>
+      <Grid xs={12} sm={12} md={12} lg={6} sx={{ border: "1px solid #e5ebef", backgroundColor: "#eef2f629", marginBottom: marginBottom }}>
+        <Typography variant="h2" sx={{ margin: "20px 0px 20px 20px" }}>Filter</Typography>
+        <Box sx={{ position: "relative", border: "1px solid #f0f5f8", zIndex: "2", width: "100%", minHeight: 'calc(100vh - 480px)' }} ref={ref} className="testf">
           <TextField
             variant="outlined"
             placeholder="Choose a Property..."
-            sx={{ width: "94%", padding: "20px 20px 20px 20px" }}
+            sx={{ width: "100%", padding: "20px 20px 20px 20px" }}
             onChange={(event) => setSearchTerm(event.target.value)}
             InputProps={{
               endAdornment: (
@@ -197,7 +198,7 @@ const SearchBar = () => {
             onClick={() => setIsOpen(true)}
           />
           {/* Displaying Selected Filters */}
-          <Box sx={{ display: "flex", flexDirection: "column", position: "absolute", top: "90px", width: "100%", overflowY: "auto", backgroundColor: "#eef2f629", zIndex: "1" }} className="scrollbar">
+          <Box sx={{ display: "flex", flexDirection: "column", position: "absolute", top: "100px", width: "100%", overflowY: "auto", backgroundColor: "#eef2f629", zIndex: "3" }} className="scrollbar">
             {
               selectedFilter && selectedFilter.map((item) =>
                 <item.filter key={item?.id} />
@@ -205,7 +206,7 @@ const SearchBar = () => {
             }
           </Box>
           {/* Displaying Available Fields */}
-          {isOpen && <Box sx={{position: "absolute", width: "90%", height: "calc(100vh - 400px)", overflowY: 'auto', zIndex: "2", backgroundColor: "white", padding: "0px 20px"}} className="scrollbar">
+          {isOpen && <Box sx={{ width: "calc(100% - 20px)", height: "calc(100vh - 400px)", overflowY: 'auto', zIndex: "5", position: 'relative', backgroundColor: "white", paddingLeft: "20px" }} className="scrollbar">
             {filterAvailableFields().map((item) => (
               <Box
                 key={item.id}
@@ -216,10 +217,13 @@ const SearchBar = () => {
             )}
           </Box>}
         </Box>
+        {/* Clear Filter Button */}
+        <Box sx={{ marginTop:"auto",marginRight:"20px",height:"60px",display:"flex",justifyContent:"flex-end"}}>
+          <Button sx={{marginTop:"auto",marginBottom:"auto",height:"40px"}} onClick={() => setSelectedFilter([])} variant="outlined">Clear Filter</Button>
+        </Box>
       </Grid>
       {/* Sort Section */}
-      <Grid xs={12} sm={12} md={6} sx={{ border: "1px solid #e5ebef", backgroundColor: "#eef2f629" }}>
-      <Typography variant="h2" sx={{margin:"20px 0px 20px 20px"}}>Sort</Typography>
+      <Grid xs={12} sm={12} md={12} lg={6} sx={{ border: "1px solid #e5ebef", backgroundColor: "#eef2f629", marginBottom: marginBottom }}>
         <Sort />
       </Grid>
     </Grid >

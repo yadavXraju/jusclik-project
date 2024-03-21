@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tabs, Tab} from '@mui/material';
+import { Tabs, Tab, Grid} from '@mui/material';
 import { Box } from '@mui/system';
 import General from './sub-categories/general';
 import HeaderFooter from './sub-categories/header-footer';
@@ -47,7 +47,8 @@ const CommonConfig = ({state,setState}) => {
   return (
     <>
       {/* Vertical Tabs */}
-      <Box sx={{display:'flex',}}>
+      <Grid container spacing={1}>
+      <Grid item md={3}>
       <Tabs
         orientation="vertical"
         variant="scrollable"
@@ -59,13 +60,18 @@ const CommonConfig = ({state,setState}) => {
           <Tab key={index} label={tab.label} />
         ))}
       </Tabs>
+      </Grid>
+      <Grid item md={8}>
+        {tabsData[selectedTab].content}
+      </Grid>
+      </Grid>
+      <Box sx={{display:'flex',}}>
+      
 
       {/* Tab Content */}
 
         {/* Render content based on selected tab */}
-        <Box>
-        {tabsData[selectedTab].content}
-        </Box>
+      
       </Box>
 
       </>
