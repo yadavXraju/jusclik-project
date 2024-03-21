@@ -5,7 +5,7 @@ import { Box } from '@mui/system';
 import { useNavigate } from 'react-router-dom';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 //import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
-import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
+//import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
 import MoreVertTwoToneIcon from '@mui/icons-material/MoreVertTwoTone';
 import Typography from '@mui/material/Typography';
@@ -13,22 +13,36 @@ import Popover from '@mui/material/Popover';
 import FilterListRoundedIcon from '@mui/icons-material/FilterListRounded';
 import AdmissionDrawer from './AdmissionDrawer';
 import RemoveRedEyeTwoToneIcon from '@mui/icons-material/RemoveRedEyeTwoTone';
+import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 import rows from './AdmissionTableData';
+import EditDrawer from './EditDrawer';
+import useDrawer from 'hooks/useDrawer';
 
 
 export default function AdmissionTable() {
   const navigate = useNavigate();
-
+  const [tableRows, setTableRows] = React.useState(rows);
+  const [currEditItem,setCurrEditItem]=React.useState({});
+  const { anchor, toggleDrawer } = useDrawer();
   // const handleRowClick = () => {
   //   navigate(`../registration`);
   // };
-  const handleEdit = () => {
+  // const handleEdit = () => {
 
-  }
+  // }
+  const handleDeleteRow = (id) => {
+    const updatedRows = tableRows.filter(row => row.id !== id);
+    setTableRows(updatedRows);
+  };
 
   const Click = (rowData) => {
     navigate('../admission-form/', { state: { rowData } });
   };
+
+  const handleEditClick=(editItem)=>{
+    toggleDrawer('top', true);
+    setCurrEditItem(editItem);
+  }
 
   const columns = [
     { field: 'AdmNo', headerName: 'Adm No.', type: 'number', flex: 1, minWidth: 130, align: 'left', headerAlign: 'left' },
@@ -44,16 +58,18 @@ export default function AdmissionTable() {
       headerName: 'Action',
       flex: 1,
       minWidth: 130,
-      renderCell: () => (
+      renderCell: (params) => (
         <Box>
           <IconButton>
             <RemoveRedEyeTwoToneIcon sx={{ color: 'rgb(124, 178, 221)' }} />
           </IconButton>
           <IconButton onClick={(event) => event.stopPropagation()}>
-            <EditTwoToneIcon onClick={handleEdit} />
+            {/* <EditTwoToneIcon onClick={handleEdit} /> */}
+            <EditTwoToneIcon onClick={()=>handleEditClick(params.row)} />
+            <EditDrawer anchor={anchor} toggleDrawer={toggleDrawer} currEditItem={currEditItem}/>
           </IconButton>
           <IconButton onClick={(event) => event.stopPropagation()}>
-            <DeleteTwoToneIcon sx={{ color: '#f19e9e' }} />
+            <DeleteTwoToneIcon onClick={() => handleDeleteRow(params.row.id)} sx={{ color: '#f19e9e' }} />
           </IconButton>
         </Box>
       ),
@@ -109,7 +125,7 @@ export default function AdmissionTable() {
       </Box>
       <Box p={2}>
         <DataGrid
-          rows={rows}
+          rows={tableRows}
           columns={columns} // Use state variable for columns
           onRowClick={(params) => Click(params.row)} 
           initialState={{

@@ -25,13 +25,14 @@ function StudentPreview() {
   };
 
   const isMobile = useMediaQuery('(max-width: 767px)')
+  const issmallMobile = useMediaQuery('(max-width: 425px)')
 
   return (
     <>
       <MainCard>
         <Box>
-          <Box pb={1} sx={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid #ccc', alignItems: 'center' }}>
-            <Box sx={{ display: 'flex', alignItems: 'center' }}>
+          <Box pb={1} sx={{ display: 'flex', justifyContent: 'space-between',flexWrap: issmallMobile ? 'wrap' : 'nowrap', borderBottom: '1px solid #ccc', alignItems: 'center' }}>
+            <Box sx={{ display: 'flex', alignItems: 'center', width:'100%' }}>
               <Box><ArrowBackOutlinedIcon onClick={BackClick} sx={{cursor:'pointer'}}/></Box>
               <Box>
                 <CardMedia
@@ -45,7 +46,7 @@ function StudentPreview() {
                 <Box>Admission No - {rowData.AdmNo}</Box>
               </Box>
             </Box>
-            <Box sx={{display:'flex'}}>
+            <Box sx={{display:'flex', justifyContent:'end', width:'100%', gap: issmallMobile ?'10px' : '0px'}}>
             <IconButton sx={{ marginRight: '8px', background: '#cccccc54' }}>
               <EditTwoToneIcon/>
               </IconButton>
