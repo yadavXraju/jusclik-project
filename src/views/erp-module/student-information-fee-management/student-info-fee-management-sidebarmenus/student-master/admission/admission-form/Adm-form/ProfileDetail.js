@@ -70,23 +70,7 @@ function ProfileDetail() {
       </Grid>
     </Grid>
     </Card>
-    {/* Personal Detail */}
-    {/* <Card sx={{padding:'10px'}}>
-      <Typography variant={'h4'} p={1} mb={2} sx={{borderBottom:'1px solid #ccc'}}>
-      Personal Details
-      </Typography>
-    <Grid container spacing={1} sx={{ display: 'flex', height: '100%' }}>
-      <Grid item xs={12} sm={12} lg={6}>
-       <TextField size={isMobile  ? 'small' : 'normal' } id="outlined-basic" fullWidth label="Gender" variant="outlined" />
-      </Grid>
-      <Grid item xs={12} sm={12} lg={6}>
-      <ParameterizedDateComponent customStyle={{width:'100%'}} label={'D.O.B.'}/>
-      </Grid>
-      <Grid item xs={12} sm={12} lg={6}>
-      <TextField size={isMobile  ? 'small' : 'normal' } id="outlined-basic" type='number' fullWidth label="Age" variant="outlined" />
-      </Grid>
-    </Grid>
-    </Card> */}
+    
     {/* Class Detail */}
     <Card sx={{padding:'10px'}}>
       <Typography variant={'h4'} p={1} mb={2} sx={{borderBottom:'1px solid #ccc'}}>
