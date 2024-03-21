@@ -27,10 +27,10 @@ const buttonsData = [
   { name: 5, icon: <TextsmsTwoToneIcon />, label: 'Remarks' },
 ];
 
-const Mainform1 = () => {
+const Mainform1 = ({currEditItem}) => {
   const [selectedButton, setSelectedButton] = useState(0);
   // const [value, setValue] = useState(0);
-
+  console.log(currEditItem)
   const handleButtonClick = (buttonName) => {
     setSelectedButton(buttonName);
   };

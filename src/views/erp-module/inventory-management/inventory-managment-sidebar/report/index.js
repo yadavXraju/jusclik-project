@@ -22,12 +22,13 @@ const sections = [
     title: 'Item/Stock',
     icon: <PolicyOutlinedIcon />,
     pages: [
-      { name: 'List + Barcode', path: '/erp/inventory/reports/enquiry' },
-      { name: 'Issue', path: '/erp/inventory/reports/register' },
-      { name: 'Return', path: '/erp/inventory/reports/admission' },
-      { name: 'Valuation', path: '/erp/inventory/reports/enrolment-review' },
-      { name: 'Stock Movement', path: '/erp/inventory/reports/withdraw-review' },
-      { name: 'Stock As On...', path: '/erp/inventory/reports/withdraw-review' }
+      { name: 'List', path: '/erp/inventory/reports/list' },
+      { name: 'Barcode', path: '/erp/inventory/reports/barcode' },
+      { name: 'Issue', path: '/erp/inventory/reports/issue' },
+      { name: 'Return', path: '/erp/inventory/reports/return' },
+      { name: 'Valuation', path: '/erp/inventory/reports/valuation' },
+      { name: 'Stock Movement', path: '/erp/inventory/reports/stock-movement' },
+      { name: 'Stock As On...', path: '/erp/inventory/reports/stock-as-on' }
     ]
   },
   {

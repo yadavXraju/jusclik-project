@@ -1,13 +1,17 @@
 import React from 'react';
-import { Paper, Grid, Box, Typography } from '@mui/material';
+import { Paper, Grid, Box, Typography, useMediaQuery } from '@mui/material';
 import { HeadingCss } from 'views/dashboard/Default/dashboard-css/CommonCss';
 
 // icons
 import LiveHelpTwoToneIcon from '@mui/icons-material/LiveHelpTwoTone';
 import AssignmentTurnedInTwoToneIcon from '@mui/icons-material/AssignmentTurnedInTwoTone';
 import BadgeTwoToneIcon from '@mui/icons-material/BadgeTwoTone';
+import { useTheme } from '@emotion/react';
 
 const StockStatus = () => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery (theme.breakpoints.only('xs'));
+
   const iconStyles = {
     fontSize: '30px',
     color: 'rgb(94, 53, 177)'
@@ -39,7 +43,7 @@ const StockStatus = () => {
       sx={{
         border: '1px solid rgb(227, 227, 227)',
         boxShadow: '4px 4px 9px 2px #ddddddc2',
-        height: '100%'
+        height: isMobile?'100%':'412px'
       }}
     >
       <Box
@@ -55,30 +59,31 @@ const StockStatus = () => {
         </Typography>
       </Box>
 
-      <Grid container spacing={0}>
+      <Grid container spacing={0} sx={{display:isMobile?'block':''}}>
         {EnrollmentData.map((item, index) => (
-          <Grid key={index} item xs={4}>
+          <Grid key={index} item  sm={4} md={4} lg={4}>
             <Box
               sx={{
-                flexDirection: 'column',
+                flexDirection: isMobile?'row':'column',
                 textAlign: 'center',
                 display: 'flex',
                 gap: '30px',
                 alignItems: 'center',
-                padding: '6rem 2rem',
-                justifyContent: 'center',
-                borderRight: '1px solid rgb(227, 227, 227)'
+                padding: isMobile?'1rem':'6rem 2rem',
+                justifyContent: isMobile?'flexStart':'center',
+                borderRight: isMobile?'none':'1px solid rgb(227, 227, 227)',
+                borderBottom: isMobile?'1px solid rgb(227, 227, 227)':'none',
               }}
             >
               {/* icon */}
               <Box sx={{ background: `rgb(227, 242, 253)`, padding: '10px', borderRadius: '12px', display: 'flex' }}>{item.icon}</Box>
 
               {/* title and number */}
-              <Box>
+              <Box sx={{display:isMobile?'flex':'',alignItems:isMobile?'center':'', gap:isMobile?'20px':'' }}>
                 <Typography variant="h3" sx={{ fontSize: '24px' }}>
                   {item.counterNumber}
                 </Typography>
-                <Typography variant="h3" sx={{ fontSize: '16px', fontWeight: '400', paddingTop: '20px' }}>
+                <Typography variant="h3" sx={{ fontSize: '16px', fontWeight: '400', paddingTop: isMobile?'0px': '20px' }}>
                   {item.counterTitle}
                 </Typography>
               </Box>

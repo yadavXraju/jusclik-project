@@ -1,12 +1,14 @@
 import React from 'react';
 import ApexCharts from 'react-apexcharts';
-import { Grid, Paper, Typography, useMediaQuery, Box } from '@mui/material';
+import { Grid, Paper, Typography, useMediaQuery } from '@mui/material';
 import { gridSpacing } from 'store/constant';
 import { HeadingCss } from 'views/dashboard/Default/dashboard-css/CommonCss';
+import { useTheme } from '@emotion/react';
 
 const StockDetailPieChart = () => {
+  const theme = useTheme();
   const isMediumDesktop = useMediaQuery('(max-width: 1600px)');
-  const isMobile = useMediaQuery('(max-width: 767px)');
+  const isMobile = useMediaQuery(theme.breakpoints.only('xs'));
 
   const chartData = {
     series: [200, 100, 110],
@@ -41,19 +43,22 @@ const StockDetailPieChart = () => {
     colors: ['#4C88BE', '#9FCCE9', '#1162A4'],
     responsive: [
       {
-        breakpoint: 768,
+        // breakpoint: 768,
         options: {
           chart: {
             width: '80%'
-          },
-          legend: {
-            position: 'bottom'
           }
+          // legend: {
+          //   position: 'bottom'
+          // }
         }
       }
     ],
     legend: {
-      show: false,
+      show: true,
+      position: 'top',
+      horizontalAlign: 'right',
+      offsetX: -15,
       fontSize: '16px',
       colors: ['#99a1b7'],
       fontWeight: '400',
@@ -99,61 +104,17 @@ const StockDetailPieChart = () => {
           </Typography>
         </Grid>
 
-        {/* ================================= content  =================================  */}
-        <Grid sx={{ display: isMobile?'block': 'flex', padding: isMobile?'20px': '' }}>
-          {/* =================================  chart =================================   */}
-          <Grid lg={6} sx={{ borderRight:isMobile?'none': '1px solid rgb(227, 227, 227)' }}>
-            <Grid
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                padding: isMobile ? '0px' : '20px 20px 18px 20px',
-                alignItems: isMobile ? 'center' : 'auto'
-              }}
-            >
-              <ApexCharts options={chartData} series={chartData.series} type="donut" height={isMediumDesktop ? 200 : 330} />
-            </Grid>
-          </Grid>
-
-          {/* =================================  book detail =================================   */}
-          <Grid lg={6} sx={{ display:isMobile?'grid': 'flex', justifyContent: 'center', flexDirection: 'column', paddingLeft: isMobile?'0px':'40px', gap: '20px' }}>
-            <Grid container spacing={0}>
-              {/* detail left */}
-              <Grid item xs={12}>
-                {/* avialable */}
-                <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-                  <Box
-                    sx={{ width: '10px', height: '10px', borderRadius: '50%', marginRight: '15px', background: chartData.colors[0] }}
-                  ></Box>
-
-                  <Typography variant="body1" className="labels">
-                    {chartData.labels[0]}
-                  </Typography>
-                </Box>
-                {/* Issued */}
-                <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-                  <Box
-                    sx={{ width: '10px', height: '10px', borderRadius: '50%', marginRight: '15px', background: chartData.colors[1] }}
-                  ></Box>
-
-                  <Typography variant="body1" className="labels">
-                    {chartData.labels[1]}
-                  </Typography>
-                </Box>
-                {/* Issued */}
-                <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-                  <Box
-                    sx={{ width: '10px', height: '10px', borderRadius: '50%', marginRight: '15px', background: chartData.colors[2] }}
-                  ></Box>
-
-                  <Typography variant="body1" className="labels">
-                    {chartData.labels[2]}
-                  </Typography>
-                </Box>
-              </Grid>
-              {/* detail right */}
-            </Grid>
-          </Grid>
+        {/* =================================  chart =================================   */}
+        <Grid
+          sx={{ display: isMobile ? 'block' : 'flex', padding: isMobile ? '20px' : '', height: '345px' }}
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            padding: isMobile ? '0px' : '20px 20px 18px 20px',
+            alignItems: isMobile ? 'center' : 'auto'
+          }}
+        >
+          <ApexCharts options={chartData} series={chartData.series} type="donut" height={isMediumDesktop ? 200 : 330} />
         </Grid>
       </Paper>
     </>

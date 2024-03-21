@@ -2,8 +2,9 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
+//import Typography from '@mui/material/Typography';
+//import Box from '@mui/material/Box';
+import { Box, Typography, Table, TableBody, TableCell, TableContainer, TableRow, Paper, Divider } from '@mui/material';
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -54,62 +55,138 @@ export default function PreviewTabs() {
       </Box>
       <CustomTabPanel value={value} index={0}>
         <>
+          {/* ================ Render Other Details tab content ============== */}
           <Box p={2}>
-            <Box p={2}>
-              <Typography p={0.7} variant="h4">
-                Other Details
-              </Typography>
-              <Typography sx={{ '&:hover': { backgroundColor: '#cbc7c73d' } }} p={0.7} variant="body2">
-                <span style={{ fontWeight: '500' }}>Family Id</span> - F847584
-              </Typography>
-              <Typography sx={{ '&:hover': { backgroundColor: '#cbc7c73d' } }} p={0.7} variant="body2">
-                <span style={{ fontWeight: '500' }}>Nationality</span> - Indian
-              </Typography>
-              <Typography sx={{ '&:hover': { backgroundColor: '#cbc7c73d' } }} p={0.7} variant="body2">
-                <span style={{ fontWeight: '500' }}>Religion</span> - Hindu
-              </Typography>
-              <Typography sx={{ '&:hover': { backgroundColor: '#cbc7c73d' } }} p={0.7} variant="body2">
-                <span style={{ fontWeight: '500' }}>House</span> - Green
-              </Typography>
-              <Typography sx={{ '&:hover': { backgroundColor: '#cbc7c73d' } }} p={0.7} variant="body2">
-                <span style={{ fontWeight: '500' }}>Blood Group</span> - O+
-              </Typography>
-              <Typography sx={{ '&:hover': { backgroundColor: '#cbc7c73d' } }} p={0.7} variant="body2">
-                <span style={{ fontWeight: '500' }}>SRN No.</span> - LKJH8974398
-              </Typography>
-            </Box>
+            <Typography pb={1} variant="h4" gutterBottom>
+              Other Details
+            </Typography>
+            <Divider />
+            <TableContainer component={Paper}>
+              <Table>
+                <TableBody>
+                  <TableRow>
+                    <TableCell sx={{padding:'10px', fontWeight:'600'}}>Family Id</TableCell>
+                    <TableCell sx={{padding:'10px'}}>F847584</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell sx={{padding:'10px', fontWeight:'600'}}>Nationality</TableCell>
+                    <TableCell sx={{padding:'10px'}}>Indian</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell sx={{padding:'10px', fontWeight:'600'}}>Religion</TableCell>
+                    <TableCell sx={{padding:'10px'}}>Hindu</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell sx={{padding:'10px', fontWeight:'600'}}>House</TableCell>
+                    <TableCell sx={{padding:'10px'}}>Green</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell sx={{padding:'10px', fontWeight:'600'}}>Blood Group</TableCell>
+                    <TableCell sx={{padding:'10px'}}>O+</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell sx={{padding:'10px', fontWeight:'600'}}>SRN No.</TableCell>
+                    <TableCell sx={{padding:'10px'}}>LKJH8974398</TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </TableContainer>
           </Box>
         </>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
         <>
-          <Box p={2}>
-            <Box p={2}>
-              <Typography p={0.7} variant="h4">
-                Address
-              </Typography>
-              <Typography sx={{ '&:hover': { backgroundColor: '#cbc7c73d' } }} p={0.7} variant="body2">
-                <span style={{ fontWeight: '500' }}>Address</span> - Dwarka, Delhi
-              </Typography>
-              <Typography sx={{ '&:hover': { backgroundColor: '#cbc7c73d' } }} p={0.7} variant="body2">
-                <span style={{ fontWeight: '500' }}>Country/Region</span> - India
-              </Typography>
-              <Typography sx={{ '&:hover': { backgroundColor: '#cbc7c73d' } }} p={0.7} variant="body2">
-                <span style={{ fontWeight: '500' }}>City</span> - Delhi
-              </Typography>
-              <Typography sx={{ '&:hover': { backgroundColor: '#cbc7c73d' } }} p={0.7} variant="body2">
-                <span style={{ fontWeight: '500' }}>state</span> - Delhi
-              </Typography>
-              <Typography sx={{ '&:hover': { backgroundColor: '#cbc7c73d' } }} p={0.7} variant="body2">
-                <span style={{ fontWeight: '500' }}>Zip Code</span> - 857473
-              </Typography>
-            </Box>
+        {/* ================ Render Address tab content ============== */}
+        <Box p={2}>
+            <Typography pb={1} variant="h4" gutterBottom>
+              Address
+            </Typography>
+            <Divider />
+            <TableContainer component={Paper}>
+              <Table>
+                <TableBody>
+                  <TableRow>
+                    <TableCell sx={{padding:'10px', fontWeight:'600'}}>Address</TableCell>
+                    <TableCell sx={{padding:'10px'}}>Dwarka, Delhi</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell sx={{padding:'10px', fontWeight:'600'}}>Country/Region</TableCell>
+                    <TableCell sx={{padding:'10px'}}>India</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell sx={{padding:'10px', fontWeight:'600'}}>City</TableCell>
+                    <TableCell sx={{padding:'10px'}}>Delhi</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell sx={{padding:'10px', fontWeight:'600'}}>state</TableCell>
+                    <TableCell sx={{padding:'10px'}}>Delhi</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell sx={{padding:'10px', fontWeight:'600'}}>Zip Code</TableCell>
+                    <TableCell sx={{padding:'10px'}}>857473</TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </TableContainer>
           </Box>
         </>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
         <>
-          <Box p={2}>
+        {/* ================ Render Contact Person tab content ============== */}
+        <Box p={2}>
+            <Typography pb={1} variant="h4" gutterBottom>
+            Contact Person
+            </Typography>
+            <Divider />
+            <TableContainer component={Paper}>
+              <Table>
+                <TableBody>
+                  <TableRow>
+                    <TableCell sx={{padding:'10px', fontWeight:'600'}}>Name</TableCell>
+                    <TableCell sx={{padding:'10px'}}>Mr. Subash</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell sx={{padding:'10px', fontWeight:'600'}}>Relation</TableCell>
+                    <TableCell sx={{padding:'10px'}}>Father</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell sx={{padding:'10px', fontWeight:'600'}}>Mobile</TableCell>
+                    <TableCell sx={{padding:'10px'}}>848493734</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell sx={{padding:'10px', fontWeight:'600'}}>Email</TableCell>
+                    <TableCell sx={{padding:'10px'}}>abc@gmail.com</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell sx={{padding:'10px', fontWeight:'600'}}>Education</TableCell>
+                    <TableCell sx={{padding:'10px'}}>B.Sc</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell sx={{padding:'10px', fontWeight:'600'}}>Company</TableCell>
+                    <TableCell sx={{padding:'10px'}}>abc Company</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell sx={{padding:'10px', fontWeight:'600'}}>Designation</TableCell>
+                    <TableCell sx={{padding:'10px'}}>Manager</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell sx={{padding:'10px', fontWeight:'600'}}>Address</TableCell>
+                    <TableCell sx={{padding:'10px'}}>Delhi</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell sx={{padding:'10px', fontWeight:'600'}}>Aadhaar No.</TableCell>
+                    <TableCell sx={{padding:'10px'}}>12456789345</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell sx={{padding:'10px', fontWeight:'600'}}>PEN</TableCell>
+                    <TableCell sx={{padding:'10px'}}>AZCIV89345</TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </TableContainer>
+          </Box>
+          {/* <Box p={2}>
             <Box p={2}>
               <Typography p={0.7} variant="h4">
                 Contact Person
@@ -117,35 +194,8 @@ export default function PreviewTabs() {
               <Typography sx={{ '&:hover': { backgroundColor: '#cbc7c73d' } }} p={0.7} variant="body2">
                 <span style={{ fontWeight: '500' }}>Name</span> - Mr. Subash
               </Typography>
-              <Typography sx={{ '&:hover': { backgroundColor: '#cbc7c73d' } }} p={0.7} variant="body2">
-                <span style={{ fontWeight: '500' }}>Relation</span> - Father
-              </Typography>
-              <Typography sx={{ '&:hover': { backgroundColor: '#cbc7c73d' } }} p={0.7} variant="body2">
-                <span style={{ fontWeight: '500' }}>Mobile</span> - 848493734
-              </Typography>
-              <Typography sx={{ '&:hover': { backgroundColor: '#cbc7c73d' } }} p={0.7} variant="body2">
-                <span style={{ fontWeight: '500' }}>Email</span> - abc@gmail.com
-              </Typography>
-              <Typography sx={{ '&:hover': { backgroundColor: '#cbc7c73d' } }} p={0.7} variant="body2">
-                <span style={{ fontWeight: '500' }}>Education</span> - B.Sc
-              </Typography>
-              <Typography sx={{ '&:hover': { backgroundColor: '#cbc7c73d' } }} p={0.7} variant="body2">
-                <span style={{ fontWeight: '500' }}>Company</span> - abc Company
-              </Typography>
-              <Typography sx={{ '&:hover': { backgroundColor: '#cbc7c73d' } }} p={0.7} variant="body2">
-                <span style={{ fontWeight: '500' }}>Designation</span> - Manager
-              </Typography>
-              <Typography sx={{ '&:hover': { backgroundColor: '#cbc7c73d' } }} p={0.7} variant="body2">
-                <span style={{ fontWeight: '500' }}>Address</span> - Delhi
-              </Typography>
-              <Typography sx={{ '&:hover': { backgroundColor: '#cbc7c73d' } }} p={0.7} variant="body2">
-                <span style={{ fontWeight: '500' }}>Aadhaar No.</span> - 12456789345
-              </Typography>
-              <Typography sx={{ '&:hover': { backgroundColor: '#cbc7c73d' } }} p={0.7} variant="body2">
-                <span style={{ fontWeight: '500' }}>PEN</span> - AZCIV89345
-              </Typography>
             </Box>
-          </Box>
+          </Box> */}
         </>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={3}>

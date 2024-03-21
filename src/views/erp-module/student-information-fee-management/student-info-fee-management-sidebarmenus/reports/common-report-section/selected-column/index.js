@@ -65,20 +65,22 @@ const ShowHide = () => {
 
     const style = {
         showHideContainer: {
-            height: "550px",
+            minHeight: 'calc(100vh - 400px)',
             display: "flex",
+            flexWrap: "wrap",
             gap: "100px",
+            width:"100%",
             alignItems: "center",
         },
         availableColumnsContainer: {
-            height: "550px",
+            height: 'calc(100vh - 400px)',
         },
         availableFieldsContainer: {
             marginTop: "20px",
             border: '1px solid #dadada',
             width: "300px",
             borderRadius: "10px",
-            height: "520px",
+            height: 'calc(100vh - 400px)',
             overflowY: 'auto',
         },
         selectedField: {
@@ -144,8 +146,8 @@ const ShowHide = () => {
     };
 
     return (
-        <Box sx={style.showHideContainer}>
-            <DragDropContext onDragEnd={handleDragAndDrop}>
+        <DragDropContext onDragEnd={handleDragAndDrop} >
+            <Box sx={style.showHideContainer}>
                 {/* Available Fields */}
                 <Box sx={style.availableColumnsContainer}>
                     <Typography variant="h5"> AVAILABLE COLUMNS</Typography>
@@ -205,9 +207,9 @@ const ShowHide = () => {
                     <Droppable droppableId="selected" type="group2">
                         {(provided) => (
                             <Box className="scrollbar" sx={style.availableFieldsContainer} {...provided.droppableProps} ref={provided.innerRef}>
-                                {selectedFields.map((item,index) => (
+                                {selectedFields.map((item, index) => (
                                     item.selected && (
-                                        <Draggable draggableId={item?.id} index={index} key={item?.id} type="group2">
+                                        <Draggable draggableId={item.id} index={index} key={item?.id} type="group2">
                                             {(provided) => (
                                                 <Box
                                                     key={item.id}
@@ -237,10 +239,8 @@ const ShowHide = () => {
                         )}
                     </Droppable>
                 </Box>
-
-
-            </DragDropContext>
-        </Box >
+            </Box >
+        </DragDropContext>
     );
 };
 
