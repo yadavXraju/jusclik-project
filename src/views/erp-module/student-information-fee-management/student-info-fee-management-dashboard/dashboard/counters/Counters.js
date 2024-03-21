@@ -30,7 +30,8 @@ const CounterData = [
         icon: <Person2OutlinedIcon sx={{ ...iconStyles, color: 'rgb(42, 101, 191)' }} />,
         counterNumber: 16,
         counterTitle: 'GIRLS'
-    }
+    },
+
 ];
 
 // Function to calculate background color based on index

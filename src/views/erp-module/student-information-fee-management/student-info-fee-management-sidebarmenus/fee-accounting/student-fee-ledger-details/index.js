@@ -56,26 +56,36 @@ export default function StudentFeeLedgerDetails() {
   };
 
   const handleClick = (event, id) => {
-    const selectedIndex = selected.indexOf(id);
-    let newSelected = [];
-
-    if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, id);
-    } else if (selectedIndex === 0) {
-      newSelected = newSelected.concat(selected.slice(1));
-    } else if (selectedIndex === selected.length - 1) {
-      newSelected = newSelected.concat(selected.slice(0, -1));
-    } else if (selectedIndex > 0) {
-      newSelected = newSelected.concat(
-        selected.slice(0, selectedIndex),
-        selected.slice(selectedIndex + 1),
-      );
-    }
-    setSelected(newSelected);
-  };
+      const selectedIndex = selected.indexOf(id);
+      let newSelected = [];
+    
+      if (selectedIndex === -1) {
+        newSelected = newSelected.concat(selected, id);
+      } else if (selectedIndex === 0) {
+        newSelected = newSelected.concat(selected.slice(1));
+      } else if (selectedIndex === selected.length - 1) {
+        newSelected = newSelected.concat(selected.slice(0, -1));
+      } else if (selectedIndex > 0) {
+        newSelected = newSelected.concat(
+          selected.slice(0, selectedIndex),
+          selected.slice(selectedIndex + 1),
+        );
+      }
+      setSelected(newSelected);
+    
+      // Calculate total net pay of selected rows
+      let totalNetPay = 0;
+      newSelected.forEach(selectedId => {
+        const selectedRow = rows.find(row => row.id === selectedId);
+        if (selectedRow) {
+          totalNetPay += selectedRow.netpay;
+        }
+      });
+      console.log(totalNetPay);
+    };
 
   
-  const isSelected = (id) => selected.indexOf(id) !== -1;
+   const isSelected = (id) => selected.indexOf(id) !== -1;
 
 
   const visibleRows = useMemo(
@@ -86,8 +96,16 @@ export default function StudentFeeLedgerDetails() {
   return (
     <Box sx={{ width: '100%' }}>
       <Paper sx={{ width: '100%', mb: 2 }}>
-        <EnhancedTableToolbar numSelected={selected.length} onSearchChange={(e) => setSearchText(e.target.value)} />
-        <TableContainer>
+
+        {/* ======================= toolbar ======================== */}
+          <EnhancedTableToolbar
+            numSelected={selected.length}
+            selectedRows={selected.map(id => rows.find(row => row.id === id))}
+            onSearchChange={(e) => setSearchText(e.target.value)}
+            // totalNetPay={totalNetPay} // Pass totalNetPay as a prop
+          />
+
+        <TableContainer className='scrollbar'>
           <Table
             sx={{ minWidth: 750, border: '1px solid rgba(224, 224, 224, 1)' }}
             aria-labelledby="tableTitle"
@@ -121,6 +139,7 @@ export default function StudentFeeLedgerDetails() {
                     //selected={isItemSelected}
                     sx={{ cursor: 'pointer' }}
                   >
+                    {/* checkbox */}
                     <TableCell padding="checkbox">
                       <Checkbox
                         color="primary"
@@ -131,72 +150,30 @@ export default function StudentFeeLedgerDetails() {
                         }}
                       />
                     </TableCell>
-                    <TableCell
+
+                    {/* fee period */}
+                    <TableCell align="left">{row.feePeriod}</TableCell>
+
+                    {/* inve no , inv type , inv date */}
+
+                  <TableCell
                       component="th"
                       id={labelId}
                       scope="row"
                     >
                       <Box>
-                        <span style={{ fontWeight: 'bold' }}>{row.name}</span><br />
+                        <span style={{ fontWeight: 'bold' }}>{row.invNo} {row.name}</span><br />
                         {row.date}
                       </Box>
                     </TableCell>
+
                     <TableCell align="right">{row.ldate}</TableCell>
                     <TableCell align="right">{row.netpay}</TableCell>
                     <TableCell align="right">{row.amtpay}</TableCell>
                     <TableCell align="right">{row.bal}</TableCell>
-                    <TableCell align="right">{row.mop}</TableCell>
-
-                    {/* entry number and entry date */}
-                   <TableCell
-                      component="th"
-                      id={labelId}
-                      scope="row"
-                      align="right"
-                    >
-                      <Box>
-                        <span style={{ fontWeight: '600' }}>#{row.entryNo}</span><br />
-                        {row.entryDate}
-                      </Box>
-                    </TableCell>
-
-
-                    {/* chq number and chq date */}
-                      <TableCell
-                        component="th"
-                        id={labelId}
-                        scope="row"
-                        align="right"
-                      >
-                        <Box>
-                          <span style={{ fontWeight: '600' }}>{row.chqNo}</span><br />
-                          {row.chqDate}
-                        </Box>
-                      </TableCell>
-
-
-                      {/* bank details */}
-
-                      <TableCell
-                        component="th"
-                        id={labelId}
-                        scope="row"
-                        align="right"
-                      >
-                        <Box sx={{textTransform:'lowercase'}}>
-                          <span style={{ fontWeight: '600' , textTransform:'uppercase' }}>{row.bank}</span><br />
-                          {row.branch}
-                        </Box>
-                      </TableCell>
-
-                    {/* <TableCell align="right"   className='find-comp'>{row.remarks}</TableCell>   */}
 
                       {/* status */}
-                      <TableCell
-                        sx={{
-                          // Add other styles as needed
-                        }}
-                      >
+                      <TableCell>
                           <Box sx={{ width: '100%', display: 'flex', justifyContent: 'end' }}>
                             <Box
                               sx={{
@@ -234,9 +211,55 @@ export default function StudentFeeLedgerDetails() {
                           </Box>
                       </TableCell>
 
+                    {/* method of payment */}
+                    <TableCell align="right">{row.mop}</TableCell>
+
+                    {/* entry number and entry date */}
+                   <TableCell
+                      component="th"
+                      id={labelId}
+                      scope="row"
+                      align="right"
+                    >
+                      <Box>
+                        <span style={{ fontWeight: '600' }}>#{row.entryNo}</span><br />
+                        {row.entryDate}
+                      </Box>
+                    </TableCell>
+
+
+                    {/* chq details */}
+                      {/* <TableCell
+                        component="th"
+                        id={labelId}
+                        scope="row"
+                        align="right"
+                      >
+                        <Box>
+                          <span style={{ fontWeight: '600' }}>{row.chqNo}</span><br />
+                          {row.chqDate}
+                        </Box>
+                      </TableCell> */}
+
+
+                      {/* bank details */}
+
+                      {/* <TableCell
+                        component="th"
+                        id={labelId}
+                        scope="row"
+                        align="right"
+                      >
+                        <Box sx={{textTransform:'lowercase'}}>
+                          <span style={{ fontWeight: '600' , textTransform:'uppercase' }}>{row.bank}</span><br />
+                          {row.branch}
+                        </Box>
+                      </TableCell> */}
+
+
                     {/* Ref details */}
                     
-                    <TableCell
+                    {/* <TableCell
                         component="th"
                         id={labelId}
                         scope="row"
@@ -246,9 +269,31 @@ export default function StudentFeeLedgerDetails() {
                           <span style={{ fontWeight: '600' }}>{row.refNo}</span><br />
                           {row.refDate}
                         </Box>
-                    </TableCell>
+                    </TableCell> */}
 
-                    <TableCell align="left" sx={{textTransform:'uppercase'}}>{row.paymentCat}</TableCell>   
+
+                    {/* payment details */}
+
+                    <TableCell
+                        component="th"
+                        id={labelId}
+                        scope="row"
+                        align="right"
+                      >
+                        <Box sx={{width:'200px'}}>
+                          {/* chq details */}
+                          <span style={{fontWeight:'600'}}>Chq Details:</span><span> {row.chqNo}  {row.chqDate}  </span>
+                           <br/>
+                           {/* bank details */}
+                           <span style={{fontWeight:'600'}}>Bank Details:</span><span> {row.bank} {row.branch}</span>
+                           <br/>
+                            {/* ref details */}
+                           <span style={{fontWeight:'600'}}>Ref Details :</span><span> {row.refNo} {row.refDate} </span>
+                        </Box>
+                    </TableCell> 
+
+
+                    <TableCell align="left" sx={{textTransform:'uppercase'}}>{row.settlementAc}</TableCell>   
   
                   </TableRow>
                 );
