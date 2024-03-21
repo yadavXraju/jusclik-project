@@ -1,6 +1,6 @@
 import React from 'react';
 import CommonConfig from './common-config-component';
-import { Paper } from '@mui/material';
+import { Grid, Paper } from '@mui/material';
 import { useState } from 'react';
 
 const Index = () => {
@@ -22,21 +22,66 @@ const Index = () => {
       backgroundColorEnable: true,
       backgroundColor: '#ffffff'
     },
-    headerFooter: {},
-    transactionDetails: {},
+    headerFooter: {
+      headerImage:null,
+      headerImagePosition:'topLeft',
+      headerBackgroundColor:'#ffffff',
+      headerBackgroundColorEnable:true,
+      headerApplyToFirestPageOnly:false,
+      footerFontSize:'6',
+      footerFontColor:'#ffffff',
+      footerImage:null,
+      footerImagePosition:'topLeft',
+      footerBackgroundColor:'#ffffff',
+      footerBackgroundColorEnable:true,
+      showPageNumber:true
+    },
+    transactionDetails: {
+      showLogo:true,
+      logo:null,
+      showOrgName:true,
+      orgNameColor:'#000000',
+      orgFontSize:'10',
+      showOrgAddress:true,
+      custFontColor:'#000000',
+      custFontSize:'9',
+      billToEnable:true,
+      billTo:'Bill To',
+      shipToEnable:true,
+      shipTo:'Ship To',
+      showDocTittle:true,
+      docTittle:'Tax Invoice',
+      docFontSize:'25',
+      docFontColor:'#000000',
+      phone:'Phone',
+      numberFeildEnable:true,
+      numberFeild:'Invoice#',
+      dateFieldEnable: true,
+      dateField: 'Invoice Date',
+      termsEnable: true,
+      terms: 'Terms',
+      dueDateEnable: true,
+      dueDate: 'Due Date',
+      referenceFieldEnable: true,
+      referenceField: 'P.0 #',
+    },
     table: {},
     total: {},
-    otherDetails: {}
+    otherDetails: {},
   });
 
-
+console.log(state);
  
 
   return (
     <>
+    <Grid container>
+      <Grid item md={6}>
       <Paper>
         <CommonConfig state={state} setState={setState} />
       </Paper>
+      </Grid>
+    </Grid>
     </>
   );
 };
