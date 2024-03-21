@@ -28,8 +28,7 @@ function CustomFields() {
       <TextField size={isMobile  ? 'small' : 'normal' } id="outlined-basic" fullWidth label="Admission Date" variant="outlined" />
       </Grid>
     </Grid>
-    </Card>
-
+    </Card> 
     </>
   );
 }

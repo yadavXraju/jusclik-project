@@ -8,48 +8,83 @@ import CreditCardOutlinedIcon from '@mui/icons-material/CreditCardOutlined';
 import TuneOutlinedIcon from '@mui/icons-material/TuneOutlined';
 import FolderOpenOutlinedIcon from '@mui/icons-material/FolderOpenOutlined';
 
-
 const SettingData = [
-    {
-      icon: <CorporateFareRoundedIcon sx={{ color: '#838195' }} />,
-      title: 'Organisation',
-      items: ['Profile', 'Branding', 'Users & Roles', 'Student Portal']
-    },
-    {
-      icon: <SmsOutlinedIcon sx={{ color: '#838195' }} />,
-      title: 'Communication Templates',
-      items: ['SMS', 'E-mail', 'Notification', 'WhatsApp']
-    },
-    {
-      icon: <PeopleAltOutlinedIcon sx={{ color: '#838195' }} />,
-      title: 'Students',
-      items: ['Class Promotion', 'Section Shuffling', 'House Shuffling']
-    },
-    {
-      icon: <CreditCardOutlinedIcon sx={{ color: '#838195' }} />,
-      title: 'Fee',
-      items: ['Fee Heads', 'Fee Structure', 'Concession', 'Discount', 'Fee Account', 'Invoice']
-    },
-    {
-      icon: <FolderOpenOutlinedIcon sx={{ color: '#838195' }} />,
-      title: 'Student Records',
-      items: ['Tuition Fee Certificate', 'School Learning Certificate', 'Gate Pass', 'Identity Card']
-    },
-    {
-      icon: <TipsAndUpdatesRoundedIcon sx={{ color: '#838195' }} />,
-      title: 'Customisation',
-      items: ['Reporting Tags', 'Transaction Number Series']
-    },
-    {
-      icon: <TuneOutlinedIcon sx={{ color: '#838195' }} />,
-      title: 'Integrations',
-      items: ['Zoom', 'Google Meet', 'WhatsApp', 'Payment Gateways']
-    },
-    {
-      icon: <WebhookRoundedIcon sx={{ color: '#838195' }} />,
-      title: 'Developer Space',
-      items: ['Data Backup']
-    }
-  ];
+  {
+    icon: <CorporateFareRoundedIcon sx={{ color: '#838195' }} />,
+    title: 'Organisation',
+    items: [
+      { name: 'Profile', path: '/profile' },
+      { name: 'Branding', path: '/branding' },
+      { name: 'Users & Roles', path: '/users-roles' },
+      { name: 'Student Portal', path: '/student-portal' }
+    ]
+  },
+  {
+    icon: <SmsOutlinedIcon sx={{ color: '#838195' }} />,
+    title: 'Communication Templates',
+    items: [
+      { name: 'SMS', path: '/sms' },
+      { name: 'E-mail', path: '/email' },
+      { name: 'Notification', path: '/notification' },
+      { name: 'WhatsApp', path: '/whatsapp' }
+    ]
+  },
+  {
+    icon: <PeopleAltOutlinedIcon sx={{ color: '#838195' }} />,
+    title: 'Students',
+    items: [
+      { name: 'Class Promotion', path: '/class-promotion' },
+      { name: 'Section Shuffling', path: '/section-shuffling' },
+      { name: 'House Shuffling', path: '/house-shuffling' }
+    ]
+  },
+  {
+    icon: <CreditCardOutlinedIcon sx={{ color: '#838195' }} />,
+    title: 'Fee',
+    items: [
+      { name: 'Fee Heads', path: '/fee-heads' },
+      { name: 'Fee Structure', path: '/fee-structure' },
+      { name: 'Concession', path: '/concession' },
+      { name: 'Discount', path: '/discount' },
+      { name: 'Fee Account', path: '/fee-account' },
+      { name: 'Invoice', path: '/invoice' }
+    ]
+  },
+  {
+    icon: <FolderOpenOutlinedIcon sx={{ color: '#838195' }} />,
+    title: 'Student Records',
+    items: [
+      { name: 'Tuition Fee Certificate', path: '/tuition-fee-certificate' },
+      { name: 'School Learning Certificate', path: '/school-learning-certificate' },
+      { name: 'Gate Pass', path: '/gate-pass' },
+      { name: 'Identity Card', path: '/identity-card' }
+    ]
+  },
+  {
+    icon: <TipsAndUpdatesRoundedIcon sx={{ color: '#838195' }} />,
+    title: 'Customisation',
+    items: [
+      { name: 'Reporting Tags', path: '/reporting-tags' },
+      { name: 'Transaction Number Series', path: '/transaction-number-series' }
+    ]
+  },
+  {
+    icon: <TuneOutlinedIcon sx={{ color: '#838195' }} />,
+    title: 'Integrations',
+    items: [
+      { name: 'Zoom', path: '/zoom' },
+      { name: 'Google Meet', path: '/google-meet' },
+      { name: 'WhatsApp', path: '/whatsapp-integration' },
+      { name: 'Payment Gateways', path: '/payment-gateways' }
+    ]
+  },
+  {
+    icon: <WebhookRoundedIcon sx={{ color: '#838195' }} />,
+    title: 'Developer Space',
+    items: [
+      { name: 'Data Backup', path: '/data-backup' }
+    ]
+  }
+];
 
-  export default SettingData;
+export default SettingData;

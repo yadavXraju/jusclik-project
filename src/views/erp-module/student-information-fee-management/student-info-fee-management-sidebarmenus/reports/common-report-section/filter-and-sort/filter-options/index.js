@@ -78,17 +78,17 @@ const ClassOption = [
 
 const style = {
     mainStyle: {
-        borderBottom: "2px solid #e5ebef",
-        borderTop: "2px solid #e5ebef",
+        borderBottom: "1px solid #e5ebef",
         borderRadius: "5px",
         height: "100px",
-        width: "100%"
+        width: "100%",
+        padding: '5px 20px'
     },
     filterFieldStyle: {
         display: "flex",
         flexDirection: "row",
-        justifyContent: 'center',
-        gap: "10px", width: "100%",
+        width: "100%",
+        gap: "10px",
         alignItems: "center",
         marginTop: "10px"
     }
@@ -100,9 +100,9 @@ const FilterByEnquiryNo = () => {
         <Box sx={style?.mainStyle}>
             <Typography>Enq No</Typography>
             <Box sx={style?.filterFieldStyle}>
-                <ParamSelectList label="= equal to" options={compareOptions} value={value} setValue={setValue} size="medium" customSytle={{ width: "110px" }} />
-                <ParamDateComponent label="From" value={null} />
-                <ParamDateComponent label="To" value={null} />
+                <ParamSelectList label="= equal to" options={compareOptions} value={value} setValue={setValue} size="medium" customSytle={{ width: "100%" }} rootStyle={{width:"33%"}}/>
+                <ParamDateComponent label="From" value={null} customStyle={{width:"33%"}}/>
+                <ParamDateComponent label="To" value={null} customSytle={{width:"33%"}}/>
             </Box>
         </Box>
     )
@@ -114,7 +114,7 @@ const FilterByEnquiryDate = () => {
         <Box sx={style?.mainStyle}>
             <Typography>Enq Date</Typography>
             <Box sx={style?.filterFieldStyle}>
-                <ParamSelectList label="= equal to" options={compareOptions} value={value} setValue={setValue} size="medium" customSytle={{ width: "110px" }} />
+                <ParamSelectList label="= equal to" options={compareOptions} value={value} setValue={setValue} size="medium"customSytle={{ width: "100%" }} rootStyle={{width:"33%"}} />
                 <ParamDateComponent label="From" value={null} />
                 <ParamDateComponent label="To" value={null} />
             </Box>
