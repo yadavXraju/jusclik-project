@@ -178,7 +178,7 @@ const Enquiry = () => {
     const printRef = useRef();
     const [clickedCustomize, setClickedCustomize] = useState(false);
     return (
-        <>
+        <Box sx={{overflowX:"hidden"}}>
             {/* Customize report and action button(printPdf) */}
             <Paper sx={{ height: "50px"}}>
                 <Box sx={{height:"50px",display: "flex", justifyContent: "space-between", marginTop: "7px" }}>
@@ -195,10 +195,10 @@ const Enquiry = () => {
                 </Box>
             </Paper>
             {/* Report Table  */}
-            <Paper>
+            <Paper sx={{overflowX:"hidden",marginTop:"20px"}}>
                 <ReportTable rows={studentData} columns={columns} ref={printRef} />
             </Paper>
-        </>
+        </Box>
     )
 }
 

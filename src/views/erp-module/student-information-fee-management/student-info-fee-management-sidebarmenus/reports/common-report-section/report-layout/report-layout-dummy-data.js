@@ -13,7 +13,7 @@ export const reportPreviewDummyData = {
 export const  pageFontFamilyObj= {
     ubuntu:{
         fontname:'Ubuntu',
-        fontDescription:'Supports English and European languages. This font can also render Indian Rupees Symbol.'
+        fontDescription:'Supports English, German, Spanish, French, Italian, Dutch, Polish.'
     },
     openSans:{
         fontname:'Open Sans',
