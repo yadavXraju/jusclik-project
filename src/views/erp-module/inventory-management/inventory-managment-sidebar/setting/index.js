@@ -1,11 +1,9 @@
-
-
 import React, { useState } from 'react';
-// import Organisation from './Organisation';
-import SettingData from './SettingData';
 import { Typography, Box, Card } from '@mui/material';
 import SearchInvBar from './SearchInvBar';
 import SettingOrg from './SettingOrg';
+import SettingData from './SettingData';
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 
 const Setting = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -14,7 +12,7 @@ const Setting = () => {
       return true;
     } else {
       return item?.items.some(submenu =>
-        submenu.toLowerCase().includes(searchTerm)
+        submenu.name.toLowerCase().includes(searchTerm) && submenu.path // Check if submenu has path defined
       );
     }
   }) : [];
@@ -39,23 +37,21 @@ const Setting = () => {
           margin: 'auto' ,
           paddingLeft:'30px'
         }}
-      > {/* Set a fixed height and scrolling */}
-        {
-          filterData.map((item, index) => {
-            return (
-              <React.Fragment key={index}>
-                <Box>
-                  <Typography component="div" sx={{paddingBottom:'10px',paddingTop:'10px' }}>
-                    <span style={{ fontWeight: 'bold', }} dangerouslySetInnerHTML={{__html: highlightSearchTerm(item.title)}}></span>
-                  </Typography>
-                  {item?.items.map((submenu, subIndex) =>
-                    <Typography sx={{padding:'4px 0'}} key={subIndex} dangerouslySetInnerHTML={{__html: highlightSearchTerm(submenu)}}></Typography>
-                  )}
-                </Box>
-              </React.Fragment>
-            );
-          })
-        }
+      >
+        {filterData.map((item, index) => (
+          <Box key={index}>
+            <Typography component="div" sx={{paddingBottom:'10px',paddingTop:'10px' }}>
+              <span style={{ fontWeight: 'bold' }} dangerouslySetInnerHTML={{__html: highlightSearchTerm(item.title)}}></span>
+            </Typography>
+            {item?.items.map((submenu, subIndex) => (
+              submenu.path && // Check if submenu has path defined
+              <Link key={subIndex} to={submenu.path} style={{ textDecoration: 'none', color: 'inherit' }}>
+                {/* Use Link to navigate to the specified path */}
+                <Typography sx={{padding:'4px 0'}} key={subIndex} dangerouslySetInnerHTML={{__html: highlightSearchTerm(submenu.name)}}></Typography>
+              </Link>
+            ))}
+          </Box>
+        ))}
       </Card>
       <SettingOrg />
     </div>
