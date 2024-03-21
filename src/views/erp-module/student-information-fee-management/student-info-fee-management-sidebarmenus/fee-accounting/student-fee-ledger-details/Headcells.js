@@ -1,5 +1,12 @@
 // ============= Table Head cell ============
 export const headCells = [
+
+  {
+    id: 'fee-period',
+    numeric: false,
+    disablePadding: false,
+    label: 'Fee Period',
+  },
     {
       id: 'invoice-details',
       numeric: false,
@@ -32,6 +39,16 @@ export const headCells = [
       disablePadding: false,
       label: 'Balance Fee',
     },
+      
+  
+    {
+      id: 'status',
+      numeric: true,
+      disablePadding: false,
+      label: 'Status',
+    },
+  
+
     {
       id: 'mop',
       numeric: true,
@@ -46,43 +63,42 @@ export const headCells = [
       label: 'Entry Details',
     },
   
-    {
-      id: 'chq-no-date',
+    // {
+    //   id: 'chq-details',
+    //   numeric: true,
+    //   disablePadding: false,
+    //   label: 'Chq Details',
+    // },
+  
+  
+    // {
+    //   id: 'bank-details',
+    //   numeric: false,
+    //   disablePadding: false,
+    //   label: 'Bank Details',
+    // },
+  
+  
+    // {
+    //   id: 'ref-details',
+    //   numeric: true,
+    //   disablePadding: false,
+    //   label: 'Ref Details',
+    // },
+
+     {
+      id: 'payment-details',
       numeric: true,
       disablePadding: false,
-      label: 'Chq Details',
+      label: 'Payment Details',
     },
   
   
     {
-      id: 'bank-detail',
+      id: 'settlement-ac',
       numeric: false,
       disablePadding: false,
-      label: 'Bank Details',
-    },
-  
-  
-  
-  
-    {
-      id: 'status',
-      numeric: true,
-      disablePadding: false,
-      label: 'Status',
-    },
-  
-    {
-      id: 'ref-details',
-      numeric: true,
-      disablePadding: false,
-      label: 'Ref Details',
-    },
-  
-    {
-      id: 'payment-cat',
-      numeric: false,
-      disablePadding: false,
-      label: 'Payment Cat',
+      label: 'Settlement Ac',
     },
   
   ];

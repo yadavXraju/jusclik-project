@@ -23,20 +23,20 @@ import ArticleTwoToneIcon from '@mui/icons-material/ArticleTwoTone';
 // Drawer and action
 
 function EnhancedTableToolbar(props) {
-  const { numSelected } = props;
+  const { numSelected, selectedRows , } = props;
   const [isDrawerOpen, setIsDrawerOpen] = useState(false); // State for drawer
-  const [paymentMode, setPaymentMode] = useState('');
-  const [paymentCate, setPaymentCate] = useState('');
-  const [chequeCate, setChequeCate] = useState('');
-  const [chequeNo, setChequeNo] = useState('');
-  const [micrNo, setMicrNo] = useState('');
-  const [bank, setBank] = useState('');
-  const [branch, setBranch] = useState('');
 
-
-  const [ddCate, setDdCate] = useState('');
-  const [ddNo, setDdNo] = useState('');
-
+  const [formData, setFormData] = useState({
+    paymentMode: '',
+    paymentCate: '',
+    chequeCate: '',
+    chequeNo: '',
+    micrNo: '',
+    bank: '',
+    branch: '',
+    ddCate: '',
+    ddNo: '',
+  });
 
   // Handler function to open drawer
   const handleDrawerOpen = () => {
@@ -48,7 +48,22 @@ function EnhancedTableToolbar(props) {
     setIsDrawerOpen(false);
   };
 
- console.log(paymentMode , paymentCate , chequeCate , chequeNo);
+  // Generic handleChange function to update form data
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  // Check if any selected row has the status "Paid"
+  const isAnyPaid = selectedRows.some(row => row.status === 'Paid');
+
+  // console.log(formData.paymentMode , formData.paymentCate , formData.chequeCate , formData.chequeNo , formData.micrNo , formData.bank , formData.branch , formData.ddCate , formData.ddNo )
+
+  // console.log(totalNetPay)
+
   return (
     <>
       <Toolbar
@@ -83,7 +98,7 @@ function EnhancedTableToolbar(props) {
 
             {/* fee payment with onClick handler to open drawer */}
             <Tooltip title="Fee Payment">
-              <IconButton onClick={handleDrawerOpen}>
+              <IconButton onClick={handleDrawerOpen} disabled={isAnyPaid}>
                 <PaymentTwoToneIcon />
               </IconButton>
             </Tooltip>
@@ -104,71 +119,65 @@ function EnhancedTableToolbar(props) {
 
       {/* Right Drawer */}
       <Drawer anchor="right" open={isDrawerOpen} onClose={handleDrawerClose}>
-        <Box style={{ width: 650 }} onKeyDown={(e) => {
-          if (e.target.tagName.toLowerCase() !== 'input') {
-            handleDrawerClose();
-          }
-        }}>
+        <Box style={{ width: 650 }}>
           {/* drawer content */}
-           <Grid sx={{padding: '4rem 2rem' ,}}>
+          <Grid sx={{ padding: '4rem 2rem' }}>
+            {/* Payment mode and payment category */}
+            <Box sx={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', gap: '6%' }}>
+              {/* Payment mode */}
+              <FormControl sx={{ flex: '0 0 47%' }}>
+                <InputLabel id="payment-mode">Payment Mode</InputLabel>
+                <Select
+                  labelId="payment-mode"
+                  id="payment-mode"
+                  name="paymentMode"
+                  value={formData.paymentMode}
+                  label="Payment Mode"
+                  onChange={handleChange}
+                >
+                  <MenuItem value="Cheque">Cheque</MenuItem>
+                  <MenuItem value="Demand Draft">Demand Draft</MenuItem>
+                  <MenuItem value="Adj Entry">Adj Entry</MenuItem>
+                  <MenuItem value="Credit/Debit Card">Credit/Debit Card</MenuItem>
+                  <MenuItem value="NEFT/RTGS/IMPS">NEFT/RTGS/IMPS</MenuItem>
+                  <MenuItem value="Online Payment">Online Payment</MenuItem>
+                  <MenuItem value="SMS Pay">SMS Pay</MenuItem>
+                  <MenuItem value="UPI Pay">UPI Pay</MenuItem>
+                  <MenuItem value="Any Other Mode">Any Other Mode</MenuItem>
+                </Select>
+              </FormControl>
 
-             {/* payment mode and payment Category */}
-              <Box sx={{ display: 'flex', flexDirection: 'row',  flexWrap:'wrap' , gap:'6%' }}>
-                {/* form  */}
-                <FormControl sx={{flex:'0 0 47%' }}>
-                  {/* payment mode */}
-                  <InputLabel id="payment-mode">Payment Mode</InputLabel>
-                  <Select
-                    labelId="payment-mode"
-                    id="payment-mode"
-                    value={paymentMode}
-                    label="Payment Mode"
-                    onChange={(e) => setPaymentMode(e.target.value)}
-                  >
-                    <MenuItem value="Cheque">Cheque</MenuItem>
-                    <MenuItem value="Demand Draft">Demand Draft</MenuItem>
-                    <MenuItem value="Adj Entry">Adj Entry</MenuItem>
-                    <MenuItem value="Credit/Debit Card">Credit/Debit Card</MenuItem>
-                    <MenuItem value="NEFT/RTGS/IMPS">NEFT/RTGS/IMPS</MenuItem>
-                    <MenuItem value="Online Payment">Online Payment</MenuItem>
-                    <MenuItem value="SMS Pay">SMS Pay</MenuItem>
-                    <MenuItem value="UPI Pay">UPI Pay</MenuItem>
-                    <MenuItem value="Any Other Mode">Any Other Mode</MenuItem>
-                  </Select>
-                </FormControl>
+              {/* Payment category */}
+              <FormControl sx={{ flex: '0 0 47%' }}>
+                <InputLabel id="payment-cate">Payment Cate</InputLabel>
+                <Select
+                  labelId="payment-cate"
+                  id="payment-cate"
+                  name="paymentCate"
+                  value={formData.paymentCate}
+                  label="Payment Cate"
+                  onChange={handleChange}
+                >
+                  <MenuItem value="">None</MenuItem>
+                  <MenuItem value="HDFC Bank">HDFC Bank</MenuItem>
+                  <MenuItem value="SBI">SBI</MenuItem>
+                </Select>
+              </FormControl>
+            </Box>
 
-                {/* payment cate */}
-                <FormControl sx={{ flex:'0 0 47%' }}>
-                  <InputLabel id="payment-cate">Payment Cate</InputLabel>
-                  <Select
-                    labelId="payment-cate"
-                    id="payment-cate"
-                    value={paymentCate}
-                    label="Payment Cate"
-                    onChange={(e) => setPaymentCate(e.target.value)}
-                  >
-                    <MenuItem value="">None</MenuItem>
-                    <MenuItem value="HDFC Bank">HDFC Bank</MenuItem>
-                    <MenuItem value="SBI">SBI</MenuItem>
-                  </Select>
-                </FormControl>
-
-              </Box>
-
-              {/* load field when pay mode is cheque*/}
-              {paymentMode === 'Cheque' && (
-              <Box sx={{ display: 'flex', flexDirection: 'row', marginTop: '2rem', gap: '6%' , flexWrap:'wrap' , rowGap:'2rem' }}>
-
-                {/* Cheque cat */}
-
+            {/* Load fields based on payment mode */}
+            {formData.paymentMode === 'Cheque' && (
+              <Box sx={{ display: 'flex', flexDirection: 'row', marginTop: '2rem', gap: '6%', flexWrap: 'wrap', rowGap: '2rem' }}>
+                {/* Cheque category */}
                 <FormControl sx={{ flex: '0 0 47%' }}>
                   <InputLabel id="cheque-cate">Cheque Cate</InputLabel>
                   <Select
                     labelId="cheque-cate"
                     id="cheque-cate"
-                    value={chequeCate}
+                    name="chequeCate"
+                    value={formData.chequeCate}
                     label="Cheque Cate"
-                    onChange={(e) => setChequeCate(e.target.value)}
+                    onChange={handleChange}
                   >
                     <MenuItem value="">None</MenuItem>
                     <MenuItem value="Transfer">Transfer</MenuItem>
@@ -181,38 +190,33 @@ function EnhancedTableToolbar(props) {
                   </Select>
                 </FormControl>
 
-                {/* cheque no */}
-                <TextField id="outlined-basic" label="Cheque No" value={chequeNo} variant="outlined" onChange={(e)=> setChequeNo(e.target.value)} sx={{ flex: '0 0 47%' }} />
+                {/* Cheque No */}
+                <TextField id="outlined-basic" label="Cheque No" name="chequeNo" value={formData.chequeNo} variant="outlined" onChange={handleChange} sx={{ flex: '0 0 47%' }} />
 
+                {/* MICR No */}
+                <TextField id="outlined-basic" label="MICR No" name="micrNo" value={formData.micrNo} variant="outlined" onChange={handleChange} sx={{ flex: '0 0 47%' }} />
 
-                {/* micr no */}
-                <TextField id="outlined-basic" label="MICR No" value={micrNo} variant="outlined" onChange={(e)=> setMicrNo(e.target.value)} sx={{ flex: '0 0 47%' }} />
+                {/* Bank */}
+                <TextField id="outlined-basic" label="Bank" name="bank" value={formData.bank} variant="outlined" onChange={handleChange} sx={{ flex: '0 0 47%' }} />
 
-                  {/* bank */}
-                  <TextField id="outlined-basic" label="Bank" value={bank} variant="outlined" onChange={(e)=> setBank(e.target.value)} sx={{ flex: '0 0 47%' }} />
-
-                  {/* micr no */}
-                  <TextField id="outlined-basic" label="Branch" value={branch} variant="outlined" onChange={(e)=> setBranch(e.target.value)} sx={{ flex: '0 0 47%' }} />
-
+                {/* Branch */}
+                <TextField id="outlined-basic" label="Branch" name="branch" value={formData.branch} variant="outlined" onChange={handleChange} sx={{ flex: '0 0 47%' }} />
               </Box>
-                )}
+            )}
 
-
-              {/* load field when pay mode is demand draft */}
-
-              {paymentMode === 'Demand Draft' && (
+            {/* Load fields when payment mode is Demand Draft */}
+            {formData.paymentMode === 'Demand Draft' && (
               <Box sx={{ display: 'flex', flexDirection: 'row', marginTop: '2rem', gap: '6%' }}>
-
-                {/* Demand Draft cat */}
-
+                {/* Demand Draft category */}
                 <FormControl sx={{ flex: '0 0 47%' }}>
                   <InputLabel id="dd-cate">D.D. Cate</InputLabel>
                   <Select
                     labelId="dd-cate"
                     id="dd-cate"
-                    value={ddCate}
+                    name="ddCate"
+                    value={formData.ddCate}
                     label="D.D. Cate"
-                    onChange={(e) => setDdCate(e.target.value)}
+                    onChange={handleChange}
                   >
                     <MenuItem value="">None</MenuItem>
                     <MenuItem value="Transfer">Transfer</MenuItem>
@@ -225,14 +229,11 @@ function EnhancedTableToolbar(props) {
                   </Select>
                 </FormControl>
 
-                {/* cheque no */}
-                <TextField id="outlined-basic" label="D.D No" value={ddNo} variant="outlined" onChange={(e)=> setDdNo(e.target.value)} sx={{ flex: '0 0 47%' }} />
-
-               
+                {/* Demand Draft No */}
+                <TextField id="outlined-basic" label="D.D No" name="ddNo" value={formData.ddNo} variant="outlined" onChange={handleChange} sx={{ flex: '0 0 47%' }} />
               </Box>
-                )}
-
-            </Grid>
+            )}
+          </Grid>
         </Box>
       </Drawer>
     </>
