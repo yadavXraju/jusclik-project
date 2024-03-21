@@ -1,5 +1,6 @@
 import * as React from 'react';
 import LinearProgress from '@mui/material/LinearProgress';
+import { HeadingCss } from 'views/dashboard/Default/dashboard-css/CommonCss';
 import Typography from '@mui/material/Typography';
 import { Box, Paper, Grid } from '@mui/material';
 
@@ -19,25 +20,26 @@ const FrequentlyItems = () => {
     { value: 20, label: 'Table Calender', color: "#f50057" }, 
     { value: 60, label: 'Highlighter', color: "#00897b" }, 
     { value: 85, label: 'Chalk Box', color: "#4caf50" },
-    { value: 18, label: 'Dusters', color: "#9c27b0" } 
+    { value: 18, label: 'Dusters', color: "#9c27b0" },
+    { value: 4, label: 'Lab Equipments', color: "#4caf50" },
   ];
 
   return (
     <Paper variant="elevation" elevation={3}>
       <Grid
-        sx={{
-          padding: '24px 24px 0 24px',
-          background: '#f9f9fb',
-          borderBottom: '1px solid rgba(128, 128, 128, 0.25)',
-          borderRadius: '12px 12px 0px 0'
-        }}
-      >
-        <Typography variant="h2" sx={{ fontSize: '1.5rem', fontWeight: 'bold', mb: 2 }}>
+          sx={{
+            padding: '24px 24px 0 24px',
+            background: '#f9f9fb',
+            borderBottom: '1px solid rgba(128, 128, 128, 0.25)',
+            borderRadius: '12px 12px 0px 0'
+          }}
+        >
+          <Typography variant="h2" style={{ ...HeadingCss, border: 'none' }}>
           Frequently Issued Items
-        </Typography>
-      </Grid>
+          </Typography>
+        </Grid>
 
-      <Box sx={{ width: '100%', padding: '24px' }}>
+      <Box height="425px" className='scrollbar-2' sx={{overflow: 'scroll', width: '100%', padding: '24px' }} >
         {/* Iterate over the progressBars array and render each progress bar */}
         {progressBars.map((progress, index) => (
           <Box key={index} sx={{ marginBottom: 4 }}>

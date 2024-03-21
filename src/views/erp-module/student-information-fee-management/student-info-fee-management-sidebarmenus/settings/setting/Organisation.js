@@ -1,7 +1,7 @@
 import { Grid, Box, Card, Typography, Container } from '@mui/material';
 import React from 'react';
 import SettingData from './SettingData'
-
+import { Link } from 'react-router-dom';
 
 const Organisation = () => {
   return (
@@ -20,7 +20,10 @@ const Organisation = () => {
                   </Box>
                   <Box sx={{ paddingTop: '14px' }}>
                     {item.items.map((subItem, subIndex) => (
-                      <Typography key={subIndex} sx={{ paddingTop: '14px' }}>{subItem}</Typography>
+                      <Link key={subIndex} to={subItem.path} style={{ textDecoration: 'none', color: 'inherit' }}>
+                      {/* Use Link to navigate to the specified path */}
+                      <Typography sx={{ paddingTop: '14px' }}>{subItem.name}</Typography>
+                    </Link>
                     ))}
                   </Box>
                 </Box>

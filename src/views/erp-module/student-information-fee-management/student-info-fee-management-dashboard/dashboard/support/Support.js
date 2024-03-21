@@ -36,7 +36,7 @@ const NeedSupport = () => {
              <Grid item xs={12} sx={{padding: '0 ' , background:'#f9f9fb' , borderBottom:'1px solid rgba(128, 128, 128, 0.25)' , mb:0 , borderRadius:'12px 12px 0px 0'}} >
                 <Grid  alignContent="center" justifyContent="space-between">
                     <Grid item sx={{  mb:'0'}} >
-                        <Typography variant='h2' style={{...HeadingCss , border:'none'}}>Support & Help </Typography> 
+                        <Typography variant='h2' style={{...HeadingCss , border:'none'}}> Help  & Support </Typography> 
                     </Grid>
                 </Grid>
              </Grid>
