@@ -1,7 +1,8 @@
 import React from 'react';
 import TextField from '@mui/material/TextField';
+import { InputAdornment } from '@mui/material';
 
-const PositiveNumberInput = ({ label, value, stateHandler,updatekey }) => {
+const FontSize = ({ label, value, stateHandler,updatekey }) => {
   const handleChange = (event) => {
     const inputValue = event.target.value;
     // Check if the input is a valid positive number or empty
@@ -17,10 +18,15 @@ const PositiveNumberInput = ({ label, value, stateHandler,updatekey }) => {
       value={value}
       onChange={handleChange}
       InputProps={{
+        endAdornment: (
+          <InputAdornment position="end" disabled>
+            pt
+          </InputAdornment>
+        ),
         inputProps: { min: 0 }, // Ensure input is non-negative
       }}
     />
   );
 };
 
-export default PositiveNumberInput;
+export default FontSize;

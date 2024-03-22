@@ -7,7 +7,6 @@ import { useTheme } from '@emotion/react';
 
 const StockDetailPieChart = () => {
   const theme = useTheme();
-  const isMediumDesktop = useMediaQuery('(max-width: 1600px)');
   const isMobile = useMediaQuery(theme.breakpoints.only('xs'));
 
   const chartData = {
@@ -43,21 +42,16 @@ const StockDetailPieChart = () => {
     colors: ['#4C88BE', '#9FCCE9', '#1162A4'],
     responsive: [
       {
-        // breakpoint: 768,
         options: {
           chart: {
             width: '80%'
           }
-          // legend: {
-          //   position: 'bottom'
-          // }
         }
       }
     ],
     legend: {
       show: true,
-      position: 'top',
-      horizontalAlign: 'right',
+      position: isMobile ? 'bottom' : 'right',
       offsetX: -15,
       fontSize: '16px',
       colors: ['#99a1b7'],
@@ -73,7 +67,7 @@ const StockDetailPieChart = () => {
         return seriesName;
       },
       offsetY: 10,
-      itemDirection: 'row'
+      itemDirection: 'column'
     }
   };
 
@@ -106,15 +100,16 @@ const StockDetailPieChart = () => {
 
         {/* =================================  chart =================================   */}
         <Grid
-          sx={{ display: isMobile ? 'block' : 'flex', padding: isMobile ? '20px' : '', height: '345px' }}
-          style={{
-            display: 'flex',
+          sx={{
+            display: isMobile ? 'block' : 'flex', 
+            height: '345px',
             flexDirection: 'column',
-            padding: isMobile ? '0px' : '20px 20px 18px 20px',
-            alignItems: isMobile ? 'center' : 'auto'
+            padding: isMobile ? '20px' : '20px 20px 18px 20px',
+            alignItems: isMobile ? 'center' : 'auto',
+            justifyContent: 'center'
           }}
         >
-          <ApexCharts options={chartData} series={chartData.series} type="donut" height={isMediumDesktop ? 200 : 330} />
+          <ApexCharts options={chartData} series={chartData.series} type="donut" height={330}/>
         </Grid>
       </Paper>
     </>
