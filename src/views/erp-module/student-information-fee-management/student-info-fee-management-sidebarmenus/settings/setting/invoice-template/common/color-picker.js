@@ -5,7 +5,7 @@ import React from 'react';
 // 2) onColorChange : function which takes two params 1st is (key) and 2nd is (value)
 // 3) colorKey: which is the key whose value is to be updated 
 // 4) label : the lable which is to be displayed
-function ColorPicker({ initialColor, onColorChange, colorKey, label }) {
+function ColorPicker({ initialColor, onColorChange, colorKey, label ,enable }) {
   const handleColorChange = (event) => {
     onColorChange(colorKey, event.target.value);
   };
@@ -40,10 +40,12 @@ function ColorPicker({ initialColor, onColorChange, colorKey, label }) {
                     padding:'0',
                     margin:'0'
                   }}
+                  disabled={!enable}
                 />
               </InputAdornment>
             )
           }}
+          disabled={!enable}
         />
       </FormControl>
     </Box>
