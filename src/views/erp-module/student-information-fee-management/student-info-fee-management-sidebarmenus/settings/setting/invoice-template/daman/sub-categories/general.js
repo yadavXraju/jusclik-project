@@ -3,10 +3,10 @@ import {
   AccordionDetails,
   AccordionSummary,
   Box,
+  Checkbox,
   FormControl,
   FormControlLabel,
   Grid,
-  InputLabel,
   Radio,
   RadioGroup,
   TextField,
@@ -17,7 +17,7 @@ import React from 'react';
 // import { useState } from 'react';
 import ColorPicker from '../../common/color-picker';
 import CommonSelect from '../../common/common-select';
-import PositiveNumberInput from '../../common/positive-number-input';
+import FontSize from '../../common/font-size';
 import ImageUploadAndPreview from '../../common/image-upload-and-preview';
 
 const General = ({ state, setState }) => {
@@ -106,41 +106,39 @@ const General = ({ state, setState }) => {
                   <Typography>Margins</Typography>
                 </Grid>
                 <Grid container rowSpacing={2} spacing={1}>
-                <Grid item>
-                <TextField
-                  id="outlined-basic"
-                  label="top"
-                  variant="outlined"
-                  onChange={(e) => handleStateChange('marginTop', e.target.value)}
-                />
+                  <Grid item>
+                    <TextField
+                      id="outlined-basic"
+                      label="top"
+                      variant="outlined"
+                      onChange={(e) => handleStateChange('marginTop', e.target.value)}
+                    />
+                  </Grid>
+                  <Grid item>
+                    <TextField
+                      id="outlined-basic"
+                      label="bottom"
+                      variant="outlined"
+                      onChange={(e) => handleStateChange('marginBottom', e.target.value)}
+                    />
+                  </Grid>
+                  <Grid item>
+                    <TextField
+                      id="outlined-basic"
+                      label="left"
+                      variant="outlined"
+                      onChange={(e) => handleStateChange('marginLeft', e.target.value)}
+                    />
+                  </Grid>
+                  <Grid item>
+                    <TextField
+                      id="outlined-basic"
+                      label="right"
+                      variant="outlined"
+                      onChange={(e) => handleStateChange('marginRight', e.target.value)}
+                    />
+                  </Grid>
                 </Grid>
-                <Grid item>
-                <TextField
-                  id="outlined-basic"
-                  label="bottom"
-                  variant="outlined"
-                  onChange={(e) => handleStateChange('marginBottom', e.target.value)}
-                />
-                </Grid>
-                <Grid item>
-                <TextField
-                  id="outlined-basic"
-                  label="left"
-                  variant="outlined"
-                  onChange={(e) => handleStateChange('marginLeft', e.target.value)}
-                />
-                </Grid>
-                <Grid item>
-                <TextField
-                  id="outlined-basic"
-                  label="right"
-                  variant="outlined"
-                  onChange={(e) => handleStateChange('marginRight', e.target.value)}
-                />
-                </Grid>               
-                </Grid>
-               
-               
               </Grid>
             </Grid>
           </AccordionDetails>
@@ -154,7 +152,6 @@ const General = ({ state, setState }) => {
               <Grid item md={12}>
                 {/* ========== Font selector =========== */}
                 <FormControl fullWidth>
-                  <InputLabel>Font Family</InputLabel>
                   <CommonSelect
                     label={'Font Family'}
                     stateHandler={handleStateChange}
@@ -171,6 +168,7 @@ const General = ({ state, setState }) => {
                   onColorChange={handleStateChange}
                   colorKey="labelColor"
                   label="Label Color"
+                  enable={true}
                 />
               </Grid>
               <Grid item container md={12} spacing={2}>
@@ -181,17 +179,13 @@ const General = ({ state, setState }) => {
                     onColorChange={handleStateChange}
                     colorKey="fontColor"
                     label="Font Color"
+                    enable={true}
                   />
                 </Grid>
                 <Grid item md={6}>
                   {/* ========== Font Size =============== */}
                   <FormControl fullWidth>
-                    <PositiveNumberInput
-                      label={'Font Size'}
-                      value={state.general.fontSize}
-                      stateHandler={handleStateChange}
-                      updatekey={'fontSize'}
-                    />
+                    <FontSize label={'Font Size'} value={state.general.fontSize} stateHandler={handleStateChange} updatekey={'fontSize'} />
                   </FormControl>
                 </Grid>
               </Grid>
@@ -204,8 +198,8 @@ const General = ({ state, setState }) => {
         <Accordion>
           <AccordionSummary expandIcon={<ExpandMoreIcon />}>Background</AccordionSummary>
           <AccordionDetails>
-            <Grid container spacing={1} rowSpacing={2}>
-              <Grid item md={12}>
+            <Grid container spacing={1} rowSpacing={3}>
+              <Grid item md={12} >
                 {/* =========== background image  =========== */}
                 <ImageUploadAndPreview
                   label={'Background Image'}
@@ -214,9 +208,9 @@ const General = ({ state, setState }) => {
                   image={state.general.backgroundImage}
                 />
               </Grid>
-              <Grid item md={12}>
+              <Grid item xs>
                 {/* ================ Image Position ===============*/}
-                <Box sx={{ pt: '1rem' }}>
+                
                   <FormControl fullWidth>
                     <CommonSelect
                       label={'Image Position'}
@@ -226,18 +220,35 @@ const General = ({ state, setState }) => {
                       options={imagePosition}
                     />
                   </FormControl>
-                </Box>
+                
               </Grid>
               <Grid item md={12}>
-                {/* ================ Background Color ===============*/}
-                <Box sx={{ pt: '1rem' }}>
-                  <ColorPicker
-                    initialColor={state.general.backgroundColor}
-                    onColorChange={handleStateChange}
-                    colorKey="backgroundColor"
-                    label="Background Color"
-                  />
-                </Box>
+                {/* ================ Background Color ===============*/}               
+                  <Grid container>
+                    <Grid item xs='auto'>
+                      <FormControlLabel
+                        control={
+                          <Checkbox
+                            checked={state.general.backgroundColorEnable}
+                            onChange={(e) => handleStateChange('backgroundColorEnable', e.target.checked)}
+                          />
+                        }
+                      />
+                    </Grid>
+
+                    <Grid item md>
+                      <FormControl fullWidth>
+                        <ColorPicker
+                          initialColor={state.general.backgroundColor}
+                          onColorChange={handleStateChange}
+                          colorKey="backgroundColor"
+                          label="Background Color"
+                          enable={state.general.backgroundColorEnable}
+                        />
+                      </FormControl>
+                    </Grid>
+                  </Grid>
+               
               </Grid>
             </Grid>
           </AccordionDetails>
