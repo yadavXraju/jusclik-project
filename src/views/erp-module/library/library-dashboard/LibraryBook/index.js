@@ -103,9 +103,9 @@ const BookDetailPieChart = () => {
         </Grid>
 
         {/* ================================= content  =================================  */}
-        <Grid sx={{ display:'flex',flexDirection:isMobile?"column":"row" }}>
+        <Grid sx={{ display:'flex',flexDirection:isMobile?"column":"row" ,paddingBottom:isMobile?'10px' :"0px"}}>
           {/* =================================  chart =================================   */}
-          <Grid lg={6} md={6} sm={6} xs={12} sx={{ borderRight: '1px solid rgb(227, 227, 227)' }}>
+          <Grid lg={6} md={6} sm={6} xs={12} sx={{ borderRight: '1px solid rgb(227, 227, 227)'}}>
             <Grid style={{ display: 'flex', flexDirection: 'column', padding: isMobile ? "0px":'20px 20px 18px 20px', alignItems: isMobile ? 'center' : 'auto' }}>
               <ApexCharts options={chartData} series={chartData.series} type="donut" height={isMediumDesktop ? 200 : 320} />
             </Grid>

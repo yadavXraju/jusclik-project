@@ -125,7 +125,9 @@ const Daman =  Loadable(lazy(() => import('views/erp-module/student-information-
 const Kulwinder =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/settings/setting/invoice-template/kulwinder')));
 
 
-const Harsh =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/settings/setting/invoice-template/harsh')));
+const Harsh =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/settings/setting/invoice-template/harsh/template')));
+
+const Harsh1 =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/settings/setting/invoice-template/harsh/harsh1')));
 
 // ==============================|| Visitor MENUS ||============================== //
 
@@ -402,6 +404,10 @@ const StudentInfoFeeRoutes = [
                     element: <Harsh /> 
                   },
                 
+                  { 
+                    path: 'harsh1', 
+                    element: <Harsh1 /> 
+                  },
       
               ]
             },

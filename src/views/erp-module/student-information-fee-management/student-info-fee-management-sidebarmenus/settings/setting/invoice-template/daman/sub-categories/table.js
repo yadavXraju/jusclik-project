@@ -10,11 +10,18 @@ const TableConfig = () => {
           aria-controls="panel1-content"
           id="panel1-header"
         >
-          Accordion 1
+          Table Layout
         </AccordionSummary>
         <AccordionDetails>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-          malesuada lacus ex, sit amet blandit leo lobortis eget.
+         {/* Table Border (checkbox) with (color input)  */}
+         {/* Table Header (Label) */}
+         {/*  (font size) */}
+         {/* background color  (checkbox) with (color input)*/}
+         {/* (font color) */}
+         {/* item row (label) */}
+         {/* (font size) */}
+         {/* background color (checkbox) eith (color input) */}
+         {/* (font color) */}
         </AccordionDetails>
         </Accordion>
     </>

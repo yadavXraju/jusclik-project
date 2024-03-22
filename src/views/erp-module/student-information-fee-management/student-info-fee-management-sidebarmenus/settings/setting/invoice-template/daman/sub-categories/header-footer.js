@@ -4,7 +4,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ImageUploadAndPreview from '../../common/image-upload-and-preview';
 import CommonSelect from '../../common/common-select';
 import ColorPicker from '../../common/color-picker';
-import PositiveNumberInput from '../../common/positive-number-input';
+import FontSize from '../../common/font-size';
 const HeaderFooter = ({ state, setState }) => {
   // state handler for headerFooter component
   const handleStateChange = (key, value) => {
@@ -39,7 +39,7 @@ const HeaderFooter = ({ state, setState }) => {
         <AccordionDetails>
           <Grid container rowSpacing={2} spacing={1} >
 
-            <Grid item md={12}>
+            <Grid item md>
               {/* ========= Background Image ============ */}
               <ImageUploadAndPreview
                 label={'Background Image'}
@@ -49,7 +49,7 @@ const HeaderFooter = ({ state, setState }) => {
               />
             </Grid>
             
-            <Grid item md={12}>
+            <Grid item md>
               {/* ========= Image Position ============== */}
               <FormControl fullWidth>
                 <CommonSelect
@@ -64,12 +64,29 @@ const HeaderFooter = ({ state, setState }) => {
 
             <Grid item md={12}>
               {/* ========= Background Color ============ */}
+              <Grid container>
+                <Grid xs='auto'>
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={state.headerFooter.headerBackgroundColorEnable}
+                    onChange={(e) => handleStateChange('headerBackgroundColorEnable', e.target.checked)}
+                  />
+                }
+              />
+
+                </Grid>
+                <Grid md>
               <ColorPicker
                 initialColor={state.headerFooter.headerBackgroundColor}
                 onColorChange={handleStateChange}
                 colorKey="headerBackgroundColor"
                 label="Background Color"
+                enable={state.headerFooter.headerBackgroundColorEnable}
               />
+
+                </Grid>
+              </Grid>
             </Grid>
 
           </Grid>
@@ -86,7 +103,7 @@ const HeaderFooter = ({ state, setState }) => {
           <Grid container spacing={1} rowSpacing={2}>
             <Grid item md={12}>
               {/* ========= Font Size ============ */}
-              <PositiveNumberInput
+              <FontSize
                 label={'Font Size'}
                 value={state.headerFooter.footerFontSize}
                 stateHandler={handleStateChange}
@@ -100,6 +117,7 @@ const HeaderFooter = ({ state, setState }) => {
                 onColorChange={handleStateChange}
                 colorKey="footerFontColor"
                 label="Font Color"
+                enable={true}
               />
             </Grid>
             <Grid item md={12}>
@@ -125,12 +143,27 @@ const HeaderFooter = ({ state, setState }) => {
             </Grid>
             <Grid item md={12}>
               {/* ========== Background Color ============ */}
+              <Grid container>
+                <Grid item xs='auto'>
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={state.headerFooter.footerBackgroundColor}
+                    onChange={(e) => handleStateChange('footerBackgroundColor', e.target.checked)}
+                  />
+                }
+              />
+                </Grid>
+                <Grid item md>
               <ColorPicker
                 initialColor={state.headerFooter.footerBackgroundColor}
                 onColorChange={handleStateChange}
                 colorKey="footerBackgroundColor"
                 label="Background Color"
+                enable={state.headerFooter.footerBackgroundColor}
               />
+                </Grid>
+              </Grid>
             </Grid>
             <Grid item md={12}>
               {/* show page number */}
