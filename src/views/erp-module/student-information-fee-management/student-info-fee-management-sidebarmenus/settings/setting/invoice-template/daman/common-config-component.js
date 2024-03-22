@@ -66,8 +66,6 @@ const CommonConfig = ({state,setState}) => {
       </Grid>
       </Grid>
       <Box sx={{display:'flex',}}>
-      
-
       {/* Tab Content */}
 
         {/* Render content based on selected tab */}
