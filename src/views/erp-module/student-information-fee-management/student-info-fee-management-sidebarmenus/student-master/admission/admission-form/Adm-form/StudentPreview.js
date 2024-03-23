@@ -1,6 +1,6 @@
 import React from 'react';
 import MainCard from 'ui-component/cards/MainCard';
-import { Box, Grid, Typography, IconButton, Popover, useMediaQuery } from '@mui/material';
+import { Box, Grid, Typography, IconButton, Popover, useMediaQuery, Divider } from '@mui/material';
 import PriviewTabs from './PreviewTabs';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
@@ -8,7 +8,7 @@ import ArrowBackIosOutlinedIcon from '@mui/icons-material/ArrowBackIosOutlined';
 import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
 import { useLocation } from 'react-router-dom';
 import { studentProfileDetails } from 'layout/MainLayout/Header/ProfileSection/ProfileDeatails';
-import {CardMedia} from '@mui/material';
+import { CardMedia } from '@mui/material';
 import ArrowBackOutlinedIcon from '@mui/icons-material/ArrowBackOutlined';
 import { useNavigate } from 'react-router-dom';
 import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
@@ -24,16 +24,27 @@ function StudentPreview() {
     navigate(`../admission`);
   };
 
-  const isMobile = useMediaQuery('(max-width: 767px)')
-  const issmallMobile = useMediaQuery('(max-width: 425px)')
+  const isMobile = useMediaQuery('(max-width: 767px)');
+  const issmallMobile = useMediaQuery('(max-width: 425px)');
 
   return (
     <>
       <MainCard>
         <Box>
-          <Box pb={1} sx={{ display: 'flex', justifyContent: 'space-between',flexWrap: issmallMobile ? 'wrap' : 'nowrap', borderBottom: '1px solid #ccc', alignItems: 'center' }}>
-            <Box sx={{ display: 'flex', alignItems: 'center', width:'100%' }}>
-              <Box><ArrowBackOutlinedIcon onClick={BackClick} sx={{cursor:'pointer'}}/></Box>
+          <Box
+            pb={1}
+            sx={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              flexWrap: issmallMobile ? 'wrap' : 'nowrap',
+              borderBottom: '1px solid #ccc',
+              alignItems: 'center'
+            }}
+          >
+            <Box sx={{ display: 'flex', alignItems: 'center', width: '100%' }}>
+              <Box>
+                <ArrowBackOutlinedIcon onClick={BackClick} sx={{ cursor: 'pointer' }} />
+              </Box>
               <Box>
                 <CardMedia
                   sx={{ height: '50px', width: '50px', borderRadius: '50%', m: '0px 15px' }}
@@ -46,9 +57,9 @@ function StudentPreview() {
                 <Box>Admission No - {rowData.AdmNo}</Box>
               </Box>
             </Box>
-            <Box sx={{display:'flex', justifyContent:'end', width:'100%', gap: issmallMobile ?'10px' : '0px'}}>
-            <IconButton sx={{ marginRight: '8px', background: '#cccccc54' }}>
-              <EditTwoToneIcon/>
+            <Box sx={{ display: 'flex', justifyContent: 'end', width: '100%', gap: issmallMobile ? '10px' : '0px' }}>
+              <IconButton sx={{ marginRight: '8px', background: '#cccccc54' }}>
+                <EditTwoToneIcon />
               </IconButton>
               <PopupState variant="popover" popupId="demo-popup-popover">
                 {(popupState) => (
@@ -60,11 +71,11 @@ function StudentPreview() {
                       {...bindPopover(popupState)}
                       anchorOrigin={{
                         vertical: 'bottom',
-                        horizontal: 'center',
+                        horizontal: 'center'
                       }}
                       transformOrigin={{
                         vertical: 'top',
-                        horizontal: 'center',
+                        horizontal: 'center'
                       }}
                     >
                       <Typography sx={{ p: 1, display: 'Grid' }}>
@@ -76,10 +87,10 @@ function StudentPreview() {
                 )}
               </PopupState>
               <ButtonGroup color="primary" variant="outlined" aria-label="Basic button group">
-                <Button sx={{padding:'5px'}}>
+                <Button sx={{ padding: '5px' }}>
                   <ArrowBackIosOutlinedIcon />
                 </Button>
-                <Button sx={{padding:'5px'}}>
+                <Button sx={{ padding: '5px' }}>
                   <ArrowForwardIosOutlinedIcon />
                 </Button>
               </ButtonGroup>
@@ -92,7 +103,44 @@ function StudentPreview() {
                   <Typography p={0.7} variant="h4">
                     Basic Info
                   </Typography>
-                  <Typography sx={{ '&:hover': { backgroundColor: '#cbc7c73d' } }} p={0.7} variant="body2">
+                  <Divider />
+
+                  <Box p={2}>
+                    <Grid container spacing={3}>
+                      <Grid item xs={12}>
+                        <Box pb={0.5} color={'#8b8989'}>
+                          Name
+                        </Box>
+                        <Box fontSize={16}>{rowData.StudentName}</Box>
+                      </Grid>
+                      <Grid item xs={12}>
+                        <Box pb={0.5} color={'#8b8989'}>
+                          Class
+                        </Box>
+                        <Box fontSize={16}>{rowData.class}</Box>
+                      </Grid>
+                      <Grid item xs={12}>
+                        <Box pb={0.5} color={'#8b8989'}>
+                          D.O.B
+                        </Box>
+                        <Box fontSize={16}>{rowData.DOB}</Box>
+                      </Grid>
+                      <Grid item xs={12}>
+                        <Box pb={0.5} color={'#8b8989'}>
+                          Adm. Date
+                        </Box>
+                        <Box fontSize={16}>{rowData.AdmDate}</Box>
+                      </Grid>
+                      <Grid item xs={12}>
+                        <Box pb={0.5} color={'#8b8989'}>
+                          Category
+                        </Box>
+                        <Box fontSize={16}>{rowData.Studentcategory}</Box>
+                      </Grid>
+                    </Grid>
+                  </Box>
+
+                  {/* <Typography sx={{ '&:hover': { backgroundColor: '#cbc7c73d' } }} p={0.7} variant="body2">
                     Name - {rowData.StudentName}
                   </Typography>
                   <Typography sx={{ '&:hover': { backgroundColor: '#cbc7c73d' } }} p={0.7} variant="body2">
@@ -106,23 +154,29 @@ function StudentPreview() {
                   </Typography>
                   <Typography sx={{ '&:hover': { backgroundColor: '#cbc7c73d' } }} p={0.7} variant="body2">
                     Category - {rowData.Studentcategory}
-                  </Typography>
+                  </Typography> */}
                 </Box>
 
                 <Box p={2}>
                   <Typography p={0.7} variant="h4">
                     Description
                   </Typography>
+                  <Divider />
+                  <Box p={2}>
                   <Typography sx={{ '&:hover': { backgroundColor: '#cbc7c73d' } }} p={0.7} variant="body2">
                     This is a sample Contact.
                   </Typography>
+                  </Box>
                 </Box>
 
                 <Box p={2}>
                   <Typography p={0.7} variant="h4">
                     Other Info
                   </Typography>
+                  <Divider />
+                  <Box p={2}>
                   <Typography p={0.7} sx={{ '&:hover': { backgroundColor: '#cbc7c73d' } }} variant="body2"></Typography>
+                  </Box>
                 </Box>
               </Box>
             </Grid>

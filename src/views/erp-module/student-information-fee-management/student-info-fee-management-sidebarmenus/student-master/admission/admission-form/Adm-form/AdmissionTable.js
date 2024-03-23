@@ -16,6 +16,8 @@ import RemoveRedEyeTwoToneIcon from '@mui/icons-material/RemoveRedEyeTwoTone';
 //import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 import rows from './AdmissionTableData';
 import EditDrawer from './EditDrawer';
+import WarningDialog from 'views/common-section/WarningDialog';
+//import {Dialog, DialogTitle , DialogContent ,DialogContentText ,DialogActions } from '@mui/material';
 
 
 export default function AdmissionTable() {
@@ -26,12 +28,6 @@ export default function AdmissionTable() {
   // const handleRowClick = () => {
   //   navigate(`../registration`);
   // };
-
-  // ========== function for handle delete row ===========
-  const handleDeleteRow = (id) => {
-    const updatedRows = tableRows.filter((row) => row.id !== id);
-    setTableRows(updatedRows);
-  };
 
   const Click = (rowData) => {
     navigate('../admission-form/', { state: { rowData } });
@@ -47,6 +43,29 @@ export default function AdmissionTable() {
   // useEffect(() => {
   //   // console.log(currEditItem);
   // },[currEditItem]);
+
+   // ========= render error model for duplicate date ==========
+   const [modalOpen, setmodalOpen] = React.useState(false);
+   const [deleteId, setdeleteId] = React.useState(null);
+  
+   const handleModalClose = () => {
+     setmodalOpen(false);
+   };
+   const handleConfirmDelete = () => {
+    const updatedRows = tableRows.filter((row) => row.id !== deleteId);
+    setTableRows(updatedRows);
+    setmodalOpen(false); 
+    setdeleteId(null)
+  };
+
+   // ========== function for handle delete row ===========
+  const handleDeleteRow = (id) => {
+    // handleModalOpen();
+    setdeleteId(id)
+    setmodalOpen(true);
+    // const updatedRows = tableRows.filter((row) => row.id !== id);
+    // setTableRows(updatedRows);
+  };
 
   const columns = [
     { field: 'AdmNo', headerName: 'Adm No.', type: 'number', flex: 1, minWidth: 130, align: 'left', headerAlign: 'left' },
@@ -80,7 +99,8 @@ export default function AdmissionTable() {
   ];
 
   return (
-    <Card>
+    <>
+      <Card>
       <Box sx={{ borderBottom: '1px solid #ccc' }}>
         <Grid container spacing={2} p={2} sx={{ alignItems: 'end' }}>
           <Grid item xs={12} sm={8} lg={8}>
@@ -143,6 +163,15 @@ export default function AdmissionTable() {
         />
       </Box>
     </Card>
+    {/* ========= import warning dialog ========== */}
+    <WarningDialog
+    open={modalOpen}
+    onClose={handleModalClose}
+    contentText="Are you sure you want to delete?"
+    onConfirm={handleConfirmDelete}
+    />
+    
+    </>
   );
 }
 
