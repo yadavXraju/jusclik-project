@@ -67,14 +67,15 @@ export const templateCompact={
 }
 export const commonTemplateContent={
   schoolName: 'ST XAVIER\'S HIGH SCHOOL',
-  bankName: 'Union Bank of India - 510101002874465',  
-  bankIfscCode: 'Union Bank of India IFSC -   UBIN0916366',
+  bankName: 'Union Bank of India ',  
+  bankAccNumber: '510101002874465',
+  bankIfscCode: 'UBIN0916366',
   admissionNo: 'P00912',
   className: 'I-A',
   name: 'Shraya Kumari',
   mobile: '9845622785',
   fatherName: 'krishna Kumar',
-  invoiceNo: 13683,
+  invoiceNo: '13683',
   invoiceDate: '31-Jan-2024',
   academicYear: '2023-2024',
   feePeriod: 'Feb`24-Mar`24',
@@ -85,7 +86,13 @@ export const commonTemplateContent={
   netAmountPayable: '4,900',
   lateFee: 0,
   compositeFee: '4,900',
-  termsAndConditions:''
+  termsAndConditions:'',
+  SchoolAddress:'Sohna Dhani Road Road Ward No - 01 Sohna Gurugram haryana Sohna - 122103',
+  schoolTel:'XXXXXXXXXX',
+  email:'123@gmail.com',
+  concession:'0',
+  copy1Name:'School Copy',
+  copy2Name:'Parent Copy',
 }
 
 export const templateCompact2={

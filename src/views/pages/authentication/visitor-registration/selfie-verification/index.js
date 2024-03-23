@@ -16,8 +16,6 @@ const SelfieVerification = ({ step, handleSteps, md }) => {
    const [showCameraIcon, setShowCameraIcon] = useState(true); // State to toggle camera icon visibility
    const [showTakePhotoButton, setShowTakePhotoButton] = useState(true);
    const [showSubmitButton, setShowSubmitButton] = useState(false);
-   // const [mediaAvailable, setMediaAvailable] = useState(true)
-   // const [selectedFile, setSelectedFile] = useState(null);
    const startCamera = () => {
       if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
          // setMediaAvailable(true)
@@ -43,10 +41,27 @@ const SelfieVerification = ({ step, handleSteps, md }) => {
    const takePhoto = () => {
       const video = videoRef.current;
       const canvas = document.createElement('canvas'); // Create a new canvas element
-      canvas.width = video.videoWidth; // Set canvas dimensions to video dimensions
-      canvas.height = video.videoHeight;
+      const aspectRatio = 4 / 3; // Aspect ratio of 4:3
+      // canvas.width = video.videoWidth; // Set canvas dimensions to video dimensions
+      // canvas.height = video.videoHeight;
+      // Calculate canvas dimensions based on aspect ratio
+  let canvasWidth = video.videoWidth;
+  let canvasHeight = video.videoHeight;
+  if (canvasWidth / canvasHeight > aspectRatio) {
+    // If video aspect ratio is wider than 4:3, adjust height
+    canvasWidth = canvasHeight * aspectRatio;
+  } else {
+    // If video aspect ratio is taller than 4:3, adjust width
+    canvasHeight = canvasWidth / aspectRatio;
+  }
+      canvas.width = canvasWidth;
+      canvas.height = canvasHeight;
       const context = canvas.getContext('2d');
       context.drawImage(video, 0, 0, canvas.width, canvas.height);
+      console.log(canvas.width);
+      console.log(canvas.height);
+      console.log(video.videoWidth);
+      console.log(video.videoHeight);
       // Get the image data from canvas and set it in state
       const imageData = canvas.toDataURL('image/png');
       setCapturedImage(imageData);
@@ -62,14 +77,6 @@ const SelfieVerification = ({ step, handleSteps, md }) => {
       setShowCamera(true);
       startCamera()
    };
-
-   // const handleFileChange = (event) => {
-   //    setSelectedFile(event.target.files[0]);
-   // };
-
-   // getusermedia is not supported by all browsers
-   // we can provide conditional checks
-   // if getusermedia not supported then show file upload
 
    const cameraComponent = <>
       <Box sx={{ ...css.center }}>
@@ -100,10 +107,11 @@ const SelfieVerification = ({ step, handleSteps, md }) => {
                               ref={videoRef}
                               autoPlay
                               muted
-                              style={{ maxWidth: md ? '100%' : '25rem', height: 'auto', borderRadius: '12px' }}
+                              style={{ maxWidth: md ? '100%' : '25rem', height:`${(4 / 3) * (md ? 100 : 25)}vw`, objectFit: 'cover', borderRadius: '12px' }}
                               onClick={() => { }}
                               onError={(e) => { console.log(e.target.error) }}
-                              playsinline
+                              playsInline
+                              webkit-playsinline                             
                            />
                           { /* eslint-enable react/no-unknown-property */}
                            {showTakePhotoButton && (
@@ -139,60 +147,9 @@ const SelfieVerification = ({ step, handleSteps, md }) => {
          </Paper>
       </Box>
    </>
-
-   // const uploadComponent = <Box sx={{ ...css.center }}>
-   //    <Paper sx={{ ...css.mobilePaper, minWidth: md ? '20rem' : '25rem' }} elevation={2}>
-   //       <Box>
-   //          <input
-   //             type="file"
-   //             id="fileInput"
-   //             style={{ display: 'none' }}
-   //             onChange={handleFileChange}
-   //          />
-   //          <label htmlFor="fileInput">
-   //             <Button variant="contained" component="span"
-   //                sx={{
-   //                   ...css.center,
-   //                   ...css.marginAuto,
-   //                   ...css.submitButton,
-   //                   ...css.button,
-   //                   textAlign:'center'
-   //                }}
-   //             >
-   //                Choose File
-   //             </Button>
-   //          </label>
-   //          {selectedFile && (
-   //             <Typography variant="body1"
-   //             sx={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}
-   //             >
-   //                Selected File: {selectedFile.name}
-   //             </Typography>
-   //          )}
-   //          <Button
-   //             variant="contained"
-   //             color="primary"
-   //             onClick={() => handleSteps(step)}
-   //             disabled={!selectedFile}
-   //             sx={{
-   //                ...css.center,
-   //                ...css.marginAuto,
-   //                ...css.submitButton,
-   //                ...css.button
-   //             }}
-   //          >
-   //             Upload
-   //          </Button>
-   //       </Box>
-   //    </Paper>
-   // </Box>
-
-   // if (mediaAvailable)
-      // return 
+  
      return cameraComponent
-   // else
-      // return uploadComponent
-
+ 
 
 };
 
