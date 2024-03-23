@@ -71,8 +71,8 @@ const StockStatus = () => {
                 alignItems: 'center',
                 padding: isMobile?'1rem':'6rem 2rem',
                 justifyContent: isMobile?'flexStart':'center',
-                borderRight: isMobile?'none':'1px solid rgb(227, 227, 227)',
-                borderBottom: isMobile?'1px solid rgb(227, 227, 227)':'none',
+                borderRight: index < 2 && !isMobile ? '1px solid rgb(227, 227, 227)' : 'none', 
+                borderBottom: index < 2 && isMobile ? '1px solid rgb(227, 227, 227)' : 'none', 
               }}
             >
               {/* icon */}
