@@ -83,9 +83,21 @@ export const commonTemplateContent={
   tutionFee: '4,900',
   invoiceTotal: '5,900',
   previousBalance: '0',
-  netAmountPayable: '5,900',
-  lateFee: 100,
+  netAmountPayable: '4,900',
+  lateFee: 0,
   compositeFee: '4,900',
-  invoiceCopy: 'Bank Copy',
-  address:'Sohna Road, Gurgaon - 122102'
+  termsAndConditions:''
+}
+
+export const templateCompact2={
+  schoolAddress:'Sohna Dhani Road Road Ward No -01 Sohna Gurugram haryana Sohna-122103',
+  schoolTel:'XXXXXXXXXX',
+  email:'123@gmail.com',
+  lastPaymentDate:'dd-mm-yyyy',
+  concession:'0',
+  amount:'',
+  copy1Name:'School Copy',
+  copy2Name:'Parent Copy',
+  date:'dd-mm-yyyy'
+
 }
