@@ -81,7 +81,7 @@ export const commonTemplateContent={
   feePeriod: 'Feb`24-Mar`24',
   dueDate: '15-Jan-2024',
   tutionFee: '4,900',
-  invoiceTotal: '4,900',
+  invoiceTotal: '5,900',
   previousBalance: '0',
   netAmountPayable: '4,900',
   lateFee: 0,
@@ -96,7 +96,7 @@ export const commonTemplateContent={
 }
 
 export const templateCompact2={
-  schoolAddress:'Sohna Dhani Road Road Ward No - 01 Sohna Gurugram haryana Sohna - 122103',
+  schoolAddress:'Sohna Dhani Road Road Ward No -01 Sohna Gurugram haryana Sohna-122103',
   schoolTel:'XXXXXXXXXX',
   email:'123@gmail.com',
   lastPaymentDate:'dd-mm-yyyy',
