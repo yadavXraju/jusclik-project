@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Box, Grid } from '@mui/material';
+import { Box, Grid, Button } from '@mui/material';
 import { TextField, InputAdornment, IconButton, Typography } from '@mui/material';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import useOutsideClick from 'hooks/useClickOutside';
@@ -164,7 +164,7 @@ const Sort = () => {
 
     return (
         <>
-         <Typography variant="h2" sx={{ margin:"20px 0px 20px 20px"}}>Sort</Typography>
+            <Typography variant="h2" sx={{ margin: "20px 0px 20px 20px" }}>Sort</Typography>
             <Grid container spacing={0} sx={{ border: "1px solid #f0f5f8", width: "100%", }}>
                 {/* Filter Based On Property */}
                 <Grid item xs={12} sm={12} md={6} ref={ref} sx={{ width: "350px" }}>
@@ -196,34 +196,41 @@ const Sort = () => {
                     }
                 </Grid>
                 {/* Sorting Order(Ascending and Descending) */}
-                <Grid item xs={12} sm={12} md={6} ref={outsideClick.ref} sx={{ width: "350px" }}>
-                    <TextField
-                        variant="outlined"
-                        placeholder={sortingOrder}
-                        sx={{ width: "100%", padding: "20px 20px 20px 20px" }}
-                        InputProps={{
-                            endAdornment: (
-                                <InputAdornment position="end">
-                                    <IconButton>
-                                        <ArrowDropDownIcon onClick={() => outsideClick.setIsOpen1(true)} />
-                                    </IconButton>
-                                </InputAdornment>
-                            ),
-                        }}
-                        onClick={() => outsideClick.setIsOpen(true)}
-                    />
-                    {
-                        outsideClick.isOpen && <Box sx={{ marginTop: "-15px", width:"calc(100% - 20px)", height: "calc(100vh - 400px)",paddingLeft:"20px",overflowY: 'auto', backgroundColor: "white", zIndex: "5" }} className="scrollbar">
-                            {
-                                sortingOrderOption.map((item) => (
-                                    <Box key={item.id}>
-                                        <Typography variant="h5" sx={{ border: "1px solid #f5f8fa", height: "30px", cursor: "pointer" }} onClick={() => handleSortOrder(item)}>{item.headerName}</Typography>
-                                    </Box>
-                                )
-                                )
-                            }
+                <Grid item xs={12} sm={12} md={6} ref={outsideClick.ref} >
+                    <Box sx={{position:"relative",minHeight: 'calc(100vh - 480px)'}}>
+                        <TextField
+                            variant="outlined"
+                            placeholder={sortingOrder}
+                            sx={{ width: "100%", padding: "20px 20px 20px 20px" }}
+                            InputProps={{
+                                endAdornment: (
+                                    <InputAdornment position="end">
+                                        <IconButton>
+                                            <ArrowDropDownIcon onClick={() => outsideClick.setIsOpen1(true)} />
+                                        </IconButton>
+                                    </InputAdornment>
+                                ),
+                            }}
+                            onClick={() => outsideClick.setIsOpen(true)}
+                        />
+                        {
+                            outsideClick.isOpen && <Box sx={{ marginTop: "-15px", width: "calc(100% - 20px)", height: "calc(100vh - 400px)", paddingLeft: "20px", overflowY: 'auto', backgroundColor: "white", zIndex: "5" }} className="scrollbar">
+                                {
+                                    sortingOrderOption.map((item) => (
+                                        <Box key={item.id}>
+                                            <Typography variant="h5" sx={{ border: "1px solid #f5f8fa", height: "30px", cursor: "pointer" }} onClick={() => handleSortOrder(item)}>{item.headerName}</Typography>
+                                        </Box>
+                                    )
+                                    )
+                                }
+                            </Box>
+                        }
+                        {/* Clear Filter Button */}
+                        <Box sx={{ marginTop: "auto", marginRight: "20px", height: "60px", display: "flex", justifyContent: "flex-end",gap:"20px" }}>
+                            <Button sx={{ marginTop: "auto", marginBottom: "auto", height: "40px" }} onClick={() => setSortProperty("Choose a Property...")} variant="outlined">Clear Sorting Property</Button>
+                            <Button sx={{ marginTop: "auto", marginBottom: "auto", height: "40px" }} onClick={() => setSortingOrder("Ascending ...")} variant="outlined">Clear Sorting Order</Button>
                         </Box>
-                    }
+                    </Box>
                 </Grid>
             </Grid>
         </>
