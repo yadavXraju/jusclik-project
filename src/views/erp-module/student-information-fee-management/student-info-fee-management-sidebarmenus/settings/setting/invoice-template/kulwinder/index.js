@@ -8,7 +8,8 @@ import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import ContentCutIcon from '@mui/icons-material/ContentCut';
 import { styled } from '@mui/system';
 import { List, ListItemText } from '@mui/material';
-import { commonTemplateContent } from '../common/common-states';
+import { commonTemplateContent,templateCompact2 } from '../common/common-states';
+
 
 const DottedDivider = styled('div')({
   width: '100%',
@@ -41,7 +42,7 @@ const Index = () => {
     <Grid item lg={2} xs={12}>
       <Typography variant="body1" style={{ textAlign: 'center' }}>
         <Typography variant="h4" fontWeight="bold" style={{ marginTop: '15px' }}>
-          
+           {templateCompact2[`copy${i+1}Name`]}
         </Typography>
         <Typography variant="h4" fontWeight="bold" style={{ marginTop: '10px' }}>
           Fee Invoice
@@ -87,7 +88,7 @@ const Index = () => {
                 {commonTemplateContent.fatherName}
                 </Typography>
                 <Typography variant="h5" style={{ marginTop: '20px' }}>
-                
+                {templateCompact2.schoolAddress}
                 </Typography>
               </Grid>
             </Grid>
@@ -110,16 +111,18 @@ const Index = () => {
               </Grid>
               <Grid item lg={10} xs={6}>
                 <Typography variant="h5" style={{ marginTop: '20px', fontWeight: 'bold' }}>
-                 
+                 {commonTemplateContent.className}
                 </Typography>
                 <Typography variant="h5" style={{ marginTop: '20px' }}>
+                {commonTemplateContent.mobile}
                   
                 </Typography>
                 <Typography variant="h5" style={{ marginTop: '20px' }}>
+                {templateCompact2.schoolTel}
                 
                 </Typography>
                 <Typography variant="h5" style={{ marginTop: '20px', wordWrap: 'break-word' }}>
-                  
+                {templateCompact2.email}
                 </Typography>
               </Grid>
             </Grid>
@@ -190,26 +193,26 @@ const Index = () => {
           </Grid>
           <Grid item lg={8} xs={5} style={{ textAlign: 'right' }}>
             <Typography variant="h5" style={{ marginTop: '20px', fontWeight: 'bold', marginRight: '30px' }}>
-              
+              {commonTemplateContent.invoiceNo}
             </Typography>
             <Typography variant="h5" style={{ marginTop: '15px', marginRight: '20px' }}>
-              
+              {templateCompact2.date}
             </Typography>
             <Typography variant="h5" style={{ marginTop: '15px', marginRight: '20px' }}>
-           
+            {commonTemplateContent.academicYear}
             </Typography>
             <Typography variant="h5" style={{ marginTop: '15px', marginRight: '20px' }}>
-           
+            {commonTemplateContent.feePeriod}
             </Typography>
             <Typography variant="h5" style={{ marginTop: '15px', marginRight: '20px' }}>
-            
+             {templateCompact2.lastPaymentDate}
             </Typography>
             <Typography
               variant="h5"
               style={{ marginTop: '20px', fontWeight: 'bold', marginRight: '30px', marginBottom: '20px' }}
             >
               <CurrencyRupeeIcon sx={{ fontSize: 'small' }} />
-             
+             {commonTemplateContent.netAmountPayable}
             </Typography>
           </Grid>
         </Grid>
@@ -304,13 +307,13 @@ const Index = () => {
                     </Box>
                   </Box>
                   <Typography variant="h5" sx={{ marginTop: '10px', textAlign: 'center', marginLeft: '20px' }}>
-                    100{' '}
+                    {commonTemplateContent.lateFee}
                   </Typography>
                   <Typography variant="h5" sx={{ marginTop: '10px', textAlign: 'center', marginLeft: '20px' }}>
-                    27,170{' '}
+                    {commonTemplateContent.compositeFee}
                   </Typography>
                   <Typography variant="h5" sx={{ marginTop: '10px', textAlign: 'center', fontWeight: 'bold', marginLeft: '20px' }}>
-                    27,270{' '}
+                  {commonTemplateContent.invoiceTotal}
                   </Typography>
                   <Typography variant="h5" sx={{ marginTop: '10px', textAlign: '', fontWeight: 'bold', marginLeft: '20px' }}>
                     {' '}
@@ -332,13 +335,13 @@ const Index = () => {
                     </Box>
                   </Box>
                   <Typography variant="h5" sx={{ marginTop: '10px', textAlign: 'right', marginRight: '60px' }}>
-                    0
+                    {templateCompact2.concession}
                   </Typography>
                   <Typography variant="h5" sx={{ marginTop: '10px', textAlign: 'right', marginRight: '60px' }}>
-                    0
+                  {templateCompact2.concession}
                   </Typography>
                   <Typography variant="h5" sx={{ marginTop: '10px', textAlign: 'right', fontWeight: 'bold', marginRight: '60px' }}>
-                    0
+                  {templateCompact2.concession}
                   </Typography>
                   <Typography variant="h5" sx={{ marginTop: '10px', textAlign: 'left', fontWeight: 'bold', marginLeft: '20px' }}>
                     Previous Balance:{' '}
@@ -358,20 +361,20 @@ const Index = () => {
                   </Box>
 
                   <Typography variant="h5" sx={{ marginTop: '10px', textAlign: 'right', marginRight: '20px' }}>
-                    100
+                    {commonTemplateContent.lateFee}
                   </Typography>
                   <Typography variant="h5" sx={{ marginTop: '10px', textAlign: 'right', marginRight: '20px' }}>
-                    27,170
+                    {commonTemplateContent.compositeFee}
                   </Typography>
                   <Typography variant="h5" sx={{ marginTop: '10px', textAlign: 'right', fontWeight: 'bold', marginRight: '20px' }}>
-                    27,170
+                    {commonTemplateContent.invoiceTotal}
                   </Typography>
                   <Typography variant="h5" sx={{ marginTop: '10px', textAlign: 'right', marginRight: '20px' }}>
-                    0
+                    {commonTemplateContent.previousBalance}
                   </Typography>
                   <Typography variant="h5" sx={{ marginTop: '10px', textAlign: 'right', fontWeight: 'bold', marginRight: '20px' }}>
                     <CurrencyRupeeIcon sx={{ fontSize: 'small' }} />
-                    27,170
+                    {commonTemplateContent.netAmountPayable}
                   </Typography>
                 </Grid>
               </Grid>

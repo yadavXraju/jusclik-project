@@ -83,19 +83,20 @@ export const commonTemplateContent={
   invoiceTotal: '4,900',
   previousBalance: '0',
   netAmountPayable: '4,900',
-  lateFee: 100,
+  lateFee: 0,
   compositeFee: '4,900',
   termsAndConditions:''
 }
 
 export const templateCompact2={
-  schoolAddress:'',
-  schoolTel:'',
-  email:'',
-  lastPaymentDate:'',
-  feePeriod:'',
-  concession:'',
+  schoolAddress:'Sohna Dhani Road Road Ward No - 01 Sohna Gurugram haryana Sohna - 122103',
+  schoolTel:'XXXXXXXXXX',
+  email:'123@gmail.com',
+  lastPaymentDate:'dd-mm-yyyy',
+  concession:'0',
   amount:'',
   copy1Name:'School Copy',
-  copy2Name:'Parent Copy'
+  copy2Name:'Parent Copy',
+  date:'dd-mm-yyyy'
+
 }
