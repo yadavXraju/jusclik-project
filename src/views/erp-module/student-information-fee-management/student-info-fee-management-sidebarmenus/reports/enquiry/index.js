@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react'
-import { Box, Paper, Button } from '@mui/material';
+import { Box, Paper, Button, Typography } from '@mui/material';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import WithPrintPdf from 'views/common-section/withPrintPdf';
 import LocalPrintshopOutlinedIcon from '@mui/icons-material/LocalPrintshopOutlined';
@@ -9,143 +9,62 @@ import EnquiryDrawer from './EnquiryDrawer';
 import ReportTable from '../common-report-section/report-table';
 import '../drawer-set.css';
 
-const studentData = [
-    {
-        id: 1,
-        enqNo: '001',
-        enqDate: '2024-03-11',
-        studentName: 'John Doe',
-        class: '10',
-        section: 'A',
-        classSection: '10A',
-        gender: 'Male',
-        birthDate: '2006-05-20',
-        age: 17,
-        address: '123 Main St, City, Country',
-        commPhone: '123-456-7890',
-        commEmail: 'john@example.com',
-        joinClass: '2024-03-15',
-        concessionCategory: 'Category A',
-        fatherName: 'Michael Doe',
-        motherName: 'Emily Doe',
+const studentData = [];
+
+// Sample data for different fields
+const names = ['John Doe', 'Jane Smith', 'Michael Johnson', 'Emily Brown', 'David Lee', 'Sarah Wilson'];
+const classes = ['10', '11', '12'];
+const sections = ['A', 'B', 'C'];
+const genders = ['Male', 'Female'];
+const addresses = ['123 Main St', '456 Elm St', '789 Oak St'];
+const emails = ['john@example.com', 'jane@example.com', 'michael@example.com'];
+const guardianRelationships = ['Father', 'Mother', 'Guardian'];
+const concessionCategories = ['Category A', 'Category B', 'Category C'];
+
+// Generate 50 student records
+for (let i = 1; i <= 50; i++) {
+    const randomName = names[Math.floor(Math.random() * names.length)];
+    const randomClass = classes[Math.floor(Math.random() * classes.length)];
+    const randomSection = sections[Math.floor(Math.random() * sections.length)];
+    const randomGender = genders[Math.floor(Math.random() * genders.length)];
+    const randomAddress = addresses[Math.floor(Math.random() * addresses.length)];
+    const randomEmail = emails[Math.floor(Math.random() * emails.length)];
+    const randomGuardianRelationship = guardianRelationships[Math.floor(Math.random() * guardianRelationships.length)];
+    const randomConcessionCategory = concessionCategories[Math.floor(Math.random() * concessionCategories.length)];
+
+    const student = {
+        id: i,
+        enqNo: `${i.toString().padStart(3, '0')}`,
+        enqDate: `2024-03-${Math.floor(Math.random() * 30) + 1}`,
+        studentName: randomName,
+        class: randomClass,
+        section: randomSection,
+        classSection: `${randomClass}${randomSection}`,
+        gender: randomGender,
+        birthDate: `200${Math.floor(Math.random() * 2) + 1}-0${Math.floor(Math.random() * 9) + 1}-${Math.floor(Math.random() * 28) + 1}`,
+        age: Math.floor(Math.random() * 8) + 15, // Random age between 15 and 22
+        address: `${randomAddress}, City, Country`,
+        commPhone: `${Math.floor(Math.random() * 900) + 100}-${Math.floor(Math.random() * 900) + 100}-${Math.floor(Math.random() * 9000) + 1000}`,
+        commEmail: randomEmail,
+        joinClass: `2024-03-${Math.floor(Math.random() * 15) + 15}`, // Random joining class date in March 2024
+        concessionCategory: randomConcessionCategory,
+        fatherName: `Father of ${randomName}`,
+        motherName: `Mother of ${randomName}`,
         nationality: 'American',
         religion: 'Christian',
         previousSchool: 'ABC School',
-        lastGradeCompleted: '9',
-        guardianName: 'Alice Doe',
-        guardianRelationship: 'Mother',
-        guardianPhone: '987-654-3210',
-        guardianEmail: 'alice@example.com',
-    },
-    {
-        id: 2,
-        enqNo: '002',
-        enqDate: '2024-03-12',
-        studentName: 'Jane Smith',
-        class: '11',
-        section: 'B',
-        classSection: '11B',
-        gender: 'Female',
-        birthDate: '2005-08-15',
-        age: 18,
-        address: '456 Oak St, Town, Country',
-        commPhone: '987-654-3210',
-        commEmail: 'jane@example.com',
-        joinClass: '2024-03-16',
-        concessionCategory: 'Category B',
-        fatherName: 'John Smith',
-        motherName: 'Mary Smith',
-        nationality: 'British',
-        religion: 'Catholic',
-        previousSchool: 'XYZ School',
-        lastGradeCompleted: '10',
-        guardianName: 'John Smith',
-        guardianRelationship: 'Father',
-        guardianPhone: '123-456-7890',
-        guardianEmail: 'john@example.com',
-    },
-    {
-        id: 3,
-        enqNo: '002',
-        enqDate: '2024-03-12',
-        studentName: 'Jane Smith',
-        class: '11',
-        section: 'B',
-        classSection: '11B',
-        gender: 'Female',
-        birthDate: '2005-08-15',
-        age: 18,
-        address: '456 Oak St, Town, Country',
-        commPhone: '987-654-3210',
-        commEmail: 'jane@example.com',
-        joinClass: '2024-03-16',
-        concessionCategory: 'Category B',
-        fatherName: 'John Smith',
-        motherName: 'Mary Smith',
-        nationality: 'British',
-        religion: 'Catholic',
-        previousSchool: 'XYZ School',
-        lastGradeCompleted: '10',
-        guardianName: 'John Smith',
-        guardianRelationship: 'Father',
-        guardianPhone: '123-456-7890',
-        guardianEmail: 'john@example.com',
-    },
-    {
-        id: 4,
-        enqNo: '002',
-        enqDate: '2024-03-12',
-        studentName: 'Jane Smith',
-        class: '11',
-        section: 'B',
-        classSection: '11B',
-        gender: 'Female',
-        birthDate: '2005-08-15',
-        age: 18,
-        address: '456 Oak St, Town, Country',
-        commPhone: '987-654-3210',
-        commEmail: 'jane@example.com',
-        joinClass: '2024-03-16',
-        concessionCategory: 'Category B',
-        fatherName: 'John Smith',
-        motherName: 'Mary Smith',
-        nationality: 'British',
-        religion: 'Catholic',
-        previousSchool: 'XYZ School',
-        lastGradeCompleted: '10',
-        guardianName: 'John Smith',
-        guardianRelationship: 'Father',
-        guardianPhone: '123-456-7890',
-        guardianEmail: 'john@example.com',
-    },
-    {
-        id: 5,
-        enqNo: '002',
-        enqDate: '2024-03-12',
-        studentName: 'Jane Smith',
-        class: '11',
-        section: 'B',
-        classSection: '11B',
-        gender: 'Female',
-        birthDate: '2005-08-15',
-        age: 18,
-        address: '456 Oak St, Town, Country',
-        commPhone: '987-654-3210',
-        commEmail: 'jane@example.com',
-        joinClass: '2024-03-16',
-        concessionCategory: 'Category B',
-        fatherName: 'John Smith',
-        motherName: 'Mary Smith',
-        nationality: 'British',
-        religion: 'Catholic',
-        previousSchool: 'XYZ School',
-        lastGradeCompleted: '10',
-        guardianName: 'John Smith',
-        guardianRelationship: 'Father',
-        guardianPhone: '123-456-7890',
-        guardianEmail: 'john@example.com',
-    },
-];
+        lastGradeCompleted: Math.floor(Math.random() * 12) + 1, // Random last grade completed between 1 and 12
+        guardianName: `${randomGuardianRelationship} of ${randomName}`,
+        guardianRelationship: randomGuardianRelationship,
+        guardianPhone: `${Math.floor(Math.random() * 900) + 100}-${Math.floor(Math.random() * 900) + 100}-${Math.floor(Math.random() * 9000) + 1000}`,
+        guardianEmail: `${randomGuardianRelationship.toLowerCase().replace(' ', '')}@example.com`,
+    };
+
+    studentData.push(student);
+}
+
+console.log(studentData);
+
 
 const columns = [
     { id: 'enqNo', field: 'enqNo', headerName: 'Enq No', editable: true },
@@ -178,27 +97,27 @@ const Enquiry = () => {
     const printRef = useRef();
     const [clickedCustomize, setClickedCustomize] = useState(false);
     return (
-        <Box sx={{overflowX:"hidden"}}>
-            {/* Customize report and action button(printPdf) */}
-            <Paper sx={{ height: "50px"}}>
-                <Box sx={{height:"50px",display: "flex", justifyContent: "space-between", marginTop: "7px" }}>
-                    <Box sx={{height:"20px",marginTop:"8px"}}>
-                        <Button endIcon={<SettingsOutlinedIcon sx={{marginTop:"2px",width: "15px"}}  />} onClick={() => setClickedCustomize(true)}>Customize Report</Button>
-                    </Box>
-                    <Box sx={{ display: 'flex' }}>
-                        <WithPrintPdf Children={<LocalPrintshopOutlinedIcon />} ref={printRef} />
-                        <Button endIcon={<ArrowDropDownOutlinedIcon />} >Export As</Button>
-                    </Box>
-                </Box>
-                <Box className={clickedCustomize ? "afterClick" : "beforeClick"}>
-                    <EnquiryDrawer name="Customize Report" setClickedCustomize={setClickedCustomize} />
-                </Box>
-            </Paper>
-            {/* Report Table  */}
-            <Paper sx={{overflowX:"hidden",marginTop:"20px"}}>
-                <ReportTable rows={studentData} columns={columns} ref={printRef} />
-            </Paper>
-        </Box>
+        <>
+            <Box>
+                {
+                    !clickedCustomize &&
+                    <Paper sx={{ overflowX: "hidden" }}>
+                        <Box sx={{ width: "100%", borderBottom: '1px solid #ccc', display: "flex", justifyContent: "space-between", alginItems: "center" }} p={2}>
+                            <Typography variant="h4" sx={{ pb: '0px' }}>Enquiry Report</Typography>
+                            <Box sx={{ display: "flex" }}>
+                                <Button endIcon={<SettingsOutlinedIcon sx={{ marginTop: "2px", width: "15px" }} />} onClick={() => setClickedCustomize(true)}>Customize Report</Button>
+                                <WithPrintPdf Children={<LocalPrintshopOutlinedIcon />} ref={printRef} />
+                                <Button endIcon={<ArrowDropDownOutlinedIcon />} >Export As</Button>
+                            </Box>
+                        </Box>
+                        <ReportTable rows={studentData} columns={columns} ref={printRef} />
+                    </Paper>
+                }
+            </Box>
+            <Box className={clickedCustomize ? "afterClick" : "beforeClick"}>
+                <EnquiryDrawer name="Customize Report" setClickedCustomize={setClickedCustomize} />
+            </Box>
+        </>
     )
 }
 

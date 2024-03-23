@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TextField, InputAdornment, IconButton, Box, Typography,Button} from '@mui/material';
+import { TextField, InputAdornment, IconButton, Box, Button, Typography } from '@mui/material';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import useOutsideClick from 'hooks/useClickOutside';
 import {
@@ -157,6 +157,7 @@ const availableColumns = [
 
 const Filter = () => {
     const { ref, isOpen, setIsOpen } = useOutsideClick(false);
+
     const handleFilterSelected = (item) => {
         setIsOpen(false);
         setSelectedFilter([...selectedFilter, item]);
@@ -173,11 +174,12 @@ const Filter = () => {
 
     return (
         <>
-            <Box sx={{ position: "relative", border: "1px solid #f0f5f8", zIndex: "2", width: "100%", minHeight: 'calc(100vh - 480px)' }} ref={ref}>
+            <Box sx={{ position: "relative", border: "1px solid #f0f5f8", zIndex: "10", width: "100%", height: '480px' }} ref={ref}>
+                {/* Search DropDown */}
                 <TextField
                     variant="outlined"
                     placeholder="Choose a Property..."
-                    sx={{ width: "100%", padding: "20px 20px 20px 20px" }}
+                    sx={{ width: "100%", padding: "20px 20px 0px 20px", zIndex: "2" }}
                     onChange={(event) => setSearchTerm(event.target.value)}
                     InputProps={{
                         endAdornment: (
@@ -190,17 +192,19 @@ const Filter = () => {
                     }}
                     onClick={() => setIsOpen(true)}
                 />
+
                 {/* Displaying Selected Filters */}
-                <Box sx={{ display: "flex", flexDirection: "column", position: "absolute", top: "100px", width: "100%", overflowY: "auto", backgroundColor: "#eef2f629", zIndex: "3" }} className="scrollbar">
+                <Box sx={{ display: "flex", flexDirection: "column", position: "absolute", top: "80px", width: "100%", overflowY: "auto", backgroundColor: "#eef2f629", zIndex: "3", height: "320px" }} className="scrollbar">
                     {
                         selectedFilter && selectedFilter.map((item) =>
                             <item.filter key={item?.id} />
                         )
                     }
                 </Box>
+
                 {/* Displaying Available Fields */}
                 {
-                    isOpen && <Box sx={{ width: "calc(100% - 20px)", height: "calc(100vh - 400px)", overflowY: 'auto', zIndex: "5", position: 'relative', backgroundColor: "white", paddingLeft: "20px" }} className="scrollbar">
+                    isOpen && <Box sx={{ width: "calc(100% - 20px)", height: "340px", overflowY: 'auto', zIndex: "5", position: 'absolute', backgroundColor: "white", paddingLeft: "20px" }} className="scrollbar">
                         {filterAvailableFields().map((item) => (
                             <Box
                                 key={item.id}
@@ -211,9 +215,11 @@ const Filter = () => {
                         )}
                     </Box>
                 }
-            </Box>
-            <Box sx={{ marginTop: "auto", marginRight: "20px", height: "60px", display: "flex", justifyContent: "flex-end" }}>
-                <Button sx={{ marginTop: "auto", marginBottom: "auto", height: "40px" }} onClick={() => setSelectedFilter([])} variant="outlined">Clear Filter</Button>
+
+                {/*Clear Filter Button*/}
+                <Box sx={{ position: "absolute", width: "100%", top: "420px", display: "flex", justifyContent: "flex-end", paddingRight: "20px", height: "60px", borderTop: "1px solid #f0f5f8", alignItems: "center" }}>
+                    <Button sx={{height: "40px" }} onClick={() => setSelectedFilter([])} variant="outlined">Clear Filter</Button>
+                </Box>
             </Box>
         </>
     )
