@@ -52,7 +52,7 @@ const CompactTemplate2 = () => {
     </Grid>
   
     <Grid container spacing={2}>
-      <Grid item lg={8} xs={12}>
+      <Grid item lg={7} xs={12}>
         <Box style={{ border: '1px solid grey' }}>
           <Box sx={{ backgroundColor: 'lightgrey', textAlign: 'center' }}>
             <Typography variant="h4" fontWeight="bold" sx={{ lineHeight: 2 }}>
@@ -62,7 +62,7 @@ const CompactTemplate2 = () => {
           <Grid container spacing={2}>
             <Grid item lg={6} xs={12}>
               <Grid container>
-                <Grid item lg={4} xs={6}>
+                <Grid item lg={6} xs={6}>
                   <Typography variant="h5" style={{ marginLeft: '20px', marginTop: '20px' }}>
                     Admission No:
                   </Typography>
@@ -76,7 +76,7 @@ const CompactTemplate2 = () => {
                     Address:
                   </Typography>
                 </Grid>
-                <Grid item lg={8} xs={6}>
+                <Grid item lg={6} xs={6}>
                   <Typography variant="h5" style={{ marginTop: '20px', fontWeight: 'bold' }}>
                    {commonTemplateContent.admissionNo}
                   </Typography>
@@ -95,7 +95,7 @@ const CompactTemplate2 = () => {
             </Grid>
             <Grid item lg={6} xs={12}>
               <Grid container>
-                <Grid item lg={2} xs={6}>
+                <Grid item lg={4} xs={6}>
                   <Typography variant="h5" style={{ marginTop: '20px', marginLeft: '20px' }}>
                     Class:
                   </Typography>
@@ -109,7 +109,7 @@ const CompactTemplate2 = () => {
                     Email:
                   </Typography>
                 </Grid>
-                <Grid item lg={10} xs={6}>
+                <Grid item lg={8} xs={6}>
                   <Typography variant="h5" style={{ marginTop: '20px', fontWeight: 'bold' }}>
                    {commonTemplateContent.className}
                   </Typography>
@@ -141,7 +141,7 @@ const CompactTemplate2 = () => {
             </Box>
           </Grid>
   
-          <Grid item lg={3} xs={12}>
+          <Grid item lg={4} xs={12}>
             <Box style={{ border: '1px solid grey', height: '62px' }}>
               <Box sx={{ backgroundColor: 'lightgrey', textAlign: 'center' }}>
                 <Typography variant="h4" fontWeight="bold" sx={{ lineHeight: 1.5 }}>
@@ -151,7 +151,7 @@ const CompactTemplate2 = () => {
             </Box>
           </Grid>
   
-          <Grid item lg={6} xs={12}>
+          <Grid item lg={5} xs={12}>
             <Box style={{ border: '1px solid grey', height: '62px' }}>
               <Box sx={{ backgroundColor: 'lightgrey', textAlign: 'center' }}>
                 <Typography variant="h4" fontWeight="bold" sx={{ lineHeight: 1.5 }}>
@@ -163,7 +163,7 @@ const CompactTemplate2 = () => {
         </Grid>
       </Grid>
   
-      <Grid item lg={4} xs={12}>
+      <Grid item lg={5} xs={12}>
         <Box style={{ border: '1px solid grey' }}>
           <Box style={{ backgroundColor: 'lightgrey', textAlign: 'center' }}>
             <Typography variant="h4" fontWeight="bold" sx={{ lineHeight: 2 }}>
@@ -260,7 +260,7 @@ const CompactTemplate2 = () => {
     }
   
     return (
-      <Box>
+      <Box sx={{ width: 1157, height: 1839, margin: 'auto' }}>
         <Paper elevation={2} square={true}>
           <Box sx={{ marginLeft: '20px', marginRight: '20px' }}>
             

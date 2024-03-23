@@ -89,7 +89,7 @@ export const commonTemplateContent={
 }
 
 export const templateCompact2={
-  schoolAddress:'Sohna Dhani Road Road Ward No - 01 Sohna Gurugram haryana Sohna - 122103',
+  schoolAddress:'Sohna Dhani Road Road Ward No -01 Sohna Gurugram haryana Sohna-122103',
   schoolTel:'XXXXXXXXXX',
   email:'123@gmail.com',
   lastPaymentDate:'dd-mm-yyyy',
