@@ -45,8 +45,9 @@ const VisitorRegistrationTemplate = () => {
                 <Box sx={{ minHeight: '100%' }}>
                     <Grid container component="main" >
                         <CssBaseline />
+                        
                         {/* left side school logo */}
-                        <Grid item sx={{backgroundColor: (t) => (t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900]),...css.imageContainer,...css.center,}}>
+                        <Grid item md={6} sx={{backgroundColor: (t) => (t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900]),...css.imageContainer,...css.center,}}>
                             <Grid item sx={{ ...css.center, flexDirection: 'column' }}>
                                 <img
                                     src={LogoImg}
@@ -62,7 +63,7 @@ const VisitorRegistrationTemplate = () => {
                             </Grid>
                         </Grid>
                         {/* school logo over*/}
-                        <Grid item elevation={6}>
+                        <Grid item elevation={6} md={6}>
                             <Box sx={{...css.parentPaper,...css.horizontalCenter}}>                            
                             <Box sx={{ ...css.parentPaperBox, ...css.displayNoneOnMd }}>
                                 <Typography
@@ -117,7 +118,7 @@ const VisitorRegistrationTemplate = () => {
                             {step == 0 && <MobileNumber step={step} handleSteps={handleSteps}  setMobileNumber={setMobileNumber} />}
                             {/* ============= Otp Modal ========================  */}
                             {step == 1 && <OtpVerification step={step} handleSteps={handleSteps}  mobileNumber={mobileNumber} />}
-                            {/* ============= Selfie ============================ */}
+                            {/* ============= Selfie ============================ */}                            
                             {step == 2 && <SelfieVerification step={step} handleSteps={handleSteps} md={md}/>}
                             {/* ============= Purpose/Details =========================== */}
                             {step == 3 && <VisitorDetails step={step} handleSteps={handleSteps} />}
@@ -125,6 +126,8 @@ const VisitorRegistrationTemplate = () => {
                             </Box>
                             </Box>      
                         </Grid>
+               
+
                     </Grid>
                 </Box>
             </ThemeProvider>
