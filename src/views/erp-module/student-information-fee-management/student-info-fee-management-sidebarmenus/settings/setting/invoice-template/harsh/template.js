@@ -22,65 +22,66 @@ const CompactTemplate = () => {
                 <Box
                   sx={{ border: '2px solid grey'}}>
                   <Box sx={{ borderBottom: '2px solid ', display: 'flex', textAlign: 'center' }}>
-                    <Box pt={4} sx={{ width: '135px' }}>
+                    <Box pt={3} sx={{ width: '135px' }}>
                       <img src={schoollogo} alt='schoollogo' width="120" height="120">
 
                       </img>
                     </Box>
-                    <Box p={1}>
-                      <Typography p={1} variant='h2'> {  commonTemplateContent.schoolName}</Typography>
-                      <Typography p={1} variant='h4' sx={{ fontWeight: '400' }}> {  commonTemplateContent.bankName} </Typography>
-                      <Typography p={1} variant='h4' sx={{ fontWeight: '400' }}> {  commonTemplateContent.bankIfscCode}</Typography>
+                    <Box p={2} pb={4}>
+                      <Typography  variant='h3'> {  commonTemplateContent.schoolName}</Typography>
+                      <Typography p={1} variant='h4'> {commonTemplateContent.address}</Typography>
+                      <Typography  variant='h4' sx={{ fontWeight: '400' }}> {  commonTemplateContent.bankName} </Typography>
+                      <Typography  variant='h4' sx={{ fontWeight: '400' }}> {  commonTemplateContent.bankIfscCode}</Typography>
                       <Typography p={1} variant='h4' sx={{ fontWeight: '800', fontSize: '16px' }}> Fee Slip ({  templateCompact[`copy${i+1}Name`]})  </Typography>
                     </Box>
                   </Box>
                   <Box>
-                    <Box p={2} sx={{ borderBottom: '2px solid gray' }}>
+                    <Box p={1} pb={2} sx={{ borderBottom: '2px solid gray' }}>
                       <Box sx={{ display: "flex", justifyContent: "space-between"}} >
                         <Box >
                           <Box sx={{ display: "flex" }}>
-                            <Typography p={1} variant='h4' sx={{ fontWeight: '400' }}>Adm No</Typography>
-                            <Typography p={1} variant='h4' sx={{ fontWeight: 'bold' }}>{  commonTemplateContent.admission_no}</Typography>
+                            <Typography p={1} variant='h5' sx={{ fontWeight: '400' }}>Adm No</Typography>
+                            <Typography p={1} variant='h5' sx={{ fontWeight: 'bold' }}>{  commonTemplateContent.admission_no}</Typography>
                           </Box>
                           <Box sx={{ display: "flex" }}>
-                            <Typography p={1} variant='h4' sx={{ fontWeight: '400' }}>Class</Typography>
-                            <Typography p={1} variant='h4' sx={{ fontWeight: 'bold' }}>{  commonTemplateContent.className}</Typography>
-                          </Box>
-
-                          <Box sx={{ display: "flex" }}>
-                            <Typography p={1} variant='h4' sx={{ fontWeight: '400' }}>Name</Typography>
-                            <Typography p={1} variant='h4' sx={{ fontWeight: '400' }}>{  commonTemplateContent.name}</Typography>
+                            <Typography p={1} variant='h5' sx={{ fontWeight: '400' }}>Class</Typography>
+                            <Typography p={1} variant='h5' sx={{ fontWeight: 'bold' }}>{  commonTemplateContent.className}</Typography>
                           </Box>
 
                           <Box sx={{ display: "flex" }}>
-                            <Typography p={1} variant='h4' sx={{ fontWeight: '400' }}>Mobile</Typography>
-                            <Typography p={1} variant='h4' sx={{ fontWeight: '400' }}>{  commonTemplateContent.mobile}</Typography>
+                            <Typography p={1} variant='h5' sx={{ fontWeight: '400' }}>Name</Typography>
+                            <Typography p={1} variant='h5' sx={{ fontWeight: '400' }}>{  commonTemplateContent.name}</Typography>
+                          </Box>
+
+                          <Box sx={{ display: "flex" }}>
+                            <Typography p={1} variant='h5' sx={{ fontWeight: '400' }}>Mobile</Typography>
+                            <Typography p={1} variant='h5' sx={{ fontWeight: '400' }}>{  commonTemplateContent.mobile}</Typography>
                           </Box>
                           <Box sx={{ display: "flex" }}>
-                            <Typography p={1} variant='h4' sx={{ fontWeight: '400' }}>Father&apos;s Name</Typography>
-                            <Typography p={1} variant='h4' sx={{ fontWeight: '400' }}>{  commonTemplateContent.fatherName}</Typography>
+                            <Typography p={1} variant='h5' sx={{ fontWeight: '400' }}>Father&apos;s Name</Typography>
+                            <Typography p={1} variant='h5' sx={{ fontWeight: '400' }}>{  commonTemplateContent.fatherName}</Typography>
                           </Box>
                         </Box>
                         <Box>
                           <Box sx={{ display: "flex" }}>
-                            <Typography p={1} variant='h4' sx={{ fontWeight: '400' }}>Inv No.[SS*]</Typography>
-                            <Typography p={1} variant='h4' sx={{ fontWeight: 'bold' }}>{  commonTemplateContent.invoiceNo}</Typography>
+                            <Typography p={1} variant='h5' sx={{ fontWeight: '400' }}>Inv No.[SS*]</Typography>
+                            <Typography p={1} variant='h5' sx={{ fontWeight: 'bold' }}>{  commonTemplateContent.invoiceNo}</Typography>
                           </Box>
                           <Box sx={{ display: "flex" }}>
-                            <Typography p={1} variant='h4' sx={{ fontWeight: '400' }}>Invoice Date</Typography>
-                            <Typography p={1} variant='h4' sx={{ fontWeight: '400' }}>{  commonTemplateContent.invoiceDate}</Typography>
+                            <Typography p={1} variant='h5' sx={{ fontWeight: '400' }}>Invoice Date</Typography>
+                            <Typography p={1} variant='h5' sx={{ fontWeight: '400' }}>{  commonTemplateContent.invoiceDate}</Typography>
                           </Box>
                           <Box sx={{ display: "flex" }}>
-                            <Typography p={1} variant='h4' sx={{ fontWeight: '400' }}>Academic Year</Typography>
-                            <Typography p={1} variant='h4' sx={{ fontWeight: '400' }}>{  commonTemplateContent.academicYear}</Typography>
+                            <Typography p={1} variant='h5' sx={{ fontWeight: '400' }}>Academic Year</Typography>
+                            <Typography p={1} variant='h5' sx={{ fontWeight: '400' }}>{  commonTemplateContent.academicYear}</Typography>
                           </Box>
                           <Box sx={{ display: "flex" }}>
-                            <Typography p={1} variant='h4' sx={{ fontWeight: '400' }}>Fee Period</Typography>
-                            <Typography p={1} variant='h4' sx={{ fontWeight: 'bold' }}>{  commonTemplateContent.feePeriod}</Typography>
+                            <Typography p={1} variant='h5' sx={{ fontWeight: '400' }}>Fee Period</Typography>
+                            <Typography p={1} variant='h5' sx={{ fontWeight: 'bold' }}>{  commonTemplateContent.feePeriod}</Typography>
                           </Box>
                           <Box sx={{ display: "flex" }}>
-                            <Typography p={1} variant='h4' sx={{ fontWeight: '400', }}>Due Date</Typography>
-                      <Typography p={1} variant='h4' sx={{ fontWeight: '400' }}>{commonTemplateContent.dueDate}</Typography>
+                            <Typography p={1} variant='h5' sx={{ fontWeight: '400', }}>Due Date</Typography>
+                      <Typography p={1} variant='h5' sx={{ fontWeight: '400' }}>{commonTemplateContent.dueDate}</Typography>
                     </Box>
                   </Box>
                 </Box>
@@ -104,7 +105,7 @@ const CompactTemplate = () => {
                     src={schoollogo}
                     alt='schoollogo'
                     style={{
-                      maxWidth: '100%',
+                      maxWidth: '50%',
                       height: 'auto',
                       opacity: '0.3',
                     }}
@@ -152,8 +153,8 @@ const CompactTemplate = () => {
           </Box>
         </Box>
         {i !== 2 && (
-          <Box sx={{ position: "relative", top: "600px", left: "-13px" }}>
-            <ContentCutOutlinedIcon sx={{ transform: "rotate(-90deg)" }} />
+          <Box sx={{ position: "relative", top: "400px", left: "-13px" }}>
+            <ContentCutOutlinedIcon sx={{ transform: "rotate(270deg)" }} />
           </Box>)
         }
 

@@ -67,8 +67,9 @@ export const templateCompact={
 }
 export const commonTemplateContent={
   schoolName: 'ST XAVIER\'S HIGH SCHOOL',
-  bankName: 'Union Bank of India - 510101002874465',  
-  bankIfscCode: 'Union Bank of India IFSC -   UBIN0916366',
+  bankName: 'Union Bank of India',  
+  bankAccountNo:'A/c-510101002874465',
+  bankIfscCode:'IFSC-UBIN0916366',
   admissionNo: 'P00912',
   className: 'I-A',
   name: 'Shraya Kumari',
@@ -80,10 +81,11 @@ export const commonTemplateContent={
   feePeriod: 'Feb`24-Mar`24',
   dueDate: '15-Jan-2024',
   tutionFee: '4,900',
-  invoiceTotal: '4,900',
+  invoiceTotal: '5,900',
   previousBalance: '0',
-  netAmountPayable: '4,900',
+  netAmountPayable: '5,900',
   lateFee: 100,
   compositeFee: '4,900',
-  invoiceCopy: 'Bank Copy'
+  invoiceCopy: 'Bank Copy',
+  address:'Sohna Road, Gurgaon - 122102'
 }
