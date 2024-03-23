@@ -85,5 +85,6 @@ export const commonTemplateContent={
   netAmountPayable: '4,900',
   lateFee: 100,
   compositeFee: '4,900',
-  invoiceCopy: 'Bank Copy'
+  invoiceCopy: 'Bank Copy',
+  
 }
