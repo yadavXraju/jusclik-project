@@ -67,10 +67,6 @@ const SelfieVerification = ({ step, handleSteps, md }) => {
       setSelectedFile(event.target.files[0]);
    };
 
-   //  const handleUpload = () => {
-   //    // You can add upload logic here, such as sending the file to a server
-   //    console.log('Selected File:', selectedFile);
-   //  };
    // getusermedia is not supported by all browsers
    // we can provide conditional checks
    // if getusermedia not supported then show file upload
@@ -106,6 +102,8 @@ const SelfieVerification = ({ step, handleSteps, md }) => {
                               style={{ maxWidth: md ? '100%' : '25rem', height: 'auto', borderRadius: '12px' }}
                               onClick={() => { }}
                               onError={(e) => { console.log(e.target.error) }}
+                              data-webkit-playsinline  // Use data- prefix for non-standard properties
+                              data-playsinline          // Use data- prefix for non-standard properties
                            />
                            {showTakePhotoButton && (
                               <Box>

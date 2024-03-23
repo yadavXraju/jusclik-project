@@ -15,8 +15,8 @@ const CompactTemplate = () => {
   for(let i=0;i<3;i++)
   {
     
-    templateContent.push( 
-
+    templateContent.push(
+      
             <Grid item md='4' >
               <Box borderRight={  i !== 2 && '2px dotted'}  sx={{ paddingRight: "18px" }}>
                 <Box

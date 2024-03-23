@@ -85,5 +85,17 @@ export const commonTemplateContent={
   netAmountPayable: '4,900',
   lateFee: 100,
   compositeFee: '4,900',
-  invoiceCopy: 'Bank Copy'
+  termsAndConditions:''
+}
+
+export const templateCompact2={
+  schoolAddress:'',
+  schoolTel:'',
+  email:'',
+  lastPaymentDate:'',
+  feePeriod:'',
+  concession:'',
+  amount:'',
+  copy1Name:'School Copy',
+  copy2Name:'Parent Copy'
 }
