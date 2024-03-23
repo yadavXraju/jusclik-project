@@ -1,5 +1,6 @@
 import React from 'react'
-import StudentDetails from './student-details'
+import AdmissionTable from '../admission/admission-form/Adm-form/AdmissionTable'
+// import StudentDetails from './student-details'
 
 const Registration = () => {
 
@@ -7,7 +8,8 @@ const Registration = () => {
  
   return (
     <div>
-      <StudentDetails/>
+      {/* <StudentDetails/> */}
+      <AdmissionTable/>
     </div>
   )
 }
