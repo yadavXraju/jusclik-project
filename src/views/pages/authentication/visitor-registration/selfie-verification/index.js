@@ -16,9 +16,9 @@ const SelfieVerification = ({ step, handleSteps, md }) => {
    const [showCameraIcon, setShowCameraIcon] = useState(true); // State to toggle camera icon visibility
    const [showTakePhotoButton, setShowTakePhotoButton] = useState(true);
    const [showSubmitButton, setShowSubmitButton] = useState(false);
-   const startCamera = () => {
+   
+   const startCamera = () => {         
       if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-         // setMediaAvailable(true)
          navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' } })
             .then(stream => {
                setStream(stream);
@@ -30,38 +30,24 @@ const SelfieVerification = ({ step, handleSteps, md }) => {
       }
       else {
          console.error('getUserMedia is not supported in this browser.');
-         // setMediaAvailable(false)
       }
    };
+
    useEffect(() => {
       if (videoRef.current && stream) {
          videoRef.current.srcObject = stream;
       }
    }, [stream]);
+
    const takePhoto = () => {
       const video = videoRef.current;
       const canvas = document.createElement('canvas'); // Create a new canvas element
-      const aspectRatio = 4 / 3; // Aspect ratio of 4:3
-      // canvas.width = video.videoWidth; // Set canvas dimensions to video dimensions
-      // canvas.height = video.videoHeight;
-      // Calculate canvas dimensions based on aspect ratio
-  let canvasWidth = video.videoWidth;
-  let canvasHeight = video.videoHeight;
-  if (canvasWidth / canvasHeight > aspectRatio) {
-    // If video aspect ratio is wider than 4:3, adjust height
-    canvasWidth = canvasHeight * aspectRatio;
-  } else {
-    // If video aspect ratio is taller than 4:3, adjust width
-    canvasHeight = canvasWidth / aspectRatio;
-  }
-      canvas.width = canvasWidth;
-      canvas.height = canvasHeight;
+      canvas.width=video.videoWidth
+      canvas.height=video.videoHeight
+      canvas.aspectRatio='3/4'
+      canvas.objectFit='cover'
       const context = canvas.getContext('2d');
       context.drawImage(video, 0, 0, canvas.width, canvas.height);
-      console.log(canvas.width);
-      console.log(canvas.height);
-      console.log(video.videoWidth);
-      console.log(video.videoHeight);
       // Get the image data from canvas and set it in state
       const imageData = canvas.toDataURL('image/png');
       setCapturedImage(imageData);
@@ -73,6 +59,12 @@ const SelfieVerification = ({ step, handleSteps, md }) => {
       setShowSubmitButton(true);
    };
    const resetCamera = () => {
+         // Stop the video stream
+   if (stream) {
+      const tracks = stream.getTracks();
+      tracks.forEach(track => track.stop());
+   }
+      setStream(null)
       setCapturedImage(null);
       setShowCamera(true);
       startCamera()
@@ -96,24 +88,36 @@ const SelfieVerification = ({ step, handleSteps, md }) => {
                            </Box>
                         ) : (
                            <Box sx={{ position: 'relative' }}>
-                              <img src={capturedImage} alt="Captured" style={{ maxWidth: md ? '100%' : '25rem', borderRadius: '12px' }} />
+                              <img src={capturedImage} alt="Captured" style={{  
+                              width:'100%' ,
+                              height:'auto',
+                              aspectRatio:'3/4',
+                              objectFit:'cover',
+                              borderRadius: '12px' }} />
                            </Box>
                         )}
                      </Box>
                      {stream && showCamera && (
-                        <Box sx={{ ...css.horizontalCenter, display: 'flex', flexDirection: 'column', mt: '1rem' }}>
-                          { /* eslint-disable react/no-unknown-property */}
+                        <Box sx={{ ...css.horizontalCenter, display: 'flex', flexDirection: 'column', mt: '1rem',width:'100%' }}>                          
+                          
+                          { /* eslint-disable react/no-unknown-property */}                          
                            <video
                               ref={videoRef}
                               autoPlay
                               muted
-                              style={{ maxWidth: md ? '100%' : '25rem', height:`${(4 / 3) * (md ? 100 : 25)}vw`, objectFit: 'cover', borderRadius: '12px' }}
+                              style={{ 
+                              width:'100%' ,
+                              height:'auto',
+                              objectFit: 'cover',
+                              aspectRatio:'3/4',
+                              borderRadius: '12px' ,
+                           }}
                               onClick={() => { }}
                               onError={(e) => { console.log(e.target.error) }}
-                              playsInline
-                              webkit-playsinline                             
+                              playsInline                             
                            />
                           { /* eslint-enable react/no-unknown-property */}
+
                            {showTakePhotoButton && (
                               <Box>
                                  <Button sx={{ ...css.center, ...css.marginAuto, ...css.submitButton, ...css.button }} onClick={takePhoto}>
