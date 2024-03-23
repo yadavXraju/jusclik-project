@@ -39,7 +39,7 @@ const BottomNavbar = ({ tabPageLength, value, setValue, customStyle }) => {
                         Submit
                     </Button>
                 }
-                {value!=0&&<Button variant="contained" sx={{ height: "38px", marginTop: "auto",marginBottom:"auto", width: "144px" }} onClick={() => handlePrev()}>
+                {value!=0&&<Button variant="contained" sx={{ height: "38px", marginTop: "auto",marginBottom:"auto", width: "20px" }} onClick={() => handlePrev()}>
                     <ChevronLeftIcon />
                 </Button>}
             </Box>

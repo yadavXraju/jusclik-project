@@ -164,16 +164,16 @@ const ShowHide = () => {
                                     {
                                         filterItem.map((item, index) => (
                                             !item.selected && (
-                                                <Draggable draggableId={item.id} index={index} key={item.id} type="group1">
+                                                <Draggable draggableId={item.id} index={index} key={item.id} >
                                                     {(provided) => (
                                                         <Box
                                                             key={item.id}
                                                             onMouseEnter={() => handleMouseEnter(item?.id)}
                                                             onMouseLeave={() => handleMouseLeave()}
                                                             sx={style?.selectedField}
-                                                            {...provided.dragHandleProps}
-                                                            {...provided.draggableProps}
                                                             ref={provided.innerRef}
+                                                            {...provided.draggableProps}
+                                                            {...provided.dragHandleProps}                                                           
                                                         >
                                                             <Typography variant="h5">{item.id}: {item.headerName}</Typography>
                                                             <IconButton

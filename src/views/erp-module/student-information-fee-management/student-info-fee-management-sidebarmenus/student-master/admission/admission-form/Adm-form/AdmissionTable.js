@@ -4,6 +4,7 @@ import { Card, IconButton, Button, Grid } from '@mui/material';
 import { Box } from '@mui/system';
 import { useNavigate } from 'react-router-dom';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
+import Drawer from '@mui/material/Drawer';
 //import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 //import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
@@ -14,14 +15,16 @@ import FilterListRoundedIcon from '@mui/icons-material/FilterListRounded';
 import AdmissionDrawer from './AdmissionDrawer';
 import RemoveRedEyeTwoToneIcon from '@mui/icons-material/RemoveRedEyeTwoTone';
 //import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
+import useDrawer from 'hooks/useDrawer';
 import rows from './AdmissionTableData';
 import EditDrawer from './EditDrawer';
-
+import FilterStudents from 'views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/reports/common-report-section/filter-and-sort/Filter';
 
 export default function AdmissionTable() {
   const navigate = useNavigate();
   const [tableRows, setTableRows] = React.useState(rows);
   const [currEditItem, setCurrEditItem] = React.useState({});
+  const {anchor,toggleDrawer}=useDrawer();
   //const { anchor, toggleDrawer } = useDrawer();
   // const handleRowClick = () => {
   //   navigate(`../registration`);
@@ -37,7 +40,7 @@ export default function AdmissionTable() {
     navigate('../admission-form/', { state: { rowData } });
   };
 
-   // ========== function for handle Edit row ===========
+  // ========== function for handle Edit row ===========
   const handleEditClick = (editItem) => {
     // console.log(editItem)
     // setCurrEditItem({ ...currEditItem, ...editItem });
@@ -69,10 +72,10 @@ export default function AdmissionTable() {
           </IconButton>
           <IconButton onClick={(event) => event.stopPropagation()}>
             {/* <EditTwoToneIcon onClick={handleEdit} /> */}
-            <EditDrawer  currEditItem={currEditItem} handleClick={()=>handleEditClick(params.row)}/>
+            <EditDrawer currEditItem={currEditItem} handleClick={() => handleEditClick(params.row)} />
           </IconButton>
           <IconButton onClick={(event) => event.stopPropagation()}>
-            <DeleteTwoToneIcon onClick={() =>handleDeleteRow(params.row.id)} sx={{ color: '#f19e9e' }} />
+            <DeleteTwoToneIcon onClick={() => handleDeleteRow(params.row.id)} sx={{ color: '#f19e9e' }} />
           </IconButton>
         </Box>
       )
@@ -97,7 +100,22 @@ export default function AdmissionTable() {
               </Button> */}
               <AdmissionDrawer />
               <IconButton sx={{ marginRight: '8px', background: '#cccccc54' }}>
-                <FilterListRoundedIcon />
+                <FilterListRoundedIcon onClick={toggleDrawer('right',true)} />
+                <Drawer
+                  anchor="right"
+                  open={anchor.right}
+                  onClose={toggleDrawer('right', false)}
+                >
+                   <Box sx={{ width: { xs: '100%', sm: 650 }, padding: 2 }} role="presentation">
+                        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #ccc' }}>
+                            <Typography variant="h4">Filter</Typography>
+                            <Button onClick={toggleDrawer('right', false)} sx={{ alignSelf: 'flex-end' }}>
+                                Close
+                            </Button> 
+                        </Box> 
+                        <FilterStudents />
+                    </Box>
+                </Drawer>
               </IconButton>
               <PopupState variant="popover" popupId="demo-popup-popover">
                 {(popupState) => (
