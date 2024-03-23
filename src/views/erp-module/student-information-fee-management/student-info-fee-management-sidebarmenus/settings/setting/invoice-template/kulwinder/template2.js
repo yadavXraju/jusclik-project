@@ -258,7 +258,7 @@ const CompactTemplate2 = () => {
   </Grid>)
   
     }
-  
+  0
     return (
       <Box sx={{ width: 1157, height: 1839, margin: 'auto' }}>
         <Paper elevation={2} square={true}>

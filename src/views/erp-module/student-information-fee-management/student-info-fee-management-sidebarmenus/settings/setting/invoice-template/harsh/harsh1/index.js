@@ -13,28 +13,28 @@ const InvoicePage = () => {
     <Box>
       <Paper elevation={4}>
         <Box p={2} bgcolor={'white'}>
-          <Box p={4} sx={{ display: "flex", justifyContent: "space-between" }}>
+          <Box p={4} ml={4} mr={4} sx={{ display: "flex", justifyContent: "space-between" }}>
             <Box>
               <Box >
                 <img src={schoollogo} alt='schoollogo' width="100" height="100">
 
                 </img>
               </Box>
-              <Box p={1} pt={3} >
+              <Box p={2} pt={3} >
                 <Typography p={1} variant="h1">{commonTemplateContent.schoolName}</Typography>
-                <Typography p={1} variant="h4" sx={{ fontWeight: '400' }}>{commonTemplateContent.bankName}</Typography>
-                <Typography p={1} variant="h4" sx={{ fontWeight: '400' }}>{commonTemplateContent.bankIfscCode}</Typography>
-                <Typography p={1} variant="h4" sx={{ fontWeight: '400' }}>{commonTemplateContent.address}</Typography>
+                <Typography p={1} variant='h3'>Sohna Dhani Road  Ward No - 01 </Typography>
+                <Typography pl={1}variant='h3'>Sohna Gurugram haryana Sohna - 122103</Typography>
+            
               </Box>
             </Box>
             <Box >
               <Typography variant="h1" sx={{ fontFamily: "serif" ,fontSize:'54px' ,fontWeight:'500'}}>INVOICE </Typography>
               <Typography p={1} sx={{display:'flex',justifyContent:'end'}} variant="h4" >Invoice# INV-17</Typography>
-              <Typography p={1} sx={{display:'flex',justifyContent:'end'}} variant="h4" >Bank Due </Typography>
-              <Typography p={1} sx={{display:'flex',justifyContent:'end'}} variant="h4" ><CurrencyRupeeOutlinedIcon sx={{ fontSize: 'small', }}></CurrencyRupeeOutlinedIcon>562.5 </Typography>
+              <Typography p={1} sx={{display:'flex',justifyContent:'end'}} variant="h4" >Net Payable Amount </Typography>
+              <Typography p={1} sx={{display:'flex',justifyContent:'end'}} variant="h3" ><CurrencyRupeeOutlinedIcon sx={{ fontSize: '24px' }}></CurrencyRupeeOutlinedIcon>562.5 </Typography>
             </Box>
           </Box>
-          <Box pb={4} sx={{ display: "flex", justifyContent: "space-between" }}>
+          <Box ml={6} mr={4} pb={4} sx={{ display: "flex", justifyContent: "space-between" }}>
                             <Box pl={4}> 
                            <Box display={'flex'}>
                             <Typography p={1} variant='h5' sx={{ fontWeight: '400',  width:'116px'}}>Adm No:</Typography>
@@ -86,18 +86,18 @@ const InvoicePage = () => {
           </Box>
 
 
-          <Box p={4}>
+          <Box ml={4} mr={4} p={4}>
 
 
             <Box >
               <TableContainer >
                 <Table >
-                  <TableHead>
+                  <TableHead sx={{bgcolor:'#D3D3D3', fontFamily:'sans-serif'}}>
                     <TableRow > 
                       <TableCell >#</TableCell>
-                      <TableCell  sx={{ fontWeight: 'bold' }}>Fees Heads</TableCell>
+                      <TableCell  sx={{ fontWeight: 'bold', color:'EFECEC' }}>FEES HEADS</TableCell>
 
-                      <TableCell  sx={{ fontWeight: 'bold'  }}align="right">Amount</TableCell>
+                      <TableCell  sx={{ fontWeight: 'bold'  }}align="right">AMOUNT</TableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>
@@ -140,7 +140,7 @@ const InvoicePage = () => {
 
            
 
-            <Box pr={4}>
+            <Box  pr={8}>
             <Box display={"flex"} justifyContent={'flex-end'} sx={{flexDirection:'column', alignItems:"end"}}> 
                 <Box display={'flex'} gap={'69px'}>
                   <Typography p={2} variant="h4" sx={{ fontWeight: 'bold' }} >Invoice Total:</Typography>
