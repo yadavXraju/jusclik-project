@@ -7,9 +7,6 @@ const WarningDialog = ({ open = {}, onClose = {}, contentText = {}, onConfirm = 
   return (
     <Dialog open={open} onClose={onClose}>
       <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-        {/* <IconButton sx={{background:'#ffe4bd'}}>
-          <WarningTwoToneIcon sx={{color:'#eeb058'}} />
-        </IconButton> */}
       </Box>
       {/* <DialogTitle sx={{color:'#eeb058'}}>Warning</DialogTitle> */}
       <Box p={2} sx={{display:'flex', alignItems:'center', borderBottom:'1px solid #eeb058',background:'#ffe9c9'}}>

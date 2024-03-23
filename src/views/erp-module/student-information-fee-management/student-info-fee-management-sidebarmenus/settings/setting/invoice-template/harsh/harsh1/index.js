@@ -5,6 +5,7 @@ import {Grid , Box, Typography, Table, TableBody, TableCell, TableContainer, Tab
 
 import CurrencyRupeeOutlinedIcon from '@mui/icons-material/CurrencyRupeeOutlined';
 import schoollogo from 'assets/images/24x24-inch-logo-1.png';
+import { commonTemplateContent } from '../../common/common-states';
 
 const InvoicePage = () => {
   return (
@@ -12,48 +13,48 @@ const InvoicePage = () => {
     <Box>
       <Paper elevation={4}>
         <Box p={2} bgcolor={'white'}>
-          <Box p={4} sx={{ display: "flex", justifyContent: "space-between" }}>
+          <Box p={4} ml={4} mr={4} sx={{ display: "flex", justifyContent: "space-between" }}>
             <Box>
               <Box >
                 <img src={schoollogo} alt='schoollogo' width="100" height="100">
 
                 </img>
               </Box>
-              <Box p={1} pt={3} >
-                <Typography p={1} variant="h1">S.T XAVIER&apos;S HIGH SCHOOL</Typography>
-                <Typography p={1} variant="h4" sx={{ fontWeight: '400' }}>Union Bank of India - 510101002874465</Typography>
-                <Typography p={1} variant="h4" sx={{ fontWeight: '400' }}>Union Bank of India IFSC - UBIN0916366</Typography>
-                <Typography p={1} variant="h4" sx={{ fontWeight: '400' }}>Chandigarh</Typography>
+              <Box p={2} pt={3} >
+                <Typography p={1} variant="h1">{commonTemplateContent.schoolName}</Typography>
+                <Typography p={1} variant='h3'>Sohna Dhani Road  Ward No - 01 </Typography>
+                <Typography pl={1}variant='h3'>Sohna Gurugram haryana Sohna - 122103</Typography>
+            
               </Box>
             </Box>
             <Box >
               <Typography variant="h1" sx={{ fontFamily: "serif" ,fontSize:'54px' ,fontWeight:'500'}}>INVOICE </Typography>
               <Typography p={1} sx={{display:'flex',justifyContent:'end'}} variant="h4" >Invoice# INV-17</Typography>
-              <Typography p={1} sx={{display:'flex',justifyContent:'end'}} variant="h4" >Bank Due </Typography>
-              <Typography p={1} sx={{display:'flex',justifyContent:'end'}} variant="h4" ><CurrencyRupeeOutlinedIcon sx={{ fontSize: 'small', }}></CurrencyRupeeOutlinedIcon>562.5 </Typography>
+              <Typography p={1} sx={{display:'flex',justifyContent:'end'}} variant="h4" >Net Payable Amount </Typography>
+              <Typography p={1} sx={{display:'flex',justifyContent:'end'}} variant="h3" ><CurrencyRupeeOutlinedIcon sx={{ fontSize: '24px' }}></CurrencyRupeeOutlinedIcon>562.5 </Typography>
             </Box>
           </Box>
-          <Box pb={4} sx={{ display: "flex", justifyContent: "space-between" }}>
+          <Box ml={6} mr={4} pb={4} sx={{ display: "flex", justifyContent: "space-between" }}>
                             <Box pl={4}> 
                            <Box display={'flex'}>
                             <Typography p={1} variant='h5' sx={{ fontWeight: '400',  width:'116px'}}>Adm No:</Typography>
-                            <Typography p={1} variant='h5' sx={{ fontWeight: 'bold' }}>646464</Typography>
+                            <Typography p={1} variant='h5' sx={{ fontWeight: 'bold' }}>{commonTemplateContent.admissionNo}</Typography>
                           </Box>
                           <Box display={'flex'}>
                             <Typography p={1} variant='h5' sx={{ fontWeight: '400' ,  width:'117px'}}>Class:</Typography>
-                            <Typography p={1} variant='h5' sx={{ fontWeight: 'bold' }}>I-A</Typography>
+                            <Typography p={1} variant='h5' sx={{ fontWeight: 'bold' }}>{commonTemplateContent.className}</Typography>
                           </Box>
                           <Box display={'flex'}>
                             <Typography p={1} variant='h5' sx={{ fontWeight: '400' ,width:'110px'}}>Name:</Typography>
-                            <Typography p={1} variant='h5' sx={{ fontWeight: '400' }}>Rahul Saggu</Typography>
+                            <Typography p={1} variant='h5' sx={{ fontWeight: '400' }}>{commonTemplateContent.name}</Typography>
                           </Box>
                           <Box display={'flex'}>
                             <Typography p={1} variant='h5' sx={{ fontWeight: '400' ,width:'110px'}}>Mobile:</Typography>
-                            <Typography p={1} variant='h5' sx={{ fontWeight: '400' }}>7856941235</Typography>
+                            <Typography p={1} variant='h5' sx={{ fontWeight: '400' }}>{commonTemplateContent.mobile}</Typography>
                           </Box>
                           <Box display={'flex'}>
                             <Typography p={1} variant='h5' sx={{ fontWeight: '400' ,width:'110px'}}>Father:</Typography>
-                            <Typography p={1} variant='h5' sx={{ fontWeight: '400' }}>Ankit Saggu</Typography>
+                            <Typography p={1} variant='h5' sx={{ fontWeight: '400' }}>{commonTemplateContent.fatherName}</Typography>
                           </Box>
                           </Box>
             
@@ -61,23 +62,23 @@ const InvoicePage = () => {
               <Box pr={4} sx={{width:'25%'}}>
                 <Box display={'flex'} >
                   <Typography p={1} variant="h5" sx={{ fontWeight: '400',textAlign:'end', width:'100%' }} >Invoice No:</Typography>
-                  <Typography p={1} variant="body1" sx={{ fontWeight: 'bold' ,textAlign:'end', width:'100%'}}>#DZ0112</Typography>
+                  <Typography p={1} variant="body1" sx={{ fontWeight: 'bold' ,textAlign:'end', width:'100%'}}>{commonTemplateContent.invoiceNo}</Typography>
                 </Box>
                 <Box display={'flex'}>
                   <Typography p={1} variant="h5" sx={{ fontWeight: '400',textAlign:'end', width:'100%' }}>Invoice Date:</Typography>
-                  <Typography p={1} variant="body1" sx={{ fontWeight: '400',textAlign:'end', width:'100%'  }}>12 Oct, 2020</Typography>
+                  <Typography p={1} variant="body1" sx={{ fontWeight: '400',textAlign:'end', width:'100%'  }}>{commonTemplateContent.invoiceDate}</Typography>
                 </Box>
                 <Box display={'flex'}>
                   <Typography p={1} variant="h5" sx={{ fontWeight: '400',textAlign:'end', width:'100%' }}>Academic Year:</Typography>
-                  <Typography p={1} variant="body1" sx={{ fontWeight: '400',textAlign:'end', width:'100%' }}>2023-2024</Typography>
+                  <Typography p={1} variant="body1" sx={{ fontWeight: '400',textAlign:'end', width:'100%' }}>{commonTemplateContent.academicYear}</Typography>
                 </Box>
                 <Box display={'flex'}>
                   <Typography p={1} variant="h5" sx={{ fontWeight: '400',textAlign:'end', width:'100%' }}>Fees Period:</Typography>
-                  <Typography p={1} variant="body1" sx={{ fontWeight: 'bold',textAlign:'end', width:'100%' }}>Feb`24-Mar`24</Typography>
+                  <Typography p={1} variant="body1" sx={{ fontWeight: 'bold',textAlign:'end', width:'100%' }}>{commonTemplateContent.feePeriod}</Typography>
                 </Box>
                 <Box display={'flex'}>
                   <Typography p={1} variant="h5" sx={{ fontWeight: '400',textAlign:'end', width:'100%' }}>Due Date:</Typography>
-                  <Typography p={1} variant="body1" sx={{ fontWeight: '400',textAlign:'end', width:'100%' }}>15-Feb-2024</Typography>
+                  <Typography p={1} variant="body1" sx={{ fontWeight: '400',textAlign:'end', width:'100%' }}>{commonTemplateContent.dueDate}</Typography>
                 </Box>
               </Box>
 
@@ -85,18 +86,18 @@ const InvoicePage = () => {
           </Box>
 
 
-          <Box p={4}>
+          <Box ml={4} mr={4} p={4}>
 
 
             <Box >
               <TableContainer >
                 <Table >
-                  <TableHead>
-                    <TableRow>
-                      <TableCell>#</TableCell>
-                      <TableCell  sx={{ fontWeight: 'bold' }}>Fees Heads</TableCell>
+                  <TableHead sx={{bgcolor:'#D3D3D3', fontFamily:'sans-serif'}}>
+                    <TableRow > 
+                      <TableCell >#</TableCell>
+                      <TableCell  sx={{ fontWeight: 'bold', color:'EFECEC' }}>FEES HEADS</TableCell>
 
-                      <TableCell  sx={{ fontWeight: 'bold'  }}align="right">Amount</TableCell>
+                      <TableCell  sx={{ fontWeight: 'bold'  }}align="right">AMOUNT</TableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>
@@ -107,16 +108,16 @@ const InvoicePage = () => {
                           <Typography variant="h5" sx={{fontWeight:'bold'}}>Tution Fees</Typography> 
                         </Box>
                       </TableCell>
-                      <TableCell align="right" sx={{fontWeight:'bold'}}>4900</TableCell>
+                      <TableCell align="right" sx={{fontWeight:'bold'}}>{commonTemplateContent.tutionFee}</TableCell>
                     </TableRow>
                     <TableRow>
                       <TableCell scope="row" sx={{fontWeight:'bold'}}>2</TableCell>
                       <TableCell>
                         <Box>
-                          <Typography variant="h5" sx={{fontWeight:'bold'}}>Annual Fees</Typography>
+                          <Typography variant="h5" sx={{fontWeight:'bold'}}>Annual Function Fees</Typography>
                         </Box>
                       </TableCell>
-                      <TableCell align="right" sx={{fontWeight:'bold'}}> 0</TableCell>
+                      <TableCell align="right" sx={{fontWeight:'bold'}}> 1000</TableCell>
                     </TableRow>
                     <TableRow>
                       <TableCell scope="row" sx={{fontWeight:'bold'}}>3</TableCell>
@@ -139,19 +140,19 @@ const InvoicePage = () => {
 
            
 
-            <Box pr={4}>
+            <Box  pr={8}>
             <Box display={"flex"} justifyContent={'flex-end'} sx={{flexDirection:'column', alignItems:"end"}}> 
-                <Box display={'flex'} gap={'90px'}>
+                <Box display={'flex'} gap={'69px'}>
                   <Typography p={2} variant="h4" sx={{ fontWeight: 'bold' }} >Invoice Total:</Typography>
-                  <Typography p={2} variant="body1" sx={{ fontWeight: 'bold', textAlign:'right'}}>4900</Typography>
+                  <Typography p={2} variant="body1" sx={{ fontWeight: 'bold', textAlign:'right'}}><CurrencyRupeeOutlinedIcon sx={{ fontSize: 'small', }}></CurrencyRupeeOutlinedIcon>{commonTemplateContent.invoiceTotal}</Typography>
                 </Box>
                 <Box display={'flex'} gap={'112px'} >
                   <Typography p={2} variant="h4" sx={{ fontWeight: 'bold' }} >Previous Balance:</Typography>
-                  <Typography p={2} variant="body1" sx={{ fontWeight: 'bold', textAlign:'right'}}>0</Typography>
+                  <Typography p={2} variant="body1" sx={{ fontWeight: 'bold', textAlign:'right'}}>{commonTemplateContent.previousBalance}</Typography>
                 </Box>
-                <Box display={'flex'} gap={'91px'} >
+                <Box display={'flex'} gap={'72px'} >
                   <Typography p={2} variant="h4" sx={{ fontWeight: 'bold' }} >Net Payable Amount:</Typography>
-                  <Typography p={2} variant="body1" sx={{ fontWeight: 'bold', textAlign:'right'}}>4900</Typography>
+                  <Typography p={2} variant="body1" sx={{ fontWeight: 'bold', textAlign:'right'}}><CurrencyRupeeOutlinedIcon sx={{ fontSize: 'small', }}></CurrencyRupeeOutlinedIcon>{commonTemplateContent.netAmountPayable}</Typography>
                 </Box>
                 <Box display={'flex'} >
                   <Typography p={2} variant="h5" sx={{ fontWeight: '400'}} >Total In Words:</Typography>
@@ -177,23 +178,3 @@ const InvoicePage = () => {
 };
 
 export default InvoicePage;
-{/* <TableRow>
-                      <TableCell colSpan="4" align="right">Sub Total</TableCell>
-                      <TableCell align="right">$732.50</TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell colSpan="4" align="right">Discount :</TableCell>
-                      <TableCell align="right">- $25.50</TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell colSpan="4" align="right">Shipping Charge :</TableCell>
-                      <TableCell align="right">$20.00</TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell colSpan="4" align="right">Tax</TableCell>
-                      <TableCell align="right">$12.00</TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell colSpan="4" align="right">Total</TableCell>
-                      <TableCell align="right"><Typography variant="h4">$739.00</Typography></TableCell>
-                    </TableRow> */}

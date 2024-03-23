@@ -44,7 +44,7 @@ function Timeline() {
           '&:after': {
             content: '""',
             position: 'absolute',
-            top: 0,
+            top: 30,
             left: '124px',
             width: '2px',
             height: '100%',
@@ -70,6 +70,13 @@ function Timeline() {
                     '&:after': {
                       content: '""',
                       position: 'absolute',
+                      background: '#00c2ff',
+                      top: '3px',
+                      left: '91px',
+                      height: '12px',
+                      width: '12px',
+                      borderRadius: '50%',
+                      zIndex: '999'
                     }
                   }}
                 >
@@ -79,13 +86,38 @@ function Timeline() {
                 </Box>
               )}
               <Box sx={{ display: 'flex', justifyContent: 'flex-start' }}>
-                <Box sx={{ minWidth: '80px', textAlign: 'right', marginRight: '34px', marginTop: '10px' }}>
-                  <Typography variant="body1">{item.time}</Typography>
+                <Box sx={{ minWidth: '80px', textAlign: 'right', marginRight: '34px', marginTop: '10px',
+                         position:'relative',
+                         '&:after':{
+                          content: index === Data.length - 1 ? '""' : 'none',
+                          width:'2px',
+                          color:'red',
+                          height:'200px',
+                         }
+                     }}>
+                  <Typography color={'#8b8989'} variant="body1">{item.time}</Typography>
                 </Box>
-                <Box>
+                <Box
+                  sx={{
+                    position: 'relative', // Added position relative for pseudo-element positioning
+                    '&:after': {
+                      content: '""',
+                      position: 'absolute',
+                      background:'white',
+                      top: '14px',
+                      left: '-23px',
+                      height: '12px',
+                      width: '12px',
+                      borderRadius: '50%',
+                      border:'1px solid #ccc',
+                      zIndex: '999',
+                    }
+                  }}
+                >
                   <Typography variant="body2">
+                  {item.detail.action }&nbsp;
                     <strong>
-                      {item.detail.action} {item.detail.user}
+                       {item.detail.user}
                     </strong>
                   </Typography>
                   <Typography variant="body2" color="textSecondary" sx={{ marginTop: '4px' }}>
@@ -102,6 +134,18 @@ function Timeline() {
 }
 
 export default Timeline;
+
+
+
+
+
+
+
+
+
+
+
+
 
 // import React from 'react';
 // import { Typography } from '@mui/material';

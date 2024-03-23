@@ -70,31 +70,31 @@ export default function PreviewTabs() {
               <Grid container spacing={3}>
                 <Grid item xs={12} sm={6} md={6}>
                   <Box pb={0.5} color={'#8b8989'}>
-                    Family Id
+                    FAMILY ID
                   </Box>
                   <Box fontSize={16}>F847584</Box>
                 </Grid>
                 <Grid item xs={12} sm={6} md={6}>
                   <Box pb={0.5} color={'#8b8989'}>
-                    Nationality
+                    NATIONALITY
                   </Box>
                   <Box fontSize={16}>Indian</Box>
                 </Grid>
                 <Grid item xs={12} sm={6} md={6}>
                   <Box pb={0.5} color={'#8b8989'}>
-                    Religion
+                    RELIGION
                   </Box>
                   <Box fontSize={16}>Hindu</Box>
                 </Grid>
                 <Grid item xs={12} sm={6} md={6}>
                   <Box pb={0.5} color={'#8b8989'}>
-                    House
+                    HOUSE
                   </Box>
                   <Box fontSize={16}>Green</Box>
                 </Grid>
                 <Grid item xs={12} sm={6} md={6}>
                   <Box pb={0.5} color={'#8b8989'}>
-                    Blood Group
+                    BLOOD GROUP
                   </Box>
                   <Box fontSize={16}>O+</Box>
                 </Grid>
@@ -155,31 +155,31 @@ export default function PreviewTabs() {
               <Grid container spacing={3}>
                 <Grid item xs={12} md={6}>
                   <Box pb={0.5} color={'#8b8989'}>
-                    Address
+                    ADDRESS
                   </Box>
                   <Box fontSize={16}>Dwarka, Delhi</Box>
                 </Grid>
                 <Grid item xs={12} md={6}>
                   <Box pb={0.5} color={'#8b8989'}>
-                    Country/Region
+                    COUNTRY/REGION
                   </Box>
                   <Box fontSize={16}>India</Box>
                 </Grid>
                 <Grid item xs={12} md={6}>
                   <Box pb={0.5} color={'#8b8989'}>
-                    City
+                    CITY
                   </Box>
                   <Box fontSize={16}>Delhi</Box>
                 </Grid>
                 <Grid item xs={12} md={6}>
                   <Box pb={0.5} color={'#8b8989'}>
-                    state
+                    STATE
                   </Box>
                   <Box fontSize={16}>Delhi</Box>
                 </Grid>
                 <Grid item xs={12} md={6}>
                   <Box pb={0.5} color={'#8b8989'}>
-                    Zip Code
+                    ZIP CODE
                   </Box>
                   <Box fontSize={16}>857473</Box>
                 </Grid>
@@ -230,55 +230,55 @@ export default function PreviewTabs() {
               <Grid container spacing={3}>
                 <Grid item xs={12} md={6}>
                   <Box pb={0.5} color={'#8b8989'}>
-                    Name
+                    NAME
                   </Box>
                   <Box fontSize={16}>Mr. Subash</Box>
                 </Grid>
                 <Grid item xs={12} md={6}>
                   <Box pb={0.5} color={'#8b8989'}>
-                    Relation
+                    RELATION
                   </Box>
                   <Box fontSize={16}>Father</Box>
                 </Grid>
                 <Grid item xs={12} md={6}>
                   <Box pb={0.5} color={'#8b8989'}>
-                    Mobile
+                    MOBILE
                   </Box>
                   <Box fontSize={16}>8484937348</Box>
                 </Grid>
                 <Grid item xs={12} md={6}>
                   <Box pb={0.5} color={'#8b8989'}>
-                    Email
+                    EMAIL
                   </Box>
                   <Box fontSize={16}>abc@gmail.com</Box>
                 </Grid>
                 <Grid item xs={12} md={6}>
                   <Box pb={0.5} color={'#8b8989'}>
-                    Education
+                    EDUCATION
                   </Box>
                   <Box fontSize={16}>B.Sc</Box>
                 </Grid>
                 <Grid item xs={12} md={6}>
                   <Box pb={0.5} color={'#8b8989'}>
-                    Company
+                    COMPANY
                   </Box>
                   <Box fontSize={16}>abc Company</Box>
                 </Grid>
                 <Grid item xs={12} md={6}>
                   <Box pb={0.5} color={'#8b8989'}>
-                    Designation
+                    DESIGNATION
                   </Box>
                   <Box fontSize={16}>Manager</Box>
                 </Grid>
                 <Grid item xs={12} md={6}>
                   <Box pb={0.5} color={'#8b8989'}>
-                    Address
+                    ADDRESS
                   </Box>
                   <Box fontSize={16}>Delhi</Box>
                 </Grid>
                 <Grid item xs={12} md={6}>
                   <Box pb={0.5} color={'#8b8989'}>
-                    Aadhaar No.
+                    AADHAAR NO.
                   </Box>
                   <Box fontSize={16}>12456789345</Box>
                 </Grid>
