@@ -163,49 +163,61 @@ function StudentPreview() {
                         </Box>
                         <Box fontSize={16}>{filteredRow.class}</Box>
                       </Grid> */}
-                      <Grid item xs={6}>
+                      <Grid item xs={12} md={6}>
                         <Box pb={0.5} color={'#8b8989'}>
                           ADMISSION DATE
                         </Box>
                         <Box fontSize={16}>{filteredRow.AdmDate}</Box>
                       </Grid>
-                      <Grid item xs={6}>
+                      <Grid item xs={12} md={6}>
                         <Box pb={0.5} color={'#8b8989'}>
                           JOINING DATE
                         </Box>
                         <Box fontSize={16}>{filteredRow.AdmDate}</Box>
                       </Grid>
-                      <Grid item xs={6}>
+                      <Grid item xs={12} md={6}>
                         <Box pb={0.5} color={'#8b8989'}>
                           D.O.B
                         </Box>
                         <Box fontSize={16}>{filteredRow.DOB}</Box>
                       </Grid>
-                      <Grid item xs={6}>
+                      <Grid item xs={12} md={6}>
                         <Box pb={0.5} color={'#8b8989'}>
                           GENDER
                         </Box>
                         <Box fontSize={16}>Male</Box>
                       </Grid>
-                      <Grid item xs={6}>
+                      <Grid item xs={12} md={6}>
+                        <Box pb={0.5} color={'#8b8989'}>
+                          MOBILE
+                        </Box>
+                        <Box fontSize={16}>8484937348, 5469354098</Box>
+                      </Grid>
+                      <Grid item xs={12} md={6}>
+                        <Box pb={0.5} color={'#8b8989'}>
+                          EMAIL
+                        </Box>
+                        <Box fontSize={16}>abc@gmail.com</Box>
+                      </Grid>
+                      <Grid item xs={12} md={6}>
                         <Box pb={0.5} color={'#8b8989'}>
                           AGE
                         </Box>
                         <Box fontSize={16}>18 Year</Box>
                       </Grid>
-                      <Grid item xs={6}>
+                      <Grid item xs={12} md={6}>
                         <Box pb={0.5} color={'#8b8989'}>
                           AADHAAR NO.
                         </Box>
                         <Box fontSize={16}>548548393832</Box>
                       </Grid>
-                      <Grid item xs={6}>
+                      <Grid item xs={12} md={6}>
                         <Box pb={0.5} color={'#8b8989'}>
                           PEN NO.
                         </Box>
                         <Box fontSize={16}>AZXPV458679</Box>
                       </Grid>
-                      <Grid item xs={6}>
+                      <Grid item xs={12} md={6}>
                         <Box pb={0.5} color={'#8b8989'}>
                           CATEGORY
                         </Box>
@@ -227,19 +239,19 @@ function StudentPreview() {
                   <Divider />
                   <Box p={2}>
                     <Grid container spacing={3}>
-                      <Grid item xs={6}>
+                      {/* <Grid item xs={12} md={6}>
                         <Box pb={0.5} color={'#8b8989'}>
                           CATEGORY
                         </Box>
                         <Box fontSize={16}>General</Box>
-                      </Grid>
-                      <Grid item xs={6}>
+                      </Grid> */}
+                      <Grid item xs={12} md={6}>
                         <Box pb={0.5} color={'#8b8989'}>
                           PAY MODE
                         </Box>
                         <Box fontSize={16}>Bank</Box>
                       </Grid>
-                      <Grid item xs={6}>
+                      <Grid item xs={12} md={6}>
                         <Box pb={0.5} color={'#8b8989'}>
                           CONCESSION
                         </Box>

@@ -3,7 +3,6 @@ import PersonOutlineTwoToneIcon from '@mui/icons-material/PersonOutlineTwoTone';
 import CreditCardTwoToneIcon from '@mui/icons-material/CreditCardTwoTone';
 import MapsHomeWorkTwoToneIcon from '@mui/icons-material/MapsHomeWorkTwoTone';
 import DescriptionTwoToneIcon from '@mui/icons-material/DescriptionTwoTone';
-import FindInPageTwoToneIcon from '@mui/icons-material/FindInPageTwoTone';
 import SettingsTwoToneIcon from '@mui/icons-material/SettingsTwoTone';
 import ReceiptLongTwoToneIcon from '@mui/icons-material/ReceiptLongTwoTone';
 import AdminPanelSettingsTwoToneIcon from '@mui/icons-material/AdminPanelSettingsTwoTone';
@@ -311,30 +310,6 @@ const StudentInfoFeeMenu = {
             breadcrumbs: false
           },
          
-
-       // search
-
-          {
-            id: 'search' ,
-            title: 'Search',
-            type: 'collapse',
-            url: '/erp/student-info-fee/search',
-            icon: FindInPageTwoToneIcon,
-            children: [
-
-              {
-                  id: 'enquiry',
-                  title: 'Enquiry',
-                  type: 'item',
-                  url: '/erp/student-info-fee/search/enquiry',
-                  breadcrumbs: false,
-                  // colleagueTitle : SetUpColleagueTitles,
-                },
-
-
-            ]
-          },
-
 
           //  setting
           {

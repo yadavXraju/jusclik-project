@@ -6,12 +6,12 @@ import {Box, Checkbox} from '@mui/material'; // Import Box from @mui/material
 import ParamDragDropImage from 'views/common-section/ParamDragDropImage';
 
 // Assuming studentProfileDetails is defined elsewhere
-const studentProfileDetails = {
-  StudentName: 'Student Name',
+// const studentProfileDetails = {
+//   StudentName: 'Student Name',
   
-};
+// };
 
-export default function Profile() {
+export default function Profile({profileDetails}) {
 
   return (
     <Card>
@@ -24,7 +24,7 @@ export default function Profile() {
 
         <CardContent>
           <Typography variant="h4" component="div">
-            {studentProfileDetails.StudentName}
+           {profileDetails?.firstName} {profileDetails?.middleName} {profileDetails?.lastName}
           </Typography>
           <Box sx={{display:'flex' , alignItems:'center', justifyContent:'center'}} color="text.secondary">
           <Checkbox label="checkbox" size="small"  />

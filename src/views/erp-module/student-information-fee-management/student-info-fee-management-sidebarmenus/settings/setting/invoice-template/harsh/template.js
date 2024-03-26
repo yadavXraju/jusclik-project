@@ -162,8 +162,8 @@ const CompactTemplate = () => {
           </Box>
         </Box>
         {i !== 2 && (
-          <Box sx={{ position: "relative", top: "500px", left: "-13px" }}>
-            <ContentCutOutlinedIcon sx={{ transform: "rotate(270deg)" }} />
+          <Box  sx={{ position: "relative", top: "-420px", left: "-21px" }}>
+            <ContentCutOutlinedIcon sx={{ transform: "rotate(270deg)" , width:'790px'}} />
           </Box>)
         }
 
