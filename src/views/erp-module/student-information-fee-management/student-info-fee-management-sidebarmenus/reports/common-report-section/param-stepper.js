@@ -92,8 +92,7 @@ const SetupTabs = ({ tabPage }) => {
             key={tab?.id}
             value={value}
             index={index}
-            sx={{width: "100%",padding:"0px 20px 20px 0px",bgcolor: 'background.paper', borderRadius: "10px",overflowY: "auto",height: 'calc(100vh - 250px)'}} className="Scrollbar"
-          >
+            sx={{width: "100%",padding:"0px 20px 20px 0px",bgcolor: 'background.paper', borderRadius: "10px",overflowY: "auto",height: 'calc(100vh - 250px)'}} className="Scrollbar">
             <tab.component />
           </TabPanel>
         ))}
