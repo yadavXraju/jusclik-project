@@ -5,7 +5,11 @@ import { DataGrid } from '@mui/x-data-grid';
 const DataGridDemo = React.forwardRef((props, ref) => {
   const { rows, columns } = props;
   return (
-    <Box sx={{ width: '100%', marginTop: "50px",overflowX:"auto"}} className="scrollbar">
+    <Box p={2} sx={{ width: '100%',overflowX:"auto" ,
+    '& .MuiDataGrid-virtualScroller': {
+      scrollbarWidth: 'thin',
+     }
+    }} className="scrollbar">
       <DataGrid
         sx={{ width: "100%" }}
         ref={ref}
@@ -13,14 +17,13 @@ const DataGridDemo = React.forwardRef((props, ref) => {
         columns={columns}
         initialState={{
           pagination: {
-            paginationModel: {
-              pageSize: 5,
-            },
+            pagination: {
+              paginationModel: { page: 0, pageSize: 50 }
+            }
           },
         }}
-        pageSizeOptions={[5]}
-        disableSelectionOnClick
-        disableRowSelectionOnClick
+        pageSizeOptions={[10, 25, 50, 100]}
+
       />
     </Box>
   );

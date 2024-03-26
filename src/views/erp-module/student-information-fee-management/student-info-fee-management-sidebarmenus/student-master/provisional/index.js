@@ -1,13 +1,12 @@
 import React from 'react'
-// import Mainform1 from '../admission/admission-form/Adm-form/MainForm1'
+import AdmissionTable from '../admission/admission-form/Adm-form/AdmissionTable'
 
 
 const Provisional = () => {
   return (
     <div>
-      <h1>Provisinal</h1>
-      {/* <Mainform1/> */}
-      
+      {/* <h1>Provisinal</h1> */}
+      <AdmissionTable/>
     </div>
   )
 }
