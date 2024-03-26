@@ -134,6 +134,8 @@ const Harsh =  Loadable(lazy(() => import('views/erp-module/student-information-
 
 const Harsh1 =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/settings/setting/invoice-template/harsh/harsh1')));
 
+const Harsh2 =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/settings/setting/invoice-template/harsh/harsh2')));
+
 // ==============================|| Visitor MENUS ||============================== //
 
 const StudentInfoFeeRoutes = [
@@ -387,6 +389,11 @@ const StudentInfoFeeRoutes = [
                   { 
                     path: 'harsh1', 
                     element: <Harsh1 /> 
+                  },
+
+                  { 
+                    path: 'harsh2', 
+                    element: <Harsh2 /> 
                   },
       
               ]
