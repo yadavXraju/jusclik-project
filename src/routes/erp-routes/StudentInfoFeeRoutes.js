@@ -19,6 +19,12 @@ const Provisional =  Loadable(lazy(() => import('views/erp-module/student-inform
 
 const Admission =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/student-master/admission')));
 
+// admission dynamic routes
+
+const AdmissionDynamicRoutes =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/student-master/admission/dynamic-admission-routes')));
+// dynamic routes end 
+
+
 const AdmissionForm =Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/student-master/admission/admission-form')));
 // const CustomeData =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/student-master/custom-data')));
 
@@ -70,9 +76,6 @@ const Reports = Loadable(lazy(() => import('views/erp-module/student-information
 const EnquiryReport =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/reports/enquiry')));
 
 const EnquiryRegister =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/reports/register')));
-
-// search
-const SearchEnquiry= Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/search/enquiry')));
 
 // tools
 const GpsBusTracking =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/tool/gps-bus-tracking')));
@@ -161,67 +164,52 @@ const StudentInfoFeeRoutes = [
             path: 'enquiry', 
             element: <Enquiry /> 
           },
-
           {
             path: 'registration',
             element: <Registration />
          },
-
           // student details main
-
           { 
             path: 'registration/student-details', 
             element: <StudentDetails /> 
           },
-
            // father details
-
-           
           { 
             path: 'registration/father-details-form', 
             element: <FatherDetailsForm/> 
           },
-
-
-          // mother details
-
-                     
+          // mother details       
           { 
             path: 'registration/mother-details-form', 
             element: <MotherDetailsForm /> 
           },
-
-
-          //  student details
-                     
+          //  student details       
           { 
             path: 'registration/student-details-form', 
             element: <StudentDetailsForm /> 
           },
-
-
-
-      //    {
-      //     path: 'registration-data',
-      //     element: <RegistrationData />
-      //  },
-
         {
           path: 'admission-process',
           element: <AdmissionProcess />
        },
-
-
        {
         path: 'provisional',
         element: <Provisional />
       },
+     {
+      path: 'admission',
+      children: [
+        {
+          path : '',
+          element : <Admission />
+        },
 
-      {
-        path: 'admission',
-        element: <Admission />
-     },
-
+        {
+          path : ':id',
+          element : <AdmissionDynamicRoutes/>
+        },
+    ]
+    },
      {
       path: 'admission-form',
       element: <AdmissionForm />
@@ -273,7 +261,7 @@ const StudentInfoFeeRoutes = [
       },
 
 
-
+// reports
       { 
          path: 'reports', 
          children:[
@@ -295,21 +283,6 @@ const StudentInfoFeeRoutes = [
        },
 
 
-
-      // search
-
-      {
-        path: 'search',
-        children: [
-
-          { 
-            path: 'enquiry', 
-            element: <SearchEnquiry/> 
-          },
-
-
-        ]
-      },
 
           // Fee Acounting
 
