@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import { Grid, Card } from '@mui/material';
-import Profile from '../Forms.js/Profile';
+import Profile from './Profile';
 import ProfileDetail from './ProfileDetail';
 import AddressForm from './Address';
 import ContactPerson from './ContactPerson';
@@ -24,21 +24,27 @@ const buttonsData = [
   { name: 2, icon: <HomeWorkTwoToneIcon />, label: 'Address' },
   { name: 3, icon: <PeopleAltTwoToneIcon />, label: 'Contact Person' },
   { name: 4, icon: <HandymanTwoToneIcon />, label: 'Custom Fields' },
-  { name: 5, icon: <TextsmsTwoToneIcon />, label: 'Remarks' },
+  { name: 5, icon: <TextsmsTwoToneIcon />, label: 'Remarks' }
 ];
 
-const Mainform1 = ({currEditItem}) => {
+const Mainform1 = ({ currEditItem }) => {
   const [selectedButton, setSelectedButton] = useState(0);
   // const [value, setValue] = useState(0);
-  console.log(currEditItem)
+  //console.log(currEditItem);
   const handleButtonClick = (buttonName) => {
     setSelectedButton(buttonName);
+  };
+
+  const [student, setStudentDetails] = useState('');
+
+  const handleChange = (name,newValue) => {
+    setStudentDetails({...student,[name]:newValue});
   };
 
   let cardComponent;
   switch (selectedButton) {
     case 0:
-      cardComponent = <ProfileDetail />;
+      cardComponent = <ProfileDetail setStudentDetail={handleChange} setEditItem={currEditItem} />;
       break;
     case 1:
       cardComponent = <OtherDetails />;
@@ -50,25 +56,24 @@ const Mainform1 = ({currEditItem}) => {
       cardComponent = <ContactPerson />;
       break;
     case 4:
-      cardComponent = <CustomFields/>;
+      cardComponent = <CustomFields />;
       break;
     case 5:
-      cardComponent = <Remarks/>;
+      cardComponent = <Remarks />;
       break;
     default:
       cardComponent = null;
   }
 
-
   return (
     <>
-      <Card >
+      <Card>
         <Grid container spacing={3} mb={8} sx={{ display: 'flex', height: '100%' }}>
           <Grid item xs={12} sm={12} lg={3}>
             <Box sx={{ border: '1px solid #ccc', borderRadius: '10px' }}>
               <Card>
                 <Box sx={{ borderBottom: '1px solid #ccc' }}>
-                  <Profile />
+                  <Profile profileDetails={student} />
                 </Box>
 
                 <Box sx={{ flex: '0 0 auto', display: 'flex', flexDirection: 'column', padding: '20px' }}>
@@ -101,7 +106,12 @@ const Mainform1 = ({currEditItem}) => {
           </Grid>
         </Grid>
       </Card>
-      <BottomNavbar tabPageLength={buttonsData.length}  value={selectedButton} setValue={setSelectedButton} customStyle={{width:'100%', bottom:'0', borderRadius:'1px'}}/>
+      <BottomNavbar
+        tabPageLength={buttonsData.length}
+        value={selectedButton}
+        setValue={setSelectedButton}
+        customStyle={{ width: '100%', bottom: '0', borderRadius: '1px' }}
+      />
     </>
   );
 };

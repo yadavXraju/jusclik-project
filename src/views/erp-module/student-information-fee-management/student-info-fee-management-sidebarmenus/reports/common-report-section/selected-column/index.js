@@ -73,7 +73,7 @@ const ShowHide = () => {
             alignItems: "center",
         },
         availableColumnsContainer: {
-            height: 'calc(100vh - 400px)',
+            height:'500px',
         },
         availableFieldsContainer: {
             marginTop: "20px",

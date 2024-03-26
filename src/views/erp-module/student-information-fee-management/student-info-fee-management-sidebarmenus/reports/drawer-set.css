@@ -1,12 +1,11 @@
 .beforeClick{
-  transform:translateY(-120vh);
+  transform:translateY(-1000vh);
   overflow-x: hidden;
   left:260px;
 }
 
 .afterClick{
   position: absolute;
-  height: 100vh;
   width: calc(100vw - 261px);
   height:calc(100vh - 110px);
   left:244px;

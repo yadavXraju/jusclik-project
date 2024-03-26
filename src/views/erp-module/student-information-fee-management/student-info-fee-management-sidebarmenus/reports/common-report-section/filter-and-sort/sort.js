@@ -140,20 +140,26 @@ const sortingOrderOption = [
 ]
 
 const Sort = () => {
+    // const [sortPropertyOption, setSortPropertyOption] = useState({
+    //     sortProperty: "Choose a Property...",
+    //     sortingOrder: "Ascending ..."
+    // });
+
     const [sortProperty, setSortProperty] = useState("Choose a Property...");
-    const [sortingOrder, setSortingOrder] = useState("Ascending ...");
+    const[sortOrdering,setSortOrdering]=useState( "Ascending ...");
+
     const { ref, isOpen, setIsOpen } = useOutsideClick(false);
     const outsideClick = useOutsideClick(false);
     const [searchTerm, setSearchTerm] = useState('');
 
     const handleSortProperty = (item) => {
+        setSortProperty( item?.headerName);
         setIsOpen(false);
-        setSortProperty(item);
     }
 
     const handleSortOrder = (item) => {
+        setSortOrdering( item?.headerName);
         outsideClick.setIsOpen(false);
-        setSortingOrder(item?.headerName);
     }
 
     const filterAvailableFields = () => {
@@ -162,78 +168,77 @@ const Sort = () => {
         ) : [];
     };
 
+    const resetSorting=()=>{
+        setSortProperty("Choose a Property...")
+        setSortOrdering("Ascending ...")
+    }
+  
     return (
-        <>
-            <Typography variant="h2" sx={{ margin: "20px 0px 20px 20px" }}>Sort</Typography>
-            <Grid container spacing={0} sx={{ border: "1px solid #f0f5f8", width: "100%", }}>
-                {/* Filter Based On Property */}
-                <Grid item xs={12} sm={12} md={6} ref={ref} sx={{ width: "350px" }}>
-                    <TextField
-                        variant="outlined"
-                        placeholder={sortProperty}
-                        sx={{ width: "100%", padding: "20px 20px 20px 20px" }}
-                        onChange={(event) => setSearchTerm(event.target.value)}
-                        InputProps={{
-                            endAdornment: (
-                                <InputAdornment position="end">
-                                    <IconButton>
-                                        <ArrowDropDownIcon onClick={() => setIsOpen(true)} />
-                                    </IconButton>
-                                </InputAdornment>
-                            ),
-                        }}
-                        onClick={() => setIsOpen(true)}
-                    />
-                    {
-                        isOpen && <Box sx={{ marginTop: "-15px", width: "calc(100% - 20px)", height: "calc(100vh - 400px)", overflowY: 'auto', backgroundColor: "white", paddingLeft: "20px", zIndex: "5" }} className="scrollbar">
-                            {filterAvailableFields().map((item) => (
+        <Grid container spacing={0} sx={{ position: "relative", border: "1px solid #f0f5f8", zIndex: "10", width: "100%", height: '480px' }}>
+            {/* Filter Based On Property */}
+            <Grid item xs={12} sm={12} md={6} ref={ref}>
+                <TextField
+                    variant="outlined"
+                    placeholder={sortProperty}
+                    sx={{ width: "100%", padding: "20px 20px 20px 20px" }}
+                    onChange={(event) => setSearchTerm(event.target.value)}
+                    InputProps={{
+                        endAdornment: (
+                            <InputAdornment position="end">
+                                <IconButton>
+                                    <ArrowDropDownIcon onClick={() => setIsOpen(true)} />
+                                </IconButton>
+                            </InputAdornment>
+                        ),
+                    }}
+                    onClick={() => setIsOpen(true)}
+                />
+                {
+                    isOpen && <Box sx={{ marginTop: "-15px", width: "calc(100% - 20px)", height: "340px", overflowY: 'auto', backgroundColor: "white", paddingLeft: "20px", zIndex: "5" }} className="scrollbar">
+                        {filterAvailableFields().map((item) => (
+                            <Box key={item.id}>
+                                <Typography variant="h5" sx={{ border: "1px solid #f5f8fa", height: "30px", cursor: "pointer" }} onClick={() => handleSortProperty( item)}>{item.headerName}</Typography>
+                            </Box>
+                        )
+                        )}
+                    </Box>
+                }
+            </Grid>
+            {/* Sorting Order(Ascending and Descending) */}
+            <Grid item xs={12} sm={12} md={6} ref={outsideClick.ref} >
+                <TextField
+                    variant="outlined"
+                    placeholder={sortOrdering}
+                    sx={{ width: "100%", padding: "20px 20px 20px 20px" }}
+                    InputProps={{
+                        endAdornment: (
+                            <InputAdornment position="end">
+                                <IconButton>
+                                    <ArrowDropDownIcon onClick={() => outsideClick.setIsOpen1(true)} />
+                                </IconButton>
+                            </InputAdornment>
+                        ),
+                    }}
+                    onClick={() => outsideClick.setIsOpen(true)}
+                />
+                {
+                    outsideClick.isOpen && <Box sx={{ marginTop: "-15px", width: "calc(100% - 20px)", height: "340px", paddingLeft: "20px", overflowY: 'auto', backgroundColor: "white", zIndex: "5" }} className="scrollbar">
+                        {
+                            sortingOrderOption.map((item) => (
                                 <Box key={item.id}>
-                                    <Typography variant="h5" sx={{ border: "1px solid #f5f8fa", height: "30px", cursor: "pointer" }} onClick={() => handleSortProperty(item?.headerName)}>{item.headerName}</Typography>
+                                    <Typography variant="h5" sx={{ border: "1px solid #f5f8fa", height: "30px", cursor: "pointer" }} onClick={() => handleSortOrder(item)}>{item.headerName}</Typography>
                                 </Box>
                             )
-                            )}
-                        </Box>
-                    }
-                </Grid>
-                {/* Sorting Order(Ascending and Descending) */}
-                <Grid item xs={12} sm={12} md={6} ref={outsideClick.ref} >
-                    <Box sx={{position:"relative",minHeight: 'calc(100vh - 480px)'}}>
-                        <TextField
-                            variant="outlined"
-                            placeholder={sortingOrder}
-                            sx={{ width: "100%", padding: "20px 20px 20px 20px" }}
-                            InputProps={{
-                                endAdornment: (
-                                    <InputAdornment position="end">
-                                        <IconButton>
-                                            <ArrowDropDownIcon onClick={() => outsideClick.setIsOpen1(true)} />
-                                        </IconButton>
-                                    </InputAdornment>
-                                ),
-                            }}
-                            onClick={() => outsideClick.setIsOpen(true)}
-                        />
-                        {
-                            outsideClick.isOpen && <Box sx={{ marginTop: "-15px", width: "calc(100% - 20px)", height: "calc(100vh - 400px)", paddingLeft: "20px", overflowY: 'auto', backgroundColor: "white", zIndex: "5" }} className="scrollbar">
-                                {
-                                    sortingOrderOption.map((item) => (
-                                        <Box key={item.id}>
-                                            <Typography variant="h5" sx={{ border: "1px solid #f5f8fa", height: "30px", cursor: "pointer" }} onClick={() => handleSortOrder(item)}>{item.headerName}</Typography>
-                                        </Box>
-                                    )
-                                    )
-                                }
-                            </Box>
+                            )
                         }
-                        {/* Clear Filter Button */}
-                        <Box sx={{ marginTop: "auto", marginRight: "20px", height: "60px", display: "flex", justifyContent: "flex-end",gap:"20px" }}>
-                            <Button sx={{ marginTop: "auto", marginBottom: "auto", height: "40px" }} onClick={() => setSortProperty("Choose a Property...")} variant="outlined">Clear Sorting Property</Button>
-                            <Button sx={{ marginTop: "auto", marginBottom: "auto", height: "40px" }} onClick={() => setSortingOrder("Ascending ...")} variant="outlined">Clear Sorting Order</Button>
-                        </Box>
                     </Box>
-                </Grid>
+                }
             </Grid>
-        </>
+            {/* Clear Filter Button */}
+            <Grid item xs={12} sm={12} md={12} sx={{ position: "absolute", width: "100%", top: "420px", display: "flex", justifyContent: "flex-end", paddingRight: "20px", height: "60px", borderTop: "1px solid #f0f5f8", alignItems: "center" }}>
+                <Button sx={{ height: "40px" }} onClick={() =>resetSorting()} variant="outlined">Clear Sorting </Button>
+            </Grid>
+        </Grid >
     )
 }
 
