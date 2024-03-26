@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Grid, TextField, Card, useMediaQuery, Typography } from '@mui/material';
 import ParameterizedDateComponent from 'views/common-section/ParamDateComponent';
 import EditableTable from './EditableTable';
@@ -8,10 +8,35 @@ import EditableTable from './EditableTable';
 // import Select from '@mui/material/Select';
 
 function ProfileDetail({setStudentDetail, setEditItem}) {
-  //const [stdName, setstdName] = React.useState('');
-  
   const isMobile = useMediaQuery('(max-width: 767px)');
   console.log(setEditItem)
+
+
+  const [admissionDetails, setAdmissionDetails] = React.useState({
+    AdmNo: '',
+    admDate: '',
+    joiningClass: '',
+    joiningDate: ''
+  });
+
+  useEffect(() => {
+    // Check if setEditItem is available and set the initial values accordingly
+    if (setEditItem) {
+      setAdmissionDetails({
+        AdmNo: setEditItem.AdmNo || '',
+        admDate: setEditItem.AdmDate || '',
+        joiningClass: setEditItem.class || '',
+        joiningDate: setEditItem.joiningDate || ''
+      });
+    }
+  }, [setEditItem]);
+
+  const handleInputChange = (fieldName, value) => {
+    setAdmissionDetails((prevDetails) => ({
+      ...prevDetails,
+      [fieldName]: value
+    }));
+  };
 
   return (
     <>
@@ -22,15 +47,23 @@ function ProfileDetail({setStudentDetail, setEditItem}) {
         </Typography>
         <Grid container spacing={2} sx={{ display: 'flex', height: '100%' }}>
           <Grid item xs={12} sm={12} lg={6}>
-            <TextField size={isMobile ? 'small' : 'normal'} id="outlined-basic" fullWidth label="Admission No." variant="outlined" />
-            {/* <TextField size={isMobile ? 'small' : 'normal'} id="outlined-basic" value={setEditItem && setEditItem.AdmNo !== undefined ? setEditItem.AdmNo : stdName}
-             onChange={(e)=>setstdName(e.target.value)}  fullWidth label="Admission No." variant="outlined" /> */}
+            {/* <TextField size={isMobile ? 'small' : 'normal'} id="outlined-basic" value={ setEditItem.AdmNo || ''} fullWidth label="Admission No." variant="outlined" /> */}
+             <TextField
+              size={isMobile ? 'small' : 'normal'}
+              id="outlined-basic"
+              value={admissionDetails.AdmNo}
+              onChange={(e) => handleInputChange('AdmNo', e.target.value)}
+              fullWidth
+              label="Admission No."
+              variant="outlined"
+            />
           </Grid>
           <Grid item xs={12} sm={12} lg={6}>
-            <ParameterizedDateComponent customStyle={{ width: '100%' }} label={'Admission Date'} />
+          <ParameterizedDateComponent customStyle={{ width: '100%' }}  label={'Admission Date'} />
+            {/* <ParameterizedDateComponent customStyle={{ width: '100%' }} value={admissionDetails.admDate} onChange={(date) => handleInputChange('admDate', date)} label={'Admission Date'} /> */}
           </Grid>
           <Grid item xs={12} sm={12} lg={6}>
-            <TextField size={isMobile ? 'small' : 'normal'} id="outlined-basic" fullWidth label="Joining Class" variant="outlined" />
+            <TextField size={isMobile ? 'small' : 'normal'} value={admissionDetails.joiningClass} onChange={(e) => handleInputChange('joiningClass', e.target.value)} id="outlined-basic" fullWidth label="Joining Class" variant="outlined" />
           </Grid>
           <Grid item xs={12} sm={12} lg={6}>
             <ParameterizedDateComponent customStyle={{ width: '100%' }} label={'Joining Date'} />

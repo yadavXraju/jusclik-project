@@ -155,7 +155,7 @@ const availableColumns = [
     },
 ];
 
-const Filter = ({ customFilterContainerStyle = {}, customSelectedFilter = {}, customAvialbelFilter = {}, customClearFilter = {},applyFilter=0}) => {
+const Filter = ({ customFilterContainerStyle = {}, customSelectedFilter = {}, customAvialbelFilter = {}, customClearFilter = {}, applyFilter = 0 }) => {
     const { ref, isOpen, setIsOpen } = useOutsideClick(false);
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedFilter, setSelectedFilter] = useState([]);
@@ -177,27 +177,25 @@ const Filter = ({ customFilterContainerStyle = {}, customSelectedFilter = {}, cu
         defaultFilterContainerStyle: {
             position: "relative",
             border: "1px solid #f0f5f8",
-            zIndex: "10",
+            zIndex: "2", 
             width: "100%",
-            height: '480px'
+            minHeight: 'calc(100vh - 480px)'
         },
         defaultSelectedFilter: {
             display: "flex",
             flexDirection: "column",
             position: "absolute",
-            top: "80px",
+            top: "100px",
             width: "100%",
             overflowY: "auto",
-            backgroundColor: "#eef2f629",
-            zIndex: "3",
-            height: "320px"
+            backgroundColor: "#eef2f629", zIndex: "3"
         },
         defualtAvialbelFilter: {
             width: "calc(100% - 20px)",
             height: "340px",
             overflowY: 'auto',
             zIndex: "5",
-            position: 'absolute',
+            position: 'relative',
             backgroundColor: "white",
             paddingLeft: "20px"
         },
@@ -215,20 +213,20 @@ const Filter = ({ customFilterContainerStyle = {}, customSelectedFilter = {}, cu
     }
 
     const filterContainerStyle = Object.keys(customFilterContainerStyle).length === 0
-        ?style?.defaultFilterContainerStyle
-        :customFilterContainerStyle;
+        ? style?.defaultFilterContainerStyle
+        : customFilterContainerStyle;
 
     const selectedFilterStyle = Object.keys(customSelectedFilter).length === 0
-        ?style?.defaultSelectedFilter
-        :customSelectedFilter ;
+        ? style?.defaultSelectedFilter
+        : customSelectedFilter;
 
     const avialbelFilterStyle = Object.keys(customAvialbelFilter).length === 0
-        ?style?.defaultAvialbelFilter
-        :customAvialbelFilter;
+        ? style?.defualtAvialbelFilter
+        : customAvialbelFilter;
 
     const clearFilterStyle = Object.keys(customClearFilter).length === 0
-        ?style?.defaultClearFilter
-        :customClearFilter;
+        ? style?.defaultClearFilter
+        : customClearFilter;
 
     return (
         <>
@@ -276,7 +274,7 @@ const Filter = ({ customFilterContainerStyle = {}, customSelectedFilter = {}, cu
 
                 {/*Clear Filter Button*/}
                 <Box sx={clearFilterStyle}>
-                    {applyFilter==1&&(<Button sx={{ height: "40px" }} onClick={() => setSelectedFilter()} variant="outlined">Apply Filter</Button>)}
+                    {applyFilter == 1 && (<Button sx={{ height: "40px" }} onClick={() => setSelectedFilter()} variant="outlined">Apply Filter</Button>)}
                     <Button sx={{ height: "40px" }} onClick={() => setSelectedFilter([])} variant="outlined">Clear Filter</Button>
                 </Box>
             </Box>
