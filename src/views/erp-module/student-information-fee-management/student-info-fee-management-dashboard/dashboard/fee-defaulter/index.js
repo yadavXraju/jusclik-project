@@ -130,7 +130,7 @@ const FeeDefaulter = ({ isLoading }) => {
         </Grid>
 
  
-          <Grid spacing={gridSpacing} height={430}>
+          <Grid container spacing={gridSpacing} height={430}>
             <Grid item >
               <Chart {...FeeDefaulterData} />
             </Grid>
