@@ -2,8 +2,13 @@ import React, { useState, useRef } from 'react'
 import { Box, Paper, Button, Typography } from '@mui/material';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import WithPrintPdf from 'views/common-section/withPrintPdf';
-import LocalPrintshopOutlinedIcon from '@mui/icons-material/LocalPrintshopOutlined';
-import ArrowDropDownOutlinedIcon from '@mui/icons-material/ArrowDropDownOutlined';
+import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
+import MoreVertTwoToneIcon from '@mui/icons-material/MoreVertTwoTone';
+import Popover from '@mui/material/Popover';
+import IconButton from '@mui/material/IconButton';
+// import FilterListRoundedIcon from '@mui/icons-material/FilterListRounded';
+// import AdmissionDrawer from './AdmissionDrawer';
+// import RemoveRedEyeTwoToneIcon from '@mui/icons-material/RemoveRedEyeTwoTone';
 // import useDrawer from 'hooks/useDrawer';
 import EnquiryDrawer from './EnquiryDrawer';
 import ReportTable from '../common-report-section/report-table';
@@ -102,21 +107,44 @@ const Enquiry = () => {
                 {
                     !clickedCustomize &&
                     <Paper sx={{ overflowX: "hidden" }}>
-                        <Box sx={{ width: "100%", borderBottom: '1px solid #ccc', display: "flex", justifyContent: "space-between", alginItems: "center" }} p={2}>
+                        <Box sx={{ width: "100%", borderBottom: '1px solid #ccc', display: "flex", justifyContent: "space-between", alignItems: "center" }} p={2}>
                             <Typography variant="h4" sx={{ pb: '0px' }}>Enquiry Report</Typography>
-                            <Box sx={{ display: "flex" }}>
-                                <Button endIcon={<SettingsOutlinedIcon sx={{ marginTop: "2px", width: "15px" }} />} onClick={() => setClickedCustomize(true)}>Customize Report</Button>
-                                <WithPrintPdf Children={<LocalPrintshopOutlinedIcon />} ref={printRef} />
-                                <Button endIcon={<ArrowDropDownOutlinedIcon />} >Export As</Button>
+                            <Box sx={{ display: "flex",gap:"20px" }}>
+                                <Button startIcon={<SettingsOutlinedIcon sx={{ marginTop: "2px", width: "15px" }} />} onClick={() => setClickedCustomize(true)} variant="outlined">Customize Report</Button>
+                                <PopupState variant="popover" popupId="demo-popup-popover">
+                                    {(popupState) => (
+                                        <div>
+                                            <IconButton sx={{ background: '#cccccc54' }} {...bindTrigger(popupState)}>
+                                                <MoreVertTwoToneIcon />
+                                            </IconButton>
+                                            <Popover
+                                                {...bindPopover(popupState)}
+                                                anchorOrigin={{
+                                                    vertical: 'bottom',
+                                                    horizontal: 'center'
+                                                }}
+                                                transformOrigin={{
+                                                    vertical: 'top',
+                                                    horizontal: 'center'
+                                                }}
+                                            >
+                                                <Typography sx={{ p: 1, display: 'Grid'}}>
+                                                    <WithPrintPdf Children={<>Export as Pdf </>} ref={printRef} />
+                                                    <Button sx={{ color: 'black', borderBottom: '1px dotted #ccc' }}>Download Contact</Button>
+                                                </Typography>
+                                            </Popover>
+                                        </div>
+                                    )}
+                                </PopupState>
                             </Box>
                         </Box>
                         <ReportTable rows={studentData} columns={columns} ref={printRef} />
                     </Paper>
                 }
             </Box>
-            <Box className={clickedCustomize ? "afterClick" : "beforeClick"}>
+            {clickedCustomize && <Box className={clickedCustomize ? "afterClick" : "beforeClick"}>
                 <EnquiryDrawer name="Customize Report" setClickedCustomize={setClickedCustomize} />
-            </Box>
+            </Box>}
         </>
     )
 }

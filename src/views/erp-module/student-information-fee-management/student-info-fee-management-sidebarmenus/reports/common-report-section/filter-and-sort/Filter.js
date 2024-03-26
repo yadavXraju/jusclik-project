@@ -155,8 +155,10 @@ const availableColumns = [
     },
 ];
 
-const Filter = () => {
+const Filter = ({ customFilterContainerStyle = {}, customSelectedFilter = {}, customAvialbelFilter = {}, customClearFilter = {},applyFilter=0}) => {
     const { ref, isOpen, setIsOpen } = useOutsideClick(false);
+    const [searchTerm, setSearchTerm] = useState('');
+    const [selectedFilter, setSelectedFilter] = useState([]);
 
     const handleFilterSelected = (item) => {
         setIsOpen(false);
@@ -169,12 +171,68 @@ const Filter = () => {
         ) : [];
     };
 
-    const [searchTerm, setSearchTerm] = useState('');
-    const [selectedFilter, setSelectedFilter] = useState([]);
+
+
+    const style = {
+        defaultFilterContainerStyle: {
+            position: "relative",
+            border: "1px solid #f0f5f8",
+            zIndex: "10",
+            width: "100%",
+            height: '480px'
+        },
+        defaultSelectedFilter: {
+            display: "flex",
+            flexDirection: "column",
+            position: "absolute",
+            top: "80px",
+            width: "100%",
+            overflowY: "auto",
+            backgroundColor: "#eef2f629",
+            zIndex: "3",
+            height: "320px"
+        },
+        defualtAvialbelFilter: {
+            width: "calc(100% - 20px)",
+            height: "340px",
+            overflowY: 'auto',
+            zIndex: "5",
+            position: 'absolute',
+            backgroundColor: "white",
+            paddingLeft: "20px"
+        },
+        defaultClearFilter: {
+            position: "absolute",
+            width: "100%",
+            top: "420px",
+            display: "flex",
+            justifyContent: "flex-end",
+            paddingRight: "20px",
+            height: "60px",
+            borderTop: "1px solid #f0f5f8",
+            alignItems: "center", gap: "20px"
+        },
+    }
+
+    const filterContainerStyle = Object.keys(customFilterContainerStyle).length === 0
+        ?style?.defaultFilterContainerStyle
+        :customFilterContainerStyle;
+
+    const selectedFilterStyle = Object.keys(customSelectedFilter).length === 0
+        ?style?.defaultSelectedFilter
+        :customSelectedFilter ;
+
+    const avialbelFilterStyle = Object.keys(customAvialbelFilter).length === 0
+        ?style?.defaultAvialbelFilter
+        :customAvialbelFilter;
+
+    const clearFilterStyle = Object.keys(customClearFilter).length === 0
+        ?style?.defaultClearFilter
+        :customClearFilter;
 
     return (
         <>
-            <Box sx={{ position: "relative", border: "1px solid #f0f5f8", zIndex: "10", width: "100%", height: '480px' }} ref={ref}>
+            <Box sx={filterContainerStyle} ref={ref}>
                 {/* Search DropDown */}
                 <TextField
                     variant="outlined"
@@ -194,7 +252,7 @@ const Filter = () => {
                 />
 
                 {/* Displaying Selected Filters */}
-                <Box sx={{ display: "flex", flexDirection: "column", position: "absolute", top: "80px", width: "100%", overflowY: "auto", backgroundColor: "#eef2f629", zIndex: "3", height: "320px" }} className="scrollbar">
+                <Box sx={selectedFilterStyle} className="scrollbar">
                     {
                         selectedFilter && selectedFilter.map((item) =>
                             <item.filter key={item?.id} />
@@ -204,7 +262,7 @@ const Filter = () => {
 
                 {/* Displaying Available Fields */}
                 {
-                    isOpen && <Box sx={{ width: "calc(100% - 20px)", height: "340px", overflowY: 'auto', zIndex: "5", position: 'absolute', backgroundColor: "white", paddingLeft: "20px" }} className="scrollbar">
+                    isOpen && <Box sx={avialbelFilterStyle} className="scrollbar">
                         {filterAvailableFields().map((item) => (
                             <Box
                                 key={item.id}
@@ -217,8 +275,9 @@ const Filter = () => {
                 }
 
                 {/*Clear Filter Button*/}
-                <Box sx={{ position: "absolute", width: "100%", top: "420px", display: "flex", justifyContent: "flex-end", paddingRight: "20px", height: "60px", borderTop: "1px solid #f0f5f8", alignItems: "center" }}>
-                    <Button sx={{height: "40px" }} onClick={() => setSelectedFilter([])} variant="outlined">Clear Filter</Button>
+                <Box sx={clearFilterStyle}>
+                    {applyFilter==1&&(<Button sx={{ height: "40px" }} onClick={() => setSelectedFilter()} variant="outlined">Apply Filter</Button>)}
+                    <Button sx={{ height: "40px" }} onClick={() => setSelectedFilter([])} variant="outlined">Clear Filter</Button>
                 </Box>
             </Box>
         </>
