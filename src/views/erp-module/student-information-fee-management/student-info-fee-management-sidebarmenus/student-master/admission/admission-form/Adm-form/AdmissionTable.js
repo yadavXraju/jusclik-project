@@ -192,7 +192,7 @@ export default function AdmissionTable() {
     onClose={handleModalClose}
     contentText="Are you sure you want to delete?"
     onConfirm={handleConfirmDelete}
-    />
+    /> 
     
     </>
   );

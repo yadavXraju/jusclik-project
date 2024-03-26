@@ -27,7 +27,7 @@ CustomTabPanel.propTypes = {
   value: PropTypes.number.isRequired
 };
 
-// =========== Function for hendle tabs index ============
+// =========== Function for handle tabs index ============
 function a11yProps(index) {
   return {
     id: `simple-tab-${index}`,
@@ -107,38 +107,6 @@ export default function PreviewTabs() {
               </Grid>
             </Box>
 
-            {/* <TableContainer component={Paper}>
-              <Table>
-                <TableBody>
-                  <TableRow>
-                    <TableCell width={isMobile ? 'auto' : '250px'} sx={{ padding: '10px', fontWeight: '600' }}>
-                      Family Id
-                    </TableCell>
-                    <TableCell sx={{ padding: '10px' }}>F847584</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell sx={{ padding: '10px', fontWeight: '600' }}>Nationality</TableCell>
-                    <TableCell sx={{ padding: '10px' }}>Indian</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell sx={{ padding: '10px', fontWeight: '600' }}>Religion</TableCell>
-                    <TableCell sx={{ padding: '10px' }}>Hindu</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell sx={{ padding: '10px', fontWeight: '600' }}>House</TableCell>
-                    <TableCell sx={{ padding: '10px' }}>Green</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell sx={{ padding: '10px', fontWeight: '600' }}>Blood Group</TableCell>
-                    <TableCell sx={{ padding: '10px' }}>O+</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell sx={{ padding: '10px', fontWeight: '600' }}>SRN No.</TableCell>
-                    <TableCell sx={{ padding: '10px' }}>LKJH8974398</TableCell>
-                  </TableRow>
-                </TableBody>
-              </Table>
-            </TableContainer> */}
           </Box>
         </>
       </CustomTabPanel>
@@ -147,7 +115,7 @@ export default function PreviewTabs() {
           {/* ================ Render Address tab content ============== */}
           <Box p={2}>
             <Typography pb={1} variant="h4" gutterBottom>
-              Address
+              Current Address
             </Typography>
             <Divider />
 
@@ -215,6 +183,49 @@ export default function PreviewTabs() {
               </Table>
             </TableContainer> */}
           </Box>
+
+          <Box p={2}>
+            <Typography pb={1} variant="h4" gutterBottom>
+            Permanent Address
+            </Typography>
+            <Divider />
+
+            <Box p={2}>
+              <Grid container spacing={3}>
+                <Grid item xs={12} md={6}>
+                  <Box pb={0.5} color={'#8b8989'}>
+                    ADDRESS
+                  </Box>
+                  <Box fontSize={16}>Dwarka, Delhi</Box>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <Box pb={0.5} color={'#8b8989'}>
+                    COUNTRY/REGION
+                  </Box>
+                  <Box fontSize={16}>India</Box>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <Box pb={0.5} color={'#8b8989'}>
+                    CITY
+                  </Box>
+                  <Box fontSize={16}>Delhi</Box>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <Box pb={0.5} color={'#8b8989'}>
+                    STATE
+                  </Box>
+                  <Box fontSize={16}>Delhi</Box>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <Box pb={0.5} color={'#8b8989'}>
+                    ZIP CODE
+                  </Box>
+                  <Box fontSize={16}>857473</Box>
+                </Grid>
+              </Grid>
+            </Box>
+
+          </Box>
         </>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
@@ -222,7 +233,7 @@ export default function PreviewTabs() {
           {/* ================ Render Contact Person tab content ============== */}
           <Box p={2}>
             <Typography pb={1} variant="h4" gutterBottom>
-              Contact Person
+              Contact Person (Father)
             </Typography>
             <Divider />
 
@@ -339,6 +350,78 @@ export default function PreviewTabs() {
                 </TableBody>
               </Table>
             </TableContainer> */}
+          </Box>
+
+          <Box p={2}>
+            <Typography pb={1} variant="h4" gutterBottom>
+              Contact Person (Mother)
+            </Typography>
+            <Divider />
+
+            <Box p={2}>
+              <Grid container spacing={3}>
+                <Grid item xs={12} md={6}>
+                  <Box pb={0.5} color={'#8b8989'}>
+                    NAME
+                  </Box>
+                  <Box fontSize={16}>Ms. Suman</Box>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <Box pb={0.5} color={'#8b8989'}>
+                    RELATION
+                  </Box>
+                  <Box fontSize={16}>Mother</Box>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <Box pb={0.5} color={'#8b8989'}>
+                    MOBILE
+                  </Box>
+                  <Box fontSize={16}>5469354098</Box>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <Box pb={0.5} color={'#8b8989'}>
+                    EMAIL
+                  </Box>
+                  <Box fontSize={16}>abc@gmail.com</Box>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <Box pb={0.5} color={'#8b8989'}>
+                    EDUCATION
+                  </Box>
+                  <Box fontSize={16}>B.Sc</Box>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <Box pb={0.5} color={'#8b8989'}>
+                    COMPANY
+                  </Box>
+                  <Box fontSize={16}>abc Company</Box>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <Box pb={0.5} color={'#8b8989'}>
+                    DESIGNATION
+                  </Box>
+                  <Box fontSize={16}>Manager</Box>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <Box pb={0.5} color={'#8b8989'}>
+                    ADDRESS
+                  </Box>
+                  <Box fontSize={16}>Delhi</Box>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <Box pb={0.5} color={'#8b8989'}>
+                    AADHAAR NO.
+                  </Box>
+                  <Box fontSize={16}>12456789345</Box>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <Box pb={0.5} color={'#8b8989'}>
+                    PEN
+                  </Box>
+                  <Box fontSize={16}>AZCIV89345</Box>
+                </Grid>
+              </Grid>
+            </Box>
           </Box>
         </>
       </CustomTabPanel>

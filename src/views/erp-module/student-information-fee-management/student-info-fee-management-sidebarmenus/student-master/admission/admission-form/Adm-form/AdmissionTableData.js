@@ -1,7 +1,7 @@
 const rows = [
     {
       id: 1,
-      AdmNo: 8574,
+      AdmNo: '8574',
       AdmDate: '01-May-2024',
       StudentName: 'Pawan',
       class: 'X',
@@ -12,7 +12,7 @@ const rows = [
     },
     {
       id: 2,
-      AdmNo: 8575,
+      AdmNo: '8575',
       AdmDate: '02-Jun-2024',
       StudentName: 'John',
       class: 'V',
@@ -23,7 +23,7 @@ const rows = [
     },
     {
       id: 3,
-      AdmNo: 8576,
+      AdmNo: '8576',
       AdmDate: '03-May-2024',
       StudentName: 'Jane',
       class: 'I',
@@ -34,7 +34,7 @@ const rows = [
     },
     {
       id: 4,
-      AdmNo: 8577,
+      AdmNo: '8577',
       AdmDate: '04-May-2024',
       StudentName: 'Alice',
       class: 'VI',
@@ -45,7 +45,7 @@ const rows = [
     },
     {
       id: 5,
-      AdmNo: 8578,
+      AdmNo: '8578',
       AdmDate: '05-May-2024',
       StudentName: 'Bob',
       class: 'XI',
@@ -56,7 +56,7 @@ const rows = [
     },
     {
       id: 6,
-      AdmNo: 8579,
+      AdmNo: '8579',
       AdmDate: '06-May-2024',
       StudentName: 'Emily',
       class: 'IX',
@@ -67,7 +67,7 @@ const rows = [
     },
     {
       id: 7,
-      AdmNo: 8580,
+      AdmNo: '8580',
       AdmDate: '07-Jun-2024',
       StudentName: 'Michael',
       class: 'X',
@@ -78,7 +78,7 @@ const rows = [
     },
     {
       id: 8,
-      AdmNo: 8581,
+      AdmNo: '8581',
       AdmDate: '08-May-2024',
       StudentName: 'Sara',
       class: 'III',
@@ -89,7 +89,7 @@ const rows = [
     },
     {
       id: 9,
-      AdmNo: 8582,
+      AdmNo: '8582',
       AdmDate: '09-May-2024',
       StudentName: 'David',
       class: 'V',
@@ -100,7 +100,7 @@ const rows = [
     },
     {
       id: 10,
-      AdmNo: 8583,
+      AdmNo: '8583',
       AdmDate: '10-May-2024',
       StudentName: 'Jessica',
       class: 'II',
@@ -111,7 +111,7 @@ const rows = [
     },
     {
       id: 11,
-      AdmNo: 8584,
+      AdmNo: '8584',
       AdmDate: '11-Jun-2024',
       StudentName: 'Peter',
       class: 'IV',
@@ -122,7 +122,7 @@ const rows = [
     },
     {
       id: 12,
-      AdmNo: 8585,
+      AdmNo: '8585',
       AdmDate: '12-May-2024',
       StudentName: 'Sophia',
       class: 'XII',
@@ -133,7 +133,7 @@ const rows = [
     },
     {
       id: 13,
-      AdmNo: 8586,
+      AdmNo: '8586',
       AdmDate: '13-Jun-2024',
       StudentName: 'Daniel',
       class: 'X',
@@ -144,7 +144,7 @@ const rows = [
     },
     {
       id: 14,
-      AdmNo: 8587,
+      AdmNo: '8587',
       AdmDate: '14-May-2024',
       StudentName: 'Olivia',
       class: 'VII',
@@ -155,7 +155,7 @@ const rows = [
     },
     {
       id: 15,
-      AdmNo: 8588,
+      AdmNo: '8588',
       AdmDate: '15-May-2024',
       StudentName: 'William',
       class: 'VIII',
@@ -166,7 +166,7 @@ const rows = [
     },
     {
       id: 16,
-      AdmNo: 8589,
+      AdmNo: '8589',
       AdmDate: '16-May-2024',
       StudentName: 'Isabella',
       class: 'X',
@@ -177,7 +177,7 @@ const rows = [
     },
     {
       id: 17,
-      AdmNo: 8590,
+      AdmNo: '8590',
       AdmDate: '17-Jun-2024',
       StudentName: 'Liam',
       class: 'II',
@@ -199,7 +199,7 @@ const rows = [
     },
     {
       id: 19,
-      AdmNo: 8592,
+      AdmNo: '8592',
       AdmDate: '19-May-2024',
       StudentName: 'Ethan',
       class: 'X',
@@ -210,7 +210,7 @@ const rows = [
     },
     {
       id: 20,
-      AdmNo: 8593,
+      AdmNo: '8593',
       AdmDate: '20-May-2024',
       StudentName: 'Ava',
       class: 'UKG',
@@ -221,7 +221,7 @@ const rows = [
     },
     {
       id: 21,
-      AdmNo: 8584,
+      AdmNo: '8584',
       AdmDate: '11-Jun-2024',
       StudentName: 'Peter',
       class: 'IV',
@@ -232,7 +232,7 @@ const rows = [
     },
     {
       id: 22,
-      AdmNo: 8585,
+      AdmNo: '8585',
       AdmDate: '12-May-2024',
       StudentName: 'Sophia',
       class: 'XII',
@@ -243,7 +243,7 @@ const rows = [
     },
     {
       id: 23,
-      AdmNo: 8586,
+      AdmNo: '8586',
       AdmDate: '13-Jun-2024',
       StudentName: 'Daniel',
       class: 'X',
@@ -254,7 +254,7 @@ const rows = [
     },
     {
       id: 24,
-      AdmNo: 8587,
+      AdmNo: '8587',
       AdmDate: '14-May-2024',
       StudentName: 'Olivia',
       class: 'VII',
@@ -265,7 +265,7 @@ const rows = [
     },
     {
       id: 25,
-      AdmNo: 8588,
+      AdmNo: '8588',
       AdmDate: '15-May-2024',
       StudentName: 'William',
       class: 'VIII',
@@ -276,7 +276,7 @@ const rows = [
     },
     {
       id: 26,
-      AdmNo: 8589,
+      AdmNo: '8589',
       AdmDate: '16-May-2024',
       StudentName: 'Isabella',
       class: 'X',
@@ -287,7 +287,7 @@ const rows = [
     },
     {
       id: 27,
-      AdmNo: 8590,
+      AdmNo: '8590',
       AdmDate: '17-Jun-2024',
       StudentName: 'Liam',
       class: 'II',
@@ -298,7 +298,7 @@ const rows = [
     },
     {
       id: 28,
-      AdmNo: 8591,
+      AdmNo: '8591',
       AdmDate: '18-May-2024',
       StudentName: 'Mia',
       class: 'LkG',
@@ -309,7 +309,7 @@ const rows = [
     },
     {
       id: 29,
-      AdmNo: 8592,
+      AdmNo: '8592',
       AdmDate: '19-May-2024',
       StudentName: 'Ethan',
       class: 'X',
@@ -320,7 +320,7 @@ const rows = [
     },
     {
       id: 30,
-      AdmNo: 8593,
+      AdmNo: '8593',
       AdmDate: '20-May-2024',
       StudentName: 'Ava',
       class: 'UKG',
@@ -331,7 +331,7 @@ const rows = [
     },
     {
       id: 31,
-      AdmNo: 8574,
+      AdmNo: '8574',
       AdmDate: '01-May-2024',
       StudentName: 'Pawan',
       class: 'X',
@@ -342,7 +342,7 @@ const rows = [
     },
     {
       id: 32,
-      AdmNo: 8575,
+      AdmNo: '8575',
       AdmDate: '02-Jun-2024',
       StudentName: 'John',
       class: 'V',
@@ -353,7 +353,7 @@ const rows = [
     },
     {
       id: 33,
-      AdmNo: 8576,
+      AdmNo: '8576',
       AdmDate: '03-May-2024',
       StudentName: 'Jane',
       class: 'I',
@@ -364,7 +364,7 @@ const rows = [
     },
     {
       id: 34,
-      AdmNo: 8577,
+      AdmNo: '8577',
       AdmDate: '04-May-2024',
       StudentName: 'Alice',
       class: 'VI',
@@ -375,7 +375,7 @@ const rows = [
     },
     {
       id: 35,
-      AdmNo: 8578,
+      AdmNo: '8578',
       AdmDate: '05-May-2024',
       StudentName: 'Bob',
       class: 'XI',
@@ -386,7 +386,7 @@ const rows = [
     },
     {
       id: 36,
-      AdmNo: 8579,
+      AdmNo: '8579',
       AdmDate: '06-May-2024',
       StudentName: 'Emily',
       class: 'IX',
@@ -397,7 +397,7 @@ const rows = [
     },
     {
       id: 37,
-      AdmNo: 8580,
+      AdmNo: '8580',
       AdmDate: '07-Jun-2024',
       StudentName: 'Michael',
       class: 'X',
@@ -408,7 +408,7 @@ const rows = [
     },
     {
       id: 38,
-      AdmNo: 8581,
+      AdmNo: '8581',
       AdmDate: '08-May-2024',
       StudentName: 'Sara',
       class: 'III',
@@ -419,7 +419,7 @@ const rows = [
     },
     {
       id: 39,
-      AdmNo: 8582,
+      AdmNo: '8582',
       AdmDate: '09-May-2024',
       StudentName: 'David',
       class: 'V',
@@ -430,7 +430,7 @@ const rows = [
     },
     {
       id: 40,
-      AdmNo: 8583,
+      AdmNo: '8583',
       AdmDate: '10-May-2024',
       StudentName: 'Jessica',
       class: 'II',
@@ -441,7 +441,7 @@ const rows = [
     },
     {
       id: 41,
-      AdmNo: 8584,
+      AdmNo: '8584',
       AdmDate: '11-Jun-2024',
       StudentName: 'Peter',
       class: 'IV',
@@ -452,7 +452,7 @@ const rows = [
     },
     {
       id: 42,
-      AdmNo: 8585,
+      AdmNo: '8585',
       AdmDate: '12-May-2024',
       StudentName: 'Sophia',
       class: 'XII',
@@ -463,7 +463,7 @@ const rows = [
     },
     {
       id: 43,
-      AdmNo: 8586,
+      AdmNo: '8586',
       AdmDate: '13-Jun-2024',
       StudentName: 'Daniel',
       class: 'X',
@@ -474,7 +474,7 @@ const rows = [
     },
     {
       id: 44,
-      AdmNo: 8587,
+      AdmNo: '8587',
       AdmDate: '14-May-2024',
       StudentName: 'Olivia',
       class: 'VII',
@@ -485,7 +485,7 @@ const rows = [
     },
     {
       id: 45,
-      AdmNo: 8588,
+      AdmNo: '8588',
       AdmDate: '15-May-2024',
       StudentName: 'William',
       class: 'VIII',
@@ -496,7 +496,7 @@ const rows = [
     },
     {
       id: 46,
-      AdmNo: 8589,
+      AdmNo: '8589',
       AdmDate: '16-May-2024',
       StudentName: 'Isabella',
       class: 'X',
@@ -507,7 +507,7 @@ const rows = [
     },
     {
       id: 47,
-      AdmNo: 8590,
+      AdmNo: '8590',
       AdmDate: '17-Jun-2024',
       StudentName: 'Liam',
       class: 'II',
@@ -518,7 +518,7 @@ const rows = [
     },
     {
       id: 48,
-      AdmNo: 8591,
+      AdmNo: '8591',
       AdmDate: '18-May-2024',
       StudentName: 'Mia',
       class: 'LkG',
@@ -529,7 +529,7 @@ const rows = [
     },
     {
       id: 49,
-      AdmNo: 8592,
+      AdmNo: '8592',
       AdmDate: '19-May-2024',
       StudentName: 'Ethan',
       class: 'X',
@@ -540,7 +540,7 @@ const rows = [
     },
     {
       id: 50,
-      AdmNo: 8593,
+      AdmNo: '8593',
       AdmDate: '20-May-2024',
       StudentName: 'Ava',
       class: 'UKG',
@@ -551,7 +551,7 @@ const rows = [
     },
     {
       id: 51,
-      AdmNo: 8574,
+      AdmNo: '8574',
       AdmDate: '01-May-2024',
       StudentName: 'Pawan',
       class: 'X',
@@ -562,7 +562,7 @@ const rows = [
     },
     {
       id: 52,
-      AdmNo: 8575,
+      AdmNo: '8575',
       AdmDate: '02-Jun-2024',
       StudentName: 'John',
       class: 'V',
@@ -573,7 +573,7 @@ const rows = [
     },
     {
       id: 53,
-      AdmNo: 8576,
+      AdmNo: '8576',
       AdmDate: '03-May-2024',
       StudentName: 'Jane',
       class: 'I',
@@ -584,7 +584,7 @@ const rows = [
     },
     {
       id: 54,
-      AdmNo: 8577,
+      AdmNo: '8577',
       AdmDate: '04-May-2024',
       StudentName: 'Alice',
       class: 'VI',
@@ -595,7 +595,7 @@ const rows = [
     },
     {
       id: 55,
-      AdmNo: 8578,
+      AdmNo: '8578',
       AdmDate: '05-May-2024',
       StudentName: 'Bob',
       class: 'XI',
@@ -606,7 +606,7 @@ const rows = [
     },
     {
       id: 56,
-      AdmNo: 8579,
+      AdmNo: '8579',
       AdmDate: '06-May-2024',
       StudentName: 'Emily',
       class: 'IX',
@@ -617,7 +617,7 @@ const rows = [
     },
     {
       id: 57,
-      AdmNo: 8580,
+      AdmNo: '8580',
       AdmDate: '07-Jun-2024',
       StudentName: 'Michael',
       class: 'X',
@@ -628,7 +628,7 @@ const rows = [
     },
     {
       id: 58,
-      AdmNo: 8581,
+      AdmNo: '8581',
       AdmDate: '08-May-2024',
       StudentName: 'Sara',
       class: 'III',
@@ -639,7 +639,7 @@ const rows = [
     },
     {
       id: 59,
-      AdmNo: 8582,
+      AdmNo: '8582',
       AdmDate: '09-May-2024',
       StudentName: 'David',
       class: 'V',
@@ -650,7 +650,7 @@ const rows = [
     },
     {
       id: 60,
-      AdmNo: 8583,
+      AdmNo: '8583',
       AdmDate: '10-May-2024',
       StudentName: 'Jessica',
       class: 'II',
