@@ -87,6 +87,9 @@ export const commonTemplateContent={
   lateFee: 0,
   compositeFee: '4,900',
   termsAndConditions:'',
+  copyName:['School Copy','Parent Copy',],
+  numberOfCopies:0,
+  // optional feilds
   SchoolAddress:'Sohna Dhani Road  Ward No - 01 Sohna Gurugram haryana Sohna - 122103',
   schoolTel:'XXXXXXXXXX',
   email:'123@gmail.com',
