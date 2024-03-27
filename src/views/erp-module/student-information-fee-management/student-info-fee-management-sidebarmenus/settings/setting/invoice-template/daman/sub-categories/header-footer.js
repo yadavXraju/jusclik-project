@@ -1,55 +1,45 @@
-import { Accordion, AccordionDetails, AccordionSummary, Checkbox, FormControl, FormControlLabel, Grid } from '@mui/material';
+import { Accordion, AccordionDetails, AccordionSummary, Checkbox, FormControl, FormControlLabel, Grid, Typography } from '@mui/material';
 import React from 'react';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ImageUploadAndPreview from '../../common/image-upload-and-preview';
 import CommonSelect from '../../common/common-select';
 import ColorPicker from '../../common/color-picker';
 import FontSize from '../../common/font-size';
-const HeaderFooter = ({ state, setState }) => {
+import { imagePosition } from '../../common/common-states';
+const HeaderFooter = ({settings}) => {
+  const headerFooterSettings=settings[0]
+  const setHeaderFooterSettings=settings[1]
   // state handler for headerFooter component
   const handleStateChange = (key, value) => {
-    setState((state) => ({
-      ...state,
-      headerFooter: {
-        ...state.headerFooter,
+    setHeaderFooterSettings((headerFooterSettings) => ({
+        ...headerFooterSettings,
         [key]: value
-      }
+      
     }));
   };
-  // constants for select menu
-  const imagePosition = {
-    topLeft: 'Top Left',
-    topCenter: 'Top Center',
-    topRight: 'Top Right',
-    centerLeft: 'Center Left',
-    centerCenter: 'Center Center',
-    centerRight: 'Center Right',
-    bottomLeft: 'Bottom Left',
-    bottomCenter: 'Bottom Center',
-    bottomRight: 'Bottom Right'
-  };
-
   return (
     <>
       {/* ====================================== HEADER SECTION ========================================= */}
       <Accordion>
         <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1-content" id="panel1-header">
+          <Typography variant='h5'>
           Header
+          </Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Grid container rowSpacing={2} spacing={1} >
 
-            <Grid item md>
+            <Grid item md={12}>
               {/* ========= Background Image ============ */}
               <ImageUploadAndPreview
                 label={'Background Image'}
-                image={state.headerFooter.headerImage}
+                image={headerFooterSettings.headerImage}
                 stateHandler={handleStateChange}
                 updatekey={'headerImage'}
               />
             </Grid>
             
-            <Grid item md>
+            <Grid item md={12}>
               {/* ========= Image Position ============== */}
               <FormControl fullWidth>
                 <CommonSelect
@@ -69,7 +59,7 @@ const HeaderFooter = ({ state, setState }) => {
               <FormControlLabel
                 control={
                   <Checkbox
-                    checked={state.headerFooter.headerBackgroundColorEnable}
+                    checked={headerFooterSettings.headerBackgroundColorEnable}
                     onChange={(e) => handleStateChange('headerBackgroundColorEnable', e.target.checked)}
                   />
                 }
@@ -78,11 +68,11 @@ const HeaderFooter = ({ state, setState }) => {
                 </Grid>
                 <Grid md>
               <ColorPicker
-                initialColor={state.headerFooter.headerBackgroundColor}
+                initialColor={headerFooterSettings.headerBackgroundColor}
                 onColorChange={handleStateChange}
                 colorKey="headerBackgroundColor"
                 label="Background Color"
-                enable={state.headerFooter.headerBackgroundColorEnable}
+                enable={headerFooterSettings.headerBackgroundColorEnable}
               />
 
                 </Grid>
@@ -97,23 +87,25 @@ const HeaderFooter = ({ state, setState }) => {
       {/* ====================================== FOOTER SECTION ========================================= */}
       <Accordion>
         <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1-content" id="panel1-header">
+          <Typography variant='h5'>
           Footer
+          </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Grid container spacing={1} rowSpacing={2}>
-            <Grid item md={12}>
+          <Grid container spacing={2} rowSpacing={2}>
+            <Grid item md>
               {/* ========= Font Size ============ */}
               <FontSize
                 label={'Font Size'}
-                value={state.headerFooter.footerFontSize}
+                value={headerFooterSettings.footerFontSize}
                 stateHandler={handleStateChange}
                 updatekey={'footerFontSize'}
               />
             </Grid>
-            <Grid item md={12}>
+            <Grid item md>
               {/* ========= Font Color ============== */}
               <ColorPicker
-                initialColor={state.headerFooter.footerFontColor}
+                initialColor={headerFooterSettings.footerFontColor}
                 onColorChange={handleStateChange}
                 colorKey="footerFontColor"
                 label="Font Color"
@@ -124,7 +116,7 @@ const HeaderFooter = ({ state, setState }) => {
               {/* ========= Background Image ============ */}
               <ImageUploadAndPreview
                 label={'Background Image'}
-                image={state.headerFooter.footerImage}
+                image={headerFooterSettings.footerImage}
                 stateHandler={handleStateChange}
                 updatekey={'footerImage'}
               />
@@ -148,7 +140,7 @@ const HeaderFooter = ({ state, setState }) => {
               <FormControlLabel
                 control={
                   <Checkbox
-                    checked={state.headerFooter.footerBackgroundColor}
+                    checked={headerFooterSettings.footerBackgroundColor}
                     onChange={(e) => handleStateChange('footerBackgroundColor', e.target.checked)}
                   />
                 }
@@ -156,11 +148,11 @@ const HeaderFooter = ({ state, setState }) => {
                 </Grid>
                 <Grid item md>
               <ColorPicker
-                initialColor={state.headerFooter.footerBackgroundColor}
+                initialColor={headerFooterSettings.footerBackgroundColor}
                 onColorChange={handleStateChange}
                 colorKey="footerBackgroundColor"
                 label="Background Color"
-                enable={state.headerFooter.footerBackgroundColor}
+                enable={headerFooterSettings.footerBackgroundColor}
               />
                 </Grid>
               </Grid>
@@ -170,7 +162,7 @@ const HeaderFooter = ({ state, setState }) => {
               <FormControlLabel
                 control={
                   <Checkbox
-                    checked={state.headerFooter.showPageNumber}
+                    checked={headerFooterSettings.showPageNumber}
                     onChange={(e) => handleStateChange('showPageNumber', e.target.checked)}
                   />
                 }

@@ -4,24 +4,36 @@ import Grid from '@mui/material/Grid';
 import { Typography } from '@mui/material';
 import schoollogo from 'assets/images/24x24-inch-logo-1.png';
 import CurrencyRupeeOutlinedIcon from '@mui/icons-material/CurrencyRupeeOutlined';
-import ContentCutOutlinedIcon from '@mui/icons-material/ContentCutOutlined';
+// import ContentCutOutlinedIcon from '@mui/icons-material/ContentCutOutlined';
 import { commonTemplateContent } from '../common/common-states';
 import { templateCompact } from '../common/common-states';
 
 const CompactTemplate = () => {
 
   
+
+  let gridSize;
+
+  if (templateCompact.numberOfCopies === 1) {
+    gridSize = "12"
+
+  } else if (templateCompact.numberOfCopies === 2) {
+    gridSize = "6"
+
+  } else {
+    gridSize = "4"
+  }
   const templateContent=[]
-  for(let i=0;i<3;i++)
-  {
-    
+
+for(let i=0;i<templateCompact.numberOfCopies;i++){
+  const borderLength=(i==templateCompact.numberOfCopies-1||templateCompact.numberOfCopies==1)?"none":"2px dotted"
     templateContent.push(
-      
-            <Grid item md='4'sx={{bgcolor:'white'}} >
-              <Box borderRight={  i !== 2 && '2px dotted'}  sx={{ paddingRight: "18px" }}>
+            
+            <Grid item  md={gridSize} sx={{bgcolor:'white'}} >
+              <Box borderRight={borderLength}  sx={{ paddingRight: "18px" }}>
                 <Box
                   sx={{ border: '2px solid grey'}}>
-                  <Box sx={{ borderBottom: '2px solid ', display: 'flex', textAlign: 'center' }}>
+                  <Box sx={{ borderBottom: '2px solid ', display: 'flex', textAlign: 'center' ,justifyContent: "space-evenly"}}>
                     <Box pt={3} sx={{ width: '100px' }}>
                       <img src={schoollogo} alt='schoollogo' width="100" height="100">
 
@@ -36,7 +48,7 @@ const CompactTemplate = () => {
                       <Typography  variant='h6' sx={{ fontWeight: '400' }}> IFSC-{ commonTemplateContent.bankIfscCode}</Typography>
                          {/* ADDITIONAL Telephone */}
                       <Typography pb={1} variant='h6' sx={{ fontWeight: '400' }}> Tel:262664,236586</Typography>
-                      <Typography  sx={{ fontWeight: '800', fontSize: '15px' }}> Fee Slip ({  templateCompact[`copy${i+1}Name`]})  </Typography>
+                      <Typography  sx={{ fontWeight: '800', fontSize: '14px' }}> Fee Slip ({  templateCompact[`copy${i+1}Name`]})  </Typography>
                     </Box>
                   </Box>
                   <Box>
@@ -65,7 +77,7 @@ const CompactTemplate = () => {
                             <Typography p={1} variant='h6' sx={{ fontWeight: '400' }}>Father&apos;s Name</Typography>
                             <Typography p={1} variant='h6' sx={{ fontWeight: '400' }}>{  commonTemplateContent.fatherName}</Typography>
                           </Box>
-                            {/* ADDITIONAL ADDRESS */}
+                            {/* email */}
                           <Box sx={{ display: "flex" }}>
                             <Typography p={1} variant='h6' sx={{ fontWeight: '400' }}>Email</Typography>
                             <Typography p={1} variant='h6' sx={{ fontWeight: '400' }}>{  commonTemplateContent.email}</Typography>
@@ -161,11 +173,11 @@ const CompactTemplate = () => {
             </Box>
           </Box>
         </Box>
-        {i !== 2 && (
-          <Box  sx={{ position: "relative", top: "-420px", left: "-21px" }}>
+        {/* {i !== 2 && (
+          <Box  sx={{ position: "relative", top: "-420px", left: "-96px" }}>
             <ContentCutOutlinedIcon sx={{ transform: "rotate(270deg)" , width:'790px'}} />
           </Box>)
-        }
+        } */}
 
       </Grid>
     )
@@ -174,7 +186,7 @@ const CompactTemplate = () => {
    <>
    <Box  >
    <Box >
-      <Grid container spacing={2} sx={{height:'1157',width:'1839',margin:'auto'}}>
+      <Grid container spacing={2} sx={{height:'1350',width:'1157',margin:'auto'}}>
 
    {templateContent}
    </Grid >

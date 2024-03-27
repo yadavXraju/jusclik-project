@@ -177,7 +177,7 @@ Breadcrumbs.propTypes = {
   icon: PropTypes.bool,
   icons: PropTypes.bool,
   maxItems: PropTypes.number,
-  navigation: PropTypes.object,
+  // navigation: PropTypes.object, tem remove comment this prop type
   rightAlign: PropTypes.bool,
   separator: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
   title: PropTypes.bool,

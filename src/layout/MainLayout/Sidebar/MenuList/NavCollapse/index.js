@@ -155,7 +155,8 @@ if (menu.children) {
           <ListItemText
             primary={
               <Typography variant={selected === menu.id ? 'h5' : 'body1'} color="inherit" sx={{ my: 'auto' }} className='menu-title'>
-                {menu.title} <Typography className='menu-animation'>{menu.title}</Typography>
+                {menu.title}
+                 <Typography variant='span' className='menu-animation'>{menu.title}</Typography>
               </Typography>
             }
             secondary={

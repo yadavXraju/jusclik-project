@@ -8,7 +8,7 @@ import React, { useRef, useState } from 'react';
 import CameraAltOutlinedIcon from '@mui/icons-material/CameraAltOutlined';
 import { useEffect } from 'react';
 
-const SelfieVerification = ({ step, handleSteps, md }) => {
+const SelfieVerification = ({ step, handleSteps, md}) => {
    const videoRef = useRef(null);
    const [stream, setStream] = useState(null);
    const [capturedImage, setCapturedImage] = useState(null);
@@ -98,24 +98,29 @@ const SelfieVerification = ({ step, handleSteps, md }) => {
                         )}
                      </Box>
                      {stream && showCamera && (
-                        <Box sx={{ ...css.horizontalCenter, display: 'flex', flexDirection: 'column', mt: '1rem',width:'100%' }}>                          
+                        <Box sx={{ ...css.horizontalCenter,flexDirection: 'column', mt: '1rem',width:'100%'}}>                          
                           
-                          { /* eslint-disable react/no-unknown-property */}                          
+                          { /* eslint-disable react/no-unknown-property */}    
+                          <Box sx={{width:'100%',...css.horizontalCenter,}}>
                            <video
                               ref={videoRef}
                               autoPlay
                               muted
                               style={{ 
-                              width:'100%' ,
+                              width:'95%' ,
                               height:'auto',
                               objectFit: 'cover',
                               aspectRatio:'3/4',
                               borderRadius: '12px' ,
+                             
                            }}
                               onClick={() => { }}
                               onError={(e) => { console.log(e.target.error) }}
                               playsInline                             
                            />
+
+                          </Box>
+                                               
                           { /* eslint-enable react/no-unknown-property */}
 
                            {showTakePhotoButton && (

@@ -16,7 +16,7 @@ const SearchBar = () => {
       {/* Sort Section */}
       <Grid xs={12} sm={12} md={12} lg={6} sx={{ border: "1px solid #e5ebef", backgroundColor: "#eef2f629",marginBottom:marginBottom}}>
         <Typography variant="body1" sx={{ margin: "20px 0px 20px 20px",fontWeight:"bold"}}>Sort</Typography>
-        <Typography variant="body1" sx={{ margin: "20px 0px 20px 20px" }}>You can select one or multiple property to filter data.</Typography>
+        <Typography variant="body1" sx={{ margin: "20px 0px 20px 20px" }}>You can select one or multiple property to Sort data.</Typography>
         <Sort />
       </Grid>
     </Grid >
