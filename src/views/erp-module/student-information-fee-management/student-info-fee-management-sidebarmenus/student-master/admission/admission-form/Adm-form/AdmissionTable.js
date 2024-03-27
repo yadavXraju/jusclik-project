@@ -5,8 +5,6 @@ import { Box } from '@mui/system';
 import { useNavigate } from 'react-router-dom';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 import Drawer from '@mui/material/Drawer';
-//import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
-//import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
 import MoreVertTwoToneIcon from '@mui/icons-material/MoreVertTwoTone';
 import Typography from '@mui/material/Typography';
@@ -14,14 +12,12 @@ import Popover from '@mui/material/Popover';
 import FilterListRoundedIcon from '@mui/icons-material/FilterListRounded';
 import AdmissionDrawer from './AdmissionDrawer';
 import RemoveRedEyeTwoToneIcon from '@mui/icons-material/RemoveRedEyeTwoTone';
-//import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 import useDrawer from 'hooks/useDrawer';
 import rows from './AdmissionTableData';
 import EditDrawer from './EditDrawer';
 import FilterStudents from 'views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/reports/common-report-section/filter-and-sort/Filter';
 import WarningDialog from 'views/common-section/WarningDialog';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
-//import {Dialog, DialogTitle , DialogContent ,DialogContentText ,DialogActions } from '@mui/material';
 
 
 export default function AdmissionTable() {
@@ -35,7 +31,7 @@ export default function AdmissionTable() {
   // };
 
   const Click = (rowData) => {
-    navigate('../admission-form/', { state: { rowData } });
+    navigate('/erp/student-info-fee/student-master/admission-form', { state: { rowData } });
   };
 
   // ========== function for handle Edit row ===========
@@ -72,6 +68,7 @@ export default function AdmissionTable() {
     // setTableRows(updatedRows);
   };
 
+  // ========= Data Grid Columns ==========
   const columns = [
     { field: 'AdmNo', headerName: 'Adm No.', type: 'number', flex: 1, minWidth: 130, align: 'left', headerAlign: 'left' },
     { field: 'AdmDate', headerName: 'Adm Date', flex: 1, minWidth: 130 },
@@ -103,6 +100,7 @@ export default function AdmissionTable() {
     }
   ];
 
+  // =========== Custom style for filter ============
   const style = {
     customFilterContainerStyle: {
       position: "relative",
