@@ -14,7 +14,7 @@ import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import { commonTemplateContent } from '../common/common-states';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
-function Template3() {
+export const  Template=()=> {
   const isSmScreen = useMediaQuery('(max-width:600px)');
 
   const style = {
@@ -291,4 +291,3 @@ function Template3() {
   );
 }
 
-export default Template3;
