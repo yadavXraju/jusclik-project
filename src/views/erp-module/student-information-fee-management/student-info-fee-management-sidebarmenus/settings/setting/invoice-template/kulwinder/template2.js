@@ -8,7 +8,11 @@ import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import ContentCutIcon from '@mui/icons-material/ContentCut';
 import { styled } from '@mui/system';
 import { List, ListItemText } from '@mui/material';
-import { commonTemplateContent,templateCompact2 } from '../common/common-states';
+import { commonTemplateContent } from '../common/common-states';
+import useMediaQuery from '@mui/material/useMediaQuery';
+
+
+
 
 
 const DottedDivider = styled('div')({
@@ -19,6 +23,25 @@ const DottedDivider = styled('div')({
   
 
 const CompactTemplate2 = () => {
+  const isSmScreen = useMediaQuery('(max-width:600px)');
+
+  const style={
+    width : '1157',
+    height : '1839',
+    
+  }
+
+  if (isSmScreen) {
+    style.width = '100%'; // Adjust as needed for small screens
+    style.height = '100%'; // Adjust as needed for small screens
+    
+  
+  }
+
+  
+
+  
+  
 
     
     const templateContent=[]
@@ -42,7 +65,7 @@ const CompactTemplate2 = () => {
       <Grid item lg={2} xs={12}>
         <Typography variant="body1" style={{ textAlign: 'center' }}>
           <Typography variant="h4" fontWeight="bold" style={{ marginTop: '15px' }}>
-             {templateCompact2[`copy${i+1}Name`]}
+             {commonTemplateContent.copyName[i]}
           </Typography>
           <Typography variant="h4" fontWeight="bold" style={{ marginTop: '10px' }}>
             Fee Invoice
@@ -60,9 +83,9 @@ const CompactTemplate2 = () => {
             </Typography>
           </Box>
           <Grid container spacing={2}>
-            <Grid item lg={6} xs={12}>
+            <Grid item lg={7} xs={12}>
               <Grid container>
-                <Grid item lg={6} xs={6}>
+                <Grid item lg={7} xs={6}>
                   <Typography variant="h5" style={{ marginLeft: '20px', marginTop: '20px' }}>
                     Admission No:
                   </Typography>
@@ -76,7 +99,7 @@ const CompactTemplate2 = () => {
                     Address:
                   </Typography>
                 </Grid>
-                <Grid item lg={6} xs={6}>
+                <Grid item lg={5} xs={6}>
                   <Typography variant="h5" style={{ marginTop: '20px', fontWeight: 'bold' }}>
                    {commonTemplateContent.admissionNo}
                   </Typography>
@@ -88,12 +111,12 @@ const CompactTemplate2 = () => {
                   {commonTemplateContent.fatherName}
                   </Typography>
                   <Typography variant="h5" style={{ marginTop: '20px' }}>
-                  {templateCompact2.schoolAddress}
+                  {commonTemplateContent.SchoolAddress}
                   </Typography>
                 </Grid>
               </Grid>
             </Grid>
-            <Grid item lg={6} xs={12}>
+            <Grid item lg={5} xs={12}>
               <Grid container>
                 <Grid item lg={4} xs={6}>
                   <Typography variant="h5" style={{ marginTop: '20px', marginLeft: '20px' }}>
@@ -118,11 +141,11 @@ const CompactTemplate2 = () => {
                     
                   </Typography>
                   <Typography variant="h5" style={{ marginTop: '20px' }}>
-                  {templateCompact2.schoolTel}
+                  {commonTemplateContent.schoolTel}
                   
                   </Typography>
                   <Typography variant="h5" style={{ marginTop: '20px', wordWrap: 'break-word' }}>
-                  {templateCompact2.email}
+                  {commonTemplateContent.email}
                   </Typography>
                 </Grid>
               </Grid>
@@ -171,7 +194,7 @@ const CompactTemplate2 = () => {
             </Typography>
           </Box>
           <Grid container>
-            <Grid item lg={4} xs={7}>
+            <Grid item lg={5} xs={7}>
               <Typography variant="h5" style={{ marginLeft: '20px', marginTop: '20px' }}>
                 Invoice No:[SS*]:
               </Typography>
@@ -185,18 +208,18 @@ const CompactTemplate2 = () => {
                 Fee Period:
               </Typography>
               <Typography variant="h5" style={{ marginLeft: '20px', marginTop: '15px' }}>
-                Last Payment Date:
+                Due Date:
               </Typography>
               <Typography variant="h5" style={{ marginLeft: '20px', marginTop: '15px' }}>
                 Net Amount Payable:
               </Typography>
             </Grid>
-            <Grid item lg={8} xs={5} style={{ textAlign: 'right' }}>
+            <Grid item lg={7} xs={5} style={{ textAlign: 'right' }}>
               <Typography variant="h5" style={{ marginTop: '20px', fontWeight: 'bold', marginRight: '30px' }}>
                 {commonTemplateContent.invoiceNo}
               </Typography>
               <Typography variant="h5" style={{ marginTop: '15px', marginRight: '20px' }}>
-                {templateCompact2.date}
+                {commonTemplateContent.invoiceDate}
               </Typography>
               <Typography variant="h5" style={{ marginTop: '15px', marginRight: '20px' }}>
               {commonTemplateContent.academicYear}
@@ -205,7 +228,7 @@ const CompactTemplate2 = () => {
               {commonTemplateContent.feePeriod}
               </Typography>
               <Typography variant="h5" style={{ marginTop: '15px', marginRight: '20px' }}>
-               {templateCompact2.lastPaymentDate}
+               {commonTemplateContent.dueDate}
               </Typography>
               <Typography
                 variant="h5"
@@ -260,7 +283,7 @@ const CompactTemplate2 = () => {
     }
   0
     return (
-      <Box sx={{ width: 1157, height: 1839, margin: 'auto' }}>
+      <Box sx={{ ...style, margin: 'auto' }}>
         <Paper elevation={2} square={true}>
           <Box sx={{ marginLeft: '20px', marginRight: '20px' }}>
             
@@ -335,13 +358,13 @@ const CompactTemplate2 = () => {
                       </Box>
                     </Box>
                     <Typography variant="h5" sx={{ marginTop: '10px', textAlign: 'right', marginRight: '60px' }}>
-                      {templateCompact2.concession}
+                      {commonTemplateContent.concession}
                     </Typography>
                     <Typography variant="h5" sx={{ marginTop: '10px', textAlign: 'right', marginRight: '60px' }}>
-                    {templateCompact2.concession}
+                    {commonTemplateContent.concession}
                     </Typography>
                     <Typography variant="h5" sx={{ marginTop: '10px', textAlign: 'right', fontWeight: 'bold', marginRight: '60px' }}>
-                    {templateCompact2.concession}
+                    {commonTemplateContent.concession}
                     </Typography>
                     <Typography variant="h5" sx={{ marginTop: '10px', textAlign: 'left', fontWeight: 'bold', marginLeft: '20px' }}>
                       Previous Balance:{' '}
