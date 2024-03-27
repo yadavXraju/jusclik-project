@@ -7,6 +7,8 @@ import { useState } from 'react';
 import { general,headerFooter,tableLayout } from '../common/common-states';  
 import CompactTemplate from '../harsh/template';
 import CompactTemplate2 from '../kulwinder/template2';
+import {CompactTemplate4} from '../harsh/harsh1/template4';
+import CompactTemplate5 from '../harsh/harsh2';
 
 const Index = () => {
   // we need to define states here for common config component and pass it as prop to both so that any change in that component will reflect on our template 
@@ -46,6 +48,8 @@ const Index = () => {
         {template==1&&<CompactTemplate/>}
         {template==2&&<CompactTemplate2/>}
         {template==3&&<Template/>}
+        {template==4&&<CompactTemplate4/>}
+        {template==5&&<CompactTemplate5/>}
               
       </Grid>
     </Grid>
