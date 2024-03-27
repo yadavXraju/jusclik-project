@@ -5,10 +5,10 @@ import ImageUploadAndPreview from '../../common/image-upload-and-preview';
 import CommonSelect from '../../common/common-select';
 import ColorPicker from '../../common/color-picker';
 import FontSize from '../../common/font-size';
-import { headerFooter,imagePosition } from '../../common/common-states';
-import { useState } from 'react';
-const HeaderFooter = () => {
-  const [headerFooterSettings,setHeaderFooterSettings]=useState(headerFooter)
+import { imagePosition } from '../../common/common-states';
+const HeaderFooter = ({settings}) => {
+  const headerFooterSettings=settings[0]
+  const setHeaderFooterSettings=settings[1]
   // state handler for headerFooter component
   const handleStateChange = (key, value) => {
     setHeaderFooterSettings((headerFooterSettings) => ({
