@@ -119,7 +119,7 @@ const VisitorRegistrationTemplate = () => {
                             {/* ============= Otp Modal ========================  */}
                             {step == 1 && <OtpVerification step={step} handleSteps={handleSteps}  mobileNumber={mobileNumber} />}
                             {/* ============= Selfie ============================ */}                            
-                            {step == 2 && <SelfieVerification step={step} handleSteps={handleSteps} md={md}/>}
+                            {step == 2 && <SelfieVerification step={step} handleSteps={handleSteps} md={md} />}
                             {/* ============= Purpose/Details =========================== */}
                             {step == 3 && <VisitorDetails step={step} handleSteps={handleSteps} />}
                             {/* ============= Get Pass ========================== */}
