@@ -1,10 +1,12 @@
 import React from 'react';
 import CommonConfig from './common-config-component';
 import { Grid, Paper } from '@mui/material';
-import Template3 from '../kulwinder/template3';
+import Template3, { Template } from '../kulwinder/template3';
 import { useState } from 'react';
 // import { general,headerFooter,tableLayout } from '../../common/common-states';
 import { general,headerFooter,tableLayout } from '../common/common-states';  
+import CompactTemplate from '../harsh/template';
+import CompactTemplate2 from '../kulwinder/template2';
 
 const Index = () => {
   // we need to define states here for common config component and pass it as prop to both so that any change in that component will reflect on our template 
@@ -30,15 +32,21 @@ const Index = () => {
   console.log(tableSettings);
   // all settings
   const settings=[generalSettingsStates,headerFooterSettingsStates,tableSettingsStates]
+  // temporary logic for rendring template
+  let template=1
   return (
     <>
     <Grid container spacing={2}>
       <Grid item md={5}>
-      <Paper>
+      <Paper sx={{width:'100%',height:'auto',padding:' 2rem 0rem'}}>
         <CommonConfig settings={settings}/>
       </Paper>
       </Grid>
       <Grid item md={6}>
+        {template==1&&<CompactTemplate/>}
+        {template==2&&<CompactTemplate2/>}
+        {template==3&&<Template/>}
+        
         <Template3/>        
       </Grid>
     </Grid>
