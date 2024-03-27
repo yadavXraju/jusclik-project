@@ -7,7 +7,7 @@ import { HeadingCss } from 'views/dashboard/Default/dashboard-css/CommonCss';
 // project imports
 import SkeletonTotalGrowthBarChart from 'ui-component/cards/Skeleton/TotalGrowthBarChart';
 // import MainCard from 'ui-component/cards/MainCard';
-import { gridSpacing } from 'store/constant';
+// import { gridSpacing } from 'store/constant';
 
 
 const FeeDefaulter = ({ isLoading }) => {
@@ -130,7 +130,7 @@ const FeeDefaulter = ({ isLoading }) => {
         </Grid>
 
  
-          <Grid container spacing={gridSpacing} height={430}>
+          <Grid  height={430}>
             <Grid item >
               <Chart {...FeeDefaulterData} />
             </Grid>
