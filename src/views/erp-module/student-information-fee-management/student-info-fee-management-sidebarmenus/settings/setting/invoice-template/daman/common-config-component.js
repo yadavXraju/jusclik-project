@@ -6,20 +6,23 @@ import HeaderFooter from './sub-categories/header-footer';
 import TableConfig from './sub-categories/table';
 import statePropTypes from './statePropTypes';
 
-const CommonConfig = () => {
+const CommonConfig = ({settings}) => {
+ const generalSettingsStates=settings[0]
+ const  headerFooterSettingsStates=settings[1]
+ const  tableSettingsStates=settings[2]
   // Sample tab data array
   const tabsData = [
     {
       label: 'General',
-      content: <><General /></>,
+      content: <><General settings={generalSettingsStates}/></>,
     },
     {
       label: 'Header And Footer',
-      content: <><HeaderFooter  /> </>,
+      content: <><HeaderFooter settings={headerFooterSettingsStates} /> </>,
     },
     {
       label: 'Table Layout',
-      content: <><TableConfig   /> </>,
+      content: <><TableConfig  settings={tableSettingsStates} /> </>,
     },
   ];
 
