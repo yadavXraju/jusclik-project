@@ -179,7 +179,7 @@ const Filter = ({ customFilterContainerStyle = {}, customSelectedFilter = {}, cu
             border: "1px solid #f0f5f8",
             zIndex: "2", 
             width: "100%",
-            minHeight: 'calc(100vh - 480px)'
+            height:"480px"
         },
         defaultSelectedFilter: {
             display: "flex",
