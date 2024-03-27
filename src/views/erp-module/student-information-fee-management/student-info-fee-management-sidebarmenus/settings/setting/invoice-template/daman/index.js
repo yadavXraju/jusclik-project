@@ -1,7 +1,7 @@
 import React from 'react';
 import CommonConfig from './common-config-component';
 import { Grid, Paper } from '@mui/material';
-import  { Template } from '../kulwinder/template3';
+import   Template  from '../kulwinder/template3';
 import { useState } from 'react';
 // import { general,headerFooter,tableLayout } from '../../common/common-states';
 import { general,headerFooter,tableLayout } from '../common/common-states';  
