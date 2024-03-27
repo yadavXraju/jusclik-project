@@ -11,7 +11,7 @@ import ParamDragDropImage from 'views/common-section/ParamDragDropImage';
   
 // };
 
-export default function Profile({profileDetails}) {
+export default function Profile({profileDetails }) {
 
   return (
     <Card>
