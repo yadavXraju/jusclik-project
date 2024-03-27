@@ -5,7 +5,7 @@ const rows = [
       AdmDate: '01-May-2024',
       StudentName: 'Pawan',
       class: 'X',
-      DOB: '03/05/2000',
+      DOB: '03-05-2000',
       Studentcategory: 'General',
       House: 'Green',
       Status: 'Active'

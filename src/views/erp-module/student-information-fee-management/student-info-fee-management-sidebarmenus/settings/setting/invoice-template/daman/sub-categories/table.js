@@ -1,12 +1,12 @@
 import { Checkbox, FormControl, FormControlLabel, Grid, Typography } from '@mui/material';
 import React from 'react';
-
 import ColorPicker from '../../common/color-picker';
 import FontSize from '../../common/font-size';
-import { tableLayout } from '../../common/common-states';
-import { useState } from 'react';
-const TableConfig = () => {
-  const [tableSettings, setTableSettings] = useState(tableLayout);
+
+const TableConfig = ({settings}) => {
+  // const [tableSettings, setTableSettings] = useState(tableLayout);
+  const tableSettings=settings[0]
+  const setTableSettings=settings[1]
   // state handler for table setting component
   const handleStateChange = (key, value) => {
     setTableSettings((tableSettings) => ({

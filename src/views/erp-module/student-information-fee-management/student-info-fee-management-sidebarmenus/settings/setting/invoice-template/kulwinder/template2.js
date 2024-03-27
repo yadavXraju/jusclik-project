@@ -12,9 +12,6 @@ import { commonTemplateContent } from '../common/common-states';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 
-
-
-
 const DottedDivider = styled('div')({
     width: '100%',
     borderBottom: '2px dotted black', // Apply dotted border style

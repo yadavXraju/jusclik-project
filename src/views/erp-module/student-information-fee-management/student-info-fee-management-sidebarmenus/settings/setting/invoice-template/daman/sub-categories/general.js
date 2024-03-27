@@ -14,17 +14,16 @@ import {
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import React from 'react';
-// import { useState } from 'react';
 import ColorPicker from '../../common/color-picker';
 import CommonSelect from '../../common/common-select';
 import FontSize from '../../common/font-size';
 import ImageUploadAndPreview from '../../common/image-upload-and-preview';
-import { general,fontFamily,imagePosition } from '../../common/common-states';
-import { useState } from 'react';
+import { fontFamily,imagePosition } from '../../common/common-states';
+const General = ({settings}) => {
 
-const General = () => {
-  // making state from imported variable
-  const [generalSettings,setGeneralSettings]=useState(general)
+  const generalSettings=settings[0]
+  const setGeneralSettings=settings[1]
+
   
   // state handler for general component
   const handleStateChange = (key, value) => {

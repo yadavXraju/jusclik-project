@@ -54,7 +54,7 @@ function StudentPreview() {
     }
   };
 
-  // Update filtered row when filteredIndex changes
+  // ======= Update filtered row when filteredIndex changes =======
   useEffect(() => {
     if (filteredIndex !== -1) {
       setFilteredRow(rows[filteredIndex]);
@@ -102,7 +102,7 @@ function StudentPreview() {
               <IconButton sx={{ marginRight: '8px', background: '#cccccc54' }}>
                 {/* <EditTwoToneIcon /> */}
                 {/* ============ import edit drawer ============ */}
-                <EditDrawer currEditItem={''} handleClick={() => {}}/>
+                <EditDrawer currEditItem={filteredRow} handleClick={() => {}}/>
               </IconButton>
               <PopupState variant="popover" popupId="demo-popup-popover">
                 {(popupState) => (
