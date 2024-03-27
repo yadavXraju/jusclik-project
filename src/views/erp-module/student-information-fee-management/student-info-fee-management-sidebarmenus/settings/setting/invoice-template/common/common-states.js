@@ -58,6 +58,31 @@ export const transactionDetails={
     showMotherPan:false,
     enableCopy:true,
 }
+export const fontFamily = {
+  ubuntu: 'Ubuntu',
+  openSans: 'Open Sans',
+  dejaVuSans: 'DejaVu Sans',
+  hind: 'Hind',
+  hindMadurai: 'Hind Madurai'
+};
+export const imagePosition = {
+  topLeft: 'Top Left',
+  topCenter: 'Top Center',
+  topRight: 'Top Right',
+  centerLeft: 'Center Left',
+  centerCenter: 'Center Center',
+  centerRight: 'Center Right',
+  bottomLeft: 'Bottom Left',
+  bottomCenter: 'Bottom Center',
+  bottomRight: 'Bottom Right'
+};
+
+
+
+
+
+
+
 // this is for St. Xavier High School
 export const templateCompact={
     numberOfCopies:3,
@@ -87,7 +112,7 @@ export const commonTemplateContent={
   lateFee: 0,
   compositeFee: '4,900',
   termsAndConditions:'',
-  copyName:['School Copy','Parent Copy',],
+  copyName:['School Copy','Parent Copy','Bank Copy'],
   numberOfCopies:0,
   // optional feilds
   SchoolAddress:'Sohna Dhani Road  Ward No - 01 Sohna Gurugram haryana Sohna - 122103',

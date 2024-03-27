@@ -13,8 +13,8 @@ const ImageUploadAndPreview = ({ label, stateHandler, updatekey, image }) => {
 
   return (
     <Grid container spacing={1} rowSpacing={2}>
-        <Grid item xs={12} >
-          <Typography variant="h5">{label}</Typography>
+        <Grid item xs={12} md='auto' >
+        {!image&& <Typography variant="h5"  sx={{padding:'2rem',border:'1px solid'}}>{label}</Typography>}
         </Grid>
         <Grid item xs={12}>
           {image && (
@@ -23,18 +23,26 @@ const ImageUploadAndPreview = ({ label, stateHandler, updatekey, image }) => {
               </Box>
           )}
         </Grid>
-        <Grid item xs={12}>
+        <Grid item >
           <Box>
+            <Grid item>
             <input id="background-image-upload" type="file" style={{ display: 'none' }} accept="image/*" onChange={handleFileChange} />
+            </Grid>
+            <Grid container item spacing={2}>
+              <Grid item>
             <Button variant="contained" component="label" >
               {image ? 'Change File' : 'Choose From Desktop'}
               <input type="file" style={{ display: 'none' }} accept="image/*" onChange={handleFileChange} />
             </Button>
+                </Grid> 
+            <Grid item>
             {image && (
               <Button variant="contained" component="label" onClick={handleRemoveFile} >
                 Remove
               </Button>
             )}
+            </Grid>
+            </Grid>
           </Box>
         </Grid>
     </Grid>

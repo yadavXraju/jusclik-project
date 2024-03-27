@@ -19,44 +19,31 @@ import ColorPicker from '../../common/color-picker';
 import CommonSelect from '../../common/common-select';
 import FontSize from '../../common/font-size';
 import ImageUploadAndPreview from '../../common/image-upload-and-preview';
+import { general,fontFamily,imagePosition } from '../../common/common-states';
+import { useState } from 'react';
 
-const General = ({ state, setState }) => {
+const General = () => {
+  // making state from imported variable
+  const [generalSettings,setGeneralSettings]=useState(general)
+  
   // state handler for general component
   const handleStateChange = (key, value) => {
-    setState((state) => ({
-      ...state,
-      general: {
-        ...state.general,
+    setGeneralSettings((generalSettings) => ({
+        ...generalSettings,
         [key]: value
-      }
-    }));
+      }))
   };
-  // objects for dropdowns
-  const fontFamily = {
-    ubuntu: 'Ubuntu',
-    openSans: 'Open Sans',
-    dejaVuSans: 'DejaVu Sans',
-    hind: 'Hind',
-    hindMadurai: 'Hind Madurai'
-  };
-  const imagePosition = {
-    topLeft: 'Top Left',
-    topCenter: 'Top Center',
-    topRight: 'Top Right',
-    centerLeft: 'Center Left',
-    centerCenter: 'Center Center',
-    centerRight: 'Center Right',
-    bottomLeft: 'Bottom Left',
-    bottomCenter: 'Bottom Center',
-    bottomRight: 'Bottom Right'
-  };
-
+  
   return (
     <>
       <Box>
         {/* ============================================ template properties ======================================================== */}
         <Accordion>
-          <AccordionSummary expandIcon={<ExpandMoreIcon />}>Template Properties</AccordionSummary>
+          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+            <Typography variant='h5'>
+            Template Properties
+            </Typography>
+            </AccordionSummary>
           <AccordionDetails>
             {/* ============ Template name ================= */}
             <Grid container spacing={2} rowSpacing={2}>
@@ -73,7 +60,7 @@ const General = ({ state, setState }) => {
               <Grid item md={12}>
                 {/* =========== paper size  =============== */}
                 <FormControl>
-                  <Typography>Paper Size</Typography>
+                  <Typography variant='h5'>Paper Size</Typography>
                   <RadioGroup aria-labelledby="" defaultValue="a4" name="" onChange={(e) => handleStateChange('paperSize', e.target.value)}>
                     <Grid container>
                       <FormControlLabel value="a4" control={<Radio />} label="A4" />
@@ -86,7 +73,7 @@ const General = ({ state, setState }) => {
               <Grid item>
                 {/* =========  Orientation =================  */}
                 <FormControl>
-                  <Typography>Orientation</Typography>
+                  <Typography variant='h5'>Orientation</Typography>
                   <RadioGroup
                     aria-labelledby=""
                     defaultValue="portrait"
@@ -100,12 +87,12 @@ const General = ({ state, setState }) => {
                   </RadioGroup>
                 </FormControl>
               </Grid>
-              <Grid container item md={12}>
+              <Grid container item md={12} rowSpacing={2}>
                 {/* ========== Marigns ==================== */}
-                <Grid container md={12} rowSpacing={2} spacing={1}>
-                  <Typography>Margins</Typography>
+                <Grid item md={12}>
+                  <Typography variant='h5'>Margins</Typography>
                 </Grid>
-                <Grid container rowSpacing={2} spacing={1}>
+                <Grid container item rowSpacing={2} spacing={1}>
                   <Grid item>
                     <TextField
                       id="outlined-basic"
@@ -146,7 +133,11 @@ const General = ({ state, setState }) => {
 
         {/* ===================================================== Font section ========================================================*/}
         <Accordion>
-          <AccordionSummary expandIcon={<ExpandMoreIcon />}>Font</AccordionSummary>
+          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+            <Typography variant='h5'>
+            Font
+            </Typography>
+            </AccordionSummary>
           <AccordionDetails>
             <Grid container spacing={2} rowSpacing={2}>
               <Grid item md={12}>
@@ -164,7 +155,7 @@ const General = ({ state, setState }) => {
               <Grid item md={12}>
                 {/*=========== Label Color ============== */}
                 <ColorPicker
-                  initialColor={state.general.labelColor}
+                  initialColor={generalSettings.labelColor}
                   onColorChange={handleStateChange}
                   colorKey="labelColor"
                   label="Label Color"
@@ -175,7 +166,7 @@ const General = ({ state, setState }) => {
                 <Grid item md={6}>
                   {/* ========== Font Color =============== */}
                   <ColorPicker
-                    initialColor={state.general.fontColor}
+                    initialColor={generalSettings.fontColor}
                     onColorChange={handleStateChange}
                     colorKey="fontColor"
                     label="Font Color"
@@ -185,7 +176,7 @@ const General = ({ state, setState }) => {
                 <Grid item md={6}>
                   {/* ========== Font Size =============== */}
                   <FormControl fullWidth>
-                    <FontSize label={'Font Size'} value={state.general.fontSize} stateHandler={handleStateChange} updatekey={'fontSize'} />
+                    <FontSize label={'Font Size'} value={generalSettings.fontSize} stateHandler={handleStateChange} updatekey={'fontSize'} />
                   </FormControl>
                 </Grid>
               </Grid>
@@ -196,7 +187,11 @@ const General = ({ state, setState }) => {
         {/* ==================================================== Background Section =============================================== */}
 
         <Accordion>
-          <AccordionSummary expandIcon={<ExpandMoreIcon />}>Background</AccordionSummary>
+          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+            <Typography variant='h5'>
+            Background
+            </Typography>
+            </AccordionSummary>
           <AccordionDetails>
             <Grid container spacing={1} rowSpacing={3}>
               <Grid item md={12} >
@@ -205,7 +200,7 @@ const General = ({ state, setState }) => {
                   label={'Background Image'}
                   stateHandler={handleStateChange}
                   updatekey={'backgroundImage'}
-                  image={state.general.backgroundImage}
+                  image={generalSettings.backgroundImage}
                 />
               </Grid>
               <Grid item xs>
@@ -229,7 +224,7 @@ const General = ({ state, setState }) => {
                       <FormControlLabel
                         control={
                           <Checkbox
-                            checked={state.general.backgroundColorEnable}
+                            checked={generalSettings.backgroundColorEnable}
                             onChange={(e) => handleStateChange('backgroundColorEnable', e.target.checked)}
                           />
                         }
@@ -239,11 +234,11 @@ const General = ({ state, setState }) => {
                     <Grid item md>
                       <FormControl fullWidth>
                         <ColorPicker
-                          initialColor={state.general.backgroundColor}
+                          initialColor={generalSettings.backgroundColor}
                           onColorChange={handleStateChange}
                           colorKey="backgroundColor"
                           label="Background Color"
-                          enable={state.general.backgroundColorEnable}
+                          enable={generalSettings.backgroundColorEnable}
                         />
                       </FormControl>
                     </Grid>
