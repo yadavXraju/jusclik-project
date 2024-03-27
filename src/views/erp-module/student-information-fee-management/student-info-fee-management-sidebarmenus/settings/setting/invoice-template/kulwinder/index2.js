@@ -1,12 +1,10 @@
 import React from 'react'
-import Template2 from './template2'
+import Template3 from './template3'
 import { Grid } from '@mui/material'
 import CommonConfig from '../daman/common-config-component'
 import { useState } from 'react'
 import { Box } from '@mui/system'
-
-
-const InvoiceTemplate2 = () => {
+const InvoiceTemplate3 = () => {
   const [state, setState] = useState({
     general: {
       templateName: '',
@@ -92,11 +90,11 @@ const InvoiceTemplate2 = () => {
     </Grid>
     <Grid item xs >
         <Box>
-    <Template2/>
+    <Template3/>
         </Box>
     </Grid>
 </Grid>
   )
 }
 
-export default InvoiceTemplate2
+export default InvoiceTemplate3
