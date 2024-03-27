@@ -7,7 +7,7 @@ import CurrencyRupeeOutlinedIcon from '@mui/icons-material/CurrencyRupeeOutlined
 import schoollogo from 'assets/images/24x24-inch-logo-1.png';
 import { commonTemplateContent } from '../../common/common-states';
 
-const InvoicePage = () => {
+const CompactTemplate4 = () => {
   return (
 
     <Box sx={{ width: 1157, height: 1300, margin: 'auto' }}>
@@ -178,5 +178,5 @@ const InvoicePage = () => {
   );
 };
 
-export default InvoicePage;
+export default CompactTemplate4;
 

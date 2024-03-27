@@ -1,13 +1,13 @@
 import React from 'react'
-import { Box, Paper, Typography, Table, TableContainer, TableRow, TableHead, TableCell, TableBody } from '@mui/material'
+import { Box, Paper, Typography, Table, TableContainer, TableRow, TableHead, TableCell, TableBody ,Grid} from '@mui/material'
 import { commonTemplateContent } from '../../common/common-states';
 import Divider from '@mui/material/Divider';
+import CurrencyRupeeOutlinedIcon from '@mui/icons-material/CurrencyRupeeOutlined';
 
-
-const InvoicePage1 = () => {
+const CompactTemplate5= () => {
   return (
 
-    <Box>
+    <Box sx={{ width: 1157, height: 1300, margin: 'auto' }}>
       <Paper elevation={4}>
 
         <Box ml={6} mr={7} pt={6} display={'flex'} justifyContent={'end'}>
@@ -110,6 +110,7 @@ const InvoicePage1 = () => {
                     </TableCell>
                     <TableCell align="right"> </TableCell>
                   </TableRow>
+                  
                 </TableBody>
               </Table>
             </TableContainer>
@@ -118,12 +119,46 @@ const InvoicePage1 = () => {
 
 
 
+        <Grid sx={{display:'flex' ,justifyContent:'end' }}>
 
+              
 
+           
 
+<Box  pr={8}>
+<Box display={"flex"} justifyContent={'flex-end'} sx={{flexDirection:'column', alignItems:"end"}}> 
+    <Box display={'flex'} sx={{borderBottom:'1px solid lightgrey', width:'100%', justifyContent:'space-between' }}>
+      <Typography p={2} variant="h4" sx={{ fontWeight: 'bold' }} >Invoice Total:</Typography>
+      <Typography p={2} variant="body1" sx={{ fontWeight: 'bold', textAlign:'right'}}><CurrencyRupeeOutlinedIcon sx={{ fontSize: 'small', }}></CurrencyRupeeOutlinedIcon>{commonTemplateContent.invoiceTotal}</Typography>
+    </Box>
+ 
+    <Box display={'flex'}  sx={{borderBottom:'1px solid lightgrey', width:'100%', justifyContent:'space-between'}} >
+      <Typography p={2} variant="h4" sx={{ fontWeight: 'bold' }} >Previous Balance:</Typography>
+      <Typography p={2} variant="body1" sx={{ fontWeight: 'bold', textAlign:'right'}}>{commonTemplateContent.previousBalance}</Typography>
+    </Box>
+    <Box display={'flex'} sx={{borderBottom:'1px solid lightgrey', width:'100%', justifyContent:'space-between'}} >
+      <Typography p={2} variant="h4" sx={{ fontWeight: 'bold' }} >Net Payable Amount:</Typography>
+      <Typography p={2} variant="body1" sx={{ fontWeight: 'bold', textAlign:'right'}}><CurrencyRupeeOutlinedIcon sx={{ fontSize: 'small', }}></CurrencyRupeeOutlinedIcon>{commonTemplateContent.netAmountPayable}</Typography>
+    </Box>
+    <Box display={'flex'}  >
+      <Typography p={2} variant="h5" sx={{ fontWeight: '400'}} >Total In Words:</Typography>
+      <Typography p={2} variant="h4" sx={{ fontWeight: 'bold', textAlign:'right'}}>Four Thousand Nine Hundred Only</Typography>
+    </Box>
+</Box>
+</Box>
+</Grid>
+<Box pt={4} p={6} >
+            <Box>
+              <Typography p={2} variant="h4" sx={{ fontWeight: '600'}} >Terms & Conditions</Typography>
+              <Typography p={2} variant="h5" sx={{ fontWeight: '400'}} >Your School&apos;s Terms and Conditions will be displayed here. You can add it in the Invoice Preferences page under Settings.</Typography>
+            </Box>
+            </Box>
+
+    
       </Paper>
+    
     </Box>
   )
 }
 
-export default InvoicePage1
+export default CompactTemplate5;

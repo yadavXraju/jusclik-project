@@ -13,10 +13,10 @@ const CompactTemplate = () => {
   
 
   let gridSize;
-  let dotted='2px dotted';
+
   if (templateCompact.numberOfCopies === 1) {
     gridSize = "12"
-    dotted='none'
+
   } else if (templateCompact.numberOfCopies === 2) {
     gridSize = "6"
 
@@ -26,10 +26,11 @@ const CompactTemplate = () => {
   const templateContent=[]
 
 for(let i=0;i<templateCompact.numberOfCopies;i++){
+  const borderLength=(i==templateCompact.numberOfCopies-1||templateCompact.numberOfCopies==1)?"none":"2px dotted"
     templateContent.push(
             
             <Grid item  md={gridSize} sx={{bgcolor:'white'}} >
-              <Box borderRight={i==0?dotted:i==1&&dotted}  sx={{ paddingRight: "18px" }}>
+              <Box borderRight={borderLength}  sx={{ paddingRight: "18px" }}>
                 <Box
                   sx={{ border: '2px solid grey'}}>
                   <Box sx={{ borderBottom: '2px solid ', display: 'flex', textAlign: 'center' ,justifyContent: "space-evenly"}}>
