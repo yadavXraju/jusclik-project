@@ -336,7 +336,7 @@ const  Template =({states})=> {
           </Box>
         </Grid>
       </Paper>
-    </Box>
+     </Box>
   );
 }
 

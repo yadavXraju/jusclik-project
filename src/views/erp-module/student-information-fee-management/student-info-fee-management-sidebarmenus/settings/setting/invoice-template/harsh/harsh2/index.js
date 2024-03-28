@@ -7,7 +7,14 @@ import CurrencyRupeeOutlinedIcon from '@mui/icons-material/CurrencyRupeeOutlined
 const CompactTemplate5= () => {
   return (
 
-    <Box sx={{ width: 1157, height: 1300, margin: 'auto' }}>
+    <Box sx={{ eight: '100%',
+    width:'100%',
+    margin: 'auto',
+    '@media print and (min-width: 210mm) and (min-height: 297mm)': {
+      // A4 potrait dimensions
+      height: '297mm',
+      width: '210mm',
+    },}}>
       <Paper elevation={4}>
 
         <Box ml={6} mr={7} pt={6} display={'flex'} justifyContent={'end'}>
@@ -60,7 +67,7 @@ const CompactTemplate5= () => {
               <Typography p={1} variant="body1" sx={{ fontWeight: '400', textAlign: 'end', width: '100%' }}>{commonTemplateContent.academicYear}</Typography>
             </Box>
             <Box display={'flex'}>
-              <Typography p={1} variant="h5" sx={{ fontWeight: '400', textAlign: 'end', width: '100%' }}>Fees Period:</Typography>
+              <Typography p={1} variant="h5" sx={{ fontWeight: '400', textAlign: 'end', width: '100%' }}>Fee Period:</Typography>
               <Typography p={1} variant="body1" sx={{ fontWeight: 'bold', textAlign: 'end', width: '100%' }}>{commonTemplateContent.feePeriod}</Typography>
             </Box>
             <Box display={'flex'}>

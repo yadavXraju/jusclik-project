@@ -25,14 +25,6 @@ const TabLabel = ({ handleChange }) => {
               minHeight:'48px',
               paddingTop:'0',
             }}
-            // sx={{
-            //   color: '#fff',
-            //   '&.Mui-selected': {
-            //     color: 'rgb(30, 136, 229)', // Change the color of the selected tab
-            //     background: '#fff'
-            //   },
-  
-            // }}
           />
         ))}
       </TabList>
