@@ -34,6 +34,7 @@ const Index = () => {
   console.log(tableSettings);
   // all settings
   const settings=[generalSettingsStates,headerFooterSettingsStates,tableSettingsStates]
+  const states=[generalSettings,headerFooterSettings,tableSettings]
   // temporary logic for rendring template
   let template=3
   return (
@@ -46,11 +47,11 @@ const Index = () => {
       </Grid>
       {/* <Grid md={1}></Grid> */}
       <Grid item md={7}>
-        {template==1&&<CompactTemplate/>}
-        {template==2&&<CompactTemplate2/>}
-        {template==3&&<Template/>}
-        {template==4&&<CompactTemplate4/>}
-        {template==5&&<CompactTemplate5/>}
+        {template==1&&<CompactTemplate states={states}/>}
+        {template==2&&<CompactTemplate2 states={states}/>}
+        {template==3&&<Template states={states}/>}
+        {template==4&&<CompactTemplate4 states={states}/>}
+        {template==5&&<CompactTemplate5 states={states}/>}
               
       </Grid>
     </Grid>
