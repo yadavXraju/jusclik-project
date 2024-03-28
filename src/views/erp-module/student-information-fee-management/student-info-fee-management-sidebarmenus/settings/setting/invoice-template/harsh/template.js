@@ -10,7 +10,6 @@ import { templateCompact } from '../common/common-states';
 
 const CompactTemplate = () => {
 
-  
 
   let gridSize;
 
@@ -34,21 +33,21 @@ for(let i=0;i<templateCompact.numberOfCopies;i++){
                 <Box
                   sx={{ border: '2px solid grey'}}>
                   <Box sx={{ borderBottom: '2px solid ', display: 'flex', textAlign: 'center' ,justifyContent: "space-evenly"}}>
-                    <Box pt={3} sx={{ width: '100px' }}>
-                      <img src={schoollogo} alt='schoollogo' width="100" height="100">
+                    <Box pt={2} sx={{ width: '100px' }}>
+                      <img src={schoollogo} alt='schoollogo' width="80" height="80">
 
                       </img>
                     </Box>
                     <Box p={3} >
-                      <Typography  variant='h4' sx={{ fontWeight: 'bold' }}> {  commonTemplateContent.schoolName}</Typography>
+                      <Typography  variant='h5' sx={{ fontWeight: 'bold' }}> {  commonTemplateContent.schoolName}</Typography>
                   
-                      <Typography  variant='h5' sx={{ fontWeight: 'bold' }}>Sohna Dhani Road-12203</Typography>
+                      <Typography  variant='h6' sx={{ fontWeight: 'bold' }}>Sohna Dhani Road-12203</Typography>
                       <Typography  variant='h6' sx={{ fontWeight: '700' }}> {  commonTemplateContent.bankName} </Typography>
                       <Typography  variant='h6' sx={{ fontWeight: '400' }}> A/c-{  commonTemplateContent.bankAccNumber}</Typography>
                       <Typography  variant='h6' sx={{ fontWeight: '400' }}> IFSC-{ commonTemplateContent.bankIfscCode}</Typography>
                          {/* ADDITIONAL Telephone */}
                       <Typography pb={1} variant='h6' sx={{ fontWeight: '400' }}> Tel:262664,236586</Typography>
-                      <Typography  sx={{ fontWeight: '800', fontSize: '14px' }}> Fee Slip ({  templateCompact[`copy${i+1}Name`]})  </Typography>
+                      <Typography  sx={{ fontWeight: '800', fontSize: '13px' }}> Fee Slip ({  templateCompact[`copy${i+1}Name`]})  </Typography>
                     </Box>
                   </Box>
                   <Box>
@@ -186,10 +185,22 @@ for(let i=0;i<templateCompact.numberOfCopies;i++){
    <>
    <Box  >
    <Box >
-      <Grid container spacing={2} sx={{height:'1350',width:'1157',margin:'auto'}}>
-
-   {templateContent}
-   </Grid >
+   <Grid
+      container
+      spacing={2}
+      sx={{
+        height: '100%',
+        width:'108%',
+        margin: 'auto',
+        '@media print and (min-width: 297mm) and (min-height: 210mm)': {
+          // A4 landscape dimensions
+          height: '210mm',
+          width: '2970mm',
+        },
+      }}
+    >
+      {templateContent}
+    </Grid>
 
    </Box>
     </Box >

@@ -35,11 +35,11 @@ const Index = () => {
   // all settings
   const settings=[generalSettingsStates,headerFooterSettingsStates,tableSettingsStates]
   // temporary logic for rendring template
-  let template=3
+  let template=1
   return (
     <>
     <Grid container spacing={4}>
-      <Grid item md={5  }>
+      <Grid item md={5 }>
       <Paper sx={{width:'100%',height:'auto',padding:' 2rem 0rem'}}>
         <CommonConfig settings={settings}/>
       </Paper>
