@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Paper } from '@mui/material';
 import TabContext from '@mui/lab/TabContext';
 import TabPanel from '@mui/lab/TabPanel';
-import TabLabel from './tabs/TabLabel';
+import TabLabel from 'views/erp-module/erp-common-item/tab/TabLabel';
 import DashboardContent from './dashboard';
 import DashboardPayRoll from 'views/common-section/dashboard-payroll';
 import PhoneIcon from '@mui/icons-material/Phone';
