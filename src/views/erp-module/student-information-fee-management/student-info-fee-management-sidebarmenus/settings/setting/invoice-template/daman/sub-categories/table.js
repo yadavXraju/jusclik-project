@@ -2,6 +2,7 @@ import { Checkbox, FormControl, FormControlLabel, Grid, Typography } from '@mui/
 import React from 'react';
 import ColorPicker from '../../common/color-picker';
 import FontSize from '../../common/font-size';
+import Divider from '@mui/material/Divider';
 
 const TableConfig = ({settings}) => {
   // const [tableSettings, setTableSettings] = useState(tableLayout);
@@ -39,61 +40,63 @@ const TableConfig = ({settings}) => {
           </Grid>
         </Grid>
         {/* Table Header ============================================== (Label) */}
-        <Grid item md={12}>
-          <Typography variant="h5">Table Header</Typography>
-        </Grid>
-        {/*  (font size) */}
-        <Grid item md>
-          <FormControl fullWidth>
-            <FontSize
-              label={'Font Size'}
-              value={tableSettings.headerFontSize}
-              stateHandler={handleStateChange}
-              updatekey={'headerFontSize'}
-            />
-          </FormControl>
-        </Grid>
-        {/* (font color) */}
-        <Grid item md>
-          <FormControl fullWidth>
-            <ColorPicker
-              initialColor={tableSettings.headerFontColor}
-              onColorChange={handleStateChange}
-              colorKey="headerFontColor"
-              label="Font Color"
-              enable={true}
-            />
-          </FormControl>
-        </Grid>
-        {/* background color  (checkbox) with (color input)*/}
-        <Grid item container>
-          <Grid item>
-            <FormControlLabel
-              control={
-                <Checkbox
-                  checked={tableSettings.headerBackgroundColorEnable}
-                  onChange={(e) => handleStateChange('headerBackgroundColorEnable', e.target.checked)}
-                />
-              }
-            />
+        <Grid container item rowSpacing={3} spacing={2}>
+          <Grid item md={12}>
+           <Divider textAlign='left'> <Typography variant="h5" mt={'1rem'}>Table Header</Typography></Divider>
           </Grid>
-
+          {/*  (font size) */}
           <Grid item md>
             <FormControl fullWidth>
-              <ColorPicker
-                initialColor={tableSettings.headerBackgroundColor}
-                onColorChange={handleStateChange}
-                colorKey="headerBackgroundColor"
-                label="Background Color"
-                enable={tableSettings.headerBackgroundColorEnable}
+              <FontSize
+                label={'Font Size'}
+                value={tableSettings.headerFontSize}
+                stateHandler={handleStateChange}
+                updatekey={'headerFontSize'}
               />
             </FormControl>
           </Grid>
-        </Grid>
+          {/* (font color) */}
+          <Grid item md>
+            <FormControl fullWidth>
+              <ColorPicker
+                initialColor={tableSettings.headerFontColor}
+                onColorChange={handleStateChange}
+                colorKey="headerFontColor"
+                label="Font Color"
+                enable={true}
+              />
+            </FormControl>
+          </Grid>
+          {/* background color  (checkbox) with (color input)*/}
+          <Grid item container>
+            <Grid item>
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={tableSettings.headerBackgroundColorEnable}
+                    onChange={(e) => handleStateChange('headerBackgroundColorEnable', e.target.checked)}
+                  />
+                }
+              />
+            </Grid>
 
+            <Grid item md>
+              <FormControl fullWidth>
+                <ColorPicker
+                  initialColor={tableSettings.headerBackgroundColor}
+                  onColorChange={handleStateChange}
+                  colorKey="headerBackgroundColor"
+                  label="Background Color"
+                  enable={tableSettings.headerBackgroundColorEnable}
+                />
+              </FormControl>
+            </Grid>
+          </Grid>
+        </Grid>
         {/* item row (label)================================================================================== */}
+        <Grid container item spacing={2} rowSpacing={3}>
         <Grid item md={12}>
-          <Typography variant="h5">Item Row</Typography>
+        <Divider textAlign='left'>  <Typography variant="h5" mt={'1rem'}>Item Row</Typography></Divider>
         </Grid>
         {/* (font size) */}
         <Grid item md>
@@ -143,10 +146,11 @@ const TableConfig = ({settings}) => {
             </FormControl>
           </Grid>
         </Grid>
-
+        </Grid>
         {/* item Description (label) =============================== */}
+        <Grid container item spacing={2} rowSpacing={3}>
         <Grid item md={12}>
-          <Typography variant="h5">Item Description </Typography>
+        <Divider textAlign='left'>  <Typography variant="h5" mt={'1rem'}>Item Description </Typography></Divider>
         </Grid>
         {/* font size */}
         <Grid item md>
@@ -170,6 +174,7 @@ const TableConfig = ({settings}) => {
               enable={true}
             />
           </FormControl>
+        </Grid>
         </Grid>
       </Grid>
     </>

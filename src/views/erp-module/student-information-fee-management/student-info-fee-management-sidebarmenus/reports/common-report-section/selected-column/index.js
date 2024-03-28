@@ -65,7 +65,7 @@ const ShowHide = () => {
 
     const style = {
         showHideContainer: {
-            minHeight: 'calc(100vh - 400px)',
+            height:'480px',
             display: "flex",
             flexWrap: "wrap",
             gap: "100px",
@@ -73,14 +73,14 @@ const ShowHide = () => {
             alignItems: "center",
         },
         availableColumnsContainer: {
-            height:'500px',
+            height:'480px',
         },
         availableFieldsContainer: {
             marginTop: "20px",
             border: '1px solid #dadada',
             width: "300px",
             borderRadius: "10px",
-            height: 'calc(100vh - 400px)',
+            height:'480px',
             overflowY: 'auto',
         },
         selectedField: {
