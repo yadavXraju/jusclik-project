@@ -1,58 +1,40 @@
-//inventory module Dashboard.js
 import React from 'react';
-import Grid from '@mui/material/Grid';
-import { gridSpacing } from 'store/constant';
-import CounterData from './counter-data';
-import StockStatus from './stock-status';
-import StockDetailPieChart from './category-wise-stock';
-import LowStockItemList from './low-stock-items';
-import FrequentlyItems from './frequently-issued-items';
-import VendorContacts from './vendor-contacts';
-import NeedSupport from 'views/erp-module/student-information-fee-management/student-info-fee-management-dashboard/dashboard/support/Support';
+import { Box, Paper } from '@mui/material';
+import TabContext from '@mui/lab/TabContext';
+import TabPanel from '@mui/lab/TabPanel';
+import TabLabel from 'views/erp-module/erp-common-item/tab/TabLabel';
+import DashboardContent from './dashboard';
+import DashboardPayRoll from 'views/common-section/dashboard-payroll';
+import PhoneIcon from '@mui/icons-material/Phone';
+import useTabValue from 'views/common-section/ParamTab';
 
-const Dashboard = ({ isLoading }) => {
+const Dashboard = () => {
+  const { value, handleChange } = useTabValue('1');
+
   return (
-    <Grid container spacing={gridSpacing}>
-      <Grid item xs={12}>
-        <Grid container spacing={gridSpacing}>
-          {/* counter */}
-          <Grid
-            item
-            xs={12}
-            lg={12}
-            md={12}
-            sx={{ marginTop: { md: '0px', lg: '0rem', display: 'flex', flexDirection: 'column', gap: '24px' } }}
-          >
-            <CounterData />
-          </Grid>
-
-          {/* Stock Category */}
-          <Grid item xs={12} lg={6} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
-            <StockDetailPieChart />
-          </Grid>
-          {/* Stockt status */}
-          <Grid item xs={12} lg={6} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
-            <StockStatus />
-          </Grid>
-          {/* Vendor Contacs */}
-          <Grid item xs={12} lg={6} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
-            <VendorContacts />
-          </Grid>
-          {/* Low stock items */}
-          <Grid item xs={12} lg={6} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
-            <LowStockItemList />
-          </Grid>
-          {/* Frequently Issued Items */}
-          <Grid item xs={12} lg={6} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
-            <FrequentlyItems />
-          </Grid>
-          {/* Help & support */}
-          <Grid item xs={12} lg={6} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
-            <NeedSupport isLoading={isLoading} />
-          </Grid>
-        </Grid>
-      </Grid>
-    </Grid>
+    <>
+      <Box sx={{ width: '100%', typography: 'body1' }}>
+        <TabContext value={value}>
+          <Paper sx={{ mx: '24px', background: 'none' }}>
+            <Box sx={{ 
+              borderBottom: 0,
+              borderColor: '#e3e8efad',
+              borderRadius: '10px',
+              padding: '10px',
+              '& .MuiBox-root': {
+                marginBottom: '10px'
+              }
+            }}>
+              <TabLabel handleChange={handleChange} />
+            </Box>
+          </Paper>
+          <TabPanel icon={<PhoneIcon />} value="1"><DashboardContent/></TabPanel>
+          <TabPanel value="2"><DashboardPayRoll /></TabPanel>
+          <TabPanel value="3"></TabPanel>
+          <TabPanel value="4"></TabPanel>
+        </TabContext>
+      </Box>
+    </>
   );
 };
 
