@@ -104,7 +104,7 @@ const MainLayout = () => {
       {/* main content */}
 
       {/*  open drawer by default */}
-      <Main theme={theme} open={leftDrawerOpened} sx={{minHeight:'calc(100vh - 114.13px)'}}>
+      <Main theme={theme} open={leftDrawerOpened} sx={{minHeight:'calc(100vh - 111px)'}}>
 
       {/* menu closed by default */}
       
