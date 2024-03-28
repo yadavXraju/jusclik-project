@@ -1,7 +1,7 @@
 import React from 'react';
 import CommonConfig from './common-config-component';
 import { Grid, Paper } from '@mui/material';
-import  { Template } from '../kulwinder/template3';
+import   Template  from '../kulwinder/template3';
 import { useState } from 'react';
 // import { general,headerFooter,tableLayout } from '../../common/common-states';
 import { general,headerFooter,tableLayout } from '../common/common-states';  
@@ -34,22 +34,24 @@ const Index = () => {
   console.log(tableSettings);
   // all settings
   const settings=[generalSettingsStates,headerFooterSettingsStates,tableSettingsStates]
+  const states=[generalSettings,headerFooterSettings,tableSettings]
   // temporary logic for rendring template
   let template=1
   return (
     <>
-    <Grid container spacing={2}>
-      <Grid item md={5}>
+    <Grid container spacing={4}>
+      <Grid item md={5 }>
       <Paper sx={{width:'100%',height:'auto',padding:' 2rem 0rem'}}>
         <CommonConfig settings={settings}/>
       </Paper>
       </Grid>
-      <Grid item md={6}>
-        {template==1&&<CompactTemplate/>}
-        {template==2&&<CompactTemplate2/>}
-        {template==3&&<Template/>}
-        {template==4&&<CompactTemplate4/>}
-        {template==5&&<CompactTemplate5/>}
+      {/* <Grid md={1}></Grid> */}
+      <Grid item md={7}>
+        {template==1&&<CompactTemplate states={states}/>}
+        {template==2&&<CompactTemplate2 states={states}/>}
+        {template==3&&<Template states={states}/>}
+        {template==4&&<CompactTemplate4 states={states}/>}
+        {template==5&&<CompactTemplate5 states={states}/>}
               
       </Grid>
     </Grid>

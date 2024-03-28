@@ -162,7 +162,8 @@ const Filter = ({ customFilterContainerStyle = {}, customSelectedFilter = {}, cu
 
     const handleFilterSelected = (item) => {
         setIsOpen(false);
-        setSelectedFilter([...selectedFilter, item]);
+        if(!selectedFilter.includes(item))
+         setSelectedFilter([...selectedFilter, item]);
     }
 
     const filterAvailableFields = () => {
@@ -179,16 +180,18 @@ const Filter = ({ customFilterContainerStyle = {}, customSelectedFilter = {}, cu
             border: "1px solid #f0f5f8",
             zIndex: "2", 
             width: "100%",
-            minHeight: 'calc(100vh - 480px)'
+            height:"480px"
         },
         defaultSelectedFilter: {
             display: "flex",
             flexDirection: "column",
             position: "absolute",
-            top: "100px",
+            top:'100px',
+            height: "320px",
             width: "100%",
             overflowY: "auto",
-            backgroundColor: "#eef2f629", zIndex: "3"
+            backgroundColor: "#eef2f629",
+            zIndex: "3"
         },
         defualtAvialbelFilter: {
             width: "calc(100% - 20px)",

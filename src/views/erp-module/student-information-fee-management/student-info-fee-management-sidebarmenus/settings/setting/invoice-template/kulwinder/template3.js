@@ -14,26 +14,29 @@ import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import { commonTemplateContent } from '../common/common-states';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
-export const  Template=()=> {
+const style = {
+  width: '210mm',
+  height: '297mm',
+  textAlign: ''
+};
+const style2 = {
+  textAlign: 'right'
+};
+
+const style3 = {
+  marginRight: '1px'
+};
+
+const style4 = {
+  borderRight: '1px solid grey'
+};
+ const  Template =({states})=> {
   const isSmScreen = useMediaQuery('(max-width:600px)');
-
-  const style = {
-    width: '210mm',
-    height: '297mm',
-    textAlign: ''
-  };
-  const style2 = {
-    textAlign: 'right'
-  };
-
-  const style3 = {
-    marginRight: '1px'
-  };
-
-  const style4 = {
-    borderRight: '1px solid grey'
-  };
-
+  const [generalSettings, headerFooterSettings, tableSettings] = states;
+  console.log(generalSettings);
+  console.log(headerFooterSettings);
+  console.log(tableSettings);
+  
   if (isSmScreen) {
     style.width = '100%'; // Adjust as needed for small screens
     style.height = '100%'; // Adjust as needed for small screens
@@ -46,7 +49,7 @@ export const  Template=()=> {
   return (
     <Box>
       <Paper elevation={2} square={true} sx={{ ...style, padding: '50px 30px', mx: 'auto' }}>
-        <Grid sx={{ border: '1px solid grey' }}>
+        <Grid sx={{ border: '1px solid grey'  }}>
           <Grid>
             <Grid container spacing={2} sx={{ padding: '10px' }}>
               {/* First Grid item */}
@@ -291,3 +294,4 @@ export const  Template=()=> {
   );
 }
 
+export default Template

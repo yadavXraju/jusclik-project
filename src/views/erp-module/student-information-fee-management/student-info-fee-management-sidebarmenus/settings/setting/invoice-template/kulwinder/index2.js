@@ -1,10 +1,10 @@
 import React from 'react'
-import Template3 from './template3'
+import {Template} from './template3'
 const InvoiceTemplate3 = () => {
 
   return (
 
-    <Template3/>
+    <Template/>
   
   )
 }

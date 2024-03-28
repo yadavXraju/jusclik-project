@@ -1,5 +1,5 @@
 import React from 'react';
-import { Paper, Grid, Box, Typography } from '@mui/material';
+import { Paper, Grid, Box, Typography, useMediaQuery} from '@mui/material';
 import { HeadingCss } from 'views/dashboard/Default/dashboard-css/CommonCss';
 
 // icons
@@ -10,8 +10,9 @@ import NoAccountsTwoToneIcon from '@mui/icons-material/NoAccountsTwoTone';
 
 const EnrollmentStatistics = () => {
 
+    const isMobile = useMediaQuery('(max-width:575px)')
     const iconStyles = {
-        fontSize: '30px',
+        fontSize: isMobile ? '18px' : '30px',
         color:'rgb(94, 53, 177)' , 
     };
 
@@ -59,23 +60,23 @@ const EnrollmentStatistics = () => {
                             flexDirection: 'row',
                             textAlign: 'center',
                             display: 'flex',
-                            gap: '20px',
+                            gap: isMobile ? '10px' :'20px',
                             alignItems: 'center',
-                            padding: '2.5rem 2rem',
+                            padding: isMobile ? '2rem 1rem'  : '2.5rem 2rem',
                             borderBottom: '1px solid rgb(227, 227, 227)',
                             justifyContent:'center',
                             borderRight: index % 2 === 0 ? '1px solid rgb(227, 227, 227)' : 'none', // Add border to even index items
                         }}>
 
                             {/* icon */}
-                            <Box sx={{ background: `rgb(227, 242, 253)`, padding: '10px', borderRadius: '12px' , display:'flex' }}>
+                            <Box sx={{ background: `rgb(227, 242, 253)`, padding: isMobile ? '7px' :'10px', borderRadius: '12px' , display:'flex' }}>
                                 {item.icon}
                             </Box>
 
                             {/* title and number */}
                             <Box sx={{flex:'0 0 70%'}}>
-                              <Typography variant='h3' sx={{ fontSize: '24px', }}>{item.counterNumber}</Typography>
-                               <Typography variant='h3' sx={{ fontSize: '16px', fontWeight: '400', paddingTop: '7px' }}>{item.counterTitle}</Typography>
+                              <Typography variant='h3' sx={{ fontSize: isMobile ? '14px' : '24px', }}>{item.counterNumber}</Typography>
+                               <Typography variant='h3' sx={{ fontSize: isMobile ? '14px' : '16px', fontWeight: '400', paddingTop: '7px' }}>{item.counterTitle}</Typography>
                             </Box>
                         </Box>
                     </Grid>
