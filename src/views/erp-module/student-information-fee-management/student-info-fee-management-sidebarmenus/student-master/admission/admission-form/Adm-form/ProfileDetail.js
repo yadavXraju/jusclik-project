@@ -350,7 +350,6 @@ function ProfileDetail({ setStudentDetail, setEditItem }) {
         <Typography variant={'h4'} p={1} mb={2} sx={{ borderBottom: '1px solid #ccc' }}>
           Sibling Details
         </Typography>
-
         <EditableTable />
       </Card>
     </>
