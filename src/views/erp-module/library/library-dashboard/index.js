@@ -1,73 +1,41 @@
-//Fee module Dashboard.js
 import React from 'react';
-import Grid from '@mui/material/Grid';
-import { gridSpacing } from 'store/constant';
-// import FeeDefaulter from './fee-defaulter';
-import BookDetailPieChart from './LibraryBook';
-
-// import IssueReturn from './issuedRetun/IssuedReturnPiechart';
-// import OverDueBook from './OverDueBooks';
-import BookDetail from './bookDetail/BookDetail';
-import IssueReturn2 from './issuedRetun';
-
-import NeedSupport from 'views/erp-module/student-information-fee-management/student-info-fee-management-dashboard/dashboard/support/Support';
-import LastestUpdatesOfBooks from './latestbooks';
-import OverDueBook from './OverDueBooks';
-import LateFine from './LateFine';
+import { Box, Paper } from '@mui/material';
+import TabContext from '@mui/lab/TabContext';
+import TabPanel from '@mui/lab/TabPanel';
+import TabLabel from 'views/erp-module/erp-common-item/tab/TabLabel';
+import DashboardContent from './dashboard';
+import DashboardPayRoll from 'views/common-section/dashboard-payroll';
+import PhoneIcon from '@mui/icons-material/Phone';
+import useTabValue from 'views/common-section/ParamTab';
 
 const Dashboard = () => {
+  const { value, handleChange } = useTabValue('1');
+
   return (
-    <Grid container spacing={gridSpacing}>
-      <Grid item xs={12}>
-
-      <BookDetail />
-      </Grid>
-      <Grid item xs={12}>
-        <Grid container spacing={gridSpacing} >
-
-
-
-
-         {/* Books Detail Pie chart */}
-         <Grid item xs={12} lg={6} md={12} sx={{ marginTop: { md: '0px', lg: '1rem' } }}>
-            {/* <InvoiceRaised /> */}
-               <IssueReturn2/>
-            {/* <OverDueBook/> */}
-         </Grid>
-
-         {/* fee collection */}
-         <Grid item xs={12} lg={6}  md={12} sx={{ marginTop: { md: '0px', lg: '1rem' } }}>
-    
-              <BookDetailPieChart/>
-          </Grid>
-
-           {/* fee defaulter */}
-           <Grid item xs={12} lg={8} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
-            <OverDueBook/>
-              {/* <FeeDefaulter isLoading={isLoading} />  */}
-          
-          </Grid>
-
-          {/* need support */}
-          <Grid item xs={12} lg={4} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
-             
-              <LastestUpdatesOfBooks/>
-          </Grid>
-          <Grid item xs={12} lg={8} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
-          {/* <NeedSupport />  */}
-          <LateFine />
-          </Grid>
-          <Grid item xs={12} lg={4} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
-          <NeedSupport /> 
-          </Grid>
-
-        </Grid>
-
-      </Grid>
-    </Grid>
+    <>
+      <Box sx={{ width: '100%', typography: 'body1' }}>
+        <TabContext value={value}>
+          <Paper sx={{ mx: '24px', background: 'none' }}>
+            <Box sx={{ 
+              borderBottom: 0,
+              borderColor: '#e3e8efad',
+              borderRadius: '10px',
+              padding: '10px',
+              '& .MuiBox-root': {
+                marginBottom: '10px'
+              }
+            }}>
+              <TabLabel handleChange={handleChange} />
+            </Box>
+          </Paper>
+          <TabPanel icon={<PhoneIcon />} value="1"><DashboardContent/></TabPanel>
+          <TabPanel value="2"><DashboardPayRoll /></TabPanel>
+          <TabPanel value="3"></TabPanel>
+          <TabPanel value="4"></TabPanel>
+        </TabContext>
+      </Box>
+    </>
   );
 };
 
-
-
-export default Dashboard
+export default Dashboard;

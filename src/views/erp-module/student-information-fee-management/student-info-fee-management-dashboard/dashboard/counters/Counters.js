@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Box, Typography } from '@mui/material';
+import { Grid, Box, Typography , useMediaQuery } from '@mui/material';
 
 
 // icons
@@ -40,21 +40,28 @@ const calculateBackgroundColor = (index) => {
     return colors[index % colors.length];
 };
 
+
+
 const Counters = () => {
+    
+const isTab =  useMediaQuery('(max-width: 1280px)');
+const isMobile =  useMediaQuery('(max-width: 575px)');
+
     return (
         <Grid container spacing={2}>
             {CounterData.map((item, index) => (
-                <Grid item key={item.id} xs={12} md={4}>
+                <Grid xs={12} md item key={item.id}  >
                     <Box
                         sx={{
                             display: 'flex',
-                            gap: '40px',
+                            gap: isTab ? '25px' : '40px',
                             alignItems: 'center',
-                            padding: '2rem',         
+                            padding:  isTab ? '1.5rem' :'2rem',         
                             borderRadius: '12px',
                             border: '1px solid rgb(227, 227, 227)',
                             boxShadow: '4px 4px 9px 2px #ddddddc2',
                             background:'#fff',
+                            justifyContent:isMobile ? 'space-around' : null ,
                         }}
                     >
                         {/* icon */}
@@ -70,10 +77,10 @@ const Counters = () => {
 
                         {/* counter title and number */}
                         <Box>
-                            <Typography variant="h3" sx={{ fontSize: '32px', color: '#000' }}>
+                            <Typography variant="h3" sx={{ fontSize: isTab ? '24px' : '32px', color: '#000' }}>
                                 {item.counterNumber}
                             </Typography>
-                            <Typography variant="h4" sx={{ fontSize: '16px', textTransform: 'uppercase', paddingTop: '7px', fontWeight: '500' }}>
+                            <Typography variant="h4" sx={{ fontSize: isTab ? '14px' : '16px', textTransform: 'uppercase', paddingTop: '7px', fontWeight: '500' }}>
                                 {item.counterTitle}
                             </Typography>
                         </Box>

@@ -290,7 +290,7 @@ const style4 = {
           </Box>
         </Grid>
       </Paper>
-    </Box>
+     </Box>
   );
 }
 
