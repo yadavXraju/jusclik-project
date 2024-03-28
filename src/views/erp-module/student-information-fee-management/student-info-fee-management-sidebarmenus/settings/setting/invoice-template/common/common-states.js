@@ -2,10 +2,10 @@ export const general={
     templateName: '',
     paperSize: 'a5',
     orientation: 'portrait',
-    marginTop: '0.7',
-    marginBottom: '0.7',
-    marginLeft: '0.55',
-    marginRight: '0.4',
+    marginTop: '2',
+    marginBottom: '2',
+    marginLeft: '1',
+    marginRight: '1',
     pdfFont: 'ubuntu',
     labelColor: '#333333',
     fontColor: '#333333',
@@ -58,6 +58,7 @@ export const transactionDetails={
     showMotherPan:false,
     enableCopy:true,
 }
+// this is for dropdown
 export const fontFamily = {
   ubuntu: 'Ubuntu',
   openSans: 'Open Sans',
@@ -76,12 +77,6 @@ export const imagePosition = {
   bottomCenter: 'Bottom Center',
   bottomRight: 'Bottom Right'
 };
-
-
-
-
-
-
 
 // this is for St. Xavier High School
 export const templateCompact={
