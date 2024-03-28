@@ -172,7 +172,9 @@ const Sort = () => {
     const outsideClick = useOutsideClick(false);
 
     const handleSortProperty = (item) => {
-        setSelectSortProperty([...selectSortProperty, item]);
+        if (!selectSortProperty.includes(item)) {
+            setSelectSortProperty([...selectSortProperty, item]);
+        }
         setIsOpen(false);
     }
 
@@ -227,18 +229,20 @@ const Sort = () => {
             </Grid>
             {/* Filter Based On Property */}
             <Grid item xs={12} sm={12} md={12} lg={12} sx={{ position: "absolute", top: "80px", zIndex: "2",width:"100%" }}>
-                <Grid container spacing={1}>
+                <Grid container spacing={1} sx={{marginTop:"20px"}}>
                     {
                         selectSortProperty && selectSortProperty.map((item) =>
                             <>
-                                <Grid item xs={12} sm={12} md={6} lg={6}>
+                                <Grid item xs={12} sm={12} md={6} lg={6} sx={{height:"100px", borderBottom: "1px solid #e5ebef",alignItems:"center",display:"flex"}}>
+                                {/* sorting property*/}
                                     <TextField
                                         variant="outlined"
                                         placeholder={item?.headerName}
                                         sx={{ width: "100%", padding: `0px ${inputpadding} 0px 20px`}}
                                     />
                                 </Grid>
-                                <Grid item xs={12} sm={12} md={6} lg={6} sx={{ position: "relative" }}>
+                                {/* sorting order */}
+                                <Grid item xs={12} sm={12} md={6} lg={6} sx={{position: "relative",height:"100px", borderBottom: "1px solid #e5ebef",alignItems:"center",display:'flex'}}>
                                     <TextField
                                         variant="outlined"
                                         placeholder={item?.order}
