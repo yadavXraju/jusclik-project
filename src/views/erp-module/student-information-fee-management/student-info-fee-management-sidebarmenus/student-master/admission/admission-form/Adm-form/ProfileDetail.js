@@ -1,3 +1,164 @@
+import React, { useEffect } from 'react';
+import { Grid, TextField, Card, useMediaQuery, Typography } from '@mui/material';
+import ParameterizedDateComponent from 'views/common-section/ParamDateComponent';
+import EditableTable from './EditableTable';
+
+function ProfileDetail({ setStudentDetail, setEditItem }) {
+  const isMobile = useMediaQuery('(max-width: 767px)');
+
+  const fieldDetails = [
+    { key: 'AdmNo', label: 'Admission No.', type: 'text', section: 'Admission Details' },
+    { key: 'admDate', label: 'Admission Date', type: 'date', section: 'Admission Details' },
+    { key: 'joiningClass', label: 'Joining Class', type: 'text', section: 'Admission Details' },
+    { key: 'joiningDate', label: 'Joining Date', type: 'date', section: 'Admission Details' },
+
+    { key: 'stdName', label: 'First Name', type: 'text', section: 'Student Details' },
+    { key: 'stdMiddleName', label: 'Middle Name', type: 'text', section: 'Student Details' },
+    { key: 'stdLastName', label: 'Last Name', type: 'text', section: 'Student Details' },
+    { key: 'gender', label: 'Gender', type: 'text', section: 'Student Details' },
+    { key: 'dob', label: 'D.O.B', type: 'date', section: 'Student Details' },
+    { key: 'age', label: 'Age', type: 'text', section: 'Student Details' },
+    { key: 'aadhaarNo', label: 'Aadhaar No.', type: 'text', section: 'Student Details' },
+    { key: 'penNo', label: 'PEN No.', type: 'text', section: 'Student Details' },
+
+    { key: 'class', label: 'Class', type: 'text', section: 'Class Details' },
+    { key: 'section', label: 'Section', type: 'text', section: 'Class Details' },
+
+    { key: 'category', label: 'Category', type: 'text', section: 'Fee Details' },
+    { key: 'payMode', label: 'Pay Mode', type: 'text', section: 'Fee Details' },
+    { key: 'concession', label: 'Concession', type: 'text', section: 'Fee Details' }
+    // Add more fields as needed
+  ];
+
+  const groupedFields = {};
+  fieldDetails.forEach((field) => {
+    groupedFields[field.section] = groupedFields[field.section] || [];
+    groupedFields[field.section].push(field);
+  });
+
+  // ======= Initialize admissionDetails state based on setEditItem =========
+  const [admissionDetails, setAdmissionDetails] = React.useState(() => {
+    const initialState = {
+      stdName: '',
+      AdmNo: '',
+      admDate: '',
+      dob: '',
+      stdCategory: '',
+      joiningClass: '',
+      joiningDate: ''
+    };
+
+    if (setEditItem) {
+      initialState.stdName = setEditItem.StudentName || '';
+      initialState.AdmNo = setEditItem.AdmNo || '';
+      initialState.admDate = setEditItem.AdmDate || null;
+      initialState.dob = setEditItem.DOB || null;
+      initialState.stdCategory = setEditItem.Studentcategory || '';
+      initialState.joiningClass = setEditItem.class || '';
+      initialState.joiningDate = setEditItem.joiningDate || '';
+    }
+
+    return initialState;
+  });
+
+  useEffect(() => {
+    if (setEditItem) {
+      setAdmissionDetails((prevState) => ({
+        ...prevState,
+        stdName: setEditItem.StudentName || '',
+        AdmNo: setEditItem.AdmNo || '',
+        admDate: setEditItem.AdmDate || null,
+        dob: setEditItem.DOB || null,
+        stdCategory: setEditItem.Studentcategory || '',
+        joiningClass: setEditItem.class || '',
+        joiningDate: setEditItem.joiningDate || ''
+      }));
+    }
+  }, [setEditItem]);
+
+  setStudentDetail('lastName', );
+  const handleInputChange = (fieldName, value) => {
+    setAdmissionDetails((prevState) => ({
+      ...prevState,
+      [fieldName]: value
+    }));
+    if (fieldName === 'stdName') {
+      setStudentDetail('firstName', value);
+    }else if (fieldName === 'stdMiddleName'){
+      setStudentDetail('middleName', value);
+    }else if (fieldName === 'stdLastName'){
+      setStudentDetail('lastName', value);
+    }
+  };
+
+  return (
+    <>
+      {/* Render sections and their fields */}
+      {Object.entries(groupedFields).map(([section, fields]) => (
+        <Card key={section} sx={{ padding: '10px', mb: 2 }}>
+          <Typography variant={'h4'} p={1.4} mb={2} sx={{ borderBottom: '1px solid #ccc' }}>
+            {section}
+          </Typography>
+          <Grid container spacing={2} sx={{ display: 'flex', height: '100%' }}>
+            {fields.map((field) => (
+              <Grid item xs={12} sm={12} md={6} lg={section === 'Student Details' ? 4 : 6} key={field.key}>
+                {field.type === 'date' ? (
+                  <ParameterizedDateComponent
+                    customStyle={{ width: '100%' }}
+                    value={admissionDetails[field.key]}
+                    onChange={(date) => handleInputChange(field.key, date)}
+                    label={field.label}
+                  />
+                ) : (
+                  <TextField
+                    size={isMobile ? 'small' : 'normal'}
+                    id={`outlined-${field.key}`}
+                    value={admissionDetails[field.key]}
+                    onChange={(e) => handleInputChange(field.key, e.target.value)}
+                    fullWidth
+                    label={field.label}
+                    variant="outlined"
+                  />
+                )}
+              </Grid>
+            ))}
+          </Grid>
+        </Card>
+      ))}
+      {/* Sibling Details */}
+      <Card sx={{ padding: '10px' }}>
+        <Typography variant={'h4'} p={1} mb={2} sx={{ borderBottom: '1px solid #ccc' }}>
+          Sibling Details
+        </Typography>
+
+        <EditableTable />
+      </Card>
+    </>
+  );
+}
+
+export default ProfileDetail;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // import React, { useEffect } from 'react';
 // import { Grid, TextField, Card, useMediaQuery, Typography } from '@mui/material';
 // import ParameterizedDateComponent from 'views/common-section/ParamDateComponent';
@@ -209,152 +370,3 @@
 // }
 
 // export default ProfileDetail;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-import React, { useEffect } from 'react';
-import { Grid, TextField, Card, useMediaQuery, Typography } from '@mui/material';
-import ParameterizedDateComponent from 'views/common-section/ParamDateComponent';
-import EditableTable from './EditableTable';
-
-function ProfileDetail({ setStudentDetail, setEditItem }) {
-  const isMobile = useMediaQuery('(max-width: 767px)');
-
-  const fieldDetails = [
-    { key: 'AdmNo', label: 'Admission No.', type: 'text', section: 'Admission Details' },
-    { key: 'admDate', label: 'Admission Date', type: 'date', section: 'Admission Details' },
-    { key: 'joiningClass', label: 'Joining Class', type: 'text', section: 'Admission Details' },
-    { key: 'joiningDate', label: 'Joining Date', type: 'date', section: 'Admission Details' },
-
-    { key: 'stdName', label: 'First Name', type: 'text', section: 'Student Details' },
-    { key: 'stdMiddleName', label: 'Middle Name', type: 'text', section: 'Student Details' },
-    { key: 'stdLastName', label: 'Last Name', type: 'text', section: 'Student Details' },
-    { key: 'gender', label: 'Gender', type: 'text', section: 'Student Details' },
-    { key: 'dob', label: 'D.O.B', type: 'date', section: 'Student Details' },
-    { key: 'age', label: 'Age', type: 'text', section: 'Student Details' },
-    { key: 'aadhaarNo', label: 'Aadhaar No.', type: 'text', section: 'Student Details' },
-    { key: 'penNo', label: 'PEN No.', type: 'text', section: 'Student Details' },
-
-    { key: 'class', label: 'Class', type: 'text', section: 'Class Details' },
-    { key: 'section', label: 'Section', type: 'text', section: 'Class Details' },
-
-    { key: 'category', label: 'Category', type: 'text', section: 'Fee Details' },
-    { key: 'payMode', label: 'Pay Mode', type: 'text', section: 'Fee Details' },
-    { key: 'concession', label: 'Concession', type: 'text', section: 'Fee Details' }
-    // Add more fields as needed
-  ];
-
-  const groupedFields = {};
-  fieldDetails.forEach((field) => {
-    groupedFields[field.section] = groupedFields[field.section] || [];
-    groupedFields[field.section].push(field);
-  });
-
-  // Initialize admissionDetails state based on setEditItem
-  const [admissionDetails, setAdmissionDetails] = React.useState(() => {
-    const initialState = {
-      stdName: '',
-      AdmNo: '',
-      admDate: '',
-      dob: '',
-      stdCategory: '',
-      joiningClass: '',
-      joiningDate: ''
-    };
-
-    if (setEditItem) {
-      initialState.stdName = setEditItem.StudentName || '';
-      initialState.AdmNo = setEditItem.AdmNo || '';
-      initialState.admDate = setEditItem.AdmDate || null;
-      initialState.dob = setEditItem.DOB || null;
-      initialState.stdCategory = setEditItem.Studentcategory || '';
-      initialState.joiningClass = setEditItem.class || '';
-      initialState.joiningDate = setEditItem.joiningDate || '';
-    }
-
-    return initialState;
-  });
-
-  useEffect(() => {
-    if (setEditItem) {
-      setAdmissionDetails((prevState) => ({
-        ...prevState,
-        stdName: setEditItem.StudentName || '',
-        AdmNo: setEditItem.AdmNo || '',
-        admDate: setEditItem.AdmDate || null,
-        dob: setEditItem.DOB || null,
-        stdCategory: setEditItem.Studentcategory || '',
-        joiningClass: setEditItem.class || '',
-        joiningDate: setEditItem.joiningDate || ''
-      }));
-    }
-  }, [setEditItem]);
-
-  const handleInputChange = (fieldName, value) => {
-    setAdmissionDetails((prevState) => ({
-      ...prevState,
-      [fieldName]: value
-    }));
-    if (fieldName === 'stdName') {
-      setStudentDetail('firstName', value);
-    }
-  };
-
-  return (
-    <>
-      {/* Render sections and their fields */}
-      {Object.entries(groupedFields).map(([section, fields]) => (
-        <Card key={section} sx={{ padding: '10px', mb: 3 }}>
-          <Typography variant={'h4'} p={1.4} mb={2} sx={{ borderBottom: '1px solid #ccc' }}>
-            {section}
-          </Typography>
-          <Grid container spacing={2} sx={{ display: 'flex', height: '100%' }}>
-            {fields.map((field) => (
-              <Grid item xs={12} sm={12} md={6} lg={section === 'Student Details' ? 4 : 6} key={field.key}>
-                {field.type === 'date' ? (
-                  <ParameterizedDateComponent
-                    customStyle={{ width: '100%' }}
-                    value={admissionDetails[field.key]}
-                    onChange={(date) => handleInputChange(field.key, date)}
-                    label={field.label}
-                  />
-                ) : (
-                  <TextField
-                    size={isMobile ? 'small' : 'normal'}
-                    id={`outlined-${field.key}`}
-                    value={admissionDetails[field.key]}
-                    onChange={(e) => handleInputChange(field.key, e.target.value)}
-                    fullWidth
-                    label={field.label}
-                    variant="outlined"
-                  />
-                )}
-              </Grid>
-            ))}
-          </Grid>
-        </Card>
-      ))}
-      {/* Sibling Details */}
-      <Card sx={{ padding: '10px' }}>
-        <Typography variant={'h4'} p={1} mb={2} sx={{ borderBottom: '1px solid #ccc' }}>
-          Sibling Details
-        </Typography>
-
-        <EditableTable />
-      </Card>
-    </>
-  );
-}
-
-export default ProfileDetail;
