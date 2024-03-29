@@ -1,7 +1,8 @@
 import { Box, Paper, Button,Drawer} from '@mui/material';
-import useDrawer from 'hooks/useDrawer';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import CustomFields from './CustomFields';
+import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
+import useDrawer from 'hooks/useDrawer';
+import CustomFields from './custom-fields';
 
 const BottomNavbar = ({ tabPageLength, value, setValue, customStyle = {} }) => {
     const {anchor,toggleDrawer}=useDrawer();
@@ -50,7 +51,7 @@ const BottomNavbar = ({ tabPageLength, value, setValue, customStyle = {} }) => {
                     Cancel
                 </Button>
             </Box>
-            <Button variant="text" sx={{ height: "38px", marginTop: "auto", marginBottom: "auto", width: "144px" }} onClick={toggleDrawer("right",true)}>
+            <Button variant="outlined" sx={{ height: "38px", marginTop: "auto", marginBottom: "auto"}} onClick={toggleDrawer("right",true)} startIcon={<SettingsOutlinedIcon  />}>
                 Customize Fields
             </Button>
             <Drawer anchor="right" open={anchor.right} onClose={toggleDrawer(false)}>

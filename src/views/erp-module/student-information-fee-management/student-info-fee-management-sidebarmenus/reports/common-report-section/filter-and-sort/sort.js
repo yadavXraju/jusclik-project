@@ -229,7 +229,7 @@ const Sort = () => {
             </Grid>
             {/* Filter Based On Property */}
             <Grid item xs={12} sm={12} md={12} lg={12} sx={{ position: "absolute", top: "80px", zIndex: "2",width:"100%" }}>
-                <Grid container spacing={1} sx={{marginTop:"20px"}}>
+                <Grid container spacing={1} sx={{marginTop:"20px",height:"320px",overflowY:"auto"}} className="scrollbar">
                     {
                         selectSortProperty && selectSortProperty.map((item) =>
                             <>
@@ -260,7 +260,7 @@ const Sort = () => {
                                     />
                                     {
                                         outsideClick.isOpen &&sortPropertyOpen==item?.id && 
-                                        <Box sx={{ position: "absolute", top: "60px", width: "calc(100% - 20px)", height: "150px", paddingLeft: "20px", paddingRight: "10px", overflowY: 'auto', backgroundColor: "white", zIndex: "3" }} className="scrollbar" ref={outsideClick.ref}>
+                                        <Box sx={{ position: "absolute", top: "80px", width: "calc(100% - 20px)", height: "150px", paddingLeft: "20px", paddingRight: "10px", overflowY: 'auto', backgroundColor: "white", zIndex: "3" }} className="scrollbar" ref={outsideClick.ref}>
                                             {
                                                 sortingOrderOption.map((sortItem) => (
                                                     <Box key={sortItem.id}>
