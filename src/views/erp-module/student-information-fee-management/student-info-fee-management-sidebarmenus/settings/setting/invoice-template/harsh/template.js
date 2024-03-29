@@ -32,16 +32,16 @@ for(let i=0;i<templateCompact.numberOfCopies;i++){
     templateContent.push(
             
             <Grid item  md={gridSize} sx={{bgcolor:'white'}} >
-              <Box borderRight={borderLength}  sx={{ paddingRight: "18px" }}>
+              <Box borderRight={borderLength}  sx={{ paddingRight: "18px", }}>
                 <Box
                   sx={{ border: '2px solid grey'}}>
-                  <Box sx={{ borderBottom: '2px solid ', display: 'flex', textAlign: 'center' ,justifyContent: "space-evenly"}}>
+                  <Box sx={{ borderBottom: '2px solid ', display: 'flex', textAlign: 'center' ,justifyContent: "space-evenly" , backgroundColor:headerFooterSettings.headerBackgroundColor}}>
                     <Box pt={2} sx={{ width: '100px' }}>
                       <img src={schoollogo} alt='schoollogo' width="80" height="80">
 
                       </img>
                     </Box>
-                    <Box p={3} >
+                    <Box p={3}  >
                       <Typography  variant='h5' sx={{ fontWeight: 'bold' }}> {  commonTemplateContent.schoolName}</Typography>
                   
                       <Typography  variant='h6' sx={{ fontWeight: 'bold' }}>Sohna Dhani Road-12203</Typography>
@@ -54,7 +54,7 @@ for(let i=0;i<templateCompact.numberOfCopies;i++){
                     </Box>
                   </Box>
                   <Box>
-                    <Box p={1} pb={1} sx={{ borderBottom: '2px solid gray' }}>
+                    <Box p={1} pb={1} sx={{ borderBottom: '2px solid gray', backgroundColor:generalSettings.backgroundColor }}>
                       <Box sx={{ display: "flex", justifyContent: "space-between"}} >
                         <Box >
                           <Box sx={{ display: "flex" }}>
@@ -159,7 +159,8 @@ for(let i=0;i<templateCompact.numberOfCopies;i++){
               </Box>
             </Box>
             <Box >
-              <Grid lg={12} container sx={{ display: "flex", justifyContent: "space-between", padding: "0px 0px 0 14px" }}>
+              <Grid lg={12} container sx={{ display: "flex", justifyContent: "space-between", padding: "0px 0px 0 14px", backgroundColor:headerFooterSettings. footerBackgroundColor
+             }}>
                 <Grid lg={6} item>
                   <Typography p={1} variant='h6' sx={{ fontWeight: 'bold' }}>Cheque/Draft No.</Typography>
                   <Typography p={1} variant='h6' sx={{ fontWeight: 'bold' }}>Cheque/Draft Date: </Typography>
