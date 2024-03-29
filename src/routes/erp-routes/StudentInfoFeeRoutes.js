@@ -65,6 +65,10 @@ const SecurityDeposit=  Loadable(lazy(() => import('views/erp-module/student-inf
 const DormEntry=  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/hostel/dorm-entry')));
 
 
+// transport
+const TransportAllocation =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/transport/transportAllocation')));
+
+
 // system data
 
 const SystemData = Loadable(lazy(() => import('views/erp-module/erp-common-item/setup/system-data')));
@@ -336,6 +340,17 @@ const StudentInfoFeeRoutes = [
           },
 
 
+          // transport
+          {
+            path: 'transport',
+            children: [
+    
+              {
+                path: 'allocation',
+                element: <TransportAllocation/>
+             },
+            ]
+            },
 
             // setting
             { 

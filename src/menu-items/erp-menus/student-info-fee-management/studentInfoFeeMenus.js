@@ -295,16 +295,25 @@ const StudentInfoFeeMenu = {
           {
             id: 'transport',
             title: 'Transport',
-            type: 'item',
+            type:  'collapse',
             url: '/erp/student-info-fee/transport',
             icon: DirectionsBusTwoToneIcon,
-            breadcrumbs: false
+            children : [
+                {
+                  id: 'transport-allocation',
+                  title: 'Transport Allocation',
+                  type: 'item',
+                  url: '/erp/student-info-fee/transport/allocation',
+                  breadcrumbs: false,
+                },
+             ]
           },
 
+          // reports
           {
             id: 'reports',
             title: 'Reports',
-            type: 'item',
+            type: 'collapse',
             url: '/erp/student-info-fee/reports',
             icon: DescriptionTwoToneIcon,
             breadcrumbs: false
