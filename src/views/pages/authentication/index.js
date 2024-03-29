@@ -224,9 +224,9 @@
            height='100%'
             pt={1}
           >
-            <Box sx={{ height: isMobile ? '100%' : '100%', width: isMobile ? '100%' : '500px', padding: isMobile ? '1rem' : '0px' }}  display='flex' flexDirection='column' >
+            <Box sx={{ height: isMobile ? '100%' : '100%', width: isMobile ? '100%' : '100%', padding: isMobile ? '1.5rem' : '0px' }}  display='flex' flexDirection='column'  >
               {/* Label: Login To Your Dashboard =========================================================================== */}
-              <Box>
+              <Box height={isMobile?null:'100%' } alignContent='space-around' >
               <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', mb: isMobile ? 0 : 1 }}>
                 <Typography
                   component="h1"
@@ -345,10 +345,8 @@
 
           </Grid>:null}
                     
-                 {!isMobile?<Box className='findme' display='flex' flexDirection='column-reverse'>
-                  <Box>
-                  <PoweredBySection/></Box>
-                  </Box>:null}
+                 {!isMobile?
+                  <Box ><PoweredBySection/></Box>:null}
                                 
 
                      

@@ -23,6 +23,7 @@ const PoweredBySection = () => {
               textAlign: 'center',
               bottom: isMobile ? '60px' : '130px'
             }}
+            position={isMobile?null:'relative'}
           >
             <img src={CloudLogo} alt="Logo" />
             <Typography variant="body2" sx={{ ...commonTextStyle }}>
