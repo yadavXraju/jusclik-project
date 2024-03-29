@@ -1,7 +1,5 @@
-import { useState, useRef } from 'react';
-
-
-// material-ui
+// Import necessary libraries and components
+import React, { useState, useRef } from 'react';
 import { useTheme } from '@mui/material/styles';
 import {
   Avatar,
@@ -16,38 +14,29 @@ import {
   Typography,
   useMediaQuery
 } from '@mui/material';
-
-// third-party
 import PerfectScrollbar from 'react-perfect-scrollbar';
-
-// project imports
-import MainCard from 'ui-component/cards/MainCard';
-import Transitions from 'ui-component/extended/Transitions';
+import MainCard from 'ui-component/cards/MainCard'; // Assuming this is a custom component
+import Transitions from 'ui-component/extended/Transitions'; // Assuming this is a custom component
 import GridViewOutlinedIcon from '@mui/icons-material/GridViewOutlined';
-import { useSelector } from 'react-redux';
-import DashboardSwitchLayout from './DashboardSwitchLayout';
+import { useSelector } from 'react-redux'; // Assuming you are using Redux
+import DashboardSwitchLayout from './DashboardSwitchLayout'; // Assuming this is another component in the same directory
 
-
-
-// ==============================|| NOTIFICATION ||============================== //
-
+// Define the DashboardSwitch component
 const DashboardSwitch = () => {
-  const theme = useTheme();
-  const matchesXs = useMediaQuery(theme.breakpoints.down('md'));
+  const theme = useTheme(); // Access the MUI theme
+  const matchesXs = useMediaQuery(theme.breakpoints.down('md')); // Check for media query matches
+  const [open, setOpen] = useState(false); // State for controlling Popper open/close
+  const anchorRef = useRef(null); // Ref for the Popper anchor
+  const customization = useSelector((state) => state.customization); // Get customization state from Redux
+  const themeColor = customization.themeColor || ''; // Extract theme color from state (or default to empty string)
+  const opacity = 0.2; // Define opacity value for background color transition
 
-//   setting initial value false
-  const [open, setOpen] = useState(false);
-
-  const anchorRef = useRef(null);
-
-  //   function for updating intial value and open the popper
+  // Toggle Popper open/close state
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
   };
 
-
-  //   function closing the popper
-
+  // Close Popper when clicking away from anchor element
   const handleClose = (event) => {
     if (anchorRef.current && anchorRef.current.contains(event.target)) {
       return;
@@ -55,19 +44,10 @@ const DashboardSwitch = () => {
     setOpen(false);
   };
 
-
-
-  // to store state in this varible
-  const customization = useSelector((state) => state.customization);
-
-    
-  // Extract theme color and set opacity
-  const themeColor = customization.themeColor || '';
-  const opacity = 0.2;
-
-
+  // Render the DashboardSwitch component UI
   return (
     <>
+      {/* Button to toggle Popper */}
       <Box
         sx={{
           ml: 2,
@@ -78,6 +58,7 @@ const DashboardSwitch = () => {
         }}
       >
         <ButtonBase sx={{ borderRadius: '12px' }}>
+          {/* Avatar button */}
           <Avatar
             variant="rounded"
             className='themeColorV2'
@@ -85,7 +66,7 @@ const DashboardSwitch = () => {
               ...theme.typography.commonAvatar,
               ...theme.typography.mediumAvatar,
               transition: 'all .2s ease-in-out',
-              backgroundColor: `${themeColor.slice(0, -1)}, ${opacity}) !important`, // Adding opacity
+              backgroundColor: `${themeColor.slice(0, -1)}, ${opacity}) !important`, // Background color with opacity
               color: theme.palette.secondary.dark,
               '&[aria-controls="menu-list-grow"],&:hover': {
                 color: theme.palette.secondary.light
@@ -97,14 +78,13 @@ const DashboardSwitch = () => {
             onClick={handleToggle}
             color="inherit"
           >
-            <GridViewOutlinedIcon className='themeColor' sx={{
-             color:`${theme?.customization?.themeColor} ` ,
-             width: '20px'
-             }}/>
+            {/* Icon inside the Avatar */}
+            <GridViewOutlinedIcon className='themeColor' sx={{ color: themeColor, width: '20px' }} />
           </Avatar>
         </ButtonBase>
       </Box>
       
+      {/* Popper component for dropdown menu */}
       <Popper
         placement={matchesXs ? 'bottom' : 'bottom-end'}
         open={open}
@@ -125,37 +105,38 @@ const DashboardSwitch = () => {
       >
         {({ TransitionProps }) => (
           <Transitions position={matchesXs ? 'top' : 'top-right'} in={open} {...TransitionProps}>
+            {/* Paper container for Popper contents */}
             <Paper>
+              {/* ClickAwayListener to handle click outside Popper */}
               <ClickAwayListener onClickAway={handleClose}>
+                {/* MainCard to style the Popper content */}
                 <MainCard border={false} elevation={16} content={false} boxShadow shadow={theme.shadows[16]}>
                   <Grid container direction="column" spacing={2}>
+                    {/* Header section */}
                     <Grid item xs={12}>
                       <Grid container alignItems="center" justifyContent="space-between" sx={{ pt: 2, px: 2 }}>
                         <Grid item>
                           <Stack direction="row" spacing={2}>
                             <Typography variant="subtitle1"> Dashboard </Typography>
-                            
                           </Stack>
                         </Grid>
- 
                       </Grid>
                     </Grid>
+                    {/* Content section with scrollbar */}
                     <Grid item xs={12}>
                       <PerfectScrollbar style={{ height: '100%', maxHeight: 'calc(100vh - 205px)', overflowX: 'hidden' }}>
                         <Grid container direction="column" spacing={2}>
-                         
+                          {/* Divider */}
                           <Grid item xs={12} p={0}>
                             <Divider sx={{ my: 0 }} />
                           </Grid>
                         </Grid>
-
-                        {/* dashbaord start */}
-                            <DashboardSwitchLayout />
-                         {/* dashbaord  end */}
-
+                        {/* Render DashboardSwitchLayout component inside scrollbar */}
+                        <DashboardSwitchLayout setOpen={setOpen} />
                       </PerfectScrollbar>
                     </Grid>
                   </Grid>
+                  {/* Divider at the end of MainCard */}
                   <Divider />
                 </MainCard>
               </ClickAwayListener>
@@ -167,4 +148,4 @@ const DashboardSwitch = () => {
   );
 };
 
-export default DashboardSwitch;
+export default DashboardSwitch; // Export the DashboardSwitch component

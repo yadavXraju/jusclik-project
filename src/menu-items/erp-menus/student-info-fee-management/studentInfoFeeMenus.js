@@ -313,7 +313,7 @@ const StudentInfoFeeMenu = {
           {
             id: 'reports',
             title: 'Reports',
-            type: 'collapse',
+            type: 'item',
             url: '/erp/student-info-fee/reports',
             icon: DescriptionTwoToneIcon,
             breadcrumbs: false
