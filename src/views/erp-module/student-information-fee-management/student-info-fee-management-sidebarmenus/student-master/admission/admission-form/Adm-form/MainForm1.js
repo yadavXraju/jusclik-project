@@ -1,24 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import { Grid, Card } from '@mui/material';
-import Profile from './Profile';
-import ProfileDetail from './ProfileDetail';
-import AddressForm from './Address';
-import ContactPerson from './ContactPerson';
-import OtherDetails from './OtherDetails';
-//import MainCard from 'ui-component/cards/MainCard';
 import Remarks from './Remarks';
-import CustomFields from './CustomFields';
 import PersonAddAltTwoToneIcon from '@mui/icons-material/PersonAddAltTwoTone';
 import HomeWorkTwoToneIcon from '@mui/icons-material/HomeWorkTwoTone';
 import PeopleAltTwoToneIcon from '@mui/icons-material/PeopleAltTwoTone';
 import HandymanTwoToneIcon from '@mui/icons-material/HandymanTwoTone';
 import TextsmsTwoToneIcon from '@mui/icons-material/TextsmsTwoTone';
 import DescriptionTwoToneIcon from '@mui/icons-material/DescriptionTwoTone';
-//import BottomNavbar from 'views/common-section/BottomNavbar';
 import BottomNavbar from '../../admission-common-section/BottomNavbar';
-//import studentDetailsData from './studentDetailsData';
+import Profile from './Profile';
+import ProfileDetail from './ProfileDetail';
+import AddressForm from './Address';
+import ContactPerson from './ContactPerson';
+import studentDetailsData from './studentDetailsData';
 
 
 const buttonsData = [
@@ -30,33 +26,52 @@ const buttonsData = [
   { name: 5, icon: <TextsmsTwoToneIcon />, label: 'Remarks' }
 ];
 
-// const buttonsData = studentDetailsData.map((item, index) => ({
-//   name: index,
-//   icon: item.icon,
-//   label: item.name,
-// }));
 
 const Mainform1 = ({ currEditItem }) => {
   const [selectedButton, setSelectedButton] = useState(0);
-  // const [value, setValue] = useState(0);
-  //console.log(currEditItem);
+  const [option, setOption] = useState({
+    primaryDetails: [],
+    otherDetails: [],
+    address: [],
+    contactPerson: [],
+    customFields: [],
+    remarks: []
+  });
+
   const handleButtonClick = (buttonName) => {
     setSelectedButton(buttonName);
   };
 
   const [student, setStudentDetails] = useState('');
 
-  const handleChange = (name,newValue) => {
-    setStudentDetails({...student,[name]:newValue});
+  useEffect(() => {
+    studentDetailsData.forEach((item) => {
+      if (item?.sectionCode === 0) {
+        setOption(prevOption => ({ ...prevOption, ["primaryDetails"]: item?.section }));
+      }
+      if (item?.sectionCode === 1) {
+        setOption(prevOption => ({ ...prevOption, ["otherDetails"]: item?.section }));
+      }
+      if (item?.sectionCode === 2) {
+        setOption(prevOption => ({ ...prevOption, ["customFields"]: item?.section }));
+      }
+    });
+  }, [studentDetailsData])
+ 
+
+   console.log(option?.customFields)
+
+  const handleChange = (name, newValue) => {
+    setStudentDetails({ ...student, [name]: newValue });
   };
 
   let cardComponent;
   switch (selectedButton) {
     case 0:
-      cardComponent = <ProfileDetail setStudentDetail={handleChange} setEditItem={currEditItem} />;
+      cardComponent = <ProfileDetail setStudentDetail={handleChange} setEditItem={currEditItem}  studentFields={option?.primaryDetails} type="Primary Details"/>;
       break;
     case 1:
-      cardComponent = <OtherDetails />;
+      cardComponent = <ProfileDetail  studentFields={option?.otherDetails} type="Other  Details"/>;
       break;
     case 2:
       cardComponent = <AddressForm />;
@@ -65,7 +80,7 @@ const Mainform1 = ({ currEditItem }) => {
       cardComponent = <ContactPerson />;
       break;
     case 4:
-      cardComponent = <CustomFields />;
+      cardComponent = <ProfileDetail studentFields={option?.customFields} type="Custom Fields"/>;
       break;
     case 5:
       cardComponent = <Remarks />;

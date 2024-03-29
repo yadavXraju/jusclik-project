@@ -40,6 +40,8 @@ const LeftLogo = () => {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
+        minHeight:'100%',
+        minWidth:'100%'
       }}
     >
       <Grid item sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>

@@ -201,7 +201,6 @@ const ShowHide = () => {
                     <ArrowCircleRightOutlinedIcon sx={style.arrowIcon} />
                 </Box>
                 {/* Selected Fields */}
-
                 <Box sx={style.availableColumnsContainer} >
                     <Typography variant="h5">SELECTED COLUMNS</Typography>
                     <Droppable droppableId="selected" type="group2">
