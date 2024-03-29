@@ -18,6 +18,8 @@ import TextsmsTwoToneIcon from '@mui/icons-material/TextsmsTwoTone';
 import DescriptionTwoToneIcon from '@mui/icons-material/DescriptionTwoTone';
 //import BottomNavbar from 'views/common-section/BottomNavbar';
 import BottomNavbar from '../../admission-common-section/BottomNavbar';
+//import studentDetailsData from './studentDetailsData';
+
 
 const buttonsData = [
   { name: 0, icon: <PersonAddAltTwoToneIcon />, label: 'Primary Details' },
@@ -27,6 +29,12 @@ const buttonsData = [
   { name: 4, icon: <HandymanTwoToneIcon />, label: 'Custom Fields' },
   { name: 5, icon: <TextsmsTwoToneIcon />, label: 'Remarks' }
 ];
+
+// const buttonsData = studentDetailsData.map((item, index) => ({
+//   name: index,
+//   icon: item.icon,
+//   label: item.name,
+// }));
 
 const Mainform1 = ({ currEditItem }) => {
   const [selectedButton, setSelectedButton] = useState(0);

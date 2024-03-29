@@ -2,28 +2,24 @@ const data = [
     { 
         id:1,
         name: "Primary Details",
+        icon:"@mui/icons-material/HomeWorkTwoTone",
         section: [
             {
                 name: "Admission Details",
-                admissionDetails: [
+                subSection: [
                     {  
-                        id:1,
                         name: "Admission No.",
                         type: "text",
-
                     },
                     {   
-                        id:2,
                         name: "Admission Date",
-                        type: "text",
+                        type: "date",
                     },
                     {   
-                        id:3,
                         name: "Joining  Class",
                         type: "text",
                     },
                     {   
-                        id:4,
                         name: "Joining  Date",
                         type: "date",
                     },
@@ -31,22 +27,79 @@ const data = [
             },
             {
                 name: "Student Details",
-                studentDetails: {}
+                subSection: [
+                    {  
+                        name: "First Name",
+                        type: "text",
+                    },
+                    {   
+                        name: "Middle Name",
+                        type: "text",
+                    },
+                    {   
+                        name: "Last Name",
+                        type: "text",
+                    },
+                    {   
+                        name: "Gender",
+                        type: "text",
+                    },
+                    {  
+                        name: "D.O.B",
+                        type: "date",
+                    },
+                    {   
+                        name: "Age",
+                        type: "text",
+                    },
+                    {   
+                        name: "Aadhaar No.",
+                        type: "text",
+                    },
+                    {   
+                        name: "PEN No.",
+                        type: "text",
+                    },
+                ]
             },
             {
                 name: "Class Details",
-                classDetails: {}
+                subSection: [
+                    {  
+                        name: "Class",
+                        type: "text",
+                    },
+                    {   
+                        name: "Section",
+                        type: "text",
+                    },
+                ]
             },
             {
                 name: "Fee Details",
-                feeDetails: {}
+                subSection: [
+                    {  
+                        name: "Category",
+                        type: "text",
+                    },
+                    {   
+                        name: "Pay Mode",
+                        type: "text",
+                    },
+                    {  
+                        name: "Concession",
+                        type: "text",
+                    },
+                ]
             },
             {
                 name: "Sibling Details",
-                siblingDetails: {
-
+                siblingDetails:{
+                    name:"Sibling",
                 }
             }
         ]
     }
 ];
+
+export default data;
