@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Button, useMediaQuery, useTheme } from '@mui/material';
+import { Box, Button,  useMediaQuery, useTheme } from '@mui/material';
 import PlayStoreImage from '../../../assets/images/Google-Play.png';
 import AppleStoreImage from '../../../assets/images/app-store.png';
 
@@ -35,16 +35,19 @@ const StoreButton = ({ href, storeImage, altText, isMobile }) => (
 
 const AppStoreButtonsGroup = () => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.only('xs'));
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
   return (
+    
     <Box
       sx={{
         display: 'flex',
         gap: 1,
-        position: 'absolute',
+        alignItems:isMobile?'center':'right',
+        // position: 'absolute',
         right: isMobile ? '39%' : '30px',
         bottom: isMobile ? '10px' : '25px',
+        justifyContent:isMobile ? 'center' : 'end' ,
       }}
     >
       <StoreButton
@@ -60,6 +63,7 @@ const AppStoreButtonsGroup = () => {
         isMobile={isMobile}
       />
     </Box>
+   
   );
 };
 

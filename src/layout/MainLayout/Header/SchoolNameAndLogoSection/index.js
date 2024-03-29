@@ -10,7 +10,7 @@ const SchoolName = () => {
 
   return (
     <>
-      <Box sx={{ mx: isMobile ? '0rem' : '2rem' , display: 'flex' , alignItems: 'center' }}>
+      <Box sx={{ mx: isMobile ? '0rem' : '2rem' , display: 'flex' , alignItems: 'center' , justifyContent: isMobile ? 'center' : null }}>
             <Box  sx={{ mx: isMobile ? '0rem' : '1rem' , maxWidth:'300px' , maxHeight:'100px'  }}> 
               <img src={SchoolData.logo} alt="School Logo"  style={{objectFit:'cover', width:'70px', height:'7 0px'}}/> 
             </Box>

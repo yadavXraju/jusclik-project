@@ -24,7 +24,7 @@ export const headerFooter={
     headerApplyToFirestPageOnly:false,
     // footer props
     footerFontSize:'6',
-    footerFontColor:'#ffffff',
+    footerFontColor:'#000000',
     footerImage:null,
     footerImagePosition:'topLeft',
     footerBackgroundColor:'#ffffff',

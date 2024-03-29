@@ -54,14 +54,14 @@ const isMobile =  useMediaQuery('(max-width: 575px)');
                     <Box
                         sx={{
                             display: 'flex',
-                            gap: isTab ? '25px' : '40px',
+                            gap: isTab ? '0px' : '40px',
                             alignItems: 'center',
                             padding:  isTab ? '1.5rem' :'2rem',         
                             borderRadius: '12px',
                             border: '1px solid rgb(227, 227, 227)',
                             boxShadow: '4px 4px 9px 2px #ddddddc2',
                             background:'#fff',
-                            justifyContent:isMobile ? 'space-around' : null ,
+                            justifyContent:isMobile ? 'flex-start' : null ,
                         }}
                     >
                         {/* icon */}
@@ -69,7 +69,8 @@ const isMobile =  useMediaQuery('(max-width: 575px)');
                             sx={{
                                 background: calculateBackgroundColor(index), // Call the function to get background color
                                 borderRadius: '50%',
-                                padding: '7px'
+                                padding: '7px',
+                                marginRight: isTab ? '20px' : 'null',
                             }}
                         >
                             {item.icon}
