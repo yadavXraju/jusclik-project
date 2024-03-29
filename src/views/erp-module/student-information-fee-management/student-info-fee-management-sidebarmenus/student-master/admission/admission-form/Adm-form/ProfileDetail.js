@@ -11,6 +11,7 @@ function ProfileDetail({ setStudentDetail, setEditItem }) {
     { id: 2, section: 'Admission Details', details: { key: 'admDate', label: 'Admission Date', type: 'date' } },
     { id: 3, section: 'Admission Details', details: { key: 'joiningClass', label: 'Joining Class', type: 'text' } },
     { id: 4, section: 'Admission Details', details: { key: 'joiningDate', label: 'Joining Date', type: 'date' } },
+
     { id: 5, section: 'Student Details', details: { key: 'stdName', label: 'First Name', type: 'text' } },
     { id: 6, section: 'Student Details', details: { key: 'stdMiddleName', label: 'Middle Name', type: 'text' } },
     { id: 7, section: 'Student Details', details: { key: 'stdLastName', label: 'Last Name', type: 'text' } },
@@ -19,6 +20,7 @@ function ProfileDetail({ setStudentDetail, setEditItem }) {
     { id: 10, section: 'Student Details', details: { key: 'age', label: 'Age', type: 'text' } },
     { id: 11, section: 'Student Details', details: { key: 'aadhaarNo', label: 'Aadhaar No.', type: 'text' } },
     { id: 12, section: 'Student Details', details: { key: 'penNo', label: 'PEN No.', type: 'text' } },
+    
     { id: 13, section: 'Class Details', details: { key: 'class', label: 'Class', type: 'text' } },
     { id: 14, section: 'Class Details', details: { key: 'section', label: 'Section', type: 'text' } },
     { id: 15, section: 'Fee Details', details: { key: 'category', label: 'Category', type: 'text' } },
