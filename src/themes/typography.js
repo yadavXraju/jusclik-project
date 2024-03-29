@@ -94,10 +94,10 @@ export default function ThemeTypography(theme) {
       backgroundColor: theme.background,
       // background: `${theme?.customization?.backgroundColor}`,
       width: '100%',
-      minHeight: 'calc(100vh - 88px)',
+      minHeight: 'calc(100vh - 111px)',
       flexGrow: 1,
-      padding: isMediumDesktop ? '20px 10px'  :'20px 40px',
-      marginTop: isMobile ? '230px' : '110px',
+      padding:isMediumDesktop ? (isMobile ? '20px 0px !important' : '20px 10px') : '20px 40px',
+      marginTop: isMobile ? '170px' : '110px',
       marginRight: isMediumDesktop ? '0' : '20px',
       borderRadius: `${theme?.customization?.borderRadius}px`
     },
