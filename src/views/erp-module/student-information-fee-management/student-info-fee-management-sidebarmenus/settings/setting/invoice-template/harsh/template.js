@@ -8,8 +8,11 @@ import CurrencyRupeeOutlinedIcon from '@mui/icons-material/CurrencyRupeeOutlined
 import { commonTemplateContent } from '../common/common-states';
 import { templateCompact } from '../common/common-states';
 
-const CompactTemplate = () => {
-
+const CompactTemplate = ({states}) => {
+  const [generalSettings, headerFooterSettings, tableSettings] = states;
+  (generalSettings);
+  (headerFooterSettings);
+  (tableSettings);
 
   let gridSize;
 
@@ -190,12 +193,12 @@ for(let i=0;i<templateCompact.numberOfCopies;i++){
       spacing={2}
       sx={{
         height: '100%',
-        width:'108%',
+        width:'110%',
         margin: 'auto',
         '@media print and (min-width: 297mm) and (min-height: 210mm)': {
           // A4 landscape dimensions
           height: '210mm',
-          width: '2970mm',
+          width: '297mm',
         },
       }}
     >

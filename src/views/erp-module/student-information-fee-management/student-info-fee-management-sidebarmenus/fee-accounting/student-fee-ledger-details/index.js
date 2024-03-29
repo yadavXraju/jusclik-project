@@ -37,7 +37,7 @@ export default function StudentFeeLedgerDetails() {
   const [orderBy, setOrderBy] = useState('calories');
   const [selected, setSelected] = useState([]);
   const [searchText, setSearchText] = useState('');
- 
+
     
 
   const handleRequestSort = (event, property) => {
@@ -81,7 +81,9 @@ export default function StudentFeeLedgerDetails() {
           totalNetPay += selectedRow.netpay;
         }
       });
+    
       console.log(totalNetPay);
+      
     };
 
   
