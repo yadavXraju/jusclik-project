@@ -13,6 +13,19 @@ const commonTextStyle = {
 const PoweredBySection = () => {
   const theme = useTheme(); // Accessing theme object using useTheme hook
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const betweenMdLg=useMediaQuery(theme.breakpoints.between('md', 'lg'))
+  // for padding if position is static
+  let pad=false 
+  const pos=()=>{if(betweenMdLg||isMobile){
+    pad=true
+    return 'static'
+
+  }
+  else{
+    pad=false
+    return 'relative'
+  }
+}
   return (
     <>
       <Grid container>
@@ -23,7 +36,8 @@ const PoweredBySection = () => {
               textAlign: 'center',
               bottom: isMobile ? '60px' : '130px'
             }}
-            position={isMobile?null:'relative'}
+            position={pos()}
+            paddingBottom={pad?'1rem':null}
           >
             <img src={CloudLogo} alt="Logo" />
             <Typography variant="body2" sx={{ ...commonTextStyle }}>
