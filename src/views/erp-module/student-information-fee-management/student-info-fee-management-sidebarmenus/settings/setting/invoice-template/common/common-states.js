@@ -39,8 +39,8 @@ export const tableLayout={
     //   table header props
       headerFontSize:'9',
       headerBackgroundColorEnable:true,
-      headerBackgroundColor:'#000000',
-      headerFontColor:'#ffffff',
+      headerBackgroundColor:'#ffffff',
+      headerFontColor:'#000000',
     //   table content props
       itemRowFontSize:'9',
       itemRowBackgroundColorEnable:true,
