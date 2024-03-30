@@ -84,7 +84,7 @@ const Header = ({ handleLeftDrawerToggle }) => {
         </Box>
 
           {/* right side box */}
-          <Box sx={{flex: isMobile ? '0 0 100%' : '0 0 60%', flexWrap:'wrap'}}>
+          <Box sx={{flex: isMobile ? '0 0 100%' : '0 0 100%', flexWrap:'wrap'}}>
           {/* school Name and logo*/}
           <SchoolName/>
           </Box>

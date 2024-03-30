@@ -9,7 +9,7 @@ export const general={
     pdfFont: 'ubuntu',
     labelColor: '#333333',
     fontColor: '#333333',
-    fontSize: '9',
+    fontSize: '12',
     backgroundImage: null,
     imagePosition: 'centerCenter',
     backgroundColorEnable: true,
@@ -23,7 +23,7 @@ export const headerFooter={
     headerBackgroundColorEnable:true,
     headerApplyToFirestPageOnly:false,
     // footer props
-    footerFontSize:'6',
+    footerFontSize:'12',
     footerFontColor:'#000000',
     footerImage:null,
     footerImagePosition:'topLeft',

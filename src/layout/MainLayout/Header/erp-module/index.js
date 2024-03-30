@@ -151,7 +151,7 @@ const ErpModule = () => {
                         </Grid>
 
                         {/* erp modules  start */}
-                            <ErpModuleLayout />
+                            <ErpModuleLayout setOpen={setOpen} />
                          {/* erp modules  end */}
 
                       </PerfectScrollbar>

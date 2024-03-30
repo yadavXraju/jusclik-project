@@ -40,12 +40,12 @@ const handleOtpChange = (index, value) => {
 return (
     <Box sx={{...css.center}}>
       <Paper sx={{ ...css.mobilePaper, minWidth:'20rem'}} elevation={2}>
-        <Typography variant="h6" sx={{ ...css.formTextColor,padding:'1rem 0',sm:'14px',...css.horizontalCenter }}>Verification</Typography>
-        <Typography sx={{ ...css.formTextColor, fontWeight: '400',...css.horizontalCenter,textAlign:'center' }}>OTP has been sent to {mobileNumber}</Typography>
+        <Typography variant="h6" pb={1} sx={{ ...css.formTextColor,sm:'14px',...css.horizontalCenter }}>Verification</Typography>
+        <Typography  pb={1} fontWeight= '400' textAlign='center' sx={{ ...css.formTextColor,...css.horizontalCenter }}>OTP has been sent to {mobileNumber}</Typography>
         
-        <Link component='button' variant='body1' onClick={()=>{
+        <Link component='button' variant='body1' width='100%' onClick={()=>{
     handleSteps(-1)
-  }} sx={{py:'1rem', fontWeight: '400',...css.horizontalCenter,textAlign:'center'}}>Edit Number</Link>
+  }}   fontWeight= '400' textAlign='center' sx={{...css.horizontalCenter}}>Edit Number</Link>
         <Grid container spacing={1} justifyContent="center">
           {otp.map((digit, index) => (
             <Grid item key={index}>
@@ -88,14 +88,19 @@ return (
             ...css.center, ...css.marginAuto,
             ...css.submitButton,...css.button
           }}
+
           onClick={handleVerify}
+          disableElevation
         >VERIFY</Button>
         <Typography variant="body1" sx={{ ...css.formTextColor,pt:'1rem',...css.horizontalCenter }}>
-          Didnt Receive the Verification OTP?{' '}
+          Didn&apos;t Receive the Verification OTP?{' '}
         </Typography>
-          <Typography variant='span' sx={{ ...css.formTextColor,fontWeight: "500", "&:hover": { textDecoration: 'underline', cursor: 'pointer' },...css.horizontalCenter,py:'1rem' }} onClick={() => navigate('/parent/dashboard')}>
+        <Link component='button' variant='body1' width='100%' onClick={()=>{
+    navigate('/visitor-registration')
+  }}   fontWeight= '400' textAlign='center' sx={{...css.horizontalCenter }}> 
             Resend again
-          </Typography>
+  
+  </Link>
       </Paper>
     </Box>
   );

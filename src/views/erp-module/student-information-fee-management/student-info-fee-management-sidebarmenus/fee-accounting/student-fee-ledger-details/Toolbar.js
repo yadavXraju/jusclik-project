@@ -1,31 +1,19 @@
-import React from 'react';
-import {
-  Box,
-  Toolbar,
-  Typography,
-  IconButton,
-  Tooltip,
-  Drawer,
-  Button,
-} from '@mui/material';
+// Toolbar.js
 
-// icons
+import React from 'react';
+import { Box, Toolbar, Typography, IconButton, Tooltip, Drawer, Button } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import PaymentTwoToneIcon from '@mui/icons-material/PaymentTwoTone';
 import ArticleTwoToneIcon from '@mui/icons-material/ArticleTwoTone';
 import useDrawer from 'hooks/useDrawer';
 import FeeLedgerForms from './Forms';
 
-
-// Drawer and action
 function EnhancedTableToolbar(props) {
-  const { numSelected, selectedRows ,} = props;
-  const { anchor, toggleDrawer } = useDrawer(); // Using the useDrawer hook for managing drawer state
-
+  const { numSelected, selectedRows, totalNetPay } = props; // Receive totalNetPay as a prop
+  const { anchor, toggleDrawer } = useDrawer();
 
   const isAnyPaid = selectedRows.some(row => row.status === 'Paid');
 
-  // console.log(totalNetPay);
 
   return (
     <>
@@ -49,6 +37,7 @@ function EnhancedTableToolbar(props) {
             </Tooltip>
 
             <Tooltip title="Fee Payment">
+              {/* Disable the payment button if any row is already paid */}
               <IconButton onClick={toggleDrawer('right', true)} disabled={isAnyPaid}>
                 <PaymentTwoToneIcon />
               </IconButton>
@@ -69,12 +58,10 @@ function EnhancedTableToolbar(props) {
 
       <Drawer anchor="right" open={anchor.right} onClose={toggleDrawer('right', false)}>
         <Box style={{ width: 650 }}  sx={{ padding: '1rem' }}>
-          {/* drawer content */}
           <Box sx={{ display: "flex", justifyContent: "space-between", paddingBottom:'1rem', }}>
-                <Typography>Student Fee Ledger</Typography>
-                <Button sx={{marginTop:"-6px"}} onClick={toggleDrawer('right', false)}>Close</Button>
+            <Typography>Quick Search {totalNetPay}</Typography>
+            <Button sx={{marginTop:"-6px"}} onClick={toggleDrawer('right', false)}>Close</Button>
           </Box>
-
           <FeeLedgerForms />
         </Box>
       </Drawer>
@@ -83,6 +70,3 @@ function EnhancedTableToolbar(props) {
 }
 
 export default EnhancedTableToolbar;
-
-  
- 
