@@ -66,11 +66,18 @@ const DormEntry=  Loadable(lazy(() => import('views/erp-module/student-informati
 
 
 // transport
+
+
+const RoutesAndSlabs =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/transport/routes-slabs')));
+
+
+const BusDetails =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/transport/bus-details')));
+
+
 const TransportAllocation =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/transport/transportAllocation')));
 
 
 const TransportAllocationPreview =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/transport/transportAllocation/transportPreview')));
-
 
 // system data
 
@@ -270,7 +277,7 @@ const StudentInfoFeeRoutes = [
       },
 
 
-// reports
+   // reports
       { 
          path: 'reports', 
          children:[
@@ -347,16 +354,17 @@ const StudentInfoFeeRoutes = [
           {
             path: 'transport',
             children: [
-    
-            //   {
-            //     path: 'allocation',
-            //     element: <TransportAllocation/>
-            //  },
 
-            //  {
-            //   path : ':id',
-            //   element : <TransportAllocationPreview/>
-            // },
+              { 
+                path: 'routes-slabs', 
+                element: <RoutesAndSlabs /> 
+              },
+
+              { 
+                path: 'bus-details', 
+                element: <BusDetails /> 
+              },
+
 
 
             {

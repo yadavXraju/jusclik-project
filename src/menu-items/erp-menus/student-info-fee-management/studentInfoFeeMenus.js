@@ -46,6 +46,15 @@ const InvoiceModificationColleagueTitles = [
 ];
 
 
+// transport
+
+const TransportColleagueTitles = [
+  {title : 'Routes & Slabs' , url : '/erp/student-info-fee/transport/routes-slabs'}, 
+  {title :  'Bus Details ' , url : '/erp/student-info-fee/transport/bus-details'}, 
+  {title :  'Transport Allocation' , url : '/erp/student-info-fee/transport/allocation'}, 
+
+];
+
 
 
 const StudentInfoFeeMenu = {
@@ -299,13 +308,34 @@ const StudentInfoFeeMenu = {
             url: '/erp/student-info-fee/transport',
             icon: DirectionsBusTwoToneIcon,
             children : [
+
+              {
+                id: 'routes-slabs',
+                title: 'Routes & Slabs',
+                type: 'item',
+                url: '/erp/student-info-fee/transport/routes-slabs',
+                breadcrumbs: false,
+                colleagueTitle : TransportColleagueTitles,
+              },
+
+                {
+                  id: 'Bus Details',
+                  title: 'Bus Details',
+                  type: 'item',
+                  url: '/erp/student-info-fee/transport/bus-details',
+                  breadcrumbs: false,
+                  colleagueTitle : TransportColleagueTitles,
+                },
+
                 {
                   id: 'transport-allocation',
                   title: 'Transport Allocation',
                   type: 'item',
                   url: '/erp/student-info-fee/transport/allocation',
                   breadcrumbs: false,
+                  colleagueTitle : TransportColleagueTitles,
                 },
+
              ]
           },
 
