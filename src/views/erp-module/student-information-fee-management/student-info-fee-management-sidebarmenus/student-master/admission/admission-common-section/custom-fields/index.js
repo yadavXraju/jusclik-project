@@ -4,12 +4,12 @@ import DragIndicatorOutlinedIcon from '@mui/icons-material/DragIndicatorOutlined
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import DoDisturbOnOutlinedIcon from '@mui/icons-material/DoDisturbOnOutlined';
 import useDrawer from 'hooks/useDrawer';
-import AddCustomField from './AddCustomField';
+import AddCustomField from './add-custom-field';
 import studentDetailsData from '../../admission-form/Adm-form/studentDetailsData';
-
+import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 
 const CustomFields = ({ customFieldDrawer }) => {
-  const [hoverUnusedField, setHoverUnusedField] = useState(false);
+  const [hoverUnusedField, setHoverUnusedField] = useState(-1);
   const { anchor, toggleDrawer } = useDrawer();
   // const isMobile = useMediaQuery('(max-width: 767px)')
   return (
@@ -22,51 +22,57 @@ const CustomFields = ({ customFieldDrawer }) => {
       </Box>
       <Box sx={{ display: "flex", flexDirection: "space-between", width: "100%" }}>
         {/* Used Fields*/}
-        <Box sx={{ display: 'flex', flexDirection: "column", gap: "20px", height: '100%', padding: "20px 20px 20px 20px", width: "50%" }}>
-          <Typography>Used Fields</Typography>
-          {
-            studentDetailsData.map((field) => (
-              <Box key={field.id}>
-                <Typography>{field?.name}</Typography>
-                {field.section.map((item) => (
-                  <Box key={item.id}>
-                    <Typography>{item?.name}</Typography>
-                    {item?.subSection.map((finalField) =>
-                      finalField.selected && (<Box
-                        sx={{
-                          display: "flex",
-                          width: "100%",
-                          justifyContent: "space-between",
-                          alignItems: "center",
-                          gap: "5px"
-                        }}
-                        key={finalField?.id}
-                        onMouseEnter={() => setHoverUnusedField(true)}
-                        onMouseLeave={() => setHoverUnusedField(false)}
-                      >
-                        <DragIndicatorOutlinedIcon sx={{ visibility: hoverUnusedField ? 'visible' : "hidden" }} />
-                        <Box sx={{ border: "1px solid #eee", height: "40px", borderRadius: "4px", display: "flex", alignItems: "center", width: "85%" }}>
-                          <Typography>{finalField?.name}</Typography>
+        <Box sx={{ display: 'flex', flexDirection: "column", gap: "20px", padding: "20px 20px 20px 20px", width: "65%" }} >
+          <Typography variant='h4'>Used Fields</Typography>
+          <Box sx={{ height: "calc(100vh - 180px)" }} className="scrollbar">
+            {
+              studentDetailsData && studentDetailsData.map((field) => (
+                <Box key={field.id} className="scrollbar">
+                  {/* Group Name */}
+                  <Typography variant="h5" sx={{ padding: "10px 10px 10px 0px" }}>{field?.name}</Typography>
+                  {field.section.map((item) => (
+                    <Box key={item.id}>
+                      {/* Sub Group Name */}
+                      <Typography variant="h6" sx={{ padding: "10px 0px" }}>{item?.name}</Typography>
+                      {item?.subSection.map((finalField) =>
+                        finalField.selected && (<Box
+                          sx={{
+                            display: "flex",
+                            width: "100%",
+                            justifyContent: "space-between",
+                            alignItems: "center",
+                            gap: "5px",
+                            padding: "5px 10px 5px 0px",
+                            backgroundColor: hoverUnusedField == finalField?.id ? '#eef2f682' : "inherit"
+                          }}
+                          key={finalField?.id}
+                          onMouseEnter={() => setHoverUnusedField(finalField?.id)}
+                          onMouseLeave={() => setHoverUnusedField(-1)}
+                        >
+                          <DragIndicatorOutlinedIcon sx={{color:"#b3b9c1"}}/>
+                          <Box sx={{ border: "1px solid #eee", height: "40px", borderRadius: "4px", display: "flex", alignItems: "center", width: "85%", paddingLeft: "10px" }}>
+                            <Typography>{finalField?.name}</Typography>
+                          </Box>
+                          <EditOutlinedIcon sx={{ visibility: hoverUnusedField == finalField?.id ? 'visible' : "hidden", height: "20px", width: "20px",color:"#b3b9c1" }} />
+                          <DoDisturbOnOutlinedIcon sx={{ visibility: hoverUnusedField == finalField?.id ? 'visible' : "hidden", height: "20px", width: "20px",color:"#b3b9c1" }} />
                         </Box>
-                        <EditOutlinedIcon sx={{ visibility: hoverUnusedField ? 'visible' : "hidden" }} />
-                        <DoDisturbOnOutlinedIcon sx={{ visibility: hoverUnusedField ? 'visible' : "hidden" }} />
-                      </Box>
-                      )
-                    )}
-                  </Box>
-                ))}
-              </Box>
-            ))
-          }
+                        )
+                      )}
+                    </Box>
+                  ))}
+                </Box>
+              ))
+            }
+          </Box>
         </Box>
         {/*Unused Fields*/}
-        <Box sx={{ display: 'flex', flexDirection: "column", gap: "20px", height: '100%', padding: "20px 20px 20px 20px", width: "50%" }}>
-          <Box sx={{ display: "flex", justifyContent: "space-around" }}>
-            <Typography>Unused Fields</Typography>
-            <Typography variant="text" sx={{ color: "#2196f3", cursor: "pointer" }} onClick={toggleDrawer("right", true)}>Add Custom Field</Typography>
+        <Box sx={{ display: 'flex', flexDirection: "column", gap: "20px", height: '100%', padding: "20px 20px 20px 20px", width: "35%" }}>
+          <Button variant="outlined" sx={{width:"150px"}} startIcon={<AddOutlinedIcon />} onClick={toggleDrawer("right", true)}>Custom Field</Button>
+          <Box sx={{ display: "flex", justifyContent: "flex-start" }}>
+            <Typography variant="h4">Unused Fields</Typography>
           </Box>
           {
-            studentDetailsData.map((field) => (
+            studentDetailsData && studentDetailsData.map((field) => (
               <Box key={field.id}>
                 {field.section.map((item) => (
                   <Box key={item.id}>
@@ -78,18 +84,18 @@ const CustomFields = ({ customFieldDrawer }) => {
                           width: "100%",
                           justifyContent: "space-between",
                           alignItems: "center",
-                          gap: "5px"
+                          gap: "5px",
+                          padding: "5px 10px 5px 0px",
+                          backgroundColor: hoverUnusedField == finalField?.id ? '#eef2f682' : "inherit"
                         }}
                         key={finalField?.id}
-                        onMouseEnter={() => setHoverUnusedField(true)}
-                        onMouseLeave={() => setHoverUnusedField(false)}
+                        onMouseEnter={() => setHoverUnusedField(finalField?.id)}
+                        onMouseLeave={() => setHoverUnusedField(-1)}
                       >
-                        <DragIndicatorOutlinedIcon sx={{ visibility: hoverUnusedField ? 'visible' : "hidden" }} />
-                        <Box sx={{ border: "1px solid #eee", height: "40px", borderRadius: "4px", display: "flex", alignItems: "center", width: "85%" }}>
+                        <DragIndicatorOutlinedIcon sx={{color:"#b3b9c1"}}/>
+                        <Box sx={{ border: "1px solid #eee", height: "40px", borderRadius: "4px", display: "flex", alignItems: "center", width: "85%", paddingLeft: "10px" }}>
                           <Typography>{finalField?.name}</Typography>
                         </Box>
-                        <EditOutlinedIcon sx={{ visibility: hoverUnusedField ? 'visible' : "hidden" }} />
-                        <DoDisturbOnOutlinedIcon sx={{ visibility: hoverUnusedField ? 'visible' : "hidden" }} />
                       </Box>)
                     )}
                   </Box>
