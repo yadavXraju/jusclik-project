@@ -110,12 +110,12 @@ export const css = {
        fontFamily: 'plus Jakarta sans', 
        textAlign: 'center', 
        marginBottom: '10px',
-       fontWeight:'500',
+       fontWeight:'700',
     },
   },
   parentPaperBox:{
     paddingTop:'0rem',
-    paddingBottom:'3rem',
+    paddingBottom:'1.5rem',
     '@media (max-width: 600px)': {
       display: 'none', // Hide the component on small screens (sm viewport)
     },
