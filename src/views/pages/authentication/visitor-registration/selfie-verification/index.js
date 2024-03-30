@@ -75,7 +75,7 @@ const SelfieVerification = ({ step, handleSteps, md}) => {
          <Paper sx={{ ...css.mobilePaper, minWidth: md ? '20rem' : '25rem' }} elevation={2}>
             <Box>
                <Box sx={{ ...css.horizontalCenter, }}>
-                  <Typography variant="h6" sx={{ ...css.formTextColor, fontWeight: '400', sm: '14px' }}>Please upload your selfie</Typography>
+                  <Typography variant="h6" sx={{ ...css.formTextColor, fontWeight: '400', sm: '14px' }}>Take a Selfie</Typography>
                </Box>
                <Divider />
                <Box sx={{ pt: '1rem' }}>
@@ -125,7 +125,7 @@ const SelfieVerification = ({ step, handleSteps, md}) => {
 
                            {showTakePhotoButton && (
                               <Box>
-                                 <Button sx={{ ...css.center, ...css.marginAuto, ...css.submitButton, ...css.button }} onClick={takePhoto}>
+                                 <Button sx={{ ...css.center, ...css.marginAuto, ...css.submitButton, ...css.button }} onClick={takePhoto} disableElevation>
                                     Take Photo
                                  </Button>
                               </Box>)}
@@ -141,12 +141,16 @@ const SelfieVerification = ({ step, handleSteps, md}) => {
                            ...css.marginAuto,
                            ...css.submitButton,
                            ...css.button
-                        }}>Retake</Button>
+                        }}
+                        disableElevation
+                        >Retake</Button>
 
                         <Button variant="contained" color="primary" sx={{
                            ...css.center, ...css.marginAuto,
                            ...css.submitButton, ...css.button
-                        }} onClick={() => handleSteps(step)}>
+                        }} 
+                        disableElevation
+                        onClick={() => handleSteps(step)}>
                            Submit
                         </Button>
                      </Box>

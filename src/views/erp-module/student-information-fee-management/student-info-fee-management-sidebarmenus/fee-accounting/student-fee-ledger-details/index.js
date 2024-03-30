@@ -37,6 +37,7 @@ export default function StudentFeeLedgerDetails() {
   const [orderBy, setOrderBy] = useState('calories');
   const [selected, setSelected] = useState([]);
   const [searchText, setSearchText] = useState('');
+  
 
     
 
@@ -301,6 +302,7 @@ export default function StudentFeeLedgerDetails() {
                 );
               })}
             </TableBody>
+            
           </Table>
         </TableContainer>
       </Paper>

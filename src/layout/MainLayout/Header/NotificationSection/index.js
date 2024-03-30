@@ -81,7 +81,8 @@ const NotificationSection = () => {
           ml: 2,
           mr: 2,
           [theme.breakpoints.down('md')]: {
-            mr: 2
+            mr: '10px',
+            ml:'10px',
           }
         }}
       >

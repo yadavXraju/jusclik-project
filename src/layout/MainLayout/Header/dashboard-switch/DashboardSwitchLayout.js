@@ -1,3 +1,4 @@
+// DashboardSwitchLayout.jsx
 import React from 'react';
 import { styled } from '@mui/material/styles';
 import { List, ListItem, Box, ListItemText, Divider } from '@mui/material';
@@ -5,7 +6,6 @@ import { useTheme } from '@mui/material/styles';
 import { DashboardList } from './DashboardList';
 import { useNavigate } from 'react-router';
 
-// styles
 const ListItemWrapper = styled('div')(({ theme }) => ({
   cursor: 'pointer',
   padding: 16,
@@ -17,16 +17,14 @@ const ListItemWrapper = styled('div')(({ theme }) => ({
   }
 }));
 
-const DashboardSwitchLayout = () => {
+const DashboardSwitchLayout = ({ setOpen }) => {
   const theme = useTheme();
   const navigate = useNavigate();
 
   const handleClick = (url, role) => {
-    // Update role in local storage
     localStorage.setItem('userRole', role);
-    // Navigate to the specified URL
     navigate(url);
-    // window.location.reload()
+    setOpen(false); // Close the Popper
   };
 
   return (
@@ -66,8 +64,6 @@ const DashboardSwitchLayout = () => {
                 textAlign: 'center',
               }}>
                 {item.icon}
-
-                
                 <ListItemText primary={item.name} />
               </Box>
             </ListItem>

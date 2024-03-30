@@ -63,7 +63,7 @@ const VisitorRegistrationTemplate = () => {
                             </Grid>
                         </Grid>
                         {/* school logo over*/}
-                        <Grid item elevation={6} md={6}>
+                        <Grid item elevation={6} md={6} >
                             <Box sx={{...css.parentPaper,...css.horizontalCenter}}>                            
                             <Box sx={{ ...css.parentPaperBox, ...css.displayNoneOnMd }}>
                                 <Typography
@@ -83,15 +83,17 @@ const VisitorRegistrationTemplate = () => {
                                 <Typography
                                     component="h4"
                                     variant="h4"
+                                    pt={2}
+
                                     sx={{ ...css.parentPaperHeading.managedBy }}
                                 >
                                     Managed By Jusklik
                                 </Typography>
                             </Box>
                             
-                            <Box sc={{display:'flex',flexDirection:'column'}}>
+                            <Box sc={{display:'flex',flexDirection:'column'}} >
 
-                            <Box sx={{ ...css.center, flexDirection: 'column', ...css.mobileLogoImage }}>
+                            <Box sx={{ ...css.center, flexDirection: 'column', ...css.mobileLogoImage,marginBottom:'1rem' }} className='findMe'>
                                 {/* logo image for mobile devices */}
                                 <img
                                     src={LogoImg}
@@ -107,6 +109,7 @@ const VisitorRegistrationTemplate = () => {
                                 <Typography
                                     component="h4"
                                     variant="h4"
+                                    pt={2}
                                     sx={{ ...css.parentPaperHeading.managedBy }}
                                 >
                                     Managed By Jusklik

@@ -24,7 +24,8 @@ import DashboardSwitch from './dashboard-switch';
 
 // popper imports
 import PopupState, { bindToggle, bindPopper } from 'material-ui-popup-state';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
+import ExpandMoreTwoToneIcon from '@mui/icons-material/ExpandMoreTwoTone';
+import { useState } from 'react';
 
 // ==============================|| MAIN NAVBAR / HEADER ||============================== //
 
@@ -38,92 +39,120 @@ const Header = ({ handleLeftDrawerToggle }) => {
   // check the url 
   // const isERP = location.pathname.includes('erp');
 
+  const [menuExpand , setMenuExpand ] = useState ( ' ')
 
+const handleClick = () =>
+{
+   if (menuExpand == ''){
+    setMenuExpand('menu-expanded')
+   }
+
+   else {
+    setMenuExpand('')
+   }
+}
 
 
   return (
     <>   
-    <Grid style={{width:'100%'}} sx={{display:'flex', justifyContent:'space-between', flexWrap: isMobile ? 'wrap' : null }}>
-      <Grid sx={{display:'flex', width:'100%'}}>
+    <Grid style={{width:'100%'}} sx={{display:'flex', justifyContent:'space-between', flexWrap: isMobile ? 'wrap' : null , flexDirection: isMobile ? 'column-reverse' : null }}>
+   
+   {/* mobile view ================================= */}
         {/* brand logo & toggler button */}
-        <Box
-          sx={{
-            width: 228,
-            display: 'flex',
-            [theme.breakpoints.down('md')]: {
-              width: 'auto',
-              marginLeft :'auto'
-            }
-          }}
-        >
-          <Box className='logo' component="span" sx={{ display: { xs: 'none', md: 'block' }, flexGrow: 1 }}>
-            <LogoSection />
-          </Box>
+       {isMobile ?(
+          <>
+             {/* school Name and logo*/}
 
-          <ButtonBase  className='menuBtn' sx={{ borderRadius: '12px', overflow: 'hidden',  }}>
-            <Avatar
-              variant="rounded"
+             <Grid sx={{display:'flex', width:'100%' , }}>
+
+                  <Box className={menuExpand} sx={{ flexWrap:'wrap' , paddingLeft: isMobile ? '6px' : null , }}>
+                     <SchoolName/> 
+                 </Box>
+            </Grid>
+          </>
+       )
+      
+      //  desktop view ================================
+      : (
+
+        <>
+          <Grid sx={{display:'flex', width:'100%' , }}>
+
+              <Box
               sx={{
-                ...theme.typography.commonAvatar,
-                ...theme.typography.mediumAvatar,
-                transition: 'all .2s ease-in-out',
-                background: theme.palette.secondary.light,
-                color: theme.palette.secondary.dark,
-                '&:hover': {
-                  background: theme.palette.secondary.dark,
-                  color: theme.palette.secondary.light
+                width: 228,
+                display: 'flex',
+                [theme.breakpoints.down('md')]: {
+                  width: 'auto',
+                  marginLeft :'0'
                 }
               }}
-              onClick={handleLeftDrawerToggle}
-              color="inherit"
             >
-              <IconMenu2 stroke={1.5} size="1.3rem" />
-            </Avatar>
-          </ButtonBase>
+              <Box className='logo' component="span" sx={{ display: { xs: 'none', md: 'block' }, flexGrow: 1 }}>
+                <LogoSection />
+              </Box>
 
-        </Box>
+              <ButtonBase  className='menuBtn' sx={{ borderRadius: '12px', overflow: 'hidden',  }}>
+                <Avatar
+                  variant="rounded"
+                  sx={{
+                    ...theme.typography.commonAvatar,
+                    ...theme.typography.mediumAvatar,
+                    transition: 'all .2s ease-in-out',
+                    background: theme.palette.secondary.light,
+                    color: theme.palette.secondary.dark,
+                    '&:hover': {
+                      background: theme.palette.secondary.dark,
+                      color: theme.palette.secondary.light
+                    }
+                  }}
+                  onClick={handleLeftDrawerToggle}
+                  color="inherit"
+                >
+                  <IconMenu2 stroke={1.5} size="1.3rem" />
+                </Avatar>
+              </ButtonBase>
 
-          {/* right side box */}
-          <Box sx={{flex: isMobile ? '0 0 100%' : '0 0 60%', flexWrap:'wrap'}}>
-          {/* school Name and logo*/}
-          <SchoolName/>
-          </Box>
+            </Box>
 
-        </Grid>
+                {/* school Name and logo*/}
 
-        <Grid sx={{
-            width: isMobile ? '100%' : 'calc(100% - 228px)',
-            display:'flex',
-            flexDirection:'column',
-            flexWrap:'wrap',
-        }}>
+              <Box sx={{flexWrap:'wrap' , paddingLeft: isMobile ? '6px' : null}}>
+                <SchoolName/> 
+              </Box>
 
-                
+          </Grid>
+         </>
 
-              
-        </Grid>
+      )} 
+       
+       
+
+
 
 
         {/* popper */}
 
         {/* Conditionally render Popper only in mobile view */}
         {isMobile
-       // mobile view
+       // mobile view ============================================
 
         ? (
-          <>
-            <Grid sx={{display:'flex' , alignItems:'center' ,justifyContent: 'space-between', width:'100%'}}>
+           <>
+            <Grid sx={{display:'flex' , alignItems:'center' , width:'100%'}}>
                 <PopupState variant="popper" popupId="demo-popup-popper">
                   {(popupState) => (
                     <>
-                    <Box>
-                       <MoreVertIcon {...bindToggle(popupState)} />
+
+                    {/* more icon ========================*/}
+                    <Box sx={{width:'34px' , height:'34px' , display:'flex' , alignItems:'center', justifyContent:'center', backgroundColor:'#ede7f6', borderRadius:'8px', marginLeft: isMobile ? 'auto' : null ,  }} onClick={handleClick}>
+                       <ExpandMoreTwoToneIcon {...bindToggle(popupState)} sx={{color:'#5e35b1'}} />
                     </Box>
 
-                      <Popper {...bindPopper(popupState)} transition>
+                      <Popper {...bindPopper(popupState)} transition sx={{zIndex:'99999'}}>
                         {({ TransitionProps }) => (
                           <Fade {...TransitionProps} timeout={350}>
-                            <Paper sx={{display:'flex' , padding:'2rem 1rem 1rem 1rem' , width:'100vw' , justifyContent:'end'}} >
+                            <Paper sx={{display:'flex' , padding:'18px 1rem 1rem 1rem' , width:'100vw' , justifyContent:'end' , marginTop:'88px'}} >
                                   {/* help section */}
                                   <HelpSection/>
 
@@ -140,20 +169,60 @@ const Header = ({ handleLeftDrawerToggle }) => {
                   )}
                 </PopupState>
 
-                <Box sx={{display:'flex', alignItems:'center' , flexWrap:'wrap', marginLeft: smallMobile ? '1rem' : null , }}>
+                {/* menu btn start ================================= */}
+                  <Box
+                    sx={{
+                      width: 228,
+                      display: 'flex',
+                      [theme.breakpoints.down('md')]: {
+                        width: 'auto',
+                        marginLeft :'0'
+                      },
+                      order: isMobile ? '-1' : null
+                    }}
+              >
+                <Box  component="span" sx={{ display: { xs: 'none', md: 'block' }, flexGrow: 1 }} >
+                  <LogoSection />
+                </Box>
+
+                <ButtonBase  className='menuBtn' sx={{ borderRadius: '12px', overflow: 'hidden',  }}>
+                  <Avatar
+                    variant="rounded"
+                    sx={{
+                      ...theme.typography.commonAvatar,
+                      ...theme.typography.mediumAvatar,
+                      transition: 'all .2s ease-in-out',
+                      background: theme.palette.secondary.light,
+                      color: theme.palette.secondary.dark,
+                      '&:hover': {
+                        background: theme.palette.secondary.dark,
+                        color: theme.palette.secondary.light
+                      }
+                    }}
+                    onClick={handleLeftDrawerToggle}
+                    color="inherit"
+                  >
+                    <IconMenu2 stroke={1.5} size="1.3rem" />
+                  </Avatar>
+                </ButtonBase>
+
+                  </Box>
+                {/* menu btn end ================================= */}
+
+                <Box sx={{display:'flex', alignItems:'center' , flexWrap:'wrap', }}>
 
 
-                <ErpModule />
+                    <ErpModule />
 
-                {/* help section */}
-                <HelpSection/>
+                    {/* help section */}
+                    {/* <HelpSection/> */}
 
 
-                {/* notification */}
-                <NotificationSection />
+                    {/* notification */}
+                    <NotificationSection />
 
-                {/* profile */}
-                <ProfileSection />
+                    {/* profile */}
+                    <ProfileSection />
 
          
 
@@ -162,7 +231,7 @@ const Header = ({ handleLeftDrawerToggle }) => {
            </>
          )
 
-        //  desktop view
+        //  desktop view =============================================
         : (
           <Box sx={{display:'flex', alignItems:'center' , flex: isMobile ? '0 0 100%' : '0 0 40%',  justifyContent:  smallMobile ? 'flex-start' : 'end', flexWrap:'wrap', marginLeft: smallMobile ? '1rem' : null}}>
 
@@ -171,7 +240,7 @@ const Header = ({ handleLeftDrawerToggle }) => {
           {/* { isERP ? <ErpModule />  : <SiblingSwitch />} */}
           {/* <SiblingSwitch /> */}
           
-          <DashboardSwitch/>
+          <DashboardSwitch />
 
           <ErpModule />
         
