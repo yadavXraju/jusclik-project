@@ -4,7 +4,12 @@ import { commonTemplateContent } from '../../common/common-states';
 import Divider from '@mui/material/Divider';
 import CurrencyRupeeOutlinedIcon from '@mui/icons-material/CurrencyRupeeOutlined';
 
-const CompactTemplate5= () => {
+const CompactTemplate5= ({states}) => {
+
+    const [generalSettings, headerFooterSettings, tableSettings] = states;
+    (generalSettings);
+    (headerFooterSettings);
+    (tableSettings);
   return (
 
     <Box sx={{ eight: '100%',
@@ -15,9 +20,12 @@ const CompactTemplate5= () => {
       height: '297mm',
       width: '210mm',
     },}}>
-      <Paper elevation={4}>
+      <Paper elevation={4} sx={{paddingTop:`${generalSettings.marginTop}rem`,
+    paddingRight:`${generalSettings.marginRight}rem`,
+    scrollPaddingBottom:`${generalSettings.marginBottom}rem`,
+    paddingLeft:`${generalSettings.marginLeft}rem`}}>
 
-        <Box ml={6} mr={7} pt={6} display={'flex'} justifyContent={'end'}>
+        <Box ml={6} mr={7} pt={6} display={'flex'} justifyContent={'end'} bgcolor={headerFooterSettings.headerBackgroundColor}>
           <Box>
             <Typography p={1} variant="h2" >{commonTemplateContent.schoolName}</Typography>
             <Typography p={1} variant='h4' sx={{ fontWeight: '500', textAlign: 'end' }}>Sohna Dhani Road  Ward No - 01 </Typography>
@@ -25,54 +33,59 @@ const CompactTemplate5= () => {
             <Typography p={1} variant='h4' sx={{ fontWeight: '500', textAlign: 'end' }}>{commonTemplateContent.schoolTel}</Typography>
           </Box>
         </Box>
-        <Box pt={5} ml={6} mr={7}>
+        <Box pt={5} ml={6} mr={7} pr={11}>
           <Divider textAlign="right"><Typography variant='h1'>INVOICE</Typography></Divider>
         </Box>
-        <Box ml={6} mr={4} pt={6} sx={{ display: "flex", justifyContent: "space-between" }}>
+        <Box ml={6} mr={4} pt={6} bgcolor={generalSettings.backgroundColor} sx={{ display: "flex", justifyContent: "space-between" }}>
           <Box pl={4}>
             <Box display={'flex'}>
-              <Typography p={1} variant='h5' sx={{ fontWeight: '400', width: '116px' }}>Adm No:</Typography>
-              <Typography p={1} variant='h5' sx={{ fontWeight: 'bold' }}>{commonTemplateContent.admissionNo}</Typography>
+              <Typography p={1} variant='h5' sx={{ fontWeight: '400', width: '116px' , color:generalSettings.labelColor}}>Adm No:</Typography>
+              <Typography p={1} variant='h5' sx={{ fontWeight: 'bold' ,color:generalSettings.fontColor ,fontSize:`${generalSettings.fontSize}px`}}>{commonTemplateContent.admissionNo}</Typography>
             </Box>
             <Box display={'flex'}>
-              <Typography p={1} variant='h5' sx={{ fontWeight: '400', width: '117px' }}>Class:</Typography>
-              <Typography p={1} variant='h5' sx={{ fontWeight: 'bold' }}>{commonTemplateContent.className}</Typography>
+              <Typography p={1} variant='h5' sx={{ fontWeight: '400', width: '117px', color:generalSettings.labelColor }}>Class:</Typography>
+              <Typography p={1} variant='h5' sx={{ fontWeight: 'bold' ,color:generalSettings.fontColor ,fontSize:`${generalSettings.fontSize}px`}}>{commonTemplateContent.className}</Typography>
             </Box>
             <Box display={'flex'}>
-              <Typography p={1} variant='h5' sx={{ fontWeight: '400', width: '110px' }}>Name:</Typography>
-              <Typography p={1} variant='h5' sx={{ fontWeight: '400' }}>{commonTemplateContent.name}</Typography>
+              <Typography p={1} variant='h5' sx={{ fontWeight: '400', width: '110px', color:generalSettings.labelColor }}>Name:</Typography>
+              <Typography p={1} variant='h5' sx={{ fontWeight: '400',color:generalSettings.fontColor ,fontSize:`${generalSettings.fontSize}px`}}>{commonTemplateContent.name}</Typography>
             </Box>
             <Box display={'flex'}>
-              <Typography p={1} variant='h5' sx={{ fontWeight: '400', width: '110px' }}>Mobile:</Typography>
-              <Typography p={1} variant='h5' sx={{ fontWeight: '400' }}>{commonTemplateContent.mobile}</Typography>
+              <Typography p={1} variant='h5' sx={{ fontWeight: '400', width: '110px', color:generalSettings.labelColor }}>Mobile:</Typography>
+              <Typography p={1} variant='h5' sx={{ fontWeight: '400' ,color:generalSettings.fontColor ,fontSize:`${generalSettings.fontSize}px`}}>{commonTemplateContent.mobile}</Typography>
             </Box>
             <Box display={'flex'}>
-              <Typography p={1} variant='h5' sx={{ fontWeight: '400', width: '110px' }}>Father:</Typography>
-              <Typography p={1} variant='h5' sx={{ fontWeight: '400' }}>{commonTemplateContent.fatherName}</Typography>
+              <Typography p={1} variant='h5' sx={{ fontWeight: '400', width: '110px' , color:generalSettings.labelColor}}>Father:</Typography>
+              <Typography p={1} variant='h5' sx={{ fontWeight: '400' ,color:generalSettings.fontColor ,fontSize:`${generalSettings.fontSize}px`}}>{commonTemplateContent.fatherName}</Typography>
             </Box>
           </Box>
 
 
-          <Box pr={12.5} sx={{ width: '25%' }}>
+          <Box pr={12.5} sx={{ width: '44%' }}>
             <Box display={'flex'} >
-              <Typography p={1} variant="h5" sx={{ fontWeight: '400', textAlign: 'end', width: '100%' }} >Invoice No:</Typography>
-              <Typography p={1} variant="body1" sx={{ fontWeight: 'bold', textAlign: 'end', width: '100%' }}>{commonTemplateContent.invoiceNo}</Typography>
+              <Typography p={1} variant="h5" sx={{ fontWeight: '400', textAlign: 'end', width: '100%', color:generalSettings.labelColor }} >Invoice No:</Typography>
+              <Typography p={1} variant="body1" sx={{ fontWeight: 'bold', textAlign: 'end', width: '100%' ,color:generalSettings.fontColor ,fontSize:`${generalSettings.fontSize}px`
+            }}>{commonTemplateContent.invoiceNo}</Typography>
             </Box>
             <Box display={'flex'}>
-              <Typography p={1} variant="h5" sx={{ fontWeight: '400', textAlign: 'end', width: '100%' }}>Invoice Date:</Typography>
-              <Typography p={1} variant="body1" sx={{ fontWeight: '400', textAlign: 'end', width: '100%' }}>{commonTemplateContent.invoiceDate}</Typography>
+              <Typography p={1} variant="h5" sx={{ fontWeight: '400', textAlign: 'end', width: '100%', color:generalSettings.labelColor }}>Invoice Date:</Typography>
+              <Typography p={1} variant="body1" sx={{ fontWeight: '400', textAlign: 'end', width: '100%' ,color:generalSettings.fontColor ,fontSize:`${generalSettings.fontSize}px`
+            }}>{commonTemplateContent.invoiceDate}</Typography>
             </Box>
             <Box display={'flex'}>
-              <Typography p={1} variant="h5" sx={{ fontWeight: '400', textAlign: 'end', width: '100%' }}>Academic Year:</Typography>
-              <Typography p={1} variant="body1" sx={{ fontWeight: '400', textAlign: 'end', width: '100%' }}>{commonTemplateContent.academicYear}</Typography>
+              <Typography p={1} variant="h5" sx={{ fontWeight: '400', textAlign: 'end', width: '100%', color:generalSettings.labelColor }}>Academic Year:</Typography>
+              <Typography p={1} variant="body1" sx={{ fontWeight: '400', textAlign: 'end', width: '100%' ,color:generalSettings.fontColor ,fontSize:`${generalSettings.fontSize}px`
+            }}>{commonTemplateContent.academicYear}</Typography>
             </Box>
             <Box display={'flex'}>
-              <Typography p={1} variant="h5" sx={{ fontWeight: '400', textAlign: 'end', width: '100%' }}>Fee Period:</Typography>
-              <Typography p={1} variant="body1" sx={{ fontWeight: 'bold', textAlign: 'end', width: '100%' }}>{commonTemplateContent.feePeriod}</Typography>
+              <Typography p={1} variant="h5" sx={{ fontWeight: '400', textAlign: 'end', width: '100%' , color:generalSettings.labelColor}}>Fee Period:</Typography>
+              <Typography p={1} variant="body1" sx={{ fontWeight: 'bold', textAlign: 'end', width: '100%',color:generalSettings.fontColor ,fontSize:`${generalSettings.fontSize}px`
+             }}>{commonTemplateContent.feePeriod}</Typography>
             </Box>
             <Box display={'flex'}>
-              <Typography p={1} variant="h5" sx={{ fontWeight: '400', textAlign: 'end', width: '100%' }}>Due Date:</Typography>
-              <Typography p={1} variant="body1" sx={{ fontWeight: '400', textAlign: 'end', width: '100%' }}>{commonTemplateContent.dueDate}</Typography>
+              <Typography p={1} variant="h5" sx={{ fontWeight: '400', textAlign: 'end', width: '100%' , color:generalSettings.labelColor}}>Due Date:</Typography>
+              <Typography p={1} variant="body1" sx={{ fontWeight: '400', textAlign: 'end', width: '100%' ,color:generalSettings.fontColor ,fontSize:`${generalSettings.fontSize}px`
+            }}>{commonTemplateContent.dueDate}</Typography>
             </Box>
           </Box>
         </Box>
@@ -80,36 +93,36 @@ const CompactTemplate5= () => {
         <Box ml={4} mr={4} p={4} >
           <Box border={'1px solid'} borderColor={'#DEDEDE'}>
             <TableContainer >
-              <Table >
-                <TableHead sx={{ bgcolor: '#3c3d3a', fontFamily: 'sans-serif' }}>
-                  <TableRow >
-                    <TableCell sx={{ fontWeight: 'bold', color: 'white' }}>#</TableCell>
-                    <TableCell sx={{ fontWeight: 'bold', color: 'white' }}>FEES HEADS</TableCell>
+              <Table sx={{border:`0px solid ${tableSettings.borderColor}`}} >
+                <TableHead sx={{ bgcolor:tableSettings.headerBackgroundColor, fontFamily: 'sans-serif' }}>
+                  <TableRow  sx={{borderBottom:`1px solid ${tableSettings.borderColor}`}}>
+                    <TableCell sx={{ fontWeight: 'bold',color:tableSettings.headerFontColor,fontSize:`${tableSettings.headerFontSize}px` }}>#</TableCell>
+                    <TableCell sx={{ fontWeight: 'bold', color:tableSettings.headerFontColor,fontSize:`${tableSettings.headerFontSize}px`}}>FEES HEADS</TableCell>
 
-                    <TableCell sx={{ fontWeight: 'bold', color: 'white' }} align="right">AMOUNT</TableCell>
+                    <TableCell sx={{ fontWeight: 'bold',color:tableSettings.headerFontColor,fontSize:`${tableSettings.headerFontSize}px`}} align="right">AMOUNT</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  <TableRow>
-                    <TableCell width="100px" scope="row"  sx={{ fontWeight: 'bold' }}>1</TableCell>
+                  <TableRow sx={{bgcolor:tableSettings.itemRowBackgroundColor,borderBottom:`1px solid ${tableSettings.borderColor}`}}>
+                    <TableCell width="100px" scope="row"  sx={{ fontWeight: 'bold',color:tableSettings.itemRowFontColor,fontSize:`${tableSettings.itemRowFontSize}px` }}>1</TableCell>
                     <TableCell>
                       <Box>
-                        <Typography variant="h5" sx={{ fontWeight: 'bold' }}>Tution Fees</Typography>
+                        <Typography variant="h5" sx={{ fontWeight: 'bold',color:tableSettings.itemRowFontColor,fontSize:`${tableSettings.itemRowFontSize}px` }}>Tution Fees</Typography>
                       </Box>
                     </TableCell>
-                    <TableCell align="right" sx={{ fontWeight: 'bold' }}>{commonTemplateContent.tutionFee}</TableCell>
+                    <TableCell align="right" sx={{ fontWeight: 'bold' ,color:tableSettings.itemRowFontColor,fontSize:`${tableSettings.itemRowFontSize}px`}}>{commonTemplateContent.tutionFee}</TableCell>
                   </TableRow>
-                  <TableRow>
-                    <TableCell scope="row" sx={{ fontWeight: 'bold' }}>2</TableCell>
+                  <TableRow sx={{bgcolor:tableSettings.itemRowBackgroundColor, borderBottom:`1px solid ${tableSettings.borderColor}`}}>
+                    <TableCell scope="row" sx={{ fontWeight: 'bold' ,color:tableSettings.itemRowFontColor,fontSize:`${tableSettings.itemRowFontSize}px`}}>2</TableCell>
                     <TableCell>
                       <Box>
-                        <Typography variant="h5" sx={{ fontWeight: 'bold' }}>Annual Function Fees</Typography>
+                        <Typography variant="h5" sx={{ fontWeight: 'bold' ,color:tableSettings.itemRowFontColor,fontSize:`${tableSettings.itemRowFontSize}px`}}>Annual Function Fees</Typography>
                       </Box>
                     </TableCell>
-                    <TableCell align="right" sx={{ fontWeight: 'bold' }}> 1000</TableCell>
+                    <TableCell align="right" sx={{ fontWeight: 'bold' ,color:tableSettings.itemRowFontColor,fontSize:`${tableSettings.itemRowFontSize}px`}}> 1000</TableCell>
                   </TableRow>
-                  <TableRow>
-                    <TableCell scope="row" sx={{ fontWeight: 'bold' }}>3</TableCell>
+                  <TableRow sx={{bgcolor:tableSettings.itemRowBackgroundColor,borderBottom:`1px solid ${tableSettings.borderColor}`}}>
+                    <TableCell scope="row" sx={{ fontWeight: 'bold' ,color:tableSettings.itemRowFontColor,fontSize:`${tableSettings.itemRowFontSize}px`}}>3</TableCell>
                     <TableCell>
                       <Box>
                         <Typography variant="h5" ></Typography>
@@ -154,10 +167,10 @@ const CompactTemplate5= () => {
 </Box>
 </Box>
 </Grid>
-<Box pt={4} p={6} >
+<Box pt={4} p={6} bgcolor={headerFooterSettings.footerBackgroundColor}>
             <Box>
-              <Typography p={2} variant="h4" sx={{ fontWeight: '600'}} >Terms & Conditions</Typography>
-              <Typography p={2} variant="h5" sx={{ fontWeight: '400'}} >Your School&apos;s Terms and Conditions will be displayed here. You can add it in the Invoice Preferences page under Settings.</Typography>
+              <Typography p={2} variant="h4" sx={{ fontWeight: '600',color:headerFooterSettings.footerFontColor,fontSize:`${headerFooterSettings.footerFontSize}px`}} >Terms & Conditions</Typography>
+              <Typography p={2} variant="h5" sx={{ fontWeight: '400',color:headerFooterSettings.footerFontColor,fontSize:`${headerFooterSettings.footerFontSize}px`}} >Your School&apos;s Terms and Conditions will be displayed here. You can add it in the Invoice Preferences page under Settings.</Typography>
             </Box>
             </Box>
 
@@ -167,5 +180,6 @@ const CompactTemplate5= () => {
     </Box>
   )
 }
+
 
 export default CompactTemplate5;
