@@ -9,7 +9,7 @@ import PeopleAltTwoToneIcon from '@mui/icons-material/PeopleAltTwoTone';
 import HandymanTwoToneIcon from '@mui/icons-material/HandymanTwoTone';
 import TextsmsTwoToneIcon from '@mui/icons-material/TextsmsTwoTone';
 import DescriptionTwoToneIcon from '@mui/icons-material/DescriptionTwoTone';
-import BottomNavbar from '../../admission-common-section/BottomNavbar';
+import BottomNavbar from '../../admission-common-section/bottom-navbar';
 import Profile from './Profile';
 import ProfileDetail from './ProfileDetail';
 import AddressForm from './Address';
