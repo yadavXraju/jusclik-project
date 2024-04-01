@@ -122,19 +122,19 @@ const  Template =({states})=> {
                     </Grid>
 
                     <Grid item lg={8} xs={6}>
-                      <Typography variant="body2" fontWeight="bold" sx={{ color: generalSettings.fontColor,paddingBottom: '0.4rem' }}>
+                      <Typography variant="body2" fontWeight="bold" sx={{ color: generalSettings.fontColor,paddingBottom: '0.4rem' ,fontSize:`${generalSettings.fontSize}px` }}>
                         {commonTemplateContent.admissionNo}
                       </Typography>
-                      <Typography variant="body2" fontWeight="bold" sx={{ color: generalSettings.fontColor,paddingBottom: '0.4rem' }}>
+                      <Typography variant="body2" fontWeight="bold" sx={{ color: generalSettings.fontColor,paddingBottom: '0.4rem' ,fontSize:`${generalSettings.fontSize}px` }}>
                         {commonTemplateContent.className}
                       </Typography>
-                      <Typography variant="body2" fontWeight="bold" sx={{ color: generalSettings.fontColor,paddingBottom: '0.4rem' }}>
+                      <Typography variant="body2" fontWeight="bold" sx={{ color: generalSettings.fontColor,paddingBottom: '0.4rem' ,fontSize:`${generalSettings.fontSize}px` }}>
                         {commonTemplateContent.name}
                       </Typography>
-                      <Typography variant="body2" fontWeight="bold" sx={{ color: generalSettings.fontColor,paddingBottom: '0.4rem' }}>
+                      <Typography variant="body2" fontWeight="bold" sx={{ color: generalSettings.fontColor,paddingBottom: '0.4rem' ,fontSize:`${generalSettings.fontSize}px` }}>
                         {commonTemplateContent.mobile}
                       </Typography>
-                      <Typography variant="body2" fontWeight="bold" sx={{color: generalSettings.fontColor}}>
+                      <Typography variant="body2" fontWeight="bold" sx={{color: generalSettings.fontColor ,fontSize:`${generalSettings.fontSize}px`}}>
                         {commonTemplateContent.fatherName}
                       </Typography>
                     </Grid>
@@ -161,19 +161,19 @@ const  Template =({states})=> {
                     </Grid>
 
                     <Grid item lg={7} xs={6}>
-                      <Typography variant="body2" fontWeight="bold" sx={{ color: generalSettings.fontColor,paddingBottom: '0.4rem' }}>
+                      <Typography variant="body2" fontWeight="bold" sx={{ color: generalSettings.fontColor,paddingBottom: '0.4rem'  ,fontSize:`${generalSettings.fontSize}px`}}>
                         {commonTemplateContent.invoiceNo}
                       </Typography>
-                      <Typography variant="body2" fontWeight="bold" sx={{ color: generalSettings.fontColor,paddingBottom: '0.4rem' }}>
+                      <Typography variant="body2" fontWeight="bold" sx={{ color: generalSettings.fontColor,paddingBottom: '0.4rem' ,fontSize:`${generalSettings.fontSize}px` }}>
                         {commonTemplateContent.invoiceDate}
                       </Typography>
-                      <Typography variant="body2" fontWeight="bold" sx={{ color: generalSettings.fontColor,paddingBottom: '0.4rem' }}>
+                      <Typography variant="body2" fontWeight="bold" sx={{ color: generalSettings.fontColor,paddingBottom: '0.4rem'  ,fontSize:`${generalSettings.fontSize}px`}}>
                         {commonTemplateContent.academicYear}
                       </Typography>
-                      <Typography variant="body2" fontWeight="bold" sx={{ color: generalSettings.fontColor,paddingBottom: '0.4rem' }}>
+                      <Typography variant="body2" fontWeight="bold" sx={{ color: generalSettings.fontColor,paddingBottom: '0.4rem'  ,fontSize:`${generalSettings.fontSize}px`}}>
                         {commonTemplateContent.feePeriod}
                       </Typography>
-                      <Typography variant="body2" fontWeight="bold" sx={{color: generalSettings.fontColor}}>
+                      <Typography variant="body2" fontWeight="bold" sx={{color: generalSettings.fontColor ,fontSize:`${generalSettings.fontSize}px`}}>
                         {commonTemplateContent.dueDate}
                       </Typography>
                     </Grid>
@@ -194,7 +194,8 @@ const  Template =({states})=> {
                 <Table sx={{ minWidth: 200 }} aria-label="simple table">
                   <TableHead sx={{ backgroundColor: tableSettings.headerBackgroundColor }}>
                     <TableRow>
-                      <TableCell style={{ borderBottom: `1px solid ${tableSettings.borderColor}`, width: '5%', ...style4 }}>#</TableCell>
+                      <TableCell style={{ borderBottom: `1px solid ${tableSettings.borderColor}`, width: '5%', ...style4 }}
+                      sx={{fontSize:`${tableSettings.headerFontSize}px`}}>#</TableCell>
                       <TableCell
                         style={{
                           width: '43%',
@@ -203,13 +204,15 @@ const  Template =({states})=> {
                           textAlign: 'center',
                           fontWeight: 'bold'
                         }}
+                        sx={{fontSize:`${tableSettings.headerFontSize}px`}}
                       >
                         Fees Heads
                       </TableCell>
                       <TableCell
                         style={{ borderBottom: `1px solid ${tableSettings.borderColor}`, textAlign: 'center', fontWeight: 'bold' }}
+                        sx={{fontSize:`${tableSettings.headerFontSize}px`}}
                       >
-                        Amount (<CurrencyRupeeIcon sx={{ fontSize: 'small', verticalAlign: 'middle' }} />)
+                        Amount (<CurrencyRupeeIcon sx={{ fontSize:`${tableSettings.headerFontSize}px`, verticalAlign: 'middle' }} />)
                       </TableCell>
                     </TableRow>
                   </TableHead>
@@ -219,23 +222,30 @@ const  Template =({states})=> {
                         component="th"
                         scope="row"
                         style={{ width: '5%', ...style4, color:tableSettings.itemRowFontColor,borderBottom: `1px solid ${tableSettings.borderColor}` }}
+                        sx={{fontSize:`${tableSettings.itemRowFontSize}px`}}
                       >
                         1
                       </TableCell>
-                      <TableCell style={{ ...style4, color:tableSettings.itemRowFontColor,borderBottom: `1px solid ${tableSettings.borderColor}`, textAlign: 'center' }}>
+                      <TableCell style={{ ...style4, color:tableSettings.itemRowFontColor,borderBottom: `1px solid ${tableSettings.borderColor}`, textAlign: 'center' }}
+                        sx={{fontSize:`${tableSettings.itemRowFontSize}px`}}>
                         Tution Fees
                       </TableCell>
-                      <TableCell style={{ color:tableSettings.itemRowFontColor,borderBottom: `1px solid ${tableSettings.borderColor}`, textAlign: 'center' }}>
+                      <TableCell style={{ color:tableSettings.itemRowFontColor,borderBottom: `1px solid ${tableSettings.borderColor}`, textAlign: 'center' }}
+                      sx={{fontSize:`${tableSettings.itemRowFontSize}px`}}>
                         {commonTemplateContent.tutionFee}
                       </TableCell>
                     </TableRow>
                     {/* Add more rows here */}
                     <TableRow>
-                      <TableCell component="th" scope="row" style={{ width: '5%', color:tableSettings.itemRowFontColor,...style4 }}>
+                      <TableCell component="th" scope="row" style={{ width: '5%', color:tableSettings.itemRowFontColor,...style4 }}
+                      sx={{fontSize:`${tableSettings.itemRowFontSize}px`}}>
                         2
+                        
                       </TableCell>
-                      <TableCell style={{ color:tableSettings.itemRowFontColor,...style4, textAlign: 'center' }}>Annual Function Fees</TableCell>
-                      <TableCell style={{ color:tableSettings.itemRowFontColor,textAlign: 'center' }}>1000</TableCell>
+                      <TableCell style={{ color:tableSettings.itemRowFontColor,...style4, textAlign: 'center' }}
+                      sx={{fontSize:`${tableSettings.itemRowFontSize}px`}}>Annual Function Fees</TableCell>
+                      <TableCell style={{ color:tableSettings.itemRowFontColor,textAlign: 'center' }}
+                    sx={{fontSize:`${tableSettings.itemRowFontSize}px`}}>1000</TableCell>
                     </TableRow>
                   </TableBody>
                 </Table>
@@ -254,11 +264,11 @@ const  Template =({states})=> {
                 {/* First Grid item */}
 
                 <Grid item lg={6} xs={12} sx={{ ...style4, alignItems: 'center' ,backgroundColor:tableSettings.headerBackgroundColor,}}> 
-                  <Typography variant="body2" sx={{  color:tableSettings.headerFontColor,paddingBottom: '0.4rem',paddingTop:'1rem',fontWeight: 'bold', textAlign: 'center' }}>
+                  <Typography variant="body2" sx={{  color:tableSettings.headerFontColor,paddingBottom: '0.4rem',paddingTop:'1rem',fontWeight: 'bold', textAlign: 'center'   ,fontSize:`${tableSettings.headerFontSize}px` }}>
                     Total In Words :{' '}
                   </Typography>
 
-                  <Typography variant="h4" fontWeight="bold" sx={{  color:tableSettings.headerFontColor,paddingBottom: '0.4rem', textAlign: 'center', marginTop: '12px' }}>
+                  <Typography variant="h4" fontWeight="bold" sx={{  color:tableSettings.headerFontColor,paddingBottom: '0.4rem', textAlign: 'center', marginTop: '12px'  ,  fontSize:`${tableSettings.headerFontSize}px`}}>
                     Four Thousand Nine Hundred Only
                   </Typography>
                 </Grid>
@@ -268,26 +278,26 @@ const  Template =({states})=> {
                       
                   <Grid container>
                     <Grid item lg={9} xs={8}>
-                      <Typography variant="body2" sx={{color:tableSettings.itemRowFontColor ,paddingBottom: '0.4rem' }}>
+                      <Typography variant="body2" sx={{color:tableSettings.itemRowFontColor ,paddingBottom: '0.4rem' ,fontSize:`${tableSettings.itemRowFontSize}px`}}>
                         Invoice Total:
                       </Typography>
-                      <Typography variant="body2" sx={{color:tableSettings.itemRowFontColor ,paddingBottom: '0.4rem' }}>
+                      <Typography variant="body2" sx={{color:tableSettings.itemRowFontColor ,paddingBottom: '0.4rem',fontSize:`${tableSettings.itemRowFontSize}px` }}>
                         Previous Balance:
                       </Typography>
-                      <Typography variant="body2" sx={{color:tableSettings.itemRowFontColor ,paddingBottom: '1rem' }}>
+                      <Typography variant="body2" sx={{color:tableSettings.itemRowFontColor ,paddingBottom: '1rem',fontSize:`${tableSettings.itemRowFontSize}px` }}>
                         Net Payable Amount:
                       </Typography>
                     </Grid>
 
                     <Grid item lg={3} xs={4} sx={{ ...style2 }}>
-                      <Typography variant="body2" fontWeight="bold" sx={{ color:tableSettings.itemRowFontColor ,marginBottom: '0.4rem' }}>
+                      <Typography variant="body2" fontWeight="bold" sx={{ color:tableSettings.itemRowFontColor ,marginBottom: '0.4rem',fontSize:`${tableSettings.itemRowFontSize}px` }}>
                         <CurrencyRupeeIcon sx={{ fontSize: 'small' }} />
                         {commonTemplateContent.invoiceTotal}
                       </Typography>
-                      <Typography variant="body2" fontWeight="bold" sx={{ color:tableSettings.itemRowFontColor ,marginBottom: '0.4rem' }}>
+                      <Typography variant="body2" fontWeight="bold" sx={{ color:tableSettings.itemRowFontColor ,marginBottom: '0.4rem' ,fontSize:`${tableSettings.itemRowFontSize}px`}}>
                         {commonTemplateContent.previousBalance}
                       </Typography>
-                      <Typography variant="body2" fontWeight="bold" sx={{ color:tableSettings.itemRowFontColor ,marginBottom: '0.4rem' }}>
+                      <Typography variant="body2" fontWeight="bold" sx={{ color:tableSettings.itemRowFontColor ,marginBottom: '0.4rem' ,fontSize:`${tableSettings.itemRowFontSize}px`}}>
                         <CurrencyRupeeIcon sx={{ fontSize: 'small' }} />
                         {commonTemplateContent.netAmountPayable}
                       </Typography>
@@ -307,21 +317,21 @@ const  Template =({states})=> {
               backgroundColor: headerFooterSettings.footerBackgroundColor
             }}
           >
-            <Typography variant="body2" sx={{ marginBottom: '0.4rem', marginLeft: '20px', marginTop: '20px', fontWeight: 'bold' }}>
+            <Typography variant="body2" sx={{ marginBottom: '0.4rem', marginLeft: '20px', marginTop: '20px', fontWeight: 'bold' ,fontSize:`${headerFooterSettings.footerFontSize}px`}}>
               Terms & Conditions{' '}
             </Typography>
 
-            <Typography variant="body2" sx={{ marginBottom: '0.4rem', marginLeft: '20px' }}>
+            <Typography variant="body2" sx={{ marginBottom: '0.4rem', marginLeft: '20px',fontSize:`${headerFooterSettings.footerFontSize}px` }}>
               1. Payment is due within 30 days from the date of invoice, late payments may incur penalties.{' '}
             </Typography>
-            <Typography variant="body2" sx={{ marginBottom: '0.4rem', marginLeft: '20px' }}>
+            <Typography variant="body2" sx={{ marginBottom: '0.4rem', marginLeft: '20px' ,fontSize:`${headerFooterSettings.footerFontSize}px`}}>
               2. Late payments exceeding [number of days] days from the due date may result in suspension of services until payment is
               received.{' '}
             </Typography>
-            <Typography variant="body2" sx={{ marginBottom: '0.4rem', marginLeft: '20px' }}>
+            <Typography variant="body2" sx={{ marginBottom: '0.4rem', marginLeft: '20px' ,fontSize:`${headerFooterSettings.footerFontSize}px`}}>
               3. All payments must be made in the currency specified on the invoice and should include any applicable taxes or fees.
             </Typography>
-            <Typography variant="body2" sx={{ paddingBottom: '20px', marginLeft: '20px' }}>
+            <Typography variant="body2" sx={{ paddingBottom: '20px', marginLeft: '20px',fontSize:`${headerFooterSettings.footerFontSize}px` }}>
               4. The client is responsible for any bank charges or transaction fees incurred during the payment process.
             </Typography>
           </Grid>
@@ -329,7 +339,7 @@ const  Template =({states})=> {
           <Box sx={{ backgroundColor: headerFooterSettings.footerBackgroundColor }}>
             <Typography
               variant="body2"
-              sx={{ paddingBottom: '10px', paddingRight: '20px', fontWeight: 'bold', textAlign: 'right', paddingTop: '70px' }}
+              sx={{ paddingBottom: '10px', paddingRight: '20px', fontWeight: 'bold', textAlign: 'right', paddingTop: '70px' ,fontSize:`${headerFooterSettings.footerFontSize}px`}}
             >
               Authorized Signature
             </Typography>

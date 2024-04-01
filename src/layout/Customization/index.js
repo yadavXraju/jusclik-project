@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 // material-ui
@@ -26,7 +26,7 @@ import PerfectScrollbar from 'react-perfect-scrollbar';
 // project imports
 import SubCard from 'ui-component/cards/SubCard';
 import AnimateButton from 'ui-component/extended/AnimateButton';
-import { SET_BORDER_RADIUS, SET_FONT_FAMILY, SET_COLOR_THEME, SET_COLOR_THEME_V2 } from 'store/actions';
+import { setBorderRadius, setFontFamily, setColorTheme, setColorThemeV2 } from 'store/customization-slice';
 import { gridSpacing } from 'store/constant';
 
 // concat 'px'
@@ -39,89 +39,33 @@ function valueText(value) {
 const Customization = () => {
   const theme = useTheme();
   const dispatch = useDispatch();
-  const customization = useSelector((state) => state.customization);
+  const {fontFamily,borderRadius,themeColor} = useSelector((state) => state.customization);
   const isMobile = useMediaQuery('(max-width:767px)')
-
+  console.log(fontFamily)
   // drawer on/off
   const [open, setOpen] = useState(false);
   const handleToggle = () => {
     setOpen(!open);
   };
 
-  // ==============================|| BORDER ||============================== //
-
-  // state - border radius
-  const [borderRadius, setBorderRadius] = useState(customization.borderRadius);
-  const handleBorderRadius = (event, newValue) => {
-    setBorderRadius(newValue);
-  };
-
-  // Effect to save border radius to local storage when it changes
-  useEffect(() => {
-    dispatch({ type: SET_BORDER_RADIUS, borderRadius });
-    localStorage.setItem('borderRadius', JSON.stringify(borderRadius));
-  }, [dispatch, borderRadius]);
-
-  // Function to retrieve border radius from local storage or use default value
-  useEffect(() => {
-    const savedBorderRadius = JSON.parse(localStorage.getItem('borderRadius'));
-    if (savedBorderRadius) {
-      setBorderRadius(savedBorderRadius);
-    }
-  }, []);
-
-  // ==============================|| BACKGROUND COLOR ||============================== //
-
-  // 2 state for 2 layout colors
-  
-  // Retrieve theme color values from local storage or use defaults if not found
-  const initialThemeColor = localStorage.getItem('themeColor') || 'rgb(94, 53, 177)';
-  const initialThemeColorV2 = localStorage.getItem('themeColorV2') || 'rgb(30, 136, 229)';
-
-  // Set initial background color to the retrieved values
-  const [themeColor, setThemeColor] = useState(initialThemeColor);
-  const [themeColorV2, setThemeColorV2] = useState(initialThemeColorV2);
-
-  // function for changing theme color
+  //set Theme color
   const handleThemeColor = (event) => {
     const newColor = event.target.value;
-    
-    setThemeColor(newColor);
-    dispatch({ type: SET_COLOR_THEME, backgroundColor: newColor });
-  
+    dispatch(setColorTheme({themeColor:newColor}));
     const newBackgroundColor = newColor === 'rgb(94, 53, 177)' ? 'rgb(30, 136, 229)' : 'rgb(84, 110, 122)';
-    setThemeColorV2(newBackgroundColor);
-    dispatch({ type: SET_COLOR_THEME_V2, backgroundColor: newBackgroundColor });
-
-    localStorage.setItem('themeColor', newColor);
-    localStorage.setItem('themeColorV2', newBackgroundColor);
+    dispatch(setColorThemeV2({themeColorV2:newBackgroundColor}));
   };
-  
-  useEffect(() => {
-    dispatch({ type: SET_COLOR_THEME, themeColor });
-  }, [dispatch, themeColor]);
-  
-  useEffect(() => {
-    dispatch({ type: SET_COLOR_THEME_V2, themeColorV2 });
-  }, [dispatch, themeColorV2]);
-  
 
-  // ==============================|| FONT FAMILY ||============================== //
+  //Set Font Family
+  const handleFontFamily=(event)=>{
+    const newFontFamily=event.target.value;
+    dispatch(setFontFamily({fontFamily:newFontFamily}));
+  }
 
-  // Retrieve font family value from local storage or use default if not found
-  const initialFontFamily = localStorage.getItem('fontFamily') || 'Plus Jakarta Sans';
-
-  // State for font family
-  const [fontFamily, setFontFamily] = useState(initialFontFamily);
-
-  // Effect to save font family to local storage when it changes
-  useEffect(() => {
-    dispatch({ type: SET_FONT_FAMILY, fontFamily });
-    localStorage.setItem('fontFamily', fontFamily);
-  }, [dispatch, fontFamily]);
-
-  // ==============================|| RENDER ||============================== //
-
+  const handleBorderRadius=(e)=>{
+    const newBorderRadius=e.target.value;
+    dispatch(setBorderRadius({borderRadius:newBorderRadius}))
+  }
   return (
     <>
       {/* toggle button */}
@@ -172,7 +116,7 @@ const Customization = () => {
                   <RadioGroup
                     aria-label="font-family"
                     value={fontFamily}
-                    onChange={(e) => setFontFamily(e.target.value)}
+                    onChange={(e) => handleFontFamily(e)}
                     name="row-radio-buttons-group"
                   >
                     <FormControlLabel
