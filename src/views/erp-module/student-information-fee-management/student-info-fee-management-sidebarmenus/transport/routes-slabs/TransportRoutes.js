@@ -38,10 +38,10 @@ function TransportRoutes() {
     { value: 'Slab2', label: 'Slab 2' }
   ];
 
-  const [gender, setGender] = useState('female');
+  const [gender, setGender] = useState('alldays');
   const genderOptions = [
-    { value: 'onetime', label: 'One Time' },
     { value: 'alldays', label: 'All days' },
+    { value: 'onetime', label: 'One Time' },
     { value: 'days', label: 'Days' }
   ];
 
@@ -56,7 +56,7 @@ function TransportRoutes() {
 
   return (
     <>
-      <Card sx={{border:'1px solid #ccc', p:2}}>
+      <Card sx={{border:'1px solid #ccc', p:2, borderRadius:'5px'}}>
         <Box>
           <Box pb={2}>
             <TextField id="outlined-basic" size={isMobile ? 'small' : 'normal'} fullWidth label="Route Name" variant="outlined" />
@@ -126,7 +126,7 @@ function TransportRoutes() {
             <Typography variant="h4">
               Attach Slab <InfoOutlinedIcon sx={{ fontSize: '14px', color: '#746a6a' }} />{' '}
             </Typography>
-            <Box>
+            <Box mt={1}>
               <SelectList
                 label="Attach Slab"
                 options={SlabOptions}
