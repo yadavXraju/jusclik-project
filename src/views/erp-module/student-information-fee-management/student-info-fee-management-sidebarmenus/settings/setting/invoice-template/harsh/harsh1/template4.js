@@ -26,7 +26,7 @@ export const CompactTemplate4 = ({states}) => {
     }}>
       <Paper elevation={4} sx={{paddingTop:`${generalSettings.marginTop}rem`,
     paddingRight:`${generalSettings.marginRight}rem`,
-    scrollPaddingBottom:`${generalSettings.marginBottom}rem`,
+    paddingBottom:`${generalSettings.marginBottom}rem`,
     paddingLeft:`${generalSettings.marginLeft}rem`}}>
         <Box p={2} bgcolor={'white'} >
           <Box p={4} ml={6} mr={4} sx={{ display: "flex", justifyContent: "space-between" }} bgcolor={headerFooterSettings.headerBackgroundColor}>
