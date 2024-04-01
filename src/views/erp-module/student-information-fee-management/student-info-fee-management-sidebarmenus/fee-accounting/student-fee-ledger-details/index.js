@@ -1,8 +1,9 @@
 import React, { useState, useMemo } from 'react';
-import {  Box, Paper, Table, TableBody, TableCell, TableContainer,  TableRow, Checkbox, } from '@mui/material';
+import { Box, Paper, Table, TableBody, TableCell, TableContainer, TableRow, Checkbox, } from '@mui/material';
 import EnhancedTableHead from './TableHead';
 import rows from './StudentFeeLedgerData';
 import EnhancedTableToolbar from './Toolbar';
+import LedgerDetails from './LedgerDetails';
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -37,9 +38,10 @@ export default function StudentFeeLedgerDetails() {
   const [orderBy, setOrderBy] = useState('calories');
   const [selected, setSelected] = useState([]);
   const [searchText, setSearchText] = useState('');
-  
+  const [totalNetPay , setTotalNetPay] = useState('')
+ 
 
-    
+
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
@@ -57,38 +59,38 @@ export default function StudentFeeLedgerDetails() {
   };
 
   const handleClick = (event, id) => {
-      const selectedIndex = selected.indexOf(id);
-      let newSelected = [];
-    
-      if (selectedIndex === -1) {
-        newSelected = newSelected.concat(selected, id);
-      } else if (selectedIndex === 0) {
-        newSelected = newSelected.concat(selected.slice(1));
-      } else if (selectedIndex === selected.length - 1) {
-        newSelected = newSelected.concat(selected.slice(0, -1));
-      } else if (selectedIndex > 0) {
-        newSelected = newSelected.concat(
-          selected.slice(0, selectedIndex),
-          selected.slice(selectedIndex + 1),
-        );
-      }
-      setSelected(newSelected);
-    
-      // Calculate total net pay of selected rows
-      let totalNetPay = 0;
-      newSelected.forEach(selectedId => {
-        const selectedRow = rows.find(row => row.id === selectedId);
-        if (selectedRow) {
-          totalNetPay += selectedRow.netpay;
-        }
-      });
-    
-      console.log(totalNetPay);
-      
-    };
+    const selectedIndex = selected.indexOf(id);
+    let newSelected = [];
 
-  
-   const isSelected = (id) => selected.indexOf(id) !== -1;
+    if (selectedIndex === -1) {
+      newSelected = newSelected.concat(selected, id);
+    } else if (selectedIndex === 0) {
+      newSelected = newSelected.concat(selected.slice(1));
+    } else if (selectedIndex === selected.length - 1) {
+      newSelected = newSelected.concat(selected.slice(0, -1));
+    } else if (selectedIndex > 0) {
+      newSelected = newSelected.concat(
+        selected.slice(0, selectedIndex),
+        selected.slice(selectedIndex + 1),
+      );
+    }
+    setSelected(newSelected);
+
+  // Calculate total net pay of selected rows
+  let totalNetPay = 0;
+  newSelected.forEach(selectedId => {
+    const selectedRow = rows.find(row => row.id === selectedId);
+    if (selectedRow) {
+      totalNetPay += selectedRow.netpay;
+    }
+  });
+
+  // Set total net pay directly in FeeLedgerForms component
+  setTotalNetPay(totalNetPay);
+};
+
+
+  const isSelected = (id) => selected.indexOf(id) !== -1;
 
 
   const visibleRows = useMemo(
@@ -97,18 +99,20 @@ export default function StudentFeeLedgerDetails() {
   );
 
   return (
-    <Box sx={{ width: '100%' }}>
+    <Box sx={{ width: '100%' , }}>
       <Paper sx={{ width: '100%', mb: 2 }}>
 
-        {/* ======================= toolbar ======================== */}
-          <EnhancedTableToolbar
-            numSelected={selected.length}
-            selectedRows={selected.map(id => rows.find(row => row.id === id))}
-            onSearchChange={(e) => setSearchText(e.target.value)}
-            // totalNetPay={totalNetPay} // Pass totalNetPay as a prop
-          />
+        <LedgerDetails />
 
-        <TableContainer className='scrollbar'>
+        {/* ======================= toolbar ======================== */}
+        <EnhancedTableToolbar
+          numSelected={selected.length}
+          selectedRows={selected.map(id => rows.find(row => row.id === id))}
+          onSearchChange={(e) => setSearchText(e.target.value)}
+          totalNetPay={totalNetPay} // Pass totalNetPay as a prop
+        />
+
+         <TableContainer className='scrollbar'>
           <Table
             sx={{ minWidth: 750, border: '1px solid rgba(224, 224, 224, 1)' }}
             aria-labelledby="tableTitle"

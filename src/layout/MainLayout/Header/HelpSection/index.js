@@ -37,7 +37,7 @@ const HelpSection = () => {
         mr: 0,
         [theme.breakpoints.down('md')]: {
           mr: 0,
-          ml:'10px',
+          ml:0,
         },
         borderRadius: '7px',
       }}
