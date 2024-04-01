@@ -13,7 +13,7 @@ export default function BasicDateCalendar() {
       <Box>
         <Grid container spacing={2} justifyContent="center" alignItems="center">
          <CalendarMonthly/>
-          <Grid item xs={12} sm={6} md={8}>
+          <Grid item xs={12} sm={6} md={7} lg={8}>
             <AttendanceChart />
           </Grid>
         </Grid>
