@@ -217,9 +217,9 @@ export default function LoginPage() {
         } else if (isMd) {
           return '80%';
         } else if (isLg) {
-          return '70%';
+          return '80%';
         } else if (isXl) {
-          return '40%';
+          return '60%';
         }
         else {
           return '100%'

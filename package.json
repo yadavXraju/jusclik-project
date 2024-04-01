@@ -91,7 +91,8 @@
   "browserslist": {
     "production": [
       "defaults",
-      "not IE 11"
+      "not IE 11",
+      "last 5 versions safari"
     ],
     "development": [
       "last 1 chrome version",

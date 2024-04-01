@@ -3,16 +3,11 @@ import {
   Box,
   Button,
   Paper,
-  //  Typography,
   TextField,
-  // Toolbar,
   InputAdornment,
   IconButton,
-  // useTheme,
-  // useMediaQuery
-  //  ,AppBar
+
 } from '@mui/material';
-// import { useNavigate } from 'react-router';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
@@ -56,6 +51,7 @@ const VisitorDetails = ({ step, handleSteps }) => {
       // You can navigate or perform other actions here after form submission
     }
   };
+  
 
   return (
     <>
