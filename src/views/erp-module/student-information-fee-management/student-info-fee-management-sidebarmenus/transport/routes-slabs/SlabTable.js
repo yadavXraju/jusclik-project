@@ -1,23 +1,16 @@
 import React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
-import { IconButton, Typography, Switch, Tooltip } from '@mui/material';
+import { IconButton, Tooltip, Typography } from '@mui/material';
 import { Box } from '@mui/system';
-//import { useNavigate } from 'react-router-dom';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
+import RemoveRedEyeTwoToneIcon from '@mui/icons-material/RemoveRedEyeTwoTone';
 import WarningDialog from 'views/common-section/WarningDialog';
 import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 import RouteData from './RoutesData';
-import RoutesFormDrawer from './RoutesFormDrawer';
-//import SettingsTwoToneIcon from '@mui/icons-material/SettingsTwoTone';
-import RoutesManageDrawer from './RoutesManageDrawer';
+import SlabFormDrawer from './SlabFormDrawer';
 
-export default function TransportRouteTable() {
-  //const navigate = useNavigate();
+export default function SlabTable() {
   const [tableRows, setTableRows] = React.useState(RouteData);
-
-  // const Click = (id) => {
-  //     navigate(`/erp/student-info-fee/transport/allocation/${id}`);
-  //   };
 
   // ========= render error model for Delete row ==========
   const [modalOpen, setmodalOpen] = React.useState(false);
@@ -41,36 +34,20 @@ export default function TransportRouteTable() {
 
   // ========= Data Grid Columns ==========
   const columns = [
-    { field: 'routeName', headerName: 'Route Name', flex: 1, minWidth: 130, align: 'left', headerAlign: 'left' },
+    { field: 'routeName', headerName: 'Slab Name', flex: 1, minWidth: 130, align: 'left', headerAlign: 'left' },
     { field: 'schedule', headerName: 'Schedule', flex: 1, minWidth: 130 },
-    { 
-        field: 'pickTimeRange', // Custom field name for combined pick start and end time
-        headerName: 'Pick Time Range', // Custom header name
-        flex: 1,
-        minWidth: 130,
-        valueGetter: (params) => `${params.row.pickstarttime} - ${params.row.pickendtime}`, // Custom value getter to combine times
-      },
-      { 
-        field: 'dropTimeRange', // Custom field name for combined pick start and end time
-        headerName: 'Drop Time Range', // Custom header name
-        flex: 1,
-        minWidth: 130,
-        valueGetter: (params) => `${params.row.dropstarttime} - ${params.row.dropendtime}`,
-      },
-    // { field: 'attachBus', headerName: 'Attach Bus', flex: 1, minWidth: 100 },
     { field: 'seatingCapacity', headerName: 'Seating Capacity', flex: 1, minWidth: 100 },
     { field: 'attachSlab', headerName: 'Attach Bus', flex: 1, minWidth: 100 },
     { field: 'classes', headerName: 'Classes', flex: 1, minWidth: 100 },
-    // { field: 'status', headerName: 'Status', flex: 1, minWidth: 100 },
-    {field: 'status',
-    headerName: 'Status',
-    flex: 1,
-    minWidth: 100,
-    renderCell: (params) => (
-      <Box display="flex" alignItems="center">
-        <Switch checked={params.value === 'Active'} disabled />
-      </Box>
-    )},
+    // {field: 'status',
+    // headerName: 'Status',
+    // flex: 1,
+    // minWidth: 100,
+    // renderCell: (params) => (
+    //   <Box display="flex" alignItems="center">
+    //     <Switch checked={params.value === 'Active'} disabled />
+    //   </Box>
+    // )},
 
     {
       field: 'Action',
@@ -81,18 +58,19 @@ export default function TransportRouteTable() {
       filterable: false,
       disableColumnMenu: true,
       renderCell: (params) => (
-        <Box onClick={(event) => event.stopPropagation()}>
-          <IconButton>
-            {/* <SettingsTwoToneIcon sx={{ color: 'rgb(124, 178, 221)' }} /> */}
-            <RoutesManageDrawer/>
+        <Box>
+            <Tooltip title="Preview">
+            <IconButton>
+            <RemoveRedEyeTwoToneIcon sx={{ color: 'rgb(124, 178, 221)' }} />
           </IconButton>
+            </Tooltip>
           <Tooltip title="Edit">
-          <IconButton>
+          <IconButton onClick={(event) => event.stopPropagation()}>
             <EditTwoToneIcon />
           </IconButton>
           </Tooltip>
           <Tooltip title="Delete">
-          <IconButton>
+          <IconButton onClick={(event) => event.stopPropagation()}>
             <DeleteTwoToneIcon onClick={() => handleDeleteRow(params.row.id)} sx={{ color: '#f19e9e' }} />
           </IconButton>
           </Tooltip>
@@ -107,11 +85,11 @@ export default function TransportRouteTable() {
         <Box p={1} sx={{ borderBottom: '1px solid #ccc', display:'flex', justifyContent:'space-between' }}>
           <Box sx={{display:'flex', alignItems:'end'}}>
             <Typography variant="h4" sx={{ pb: '0px' }}>
-              Route Details
+              Slab Details
             </Typography>
           </Box>
           <Box>
-            <RoutesFormDrawer/>
+            <SlabFormDrawer/>
           </Box>
         </Box>
         <Box mt={3}>

@@ -37,7 +37,6 @@ const Index = () => {
   const states=[generalSettings,headerFooterSettings,tableSettings]
   // temporary logic for rendring template
   let template=5
-
   return (
     <>
     <Grid container spacing={4}>

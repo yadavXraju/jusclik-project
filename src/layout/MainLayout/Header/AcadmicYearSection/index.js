@@ -35,18 +35,18 @@ const AcademicYear = () => {
   const academicYear = getAcademicYear();
 
     // to store state in this varible
-    const customization = useSelector((state) => state.customization);
+    const {themeColorV2} = useSelector((state) => state.customization);
 
 
     // Extract theme color and set opacity
-    const themeColor = customization.themeColorV2 || 'rgb(30, 136, 229)';
+
     const opacity = 0.2;  
 
   return (
     <Paper
     className='themeColorV2'
     sx={{
-      backgroundColor: `${themeColor.slice(0, -1)}, ${opacity}) !important`, // Adding opacity
+      backgroundColor: `${themeColorV2.slice(0, -1)}, ${opacity}) !important`, // Adding opacity
       ml: 2,
       mr: 0,
       [theme.breakpoints.down('md')]: {
@@ -60,7 +60,7 @@ const AcademicYear = () => {
         <StyledContainer>
           {/* <StyledIcon data-testid="CalendarMonthIcon" sx={{width:'20px'}} /> */}
           <CalendarMonthIcon className='themeColorV2' sx={{
-             color:`${theme?.customization?.themeColor} ` ,
+             color:`${theme?.customization?.themeColorV2} ` ,
              width: '20px'
              }}/>
         </StyledContainer>

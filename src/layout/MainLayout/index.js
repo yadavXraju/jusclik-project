@@ -16,7 +16,7 @@ import Customization from '../Customization';
 import { getMenuItems } from 'menu-items';
 
 import { drawerWidth } from 'store/constant';
-import { SET_MENU } from 'store/actions';
+import { setMenu } from 'store/customization-slice';
 
 // assets
 import { IconChevronRight } from '@tabler/icons';
@@ -68,7 +68,7 @@ const MainLayout = () => {
   const leftDrawerOpened = useSelector((state) => state.customization.opened);
   const dispatch = useDispatch();
   const handleLeftDrawerToggle = () => {
-    dispatch({ type: SET_MENU, opened: !leftDrawerOpened });
+    dispatch(setMenu({opened:!leftDrawerOpened}));
   };
 
 

@@ -8,15 +8,16 @@ import React, { useRef, useState } from 'react';
 import CameraAltOutlinedIcon from '@mui/icons-material/CameraAltOutlined';
 import { useEffect } from 'react';
 
-const SelfieVerification = ({ step, handleSteps, md}) => {
+const SelfieVerification = ({ step, handleSteps, md,capturedImage,setCapturedImage}) => {
+
    const videoRef = useRef(null);
    const [stream, setStream] = useState(null);
-   const [capturedImage, setCapturedImage] = useState(null);
+   // const [capturedImage, setCapturedImage] = useState(null);
    const [showCamera, setShowCamera] = useState(true); // State to toggle between camera and captured photo
    const [showCameraIcon, setShowCameraIcon] = useState(true); // State to toggle camera icon visibility
    const [showTakePhotoButton, setShowTakePhotoButton] = useState(true);
    const [showSubmitButton, setShowSubmitButton] = useState(false);
-   
+// scroll behaviour
    const startCamera = () => {         
       if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
          navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' } })
@@ -57,6 +58,10 @@ const SelfieVerification = ({ step, handleSteps, md}) => {
       setShowCamera(false);
       setShowTakePhotoButton(false);
       setShowSubmitButton(true);
+      // to scroll back to take photo
+      setTimeout(() => {
+         window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+      }, 500);
    };
    const resetCamera = () => {
          // Stop the video stream
@@ -68,6 +73,10 @@ const SelfieVerification = ({ step, handleSteps, md}) => {
       setCapturedImage(null);
       setShowCamera(true);
       startCamera()
+      // to scroll back to take photo
+      setTimeout(() => {
+         window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+      }, 500);
    };
 
    const cameraComponent = <>
@@ -135,13 +144,15 @@ const SelfieVerification = ({ step, handleSteps, md}) => {
                </Box>
                <Box p={2}>
                   {showSubmitButton && (
-                     <Box sx={{ display: 'flex' }}>
-                        <Button variant="contained" color="primary" onClick={resetCamera} sx={{
+                     <Box  display='flex'>
+                        <Button variant="contained" color="primary"  onClick={resetCamera} sx={{
                            ...css.center,
                            ...css.marginAuto,
                            ...css.submitButton,
-                           ...css.button
+                           ...css.button,
+                           marginRight:'1rem'
                         }}
+                        
                         disableElevation
                         >Retake</Button>
 

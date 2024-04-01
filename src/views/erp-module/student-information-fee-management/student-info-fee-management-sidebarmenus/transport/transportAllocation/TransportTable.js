@@ -1,6 +1,6 @@
 import React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
-import { IconButton } from '@mui/material';
+import { IconButton, Tooltip } from '@mui/material';
 import { Box } from '@mui/system';
 import { useNavigate } from 'react-router-dom';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
@@ -72,15 +72,21 @@ const Click = (id) => {
       disableColumnMenu: true,
       renderCell: (params) => (
         <Box>
+          <Tooltip title="Preview">
           <IconButton>
             <RemoveRedEyeTwoToneIcon sx={{ color: 'rgb(124, 178, 221)' }} />
           </IconButton>
+          </Tooltip>
+          <Tooltip title="Edit">
           <IconButton onClick={(event) => event.stopPropagation()}>
             <EditTwoToneIcon  />
           </IconButton>
+          </Tooltip>
+          <Tooltip title="Delete">
           <IconButton onClick={(event) => event.stopPropagation()}>
             <DeleteTwoToneIcon onClick={() => handleDeleteRow(params.row.id)} sx={{ color: '#f19e9e' }} />
           </IconButton>
+          </Tooltip>
         </Box>
       )
     }

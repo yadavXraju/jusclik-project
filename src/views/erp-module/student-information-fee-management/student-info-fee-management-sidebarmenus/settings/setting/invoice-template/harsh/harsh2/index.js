@@ -12,7 +12,7 @@ const CompactTemplate5= ({states}) => {
     (tableSettings);
   return (
 
-    <Box sx={{ eight: '100%',
+    <Box sx={{ height: '100%',
     width:'100%',
     margin: 'auto',
     '@media print and (min-width: 210mm) and (min-height: 297mm)': {
@@ -22,7 +22,7 @@ const CompactTemplate5= ({states}) => {
     },}}>
       <Paper elevation={4} sx={{paddingTop:`${generalSettings.marginTop}rem`,
     paddingRight:`${generalSettings.marginRight}rem`,
-    scrollPaddingBottom:`${generalSettings.marginBottom}rem`,
+    paddingBottom:`${generalSettings.marginBottom}rem`,
     paddingLeft:`${generalSettings.marginLeft}rem`}}>
 
         <Box ml={6} mr={7} pt={6} display={'flex'} justifyContent={'end'} bgcolor={headerFooterSettings.headerBackgroundColor}>

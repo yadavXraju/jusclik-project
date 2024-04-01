@@ -1,9 +1,11 @@
-import { createStore } from 'redux';
-import reducer from './reducer';
+import { configureStore } from "@reduxjs/toolkit";
+import customizationSlice from "./customization-slice";
 
-// ==============================|| REDUX - MAIN STORE ||============================== //
+const store=configureStore({
+    reducer:{
+        customization:customizationSlice
+    },
+    devTools:true
+});
 
-const store = createStore(reducer);
-const persister = 'Dashboard';
-
-export { store, persister };
+export default store;
