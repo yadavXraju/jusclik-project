@@ -4,7 +4,7 @@ const config = {
   basename: '/',
   defaultPath: '/parent/dashboard',
   // fontFamily: `'Roboto', sans-serif`,
-  fontFamily: `'plus-jakarta-sans', sans-serif`,
+  fontFamily:'Plus Jakarta Sans',
   borderRadius: 12,
   //apiUrl : "https://uat.shauryasoft.com",
   ApiKey : "CldbvvQeenSv5xs899AIgeN8r7fTtjOdf97cxPw4uMZ1nVfYyvkQsQ9Mn8zrOYyA"
