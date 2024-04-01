@@ -116,12 +116,12 @@ for(let i=0;i<templateCompact.numberOfCopies;i++){
 
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
                   <Box sx={{ display: 'flex', justifyContent: 'space-between' ,bgcolor:tableSettings.headerBackgroundColor}}>
-                    <Typography variant='h5' sx={{ fontWeight: 'bold' , color:tableSettings.headerFontColor}}>Fees Heads</Typography>
-                    <Typography variant='h5' sx={{ fontWeight: 'bold' , color:tableSettings.headerFontColor}}>Amount (<CurrencyRupeeOutlinedIcon sx={{ fontSize: 'small' }} />)</Typography>
+                    <Typography variant='h5' sx={{ fontWeight: 'bold' , color:tableSettings.headerFontColor, fontSize:`${tableSettings.headerFontSize}px`}}>Fees Heads</Typography>
+                    <Typography variant='h5' sx={{ fontWeight: 'bold' , color:tableSettings.headerFontColor, fontSize:`${tableSettings.headerFontSize}px`}}>Amount (<CurrencyRupeeOutlinedIcon sx={{ fontSize: `${tableSettings.headerFontSize}px` }} />)</Typography>
                   </Box>
                   <Box sx={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap',bgcolor:tableSettings.itemRowBackgroundColor }}>
-                    <Typography variant='h6' sx={{ fontWeight: '400', minWidth: '50%',color:tableSettings.itemRowFontColor}}>Tuition Fee</Typography>
-                    <Typography variant='h6' sx={{ fontWeight: '400',color:tableSettings.itemRowFontColor  }}>{commonTemplateContent.tutionFee}</Typography>
+                    <Typography variant='h6' sx={{ fontWeight: '400', minWidth: '50%',color:tableSettings.itemRowFontColor, fontSize:`${tableSettings.itemRowFontSize}px`}}>Tuition Fee</Typography>
+                    <Typography variant='h6' sx={{ fontWeight: '400',color:tableSettings.itemRowFontColor , fontSize:`${tableSettings.itemRowFontSize}px` }}>{commonTemplateContent.tutionFee}</Typography>
                   </Box>
                 </Box>
                 <Box sx={{ display: 'flex', justifyContent: 'center' }}>
@@ -137,16 +137,16 @@ for(let i=0;i<templateCompact.numberOfCopies;i++){
                 </Box>
                 <Box >
                 <Box sx={{ display: "flex", justifyContent: "space-between",bgcolor:tableSettings.itemRowBackgroundColor}}>
-                  <Typography p={1} variant='h6' sx={{ fontWeight: 'bold' ,color:tableSettings.itemRowFontColor}}>Invoice Total:</Typography>
-                  <Typography p={1} variant='h6' sx={{ fontWeight: 'bold',color:tableSettings.itemRowFontColor }}>{commonTemplateContent.invoiceTotal}</Typography>
+                  <Typography p={1} variant='h6' sx={{ fontWeight: 'bold' ,color:tableSettings.itemRowFontColor, fontSize:`${tableSettings.itemRowFontSize}px`}}>Invoice Total:</Typography>
+                  <Typography p={1} variant='h6' sx={{ fontWeight: 'bold',color:tableSettings.itemRowFontColor , fontSize:`${tableSettings.itemRowFontSize}px`}}>{commonTemplateContent.invoiceTotal}</Typography>
                 </Box>
                 <Box sx={{ display: "flex" , justifyContent: "space-between",bgcolor:tableSettings.itemRowBackgroundColor}}>
-                  <Typography p={1} variant='h6' sx={{ fontWeight: 'bold' ,color:tableSettings.itemRowFontColor}}>Previous Balance:</Typography>
-                  <Typography p={1} variant='h6' sx={{ fontWeight: 'bold' ,color:tableSettings.itemRowFontColor }}>{commonTemplateContent.previousBalance}</Typography>
+                  <Typography p={1} variant='h6' sx={{ fontWeight: 'bold' ,color:tableSettings.itemRowFontColor, fontSize:`${tableSettings.itemRowFontSize}px`}}>Previous Balance:</Typography>
+                  <Typography p={1} variant='h6' sx={{ fontWeight: 'bold' ,color:tableSettings.itemRowFontColor , fontSize:`${tableSettings.itemRowFontSize}px`}}>{commonTemplateContent.previousBalance}</Typography>
                 </Box>
                 <Box sx={{ display: "flex" , justifyContent: "space-between",bgcolor:tableSettings.itemRowBackgroundColor}}>
-                  <Typography p={1} variant='h6' sx={{ fontWeight: 'bold',color:tableSettings.itemRowFontColor}}>Net Amount Payable:</Typography>
-                  <Typography p={1} variant='h6' sx={{ fontWeight: 'bold' ,color:tableSettings.itemRowFontColor }}><CurrencyRupeeOutlinedIcon sx={{ fontSize: 'small' }}></CurrencyRupeeOutlinedIcon>{commonTemplateContent.netAmountPayable}</Typography>
+                  <Typography p={1} variant='h6' sx={{ fontWeight: 'bold',color:tableSettings.itemRowFontColor, fontSize:`${tableSettings.itemRowFontSize}px`}}>Net Amount Payable:</Typography>
+                  <Typography p={1} variant='h6' sx={{ fontWeight: 'bold' ,color:tableSettings.itemRowFontColor , fontSize:`${tableSettings.itemRowFontSize}px`}}><CurrencyRupeeOutlinedIcon sx={{ fontSize: `${tableSettings.itemRowFontSize}px`}}></CurrencyRupeeOutlinedIcon>{commonTemplateContent.netAmountPayable}</Typography>
                 </Box>
                 </Box>
               </Box>
@@ -170,8 +170,8 @@ for(let i=0;i<templateCompact.numberOfCopies;i++){
                     payment date.</Typography>
                 </Grid>
                 <Grid lg={6} item >
-                  <Typography p={1} variant='h6' sx={{ fontWeight: 'bold' , color:headerFooterSettings. footerFontColor, fontSize:`${headerFooterSettings.footerFontSize}px`}}>*Fine (<CurrencyRupeeOutlinedIcon sx={{ fontSize: 'small' }}></CurrencyRupeeOutlinedIcon>):</Typography>
-                  <Typography p={1} variant='h6' sx={{ fontWeight: 'bold' , color:headerFooterSettings. footerFontColor, fontSize:`${headerFooterSettings.footerFontSize}px`}}>Amount Paid (<CurrencyRupeeOutlinedIcon sx={{ fontSize: 'small' }}></CurrencyRupeeOutlinedIcon>):</Typography>
+                  <Typography p={1} variant='h6' sx={{ fontWeight: 'bold' , color:headerFooterSettings. footerFontColor, fontSize:`${headerFooterSettings.footerFontSize}px`}}>*Fine (<CurrencyRupeeOutlinedIcon sx={{ fontSize: `${headerFooterSettings.footerFontSize}px` }}></CurrencyRupeeOutlinedIcon>):</Typography>
+                  <Typography p={1} variant='h6' sx={{ fontWeight: 'bold' , color:headerFooterSettings. footerFontColor, fontSize:`${headerFooterSettings.footerFontSize}px`}}>Amount Paid (<CurrencyRupeeOutlinedIcon sx={{ fontSize: `${headerFooterSettings.footerFontSize}px` }}></CurrencyRupeeOutlinedIcon>):</Typography>
                 </Grid>
               </Grid>
             </Box>
