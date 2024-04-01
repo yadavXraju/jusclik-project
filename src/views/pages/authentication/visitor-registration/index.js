@@ -1,7 +1,6 @@
 import React from 'react'
 import VisitorRegistrationTemplate from './visitor-registration'
 import { Box } from '@mui/material'
-import {css} from './css'
 const VisitorRegistration = () => {
   return (
     <>
