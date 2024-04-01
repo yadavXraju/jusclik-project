@@ -1,6 +1,10 @@
 const rows = [
   {
     id: 1,
+    AdmNo: '8574',
+    Section: 'A',
+    StudentName: 'Pawan',
+    class: 'X',
     EffectFrom: '03-05-2000',
     PickRoute: 'Route 1',
     DropRoute: 'Route 10',
@@ -13,6 +17,10 @@ const rows = [
   },
   {
     id: 2,
+    AdmNo: '8575',
+    Section: 'B',
+    StudentName: 'John',
+    class: 'V',
     EffectFrom: '10-12-2001',
     PickRoute: 'Route 2',
     DropRoute: 'Route 5',
@@ -25,6 +33,10 @@ const rows = [
   },
   {
     id: 3,
+    AdmNo: '8576',
+    Section: 'C',
+    StudentName: 'Jane',
+    class: 'I',
     EffectFrom: '15-09-2002',
     PickRoute: 'Route 3',
     DropRoute: 'Route 7',
@@ -37,6 +49,10 @@ const rows = [
   },
   {
     id: 4,
+    AdmNo: '8577',
+    Section: 'A',
+    StudentName: 'Alice',
+    class: 'VI',
     EffectFrom: '03-05-2000',
     PickRoute: 'Route 1',
     DropRoute: 'Route 10',
@@ -49,6 +65,10 @@ const rows = [
   },
   {
     id: 5,
+    AdmNo: '8578',
+    Section: 'B',
+    StudentName: 'Bob',
+    class: 'XI',
     EffectFrom: '10-12-2001',
     PickRoute: 'Route 2',
     DropRoute: 'Route 5',
@@ -61,6 +81,10 @@ const rows = [
   },
   {
     id: 6,
+    AdmNo: '8579',
+    Section: 'C',
+    StudentName: 'Emily',
+    class: 'IX',
     EffectFrom: '15-09-2002',
     PickRoute: 'Route 3',
     DropRoute: 'Route 7',
@@ -73,6 +97,10 @@ const rows = [
   },
   {
     id: 7,
+    AdmNo: '8580',
+    Section: 'A',
+    StudentName: 'Michael',
+    class: 'X',
     EffectFrom: '03-05-2000',
     PickRoute: 'Route 1',
     DropRoute: 'Route 10',
@@ -85,6 +113,10 @@ const rows = [
   },
   {
     id: 8,
+    AdmNo: '8581',
+    Section: 'B',
+    StudentName: 'Sara',
+    class: 'III',
     EffectFrom: '10-12-2001',
     PickRoute: 'Route 2',
     DropRoute: 'Route 5',
@@ -97,6 +129,10 @@ const rows = [
   },
   {
     id: 9,
+    AdmNo: '8582',
+    Section: 'C',
+    StudentName: 'David',
+    class: 'V',
     EffectFrom: '15-09-2002',
     PickRoute: 'Route 3',
     DropRoute: 'Route 7',
@@ -109,6 +145,10 @@ const rows = [
   },
   {
     id: 10,
+    AdmNo: '8583',
+    Section: 'A',
+    StudentName: 'Jessica',
+    class: 'II',
     EffectFrom: '03-05-2000',
     PickRoute: 'Route 1',
     DropRoute: 'Route 10',
@@ -121,6 +161,10 @@ const rows = [
   },
   {
     id: 11,
+    AdmNo: '8584',
+    Section: 'B',
+    StudentName: 'Peter',
+    class: 'IV',
     EffectFrom: '10-12-2001',
     PickRoute: 'Route 2',
     DropRoute: 'Route 5',
@@ -133,6 +177,10 @@ const rows = [
   },
   {
     id: 12,
+    AdmNo: '8585',
+    Section: 'C',
+    StudentName: 'Sophia',
+    class: 'XII',
     EffectFrom: '15-09-2002',
     PickRoute: 'Route 3',
     DropRoute: 'Route 7',
@@ -145,6 +193,10 @@ const rows = [
   },
   {
     id: 13,
+    AdmNo: '8586',
+    Section: 'A',
+    StudentName: 'Daniel',
+    class: 'X',
     EffectFrom: '03-05-2000',
     PickRoute: 'Route 1',
     DropRoute: 'Route 10',
@@ -157,6 +209,10 @@ const rows = [
   },
   {
     id: 14,
+    AdmNo: '8587',
+    Section: 'B',
+    StudentName: 'Olivia',
+    class: 'VII',
     EffectFrom: '10-12-2001',
     PickRoute: 'Route 2',
     DropRoute: 'Route 5',
@@ -169,6 +225,10 @@ const rows = [
   },
   {
     id: 15,
+    AdmNo: '8588',
+    Section: 'C',
+    StudentName: 'William',
+    class: 'VIII',
     EffectFrom: '15-09-2002',
     PickRoute: 'Route 3',
     DropRoute: 'Route 7',
@@ -178,7 +238,7 @@ const rows = [
     DropStop: 'Stop 6',
     TransportLeftDate: '20-Jun-2024',
     Remarks: 'Excellent Service'
-  },
+  }
 ];
 
 export default rows;
