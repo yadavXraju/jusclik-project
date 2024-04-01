@@ -89,7 +89,7 @@ export const css = {
     school:{
       // color: '#3a3a3a',
       color:'#E64B4C',
-      fontSize: { xs: '20px', md: '2.5rem' },
+      fontSize: { sm: '16px', md: '30px' },
       fontFamily: 'plus Jakarta sans',
       textAlign: 'center',
       marginBottom: '20px',
@@ -98,7 +98,7 @@ export const css = {
     address:{
 
       color:'#364152b5',
-      fontSize: { xs: '1rem', md: '1.5rem' },
+      fontSize: { sm: '14px', md: '20px' },
       fontFamily: 'plus Jakarta sans', 
       textAlign: 'center', 
       marginBottom: '10px',
@@ -106,7 +106,7 @@ export const css = {
     },
     managedBy:{
        color:'#364152b5',
-       fontSize: { xs: '1rem', md: '1rem' }, 
+       fontSize: { xs: '14px', md: '14px' }, 
        fontFamily: 'plus Jakarta sans', 
        textAlign: 'center', 
        marginBottom: '10px',

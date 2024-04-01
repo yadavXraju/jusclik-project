@@ -127,7 +127,7 @@ export default function CalendarMonthly() {
 
   // Render the calendar component
   return (
-    <Grid item xs={12} sm={6} md={4}>
+    <Grid item xs={12} sm={6} md={5} lg={4}>
       <Paper sx={{ height: '525px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
         <Grid item>
           <Typography variant='h3' sx={{ mb: 4 }}>

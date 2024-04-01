@@ -11,6 +11,7 @@ import CalendarMonthTwoToneIcon from '@mui/icons-material/CalendarMonthTwoTone';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import Autocomplete from '@mui/material/Autocomplete';
 import { data } from './AssignmentData';
+import { Grid } from '@mui/material';
 
 const uniqueSubjects = [...new Set(data.map(item => item.name))];
 const subjects = uniqueSubjects.map(subject => ({ title: subject }));
@@ -59,35 +60,64 @@ const SearchAssignment = ({ onSearch }) => {
         borderRadius: '30px',
         padding: '20px',
         mb: '15px',
-        backgroundColor: '#fff',
+        backgroundColor: '#fff'
       }}
       noValidate
       autoComplete="off"
     >
+
+      <Grid>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DemoContainer components={['DatePicker']}>
-          <DatePicker label="From" value={startDate} onChange={handleStartDateChange} slots={{
+          <DatePicker
+            label="From"
+            value={startDate}
+            onChange={handleStartDateChange}
+            slots={{
+              openPickerIcon: CalendarMonthTwoToneIcon
+            }}
+          />
+        </DemoContainer>
+      </LocalizationProvider>
+      </Grid>
+
+      <Grid>
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <DemoContainer components={['DatePicker']}>
+          <DatePicker
+            label="To"
+            value={endDate}
+            onChange={handleEndDateChange}
+            slots={{
+              openPickerIcon: CalendarMonthTwoToneIcon
+            }}
+          />
+        </DemoContainer>
+      </LocalizationProvider>
+
+      </Grid>
+
+      {/*Commented for responsive */}
+
+      {/*<LocalizationProvider dateAdapter={AdapterDayjs}>
+        <DemoContainer components={['DatePicker']}>
+           <DatePicker label="From" value={startDate} onChange={handleStartDateChange} slots={{
             openPickerIcon: CalendarMonthTwoToneIcon
           }} />
+          
           <DatePicker label="To" value={endDate} onChange={handleEndDateChange} slots={{
             openPickerIcon: CalendarMonthTwoToneIcon
           }} />
         </DemoContainer>
-      </LocalizationProvider>
+        </LocalizationProvider> */}
+
       <Autocomplete
         id="highlights-demo"
         sx={{ width: 300, marginTop: '8px', marginBottom: '-1px' }}
         options={subjects}
-        getOptionLabel={option => option.title}
+        getOptionLabel={(option) => option.title}
         onChange={handleSubjectChange}
-        renderInput={params => (
-          <TextField
-            {...params}
-            label="Subjects"
-            margin="normal"
-            sx={{ marginBottom: '0px', marginTop: '0px' }}
-          />
-        )}
+        renderInput={(params) => <TextField {...params} label="Subjects" margin="normal" sx={{ marginBottom: '0px', marginTop: '0px' }} />}
         renderOption={(props, option, { inputValue }) => {
           const parts = option.title.split(new RegExp(`(${inputValue})`, 'gi'));
 
@@ -98,7 +128,7 @@ const SearchAssignment = ({ onSearch }) => {
                   <span
                     key={index}
                     style={{
-                      fontWeight: part.toLowerCase() === inputValue.toLowerCase() ? 700 : 400,
+                      fontWeight: part.toLowerCase() === inputValue.toLowerCase() ? 700 : 400
                     }}
                   >
                     {part}
@@ -109,13 +139,7 @@ const SearchAssignment = ({ onSearch }) => {
           );
         }}
       />
-      <TextField
-        id="outlined-search"
-        label="Search"
-        type="search"
-        value={searchText}
-        onChange={handleSearchTextChange}
-      />
+      <TextField id="outlined-search" label="Search" type="search" value={searchText} onChange={handleSearchTextChange} />
       <Stack direction="row" spacing={2}>
         <Button
           variant="contained"

@@ -28,6 +28,7 @@
     "@mui/x-tree-view": "^6.17.0",
     "@react-email/components": "^0.0.12",
     "@react-spring/web": "^9.7.3",
+    "@reduxjs/toolkit": "^2.2.3",
     "@tabler/icons": "^1.72.0",
     "@types/react-dnd": "^3.0.2",
     "antd": "^5.13.2",
@@ -91,7 +92,8 @@
   "browserslist": {
     "production": [
       "defaults",
-      "not IE 11"
+      "not IE 11",
+      "last 5 versions safari"
     ],
     "development": [
       "last 1 chrome version",
