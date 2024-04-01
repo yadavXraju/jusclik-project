@@ -21,7 +21,7 @@ const DottedDivider = styled('div')({
 const CompactTemplate2 = ({ states }) => {
   const isSmScreen = useMediaQuery('(max-width:600px)');
   const isLargeScreen = useMediaQuery('(max-width:1500px)');
-  const responsiveText = isLargeScreen ? '14px' : '20px';
+  const responsiveText = isLargeScreen ? '12px' : '14px';
 
   const [generalSettings, headerFooterSettings, tableSettings] = states;
 
@@ -107,16 +107,16 @@ const CompactTemplate2 = ({ states }) => {
                       </Typography>
                     </Grid>
                     <Grid item lg={6} xs={6}>
-                      <Typography variant="h6" style={{ marginTop: '20px', fontWeight: 'bold', color: generalSettings.fontColor }}>
+                      <Typography variant="h6" style={{ marginTop: '20px', fontWeight: 'bold', color: generalSettings.fontColor,fontSize:`${generalSettings.fontSize}px`}}>
                         {commonTemplateContent.admissionNo}
                       </Typography>
-                      <Typography variant="h6" style={{ marginTop: '20px', fontWeight: 'bold', color: generalSettings.fontColor }}>
+                      <Typography variant="h6" style={{ marginTop: '20px', fontWeight: 'bold', color: generalSettings.fontColor ,fontSize:`${generalSettings.fontSize}px`}}>
                         {commonTemplateContent.name}
                       </Typography>
-                      <Typography variant="h6" style={{ marginTop: '20px', fontWeight: 'bold', color: generalSettings.fontColor }}>
+                      <Typography variant="h6" style={{ marginTop: '20px', fontWeight: 'bold', color: generalSettings.fontColor,fontSize:`${generalSettings.fontSize}px` }}>
                         {commonTemplateContent.fatherName}
                       </Typography>
-                      <Typography variant="h6" style={{ marginTop: '20px', color: generalSettings.fontColor }}>
+                      <Typography variant="h6" style={{ marginTop: '20px', color: generalSettings.fontColor,fontSize:`${generalSettings.fontSize}px` }}>
                         {commonTemplateContent.SchoolAddress}
                       </Typography>
                     </Grid>
@@ -142,16 +142,16 @@ const CompactTemplate2 = ({ states }) => {
                       </Typography>
                     </Grid>
                     <Grid item lg={7} xs={6}>
-                      <Typography variant="h6" style={{ marginTop: '20px', fontWeight: 'bold', color: generalSettings.fontColor }}>
+                      <Typography variant="h6" style={{ marginTop: '20px', fontWeight: 'bold', color: generalSettings.fontColor ,fontSize:`${generalSettings.fontSize}px`}}>
                         {commonTemplateContent.className}
                       </Typography>
-                      <Typography variant="h6" style={{ marginTop: '20px', color: generalSettings.fontColor }}>
+                      <Typography variant="h6" style={{ marginTop: '20px', color: generalSettings.fontColor ,fontSize:`${generalSettings.fontSize}px`}}>
                         {commonTemplateContent.mobile}
                       </Typography>
-                      <Typography variant="h6" style={{ marginTop: '20px', color: generalSettings.fontColor }}>
+                      <Typography variant="h6" style={{ marginTop: '20px', color: generalSettings.fontColor ,fontSize:`${generalSettings.fontSize}px`}}>
                         {commonTemplateContent.schoolTel}
                       </Typography>
-                      <Typography variant="h6" style={{ marginTop: '20px', wordWrap: 'break-word', color: generalSettings.fontColor }}>
+                      <Typography variant="h6" style={{ marginTop: '20px', wordWrap: 'break-word', color: generalSettings.fontColor ,fontSize:`${generalSettings.fontSize}px`}}>
                         {commonTemplateContent.email}
                       </Typography>
                     </Grid>
@@ -175,11 +175,12 @@ const CompactTemplate2 = ({ states }) => {
                   <Typography
   sx={{
     lineHeight: 1.5,
+    fontWeight:'800',
     color: generalSettings.labelColor,
     textAlign: 'center',
     fontSize: responsiveText,
     '@media (max-width: 1500px)': {
-      fontSize: '14px', // Define the font size for smaller screens
+      fontSize: '12px', // Define the font size for smaller screens
     },
   }}
 >
@@ -259,20 +260,20 @@ const CompactTemplate2 = ({ states }) => {
                 <Grid item lg={5} xs={5} style={{ textAlign: 'right' }}>
                   <Typography
                     variant="h6"
-                    style={{ marginTop: '20px', fontWeight: 'bold', marginRight: '30px', color: generalSettings.fontColor }}
+                    style={{ marginTop: '20px', fontWeight: 'bold', marginRight: '30px', color: generalSettings.fontColor ,fontSize:`${generalSettings.fontSize}px`}}
                   >
                     {commonTemplateContent.invoiceNo}
                   </Typography>
-                  <Typography variant="h6" style={{ marginTop: '15px', marginRight: '20px', color: generalSettings.fontColor }}>
+                  <Typography variant="h6" style={{ marginTop: '15px', marginRight: '20px', color: generalSettings.fontColor ,fontSize:`${generalSettings.fontSize}px`}}>
                     {commonTemplateContent.invoiceDate}
                   </Typography>
-                  <Typography variant="h6" style={{ marginTop: '15px', marginRight: '20px', color: generalSettings.fontColor }}>
+                  <Typography variant="h6" style={{ marginTop: '15px', marginRight: '20px', color: generalSettings.fontColor,fontSize:`${generalSettings.fontSize}px` }}>
                     {commonTemplateContent.academicYear}
                   </Typography>
-                  <Typography variant="h6" style={{ marginTop: '15px', marginRight: '20px', color: generalSettings.fontColor }}>
+                  <Typography variant="h6" style={{ marginTop: '15px', marginRight: '20px', color: generalSettings.fontColor,fontSize:`${generalSettings.fontSize}px` }}>
                     {commonTemplateContent.feePeriod}
                   </Typography>
-                  <Typography variant="h6" style={{ marginTop: '15px', marginRight: '20px', color: generalSettings.fontColor }}>
+                  <Typography variant="h6" style={{ marginTop: '15px', marginRight: '20px', color: generalSettings.fontColor,fontSize:`${generalSettings.fontSize}px` }}>
                     {commonTemplateContent.dueDate}
                   </Typography>
                   <Typography
@@ -284,8 +285,9 @@ const CompactTemplate2 = ({ states }) => {
                       marginBottom: '20px',
                       color: generalSettings.fontColor
                     }}
+                    sx={{fontSize:`${generalSettings.fontSize}px`}}
                   >
-                    <CurrencyRupeeIcon sx={{ fontSize: 'small', color: generalSettings.fontColor }} />
+                    <CurrencyRupeeIcon sx={{color: generalSettings.fontColor ,fontSize:`${generalSettings.fontSize}px`}} />
                     {commonTemplateContent.netAmountPayable}
                   </Typography>
                 </Grid>
@@ -362,7 +364,7 @@ const CompactTemplate2 = ({ states }) => {
                   <Grid item lg={9} xs={6}>
                     <Box style={{ border: `1px solid ${tableSettings.borderColor}` }}>
                       <Box sx={{ backgroundColor: tableSettings.headerBackgroundColor, textAlign: 'center' }}>
-                        <Typography variant="h5" fontWeight="bold" sx={{ lineHeight: 1.5, color: tableSettings.headerFontColor }}>
+                        <Typography variant="h5" fontWeight="bold" sx={{ lineHeight: 1.5, color: tableSettings.headerFontColor ,fontSize:`${tableSettings.headerFontSize}px`}}>
                           Fee Heads{' '}
                         </Typography>
                       </Box>
@@ -397,20 +399,20 @@ const CompactTemplate2 = ({ states }) => {
                   <Grid item lg={3} xs={6}>
                     <Box style={{ border: `1px solid ${tableSettings.borderColor}` }}>
                       <Box sx={{ backgroundColor: tableSettings.headerBackgroundColor, textAlign: 'center' }}>
-                        <Typography variant="h5" fontWeight="bold" sx={{ lineHeight: 1.5, color: tableSettings.headerFontColor }}>
+                        <Typography variant="h5" fontWeight="bold" sx={{ lineHeight: 1.5, color: tableSettings.headerFontColor,fontSize:`${tableSettings.headerFontSize}px` }}>
                           Fee Due (<CurrencyRupeeIcon sx={{ fontSize: 'small' }} />){' '}
                         </Typography>
                       </Box>
                     </Box>
                     <Typography
                       variant="h6"
-                      sx={{ marginTop: '10px', textAlign: 'center', marginLeft: '20px', color: tableSettings.itemDescriptionFontColor }}
+                      sx={{ marginTop: '10px', textAlign: 'center', marginLeft: '20px',color:tableSettings.itemRowFontColor }}
                     >
                       {commonTemplateContent.lateFee}
                     </Typography>
                     <Typography
                       variant="h6"
-                      sx={{ marginTop: '10px', textAlign: 'center', marginLeft: '20px', color: tableSettings.itemDescriptionFontColor }}
+                      sx={{ marginTop: '10px', textAlign: 'center', marginLeft: '20px', color:tableSettings.itemRowFontColor }}
                     >
                       {commonTemplateContent.compositeFee}
                     </Typography>
@@ -421,7 +423,7 @@ const CompactTemplate2 = ({ states }) => {
                         textAlign: 'center',
                         fontWeight: 'bold',
                         marginLeft: '20px',
-                        color: tableSettings.itemDescriptionFontColor
+                        color:tableSettings.itemRowFontColor
                       }}
                     >
                       {commonTemplateContent.invoiceTotal}
@@ -440,7 +442,7 @@ const CompactTemplate2 = ({ states }) => {
                   <Grid item lg={6} xs={7}>
                     <Box style={{ border: `1px solid ${tableSettings.borderColor}` }}>
                       <Box sx={{ backgroundColor: tableSettings.headerBackgroundColor, textAlign: 'center' }}>
-                        <Typography variant="h5" fontWeight="bold" sx={{ lineHeight: 1.5, color: tableSettings.headerFontColor }}>
+                        <Typography variant="h5" fontWeight="bold" sx={{ lineHeight: 1.5, color: tableSettings.headerFontColor,fontSize:`${tableSettings.headerFontSize}px` }}>
                           Concessions (<CurrencyRupeeIcon sx={{ fontSize: 'small' }} />){' '}
                         </Typography>
                       </Box>
@@ -498,7 +500,7 @@ const CompactTemplate2 = ({ states }) => {
                   <Grid item lg={6} xs={5}>
                     <Box style={{ border: `1px solid ${tableSettings.borderColor}` }}>
                       <Box sx={{ backgroundColor: tableSettings.headerBackgroundColor, textAlign: 'center' }}>
-                        <Typography variant="h5" fontWeight="bold" sx={{ lineHeight: 1.5, color: tableSettings.headerFontColor }}>
+                        <Typography variant="h5" fontWeight="bold" sx={{ lineHeight: 1.5, color: tableSettings.headerFontColor ,fontSize:`${tableSettings.headerFontSize}px`}}>
                           Amount (<CurrencyRupeeIcon sx={{ fontSize: 'small' }} />){' '}
                         </Typography>
                       </Box>
@@ -506,13 +508,13 @@ const CompactTemplate2 = ({ states }) => {
 
                     <Typography
                       variant="h6"
-                      sx={{ marginTop: '10px', textAlign: 'right', marginRight: '20px', color: tableSettings.itemDescriptionFontColor }}
+                      sx={{ marginTop: '10px', textAlign: 'right', marginRight: '20px',color:tableSettings.itemRowFontColor }}
                     >
                       {commonTemplateContent.lateFee}
                     </Typography>
                     <Typography
                       variant="h6"
-                      sx={{ marginTop: '10px', textAlign: 'right', marginRight: '20px', color: tableSettings.itemDescriptionFontColor }}
+                      sx={{ marginTop: '10px', textAlign: 'right', marginRight: '20px', color:tableSettings.itemRowFontColor }}
                     >
                       {commonTemplateContent.compositeFee}
                     </Typography>
@@ -523,14 +525,14 @@ const CompactTemplate2 = ({ states }) => {
                         textAlign: 'right',
                         fontWeight: 'bold',
                         marginRight: '20px',
-                        color: tableSettings.itemDescriptionFontColor
+                      color:tableSettings.itemRowFontColor
                       }}
                     >
                       {commonTemplateContent.invoiceTotal}
                     </Typography>
                     <Typography
                       variant="h6"
-                      sx={{ marginTop: '10px', textAlign: 'right', marginRight: '20px', color: tableSettings.itemDescriptionFontColor }}
+                      sx={{ marginTop: '10px', textAlign: 'right', marginRight: '20px', color:tableSettings.itemRowFontColor }}
                     >
                       {commonTemplateContent.previousBalance}
                     </Typography>
@@ -541,7 +543,7 @@ const CompactTemplate2 = ({ states }) => {
                         textAlign: 'right',
                         fontWeight: 'bold',
                         marginRight: '20px',
-                        color: tableSettings.itemDescriptionFontColor
+                        color:tableSettings.itemRowFontColor
                       }}
                     >
                       <CurrencyRupeeIcon sx={{ fontSize: 'small' }} />
@@ -692,7 +694,7 @@ const CompactTemplate2 = ({ states }) => {
           <Box
             sx={{
               marginLeft: '20px',
-              '& .MuiTypography-root': { fontWeight: 'bold !important', fontSize: '12px', color: headerFooterSettings.footerFontColor }
+              '& .MuiTypography-root': { fontWeight: 'bold !important', fontSize:`${headerFooterSettings.footerFontSize}px`, color: headerFooterSettings.footerFontColor }
             }}
           >
             <List>

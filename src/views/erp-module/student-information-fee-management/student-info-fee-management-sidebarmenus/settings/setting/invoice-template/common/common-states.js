@@ -130,3 +130,183 @@ export const templateCompact2={
   date:'dd-mm-yyyy'
 
 }
+
+
+// compact template 1 default values
+export const CompactTemplate1DeafultValues={
+general:{
+  templateName: 'three copies',
+  paperSize: 'a4',
+  orientation: 'landscape',
+  marginTop: '0',
+  marginBottom: '0',
+  marginLeft: '0',
+  marginRight: '0',
+  pdfFont: 'ubuntu',
+  labelColor: '#000000',
+  fontColor: '#000000',
+  fontSize: '12',
+  backgroundImage: null,
+  imagePosition: 'centerCenter',
+  backgroundColorEnable: true,
+  backgroundColor: '#ffffff'
+}
+
+,
+headerFooter:{
+  // header props
+  headerImage:null,
+  headerImagePosition:'topLeft',
+  headerBackgroundColor:'#ffffff',
+  headerBackgroundColorEnable:true,
+  headerApplyToFirestPageOnly:false,
+  // footer props
+  footerFontSize:'12',
+  footerFontColor:'#000000',
+  footerImage:null,
+  footerImagePosition:'topLeft',
+  footerBackgroundColor:'#ffffff',
+  footerBackgroundColorEnable:true,
+  showPageNumber:true,
+  showGeneratedDate:false,
+  showGeneratedTime:false,
+}
+
+,
+
+tableLayout:{
+  borderEnable:true,
+  borderColor:'#000000',
+//   table header props
+  headerFontSize:'12',
+  headerBackgroundColorEnable:true,
+  headerBackgroundColor:'#ffffff',
+  headerFontColor:'#000000',
+//   table content props
+  itemRowFontSize:'12',
+  itemRowBackgroundColorEnable:true,
+  itemRowBackgroundColor:'#ffffff',
+  itemRowFontColor:'#000000'
+
+
+}
+}
+
+// compact template 4 default values
+export const CompactTemplate4DeafultValues={
+general:{
+
+  templateName: 'standard',
+  paperSize: 'a4',
+  orientation: 'portrait',
+  marginTop: '0',
+  marginBottom: '0',
+  marginLeft: '0',
+  marginRight: '0',
+  pdfFont: 'ubuntu',
+  labelColor: '#000000',
+  fontColor: '#000000',
+  fontSize: '12',
+  backgroundImage: null,
+  imagePosition: 'centerCenter',
+  backgroundColorEnable: true,
+  backgroundColor: '#ffffff'
+
+}
+,
+  headerFooter:{
+    // header props
+    headerImage:null,
+    headerImagePosition:'topLeft',
+    headerBackgroundColor:'#ffffff',
+    headerBackgroundColorEnable:true,
+    headerApplyToFirestPageOnly:false,
+    // footer props
+    footerFontSize:'12',
+    footerFontColor:'#000000',
+    footerImage:null,
+    footerImagePosition:'topLeft',
+    footerBackgroundColor:'#ffffff',
+    footerBackgroundColorEnable:true,
+    showPageNumber:true,
+    showGeneratedDate:false,
+    showGeneratedTime:false,
+},
+tableLayout:{
+  borderEnable:true,
+  borderColor:'#000000',
+//   table header props
+  headerFontSize:'12',
+  headerBackgroundColorEnable:true,
+  headerBackgroundColor:'#3c3d3a',
+  headerFontColor:'#ffffff',
+//   table content props
+  itemRowFontSize:'12',
+  itemRowBackgroundColorEnable:true,
+  itemRowBackgroundColor:'#ffffff',
+  itemRowFontColor:'#000000'
+
+
+}
+
+
+}
+// compact template 5 default values
+export const CompactTemplate5DeafultValues={
+  general:{
+  
+    templateName: 'spreadsheet compact',
+    paperSize: 'a4',
+    orientation: 'portrait',
+    marginTop: '0',
+    marginBottom: '0',
+    marginLeft: '0',
+    marginRight: '0',
+    pdfFont: 'ubuntu',
+    labelColor: '#000000',
+    fontColor: '#000000',
+    fontSize: '12',
+    backgroundImage: null,
+    imagePosition: 'centerCenter',
+    backgroundColorEnable: true,
+    backgroundColor: '#ffffff'
+  
+  },
+  headerFooter:{
+    // header props
+    headerImage:null,
+    headerImagePosition:'topLeft',
+    headerBackgroundColor:'#ffffff',
+    headerBackgroundColorEnable:true,
+    headerApplyToFirestPageOnly:false,
+    // footer props
+    footerFontSize:'12',
+    footerFontColor:'#000000',
+    footerImage:null,
+    footerImagePosition:'topLeft',
+    footerBackgroundColor:'#ffffff',
+    footerBackgroundColorEnable:true,
+    showPageNumber:true,
+    showGeneratedDate:false,
+    showGeneratedTime:false,
+},
+
+tableLayout:{
+  borderEnable:true,
+  borderColor:'#000000',
+//   table header props
+  headerFontSize:'12',
+  headerBackgroundColorEnable:true,
+  headerBackgroundColor:'#3c3d3a',
+  headerFontColor:'#ffffff',
+//   table content props
+  itemRowFontSize:'12',
+  itemRowBackgroundColorEnable:true,
+  itemRowBackgroundColor:'#ffffff',
+  itemRowFontColor:'#000000'
+
+
+}
+  
+
+}

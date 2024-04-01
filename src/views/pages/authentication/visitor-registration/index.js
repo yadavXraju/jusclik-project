@@ -5,7 +5,7 @@ import {css} from './css'
 const VisitorRegistration = () => {
   return (
     <>
-    <Box sx={{...css.center,backgroundColor:'#eef2f6'}}>
+    <Box sx={{backgroundColor:'#eef2f6' }} >
     <VisitorRegistrationTemplate/>
       </Box>     
     </>
