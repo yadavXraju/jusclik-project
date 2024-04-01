@@ -45,8 +45,7 @@ const stateHandler=(key,value)=>{
 
   {
     return (<>
-
-      <Box sx={{ ...css.center }}></Box>
+        <Box >
       <Paper sx={{ ...css.mobilePaper,minWidth:'20rem'}} elevation={2}>
         <Box>
           <FormControl fullWidth>
@@ -103,6 +102,7 @@ const stateHandler=(key,value)=>{
           {'Next'}
         </Button>
       </Paper>
+      </Box>
     </>
     );
   }

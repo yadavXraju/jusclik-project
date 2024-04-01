@@ -3,7 +3,6 @@ import Box from '@mui/material/Box';
 import logo from 'assets/images/WhatsApp_Image_2020-03-21_at_8_04_53_PM__1-removebg-preview 1.png';
 import Typography from '@mui/material/Typography';
 import Avatar from '@mui/material/Avatar';
-import DP from 'assets/images/pro-3.png';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import Divider from '@mui/material/Divider';
 import QRCODE from 'assets/images/Demo_QR.jpg';
@@ -13,6 +12,8 @@ import WithPrintPdf from 'views/common-section/withPrintPdf';
 import DownloadpdfwithCanvas from 'views/common-section/DownloadpdfwithCanvas';
 import {  List, ListItemText } from '@mui/material';
 import jsPDF from 'jspdf';
+import { getCurrentDate } from 'utils/timeUtils';
+import { getCurrentTime } from 'utils/timeUtils';
 
 const PrintButton = () => {
   return (
@@ -22,21 +23,24 @@ const PrintButton = () => {
   );
 };
 
-const VisitorAppointmentPass = ({ handleDownload }) => {
+const VisitorAppointmentPass = ({ handleDownload,capturedImage,personalDetails,mobileNumber }) => {
   const printRef = useRef();
   const downloadRef = useRef(); // Used Ref for Downlaod 
   const pdf=new jsPDF  // Creating PDF Document with jsPDF library , Its Mandatory to pass ImgWidth
   const imgWidth = pdf.internal.pageSize.getWidth() * 0.42; //Set Value in % for print , change .42 value as per requirement
+  const currentDate=getCurrentDate()
+  const currentTime=getCurrentTime()
+
 
   const passDetails = {
-    visitorName: 'Visitor Name',
-    date: '12 mar,2024',
-    time: '10:10am(IST)',
+    visitorName: personalDetails.name,
+    date: currentDate,
+    time: currentTime,
     schoolName: 'Arwachin Public School , Ghaziabad',
     address: 'Abc Delhi',
     visitorcompany: 'Abc Tech',
-    name: 'Visitor Name',
-    number: 'Visitor Number',
+    name: personalDetails.concernedPerson,
+    number: mobileNumber,
   };
   
 
@@ -79,10 +83,10 @@ const VisitorAppointmentPass = ({ handleDownload }) => {
             <img src={logo} alt="Logo" style={{ width: '90px', height: '90px', alignSelf: 'center!important', marginTop: '20px' }} />
 
             <Typography variant="h4" color="white">
-              Meeting Appointment Pass
+              {personalDetails.purpose} Pass
             </Typography>
 
-            <Avatar alt="DP" src={DP} sx={{ width: 100, height: 100, marginTop: 2, marginBottom: 2, marginLeft: 'auto', marginRight: 'auto' }} />
+            <Avatar alt="DP" src={capturedImage} sx={{ width: 100, height: 100, marginTop: 2, marginBottom: 2, marginLeft: 'auto', marginRight: 'auto' }} />
 
             <Typography variant="h4" color="white">
               {passDetails.visitorName}
@@ -109,7 +113,7 @@ const VisitorAppointmentPass = ({ handleDownload }) => {
               <strong>POC Details</strong>
             </Typography>
             <Typography variant="h6" color="white">
-              <strong>Name: {passDetails.visitorName} , Number: {passDetails.number}</strong>
+              <strong>Name: {personalDetails.concernedPerson} , Number: {passDetails.number}</strong>
             </Typography>
             <img src={QRCODE} alt="QRCODE" style={{ width: '150px', height: '140px', alignSelf: 'center!important', marginTop: '20px' }} />
             <Typography variant="h5" color="white" marginTop={2}>
