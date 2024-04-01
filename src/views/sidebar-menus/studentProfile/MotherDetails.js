@@ -53,7 +53,7 @@ export default function MotherDetails() {
         image={studentProfileDetails.StudentImage}
         title="Father image"
       />
-      <Typography variant="h1" m={2}>Mother Name</Typography>
+      <Typography variant="h5" m={2} sx={{fontSize:{lg:'20px' , md:'18px' , xs:'16px'}}}>Mother Name</Typography>
     </Typography>
     <Box component="form">
       <CardContent>

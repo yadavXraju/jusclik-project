@@ -57,11 +57,15 @@ function EnhancedTableToolbar(props) {
       </Toolbar>
 
       <Drawer anchor="right" open={anchor.right} onClose={toggleDrawer('right', false)}>
-        <Box style={{ width: 650 }}  sx={{ padding: '1rem' }}>
+        <Box  sx={{ width:{xs : '100vw' , sm: 650} , padding: '1rem' }} role='presentation'>
           <Box sx={{ display: "flex", justifyContent: "space-between", paddingBottom:'1rem', }}>
-            <Typography>Quick Search {totalNetPay}</Typography>
+            <Typography> Student Fee Ledger </Typography>
+
+
             <Button sx={{marginTop:"-6px"}} onClick={toggleDrawer('right', false)}>Close</Button>
           </Box>
+
+           <Typography sx={{fontSize:'18px' , pb:3, }}> Total Net Payable : {totalNetPay}</Typography>
           <FeeLedgerForms />
         </Box>
       </Drawer>

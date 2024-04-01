@@ -6,6 +6,8 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { Card } from '@mui/material';
 import TransportRouteTable from './TransportRouteTable';
+import SlabTable from './SlabTable';
+import Stoppage from './Stoppage';
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -13,7 +15,7 @@ function CustomTabPanel(props) {
   return (
     <div role="tabpanel" hidden={value !== index} id={`simple-tabpanel-${index}`} aria-labelledby={`simple-tab-${index}`} {...other}>
       {value === index && (
-        <Box sx={{ p: 2 }}>
+        <Box sx={{ padding:{xs:0 , sm:2} }}>
           <Typography>{children}</Typography>
         </Box>
       )}
@@ -53,13 +55,13 @@ export default function RoutesAndSlabs() {
             </Tabs>
           </Box>
           <CustomTabPanel value={value} index={0}>
-          Slabs
+          <SlabTable/>
           </CustomTabPanel>
           <CustomTabPanel value={value} index={1}>
            <TransportRouteTable/>
           </CustomTabPanel>
           <CustomTabPanel value={value} index={2}>
-          Stoppage
+          <Stoppage/>
           </CustomTabPanel>
         </Box>
       </Card>
