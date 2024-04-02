@@ -26,12 +26,18 @@ const PoweredBySection = () => {
   }
   else{
     pad=false
-    return 'relative'
+    return 'static'
   }
 }
+let padBottom=null
+if(viewportWidth>=600)
+padBottom='4rem'
+else
+padBottom=null
+
   return (
     <>
-      <Grid container>
+      <Grid container pb={padBottom}>
         {/* powered by section */}
         <Grid item xs={12}>
           <Box
@@ -61,10 +67,6 @@ const PoweredBySection = () => {
               </Typography>
             </Box>
           </Box>
-          {/* playstore and app store logo */}
-          {/* <Grid item sm={12} pt={1}>
-            <AppStoreButtonsGroup />
-          </Grid> */}
         </Grid>
       </Grid>
     </>
