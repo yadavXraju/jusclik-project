@@ -9,13 +9,12 @@ import PeopleAltTwoToneIcon from '@mui/icons-material/PeopleAltTwoTone';
 import HandymanTwoToneIcon from '@mui/icons-material/HandymanTwoTone';
 import TextsmsTwoToneIcon from '@mui/icons-material/TextsmsTwoTone';
 import DescriptionTwoToneIcon from '@mui/icons-material/DescriptionTwoTone';
-import BottomNavbar from '../../admission-common-section/bottom-navbar';
+import BottomNavbar from '../../../../../../../erp-common-component/bottom-navbar';
 import Profile from './Profile';
 import ProfileDetail from './ProfileDetail';
 import AddressForm from './Address';
 import ContactPerson from './ContactPerson';
-import studentDetailsData from './studentDetailsData';
-
+import { useSelector } from 'react-redux';
 
 const buttonsData = [
   { name: 0, icon: <PersonAddAltTwoToneIcon />, label: 'Primary Details' },
@@ -28,6 +27,7 @@ const buttonsData = [
 
 
 const Mainform1 = ({ currEditItem }) => {
+  const {studentDetailsData}=useSelector((state)=>state.admission);
   const [selectedButton, setSelectedButton] = useState(0);
   const [option, setOption] = useState({
     primaryDetails: [],

@@ -13,22 +13,31 @@ const commonTextStyle = {
 const PoweredBySection = () => {
   const theme = useTheme(); // Accessing theme object using useTheme hook
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
-  const betweenMdLg=useMediaQuery(theme.breakpoints.between('md', 'lg'))
+  const belowXl=useMediaQuery(theme.breakpoints.down( 'xl'))
+  // console.log(belowXl);
+  const viewportWidth = window.innerWidth;
+  console.log(viewportWidth);
   // for padding if position is static
-  let pad=false 
-  const pos=()=>{if(betweenMdLg||isMobile){
+  let pad=false
+  const pos=()=>{if(belowXl||isMobile||viewportWidth==1600){
     pad=true
     return 'static'
 
   }
   else{
     pad=false
-    return 'relative'
+    return 'static'
   }
 }
+let padBottom=null
+if(viewportWidth>=600)
+padBottom='4rem'
+else
+padBottom=null
+
   return (
     <>
-      <Grid container>
+      <Grid container pb={padBottom}>
         {/* powered by section */}
         <Grid item xs={12}>
           <Box
@@ -58,10 +67,6 @@ const PoweredBySection = () => {
               </Typography>
             </Box>
           </Box>
-          {/* playstore and app store logo */}
-          {/* <Grid item sm={12} pt={1}>
-            <AppStoreButtonsGroup />
-          </Grid> */}
         </Grid>
       </Grid>
     </>

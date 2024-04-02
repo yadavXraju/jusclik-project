@@ -6,6 +6,7 @@ import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import RadioButtonsGroup from 'views/common-section/ParamRadioButton';
 import ParamTime from 'views/common-section/ParamTime';
 import ParamMultipleSelect from 'views/common-section/ParamMultipleSelect';
+import ParamDateRangePicker from 'views/common-section/ParamDateRange';
 
 function TransportRoutes() {
   const isMobile = useMediaQuery('(max-width: 767px)');
@@ -23,6 +24,9 @@ function TransportRoutes() {
     },
     { value: 'option2', label: 'Option 2' }
   ];
+  const statusChange = (event) => {
+    setStatusValue(event.target.value);
+  };
 
   // ========= state for Attach Bus ============
   const [addBus, setAddBus] = useState('');
@@ -30,6 +34,9 @@ function TransportRoutes() {
     { value: 'Bus1', label: 'Bus 1' },
     { value: 'Bus2', label: 'Bus 2' }
   ];
+  const addBusChange = (event) => {
+    setAddBus(event.target.value);
+  };
 
   // ========= state for Attach Slab ============
   const [addSlab, setAddSlab] = useState('');
@@ -37,13 +44,19 @@ function TransportRoutes() {
     { value: 'Slab1', label: 'Slab 1' },
     { value: 'Slab2', label: 'Slab 2' }
   ];
+  const slabChange = (event) => {
+    setAddSlab(event.target.value);
+  };
 
-  const [gender, setGender] = useState('alldays');
-  const genderOptions = [
+  const [schedule, setSchedule] = useState('alldays');
+  const scheduleOptions = [
     { value: 'alldays', label: 'All days' },
     { value: 'onetime', label: 'One Time' },
     { value: 'days', label: 'Days' }
   ];
+  const handleChange = (event) => {
+    setSchedule(event.target.value);
+  };
 
   const [selectedStudents, setSelectedStudents] = React.useState([]);
   // =========== list of students ===========
@@ -54,9 +67,20 @@ function TransportRoutes() {
     { id: 4, name: 'VII' },
   ];
 
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
+
+  const handleStartDateChange = (date) => {
+    setStartDate(date);
+  };
+
+  const handleEndDateChange = (date) => {
+    setEndDate(date);
+  };
+
   return (
     <>
-      <Card sx={{border:'1px solid #ccc', p:2, borderRadius:'5px'}}>
+      <Card className='scrollbar' sx={{border:'1px solid #ccc', height: 'calc(100vh - 175px)', overflowY:'scroll', p:2, borderRadius:'5px'}}>
         <Box>
           <Box pb={2}>
             <TextField id="outlined-basic" size={isMobile ? 'small' : 'normal'} fullWidth label="Route Name" variant="outlined" />
@@ -66,16 +90,51 @@ function TransportRoutes() {
               label="Status"
               options={statusOptions}
               value={statusValue}
-              setValue={setStatusValue}
+              onChange={statusChange}
               size={isMobile ? 'small' : 'normal'}
               // customSytle={{ width: '30%' }}
             />
           </Box>
+ 
+          <Box pb={2}>
+            <Typography variant="h4">
+              Attach Bus <InfoOutlinedIcon sx={{ fontSize: '14px', color: '#746a6a' }} />{' '}
+            </Typography>
+            <Grid container spacing={2}>
+              <Grid mt={1} item xs={12} md={6}>
+                <SelectList
+                  label="Attach Bus"
+                  options={busOptions}
+                  value={addBus}
+                  onChange={addBusChange}
+                  size={isMobile ? 'small' : 'normal'}
+                  // customSytle={{ width: '30%' }}
+                />
+              </Grid>
+              <Grid mt={1} item xs={12} md={6}>
+                <TextField id="outlined-basic" size={isMobile ? 'small' : 'normal'} fullWidth label="Seating Capacity" variant="outlined" />
+              </Grid>
+            </Grid>
+          </Box>
+
           <Box pb={2}>
             <Typography variant="h4">
               Schedule <InfoOutlinedIcon sx={{ fontSize: '14px', color: '#746a6a' }} />{' '}
             </Typography>
-            <RadioButtonsGroup defaultValue={gender} setValue={setGender} options={genderOptions} />
+            <RadioButtonsGroup defaultValue={schedule} onChange={handleChange} options={scheduleOptions} />
+             {
+             schedule === 'onetime' && 
+                <Box>
+                <ParamDateRangePicker
+                startLabel='Start Date'
+                endLabel='End Date'
+                startDateValue={startDate}
+                endDateValue={endDate}
+                onStartDateChange={handleStartDateChange}
+                onEndDateChange={handleEndDateChange}
+                />
+               </Box>
+             }
           </Box>
           <Box pb={2}>
             <Typography variant="h4">Pick Route </Typography>
@@ -103,27 +162,6 @@ function TransportRoutes() {
 
           <Box pb={2}>
             <Typography variant="h4">
-              Attach Bus <InfoOutlinedIcon sx={{ fontSize: '14px', color: '#746a6a' }} />{' '}
-            </Typography>
-            <Grid container spacing={2}>
-              <Grid mt={1} item xs={12} md={6}>
-                <SelectList
-                  label="Attach Bus"
-                  options={busOptions}
-                  value={addBus}
-                  setValue={setAddBus}
-                  size={isMobile ? 'small' : 'normal'}
-                  // customSytle={{ width: '30%' }}
-                />
-              </Grid>
-              <Grid mt={1} item xs={12} md={6}>
-                <TextField id="outlined-basic" size={isMobile ? 'small' : 'normal'} fullWidth label="Seating Capacity" variant="outlined" />
-              </Grid>
-            </Grid>
-          </Box>
-
-          <Box pb={2}>
-            <Typography variant="h4">
               Attach Slab <InfoOutlinedIcon sx={{ fontSize: '14px', color: '#746a6a' }} />{' '}
             </Typography>
             <Box mt={1}>
@@ -131,7 +169,7 @@ function TransportRoutes() {
                 label="Attach Slab"
                 options={SlabOptions}
                 value={addSlab}
-                setValue={setAddSlab}
+                onChange={slabChange}
                 size={isMobile ? 'small' : 'normal'}
                 // customSytle={{ width: '30%' }}
               />
@@ -146,6 +184,7 @@ function TransportRoutes() {
               <ParamMultipleSelect options={students} label="Classes" value={selectedStudents} setValue={setSelectedStudents} />
             </Box>
           </Box>
+
         </Box>
       </Card>
     </>

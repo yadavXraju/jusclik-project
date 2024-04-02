@@ -264,11 +264,11 @@ export default function LoginPage() {
           height="100%"
           pt={1}
         >
-          <Box height="100%" width={widthPercentage} padding={isMobile ? '1.5rem' : '0px'} display="flex" flexDirection="column">
+          <Box height="100%" width={widthPercentage} padding={isMobile ? '1.5rem' : '0px'} display="flex" flexDirection="column" >
             {/* Label: Login To Your Dashboard =========================================================================== */}
-            <Box height={isMobile ? null : '100%'} alignContent="start">
+            <Box height={isMobile ? null : '100%'}>
               {/* header and tabs */}
-              <Box height='50%'  alignContent='end' >
+              <Box height='50%'  display='flex' flexDirection='column' justifyContent='end' >
                 <Box display="flex" flexDirection="column" alignItems="flex-start" mb={isMobile ? 0 : 1}>
                   <Typography
                     component="h1"
@@ -292,7 +292,7 @@ export default function LoginPage() {
                   </Typography>
                 </Box>
                 {/* Tabs :  Username / Mobile Number ========================================================================== */}
-                <Box borderBottom={1} borderColor="divider">
+                <Box borderBottom={1} borderColor="divider" >
                   <Tabs
                     value={value}
                     onChange={handleChange}

@@ -2,7 +2,7 @@ import { Box, Paper, Button,Drawer} from '@mui/material';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import useDrawer from 'hooks/useDrawer';
-import CustomFields from './custom-fields';
+import CustomFields from './common-custom-fields';
 
 const BottomNavbar = ({ tabPageLength, value, setValue, customStyle = {} }) => {
     const {anchor,toggleDrawer}=useDrawer();

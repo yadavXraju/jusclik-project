@@ -3,17 +3,16 @@ import React from 'react';
 import ColorPicker from '../../common/color-picker';
 import FontSize from '../../common/font-size';
 import Divider from '@mui/material/Divider';
+import { useDispatch } from 'react-redux';
+import { updateTableProperty } from 'store/student-info-and-fee/setting/Invoice-Template-Slice';
+import { useSelector } from 'react-redux';
 
 const TableConfig = ({settings}) => {
-  // const [tableSettings, setTableSettings] = useState(tableLayout);
-  const tableSettings=settings[0]
-  const setTableSettings=settings[1]
-  // state handler for table setting component
+  settings
+  const dispatch=useDispatch()
+  const tableSettings=useSelector(state=>state.invoiceTemplate.table)
   const handleStateChange = (key, value) => {
-    setTableSettings((tableSettings) => ({
-      ...tableSettings,
-      [key]: value
-    }));
+    dispatch(updateTableProperty({key,value}))
   };
   return (
     <>
