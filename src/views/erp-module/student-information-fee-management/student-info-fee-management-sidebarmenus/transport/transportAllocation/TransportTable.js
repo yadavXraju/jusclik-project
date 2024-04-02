@@ -51,8 +51,11 @@ const Click = (id) => {
   const columns = [
     { field: 'AdmNo', headerName: 'Admission No.', flex: 1, minWidth: 130, align: 'left', headerAlign: 'left' },
     { field: 'StudentName', headerName: 'Name', flex: 1, minWidth: 130 },
-    { field: 'class', headerName: 'Class', flex: 1, minWidth: 100 },
-    { field: 'Section', headerName: 'Section', flex: 1, minWidth: 100 },
+    // { field: 'class', headerName: 'Class/Section', flex: 1, minWidth: 100 },
+    // { field: 'Section', headerName: 'Section', flex: 1, minWidth: 100 },
+    { field: 'ClassSection', headerName: 'Class/Section', flex: 1, minWidth: 100, 
+      valueGetter: (params) => `${params.row.class}-${params.row.Section}` 
+    },
     { field: 'EffectFrom', headerName: 'Effect From', flex: 1, minWidth: 130 },
     { field: 'PickRoute', headerName: 'Pick Route', flex: 1, minWidth: 130 },
     { field: 'DropRoute', headerName: 'Drop Route', flex: 1, minWidth: 130 },
