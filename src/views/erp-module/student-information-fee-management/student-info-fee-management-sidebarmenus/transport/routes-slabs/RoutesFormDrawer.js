@@ -50,12 +50,12 @@ const RoutesFormDrawer = () => {
               ))}
             </Tabs>
             {/* Tab panels based on selected tab */}
-            <Box sx={{ mt: 3 }}>
+            <Box sx={{ mt: 1 }}>
               {tabValue === 0 && <TransportRoutes />} {/* Render TransportRoutes if tabValue is 0 */}
               {tabValue === 1 && <Stoppage />} {/* Render Stoppage if tabValue is 1 */}
             </Box>
           </Box>
-        </Box>
+        </Box>+
         
         <BottomNavbar
           tabPageLength={tabLength}

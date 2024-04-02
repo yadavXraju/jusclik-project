@@ -16,7 +16,7 @@ const columns = [
   { id: 'stoppage', label: 'Stoppage', minWidth: 200 },
   { id: 'pickTime', label: 'Pick Time', minWidth: 200 },
   { id: 'dropTime', label: 'Drop Time', minWidth: 200 },
-  { id: 'manage', label: 'Manage', minWidth: 100, align: 'right' }
+  { id: 'manage', label: '', minWidth: 100, align: 'right' }
 ];
 
 function createData(id, stoppage, pickTime, dropTime) {
@@ -116,108 +116,3 @@ export default function Stoppage() {
     </>
   );
 }
-
-
-
-
-
-
-
-
-
-
-// import React from 'react';
-// import { DataGrid } from '@mui/x-data-grid';
-// import { Button, IconButton, Typography } from '@mui/material';
-// import { Box } from '@mui/system';
-// import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
-// import WarningDialog from 'views/common-section/WarningDialog';
-// import RouteData from './RoutesData';
-// import SlabFormDrawer from './SlabFormDrawer';
-
-// export default function Stoppage() {
-//   const [tableRows, setTableRows] = React.useState(RouteData);
-
-//   // ========= render error model for Delete row ==========
-//   const [modalOpen, setmodalOpen] = React.useState(false);
-//   const [deleteId, setdeleteId] = React.useState(null);
-
-//   const handleModalClose = () => {
-//     setmodalOpen(false);
-//   };
-//   const handleConfirmDelete = () => {
-//     const updatedRows = tableRows.filter((row) => row.id !== deleteId);
-//     setTableRows(updatedRows);
-//     setmodalOpen(false);
-//     setdeleteId(null);
-//   };
-
-//   // ========== function for handle delete row ===========
-//   const handleDeleteRow = (id) => {
-//     setdeleteId(id);
-//     setmodalOpen(true);
-//   };
-
-//   // ========= Data Grid Columns ==========
-//   const columns = [
-//     { field: 'routeName', headerName: 'Route Name', flex: 1, minWidth: 130, align: 'left', headerAlign: 'left' },
-//     { field: 'schedule', headerName: 'Schedule', flex: 1, minWidth: 130 },
-//     { field: 'seatingCapacity', headerName: 'Seating Capacity', flex: 1, minWidth: 100 },
-//     { field: 'attachSlab', headerName: 'Attach Bus', flex: 1, minWidth: 100 },
-
-//     {
-//       field: 'Action',
-//       headerName: 'Action',
-//       flex: 1,
-//       minWidth: 130,
-//       sortable: false,
-//       filterable: false,
-//       disableColumnMenu: true,
-//       renderCell: (params) => (
-//         <Box onClick={(event) => event.stopPropagation()}>
-//            <Button variant="contained" sx={{padding:'4px 10px'}}>Manage</Button>
-//           <IconButton size="small">
-//             <DeleteTwoToneIcon onClick={() => handleDeleteRow(params.row.id)} sx={{ color: '#f19e9e' }} />
-//           </IconButton>
-//         </Box>
-//       )
-//     }
-//   ];
-
-//   return (
-//     <>
-//       <Box>
-//         <Box p={1} sx={{ borderBottom: '1px solid #ccc', display:'flex', justifyContent:'space-between' }}>
-//           <Box sx={{display:'flex', alignItems:'end'}}>
-//             <Typography variant="h4" sx={{ pb: '0px' }}>
-//               Slab Details
-//             </Typography>
-//           </Box>
-//           <Box>
-//             <SlabFormDrawer/>
-//           </Box>
-//         </Box>
-//         <Box mt={3}>
-//           <DataGrid
-//             rows={tableRows}
-//             columns={columns} // Use state variable for columns
-//             initialState={{
-//               pagination: {
-//                 paginationModel: { page: 0, pageSize: 50 }
-//               }
-//             }}
-//             pageSizeOptions={[10, 25, 50, 100]}
-//             checkboxSelection
-//           />
-//         </Box>
-//       </Box>
-//       {/* ========= import warning dialog ========== */}
-//       <WarningDialog
-//         open={modalOpen}
-//         onClose={handleModalClose}
-//         contentText="Are you sure you want to delete?"
-//         onConfirm={handleConfirmDelete}
-//       />
-//     </>
-//   );
-// }

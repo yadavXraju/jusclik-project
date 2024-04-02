@@ -5,15 +5,12 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 
-export default function RadioButtonsGroup({ label="", defaultValue, options, setValue, rootStyle={},customSytle={}, disabled=null }) {
-    const handleChange = (event) => {
-        setValue(event.target.value);
-      };
+export default function RadioButtonsGroup({ label="", defaultValue, options, onChange, rootStyle={},customSytle={}, disabled=null }) {
 
   return (
     <FormControl sx={{width:'100%',...rootStyle}}>
       <FormLabel>{label}</FormLabel>
-      <RadioGroup defaultValue={defaultValue} row onChange={handleChange}>
+      <RadioGroup defaultValue={defaultValue} row onChange={onChange}>
         {options.map((option) => (
           <FormControlLabel
             key={option.value}
