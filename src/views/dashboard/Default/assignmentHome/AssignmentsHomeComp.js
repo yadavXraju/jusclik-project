@@ -190,7 +190,7 @@ const AssignmentsHomeComp = () => {
             ))}
 
             <Box sx={{px:3, textAlign:'right'}}>
-                <Button variant="contained" onClick={() => navigate('/assignments')}>
+                <Button variant="contained" onClick={() => navigate('/parent/assignments')}>
                   View More
                 </Button>
             </Box>
