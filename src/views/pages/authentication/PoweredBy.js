@@ -13,10 +13,13 @@ const commonTextStyle = {
 const PoweredBySection = () => {
   const theme = useTheme(); // Accessing theme object using useTheme hook
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
-  const betweenMdLg=useMediaQuery(theme.breakpoints.between('md', 'lg'))
+  const belowXl=useMediaQuery(theme.breakpoints.down( 'xl'))
+  // console.log(belowXl);
+  const viewportWidth = window.innerWidth;
+  console.log(viewportWidth);
   // for padding if position is static
-  let pad=false 
-  const pos=()=>{if(betweenMdLg||isMobile){
+  let pad=false
+  const pos=()=>{if(belowXl||isMobile||viewportWidth==1600){
     pad=true
     return 'static'
 
