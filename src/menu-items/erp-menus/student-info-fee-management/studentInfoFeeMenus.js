@@ -49,8 +49,8 @@ const InvoiceModificationColleagueTitles = [
 // transport
 
 const TransportColleagueTitles = [
-  {title : 'Routes & Slabs' , url : '/erp/student-info-fee/transport/routes-slabs'}, 
   {title :  'Bus Details ' , url : '/erp/student-info-fee/transport/bus-details'}, 
+  {title : 'Routes & Slabs' , url : '/erp/student-info-fee/transport/routes-slabs'}, 
   {title :  'Transport Allocation' , url : '/erp/student-info-fee/transport/allocation'}, 
 
 ];
@@ -310,6 +310,17 @@ const StudentInfoFeeMenu = {
             children : [
 
               {
+                id: 'Bus Details',
+                title: 'Bus Details',
+                type: 'item',
+                url: '/erp/student-info-fee/transport/bus-details',
+                breadcrumbs: false,
+                colleagueTitle : TransportColleagueTitles,
+              },
+
+
+
+              {
                 id: 'routes-slabs',
                 title: 'Routes & Slabs',
                 type: 'item',
@@ -318,14 +329,6 @@ const StudentInfoFeeMenu = {
                 colleagueTitle : TransportColleagueTitles,
               },
 
-                {
-                  id: 'Bus Details',
-                  title: 'Bus Details',
-                  type: 'item',
-                  url: '/erp/student-info-fee/transport/bus-details',
-                  breadcrumbs: false,
-                  colleagueTitle : TransportColleagueTitles,
-                },
 
                 {
                   id: 'transport-allocation',
