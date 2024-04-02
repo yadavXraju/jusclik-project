@@ -37,6 +37,9 @@ const SelfieVerification = ({ step, handleSteps, md,capturedImage,setCapturedIma
    useEffect(() => {
       if (videoRef.current && stream) {
          videoRef.current.srcObject = stream;
+         setTimeout(() => {
+            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+         }, 300);   
       }
    }, [stream]);
 
@@ -61,7 +64,7 @@ const SelfieVerification = ({ step, handleSteps, md,capturedImage,setCapturedIma
       // to scroll back to take photo
       setTimeout(() => {
          window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-      }, 500);
+      }, 300);
    };
    const resetCamera = () => {
          // Stop the video stream
@@ -74,15 +77,12 @@ const SelfieVerification = ({ step, handleSteps, md,capturedImage,setCapturedIma
       setShowCamera(true);
       startCamera()
       // to scroll back to take photo
-      setTimeout(() => {
-         window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-      }, 500);
    };
 
    const cameraComponent = <>
-      <Box sx={{ ...css.center }}>
-         <Paper sx={{ ...css.mobilePaper, minWidth: md ? '20rem' : '25rem' }} elevation={2}>
-            <Box>
+      <Box sx={{ ...css.center }} >
+         <Paper sx={{ ...css.mobilePaper, minWidth: md ? '20rem' : '25rem',maxWidth:'60%' }} elevation={2}>
+            <Box display='flex' flexDirection='column'>
                <Box sx={{ ...css.horizontalCenter, }}>
                   <Typography variant="h6" sx={{ ...css.formTextColor, fontWeight: '400', sm: '14px' }}>Take a Selfie</Typography>
                </Box>
