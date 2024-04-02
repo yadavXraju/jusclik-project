@@ -19,18 +19,18 @@ import CommonSelect from '../../common/common-select';
 import FontSize from '../../common/font-size';
 import ImageUploadAndPreview from '../../common/image-upload-and-preview';
 import { fontFamily,imagePosition } from '../../common/common-states';
-const General = ({settings}) => {
+import { useDispatch } from 'react-redux';
+import { updateGeneralProperty } from 'store/student-info-and-fee/setting/Invoice-Template-Slice';
+import { useSelector } from 'react-redux';
+// to view data this import not needed in general
 
-  const generalSettings=settings[0]
-  const setGeneralSettings=settings[1]
-
+const General = () => {
+  const dispatch=useDispatch()
+  const generalSettings=useSelector(state=>state.invoiceTemplate.general)
   
   // state handler for general component
   const handleStateChange = (key, value) => {
-    setGeneralSettings((generalSettings) => ({
-        ...generalSettings,
-        [key]: value
-      }))
+    dispatch(updateGeneralProperty({key,value}))
   };
   
   return (
