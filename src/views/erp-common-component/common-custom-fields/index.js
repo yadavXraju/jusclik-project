@@ -5,7 +5,7 @@ import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import DoDisturbOnOutlinedIcon from '@mui/icons-material/DoDisturbOnOutlined';
 import useDrawer from 'hooks/useDrawer';
 import AddCustomField from './add-custom-field';
-import studentDetailsData from '../../admission-form/Adm-form/studentDetailsData';
+import studentDetailsData from '../../erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/student-master/admission/admission-form/Adm-form/studentDetailsData';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';

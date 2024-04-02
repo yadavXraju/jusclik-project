@@ -2,27 +2,28 @@ import { createSlice } from '@reduxjs/toolkit';
 import config from 'config';
 
 
-let initialThemeColor = 'rgb(94, 53, 177)';
-if (localStorage.getItem('themeColor'))
-  initialThemeColor = JSON.parse(localStorage.getItem('themeColor'));
 
-let initialThemeColorV2 = 'rgb(30, 136, 229)';
-if (localStorage.getItem('themeColorV2'))
-  initialThemeColorV2 = JSON.parse(localStorage.getItem('themeColorV2'));
+  let initialThemeColor = 'rgb(94, 53, 177)';
+  if (localStorage.getItem('themeColor'))
+    initialThemeColor = JSON.parse(localStorage.getItem('themeColor'));
 
-let initialFontFamily = config.fontFamily
-if (localStorage.getItem('fontFamily'))
-  initialFontFamily = JSON.parse(localStorage.getItem('fontFamily'));
+  let initialThemeColorV2 = 'rgb(30, 136, 229)';
+  if (localStorage.getItem('themeColorV2'))
+    initialThemeColorV2 = JSON.parse(localStorage.getItem('themeColorV2'));
 
-let intialborderRadius = config.borderRadius
-if (localStorage.getItem('borderRadius'))
-  intialborderRadius = JSON.parse(localStorage.getItem('borderRadius'));
+  let initialFontFamily = config.fontFamily
+  if (localStorage.getItem('fontFamily'))
+    initialFontFamily = JSON.parse(localStorage.getItem('fontFamily'));
 
+  let intialborderRadius = config.borderRadius
+  if (localStorage.getItem('borderRadius'))
+    intialborderRadius = JSON.parse(localStorage.getItem('borderRadius'));
+  
 const initialState = {
   isOpen: [],
   defaultId: 'default',
-  fontFamily:initialFontFamily,
-  borderRadius:intialborderRadius ,
+  fontFamily: initialFontFamily,
+  borderRadius: intialborderRadius,
   opened: true,
   themeColor: initialThemeColor,
   themeColorV2: initialThemeColorV2
@@ -42,7 +43,7 @@ const customizationSlice = createSlice({
     setFontFamily: (state, action) => {
       const newFontFamily = action.payload.fontFamily;
       state.fontFamily = newFontFamily;
-      localStorage.setItem('fontFamily',JSON.stringify(newFontFamily));
+      localStorage.setItem('fontFamily', JSON.stringify(newFontFamily));
     },
     setBorderRadius: (state, action) => {
       const newBorderRadius = action.payload.borderRadius;
