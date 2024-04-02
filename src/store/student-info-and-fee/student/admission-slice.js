@@ -346,9 +346,6 @@ const initialState = {
     name: 'admission',
     initialState,
     reducers: {
-      addCustomField: (state, action) => {
-        
-      }
     },
   });
   
