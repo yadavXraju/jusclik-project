@@ -17,6 +17,9 @@ const InviteUserDrawer = () => {
     { value: 'Manager ', label: 'Manager' },  
     { value: 'senior manager', label: 'senior manager' },
   ];
+  const roleChange = (event) => {
+    setrole(event.target.value);
+  };
 
   return (
     <>
@@ -45,7 +48,7 @@ const InviteUserDrawer = () => {
             <TextField id="outlined-basic" label="Mobile" variant="outlined" fullWidth />
             </Box>
             <Box pb={2}>
-            <SelectList label="Role" options={roleOptions} value={role} setValue={setrole}/>
+            <SelectList label="Role" options={roleOptions} value={role} onChange={roleChange}/>
             </Box>
             <Box sx={{ padding: 2 }}>
               <Button type="submit" variant="contained">

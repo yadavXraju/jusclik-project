@@ -80,7 +80,7 @@ const Assignments = () => {
     <>
  
       <SearchAssignment onSearch={handleSearch} />
-      <Box maxWidth="xl" xs={12} style={{ marginTop: 20 }}>
+      <Box  xs={12} style={{ marginTop: 20 }}>  {/* Removed  maxWidth="xl" to optimize responsive on 2560 */}
         <Paper style={{ padding: 20 }}>
           <Tabs
             value={value}

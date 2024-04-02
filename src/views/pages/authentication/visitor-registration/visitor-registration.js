@@ -21,6 +21,7 @@ const defaultTheme = createTheme({
 const VisitorRegistrationTemplate = () => {
   const theme = useTheme(); // Accessing theme object using useTheme hook
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const betweenMdLg=useMediaQuery(theme.breakpoints.between('md','lg'));
   const md = useMediaQuery(theme.breakpoints.down('md'));
   //    States====================================================================
   // step==============for all pages
@@ -59,7 +60,9 @@ const VisitorRegistrationTemplate = () => {
               {/* left side school logo */}
               <Grid
                 item
-                md={6}
+                md={12}
+                display={betweenMdLg?'none':null}
+                lg={6} xl={6}
                 sx={{
                   backgroundColor: (t) => (t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900]),
                   ...css.imageContainer,
@@ -89,7 +92,7 @@ const VisitorRegistrationTemplate = () => {
                 </Grid>
               </Grid>
               {/* school logo over*/}
-              <Grid item elevation={6} md={6} sx={{'& .css-0':isMobile?{}:{display:'flex',justifyContent:'center'}}} >
+              <Grid item elevation={6} sm={12} md={12} lg={6} xl={6} sx={{'& .css-0':isMobile?{}:{display:'flex',justifyContent:'center',flexDirection:'column' }}} >
                 <Box sx={{ ...css.parentPaper, ...css.horizontalCenter }} >
                   <Box sx={{ ...css.parentPaperBox, ...css.displayNoneOnMd }}>
                     <Typography component="h1" variant="h1" sx={{ ...css.parentPaperHeading.school }}>
@@ -102,9 +105,10 @@ const VisitorRegistrationTemplate = () => {
                       Managed By Jusklik
                     </Typography>
                   </Box>
-
+                  {/* leftside component over ================================================================ */}
+                    {/* for mobile devices =================================================== */}
                   <Box sc={{ display: 'flex', flexDirection: 'column' }}>
-                    <Box sx={{ ...css.center, flexDirection: 'column', ...css.mobileLogoImage, marginBottom: '1rem' }} className="findMe">
+                    <Box sx={{ ...css.center, flexDirection: 'column', ...css.mobileLogoImage, marginBottom: '1rem' }} >
                       {/* logo image for mobile devices */}
                       <img src={LogoImg} alt="Logo" style={{ width: '100px', height: '100px', marginBottom: '15px' }} />
                       <Typography
@@ -123,7 +127,10 @@ const VisitorRegistrationTemplate = () => {
                         Managed By Jusklik
                       </Typography>
                     </Box>
-                    <Box width={isMobile ? null : '60%'}>
+                    <Box display='flex' width='100%' justifyContent='center'>
+                    <Box 
+                    // width={isMobile ? null : '60%'}
+                    >
                       {/* ============= Static Part Over =================== */}
                       {/* ================mobile number modal ===============  */}
                       {step == 0 && <MobileNumber step={step} handleSteps={handleSteps} setMobileNumber={setMobileNumber} />}
@@ -142,6 +149,7 @@ const VisitorRegistrationTemplate = () => {
                       {/* ============= Purpose/Details =========================== */}
                       {step == 3 && <VisitorDetails step={step} handleSteps={handleSteps} setPersonalDetails={setPersonalDetails} />}
                       {/* ============= Get Pass ========================== */}
+                    </Box>
                     </Box>
                   </Box>
                 </Box>
