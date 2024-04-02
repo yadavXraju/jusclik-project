@@ -1,5 +1,5 @@
 import React from 'react';
-import { DataGrid } from '@mui/x-data-grid';
+//import { DataGrid } from '@mui/x-data-grid';
 import { IconButton, Typography, Switch, Tooltip } from '@mui/material';
 import { Box } from '@mui/system';
 //import { useNavigate } from 'react-router-dom';
@@ -8,8 +8,9 @@ import WarningDialog from 'views/common-section/WarningDialog';
 import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 import RouteData from './RoutesData';
 import RoutesFormDrawer from './RoutesFormDrawer';
+import CommonDataGrid from 'views/erp-common-component/commonDataGrid';
 //import SettingsTwoToneIcon from '@mui/icons-material/SettingsTwoTone';
-import RoutesManageDrawer from './RoutesManageDrawer';
+//import RoutesManageDrawer from './RoutesManageDrawer';
 
 export default function TransportRouteTable() {
   //const navigate = useNavigate();
@@ -82,10 +83,9 @@ export default function TransportRouteTable() {
       disableColumnMenu: true,
       renderCell: (params) => (
         <Box onClick={(event) => event.stopPropagation()}>
-          <IconButton>
-            {/* <SettingsTwoToneIcon sx={{ color: 'rgb(124, 178, 221)' }} /> */}
+          {/* <IconButton>
             <RoutesManageDrawer/>
-          </IconButton>
+          </IconButton> */}
           <Tooltip title="Edit">
           <IconButton>
             <EditTwoToneIcon />
@@ -115,7 +115,7 @@ export default function TransportRouteTable() {
           </Box>
         </Box>
         <Box mt={3}>
-          <DataGrid
+          {/* <DataGrid
             rows={tableRows}
             columns={columns} // Use state variable for columns
             //onRowClick={(params) => Click(params.id)}
@@ -126,6 +126,15 @@ export default function TransportRouteTable() {
             }}
             pageSizeOptions={[10, 25, 50, 100]}
             checkboxSelection
+          /> */}
+          <CommonDataGrid
+            rows={tableRows} columns={columns}  width="100%"
+            initialState={{
+              pagination: {
+                paginationModel: { page: 0, pageSize: 50 }
+              }
+            }}
+            pageSizeOptions={[10, 25, 50, 100]}
           />
         </Box>
       </Box>

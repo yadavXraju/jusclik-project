@@ -6,7 +6,7 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import { Button, IconButton, TextField, Tooltip } from '@mui/material';
+import { IconButton, TextField, Tooltip } from '@mui/material';
 import { Box } from '@mui/system';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 import ParamTime from 'views/common-section/ParamTime';
@@ -16,7 +16,7 @@ const columns = [
   { id: 'stoppage', label: 'Stoppage', minWidth: 200 },
   { id: 'pickTime', label: 'Pick Time', minWidth: 200 },
   { id: 'dropTime', label: 'Drop Time', minWidth: 200 },
-  { id: 'manage', label: 'Manage', minWidth: 150, align: 'right' }
+  { id: 'manage', label: 'Manage', minWidth: 100, align: 'right' }
 ];
 
 function createData(id, stoppage, pickTime, dropTime) {
@@ -89,9 +89,9 @@ export default function Stoppage() {
                   <TableCell align="right">
                     {
                       <Box onClick={(event) => event.stopPropagation()}>
-                        <Button variant="contained" sx={{ padding: '4px 10px' }}>
+                        {/* <Button variant="contained" sx={{ padding: '4px 10px' }}>
                           Manage
-                        </Button>
+                        </Button> */}
                         <Tooltip title="Delete">
                           <IconButton size="small">
                             <DeleteTwoToneIcon onClick={() => handleDeleteRow(row.id)} sx={{ color: '#f19e9e' }} />
