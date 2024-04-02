@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Typography, Box, Button, TextField } from '@mui/material';
 import InputAdornment from '@mui/material/InputAdornment';
 import ParamSelectList from 'views/common-section/ParamSelectList';
-import { Email, CustomCheckbox, Phone, CustomText, CustomNumber, Currency, URL,CustomDate } from './custom-field-options';
+import { Email, CustomCheckbox, Phone, CustomText, CustomNumber, Currency, URL,CustomDate } from '../../dashboard/custom-field-options';
 import Picklist from './Picklist';
 
 const availableFieldType = [
