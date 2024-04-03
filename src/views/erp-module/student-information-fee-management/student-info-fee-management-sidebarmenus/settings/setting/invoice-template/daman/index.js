@@ -7,16 +7,9 @@ import CompactTemplate from '../harsh/template';
 import CompactTemplate2 from '../kulwinder/template2';
 import {CompactTemplate4} from '../harsh/harsh1/template4';
 import CompactTemplate5 from '../harsh/harsh2';
-import { useSelector } from 'react-redux';
+
 
 const Index = () => {
-  
-  // states
-  const generalSettings= useSelector(state=>state.invoiceTemplate.general)
-  const headerFooterSettings=useSelector(state=>state.invoiceTemplate.headerFooter)
-  const tableSettings=useSelector(state=>state.invoiceTemplate.table)
-
-
 
   // temporary logic for rendring template
   let template=1
