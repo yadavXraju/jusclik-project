@@ -356,7 +356,7 @@ const StudentInfoFeeMenu = {
           //  setting
           {
             id: 'setting',
-            title: 'Setting',
+            title: 'Settings',
             type: 'item',
             url: '/erp/student-info-fee/setting',
             icon: SettingsTwoToneIcon,

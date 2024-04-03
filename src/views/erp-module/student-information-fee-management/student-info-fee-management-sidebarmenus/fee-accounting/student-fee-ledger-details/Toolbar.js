@@ -22,7 +22,11 @@ const EnhancedTableToolbar= React.forwardRef((props,ref)=>{
   const PrintButton = () => {
     return (
  
-         <PrintTwoToneIcon sx={{cursor:'pointer'}}/>
+      <Tooltip title="Print">
+          <IconButton sx={{background:'rgba(204, 204, 204, 0.33)' , margin:'0 8px' }}>
+            <PrintTwoToneIcon sx={{cursor:'pointer'}}/>
+         </IconButton>
+        </Tooltip>
 
     );
   };
@@ -50,25 +54,25 @@ const EnhancedTableToolbar= React.forwardRef((props,ref)=>{
             </Button>
 
               <Tooltip title="Delete">
-                <IconButton>
+                <IconButton sx={{background:'rgba(204, 204, 204, 0.33)'}}>
                   <DeleteIcon />
                 </IconButton>
               </Tooltip>
 
               <Tooltip title="Fee Payment">
                 {/* Disable the payment button if any row is already paid */}
-                <IconButton onClick={toggleDrawer('right', true)} disabled={isAnyPaid || numSelected==0}>
+                <IconButton sx={{background:'rgba(204, 204, 204, 0.33)'}}  onClick={toggleDrawer('right', true)} disabled={isAnyPaid || numSelected==0}>
                   <PaymentTwoToneIcon />
                 </IconButton>
               </Tooltip>
 
               <Tooltip title="Transfer Entry">
-                <IconButton>
+                <IconButton sx={{background:'rgba(204, 204, 204, 0.33)'}}>
                   <ArticleTwoToneIcon />
                 </IconButton>
               </Tooltip>
 
-              <WithPrintPdf  Children={<PrintButton />} ref={ref} />
+                  <WithPrintPdf  Children={<PrintButton />} ref={ref} />
             </>
     
           {/* )} */}

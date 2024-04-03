@@ -73,7 +73,7 @@ const DashboardMain = () => {
           </Typography>
         </Grid>
         <Typography variant="body1" sx={{ color: 'white', paddingTop: '10px' }}>
-          Complete the following steps to have a hassle-free payroll experience
+        Complete the following steps to Simplify your payroll process
         </Typography>
       </MainCard>
 {/* getting started titles */}
