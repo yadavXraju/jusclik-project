@@ -8,7 +8,7 @@ import { useTheme } from '@mui/material/styles';
 import { Avatar, Chip, ListItemButton, ListItemIcon, ListItemText, Typography, useMediaQuery } from '@mui/material';
 
 // project imports
-import { MENU_OPEN, SET_MENU } from 'store/actions';
+import { menuOpen} from 'store/customization-slice';
 
 // assets
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
@@ -75,8 +75,8 @@ const NavItem = ({ item, level , }) => {
 
 
 const itemHandler = (id) => {
-  dispatch({ type: MENU_OPEN, id });
-  if (matchesSM) dispatch({ type: SET_MENU, opened: false });
+  dispatch(menuOpen({id }));
+  if (matchesSM) dispatch(setMENU({opened: false}));
 
   // Clear existing children
   urlStore.children = [];
@@ -116,7 +116,7 @@ const itemHandler = (id) => {
       .split('/')
       .findIndex((id) => id === item.id);
     if (currentIndex > -1) {
-      dispatch({ type: MENU_OPEN, id: item.id });
+      dispatch(menuOpen({ id: item.id}));
     }
 
 

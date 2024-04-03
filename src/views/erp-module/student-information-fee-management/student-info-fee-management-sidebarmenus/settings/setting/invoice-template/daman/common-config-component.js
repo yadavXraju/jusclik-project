@@ -1,40 +1,25 @@
 import React from 'react';
-import { Tabs, Tab} from '@mui/material';
+import { Tabs, Tab, Grid} from '@mui/material';
 import { Box } from '@mui/system';
 import General from './sub-categories/general';
 import HeaderFooter from './sub-categories/header-footer';
-import TransactionDetails from './sub-categories/transcation-details';
 import TableConfig from './sub-categories/table';
-import Total from './sub-categories/total';
-import OtherDetails from './sub-categories/other-details';
 import statePropTypes from './statePropTypes';
 
-const CommonConfig = ({state,setState}) => {
-  // Sample tab data array
+const CommonConfig = () => {
+
   const tabsData = [
     {
       label: 'General',
-      content: <><General  state={state} setState={setState} /></>,
+      content: <><General/></>,
     },
     {
       label: 'Header And Footer',
-      content: <><HeaderFooter  state={state} setState={setState} /> </>,
+      content: <><HeaderFooter/></>,
     },
     {
-      label: 'Transaction Details',
-      content: <><TransactionDetails  state={state} setState={setState} /> </>,
-    },
-    {
-      label: 'Table',
-      content: <><TableConfig  state={state} setState={setState} /> </>,
-    },
-    {
-      label: 'Total',
-      content: <><Total  state={state} setState={setState} /> </>,
-    },
-    {
-      label: 'Other Details',
-      content: <><OtherDetails  state={state} setState={setState} /> </>,
+      label: 'Table Layout',
+      content: <><TableConfig /></>,
     },
   ];
 
@@ -47,7 +32,8 @@ const CommonConfig = ({state,setState}) => {
   return (
     <>
       {/* Vertical Tabs */}
-      <Box sx={{display:'flex',}}>
+      <Grid container spacing={1}>
+      <Grid item md={3}>
       <Tabs
         orientation="vertical"
         variant="scrollable"
@@ -59,13 +45,16 @@ const CommonConfig = ({state,setState}) => {
           <Tab key={index} label={tab.label} />
         ))}
       </Tabs>
-
+      </Grid>
+      <Grid item md={8}>
+        {tabsData[selectedTab].content}
+      </Grid>
+      </Grid>
+      <Box sx={{display:'flex',}}>
       {/* Tab Content */}
 
         {/* Render content based on selected tab */}
-        <Box>
-        {tabsData[selectedTab].content}
-        </Box>
+      
       </Box>
 
       </>

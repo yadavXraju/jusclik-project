@@ -2,8 +2,10 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
+//import Typography from '@mui/material/Typography';
+//import Box from '@mui/material/Box';
+import { Box, Typography, Divider, Grid } from '@mui/material';
+import Timeline from './Timeline';
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -25,7 +27,7 @@ CustomTabPanel.propTypes = {
   value: PropTypes.number.isRequired
 };
 
-// =========== Function for hendle tabs index ============
+// =========== Function for handle tabs index ============
 function a11yProps(index) {
   return {
     id: `simple-tab-${index}`,
@@ -35,6 +37,8 @@ function a11yProps(index) {
 
 export default function PreviewTabs() {
   const [value, setValue] = React.useState(0);
+
+  //const isMobile = useMediaQuery('(max-width: 767px)');
 
   // =========== Function for hendle tabs click ============
   const handleChange = (event, newValue) => {
@@ -50,100 +54,373 @@ export default function PreviewTabs() {
           <Tab label="Contact Person" {...a11yProps(2)} />
           <Tab label="Custom Fields" {...a11yProps(3)} />
           <Tab label="Remarks" {...a11yProps(4)} />
+          <Tab label="Timeline" {...a11yProps(5)} />
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
         <>
+          {/* ================ Render Other Details tab content ============== */}
           <Box p={2}>
+            <Typography pb={1} variant="h4" gutterBottom>
+              Other Details
+            </Typography>
+            <Divider />
+
             <Box p={2}>
-              <Typography p={0.7} variant="h4">
-                Other Details
-              </Typography>
-              <Typography sx={{ '&:hover': { backgroundColor: '#cbc7c73d' } }} p={0.7} variant="body2">
-                <span style={{ fontWeight: '500' }}>Family Id</span> - F847584
-              </Typography>
-              <Typography sx={{ '&:hover': { backgroundColor: '#cbc7c73d' } }} p={0.7} variant="body2">
-                <span style={{ fontWeight: '500' }}>Nationality</span> - Indian
-              </Typography>
-              <Typography sx={{ '&:hover': { backgroundColor: '#cbc7c73d' } }} p={0.7} variant="body2">
-                <span style={{ fontWeight: '500' }}>Religion</span> - Hindu
-              </Typography>
-              <Typography sx={{ '&:hover': { backgroundColor: '#cbc7c73d' } }} p={0.7} variant="body2">
-                <span style={{ fontWeight: '500' }}>House</span> - Green
-              </Typography>
-              <Typography sx={{ '&:hover': { backgroundColor: '#cbc7c73d' } }} p={0.7} variant="body2">
-                <span style={{ fontWeight: '500' }}>Blood Group</span> - O+
-              </Typography>
-              <Typography sx={{ '&:hover': { backgroundColor: '#cbc7c73d' } }} p={0.7} variant="body2">
-                <span style={{ fontWeight: '500' }}>SRN No.</span> - LKJH8974398
-              </Typography>
+              <Grid container spacing={3}>
+                <Grid item xs={12} sm={6} md={6}>
+                  <Box pb={0.5} color={'#8b8989'}>
+                    FAMILY ID
+                  </Box>
+                  <Box fontSize={16}>F847584</Box>
+                </Grid>
+                <Grid item xs={12} sm={6} md={6}>
+                  <Box pb={0.5} color={'#8b8989'}>
+                    NATIONALITY
+                  </Box>
+                  <Box fontSize={16}>Indian</Box>
+                </Grid>
+                <Grid item xs={12} sm={6} md={6}>
+                  <Box pb={0.5} color={'#8b8989'}>
+                    RELIGION
+                  </Box>
+                  <Box fontSize={16}>Hindu</Box>
+                </Grid>
+                <Grid item xs={12} sm={6} md={6}>
+                  <Box pb={0.5} color={'#8b8989'}>
+                    HOUSE
+                  </Box>
+                  <Box fontSize={16}>Green</Box>
+                </Grid>
+                <Grid item xs={12} sm={6} md={6}>
+                  <Box pb={0.5} color={'#8b8989'}>
+                    BLOOD GROUP
+                  </Box>
+                  <Box fontSize={16}>O+</Box>
+                </Grid>
+                <Grid item xs={12} sm={6} md={6}>
+                  <Box pb={0.5} color={'#8b8989'}>
+                    SRN No.
+                  </Box>
+                  <Box fontSize={16}>LKJH8974398</Box>
+                </Grid>
+              </Grid>
             </Box>
+
           </Box>
         </>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
         <>
+          {/* ================ Render Address tab content ============== */}
           <Box p={2}>
+            <Typography pb={1} variant="h4" gutterBottom>
+              Current Address
+            </Typography>
+            <Divider />
+
             <Box p={2}>
-              <Typography p={0.7} variant="h4">
-                Address
-              </Typography>
-              <Typography sx={{ '&:hover': { backgroundColor: '#cbc7c73d' } }} p={0.7} variant="body2">
-                <span style={{ fontWeight: '500' }}>Address</span> - Dwarka, Delhi
-              </Typography>
-              <Typography sx={{ '&:hover': { backgroundColor: '#cbc7c73d' } }} p={0.7} variant="body2">
-                <span style={{ fontWeight: '500' }}>Country/Region</span> - India
-              </Typography>
-              <Typography sx={{ '&:hover': { backgroundColor: '#cbc7c73d' } }} p={0.7} variant="body2">
-                <span style={{ fontWeight: '500' }}>City</span> - Delhi
-              </Typography>
-              <Typography sx={{ '&:hover': { backgroundColor: '#cbc7c73d' } }} p={0.7} variant="body2">
-                <span style={{ fontWeight: '500' }}>state</span> - Delhi
-              </Typography>
-              <Typography sx={{ '&:hover': { backgroundColor: '#cbc7c73d' } }} p={0.7} variant="body2">
-                <span style={{ fontWeight: '500' }}>Zip Code</span> - 857473
-              </Typography>
+              <Grid container spacing={3}>
+                <Grid item xs={12} md={6}>
+                  <Box pb={0.5} color={'#8b8989'}>
+                    ADDRESS
+                  </Box>
+                  <Box fontSize={16}>Dwarka, Delhi</Box>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <Box pb={0.5} color={'#8b8989'}>
+                    COUNTRY/REGION
+                  </Box>
+                  <Box fontSize={16}>India</Box>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <Box pb={0.5} color={'#8b8989'}>
+                    CITY
+                  </Box>
+                  <Box fontSize={16}>Delhi</Box>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <Box pb={0.5} color={'#8b8989'}>
+                    STATE
+                  </Box>
+                  <Box fontSize={16}>Delhi</Box>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <Box pb={0.5} color={'#8b8989'}>
+                    ZIP CODE
+                  </Box>
+                  <Box fontSize={16}>857473</Box>
+                </Grid>
+              </Grid>
             </Box>
+
+            {/* <TableContainer component={Paper}>
+              <Table>
+                <TableBody>
+                  <TableRow>
+                    <TableCell width={isMobile ? 'auto' : '250px'} sx={{ padding: '10px', fontWeight: '600' }}>
+                      Address
+                    </TableCell>
+                    <TableCell sx={{ padding: '10px' }}>Dwarka, Delhi</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell sx={{ padding: '10px', fontWeight: '600' }}>Country/Region</TableCell>
+                    <TableCell sx={{ padding: '10px' }}>India</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell sx={{ padding: '10px', fontWeight: '600' }}>City</TableCell>
+                    <TableCell sx={{ padding: '10px' }}>Delhi</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell sx={{ padding: '10px', fontWeight: '600' }}>state</TableCell>
+                    <TableCell sx={{ padding: '10px' }}>Delhi</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell sx={{ padding: '10px', fontWeight: '600' }}>Zip Code</TableCell>
+                    <TableCell sx={{ padding: '10px' }}>857473</TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </TableContainer> */}
+          </Box>
+
+          <Box p={2}>
+            <Typography pb={1} variant="h4" gutterBottom>
+            Permanent Address
+            </Typography>
+            <Divider />
+
+            <Box p={2}>
+              <Grid container spacing={3}>
+                <Grid item xs={12} md={6}>
+                  <Box pb={0.5} color={'#8b8989'}>
+                    ADDRESS
+                  </Box>
+                  <Box fontSize={16}>Dwarka, Delhi</Box>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <Box pb={0.5} color={'#8b8989'}>
+                    COUNTRY/REGION
+                  </Box>
+                  <Box fontSize={16}>India</Box>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <Box pb={0.5} color={'#8b8989'}>
+                    CITY
+                  </Box>
+                  <Box fontSize={16}>Delhi</Box>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <Box pb={0.5} color={'#8b8989'}>
+                    STATE
+                  </Box>
+                  <Box fontSize={16}>Delhi</Box>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <Box pb={0.5} color={'#8b8989'}>
+                    ZIP CODE
+                  </Box>
+                  <Box fontSize={16}>857473</Box>
+                </Grid>
+              </Grid>
+            </Box>
+
           </Box>
         </>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
         <>
+          {/* ================ Render Contact Person tab content ============== */}
           <Box p={2}>
+            <Typography pb={1} variant="h4" gutterBottom>
+              Contact Person (Father)
+            </Typography>
+            <Divider />
+
             <Box p={2}>
-              <Typography p={0.7} variant="h4">
-                Contact Person
-              </Typography>
-              <Typography sx={{ '&:hover': { backgroundColor: '#cbc7c73d' } }} p={0.7} variant="body2">
-                <span style={{ fontWeight: '500' }}>Name</span> - Mr. Subash
-              </Typography>
-              <Typography sx={{ '&:hover': { backgroundColor: '#cbc7c73d' } }} p={0.7} variant="body2">
-                <span style={{ fontWeight: '500' }}>Relation</span> - Father
-              </Typography>
-              <Typography sx={{ '&:hover': { backgroundColor: '#cbc7c73d' } }} p={0.7} variant="body2">
-                <span style={{ fontWeight: '500' }}>Mobile</span> - 848493734
-              </Typography>
-              <Typography sx={{ '&:hover': { backgroundColor: '#cbc7c73d' } }} p={0.7} variant="body2">
-                <span style={{ fontWeight: '500' }}>Email</span> - abc@gmail.com
-              </Typography>
-              <Typography sx={{ '&:hover': { backgroundColor: '#cbc7c73d' } }} p={0.7} variant="body2">
-                <span style={{ fontWeight: '500' }}>Education</span> - B.Sc
-              </Typography>
-              <Typography sx={{ '&:hover': { backgroundColor: '#cbc7c73d' } }} p={0.7} variant="body2">
-                <span style={{ fontWeight: '500' }}>Company</span> - abc Company
-              </Typography>
-              <Typography sx={{ '&:hover': { backgroundColor: '#cbc7c73d' } }} p={0.7} variant="body2">
-                <span style={{ fontWeight: '500' }}>Designation</span> - Manager
-              </Typography>
-              <Typography sx={{ '&:hover': { backgroundColor: '#cbc7c73d' } }} p={0.7} variant="body2">
-                <span style={{ fontWeight: '500' }}>Address</span> - Delhi
-              </Typography>
-              <Typography sx={{ '&:hover': { backgroundColor: '#cbc7c73d' } }} p={0.7} variant="body2">
-                <span style={{ fontWeight: '500' }}>Aadhaar No.</span> - 12456789345
-              </Typography>
-              <Typography sx={{ '&:hover': { backgroundColor: '#cbc7c73d' } }} p={0.7} variant="body2">
-                <span style={{ fontWeight: '500' }}>PEN</span> - AZCIV89345
-              </Typography>
+              <Grid container spacing={3}>
+                <Grid item xs={12} md={6}>
+                  <Box pb={0.5} color={'#8b8989'}>
+                    NAME
+                  </Box>
+                  <Box fontSize={16}>Mr. Subash</Box>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <Box pb={0.5} color={'#8b8989'}>
+                    RELATION
+                  </Box>
+                  <Box fontSize={16}>Father</Box>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <Box pb={0.5} color={'#8b8989'}>
+                    MOBILE
+                  </Box>
+                  <Box fontSize={16}>8484937348</Box>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <Box pb={0.5} color={'#8b8989'}>
+                    EMAIL
+                  </Box>
+                  <Box fontSize={16}>abc@gmail.com</Box>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <Box pb={0.5} color={'#8b8989'}>
+                    EDUCATION
+                  </Box>
+                  <Box fontSize={16}>B.Sc</Box>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <Box pb={0.5} color={'#8b8989'}>
+                    COMPANY
+                  </Box>
+                  <Box fontSize={16}>abc Company</Box>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <Box pb={0.5} color={'#8b8989'}>
+                    DESIGNATION
+                  </Box>
+                  <Box fontSize={16}>Manager</Box>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <Box pb={0.5} color={'#8b8989'}>
+                    ADDRESS
+                  </Box>
+                  <Box fontSize={16}>Delhi</Box>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <Box pb={0.5} color={'#8b8989'}>
+                    AADHAAR NO.
+                  </Box>
+                  <Box fontSize={16}>12456789345</Box>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <Box pb={0.5} color={'#8b8989'}>
+                    PEN
+                  </Box>
+                  <Box fontSize={16}>AZCIV89345</Box>
+                </Grid>
+              </Grid>
+            </Box>
+
+            {/* <TableContainer component={Paper}>
+              <Table>
+                <TableBody>
+                  <TableRow>
+                    <TableCell width={isMobile ? 'auto' : '250px'} sx={{ padding: '10px', fontWeight: '600' }}>
+                      Name
+                    </TableCell>
+                    <TableCell sx={{ padding: '10px' }}>Mr. Subash</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell sx={{ padding: '10px', fontWeight: '600' }}>Relation</TableCell>
+                    <TableCell sx={{ padding: '10px' }}>Father</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell sx={{ padding: '10px', fontWeight: '600' }}>Mobile</TableCell>
+                    <TableCell sx={{ padding: '10px' }}>8484937834</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell sx={{ padding: '10px', fontWeight: '600' }}>Email</TableCell>
+                    <TableCell sx={{ padding: '10px' }}>abc@gmail.com</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell sx={{ padding: '10px', fontWeight: '600' }}>Education</TableCell>
+                    <TableCell sx={{ padding: '10px' }}>B.Sc</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell sx={{ padding: '10px', fontWeight: '600' }}>Company</TableCell>
+                    <TableCell sx={{ padding: '10px' }}>abc Company</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell sx={{ padding: '10px', fontWeight: '600' }}>Designation</TableCell>
+                    <TableCell sx={{ padding: '10px' }}>Manager</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell sx={{ padding: '10px', fontWeight: '600' }}>Address</TableCell>
+                    <TableCell sx={{ padding: '10px' }}>Delhi</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell sx={{ padding: '10px', fontWeight: '600' }}>Aadhaar No.</TableCell>
+                    <TableCell sx={{ padding: '10px' }}>12456789345</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell sx={{ padding: '10px', fontWeight: '600' }}>PEN</TableCell>
+                    <TableCell sx={{ padding: '10px' }}>AZCIV89345</TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </TableContainer> */}
+          </Box>
+
+          <Box p={2}>
+            <Typography pb={1} variant="h4" gutterBottom>
+              Contact Person (Mother)
+            </Typography>
+            <Divider />
+
+            <Box p={2}>
+              <Grid container spacing={3}>
+                <Grid item xs={12} md={6}>
+                  <Box pb={0.5} color={'#8b8989'}>
+                    NAME
+                  </Box>
+                  <Box fontSize={16}>Ms. Suman</Box>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <Box pb={0.5} color={'#8b8989'}>
+                    RELATION
+                  </Box>
+                  <Box fontSize={16}>Mother</Box>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <Box pb={0.5} color={'#8b8989'}>
+                    MOBILE
+                  </Box>
+                  <Box fontSize={16}>5469354098</Box>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <Box pb={0.5} color={'#8b8989'}>
+                    EMAIL
+                  </Box>
+                  <Box fontSize={16}>abc@gmail.com</Box>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <Box pb={0.5} color={'#8b8989'}>
+                    EDUCATION
+                  </Box>
+                  <Box fontSize={16}>B.Sc</Box>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <Box pb={0.5} color={'#8b8989'}>
+                    COMPANY
+                  </Box>
+                  <Box fontSize={16}>abc Company</Box>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <Box pb={0.5} color={'#8b8989'}>
+                    DESIGNATION
+                  </Box>
+                  <Box fontSize={16}>Manager</Box>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <Box pb={0.5} color={'#8b8989'}>
+                    ADDRESS
+                  </Box>
+                  <Box fontSize={16}>Delhi</Box>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <Box pb={0.5} color={'#8b8989'}>
+                    AADHAAR NO.
+                  </Box>
+                  <Box fontSize={16}>12456789345</Box>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <Box pb={0.5} color={'#8b8989'}>
+                    PEN
+                  </Box>
+                  <Box fontSize={16}>AZCIV89345</Box>
+                </Grid>
+              </Grid>
             </Box>
           </Box>
         </>
@@ -153,6 +430,9 @@ export default function PreviewTabs() {
       </CustomTabPanel>
       <CustomTabPanel value={value} index={4}>
         5
+      </CustomTabPanel>
+      <CustomTabPanel value={value} index={5}>
+        <Timeline/>
       </CustomTabPanel>
     </Box>
   );

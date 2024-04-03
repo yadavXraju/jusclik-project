@@ -17,7 +17,7 @@ const ListItemWrapper = styled('div')(({ theme }) => ({
   }
 }));
 
-const ErpModuleLayout = () => {
+const ErpModuleLayout = ({ setOpen }) => {
   const theme = useTheme();
   const navigate = useNavigate();
 
@@ -27,6 +27,7 @@ const ErpModuleLayout = () => {
     // Navigate to the specified URL
     navigate(url);
     // window.location.reload()
+    setOpen(false); // Close the Popper
   };
 
   return (

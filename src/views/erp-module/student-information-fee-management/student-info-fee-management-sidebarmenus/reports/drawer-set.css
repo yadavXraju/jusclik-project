@@ -1,12 +1,12 @@
 .beforeClick{
-  transform:translateY(-120vh);
+  transform:translateY(-1000vh);
+  overflow-x: hidden;
   left:260px;
 }
 
 .afterClick{
   position: absolute;
-  height: 100vh;
-  width: calc(100vw - 260px);
+  width: calc(100vw - 261px);
   height:calc(100vh - 110px);
   left:244px;
   top:110px;
@@ -19,7 +19,8 @@
 }
 
 .enquiry-customize-report{
-   width: calc(100vw - 300px);
+  overflow-x: hidden;
+  width: calc(100vw - 300px);
 }
 
 
@@ -30,6 +31,10 @@
   }
   .afterClick{
     left:0px;
+    width:100vw;
+  }
+  .enquiry-customize-report{
+    padding-right:40px;
     width:100vw;
   }
 }

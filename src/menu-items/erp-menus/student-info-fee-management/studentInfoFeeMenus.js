@@ -3,7 +3,6 @@ import PersonOutlineTwoToneIcon from '@mui/icons-material/PersonOutlineTwoTone';
 import CreditCardTwoToneIcon from '@mui/icons-material/CreditCardTwoTone';
 import MapsHomeWorkTwoToneIcon from '@mui/icons-material/MapsHomeWorkTwoTone';
 import DescriptionTwoToneIcon from '@mui/icons-material/DescriptionTwoTone';
-import FindInPageTwoToneIcon from '@mui/icons-material/FindInPageTwoTone';
 import SettingsTwoToneIcon from '@mui/icons-material/SettingsTwoTone';
 import ReceiptLongTwoToneIcon from '@mui/icons-material/ReceiptLongTwoTone';
 import AdminPanelSettingsTwoToneIcon from '@mui/icons-material/AdminPanelSettingsTwoTone';
@@ -46,6 +45,15 @@ const InvoiceModificationColleagueTitles = [
 
 ];
 
+
+// transport
+
+const TransportColleagueTitles = [
+  {title :  'Bus Details ' , url : '/erp/student-info-fee/transport/bus-details'}, 
+  {title : 'Routes & Slabs' , url : '/erp/student-info-fee/transport/routes-slabs'}, 
+  {title :  'Transport Allocation' , url : '/erp/student-info-fee/transport/allocation'}, 
+
+];
 
 
 
@@ -296,12 +304,45 @@ const StudentInfoFeeMenu = {
           {
             id: 'transport',
             title: 'Transport',
-            type: 'item',
+            type:  'collapse',
             url: '/erp/student-info-fee/transport',
             icon: DirectionsBusTwoToneIcon,
-            breadcrumbs: false
+            children : [
+
+              {
+                id: 'Bus Details',
+                title: 'Bus Details',
+                type: 'item',
+                url: '/erp/student-info-fee/transport/bus-details',
+                breadcrumbs: false,
+                colleagueTitle : TransportColleagueTitles,
+              },
+
+
+
+              {
+                id: 'routes-slabs',
+                title: 'Routes & Slabs',
+                type: 'item',
+                url: '/erp/student-info-fee/transport/routes-slabs',
+                breadcrumbs: false,
+                colleagueTitle : TransportColleagueTitles,
+              },
+
+
+                {
+                  id: 'transport-allocation',
+                  title: 'Transport Allocation',
+                  type: 'item',
+                  url: '/erp/student-info-fee/transport/allocation',
+                  breadcrumbs: false,
+                  colleagueTitle : TransportColleagueTitles,
+                },
+
+             ]
           },
 
+          // reports
           {
             id: 'reports',
             title: 'Reports',
@@ -311,30 +352,6 @@ const StudentInfoFeeMenu = {
             breadcrumbs: false
           },
          
-
-       // search
-
-          {
-            id: 'search' ,
-            title: 'Search',
-            type: 'collapse',
-            url: '/erp/student-info-fee/search',
-            icon: FindInPageTwoToneIcon,
-            children: [
-
-              {
-                  id: 'enquiry',
-                  title: 'Enquiry',
-                  type: 'item',
-                  url: '/erp/student-info-fee/search/enquiry',
-                  breadcrumbs: false,
-                  // colleagueTitle : SetUpColleagueTitles,
-                },
-
-
-            ]
-          },
-
 
           //  setting
           {

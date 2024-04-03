@@ -1,166 +1,131 @@
-import React from 'react';
-import { Grid,  TextField, Card, useMediaQuery, Typography } from '@mui/material';
+import React, { useEffect } from 'react';
+import { Grid, TextField, Card, useMediaQuery, Typography } from '@mui/material';
 import ParameterizedDateComponent from 'views/common-section/ParamDateComponent';
 import EditableTable from './EditableTable';
-// import InputLabel from '@mui/material/InputLabel';
-// import MenuItem from '@mui/material/MenuItem';
-// import FormControl from '@mui/material/FormControl';
-// import Select from '@mui/material/Select';
 
-function ProfileDetail() {
-  // const [age, setAge] = React.useState('');
+const ProfileDetail = ({ setStudentDetail, setEditItem, studentFields, type }) => {
+  const isMobile = useMediaQuery('(max-width: 767px)');
+  
+  const [admissionDetails, setAdmissionDetails] = React.useState(() => {
+    const initialState = {
+      stdName: '',
+      AdmNo: '',
+      admDate: '',
+      dob: '',
+      stdCategory: '',
+      joiningClass: '',
+      joiningDate: ''
+    };
 
-  // const handleChange = (event) => {
-  //   setAge(event.target.value);
-  // };
+    if (setEditItem) {
+      initialState.stdName = setEditItem.StudentName || '';
+      initialState.AdmNo = setEditItem.AdmNo || '';
+      initialState.admDate = setEditItem.AdmDate || null;
+      initialState.dob = setEditItem.DOB || null;
+      initialState.stdCategory = setEditItem.Studentcategory || '';
+      initialState.joiningClass = setEditItem.class || '';
+      initialState.joiningDate = setEditItem.joiningDate || '';
+    }
 
-  const isMobile = useMediaQuery('(max-width: 767px)')
+    return initialState;
+  });
+
+  useEffect(() => {
+    if (setEditItem) {
+      setAdmissionDetails((prevState) => ({
+        ...prevState,
+        stdName: setEditItem.StudentName || '',
+        AdmNo: setEditItem.AdmNo || '',
+        admDate: setEditItem.AdmDate || null,
+        dob: setEditItem.DOB || null,
+        stdCategory: setEditItem.Studentcategory || '',
+        joiningClass: setEditItem.class || '',
+        joiningDate: setEditItem.joiningDate || ''
+      }));
+    }
+  }, [setEditItem]);
+
+  useEffect(() => {
+    if (setEditItem) {
+      handleInputChange('stdName', setEditItem.StudentName || '');
+    }
+  }, [setEditItem]);
+
+  const handleInputChange = (fieldName, value) => {
+    setAdmissionDetails((prevState) => ({
+      ...prevState,
+      [fieldName]: value
+    }));
+    if (fieldName === 'stdName') {
+      setStudentDetail('firstName', value);
+    } else if (fieldName === 'stdMiddleName') {
+      setStudentDetail('middleName', value);
+    } else if (fieldName === 'stdLastName') {
+      setStudentDetail('lastName', value);
+    }
+  };
 
   return (
     <>
-    {/* Admission Details */}
-    <Card sx={{padding:'10px'}}>
-      <Typography variant={'h4'} p={1.4} mb={2} sx={{borderBottom:'1px solid #ccc'}}>
-       Admission Details
-      </Typography>
-    <Grid container spacing={2} sx={{ display: 'flex', height: '100%' }}>
-      <Grid item xs={12} sm={12} lg={6}>
-       <TextField size={isMobile  ? 'small' : 'normal' } id="outlined-basic" fullWidth label="Admission No." variant="outlined" />
-      </Grid>
-      <Grid item xs={12} sm={12} lg={6}>
-       <ParameterizedDateComponent customStyle={{width:'100%'}} label={'Admission Date'}/>
-      </Grid>
-      <Grid item xs={12} sm={12} lg={6}>
-      <TextField size={isMobile  ? 'small' : 'normal' } id="outlined-basic" fullWidth label="Joining Class" variant="outlined" />
-      </Grid>
-      <Grid item xs={12} sm={12} lg={6}>
-       <ParameterizedDateComponent customStyle={{width:'100%'}} label={'Joining Date'}/>
-      </Grid>
-    </Grid>
-    </Card>
-    {/* Primary Contact */}
-    <Card sx={{padding:'10px'}}>
-      <Typography variant={'h4'} p={1} mb={2} sx={{borderBottom:'1px solid #ccc'}}>
-      Student Details
-      </Typography>
-    <Grid container spacing={2} sx={{ display: 'flex', height: '100%' }}>
-      <Grid item xs={12} sm={12} md={6} lg={4}>
-       <TextField size={isMobile  ? 'small' : 'normal' } id="outlined-basic" fullWidth label="First Name" variant="outlined" />
-      </Grid>
-      <Grid item xs={12} sm={12} md={6} lg={4}>
-      <TextField size={isMobile  ? 'small' : 'normal' } id="outlined-basic" fullWidth label="Middle Name" variant="outlined" />
-      </Grid>
-      <Grid item xs={12} sm={12} md={6} lg={4}>
-      <TextField size={isMobile  ? 'small' : 'normal' } id="outlined-basic" fullWidth label="Last Name" variant="outlined" />
-      </Grid>
-      <Grid item xs={12} sm={12} md={6} lg={4}>
-       <TextField size={isMobile  ? 'small' : 'normal' } id="outlined-basic" fullWidth label="Gender" variant="outlined" />
-      </Grid>
-      <Grid item xs={12} sm={12} md={6} lg={4}>
-      <ParameterizedDateComponent customStyle={{width:'100%'}} label={'D.O.B.'}/>
-      </Grid>
-      <Grid item xs={12} sm={12} md={6} lg={4}>
-      <TextField size={isMobile  ? 'small' : 'normal' } id="outlined-basic" type='number' fullWidth label="Age" variant="outlined" />
-      </Grid>
-      <Grid item xs={12} sm={12} md={6} lg={4}>
-      <TextField size={isMobile  ? 'small' : 'normal' } id="outlined-basic" fullWidth label="Aadhaar No." variant="outlined" />
-      </Grid>
-      <Grid item xs={12} sm={12} md={6} lg={4}>
-      <TextField size={isMobile  ? 'small' : 'normal' } id="outlined-basic" fullWidth label="PEN No." variant="outlined" />
-      </Grid>
-    </Grid>
-    </Card>
-    {/* Personal Detail */}
-    {/* <Card sx={{padding:'10px'}}>
-      <Typography variant={'h4'} p={1} mb={2} sx={{borderBottom:'1px solid #ccc'}}>
-      Personal Details
-      </Typography>
-    <Grid container spacing={1} sx={{ display: 'flex', height: '100%' }}>
-      <Grid item xs={12} sm={12} lg={6}>
-       <TextField size={isMobile  ? 'small' : 'normal' } id="outlined-basic" fullWidth label="Gender" variant="outlined" />
-      </Grid>
-      <Grid item xs={12} sm={12} lg={6}>
-      <ParameterizedDateComponent customStyle={{width:'100%'}} label={'D.O.B.'}/>
-      </Grid>
-      <Grid item xs={12} sm={12} lg={6}>
-      <TextField size={isMobile  ? 'small' : 'normal' } id="outlined-basic" type='number' fullWidth label="Age" variant="outlined" />
-      </Grid>
-    </Grid>
-    </Card> */}
-    {/* Class Detail */}
-    <Card sx={{padding:'10px'}}>
-      <Typography variant={'h4'} p={1} mb={2} sx={{borderBottom:'1px solid #ccc'}}>
-      Class Details
-      </Typography>
-    <Grid container spacing={1} sx={{ display: 'flex', height: '100%' }}>
-      <Grid item xs={12} sm={12} lg={6}>
-       <TextField size={isMobile  ? 'small' : 'normal' } id="outlined-basic" fullWidth label="Class" variant="outlined" />
-      </Grid>
-      <Grid item xs={12} sm={12} lg={6}>
-      <TextField size={isMobile  ? 'small' : 'normal' } id="outlined-basic" fullWidth label="Section" variant="outlined" />
-      </Grid>
-    </Grid>
-    </Card>
-
-
-    {/* Other Detail */}
-    <Card sx={{padding:'10px'}}>
-      <Typography variant={'h4'} p={1} mb={2} sx={{borderBottom:'1px solid #ccc'}}>
-      Fee Details
-      </Typography>
-    <Grid container spacing={1} sx={{ display: 'flex', height: '100%' }}>
-    <Grid item xs={12} sm={12} md={6} lg={4}>
-      <TextField size={isMobile  ? 'small' : 'normal' } id="outlined-basic" fullWidth label="Category" variant="outlined" />
-      </Grid>
-      <Grid item xs={12} sm={12} md={6} lg={4}>
-      <TextField size={isMobile  ? 'small' : 'normal' } id="outlined-basic" fullWidth label="Pay Mode" variant="outlined" />
-      </Grid>
-      <Grid item xs={12} sm={12} md={6} lg={4}>
-      <TextField size={isMobile  ? 'small' : 'normal' } id="outlined-basic" fullWidth label="Concession" variant="outlined" />
-      </Grid>
-    </Grid>
-    </Card>
-
-
-
-    {/* Sibling Details */}
-    <Card sx={{padding:'10px'}}>
-      <Typography variant={'h4'} p={1} mb={2} sx={{borderBottom:'1px solid #ccc'}}>
-      Sibling Details
-      </Typography>
-    {/* <Grid container spacing={1} sx={{ display: 'flex', height: '100%' }}>
-      <Grid item xs={12} sm={12} lg={6}>
-      <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">Enrollment Type</InputLabel>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={age}
-          label="Enrollment Type"
-          onChange={handleChange}
-        >
-          <MenuItem value={10}>Enquiry</MenuItem>
-          <MenuItem value={20}>Ragistration</MenuItem>
-          <MenuItem value={30}>Provisional</MenuItem>
-          <MenuItem value={30}>Admission</MenuItem>
-        </Select>
-      </FormControl>
-      </Grid>
-      <Grid item xs={12} sm={12} lg={6}>
-      <TextField size={isMobile  ? 'small' : 'normal' } id="outlined-basic" type='number' fullWidth label="Adm. No." variant="outlined" />
-      </Grid>
-      <Grid item xs={12} sm={12} lg={6}>
-      <TextField size={isMobile  ? 'small' : 'normal' } id="outlined-basic" fullWidth label="Name" variant="outlined" />
-      </Grid>
-      <Grid item xs={12} sm={12} lg={6}>
-      <TextField size={isMobile  ? 'small' : 'normal' } id="outlined-basic" fullWidth label="Class/Section" variant="outlined" />
-      </Grid>
-    </Grid> */}
-      <EditableTable/>
-    </Card>
-
+      {studentFields&&studentFields.map((field) => (
+        <Card key={field} sx={{ padding: '10px', mb: 3 }}>
+          <Typography variant={'h4'} p={1.4} mb={2} sx={{ borderBottom: '1px solid #ccc' }}>
+            {field.name}
+          </Typography>
+          <Grid container spacing={2} sx={{ display: 'flex', height: '100%' }}>
+            {
+              field&&field?.subSection.map((item)=>
+              <Grid item xs={12} sm={12} md={6} lg={field.name === 'Student Details' ? 4 : 6} key={item.id}>
+                {item.type === 'date' ? (
+                  <ParameterizedDateComponent
+                    customStyle={{ width: '100%' }}
+                    value={admissionDetails[field.name]}
+                    onChange={(date) => handleInputChange(field.name, date)}
+                    label={item.name}
+                  />
+                ) : (
+                  <TextField
+                    size={isMobile ? 'small' : 'normal'}
+                    id={`outlined-${field?.id}`}
+                    value={admissionDetails[field.name]}
+                    onChange={(e) => handleInputChange(field.type, e.target.value)}
+                    onLoad={() => console.log('vikash poonia')}
+                    fullWidth
+                    label={item.name}
+                    variant="outlined"
+                  />
+                )}
+              </Grid>
+            )}
+          </Grid>
+        </Card>
+      ))}
+      {/* Sibling Details */}
+       {type=="Primary Details"&&<Card sx={{ padding: '10px' }}>
+        <Typography variant={'h4'} p={1} mb={2} sx={{ borderBottom: '1px solid #ccc' }}>
+          Sibling Details
+        </Typography>
+        <EditableTable />
+      </Card> }
     </>
   );
 }
 
 export default ProfileDetail;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

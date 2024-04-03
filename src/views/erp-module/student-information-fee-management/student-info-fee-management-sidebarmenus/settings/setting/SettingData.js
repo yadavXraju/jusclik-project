@@ -43,11 +43,11 @@ const SettingData = [
     title: 'Fee',
     items: [
       { name: 'Fee Heads', path: '/fee-heads' },
-      { name: 'Fee Structure', path: '/fee-structure' },
+      { name: 'Fee Structure', path: '/erp/student-info-fee/settings/system-data' },
       { name: 'Concession', path: '/concession' },
       { name: 'Discount', path: '/discount' },
       { name: 'Fee Account', path: '/fee-account' },
-      { name: 'Invoice', path: '/invoice' }
+      { name: 'Invoice', path: '/erp/student-info-fee/settings/daman' }
     ]
   },
   {

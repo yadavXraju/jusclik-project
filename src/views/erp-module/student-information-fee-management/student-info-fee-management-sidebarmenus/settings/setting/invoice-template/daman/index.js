@@ -1,42 +1,44 @@
 import React from 'react';
 import CommonConfig from './common-config-component';
-import { Paper } from '@mui/material';
-import { useState } from 'react';
+import { Grid, Paper } from '@mui/material';
+import   Template  from '../kulwinder/template3';
+
+import CompactTemplate from '../harsh/template';
+import CompactTemplate2 from '../kulwinder/template2';
+import {CompactTemplate4} from '../harsh/harsh1/template4';
+import CompactTemplate5 from '../harsh/harsh2';
+import { useSelector } from 'react-redux';
 
 const Index = () => {
-  const [state, setState] = useState({
-    general: {
-      templateName: '',
-      paperSize: 'a5',
-      orientation: 'portrait',
-      marginTop: '0.7',
-      marginBottom: '0.7',
-      marginLeft: '0.55',
-      marginRight: '0.4',
-      pdfFont: 'ubuntu',
-      labelColor: '#333333',
-      fontColor: '#333333',
-      fontSize: '9',
-      backgroundImage: null,
-      imagePosition: 'centerCenter',
-      backgroundColorEnable: true,
-      backgroundColor: '#ffffff'
-    },
-    headerFooter: {},
-    transactionDetails: {},
-    table: {},
-    total: {},
-    otherDetails: {}
-  });
+  
+  // states
+  const generalSettings= useSelector(state=>state.invoiceTemplate.general)
+  const headerFooterSettings=useSelector(state=>state.invoiceTemplate.headerFooter)
+  const tableSettings=useSelector(state=>state.invoiceTemplate.table)
 
 
- 
-
+  // all settings
+  const states=[generalSettings,headerFooterSettings,tableSettings]
+  // temporary logic for rendring template
+  let template=1
   return (
     <>
-      <Paper>
-        <CommonConfig state={state} setState={setState} />
+    <Grid container spacing={4}>
+      <Grid item md={5 }>
+      <Paper sx={{width:'100%',height:'auto',padding:' 2rem 0rem'}}>
+        <CommonConfig/>
       </Paper>
+      </Grid>
+      {/* <Grid md={1}></Grid> */}
+      <Grid item md={7}>
+        {template==1&&<CompactTemplate states={states}/>}
+        {template==2&&<CompactTemplate2 states={states}/>}
+        {template==3&&<Template states={states}/>}
+        {template==4&&<CompactTemplate4 states={states}/>}
+        {template==5&&<CompactTemplate5 states={states}/>}
+              
+      </Grid>
+    </Grid>
     </>
   );
 };

@@ -11,7 +11,10 @@ import CardMedia from '@mui/material/CardMedia';
 import { studentProfileDetails } from 'layout/MainLayout/Header/ProfileSection/ProfileDeatails';
 
 
+
 export default function GuardianDetails() {
+
+ 
 
  // Email validation
     const [email, setEmail] = React.useState('');
@@ -44,7 +47,7 @@ export default function GuardianDetails() {
 
   return (
     <Card sx={{ border: '1px solid #ccc' }}>
-    <Typography sx={{p:2,borderBottom: '1px solid #ccc'}} variant='h5'  component="div">
+    <Typography sx={{p:2,borderBottom: '1px solid #ccc' }} variant='h5'  component="div">
          Guardian Details
     </Typography>
     <Typography sx={{p:2, mb : 3,display: 'flex', alignItems: 'center',borderBottom: '1px solid #ccc'}} variant='h5'  component="div">
@@ -53,7 +56,7 @@ export default function GuardianDetails() {
         image={studentProfileDetails.StudentImage}
         title="Father image"
       />
-      <Typography variant="h1" m={2}>Guardian Name</Typography>
+      <Typography variant="h5" m={2} sx={{fontSize:{lg:'20px' , md:'18px' , xs:'16px'}}}>Guardian Name </Typography>
     </Typography>
     <Box component="form">
       <CardContent>

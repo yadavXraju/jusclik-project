@@ -52,8 +52,8 @@ export const css = {
   },
   imageContainer:{backgroundSize: 'cover',
   backgroundPosition: 'bottom',
-  padding:'0 10rem',
-  '@media (max-width: 1024px)': {
+  padding:'0 0rem',
+  '@media (max-width: 1199px)': {
     display: 'none', // Hide the component on small screens (sm viewport)
   },
   },
@@ -89,7 +89,7 @@ export const css = {
     school:{
       // color: '#3a3a3a',
       color:'#E64B4C',
-      fontSize: { xs: '20px', md: '2.5rem' },
+      fontSize: { sm: '16px', md: '30px' },
       fontFamily: 'plus Jakarta sans',
       textAlign: 'center',
       marginBottom: '20px',
@@ -98,7 +98,7 @@ export const css = {
     address:{
 
       color:'#364152b5',
-      fontSize: { xs: '1rem', md: '1.5rem' },
+      fontSize: { sm: '14px', md: '20px' },
       fontFamily: 'plus Jakarta sans', 
       textAlign: 'center', 
       marginBottom: '10px',
@@ -106,16 +106,16 @@ export const css = {
     },
     managedBy:{
        color:'#364152b5',
-       fontSize: { xs: '1rem', md: '1rem' }, 
+       fontSize: { xs: '14px', md: '14px' }, 
        fontFamily: 'plus Jakarta sans', 
        textAlign: 'center', 
        marginBottom: '10px',
-       fontWeight:'500',
+       fontWeight:'700',
     },
   },
   parentPaperBox:{
     paddingTop:'0rem',
-    paddingBottom:'3rem',
+    paddingBottom:'1.5rem',
     '@media (max-width: 600px)': {
       display: 'none', // Hide the component on small screens (sm viewport)
     },
@@ -135,7 +135,7 @@ export const css = {
   },
   mobileLogoImage:{
     margin: '3rem 0',
-    '@media (min-width: 1025px)': {
+    '@media (min-width: 1199px)': {
       display:'none'
     },
   },
@@ -148,7 +148,7 @@ export const css = {
     },
   },
   displayNoneOnMd:{
-    '@media (max-width: 1024px)': {
+    '@media (max-width: 1199px)': {
       display:'none'
     },
   },

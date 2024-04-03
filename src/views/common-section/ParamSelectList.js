@@ -4,27 +4,21 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
-const SelectList = ({ label, options, value, setValue, size="small",customSytle={}, disabled=null }) => {
-    const handleChange = (event) => {
-        setValue(event.target.value);
-      };
+const SelectList = ({ label, options, value, onChange, name, size="",rootStyle={},customStyle={}, disabled=null }) => {
     
   return (
-    <div>
-      <FormControl sx={{ width:'100%' }}>
+      <FormControl sx={{width:'100%',...rootStyle}}>
         <InputLabel id="select-label">{label}</InputLabel>
         <Select
           labelId="select-label"
           value={value}
-          onChange={handleChange}
+          onChange={onChange}
+          name={name}
           label={label}
-          sx={customSytle}
+          sx={customStyle}
           size={size}
           disabled={disabled}
         >
-          {/* <MenuItem value="">
-            <em>None</em>
-          </MenuItem> */}
           {options.map((option) => (
             <MenuItem key={option.value} value={option.value}>
               {option.label}
@@ -32,7 +26,6 @@ const SelectList = ({ label, options, value, setValue, size="small",customSytle=
           ))}
         </Select>
       </FormControl>
-    </div>
   );
 }
 

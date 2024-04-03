@@ -72,19 +72,18 @@ const SetupTabs = ({ tabPage }) => {
       <Box sx={{width: "100%",display: 'flex',flexDirection: "column",marginTop: "25px" }}>
         <Tabs
           orientation="horizontal"
+          variant="scrollable"
           value={value}
           onChange={handleChange}
           aria-label="Vertical tabs example"
-          sx={{ display: "flex",flexWrap:"wrap",borderBottom: "1px solid #eef2f6", bgcolor: 'background.paper',gap:"40px"}}
         >
           {tabPage.map((tab, index) => (
             <Tab
               key={tab?.id}
-            
+             
               label={<TabsName name={tab.name} number={index} />}
               {...a11yProps(index)}
               sx={{width:"fit-content",borderBottom: "1px solid #eef2f6", alignItems: "baseline",paddingLeft:'0px',marginRight:"40px" }}
-              className="testf"
             />
           ))}
         </Tabs>
@@ -93,8 +92,7 @@ const SetupTabs = ({ tabPage }) => {
             key={tab?.id}
             value={value}
             index={index}
-            sx={{width: "100%",padding:"0px 20px 20px 0px",bgcolor: 'background.paper', borderRadius: "10px",overflowY: "auto",height: 'calc(100vh - 250px)'}} className="Scrollbar"
-          >
+            sx={{width: "100%",padding:"0px 20px 20px 0px",bgcolor: 'background.paper', borderRadius: "10px",overflowY: "auto",height: 'calc(100vh - 250px)'}} className="Scrollbar">
             <tab.component />
           </TabPanel>
         ))}

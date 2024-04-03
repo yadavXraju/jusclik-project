@@ -1,216 +1,252 @@
-import { Accordion, AccordionDetails, AccordionSummary, Box, Button, FormControl, FormControlLabel, Grid, InputAdornment, InputLabel, MenuItem, Radio, RadioGroup, Select, TextField, Typography } from '@mui/material';
+import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  Box,
+  Checkbox,
+  FormControl,
+  FormControlLabel,
+  Grid,
+  Radio,
+  RadioGroup,
+  TextField,
+  Typography
+} from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import React from 'react';
-import { useState } from 'react';
 import ColorPicker from '../../common/color-picker';
+import CommonSelect from '../../common/common-select';
+import FontSize from '../../common/font-size';
+import ImageUploadAndPreview from '../../common/image-upload-and-preview';
+import { fontFamily,imagePosition } from '../../common/common-states';
+import { useDispatch } from 'react-redux';
+import { updateGeneralProperty } from 'store/student-info-and-fee/setting/Invoice-Template-Slice';
+import { useSelector } from 'react-redux';
+// to view data this import not needed in general
 
-const General = ({state,setState}) => {
-
-  const [color, setColor] = useState({
-    labelColor: '#ffffff',
-    fontColor:'#000000',
-    backgroundColor:'#ffffff',
-  });
-(()=>setState(state))
-  const handleColorChange = (key, newColor) => {
-    setColor({
-      ...color,
-      [key]: newColor,
-    });
+const General = () => {
+  const dispatch=useDispatch()
+  const generalSettings=useSelector(state=>state.invoiceTemplate.general)
+  
+  // state handler for general component
+  const handleStateChange = (key, value) => {
+    dispatch(updateGeneralProperty({key,value}))
   };
-
-  const [selectedFile, setSelectedFile] = useState(null);
-
-  const handleFileChange = (event) => {
-    const file = event.target.files[0];
-    setSelectedFile(file); // Store the selected file in state
-  };
-  console.log(selectedFile);
-  const handleRemoveFile = () => {
-    setSelectedFile(null); // Remove the selected file from state
-  };
-(()=>state)
-
+  
   return (
     <>
       <Box>
-        {/* template properties */}
+        {/* ============================================ template properties ======================================================== */}
         <Accordion>
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}>
+          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+            <Typography variant='h5'>
             Template Properties
-          </AccordionSummary>
+            </Typography>
+            </AccordionSummary>
           <AccordionDetails>
-            {/* Template name ============================== ROW 1 */}
-            <TextField id="outlined-basic" label="Template Name" variant="outlined" onChange={()=>{}}/>
-            {/* paper size radio group ====================== ROW 2 */}
-            <FormControl>
-              <Typography>Paper Size</Typography>
-              <RadioGroup
-                aria-labelledby=""
-                defaultValue="a4"
-                name=""
-                onChange={() =>{}} >
-                <Grid container>
-                  <FormControlLabel value="a4" control={<Radio />} label="A4" />
-                  <FormControlLabel value="letter" control={<Radio />} label="Letter" />
+            {/* ============ Template name ================= */}
+            <Grid container spacing={2} rowSpacing={2}>
+              <Grid item md={12}>
+                <FormControl fullWidth>
+                  <TextField
+                    id="outlined-basic"
+                    label="Template Name"
+                    variant="outlined"
+                    onChange={(e) => handleStateChange('templateName', e.target.value)}
+                  />
+                </FormControl>
+              </Grid>
+              <Grid item md={12}>
+                {/* =========== paper size  =============== */}
+                <FormControl>
+                  <Typography variant='h5'>Paper Size</Typography>
+                  <RadioGroup aria-labelledby="" defaultValue="a4" name="" onChange={(e) => handleStateChange('paperSize', e.target.value)}>
+                    <Grid container>
+                      <FormControlLabel value="a4" control={<Radio />} label="A4" />
+                      <FormControlLabel value="a5" control={<Radio />} label="A5" />
+                      <FormControlLabel value="letter" control={<Radio />} label="Letter" />
+                    </Grid>
+                  </RadioGroup>
+                </FormControl>
+              </Grid>
+              <Grid item>
+                {/* =========  Orientation =================  */}
+                <FormControl>
+                  <Typography variant='h5'>Orientation</Typography>
+                  <RadioGroup
+                    aria-labelledby=""
+                    defaultValue="portrait"
+                    name=""
+                    onChange={(e) => handleStateChange('orientation', e.target.value)}
+                  >
+                    <Grid container>
+                      <FormControlLabel value="portrait" control={<Radio />} label="Portrait" />
+                      <FormControlLabel value="landscape" control={<Radio />} label="Landscape" />
+                    </Grid>
+                  </RadioGroup>
+                </FormControl>
+              </Grid>
+              <Grid container item md={12} rowSpacing={2}>
+                {/* ========== Marigns ==================== */}
+                <Grid item md={12}>
+                  <Typography variant='h5'>Margins</Typography>
                 </Grid>
-              </RadioGroup>
-            </FormControl>
-
-            {/*  Orientation    radio group =================  ROW 3 */}
-            <FormControl>
-              <Typography>Orientation</Typography>
-              <RadioGroup
-                aria-labelledby=""
-                defaultValue="portrait"
-                name=""
-                onChange={() => {}}
-              >
-                <Grid container>
-                  <FormControlLabel value="portrait" control={<Radio />} label="Portrait" />
-                  <FormControlLabel value="pandscape" control={<Radio />} label="Landscape" />
+                <Grid container item rowSpacing={2} spacing={1}>
+                  <Grid item>
+                    <TextField
+                      id="outlined-basic"
+                      label="top"
+                      variant="outlined"
+                      onChange={(e) => handleStateChange('marginTop', e.target.value)}
+                    />
+                  </Grid>
+                  <Grid item>
+                    <TextField
+                      id="outlined-basic"
+                      label="bottom"
+                      variant="outlined"
+                      onChange={(e) => handleStateChange('marginBottom', e.target.value)}
+                    />
+                  </Grid>
+                  <Grid item>
+                    <TextField
+                      id="outlined-basic"
+                      label="left"
+                      variant="outlined"
+                      onChange={(e) => handleStateChange('marginLeft', e.target.value)}
+                    />
+                  </Grid>
+                  <Grid item>
+                    <TextField
+                      id="outlined-basic"
+                      label="right"
+                      variant="outlined"
+                      onChange={(e) => handleStateChange('marginRight', e.target.value)}
+                    />
+                  </Grid>
                 </Grid>
-              </RadioGroup>
-            </FormControl>
-
-            {/* Marigns--- 4*input ======================== ROW 4 */}
-            <Typography>Margins</Typography>
-            <TextField id="outlined-basic" label="top" variant="outlined" />
-            <TextField id="outlined-basic" label="bottom" variant="outlined" />
-            <TextField id="outlined-basic" label="left" variant="outlined" />
-            <TextField id="outlined-basic" label="right" variant="outlined" />
-
+              </Grid>
+            </Grid>
           </AccordionDetails>
         </Accordion>
-{/* font section */}
+
+        {/* ===================================================== Font section ========================================================*/}
         <Accordion>
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />} >
+          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+            <Typography variant='h5'>
             Font
-          </AccordionSummary>
+            </Typography>
+            </AccordionSummary>
           <AccordionDetails>
-            {/* Font selector ================ ROW 1 */}
-          <FormControl fullWidth>
-                                <InputLabel>Font Family</InputLabel>
-                                <Select
-                                    label='Font Family'
-                                    onChange={(e) => (handleState('pageFontFamily', e.target.value))}
-                                    defaultValue={'ubuntu'}>
-                                    <MenuItem value={'ubuntu'}>Ubuntu</MenuItem>
-                                    <MenuItem value={'openSans'}>Open Sans</MenuItem>
-                                    <MenuItem value={'dejaVuSans'}>DejaVu Sans</MenuItem>
-                                    <MenuItem value={'hind'}>Hind</MenuItem>
-                                    <MenuItem value={'hindMadurai'}>Hind Madurai</MenuItem>
-                                </Select>
-                            </FormControl>
-           {/* Label Color ================= Row 2 */}
-           <ColorPicker
-        initialColor={color.labelColor}
-        onColorChange={handleColorChange}
-        colorKey="labelColor"
-        label='Label Color'
-      />
-      {/* Font Color ===================== Row 3 */}
-      <ColorPicker
-        initialColor={color.fontColor}
-        onColorChange={handleColorChange}
-        colorKey="fontColor"
-        label='Font Color'
-      />
-       <TextField
-      type="number"
-      label="Font Size"
-      // value={value}
-      InputProps={{
-        endAdornment: <InputAdornment position="end">pt</InputAdornment>,
-      }}
-    />
+            <Grid container spacing={2} rowSpacing={2}>
+              <Grid item md={12}>
+                {/* ========== Font selector =========== */}
+                <FormControl fullWidth>
+                  <CommonSelect
+                    label={'Font Family'}
+                    stateHandler={handleStateChange}
+                    updatekey={'pdfFont'}
+                    defaultValue={'ubuntu'}
+                    options={fontFamily}
+                  />
+                </FormControl>
+              </Grid>
+              <Grid item md={12}>
+                {/*=========== Label Color ============== */}
+                <ColorPicker
+                  initialColor={generalSettings.labelColor}
+                  onColorChange={handleStateChange}
+                  colorKey="labelColor"
+                  label="Label Color"
+                  enable={true}
+                />
+              </Grid>
+              <Grid item container md={12} spacing={2}>
+                <Grid item md={6}>
+                  {/* ========== Font Color =============== */}
+                  <ColorPicker
+                    initialColor={generalSettings.fontColor}
+                    onColorChange={handleStateChange}
+                    colorKey="fontColor"
+                    label="Font Color"
+                    enable={true}
+                  />
+                </Grid>
+                <Grid item md={6}>
+                  {/* ========== Font Size =============== */}
+                  <FormControl fullWidth>
+                    <FontSize label={'Font Size'} value={generalSettings.fontSize} stateHandler={handleStateChange} updatekey={'fontSize'} />
+                  </FormControl>
+                </Grid>
+              </Grid>
+            </Grid>
           </AccordionDetails>
         </Accordion>
 
+        {/* ==================================================== Background Section =============================================== */}
 
-{/* background section */}
-
-<Accordion>
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />} >
+        <Accordion>
+          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+            <Typography variant='h5'>
             Background
-          </AccordionSummary>
+            </Typography>
+            </AccordionSummary>
           <AccordionDetails>
- {/* background image upload */}
-     
-  <FormControl fullWidth>
-{/*     
-      <InputLabel>Background Image</InputLabel>
-      <Button variant="contained" component="label">
-        Upload File
-        <input
-          id="background-image-upload"
-          type="file"
-          style={{ display: 'none' }}
-          accept="image/*"
-          onChange={handleFileChange}
-        />
-      </Button> */}
-    </FormControl>
-    <FormControl fullWidth>
-      <InputLabel>Background Image</InputLabel>
-      <input
-        id="background-image-upload"
-        type="file"
-        style={{ display: 'none' }}
-        accept="image/*"
-        onChange={handleFileChange}
-      />
-      <Button variant="contained" component="label">
-        {selectedFile ? 'Change File' : 'Upload File'}
-        <input
-          type="file"
-          style={{ display: 'none' }}
-          accept="image/*"
-          onChange={handleFileChange}
-        />
-      </Button>
-      {selectedFile && (
-        <div style={{ marginTop: 10 }}>
-          <img src={URL.createObjectURL(selectedFile)} alt="Preview" style={{ maxWidth: 200 }} />
-          <Button variant="outlined" color="secondary" onClick={handleRemoveFile} style={{ marginLeft: 10 }}>
-            Remove
-          </Button>
-        </div>
-      )}
-    </FormControl>
+            <Grid container spacing={1} rowSpacing={3}>
+              <Grid item md={12} >
+                {/* =========== background image  =========== */}
+                <ImageUploadAndPreview
+                  label={'Background Image'}
+                  stateHandler={handleStateChange}
+                  updatekey={'backgroundImage'}
+                  image={generalSettings.backgroundImage}
+                />
+              </Grid>
+              <Grid item xs>
+                {/* ================ Image Position ===============*/}
+                
+                  <FormControl fullWidth>
+                    <CommonSelect
+                      label={'Image Position'}
+                      stateHandler={handleStateChange}
+                      updatekey="imagePosition"
+                      defaultValue={'centerCenter'}
+                      options={imagePosition}
+                    />
+                  </FormControl>
+                
+              </Grid>
+              <Grid item md={12}>
+                {/* ================ Background Color ===============*/}               
+                  <Grid container>
+                    <Grid item xs='auto'>
+                      <FormControlLabel
+                        control={
+                          <Checkbox
+                            checked={generalSettings.backgroundColorEnable}
+                            onChange={(e) => handleStateChange('backgroundColorEnable', e.target.checked)}
+                          />
+                        }
+                      />
+                    </Grid>
 
-    {/* image position =====================*/}
-    <FormControl fullWidth>
-                                <InputLabel>Image Position</InputLabel>
-                                <Select
-                                    label='Font Family'
-                                    onChange={(e) => (handleState('pageFontFamily', e.target.value))}
-                                    defaultValue={'centerCenter'}>
-                                    <MenuItem value={'topLeft'}>Top Left</MenuItem>
-                                    <MenuItem value={'topCenter'}>Top Center</MenuItem>
-                                    <MenuItem value={'topRight'}>Top Right</MenuItem>
-                                    <MenuItem value={'centerLeft'}>Center Left</MenuItem>
-                                    <MenuItem value={'centerCenter'}>Center Center</MenuItem>
-                                    <MenuItem value={'centerRight'}>Center Right</MenuItem>
-                                    <MenuItem value={'bottomLeft'}>Bottom Left</MenuItem>
-                                    <MenuItem value={'bottomCenter'}>Bottom Center</MenuItem>
-                                    <MenuItem value={'bottomRight'}>Bottom Right</MenuItem>
-
-                                </Select>
-                            </FormControl>
-
-                            <ColorPicker
-        initialColor={color.backgroundColor}
-        onColorChange={handleColorChange}
-        colorKey="backgroundColor"
-        label='Background Color'
-      />
+                    <Grid item md>
+                      <FormControl fullWidth>
+                        <ColorPicker
+                          initialColor={generalSettings.backgroundColor}
+                          onColorChange={handleStateChange}
+                          colorKey="backgroundColor"
+                          label="Background Color"
+                          enable={generalSettings.backgroundColorEnable}
+                        />
+                      </FormControl>
+                    </Grid>
+                  </Grid>
+               
+              </Grid>
+            </Grid>
           </AccordionDetails>
         </Accordion>
-
       </Box>
     </>
   );

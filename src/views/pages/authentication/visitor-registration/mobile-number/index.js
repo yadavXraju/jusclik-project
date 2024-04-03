@@ -5,10 +5,16 @@ import {
   Paper,
   Button,
   FormControl,
-  InputAdornment, MenuItem, Select, TextField,
+  InputAdornment, MenuItem, Select, TextField, FormHelperText,
 } from '@mui/material';
 import { withStyles } from '@mui/styles';
 import { useState } from 'react';
+import { makeStyles } from '@mui/styles';
+const useStyles = makeStyles(() => ({
+  helperText: {
+    textAlign: 'center', // Center align the text
+  },
+}));
 
 function CountrySelect({state,stateHandler }) {
   return (
@@ -23,7 +29,7 @@ function CountrySelect({state,stateHandler }) {
 }
 
 export const MobileNumber = ({step,handleSteps,setMobileNumber}) => {
-
+  const classes = useStyles();
 const [state,setState]=useState({
   mobileNumber:'',
   mobileError:false,
@@ -39,8 +45,7 @@ const stateHandler=(key,value)=>{
 
   {
     return (<>
-
-      <Box sx={{ ...css.center }}></Box>
+        <Box >
       <Paper sx={{ ...css.mobilePaper,minWidth:'20rem'}} elevation={2}>
         <Box>
           <FormControl fullWidth>
@@ -61,7 +66,11 @@ const stateHandler=(key,value)=>{
                 fullWidth
                 error={state.mobileError} // Set error state
                 id="Mobilenumber"
-                helperText={state.mobileError ? 'Mobile number must be 10 digits' : 'OTP will be sent to this number'} // Error message
+                // Error message
+                helperText={
+                  <FormHelperText className={classes.helperText}>
+                    {state.mobileError ? 'Mobile number must be 10 digits' : 'OTP will be sent to this number'}
+                  </FormHelperText>}
                 placeholder="Mobile Number"
                 name="Mobilenumber"
                 autoComplete="Mobilenumber"
@@ -93,6 +102,7 @@ const stateHandler=(key,value)=>{
           {'Next'}
         </Button>
       </Paper>
+      </Box>
     </>
     );
   }

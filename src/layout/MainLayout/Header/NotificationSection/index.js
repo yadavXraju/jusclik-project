@@ -81,7 +81,8 @@ const NotificationSection = () => {
           ml: 2,
           mr: 2,
           [theme.breakpoints.down('md')]: {
-            mr: 2
+            mr: '10px',
+            ml:'10px',
           }
         }}
       >
@@ -116,7 +117,7 @@ const NotificationSection = () => {
       </Box>
       
       <Popper
-        placement={matchesXs ? 'bottom' : 'bottom-end'}
+        placement={matchesXs ? 'bottom-end' : 'bottom-end'}
         open={open}
         anchorEl={anchorRef.current}
         role={undefined}
@@ -134,7 +135,7 @@ const NotificationSection = () => {
         }}
       >
         {({ TransitionProps }) => (
-          <Transitions position={matchesXs ? 'top' : 'top-right'} in={open} {...TransitionProps}>
+          <Transitions position={matchesXs ? 'top-right' : 'top-right'} in={open} {...TransitionProps}>
             <Paper>
               <ClickAwayListener onClickAway={handleClose}>
                 <MainCard border={false} elevation={16} content={false} boxShadow shadow={theme.shadows[16]}>

@@ -9,10 +9,11 @@ const ReportReference = () => {
   const handleChange = (event) => {
     setValue(event.target.value);
   };
-
+  
+  const width=window.innerWidth<1200?"100%":"80%";
 
   return (
-    <Box sx={{ display: "flex", flexDirection: "column",overflowX:"hidden",overflowY:"auto"}}>
+    <Box sx={{ display: "flex",width:width,flexDirection: "column",overflowX:"hidden",overflowY:"auto"}}>
       <TextField
         label="Report Name"
         variant="outlined"
@@ -20,7 +21,7 @@ const ReportReference = () => {
         onChange={handleChange}
         fullWidth
         margin="normal"
-        sx={{ width: "50%" }}
+        sx={{ width:width }}
       />
       <TextField
         label="Report Description"
@@ -31,9 +32,9 @@ const ReportReference = () => {
         multiline
         rows={4}
         margin="normal"
-        sx={{ width: "50%" }}
+        sx={{ width: width}}
       />
-      <ParamWarningBox cancelIcon={{display:"none"}} customStyle={{marginTop:"20px",width:"50%"}} label="You can use report descriptions to help you identify the details of the reports for your reference." severity="info" />
+      <ParamWarningBox cancelIcon={{display:"none"}} customStyle={{marginTop:"20px",width:width}} label="You can use report descriptions to help you identify the details of the reports for your reference." severity="info" />
       <Typography variant="h4" sx={{ marginTop: "20px" }}>Configure Permission</Typography>
       <Box sx={{ display: "flex", gap: "60px", marginTop: "30px", alignItems: 'center' }}>
         <Typography>
@@ -41,7 +42,7 @@ const ReportReference = () => {
         </Typography>
         <ParramPopover selectDropDown={selectDropDown} setSelectDropDown={setSelectDropDown}/>
       </Box>
-      <ParamWarningBox cancelIcon={{display:"none"}} customStyle={{marginTop:"20px",backgroundColor:'#fff4e5',width:"50%"}} label="Although you want to limit the access to this report to yourself, users who have full access to reports(Admins) will be able to access it." severity="warning" />
+      <ParamWarningBox cancelIcon={{display:"none"}} customStyle={{marginTop:"20px",backgroundColor:'#fff4e5',width:width}} label="Although you want to limit the access to this report to yourself, users who have full access to reports(Admins) will be able to access it." severity="warning" />
     </Box>
   )
 }

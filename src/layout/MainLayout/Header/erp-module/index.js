@@ -74,7 +74,8 @@ const ErpModule = () => {
           ml: 2,
           mr: 0,
           [theme.breakpoints.down('md')]: {
-            mr: 0
+            mr: 0 ,
+            ml: '10px',
           }
         }}
       >
@@ -151,7 +152,7 @@ const ErpModule = () => {
                         </Grid>
 
                         {/* erp modules  start */}
-                            <ErpModuleLayout />
+                            <ErpModuleLayout setOpen={setOpen} />
                          {/* erp modules  end */}
 
                       </PerfectScrollbar>

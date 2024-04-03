@@ -1,55 +1,41 @@
-import { useState } from 'react';
+import React from 'react';
+import { Box, Paper } from '@mui/material';
 import TabContext from '@mui/lab/TabContext';
-import { Paper , Box } from '@mui/material';
 import TabPanel from '@mui/lab/TabPanel';
-import TabLabel from './tabs/TabLabel';
+import TabLabel from 'views/erp-module/erp-common-item/tab/TabLabel';
 import DashboardContent from './dashboard';
 import DashboardPayRoll from 'views/common-section/dashboard-payroll';
 import PhoneIcon from '@mui/icons-material/Phone';
+import useTabValue from 'views/common-section/ParamTab';
 
-
-
-
-const Dashboard =()=> {
-
-  // for active first item when page load
-  const [value, setValue] = useState('1')
-
-
-  // for change the setvalue into newvalue
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
+const Dashboard = () => {
+  const { value, handleChange } = useTabValue('1');
 
   return (
     <>
-    <Box sx={{ width: '100%', typography: 'body1' ,}}>
-
-          <TabContext value={value}>
-          <Paper sx={{mx:'24px' , background:'none'}}>
+      <Box sx={{ width: '100%', typography: 'body1' }}>
+        <TabContext value={value}  variant="scrollable">
+          <Paper sx={{ mx: '24px', background: 'none' }}>
             <Box sx={{ 
               borderBottom: 0,
-              borderColor: '#e3e8efad' ,
-            //  background:'rgb(30, 136, 229)' , 
-             borderRadius:'10px' , 
-             padding:'10px',
-             '& .MuiBox-root':{
-              marginBottom:'10px'
-             }
-             }}>
-              <TabLabel handleChange={handleChange} />
+              borderColor: '#e3e8efad',
+              borderRadius: '10px',
+              padding: '10px',
+              '& .MuiBox-root': {
+                marginBottom: '10px'
+              }
+            }}>
+              <TabLabel handleChange={handleChange}   />
             </Box>
           </Paper>
-            <TabPanel  icon={<PhoneIcon />} value="1"><DashboardContent/></TabPanel>
-            <TabPanel value="2"><DashboardPayRoll /> </TabPanel>
-            <TabPanel value="3"></TabPanel>
-            <TabPanel value="4"></TabPanel>
-          </TabContext>
-  
-
-    </Box>
+          <TabPanel icon={<PhoneIcon />} value="1"><DashboardContent/></TabPanel>
+          <TabPanel value="2"><DashboardPayRoll /></TabPanel>
+          <TabPanel value="3"></TabPanel>
+          <TabPanel value="4"></TabPanel>
+        </TabContext>
+      </Box>
     </>
   );
-}
+};
 
-export default Dashboard
+export default Dashboard;

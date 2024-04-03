@@ -24,6 +24,7 @@ import SelectAccount from './SelectAccount';
 import PoweredBySection from './PoweredBy';
 import MobileLogin from './MobileLogin';
 import { Auth } from 'Auth';
+import AppStoreButtonsGroup from './AppStoreLogos';
 
 const defaultTheme = createTheme({
   palette: {
@@ -95,7 +96,6 @@ export default function LoginPage() {
     handleSelectAccountToggle();
   };
 
-  
   const handleChangeUsername = (event) => {
     const { value } = event.target;
     setUserId(value);
@@ -148,23 +148,27 @@ export default function LoginPage() {
       }, 500); // Delay in milliseconds
     } else {
       // alert('Wrong Credentials');
-      setUsernameError(true) 
-      setPasswordError(true) 
+      setUsernameError(true);
+      setPasswordError(true);
     }
 
-       // Check for empty username or password
-       if (userId.trim() === '') {
-        setUsernameError(true);
-        return;
-      }
-  
-      if (userPassword.trim() === '') {
-        setPasswordError(true);
-        return;
-      }
+    // Check for empty username or password
+    if (userId.trim() === '') {
+      setUsernameError(true);
+      return;
+    }
+
+    if (userPassword.trim() === '') {
+      setPasswordError(true);
+      return;
+    }
   };
 
-  const isMobile = useMediaQuery(theme.breakpoints.only('xs'));
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const isMd = useMediaQuery(theme.breakpoints.down('md'));
+  const isLg = useMediaQuery(theme.breakpoints.down('lg'));
+  const isXl = useMediaQuery(theme.breakpoints.up('lg'));
+
 
   const commonStyles = {
     fontFamily: 'plus Jakarta sans',
@@ -179,7 +183,7 @@ export default function LoginPage() {
   const tabStyles = {
     width: isMobile ? '260px' : '200px',
     paddingTop: '21px',
-    textTransform:'none'
+    textTransform: 'none'
   };
 
   const buttonStyles = {
@@ -197,139 +201,205 @@ export default function LoginPage() {
       color: '#fff'
     }
   };
+  const playstoreButtonStyles = isMobile
+    ? null
+    : {
+        position: 'fixed',
+        bottom: theme.spacing(3),
+        right: theme.spacing(3),
+        display: 'block', // Show/hide based on md breakpoint and above
+        zIndex: theme.zIndex.tooltip
+      };
 
+      const getWidthPercentage = () => {
+        if (isMobile) {
+          return '100%';
+        } else if (isMd) {
+          return '80%';
+        } else if (isLg) {
+          return '80%';
+        } else if (isXl) {
+          return '60%';
+        }
+        else {
+          return '100%'
+        }
+      };
+    
+      const widthPercentage = getWidthPercentage();
   return (
     <ThemeProvider theme={defaultTheme}>
-      <Grid container sx={{ height: '100vh', display: 'flex' }}>
+      <Grid
+        container
+        height={isMobile ? '100%' : '100vh'}
+        width="100%"
+        display="flex"
+        flexDirection={isMobile ? 'column' : 'row'}
+        justifyContent="center"
+        minHeight="100vh"
+        backgroundColor={(t) => (t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900])}        
+      >
+  
         <CssBaseline />
-        <LeftLogo />
+        {/* Left Side Logo ==================================================================  */}
+        <Grid item xs={12} sm={6} md={6} paddingBottom="1rem">
+          <LeftLogo />
+        </Grid>
+        {/* Right Side Components */}
         <Grid
           item
           xs={12}
-          sm={7}
-          md={7}
+          sm={6}
+          md={6}
           component={Paper}
           elevation={6}
           square
-          sx={{
-            backgroundColor: '#ffecec',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            backgroundRepeat: 'no-repeat',
-            borderRadius: isMobile ? '20px 20px 0px 0px' : '20px 0px 0px 20px',
-            padding: isMobile ? '0px' : '0px 35px'
-          }}
+          backgroundColor="#ffecec"
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          backgroundRepeat="no-repeat"
+          borderRadius={isMobile ? '20px 20px 0px 0px' : '20px 0px 0px 20px'}
+          padding={isMobile ? '0px 0px 0px 0px' : '0px 35px'}
+          height="100%"
+          pt={1}
         >
-          <Box sx={{ height: isMobile ? '500px' : '450px', width: isMobile ? '100%' : '500px', padding:isMobile?'25px':'0px' }}>
-            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', mb: isMobile ? 0 : 1 }}>
-              <Typography
-                component="h1"
-                variant="h4"
-                sx={{
-                  color: '#3a3a3a',
-                  fontWeight: 500,
-                  fontSize: { xs: '20px', md: '30px' },
-                  fontFamily: 'plus Jakarta sans',
-                  paddingBottom: '5px'
-                }}
-              >
-                Login to
-              </Typography>
-              <Typography
-                component="h1"
-                variant="h4"
-                sx={{ color: '#3a3a3a', fontWeight: 500, fontSize: { xs: '19px', md: '30px' }, fontFamily: 'plus Jakarta sans' }}
-              >
-                your dashboard!
-              </Typography>
-            </Box>
-            <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-              <Tabs
-                value={value}
-                onChange={handleChange}
-                textColor="secondary"
-                indicatorColor="secondary"
-                variant="fullWidth"
-                aria-label="full width tabs example"
-              >
-                <Tab label="Username" {...a11yProps(0)} sx={tabStyles} />
-                <Tab label="Mobile Number" {...a11yProps(1)} sx={tabStyles} />
-              </Tabs>
-            </Box>
-            <CustomTabPanel value={value} index={0}>
-              <Box component="form" noValidate onSubmit={handleSubmit}>
-                <TextField
-                  InputProps={{
-                    style: { ...commonStyles}
-                  }}
-                  margin="normal"
-                  variant="outlined"
-                  required
-                  fullWidth
-                  id="Username"
-                  placeholder="Username"
-                  name="Username"
-                  autoComplete="Username"
-                  autoFocus
-                  value={userId}
-                  error={usernameError}
-                  helperText={usernameError?'Enter the username' : ''}
-                  onChange={handleChangeUsername}
-                />
-
-                <TextField
-                  InputProps={{
-                    style: { ...commonStyles, borderRadius: '50px' },
-                    // startAdornment: <InputAdornment position="start" style={{ paddingLeft: '10px' }} />,
-                    endAdornment: (
-                      <InputAdornment position="end">
-                        <IconButton
-                          aria-label="toggle password visibility"
-                          onClick={() => setShowPassword(!showPassword)}
-                          edge="end"
-                          sx={{ color: '#364152b5', marginRight: '2px' }}
-                        >
-                          {showPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
-                        </IconButton>
-                      </InputAdornment>
-                    )
-                  }}
-                  margin="normal"
-                  variant="outlined"
-                  required
-                  fullWidth
-                  name="password"
-                  placeholder="Password"
-                  type={showPassword ? 'text' : 'password'}
-                  id="password"
-                  autoComplete="current-password"
-                  value={userPassword}
-                  error={passwordError}
-                  helperText={passwordError?'Enter your password':''}
-                  onChange={handleChangePassword}
-                />
-
-                <Grid
-                  item
-                  xs
-                  sx={{ display: 'flex', alignItems: 'center', justifyContent: isMobile ? 'center' : 'left', mt: isMobile ? 1 : 2 }}
-                >
-                  <Button type="submit" sx={buttonStyles}>
-                    LOGIN
-                  </Button>
-                  <EnterMobileDialog open={dialogOpen} onClose={handleDialogToggle} onMobileSubmit={handleMobileSubmit} />
-                  <SelectAccount open={selectAccountOpen} onClose={handleSelectAccountToggle} />
-                </Grid>
+          <Box height="100%" width={widthPercentage} padding={isMobile ? '1.5rem' : '0px'} display="flex" flexDirection="column" >
+            {/* Label: Login To Your Dashboard =========================================================================== */}
+            <Box height={isMobile ? null : '100%'}>
+              {/* header and tabs */}
+              <Box height='50%'  display='flex' flexDirection='column' justifyContent='end' >
+                <Box display="flex" flexDirection="column" alignItems="flex-start" mb={isMobile ? 0 : 1}>
+                  <Typography
+                    component="h1"
+                    variant="h4"
+                    sx={{
+                      color: '#3a3a3a',
+                      fontWeight: 500,
+                      fontSize: { xs: '20px', md: '30px' },
+                      fontFamily: 'plus Jakarta sans',
+                      paddingBottom: '5px'
+                    }}
+                  >
+                    Login to
+                  </Typography>
+                  <Typography
+                    component="h1"
+                    variant="h4"
+                    sx={{ color: '#3a3a3a', fontWeight: 500, fontSize: { xs: '19px', md: '30px' }, fontFamily: 'plus Jakarta sans' }}
+                  >
+                    your dashboard!
+                  </Typography>
+                </Box>
+                {/* Tabs :  Username / Mobile Number ========================================================================== */}
+                <Box borderBottom={1} borderColor="divider" >
+                  <Tabs
+                    value={value}
+                    onChange={handleChange}
+                    textColor="secondary"
+                    indicatorColor="secondary"
+                    variant="fullWidth"
+                    aria-label="full width tabs example"
+                  >
+                    <Tab label="Username" {...a11yProps(0)} sx={tabStyles} />
+                    <Tab label="Mobile Number" {...a11yProps(1)} sx={tabStyles} />
+                  </Tabs>
+                </Box>
               </Box>
-            </CustomTabPanel>
-            <CustomTabPanel value={value} index={1}>
-              <MobileLogin />
-            </CustomTabPanel>
-            <Box>
+              {/*  Username Tab Content ====================================================================================== */}
+              <CustomTabPanel value={value} index={0}>
+                <Box component="form" noValidate onSubmit={handleSubmit}>
+                  <TextField
+                    InputProps={{
+                      style: { ...commonStyles }
+                    }}
+                    margin="normal"
+                    variant="outlined"
+                    required
+                    fullWidth
+                    id="Username"
+                    placeholder="Username"
+                    name="Username"
+                    autoComplete="Username"
+                    autoFocus
+                    value={userId}
+                    error={usernameError}
+                    helperText={usernameError ? 'Enter the username' : ''}
+                    onChange={handleChangeUsername}
+                  />
 
-            <PoweredBySection />
+                  <TextField
+                    InputProps={{
+                      style: { ...commonStyles, borderRadius: '50px' },
+                      // startAdornment: <InputAdornment position="start" style={{ paddingLeft: '10px' }} />,
+                      endAdornment: (
+                        <InputAdornment position="end">
+                          <IconButton
+                            aria-label="toggle password visibility"
+                            onClick={() => setShowPassword(!showPassword)}
+                            edge="end"
+                            sx={{ color: '#364152b5', marginRight: '2px' }}
+                          >
+                            {showPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
+                          </IconButton>
+                        </InputAdornment>
+                      )
+                    }}
+                    margin="normal"
+                    variant="outlined"
+                    required
+                    fullWidth
+                    name="password"
+                    placeholder="Password"
+                    type={showPassword ? 'text' : 'password'}
+                    id="password"
+                    autoComplete="current-password"
+                    value={userPassword}
+                    error={passwordError}
+                    helperText={passwordError ? 'Enter your password' : ''}
+                    onChange={handleChangePassword}
+                  />
+
+                  <Grid
+                    item
+                    xs
+                    sx={{ display: 'flex', alignItems: 'center', justifyContent: isMobile ? 'center' : 'left', mt: isMobile ? 1 : 2 }}
+                  >
+                    <Button type="submit" sx={buttonStyles}>
+                      LOGIN
+                    </Button>
+                    <EnterMobileDialog open={dialogOpen} onClose={handleDialogToggle} onMobileSubmit={handleMobileSubmit} />
+                    <SelectAccount open={selectAccountOpen} onClose={handleSelectAccountToggle} />
+                  </Grid>
+                </Box>
+              </CustomTabPanel>
+              {/*  Mobile Login Tab ========================================================================================== */}
+              <CustomTabPanel value={value} index={1}>
+                <MobileLogin />
+              </CustomTabPanel>
             </Box>
+            {isMobile ? (
+              <Grid item flex="auto" alignContent="flex-end">
+                <Box pt={1}>
+                  <PoweredBySection />
+                  <Box pt={1}></Box>
+                  <AppStoreButtonsGroup />
+                  <Box></Box>
+                </Box>
+              </Grid>
+            ) : null}
+
+            {!isMobile ? (
+              <Box>
+                <PoweredBySection />
+              </Box>
+            ) : null}
+
+            {!isMobile ? (
+              <Box sx={playstoreButtonStyles}>
+                <AppStoreButtonsGroup />
+              </Box>
+            ) : null}
           </Box>
         </Grid>
       </Grid>

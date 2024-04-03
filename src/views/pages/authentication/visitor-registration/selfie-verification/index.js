@@ -8,19 +8,18 @@ import React, { useRef, useState } from 'react';
 import CameraAltOutlinedIcon from '@mui/icons-material/CameraAltOutlined';
 import { useEffect } from 'react';
 
-const SelfieVerification = ({ step, handleSteps, md }) => {
+const SelfieVerification = ({ step, handleSteps, md,capturedImage,setCapturedImage}) => {
+
    const videoRef = useRef(null);
    const [stream, setStream] = useState(null);
-   const [capturedImage, setCapturedImage] = useState(null);
+   // const [capturedImage, setCapturedImage] = useState(null);
    const [showCamera, setShowCamera] = useState(true); // State to toggle between camera and captured photo
    const [showCameraIcon, setShowCameraIcon] = useState(true); // State to toggle camera icon visibility
    const [showTakePhotoButton, setShowTakePhotoButton] = useState(true);
    const [showSubmitButton, setShowSubmitButton] = useState(false);
-   const [mediaAvailable, setMediaAvailable] = useState(true)
-   const [selectedFile, setSelectedFile] = useState(null);
-   const startCamera = () => {
+// scroll behaviour
+   const startCamera = () => {         
       if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-         setMediaAvailable(true)
          navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' } })
             .then(stream => {
                setStream(stream);
@@ -32,19 +31,25 @@ const SelfieVerification = ({ step, handleSteps, md }) => {
       }
       else {
          console.error('getUserMedia is not supported in this browser.');
-         setMediaAvailable(false)
       }
    };
+
    useEffect(() => {
       if (videoRef.current && stream) {
          videoRef.current.srcObject = stream;
+         setTimeout(() => {
+            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+         }, 300);   
       }
    }, [stream]);
+
    const takePhoto = () => {
       const video = videoRef.current;
       const canvas = document.createElement('canvas'); // Create a new canvas element
-      canvas.width = video.videoWidth; // Set canvas dimensions to video dimensions
-      canvas.height = video.videoHeight;
+      canvas.width=video.videoWidth
+      canvas.height=video.videoHeight
+      canvas.aspectRatio='3/4'
+      canvas.objectFit='cover'
       const context = canvas.getContext('2d');
       context.drawImage(video, 0, 0, canvas.width, canvas.height);
       // Get the image data from canvas and set it in state
@@ -56,31 +61,30 @@ const SelfieVerification = ({ step, handleSteps, md }) => {
       setShowCamera(false);
       setShowTakePhotoButton(false);
       setShowSubmitButton(true);
+      // to scroll back to take photo
+      setTimeout(() => {
+         window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+      }, 300);
    };
    const resetCamera = () => {
+         // Stop the video stream
+   if (stream) {
+      const tracks = stream.getTracks();
+      tracks.forEach(track => track.stop());
+   }
+      setStream(null)
       setCapturedImage(null);
       setShowCamera(true);
       startCamera()
+      // to scroll back to take photo
    };
-
-   const handleFileChange = (event) => {
-      setSelectedFile(event.target.files[0]);
-   };
-
-   //  const handleUpload = () => {
-   //    // You can add upload logic here, such as sending the file to a server
-   //    console.log('Selected File:', selectedFile);
-   //  };
-   // getusermedia is not supported by all browsers
-   // we can provide conditional checks
-   // if getusermedia not supported then show file upload
 
    const cameraComponent = <>
-      <Box sx={{ ...css.center }}>
-         <Paper sx={{ ...css.mobilePaper, minWidth: md ? '20rem' : '25rem' }} elevation={2}>
-            <Box>
+      <Box sx={{ ...css.center }} >
+         <Paper sx={{ ...css.mobilePaper, minWidth: md ? '20rem' : '25rem',maxWidth:'60%' }} elevation={2}>
+            <Box display='flex' flexDirection='column'>
                <Box sx={{ ...css.horizontalCenter, }}>
-                  <Typography variant="h6" sx={{ ...css.formTextColor, fontWeight: '400', sm: '14px' }}>Please upload your selfie</Typography>
+                  <Typography variant="h6" sx={{ ...css.formTextColor, fontWeight: '400', sm: '14px' }}>Take a Selfie</Typography>
                </Box>
                <Divider />
                <Box sx={{ pt: '1rem' }}>
@@ -93,23 +97,44 @@ const SelfieVerification = ({ step, handleSteps, md }) => {
                            </Box>
                         ) : (
                            <Box sx={{ position: 'relative' }}>
-                              <img src={capturedImage} alt="Captured" style={{ maxWidth: md ? '100%' : '25rem', borderRadius: '12px' }} />
+                              <img src={capturedImage} alt="Captured" style={{  
+                              width:'100%' ,
+                              height:'auto',
+                              aspectRatio:'3/4',
+                              objectFit:'cover',
+                              borderRadius: '12px' }} />
                            </Box>
                         )}
                      </Box>
                      {stream && showCamera && (
-                        <Box sx={{ ...css.horizontalCenter, display: 'flex', flexDirection: 'column', mt: '1rem' }}>
+                        <Box sx={{ ...css.horizontalCenter,flexDirection: 'column', mt: '1rem',width:'100%'}}>                          
+                          
+                          { /* eslint-disable react/no-unknown-property */}    
+                          <Box sx={{width:'100%',...css.horizontalCenter,}}>
                            <video
                               ref={videoRef}
                               autoPlay
                               muted
-                              style={{ maxWidth: md ? '100%' : '25rem', height: 'auto', borderRadius: '12px' }}
+                              style={{ 
+                              width:'95%' ,
+                              height:'auto',
+                              objectFit: 'cover',
+                              aspectRatio:'3/4',
+                              borderRadius: '12px' ,
+                             
+                           }}
                               onClick={() => { }}
                               onError={(e) => { console.log(e.target.error) }}
+                              playsInline                             
                            />
+
+                          </Box>
+                                               
+                          { /* eslint-enable react/no-unknown-property */}
+
                            {showTakePhotoButton && (
                               <Box>
-                                 <Button sx={{ ...css.center, ...css.marginAuto, ...css.submitButton, ...css.button }} onClick={takePhoto}>
+                                 <Button sx={{ ...css.center, ...css.marginAuto, ...css.submitButton, ...css.button }} onClick={takePhoto} disableElevation>
                                     Take Photo
                                  </Button>
                               </Box>)}
@@ -119,18 +144,24 @@ const SelfieVerification = ({ step, handleSteps, md }) => {
                </Box>
                <Box p={2}>
                   {showSubmitButton && (
-                     <Box sx={{ display: 'flex' }}>
-                        <Button variant="contained" color="primary" onClick={resetCamera} sx={{
+                     <Box  display='flex'>
+                        <Button variant="contained" color="primary"  onClick={resetCamera} sx={{
                            ...css.center,
                            ...css.marginAuto,
                            ...css.submitButton,
-                           ...css.button
-                        }}>Retake</Button>
+                           ...css.button,
+                           marginRight:'1rem'
+                        }}
+                        
+                        disableElevation
+                        >Retake</Button>
 
                         <Button variant="contained" color="primary" sx={{
                            ...css.center, ...css.marginAuto,
                            ...css.submitButton, ...css.button
-                        }} onClick={() => handleSteps(step)}>
+                        }} 
+                        disableElevation
+                        onClick={() => handleSteps(step)}>
                            Submit
                         </Button>
                      </Box>
@@ -140,59 +171,9 @@ const SelfieVerification = ({ step, handleSteps, md }) => {
          </Paper>
       </Box>
    </>
-
-   const uploadComponent = <Box sx={{ ...css.center }}>
-      <Paper sx={{ ...css.mobilePaper, minWidth: md ? '20rem' : '25rem' }} elevation={2}>
-         <Box>
-            <input
-               type="file"
-               id="fileInput"
-               style={{ display: 'none' }}
-               onChange={handleFileChange}
-            />
-            <label htmlFor="fileInput">
-               <Button variant="contained" component="span"
-                  sx={{
-                     ...css.center,
-                     ...css.marginAuto,
-                     ...css.submitButton,
-                     ...css.button,
-                     textAlign:'center'
-                  }}
-               >
-                  Choose File
-               </Button>
-            </label>
-            {selectedFile && (
-               <Typography variant="body1"
-               sx={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}
-               >
-                  Selected File: {selectedFile.name}
-               </Typography>
-            )}
-            <Button
-               variant="contained"
-               color="primary"
-               onClick={() => handleSteps(step)}
-               disabled={!selectedFile}
-               sx={{
-                  ...css.center,
-                  ...css.marginAuto,
-                  ...css.submitButton,
-                  ...css.button
-               }}
-            >
-               Upload
-            </Button>
-         </Box>
-      </Paper>
-   </Box>
-
-   if (mediaAvailable)
-      return cameraComponent
-   else
-      return uploadComponent
-
+  
+     return cameraComponent
+ 
 
 };
 
