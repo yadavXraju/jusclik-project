@@ -11,10 +11,12 @@ import TextsmsTwoToneIcon from '@mui/icons-material/TextsmsTwoTone';
 import DescriptionTwoToneIcon from '@mui/icons-material/DescriptionTwoTone';
 import BottomNavbar from '../../../../../../../erp-common-component/bottom-navbar';
 import Profile from './Profile';
-import ProfileDetail from './ProfileDetail';
+import ProfileDetail from './PrimaryDetails';
 import AddressForm from './Address';
 import ContactPerson from './ContactPerson';
-import { useSelector } from 'react-redux';
+import { useSelector,useDispatch } from 'react-redux';
+import  {addField}  from 'store/student-info-and-fee/student/admission-slice';
+
 
 const buttonsData = [
   { name: 0, icon: <PersonAddAltTwoToneIcon />, label: 'Primary Details' },
@@ -27,8 +29,10 @@ const buttonsData = [
 
 
 const Mainform1 = ({ currEditItem }) => {
-  const {studentDetailsData}=useSelector((state)=>state.admission);
+  const dispatch=useDispatch();
+  const { studentDetailsData } = useSelector((state) => state.admission);
   const [selectedButton, setSelectedButton] = useState(0);
+  const [section,setSection]=useState([]);
   const [option, setOption] = useState({
     primaryDetails: [],
     otherDetails: [],
@@ -57,9 +61,21 @@ const Mainform1 = ({ currEditItem }) => {
       }
     });
   }, [studentDetailsData])
- 
 
-   console.log(option?.customFields)
+ 
+  const getSectionName = () => {
+    const updatedSections = [];
+    studentDetailsData.forEach((item) => {
+      item?.section?.forEach((subitem) => {
+        updatedSections.push({ label: subitem.name, value: subitem.name});
+      });
+    });
+    setSection(updatedSections);
+  };
+
+  useEffect(() => {
+    getSectionName();
+  }, [])
 
   const handleChange = (name, newValue) => {
     setStudentDetails({ ...student, [name]: newValue });
@@ -68,10 +84,10 @@ const Mainform1 = ({ currEditItem }) => {
   let cardComponent;
   switch (selectedButton) {
     case 0:
-      cardComponent = <ProfileDetail setStudentDetail={handleChange} setEditItem={currEditItem}  studentFields={option?.primaryDetails} type="Primary Details"/>;
+      cardComponent = <ProfileDetail setStudentDetail={handleChange} setEditItem={currEditItem} studentFields={option?.primaryDetails} type="Primary Details" />;
       break;
     case 1:
-      cardComponent = <ProfileDetail  studentFields={option?.otherDetails} type="Other  Details"/>;
+      cardComponent = <ProfileDetail studentFields={option?.otherDetails} type="Other  Details" />;
       break;
     case 2:
       cardComponent = <AddressForm />;
@@ -80,7 +96,7 @@ const Mainform1 = ({ currEditItem }) => {
       cardComponent = <ContactPerson />;
       break;
     case 4:
-      cardComponent = <ProfileDetail studentFields={option?.customFields} type="Custom Fields"/>;
+      cardComponent = <ProfileDetail studentFields={option?.customFields} type="Custom Fields" />;
       break;
     case 5:
       cardComponent = <Remarks />;
@@ -89,6 +105,10 @@ const Mainform1 = ({ currEditItem }) => {
       cardComponent = null;
   }
 
+   const handleAddField=(customFields)=>{
+      dispatch(addField(customFields))
+   }
+  
   return (
     <>
       <Card>
@@ -134,7 +154,9 @@ const Mainform1 = ({ currEditItem }) => {
         tabPageLength={buttonsData.length}
         value={selectedButton}
         setValue={setSelectedButton}
+        handleAddField={handleAddField}
         customStyle={{ width: '100%', bottom: '0', borderRadius: '1px' }}
+        section={section}
       />
     </>
   );
