@@ -14,6 +14,7 @@ import ReceiptOutlinedIcon from '@mui/icons-material/ReceiptOutlined';
 // import ManageHistoryOutlinedIcon from '@mui/icons-material/ManageHistoryOutlined';
 import ReportsPayrollInv from './ReportsPayrollInv';
 import SearchBar from 'views/common-section/ParamSearchBar';
+import { Link } from 'react-router-dom'; 
 
 
 
@@ -122,65 +123,61 @@ const ReportTabs = () => {
     setValue(newValue);
   };
 
+  const filterData = searchTerm.trim() !== '' ? sections.filter(item => {
+    if (item.title.toLowerCase().includes(searchTerm)) {
+      return true;
+    } else {
+      return item?.pages.some(submenu =>
+        submenu.name.toLowerCase().includes(searchTerm) && submenu.path
+      );
+    }
+  }) : [];
 
-
-    const filterData = searchTerm.trim() !== '' ? sections.filter(item => {
-      if (item.title.toLowerCase().includes(searchTerm)) {
-        return true;
-      } else {
-        return item?.pages.some(submenu =>
-          submenu.name.toLowerCase().includes(searchTerm)
-        );
-      }
-    }) : [];
-
-    return (
-      <Card>
-        <Box sx={{ display: 'flex', width: '100%' }}>
-          <Box sx={{ flexGrow: 1 }}>
-            <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-              <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-                <Tab label="General Reports" {...a11yProps(0)} />
-                <Tab label="Custom Reports" {...a11yProps(1)} />
-              </Tabs>
-            </Box>
-          </Box>
-          <Box sx={{width:'40%', borderBottom:'1px solid #cbcbcb85', paddingTop:'1px'}}>
-            <SearchBar onChange={(e) => setSearchTerm(e.target.value)} />
-            <Box>
-              <Card className='scrollbar '
-                sx={{
-                  overflowY: 'scroll',
-                  maxHeight: '200px',
-                  margin: 'auto',
-                  paddingLeft: '30px'
-                }}>
-                {
-                  filterData.map((item) => {
-                      return <>
-                         <p key={item} style={{paddingBottom:'10px',paddingTop:'10px',fontWeight: 'bold' }}>{item?.title}</p>
-                         {
-                          item.pages.map((submenu)=>
-                          <Typography key={submenu?.name}>
-                             {submenu?.name}
-                          </Typography>)
-                         }
-                       </>
-                  })
-                }
-              </Card>
-            </Box>
+  return (
+    <Card>
+      <Box sx={{ display: 'flex', width: '100%' }}>
+        <Box sx={{ flexGrow: 1 }}>
+          <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+            <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+              <Tab label="General Reports" {...a11yProps(0)} />
+              <Tab label="Custom Reports" {...a11yProps(1)} />
+            </Tabs>
           </Box>
         </Box>
-        <CustomTabPanel value={value} index={0}>
-          <ReportsPayrollInv sections={sections} />
-        </CustomTabPanel>
-        <CustomTabPanel value={value} index={1}>
-          Custom Reports
-        </CustomTabPanel>
-      </Card>
-    );
-  }
+        <Box sx={{width:'40%', borderBottom:'1px solid #cbcbcb85'}}>
+          <SearchBar onChange={(e) => setSearchTerm(e.target.value)} />
+          <Box>
+            <Card className='scrollbar'
+              sx={{
+                overflowY: 'scroll',
+                maxHeight: '200px',
+                margin: 'auto',
+                paddingLeft: '30px'
+              }}>
+              {filterData.map((item) => (
+                <React.Fragment key={item.title}>
+                  <p style={{paddingBottom:'10px',paddingTop:'10px',fontWeight: 'bold' }}>{item?.title}</p>
+                  {item.pages.map((submenu) => (
+                    <Link key={submenu.name} to={submenu.path} style={{ textDecoration: 'none' }}>
+                      <Typography key={submenu.name} style={{padding:'4px 0', color:'#000'}}>{submenu.name}</Typography>
+                    </Link>
+                  ))}
+                </React.Fragment>
+              ))}
+            </Card>
+          </Box>
+        </Box>
+      </Box>
+      <CustomTabPanel value={value} index={0}>
+        <ReportsPayrollInv sections={sections} />
+      </CustomTabPanel>
+      <CustomTabPanel value={value} index={1}>
+        Custom Reports
+      </CustomTabPanel>
+    </Card>
+  );
+}
+
 
 
   export default ReportTabs;
