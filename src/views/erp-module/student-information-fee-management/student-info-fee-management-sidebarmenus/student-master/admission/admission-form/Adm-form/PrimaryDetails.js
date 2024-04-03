@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Grid, TextField, Card, useMediaQuery, Typography } from '@mui/material';
 import ParameterizedDateComponent from 'views/common-section/ParamDateComponent';
-import EditableTable from './EditableTable';
+import EditableTable from './SiblingDetails';
 
 const ProfileDetail = ({ setStudentDetail, setEditItem, studentFields, type }) => {
   const isMobile = useMediaQuery('(max-width: 767px)');
