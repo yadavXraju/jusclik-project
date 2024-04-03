@@ -1,65 +1,42 @@
 // Dashboard.js
 import React from 'react';
-import Grid from '@mui/material/Grid';
-import { gridSpacing } from 'store/constant';
-import WelcomeTotalVisitor from './welcome-visitor-today-visitor-total-visitor';
-import VisitorProfile from './profile/Profile';
-import HourlyVisior from './hourly-visitor';
-import FrequentlyReturningVisitor from './frequently-returning-visitors/index.';
-import LastThirtyDayVisitor from './last-thirty-day-visitor';
+import { Box, Paper } from '@mui/material';
+import TabContext from '@mui/lab/TabContext';
+import TabPanel from '@mui/lab/TabPanel';
+import TabLabel from 'views/erp-module/erp-common-item/tab/TabLabel';
+import DashboardPayRoll from 'views/common-section/dashboard-payroll';
+import PhoneIcon from '@mui/icons-material/Phone';
+import useTabValue from 'views/common-section/ParamTab';
+import DashboardContent from './Dashboard';
 
 
-const Dashboard = ({ isLoading }) => {
+const Dashboard = () => {
+  const { value, handleChange } = useTabValue('1');
+
   return (
-    <Grid container spacing={gridSpacing}>
-      <Grid item xs={12}>
-        <Grid container spacing={gridSpacing}>
-
-        {/* Welcome message , today visitor , total visitor */}
-        <Grid item lg={8} md={12} sm={12} xs={12} spacing={gridSpacing}>
-                    <Grid
-                      spacing={gridSpacing}
-                      sx={{
-                        backgroundColor: '#fff',
-                        border: '1px solid rgb(227 227 227)',
-                        borderRadius: '7px',
-                        px: 4,
-                        py: 3,
-                      }}
-                    >
-                      <WelcomeTotalVisitor  isLoading={isLoading} />
-                    </Grid>
-        </Grid>
-
-         {/* Profile comp */}
-         <Grid item lg={4} md={12} sm={12} xs={12}>
-            <Grid container spacing={gridSpacing}>
-              <Grid item sm={12} xs={12} md={12} lg={12}>
-                <VisitorProfile />
-              </Grid>
-            </Grid>
-         </Grid>
-
-
-         {/* Hourly visited chart */}
-          <Grid item xs={12} lg={7} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
-            <HourlyVisior isLoading={isLoading} />
-          </Grid>
-
-           {/* frequently returning visitors */}
-          <Grid item xs={12} lg={5}  md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
-              <FrequentlyReturningVisitor isLoading={isLoading} /> 
-          </Grid>
-
-
-           {/* last thirty day  visitors */}
-           <Grid item xs={12} lg={12}  md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
-              <LastThirtyDayVisitor isLoading={isLoading} /> 
-          </Grid>
-
-        </Grid>
-      </Grid>
-    </Grid>
+    <>
+    <Box sx={{ width: '100%', typography: 'body1' }}>
+      <TabContext value={value}>
+        <Paper sx={{ mx: '24px', background: 'none' }}>
+          <Box sx={{ 
+            borderBottom: 0,
+            borderColor: '#e3e8efad',
+            borderRadius: '10px',
+            padding: '10px',
+            '& .MuiBox-root': {
+              marginBottom: '10px'
+            }
+          }}>
+            <TabLabel handleChange={handleChange} />
+          </Box>
+        </Paper>
+        <TabPanel icon={<PhoneIcon />} value="1"><DashboardContent/></TabPanel>
+        <TabPanel value="2"><DashboardPayRoll /></TabPanel>
+        <TabPanel value="3"></TabPanel>
+        <TabPanel value="4"></TabPanel>
+      </TabContext>
+    </Box>
+  </>
   );
 };
 
