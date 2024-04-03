@@ -6,7 +6,7 @@ const DashboardDefault = Loadable(lazy(() => import('views/erp-module/visitor/vi
 const VisitorEntry = Loadable(lazy(() => import('views/erp-module/visitor/visitor-sidemenus/visitor-managment/visitor-entry')));
 const ScheduledVisit = Loadable(lazy(() => import('views/erp-module/visitor/visitor-sidemenus/visitor-managment/scheduled-visit')));
 const Reports =Loadable(lazy(() => import('views/erp-module/visitor/visitor-sidemenus/reports')));
-const Settings =Loadable(lazy(() => import('views/erp-module/visitor/visitor-sidemenus/settings/Settings')));
+const Settings =Loadable(lazy(() => import('views/erp-module/visitor/visitor-sidemenus/settings')));
 
 // const SmsDeliveryReport = Loadable(lazy(() => import('views/erp-module/visitor/visitor-sidemenus/tool-item/sms-delivery-report')));
 // const Report = Loadable(lazy(() => import('views/erp-module/visitor/visitor-sidemenus/tool-item/sms-delivery-report/Report')));

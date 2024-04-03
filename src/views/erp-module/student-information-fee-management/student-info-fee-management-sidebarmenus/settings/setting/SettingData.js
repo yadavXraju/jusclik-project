@@ -42,8 +42,8 @@ const SettingData = [
     icon: <CreditCardOutlinedIcon sx={{ color: '#838195' }} />,
     title: 'Fee',
     items: [
-      { name: 'Fee Heads', path: '/fee-heads' },
-      { name: 'Fee Structure', path: '/erp/student-info-fee/settings/system-data' },
+      { name: 'Fee Heads', path: '/erp/student-info-fee/settings/system-data' },
+      { name: 'Fee Structure', path: '/erp/student-info-fee/settings/fee-structure' },
       { name: 'Concession', path: '/concession' },
       { name: 'Discount', path: '/discount' },
       { name: 'Fee Account', path: '/fee-account' },

@@ -1,7 +1,7 @@
 // import React,{useState} from 'react';
 import user from '../../../../../../assets/images/users/user.jpg';
-import { Grid, Typography , Box , TextField, Select, MenuItem , InputLabel , FormControl , IconButton
-  //  FormControl, , InputLabel,  
+import { Grid, Typography , Box ,  Select, MenuItem , InputLabel , FormControl , 
+  //  FormControl, , InputLabel,  TextField,
 } 
   from '@mui/material';
 
@@ -13,7 +13,7 @@ import { useState } from 'react';
 const LedgerDetails = () => {
 
     const [formData, setFormData] = useState({
-        admNo: '',
+        // admNo: '',
         enrolmentType: 'Admission',
 
       });
@@ -34,7 +34,7 @@ const LedgerDetails = () => {
 
   return (
     <>
-        <Grid container  alignItems={'start'} sx={{border:'1px solid rgba(224, 224, 224, 1)' , borderRadius:'12px' , padding:'2rem'}}>
+        <Grid container  alignItems={'start'} sx={{border:'1px solid rgba(224, 224, 224, 1)' , borderRadius:'12px' , padding:'2rem' , alignItems:'center'}}>
             <Grid  lg={2} sx={{borderRight:'1px solid rgba(224, 224, 224, 1)' ,display:'flex' , alignItems:'center' , justifyContent:'center' , flexDirection:'column'}}  >
                 <Box sx={{}}>
                   <img src={user} alt='student' style={{borderRadius:'50%' , width:'100px'}}/>
@@ -57,24 +57,23 @@ const LedgerDetails = () => {
 
             <Grid lg={10} sx={{paddingLeft:'2rem'}}>
 
-                <Grid container sx={{gap:'40px' , }} alignItems={'center'}>
-                          <Box sx={{display:'flex' , gap:'10px' , paddingTop:'5px'}}> 
-                            <IconButton sx={{background:'rgba(204, 204, 204, 0.33)'}}>
+                <Grid container sx={{gap:'60px' , }} alignItems={'center'}>
+                          <Box  sx={{display:'flex' , gap:'10px' , paddingTop:'5px', alignItems:'center'}}> 
                               <MarkunreadTwoToneIcon />
-                            </IconButton>
                            
-                              <Typography> anupamrawat12@gmail.com  </Typography>
+                              <Typography sx={{fontSize:'16px'}}> anupamrawat12@gmail.com  </Typography>
                           </Box>
 
-                          <Box sx={{display:'flex' , gap:'10px' , paddingTop:'5px'}}> 
-                              <PhoneTwoToneIcon />
-                              <Typography> 7895086891  </Typography>
+                          <Box  sx={{display:'flex' , gap:'10px' , paddingTop:'5px', alignItems:'center'}}> 
+                                 <PhoneTwoToneIcon />
+                              <Typography sx={{fontSize:'16px'}}> 7895086891  </Typography>
                           </Box>
 
                       {/* Class */}
-                      <Box sx={{display:'flex' , gap:'10px' , paddingTop:'5px'}}> 
-                            <SchoolTwoToneIcon />
-                            <Typography > IX-A </Typography>
+                      <Box  sx={{display:'flex' , gap:'10px' , paddingTop:'5px', alignItems:'center'}}> 
+                              <SchoolTwoToneIcon />
+                          <Typography  sx={{fontSize:'16px'}}> IX-A </Typography>
+                     
                         </Box>
                           
                 </Grid>
@@ -106,11 +105,13 @@ const LedgerDetails = () => {
 
                       {/* sibling details */}
                       <Box >
-                      <Typography variant="h5" sx={{color:'#8b8989' , }}>Sibling Details </Typography>
-                      <Typography variant="h5"> </Typography>
+                       <Typography variant="h5" sx={{color:'#8b8989' , }}>Sibling Details </Typography>
+                          {/* <Button variant="outlined" sx={{display:'flex' , flexDirection:'column'}}> */}
+                            <Typography variant="h5"  sx={{color:'#2196f3', cursor:'pointer'}}>  Arnav Rawat (V-A) </Typography>
+                       {/* </Button> */}
                     </Box>
 
-               <Grid lg={2} >
+               {/* <Grid lg={2} >
                 <TextField
                 id="outlined-basic"
                         label="Admission No"
@@ -120,7 +121,7 @@ const LedgerDetails = () => {
                         onChange={handleChange}
                         fullWidth
                 />
-              </Grid>
+              </Grid> */}
 
                 {/* Enrolment Type */}
                 <Grid lg={2}>
