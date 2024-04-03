@@ -50,7 +50,7 @@ const AuthenticationRoutes = {
     // },
 
     {
-      path:'/visitor-registration',
+      path:'/registration-link',
       element: <VisitorRegistration />
     },
 
