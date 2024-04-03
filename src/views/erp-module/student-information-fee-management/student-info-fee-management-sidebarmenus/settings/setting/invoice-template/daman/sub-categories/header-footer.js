@@ -6,16 +6,18 @@ import CommonSelect from '../../common/common-select';
 import ColorPicker from '../../common/color-picker';
 import FontSize from '../../common/font-size';
 import { imagePosition } from '../../common/common-states';
-const HeaderFooter = ({settings}) => {
-  const headerFooterSettings=settings[0]
-  const setHeaderFooterSettings=settings[1]
-  // state handler for headerFooter component
+import { useDispatch } from 'react-redux';
+import { updateHeaderFooterProperty } from 'store/student-info-and-fee/setting/Invoice-Template-Slice';
+import { useSelector } from 'react-redux';
+
+const HeaderFooter = () => {
+  
+  const dispatch=useDispatch()
+  // const headerFooterSettings=settings[0]
+  const headerFooterSettings=useSelector(state=>state.invoiceTemplate.headerFooter)
+
   const handleStateChange = (key, value) => {
-    setHeaderFooterSettings((headerFooterSettings) => ({
-        ...headerFooterSettings,
-        [key]: value
-      
-    }));
+   dispatch(updateHeaderFooterProperty({key,value}))
   };
   return (
     <>

@@ -45,8 +45,9 @@ const SearchFilter = ({ onSearch }) => {
         marginRight: '25px',
         marginLeft: '25px',
         backgroundColor: '#fff',
+        flexWrap:'wrap'}}
         
-      }}
+      
       noValidate
       autoComplete="off"
     >
@@ -70,13 +71,18 @@ const SearchFilter = ({ onSearch }) => {
           }}
         />
       </LocalizationProvider>
+      
+     
       <TextField
         id="outlined-search"
         label="Search"
         type="search"
         value={searchTerm}
         onChange={handleSearchChange}
+        sx={{'& #outlined-search': {width:'170px !important'}}}
+
       />
+      
       <Stack direction="row" spacing={2}>
         <Button
           variant="contained"
