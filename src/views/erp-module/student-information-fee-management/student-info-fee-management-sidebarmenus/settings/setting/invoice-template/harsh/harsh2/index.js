@@ -3,13 +3,14 @@ import { Box, Paper, Typography, Table, TableContainer, TableRow, TableHead, Tab
 import { commonTemplateContent } from '../../common/common-states';
 import Divider from '@mui/material/Divider';
 import CurrencyRupeeOutlinedIcon from '@mui/icons-material/CurrencyRupeeOutlined';
+import { useSelector } from 'react-redux';
 
-const CompactTemplate5= ({states}) => {
+const CompactTemplate5= () => {
 
-    const [generalSettings, headerFooterSettings, tableSettings] = states;
-    (generalSettings);
-    (headerFooterSettings);
-    (tableSettings);
+  // states
+  const generalSettings= useSelector(state=>state.invoiceTemplate.general)
+  const headerFooterSettings=useSelector(state=>state.invoiceTemplate.headerFooter)
+  const tableSettings=useSelector(state=>state.invoiceTemplate.table)
   return (
 
     <Box sx={{ height: '100%',

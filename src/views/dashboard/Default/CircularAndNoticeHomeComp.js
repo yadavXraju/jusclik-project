@@ -101,7 +101,7 @@ const CircularAndNoticeHomeComp = ({ isLoading }) => {
               ))}
 
                 <Box sx={{ pt: 3 , marginLeft:'auto'}}>
-                    <Button variant="contained" onClick={() => navigate('/updates')}>
+                    <Button variant="contained" onClick={() => navigate('/parent/updates')}>
                       View More
                     </Button>
                 </Box>

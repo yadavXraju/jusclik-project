@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import SearchTwoToneIcon from '@mui/icons-material/SearchTwoTone';
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
@@ -13,8 +12,9 @@ import Autocomplete from '@mui/material/Autocomplete';
 import { data } from './AssignmentData';
 import { Grid } from '@mui/material';
 
-const uniqueSubjects = [...new Set(data.map(item => item.name))];
-const subjects = uniqueSubjects.map(subject => ({ title: subject }));
+
+const uniqueSubjects = [...new Set(data.map((item) => item.name))];
+const subjects = uniqueSubjects.map((subject) => ({ title: subject }));
 
 const SearchAssignment = ({ onSearch }) => {
   const [startDate, setStartDate] = useState(null);
@@ -22,11 +22,11 @@ const SearchAssignment = ({ onSearch }) => {
   const [selectedSubject, setSelectedSubject] = useState(null);
   const [searchText, setSearchText] = useState('');
 
-  const handleStartDateChange = date => {
+  const handleStartDateChange = (date) => {
     setStartDate(date);
   };
 
-  const handleEndDateChange = date => {
+  const handleEndDateChange = (date) => {
     setEndDate(date);
   };
 
@@ -34,7 +34,7 @@ const SearchAssignment = ({ onSearch }) => {
     setSelectedSubject(newValue);
   };
 
-  const handleSearchTextChange = event => {
+  const handleSearchTextChange = (event) => {
     setSearchText(event.target.value);
   };
 
@@ -43,14 +43,14 @@ const SearchAssignment = ({ onSearch }) => {
       startDate,
       endDate,
       subject: selectedSubject ? selectedSubject.title : '',
-      searchText,
+      searchText
     };
 
     onSearch(searchCriteria);
   };
 
   return (
-    <Box
+    <Box 
       component="form"
       sx={{
         display: 'flex',
@@ -60,46 +60,48 @@ const SearchAssignment = ({ onSearch }) => {
         borderRadius: '30px',
         padding: '20px',
         mb: '15px',
-        backgroundColor: '#fff'
+        backgroundColor: '#fff',
+        
       }}
       noValidate
       autoComplete="off"
     >
+      <Grid container spacing={2} sx={{ paddingLeft: '20px', paddingTop: '10px'  }}>
+        <Grid lg={2}    sm={12} md={6} xs={12} sx={{'& .css-4jnixx-MuiStack-root': {display:'flex' , flexDirection:'column'}, paddingRight:'10px' ,'& .MuiTextField-root': {minWidth:'auto !important'} }}>
+          <LocalizationProvider dateAdapter={AdapterDayjs}  >
+            <DemoContainer components={['DatePicker']} >
+              <DatePicker
+                label="From"
+                value={startDate}
+                onChange={handleStartDateChange}
+                slots={{
+                  openPickerIcon: CalendarMonthTwoToneIcon
+                }}
+              
 
-      <Grid>
-      <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <DemoContainer components={['DatePicker']}>
-          <DatePicker
-            label="From"
-            value={startDate}
-            onChange={handleStartDateChange}
-            slots={{
-              openPickerIcon: CalendarMonthTwoToneIcon
-            }}
-          />
-        </DemoContainer>
-      </LocalizationProvider>
-      </Grid>
+              />
+            </DemoContainer>
+          </LocalizationProvider>
+        </Grid>
 
-      <Grid>
-      <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <DemoContainer components={['DatePicker']}>
-          <DatePicker
-            label="To"
-            value={endDate}
-            onChange={handleEndDateChange}
-            slots={{
-              openPickerIcon: CalendarMonthTwoToneIcon
-            }}
-          />
-        </DemoContainer>
-      </LocalizationProvider>
+        <Grid lg={2} sm={12} md={6} xs={12} sx={{'& .css-4jnixx-MuiStack-root': {display:'flex' , flexDirection:'column'},paddingRight:'10px' , '& .MuiTextField-root': {minWidth:'auto !important'}}}>
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <DemoContainer components={['DatePicker']}>
+              <DatePicker
+                label="To"
+                value={endDate}
+                onChange={handleEndDateChange}
+                slots={{
+                  openPickerIcon: CalendarMonthTwoToneIcon
+                }}
+              />
+            </DemoContainer>
+          </LocalizationProvider>
+        </Grid>
 
-      </Grid>
+        {/*Commented for responsive */}
 
-      {/*Commented for responsive */}
-
-      {/*<LocalizationProvider dateAdapter={AdapterDayjs}>
+        {/*<LocalizationProvider dateAdapter={AdapterDayjs}>
         <DemoContainer components={['DatePicker']}>
            <DatePicker label="From" value={startDate} onChange={handleStartDateChange} slots={{
             openPickerIcon: CalendarMonthTwoToneIcon
@@ -111,46 +113,55 @@ const SearchAssignment = ({ onSearch }) => {
         </DemoContainer>
         </LocalizationProvider> */}
 
-      <Autocomplete
-        id="highlights-demo"
-        sx={{ width: 300, marginTop: '8px', marginBottom: '-1px' }}
-        options={subjects}
-        getOptionLabel={(option) => option.title}
-        onChange={handleSubjectChange}
-        renderInput={(params) => <TextField {...params} label="Subjects" margin="normal" sx={{ marginBottom: '0px', marginTop: '0px' }} />}
-        renderOption={(props, option, { inputValue }) => {
-          const parts = option.title.split(new RegExp(`(${inputValue})`, 'gi'));
+        <Grid lg={2} sm={12} md={6} xs={12} sx={{ marginTop: '6px' ,paddingRight:'10px' }}>
+          <Autocomplete
+            id="highlights-demo"
+            options={subjects}
+            getOptionLabel={(option) => option.title}
+            onChange={handleSubjectChange}
+            renderInput={(params) => (
+              <TextField {...params} label="Subjects" margin="normal" sx={{ marginBottom: '0px', marginTop: '0px' }} />
+            )}
+            renderOption={(props, option, { inputValue }) => {
+              const parts = option.title.split(new RegExp(`(${inputValue})`, 'gi'));
 
-          return (
-            <li {...props}>
-              <div>
-                {parts.map((part, index) => (
-                  <span
-                    key={index}
-                    style={{
-                      fontWeight: part.toLowerCase() === inputValue.toLowerCase() ? 700 : 400
-                    }}
-                  >
-                    {part}
-                  </span>
-                ))}
-              </div>
-            </li>
-          );
-        }}
-      />
-      <TextField id="outlined-search" label="Search" type="search" value={searchText} onChange={handleSearchTextChange} />
-      <Stack direction="row" spacing={2}>
-        <Button
-          variant="contained"
-          startIcon={<SearchTwoToneIcon />}
-          sx={{ height: '48px', borderRadius: '12px', marginTop: '-3px !important' }}
-          onClick={handleSearch}
-        >
-          Search
-        </Button>
-      </Stack>
+              return (
+                <li {...props}>
+                  <div>
+                    {parts.map((part, index) => (
+                      <span
+                        key={index}
+                        style={{
+                          fontWeight: part.toLowerCase() === inputValue.toLowerCase() ? 700 : 400
+                        }}
+                      >
+                        {part}
+                      </span>
+                    ))}
+                  </div>
+                </li>
+              );
+            }}
+          />
+        </Grid>
+
+        <Grid lg={2} sm={12} md={6} xs={12} sx={{paddingRight:'10px', paddingTop:'7px'}}>
+          <TextField id="outlined-search" label="Search" type="search" value={searchText} onChange={handleSearchTextChange} fullWidth />
+        </Grid>
+
+        <Grid lg={2} sm={12} xs={12} sx={{paddingTop:'8px' }}>
+          <Button
+            variant="contained"
+            startIcon={<SearchTwoToneIcon />}
+            sx={{ height: '48px', borderRadius: '12px' }}
+            onClick={handleSearch}
+          >
+            Search
+          </Button>
+        </Grid>
+      </Grid>
     </Box>
+   
   );
 };
 

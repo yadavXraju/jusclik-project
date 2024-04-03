@@ -52,8 +52,8 @@ export const css = {
   },
   imageContainer:{backgroundSize: 'cover',
   backgroundPosition: 'bottom',
-  padding:'0 10rem',
-  '@media (max-width: 1201px)': {
+  padding:'0 0rem',
+  '@media (max-width: 1199px)': {
     display: 'none', // Hide the component on small screens (sm viewport)
   },
   },
@@ -135,7 +135,7 @@ export const css = {
   },
   mobileLogoImage:{
     margin: '3rem 0',
-    '@media (min-width: 1200px)': {
+    '@media (min-width: 1199px)': {
       display:'none'
     },
   },
@@ -148,7 +148,7 @@ export const css = {
     },
   },
   displayNoneOnMd:{
-    '@media (max-width: 1200px)': {
+    '@media (max-width: 1199px)': {
       display:'none'
     },
   },
