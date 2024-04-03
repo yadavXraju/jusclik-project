@@ -13,8 +13,8 @@ const RoutesFormDrawer = () => {
   const { anchor, toggleDrawer } = useDrawer();
   const [tabValue, setTabValue] = useState(0); // State for controlling tabs
 
-  const tabs = ['Transport Routes', 'Stoppage']; // Array of tab labels
-  const tabLength = tabs.length; // Length of tabs array
+  const tabs = ['Transport Routes', 'Stoppage'];
+  const tabLength = tabs.length; 
 
   const handleTabChange = (event, newValue) => {
     setTabValue(newValue);
@@ -26,7 +26,7 @@ const RoutesFormDrawer = () => {
         Add Route
       </Button>
       <Drawer anchor={'right'} open={anchor.right} onClose={toggleDrawer('right', false)}>
-        <Box sx={{ width: { sm: '100vw', md: 800 }, height: '100vh', padding: 2 }} role="presentation">
+        <Box sx={{ width: { sm: '100vw', md: 820 }, height: '100vh', padding: 2 }} role="presentation">
           <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #ccc' }}>
             <Typography variant="h4">Add Route & Stoppage</Typography>
             <Button onClick={toggleDrawer('right', false)} sx={{ alignSelf: 'flex-end' }}>
@@ -35,15 +35,17 @@ const RoutesFormDrawer = () => {
           </Box>
           <Box>
             {/* Tabs for switching between TransportRoutes and Stoppage */}
-            <Tabs value={tabValue} onChange={handleTabChange} aria-label="Route tabs">
+            <Tabs value={tabValue} onChange={handleTabChange} variant="scrollable" aria-label="Route tabs">
               {tabs.map((label, index) => (
                 // <Tab key={index} label={label} />
                 <Tab
+                  sx={{padding:'12px 8px', margin:'0px 10px'}}
                   key={index}
                   label={
                     <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                      <span style={{padding:'5px', border: `1px solid ${tabValue === index ? '#2196f3' : '#ccc'}`, borderRadius:'50%', width:'29px', marginRight:'5px'}}>{index + 1}</span>
                       {label}
-                      { <KeyboardArrowRightIcon />} {/* Add the Next icon if not the last tab */}
+                      { <KeyboardArrowRightIcon />}
                     </Box>
                   }
                 />
@@ -51,17 +53,17 @@ const RoutesFormDrawer = () => {
             </Tabs>
             {/* Tab panels based on selected tab */}
             <Box sx={{ mt: 1 }}>
-              {tabValue === 0 && <TransportRoutes />} {/* Render TransportRoutes if tabValue is 0 */}
-              {tabValue === 1 && <Stoppage />} {/* Render Stoppage if tabValue is 1 */}
+              {tabValue === 0 && <TransportRoutes />}
+              {tabValue === 1 && <Stoppage />}
             </Box>
           </Box>
-        </Box>+
+        </Box>
         
         <BottomNavbar
           tabPageLength={tabLength}
           value={tabValue}
           setValue={setTabValue}
-          customStyle={{ width: '42%', bottom: '0', borderRadius: '1px' }}
+          customStyle={{ width: { sm: '100vw', md: '42%' }, bottom: '0', borderRadius: '1px' }}
         />
       </Drawer>
     </>
@@ -69,63 +71,3 @@ const RoutesFormDrawer = () => {
 };
 
 export default RoutesFormDrawer;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import React from 'react';
-// import useDrawer from 'hooks/useDrawer';
-// import Drawer from '@mui/material/Drawer';
-// import { Button, Typography, Box } from '@mui/material';
-// import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
-// // import RoutesStoppage from './RoutesStoppage';
-// //import TransportRoutes from './TransportRoutes';
-
-
-// const RoutesFormDrawer = () => {
-//   // ========= call custom hook for toggle drawer ==========
-//   const { anchor, toggleDrawer } = useDrawer();
-
-
-//   return (
-//     <>
-//       <Button onClick={toggleDrawer('right', true)} sx={{mr:'8px'}} variant="outlined" startIcon={<AddOutlinedIcon />}>
-//       Add Route
-//       </Button>
-//       <Drawer anchor={'right'} open={anchor.right} onClose={toggleDrawer('right', false)}>
-//         <Box sx={{ width: { sm: '100vw', md: 900 }, height:'100vh', padding: 2 }} role="presentation">
-//           <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #ccc' }}>
-//             <Typography variant="h4">Add Route & Stoppage</Typography>
-//             <Button onClick={toggleDrawer('right', false)} sx={{ alignSelf: 'flex-end' }}>
-//               Close
-//             </Button>
-//           </Box>
-//           <Box pt={3}>
-//             {/* ========== Render Drawer Contant ============ */}
-//             {/* <TransportRoutes/> */}
-//             {/* <RoutesStoppage/> */}
-//           </Box>
-//         </Box>
-//       </Drawer>
-//     </>
-//   );
-// };
-
-// export default RoutesFormDrawer;
