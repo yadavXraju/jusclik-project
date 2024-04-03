@@ -17,8 +17,7 @@ const Index = () => {
   const tableSettings=useSelector(state=>state.invoiceTemplate.table)
 
 
-  // all settings
-  const states=[generalSettings,headerFooterSettings,tableSettings]
+
   // temporary logic for rendring template
   let template=1
   return (
