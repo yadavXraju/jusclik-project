@@ -11,6 +11,7 @@ import { List, ListItemText } from '@mui/material';
 import { commonTemplateContent } from '../common/common-states';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import schoollogo from 'assets/images/24x24-inch-logo-1.png';
+import { useSelector } from 'react-redux';
 
 const DottedDivider = styled('div')({
   width: '100%',
@@ -18,16 +19,15 @@ const DottedDivider = styled('div')({
   marginTop: '20px' // Adjust margin for spacing
 });
 
-const CompactTemplate2 = ({ states }) => {
+const CompactTemplate2 = () => {
   const isSmScreen = useMediaQuery('(max-width:600px)');
   const isLargeScreen = useMediaQuery('(max-width:1500px)');
   const responsiveText = isLargeScreen ? '12px' : '14px';
-
-  const [generalSettings, headerFooterSettings, tableSettings] = states;
-
-  generalSettings;
-  headerFooterSettings;
-  tableSettings;
+  
+  // states
+  const generalSettings= useSelector(state=>state.invoiceTemplate.general)
+  const headerFooterSettings=useSelector(state=>state.invoiceTemplate.headerFooter)
+  const tableSettings=useSelector(state=>state.invoiceTemplate.table)
 
   const style = {};
 

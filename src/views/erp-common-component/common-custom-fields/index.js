@@ -5,17 +5,20 @@ import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import DoDisturbOnOutlinedIcon from '@mui/icons-material/DoDisturbOnOutlined';
 import useDrawer from 'hooks/useDrawer';
 import AddCustomField from './add-custom-field';
-import studentDetailsData from '../../erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/student-master/admission/admission-form/Adm-form/studentDetailsData';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Accordion from '@mui/material/Accordion';
+import {useSelector} from 'react-redux';
 
-const CustomFields = ({ customFieldDrawer }) => {
+const CustomFields = ({ customFieldDrawer,handleAddField,section}) => {
   const [hoverUnusedField, setHoverUnusedField] = useState(-1);
   const { anchor, toggleDrawer } = useDrawer();
   // const isMobile = useMediaQuery('(max-width: 767px)')
+  const {studentDetailsData}=useSelector((state)=>state.admission)
+  // const {studentDetailsList}=useSelector((state)=>state.studentDetailsList)
+  
   return (
     <Box sx={{ width: "800px" }}>
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #ccc', padding: "0px 20px 0px 20px" }}>
@@ -130,7 +133,7 @@ const CustomFields = ({ customFieldDrawer }) => {
         </Box>
       </Box>
       <Drawer anchor="right" open={anchor.right} onClose={toggleDrawer("right", true)}>
-        <AddCustomField toggleDrawer={toggleDrawer} />
+        <AddCustomField toggleDrawer={toggleDrawer}  section={section} handleAddField={handleAddField}/>
       </Drawer>
     </Box>
   );
