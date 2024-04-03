@@ -45,9 +45,9 @@ const LibraryMenu = {
            
             {
               id: 'settings',
-              title: 'Setting',
+              title: 'Settings',
               type: 'item',
-              url: '/erp/library/Setting',
+              url: '/erp/library/Settings',
               icon: SettingsTwoToneIcon,
               breadcrumbs: false
             },

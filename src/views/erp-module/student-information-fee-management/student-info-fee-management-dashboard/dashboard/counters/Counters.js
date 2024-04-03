@@ -23,6 +23,7 @@ const CounterData = [
         id: 2,
         icon: <PermIdentityOutlinedIcon sx={{ ...iconStyles, color: 'rgb(247, 144, 9)' }} />,
         counterNumber: 83,
+        
         counterTitle: 'BOYS'
     },
     {
