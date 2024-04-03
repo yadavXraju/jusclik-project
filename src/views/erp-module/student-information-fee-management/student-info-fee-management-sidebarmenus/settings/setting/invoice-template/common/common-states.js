@@ -1,63 +1,4 @@
-export const general={
-    templateName: '',
-    paperSize: 'a5',
-    orientation: 'portrait',
-    marginTop: '2',
-    marginBottom: '2',
-    marginLeft: '1',
-    marginRight: '1',
-    pdfFont: 'ubuntu',
-    labelColor: '#333333',
-    fontColor: '#333333',
-    fontSize: '12',
-    backgroundImage: null,
-    imagePosition: 'centerCenter',
-    backgroundColorEnable: true,
-    backgroundColor: '#ffffff'
-}
-export const headerFooter={
-    // header props
-    headerImage:null,
-    headerImagePosition:'topLeft',
-    headerBackgroundColor:'#ffffff',
-    headerBackgroundColorEnable:true,
-    headerApplyToFirestPageOnly:false,
-    // footer props
-    footerFontSize:'12',
-    footerFontColor:'#000000',
-    footerImage:null,
-    footerImagePosition:'topLeft',
-    footerBackgroundColor:'#ffffff',
-    footerBackgroundColorEnable:true,
-    showPageNumber:true,
-    showGeneratedDate:false,
-    showGeneratedTime:false,
-}
-export const tableLayout={
-      borderEnable:true,
-      borderColor:'#000000',
-    //   table header props
-      headerFontSize:'9',
-      headerBackgroundColorEnable:true,
-      headerBackgroundColor:'#ffffff',
-      headerFontColor:'#000000',
-    //   table content props
-      itemRowFontSize:'9',
-      itemRowBackgroundColorEnable:true,
-      itemRowBackgroundColor:'#ffffff',
-      itemRowFontColor:'#000000',
-      itemDescriptionFontSize:'8',
-      itemDescriptionFontColor:'#333333',
-    //   print related 
-}
 
-export const transactionDetails={
-    showMotherName:false,
-    showFatherName:false,
-    showFatherPan:false,
-    showMotherPan:false,
-    enableCopy:true,
-}
 // this is for dropdown
 export const fontFamily = {
   ubuntu: 'Ubuntu',
@@ -117,7 +58,6 @@ export const commonTemplateContent={
   copy1Name:'School Copy',
   copy2Name:'Parent Copy',
 }
-
 export const templateCompact2={
   schoolAddress:'Sohna Dhani Road Road Ward No -01 Sohna Gurugram haryana Sohna-122103',
   schoolTel:'XXXXXXXXXX',
@@ -130,8 +70,6 @@ export const templateCompact2={
   date:'dd-mm-yyyy'
 
 }
-
-
 // compact template 1 default values
 export const CompactTemplate1DeafultValues={
 general:{

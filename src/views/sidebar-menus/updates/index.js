@@ -46,6 +46,7 @@ const Update = () => {
   return (
     <>
         <MainCard>
+        <Grid container sx={{ justifyContent: 'center', alignItems: 'center' , display:'flex' }}>
         <Grid container spacing={2} maxWidth="xl" style={{ marginTop: 20 }} >
       <SearchFilter onSearch={handleSearch} />
       <Box sx={{ flexGrow: 1, overflow: 'hidden', px: 3 }}>
@@ -95,6 +96,8 @@ const Update = () => {
           </Typography>
         )}
       </Box>
+    </Grid>
+
     </Grid>
     </MainCard>
     </>

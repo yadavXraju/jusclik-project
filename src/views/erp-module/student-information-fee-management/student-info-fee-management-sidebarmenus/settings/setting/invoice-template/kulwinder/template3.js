@@ -13,14 +13,14 @@ import TableRow from '@mui/material/TableRow';
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import { commonTemplateContent } from '../common/common-states';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import { useSelector } from 'react-redux';
 
-const  Template =({states})=> {
+const  Template =()=> {
   const isSmScreen = useMediaQuery('(max-width:600px)');
-  const [generalSettings, headerFooterSettings, tableSettings] = states;
-  // temporary so that es lint will not give error
-  generalSettings
-  headerFooterSettings
-  tableSettings
+  // states
+  const generalSettings= useSelector(state=>state.invoiceTemplate.general)
+  const headerFooterSettings=useSelector(state=>state.invoiceTemplate.headerFooter)
+  const tableSettings=useSelector(state=>state.invoiceTemplate.table)
   const style = {
     width: '210mm',
     height: '297mm',

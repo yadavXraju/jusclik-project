@@ -7,12 +7,13 @@ import CurrencyRupeeOutlinedIcon from '@mui/icons-material/CurrencyRupeeOutlined
 // import ContentCutOutlinedIcon from '@mui/icons-material/ContentCutOutlined';
 import { commonTemplateContent } from '../common/common-states';
 import { templateCompact } from '../common/common-states';
+import { useSelector } from 'react-redux';
 
-const CompactTemplate = ({states}) => {
-  const [generalSettings, headerFooterSettings, tableSettings] = states;
-  (generalSettings);
-  (headerFooterSettings);
-  (tableSettings);
+
+const CompactTemplate = () => {
+  const generalSettings= useSelector(state=>state.invoiceTemplate.general)
+  const headerFooterSettings=useSelector(state=>state.invoiceTemplate.headerFooter)
+  const tableSettings=useSelector(state=>state.invoiceTemplate.table)
 
   let gridSize;
 

@@ -6,7 +6,8 @@ import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import RadioButtonsGroup from 'views/common-section/ParamRadioButton';
 import ParamTime from 'views/common-section/ParamTime';
 import ParamMultipleSelect from 'views/common-section/ParamMultipleSelect';
-import ParamDateRangePicker from 'views/common-section/ParamDateRange';
+//import ParamDateRangePicker from 'views/common-section/ParamDateRange';
+import ParameterizedDateComponent from 'views/common-section/ParamDateComponent';
 
 function TransportRoutes() {
   const isMobile = useMediaQuery('(max-width: 767px)');
@@ -64,23 +65,38 @@ function TransportRoutes() {
     { id: 1, name: 'I' },
     { id: 2, name: 'II' },
     { id: 3, name: 'III' },
-    { id: 4, name: 'VII' },
+    { id: 4, name: 'VII' }
   ];
 
-  const [startDate, setStartDate] = useState(null);
-  const [endDate, setEndDate] = useState(null);
+  const [selectedDay, setSelectedDays] = React.useState([]);
+  // =========== list of students ===========
+  const Days = [
+    { id: 1, name: 'Monday' },
+    { id: 2, name: 'Tuesday' },
+    { id: 3, name: 'Wednesday' },
+    { id: 4, name: 'Thursday' },
+    { id: 5, name: 'Friday' },
+    { id: 6, name: 'Saturday' },
+    { id: 7, name: 'Sunday' },
+  ];
 
-  const handleStartDateChange = (date) => {
-    setStartDate(date);
-  };
+  // const [startDate, setStartDate] = useState(null);
+  // const [endDate, setEndDate] = useState(null);
 
-  const handleEndDateChange = (date) => {
-    setEndDate(date);
-  };
+  // const handleStartDateChange = (date) => {
+  //   setStartDate(date);
+  // };
+
+  // const handleEndDateChange = (date) => {
+  //   setEndDate(date);
+  // };
 
   return (
     <>
-      <Card className='scrollbar' sx={{border:'1px solid #ccc', height: 'calc(100vh - 175px)', overflowY:'scroll', p:2, borderRadius:'5px'}}>
+      <Card
+        className="scrollbar"
+        sx={{ border: '1px solid #ccc', height: 'calc(100vh - 180px)', overflowY: 'scroll', p: 2, borderRadius: '5px' }}
+      >
         <Box>
           <Box pb={2}>
             <TextField id="outlined-basic" size={isMobile ? 'small' : 'normal'} fullWidth label="Route Name" variant="outlined" />
@@ -95,7 +111,7 @@ function TransportRoutes() {
               // customSytle={{ width: '30%' }}
             />
           </Box>
- 
+
           <Box pb={2}>
             <Typography variant="h4">
               Attach Bus <InfoOutlinedIcon sx={{ fontSize: '14px', color: '#746a6a' }} />{' '}
@@ -122,19 +138,46 @@ function TransportRoutes() {
               Schedule <InfoOutlinedIcon sx={{ fontSize: '14px', color: '#746a6a' }} />{' '}
             </Typography>
             <RadioButtonsGroup defaultValue={schedule} onChange={handleChange} options={scheduleOptions} />
-             {
-             schedule === 'onetime' && 
-                <Box>
-                <ParamDateRangePicker
-                startLabel='Start Date'
-                endLabel='End Date'
-                startDateValue={startDate}
-                endDateValue={endDate}
-                onStartDateChange={handleStartDateChange}
-                onEndDateChange={handleEndDateChange}
-                />
-               </Box>
-             }
+            {
+              schedule === 'onetime' && (
+                <>
+                  <Box p={2} sx={{border:'1px solid #ccc', borderRadius:'5px'}}>
+                    <Grid container spacing={2}>
+                      <Grid item xs={6}>
+                      <ParameterizedDateComponent label="Start Date" customStyle={{width:'100%'}}/>
+                      </Grid>
+                      <Grid item xs={6}>
+                      <ParameterizedDateComponent label="End Date" customStyle={{width:'100%'}} />
+                      </Grid>
+                    </Grid>
+                  </Box>
+                </>
+              )
+
+              //   <Box>
+              //   <ParamDateRangePicker
+              //   startLabel='Start Date'
+              //   endLabel='End Date'
+              //   startDateValue={startDate}
+              //   endDateValue={endDate}
+              //   onStartDateChange={handleStartDateChange}
+              //   onEndDateChange={handleEndDateChange}
+              //   />
+              //  </Box>
+            }
+            {
+              schedule === 'days' && (
+                <>
+                  <Box p={2} sx={{border:'1px solid #ccc', borderRadius:'5px'}}>
+                    <Grid container spacing={2}>
+                      <Grid item xs={12}>
+                      <ParamMultipleSelect options={Days} label="Select Day" value={selectedDay} setValue={setSelectedDays} />
+                      </Grid>
+                    </Grid>
+                  </Box>
+                </>
+              )
+            }
           </Box>
           <Box pb={2}>
             <Typography variant="h4">Pick Route </Typography>
@@ -184,7 +227,6 @@ function TransportRoutes() {
               <ParamMultipleSelect options={students} label="Classes" value={selectedStudents} setValue={setSelectedStudents} />
             </Box>
           </Box>
-
         </Box>
       </Card>
     </>

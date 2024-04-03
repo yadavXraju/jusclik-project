@@ -1,10 +1,11 @@
 import React from 'react';
-import HourlyChart from './HourlyChart';
+
+import VisitorGraph from './HourlyChart';
 
 const HourlyVisior = () => {
   return (
     <>
-    <HourlyChart />
+  <VisitorGraph/>
     </>
   )
 }

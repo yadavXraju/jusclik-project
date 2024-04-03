@@ -1,15 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useDrawer from 'hooks/useDrawer';
 import Drawer from '@mui/material/Drawer';
-import { Button, Typography, Box } from '@mui/material';
+import { Button, Typography, Box, Tab, Tabs } from '@mui/material';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
+import BottomNavbar from 'views/common-section/BottomNavbar';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import SlabForm from './SlabForm';
+import Test from './SlabStructure';
 
 
 const SlabFormDrawer = () => {
   // ========= call custom hook for toggle drawer ==========
   const { anchor, toggleDrawer } = useDrawer();
+  const [tabValue, setTabValue] = useState(0); // State for controlling tabs
 
+  const tabs = ['Basic Info', 'Slab Structure'];
+  const tabLength = tabs.length; 
+
+  const handleTabChange = (event, newValue) => {
+    setTabValue(newValue);
+  };
 
   return (
     <>
@@ -24,14 +34,43 @@ const SlabFormDrawer = () => {
               Close
             </Button>
           </Box>
-          <Box pt={3}>
+          <Box>
             {/* ========== Render Drawer Contant ============ */}
-            <SlabForm/>
+            <Box>
+            {/* Tabs for switching between TransportRoutes and Stoppage */}
+            <Tabs value={tabValue} onChange={handleTabChange} variant="scrollable" aria-label="Route tabs">
+              {tabs.map((label, index) => (
+                // <Tab key={index} label={label} />
+                <Tab
+                  sx={{padding:'12px 8px', margin:'0px 10px'}}
+                  key={index}
+                  label={
+                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                      <span style={{padding:'5px', border: `1px solid ${tabValue === index ? '#2196f3' : '#ccc'}`, borderRadius:'50%', width:'29px', marginRight:'5px'}}>{index + 1}</span>
+                      {label}
+                      { <KeyboardArrowRightIcon />}
+                    </Box>
+                  }
+                />
+              ))}
+            </Tabs>
+            {/* Tab panels based on selected tab */}
+            <Box sx={{ mt: 1 }}>
+              {tabValue === 0 && <SlabForm/>}
+              {tabValue === 1 && <Test/>}
+            </Box>
+          </Box>
           </Box>
         </Box>
+        <BottomNavbar
+          tabPageLength={tabLength}
+          value={tabValue}
+          setValue={setTabValue}
+          customStyle={{width: { sm: '100vw', md: '42%' }, bottom: '0', borderRadius: '1px' }}
+        />
       </Drawer>
     </>
   );
-};
+};  
 
 export default SlabFormDrawer;

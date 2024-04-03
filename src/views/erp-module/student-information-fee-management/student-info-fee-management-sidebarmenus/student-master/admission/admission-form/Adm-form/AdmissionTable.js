@@ -13,18 +13,19 @@ import FilterListRoundedIcon from '@mui/icons-material/FilterListRounded';
 import AdmissionDrawer from './AdmissionDrawer';
 import RemoveRedEyeTwoToneIcon from '@mui/icons-material/RemoveRedEyeTwoTone';
 import useDrawer from 'hooks/useDrawer';
-import rows from './AdmissionTableData';
 import EditDrawer from './EditDrawer';
 import FilterStudents from 'views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/reports/common-report-section/filter-and-sort/Filter';
 import WarningDialog from 'views/common-section/WarningDialog';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
+import {useSelector}  from 'react-redux';
 
-
-export default function AdmissionTable() {
+ const AdmissionTable=()=>{
+  const {studentDetailsList}=useSelector((state)=>state.admission)
   const navigate = useNavigate();
-  const [tableRows, setTableRows] = React.useState(rows);
+  const [tableRows, setTableRows] = React.useState(studentDetailsList);
   const [currEditItem, setCurrEditItem] = React.useState({});
   const { anchor, toggleDrawer } = useDrawer();
+
   //const { anchor, toggleDrawer } = useDrawer();
   // const handleRowClick = () => {
   //   navigate(`../registration`);
@@ -239,3 +240,5 @@ export default function AdmissionTable() {
     </>
   );
 }
+
+export default AdmissionTable;

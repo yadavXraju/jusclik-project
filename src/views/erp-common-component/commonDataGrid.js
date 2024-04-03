@@ -10,7 +10,7 @@ const CommonDataGrid = ({ rows, columns, pageSizeOptions = [5, 10], ...otherProp
         columns={columns}
         pageSizeOptions={pageSizeOptions}
         checkboxSelection
-        {...otherProps} // Pass other props directly to DataGrid
+        {...otherProps} 
       />
   );
 };
