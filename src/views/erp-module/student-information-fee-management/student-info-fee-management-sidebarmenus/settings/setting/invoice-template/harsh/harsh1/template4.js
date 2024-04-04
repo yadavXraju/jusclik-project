@@ -2,16 +2,17 @@
 
 import React from 'react';
 import {Grid , Box, Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow,  Paper } from '@mui/material';
+import { useSelector } from 'react-redux';
 
 import CurrencyRupeeOutlinedIcon from '@mui/icons-material/CurrencyRupeeOutlined';
 import schoollogo from 'assets/images/24x24-inch-logo-1.png';
 import { commonTemplateContent } from '../../common/common-states';
 
-export const CompactTemplate4 = ({states}) => {
-  const [generalSettings, headerFooterSettings, tableSettings] = states;
-  (generalSettings);
-  (headerFooterSettings);
-  (tableSettings);
+export const CompactTemplate4 = () => {
+  // states
+  const generalSettings= useSelector(state=>state.invoiceTemplate.general)
+  const headerFooterSettings=useSelector(state=>state.invoiceTemplate.headerFooter)
+  const tableSettings=useSelector(state=>state.invoiceTemplate.table)
 
   return (
 
@@ -24,10 +25,10 @@ export const CompactTemplate4 = ({states}) => {
       width: '210mm',
     },
     }}>
-      <Paper elevation={4} sx={{paddingTop:`${generalSettings.marginTop}rem`,
+      <Paper elevation={4}  sx={{paddingTop:`${generalSettings.marginTop}rem`,
     paddingRight:`${generalSettings.marginRight}rem`,
     paddingBottom:`${generalSettings.marginBottom}rem`,
-    paddingLeft:`${generalSettings.marginLeft}rem`}}>
+    paddingLeft:`${generalSettings.marginLeft}rem`, maxWidth:'max-content'}}>
         <Box p={2} bgcolor={'white'} >
           <Box p={4} ml={6} mr={4} sx={{ display: "flex", justifyContent: "space-between" }} bgcolor={headerFooterSettings.headerBackgroundColor}>
             <Box>

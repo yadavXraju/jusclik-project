@@ -9,11 +9,14 @@ import initialData from './InboxNameList';
 // import AvtarImg from '../../../../assets/images/avatar.png';
 import ReplyForwardBox from './ReplyForwardBox';
 import Image1 from '../../../../assets/images/Avatar-images/IMG_01.png';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 const Message = () => {
     const currentDate = new Date().toLocaleDateString();
     const [emailData, setEmailData] = useState(null);
     const [isBoxVisible, setIsBoxVisible] = useState(false);
+    const isSmScreen = useMediaQuery('(max-width: 400px)');
+    const small360 = isSmScreen ? 'ruby-text' : 'flex';
 
     // Function to handle the received data from MailCompose
     const handleEmailSend = (data) => {
@@ -54,7 +57,7 @@ const Message = () => {
     return (
         <>
             <Paper>
-                <Box style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px' }}>
+                <Box style={{ display: small360, justifyContent: 'space-between', alignItems: 'center', padding: '60px' , paddingLeft:'0px' }}>
                     <Box display="flex" alignItems="center">
                         <IconButton onClick={() => navigate('/parent/communication/inbox')} color="primary">
                             <ArrowBackIosNewOutlinedIcon />
@@ -77,11 +80,11 @@ const Message = () => {
                     </Box>
                     <Box>
 
-                        <Typography variant="subtitle2">{currentDate}</Typography>
+                        <Typography  variant="subtitle2">{currentDate}</Typography>
                     </Box>
                 </Box>
                 <Box>
-                    <Typography variant="h3" fontWeight="bold" padding="30px">
+                    <Typography variant="h3" fontWeight="bold" paddingLeft="30px" paddingRight="30px" paddingBottom="30px">
                         {emailData?.subject}
                         Extension for the fee payment
                     </Typography>

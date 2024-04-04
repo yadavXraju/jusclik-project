@@ -27,7 +27,7 @@ const initialState = {
      headerBackgroundColorEnable:true,
      headerApplyToFirestPageOnly:false,
      // footer props
-     footerFontSize:'12',
+     footerFontSize:'10',
      footerFontColor:'#000000',
      footerImage:null,
      footerImagePosition:'topLeft',
@@ -53,6 +53,7 @@ const initialState = {
       itemDescriptionFontSize:'8',
       itemDescriptionFontColor:'#333333',
   },
+  selectedTemplate:1
 };
 
 // Create a slice using createSlice from Redux Toolkit
@@ -75,6 +76,9 @@ const invoiceSlice = createSlice({
         const { key, value } = action.payload;
         state.table[key] = value;
       },
+      updateSelectedTemplate(state,action){
+        state.selectedTemplate=action.payload
+      }
 
   },
 });
@@ -82,6 +86,7 @@ export const {
     updateGeneralProperty,
     updateHeaderFooterProperty,
     updateTableProperty,
+    updateSelectedTemplate
   } = invoiceSlice.actions;
   
 // Export the reducer itself to be used in combineReducers

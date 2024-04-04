@@ -3,14 +3,13 @@ import { DataGrid } from '@mui/x-data-grid';
 import { IconButton, Tooltip, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
-import RemoveRedEyeTwoToneIcon from '@mui/icons-material/RemoveRedEyeTwoTone';
 import WarningDialog from 'views/common-section/WarningDialog';
 import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
-import RouteData from './RoutesData';
+import SlabTableData from './SlabTableData';
 import SlabFormDrawer from './SlabFormDrawer';
 
 export default function SlabTable() {
-  const [tableRows, setTableRows] = React.useState(RouteData);
+  const [tableRows, setTableRows] = React.useState(SlabTableData);
 
   // ========= render error model for Delete row ==========
   const [modalOpen, setmodalOpen] = React.useState(false);
@@ -34,20 +33,11 @@ export default function SlabTable() {
 
   // ========= Data Grid Columns ==========
   const columns = [
-    { field: 'routeName', headerName: 'Slab Name', flex: 1, minWidth: 130, align: 'left', headerAlign: 'left' },
-    { field: 'schedule', headerName: 'Schedule', flex: 1, minWidth: 130 },
-    { field: 'seatingCapacity', headerName: 'Seating Capacity', flex: 1, minWidth: 100 },
-    { field: 'attachSlab', headerName: 'Attach Bus', flex: 1, minWidth: 100 },
-    { field: 'classes', headerName: 'Classes', flex: 1, minWidth: 100 },
-    // {field: 'status',
-    // headerName: 'Status',
-    // flex: 1,
-    // minWidth: 100,
-    // renderCell: (params) => (
-    //   <Box display="flex" alignItems="center">
-    //     <Switch checked={params.value === 'Active'} disabled />
-    //   </Box>
-    // )},
+    { field: 'slabName', headerName: 'Slab Name', flex: 1, minWidth: 130, align: 'left', headerAlign: 'left' },
+    { field: 'amount', headerName: 'Amount', flex: 1, minWidth: 130 },
+    { field: 'yearUpto', headerName: 'Academic Year Upto', flex: 1, minWidth: 130 },
+    { field: 'createdBy', headerName: 'Created by', flex: 1, minWidth: 100 },
+    { field: 'createdOn', headerName: 'Created On', flex: 1, minWidth: 100 },
 
     {
       field: 'Action',
@@ -59,11 +49,6 @@ export default function SlabTable() {
       disableColumnMenu: true,
       renderCell: (params) => (
         <Box>
-            <Tooltip title="Preview">
-            <IconButton>
-            <RemoveRedEyeTwoToneIcon sx={{ color: 'rgb(124, 178, 221)' }} />
-          </IconButton>
-            </Tooltip>
           <Tooltip title="Edit">
           <IconButton onClick={(event) => event.stopPropagation()}>
             <EditTwoToneIcon />

@@ -7,12 +7,13 @@ import CurrencyRupeeOutlinedIcon from '@mui/icons-material/CurrencyRupeeOutlined
 // import ContentCutOutlinedIcon from '@mui/icons-material/ContentCutOutlined';
 import { commonTemplateContent } from '../common/common-states';
 import { templateCompact } from '../common/common-states';
+import { useSelector } from 'react-redux';
 
-const CompactTemplate = ({states}) => {
-  const [generalSettings, headerFooterSettings, tableSettings] = states;
-  (generalSettings);
-  (headerFooterSettings);
-  (tableSettings);
+
+const CompactTemplate = () => {
+  const generalSettings= useSelector(state=>state.invoiceTemplate.general)
+  const headerFooterSettings=useSelector(state=>state.invoiceTemplate.headerFooter)
+  const tableSettings=useSelector(state=>state.invoiceTemplate.table)
 
   let gridSize;
 
@@ -40,7 +41,7 @@ for(let i=0;i<templateCompact.numberOfCopies;i++){
                     <Box pt={2} sx={{ width: '100px' }}>
                       <img src={schoollogo} alt='schoollogo' width="80" height="80">
 
-                      </img>
+                      </img> 
                     </Box>
                     <Box p={3}  >
                       <Typography  variant='h5' sx={{ fontWeight: 'bold' }}> {  commonTemplateContent.schoolName}</Typography>
@@ -195,7 +196,7 @@ for(let i=0;i<templateCompact.numberOfCopies;i++){
       spacing={2}
       sx={{
         height: '100%',
-        width:'110%',
+        width:'100%',
         margin: 'auto',
         '@media print and (min-width: 297mm) and (min-height: 210mm)': {
           // A4 landscape dimensions

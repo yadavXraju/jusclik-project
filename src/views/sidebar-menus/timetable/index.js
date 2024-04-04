@@ -112,10 +112,19 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Card from '@mui/material/Card';
 import timeTableData1 from './TimeTableData';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 const TimeTable = () => {
   const [value, setValue] = useState('Mon');
   const [timeTableData, setTimeTableData] = useState([]);
+  const res2560 = useMediaQuery('(min-width:2000px)')
+  let rem = null
+
+  if (res2560){
+    
+   rem = '20rem'
+    
+  }
 
   useEffect(() => {
     const currentDay = new Date().getDay();
@@ -148,8 +157,10 @@ const TimeTable = () => {
 
     return (
       <>
+
+          
         {daySchedule.map((scheduleItem, index) => (
-          <Grid container spacing={0.5} style={{ marginTop: '6px' }} key={index}>
+          <Grid container spacing={0.5} style={{ marginTop: '6px' }} key={index} >
             <Grid item xs={12}>
               <Paper elevation={3} style={{ padding: scheduleItem.details.length === 0 ? '5px' : '10px', display: 'flex', lineHeight: '10px' }}>
                 <Typography variant="h6" sx={{ display: 'flex', alignItems: 'center' }}>
@@ -180,7 +191,10 @@ const TimeTable = () => {
 
   return (
     <>
-      <Card sx={{ padding: { xs: 1, md: 3 } }}>
+
+     
+      <Card sx={{ padding: { xs: 1, md: 3 }  }}>
+      <Grid sx={{paddingRight:rem , paddingLeft:rem}}>
         <Typography sx={{ p: 2, borderBottom: '1px solid #ccc', fontSize: '1.3rem' }} variant="h5" component="div">
           Timetable
         </Typography>
@@ -200,7 +214,10 @@ const TimeTable = () => {
           </Box>
           <Box sx={{ p: 1 }}>{renderTabContent()}</Box>
         </div>
+        </Grid>
       </Card>
+
+      
     </>
   );
 };
