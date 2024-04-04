@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Typography, Box, Button, TextField } from '@mui/material';
-import InputAdornment from '@mui/material/InputAdornment';
-import ParamSelectList from 'views/common-section/ParamSelectList';
+import { Typography, Box, Button, TextField,FormControl } from '@mui/material';
+import ParamSelectPlaceholder from 'views/common-section/ParamSelectPlaceholder';
 import { Email, CustomCheckbox, Phone, CustomText, CustomNumber, Currency, URL, CustomDate } from './custom-field-options';
 import Picklist from './Picklist';
+
 
 
 const availableFieldType = [
@@ -34,9 +34,9 @@ const availableGroup = [
 
 const intialCustomFields = {
   label: "this custom text",
-  group:"Primary Details",
-  subGroup: "Other Details",
-  fieldType: "Text",
+  group: "",
+  subGroup: "",
+  fieldType: "",
   picklist: {
     isMandatory: "",
     subType: "",
@@ -50,17 +50,16 @@ const intialCustomFields = {
     encryptField: false
   },
   numerical: {
-    isMandatory: "",
-    subType: "",
-    duplicates: "",
-    encryptField: ""
+    isMandatory: true,
+    duplicates: true,
+    encryptField: true
   },
   date: {
-    isMandatory: "",
-    subType: "",
+    isMandatory: true,
+    subType: "Date and Time",
   },
-  currencey: {
-    isMandatory: "",
+  currency: {
+    isMandatory: true,
   },
   phone: {
     isMandatory: "",
@@ -76,7 +75,7 @@ const intialCustomFields = {
 
 
 
-const AddCustomField = ({ toggleDrawer, section ,handleAddField }) => {
+const AddCustomField = ({ toggleDrawer, handleAddField,handleSubGroup,subGroups}) => {
   const [customFields, setCustomFields] = useState(intialCustomFields);
 
   const handleSave = () => {
@@ -89,6 +88,7 @@ const AddCustomField = ({ toggleDrawer, section ,handleAddField }) => {
       ...prevFields,
       [name]: value,
     }));
+    handleSubGroup(customFields?.group);
   }
 
   //Setting Custom Text
@@ -114,19 +114,85 @@ const AddCustomField = ({ toggleDrawer, section ,handleAddField }) => {
       }));
     }
   }
-
-
   //Setting Picklist
 
   //Setting CustomDate
+  const handleCustomDate = (e) => {
+    const { name, checked } = e.target;
+    if (checked == true || checked == false) {
+      setCustomFields((prevFields) => ({
+        ...prevFields,
+        date: {
+          ...prevFields.date,
+          [name]: checked,
+        },
+      }));
+    }
+    else {
+      const { name, value } = e.target;
+      setCustomFields((prevFields) => ({
+        ...prevFields,
+        date: {
+          ...prevFields.date,
+          [name]: value,
+        },
+      }));
+    }
+  }
 
   //Setting CustomNumber
+  const handleCustomNumber = (e) => {
+    const { name, checked } = e.target;
+    console.log(name, checked)
+    if (checked == true || checked == false) {
+      setCustomFields((prevFields) => ({
+        ...prevFields,
+        numerical: {
+          ...prevFields.numerical,
+          [name]: checked,
+        },
+      }));
+    }
+    else {
+      const { name, value } = e.target;
+      setCustomFields((prevFields) => ({
+        ...prevFields,
+        numerical: {
+          ...prevFields.numerical,
+          [name]: value,
+        },
+      }));
+    }
+  }
 
-
-  //Setting CustomCheckbox
+  // Email
 
 
   // Phone
+  // 
+  const handleCurrency = (e) => {
+    const { name, checked } = e.target;
+    console.log(name, checked)
+    if (checked == true || checked == false) {
+      setCustomFields((prevFields) => ({
+        ...prevFields,
+        currencey: {
+          ...prevFields.currencey,
+          [name]: checked,
+        },
+      }));
+    }
+    else {
+      const { name, value } = e.target;
+      setCustomFields((prevFields) => ({
+        ...prevFields,
+        currencey: {
+          ...prevFields.currencey,
+          [name]: value,
+        },
+      }));
+    }
+  }
 
   const DynamicRender = ({ switchValue, onChange }) => {
     switch (switchValue) {
@@ -135,9 +201,9 @@ const AddCustomField = ({ toggleDrawer, section ,handleAddField }) => {
       case 'Text':
         return <CustomText option={customFields?.customText} onChange={handleCustomText} />;
       case 'Date':
-        return <CustomDate option={customFields?.date} onChange={onChange} />;
+        return <CustomDate option={customFields?.date} onChange={handleCustomDate} />;
       case 'Numerical':
-        return <CustomNumber option={customFields?.numerical} onChange={onChange} />;
+        return <CustomNumber option={customFields?.numerical} onChange={handleCustomNumber} />;
       case 'Email':
         return <Email option={customFields?.email} onChange={onChange} />;
       case 'Checkbox':
@@ -145,7 +211,7 @@ const AddCustomField = ({ toggleDrawer, section ,handleAddField }) => {
       case 'Phone':
         return <Phone option={customFields?.phone} onChange={onChange} />;
       case 'Currency':
-        return <Currency option={customFields?.currencey} onChnage={onChange} />;
+        return <Currency option={customFields?.currencey} onChnage={handleCurrency} />;
       case 'URL':
         return <URL option={customFields?.url} onChange={onChange} />;
       default:
@@ -154,12 +220,11 @@ const AddCustomField = ({ toggleDrawer, section ,handleAddField }) => {
   }
 
   useEffect(() => {
-
   }, [customFields])
 
-
+  
   return (
-    <Box sx={{ width: "480px", padding: "0px 20px" }}>
+    <Box sx={{ width: "500px", padding: "0px 20px" }}>
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #ccc', padding: "0px 20px 0px 20px" }}>
         <Typography variant="h4">Add Custom Field</Typography>
         <Button onClick={toggleDrawer('right', false)} sx={{ alignSelf: 'flex-end' }}>
@@ -168,33 +233,28 @@ const AddCustomField = ({ toggleDrawer, section ,handleAddField }) => {
       </Box>
       <Box sx={{ height: "calc(100vh - 100px)", overflowY: "auto" }} className="scrollbar">
         <Box sx={{ position: "fixed", bottom: "0px", display: "flex", height: "60px", borderTop: "1px solid #eee", borderBottom: "1px solid #eee", gap: "20px", alignItems: "center" }}>
-          <Button variant="contained" sx={{ height: '40px' }} onClick={toggleDrawer("right", false)}>Cancel</Button>
+          <Button variant="contained" sx={{ height: '40px' }} onClick={() => handleSave()}>Save</Button>
           <Button variant="contained" sx={{ height: '40px' }}>Save & New</Button>
-          <Button variant="contained" sx={{ height: '40px' }} onClick={()=>handleSave()}>Save</Button>
+          <Button variant="contained" sx={{ height: '40px' }} onClick={toggleDrawer("right", false)}>Cancel</Button>
         </Box>
         <Box sx={{ display: "flex", flexDirection: "column", gap: "20px", padding: "20px 20px 20px 20px" }}>
-          <TextField
-            id="permanent-textfield"
-            sx={{ width: "100%" }}
-            label="Enter Lable"
-            name="label"
-            onChange={handleChange}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  Field Label
-                </InputAdornment>
-              ),
-            }}
+          <FormControl>
+            <TextField
+              id="permanent-textfield"
+              sx={{ width: "100%" }}
+              placeholder="Enter Label"
+              name="label"
+              onChange={handleChange}
+            />
+          </FormControl>
+          <ParamSelectPlaceholder options={availableGroup} value={customFields?.group} onChange={handleChange}
+            size="medium" name="group" placeholder="select group"
           />
-          <ParamSelectList label="Add In Group" options={availableGroup} value={customFields?.group} onChange={handleChange}
-            size="medium" name="group"
+          <ParamSelectPlaceholder options={subGroups} value={customFields?.subGroup} onChange={handleChange}
+            size="medium" name="subGroup" placeholder="Select Sub Group"
           />
-          <ParamSelectList label="Add In SubGroup" options={section} value={customFields?.subGroup} onChange={handleChange}
-            size="medium" name="subGroup"
-          />
-          <ParamSelectList label="Field Type" options={availableFieldType} value={customFields?.fieldType} onChange={handleChange}
-            size="medium" name="fieldType"
+          <ParamSelectPlaceholder options={availableFieldType} value={customFields?.fieldType} onChange={handleChange}
+            size="medium" name="fieldType" placeholder="Field Type"
           />
           <DynamicRender switchValue={customFields?.fieldType} />
         </Box>

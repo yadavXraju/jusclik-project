@@ -15,7 +15,7 @@ import ProfileDetail from './PrimaryDetails';
 import AddressForm from './Address';
 import ContactPerson from './ContactPerson';
 import { useSelector,useDispatch } from 'react-redux';
-import  {addField}  from 'store/student-info-and-fee/student/admission-slice';
+import  {addField,subGroupbyGroup}  from 'store/student-info-and-fee/student/admission-slice';
 
 
 const buttonsData = [
@@ -30,7 +30,7 @@ const buttonsData = [
 
 const Mainform1 = ({ currEditItem }) => {
   const dispatch=useDispatch();
-  const { studentDetailsData } = useSelector((state) => state.admission);
+  const { studentDetailsData,subGroups } = useSelector((state) => state.admission);
   const [selectedButton, setSelectedButton] = useState(0);
   const [section,setSection]=useState([]);
   const [option, setOption] = useState({
@@ -77,10 +77,11 @@ const Mainform1 = ({ currEditItem }) => {
     getSectionName();
   }, [])
 
-  const handleChange = (name, newValue) => {
+  const handleChange =(name, newValue) => {
     setStudentDetails({ ...student, [name]: newValue });
   };
 
+  
   let cardComponent;
   switch (selectedButton) {
     case 0:
@@ -108,6 +109,10 @@ const Mainform1 = ({ currEditItem }) => {
    const handleAddField=(customFields)=>{
       dispatch(addField(customFields))
    }
+  
+  const handleSubGroup=async(subGroupName)=>{
+    await dispatch(subGroupbyGroup(subGroupName));
+  }
   
   return (
     <>
@@ -155,6 +160,8 @@ const Mainform1 = ({ currEditItem }) => {
         value={selectedButton}
         setValue={setSelectedButton}
         handleAddField={handleAddField}
+        handleSubGroup={handleSubGroup}
+        subGroups={subGroups}
         customStyle={{ width: '100%', bottom: '0', borderRadius: '1px' }}
         section={section}
       />
