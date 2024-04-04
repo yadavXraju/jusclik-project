@@ -100,6 +100,9 @@ const InvoiceTemplate = () => {
               <Grid item>
                 <CustomCard cardName={'Simple'} image={PortraitImage3} selectedTemplate={5} />
               </Grid>
+              <Grid item>
+                <CustomCard cardName={'Standard Lite'} image={PortraitImage3} selectedTemplate={2} />
+              </Grid>
             </Grid>
             <Grid container>
               <Grid item>
@@ -135,6 +138,9 @@ const InvoiceTemplate = () => {
               </Grid>
               <Grid item>
                 <CustomCard cardName={'Simple'} image={PortraitImage3} selectedTemplate={5} />
+              </Grid>
+              <Grid item>
+                <CustomCard cardName={'Standard Lite'} image={PortraitImage3} selectedTemplate={2} />
               </Grid>
           </Grid>
           <Typography variant="h4" py={2}>
