@@ -2,7 +2,7 @@
 // import ArticleTwoToneIcon from '@mui/icons-material/ArticleTwoTone';
 import GroupsTwoToneIcon from '@mui/icons-material/GroupsTwoTone';
 import SettingsTwoToneIcon from '@mui/icons-material/SettingsTwoTone';
-import AdminPanelSettingsTwoToneIcon from '@mui/icons-material/AdminPanelSettingsTwoTone';
+import DescriptionTwoToneIcon from '@mui/icons-material/DescriptionTwoTone';
 
 
 
@@ -57,7 +57,7 @@ const VisitorMenu = {
                 title: 'Reports',
                 type:'item',
                 url: '/erp/visitor/reports',
-                icon: AdminPanelSettingsTwoToneIcon,
+                icon: DescriptionTwoToneIcon,
               },
               //  settings
               {
