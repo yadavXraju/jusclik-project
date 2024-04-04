@@ -5,7 +5,7 @@ import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 import WarningDialog from 'views/common-section/WarningDialog';
 import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 import BusDetailsData from './BusDetailsData';
-import CommonDataGrid from 'views/erp-common-component/commonDataGrid';
+import CommonDataGrid from 'views/common-section/commonDataGrid';
 import BusDetailsDrawer from './BusDetailsDrawer';
 import RemoveRedEyeTwoToneIcon from '@mui/icons-material/RemoveRedEyeTwoTone';
 
