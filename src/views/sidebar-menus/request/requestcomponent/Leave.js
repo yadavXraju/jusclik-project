@@ -19,15 +19,15 @@ const Leave = () => {
               />
             </Grid>
 
-            <Grid container flexDirection="row" item xs={12} md={6} style={{ padding: '5px 10px' }}>
-              <Grid item md={6} style={{ padding: '5px 10px' }}>
+            <Grid container flexDirection="row" item xs={12} md={6} >
+              <Grid item md={6} style={{ paddingLeft:'10px' }}>
                 {/* <TextField type="date" fullWidth variant="outlined" label="Leave From:" /> */}
-                <Datecomponet label="Leave From:"/>
+                <Datecomponet  Margin={'0px'} label="Leave From:"/>
               </Grid>
 
-              <Grid item md={6} style={{ padding: '5px 10px' }}>
+              <Grid item md={6} style={{ paddingRight:'10px' , paddingLeft:'10px' }}>
                 {/* <TextField type="date" fullWidth variant="outlined"  label="Leave To:"/> */}
-                <Datecomponet label="Leave To:"/>
+                <Datecomponet Margin={'0px'} label="Leave To:"/>
               </Grid>
             </Grid>
           </Grid>
