@@ -18,15 +18,26 @@ import Avatar from '@mui/material/Avatar';
 const renderChipCell = (params) => {
   const { status } = params.row;
   let iconComponent;
+  let chipStyle = { color: '#364152',width:'140px',display: 'flex', alignItems: 'center' ,justifyContent:'flex-start'};
   switch (status) {
     case 'Expected':
-      iconComponent = <LoginOutlinedIcon />;
+      iconComponent = <AccessTimeOutlinedIcon color='success'/>;
+      chipStyle = { ...chipStyle, color:'#00e676' };
       break;
     case 'Checked In':
-      iconComponent = <LogoutOutlinedIcon />;
+      iconComponent = <LoginOutlinedIcon color='primary'/>;
+      chipStyle = { ...chipStyle, color:'#2196f3' };
       break;
     case 'Checked Out':
-      iconComponent = <AccessTimeOutlinedIcon/>;
+      iconComponent = <LogoutOutlinedIcon />;
+      
+      break;
+      case 'Do Not Admit':
+      iconComponent = <LogoutOutlinedIcon />;
+      break;
+      case 'Pending':
+      iconComponent = <LogoutOutlinedIcon color='#ef7918'/>;
+      chipStyle = { ...chipStyle, color:'#ef7918' }
       break;
     default:
       iconComponent = null; // You can set a default icon or handle other cases as needed
@@ -39,12 +50,12 @@ const renderChipCell = (params) => {
     <Chip
       icon={iconComponent}
       label= {status}
-      style={{ color: '#1e90ff',width:'140px' }}
+      style={{ ...chipStyle,}}
       color="default"
       variant="outlined"
       width="200"
-
-    />
+      
+    /> 
     
  
   );

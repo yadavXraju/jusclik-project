@@ -41,7 +41,7 @@ for(let i=0;i<templateCompact.numberOfCopies;i++){
                     <Box pt={2} sx={{ width: '100px' }}>
                       <img src={schoollogo} alt='schoollogo' width="80" height="80">
 
-                      </img>
+                      </img> 
                     </Box>
                     <Box p={3}  >
                       <Typography  variant='h5' sx={{ fontWeight: 'bold' }}> {  commonTemplateContent.schoolName}</Typography>
@@ -196,7 +196,7 @@ for(let i=0;i<templateCompact.numberOfCopies;i++){
       spacing={2}
       sx={{
         height: '100%',
-        width:'110%',
+        width:'100%',
         margin: 'auto',
         '@media print and (min-width: 297mm) and (min-height: 210mm)': {
           // A4 landscape dimensions

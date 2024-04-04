@@ -1,7 +1,7 @@
 // icons
 import PersonOutlineTwoToneIcon from '@mui/icons-material/PersonOutlineTwoTone';
 import SettingsTwoToneIcon from '@mui/icons-material/SettingsTwoTone';
-import AdminPanelSettingsTwoToneIcon from '@mui/icons-material/AdminPanelSettingsTwoTone';
+import DescriptionTwoToneIcon from '@mui/icons-material/DescriptionTwoTone';
 
 
 
@@ -10,9 +10,7 @@ import AdminPanelSettingsTwoToneIcon from '@mui/icons-material/AdminPanelSetting
 const LibraryMenu = {
     id: 'library',
     type: 'group',
-    children: [
-  
-       // Studnet master      
+    children: [   
           {
             id: 'manage-library',
             title: 'Manage Library',
@@ -30,16 +28,12 @@ const LibraryMenu = {
             icon: SettingsTwoToneIcon,
             breadcrumbs: false
           },
-         
-
-          
-            // User and roles
             {
               id: 'reports',
               title: 'Reports',
               type: 'item',
               url: '/erp/library/reports',
-              icon: AdminPanelSettingsTwoToneIcon,
+              icon: DescriptionTwoToneIcon,
               breadcrumbs: false
             },
            

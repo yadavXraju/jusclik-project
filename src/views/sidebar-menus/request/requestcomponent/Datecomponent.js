@@ -1,6 +1,6 @@
 import React from 'react'
 import {TextField} from '@mui/material';
-function Datecomponent({label}) {
+function Datecomponent({label,Margin}) {
 
   return (
  <>
@@ -9,9 +9,9 @@ function Datecomponent({label}) {
       type="date"
       fullWidth
       label={label}
-      sx={{margin:"10px"}}
+      sx={{margin:Margin?Margin:"10px"}}
       InputLabelProps={{
-        shrink: true,
+        shrink:true,
       }}
     />
  </>
