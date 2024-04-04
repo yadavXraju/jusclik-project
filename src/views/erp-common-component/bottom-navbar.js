@@ -4,7 +4,7 @@ import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import useDrawer from 'hooks/useDrawer';
 import CustomFields from './common-custom-fields';
 
-const BottomNavbar = ({handleAddField,tabPageLength, value, setValue, customStyle = {},section}) => {
+const BottomNavbar = ({handleAddField,tabPageLength, value, setValue,handleSubGroup, customStyle = {},section,subGroups}) => {
     const {anchor,toggleDrawer}=useDrawer();
     const handlePrev = () => {
         setValue(Math.max(0, value - 1));
@@ -56,7 +56,7 @@ const BottomNavbar = ({handleAddField,tabPageLength, value, setValue, customStyl
                 Customize Fields
             </Button>
             <Drawer anchor="right" open={anchor.right} onClose={toggleDrawer(false)}>
-              <CustomFields customFieldDrawer={toggleDrawer}  handleAddField={handleAddField} section={section}/>    
+              <CustomFields customFieldDrawer={toggleDrawer}  handleAddField={handleAddField} section={section} handleSubGroup={handleSubGroup} subGroups={subGroups}/>    
             </Drawer>
         </Paper>
     )

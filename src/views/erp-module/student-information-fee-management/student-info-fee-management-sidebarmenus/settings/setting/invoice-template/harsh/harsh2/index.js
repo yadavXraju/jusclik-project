@@ -24,7 +24,7 @@ const CompactTemplate5= () => {
       <Paper elevation={4} sx={{paddingTop:`${generalSettings.marginTop}rem`,
     paddingRight:`${generalSettings.marginRight}rem`,
     paddingBottom:`${generalSettings.marginBottom}rem`,
-    paddingLeft:`${generalSettings.marginLeft}rem`}}>
+    paddingLeft:`${generalSettings.marginLeft}rem` , maxWidth:'max-content'}}>
 
         <Box ml={6} mr={7} pt={6} display={'flex'} justifyContent={'end'} bgcolor={headerFooterSettings.headerBackgroundColor}>
           <Box>
