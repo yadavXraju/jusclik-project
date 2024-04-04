@@ -1,5 +1,5 @@
 import React from 'react'
-import CommonDataGrid from 'views/erp-common-component/commonDataGrid'
+import CommonDataGrid from 'views/common-section/commonDataGrid'
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 // import WarningDialog from 'views/common-section/WarningDialog';
 import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';

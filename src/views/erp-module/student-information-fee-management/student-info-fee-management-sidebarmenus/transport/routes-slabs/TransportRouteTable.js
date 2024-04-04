@@ -8,7 +8,7 @@ import WarningDialog from 'views/common-section/WarningDialog';
 import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 import RouteData from './RoutesData';
 import RoutesFormDrawer from './RoutesFormDrawer';
-import CommonDataGrid from 'views/erp-common-component/commonDataGrid';
+import CommonDataGrid from 'views/common-section/commonDataGrid';
 //import SettingsTwoToneIcon from '@mui/icons-material/SettingsTwoTone';
 //import RoutesManageDrawer from './RoutesManageDrawer';
 
