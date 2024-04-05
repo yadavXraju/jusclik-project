@@ -977,17 +977,15 @@ const customizationSlice = createSlice({
       })
       state.studentDetailsData = updatedData;
     },
-
     subGroupbyGroup: (state, action) => {
       const section = action.payload;
-      const subGroups = [];
+      state.subGroups=[];
       const relevantItems = state.studentDetailsData.filter(item => item.name === section);
       relevantItems.forEach(item => {
         item.section.forEach(subItem => {
-          subGroups.push({ label: subItem.name, value: subItem.name });
+          state.subGroups.push({ label: subItem.name, value: subItem.name });
         });
       });
-      state.subGroups = subGroups;
     },
   },
 });
