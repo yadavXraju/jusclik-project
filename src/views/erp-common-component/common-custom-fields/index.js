@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { Typography, Box, Button, Drawer } from '@mui/material';
 import DragIndicatorOutlinedIcon from '@mui/icons-material/DragIndicatorOutlined';
-import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
-import DoDisturbOnOutlinedIcon from '@mui/icons-material/DoDisturbOnOutlined';
 import useDrawer from 'hooks/useDrawer';
 import AddCustomField from './add-custom-field';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
@@ -10,6 +8,8 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Accordion from '@mui/material/Accordion';
+import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
+import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 import { useSelector } from 'react-redux';
 
 const CustomFields = ({ customFieldDrawer, handleAddField, section,handleSubGroup,subGroups}) => {
@@ -67,8 +67,8 @@ const CustomFields = ({ customFieldDrawer, handleAddField, section,handleSubGrou
                                 <Box sx={{ border: "1px solid #eee", height: "40px", borderRadius: "4px", display: "flex", alignItems: "center", width: "85%", paddingLeft: "10px" }}>
                                   <Typography>{finalField?.name}</Typography>
                                 </Box>
-                                <EditOutlinedIcon sx={{ visibility: hoverUnusedField == finalField?.id ? 'visible' : "hidden", height: "20px", width: "20px", color: "#b3b9c1" }} />
-                                <DoDisturbOnOutlinedIcon sx={{ visibility: hoverUnusedField == finalField?.id ? 'visible' : "hidden", height: "20px", width: "20px", color: "#b3b9c1" }} />
+                                <EditTwoToneIcon sx={{ visibility: hoverUnusedField == finalField?.id ? 'visible' : "hidden", height: "20px", width: "20px", color: "#1980d8",marginLeft:"5px" }} />
+                                <RemoveCircleIcon sx={{ visibility: hoverUnusedField == finalField?.id ? 'visible' : "hidden", height: "20px", width: "20px",color:"#ff7c80" }} />
                               </Box>
                               )
                             )}
@@ -125,7 +125,7 @@ const CustomFields = ({ customFieldDrawer, handleAddField, section,handleSubGrou
       </Box>
       <Box sx={{ display: "flex", justifyContent: "space-between", position: "fixed", bottom: "0px", borderTop: "1px solid #eee", borderBotttom: "1px solid #eee", width: "900px", padding: "0px 20px" }}>
         <Typography variant="text" sx={{ padding: "20px 20px 20px 20px" }}>
-          Used Custom Fields:2/50
+          Used Custom Fields: <Typography  variant="text">2/<Typography variant="text" sx={{fontWeight:"600"}}>50</Typography></Typography> 
         </Typography>
         <Box sx={{ display: "flex", gap: "20px", alignItems: 'center' }}>
           <Button variant="contained" sx={{ height: "40px" }}>Save</Button>
