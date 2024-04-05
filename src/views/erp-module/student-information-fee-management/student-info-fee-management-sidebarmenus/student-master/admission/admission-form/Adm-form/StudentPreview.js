@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import MainCard from 'ui-component/cards/MainCard';
-import { Box, Grid, Typography, IconButton, Popover, useMediaQuery, Divider } from '@mui/material';
+import { Box, Grid, Typography, IconButton, useMediaQuery, Divider } from '@mui/material';
 import PriviewTabs from './PreviewTabs';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
@@ -11,11 +11,12 @@ import { studentProfileDetails } from 'layout/MainLayout/Header/ProfileSection/P
 import { CardMedia } from '@mui/material';
 import ArrowBackOutlinedIcon from '@mui/icons-material/ArrowBackOutlined';
 import { useNavigate } from 'react-router-dom';
-import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
-import MoreVertTwoToneIcon from '@mui/icons-material/MoreVertTwoTone';
+// import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
+// import MoreVertTwoToneIcon from '@mui/icons-material/MoreVertTwoTone';
 //import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 import EditDrawer from './EditDrawer';
 import rows from './AdmissionTableData';
+import PreviewLoginAndWithdrawalDrawer from './PreviewLoginAndWithdrawalDrawer';
 
 function StudentPreview() {
   const location = useLocation();
@@ -104,7 +105,7 @@ function StudentPreview() {
                 {/* ============ import edit drawer ============ */}
                 <EditDrawer currEditItem={filteredRow} handleClick={() => {}}/>
               </IconButton>
-              <PopupState variant="popover" popupId="demo-popup-popover">
+              {/* <PopupState variant="popover" popupId="demo-popup-popover">
                 {(popupState) => (
                   <div>
                     <IconButton sx={{ marginRight: '8px', background: '#cccccc54' }} {...bindTrigger(popupState)}>
@@ -122,13 +123,16 @@ function StudentPreview() {
                       }}
                     >
                       <Typography sx={{ p: 1, display: 'Grid' }}>
-                        <Button sx={{ color: 'black', borderBottom: '1px dotted #ccc' }}>Import Contact</Button>
-                        <Button sx={{ color: 'black', borderBottom: '1px dotted #ccc' }}>Download Contact</Button>
+                        <Button sx={{ color: 'black', borderBottom: '1px dotted #ccc' }}>Initiate Withdrawal</Button>
+                        <Button sx={{ color: 'black', borderBottom: '1px dotted #ccc' }}>Deactivate Login</Button>
                       </Typography>
                     </Popover>
                   </div>
                 )}
-              </PopupState>
+              </PopupState> */}
+              <PreviewLoginAndWithdrawalDrawer/>
+
+
               <ButtonGroup color="primary" variant="outlined" aria-label="Basic button group">
                 <Button sx={{ padding: '5px' }}>
                   <ArrowBackIosOutlinedIcon onClick={handlePrevious}/>

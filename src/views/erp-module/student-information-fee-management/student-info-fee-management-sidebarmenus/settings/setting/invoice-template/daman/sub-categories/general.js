@@ -218,17 +218,7 @@ const General = () => {
               </Grid>
               <Grid item md={12}>
                 {/* ================ Background Color ===============*/}               
-                  <Grid container>
-                    <Grid item xs='auto'>
-                      <FormControlLabel
-                        control={
-                          <Checkbox
-                            checked={generalSettings.backgroundColorEnable}
-                            onChange={(e) => handleStateChange('backgroundColorEnable', e.target.checked)}
-                          />
-                        }
-                      />
-                    </Grid>
+                  <Grid container columnSpacing={2}>
 
                     <Grid item md>
                       <FormControl fullWidth>
@@ -240,6 +230,19 @@ const General = () => {
                           enable={generalSettings.backgroundColorEnable}
                         />
                       </FormControl>
+                    </Grid>
+                    <Grid item display='flex' justifyContent='center' >
+                      <FormControlLabel
+                        control={
+                          <Checkbox
+                            checked={generalSettings.backgroundColorEnable}
+                            onChange={(e) => handleStateChange('backgroundColorEnable', e.target.checked)}
+                            sx={{marginRight:'0'}}
+                          />
+                        }
+                        sx={{marginRight:'0'}}
+
+                      />
                     </Grid>
                   </Grid>
                
