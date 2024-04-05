@@ -25,6 +25,15 @@ const ReusableTable = ({ columns, data, action = true , dragIcon = false }) => {
         <TableBody>
           {data.map((row) => (
             <TableRow key={row?.id}>
+
+            {dragIcon && (
+                <TableCell sx={{ width:'0' }}>
+                  <Typography >
+                    <GppMaybeTwoToneIcon />
+                  </Typography>
+                </TableCell>
+              )}
+
               {Object.keys(row).map((key, index) => {
                 if (key === 'id') {
                   return null;
@@ -43,13 +52,7 @@ const ReusableTable = ({ columns, data, action = true , dragIcon = false }) => {
                   </Typography>
                 </TableCell>
               )}
-                 {dragIcon && (
-                <TableCell>
-                  <Typography sx={{ display: 'flex', gap: '15px' }}>
-                    <GppMaybeTwoToneIcon />
-                  </Typography>
-                </TableCell>
-              )}
+                
             </TableRow>
           ))}
         </TableBody>

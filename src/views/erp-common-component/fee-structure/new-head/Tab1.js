@@ -1,33 +1,82 @@
 import React,{useState} from 'react'
 import SelectList from 'views/common-section/ParamSelectList';
+import { Grid , } from '@mui/material';
 
 
 
 const Tab1 = () => {
   // ========= state for Attach Slab ============
-  const [academicYear, setAcademicYear] = useState('');
-  const AcademicYearOptions = [
-    { value: 'Slab1', label: '2009-2010' },
-    { value: 'Slab2', label: '2010-2011' },
-    { value: 'Slab1', label: '2011-2012' },
-    { value: 'Slab2', label: '2012-2013' },
-    { value: 'Slab1', label: '2014-2015' },
-    { value: 'Slab2', label: '2015-2016' },
-    { value: 'Slab1', label: '2016-2017' },
-    { value: 'Slab2', label: '2017-2018' },
+  const [prioridicity, setPrioridicity] = useState('');
+  const [feeType, setFeeType] = useState('');
+  const [toBeChargeFrom, setToBeChargeFrom,] = useState('');
+
+  const PrioridicityOptions = [
+    { value: 'Monthly', label: 'Monthly' },
+    { value: 'Quarterly ', label: 'Quarterly ' },
+    { value: 'Half Yearly', label: 'Half Yearly' },
+    { value: 'Annually', label: 'Annually' },
+
   ];
 
-  const AcademicYearChange = (event) => {
-    setAcademicYear(event.target.value);
+  const FeeTypeOptions = [
+    { value: 'Supplementary', label: 'Supplementary' },
+    { value: 'One time ', label: 'One time ' },
+    { value: 'Half Yearly', label: 'Optional Fee Head' },
+
+  ];
+
+  const ToBeChargeFromOptions = [
+    { value: 'Old students', label: 'Old students' },
+    { value: 'New student', label: 'New student' },
+    { value: 'Old student and New student', label: 'Old student and New student' },
+
+  ];
+
+
+  const Prioridicity = (event) => {
+    setPrioridicity(event.target.value);
   };
+
+  const FeeType= (event) => {
+    setFeeType(event.target.value);
+  };
+
+  const ToBeChargeFrom= (event) => {
+    setToBeChargeFrom(event.target.value);
+  };
+  
+
   return (
     <>
-        <SelectList 
-            label="Academic Year Upto"
-            options={AcademicYearOptions}
-            value={academicYear}
-            onChange={AcademicYearChange}
+    <Grid  sx={{padding:'16px' , border:'1px solid #ccc' , borderRadius:'5px' , marginTop:'1rem'}}>
+        <Grid item xs={12} sx={{paddingBottom:'16px'}} >
+            <SelectList 
+                label="Prioridicity"
+                options={ PrioridicityOptions}
+                value={prioridicity}
+                onChange={Prioridicity}
             />
+        </Grid>
+
+        <Grid item xs={12} sx={{paddingBottom:'16px'}} >
+            <SelectList 
+                label="Fee Type"
+                options={FeeTypeOptions}
+                value={feeType}
+                onChange={FeeType}
+            />
+        </Grid>
+
+        <Grid item xs={12} sx={{paddingBottom:'16px'}} >
+            <SelectList 
+                label="To be charged from"
+                options={ToBeChargeFromOptions}
+                value={toBeChargeFrom}
+                onChange={ToBeChargeFrom}
+            />
+        </Grid>
+
+    </Grid>
     </>
   )
 }
