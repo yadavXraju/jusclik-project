@@ -5,9 +5,10 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Drawer, Button, CardActionArea, CardActions } from '@mui/material';
 import PortraitImage1 from '../../../../../../../assets/images/invoice-template/templatePortrait1.png';
-import LandscapeImage1 from '../../../../../../../assets/images/invoice-template/templateLandscape1.png';
 import PortraitImage2 from '../../../../../../../assets/images/invoice-template/templatePortrait2.png';
 import PortraitImage3 from '../../../../../../../assets/images/invoice-template/templatePortrait3.png';
+import PortraitImage4 from '../../../../../../../assets/images/invoice-template/templatePortrait4.png';
+import LandscapeImage1 from '../../../../../../../assets/images/invoice-template/templateLandscape1.png';
 
 import useDrawer from 'hooks/useDrawer';
 import { useDispatch } from 'react-redux';
@@ -95,19 +96,15 @@ const InvoiceTemplate = () => {
                 <CustomCard cardName={'Standard'} image={PortraitImage1} selectedTemplate={3} />
               </Grid>
             <Grid item>
-                <CustomCard cardName={'Compact'} image={PortraitImage2} selectedTemplate={4} />
+                <CustomCard cardName={'Standard Lite'} image={PortraitImage2} selectedTemplate={4} />
               </Grid>
+              
               <Grid item>
-                <CustomCard cardName={'Simple'} image={PortraitImage3} selectedTemplate={5} />
-              </Grid>
-              <Grid item>
-                <CustomCard cardName={'Standard Lite'} image={PortraitImage3} selectedTemplate={2} />
+                <CustomCard cardName={'Compact'} image={PortraitImage4} selectedTemplate={2} />
               </Grid>
             </Grid>
             <Grid container>
-              <Grid item>
-                <CustomCard cardName={'Compact'} image={LandscapeImage1} orientation={'landscape'} selectedTemplate={1} />
-              </Grid>
+            
             </Grid>
           </Grid>
         
@@ -134,13 +131,13 @@ const InvoiceTemplate = () => {
               </Grid>
             </Grid>
               <Grid item>
-                <CustomCard cardName={'Compact'} image={PortraitImage2} selectedTemplate={4} />
+                <CustomCard cardName={'Standard Lite'} image={PortraitImage2} selectedTemplate={4} />
               </Grid>
               <Grid item>
                 <CustomCard cardName={'Simple'} image={PortraitImage3} selectedTemplate={5} />
               </Grid>
               <Grid item>
-                <CustomCard cardName={'Standard Lite'} image={PortraitImage3} selectedTemplate={2} />
+                <CustomCard cardName={'Compact'} image={PortraitImage4} selectedTemplate={2} />
               </Grid>
           </Grid>
           <Typography variant="h4" py={2}>
