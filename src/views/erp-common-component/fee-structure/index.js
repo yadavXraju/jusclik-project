@@ -1,88 +1,72 @@
-import { useState } from 'react';
-import TabContext from '@mui/lab/TabContext';
-import { Paper , Box } from '@mui/material';
-import TabPanel from '@mui/lab/TabPanel';
-import TabLabel from './TabLabel';
-import OptionalHead from './OptionalHead/OptionalHead';
+import { Box , Typography , Button, Drawer } from '@mui/material';
+import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
+import  ParamStepper from 'views/common-section/param-stepper';
+import CreateRegularFeeHeads from './CreateRegularFeeHeads';
+import OtherSettings from './other-settings/OtherSettings';
+import useDrawer from 'hooks/useDrawer';
 
 
-// const tableHeadings = [
-//     {
-//       id: 2,
-//       tabHeading: "Fee Head"
-//     },
-//     {
-//       id: 3,
-//       tabHeading: "Fee Type"
-//     },
-//     {
-//       id: 4,
-//       tabHeading: "Amount"
-//     },
-//     {
-//       id: 5,
-//       tabHeading: "To Be Charge From"
-//     },
 
-//   ]
+const tabPage = [
+    {
+      id: 1,
+      name: 'Regular Fee Heads',
+      value: '1',
+      component: CreateRegularFeeHeads
+    },
+    {
+        id: 2,
+        name: 'Optional Fee Heads',
+        value: '2',
+        component:'test'
+      },
   
-//   const data = [
-//     {
-//       "feeHead": "Registration Fee",
-//       "feeType": "Supplementary Invoice Only",
-//       "Amount": "4000"
-//     },
-//     {
-//       "feeHead": "Late Fee",
-//       "feeType": "Supplementary Invoice Only",
-//       "Amount": "4000"
-//     },
-//     {
-//       "feeHead": "Tuition Fee",
-//       "feeType": "Fee charged one time only",
-//       "Amount": "4000"
-//     },
-//     {
-//       "feeHead": "Admission Fee",
-//       "feeType": "Fee charged one time only",
-//       "Amount": "4000"
-//     },
+    {
+      id: 3,
+      name: 'Concession',
+      value: '3',
+      component:'test'
+    },
+  
+    {
+      id: 4,
+      name: 'Discount',
+      value: '4',
+      component:CreateRegularFeeHeads
+    },
+  
+    {
+      id: 5,
+      name: 'Other Settings',
+      value: '5',
+      component:OtherSettings
+    }
+  ];
 
-//   ];
+const FeeStructure = () => {
 
-
-
-const FeeStructure =()=> {
-
-  // for active first item when page load
-  const [value, setValue] = useState('1')
-
-
-  // for change the setvalue into newvalue
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
-
+  const  {anchor,toggleDrawer} = useDrawer();
   return (
-    <>
-    <Box sx={{ width: '100%', typography: 'body1' }}>
-      <Paper sx={{ padding:'24px' , }}>
-          <TabContext value={value} >
-            <Box sx={{ borderBottom: 1, borderColor: '#e3e8efad' , }} >
-              <TabLabel handleChange={handleChange}  />
+      <>
+            <Box sx={{paddingRight:'20px' , display:'flex' , justifyContent:'space-between' , alignItems:'center' , borderBottom:'1px solid rgba(224, 224, 224, 1)', background:'#fff', padding:'16px 24px'}}>
+        <Typography variant='h3'>Fee Structure</Typography>
+            <Button variant='contained' startIcon={<AddOutlinedIcon />} onClick={toggleDrawer('right' , true)}>New Head
+            </Button>
+        </Box>
+
+          <ParamStepper variant={null} tabPage={tabPage} orientation='vertical' customtabWrapper={{display:'flex' , flexDirection:'row' , marginTop:'0' , background:'#fff' , paddingTop:'0rem' , '& .MuiTabs-indicator':{
+            display:'none'
+          }}} customtabSytle={{minWidth:'300px' , padding:'14px' , border:'none' , fontSize:'16px'}} customtabPanelStyle={{paddingTop:'0' , }} customStyleTabs={{borderRight:'1px solid rgba(224, 224, 224, 1)' , }}/>
+
+          {/* Drawer */}
+          <Drawer anchor='right' open={anchor.right}  onClose={toggleDrawer('right', false)}>
+          <Box  sx={{ width:{xs : '100vw' , sm: 650} , padding: '1rem' }} role='presentation'>
             </Box>
-       
-            <TabPanel value="1" sx={{width:'100%' , padding:'2rem 0'}}><OptionalHead /> </TabPanel>
-            <TabPanel value="2" sx={{width:'100%' , padding:'2rem 0'}} >test</TabPanel>
+            </Drawer>
 
-          </TabContext>
-      </Paper>
 
-    </Box>
-    </>
-  );
+  </>
+  )
 }
 
 export default FeeStructure
-
-

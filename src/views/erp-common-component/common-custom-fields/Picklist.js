@@ -43,9 +43,9 @@ const Picklist = () => {
       />
       <FormControlLabel control={<Checkbox defaultChecked />} label="Mandatory Field" sx={{ marginTop: "-20px" }} />
       <Box sx={{ width: "90%" }}>
-        <Box sx={{ display: "flex", justifyContent: "space-between", width: "100%", marginTop: "-10px" }}>
+        <Box sx={{ display: "flex", justifyContent: "space-between", width: "100%"}}>
           <Typography sx={{ whiteSpace: "nowrap" }}>Picklist Options</Typography>
-          <Typography sx={{ whiteSpace: "nowrap",Color:"blue"}}><AddOutlinedIcon />Option in Bulk</Typography>
+          <Typography sx={{ whiteSpace: "nowrap",Color:"blue",display:"flex",alingItems:"center"}}><AddOutlinedIcon sx={{marginTop:"-3px"}}/>Option in Bulk</Typography>
         </Box>
         <Box sx={{ display: "flex", flexDirection: "column", marginTop: "10px", gap: "10px" }}>
           <Box

@@ -10,17 +10,15 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Accordion from '@mui/material/Accordion';
-import {useSelector} from 'react-redux';
+import { useSelector } from 'react-redux';
 
-const CustomFields = ({ customFieldDrawer,handleAddField,section}) => {
+const CustomFields = ({ customFieldDrawer, handleAddField, section,handleSubGroup,subGroups}) => {
   const [hoverUnusedField, setHoverUnusedField] = useState(-1);
   const { anchor, toggleDrawer } = useDrawer();
-  // const isMobile = useMediaQuery('(max-width: 767px)')
-  const {studentDetailsData}=useSelector((state)=>state.admission)
-  // const {studentDetailsList}=useSelector((state)=>state.studentDetailsList)
-  
+  const { studentDetailsData } = useSelector((state) => state.admission)
+ 
   return (
-    <Box sx={{ width: "800px" }}>
+    <Box sx={{ width: "900px" }}>
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #ccc', padding: "0px 20px 0px 20px" }}>
         <Typography variant="h4">Custom Field</Typography>
         <Button onClick={customFieldDrawer('right', false)} sx={{ alignSelf: 'flex-end' }}>
@@ -29,65 +27,67 @@ const CustomFields = ({ customFieldDrawer,handleAddField,section}) => {
       </Box>
       <Box sx={{ display: "flex", flexDirection: "space-between", width: "100%" }}>
         {/* Used Fields*/}
-        <Box sx={{ display: 'flex', flexDirection: "column", gap: "20px", padding: "20px 20px 20px 20px", width: "65%" }} >
-            <Typography variant='h4'>Used Fields</Typography>
-            <Box sx={{ height: "calc(100vh - 180px)" }} className="scrollbar">
-              {
-                studentDetailsData && studentDetailsData.map((field) => (
-                  <Box key={field.id} className="scrollbar">
-                    <Accordion defaultExpanded>
+        <Box sx={{ display: 'flex', flexDirection: "column", gap: "20px", padding: "20px 20px 20px 20px", width: "60%" }} >
+          <Typography variant='h3'>Used Fields</Typography>
+          <Box sx={{ height: "calc(100vh - 180px)" }} className="scrollbar">
+            {
+              studentDetailsData && studentDetailsData.map((field) => (
+                <Box key={field.id} className="scrollbar">
+                  <Accordion defaultExpanded>
                     {/* Group Name */}
                     <AccordionSummary
                       expandIcon={<ExpandMoreIcon />}
                       aria-controls="panel1-content"
                       id="panel1-header"
                     >
-                      <Typography variant="h5" sx={{ padding: "10px 10px 10px 0px" }}>{field?.name}</Typography>
+                      <Typography variant="h4">{field?.name}</Typography>
                     </AccordionSummary>
                     <AccordionDetails>
                       {field.section.map((item) => (
                         <Box key={item.id}>
                           {/* Sub Group Name */}
-                          <Typography variant="h6" sx={{ padding: "10px 0px" }}>{item?.name}</Typography>
-                          {item?.subSection.map((finalField) =>
-                            finalField.selected && (<Box
-                              sx={{
-                                display: "flex",
-                                width: "100%",
-                                justifyContent: "space-between",
-                                alignItems: "center",
-                                gap: "5px",
-                                padding: "5px 10px 5px 0px",
-                                backgroundColor: hoverUnusedField == finalField?.id ? '#eef2f682' : "inherit"
-                              }}
-                              key={finalField?.id}
-                              onMouseEnter={() => setHoverUnusedField(finalField?.id)}
-                              onMouseLeave={() => setHoverUnusedField(-1)}
-                            >
-                              <DragIndicatorOutlinedIcon sx={{ color: "#b3b9c1" }} />
-                              <Box sx={{ border: "1px solid #eee", height: "40px", borderRadius: "4px", display: "flex", alignItems: "center", width: "85%", paddingLeft: "10px" }}>
-                                <Typography>{finalField?.name}</Typography>
+                          <Typography variant="h5">{item?.name}</Typography>
+                          <Box sx={{margin:"20px 0px"}}>
+                            {item?.subSection.map((finalField) =>
+                              finalField.selected && (<Box
+                                sx={{
+                                  display: "flex",
+                                  width: "100%",
+                                  justifyContent: "space-between",
+                                  alignItems: "center",
+                                  gap: "5px",
+                                  padding: "5px 10px 5px 0px",
+                                  backgroundColor: hoverUnusedField == finalField?.id ? '#eef2f682' : "inherit"
+                                }}
+                                key={finalField?.id}
+                                onMouseEnter={() => setHoverUnusedField(finalField?.id)}
+                                onMouseLeave={() => setHoverUnusedField(-1)}
+                              >
+                                <DragIndicatorOutlinedIcon sx={{ color: "#b3b9c1" }} />
+                                <Box sx={{ border: "1px solid #eee", height: "40px", borderRadius: "4px", display: "flex", alignItems: "center", width: "85%", paddingLeft: "10px" }}>
+                                  <Typography>{finalField?.name}</Typography>
+                                </Box>
+                                <EditOutlinedIcon sx={{ visibility: hoverUnusedField == finalField?.id ? 'visible' : "hidden", height: "20px", width: "20px", color: "#b3b9c1" }} />
+                                <DoDisturbOnOutlinedIcon sx={{ visibility: hoverUnusedField == finalField?.id ? 'visible' : "hidden", height: "20px", width: "20px", color: "#b3b9c1" }} />
                               </Box>
-                              <EditOutlinedIcon sx={{ visibility: hoverUnusedField == finalField?.id ? 'visible' : "hidden", height: "20px", width: "20px", color: "#b3b9c1" }} />
-                              <DoDisturbOnOutlinedIcon sx={{ visibility: hoverUnusedField == finalField?.id ? 'visible' : "hidden", height: "20px", width: "20px", color: "#b3b9c1" }} />
-                            </Box>
-                            )
-                          )}
+                              )
+                            )}
+                          </Box>
                         </Box>
                       ))}
                     </AccordionDetails>
-                    </Accordion>
-                  </Box>
-                ))
-              }
-            </Box>
-         
+                  </Accordion>
+                </Box>
+              ))
+            }
+          </Box>
+
         </Box>
         {/*Unused Fields*/}
-        <Box sx={{ display: 'flex', flexDirection: "column", gap: "20px", height: '100%', padding: "20px 20px 20px 20px", width: "35%" }}>
+        <Box sx={{ display: 'flex', flexDirection: "column", gap: "20px", height: '100%', padding: "20px 20px 20px 20px", width: "40%" }}>
           <Button variant="outlined" sx={{ width: "150px" }} startIcon={<AddOutlinedIcon />} onClick={toggleDrawer("right", true)}>Custom Field</Button>
           <Box sx={{ display: "flex", justifyContent: "flex-start" }}>
-            <Typography variant="h4">Unused Fields</Typography>
+            <Typography variant="h3">Unused Fields</Typography>
           </Box>
           {
             studentDetailsData && studentDetailsData.map((field) => (
@@ -123,7 +123,7 @@ const CustomFields = ({ customFieldDrawer,handleAddField,section}) => {
           }
         </Box>
       </Box>
-      <Box sx={{ display: "flex", justifyContent: "space-between", position: "fixed", bottom: "0px", borderTop: "1px solid #eee", borderBotttom: "1px solid #eee", width: "800px", padding: "0px 20px" }}>
+      <Box sx={{ display: "flex", justifyContent: "space-between", position: "fixed", bottom: "0px", borderTop: "1px solid #eee", borderBotttom: "1px solid #eee", width: "900px", padding: "0px 20px" }}>
         <Typography variant="text" sx={{ padding: "20px 20px 20px 20px" }}>
           Used Custom Fields:2/50
         </Typography>
@@ -133,7 +133,7 @@ const CustomFields = ({ customFieldDrawer,handleAddField,section}) => {
         </Box>
       </Box>
       <Drawer anchor="right" open={anchor.right} onClose={toggleDrawer("right", true)}>
-        <AddCustomField toggleDrawer={toggleDrawer}  section={section} handleAddField={handleAddField}/>
+        <AddCustomField toggleDrawer={toggleDrawer} section={section} handleAddField={handleAddField} handleSubGroup={handleSubGroup} subGroups={subGroups}/>
       </Drawer>
     </Box>
   );

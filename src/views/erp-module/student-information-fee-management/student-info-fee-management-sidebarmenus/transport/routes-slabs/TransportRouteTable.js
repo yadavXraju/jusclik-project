@@ -8,7 +8,7 @@ import WarningDialog from 'views/common-section/WarningDialog';
 import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 import RouteData from './RoutesData';
 import RoutesFormDrawer from './RoutesFormDrawer';
-import CommonDataGrid from 'views/erp-common-component/commonDataGrid';
+import CommonDataGrid from 'views/common-section/commonDataGrid';
 //import SettingsTwoToneIcon from '@mui/icons-material/SettingsTwoTone';
 //import RoutesManageDrawer from './RoutesManageDrawer';
 
@@ -115,18 +115,6 @@ export default function TransportRouteTable() {
           </Box>
         </Box>
         <Box mt={3}>
-          {/* <DataGrid
-            rows={tableRows}
-            columns={columns} // Use state variable for columns
-            //onRowClick={(params) => Click(params.id)}
-            initialState={{
-              pagination: {
-                paginationModel: { page: 0, pageSize: 50 }
-              }
-            }}
-            pageSizeOptions={[10, 25, 50, 100]}
-            checkboxSelection
-          /> */}
           <CommonDataGrid
             rows={tableRows} columns={columns}  width="100%"
             initialState={{

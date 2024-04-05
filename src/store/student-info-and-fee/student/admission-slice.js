@@ -71,7 +71,7 @@ const intialStudentDetailsData = [
           {
             name: "Age",
             type: "text",
-            selected: true,
+            selected: false,
             id: 14
           },
           {
@@ -83,33 +83,9 @@ const intialStudentDetailsData = [
           {
             name: "PEN No.",
             type: "text",
-            selected: true,
+            selected: false,
             id: 16
           },
-          {
-            name: "abhishek",
-            type: "text",
-            selected: true,
-            id: 17
-          },
-          {
-            name: "tarun",
-            type: "text",
-            selected: true,
-            id: 18
-          },
-          {
-            name: "vikas",
-            type: "text",
-            selected: false,
-            id: 19,
-          },
-          {
-            name: "suraj",
-            type: "text",
-            selected: false,
-            id: 20
-          }
         ]
       },
       {
@@ -126,12 +102,6 @@ const intialStudentDetailsData = [
             type: "text",
             selected: true,
             id: 22
-          },
-          {
-            name: "Vikas",
-            type: "text",
-            selected: true,
-            id: 23
           },
         ]
       },
@@ -157,7 +127,7 @@ const intialStudentDetailsData = [
             id: 26
           },
           {
-            name: "date",
+            name: "Date",
             type: "date",
             selected: true,
             id: 27
@@ -209,14 +179,7 @@ const intialStudentDetailsData = [
             type: "text",
             selected: true,
             id: 33
-          },
-          {
-            name: "vikas",
-            type: "text",
-            selected: true,
-            id: 34
           }
-
         ]
       },
       {
@@ -295,12 +258,6 @@ const intialStudentDetailsData = [
             selected: true,
             id: 44
           },
-          {
-            name: "check",
-            type: "text",
-            selected: true,
-            id: 45
-          }
         ]
       },
     ]
@@ -975,7 +932,24 @@ const rows = [
 const initialState = {
   studentDetailsData: intialStudentDetailsData,
   studentDetailsList: rows,
-  section: []
+  section: [],
+  subGroups: [
+    {
+      label: 'Admission Details',
+      value: 'Admission Details'
+    },
+    {
+      label: 'Student Details',
+      value: 'Student Details'
+    },
+    {
+      label: 'Class Details',
+      value: 'Class Details'
+    },
+    {
+      label: 'Fee Details',
+      value: 'Fee Details'
+    }]
 };
 
 const customizationSlice = createSlice({
@@ -991,7 +965,7 @@ const customizationSlice = createSlice({
                 ...section,
                 subSection: [
                   ...section.subSection,
-                  {name: action.payload.label, ...action.payload.customText }
+                  { name: action.payload.label, ...action.payload.customTextl, selected: true }
                 ]
               };
             }
@@ -1002,13 +976,26 @@ const customizationSlice = createSlice({
         return item;
       })
       state.studentDetailsData = updatedData;
-    }
+    },
+
+    subGroupbyGroup: (state, action) => {
+      const section = action.payload;
+      const subGroups = [];
+      const relevantItems = state.studentDetailsData.filter(item => item.name === section);
+      relevantItems.forEach(item => {
+        item.section.forEach(subItem => {
+          subGroups.push({ label: subItem.name, value: subItem.name });
+        });
+      });
+      state.subGroups = subGroups;
+    },
   },
 });
 
 
 export const {
-  addField
+  addField,
+  subGroupbyGroup
 } = customizationSlice.actions;
 
 export default customizationSlice.reducer;

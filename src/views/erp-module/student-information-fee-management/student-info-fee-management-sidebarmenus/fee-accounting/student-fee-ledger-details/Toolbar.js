@@ -88,6 +88,7 @@ const EnhancedTableToolbar= React.forwardRef((props,ref)=>{
 
             <Button sx={{marginTop:"-6px"}} onClick={toggleDrawer('right', false)}>Close</Button>
           </Box>
+          
 
            <Typography sx={{fontSize:'18px' , pb:3, }}> Total Net Payable : {totalNetPay}</Typography>
           <FeeLedgerForms />

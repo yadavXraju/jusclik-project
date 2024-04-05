@@ -14,7 +14,7 @@ const ReusableTable = ({ columns, data, action = true }) => {
   return (
     <TableContainer component={Paper} sx={{ width: '100%', overflowX: 'auto' }}>
       <Table>
-        <TableHead sx={{ width: '100%', backgroundColor: '#1219260f' }}>
+        <TableHead sx={{ width: '100%', backgroundColor: '#1219260f'  , background:'none'}}>
           <TableRow>
             {columns.map((column) => (
               <TableCell key={column.id}>{column.tabHeading}</TableCell>

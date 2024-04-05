@@ -38,11 +38,11 @@ const SlabFormDrawer = () => {
             {/* ========== Render Drawer Contant ============ */}
             <Box>
             {/* Tabs for switching between TransportRoutes and Stoppage */}
-            <Tabs value={tabValue} onChange={handleTabChange} variant="scrollable" aria-label="Route tabs">
+            <Tabs value={tabValue} onChange={handleTabChange} sx={{borderBottom:'1px solid #ccc'}} variant="scrollable" aria-label="Route tabs">
               {tabs.map((label, index) => (
                 // <Tab key={index} label={label} />
                 <Tab
-                  sx={{padding:'12px 8px', margin:'0px 10px'}}
+                  sx={{padding:'12px 8px', margin:'0px 10px 0px 0px'}}
                   key={index}
                   label={
                     <Box sx={{ display: 'flex', alignItems: 'center' }}>
