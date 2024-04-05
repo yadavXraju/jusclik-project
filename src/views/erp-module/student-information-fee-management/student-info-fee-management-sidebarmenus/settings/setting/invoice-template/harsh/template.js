@@ -32,7 +32,7 @@ for(let i=0;i<templateCompact.numberOfCopies;i++){
   const borderLength=(i==templateCompact.numberOfCopies-1||templateCompact.numberOfCopies==1)?"none":"2px dotted"
     templateContent.push(
             
-            <Grid item  md={gridSize} sx={{bgcolor:'white'}} >
+            <Grid item   md={gridSize} sx={{bgcolor:'white',paddingBottom:'16px'}} >
              
               <Box borderRight={borderLength}  sx={{ paddingRight: "18px", }}>
                 <Box
@@ -43,7 +43,7 @@ for(let i=0;i<templateCompact.numberOfCopies;i++){
 
                       </img> 
                     </Box>
-                    <Box p={3}  >
+                    <Box p={1}  >
                       <Typography  variant='h5' sx={{ fontWeight: 'bold' }}> {  commonTemplateContent.schoolName}</Typography>
                   
                       <Typography  variant='h6' sx={{ fontWeight: 'bold' }}>Sohna Dhani Road-12203</Typography>
@@ -78,7 +78,7 @@ for(let i=0;i<templateCompact.numberOfCopies;i++){
                             <Typography p={1} variant='h6' sx={{ fontWeight: '400' ,color:generalSettings.fontColor,fontSize:`${generalSettings.fontSize}px`}}>{  commonTemplateContent.mobile}</Typography>
                           </Box>
                           <Box sx={{ display: "flex" }}>
-                            <Typography p={1} variant='h6' sx={{ fontWeight: '400' ,color:generalSettings.labelColor}}>Father&apos;s Name</Typography>
+                            <Typography p={1} variant='h6' sx={{ fontWeight: '400' ,color:generalSettings.labelColor}}>Father</Typography>
                             <Typography p={1} variant='h6' sx={{ fontWeight: '400' ,color:generalSettings.fontColor,fontSize:`${generalSettings.fontSize}px`}}>{  commonTemplateContent.fatherName}</Typography>
                           </Box>
                             {/* email */}
@@ -89,7 +89,7 @@ for(let i=0;i<templateCompact.numberOfCopies;i++){
                         </Box>
                         <Box>
                           <Box sx={{ display: "flex" }}>
-                            <Typography p={1} variant='h6' sx={{ fontWeight: '400' ,color:generalSettings.labelColor}}>Inv No.[SS*]</Typography>
+                            <Typography p={1} variant='h6' sx={{ fontWeight: '400' ,color:generalSettings.labelColor}}>Inv No.</Typography>
                             <Typography p={1} variant='h6' sx={{ fontWeight: 'bold',color:generalSettings.fontColor ,fontSize:`${generalSettings.fontSize}px`}}>{  commonTemplateContent.invoiceNo}</Typography>
                           </Box>
                           <Box sx={{ display: "flex" }}>
@@ -125,7 +125,7 @@ for(let i=0;i<templateCompact.numberOfCopies;i++){
                     <Typography variant='h6' sx={{ fontWeight: '400',color:tableSettings.itemRowFontColor , fontSize:`${tableSettings.itemRowFontSize}px` }}>{commonTemplateContent.tutionFee}</Typography>
                   </Box>
                 </Box>
-                <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                <Box sx={{ display: 'none', justifyContent: 'center' }}>
                   <img
                     src={schoollogo}
                     alt='schoollogo'
@@ -196,14 +196,12 @@ for(let i=0;i<templateCompact.numberOfCopies;i++){
       spacing={2}
       sx={{
         height: '100%',
-        width:'100%',
         margin: 'auto',
-        '@media print and (min-width: 297mm) and (min-height: 210mm)': {
-          // A4 landscape dimensions
-          height: '210mm',
-          width: '297mm',
-        },
+        width:'120%',
+       maxWidth:'291mm'
+      
       }}
+     
     >
       {templateContent}
     </Grid>

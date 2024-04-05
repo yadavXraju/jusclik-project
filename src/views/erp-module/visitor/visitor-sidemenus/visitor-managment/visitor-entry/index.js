@@ -33,7 +33,8 @@ const renderChipCell = (params) => {
       
       break;
       case 'Do Not Admit':
-      iconComponent = <LogoutOutlinedIcon />;
+      iconComponent = <LogoutOutlinedIcon color='red'/>;
+      chipStyle = { ...chipStyle, color:'red' };
       break;
       case 'Pending':
       iconComponent = <LogoutOutlinedIcon color='#ef7918'/>;
@@ -149,7 +150,7 @@ const VisitorEntry = () => {
 
           </Grid>
         </Box>
-        <Box p={2}>
+        <Box p={2} className={'scrollbar-2'}>
           <CommonDataGrid
             rows={RouteData}
             columns={columns} // Use state variable for columns
