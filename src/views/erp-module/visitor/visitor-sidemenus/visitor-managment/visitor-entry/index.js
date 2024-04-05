@@ -12,6 +12,7 @@ import LoginOutlinedIcon from '@mui/icons-material/LoginOutlined';
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import Chip from '@mui/material/Chip';
 import Avatar from '@mui/material/Avatar';
+import { useNavigate } from 'react-router';
 
 
 
@@ -60,6 +61,7 @@ const renderChipCell = (params) => {
  
   );
 };
+
 
 const columns = [
   { field: 'status', headerName: 'Status', flex: 1, minWidth: 150, align: 'left', headerAlign: 'left' ,renderCell: renderChipCell, },
@@ -131,7 +133,12 @@ const VisitorEntry = () => {
 
   //const [tableRows, setTableRows] = useState(RouteData);
  
+const navigate=useNavigate();
 
+  const Click = (rowData) => {
+    navigate('../visitor-detail', { state: { rowData } });
+    console.log(rowData);
+  };
 
   return (
     <>
