@@ -72,6 +72,10 @@ const RoutesAndSlabs =  Loadable(lazy(() => import('views/erp-module/student-inf
 
 
 const BusDetails =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/transport/bus-details')));
+// dynamic routes
+
+const BusDetailsPreveiw =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/transport/bus-details/Preview')));
+// dynamic routes
 
 
 const TransportAllocation =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/transport/transportAllocation')));
@@ -361,9 +365,21 @@ const StudentInfoFeeRoutes = [
                 element: <RoutesAndSlabs /> 
               },
 
-              { 
-                path: 'bus-details', 
-                element: <BusDetails /> 
+
+
+              {
+                path: 'bus-details',
+                children: [
+                  {
+                    path : '',
+                    element :  <BusDetails/>
+                  },
+          
+                  {
+                    path : ':id',
+                    element : <BusDetailsPreveiw/>
+                  },
+              ]
               },
 
 

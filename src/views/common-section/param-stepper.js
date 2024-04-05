@@ -1,32 +1,9 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Tabs, Tab, Typography, Box} from '@mui/material';
-import ChevronRightOutlinedIcon from '@mui/icons-material/ChevronRightOutlined';
 import BottomNavbar from 'views/common-section/BottomNavbar';
+import TabsName from './ParamTabStep';
 
-const TabsName = ({ name, number }) => {
-  return (
-    <Box sx={{ display: 'flex', gap: '8px', alignItems: 'center', justifyContent: 'space-between' }}>
-      <Box sx={{ display: 'flex', gap: '5px', alignItems: "center" }}>
-        <span style={{
-         display: 'inline-block',
-         width: '23px',
-         height: '23px',
-         borderRadius: '50%',
-         color:'rgb(52, 64, 64)',
-         textAlign: 'center',
-         lineHeight: '22px',
-         fontSize: '15px',
-         fontWeight: 'bold',
-         border: '1px solid rgb(221, 221, 221)',
-         boxSizing: 'border-box',
-        }}>{number + 1}</span>
-        <Typography>{name}</Typography>
-      </Box>
-      <ChevronRightOutlinedIcon sx={{ marginTop: "2px" }} />
-    </Box>
-  );
-};
 
 const TabPanel = (props) => {
   const { children, value, index, ...other } = props;
@@ -60,30 +37,50 @@ const a11yProps = (index) => {
   };
 };
 
-const SetupTabs = ({ tabPage }) => {
+const SetupTabs = ({ tabPage , orientation='horizontal', variant='scrollable' , customStyleTabs , customtabWrapper={},customtabSytle={},customtabPanelStyle={} , numberShow=true , iconShow=true}) => {
   const [value, setValue] = useState(0);
 
   const handleChange = (event,newValue) => {
     setValue(newValue);
   };
 
+  const style={
+       tabWrapper:{
+        width: "100%",display: 'flex',flexDirection: "column",marginTop: "25px"
+       },
+      tabStyle:{
+        width:"fit-content",borderBottom: "1px solid #eef2f6", alignItems: "baseline",paddingLeft:'0px',marginRight:"40px" 
+      },
+      tabPanel:{
+        width: "100%",padding:"0px 20px 20px 0px",bgcolor: 'background.paper', borderRadius: "10px",overflowY: "auto",height: 'calc(100vh - 250px)'
+      }
+  }
+
   return (
     <>
-      <Box sx={{width: "100%",display: 'flex',flexDirection: "column",marginTop: "25px" }}>
+      <Box sx={{...style?.tabWrapper,...customtabWrapper}}>
         <Tabs
-          orientation="horizontal"
-          variant="scrollable"
+          orientation={orientation}
+          variant={variant}
           value={value}
           onChange={handleChange}
           aria-label="Vertical tabs example"
+          sx={{...customStyleTabs , '& .Mui-selected .number-bg':{
+            background:'#2196f3',
+            color:'#fff',
+          }}}
         >
           {tabPage.map((tab, index) => (
             <Tab
               key={tab?.id}
              
-              label={<TabsName name={tab.name} number={index} />}
+              label={<TabsName name={tab.name} number={index} numberShow={numberShow} iconShow={iconShow}/>}
               {...a11yProps(index)}
-              sx={{width:"fit-content",borderBottom: "1px solid #eef2f6", alignItems: "baseline",paddingLeft:'0px',marginRight:"40px" }}
+              sx={{...style?.tabStyle,...customtabSytle , '& .MuiTypography-body1':{
+                fontSize:'15px',
+                fontWeight:'500',
+              }}}
+               
             />
           ))}
         </Tabs>
@@ -92,7 +89,9 @@ const SetupTabs = ({ tabPage }) => {
             key={tab?.id}
             value={value}
             index={index}
-            sx={{width: "100%",padding:"0px 20px 20px 0px",bgcolor: 'background.paper', borderRadius: "10px",overflowY: "auto",height: 'calc(100vh - 250px)'}} className="Scrollbar">
+            sx={{...style?.tabPanel,...customtabPanelStyle , '& .MuiBox-root':{
+              padding:'0',
+            }}} className="Scrollbar">
             <tab.component />
           </TabPanel>
         ))}

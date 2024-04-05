@@ -1,20 +1,22 @@
-import { Box, Grid, Paper } from '@mui/material';
+import { Box,  Grid, Paper } from '@mui/material';
 import React from 'react';
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Drawer, Button, CardActionArea, CardActions } from '@mui/material';
 import PortraitImage1 from '../../../../../../../assets/images/invoice-template/templatePortrait1.png';
-import LandscapeImage1 from '../../../../../../../assets/images/invoice-template/templateLandscape1.png';
 import PortraitImage2 from '../../../../../../../assets/images/invoice-template/templatePortrait2.png';
 import PortraitImage3 from '../../../../../../../assets/images/invoice-template/templatePortrait3.png';
+import PortraitImage4 from '../../../../../../../assets/images/invoice-template/templatePortrait4.png';
+import LandscapeImage1 from '../../../../../../../assets/images/invoice-template/templateLandscape1.png';
 
 import useDrawer from 'hooks/useDrawer';
 import { useDispatch } from 'react-redux';
 import { updateSelectedTemplate } from 'store/student-info-and-fee/setting/Invoice-Template-Slice';
 import { useNavigate } from 'react-router';
-// this will be the reuseable card component
 
+
+// this is reuseable card component
 export const CustomCard = ({ cardName, image, orientation, selectedTemplate }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -95,23 +97,41 @@ const InvoiceTemplate = () => {
                 <CustomCard cardName={'Standard'} image={PortraitImage1} selectedTemplate={3} />
               </Grid>
             <Grid item>
-                <CustomCard cardName={'Compact'} image={PortraitImage2} selectedTemplate={4} />
+                <CustomCard cardName={'Standard Lite'} image={PortraitImage2} selectedTemplate={4} />
               </Grid>
+              
               <Grid item>
-                <CustomCard cardName={'Simple'} image={PortraitImage3} selectedTemplate={5} />
+                <CustomCard cardName={'Compact'} image={PortraitImage4} selectedTemplate={2} />
               </Grid>
+
+              {/* new template card  */}
               <Grid item>
-                <CustomCard cardName={'Standard Lite'} image={PortraitImage3} selectedTemplate={2} />
+              <Card sx={{ width: '300px', height:'425px',borderRadius:'0px', border:'1px  dotted grey', display:'flex' }}>
+      <CardActionArea>
+          <Box p={2}>      
+          <Typography gutterBottom variant="h5" component="div">
+            New Template
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+          Click to add a template from our gallery. You can customize the template title, columns, and headers in line item table.
+          </Typography>
+          <Button onClick={toggleDrawer('top', true)} variant="contained" sx={{margin:'1rem 1rem 1rem 0'}}>
+              +New
+            </Button>
+          </Box>
+      </CardActionArea>
+    </Card>
+
               </Grid>
             </Grid>
-            <Grid container>
-              <Grid item>
-                <CustomCard cardName={'Compact'} image={LandscapeImage1} orientation={'landscape'} selectedTemplate={1} />
-              </Grid>
-            </Grid>
+           
           </Grid>
         
       </Paper>
+
+
+
+
 
       {/*  invoice gallery drawer */}
       <Drawer anchor="top" open={anchor.top} onClose={toggleDrawer('top', false)} sx={{ minHeight: '100vh' }}>
@@ -134,13 +154,13 @@ const InvoiceTemplate = () => {
               </Grid>
             </Grid>
               <Grid item>
-                <CustomCard cardName={'Compact'} image={PortraitImage2} selectedTemplate={4} />
+                <CustomCard cardName={'Standard Lite'} image={PortraitImage2} selectedTemplate={4} />
               </Grid>
               <Grid item>
                 <CustomCard cardName={'Simple'} image={PortraitImage3} selectedTemplate={5} />
               </Grid>
               <Grid item>
-                <CustomCard cardName={'Standard Lite'} image={PortraitImage3} selectedTemplate={2} />
+                <CustomCard cardName={'Compact'} image={PortraitImage4} selectedTemplate={2} />
               </Grid>
           </Grid>
           <Typography variant="h4" py={2}>
