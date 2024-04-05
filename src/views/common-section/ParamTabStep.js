@@ -1,11 +1,11 @@
 import {Box,Typography} from '@mui/material';
 
 import ChevronRightOutlinedIcon from '@mui/icons-material/ChevronRightOutlined';
-const TabsName = ({ name, number }) => {
+const TabsName = ({ name, number,numberShow , iconShow}) => {
     return (
       <Box sx={{ display: 'flex', gap: '8px', alignItems: 'center', justifyContent: 'space-between' ,  }}>
         <Box sx={{ display: 'flex', gap: '5px', alignItems: "center" }}>
-          <Typography style={{
+         {numberShow&&<Typography style={{
           //  display: 'inline-block',
            width: '30px',
            height: '30px',
@@ -24,10 +24,12 @@ const TabsName = ({ name, number }) => {
            marginRight:'5px'
           }}
           className='number-bg'
-          >{number + 1}</Typography>
+          >{number + 1}</Typography>}
           <Typography>{name}</Typography>
         </Box>
-        <ChevronRightOutlinedIcon sx={{ marginTop: "2px" }} />
+        {iconShow&&
+          <ChevronRightOutlinedIcon sx={{ marginTop: "2px" }} />
+         }
       </Box>
     );
   };

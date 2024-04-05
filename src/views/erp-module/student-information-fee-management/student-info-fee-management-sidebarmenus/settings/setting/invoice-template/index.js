@@ -1,4 +1,4 @@
-import { Box, Grid, Paper } from '@mui/material';
+import { Box,  Grid, Paper } from '@mui/material';
 import React from 'react';
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
@@ -14,8 +14,9 @@ import useDrawer from 'hooks/useDrawer';
 import { useDispatch } from 'react-redux';
 import { updateSelectedTemplate } from 'store/student-info-and-fee/setting/Invoice-Template-Slice';
 import { useNavigate } from 'react-router';
-// this will be the reuseable card component
 
+
+// this is reuseable card component
 export const CustomCard = ({ cardName, image, orientation, selectedTemplate }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -102,13 +103,35 @@ const InvoiceTemplate = () => {
               <Grid item>
                 <CustomCard cardName={'Compact'} image={PortraitImage4} selectedTemplate={2} />
               </Grid>
+
+              {/* new template card  */}
+              <Grid item>
+              <Card sx={{ width: '300px', height:'425px',borderRadius:'0px', border:'1px  dotted grey', display:'flex' }}>
+      <CardActionArea>
+          <Box p={2}>      
+          <Typography gutterBottom variant="h5" component="div">
+            New Template
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+          Click to add a template from our gallery. You can customize the template title, columns, and headers in line item table.
+          </Typography>
+          <Button onClick={toggleDrawer('top', true)} variant="contained" sx={{margin:'1rem 1rem 1rem 0'}}>
+              +New
+            </Button>
+          </Box>
+      </CardActionArea>
+    </Card>
+
+              </Grid>
             </Grid>
-            <Grid container>
-            
-            </Grid>
+           
           </Grid>
         
       </Paper>
+
+
+
+
 
       {/*  invoice gallery drawer */}
       <Drawer anchor="top" open={anchor.top} onClose={toggleDrawer('top', false)} sx={{ minHeight: '100vh' }}>
