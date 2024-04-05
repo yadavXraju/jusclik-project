@@ -11,9 +11,6 @@ import { studentProfileDetails } from 'layout/MainLayout/Header/ProfileSection/P
 import { CardMedia } from '@mui/material';
 import ArrowBackOutlinedIcon from '@mui/icons-material/ArrowBackOutlined';
 import { useNavigate } from 'react-router-dom';
-// import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
-// import MoreVertTwoToneIcon from '@mui/icons-material/MoreVertTwoTone';
-//import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 import EditDrawer from './EditDrawer';
 import rows from './AdmissionTableData';
 import PreviewLoginAndWithdrawalDrawer from './PreviewLoginAndWithdrawalDrawer';
@@ -105,33 +102,8 @@ function StudentPreview() {
                 {/* ============ import edit drawer ============ */}
                 <EditDrawer currEditItem={filteredRow} handleClick={() => {}}/>
               </IconButton>
-              {/* <PopupState variant="popover" popupId="demo-popup-popover">
-                {(popupState) => (
-                  <div>
-                    <IconButton sx={{ marginRight: '8px', background: '#cccccc54' }} {...bindTrigger(popupState)}>
-                      <MoreVertTwoToneIcon />
-                    </IconButton>
-                    <Popover
-                      {...bindPopover(popupState)}
-                      anchorOrigin={{
-                        vertical: 'bottom',
-                        horizontal: 'center'
-                      }}
-                      transformOrigin={{
-                        vertical: 'top',
-                        horizontal: 'center'
-                      }}
-                    >
-                      <Typography sx={{ p: 1, display: 'Grid' }}>
-                        <Button sx={{ color: 'black', borderBottom: '1px dotted #ccc' }}>Initiate Withdrawal</Button>
-                        <Button sx={{ color: 'black', borderBottom: '1px dotted #ccc' }}>Deactivate Login</Button>
-                      </Typography>
-                    </Popover>
-                  </div>
-                )}
-              </PopupState> */}
+        
               <PreviewLoginAndWithdrawalDrawer/>
-
 
               <ButtonGroup color="primary" variant="outlined" aria-label="Basic button group">
                 <Button sx={{ padding: '5px' }}>
@@ -155,18 +127,6 @@ function StudentPreview() {
 
                   <Box p={2}>
                     <Grid container spacing={3}>
-                      {/* <Grid item xs={6}>
-                        <Box pb={0.5} color={'#8b8989'}>
-                          Name
-                        </Box>
-                        <Box fontSize={16}>{filteredRow.StudentName}</Box>
-                      </Grid> */}
-                      {/* <Grid item xs={6}>
-                        <Box pb={0.5} color={'#8b8989'}>
-                          CLASS
-                        </Box>
-                        <Box fontSize={16}>{filteredRow.class}</Box>
-                      </Grid> */}
                       <Grid item xs={12} md={6}>
                         <Box pb={0.5} color={'#8b8989'}>
                           ADMISSION DATE
@@ -230,9 +190,6 @@ function StudentPreview() {
                     </Grid>
                   </Box>
 
-                  {/* <Typography sx={{ '&:hover': { backgroundColor: '#cbc7c73d' } }} p={0.7} variant="body2">
-                    Name - {rowData.StudentName}
-                  </Typography> */}
                 </Box>
            
                  {/* =============== Render Fee Details ===================== */}
