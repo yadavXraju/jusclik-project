@@ -11,26 +11,22 @@ import { updateHeaderFooterProperty } from 'store/student-info-and-fee/setting/I
 import { useSelector } from 'react-redux';
 
 const HeaderFooter = () => {
-  
-  const dispatch=useDispatch()
+  const dispatch = useDispatch();
   // const headerFooterSettings=settings[0]
-  const headerFooterSettings=useSelector(state=>state.invoiceTemplate.headerFooter)
+  const headerFooterSettings = useSelector((state) => state.invoiceTemplate.headerFooter);
 
   const handleStateChange = (key, value) => {
-   dispatch(updateHeaderFooterProperty({key,value}))
+    dispatch(updateHeaderFooterProperty({ key, value }));
   };
   return (
     <>
       {/* ====================================== HEADER SECTION ========================================= */}
       <Accordion>
         <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1-content" id="panel1-header">
-          <Typography variant='h5'>
-          Header
-          </Typography>
+          <Typography variant="h5">Header</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Grid container rowSpacing={2} spacing={1} >
-
+          <Grid container rowSpacing={2} spacing={1}>
             <Grid item md={12}>
               {/* ========= Background Image ============ */}
               <ImageUploadAndPreview
@@ -40,7 +36,7 @@ const HeaderFooter = () => {
                 updatekey={'headerImage'}
               />
             </Grid>
-            
+
             <Grid item md={12}>
               {/* ========= Image Position ============== */}
               <FormControl fullWidth>
@@ -56,42 +52,40 @@ const HeaderFooter = () => {
 
             <Grid item md={12}>
               {/* ========= Background Color ============ */}
-              <Grid container>
-                <Grid xs='auto'>
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    checked={headerFooterSettings.headerBackgroundColorEnable}
-                    onChange={(e) => handleStateChange('headerBackgroundColorEnable', e.target.checked)}
-                  />
-                }
-              />
-
+              <Grid container columnSpacing={2}>
+                <Grid item md>
+                  <FormControl fullWidth>
+                    <ColorPicker
+                      initialColor={headerFooterSettings.headerBackgroundColor}
+                      onColorChange={handleStateChange}
+                      colorKey="headerBackgroundColor"
+                      label="Background Color"
+                      enable={headerFooterSettings.headerBackgroundColorEnable}
+                    />
+                  </FormControl>
                 </Grid>
-                <Grid md>
-              <ColorPicker
-                initialColor={headerFooterSettings.headerBackgroundColor}
-                onColorChange={handleStateChange}
-                colorKey="headerBackgroundColor"
-                label="Background Color"
-                enable={headerFooterSettings.headerBackgroundColorEnable}
-              />
-
+                <Grid  item display="flex" justifyContent="center">
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={headerFooterSettings.headerBackgroundColorEnable}
+                        onChange={(e) => handleStateChange('headerBackgroundColorEnable', e.target.checked)}
+                        sx={{ marginRight: '0' }}
+                      />
+                    }
+                    sx={{ marginRight: '0' }}
+                  />
                 </Grid>
               </Grid>
             </Grid>
-
           </Grid>
-
         </AccordionDetails>
       </Accordion>
 
       {/* ====================================== FOOTER SECTION ========================================= */}
       <Accordion>
         <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1-content" id="panel1-header">
-          <Typography variant='h5'>
-          Footer
-          </Typography>
+          <Typography variant="h5">Footer</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Grid container spacing={2} rowSpacing={2}>
@@ -137,26 +131,30 @@ const HeaderFooter = () => {
             </Grid>
             <Grid item md={12}>
               {/* ========== Background Color ============ */}
-              <Grid container>
-                <Grid item xs='auto'>
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    checked={headerFooterSettings.footerBackgroundColor}
-                    onChange={(e) => handleStateChange('footerBackgroundColor', e.target.checked)}
-                  />
-                }
-              />
-                </Grid>
+              <Grid container columnSpacing={2}>
                 <Grid item md>
-              <ColorPicker
-                initialColor={headerFooterSettings.footerBackgroundColor}
-                onColorChange={handleStateChange}
-                colorKey="footerBackgroundColor"
-                label="Background Color"
-                enable={headerFooterSettings.footerBackgroundColor}
-              />
+                  <FormControl fullWidth>
+                    <ColorPicker
+                      initialColor={headerFooterSettings.footerBackgroundColor}
+                      onColorChange={handleStateChange}
+                      colorKey="footerBackgroundColor"
+                      label="Background Color"
+                      enable={headerFooterSettings.footerBackgroundColor}
+                    />
+                  </FormControl>
                 </Grid>
+                  <Grid item display="flex" justifyContent="center">
+                    <FormControlLabel
+                      control={
+                        <Checkbox
+                          checked={headerFooterSettings.footerBackgroundColor}
+                          onChange={(e) => handleStateChange('footerBackgroundColor', e.target.checked)}
+                          sx={{ marginRight: '0' }}
+                        />
+                      }
+                      sx={{ marginRight: '0' }}
+                    />
+                  </Grid>
               </Grid>
             </Grid>
             <Grid item md={12}>

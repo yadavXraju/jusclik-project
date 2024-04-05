@@ -18,14 +18,8 @@ const TableConfig = ({settings}) => {
     <>
       <Grid container spacing={2} rowSpacing={2}>
         {/* Table Border (checkbox) with (color input)  */}
-        <Grid container item>
-          <Grid item xs="auto">
-            <FormControlLabel
-              control={
-                <Checkbox checked={tableSettings.borderEnable} onChange={(e) => handleStateChange('borderEnable', e.target.checked)} />
-              }
-            />
-          </Grid>
+        <Grid item md={12}>
+        <Grid container columnSpacing={2}>
           <Grid item md>
             <FormControl fullWidth>
               <ColorPicker
@@ -37,6 +31,15 @@ const TableConfig = ({settings}) => {
               />
             </FormControl>
           </Grid>
+          <Grid item display='flex' justifyContent='center' >
+            <FormControlLabel
+              control={
+                <Checkbox checked={tableSettings.borderEnable} onChange={(e) => handleStateChange('borderEnable', e.target.checked)}  sx={{marginRight:'0'}}/>
+              }
+              sx={{marginRight:'0'}}
+            />
+          </Grid>
+        </Grid>
         </Grid>
         {/* Table Header ============================================== (Label) */}
         <Grid container item rowSpacing={3} spacing={2}>
@@ -67,18 +70,7 @@ const TableConfig = ({settings}) => {
             </FormControl>
           </Grid>
           {/* background color  (checkbox) with (color input)*/}
-          <Grid item container>
-            <Grid item>
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    checked={tableSettings.headerBackgroundColorEnable}
-                    onChange={(e) => handleStateChange('headerBackgroundColorEnable', e.target.checked)}
-                  />
-                }
-              />
-            </Grid>
-
+          <Grid item container columnSpacing={2}>
             <Grid item md>
               <FormControl fullWidth>
                 <ColorPicker
@@ -90,6 +82,19 @@ const TableConfig = ({settings}) => {
                 />
               </FormControl>
             </Grid>
+            <Grid item display='flex' justifyContent='center'>
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={tableSettings.headerBackgroundColorEnable}
+                    onChange={(e) => handleStateChange('headerBackgroundColorEnable', e.target.checked)}
+                    sx={{marginRight:'0'}}
+                  />
+                }
+                sx={{marginRight:'0'}}
+              />
+            </Grid>
+
           </Grid>
         </Grid>
         {/* item row (label)================================================================================== */}
@@ -121,18 +126,8 @@ const TableConfig = ({settings}) => {
           </FormControl>
         </Grid>
         {/* background color (checkbox) eith (color input) */}
-        <Grid container item>
-          <Grid item>
-            <FormControlLabel
-              control={
-                <Checkbox
-                  checked={tableSettings.itemRowBackgroundColorEnable}
-                  onChange={(e) => handleStateChange('itemRowBackgroundColorEnable', e.target.checked)}
-                />
-              }
-            />
-          </Grid>
-
+        <Grid item md={12}>
+        <Grid container  columnSpacing={2}>
           <Grid item md>
             <FormControl fullWidth>
               <ColorPicker
@@ -143,6 +138,19 @@ const TableConfig = ({settings}) => {
                 enable={tableSettings.itemRowBackgroundColorEnable}
               />
             </FormControl>
+          </Grid>
+          <Grid item display='flex' justifyContent='center' >
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={tableSettings.itemRowBackgroundColorEnable}
+                  onChange={(e) => handleStateChange('itemRowBackgroundColorEnable', e.target.checked)}
+                  sx={{marginRight:'0'}}
+                />
+              }
+              sx={{marginRight:'0'}}
+            />
+          </Grid>
           </Grid>
         </Grid>
         </Grid>

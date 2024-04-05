@@ -6,15 +6,16 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-//import Button from '@mui/material/Button';
-import AttachFileIcon from '@mui/icons-material/AttachFile';
-import DeleteOutlineTwoToneIcon from '@mui/icons-material/DeleteOutlineTwoTone';
+import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
+import UploadFileTwoToneIcon from '@mui/icons-material/UploadFileTwoTone';
+import { InputLabel, IconButton, Tooltip } from '@mui/material';
+import { Box } from '@mui/system';
 
 const columns = [
   { id: 'documenttitle', label: 'Document Title', minWidth: 170 },
   { id: 'discription', label: 'Description', minWidth: 100 },
   { id: 'action', label: 'Action', minWidth: 170, align: 'right' },
-  { id: 'lastupdated', label: 'LastUpdated', minWidth: 170, align: 'right' },
+  { id: 'lastupdated', label: 'Last Updated', minWidth: 170, align: 'right' }
 ];
 
 function createData(documenttitle, discription, lastupdated, status) {
@@ -22,31 +23,37 @@ function createData(documenttitle, discription, lastupdated, status) {
 }
 
 const rows = [
-  createData('Aadhar', 'Organization Code of Conduct...', '13 Jan, 2020'),
-  createData('Fitness', 'Organization Code of Conduct...', '13 Jan, 2020'),
+  createData('Aadhar', '', '13 Jan, 2020'),
+  createData('Fitness', '', '13 Jan, 2020'),
   createData('License', 'Organization Code of Conduct...', '13 Jan, 2020'),
-  createData('Permit', 'Organization Code of Conduct...', '13 Jan, 2020'),
+  createData('Permit', '', '13 Jan, 2020'),
   createData('RegCertificate', 'Organization Code of Conduct...', '13 Jan, 2020'),
-  createData('SpeedGovernor', 'Organization Code of Conduct...', '13 Jan, 2020'),
+  createData('SpeedGovernor', '', '13 Jan, 2020'),
   createData('Insurance', 'Organization Code of Conduct...', '13 Jan, 2020'),
-  createData('GPS', 'Organization Code of Conduct...', '13 Jan, 2020'),
+  createData('GPS', '', '13 Jan, 2020')
 ];
 
 export default function Documents() {
+  const [uploadedFile, setUploadedFile] = React.useState(null);
+
+  const handleFileUpload = (event, rowIndex) => {
+    const file = event.target.files[0];
+    if (file) {
+      const newRows = [...rows];
+      newRows[rowIndex].discription = file.name;
+      setUploadedFile(file);
+    }
+  };
 
   return (
     <>
       <Paper sx={{ width: '100%', overflow: 'hidden', borderRadius: 0 }}>
-        <TableContainer sx={{height: 'calc(100vh - 188px)'}}>
+        <TableContainer className="scrollbar" sx={{ height: 'calc(100vh - 188px)', '&::-webkit-scrollbar': { display: 'none' } }}>
           <Table stickyHeader aria-label="sticky table" sx={{ border: '1px solid #ccc' }}>
             <TableHead>
               <TableRow>
                 {columns.map((column) => (
-                  <TableCell
-                    key={column.id}
-                    align={column.align}
-                    style={{ minWidth: column.minWidth, fontWeight:'bold' }}
-                  >
+                  <TableCell key={column.id} align={column.align} style={{ minWidth: column.minWidth, fontWeight: 'bold' }}>
                     {column.label}
                   </TableCell>
                 ))}
@@ -54,30 +61,39 @@ export default function Documents() {
             </TableHead>
             <TableBody>
               {rows.map((row, rowIndex) => (
-                  <TableRow hover role="checkbox" tabIndex={-1} key={rowIndex}>
-                    <TableCell sx={{ fontWeight: 'bold' }}>
-                      {row.documenttitle}
-                    </TableCell>
-                    <TableCell>
-                      {row.discription}
-                    </TableCell>
-                    <TableCell align="right">
-                      {/* <Button size='small' sx={{ mr: '2px' ,background: 'rgb(0, 200, 83 , .5)', color: 'black' }}>Upload</Button> */}
-                      <AttachFileIcon sx={{ color: 'rgb(124, 178, 221)' }}/>
-                      {/* <Button size='small' sx={{ background: 'rgb(216, 67, 21, .5)', color: 'black' }}>Delete</Button> */}
-                      <DeleteOutlineTwoToneIcon sx={{ color: '#f19e9e' }}/>
-                    </TableCell>
-                    <TableCell align="right">
-                      {row.lastupdated}
-                    </TableCell>
-                  </TableRow>
-                ))}
+                <TableRow hover role="checkbox" tabIndex={-1} key={rowIndex}>
+                  <TableCell sx={{ fontWeight: 'bold' }}>{row.documenttitle}</TableCell>
+                  <TableCell>{uploadedFile && rowIndex === 0 ? uploadedFile.name : row.discription}</TableCell>
+                  <TableCell align="right">
+                    <Box sx={{ display: 'flex', justifyContent: 'end' }}>
+                      <InputLabel htmlFor={`file-upload-${rowIndex}`}>
+                        {/* <UploadFileIcon sx={{ color: 'rgb(124, 178, 221)' }} /> */}
+                        <Tooltip title="Upload">
+                        <IconButton onClick={() => document.getElementById(`file-upload-${rowIndex}`).click()}>
+                          <UploadFileTwoToneIcon sx={{ color: 'rgb(124, 178, 221)' }} />
+                        </IconButton>
+                      </Tooltip>
+                        <input
+                          id={`file-upload-${rowIndex}`}
+                          type="file"
+                          style={{ display: 'none' }}
+                          onChange={(event) => handleFileUpload(event, rowIndex)}
+                        />
+                      </InputLabel>
+                      <Tooltip title="Delete">
+                        <IconButton >
+                          <DeleteTwoToneIcon  sx={{ color: '#f19e9e' }} />
+                        </IconButton>
+                      </Tooltip>
+                    </Box>
+                  </TableCell>
+                  <TableCell align="right">{row.lastupdated}</TableCell>
+                </TableRow>
+              ))}
             </TableBody>
           </Table>
         </TableContainer>
       </Paper>
-
-      
     </>
   );
 }
@@ -90,13 +106,88 @@ export default function Documents() {
 
 
 
+// import * as React from 'react';
+// import Paper from '@mui/material/Paper';
+// import Table from '@mui/material/Table';
+// import TableBody from '@mui/material/TableBody';
+// import TableCell from '@mui/material/TableCell';
+// import TableContainer from '@mui/material/TableContainer';
+// import TableHead from '@mui/material/TableHead';
+// import TableRow from '@mui/material/TableRow';
+// //import Button from '@mui/material/Button';
+// import AttachFileIcon from '@mui/icons-material/AttachFile';
+// import DeleteOutlineTwoToneIcon from '@mui/icons-material/DeleteOutlineTwoTone';
 
+// const columns = [
+//   { id: 'documenttitle', label: 'Document Title', minWidth: 170 },
+//   { id: 'discription', label: 'Description', minWidth: 100 },
+//   { id: 'action', label: 'Action', minWidth: 170, align: 'right' },
+//   { id: 'lastupdated', label: 'LastUpdated', minWidth: 170, align: 'right' },
+// ];
 
+// function createData(documenttitle, discription, lastupdated, status) {
+//   return { documenttitle, discription, lastupdated, status };
+// }
 
+// const rows = [
+//   createData('Aadhar', 'Organization Code of Conduct...', '13 Jan, 2020'),
+//   createData('Fitness', 'Organization Code of Conduct...', '13 Jan, 2020'),
+//   createData('License', 'Organization Code of Conduct...', '13 Jan, 2020'),
+//   createData('Permit', 'Organization Code of Conduct...', '13 Jan, 2020'),
+//   createData('RegCertificate', 'Organization Code of Conduct...', '13 Jan, 2020'),
+//   createData('SpeedGovernor', 'Organization Code of Conduct...', '13 Jan, 2020'),
+//   createData('Insurance', 'Organization Code of Conduct...', '13 Jan, 2020'),
+//   createData('GPS', 'Organization Code of Conduct...', '13 Jan, 2020'),
+// ];
 
+// export default function Documents() {
 
+//   return (
+//     <>
+//       <Paper sx={{ width: '100%', overflow: 'hidden', borderRadius: 0 }}>
+//         <TableContainer sx={{height: 'calc(100vh - 188px)'}}>
+//           <Table stickyHeader aria-label="sticky table" sx={{ border: '1px solid #ccc' }}>
+//             <TableHead>
+//               <TableRow>
+//                 {columns.map((column) => (
+//                   <TableCell
+//                     key={column.id}
+//                     align={column.align}
+//                     style={{ minWidth: column.minWidth, fontWeight:'bold' }}
+//                   >
+//                     {column.label}
+//                   </TableCell>
+//                 ))}
+//               </TableRow>
+//             </TableHead>
+//             <TableBody>
+//               {rows.map((row, rowIndex) => (
+//                   <TableRow hover role="checkbox" tabIndex={-1} key={rowIndex}>
+//                     <TableCell sx={{ fontWeight: 'bold' }}>
+//                       {row.documenttitle}
+//                     </TableCell>
+//                     <TableCell>
+//                       {row.discription}
+//                     </TableCell>
+//                     <TableCell align="right">
+//                       {/* <Button size='small' sx={{ mr: '2px' ,background: 'rgb(0, 200, 83 , .5)', color: 'black' }}>Upload</Button> */}
+//                       <AttachFileIcon sx={{ color: 'rgb(124, 178, 221)' }}/>
+//                       {/* <Button size='small' sx={{ background: 'rgb(216, 67, 21, .5)', color: 'black' }}>Delete</Button> */}
+//                       <DeleteOutlineTwoToneIcon sx={{ color: '#f19e9e' }}/>
+//                     </TableCell>
+//                     <TableCell align="right">
+//                       {row.lastupdated}
+//                     </TableCell>
+//                   </TableRow>
+//                 ))}
+//             </TableBody>
+//           </Table>
+//         </TableContainer>
+//       </Paper>
 
-
+//     </>
+//   );
+// }
 
 // import * as React from 'react';
 // import { Grid, TextField, Typography } from '@mui/material';

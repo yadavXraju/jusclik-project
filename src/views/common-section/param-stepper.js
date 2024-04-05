@@ -37,7 +37,7 @@ const a11yProps = (index) => {
   };
 };
 
-const SetupTabs = ({ tabPage , orientation='horizontal', variant='scrollable' , customStyleTabs , customtabWrapper={},customtabSytle={},customtabPanelStyle={} }) => {
+const SetupTabs = ({ tabPage , orientation='horizontal', variant='scrollable' , customStyleTabs , customtabWrapper={},customtabSytle={},customtabPanelStyle={} , numberShow=true , iconShow=true}) => {
   const [value, setValue] = useState(0);
 
   const handleChange = (event,newValue) => {
@@ -74,10 +74,10 @@ const SetupTabs = ({ tabPage , orientation='horizontal', variant='scrollable' , 
             <Tab
               key={tab?.id}
              
-              label={<TabsName name={tab.name} number={index} />}
+              label={<TabsName name={tab.name} number={index} numberShow={numberShow} iconShow={iconShow}/>}
               {...a11yProps(index)}
               sx={{...style?.tabStyle,...customtabSytle , '& .MuiTypography-body1':{
-                fontSize:'16px',
+                fontSize:'15px',
                 fontWeight:'500',
               }}}
                
@@ -90,7 +90,7 @@ const SetupTabs = ({ tabPage , orientation='horizontal', variant='scrollable' , 
             value={value}
             index={index}
             sx={{...style?.tabPanel,...customtabPanelStyle , '& .MuiBox-root':{
-              paddingTop:'0',
+              padding:'0',
             }}} className="Scrollbar">
             <tab.component />
           </TabPanel>

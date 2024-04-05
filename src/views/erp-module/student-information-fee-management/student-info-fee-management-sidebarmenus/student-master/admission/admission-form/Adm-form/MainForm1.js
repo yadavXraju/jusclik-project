@@ -110,8 +110,8 @@ const Mainform1 = ({ currEditItem }) => {
       dispatch(addField(customFields))
    }
   
-  const handleSubGroup=async(subGroupName)=>{
-    await dispatch(subGroupbyGroup(subGroupName));
+  const handleSubGroup=(subGroupName)=>{
+     dispatch(subGroupbyGroup(subGroupName));
   }
   
   return (
