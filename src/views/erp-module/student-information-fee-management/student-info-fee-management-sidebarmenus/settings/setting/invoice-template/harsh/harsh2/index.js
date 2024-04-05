@@ -21,12 +21,12 @@ const CompactTemplate5= () => {
       height: '297mm',
       width: '210mm',
     },}}>
-      <Paper elevation={4} sx={{paddingTop:`${generalSettings.marginTop}rem`,
+      <Paper elevation={1} sx={{paddingTop:`${generalSettings.marginTop}rem`,
     paddingRight:`${generalSettings.marginRight}rem`,
     paddingBottom:`${generalSettings.marginBottom}rem`,
-    paddingLeft:`${generalSettings.marginLeft}rem` , maxWidth:'max-content'}}>
+    paddingLeft:`${generalSettings.marginLeft}rem` , maxWidth:'max-content',borderRadius:'0'}}>
 
-        <Box ml={6} mr={7} pt={6} display={'flex'} justifyContent={'end'} bgcolor={headerFooterSettings.headerBackgroundColor}>
+        <Box ml={6} mr={7} pt={5} display={'flex'} justifyContent={'end'} bgcolor={headerFooterSettings.headerBackgroundColor}>
           <Box>
             <Typography p={1} variant="h2" >{commonTemplateContent.schoolName}</Typography>
             <Typography p={1} variant='h4' sx={{ fontWeight: '500', textAlign: 'end' }}>Sohna Dhani Road  Ward No - 01 </Typography>
@@ -62,7 +62,7 @@ const CompactTemplate5= () => {
           </Box>
 
 
-          <Box pr={12.5} sx={{ width: '44%' }}>
+          <Box pr={12.5} sx={{ width: '41%' }}>
             <Box display={'flex'} >
               <Typography p={1} variant="h5" sx={{ fontWeight: '400', textAlign: 'end', width: '100%', color:generalSettings.labelColor }} >Invoice No:</Typography>
               <Typography p={1} variant="body1" sx={{ fontWeight: 'bold', textAlign: 'end', width: '100%' ,color:generalSettings.fontColor ,fontSize:`${generalSettings.fontSize}px`

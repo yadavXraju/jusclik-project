@@ -25,10 +25,10 @@ export const CompactTemplate4 = () => {
       width: '210mm',
     },
     }}>
-      <Paper elevation={4}  sx={{paddingTop:`${generalSettings.marginTop}rem`,
+      <Paper elevation={1}  sx={{paddingTop:`${generalSettings.marginTop}rem`,
     paddingRight:`${generalSettings.marginRight}rem`,
     paddingBottom:`${generalSettings.marginBottom}rem`,
-    paddingLeft:`${generalSettings.marginLeft}rem`, maxWidth:'max-content'}}>
+    paddingLeft:`${generalSettings.marginLeft}rem`, maxWidth:'max-content',borderRadius:'0'}}>
         <Box p={2} bgcolor={'white'} >
           <Box p={4} ml={6} mr={4} sx={{ display: "flex", justifyContent: "space-between" }} bgcolor={headerFooterSettings.headerBackgroundColor}>
             <Box>
