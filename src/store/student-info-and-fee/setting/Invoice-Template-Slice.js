@@ -63,6 +63,7 @@ const invoiceSlice = createSlice({
   reducers: {
      // Reducer functions to update general properties
      updateGeneralProperty(state, action) {
+      console.log(action.payload);
         const { key, value } = action.payload;
         state.general[key] = value;
       },
