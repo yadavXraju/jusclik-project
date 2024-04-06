@@ -1,5 +1,5 @@
 import React from 'react';
-import { IconButton, Typography, Switch, Tooltip, Card } from '@mui/material';
+import { IconButton, Typography, Tooltip, Card } from '@mui/material';
 import { Box } from '@mui/system';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 import WarningDialog from 'views/common-section/WarningDialog';
@@ -8,12 +8,17 @@ import BusDetailsData from './BusDetailsData';
 import CommonDataGrid from 'views/common-section/commonDataGrid';
 import BusDetailsDrawer from './BusDetailsDrawer';
 import RemoveRedEyeTwoToneIcon from '@mui/icons-material/RemoveRedEyeTwoTone';
+import { useNavigate } from 'react-router-dom';
 
 export default function BusDetails() {
-  //const navigate = useNavigate();
   const [tableRows, setTableRows] = React.useState(BusDetailsData);
   const [modalOpen, setmodalOpen] = React.useState(false);
   const [deleteId, setdeleteId] = React.useState(null);
+  const navigate = useNavigate();
+
+  const Click = (id) => {
+    navigate(`/erp/student-info-fee/transport/bus-details/${id}`);
+  };
 
   const handleModalClose = () => {
     setmodalOpen(false);
@@ -32,22 +37,94 @@ export default function BusDetails() {
   };
 
   // ========= Data Grid Columns ==========
-  const columns = [
-    { field: 'routeName', headerName: 'Route Name', flex: 1, minWidth: 130, align: 'left', headerAlign: 'left' },
-    { field: 'schedule', headerName: 'Schedule', flex: 1, minWidth: 130 },
-    { field: 'seatingCapacity', headerName: 'Seating Capacity', flex: 1, minWidth: 100 },
-    { field: 'attachSlab', headerName: 'Attach Bus', flex: 1, minWidth: 100 },
-    { field: 'classes', headerName: 'Classes', flex: 1, minWidth: 100 },
-    {field: 'status',
-    headerName: 'Status',
-    flex: 1,
-    minWidth: 100,
-    renderCell: (params) => (
-      <Box display="flex" alignItems="center">
-        <Switch checked={params.value === 'Active'} disabled />
-      </Box>
-    )},
+  // const columns = [
+  //   { field: 'registrationNo', headerName: 'Registration No', flex: 1, minWidth: 130, align: 'left', headerAlign: 'left' },
+  //   { field: 'seatingCapacity', headerName: 'Seating Capacity', flex: 1, minWidth: 130 },
+  //   { field: 'ownerName', headerName: 'Owner', flex: 1, minWidth: 130, 
+  //   renderCell: (params) => (
+  //     <Box>
+  //       <Box >{params.row.ownerName}</Box>
+  //       <Box>{params.row.ownerMobile}</Box>
+  //     </Box>
+  //   )
+  //   },
+  //   { field: 'driverName', headerName: 'Driver', flex: 1, minWidth: 130, 
+  //   renderCell: (params) => (
+  //     <Box>
+  //       <Box >{params.row.driverName}</Box>
+  //       <Box>{params.row.driverMobile}</Box>
+  //     </Box>
+  //   )
+  //   },
+  //   { field: 'conductorName', headerName: 'Conductor', flex: 1, minWidth: 130, 
+  //     // valueGetter: (params) => `${params.row.conductorName}-${params.row.conductorMobile}` 
+  //     renderCell: (params) => (
+  //       <Box>
+  //         <Box >{params.row.conductorName}</Box>
+  //         <Box>{params.row.conductorMobile}</Box>
+  //       </Box>
+  //     )
+  //   },
+  //   { field: 'attendantName', headerName: 'Attendant', flex: 1, minWidth: 130, 
+  //     renderCell: (params) => (
+  //       <Box>
+  //         <Box >{params.row.attendantName}</Box>
+  //         <Box>{params.row.attendantMobile}</Box>
+  //       </Box>
+  //     )
+  //   },
+  //   { field: 'inchargeName', headerName: 'Incharge', flex: 1, minWidth: 130, 
+  //     renderCell: (params) => (
+  //       <Box>
+  //         <Box >{params.row.inchargeName}</Box>
+  //         <Box>{params.row.inchargeMobile}</Box>
+  //       </Box>
+  //     )
+  //   },
 
+  //   {
+  //     field: 'Action',
+  //     headerName: 'Action',
+  //     flex: 1,
+  //     minWidth: 130,
+  //     sortable: false,
+  //     filterable: false,
+  //     disableColumnMenu: true,
+  //     renderCell: (params) => (
+  //       <Box onClick={(event) => event.stopPropagation()}>
+  //         <Tooltip title="Preview">
+  //         <IconButton>
+  //           <RemoveRedEyeTwoToneIcon onClick={() => Click(params.row.id)} sx={{ color: 'rgb(124, 178, 221)' }} />
+  //         </IconButton>
+  //         </Tooltip>
+  //         <Tooltip title="Edit">
+  //         <IconButton>
+  //           <EditTwoToneIcon />
+  //         </IconButton>
+  //         </Tooltip>
+  //         <Tooltip title="Delete">
+  //         <IconButton>
+  //           <DeleteTwoToneIcon onClick={() => handleDeleteRow(params.row.id)} sx={{ color: '#f19e9e' }} />
+  //         </IconButton>
+  //         </Tooltip>
+  //       </Box>
+  //     )
+  //   }
+  // ];
+
+  const columns = [
+    { field: 'registrationNo', headerName: 'Registration No', flex: 1, minWidth: 130, align: 'left', headerAlign: 'left' },
+    { field: 'seatingCapacity', headerName: 'Seating Capacity', flex: 1, minWidth: 130 },
+    { field: 'ownerName', headerName: 'Owner Name', flex: 1, minWidth: 130, },
+    { field: 'ownerMobile', headerName: 'Owner Mobile', flex: 1, minWidth: 130, },
+    { field: 'driverName', headerName: 'Driver Name', flex: 1, minWidth: 130, },
+    { field: 'driverMobile', headerName: 'Driver mobile', flex: 1, minWidth: 130, },
+    { field: 'conductorName', headerName: 'Conductor Name', flex: 1, minWidth: 130, },
+    { field: 'conductorMobile', headerName: 'Conductor mobile', flex: 1, minWidth: 130, },
+    { field: 'attendantName', headerName: 'Attendant Name', flex: 1, minWidth: 130,  },
+    { field: 'attendantMobile', headerName: 'Attendant Mobile', flex: 1, minWidth: 130,  },
+    { field: 'inchargeName', headerName: 'Incharge Name', flex: 1, minWidth: 130, },
+    { field: 'inchargeMobile', headerName: 'Incharge Mobile', flex: 1, minWidth: 130, },
     {
       field: 'Action',
       headerName: 'Action',
@@ -60,7 +137,7 @@ export default function BusDetails() {
         <Box onClick={(event) => event.stopPropagation()}>
           <Tooltip title="Preview">
           <IconButton>
-            <RemoveRedEyeTwoToneIcon sx={{ color: 'rgb(124, 178, 221)' }} />
+            <RemoveRedEyeTwoToneIcon onClick={() => Click(params.row.id)} sx={{ color: 'rgb(124, 178, 221)' }} />
           </IconButton>
           </Tooltip>
           <Tooltip title="Edit">
@@ -94,12 +171,15 @@ export default function BusDetails() {
         </Box>
         <Box mt={3}>
           <CommonDataGrid
+            className='scrollbar'
             rows={tableRows} columns={columns}  width="100%"
+            onRowClick={(params) => Click(params.id)}
             initialState={{
               pagination: {
                 paginationModel: { page: 0, pageSize: 50 }
-              }
+              },
             }}
+              
             pageSizeOptions={[10, 25, 50, 100]}
           />
         </Box>
@@ -108,6 +188,7 @@ export default function BusDetails() {
       <WarningDialog
         open={modalOpen}
         onClose={handleModalClose}
+        onRowClick={(params) => Click(params.id)}
         contentText="Are you sure you want to delete?"
         onConfirm={handleConfirmDelete}
       />

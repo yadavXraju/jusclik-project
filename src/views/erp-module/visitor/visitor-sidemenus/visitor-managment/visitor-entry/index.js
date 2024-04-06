@@ -10,8 +10,11 @@ import RemoveRedEyeTwoToneIcon from '@mui/icons-material/RemoveRedEyeTwoTone';
 import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
 import LoginOutlinedIcon from '@mui/icons-material/LoginOutlined';
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
+import PauseCircleOutlineIcon from '@mui/icons-material/PauseCircleOutline';
+import DoDisturbAltOutlinedIcon from '@mui/icons-material/DoDisturbAltOutlined';
 import Chip from '@mui/material/Chip';
 import Avatar from '@mui/material/Avatar';
+import { useNavigate } from 'react-router';
 
 
 
@@ -21,24 +24,25 @@ const renderChipCell = (params) => {
   let chipStyle = { color: '#364152',width:'140px',display: 'flex', alignItems: 'center' ,justifyContent:'flex-start'};
   switch (status) {
     case 'Expected':
-      iconComponent = <AccessTimeOutlinedIcon color='success'/>;
-      chipStyle = { ...chipStyle, color:'#00e676' };
+      iconComponent = <AccessTimeOutlinedIcon color='rgb(16, 185, 129)'/>;
+
+      chipStyle = { ...chipStyle,color:'rgb(16, 185, 129)' ,background:'rgb(240, 253, 249)' };
       break;
     case 'Checked In':
-      iconComponent = <LoginOutlinedIcon color='primary'/>;
-      chipStyle = { ...chipStyle, color:'#2196f3' };
+      iconComponent = <LoginOutlinedIcon color='#1e88e5'/>;
+      chipStyle = { ...chipStyle, color:'#1e88e5', background:'rgb(242,252,255)' };
       break;
     case 'Checked Out':
-      iconComponent = <LogoutOutlinedIcon />;
-      
+      iconComponent = <LogoutOutlinedIcon  />;
+      chipStyle = { ...chipStyle, background:'rgb(247, 249, 251)' };
       break;
       case 'Do Not Admit':
-      iconComponent = <LogoutOutlinedIcon color='red'/>;
-      chipStyle = { ...chipStyle, color:'red' };
+      iconComponent = <DoDisturbAltOutlinedIcon color='rgb(216, 67, 21)'/>;
+      chipStyle = { ...chipStyle, color:'rgb(216, 67, 21)', background:'rgb(251, 233, 231)' };
       break;
       case 'Pending':
-      iconComponent = <LogoutOutlinedIcon color='#ef7918'/>;
-      chipStyle = { ...chipStyle, color:'#ef7918' }
+      iconComponent = <PauseCircleOutlineIcon color='rgb(247, 144, 9)' />;
+      chipStyle = { ...chipStyle, color:'rgb(247, 144, 9)' ,background:'rgb(255, 250, 235)'}
       break;
     default:
       iconComponent = null; // You can set a default icon or handle other cases as needed
@@ -62,8 +66,9 @@ const renderChipCell = (params) => {
   );
 };
 
+
 const columns = [
-  { field: 'status', headerName: 'Status', flex: 1, minWidth: 150, align: 'left', headerAlign: 'left' ,renderCell: renderChipCell, },
+  { field: 'status', headerName: 'Status', flex: 1, minWidth: 180, align: 'left', headerAlign: 'left' ,renderCell: renderChipCell, },
   { field: 'VisitorName', headerName: 'Visitor Name', flex: 1, minWidth: 160, align: 'left', headerAlign: 'left' , renderCell: (params) => (
     <div style={{ display: 'flex', alignItems: 'center' }}>
       <Avatar src={params.row.avatarUrl} alt={params.row.altName} />
@@ -92,7 +97,7 @@ const columns = [
     },
   // { field: 'attachBus', headerName: 'Attach Bus', flex: 1, minWidth: 100 },
   { field: 'TimeOut',
-   headerName: 'Time Out', flex: 1,
+   headerName: 'Time Out', flex: 0,
     minWidth: 100 ,
   //  valueGetter: (params) => `${params.row.dropstarttime} - ${params.row.dropendtime}`,
 },
@@ -132,7 +137,12 @@ const VisitorEntry = () => {
 
   //const [tableRows, setTableRows] = useState(RouteData);
  
+const navigate=useNavigate();
 
+  const Click = (rowData) => {
+    navigate('../visitor-detail', { state: { rowData } });
+    console.log(rowData);
+  };
 
   return (
     <>

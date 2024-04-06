@@ -84,13 +84,13 @@ const RecentVisitors = () => {
                 <TableCell>
                   <Box display="flex" alignItems="center">
                     <AccessTimeIcon fontSize='small' />
-                    <Typography variant="body2" sx={{ ml: 1 }}>{row.entryTime}</Typography>
+                    <Typography variant="body2" sx={{ ml: 1 , width: isMobile?"80px":"auto",}}>{row.entryTime}</Typography>
                   </Box>
                 </TableCell>
                 <TableCell>
                   <Box display="flex" alignItems="center">
                     <EventIcon fontSize='small' />
-                    <Typography variant="body2" sx={{ ml: 1 }}>{row.date}</Typography>
+                    <Typography variant="body2" sx={{ ml: 1 , width: isMobile?"100px":"auto", }}>{row.date}</Typography>
                   </Box>
                 </TableCell>
                 <TableCell>{row.visitingPurpose}</TableCell>

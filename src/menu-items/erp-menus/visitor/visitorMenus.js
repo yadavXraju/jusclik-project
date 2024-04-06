@@ -48,6 +48,14 @@ const VisitorMenu = {
                      breadcrumbs: false,
                      colleagueTitle : VisitorColleagueTitles,
                    },
+                  //  {
+                  //   id: 'visitor-details',
+                  //   title: 'Visitor Deatils',
+                  //   type: 'item',
+                  //   url: '/erp/visitor/visitor-management/visitor-detail',
+                  //   breadcrumbs: false,
+                  //   colleagueTitle : VisitorColleagueTitles,
+                  // },
     
                 ]
               },
