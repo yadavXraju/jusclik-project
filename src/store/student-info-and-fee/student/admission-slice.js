@@ -7,17 +7,12 @@ const intialStudentDetailsData = [
     sectionCode: 0,
     section: [
       {
+        id:50,
         name: "Admission Details",
         subSection: [
           {
             name: "Admission No.",
             type: "text",
-            selected: true,
-            id: 1
-          },
-          {
-            name: "Admission Date",
-            type: "date",
             selected: true,
             id: 2
           },
@@ -25,24 +20,25 @@ const intialStudentDetailsData = [
             name: "Joining  Class",
             type: "text",
             selected: true,
-            id: 3
+            id: 4
           },
           {
             name: "Joining  Date",
             type: "date",
             selected: true,
-            id: 4
+            id: 5
           }
         ]
       },
       {
+        id:56,
         name: "Student Details",
         subSection: [
           {
             name: "First Name",
             type: "text",
             selected: true,
-            id: 9
+            id: 6
           },
           {
             name: "Middle Name",
@@ -89,6 +85,7 @@ const intialStudentDetailsData = [
         ]
       },
       {
+        id:57,
         name: "Class Details",
         subSection: [
           {
@@ -105,7 +102,8 @@ const intialStudentDetailsData = [
           },
         ]
       },
-      {
+      { 
+        id:58,
         name: "Fee Details",
         subSection: [
           {
@@ -137,11 +135,12 @@ const intialStudentDetailsData = [
     ]
   },
   {
-    id: 1,
+    id: 400,
     name: "Other Details",
     sectionCode: 1,
     section: [
       {
+        id:59,
         name: "Other Details",
         subSection: [
           {
@@ -183,6 +182,7 @@ const intialStudentDetailsData = [
         ]
       },
       {
+        id:60,
         name: "Other Details2",
         subSection: [
           {
@@ -227,11 +227,12 @@ const intialStudentDetailsData = [
     ]
   },
   {
-    id: 3,
+    id: 480,
     name: "Custom Fields",
     sectionCode: 2,
     section: [
       {
+        id:62,
         name: "Custom Fields",
         subSection: [
           {
@@ -239,12 +240,6 @@ const intialStudentDetailsData = [
             type: "text",
             selected: true,
             id: 41
-          },
-          {
-            name: "Admission No.",
-            type: "text",
-            selected: true,
-            id: 42
           },
           {
             name: "Class",
@@ -277,7 +272,7 @@ const rows = [
     Status: 'Active'
   },
   {
-    id: 2,
+    id:350,
     AdmNo: '8575',
     AdmDate: '02-Jun-2024',
     StudentName: 'John',
@@ -288,7 +283,7 @@ const rows = [
     Status: 'Inactive'
   },
   {
-    id: 3,
+    id: 360,
     AdmNo: '8576',
     AdmDate: '03-May-2024',
     StudentName: 'Jane',
