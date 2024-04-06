@@ -203,8 +203,10 @@ import {useSelector}  from 'react-redux';
                         }}
                       >
                         <Typography sx={{ p: 1, display: 'Grid' }}>
-                          <Button sx={{ color: 'black', borderBottom: '1px dotted #ccc' }}>Import Contact</Button>
-                          <Button sx={{ color: 'black', borderBottom: '1px dotted #ccc' }}>Download Contact</Button>
+                          <Button sx={{ color: 'black', borderBottom: '1px dotted #ccc' }}>Change Enrolment Status</Button>
+                          <Button sx={{ color: 'black', borderBottom: '1px dotted #ccc' }}>Change Enrolment Number</Button>
+                          <Button sx={{ color: 'black', borderBottom: '1px dotted #ccc' }}>Initiate Withdrawal</Button>
+                          <Button sx={{ color: 'black', borderBottom: '1px dotted #ccc' }}>Bulk Editing</Button>
                         </Typography>
                       </Popover>
                     </div>
