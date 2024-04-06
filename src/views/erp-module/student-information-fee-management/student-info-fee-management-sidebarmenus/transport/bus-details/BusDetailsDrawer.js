@@ -7,10 +7,11 @@ import BottomNavbar from 'views/common-section/BottomNavbar';
 import BusDetailForm from './BusDetailForm';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import OwnerDetails from './OwnerDetails';
-import Documents from './Documents';
 import DirectionsBusTwoToneIcon from '@mui/icons-material/DirectionsBusTwoTone';
 import DriveFolderUploadTwoToneIcon from '@mui/icons-material/DriveFolderUploadTwoTone';
 import AccountBoxTwoToneIcon from '@mui/icons-material/AccountBoxTwoTone';
+import CommonDocuments from 'views/erp-common-component/commonDocuments';
+import documentData from './DocumentData';
 
 const BusDetailsDrawer = () => {
   const { anchor, toggleDrawer } = useDrawer();
@@ -63,7 +64,7 @@ const BusDetailsDrawer = () => {
             <Box sx={{ mt: 1 }}>
               {tabValue === 0 && <BusDetailForm />}
               {tabValue === 1 &&  <OwnerDetails />}
-              {tabValue === 2 &&  <Documents/>}
+              {tabValue === 2 &&  <CommonDocuments documentData={documentData} />}
             </Box>
           </Box>
         </Box>

@@ -1,5 +1,5 @@
 
-import pdf from './pdfIcon.png';
+import pdf from 'assets/images/pdfIcon.png';
 export const documentData = [
     {
         id: 1,
