@@ -6,9 +6,20 @@ import { Grid , } from '@mui/material';
 
 const Tab1 = () => {
   // ========= state for Attach Slab ============
+  const [feeHead, setFeeHead] = useState('');
   const [prioridicity, setPrioridicity] = useState('');
   const [feeType, setFeeType] = useState('');
   const [toBeChargeFrom, setToBeChargeFrom,] = useState('');
+
+  const FeeHeadOptions = [
+    { value: 'Registration Fee', label: 'Registration Fee' },
+    { value: 'Late Fee', label: 'Late Fee' },
+    { value: 'Tuition Fee', label: 'Tuition Fee' },
+    { value: 'Admission Fee', label: 'Admission Fee' },
+    { value: 'Caution Money', label: 'Caution Money' },
+
+  ];
+
 
   const PrioridicityOptions = [
     { value: 'Monthly', label: 'Monthly' },
@@ -33,6 +44,11 @@ const Tab1 = () => {
   ];
 
 
+  const FeeHead = (event) => {
+    setFeeHead(event.target.value);
+  };
+
+
   const Prioridicity = (event) => {
     setPrioridicity(event.target.value);
   };
@@ -49,6 +65,17 @@ const Tab1 = () => {
   return (
     <>
     <Grid  sx={{padding:'16px' , border:'1px solid #ccc' , borderRadius:'5px' , marginTop:'1rem'}}>
+
+    <Grid item xs={12} sx={{paddingBottom:'16px'}} >
+            <SelectList 
+                label="Fee Head"
+                options={FeeHeadOptions}
+                value={feeHead}
+                onChange={FeeHead}
+            />
+        </Grid>
+
+
         <Grid item xs={12} sx={{paddingBottom:'16px'}} >
             <SelectList 
                 label="Prioridicity"

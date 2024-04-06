@@ -1,7 +1,9 @@
 import React from 'react';
-import ReusableTable from 'views/erp-module/erp-common-item/setup/system-data/ParamTable';
+import ParamTableDragDrop from './ParamTableDragDrop';
+
 
 const CreateRegularFeeHeads = () => {
+
   const tableHeadings = [
     {
       id: 1,
@@ -38,7 +40,8 @@ const CreateRegularFeeHeads = () => {
   ];
 
   const data = [
-    {
+    { 
+      id:"1",
       feeHead: 'Registration Fee',
       prioridicity: 'Annual',
       feeType: 'Supplementary',
@@ -47,6 +50,7 @@ const CreateRegularFeeHeads = () => {
       monthlyAmount: '4000'
     },
     {
+      id:"2",
       feeHead: 'Late Fee',
       prioridicity: 'Annual',
       feeType: 'Supplementary',
@@ -55,6 +59,7 @@ const CreateRegularFeeHeads = () => {
       monthlyAmount: '4000'
     },
     {
+      id:"3",
       feeHead: 'Tuition Fee',
       prioridicity: 'Annual',
       feeType: 'One time ',
@@ -63,6 +68,7 @@ const CreateRegularFeeHeads = () => {
       monthlyAmount: '4000'
     },
     {
+      id:"4",
       feeHead: 'Admission Fee',
       prioridicity: 'Annual',
       feeType: 'One time ',
@@ -71,6 +77,7 @@ const CreateRegularFeeHeads = () => {
       monthlyAmount: '4000'
     },
     {
+      id:"5",
       feeHead: 'Caution Money',
       prioridicity: 'Annual',
       feeType: 'One time ',
@@ -79,6 +86,7 @@ const CreateRegularFeeHeads = () => {
       monthlyAmount: '4000'
     },
     {
+      id:"6",
       feeHead: 'Registration Fee',
       prioridicity: 'Annual',
       feeType: 'Supplementary',
@@ -87,6 +95,7 @@ const CreateRegularFeeHeads = () => {
       monthlyAmount: '4000'
     },
     {
+      id:"7",
       feeHead: 'Late Fee',
       prioridicity: 'Annual',
       feeType: 'Supplementary',
@@ -96,6 +105,7 @@ const CreateRegularFeeHeads = () => {
     },
 
     {
+      id:"8",
       feeHead: 'Registration Fee',
       prioridicity: 'Annual',
       feeType: 'Supplementary',
@@ -104,6 +114,7 @@ const CreateRegularFeeHeads = () => {
       monthlyAmount: '4000'
     },
     {
+      id:"9",
       feeHead: 'Late Fee',
       prioridicity: 'Annual',
       feeType: 'Supplementary',
@@ -111,7 +122,9 @@ const CreateRegularFeeHeads = () => {
       totalAmount: '9000',
       monthlyAmount: '4000'
     },
+    
     {
+      id:"10",
       feeHead: 'Tuition Fee',
       prioridicity: 'Annual',
       feeType: 'One time ',
@@ -120,6 +133,7 @@ const CreateRegularFeeHeads = () => {
       monthlyAmount: '4000'
     },
     {
+      id:"11",
       feeHead: 'Admission Fee',
       prioridicity: 'Annual',
       feeType: 'One time ',
@@ -128,6 +142,7 @@ const CreateRegularFeeHeads = () => {
       monthlyAmount: '4000'
     },
     {
+      id:"12",
       feeHead: 'Caution Money',
       prioridicity: 'Annual',
       feeType: 'One time ',
@@ -136,6 +151,7 @@ const CreateRegularFeeHeads = () => {
       monthlyAmount: '4000'
     },
     {
+      id:"13",
       feeHead: 'Registration Fee',
       prioridicity: 'Annual',
       feeType: 'Supplementary',
@@ -144,6 +160,7 @@ const CreateRegularFeeHeads = () => {
       monthlyAmount: '4000'
     },
     {
+      id:"14",
       feeHead: 'Late Fee',
       prioridicity: 'Annual',
       feeType: 'Supplementary',
@@ -152,6 +169,7 @@ const CreateRegularFeeHeads = () => {
       monthlyAmount: '4000'
     },
     {
+      id:"15",
       feeHead: 'Registration Fee',
       prioridicity: 'Annual',
       feeType: 'Supplementary',
@@ -160,6 +178,7 @@ const CreateRegularFeeHeads = () => {
       monthlyAmount: '4000'
     },
     {
+      id:"16",
       feeHead: 'Late Fee',
       prioridicity: 'Annual',
       feeType: 'Supplementary',
@@ -168,6 +187,7 @@ const CreateRegularFeeHeads = () => {
       monthlyAmount: '4000'
     },
     {
+      id:"17",
       feeHead: 'Tuition Fee',
       prioridicity: 'Annual',
       feeType: 'One time ',
@@ -176,6 +196,7 @@ const CreateRegularFeeHeads = () => {
       monthlyAmount: '4000'
     },
     {
+      id:"18",
       feeHead: 'Admission Fee',
       prioridicity: 'Annual',
       feeType: 'One time ',
@@ -184,6 +205,7 @@ const CreateRegularFeeHeads = () => {
       monthlyAmount: '4000'
     },
     {
+      id:"19",
       feeHead: 'Caution Money',
       prioridicity: 'Annual',
       feeType: 'One time ',
@@ -192,6 +214,7 @@ const CreateRegularFeeHeads = () => {
       monthlyAmount: '4000'
     },
     {
+      id:"20",
       feeHead: 'Registration Fee',
       prioridicity: 'Annual',
       feeType: 'Supplementary',
@@ -200,6 +223,7 @@ const CreateRegularFeeHeads = () => {
       monthlyAmount: '4000'
     },
     {
+      id:"21",
       feeHead: 'Late Fee',
       prioridicity: 'Annual',
       feeType: 'Supplementary',
@@ -211,7 +235,14 @@ const CreateRegularFeeHeads = () => {
 
   return (
     <>
-      <ReusableTable dragIcon={true} columns={tableHeadings} data={data} action={false} />
+
+         <ParamTableDragDrop
+                tableStyle={{ paddingBottom: '4rem' }}
+                dragIcon={true}
+                columns={tableHeadings}
+                initialData={data}
+            />
+
     </>
   );
 };

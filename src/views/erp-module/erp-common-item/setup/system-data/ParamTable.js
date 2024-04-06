@@ -9,12 +9,13 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutlined';
-import GppMaybeTwoToneIcon from '@mui/icons-material/GppMaybeTwoTone';
+// import GppMaybeTwoToneIcon from '@mui/icons-material/GppMaybeTwoTone';
+import DragIndicatorOutlinedIcon from '@mui/icons-material/DragIndicatorOutlined';
 
-const ReusableTable = ({ columns, data, action = true , dragIcon = false }) => {
+const ReusableTable = ({ columns, data, tableStyle ,  action = true , dragIcon = false ,}) => {
   return (
     <TableContainer  component={Paper} sx={{ width: '100%',overflowX: 'auto' , height:'80vh' , '&::-webkit-scrollbar': { display: 'none' } ,}}>
-      <Table stickyHeader >
+      <Table stickyHeader  sx={{...tableStyle}}>
         <TableHead sx={{ width: '100%', backgroundColor: '#1219260f'  , background:'none' , fontWeight:'600'}}>
           <TableRow>
             {columns.map((column) => (
@@ -27,9 +28,9 @@ const ReusableTable = ({ columns, data, action = true , dragIcon = false }) => {
             <TableRow key={row?.id}>
 
             {dragIcon && (
-                <TableCell sx={{ width:'0' }}>
+                <TableCell sx={{ width:'0' , padding:'0' , textAlign:'right' }}>
                   <Typography >
-                    <GppMaybeTwoToneIcon />
+                    <DragIndicatorOutlinedIcon sx={{color:'#b3b9c1'}}/>
                   </Typography>
                 </TableCell>
               )}

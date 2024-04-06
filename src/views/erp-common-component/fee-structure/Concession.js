@@ -1,73 +1,222 @@
-import React from 'react';
-import ReusableTable from 'views/erp-module/erp-common-item/setup/system-data/ParamTable';
+
+import React, { useState } from 'react';
+import { TextField, TableCell, TableBody, Table, TableContainer, TableHead, TableRow, Paper, Typography } from '@mui/material';
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
 const tableHeadings = [
     {
-      id: 1,
-      tabHeading: "Concession category"
+        id: 1,
+        tabHeading: "Concession category"
     },
-
     {
-      id:2,
-      tabHeading: 'Approval based'
+        id: 2,
+        tabHeading: 'Approval based'
     },
     {
         id: 3,
+        tabHeading: 'Approval Id'
+    },
+    {
+        id: 4,
         tabHeading: "Applicable from"
-      },
-
-    {
-      id: 4,
-      tabHeading: "Valid up to"
     },
-
-
-
-
-  ]
-  
-  const data = [
     {
-      "concessionCategory": "Vaccination Discount",
-      "approvalBased":"Yes",
-      "applicableFrom" : "2025-2026",
-      "ValidUpTo" : '2026-2027',
+        id: 5,
+        tabHeading: "Valid up to"
     },
+];
 
+const initialData = [
     {
+        "id": "1",
+        "concessionCategory": "Vaccination Discount",
+        "approvalBased": "Yes",
+        "approvalId": '',
+        "applicableFrom": "2025-2026",
+        "ValidUpTo": '2026-2027',
+    },
+    {
+        "id": "2",
         "concessionCategory": "Scholarship",
-        "approvalBased":"Yes",
-        "applicableFrom" : "2025",
-        "ValidUpTo" : '2026-2027',
-      },
-
-      {
+        "approvalBased": "Yes",
+        "approvalId": '',
+        "applicableFrom": "2025",
+        "ValidUpTo": '2026-2027',
+    },
+    {
+        "id": "3",
         "concessionCategory": "Free Transport",
-        "approvalBased":"No",
-        "applicableFrom" : "2025",
-        "ValidUpTo" : '2026-2027',
-      },
-
-
-      {
+        "approvalBased": "No",
+        "approvalId": '',
+        "applicableFrom": "2025",
+        "ValidUpTo": '2026-2027',
+    },
+    {
+        "id": "4",
         "concessionCategory": "Management",
-        "approvalBased":"No",
-        "applicableFrom" : "2025",
-        "ValidUpTo" : '2026-2027',
-      },
+        "approvalBased": "No",
+        "approvalId": '',
+        "applicableFrom": "2025",
+        "ValidUpTo": '2026-2027',
+    },
+    {
+        "id": "11",
+        "concessionCategory": "Vaccination Discount",
+        "approvalBased": "Yes",
+        "approvalId": '',
+        "applicableFrom": "2025-2026",
+        "ValidUpTo": '2026-2027',
+    },
+    {
+        "id": "12",
+        "concessionCategory": "Scholarship",
+        "approvalBased": "Yes",
+        "approvalId": '',
+        "applicableFrom": "2025",
+        "ValidUpTo": '2026-2027',
+    },
+    {
+        "id": "13",
+        "concessionCategory": "Free Transport",
+        "approvalBased": "No",
+        "approvalId": '',
+        "applicableFrom": "2025",
+        "ValidUpTo": '2026-2027',
+    },
+    {
+        "id": "14",
+        "concessionCategory": "Management",
+        "approvalBased": "No",
+        "approvalId": '',
+        "applicableFrom": "2025",
+        "ValidUpTo": '2026-2027',
+    },
 
-
-  ];
+    {
+        "id": "21",
+        "concessionCategory": "Vaccination Discount",
+        "approvalBased": "Yes",
+        "approvalId": '',
+        "applicableFrom": "2025-2026",
+        "ValidUpTo": '2026-2027',
+    },
+    {
+        "id": "22",
+        "concessionCategory": "Scholarship",
+        "approvalBased": "Yes",
+        "approvalId": '',
+        "applicableFrom": "2025",
+        "ValidUpTo": '2026-2027',
+    },
+    {
+        "id": "23",
+        "concessionCategory": "Free Transport",
+        "approvalBased": "No",
+        "approvalId": '',
+        "applicableFrom": "2025",
+        "ValidUpTo": '2026-2027',
+    },
+    {
+        "id": "24",
+        "concessionCategory": "Management",
+        "approvalBased": "No",
+        "approvalId": '',
+        "applicableFrom": "2025",
+        "ValidUpTo": '2026-2027',
+    },
+];
 
 const Concession = () => {
-  return (
-    <>
-      <ReusableTable 
-      columns={tableHeadings}
-      data={data}
-      action={false} />
-    </>
-  )
-}
+    const [data, setData] = useState(initialData);
+    const [editableApprovalIds, setEditableApprovalIds] = useState(initialData.map(() => ''));
 
-export default Concession
+    const handleApprovalIdChange = (index, value) => {
+        const updatedApprovalIds = [...editableApprovalIds];
+        updatedApprovalIds[index] = value;
+        setEditableApprovalIds(updatedApprovalIds);
+    };
+
+    const handleDragEnd = (result) => {
+        if (!result.destination) return;
+
+        const items = Array.from(data);
+        const [reorderedItem] = items.splice(result.source.index, 1);
+        items.splice(result.destination.index, 0, reorderedItem);
+
+        setData(items); // Update the state with the reordered data
+        console.log(result)
+    };
+
+ 
+    return (
+        <DragDropContext onDragEnd={handleDragEnd}>
+            <TableContainer component={Paper} sx={{ width: '100%', overflowX: 'auto', Maxheight: '80vh', '&::-webkit-scrollbar': { display: 'none' } }}>
+                <Table stickyHeader>
+                    <TableHead sx={{ width: '100%', backgroundColor: '#1219260f', background: 'none', fontWeight: '600' }}>
+                        <TableRow>
+                            {tableHeadings.map((column) => (
+                                <TableCell key={column.id}>{column.tabHeading}</TableCell>
+                            ))}
+                        </TableRow>
+                    </TableHead>
+                    <Droppable droppableId="table">
+                        {(provided) => (
+                            <TableBody ref={provided.innerRef} {...provided.droppableProps}>
+                                {data.map((row, index) => (
+                                    <Draggable key={row.id} draggableId={row.id} index={index}>
+                                        {(provided) => (
+                                            <TableRow
+                                                ref={provided.innerRef}
+                                                {...provided.draggableProps}
+                                                {...provided.dragHandleProps}
+                                            >
+                                                {Object.keys(row).map((key, cellIndex) => {
+                                                    if (key === 'id') {
+                                                        return null;
+                                                    } else if (key === 'approvalId') {
+                                                        return (
+                                                            <TableCell
+                                                                key={cellIndex}
+                                                                sx={{
+                                                                    cursor: row.approvalBased === 'No' ? 'not-allowed' : '',
+                                                                    '& fieldset': {
+                                                                        borderRadius: '0',
+                                                                        cursor: row.approvalBased === 'No' ? 'not-allowed' : ''
+                                                                    },
+                                                                    '& input': {
+                                                                        padding: '5px',
+                                                                        cursor: row.approvalBased === 'No' ? 'not-allowed' : ''
+                                                                    },
+                                                                }}
+                                                            >
+                                                                <TextField
+                                                                    sx={{ borderRadius: 0 }}
+                                                                    type="text"
+                                                                    value={editableApprovalIds[index]}
+                                                                    onChange={(e) => handleApprovalIdChange(index, e.target.value)}
+                                                                    disabled={row.approvalBased === 'No'} // Disable input if approvalBased is 'No'
+                                                                />
+                                                            </TableCell>
+                                                        );
+                                                    }
+                                                    return (
+                                                        <TableCell key={cellIndex}>
+                                                            <Typography>{row[key]}</Typography>
+                                                        </TableCell>
+                                                    );
+                                                })}
+                                            </TableRow>
+                                        )}
+                                    </Draggable>
+                                ))}
+                                {provided.placeholder}
+                            </TableBody>
+                        )}
+                    </Droppable>
+                </Table>
+            </TableContainer>
+        </DragDropContext>
+    );
+};
+
+export default Concession;
