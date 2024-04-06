@@ -5,7 +5,7 @@ const documentData = [
       id: 1,
       url: 'https://www.thewisdomtree.co/downloads?download=the-jungle-book#54',
       title: ' Aadhar',
-      subtitle: ' Rudyard Kipling',
+      subtitle: ' Aadhar.jpg',
       thumbnailUrl: pdf,
       lastUpdated: '20-Jan-2029'
     },
@@ -17,7 +17,6 @@ const documentData = [
       subtitle: ' Rudyard Kipling',
       thumbnailUrl: pdf,
       lastUpdated: '20-Jan-2022'
-      //  https://source.unsplash.com/featured?finess
     },
   
     {

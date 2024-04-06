@@ -222,7 +222,7 @@ function Preview() {
                                 </Typography>
                                 {/* <Typography variant="body2" color="text.secondary">
                                     {document.subtitle}
-                                </Typography>             */}
+                                </Typography>  */}
 
                                 <a
                                   href={document.url}

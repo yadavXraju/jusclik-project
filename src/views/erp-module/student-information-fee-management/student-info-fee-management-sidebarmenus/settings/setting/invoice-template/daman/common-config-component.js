@@ -4,7 +4,9 @@ import {  Accordion, AccordionSummary, AccordionDetails, Typography} from '@mui/
 import General from './sub-categories/general';
 import HeaderFooter from './sub-categories/header-footer';
 import TableConfig from './sub-categories/table';
+import TermsAndConditions from './sub-categories/terms-and-conditions';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import Labels from './sub-categories/labels';
 
 const CommonConfig = () => {
 
@@ -19,7 +21,16 @@ const CommonConfig = () => {
   {
     title: 'Table Layout',
     content: <><TableConfig /></>,
-  },]
+  },
+  {
+    title: 'Terms And Conditions',
+    content: <><TermsAndConditions /></>,
+  },
+  {
+    title:'Labels',
+    content:<><Labels/></>
+  }
+  ]
 
   return (
     <>
