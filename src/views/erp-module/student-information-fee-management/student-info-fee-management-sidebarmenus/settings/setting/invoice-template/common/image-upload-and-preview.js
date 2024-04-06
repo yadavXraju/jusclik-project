@@ -1,52 +1,119 @@
-import React from 'react';
-import { Button, Grid, Typography } from '@mui/material';
-import { Box } from '@mui/system';
 
-const ImageUploadAndPreview = ({ label, stateHandler, updatekey, image }) => {
-  const handleFileChange = (e) => {
-    stateHandler(updatekey, e.target.files[0]);
+import React from 'react';
+import { Button, Typography, Box, Chip, IconButton, Grid } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
+import { makeStyles } from '@mui/styles';
+import BackupTwoToneIcon from '@mui/icons-material/BackupTwoTone';
+
+const useStyles = makeStyles((theme) => ({
+  uploadButton: {
+    marginTop: theme.spacing(2)
+  },
+  fileContainer: {
+    display: 'flex',
+    alignItems: 'center',
+    marginBottom: theme.spacing(1)
+  }
+}));
+
+const DragAndDropFile = ({stateHandler, updatekey,selectedFile}) => {
+  const classes = useStyles();
+
+  const handleFileChange = (event) => {
+    stateHandler(updatekey,event.target.files[0])
+  };
+  
+  const handleDeleteFile = () => {
+  stateHandler(updatekey,null)
   };
 
-  const handleRemoveFile = () => {
-    stateHandler(updatekey, null);
+  const handleFileDrop = (event) => {
+    const droppedFile = event.dataTransfer.files[0];   
+    stateHandler(updatekey,droppedFile)
+  };
+
+  const truncateFileName = (fileName) => {
+    const words = fileName.split(' ');
+    if (words.length > 3) {
+      return words.slice(0, 3).join(' ') + '...';
+    } else {
+      return fileName;
+    }
   };
 
   return (
-    <Grid container spacing={1} rowSpacing={2}>
-        <Grid item xs={12} md='auto' >
-        {!image&& <Typography variant="h5"  sx={{padding:'2rem',border:'1px solid'}}>{label}</Typography>}
-        </Grid>
-        <Grid item xs={12}>
-          {image && (
-            <Box>
-                <img src={URL.createObjectURL(image)} alt="Preview" style={{ maxWidth: 200, marginLeft: '1rem' }} />
-              </Box>
-          )}
-        </Grid>
-        <Grid item >
-          <Box>
-            <Grid item>
-            <input id="background-image-upload" type="file" style={{ display: 'none' }} accept="image/*" onChange={handleFileChange} />
-            </Grid>
-            <Grid container item spacing={2}>
-              <Grid item>
-            <Button variant="contained" component="label" >
-              {image ? 'Change File' : 'Choose From Desktop'}
-              <input type="file" style={{ display: 'none' }} accept="image/*" onChange={handleFileChange} />
-            </Button>
-                </Grid> 
-            <Grid item>
-            {image && (
-              <Button variant="contained" component="label" onClick={handleRemoveFile} >
-                Remove
+    <Grid container item display="flex" flexDirection="column">
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          textAlign: 'center',
+          justifyContent: 'center',
+          paddingTop: '40px'
+        }}
+      >
+        <Box
+          htmlFor="upload-media"
+          onDragOver={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+          }}
+          onDragEnter={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+          }}
+          onDrop={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            handleFileDrop(e);
+          }}
+          sx={{width:'100%'}}
+        >
+          <input type="file" accept="image/*, video/*" onChange={handleFileChange} id="upload-media" style={{ display: 'none' }} />
+          <Box
+            sx={{
+              border: '2px dashed #ccc',
+              borderRadius: '8px',
+              padding: '20px'
+            }}
+          >
+            <Grid>
+              <BackupTwoToneIcon sx={{ width: '50px', height: '50px', opacity: '0.5' }} />
+              <Typography variant="body1" sx={{ fontWeight: 'bold', paddingTop: '12px' }}>
+                Drag & Drop a File Here
+              </Typography>
+
+              <Button
+                variant="contained"
+                color="primary"
+                component="span"
+                className={classes.uploadButton}
+                onClick={() => document.getElementById('upload-media').click()}
+                style={{ marginTop: '25px' }}
+              >
+                Upload File
               </Button>
-            )}
-            </Grid>
             </Grid>
           </Box>
-        </Grid>
+        </Box>
+
+        {selectedFile && (
+          <Box className={classes.fileContainer} style={{ width: '100px', marginTop: '20px' }}>
+            <Chip label={truncateFileName(selectedFile.name)} variant="outlined" onDelete={handleDeleteFile}>
+              <Typography variant="body1">{selectedFile.name}</Typography>
+              <IconButton color="secondary" onClick={handleDeleteFile}>
+                <CloseIcon />
+              </IconButton>
+            </Chip>
+          </Box>
+        )}
+      </Box>
     </Grid>
+
+    //   </div>
+    // </div>
   );
 };
 
-export default ImageUploadAndPreview;
+export default DragAndDropFile;

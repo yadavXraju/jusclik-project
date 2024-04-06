@@ -14,6 +14,7 @@ import PauseCircleOutlineIcon from '@mui/icons-material/PauseCircleOutline';
 import DoDisturbAltOutlinedIcon from '@mui/icons-material/DoDisturbAltOutlined';
 import Chip from '@mui/material/Chip';
 import Avatar from '@mui/material/Avatar';
+import { useNavigate } from 'react-router';
 
 
 
@@ -64,6 +65,7 @@ const renderChipCell = (params) => {
  
   );
 };
+
 
 const columns = [
   { field: 'status', headerName: 'Status', flex: 1, minWidth: 180, align: 'left', headerAlign: 'left' ,renderCell: renderChipCell, },
@@ -135,7 +137,12 @@ const VisitorEntry = () => {
 
   //const [tableRows, setTableRows] = useState(RouteData);
  
+const navigate=useNavigate();
 
+  const Click = (rowData) => {
+    navigate('../visitor-detail', { state: { rowData } });
+    console.log(rowData);
+  };
 
   return (
     <>

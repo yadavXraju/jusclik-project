@@ -58,7 +58,7 @@ const SetupTabs = ({ tabPage , orientation='horizontal', variant='scrollable' , 
 
   return (
     <>
-      <Box sx={{...style?.tabWrapper,...customtabWrapper}}>
+      <Box sx={{...style?.tabWrapper,...customtabWrapper}} >
         <Tabs
           orientation={orientation}
           variant={variant}

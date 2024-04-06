@@ -1,6 +1,6 @@
 import React from 'react';
 import CommonConfig from './common-config-component';
-import { Button, Grid, Paper } from '@mui/material';
+import { Button, Grid } from '@mui/material';
 import Template from '../kulwinder/template3';
 import CompactTemplate from '../harsh/template';
 import CompactTemplate2 from '../kulwinder/template2';
@@ -22,12 +22,10 @@ const Index = () => {
     <>
       <Button onClick={() => navigate('/erp/student-info-fee/settings/invoice-template')} sx={{ position: 'absolute', right: 0, marginTop: '-4rem', marginRight: '2rem' }}>Close</Button>
       <Grid container spacing={4}>
-        <Grid item md={5}>
-          <Paper sx={{ width: '100%', height: 'auto', padding: ' 2rem 0rem' }}>
+        <Grid item md={4}>
             <CommonConfig />
-          </Paper>
         </Grid>
-        <Grid item md={7} sx={sx}>
+        <Grid item md={8} sx={sx}>
         {template == 1 && <CompactTemplate />}
         {template == 2 && <CompactTemplate2 />}
         {template == 3 && <Template />}

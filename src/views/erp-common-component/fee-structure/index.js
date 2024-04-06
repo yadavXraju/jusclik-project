@@ -2,6 +2,7 @@ import { Box , Typography , Button, Drawer } from '@mui/material';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import  ParamStepper from 'views/common-section/param-stepper';
 import CreateRegularFeeHeads from './CreateRegularFeeHeads';
+import Concession from './Concession';
 import OtherSettings from './other-settings/OtherSettings';
 import useDrawer from 'hooks/useDrawer';
 import NewHead from './new-head/NewHead';
@@ -26,7 +27,7 @@ const tabPage = [
       id: 3,
       name: 'Concession',
       value: '3',
-      component:'test'
+      component:Concession,
     },
   
     {
@@ -51,7 +52,7 @@ const FeeStructure = () => {
       <>
           <Box sx={{paddingRight:'20px' , display:'flex' , justifyContent:'space-between' , alignItems:'center' , borderBottom:'1px solid rgba(224, 224, 224, 1)', background:'#fff', padding:'16px 24px'}}>
             <Typography variant='h3'>Fee Structure</Typography>
-            <Button variant='contained' startIcon={<AddOutlinedIcon />} onClick={toggleDrawer('right' , true)}>New Head</Button>
+            <Button variant='outlined' startIcon={<AddOutlinedIcon />} onClick={toggleDrawer('right' , true)}>New Head</Button>
           </Box>
            
            {/* stepper tabs  */}

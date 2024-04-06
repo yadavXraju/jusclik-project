@@ -4,6 +4,8 @@ import ChevronRightOutlinedIcon from '@mui/icons-material/ChevronRightOutlined';
 const TabsName = ({ name, number,numberShow , iconShow}) => {
     return (
       <Box sx={{ display: 'flex', gap: '8px', alignItems: 'center', justifyContent: 'space-between' ,  }}>
+
+        
         <Box sx={{ display: 'flex', gap: '5px', alignItems: "center" }}>
          {numberShow&&<Typography style={{
           //  display: 'inline-block',
