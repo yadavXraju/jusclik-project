@@ -1,39 +1,99 @@
-import { Grid, Box, Card, Typography, Container } from '@mui/material';
 import React from 'react';
-import SettingData from './SettingData'
-import { Link } from 'react-router-dom';
+import CorporateFareRoundedIcon from '@mui/icons-material/CorporateFareRounded';
+import PermDataSettingOutlinedIcon from '@mui/icons-material/PermDataSettingOutlined';
+import WebhookRoundedIcon from '@mui/icons-material/WebhookRounded';
+import SmsOutlinedIcon from '@mui/icons-material/SmsOutlined';
+import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
+import CreditCardOutlinedIcon from '@mui/icons-material/CreditCardOutlined';
+import TuneOutlinedIcon from '@mui/icons-material/TuneOutlined';
+import FolderOpenOutlinedIcon from '@mui/icons-material/FolderOpenOutlined';
+import ParamSetting from 'views/erp-common-component/commonSetting';
 
-const Organisation = () => {
-  return (
-    <Container>
-      <Box sx={{ paddingTop:'2rem'}}>
-        <Grid container spacing={5} sx={{}}>
-          {SettingData.map((item, index) => (
-             <Grid item xs={12} sm={6} md={4} lg={3} key={index} sx={{ paddingBottom: '2rem' }}>
-              <Card sx={{ border: '1px solid #ebeaf2', padding: '36px', height: '110%', backgroundColor: '#f9f9fb' }}>
-                <Box>
-                  <Box sx={{ display: 'flex' }}>
-                    {item.icon}
-                    <Typography variant='h5' sx={{ paddingLeft: '7px', paddingTop: '3px' }}>
-                      {item.title}
-                    </Typography>
-                  </Box>
-                  <Box sx={{ paddingTop: '14px' }}>
-                    {item.items.map((subItem, subIndex) => (
-                      <Link key={subIndex} to={subItem.path} style={{ textDecoration: 'none', color: 'inherit' }}>
-                      {/* Use Link to navigate to the specified path */}
-                      <Typography sx={{ paddingTop: '14px' }}>{subItem.name}</Typography>
-                    </Link>
-                    ))}
-                  </Box>
-                </Box>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
-      </Box>
-    </Container>
-  );
+const SettingData = [
+  {
+    icon: <CorporateFareRoundedIcon sx={{ color: '#838195' }} />,
+    title: 'Organisation',
+    items: [
+      { name: 'Profile', path: '/profile' },
+      { name: 'Branding', path: '/branding' },
+      { name: 'Users & Roles', path: '/users-roles' },
+      { name: 'Student Portal', path: '/student-portal' }
+    ]
+  },
+  {
+    icon: <SmsOutlinedIcon sx={{ color: '#838195' }} />,
+    title: 'Communication Templates',
+    items: [
+      { name: 'SMS', path: '/sms' },
+      { name: 'E-mail', path: '/email' },
+      { name: 'Notification', path: '/notification' },
+      { name: 'WhatsApp', path: '/whatsapp' }
+    ]
+  },
+  {
+    icon: <PeopleAltOutlinedIcon sx={{ color: '#838195' }} />,
+    title: 'Students',
+    items: [
+      { name: 'Class Promotion', path: '/class-promotion' },
+      { name: 'Section Shuffling', path: '/section-shuffling' },
+      { name: 'House Shuffling', path: '/house-shuffling' }
+    ]
+  },
+  {
+    icon: <CreditCardOutlinedIcon sx={{ color: '#838195' }} />,
+    title: 'Fee',
+    items: [
+      { name: 'Fee Heads', path: '/erp/student-info-fee/settings/system-data' },
+      { name: 'Fee Structure', path: '/erp/student-info-fee/settings/fee-structure' },
+      { name: 'Concession', path: '/concession' },
+      { name: 'Discount', path: '/discount' },
+      { name: 'Fee Account', path: '/fee-account' },
+      { name: 'Invoice', path: '/erp/student-info-fee/settings/daman' }
+    ]
+  },
+  {
+    icon: <FolderOpenOutlinedIcon sx={{ color: '#838195' }} />,
+    title: 'Student Records',
+    items: [
+      { name: 'Tuition Fee Certificate', path: '/tuition-fee-certificate' },
+      { name: 'School Learning Certificate', path: '/school-learning-certificate' },
+      { name: 'Gate Pass', path: '/gate-pass' },
+      { name: 'Identity Card', path: '/identity-card' }
+    ]
+  },
+  {
+    icon: <PermDataSettingOutlinedIcon sx={{ color: '#838195' }} />,
+    title: 'Configure',
+    items: [
+      { name: 'Blacklist Visitors', path: '/erp/student-info-fee/settings/blacklist-visitors' },
+      { name: 'Transaction Number Series', path: '/transaction-number-series' }
+    ]
+  },
+  {
+    icon: <TuneOutlinedIcon sx={{ color: '#838195' }} />,
+    title: 'Integrations',
+    items: [
+      { name: 'Zoom', path: '/zoom' },
+      { name: 'Google Meet', path: '/google-meet' },
+      { name: 'WhatsApp', path: '/whatsapp-integration' },
+      { name: 'Payment Gateways', path: '/payment-gateways' }
+    ]
+  },
+  {
+    icon: <WebhookRoundedIcon sx={{ color: '#838195' }} />,
+    title: 'Developer Space',
+    items: [
+      { name: 'Data Backup', path: '/data-backup' }
+    ]
+  }
+];
+
+const Organisation= () =>{
+  return(
+    <>
+    <ParamSetting SettingData={SettingData} />
+    </>
+  )
 }
 
 export default Organisation;
