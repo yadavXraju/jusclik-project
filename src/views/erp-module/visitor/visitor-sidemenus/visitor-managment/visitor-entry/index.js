@@ -16,12 +16,12 @@ import Chip from '@mui/material/Chip';
 import Avatar from '@mui/material/Avatar';
 import { useNavigate } from 'react-router';
 
-
+ 
 
 const renderChipCell = (params) => {
   const { status } = params.row;
   let iconComponent;
-  let chipStyle = { color: '#364152',width:'140px',display: 'flex', alignItems: 'center' ,justifyContent:'flex-start'};
+  let chipStyle = { color: '#364152',width:'140px',display: 'flex', alignItems: 'center' ,justifyContent:'flex-start',border:'none'};
   switch (status) {
     case 'Expected':
       iconComponent = <AccessTimeOutlinedIcon color='rgb(16, 185, 129)'/>;
@@ -52,6 +52,7 @@ const renderChipCell = (params) => {
 
 
   return (
+    
     <Chip
       icon={iconComponent}
       label= {status}
@@ -68,7 +69,7 @@ const renderChipCell = (params) => {
 
 
 const columns = [
-  { field: 'status', headerName: 'Status', flex: 1, minWidth: 180, align: 'left', headerAlign: 'left' ,renderCell: renderChipCell, },
+  { field: 'status', headerName: 'Status', flex: 1, minWidth: 140, align: 'left', headerAlign: 'left' ,renderCell: renderChipCell, },
   { field: 'VisitorName', headerName: 'Visitor Name', flex: 1, minWidth: 160, align: 'left', headerAlign: 'left' , renderCell: (params) => (
     <div style={{ display: 'flex', alignItems: 'center' }}>
       <Avatar src={params.row.avatarUrl} alt={params.row.altName} />
@@ -111,13 +112,13 @@ const columns = [
     filterable: false,
     disableColumnMenu: true,
     renderCell: (params) => (
-      <Box onClick={(event) => event.stopPropagation()}>
+      <Box >
         {/* <IconButton>
           <RoutesManageDrawer/>
         </IconButton> */}
         <Tooltip title="Edit">
-        <IconButton>
-            <RemoveRedEyeTwoToneIcon sx={{ color: 'rgb(124, 178, 221)' }} />
+        <IconButton >
+            <RemoveRedEyeTwoToneIcon   sx={{ color: 'rgb(124, 178, 221)' }} />
           </IconButton>
         <IconButton>
           <EditTwoToneIcon />
@@ -133,10 +134,10 @@ const columns = [
   }
 ];
 
-const VisitorEntry = () => {
+const VisitorEntry = () => {  
 
   //const [tableRows, setTableRows] = useState(RouteData);
- 
+
 const navigate=useNavigate();
 
   const Click = (rowData) => {
