@@ -1,6 +1,6 @@
 import React from 'react';
 import CorporateFareRoundedIcon from '@mui/icons-material/CorporateFareRounded';
-import TipsAndUpdatesRoundedIcon from '@mui/icons-material/TipsAndUpdatesRounded';
+import PermDataSettingOutlinedIcon from '@mui/icons-material/PermDataSettingOutlined';
 import WebhookRoundedIcon from '@mui/icons-material/WebhookRounded';
 import SmsOutlinedIcon from '@mui/icons-material/SmsOutlined';
 import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
@@ -61,8 +61,8 @@ const SettingData = [
     ]
   },
   {
-    icon: <TipsAndUpdatesRoundedIcon sx={{ color: '#838195' }} />,
-    title: 'Customisation',
+    icon: <PermDataSettingOutlinedIcon sx={{ color: '#838195' }} />,
+    title: 'Configure',
     items: [
       { name: 'Reporting Tags', path: '/reporting-tags' },
       { name: 'Transaction Number Series', path: '/transaction-number-series' }

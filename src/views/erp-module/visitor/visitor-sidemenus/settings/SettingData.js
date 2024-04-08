@@ -23,11 +23,12 @@ const SettingData = [
     title: 'Configure',
     items: [
       // { name: 'Department', path: '/erp/visitor/settings/department' },
-      // { name: 'Blacklist Visitors', path: '/erp/visitor/settings/blacklist-visitors' },
+      
       { name: 'Purpose', path: '/erp/visitor/settings/purpose' },
       { name: 'To Meet', path: '/erp/visitor/settings/to-meet' },
       { name: 'Visitor Category', path: '/erp/visitor/settings/visitor-category' },
-      { name: 'Location', path: '/erp/visitor/settings/location' }
+      { name: 'Location', path: '/erp/visitor/settings/location' },
+      { name: 'Blacklist Visitors', path: '/erp/visitor/settings/blacklist-visitors' },
     ]
   },
   {
