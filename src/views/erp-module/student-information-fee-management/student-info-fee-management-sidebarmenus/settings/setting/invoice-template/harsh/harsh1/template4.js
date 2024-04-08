@@ -203,10 +203,10 @@ column2.push( <Box display={'flex'} sx={{display:!templateLabels[i].enable?'none
             </Grid>
             <Box pt={4} p={6} bgcolor={headerFooterSettings.footerBackgroundColor}>
             <Box>
-              <Typography p={2} variant="h4" sx={{ fontWeight: '600',color:headerFooterSettings.footerFontColor,fontSize:`${headerFooterSettings.footerFontSize}px`}} >Terms & Conditions</Typography>
+              <Typography p={2} variant="h4" sx={{ fontWeight: '600',color:generalSettings.labelColor,fontSize:`${headerFooterSettings.footerFontSize}px`}} >Terms & Conditions</Typography>
               {/* <Typography p={2} variant="h5" sx={{ fontWeight: '400',color:headerFooterSettings.footerFontColor,fontSize:`${headerFooterSettings.footerFontSize}px`}} >Your School&apos;s Terms and Conditions will be displayed here. You can add it in the Invoice Preferences page under Settings.</Typography> */}
-              <Typography p={2} variant="h5" sx={{ fontWeight: '400',color:headerFooterSettings.footerFontColor,fontSize:`${headerFooterSettings.footerFontSize}px`}} ><div dangerouslySetInnerHTML={{ __html: termsAndConditions }}/></Typography>
-
+              <Typography p={2} variant="h5" sx={{ fontWeight: '400',color: headerFooterSettings.footerFontColor,fontSize:`${headerFooterSettings.footerFontSize}px`}} ><div dangerouslySetInnerHTML={{ __html: termsAndConditions }}/></Typography>
+             
             </Box>
             </Box>
         </Box>

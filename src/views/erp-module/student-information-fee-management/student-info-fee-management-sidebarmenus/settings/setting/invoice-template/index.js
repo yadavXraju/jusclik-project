@@ -9,7 +9,7 @@ import PortraitImage2 from '../../../../../../../assets/images/invoice-template/
 import PortraitImage3 from '../../../../../../../assets/images/invoice-template/templatePortrait3.png';
 import PortraitImage4 from '../../../../../../../assets/images/invoice-template/templatePortrait4.png';
 import LandscapeImage1 from '../../../../../../../assets/images/invoice-template/templateLandscape1.png';
-
+import {Badge} from '@mui/material'
 import useDrawer from 'hooks/useDrawer';
 import { useDispatch } from 'react-redux';
 import { updateSelectedTemplate } from 'store/student-info-and-fee/setting/Invoice-Template-Slice';
@@ -17,7 +17,7 @@ import { useNavigate } from 'react-router';
 
 
 // this is reuseable card component
-export const CustomCard = ({ cardName, image, orientation, selectedTemplate }) => {
+export const CustomCard = ({ cardName, image, orientation, selectedTemplate,badge }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   let imageWidth, imageHeight;
@@ -31,6 +31,13 @@ export const CustomCard = ({ cardName, image, orientation, selectedTemplate }) =
   const [hovered, setHovered] = React.useState(false);
   return (
     <>
+    <Badge badgeContent='Default' color='primary' invisible={!badge} sx={{'& .css-1c7npoy-MuiBadge-badge':{borderRadius:0,    top: '10px',right: '28px'},
+  }}
+  anchorOrigin={{
+    vertical: 'top',
+    horizontal: 'right',
+  }}
+  >
       <Card sx={{ border: '1px solid grey', borderRadius: '0px', minWidth: '300px' }}>
         <CardActionArea onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
           <CardMedia component="img" height={imageHeight} width={imageWidth} image={image} alt="" sx={{ aspectRatio: '1.414:1' }} />
@@ -62,6 +69,7 @@ export const CustomCard = ({ cardName, image, orientation, selectedTemplate }) =
           )}
         </CardActionArea>
       </Card>
+      </Badge>
       <Typography gutterBottom variant="h5" component="div" textAlign="center">
         {cardName}
       </Typography>
@@ -94,10 +102,12 @@ const InvoiceTemplate = () => {
             <Grid container gap={4} >
               {/* cards for templates ================================== */}
               <Grid item>
+                
                 <CustomCard cardName={'Standard'} image={PortraitImage1} selectedTemplate={3} />
+                
               </Grid>
             <Grid item>
-                <CustomCard cardName={'Standard Lite'} image={PortraitImage2} selectedTemplate={4} />
+                <CustomCard cardName={'Standard Lite'} image={PortraitImage2} selectedTemplate={4} badge={true} />
               </Grid>
               
               <Grid item>
