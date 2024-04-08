@@ -14,6 +14,22 @@ const CompactTemplate = () => {
   const generalSettings= useSelector(state=>state.invoiceTemplate.general)
   const headerFooterSettings=useSelector(state=>state.invoiceTemplate.headerFooter)
   const tableSettings=useSelector(state=>state.invoiceTemplate.table)
+  const templateLabels=useSelector(state=>state.invoiceTemplate.labels)
+  const termsAndConditions=useSelector(state=>state.invoiceTemplate.termsAndConditions)
+  let column1=[],column2=[]
+  for(let i=0;i<14;i++)
+  {
+    if(i<7)
+    column1.push( <Box display={'flex'} sx={{display:!templateLabels[i].enable?'none':'flex'}}>
+    <Typography p={1} variant='h5' sx={{ fontWeight: '400',  width:'110px', color:generalSettings.labelColor}}>{templateLabels[i].label}</Typography>
+    <Typography p={1} variant='h5' sx={{ fontWeight: 'bold',color:generalSettings.fontColor ,fontSize:`${generalSettings.fontSize}px`}}>{templateLabels[i].value}</Typography>
+  </Box>)
+else
+column2.push( <Box display={'flex'} sx={{display:!templateLabels[i].enable?'none':'flex'}}>
+<Typography p={1} variant='h5' sx={{ fontWeight: '400',  width:'110px', color:generalSettings.labelColor}}>{templateLabels[i].label}</Typography>
+<Typography p={1} variant='h5' sx={{ fontWeight: 'bold',color:generalSettings.fontColor ,fontSize:`${generalSettings.fontSize}px`}}>{templateLabels[i].value}</Typography>
+</Box>)
+  }
 
   let gridSize;
 
@@ -59,7 +75,7 @@ for(let i=0;i<templateCompact.numberOfCopies;i++){
                     <Box p={1} pb={1} sx={{ borderBottom: '2px solid gray', backgroundColor:generalSettings.backgroundColor }}>
                       <Box sx={{ display: "flex", justifyContent: "space-between"}} >
                         <Box >
-                          <Box sx={{ display: "flex" }}>
+                          {/* <Box sx={{ display: "flex" }}>
                             <Typography p={1}  sx={{ fontWeight: '400' ,color:generalSettings.labelColor }}>Adm No</Typography>
                             <Typography p={1} variant='h6' sx={{ fontWeight: 'bold' ,color:generalSettings.fontColor,fontSize:`${generalSettings.fontSize}px`}}>{  commonTemplateContent.admissionNo}</Typography>
                           </Box>
@@ -81,14 +97,15 @@ for(let i=0;i<templateCompact.numberOfCopies;i++){
                             <Typography p={1} variant='h6' sx={{ fontWeight: '400' ,color:generalSettings.labelColor}}>Father</Typography>
                             <Typography p={1} variant='h6' sx={{ fontWeight: '400' ,color:generalSettings.fontColor,fontSize:`${generalSettings.fontSize}px`}}>{  commonTemplateContent.fatherName}</Typography>
                           </Box>
-                            {/* email */}
-                          <Box sx={{ display: "flex" }}>
+                       
+                            <Box sx={{ display: "flex" }}>
                             <Typography p={1} variant='h6' sx={{ fontWeight: '400' ,color:generalSettings.labelColor}}>Email</Typography>
                             <Typography p={1} variant='h6' sx={{ fontWeight: '400' ,color:generalSettings.fontColor,fontSize:`${generalSettings.fontSize}px`}}>{  commonTemplateContent.email}</Typography>
-                          </Box>
+                          </Box> */}
+                          {column1}
                         </Box>
                         <Box>
-                          <Box sx={{ display: "flex" }}>
+                          {/* <Box sx={{ display: "flex" }}>
                             <Typography p={1} variant='h6' sx={{ fontWeight: '400' ,color:generalSettings.labelColor}}>Inv No.</Typography>
                             <Typography p={1} variant='h6' sx={{ fontWeight: 'bold',color:generalSettings.fontColor ,fontSize:`${generalSettings.fontSize}px`}}>{  commonTemplateContent.invoiceNo}</Typography>
                           </Box>
@@ -107,7 +124,8 @@ for(let i=0;i<templateCompact.numberOfCopies;i++){
                           <Box sx={{ display: "flex" }}>
                             <Typography p={1} variant='h6' sx={{ fontWeight: '400', color:generalSettings.labelColor}}>Due Date</Typography>
                       <Typography p={1} variant='h6' sx={{ fontWeight: '400' ,color:generalSettings.fontColor,fontSize:`${generalSettings.fontSize}px`}}>{commonTemplateContent.dueDate}</Typography>
-                    </Box>
+                    </Box> */}
+                    {column2}
                   </Box>
                 </Box>
               </Box>
@@ -167,8 +185,7 @@ for(let i=0;i<templateCompact.numberOfCopies;i++){
                   <Typography p={1} variant='h6' sx={{ fontWeight: 'bold' , color:headerFooterSettings. footerFontColor , fontSize:`${headerFooterSettings.footerFontSize}px`}}>Cheque/Draft No.</Typography>
                   <Typography p={1} variant='h6' sx={{ fontWeight: 'bold', color:headerFooterSettings. footerFontColor , fontSize:`${headerFooterSettings.footerFontSize}px`}}>Cheque/Draft Date: </Typography>
                   <Typography p={1} variant='h6' sx={{ fontWeight: 'bold' , color:headerFooterSettings. footerFontColor, fontSize:`${headerFooterSettings.footerFontSize}px`}}>Bank and Branch Details:</Typography>
-                  <Typography p={1} variant='h6' sx={{ fontWeight: 'bold' , color:headerFooterSettings. footerFontColor, fontSize:`${headerFooterSettings.footerFontSize}px`}}>*Fine to be calculated appropriately after the last
-                    payment date.</Typography>
+                  <Typography p={1} variant='h6' sx={{ fontWeight: 'bold' , color:headerFooterSettings. footerFontColor, fontSize:`${headerFooterSettings.footerFontSize}px`}}><div dangerouslySetInnerHTML={{ __html: termsAndConditions }}/></Typography>
                 </Grid>
                 <Grid lg={6} item >
                   <Typography p={1} variant='h6' sx={{ fontWeight: 'bold' , color:headerFooterSettings. footerFontColor, fontSize:`${headerFooterSettings.footerFontSize}px`}}>*Fine (<CurrencyRupeeOutlinedIcon sx={{ fontSize: `${headerFooterSettings.footerFontSize}px` }}></CurrencyRupeeOutlinedIcon>):</Typography>

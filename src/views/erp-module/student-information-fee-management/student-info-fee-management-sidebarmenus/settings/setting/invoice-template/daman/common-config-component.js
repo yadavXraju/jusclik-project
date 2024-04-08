@@ -7,15 +7,22 @@ import TableConfig from './sub-categories/table';
 import TermsAndConditions from './sub-categories/terms-and-conditions';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Labels from './sub-categories/labels';
+import { useState } from 'react';
 
 const CommonConfig = () => {
+  const [expandedPanel, setExpandedPanel] = useState(null);
+
+  const handleChange = (panel) => (event, isExpanded) => {
+    setExpandedPanel(isExpanded ? panel : null);
+  };
+
 
   const accordionData=[ {
     title: 'General',
     content: <><General/></>,
   },
   {
-    title: 'Header And Footer',
+    title: 'Header & Footer',
     content: <><HeaderFooter/></>,
   },
   {
@@ -23,13 +30,13 @@ const CommonConfig = () => {
     content: <><TableConfig /></>,
   },
   {
-    title: 'Terms And Conditions',
-    content: <><TermsAndConditions /></>,
-  },
-  {
     title:'Labels',
     content:<><Labels/></>
-  }
+  },
+  {
+    title: 'Terms & Conditions',
+    content: <><TermsAndConditions /></>,
+  },
   ]
 
   return (
@@ -41,7 +48,10 @@ const CommonConfig = () => {
             display: 'none',
           },
           borderBottom: '5px solid #eef2f6',
-        }}>
+        }}
+        expanded={expandedPanel === `panel${index}`}
+        onChange={handleChange(`panel${index}`)}
+        >
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls={`panel${index + 1}a-content`}

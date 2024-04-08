@@ -21,6 +21,54 @@ const  Template =()=> {
   const generalSettings= useSelector(state=>state.invoiceTemplate.general)
   const headerFooterSettings=useSelector(state=>state.invoiceTemplate.headerFooter)
   const tableSettings=useSelector(state=>state.invoiceTemplate.table)
+  const templateLabels=useSelector(state=>state.invoiceTemplate.labels)
+  const termsAndConditions=useSelector(state=>state.invoiceTemplate.termsAndConditions)
+
+
+
+
+
+  let column1=[],column2=[]
+
+
+  for(let i=0;i<14;i++)
+  {
+    if(i<7)
+    column1.push( <Grid container><Grid item lg={5} xs={6}>
+      <Typography variant="body2" sx={{ color: generalSettings.labelColor, paddingBottom: '0.4rem' }}>
+      {templateLabels[i].label}
+      </Typography>
+    </Grid>
+
+<Grid item lg={7} xs={6}>
+  <Typography variant="body2" fontWeight="bold" sx={{ color: generalSettings.fontColor, paddingBottom: '0.4rem', fontSize:`${generalSettings.fontSize}px` }}>
+  {templateLabels[i].value}
+  </Typography>
+</Grid>
+</Grid>
+
+
+  
+  
+  
+    )
+else
+column2.push( <Grid container><Grid item lg={6} xs={6}>
+  <Typography variant="body2" sx={{ color: generalSettings.labelColor, paddingBottom: '0.4rem' }}>
+  {templateLabels[i].label}
+  </Typography>
+</Grid>
+
+<Grid item lg={6} xs={6}>
+<Typography variant="body2" fontWeight="bold" sx={{ color: generalSettings.fontColor, paddingBottom: '0.4rem', fontSize:`${generalSettings.fontSize}px` }}>
+{templateLabels[i].value}
+</Typography>
+</Grid>
+</Grid>
+)
+  }
+
+  
   const style = {
     width: '210mm',
     height: '297mm',
@@ -101,83 +149,17 @@ const  Template =()=> {
                 {/* First Grid item */}
 
                 <Grid item lg={6} xs={12} sx={{ ...style4 }}>
-                  <Grid container>
-                    <Grid item lg={4} xs={6}>
-                      <Typography variant="body2" sx={{ color: generalSettings.labelColor, paddingBottom: '0.4rem' }}>
-                        Adm No:
-                      </Typography>
-
-                      <Typography variant="body2" sx={{ color: generalSettings.labelColor, paddingBottom: '0.4rem' }}>
-                        Class:
-                      </Typography>
-                      <Typography variant="body2" sx={{ color: generalSettings.labelColor, paddingBottom: '0.4rem' }}>
-                        Name:
-                      </Typography>
-                      <Typography variant="body2" sx={{ color: generalSettings.labelColor, paddingBottom: '0.4rem' }}>
-                        Mobile:
-                      </Typography>
-                      <Typography variant="body2" sx={{ color: generalSettings.labelColor, paddingBottom: '1rem' }}>
-                        Father:
-                      </Typography>
-                    </Grid>
-
-                    <Grid item lg={8} xs={6}>
-                      <Typography variant="body2" fontWeight="bold" sx={{ color: generalSettings.fontColor,paddingBottom: '0.4rem' ,fontSize:`${generalSettings.fontSize}px` }}>
-                        {commonTemplateContent.admissionNo}
-                      </Typography>
-                      <Typography variant="body2" fontWeight="bold" sx={{ color: generalSettings.fontColor,paddingBottom: '0.4rem' ,fontSize:`${generalSettings.fontSize}px` }}>
-                        {commonTemplateContent.className}
-                      </Typography>
-                      <Typography variant="body2" fontWeight="bold" sx={{ color: generalSettings.fontColor,paddingBottom: '0.4rem' ,fontSize:`${generalSettings.fontSize}px` }}>
-                        {commonTemplateContent.name}
-                      </Typography>
-                      <Typography variant="body2" fontWeight="bold" sx={{ color: generalSettings.fontColor,paddingBottom: '0.4rem' ,fontSize:`${generalSettings.fontSize}px` }}>
-                        {commonTemplateContent.mobile}
-                      </Typography>
-                      <Typography variant="body2" fontWeight="bold" sx={{color: generalSettings.fontColor ,fontSize:`${generalSettings.fontSize}px`}}>
-                        {commonTemplateContent.fatherName}
-                      </Typography>
-                    </Grid>
-                  </Grid>
+                  
+                    
+                {column1}
+                    
+                     
+                  
                 </Grid>
 
                 {/* Second Grid item */}
                 <Grid item lg={6} xs={12} sx={{ paddingLeft: '0.4rem' }}>
-                  <Grid container>
-                    <Grid item lg={5} xs={6}>
-                      <Typography variant="body2" sx={{ color: generalSettings.labelColor,paddingBottom: '0.4rem' }}>
-                        Invoice No:
-                      </Typography>
-                      <Typography variant="body2" sx={{ color: generalSettings.labelColor,paddingBottom: '0.4rem' }}>
-                        Invoice Date:
-                      </Typography>
-                      <Typography variant="body2" sx={{ color: generalSettings.labelColor,paddingBottom: '0.4rem' }}>
-                        Academic Year:
-                      </Typography>
-                      <Typography variant="body2" sx={{ color: generalSettings.labelColor,paddingBottom: '0.4rem' }}>
-                        Fees Period:
-                      </Typography>
-                      <Typography variant="body2" sx={{color: generalSettings.labelColor,}}>Due Date:</Typography>
-                    </Grid>
-
-                    <Grid item lg={7} xs={6}>
-                      <Typography variant="body2" fontWeight="bold" sx={{ color: generalSettings.fontColor,paddingBottom: '0.4rem'  ,fontSize:`${generalSettings.fontSize}px`}}>
-                        {commonTemplateContent.invoiceNo}
-                      </Typography>
-                      <Typography variant="body2" fontWeight="bold" sx={{ color: generalSettings.fontColor,paddingBottom: '0.4rem' ,fontSize:`${generalSettings.fontSize}px` }}>
-                        {commonTemplateContent.invoiceDate}
-                      </Typography>
-                      <Typography variant="body2" fontWeight="bold" sx={{ color: generalSettings.fontColor,paddingBottom: '0.4rem'  ,fontSize:`${generalSettings.fontSize}px`}}>
-                        {commonTemplateContent.academicYear}
-                      </Typography>
-                      <Typography variant="body2" fontWeight="bold" sx={{ color: generalSettings.fontColor,paddingBottom: '0.4rem'  ,fontSize:`${generalSettings.fontSize}px`}}>
-                        {commonTemplateContent.feePeriod}
-                      </Typography>
-                      <Typography variant="body2" fontWeight="bold" sx={{color: generalSettings.fontColor ,fontSize:`${generalSettings.fontSize}px`}}>
-                        {commonTemplateContent.dueDate}
-                      </Typography>
-                    </Grid>
-                  </Grid>
+                  {column2}
                 </Grid>
               </Grid>
             </Grid>
@@ -322,24 +304,15 @@ const  Template =()=> {
             </Typography>
 
             <Typography variant="body2" sx={{ marginBottom: '0.4rem', marginLeft: '20px',fontSize:`${headerFooterSettings.footerFontSize}px` }}>
-              1. Payment is due within 30 days from the date of invoice, late payments may incur penalties.{' '}
+            <div dangerouslySetInnerHTML={{ __html: termsAndConditions }}/>
             </Typography>
-            <Typography variant="body2" sx={{ marginBottom: '0.4rem', marginLeft: '20px' ,fontSize:`${headerFooterSettings.footerFontSize}px`}}>
-              2. Late payments exceeding [number of days] days from the due date may result in suspension of services until payment is
-              received.{' '}
-            </Typography>
-            <Typography variant="body2" sx={{ marginBottom: '0.4rem', marginLeft: '20px' ,fontSize:`${headerFooterSettings.footerFontSize}px`}}>
-              3. All payments must be made in the currency specified on the invoice and should include any applicable taxes or fees.
-            </Typography>
-            <Typography variant="body2" sx={{ paddingBottom: '20px', marginLeft: '20px',fontSize:`${headerFooterSettings.footerFontSize}px` }}>
-              4. The client is responsible for any bank charges or transaction fees incurred during the payment process.
-            </Typography>
+            
           </Grid>
 
           <Box sx={{ backgroundColor: headerFooterSettings.footerBackgroundColor }}>
             <Typography
               variant="body2"
-              sx={{ paddingBottom: '10px', paddingRight: '20px', fontWeight: 'bold', textAlign: 'right', paddingTop: '70px' ,fontSize:`${headerFooterSettings.footerFontSize}px`}}
+              sx={{ paddingBottom: '10px', paddingRight: '20px', fontWeight: 'bold', textAlign: 'right', paddingTop: '20px' ,fontSize:`${headerFooterSettings.footerFontSize}px`}}
             >
               Authorized Signature
             </Typography>
