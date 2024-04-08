@@ -18,7 +18,6 @@ const General = () => {
 
   // state handler for general component
   const handleStateChange = (key, value) => {
-    console.log(key,value);
     dispatch(updateGeneralProperty({ key, value }));
   };
 

@@ -1,33 +1,28 @@
 import React from 'react'
-import { Box,Typography ,Switch} from "@mui/material";
+import { Box,Typography ,Switch,FormControl,} from "@mui/material";
 import DragIndicatorOutlinedIcon from '@mui/icons-material/DragIndicatorOutlined';
 import {  DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { updateLabels } from 'store/student-info-and-fee/setting/Invoice-Template-Slice';
 const Labels = () => {
-const label = [
-    'Admission No',
-    'Student\'s Name',
-    'Father\'s Name',
-    'Address',
-    'Class',
-    'Tel(R)',
-    'Tel(M)',
-    'Email',
-    'Invoice No:[SS*]',
-    'Invoice Date',
-    'Academic Year',
-    'Fee Period',
-    'Due Date',
-    'Net Amount Payable'
-  ];
+  const label=useSelector((state)=>state.invoiceTemplate.labels)
+  const dispatch=useDispatch()
   const [labels,setLabels]=useState(label)
+  
+const handleEnable=(e,index)=>{
+const checked=e.target.checked
+setLabels(prevLabels => {
+  const updatedLabels = [...prevLabels];
+  updatedLabels[index] = { ...updatedLabels[index], enable: checked };
+  return updatedLabels;
+});
+}
 
- 
-//   all labels
-
-
-
-    const newlabels = labels.map((text, index) => (
+//   all labels     
+    const newlabels = labels.map((item, index) => (
         <Draggable key={index} draggableId={`label-${index}`} index={index}>
           {(provided) => (
             <Box
@@ -50,13 +45,16 @@ const label = [
                   paddingLeft: "10px"
                 }}
               >
-                <Typography>{text}</Typography>
-                <Switch key={`label-${index}`} />
+                <Typography>{item.label}</Typography>
+                <FormControl key={`label-${index}`}>
+                <Switch key={`label-${index}`} checked={item.enable}  onChange={(e)=>handleEnable(e,index)}/>
+                </FormControl>
               </Box>
             </Box>
           )}
         </Draggable>
       ));
+
 
       const handleDragAndDrop = (results) => {
         const { source, destination } = results;
@@ -67,9 +65,11 @@ const label = [
             const [movedItem] = newLabels.splice(source.index, 1);
             newLabels.splice(destination.index, 0, movedItem);
             setLabels(newLabels);
-       
       }
-    
+
+      useEffect(()=>{
+    dispatch(updateLabels(labels))
+      },[labels])
   return (
     <DragDropContext onDragEnd={handleDragAndDrop}>
     <Droppable droppableId="labels">
