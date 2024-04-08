@@ -53,7 +53,7 @@ const initialState = {
     itemDescriptionFontSize: '8',
     itemDescriptionFontColor: '#333333'
   },
-  selectedTemplate: 1,
+  selectedTemplate: 4,
   defaultTemplate: null,
   labels: [
     { label: 'Admission No', value: 'P00912' ,enable:true},
@@ -70,7 +70,8 @@ const initialState = {
     { label: 'Fee Period', value: 'Feb`24-Mar`24' ,enable:true},
     { label: 'Due Date', value: '15-Jan-2024' ,enable:true},
     { label: 'Net Amount Payable', value: '5,900',enable:true }
-  ]
+  ],
+  termsAndConditions:'<p>Your School\'s Terms and Conditions will be displayed here. You can add it in the Invoice Preferences page under Settings.</p>'
 };
 
 // Create a slice using createSlice from Redux Toolkit
@@ -100,10 +101,13 @@ const invoiceSlice = createSlice({
     updateLabels(state, action) {      
       state.labels = action.payload;
     },
+    updateTermsAndConditions(state,action){
+      state.termsAndConditions=action.payload
+    }
 
   }
 });
-export const { updateGeneralProperty, updateHeaderFooterProperty, updateTableProperty, updateSelectedTemplate, updateLabels } = invoiceSlice.actions;
+export const { updateGeneralProperty, updateHeaderFooterProperty, updateTableProperty, updateSelectedTemplate, updateLabels,updateTermsAndConditions } = invoiceSlice.actions;
 
 // Export the reducer itself to be used in combineReducers
 export default invoiceSlice.reducer;
