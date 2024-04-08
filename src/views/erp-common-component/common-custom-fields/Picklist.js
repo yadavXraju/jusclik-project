@@ -74,9 +74,8 @@ const Picklist = ({ option, onChange }) => {
                 className='findcomp'
                 onMouseEnter={() => setHoverUnusedField(index)}
                 onMouseLeave={() => setHoverUnusedField(-1)}
-
               >
-                <DragIndicatorOutlinedIcon />
+                <DragIndicatorOutlinedIcon sx={{color: "#b3b9c1"}} />
                 <TextField
                   id="permanent-textfield"
                   sx={{
@@ -84,15 +83,15 @@ const Picklist = ({ option, onChange }) => {
                       height: "15px !important",
                     }
                   }}
-                  //value={option?.defaultValue}
+                  value={option?.defaultValue}
                   placeholder="Specify option name"
-                  name="label"
+                  name="defaultValue"
                   fullWidth
                   onChange={onChange}
                 />
                 <Box sx={{ display: "flex", flexDirection: "row", gap: "10px", marginLeft: "10px" }}>
-                  <AddCircleIcon sx={{ visibility: hoverUnusedField == index ? 'visible' : "hidden", height: "20px", width: "20px", color: "green" }} />
-                  <RemoveCircleIcon sx={{ visibility: hoverUnusedField == index ? 'visible' : "hidden", height: "20px", width: "20px", color: "#ff7c80" }} onClick={()=>handleRemove()}/>
+                  <AddCircleIcon sx={{ visibility: hoverUnusedField == index ? 'visible' : "hidden", height: "20px", width: "20px", color: "#00bf7c" }} onClick={()=>AddMore()}/>
+                  <RemoveCircleIcon sx={{ visibility: hoverUnusedField == index ? 'visible' : "hidden", height: "20px", width: "20px", color: "#ff7c80" }} onClick={()=>handleRemove( )}/>
                 </Box>
               </Box>
             )

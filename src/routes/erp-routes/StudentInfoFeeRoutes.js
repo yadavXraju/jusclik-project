@@ -85,7 +85,7 @@ const TransportAllocationPreview =  Loadable(lazy(() => import('views/erp-module
 
 // setings
 
-const SystemData = Loadable(lazy(() => import('views/erp-module/erp-common-item/setup/system-data')));
+const SystemData = Loadable(lazy(() => import('views/erp-common-component/setup/system-data')));
 const FeeStructure = Loadable(lazy(() => import('views/erp-common-component/fee-structure')));
 
 

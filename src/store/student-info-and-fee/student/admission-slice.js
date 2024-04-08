@@ -7,219 +7,219 @@ const intialStudentDetailsData = [
     sectionCode: 0,
     section: [
       {
+        id:2,
         name: "Admission Details",
         subSection: [
           {
             name: "Admission No.",
             type: "text",
-            selected: true,
-            id: 1
-          },
-          {
-            name: "Admission Date",
-            type: "date",
-            selected: true,
-            id: 2
+            selected: false,
+            id: 3
           },
           {
             name: "Joining  Class",
             type: "text",
             selected: true,
-            id: 3
+            id: 4
           },
           {
             name: "Joining  Date",
             type: "date",
             selected: true,
-            id: 4
+            id: 5
           }
         ]
       },
       {
+        id:6,
         name: "Student Details",
         subSection: [
           {
             name: "First Name",
             type: "text",
             selected: true,
-            id: 9
+            id: 7
           },
           {
             name: "Middle Name",
             type: "text",
             selected: true,
-            id: 10
+            id: 8
           },
           {
             name: "Last Name",
             type: "text",
             selected: true,
-            id: 11
+            id: 9
           },
           {
             name: "Gender",
             type: "text",
             selected: true,
-            id: 12
+            id: 10
           },
           {
             name: "D.O.B",
             type: "date",
             selected: true,
-            id: 13
+            id: 11
           },
           {
             name: "Age",
             type: "text",
-            selected: false,
-            id: 14
+            selected: true,
+            id: 12
           },
           {
             name: "Aadhaar No.",
             type: "text",
             selected: true,
-            id: 15
+            id: 13
           },
           {
             name: "PEN No.",
             type: "text",
-            selected: false,
-            id: 16
+            selected: true,
+            id: 14
           },
         ]
       },
       {
+        id:15,
         name: "Class Details",
         subSection: [
           {
             name: "Class",
             type: "text",
             selected: true,
-            id: 21
+            id: 16
           },
           {
             name: "Section",
             type: "text",
             selected: true,
-            id: 22
+            id:17
           },
         ]
       },
-      {
+      { 
+        id:18,
         name: "Fee Details",
         subSection: [
           {
             name: "Category",
             type: "text",
             selected: true,
-            id: 24
+            id: 19
           },
           {
             name: "Pay Mode",
             type: "text",
             selected: true,
-            id: 25
+            id: 20
           },
           {
             name: "Concession",
             type: "text",
             selected: true,
-            id: 26
+            id: 21
           },
           {
             name: "Date",
             type: "date",
             selected: true,
-            id: 27
+            id: 22
           }
         ]
       },
     ]
   },
   {
-    id: 1,
+    id: 23,
     name: "Other Details",
     sectionCode: 1,
     section: [
       {
+        id:24,
         name: "Other Details",
         subSection: [
           {
             name: "Family Id",
             type: "text",
             selected: true,
-            id: 28
+            id: 25
           },
           {
             name: "Nationality",
             type: "text",
             selected: true,
-            id: 29
+            id: 26
           },
           {
             name: "Religion",
             type: "text",
             selected: true,
-            id: 30
+            id: 27
           },
           {
             name: "House",
             type: "text",
             selected: true,
-            id: 31
+            id: 28
           },
           {
             name: "Blood Group",
             type: "text",
             selected: true,
-            id: 32
+            id: 29
           },
           {
             name: "SRN. No.",
             type: "text",
             selected: true,
-            id: 33
+            id: 30
           }
         ]
       },
       {
+        id:31,
         name: "Other Details2",
         subSection: [
           {
             name: "Family Id",
             type: "text",
             selected: true,
-            id: 35
+            id: 32
           },
           {
             name: "Nationality",
             type: "text",
             selected: true,
-            id: 36
+            id: 33
           },
           {
             name: "Religion",
             type: "text",
             selected: true,
-            id: 37
+            id: 34
           },
           {
             name: "House",
             type: "text",
             selected: true,
-            id: 38
+            id: 35
           },
           {
             name: "Blood Group",
             type: "text",
             selected: true,
-            id: 39
+            id: 36
           },
           {
             name: "SRN. No.",
             type: "text",
             selected: true,
-            id: 40
+            id:37
           }
 
         ]
@@ -227,36 +227,211 @@ const intialStudentDetailsData = [
     ]
   },
   {
-    id: 3,
-    name: "Custom Fields",
-    sectionCode: 2,
+    id:38,
+    name: "Address",
+    sectionCode: 3,
     section: [
       {
+        id:39,
+        name: "Current Address",
+        subSection: [
+          {
+            name: "Address",
+            type: "textarea",
+            selected: true,
+            id:40
+          },
+          {
+            name: "Country/Region",
+            type: "text",
+            selected: true,
+            id: 41
+          },
+          {
+            name: "City",
+            type: "text",
+            selected: true,
+            id: 42
+          },
+          {
+            name: "State",
+            type: "text",
+            selected: true,
+            id: 43
+          },
+          {
+            name: "Zip Code",
+            type: "text",
+            selected: true,
+            id: 44
+          },
+        ]
+      },
+      {
+        id:45,
+        name: "Permanent Address",
+        subSection: [
+          {
+            name: "Address",
+            type: "textarea",
+            selected: true,
+            id: 46
+          },
+          {
+            name: "Country/Region",
+            type: "text",
+            selected: true,
+            id: 47
+          },
+          {
+            name: "City",
+            type: "text",
+            selected: true,
+            id: 48
+          },
+          {
+            name: "State",
+            type: "text",
+            selected: true,
+            id: 49
+          },
+          {
+            name: "Zip Code",
+            type: "text",
+            selected: true,
+            id:50
+          },
+        ]
+      }
+    ]
+  },
+  {
+    id:51,
+    name: "Contact Person",
+    sectionCode: 3,
+    section: [
+      {
+        id:52,
+        name: "Contact Person",
+        subSection: [
+          {
+            name: "Title",
+            type: "text",
+            selected: true,
+            id: 53
+          },
+          {
+            name: "First Name",
+            type: "text",
+            selected: true,
+            id: 54
+          },
+          {
+            name: "Last Name",
+            type: "text",
+            selected: true,
+            id: 55
+          },
+          {
+            name: "Relation",
+            type: "text",
+            selected: true,
+            id: 56
+          },
+          {
+            name: "Mobile",
+            type: "text",
+            selected: true,
+            id: 57
+          },
+          {
+            name: "Relation",
+            type: "text",
+            selected: true,
+            id: 58
+          },
+          {
+            name: "Mobile",
+            type: "text",
+            selected: true,
+            id: 58
+          },
+          {
+            name: "Email",
+            type: "text",
+            selected: true,
+            id: 59
+          },
+          {
+            name: "Education",
+            type: "text",
+            selected: true,
+            id: 60
+          },
+          {
+            name: "Occupation",
+            type: "text",
+            selected: true,
+            id: 61
+         },
+         {
+          name:"Company",
+          type:"text",
+          selected:true,
+          id: 62
+         },
+         {
+          name:"Designation",
+          type:"text",
+          selected:true,
+          id: 63
+         },{
+          name:"Address(office)",
+          type:"text",
+          selected:true,
+          id: 64
+         },
+         {
+          name:"Adhaar No",
+          type:"text",
+          selected:true,
+          id: 65
+         },
+         {
+          name:"PAN",
+          selected:true,
+          id: 65
+         }
+        ]
+      }
+    ]
+  },
+  {
+    id:66,
+    name: "Custom Fields",
+    sectionCode: 4,
+    section: [
+      {
+        id:67,
         name: "Custom Fields",
         subSection: [
           {
             name: "name",
             type: "text",
             selected: true,
-            id: 41
-          },
-          {
-            name: "Admission No.",
-            type: "text",
-            selected: true,
-            id: 42
+            id: 68
           },
           {
             name: "Class",
             type: "text",
             selected: true,
-            id: 43
+            id:69
           },
           {
             name: "Admission Date",
             type: "text",
             selected: true,
-            id: 44
+            id: 70
           },
         ]
       },
@@ -277,7 +452,7 @@ const rows = [
     Status: 'Active'
   },
   {
-    id: 2,
+    id:350,
     AdmNo: '8575',
     AdmDate: '02-Jun-2024',
     StudentName: 'John',
@@ -288,7 +463,7 @@ const rows = [
     Status: 'Inactive'
   },
   {
-    id: 3,
+    id: 360,
     AdmNo: '8576',
     AdmDate: '03-May-2024',
     StudentName: 'Jane',

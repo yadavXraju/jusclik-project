@@ -2,18 +2,9 @@ import React from 'react';
 import Box from '@mui/material/Box';
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
+import Typography from '@mui/material/Typography';
 import ParamSelectPlaceholder from 'views/common-section/ParamSelectPlaceholder';
 
-// const availableFieldType = [
-//     { value: "Picklist", label: "Picklist" },
-//     { value: "Text", label: "Text" },
-//     { value: "Numerical", label: "Numerical" },
-//     { value: "Date", label: "Date" },
-//     { value: "Currency", label: "Currency" },
-//     { value: "Email", label: "Email" },
-//     { value: "Phone", label: "Phone" },
-//     { value: "URL", label: "URL" }
-// ];
 
 const availableSubtype = [
     { value: "singleline", label: "Single Line" },
@@ -44,9 +35,12 @@ export const Email = ({ option, onChange }) => {
 
 export const CustomCheckbox = ({ option, onChange }) => {
     return (
-        <Box sx={{ display: "flex", flexDirection: "column", gap: "0px" }}>
-            <FormControlLabel control={<Checkbox onChange={onChange} checked={option?.isMandatory} />} label="Checked" />
-            <FormControlLabel control={<Checkbox onChange={onChange} checked={option?.isMandatory} />} label="Unchecked" />
+        <Box sx={{marginTop:"5px"}}>
+            <Typography>Default State</Typography>
+            <Box sx={{ display: "flex", flexDirection: "column", gap: "0px",marginTop:"10px"}}>
+                <FormControlLabel control={<Checkbox onChange={onChange} checked={option?.checked} name="checked" />} label="Checked" />
+                <FormControlLabel control={<Checkbox onChange={onChange} checked={!option?.checked} name="checked" />} label="Unchecked" />
+            </Box>
         </Box>
     )
 }
@@ -70,7 +64,7 @@ export const CustomText = ({ option, onChange }) => {
     return (
         <>
             <ParamSelectPlaceholder options={availableSubtype} value={option?.subType} onChange={onChange}
-               name="subType" placeholder="Sub-type"
+                name="subType" placeholder="Sub-type"
             />
             <Box sx={{ display: "flex", flexDirection: "column", gap: "0px" }}>
                 <FormControlLabel control={<Checkbox onChange={onChange} name="isMandatory" checked={option?.isMandatory} />} label="Mandatory Field" />
@@ -113,8 +107,8 @@ export const URL = ({ option, onChange }) => {
 export const CustomDate = ({ option, onChange }) => {
     return (
         <>
-             <ParamSelectPlaceholder options={dateoption} value={option?.subType} onChange={onChange}
-               name="subType" placeholder="Sub-type"
+            <ParamSelectPlaceholder options={dateoption} value={option?.subType} onChange={onChange}
+                name="subType" placeholder="Sub-type"
             />
             <FormControlLabel control={<Checkbox onChange={onChange} name="isMandatory" checked={option?.isMandatory} />} label="Mandatory Field" />
         </>

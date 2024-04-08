@@ -3,6 +3,7 @@ import OutlinedInput from '@mui/material/OutlinedInput';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import Typography from '@mui/material/Typography';
 
 const ParamSelectPlaceholder = ({options,placeholder="", value, onChange, name="",rootStyle={},customStyle={}}) => {
     return (
@@ -11,9 +12,13 @@ const ParamSelectPlaceholder = ({options,placeholder="", value, onChange, name="
                     displayEmpty
                     name={name}
                     value={value}
-                    sx={customStyle}
+                    sx={{...customStyle, '& .MuiSelect-select':{
+                        display:'flex',
+                        alignItems:'center',
+                    } }}
                     onChange={onChange}
-                    input={<OutlinedInput />}
+                    input={<OutlinedInput
+                    />}
                 >
                     <MenuItem disabled value="">
                         <em>{placeholder}</em>
@@ -22,8 +27,11 @@ const ParamSelectPlaceholder = ({options,placeholder="", value, onChange, name="
                         <MenuItem
                             key={option?.value}
                             value={option?.value}
+                            sx={{dispaly:"flex",alingItems:"center"}}
+                         
                         >
-                            {option?.label}
+                        {option.icon&&<Typography variant="text" sx={{marginRight:"5px", display:'flex'}}>{option.icon}</Typography>}
+                        {option?.label}
                         </MenuItem>
                     ))}
                 </Select>

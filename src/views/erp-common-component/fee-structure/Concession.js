@@ -1,5 +1,5 @@
 import React from 'react';
-import ReusableTable from 'views/erp-module/erp-common-item/setup/system-data/ParamTable';
+import ReusableTable from 'views/erp-common-component/ParamTable';
 
 const tableHeadings = [
     {

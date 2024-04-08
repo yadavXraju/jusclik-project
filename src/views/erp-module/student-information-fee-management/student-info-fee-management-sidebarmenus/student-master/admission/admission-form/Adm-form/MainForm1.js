@@ -57,6 +57,9 @@ const Mainform1 = ({ currEditItem }) => {
         setOption(prevOption => ({ ...prevOption, ["otherDetails"]: item?.section }));
       }
       if (item?.sectionCode === 2) {
+        setOption(prevOption => ({ ...prevOption, ["contactPerson"]: item?.section }));
+      }
+      if (item?.sectionCode === 3) {
         setOption(prevOption => ({ ...prevOption, ["customFields"]: item?.section }));
       }
     });
@@ -94,7 +97,7 @@ const Mainform1 = ({ currEditItem }) => {
       cardComponent = <AddressForm />;
       break;
     case 3:
-      cardComponent = <ContactPerson />;
+      cardComponent = <ContactPerson studentFields={option?.contactPerson}/>;
       break;
     case 4:
       cardComponent = <ProfileDetail studentFields={option?.customFields} type="Custom Fields" />;
