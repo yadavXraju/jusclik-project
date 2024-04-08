@@ -1,55 +1,31 @@
-import { Accordion, AccordionDetails, AccordionSummary, Checkbox, FormControl, FormControlLabel, Grid, Typography } from '@mui/material';
+import {  Box, Checkbox, FormControl, FormControlLabel, Grid, Tab, Tabs } from '@mui/material';
 import React from 'react';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import ImageUploadAndPreview from '../../common/image-upload-and-preview';
-import CommonSelect from '../../common/common-select';
+// import ImageUploadAndPreview from '../../common/image-upload-and-preview';
 import ColorPicker from '../../common/color-picker';
 import FontSize from '../../common/font-size';
-import { imagePosition } from '../../common/common-states';
 import { useDispatch } from 'react-redux';
 import { updateHeaderFooterProperty } from 'store/student-info-and-fee/setting/Invoice-Template-Slice';
 import { useSelector } from 'react-redux';
+import { useState } from 'react';
+import DragAndDropFile from '../../common/image-upload-and-preview';
 
 const HeaderFooter = () => {
   const dispatch = useDispatch();
-  // const headerFooterSettings=settings[0]
+
   const headerFooterSettings = useSelector((state) => state.invoiceTemplate.headerFooter);
 
   const handleStateChange = (key, value) => {
     dispatch(updateHeaderFooterProperty({ key, value }));
   };
-  return (
-    <>
-      {/* ====================================== HEADER SECTION ========================================= */}
-      <Accordion>
-        <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1-content" id="panel1-header">
-          <Typography variant="h5">Header</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Grid container rowSpacing={2} spacing={1}>
+
+  const header=<>
+   <Grid container rowSpacing={2} spacing={1}>
             <Grid item md={12}>
               {/* ========= Background Image ============ */}
-              <ImageUploadAndPreview
-                label={'Background Image'}
-                image={headerFooterSettings.headerImage}
-                stateHandler={handleStateChange}
-                updatekey={'headerImage'}
-              />
+                  <DragAndDropFile stateHandler={handleStateChange}
+            updatekey={'headerImage'} 
+            selectedFile={headerFooterSettings.headerImage}/>
             </Grid>
-
-            <Grid item md={12}>
-              {/* ========= Image Position ============== */}
-              <FormControl fullWidth>
-                <CommonSelect
-                  label={'Image Position'}
-                  stateHandler={handleStateChange}
-                  updatekey="headerImagePosition"
-                  defaultValue={'centerCenter'}
-                  options={imagePosition}
-                />
-              </FormControl>
-            </Grid>
-
             <Grid item md={12}>
               {/* ========= Background Color ============ */}
               <Grid container columnSpacing={2}>
@@ -79,16 +55,9 @@ const HeaderFooter = () => {
               </Grid>
             </Grid>
           </Grid>
-        </AccordionDetails>
-      </Accordion>
-
-      {/* ====================================== FOOTER SECTION ========================================= */}
-      <Accordion>
-        <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1-content" id="panel1-header">
-          <Typography variant="h5">Footer</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Grid container spacing={2} rowSpacing={2}>
+  </>
+  const footer=<>
+   <Grid container spacing={2} rowSpacing={2}>
             <Grid item md>
               {/* ========= Font Size ============ */}
               <FontSize
@@ -107,27 +76,6 @@ const HeaderFooter = () => {
                 label="Font Color"
                 enable={true}
               />
-            </Grid>
-            <Grid item md={12}>
-              {/* ========= Background Image ============ */}
-              <ImageUploadAndPreview
-                label={'Background Image'}
-                image={headerFooterSettings.footerImage}
-                stateHandler={handleStateChange}
-                updatekey={'footerImage'}
-              />
-            </Grid>
-            <Grid item md={12}>
-              {/* ========= Image Position ============== */}
-              <FormControl fullWidth>
-                <CommonSelect
-                  label={'Image Position'}
-                  stateHandler={handleStateChange}
-                  updatekey="footerImagePosition"
-                  defaultValue={'centerCenter'}
-                  options={imagePosition}
-                />
-              </FormControl>
             </Grid>
             <Grid item md={12}>
               {/* ========== Background Color ============ */}
@@ -170,9 +118,30 @@ const HeaderFooter = () => {
               />
             </Grid>
           </Grid>
-        </AccordionDetails>
-      </Accordion>
-    </>
+  </>
+  const tabs = [
+    { label: 'Header', content: header },
+    { label: 'Footer', content: footer },
+  ];
+  const [value, setValue] = useState(0);
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+  return (
+    <>
+    <Box>
+      <Tabs value={value} onChange={handleChange}  sx={{marginBottom:'1rem'}}>
+        {tabs.map((tab, index) => (
+          <Tab key={index} label={tab.label} />
+        ))}
+      </Tabs>
+      {tabs.map((tab, index) => (
+        <div key={index} role="tabpanel" hidden={value !== index} id={`tabpanel-${index}`} aria-labelledby={`tab-${index}`}>
+          {value === index && <div>{tab.content}</div>}
+        </div>
+      ))}
+    </Box>
+  </>
   );
 };
 

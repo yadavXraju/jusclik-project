@@ -3,18 +3,27 @@ import { Typography, Box, Button, TextField,FormControl } from '@mui/material';
 import ParamSelectPlaceholder from 'views/common-section/ParamSelectPlaceholder';
 import { Email, CustomCheckbox, Phone, CustomText, CustomNumber, Currency, URL, CustomDate } from './custom-field-options';
 import Picklist from './Picklist';
-
+import CalendarMonthTwoToneIcon from '@mui/icons-material/CalendarMonthTwoTone';
+import ListAltOutlinedIcon from '@mui/icons-material/ListAltOutlined';
+import SavingsOutlinedIcon from '@mui/icons-material/SavingsOutlined';
+import AssignmentOutlinedIcon from '@mui/icons-material/AssignmentOutlined';
+import LooksOneOutlinedIcon from '@mui/icons-material/LooksOneOutlined';
+import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
+import PhoneAndroidOutlinedIcon from '@mui/icons-material/PhoneAndroidOutlined';
+import PublicOutlinedIcon from '@mui/icons-material/PublicOutlined';
+import CheckBoxOutlinedIcon from '@mui/icons-material/CheckBoxOutlined';
 
 
 const availableFieldType = [
-  { value: "Picklist", label: "Picklist" },
-  { value: "Text", label: "Text" },
-  { value: "Numerical", label: "Numerical" },
-  { value: "Date", label: "Date" },
-  { value: "Currency", label: "Currency" },
-  { value: "Email", label: "Email" },
-  { value: "Phone", label: "Phone" },
-  { value: "URL", label: "URL" }
+  { value: "Picklist", label: "Picklist",icon:<ListAltOutlinedIcon /> },
+  { value: "Text", label: "Text" ,icon:<AssignmentOutlinedIcon />},
+  { value: "Numerical", label: "Numerical",icon:<LooksOneOutlinedIcon /> },
+  { value: "Date", label: "Date",icon:<CalendarMonthTwoToneIcon /> },
+  { value: "Currency", label: "Currency",icon:<SavingsOutlinedIcon /> },
+  { value: "Email", label: "Email",icon:<EmailOutlinedIcon /> },
+  { value: "Phone", label: "Phone",icon:<PhoneAndroidOutlinedIcon /> },
+  { value: "URL", label: "URL",icon:<PublicOutlinedIcon />},
+  {value:"CheckBox",label:"CheckBox",icon:<CheckBoxOutlinedIcon />}
 ];
 
 const availableGroup = [
@@ -38,13 +47,13 @@ const intialCustomFields = {
   subGroup: "",
   fieldType: "",
   picklist: {
-    isMandatory: "",
-    subType: "",
     PicklistOption: [],
-    setDefaultValue: null,
+    isMandatory: "",
+    subType:"",
+    defaultValue:"",
   },
   customText: {
-    subType: "Single Line",
+    subType: "",
     isMandatory: true,
     duplicates: true,
     encryptField: false
@@ -56,19 +65,22 @@ const intialCustomFields = {
   },
   date: {
     isMandatory: true,
-    subType: "Date and Time",
+    subType: "",
   },
   currency: {
     isMandatory: true,
   },
   phone: {
-    isMandatory: "",
-    subType: "",
-    encryptField: ""
+    isMandatory:true,
+    subType:"",
+    encryptField:true
   },
   url: {
-    isMandatory: "",
-    duplicates: ""
+    isMandatory:true,
+    duplicates:true
+  },
+  customCheckbox:{
+    checked:true,
   }
 }
 
@@ -88,7 +100,32 @@ const AddCustomField = ({ toggleDrawer, handleAddField,handleSubGroup,subGroups}
       ...prevFields,
       [name]: value,
     }));
-    handleSubGroup(customFields?.group);
+  }
+
+  //HandlePiclist
+  const handlePicklist=(e)=>{
+    // const { name, checked } = e.target;
+    //console.log(name,checked)
+    // if (checked == true || checked == false) {
+    //   setCustomFields((prevFields) => ({
+    //     ...prevFields,
+    //     picklist: {
+    //       ...prevFields.picklist,
+    //       [name]: checked,
+    //     },
+    //   }));
+    // }
+    // else {
+      const { name, value } = e.target;
+      console.log(name,value)
+      setCustomFields((prevFields) => ({
+        ...prevFields,
+        picklist: {
+          ...prevFields.picklist,
+          [name]: value,
+        },
+      }));
+    // }
   }
 
   //Setting Custom Text
@@ -166,10 +203,53 @@ const AddCustomField = ({ toggleDrawer, handleAddField,handleSubGroup,subGroups}
   }
 
   // Email
-
+  const handleURL=(e)=>{
+    const { name, checked } = e.target;
+    if (checked == true || checked == false) {
+      setCustomFields((prevFields) => ({
+        ...prevFields,
+        url: {
+          ...prevFields.url,
+          [name]: checked,
+        },
+      }));
+    }
+    else {
+      const { name, value } = e.target;
+      setCustomFields((prevFields) => ({
+        ...prevFields,
+        url: {
+          ...prevFields.url,
+          [name]: value,
+        },
+      }));
+    }
+  }
 
   // Phone
-  // 
+   const handlePhoneChange=(e)=>{ 
+    const { name, checked } = e.target;
+    if (checked == true || checked == false) {
+      setCustomFields((prevFields) => ({
+        ...prevFields,
+        phone: {
+          ...prevFields.phone,
+          [name]: checked,
+        },
+      }));
+    }
+    else {
+      const { name, value } = e.target;
+      setCustomFields((prevFields) => ({
+        ...prevFields,
+        phone: {
+          ...prevFields.phone,
+          [name]: value,
+        },
+      }));
+    }
+   }
+
   const handleCurrency = (e) => {
     const { name, checked } = e.target;
     console.log(name, checked)
@@ -194,10 +274,25 @@ const AddCustomField = ({ toggleDrawer, handleAddField,handleSubGroup,subGroups}
     }
   }
 
+  const handleCheckbox=(e)=>{
+    const { name, checked } = e.target;
+    if (checked == true || checked == false) {
+      setCustomFields((prevFields) => ({
+        ...prevFields,
+        customCheckbox:{
+          ...prevFields.customCheckbox,
+          [name]:!customFields.customCheckbox.checked,
+        },
+      }));
+    }
+  }
+
+
+
   const DynamicRender = ({ switchValue, onChange }) => {
     switch (switchValue) {
       case 'Picklist':
-        return <Picklist option={customFields?.picklist} onChange={onChange} />;
+        return <Picklist option={customFields?.picklist} onChange={handlePicklist} />;
       case 'Text':
         return <CustomText option={customFields?.customText} onChange={handleCustomText} />;
       case 'Date':
@@ -206,20 +301,21 @@ const AddCustomField = ({ toggleDrawer, handleAddField,handleSubGroup,subGroups}
         return <CustomNumber option={customFields?.numerical} onChange={handleCustomNumber} />;
       case 'Email':
         return <Email option={customFields?.email} onChange={onChange} />;
-      case 'Checkbox':
-        return <CustomCheckbox option={customFields?.customCheckbox} onChange={onChange} />;
+      case 'CheckBox':
+        return <CustomCheckbox option={customFields?.customCheckbox} onChange={handleCheckbox} />;
       case 'Phone':
-        return <Phone option={customFields?.phone} onChange={onChange} />;
+        return <Phone option={customFields?.phone} onChange={handlePhoneChange} />;
       case 'Currency':
         return <Currency option={customFields?.currencey} onChnage={handleCurrency} />;
       case 'URL':
-        return <URL option={customFields?.url} onChange={onChange} />;
+        return <URL option={customFields?.url} onChange={handleURL} />;
       default:
         return null;
     }
   }
 
   useEffect(() => {
+    handleSubGroup(customFields?.group);
   }, [customFields])
 
   
@@ -248,10 +344,10 @@ const AddCustomField = ({ toggleDrawer, handleAddField,handleSubGroup,subGroups}
             />
           </FormControl>
           <ParamSelectPlaceholder options={availableGroup} value={customFields?.group} onChange={handleChange}
-            size="medium" name="group" placeholder="select group"
+            size="medium" name="group" placeholder="Select Group" 
           />
           <ParamSelectPlaceholder options={subGroups} value={customFields?.subGroup} onChange={handleChange}
-            size="medium" name="subGroup" placeholder="Select Sub Group"
+            size="medium" name="subGroup" placeholder="Select Sub-group"
           />
           <ParamSelectPlaceholder options={availableFieldType} value={customFields?.fieldType} onChange={handleChange}
             size="medium" name="fieldType" placeholder="Field Type"

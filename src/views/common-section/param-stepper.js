@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Tabs, Tab, Typography, Box} from '@mui/material';
+import { Tabs, Tab, Typography, Box } from '@mui/material';
 import BottomNavbar from 'views/common-section/BottomNavbar';
 import TabsName from './ParamTabStep';
-
 
 const TabPanel = (props) => {
   const { children, value, index, ...other } = props;
@@ -37,50 +36,78 @@ const a11yProps = (index) => {
   };
 };
 
-const SetupTabs = ({ tabPage , orientation='horizontal', variant='scrollable' , customStyleTabs , customtabWrapper={},customtabSytle={},customtabPanelStyle={} , numberShow=true , iconShow=true}) => {
+const SetupTabs = ({
+  tabPage,
+  orientation = 'horizontal',
+  variant = 'scrollable',
+  customStyleTabs,
+  customtabWrapper = {},
+  customtabSytle = {},
+  customtabPanelStyle = {},
+  numberShow = true,
+  iconShow = true,
+}) => {
   const [value, setValue] = useState(0);
+  const lastIndex = tabPage.length - 1;
 
-  const handleChange = (event,newValue) => {
+  const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
-  const style={
-       tabWrapper:{
-        width: "100%",display: 'flex',flexDirection: "column",marginTop: "25px"
-       },
-      tabStyle:{
-        width:"fit-content",borderBottom: "1px solid #eef2f6", alignItems: "baseline",paddingLeft:'0px',marginRight:"40px" 
-      },
-      tabPanel:{
-        width: "100%",padding:"0px 20px 20px 0px",bgcolor: 'background.paper', borderRadius: "10px",overflowY: "auto",height: 'calc(100vh - 250px)'
-      }
-  }
+  const style = {
+    tabWrapper: {
+      width: '100%',
+      display: 'flex',
+      flexDirection: 'column',
+      marginTop: '25px',
+    },
+    tabStyle: {
+      width: 'fit-content',
+      borderBottom: '1px solid #eef2f6',
+      alignItems: 'baseline',
+      paddingLeft: '0px',
+      marginRight: '40px',
+    },
+    tabPanel: {
+      width: '100%',
+      padding: '24px',
+      bgcolor: 'background.paper',
+      borderRadius: '10px',
+      overflowY: 'auto',
+      height: 'calc(100vh - 250px)',
+    },
+  };
 
   return (
     <>
-      <Box sx={{...style?.tabWrapper,...customtabWrapper}}>
+      <Box sx={{ ...style?.tabWrapper, ...customtabWrapper }}>
         <Tabs
           orientation={orientation}
           variant={variant}
           value={value}
           onChange={handleChange}
           aria-label="Vertical tabs example"
-          sx={{...customStyleTabs , '& .Mui-selected .number-bg':{
-            background:'#2196f3',
-            color:'#fff',
-          }}}
+          sx={{
+            ...customStyleTabs,
+            '& .Mui-selected .number-bg': {
+              background: '#2196f3',
+              color: '#fff',
+            },
+          }}
         >
           {tabPage.map((tab, index) => (
             <Tab
               key={tab?.id}
-             
-              label={<TabsName name={tab.name} number={index} numberShow={numberShow} iconShow={iconShow}/>}
+              label={<TabsName name={tab.name} number={index} numberShow={numberShow} iconShow={iconShow} lastIndex={lastIndex} />}
               {...a11yProps(index)}
-              sx={{...style?.tabStyle,...customtabSytle , '& .MuiTypography-body1':{
-                fontSize:'15px',
-                fontWeight:'500',
-              }}}
-               
+              sx={{
+                ...style?.tabStyle,
+                ...customtabSytle,
+                '& .MuiTypography-body1': {
+                  fontSize: '15px',
+                  fontWeight: '500',
+                },
+              }}
             />
           ))}
         </Tabs>
@@ -89,14 +116,20 @@ const SetupTabs = ({ tabPage , orientation='horizontal', variant='scrollable' , 
             key={tab?.id}
             value={value}
             index={index}
-            sx={{...style?.tabPanel,...customtabPanelStyle , '& .MuiBox-root':{
-              padding:'0',
-            }}} className="Scrollbar">
+            sx={{
+              ...style?.tabPanel,
+              ...customtabPanelStyle,
+              '& .MuiBox-root': {
+                padding: '0',
+              },
+            }}
+            className="Scrollbar"
+          >
             <tab.component />
           </TabPanel>
         ))}
-      </Box >
-      <BottomNavbar tabPageLength={tabPage.length}  value={value} setValue={setValue}/>
+      </Box>
+      <BottomNavbar tabPageLength={tabPage.length} value={value} setValue={setValue} />
     </>
   );
 };

@@ -1,68 +1,61 @@
 import React from 'react';
-import { Tabs, Tab, Grid} from '@mui/material';
-import { Box } from '@mui/system';
+import {  Accordion, AccordionSummary, AccordionDetails, Typography} from '@mui/material';
+
 import General from './sub-categories/general';
 import HeaderFooter from './sub-categories/header-footer';
 import TableConfig from './sub-categories/table';
-import statePropTypes from './statePropTypes';
+import TermsAndConditions from './sub-categories/terms-and-conditions';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import Labels from './sub-categories/labels';
 
 const CommonConfig = () => {
 
-  const tabsData = [
-    {
-      label: 'General',
-      content: <><General/></>,
-    },
-    {
-      label: 'Header And Footer',
-      content: <><HeaderFooter/></>,
-    },
-    {
-      label: 'Table Layout',
-      content: <><TableConfig /></>,
-    },
-  ];
-
-  const [selectedTab, setSelectedTab] = React.useState(0);
-
-  const handleTabChange = (event, newValue) => {
-    setSelectedTab(newValue);
-  };
+  const accordionData=[ {
+    title: 'General',
+    content: <><General/></>,
+  },
+  {
+    title: 'Header And Footer',
+    content: <><HeaderFooter/></>,
+  },
+  {
+    title: 'Table Layout',
+    content: <><TableConfig /></>,
+  },
+  {
+    title: 'Terms And Conditions',
+    content: <><TermsAndConditions /></>,
+  },
+  {
+    title:'Labels',
+    content:<><Labels/></>
+  }
+  ]
 
   return (
     <>
-      {/* Vertical Tabs */}
-      <Grid container spacing={1}>
-      <Grid item md={3}>
-      <Tabs
-        orientation="vertical"
-        variant="scrollable"
-        value={selectedTab}
-        onChange={handleTabChange}
-      >
-        {/* Dynamically generate tabs */}
-        {tabsData.map((tab, index) => (
-          <Tab key={index} label={tab.label} />
-        ))}
-      </Tabs>
-      </Grid>
-      <Grid item md={8}>
-        {tabsData[selectedTab].content}
-      </Grid>
-      </Grid>
-      <Box sx={{display:'flex',}}>
-      {/* Tab Content */}
-
-        {/* Render content based on selected tab */}
-      
-      </Box>
-
+    {accordionData.map((item, index) => (
+        <Accordion key={index} sx={{
+          '&.MuiAccordion-root:before': {
+            // To hide the default border
+            display: 'none',
+          },
+          borderBottom: '5px solid #eef2f6',
+        }}>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls={`panel${index + 1}a-content`}
+            id={`panel${index + 1}a-header`}
+          >
+            <Typography>{item.title}</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <Typography>{item.content}</Typography>
+          </AccordionDetails>
+        </Accordion>
+      ))}
       </>
   );
-};
-
-CommonConfig.propTypes = {
-  state: statePropTypes.isRequired, // Use the defined PropTypes for the state prop
 };
 
 export default CommonConfig;

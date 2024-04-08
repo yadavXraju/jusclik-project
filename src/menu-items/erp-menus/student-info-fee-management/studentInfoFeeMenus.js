@@ -14,15 +14,15 @@ import DirectionsBusTwoToneIcon from '@mui/icons-material/DirectionsBusTwoTone';
 const StudnetMasterColleagueTitles = [
  {title : 'Enquiry' , url : '/erp/student-info-fee/student-master/enquiry'}, 
  {title : 'Registration' , url : '/erp/student-info-fee/student-master/registration'}, 
- {title : 'Registration Data' , url : '/erp/student-info-fee/student-master/registration-data'}, 
- {title : 'Admission Process' , url : '/erp/student-info-fee/student-master/admission-process'}, 
+//  {title : 'Registration Data' , url : '/erp/student-info-fee/student-master/registration-data'}, 
+//  {title : 'Admission Process' , url : '/erp/student-info-fee/student-master/admission-process'}, 
  {title :  'Provisional' , url : '/erp/student-info-fee/student-master/provisional'}, 
  {title :  'Admission' , url : '/erp/student-info-fee/student-master/admission'}, 
- {title :  'Custom Data' , url : '/erp/student-info-fee/student-master/custom-data'}, 
- {title :  'Edit Master Data Field' , url : '/erp/student-info-fee/student-master/edit-master-data-field'}, 
- {title :  'Change Enrolment Number' , url : '/erp/student-info-fee/student-master/change-enrolment-number'}, 
- {title :  'Change Enrolment Status' , url : '/erp/student-info-fee/student-master/change-enrolment-status'}, 
- {title :   'Upload Documents' , url : '/erp/student-info-fee/student-master/upload-document'}, 
+//  {title :  'Custom Data' , url : '/erp/student-info-fee/student-master/custom-data'}, 
+//  {title :  'Edit Master Data Field' , url : '/erp/student-info-fee/student-master/edit-master-data-field'}, 
+//  {title :  'Change Enrolment Number' , url : '/erp/student-info-fee/student-master/change-enrolment-number'}, 
+//  {title :  'Change Enrolment Status' , url : '/erp/student-info-fee/student-master/change-enrolment-status'}, 
+//  {title :   'Upload Documents' , url : '/erp/student-info-fee/student-master/upload-document'}, 
 ];
 
 
@@ -90,24 +90,6 @@ const StudentInfoFeeMenu = {
                   colleagueTitle : StudnetMasterColleagueTitles,
                 },
 
-              //   {
-              //   id: 'registration-data',
-              //   title: 'Registration Data',
-              //   type: 'item',
-              //   url: '/erp/student-info-fee/student-master/registration-data',
-              //   breadcrumbs: false,
-              //   colleagueTitle : StudnetMasterColleagueTitles,
-              // },
-
-              // {
-              //   id: 'admission-process',
-              //   title: 'Admission Process',
-              //   type: 'item',
-              //   url: '/erp/student-info-fee/student-master/admission-process',
-              //   breadcrumbs: false,
-              //   colleagueTitle : StudnetMasterColleagueTitles,
-              // },
-
 
               {
                 id: 'provisional',
@@ -129,51 +111,43 @@ const StudentInfoFeeMenu = {
               },
 
                                 
+
               // {
-              //   id: 'custom-data',
-              //   title: 'Custom Data',
+              //   id: 'edit-master-data-field',
+              //   title: 'Edit Master Data Field',
               //   type: 'item',
-              //   url: '/erp/student-info-fee/student-master/custom-data',
+              //   url: '/erp/student-info-fee/student-master/edit-master-data-field',
               //   breadcrumbs: false,
               //   colleagueTitle : StudnetMasterColleagueTitles,
               // },
 
-              {
-                id: 'edit-master-data-field',
-                title: 'Edit Master Data Field',
-                type: 'item',
-                url: '/erp/student-info-fee/student-master/edit-master-data-field',
-                breadcrumbs: false,
-                colleagueTitle : StudnetMasterColleagueTitles,
-              },
-
                   
-              {
-                id: 'change-enrolment-status',
-                title: 'Change Enrolment Status',
-                type: 'item',
-                url: '/erp/student-info-fee/student-master/change-enrolment-status',
-                breadcrumbs: false,
-                colleagueTitle : StudnetMasterColleagueTitles,
-              },
+              // {
+              //   id: 'change-enrolment-status',
+              //   title: 'Change Enrolment Status',
+              //   type: 'item',
+              //   url: '/erp/student-info-fee/student-master/change-enrolment-status',
+              //   breadcrumbs: false,
+              //   colleagueTitle : StudnetMasterColleagueTitles,
+              // },
 
-              {
-                id: 'change-enrolment-number',
-                title: 'Change Enrolment Number',
-                type: 'item',
-                url: '/erp/student-info-fee/student-master/change-enrolment-number',
-                breadcrumbs: false,
-                colleagueTitle : StudnetMasterColleagueTitles,
-              },
+              // {
+              //   id: 'change-enrolment-number',
+              //   title: 'Change Enrolment Number',
+              //   type: 'item',
+              //   url: '/erp/student-info-fee/student-master/change-enrolment-number',
+              //   breadcrumbs: false,
+              //   colleagueTitle : StudnetMasterColleagueTitles,
+              // },
 
-              {
-                id: 'upload-documents',
-                title: 'Upload Documents',
-                type: 'item',
-                url: '/erp/student-info-fee/student-master/upload-document',
-                breadcrumbs: false,
-                colleagueTitle : StudnetMasterColleagueTitles,
-              },
+              // {
+              //   id: 'upload-documents',
+              //   title: 'Upload Documents',
+              //   type: 'item',
+              //   url: '/erp/student-info-fee/student-master/upload-document',
+              //   breadcrumbs: false,
+              //   colleagueTitle : StudnetMasterColleagueTitles,
+              // },
 
 
             ]
