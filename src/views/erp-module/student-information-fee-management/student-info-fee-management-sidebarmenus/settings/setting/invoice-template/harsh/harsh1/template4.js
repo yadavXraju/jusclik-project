@@ -1,5 +1,3 @@
-// template 2
-
 import React from 'react';
 import {Grid , Box, Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow,  Paper } from '@mui/material';
 import { useSelector } from 'react-redux';
@@ -13,7 +11,22 @@ export const CompactTemplate4 = () => {
   const generalSettings= useSelector(state=>state.invoiceTemplate.general)
   const headerFooterSettings=useSelector(state=>state.invoiceTemplate.headerFooter)
   const tableSettings=useSelector(state=>state.invoiceTemplate.table)
+  const templateLabels=useSelector(state=>state.invoiceTemplate.labels)
 
+  let column1=[],column2=[]
+  for(let i=0;i<14;i++)
+  {
+    if(i<7)
+    column1.push( <Box display={'flex'} sx={{display:!templateLabels[i].enable?'none':'flex'}}>
+    <Typography p={1} variant='h5' sx={{ fontWeight: '400',  width:'110px', color:generalSettings.labelColor}}>{templateLabels[i].label}</Typography>
+    <Typography p={1} variant='h5' sx={{ fontWeight: 'bold',color:generalSettings.fontColor ,fontSize:`${generalSettings.fontSize}px`}}>{templateLabels[i].value}</Typography>
+  </Box>)
+else
+column2.push( <Box display={'flex'} sx={{display:!templateLabels[i].enable?'none':'flex'}}>
+<Typography p={1} variant='h5' sx={{ fontWeight: '400',  width:'110px', color:generalSettings.labelColor}}>{templateLabels[i].label}</Typography>
+<Typography p={1} variant='h5' sx={{ fontWeight: 'bold',color:generalSettings.fontColor ,fontSize:`${generalSettings.fontSize}px`}}>{templateLabels[i].value}</Typography>
+</Box>)
+  }
   return (
 
     <Box sx={{  height: '100%',
@@ -52,13 +65,13 @@ export const CompactTemplate4 = () => {
             </Box>
           </Box>
           <Box ml={6} mr={4} pb={4} sx={{ display: "flex", justifyContent: "space-between" }} bgcolor={generalSettings.backgroundColor}>
-                            <Box pl={4}> 
-                           <Box display={'flex'}>
-                            <Typography p={1} variant='h5' sx={{ fontWeight: '400',  width:'116px', color:generalSettings.labelColor}}>Adm No:</Typography>
+                            <Box pl={4}>
+                           {/* <Box display={'flex'}>
+                            <Typography p={1} variant='h5' sx={{ fontWeight: '400',  width:'110px', color:generalSettings.labelColor}}>Adm No:</Typography>
                             <Typography p={1} variant='h5' sx={{ fontWeight: 'bold',color:generalSettings.fontColor ,fontSize:`${generalSettings.fontSize}px`}}>{commonTemplateContent.admissionNo}</Typography>
                           </Box>
                           <Box display={'flex'}>
-                            <Typography p={1} variant='h5' sx={{ fontWeight: '400' ,  width:'117px',color:generalSettings.labelColor}}>Class:</Typography>
+                            <Typography p={1} variant='h5' sx={{ fontWeight: '400' ,  width:'110px',color:generalSettings.labelColor}}>Class:</Typography>
                             <Typography p={1} variant='h5' sx={{ fontWeight: 'bold',color:generalSettings.fontColor ,fontSize:`${generalSettings.fontSize}px` }}>{commonTemplateContent.className}</Typography>
                           </Box>
                           <Box display={'flex'}>
@@ -72,12 +85,13 @@ export const CompactTemplate4 = () => {
                           <Box display={'flex'}>
                             <Typography p={1} variant='h5' sx={{ fontWeight: '400' ,width:'110px',color:generalSettings.labelColor}}>Father:</Typography>
                             <Typography p={1} variant='h5' sx={{ fontWeight: '400' ,color:generalSettings.fontColor ,fontSize:`${generalSettings.fontSize}px`}}>{commonTemplateContent.fatherName}</Typography>
-                          </Box>
+                          </Box> */}
+                          {column1}
                           </Box>
             
 
               <Box pr={4} sx={{width:'41%'}}>
-                <Box display={'flex'} >
+                {/* <Box display={'flex'} >
                   <Typography p={1} variant="h5" sx={{ fontWeight: '400',textAlign:'end', width:'100%',color:generalSettings.labelColor }} >Invoice No:</Typography>
                   <Typography p={1} variant="body1" sx={{ fontWeight: 'bold' ,textAlign:'end', width:'100%',color:generalSettings.fontColor ,fontSize:`${generalSettings.fontSize}px`}}>
                     {commonTemplateContent.invoiceNo}</Typography>
@@ -101,7 +115,8 @@ export const CompactTemplate4 = () => {
                   <Typography p={1} variant="h5" sx={{ fontWeight: '400',textAlign:'end', width:'100%',color:generalSettings.labelColor }}>Due Date:</Typography>
                   <Typography p={1} variant="body1" sx={{ fontWeight: '400',textAlign:'end', width:'100%',color:generalSettings.fontColor  ,fontSize:`${generalSettings.fontSize}px`}}>
                     {commonTemplateContent.dueDate}</Typography>
-                </Box>
+                </Box> */}
+                {column2}
               </Box>
 
             
