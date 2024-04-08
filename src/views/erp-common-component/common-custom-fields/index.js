@@ -12,6 +12,7 @@ import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 import { useSelector } from 'react-redux';
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
+import ParamSearchBar from 'views/common-section/ParamSearchBar';
 
 const CustomFields = ({ customFieldDrawer, handleAddField, section, handleSubGroup, subGroups }) => {
   const [hoverUnusedField, setHoverUnusedField] = useState(-1);
@@ -35,7 +36,8 @@ const CustomFields = ({ customFieldDrawer, handleAddField, section, handleSubGro
           {/* Used Fields*/}
           <Box sx={{ display: 'flex', flexDirection: "column", gap: "20px", padding: "20px 20px 20px 20px", width: "60%" }} >
             <Typography variant='h3'>Used Fields</Typography>
-            <Box sx={{ height: "calc(100vh - 180px)" }} className="scrollbar">
+            <ParamSearchBar paperStyle={{width:"80%"}}/>
+            <Box sx={{ height: "calc(100vh - 250px)" }} className="scrollbar">
               {
                 studentDetailsData && studentDetailsData.map((field) => (
                   <Box key={field.id} className="scrollbar">
@@ -60,7 +62,7 @@ const CustomFields = ({ customFieldDrawer, handleAddField, section, handleSubGro
                                   (
                                     <Draggable draggableId={finalField.name} index={finalField?.id} key={finalField?.id}>
                                       {(provided) => (
-                                         <Box
+                                         finalField.selected&&<Box
                                           sx={{
                                             display: "flex", 
                                             width: "100%",
@@ -109,6 +111,7 @@ const CustomFields = ({ customFieldDrawer, handleAddField, section, handleSubGro
             <Box sx={{ display: "flex", justifyContent: "flex-start" }}>
               <Typography variant="h3">Unused Fields</Typography>
             </Box>
+            <ParamSearchBar paperStyle={{width:"100%"}}/>
             {
               studentDetailsData && studentDetailsData.map((field) => (
                 <Box key={field.id}>

@@ -36,9 +36,17 @@ const availableGroup = [
     label: "Other Details"
   },
   {
+    value:"Address",
+    label:"Address"
+  },
+  {
+    value:"Contact Person",
+    label:"Contact Person"
+  },
+  {
     value: "Custom Fields",
     label: "Custom Fields"
-  }
+  },
 ]
 
 const intialCustomFields = {
