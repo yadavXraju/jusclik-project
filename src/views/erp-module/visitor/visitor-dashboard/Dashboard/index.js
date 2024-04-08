@@ -8,17 +8,19 @@ import { gridSpacing } from 'store/constant';
 import NeedSupport from 'views/erp-module/student-information-fee-management/student-info-fee-management-dashboard/dashboard/support/Support';
 
 
-import VisitorDetail from './visitor-detail';
+// import VisitorDetail from './visitor-detail';
 import HourlyVisior from './hourly-visitor';
 import DepartmentwiseVisitor from './deparmentwise-visitor';
 import RecentVisitors from './recent visitor';
+import Counters from './counter';
 
 const DashboardContent = () => {
   return (
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
         {/* counter */}
-        <VisitorDetail />
+        {/* <VisitorDetail /> */}
+        <Counters/>
 
       </Grid>
       <Grid item xs={12}>

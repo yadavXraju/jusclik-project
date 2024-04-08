@@ -23,7 +23,6 @@ const TermsAndConditions = () => {
         <Box minHeight='25rem'>
           <ReactQuill value={content} onChange={handleChange} style={{height:'21rem'}} />
         </Box>
-        {/* <div dangerouslySetInnerHTML={{ __html: content }} /> */}
       </>
   );
 };
