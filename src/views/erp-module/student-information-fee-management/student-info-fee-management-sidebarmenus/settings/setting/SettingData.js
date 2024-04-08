@@ -64,7 +64,7 @@ const SettingData = [
     icon: <PermDataSettingOutlinedIcon sx={{ color: '#838195' }} />,
     title: 'Configure',
     items: [
-      { name: 'Reporting Tags', path: '/reporting-tags' },
+      { name: 'Blacklist Visitors', path: '/erp/student-info-fee/settings/blacklist-visitors' },
       { name: 'Transaction Number Series', path: '/transaction-number-series' }
     ]
   },
