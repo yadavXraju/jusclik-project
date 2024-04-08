@@ -11,6 +11,7 @@ const ScheduledVisit = Loadable(lazy(() => import('views/erp-module/visitor/visi
 const VisitorDetails=Loadable(lazy(() => import('views/erp-module/visitor/visitor-sidemenus/visitor-managment/visitor-detail')));
 const Reports =Loadable(lazy(() => import('views/erp-module/visitor/visitor-sidemenus/reports')));
 const Settings =Loadable(lazy(() => import('views/erp-module/visitor/visitor-sidemenus/settings')));
+const Purpose = Loadable(lazy(() => import('views/erp-module/visitor/visitor-sidemenus/settings/purpose')));
 
 // const SmsDeliveryReport = Loadable(lazy(() => import('views/erp-module/visitor/visitor-sidemenus/tool-item/sms-delivery-report')));
 // const Report = Loadable(lazy(() => import('views/erp-module/visitor/visitor-sidemenus/tool-item/sms-delivery-report/Report')));
@@ -57,7 +58,17 @@ const VisitorRoutes = [
        },
        { 
         path: 'settings', 
-        element: <Settings />
+        children : [
+          {
+            path: '', 
+            element: <Settings />
+          } , 
+          {
+            path: 'purpose', 
+            element: <Purpose />
+          } , 
+        ]
+       
        },
 
 

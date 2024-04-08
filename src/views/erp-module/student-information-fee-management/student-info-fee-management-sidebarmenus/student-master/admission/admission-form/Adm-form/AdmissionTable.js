@@ -1,6 +1,6 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { DataGrid } from '@mui/x-data-grid';
-import { Card, IconButton, Button, Grid } from '@mui/material';
+import { Card, IconButton, Button, Grid ,TextField} from '@mui/material';
 import { Box } from '@mui/system';
 import { useNavigate } from 'react-router-dom';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
@@ -31,6 +31,18 @@ import {useSelector}  from 'react-redux';
   //   navigate(`../registration`);
   // };
 
+// search 
+
+  const [isSearchVisible, setSearchVisible] = useState(false);
+
+  const handleSearchClick = () => {
+    setSearchVisible(true);
+  };
+
+  const handleCloseSearch = () => {
+    setSearchVisible(false);
+  };
+  
   const Click = (rowData) => {
     navigate('/erp/student-info-fee/student-master/admission-form', { state: { rowData } });
   };
@@ -142,6 +154,7 @@ import {useSelector}  from 'react-redux';
     },
   }
 
+
   return (
     <>
       <Card>
@@ -160,9 +173,35 @@ import {useSelector}  from 'react-redux';
                 Add Student
               </Button> */}
                 <AdmissionDrawer />
-                <IconButton sx={{ marginRight: '8px', background: '#cccccc54' }}>
-                  <SearchOutlinedIcon />
-                </IconButton>
+                
+      <IconButton
+        sx={{ marginRight: '8px', background: '#cccccc54' }}
+        onClick={handleSearchClick}
+      >
+        <SearchOutlinedIcon />
+      </IconButton>
+      {isSearchVisible && (
+        <TextField
+        sx={{
+          marginRight:"8px",
+          marginTop:"0px",
+          height: '30px', // Adjust the height according to your preference
+          '& input': {
+            paddingTop: '8px',
+            paddingBottom:"8px" // Adjust the top padding to center the text vertically
+          },
+        }}
+        autoFocus
+        variant="outlined"
+        margin="dense"
+        onBlur={handleCloseSearch}
+        onKeyDown={(e) => {
+          if (e.key === 'Escape') {
+            handleCloseSearch();
+          }
+        }}
+        />
+      )}
                 <IconButton sx={{ marginRight: '8px', background: '#cccccc54' }}>
                   <FilterListRoundedIcon onClick={toggleDrawer('right', true)} />
                   <Drawer

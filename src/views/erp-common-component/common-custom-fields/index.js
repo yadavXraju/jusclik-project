@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { Typography, Box, Button, Drawer } from '@mui/material';
+import React, { useState } from 'react'; import { Typography, Box, Button, Drawer } from '@mui/material';
 import DragIndicatorOutlinedIcon from '@mui/icons-material/DragIndicatorOutlined';
 import useDrawer from 'hooks/useDrawer';
 import AddCustomField from './add-custom-field';
@@ -12,15 +11,39 @@ import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 import { useSelector } from 'react-redux';
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
+import ParamSearchBar from 'views/common-section/ParamSearchBar';
 
 const CustomFields = ({ customFieldDrawer, handleAddField, section, handleSubGroup, subGroups }) => {
   const [hoverUnusedField, setHoverUnusedField] = useState(-1);
+  // const[searchQuery,setSearchQuery]=useState('');
   const { anchor, toggleDrawer } = useDrawer();
   const { studentDetailsData } = useSelector((state) => state.admission)
 
   const handleDragAndDrop = (results) => {
     console.log(results)
   }
+
+
+  // const filterData = () => {
+  //   if (!searchQuery) {
+  //     return studentDetailsData; 
+  //   }
+  //   return studentDetailsData.filter(groups => {
+  //     if (groups.name.toLowerCase().includes(searchQuery.toLowerCase())) {
+  //       return true;
+  //     }
+  //     return groups.section.some(subGroups => {
+  //       if (subGroups.name.toLowerCase().includes(searchQuery.toLowerCase())) {
+  //         return true;
+  //       }
+  //       return subGroups.subSection.some(field =>
+  //         field.name.toLowerCase().includes(searchQuery.toLowerCase())
+  //       );
+  //     });
+  //   });
+  // };
+ 
+  
 
   return (
     <Box sx={{ width: "900px" }}>
@@ -35,9 +58,10 @@ const CustomFields = ({ customFieldDrawer, handleAddField, section, handleSubGro
           {/* Used Fields*/}
           <Box sx={{ display: 'flex', flexDirection: "column", gap: "20px", padding: "20px 20px 20px 20px", width: "60%" }} >
             <Typography variant='h3'>Used Fields</Typography>
-            <Box sx={{ height: "calc(100vh - 180px)" }} className="scrollbar">
+            <ParamSearchBar paperStyle={{ width: "80%" }}  />
+            <Box sx={{ height: "calc(100vh - 250px)" }} className="scrollbar">
               {
-                studentDetailsData && studentDetailsData.map((field) => (
+               studentDetailsData && studentDetailsData.map((field) => (
                   <Box key={field.id} className="scrollbar">
                     <Accordion defaultExpanded>
                       {/* Group Name */}
@@ -53,16 +77,16 @@ const CustomFields = ({ customFieldDrawer, handleAddField, section, handleSubGro
                           <Box key={item.id}>
                             {/* Sub Group Name */}
                             <Typography variant="h5">{item?.name}</Typography>
-                            <Droppable droppableId ={item?.name} type="group">
+                            <Droppable droppableId={item?.name} type="group">
                               {(provided) => (
                                 <Box sx={{ margin: "20px 0px" }} {...provided.droppableProps} ref={provided.innerRef}>
                                   {item?.subSection.map((finalField) =>
                                   (
-                                    <Draggable draggableId={finalField.name} index={finalField?.id} key={finalField?.id}>
+                                    finalField.selected && <Draggable draggableId={finalField.name} index={finalField?.id} key={finalField?.id}>
                                       {(provided) => (
-                                         <Box
+                                        <Box
                                           sx={{
-                                            display: "flex", 
+                                            display: "flex",
                                             width: "100%",
                                             justifyContent: "space-between",
                                             alignItems: "center",
@@ -75,7 +99,7 @@ const CustomFields = ({ customFieldDrawer, handleAddField, section, handleSubGro
                                           onMouseLeave={() => setHoverUnusedField(-1)}
                                           {...provided.dragHandleProps}
                                           {...provided.draggableProps}
-                                          ref={provided.innerRef} 
+                                          ref={provided.innerRef}
                                         >
                                           <DragIndicatorOutlinedIcon sx={{ color: "#b3b9c1" }} />
                                           <Box sx={{ border: "1px solid #eee", height: "40px", borderRadius: "4px", display: "flex", alignItems: "center", width: "85%", paddingLeft: "10px" }}>
@@ -109,8 +133,9 @@ const CustomFields = ({ customFieldDrawer, handleAddField, section, handleSubGro
             <Box sx={{ display: "flex", justifyContent: "flex-start" }}>
               <Typography variant="h3">Unused Fields</Typography>
             </Box>
+            <ParamSearchBar paperStyle={{ width: "100%" }}  />
             {
-              studentDetailsData && studentDetailsData.map((field) => (
+             studentDetailsData &&  studentDetailsData.map((field) => (
                 <Box key={field.id}>
                   {field.section.map((item) => (
                     <Box key={item.id}>

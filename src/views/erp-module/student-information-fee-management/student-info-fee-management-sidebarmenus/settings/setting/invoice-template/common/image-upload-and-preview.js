@@ -50,7 +50,6 @@ const DragAndDropFile = ({stateHandler, updatekey,selectedFile}) => {
           alignItems: 'center',
           textAlign: 'center',
           justifyContent: 'center',
-          paddingTop: '40px'
         }}
       >
         <Box
