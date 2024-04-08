@@ -1,27 +1,20 @@
 import React,{useState} from 'react'
 import SelectList from 'views/common-section/ParamSelectList';
-import { Grid , } from '@mui/material';
+import { Grid , TextField } from '@mui/material';
 
 
 
 const Tab1 = () => {
   // ========= state for Attach Slab ============
   const [feeHead, setFeeHead] = useState('');
-  const [prioridicity, setPrioridicity] = useState('');
+  const [periodicities, setperiodicities] = useState('');
   const [feeType, setFeeType] = useState('');
   const [toBeChargeFrom, setToBeChargeFrom,] = useState('');
 
-  const FeeHeadOptions = [
-    { value: 'Registration Fee', label: 'Registration Fee' },
-    { value: 'Late Fee', label: 'Late Fee' },
-    { value: 'Tuition Fee', label: 'Tuition Fee' },
-    { value: 'Admission Fee', label: 'Admission Fee' },
-    { value: 'Caution Money', label: 'Caution Money' },
-
-  ];
 
 
-  const PrioridicityOptions = [
+
+  const PeriodicitiesOptions = [
     { value: 'Monthly', label: 'Monthly' },
     { value: 'Quarterly ', label: 'Quarterly ' },
     { value: 'Half Yearly', label: 'Half Yearly' },
@@ -49,8 +42,8 @@ const Tab1 = () => {
   };
 
 
-  const Prioridicity = (event) => {
-    setPrioridicity(event.target.value);
+  const Periodicities = (event) => {
+    setperiodicities(event.target.value);
   };
 
   const FeeType= (event) => {
@@ -61,27 +54,21 @@ const Tab1 = () => {
     setToBeChargeFrom(event.target.value);
   };
   
-
   return (
     <>
     <Grid  sx={{padding:'16px' , border:'1px solid #ccc' , borderRadius:'5px' , marginTop:'1rem'}}>
 
-    <Grid item xs={12} sx={{paddingBottom:'16px'}} >
-            <SelectList 
-                label="Fee Head"
-                options={FeeHeadOptions}
-                value={feeHead}
-                onChange={FeeHead}
-            />
+      <Grid item xs={12} sx={{paddingBottom:'16px'}} >
+             <TextField id="fee-head" value={feeHead} label="Fee Head" variant="outlined" onChange={FeeHead} fullWidth />
         </Grid>
 
 
         <Grid item xs={12} sx={{paddingBottom:'16px'}} >
             <SelectList 
-                label="Prioridicity"
-                options={ PrioridicityOptions}
-                value={prioridicity}
-                onChange={Prioridicity}
+                label="Periodicities"
+                options={ PeriodicitiesOptions}
+                value={periodicities}
+                onChange={Periodicities}
             />
         </Grid>
 

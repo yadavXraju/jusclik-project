@@ -1,5 +1,5 @@
 import React from 'react';
-import ParamTableDragDrop from './ParamTableDragDrop';
+import ParamTableDragDrop from '../../../common-section/ParamTableDragDrop';
 
 
 const CreateRegularFeeHeads = () => {
@@ -16,7 +16,7 @@ const CreateRegularFeeHeads = () => {
 
     {
       id: 3,
-      tabHeading: 'Prioridicity'
+      tabHeading: 'Periodicities' //'Prioridicity'
     },
 
     {
