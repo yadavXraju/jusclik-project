@@ -85,7 +85,7 @@ export default function PreviewLoginAndWithdrawalDrawer() {
             <ParameterizedDateComponent label="Date" customStyle={{ width: '100%' }} />
           </Grid>
           
-         <Box sx={{paddingTop:'30px',width:'100%'}}>
+         <Box sx={{paddingTop:'20px',width:'100%'}}>
          <Box
             component="form"
             sx={{
@@ -98,7 +98,7 @@ export default function PreviewLoginAndWithdrawalDrawer() {
             <TextField id="outlined-multiline-static" label="Remarks" multiline rows={4} fullWidth/>
           </Box>
          </Box>
-          <Box sx={{ paddingTop: '30px', paddingBottom: '20px', paddingLeft:'8px' }}>
+          <Box sx={{ paddingTop: '12px', paddingBottom: '20px', paddingLeft:'8px' }}>
             <FormGroup>
               <FormControlLabel control={<Switch />} label="Eligible for Re-admission" />
             </FormGroup>
