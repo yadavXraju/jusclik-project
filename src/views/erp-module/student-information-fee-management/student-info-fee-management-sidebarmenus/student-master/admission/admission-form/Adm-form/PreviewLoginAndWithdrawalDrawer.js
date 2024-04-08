@@ -12,7 +12,7 @@ export default function PreviewLoginAndWithdrawalDrawer() {
     replacementDrawerOpen: false 
   });
 
-  // const isMobile = useMediaQuery('(max-width: 767px)');
+  //const isMobile = useMediaQuery('(max-width: 425px)');
 
  // ========= state for Attach Bus ============
  const [addInitiate, setAddInitiate] = useState('');
@@ -85,20 +85,20 @@ export default function PreviewLoginAndWithdrawalDrawer() {
             <ParameterizedDateComponent label="Date" customStyle={{ width: '100%' }} />
           </Grid>
           
-         <Box sx={{paddingTop:'30px'}}>
+         <Box sx={{paddingTop:'20px',width:'100%'}}>
          <Box
             component="form"
             sx={{
-              '& .MuiTextField-root': { m: 1, width: '500px', maxWidth: '100%' }
+              '& .MuiTextField-root': { m: 1,width:'100%' , paddingRight:'15px'}
             }}
             noValidate
             autoComplete="off"
           >
             {' '}
-            <TextField id="outlined-multiline-static" label="Remarks" multiline rows={4} />
+            <TextField id="outlined-multiline-static" label="Remarks" multiline rows={4} fullWidth/>
           </Box>
          </Box>
-          <Box sx={{ paddingTop: '30px', paddingBottom: '20px', paddingLeft:'8px' }}>
+          <Box sx={{ paddingTop: '12px', paddingBottom: '20px', paddingLeft:'8px' }}>
             <FormGroup>
               <FormControlLabel control={<Switch />} label="Eligible for Re-admission" />
             </FormGroup>
