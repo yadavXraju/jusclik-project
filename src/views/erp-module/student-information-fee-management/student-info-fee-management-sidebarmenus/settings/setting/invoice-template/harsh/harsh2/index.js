@@ -11,6 +11,22 @@ const CompactTemplate5= () => {
   const generalSettings= useSelector(state=>state.invoiceTemplate.general)
   const headerFooterSettings=useSelector(state=>state.invoiceTemplate.headerFooter)
   const tableSettings=useSelector(state=>state.invoiceTemplate.table)
+  const templateLabels=useSelector(state=>state.invoiceTemplate.labels)
+  const termsAndConditions=useSelector(state=>state.invoiceTemplate.termsAndConditions)
+  let column1=[],column2=[]
+  for(let i=0;i<14;i++)
+  {
+    if(i<7)
+    column1.push( <Box display={'flex'} sx={{display:!templateLabels[i].enable?'none':'flex'}}>
+    <Typography p={1} variant='h5' sx={{ fontWeight: '400',  width:'110px', color:generalSettings.labelColor}}>{templateLabels[i].label}</Typography>
+    <Typography p={1} variant='h5' sx={{ fontWeight: 'bold',color:generalSettings.fontColor ,fontSize:`${generalSettings.fontSize}px`}}>{templateLabels[i].value}</Typography>
+  </Box>)
+else
+column2.push( <Box display={'flex'} sx={{display:!templateLabels[i].enable?'none':'flex'}}>
+<Typography p={1} variant='h5' sx={{ fontWeight: '400',  width:'110px', color:generalSettings.labelColor}}>{templateLabels[i].label}</Typography>
+<Typography p={1} variant='h5' sx={{ fontWeight: 'bold',color:generalSettings.fontColor ,fontSize:`${generalSettings.fontSize}px`}}>{templateLabels[i].value}</Typography>
+</Box>)
+  }
   return (
 
     <Box sx={{ height: '100%',
@@ -39,7 +55,7 @@ const CompactTemplate5= () => {
         </Box>
         <Box ml={6} mr={4} pt={6} bgcolor={generalSettings.backgroundColor} sx={{ display: "flex", justifyContent: "space-between" }}>
           <Box pl={4}>
-            <Box display={'flex'}>
+            {/* <Box display={'flex'}>
               <Typography p={1} variant='h5' sx={{ fontWeight: '400', width: '116px' , color:generalSettings.labelColor}}>Adm No:</Typography>
               <Typography p={1} variant='h5' sx={{ fontWeight: 'bold' ,color:generalSettings.fontColor ,fontSize:`${generalSettings.fontSize}px`}}>{commonTemplateContent.admissionNo}</Typography>
             </Box>
@@ -58,12 +74,13 @@ const CompactTemplate5= () => {
             <Box display={'flex'}>
               <Typography p={1} variant='h5' sx={{ fontWeight: '400', width: '110px' , color:generalSettings.labelColor}}>Father:</Typography>
               <Typography p={1} variant='h5' sx={{ fontWeight: '400' ,color:generalSettings.fontColor ,fontSize:`${generalSettings.fontSize}px`}}>{commonTemplateContent.fatherName}</Typography>
-            </Box>
+            </Box> */}
+            {column1}
           </Box>
 
 
           <Box pr={12.5} sx={{ width: '41%' }}>
-            <Box display={'flex'} >
+            {/* <Box display={'flex'} >
               <Typography p={1} variant="h5" sx={{ fontWeight: '400', textAlign: 'end', width: '100%', color:generalSettings.labelColor }} >Invoice No:</Typography>
               <Typography p={1} variant="body1" sx={{ fontWeight: 'bold', textAlign: 'end', width: '100%' ,color:generalSettings.fontColor ,fontSize:`${generalSettings.fontSize}px`
             }}>{commonTemplateContent.invoiceNo}</Typography>
@@ -87,7 +104,8 @@ const CompactTemplate5= () => {
               <Typography p={1} variant="h5" sx={{ fontWeight: '400', textAlign: 'end', width: '100%' , color:generalSettings.labelColor}}>Due Date:</Typography>
               <Typography p={1} variant="body1" sx={{ fontWeight: '400', textAlign: 'end', width: '100%' ,color:generalSettings.fontColor ,fontSize:`${generalSettings.fontSize}px`
             }}>{commonTemplateContent.dueDate}</Typography>
-            </Box>
+            </Box> */}
+            {column2}
           </Box>
         </Box>
 
@@ -171,7 +189,7 @@ const CompactTemplate5= () => {
 <Box pt={4} p={6} bgcolor={headerFooterSettings.footerBackgroundColor}>
             <Box>
               <Typography p={2} variant="h4" sx={{ fontWeight: '600',color:headerFooterSettings.footerFontColor,fontSize:`${headerFooterSettings.footerFontSize}px`}} >Terms & Conditions</Typography>
-              <Typography p={2} variant="h5" sx={{ fontWeight: '400',color:headerFooterSettings.footerFontColor,fontSize:`${headerFooterSettings.footerFontSize}px`}} >Your School&apos;s Terms and Conditions will be displayed here. You can add it in the Invoice Preferences page under Settings.</Typography>
+              <Typography p={2} variant="h5" sx={{ fontWeight: '400',color:headerFooterSettings.footerFontColor,fontSize:`${headerFooterSettings.footerFontSize}px`}} ><div dangerouslySetInnerHTML={{ __html: termsAndConditions }}/></Typography>
             </Box>
             </Box>
 
@@ -184,3 +202,4 @@ const CompactTemplate5= () => {
 
 
 export default CompactTemplate5;
+// Your School&apos;s Terms and Conditions will be displayed here. You can add it in the Invoice Preferences page under Settings

@@ -69,7 +69,7 @@ const renderChipCell = (params) => {
 
 
 const columns = [
-  { field: 'status', headerName: 'Status', flex: 1, minWidth: 140, align: 'left', headerAlign: 'left' ,renderCell: renderChipCell, },
+  { field: 'status', headerName: 'Status', flex: 1, minWidth: 150, align: 'left', headerAlign: 'left' ,renderCell: renderChipCell, },
   { field: 'VisitorName', headerName: 'Visitor Name', flex: 1, minWidth: 160, align: 'left', headerAlign: 'left' , renderCell: (params) => (
     <div style={{ display: 'flex', alignItems: 'center' }}>
       <Avatar src={params.row.avatarUrl} alt={params.row.altName} />
