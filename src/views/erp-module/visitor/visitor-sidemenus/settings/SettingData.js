@@ -22,11 +22,13 @@ const SettingData = [
     icon: <PermDataSettingOutlinedIcon sx={{ color: '#838195' }} />,
     title: 'Configure',
     items: [
-      { name: 'Department', path: '/erp/visitor/settings/department' },
+      // { name: 'Department', path: '/erp/visitor/settings/department' },
+      
       { name: 'Purpose', path: '/erp/visitor/settings/purpose' },
-      { name: 'Host', path: '/erp/visitor/settings/host' },
+      { name: 'To Meet', path: '/erp/visitor/settings/to-meet' },
       { name: 'Visitor Category', path: '/erp/visitor/settings/visitor-category' },
-      { name: 'Location', path: '/erp/visitor/settings/location' }
+      { name: 'Location', path: '/erp/visitor/settings/location' },
+      { name: 'Blacklist Visitors', path: '/erp/visitor/settings/blacklist-visitors' },
     ]
   },
   {
