@@ -12,9 +12,7 @@ const VisitorDetails=Loadable(lazy(() => import('views/erp-module/visitor/visito
 const Reports =Loadable(lazy(() => import('views/erp-module/visitor/visitor-sidemenus/reports')));
 const Settings =Loadable(lazy(() => import('views/erp-module/visitor/visitor-sidemenus/settings')));
 const Purpose = Loadable(lazy(() => import('views/erp-module/visitor/visitor-sidemenus/settings/purpose')));
-
-// const SmsDeliveryReport = Loadable(lazy(() => import('views/erp-module/visitor/visitor-sidemenus/tool-item/sms-delivery-report')));
-// const Report = Loadable(lazy(() => import('views/erp-module/visitor/visitor-sidemenus/tool-item/sms-delivery-report/Report')));
+const ToMeet = Loadable(lazy(() => import('views/erp-module/visitor/visitor-sidemenus/settings/to-meet')));
 
 
 
@@ -67,29 +65,13 @@ const VisitorRoutes = [
             path: 'purpose', 
             element: <Purpose />
           } , 
+          {
+            path: 'to-meet', 
+            element: <ToMeet />
+          } , 
         ]
        
        },
-
-
-       
-      // {
-      //   path: 'tools',
-      //   children: [
-      //     { 
-      //       path: 'sms-delivery-report', 
-      //       element: <SmsDeliveryReport  /> 
-      //     },
-
-      //     { 
-      //       path: 'report', 
-      //       element: <Report  /> 
-      //     },
-
-      //   ]
-      // }, 
-
-
 
     ]
   }
