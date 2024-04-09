@@ -48,7 +48,7 @@ const SettingData = [
       { name: 'Concession', path: '/erp/student-info-fee/settings/concession' },
       { name: 'Discount', path: '/erp/student-info-fee/settings/discount' },
       { name: 'Fee Account', path: '/erp/student-info-fee/settings/fee-account' },
-      { name: 'Invoice', path: '/erp/student-info-fee/settings/daman' }
+      { name: 'Invoice', path: '/erp/student-info-fee/settings/invoice-template' }
     ]
   },
   {
