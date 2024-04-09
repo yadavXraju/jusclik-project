@@ -1,13 +1,14 @@
 import React from 'react';
-import CommonConfig from './common-config-component';
 import { Button, Grid } from '@mui/material';
-import Template from '../kulwinder/template3';
-import CompactTemplate from '../harsh/template';
-import CompactTemplate2 from '../kulwinder/template2';
-import { CompactTemplate4 } from '../harsh/harsh1/template4';
-import CompactTemplate5 from '../harsh/harsh2';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
+import {Template1} from './template1';
+import {Template2} from './template2';
+import {Template3} from './template3';
+import {Template4} from './template4';
+import {Template5} from './template5';
+
+import CommonConfig from '../common/common-config-component';
 const Index = () => {
   // temporary logic for rendring template
   const template = useSelector(state => state.invoiceTemplate.selectedTemplate)
@@ -26,11 +27,11 @@ const Index = () => {
             <CommonConfig />
         </Grid>
         <Grid item md={8} sx={sx}>
-        {template == 1 && <CompactTemplate />}
-        {template == 2 && <CompactTemplate2 />}
-        {template == 3 && <Template />}
-        {template == 4 && <CompactTemplate4 />}
-        {template == 5 && <CompactTemplate5 />}
+        {template == 1 && <Template1/>}
+        {template == 2 && <Template2/>}
+        {template == 3 && <Template3/>}
+        {template == 4 && <Template4/>}
+        {template == 5 && <Template5/>}
       </Grid>
     </Grid >
     </>

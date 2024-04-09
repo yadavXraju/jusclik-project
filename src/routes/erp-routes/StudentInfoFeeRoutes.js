@@ -141,9 +141,11 @@ const UserDetailsRoles =  Loadable(lazy(() => import('views/erp-module/student-i
 // invoice template
 const InvoiceTemplate =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/settings/setting/invoice-template')));
 
+const Template =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/settings/setting/invoice-template/templates')));
+
 // temp routes will be deleted
 
-const Daman =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/settings/setting/invoice-template/daman')));
+// const InvoiceTemplate =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/settings/setting/invoice-template/daman')));
 
 // const Kulwinder =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/settings/setting/invoice-template/kulwinder')));
 
@@ -419,7 +421,18 @@ const StudentInfoFeeRoutes = [
                 },                
                 {
                   path:'invoice-template',
-                  element : <InvoiceTemplate />
+                  children :[
+                    {
+                      path:'',
+                     element : <InvoiceTemplate />
+                    } ,
+
+                    {
+                      path:'template',
+                     element : <Template />
+                    } ,
+
+                  ]
                 },
                 {
                    path: 'fee-structure',
@@ -433,10 +446,10 @@ const StudentInfoFeeRoutes = [
                 
                   // temp routes
         
-                  { 
-                    path: 'daman', 
-                    element: <Daman/> 
-                  },
+                  // { 
+                  //   path: 'daman', 
+                  //   element: <Daman/> 
+                  // },
 
                   // { 
                   //   path: 'kulwinder', 

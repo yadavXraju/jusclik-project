@@ -2,7 +2,6 @@ import React from 'react';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
-
 import Typography from '@mui/material/Typography';
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import ContentCutIcon from '@mui/icons-material/ContentCut';
@@ -19,7 +18,7 @@ const DottedDivider = styled('div')({
   marginTop: '20px' // Adjust margin for spacing
 });
 
-const CompactTemplate2 = () => {
+export const Template2 = () => {
   const isSmScreen = useMediaQuery('(max-width:600px)');
   const isLargeScreen = useMediaQuery('(max-width:1500px)');
   const responsiveText = isLargeScreen ? '12px' : '12px';
@@ -670,5 +669,3 @@ column3.push (
     </Box>
   );
 };
-
-export default CompactTemplate2;

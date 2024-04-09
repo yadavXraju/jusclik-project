@@ -15,7 +15,7 @@ import { commonTemplateContent } from '../common/common-states';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useSelector } from 'react-redux';
 
-const  Template =()=> {
+export const  Template5 =()=> {
   const isSmScreen = useMediaQuery('(max-width:600px)');
   // states
   const generalSettings= useSelector(state=>state.invoiceTemplate.general)
@@ -325,4 +325,3 @@ column2.push( <Grid container sx={{display:templateLabels[i].enable?'flex':'none
   );
 }
 
-export default Template
