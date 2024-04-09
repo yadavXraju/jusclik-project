@@ -8,7 +8,10 @@ import {
 Meeting
 ,Submission
 ,ParentsDiscussion
-,Admission} from './Tabpages'
+,Admission
+,Interview
+,Conference
+} from './Tabpages'
 import 'assets/scss/tabscustomization.css';
 
 
@@ -69,7 +72,7 @@ const Purpose = () => {
       }
     }, {
       id: 3,
-      name: "ParentsDiscussion",
+      name: "Parents Discussion",
       component: ParentsDiscussion,
       props: {
         toggleDrawer: toggleDrawer,
@@ -78,13 +81,33 @@ const Purpose = () => {
     },
     {
       id: 4,
-      name: "Admission",
+      name: "Admission Orientation",
       component: Admission,
       props: {
         toggleDrawer: toggleDrawer,
         toggleAddDrawer: anchor
       }
     },
+    {
+      id: 5,
+      name: "Interview",
+      component: Interview,
+      props: {
+        toggleDrawer: toggleDrawer,
+        toggleAddDrawer: anchor
+      }
+    },
+    {
+      id: 6,
+      name: "Conference",
+      component: Conference,
+      props: {
+        toggleDrawer: toggleDrawer,
+        toggleAddDrawer: anchor
+      }
+    },
+    
+  
 
 
   ]

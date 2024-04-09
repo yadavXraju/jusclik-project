@@ -26,27 +26,27 @@ const tableHeadings = [
 const data = [
   {
     "Average Meeting Time": "1:30",
-    "createdBy": "John Doe",
+    "createdBy": "Rahul Kumar",
     "createdOn": "2024-03-05"
   },
   {
     "Average Meeting Time": "2:30",
-    "createdBy": "Jane Smith",
+    "createdBy": "Vijay Mishra",
     "createdOn": "2024-03-06"
   },
   {
     "Average Meeting Time": "0:30",
-    "createdBy": "Alice Johnson",
+    "createdBy": "Mohit Thakur",
     "createdOn": "2024-03-07"
   },
   {
     "Average Meeting Time": "3:30",
-    "createdBy": "Bob Brown",
+    "createdBy": "Sidharat Verma",
     "createdOn": "2024-03-08"
   },
   {
     "Average Meeting Time": "1:30",
-    "createdBy": "Emma Wilson",
+    "createdBy": "Tarun Yadav",
     "createdOn": "2024-03-09"
   }
 ];
