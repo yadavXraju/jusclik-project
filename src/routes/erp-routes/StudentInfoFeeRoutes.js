@@ -87,6 +87,7 @@ const TransportAllocationPreview =  Loadable(lazy(() => import('views/erp-module
 
 const SystemData = Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/settings/system-data')));
 const FeeStructure = Loadable(lazy(() => import('views/erp-common-component/fee-structure')));
+const WithdrawalChecklist = Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/settings/withdrawal-checklist')));
 
 
 // reports
@@ -421,18 +422,20 @@ const StudentInfoFeeRoutes = [
                 { 
                   path: 'system-data', 
                   element: <SystemData /> 
-                },
-
-                 
+                },                
                 {
                   path:'invoice-template',
                   element : <InvoiceTemplate />
                 },
-
                 {
                    path: 'fee-structure',
                    element : <FeeStructure />
                 },
+                {
+                  path: 'withdrawal-checklist',
+                  element : <WithdrawalChecklist />
+               },
+               
                 
                   // temp routes
         

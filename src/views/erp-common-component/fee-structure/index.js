@@ -1,15 +1,17 @@
-import { Box, Typography, Button } from '@mui/material';
+import { Box, Typography, Button , useMediaQuery } from '@mui/material';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import ParamStepper from 'views/common-section/param-stepper';
 import CreateRegularFeeHeads from './regularFeeHead/CreateRegularFeeHeads';
 import Concession from './concession/Concession';
 import OtherSettings from './other-settings/OtherSettings';
 import useDrawer from 'hooks/useDrawer';
+
 // import NewHead from './regularFeeHead/NewHead';
 
 
 
 const FeeStructure = () => {
+  const isTab = useMediaQuery('(max-width:991px)')
   // drawer btn
   const { anchor, toggleDrawer } = useDrawer();
   const tabPage = [
@@ -89,12 +91,12 @@ const FeeStructure = () => {
 
       {/* stepper tabs  */}
       <ParamStepper
-        variant={null}
+        variant={isTab ? 'scrollable' : null}
         tabPage={tabPage}
-        orientation="vertical"
+        orientation={ isTab ? "horizontal" :"vertical"}
         customtabWrapper={{
           display: 'flex',
-          flexDirection: 'row',
+          flexDirection: isTab ? 'column' : 'row',
           marginTop: '0',
           background: '#fff',
           paddingTop: '0rem',
@@ -102,9 +104,9 @@ const FeeStructure = () => {
             display: 'none'
           }
         }}
-        customtabSytle={{ minWidth: '300px', padding: '14px', border: 'none', fontSize: '16px' }}
+        customtabSytle={{ minWidth: isTab ? 'auto' :'300px', padding: '14px', border: 'none', fontSize: '16px' , marginRight:isTab ? '0' : 'auto'}}
         customtabPanelStyle={{ paddingTop: '0', height: 'auto' }}
-        customStyleTabs={{ borderRight: '1px solid rgba(224, 224, 224, 1)' }}
+        customStyleTabs={{ borderRight: '1px solid rgba(224, 224, 224, 1)' , borderBottom:'1px solid #e0e0e0' }}
       />
 
       {/* Drawer */}
