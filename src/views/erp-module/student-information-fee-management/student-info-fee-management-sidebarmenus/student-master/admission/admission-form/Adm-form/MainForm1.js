@@ -94,7 +94,7 @@ const Mainform1 = ({ currEditItem }) => {
       cardComponent = <ProfileDetail studentFields={option?.otherDetails} type="Other  Details" />;
       break;
     case 2:
-      cardComponent = <AddressForm />;
+      cardComponent = <AddressForm  />;
       break;
     case 3:
       cardComponent = <ContactPerson studentFields={option?.contactPerson}/>;

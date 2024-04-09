@@ -1162,13 +1162,35 @@ const customizationSlice = createSlice({
         });
       });
     },
+    searchFilter:(state,action)=>{
+      const searchQuery=action.payload;
+      console.log(searchQuery)
+      if (!searchQuery) {
+        return studentDetailsData; 
+      }
+      const filterStudentData=studentDetailsData.filter(groups => {
+        if (groups.name.toLowerCase().includes(searchQuery.toLowerCase())) {
+          return true;
+        }
+        return groups.section.some(subGroups => {
+          if (subGroups.name.toLowerCase().includes(searchQuery.toLowerCase())) {
+            return true;
+          }
+          return subGroups.subSection.some(field =>
+            field.name.toLowerCase().includes(searchQuery.toLowerCase())
+          );
+        });
+      });
+      state.studentDetailsData=filterStudentData;
+    }
   },
 });
 
 
 export const {
   addField,
-  subGroupbyGroup
+  subGroupbyGroup,
+  filterStudentData
 } = customizationSlice.actions;
 
 export default customizationSlice.reducer;
