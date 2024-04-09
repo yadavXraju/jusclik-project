@@ -283,9 +283,7 @@ const SetupTabs = () => {
         {
           filterData.map((tab, index) => {
             return <TabPanel key={tab?.id} value={value} index={index} sx={{ width: "100%", bgcolor: 'background.paper', marginLeft: "40px", borderRadius: "10px", overflowX: "auto" }}>
-              <tab.component  
-              
-              />
+              <tab.component  {...tab.props } />
             </TabPanel>
           })
         }
