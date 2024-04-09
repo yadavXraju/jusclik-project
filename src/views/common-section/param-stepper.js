@@ -125,7 +125,7 @@ const SetupTabs = ({
             }}
             className="Scrollbar"
           >
-            <tab.component />
+            <tab.component {...tab.props}/>
           </TabPanel>
         ))}
       </Box>

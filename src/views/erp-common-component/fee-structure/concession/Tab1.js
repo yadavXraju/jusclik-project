@@ -1,73 +1,53 @@
-import React,{useState} from 'react'
-import SelectList from 'views/common-section/ParamSelectList';
-import { Grid , TextField } from '@mui/material';
-
-
+import React, { useState } from 'react';
+import { Grid, TextField,  Checkbox , FormControlLabel} from '@mui/material';
 
 const Tab1 = () => {
-  // ========= state for Attach Slab ============
-  const [concessionCategory, setConcessionCategory] = useState('');
-  const [approvalId, setApprovalId] = useState('');
-//   const [value, setValue] = useState('female');
-  const [toBeChargeFrom, setToBeChargeFrom,] = useState('');
+    const [concessionCategory, setConcessionCategory] = useState('');
+    const [approvalId, setApprovalId] = useState('');
+    const [approvalBased, setApprovalBased] = useState(true);
 
-
-
-
-
-
-  const ToBeChargeFromOptions = [
-    { value: 'Old students', label: 'Old students' },
-    { value: 'New student', label: 'New student' },
-    { value: 'Old student and New student', label: 'Old student and New student' },
-
-  ];
-
-
-  const ConcessionCategory = (event) => {
-    setConcessionCategory(event.target.value);
-  };
-
-  const ApprovalId = (event) => {
-    setApprovalId(event.target.value);
-  };
-
-
-
-  const ToBeChargeFrom= (event) => {
-    setToBeChargeFrom(event.target.value);
-  };
-
-//   const handleChange = (event) => {
-//     setValue(event.target.value);
-//   };
   
-  return (
-    <>
-    <Grid  sx={{padding:'16px' , border:'1px solid #ccc' , borderRadius:'5px' , marginTop:'1rem'}}>
+    const ConcessionCategory = (event) => {
+      setConcessionCategory(event.target.value);
+    };
+  
+    const ApprovalId = (event) => {
+      setApprovalId(event.target.value);
+    };
+  
 
-      <Grid item xs={12} sx={{paddingBottom:'16px'}} >
-             <TextField id="fee-head" value={concessionCategory} label="Concession Category " variant="outlined" onChange={ConcessionCategory} fullWidth />
-      </Grid>
 
-      <Grid item xs={12} sx={{paddingBottom:'16px'}} >
-             <TextField id="approvalId" value={approvalId} label="Approval Id" variant="outlined" onChange={ApprovalId} fullWidth />
-      </Grid>
+    const handleApprovalBased = (event) => {
+        setApprovalBased(event.target.checked);
+    };
+      
+//   console.log(approvalBased)
 
-              
+    return (
+      <>
+        <Grid sx={{ padding: '16px', border: '1px solid #ccc', borderRadius: '5px', marginTop: '1rem' }}>
 
-        <Grid item xs={12} sx={{paddingBottom:'16px'}} >
-            <SelectList 
-                label="To be charged from"
-                options={ToBeChargeFromOptions}
-                value={toBeChargeFrom}
-                onChange={ToBeChargeFrom}
-            />
+          <Grid item xs={12} sx={{ paddingBottom: '16px' }}>
+            <TextField id="fee-head" value={concessionCategory} label="Concession Category" variant="outlined" onChange={ConcessionCategory} fullWidth />
+          </Grid>
+  
+          <Grid item xs={12} sx={{ padding: '3px 12px' , border:'1px solid #bfc0c2', marginBottom:'20px' ,  borderRadius:'10px'}} >
+                <FormControlLabel
+                    control={<Checkbox />}
+                    checked={approvalBased}
+                    onChange={handleApprovalBased}
+                    inputProps={{ 'aria-label': 'controlled' }}
+                    label="Approval Based" 
+               />
+          </Grid>
+
+          <Grid item xs={12} >
+            <TextField id="approvalId" sx={{ paddingBottom: '16px' }} value={approvalId} label="Approval Id" variant="outlined" onChange={ApprovalId} fullWidth />
+          </Grid>
+          
         </Grid>
+      </>
+    );
+};
 
-    </Grid>
-    </>
-  )
-}
-
-export default Tab1
+export default Tab1;

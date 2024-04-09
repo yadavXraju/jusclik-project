@@ -4,14 +4,9 @@ import Loadable from 'ui-component/Loadable';
 
 
 // Class Teacher  Dashboard Menus
-const ContactSupport = Loadable(lazy(() => import('views/common-files/post-support-ticket')));
+const ContactSupport = Loadable(lazy(() => import('views/erp-common-component/post-support-ticket')));
 
 // visitor reg
-
-// const VisitorRegistration = Loadable(lazy(() => import('views/erp-module/visitor/visitor-sidemenus/visitor-registration')));
-
-
-
 
 // Class Teacher Routes
 const CommonRoutes = [
@@ -25,11 +20,6 @@ const CommonRoutes = [
         element: <ContactSupport />
         },
 
-        // { 
-        //   path: 'visitor-registration', 
-        //   element: <VisitorRegistration/>
-        //   },
-  
     ]
 }
 ];

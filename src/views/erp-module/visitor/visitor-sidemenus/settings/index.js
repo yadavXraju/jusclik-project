@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Organisation from './Organisation';
-import SettingData from './SettingData';
+// import SettingData from './SettingData';
 import { Typography, Box, Card } from '@mui/material';
 import SearchBar from './SearchBar';
 import { Link } from 'react-router-dom';
