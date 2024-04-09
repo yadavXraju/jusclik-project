@@ -5,7 +5,7 @@ import { useTheme, Tooltip, Paper } from '@mui/material';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
 
-const HelpSection = () => {
+const HelpSection = ( {setOpen} ) => {
   const theme = useTheme();
   const navigate = useNavigate();
 
@@ -19,6 +19,11 @@ const HelpSection = () => {
     cursor: 'pointer',
   });
 
+
+  const handleClick = () => {
+    navigate('contact-support');
+    setOpen(false); // Close the Popper
+  };
 
     // to store state in this varible
     const customization = useSelector((state) => state.customization);
@@ -42,7 +47,7 @@ const HelpSection = () => {
         borderRadius: '7px',
       }}
     >
-      <Tooltip title={'Help'} arrow onClick={()=>{navigate('contact-support')}}>
+      <Tooltip title={'Help'} arrow onClick={handleClick}>
         <StyledContainer>
           {/* <StyledIcon className='dynamicBg' data-testid="CalendarMonthIcon" sx={{ width: '20px' }} /> */}
           <QuestionMarkOutlinedIcon className='themeColor' sx={{

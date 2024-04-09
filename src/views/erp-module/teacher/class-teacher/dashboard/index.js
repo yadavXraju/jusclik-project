@@ -21,9 +21,8 @@ const Dashboard = ({ isLoading }) => {
 
          {/* Welcome message , Check in  and  attendance */}
 
-          <Grid item lg={8} md={12} sm={12} xs={12} spacing={gridSpacing}>
+          <Grid  item lg={8} md={12} sm={12} xs={12} >
             <Grid
-              spacing={gridSpacing}
               sx={{
                 backgroundColor: '#fff',
                 border: '1px solid rgb(227 227 227)',
