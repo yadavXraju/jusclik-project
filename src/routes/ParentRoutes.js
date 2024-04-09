@@ -17,7 +17,7 @@ const RecentMessage = Loadable(lazy(() => import('views/erp-module/parent/parent
 const AddMeeting = Loadable(lazy(() => import('views/erp-module/parent/parent-sidebar/request/AddMetting')));
 const ItemRequestGatePass = Loadable(lazy(() => import('views/erp-module/parent/parent-sidebar/request/ItemRequestGatePass')));
 const Resources = Loadable(lazy(() => import('views/erp-module/parent/parent-sidebar/resources')));
-const StudentProfile = Loadable(lazy(() => import('views/sidebar-menus/studentProfile')));
+const StudentProfile = Loadable(lazy(() => import('views/erp-module/parent/dashboard/studentProfile')));
 const PhotoGallery = Loadable(lazy(() => import('views/erp-module/parent/parent-sidebar/photo-gallery')));
 const EmailMsg = Loadable(lazy(() => import('views/erp-module/parent/parent-sidebar/communication-message/MailBox/EmailMssg')));
 

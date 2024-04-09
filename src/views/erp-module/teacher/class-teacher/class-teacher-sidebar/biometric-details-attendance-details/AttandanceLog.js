@@ -6,7 +6,7 @@ import { Table,  TableCell, TableContainer, TableHead, TableRow, Typography, Tab
 import { IconButton } from '@mui/material';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
-import Pagination from '../../common-section/Pagination';
+import Pagination from 'views/common-section/Pagination';
 
 
 const leavedata = [
