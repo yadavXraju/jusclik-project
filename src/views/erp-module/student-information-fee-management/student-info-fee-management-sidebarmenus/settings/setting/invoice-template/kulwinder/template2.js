@@ -6,7 +6,7 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import ContentCutIcon from '@mui/icons-material/ContentCut';
-import { styled } from '@mui/system';
+import {  styled } from '@mui/system';
 import { List, ListItemText } from '@mui/material';
 import { commonTemplateContent } from '../common/common-states';
 import useMediaQuery from '@mui/material/useMediaQuery';
@@ -28,10 +28,78 @@ const CompactTemplate2 = () => {
   const generalSettings= useSelector(state=>state.invoiceTemplate.general)
   const headerFooterSettings=useSelector(state=>state.invoiceTemplate.headerFooter)
   const tableSettings=useSelector(state=>state.invoiceTemplate.table)
+  const templateLabels=useSelector(state=>state.invoiceTemplate.labels)
+  const termsAndConditions=useSelector(state=>state.invoiceTemplate.termsAndConditions)
+
+  let column1=[],column2=[] , column3=[]
+
+
+  for(let i=0;i<14;i++)
+  {
+    if(i<4)
+    column1.push(   <Grid container sx={{display:templateLabels[i].enable?'flex':'none'}}>
+      <Grid item lg={6} xs={6}>
+        <Typography variant="h6" style={{ marginLeft: '10px', marginTop: '10px', color: generalSettings.labelColor }}>
+        {templateLabels[i].label}
+        </Typography>
+       
+      </Grid>
+      <Grid item lg={6} xs={6}>
+        <Typography variant="h6" style={{ marginTop: '5px', fontWeight: 'bold', color: generalSettings.fontColor,fontSize:`${generalSettings.fontSize}px`}}>
+        {templateLabels[i].value}
+        </Typography>
+        
+      </Grid>
+    </Grid>
+
+    )
+else if (i<9)
+column2.push( <Grid container sx={{display:templateLabels[i].enable?'flex':'none'}}>
+  <Grid item lg={5} xs={6}>
+    <Typography variant="h6" style={{ marginTop: '5px', marginLeft: '20px', color: generalSettings.labelColor }}>
+    {templateLabels[i].label}
+    </Typography>
+    
+  </Grid>
+  <Grid item lg={7} xs={6}>
+    <Typography variant="h6" style={{ marginTop: '5px', fontWeight: 'bold', color: generalSettings.fontColor ,fontSize:`${generalSettings.fontSize}px`}}>
+    {templateLabels[i].value}
+    </Typography>
+   
+  </Grid>
+</Grid>
+)
+
+else
+column3.push (
+<Grid container sx={{display:templateLabels[i].enable?'flex':'none'}}>
+                <Grid item lg={7} xs={7}>
+                  
+                  <Typography variant="h6" style={{ marginLeft: '20px', marginTop: '5px', color: generalSettings.labelColor }}>
+                  {templateLabels[i].label}
+                  </Typography>
+                </Grid>
+                <Grid item lg={5} xs={5} style={{ textAlign: 'right' }}>
+                  <Typography
+                    variant="h6"
+                    style={{ marginTop: '5px', fontWeight: 'bold', marginRight: '30px', color: generalSettings.fontColor ,fontSize:`${generalSettings.fontSize}px`}}
+                  >
+                    {templateLabels[i].value}
+                  </Typography>
+                  
+                </Grid>
+              </Grid>
+
+)
+
+  }
+  
+
+
 
   const style = {
-    width:'210mm',
-    height:'297mm'
+    width:'240mm',
+    height:'100%'
   };
 
   if (isSmScreen) {
@@ -85,8 +153,8 @@ const CompactTemplate2 = () => {
           }}
           className="findme"
         >
-          <Grid item lg={7} xs={12}>
-            <Box style={{ border: `1px solid ${tableSettings.borderColor}`, marginRight: '10px' }}>
+          <Grid item lg={7} xs={12} >
+            <Box style={{ border: `1px solid ${tableSettings.borderColor}`, marginRight: '10px'}} sx={{minHeight:'14rem'}}>
               <Box sx={{ backgroundColor: generalSettings.backgroundColor, textAlign: 'center' }}>
                 <Typography variant="h6" fontWeight="bold" sx={{ lineHeight: 2, color: generalSettings.labelColor }}>
                   Student Details
@@ -94,71 +162,10 @@ const CompactTemplate2 = () => {
               </Box>
               <Grid container spacing={2}>
                 <Grid item lg={7} xs={12}>
-                  <Grid container>
-                    <Grid item lg={6} xs={6}>
-                      <Typography variant="h6" style={{ marginLeft: '10px', marginTop: '10px', color: generalSettings.labelColor }}>
-                        Admission No:
-                      </Typography>
-                      <Typography variant="h6" style={{ marginLeft: '10px', marginTop: '5px', color: generalSettings.labelColor }}>
-                        Student&lsquo;s Name:
-                      </Typography>
-                      <Typography variant="h6" style={{ marginLeft: '10px', marginTop: '5px', color: generalSettings.labelColor }}>
-                        Father&lsquo;s Name:
-                      </Typography>
-                      <Typography variant="h6" style={{ marginLeft: '10px', marginTop: '5px', color: generalSettings.labelColor }}>
-                        Address:
-                      </Typography>
-                    </Grid>
-                    <Grid item lg={6} xs={6}>
-                      <Typography variant="h6" style={{ marginTop: '5px', fontWeight: 'bold', color: generalSettings.fontColor,fontSize:`${generalSettings.fontSize}px`}}>
-                        {commonTemplateContent.admissionNo}
-                      </Typography>
-                      <Typography variant="h6" style={{ marginTop: '5px', fontWeight: 'bold', color: generalSettings.fontColor ,fontSize:`${generalSettings.fontSize}px`}}>
-                        {commonTemplateContent.name}
-                      </Typography>
-                      <Typography variant="h6" style={{ marginTop: '5px', fontWeight: 'bold', color: generalSettings.fontColor,fontSize:`${generalSettings.fontSize}px` }}>
-                        {commonTemplateContent.fatherName}
-                      </Typography>
-                      <Typography variant="h6" style={{ marginTop: '5px', color: generalSettings.fontColor,fontSize:`${generalSettings.fontSize}px` }}>
-                        {commonTemplateContent.SchoolAddress}
-                      </Typography>
-                    </Grid>
-                  </Grid>
+                {column1}
                 </Grid>
                 <Grid item lg={5} xs={12}>
-                  <Grid container>
-                    <Grid item lg={5} xs={6}>
-                      <Typography variant="h6" style={{ marginTop: '5px', marginLeft: '20px', color: generalSettings.labelColor }}>
-                        Class:
-                      </Typography>
-                      <Typography variant="h6" style={{ marginTop: '5px', marginLeft: '20px', color: generalSettings.labelColor }}>
-                        Tel(R):
-                      </Typography>
-                      <Typography variant="h6" style={{ marginTop: '5px', marginLeft: '20px', color: generalSettings.labelColor }}>
-                        Tel(M):
-                      </Typography>
-                      <Typography
-                        variant="h6"
-                        style={{ marginTop: '5px', marginLeft: '20px', marginBottom: '0px', color: generalSettings.labelColor }}
-                      >
-                        Email:
-                      </Typography>
-                    </Grid>
-                    <Grid item lg={7} xs={6}>
-                      <Typography variant="h6" style={{ marginTop: '5px', fontWeight: 'bold', color: generalSettings.fontColor ,fontSize:`${generalSettings.fontSize}px`}}>
-                        {commonTemplateContent.className}
-                      </Typography>
-                      <Typography variant="h6" style={{ marginTop: '5px', color: generalSettings.fontColor ,fontSize:`${generalSettings.fontSize}px`}}>
-                        {commonTemplateContent.mobile}
-                      </Typography>
-                      <Typography variant="h6" style={{ marginTop: '5px', color: generalSettings.fontColor ,fontSize:`${generalSettings.fontSize}px`}}>
-                        {commonTemplateContent.schoolTel}
-                      </Typography>
-                      <Typography variant="h6" style={{ marginTop: '5px', wordWrap: 'break-word', color: generalSettings.fontColor ,fontSize:`${generalSettings.fontSize}px`}}>
-                        {commonTemplateContent.email}
-                      </Typography>
-                    </Grid>
-                  </Grid>
+                  {column2}
                 </Grid>
               </Grid>
             </Box>
@@ -171,7 +178,8 @@ const CompactTemplate2 = () => {
                     height: '42px',
                     display: 'flex',
                     justifyContent: 'center',
-                    alignItems: 'center'
+                    alignItems: 'center',
+                    
                   }}
                 >
                   <Box sx={{ textAlign: 'center' }}>
@@ -219,7 +227,8 @@ const CompactTemplate2 = () => {
                     marginRight: '10px',
                     display: 'flex',
                     justifyContent: 'center',
-                    alignItems: 'center'
+                    alignItems: 'center',
+                    
                   }}
                 >
                   <Box sx={{ backgroundColor: generalSettings.backgroundColor, textAlign: 'center' }}>
@@ -233,68 +242,13 @@ const CompactTemplate2 = () => {
           </Grid>
 
           <Grid item lg={5} xs={12}>
-            <Box style={{ border: `1px solid ${tableSettings.borderColor}` }}>
+            <Box style={{ border: `1px solid ${tableSettings.borderColor}` }} sx={{minHeight:'14rem'}}>
               <Box style={{ backgroundColor: generalSettings.backgroundColor, textAlign: 'center' }}>
                 <Typography variant="h6" fontWeight="bold" sx={{ lineHeight: 2, color: generalSettings.labelColor }}>
                   Invoice Details
                 </Typography>
               </Box>
-              <Grid container>
-                <Grid item lg={7} xs={7}>
-                  <Typography variant="h6" style={{ marginLeft: '20px', marginTop: '5px', color: generalSettings.labelColor }}>
-                    Invoice No:[SS*]:
-                  </Typography>
-                  <Typography variant="h6" style={{ marginLeft: '20px', marginTop: '5px', color: generalSettings.labelColor }}>
-                    Invoice Date:
-                  </Typography>
-                  <Typography variant="h6" style={{ marginLeft: '20px', marginTop: '5px', color: generalSettings.labelColor }}>
-                    Academic Year:
-                  </Typography>
-                  <Typography variant="h6" style={{ marginLeft: '20px', marginTop: '5px', color: generalSettings.labelColor }}>
-                    Fee Period:
-                  </Typography>
-                  <Typography variant="h6" style={{ marginLeft: '20px', marginTop: '5px', color: generalSettings.labelColor }}>
-                    Due Date:
-                  </Typography>
-                  <Typography variant="h6" style={{ marginLeft: '20px', marginTop: '5px', color: generalSettings.labelColor }}>
-                    Net Amount Payable:
-                  </Typography>
-                </Grid>
-                <Grid item lg={5} xs={5} style={{ textAlign: 'right' }}>
-                  <Typography
-                    variant="h6"
-                    style={{ marginTop: '5px', fontWeight: 'bold', marginRight: '30px', color: generalSettings.fontColor ,fontSize:`${generalSettings.fontSize}px`}}
-                  >
-                    {commonTemplateContent.invoiceNo}
-                  </Typography>
-                  <Typography variant="h6" style={{ marginTop: '5px', marginRight: '20px', color: generalSettings.fontColor ,fontSize:`${generalSettings.fontSize}px`}}>
-                    {commonTemplateContent.invoiceDate}
-                  </Typography>
-                  <Typography variant="h6" style={{ marginTop: '5px', marginRight: '20px', color: generalSettings.fontColor,fontSize:`${generalSettings.fontSize}px` }}>
-                    {commonTemplateContent.academicYear}
-                  </Typography>
-                  <Typography variant="h6" style={{ marginTop: '5px', marginRight: '20px', color: generalSettings.fontColor,fontSize:`${generalSettings.fontSize}px` }}>
-                    {commonTemplateContent.feePeriod}
-                  </Typography>
-                  <Typography variant="h6" style={{ marginTop: '5px', marginRight: '20px', color: generalSettings.fontColor,fontSize:`${generalSettings.fontSize}px` }}>
-                    {commonTemplateContent.dueDate}
-                  </Typography>
-                  <Typography
-                    variant="h6"
-                    style={{
-                      marginTop: '5px',
-                      fontWeight: 'bold',
-                      marginRight: '30px',
-                      marginBottom: '8px',
-                      color: generalSettings.fontColor
-                    }}
-                    sx={{fontSize:`${generalSettings.fontSize}px`}}
-                  >
-                    <CurrencyRupeeIcon sx={{color: generalSettings.fontColor ,fontSize:`${generalSettings.fontSize}px`}} />
-                    {commonTemplateContent.netAmountPayable}
-                  </Typography>
-                </Grid>
-              </Grid>
+              {column3}
             </Box>
 
             <Grid container spacing={2} sx={{ marginTop: '-7px' }}>
@@ -305,7 +259,8 @@ const CompactTemplate2 = () => {
                     height: '42px',
                     display: 'flex',
                     justifyContent: 'center',
-                    alignItems: 'center'
+                    alignItems: 'center',
+                    
                   }}
                 >
                   <Box sx={{ backgroundColor: generalSettings.backgroundColor, textAlign: 'center' }}>
@@ -702,42 +657,12 @@ const CompactTemplate2 = () => {
           >
             <List>
               <ListItemText>
-                <Typography >
-                  1. We expect that all parents will remit the fee dues of their wards on time. Pl clear the dues latest by 15-Jan-2024.
-                 
-                </Typography>
+              <Typography variant="body2" sx={{ marginBottom: '0.4rem', marginLeft: '20px',fontSize:`${headerFooterSettings.footerFontSize}px` }}>
+            <div dangerouslySetInnerHTML={{ __html: termsAndConditions }}/>
+            </Typography>
               </ListItemText>
 
-              <ListItemText>
-                <Typography>
-                  2. Parents are requested to issue Cheque/DD in favour of School payable at Delhi/Gurugramonly and please attach the copy
-                  of the fee slip with the Cheque/DD. Out station cheques payable at-par only will beaccepted.
-                </Typography>
-              </ListItemText>
-
-              <ListItemText>
-                <Typography>
-                  3. Please write your wards Name, Admission No, Class, Section and Phone No. on the backside of the cheque/DD. If cheque is
-                  dishonoured for any reason, Rs. 500/- will be levied as re-processing charges.
-                </Typography>
-              </ListItemText>
-
-              <ListItemText>
-                <Typography>4. Please visit our website :- www.dpsmarutikunj.org for online payment</Typography>
-              </ListItemText>
-             {/*
-              <ListItemText>
-                <Typography>5. Please scan below Printed QR-Code for depositing fee via PayTm.</Typography>
-              </ListItemText>
-
-              <ListItemText>
-                <Typography>
-                  6. For the convenience of the parents monthly payment option is also available. Parents may pay fee dues in three equal
-                  monthly instalments during the first week of every month.
-                </Typography>
-              </ListItemText>
-
-          */}
+             
             </List>
           </Box>
         </Grid>

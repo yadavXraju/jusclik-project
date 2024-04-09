@@ -34,7 +34,7 @@ const  Template =()=> {
   for(let i=0;i<14;i++)
   {
     if(i<7)
-    column1.push( <Grid container><Grid item lg={5} xs={6}>
+    column1.push( <Grid container sx={{display:templateLabels[i].enable?'flex':'none'}}><Grid item lg={5} xs={6}>
       <Typography variant="body2" sx={{ color: generalSettings.labelColor, paddingBottom: '0.4rem' }}>
       {templateLabels[i].label}
       </Typography>
@@ -53,7 +53,7 @@ const  Template =()=> {
   
     )
 else
-column2.push( <Grid container><Grid item lg={6} xs={6}>
+column2.push( <Grid container sx={{display:templateLabels[i].enable?'flex':'none'}}><Grid item lg={6} xs={6}>
   <Typography variant="body2" sx={{ color: generalSettings.labelColor, paddingBottom: '0.4rem' }}>
   {templateLabels[i].label}
   </Typography>
@@ -79,7 +79,7 @@ column2.push( <Grid container><Grid item lg={6} xs={6}>
   };
   
   const style3 = {
-    marginRight: '1px'
+    marginRight: '0px'
   };
   
   const style4 = {
@@ -107,12 +107,12 @@ column2.push( <Grid container><Grid item lg={6} xs={6}>
           paddingLeft: ` ${generalSettings.marginLeft}rem`
         }}
       >
-        <Grid sx={{ border: `1px solid ${tableSettings.borderColor}`, paddingTop: '3%' }}>
+        <Grid sx={{ border: `1px solid ${tableSettings.borderColor}`, paddingTop: '2.1%' }}>
         {/* HEADER SECTION ========================================================================== */}
           <Grid sx={{ backgroundColor: headerFooterSettings.headerBackgroundColor }}>
             <Grid container spacing={2} sx={{ padding: '10px' }}>
               {/* First Grid item */}
-              <Grid item lg={6} xs={12}>
+              <Grid item lg={6} xs={12} >
                 <Grid container spacing={2}>
                   <Grid item lg={4} xs={12} sx={{ alignItems: 'center' }}>
                     <img src={schoollogo} alt="schoollogo" width="100" height="100"></img>
@@ -145,7 +145,7 @@ column2.push( <Grid container><Grid item lg={6} xs={6}>
           {/* BODY SECTION ========================================================================= */}
           <Grid sx={{ backgroundColor: generalSettings.backgroundColor }}>
             <Grid sx={{ borderTop: `1px solid ${tableSettings.borderColor}`, borderBottom: `1px solid ${tableSettings.borderColor}` }}>
-              <Grid container spacing={2} sx={{ padding: '1rem 1.5rem', paddingBottom: '0' }}>
+              <Grid container spacing={2} sx={{ padding: '1rem 1.5rem', paddingBottom: '0' , paddingRight:'10px'}}>
                 {/* First Grid item */}
 
                 <Grid item lg={6} xs={12} sx={{ ...style4 }}>
@@ -180,13 +180,14 @@ column2.push( <Grid container><Grid item lg={6} xs={6}>
                       sx={{fontSize:`${tableSettings.headerFontSize}px`}}>#</TableCell>
                       <TableCell
                         style={{
-                          width: '43%',
+                          width: '44.5%',
                           ...style4,
                           borderBottom: `1px solid ${tableSettings.borderColor}`,
                           textAlign: 'center',
-                          fontWeight: 'bold'
+                          fontWeight: 'bold',
+                         
                         }}
-                        sx={{fontSize:`${tableSettings.headerFontSize}px`}}
+                        sx={{fontSize:`${tableSettings.headerFontSize}px` , }}
                       >
                         Fees Heads
                       </TableCell>
@@ -235,17 +236,18 @@ column2.push( <Grid container><Grid item lg={6} xs={6}>
             </Grid>
 
 {/* SECOND TABLE LIKE SECTION ============================================================================= */}
+
             <Grid
               sx={{
                 borderTop: `1px solid ${tableSettings.borderColor}`,
                 borderBottom: `1px solid ${tableSettings.borderColor}`,
-                marginTop: '50px'
+                marginTop: '50px',
               }}
             >
-              <Grid container spacing={2} sx={{ padding: '1rem', paddingBottom: '0' }}>
+              <Grid container sx={{ padding: '0rem', paddingBottom: '0' }}>
                 {/* First Grid item */}
 
-                <Grid item lg={6} xs={12} sx={{ ...style4, alignItems: 'center' ,backgroundColor:tableSettings.headerBackgroundColor,}}> 
+                <Grid item lg={6} xs={12} sx={{ ...style4, alignItems: 'center' ,backgroundColor:tableSettings.itemRowBackgroundColor,}}> 
                   <Typography variant="body2" sx={{  color:tableSettings.headerFontColor,paddingBottom: '0.4rem',paddingTop:'1rem',fontWeight: 'bold', textAlign: 'center'   ,fontSize:`${tableSettings.headerFontSize}px` }}>
                     Total In Words :{' '}
                   </Typography>
@@ -258,7 +260,7 @@ column2.push( <Grid container><Grid item lg={6} xs={6}>
                 {/* Second Grid item */}
                 <Grid item lg={6} xs={12} sx={{ ...style2,backgroundColor:tableSettings.itemRowBackgroundColor }}>
                       
-                  <Grid container>
+                  <Grid container sx={{padding:'10px'}}>
                     <Grid item lg={9} xs={8}>
                       <Typography variant="body2" sx={{color:tableSettings.itemRowFontColor ,paddingBottom: '0.4rem' ,fontSize:`${tableSettings.itemRowFontSize}px`}}>
                         Invoice Total:
@@ -303,7 +305,7 @@ column2.push( <Grid container><Grid item lg={6} xs={6}>
               Terms & Conditions{' '}
             </Typography>
 
-            <Typography variant="body2" sx={{ marginBottom: '0.4rem', marginLeft: '20px',fontSize:`${headerFooterSettings.footerFontSize}px` }}>
+            <Typography variant="body2" sx={{ marginBottom: '-0.7rem', marginLeft: '20px',fontSize:`${headerFooterSettings.footerFontSize}px` }}>
             <div dangerouslySetInnerHTML={{ __html: termsAndConditions }}/>
             </Typography>
             
