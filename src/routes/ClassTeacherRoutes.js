@@ -3,7 +3,7 @@ import { lazy } from 'react';
 import Loadable from 'ui-component/Loadable';
 
 // Class Teacher  Dashboard Menus
-const ClassTeacherDashboard = Loadable(lazy(() => import('views/class-teacher-dashboard/')));
+const ClassTeacherDashboard = Loadable(lazy(() => import('views/erp-module/teacher/class-teacher/dashboard')));
 const DailyAttendance = Loadable(lazy(() => import('views/sidebar-menus/attendance-entry')));
 const MonthlyAttendance = Loadable(lazy(() => import('views/sidebar-menus/monthly-attendance')));
 const MarksEntryPanel = Loadable(lazy(() => import('views/sidebar-menus/marks-entry-panel')));

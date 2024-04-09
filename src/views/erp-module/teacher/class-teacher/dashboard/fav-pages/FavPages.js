@@ -1,5 +1,5 @@
 import React from 'react';
-import FavPages from '../../common-section/FavPages';
+import FavPages from 'views/common-section/FavPages';
 import { FavPagesList } from './FavPagesList';
 
 const ClassTeacherFavPages = () => {

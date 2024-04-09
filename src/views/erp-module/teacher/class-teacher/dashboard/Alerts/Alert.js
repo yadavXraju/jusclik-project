@@ -1,15 +1,15 @@
+import React from 'react'
+import Alert from 'views/common-section/Alerts'
 import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
-// import CurrencyRupeeOutlinedIcon from '@mui/icons-material/CurrencyRupeeOutlined';
-// import BookOutlinedIcon from '@mui/icons-material/BookOutlined';
 import initialData from 'views/erp-module/parent/parent-sidebar/communication-message/MailBox/InboxNameList';
-import AvatarImg from '../../../assets/images/avatar.png'
+import AvatarImg from 'assets/images/avatar.png'
 
 
 // store a first data from initialData in this var
 
 const recentData =  initialData[0]
 
-const ClassTeacherAlertData = [
+export const ClassTeacherAlertData = [
   {
     id: 1,
     icon: <img src={AvatarImg} alt="avatar" style={{ width: '24px', height: '24px', borderRadius: '50%' }} />,
@@ -99,4 +99,13 @@ const ClassTeacherAlertData = [
  
 ];
 
-export default ClassTeacherAlertData;
+
+const ClassTeacherAlert = () => {
+  return (
+    <>
+      <Alert AlertData={ClassTeacherAlertData}/>
+    </>
+  )
+}
+
+export default ClassTeacherAlert
