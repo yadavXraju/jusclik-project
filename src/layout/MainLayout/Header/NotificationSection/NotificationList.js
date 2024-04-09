@@ -6,8 +6,8 @@ import { Divider, Grid, List, ListItem, Box, ListItemText, Button } from '@mui/m
 
 // Import alert data with different names
 import ParentAlertData from 'views/erp-module/parent/dashboard/Alerts/AlertData';
-import ClassTeacherAlertData from 'views/class-teacher-dashboard/Alerts/AlertData';
-import SubjectTeacherAlertData from 'views/subject-teacher-dashboard/alerts/AlertData';
+import { ClassTeacherAlertData } from 'views/erp-module/teacher/class-teacher/dashboard/Alerts/Alert';
+import SubjectTeacherAlertData from 'views/erp-module/teacher/subject-teacher/dashboard/alerts/AlertData';
 
 // styles
 const ListItemWrapper = styled('div')(({ theme }) => ({
