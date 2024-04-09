@@ -19,7 +19,7 @@ const tabPage = [
 
   ];
 
-const ConcessionDrawer = () => {
+const ConcessionTab = () => {
 
   return (
     <>
@@ -36,4 +36,4 @@ const ConcessionDrawer = () => {
   )
 }
 
-export default ConcessionDrawer
+export default ConcessionTab

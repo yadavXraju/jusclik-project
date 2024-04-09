@@ -1,39 +1,86 @@
-import { Grid, Box, Card, Typography, Container } from '@mui/material';
 import React from 'react';
-import SettingData from './SettingData';
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import CorporateFareRoundedIcon from '@mui/icons-material/CorporateFareRounded';
+import WebhookRoundedIcon from '@mui/icons-material/WebhookRounded';
+import SmsOutlinedIcon from '@mui/icons-material/SmsOutlined';
+import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
+import CreditCardOutlinedIcon from '@mui/icons-material/CreditCardOutlined';
+import TuneOutlinedIcon from '@mui/icons-material/TuneOutlined';
+import FolderOpenOutlinedIcon from '@mui/icons-material/FolderOpenOutlined';
+import AddShoppingCartOutlinedIcon from '@mui/icons-material/AddShoppingCartOutlined';
+import ParamSetting from 'views/erp-common-component/commonSetting';
 
-const SettingOrg = () => {
-  return (
-    <Container>
-      <Box sx={{ paddingTop: '2rem' }}>
-        <Grid container spacing={5} sx={{}}>
-          {SettingData.map((item, index) => (
-            <Grid item xs={12} sm={6} md={4} lg={3} key={index} sx={{ paddingBottom: '2rem' }}>
-              <Card sx={{ border: '1px solid #ebeaf2', padding: '36px', height: '110%', backgroundColor: '#f9f9fb' }}>
-                <Box>
-                  <Box sx={{ display: 'flex' }}>
-                    {item.icon}
-                    <Typography variant='h5' sx={{ paddingLeft: '7px', paddingTop: '3px' }}>
-                      {item.title}
-                    </Typography>
-                  </Box>
-                  <Box sx={{ paddingTop: '14px' }}>
-                    {item.items.map((subItem, subIndex) => (
-                      <Link key={subIndex} to={subItem.path} style={{ textDecoration: 'none', color: 'inherit' }}>
-                        {/* Use Link to navigate to the specified path */}
-                        <Typography sx={{ paddingTop: '14px' }}>{subItem.name}</Typography>
-                      </Link>
-                    ))}
-                  </Box>
-                </Box>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
-      </Box>
-    </Container>
-  );
+const SettingData = [
+  {
+    icon: <CorporateFareRoundedIcon sx={{ color: '#838195' }} />,
+    title: 'Organisation',
+    items: [
+      { name: 'Profile', path: '/organisation/profile' },
+      { name: 'Branding', path: '/organisation/branding' },
+      { name: 'Inventory Groups', path: '/organisation/inventory-groups' },
+      { name: 'Users & Roles', path: '/organisation/users-roles' }
+    ]
+  },
+  {
+    icon: <SmsOutlinedIcon sx={{ color: '#838195' }} />,
+    title: 'Taxes & Compliance Taxes',
+    items: [
+      { name: 'Sales', path: '/taxes/sales' },
+      { name: 'Invoice', path: '/taxes/invoice' },
+      { name: 'Delivery Challans', path: '/taxes/delivery-challans' },
+      { name: 'Credit Note', path: '/taxes/credit-note' }
+    ]
+  },
+  {
+    icon: <PeopleAltOutlinedIcon sx={{ color: '#838195' }} />,
+    title: 'Preference',
+    items: [
+      { name: 'General', path: '/preference/general' },
+      { name: 'Transaction Number Series', path: '/preference/transaction-number-series' }
+    ]
+  },
+  {
+    icon: <AddShoppingCartOutlinedIcon sx={{ color: '#838195' }} />,
+    title: 'Item',
+    items: [
+      { name: 'Item', path: '/item' }
+    ]
+  },
+  {
+    icon: <FolderOpenOutlinedIcon sx={{ color: '#838195' }} />,
+    title: 'Purchase',
+    items: [
+      { name: 'Purchase Order', path: '/purchase-order' }
+    ]
+  },
+  {
+    icon: <CreditCardOutlinedIcon sx={{ color: '#838195' }} />,
+    title: 'Online Payments',
+    items: [
+      { name: 'Payment Gateway', path: '/payments-gateway' }
+    ]
+  },
+  {
+    icon: <WebhookRoundedIcon sx={{ color: '#838195' }} />,
+    title: 'Developer Space',
+    items: [
+      { name: 'Data Backup', path: '/developer/data-backup' }
+    ]
+  },
+  {
+    icon: <TuneOutlinedIcon sx={{ color: '#838195' }} />,
+    title: 'Integrations',
+    items: [
+      { name: 'Integration', path: '/integrations' }
+    ]
+  }
+];
+
+const Organisation= () =>{
+  return(
+    <>
+    <ParamSetting SettingData={SettingData} />
+    </>
+  )
 }
 
-export default SettingOrg;
+export default Organisation;

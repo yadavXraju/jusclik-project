@@ -87,6 +87,7 @@ const TransportAllocationPreview =  Loadable(lazy(() => import('views/erp-module
 
 const SystemData = Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/settings/system-data')));
 const FeeStructure = Loadable(lazy(() => import('views/erp-common-component/fee-structure')));
+const WithdrawalChecklist = Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/settings/withdrawal-checklist')));
 
 
 // reports
@@ -111,7 +112,7 @@ const WhatshapExcelSheet =  Loadable(lazy(() => import('views/erp-module/student
 
 // setting
 
-const Setting =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/settings/setting')));
+const Settings =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/settings/setting')));
 
 // student details and forms
 
@@ -144,16 +145,16 @@ const InvoiceTemplate =  Loadable(lazy(() => import('views/erp-module/student-in
 
 const Daman =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/settings/setting/invoice-template/daman')));
 
-const Kulwinder =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/settings/setting/invoice-template/kulwinder')));
+// const Kulwinder =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/settings/setting/invoice-template/kulwinder')));
 
-const Kulwinder2 =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/settings/setting/invoice-template/kulwinder/template3')));
+// const Kulwinder2 =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/settings/setting/invoice-template/kulwinder/template3')));
 
 
-const Harsh =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/settings/setting/invoice-template/harsh')));
+// const Harsh =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/settings/setting/invoice-template/harsh')));
 
-const Harsh1 =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/settings/setting/invoice-template/harsh/harsh1')));
+// const Harsh1 =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/settings/setting/invoice-template/harsh/harsh1')));
 
-const Harsh2 =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/settings/setting/invoice-template/harsh/harsh2')));
+// const Harsh2 =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/settings/setting/invoice-template/harsh/harsh2')));
 
 // ==============================|| Visitor MENUS ||============================== //
 
@@ -402,37 +403,33 @@ const StudentInfoFeeRoutes = [
             ]
             },
 
-            // setting
-            { 
-              path: 'setting', 
-              element: <Setting /> 
-            },
-
-
+            // settinga
             {
               path: 'settings',
               children: [
 
-                // { 
-                //   path: 'setting', 
-                //   element: <Setting /> 
-                // },
+                { 
+                  path: '', 
+                  element: <Settings /> 
+                },
 
                 { 
                   path: 'system-data', 
                   element: <SystemData /> 
-                },
-
-                 
+                },                
                 {
                   path:'invoice-template',
                   element : <InvoiceTemplate />
                 },
-
                 {
                    path: 'fee-structure',
                    element : <FeeStructure />
                 },
+                {
+                  path: 'withdrawal-checklist',
+                  element : <WithdrawalChecklist />
+               },
+               
                 
                   // temp routes
         
@@ -441,31 +438,30 @@ const StudentInfoFeeRoutes = [
                     element: <Daman/> 
                   },
 
-                  { 
-                    path: 'kulwinder', 
-                    element: <Kulwinder /> 
-                  },    
+                  // { 
+                  //   path: 'kulwinder', 
+                  //   element: <Kulwinder /> 
+                  // },    
 
-                  { 
-                    path: 'kulwinder2', 
-                    element: <Kulwinder2 /> 
-                  },    
+                  // { 
+                  //   path: 'kulwinder2', 
+                  //   element: <Kulwinder2 /> 
+                  // },    
 
-                  { 
-                    path: 'harsh', 
-                    element: <Harsh /> 
-                  },
+                  // { 
+                  //   path: 'harsh', 
+                  //   element: <Harsh /> 
+                  // },
                 
-                  { 
-                    path: 'harsh1', 
-                    element: <Harsh1 /> 
-                  },
+                  // { 
+                  //   path: 'harsh1', 
+                  //   element: <Harsh1 /> 
+                  // },
 
-                  { 
-                    path: 'harsh2', 
-                    element: <Harsh2 /> 
-                  },
-      
+                  // { 
+                  //   path: 'harsh2', 
+                  //   element: <Harsh2 /> 
+                  // },
               ]
             },
 

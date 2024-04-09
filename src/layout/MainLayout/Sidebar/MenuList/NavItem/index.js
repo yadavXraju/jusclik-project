@@ -13,7 +13,7 @@ import { menuOpen} from 'store/customization-slice';
 // assets
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 
-import { urlStore } from 'views/navigation-for-pages/UrlStore';
+import { urlStore } from 'themes/navigation-for-pages/UrlStore';
 // ==============================|| SIDEBAR MENU LIST ITEMS ||============================== //
 
 const NavItem = ({ item, level , }) => {
