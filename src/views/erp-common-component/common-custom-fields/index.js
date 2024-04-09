@@ -1,4 +1,4 @@
-import React, { useState } from 'react'; import { Typography, Box, Button, Drawer } from '@mui/material';
+import React, { useState,useEffect} from 'react'; import { Typography, Box, Button, Drawer } from '@mui/material';
 import DragIndicatorOutlinedIcon from '@mui/icons-material/DragIndicatorOutlined';
 import useDrawer from 'hooks/useDrawer';
 import AddCustomField from './add-custom-field';
@@ -12,10 +12,11 @@ import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 import { useSelector,useDispatch } from 'react-redux';
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import ParamSearchBar from 'views/common-section/ParamSearchBar';
-import {filterStudentData} from 'store/student-info-and-fee/student/admission-slice';
+import {searchFilter} from 'store/student-info-and-fee/student/admission-slice';
   
 const CustomFields = ({ customFieldDrawer, handleAddField, section, handleSubGroup, subGroups }) => {
   const [hoverUnusedField, setHoverUnusedField] = useState(-1);
+  const [searchQuery,setSearchQuery]=useState('');
   const dispatch=useDispatch();
   // const[searchQuery,setSearchQuery]=useState('');
   const { anchor, toggleDrawer } = useDrawer();
@@ -25,11 +26,17 @@ const CustomFields = ({ customFieldDrawer, handleAddField, section, handleSubGro
     console.log(results)
   }
 
-
+const [ren,setRen]=useState(0)
   const handleChange=(e)=>{
-      dispatch(filterStudentData(e.target.value));
+      const searchQueryTerm=e.target.value;
+      setSearchQuery(searchQueryTerm)
   }
  
+  useEffect(()=>{
+        setRen(ren+1)
+        dispatch(searchFilter(searchQuery));
+        console.log(ren);
+  },[searchQuery])
   
 
   return (
@@ -120,7 +127,7 @@ const CustomFields = ({ customFieldDrawer, handleAddField, section, handleSubGro
             <Box sx={{ display: "flex", justifyContent: "flex-start" }}>
               <Typography variant="h3">Unused Fields</Typography>
             </Box>
-            <ParamSearchBar paperStyle={{ width: "100%" }} onChange={handleChange()} />
+            <ParamSearchBar paperStyle={{ width: "100%" }} onChange={handleChange} />
            
             {
             studentDetailsData&&studentDetailsData.map((field) => (
