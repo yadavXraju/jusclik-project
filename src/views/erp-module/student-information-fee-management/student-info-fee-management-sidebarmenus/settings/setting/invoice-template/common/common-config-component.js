@@ -1,12 +1,11 @@
 import React from 'react';
 import {  Accordion, AccordionSummary, AccordionDetails, Typography} from '@mui/material';
-
-import General from './sub-categories/general';
-import HeaderFooter from './sub-categories/header-footer';
-import TableConfig from './sub-categories/table';
-import TermsAndConditions from './sub-categories/terms-and-conditions';
+import General from './sub-categories-common-config/general';
+import HeaderFooter from './sub-categories-common-config/header-footer';
+import TableConfig from './sub-categories-common-config/table';
+import TermsAndConditions from './sub-categories-common-config/terms-and-conditions';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import Labels from './sub-categories/labels';
+import Labels from './sub-categories-common-config/labels';
 import { useState } from 'react';
 
 const CommonConfig = () => {

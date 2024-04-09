@@ -4,9 +4,9 @@ import { useSelector } from 'react-redux';
 
 import CurrencyRupeeOutlinedIcon from '@mui/icons-material/CurrencyRupeeOutlined';
 import schoollogo from 'assets/images/24x24-inch-logo-1.png';
-import { commonTemplateContent } from '../../common/common-states';
+import { commonTemplateContent } from '../common/common-states';
 
-export const CompactTemplate4 = () => {
+export const Template4 = () => {
   // states
   const generalSettings= useSelector(state=>state.invoiceTemplate.general)
   const headerFooterSettings=useSelector(state=>state.invoiceTemplate.headerFooter)

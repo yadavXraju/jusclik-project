@@ -1,11 +1,11 @@
 import React from 'react'
 import { Box, Paper, Typography, Table, TableContainer, TableRow, TableHead, TableCell, TableBody ,Grid} from '@mui/material'
-import { commonTemplateContent } from '../../common/common-states';
+import { commonTemplateContent } from '../common/common-states';
 import Divider from '@mui/material/Divider';
 import CurrencyRupeeOutlinedIcon from '@mui/icons-material/CurrencyRupeeOutlined';
 import { useSelector } from 'react-redux';
 
-const CompactTemplate5= () => {
+export const Template3= () => {
 
   // states
   const generalSettings= useSelector(state=>state.invoiceTemplate.general)
@@ -201,5 +201,4 @@ column2.push( <Box display={'flex'} sx={{display:!templateLabels[i].enable?'none
 }
 
 
-export default CompactTemplate5;
-// Your School&apos;s Terms and Conditions will be displayed here. You can add it in the Invoice Preferences page under Settings
+

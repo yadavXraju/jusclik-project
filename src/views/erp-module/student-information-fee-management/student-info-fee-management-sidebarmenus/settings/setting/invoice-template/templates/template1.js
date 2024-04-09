@@ -4,13 +4,12 @@ import Grid from '@mui/material/Grid';
 import { Typography } from '@mui/material';
 import schoollogo from 'assets/images/24x24-inch-logo-1.png';
 import CurrencyRupeeOutlinedIcon from '@mui/icons-material/CurrencyRupeeOutlined';
-// import ContentCutOutlinedIcon from '@mui/icons-material/ContentCutOutlined';
 import { commonTemplateContent } from '../common/common-states';
 import { templateCompact } from '../common/common-states';
 import { useSelector } from 'react-redux';
 
 
-const CompactTemplate = () => {
+export const Template1 = () => {
   const generalSettings= useSelector(state=>state.invoiceTemplate.general)
   const headerFooterSettings=useSelector(state=>state.invoiceTemplate.headerFooter)
   const tableSettings=useSelector(state=>state.invoiceTemplate.table)
@@ -229,5 +228,4 @@ for(let i=0;i<templateCompact.numberOfCopies;i++){
   );
 }
 
-export default CompactTemplate;
 
