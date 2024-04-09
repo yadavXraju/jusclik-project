@@ -52,7 +52,7 @@ const data = [
 ];
 
 
-const ParentsDiscussion = () => {
+const Interview = () => {
 //   const handleChange=()=>{
 
 //   }
@@ -67,4 +67,4 @@ const ParentsDiscussion = () => {
   )
 }
 
-export default ParentsDiscussion;
+export default Interview;
