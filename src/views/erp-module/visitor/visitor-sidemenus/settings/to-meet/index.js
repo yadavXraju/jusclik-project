@@ -4,24 +4,27 @@ import AddIcon from '@mui/icons-material/Add';
 import Systemdata from 'views/common-section/ParamSearchTabs';
 import useDrawer from 'hooks/useDrawer';
 import {
-  Meeting,
-  Submission,
-  ParentsDiscussion,
-  Admission,
-  Interview,
-  Conference
-} from './Tabpages';
+  HeadMaster,
+  Principal,
+  VicePrincipal,
+ ClassTeacher,
+ HrDepartment,
+ HeadMistress,
+ SportsTeacher,
+ Librarian,
+ ComputerTeacher
+} from './TabPages';
 
 
 
 
-const SystemDataPages=()=>{
+const ToMeet=()=>{
   const {anchor,toggleDrawer}=useDrawer();
   const tabPage = [
     {
       id: 1,
-      name: "Meeting",
-      component: Meeting,
+      name: "Head Master",
+      component: HeadMaster,
       props: {
         toggleDrawer: toggleDrawer,
         toggleAddDrawer: anchor
@@ -29,16 +32,17 @@ const SystemDataPages=()=>{
     },
     {
       id: 2,
-      name: "Submission",
-      component: Submission,
+      name: "Principal",
+      component: Principal,
       props: {
         toggleDrawer: toggleDrawer,
         toggleAddDrawer: anchor
       }
-    }, {
+    },
+    {
       id: 3,
-      name: "Parents Discussion",
-      component: ParentsDiscussion,
+      name: "Vice Principal",
+      component: VicePrincipal,
       props: {
         toggleDrawer: toggleDrawer,
         toggleAddDrawer: anchor
@@ -46,8 +50,8 @@ const SystemDataPages=()=>{
     },
     {
       id: 4,
-      name: "Admission Orientation",
-      component: Admission,
+      name: "Class Teacher",
+      component: ClassTeacher,
       props: {
         toggleDrawer: toggleDrawer,
         toggleAddDrawer: anchor
@@ -55,8 +59,8 @@ const SystemDataPages=()=>{
     },
     {
       id: 5,
-      name: "Interview",
-      component: Interview,
+      name: "HR Department",
+      component: HrDepartment,
       props: {
         toggleDrawer: toggleDrawer,
         toggleAddDrawer: anchor
@@ -64,15 +68,40 @@ const SystemDataPages=()=>{
     },
     {
       id: 6,
-      name: "Conference",
-      component: Conference,
+      name: "Head Mistress",
+      component: HeadMistress,
       props: {
         toggleDrawer: toggleDrawer,
         toggleAddDrawer: anchor
       }
     },
-    
-  
+    {
+      id: 7,
+      name: "Sports Teacher",
+      component: SportsTeacher,
+      props: {
+        toggleDrawer: toggleDrawer,
+        toggleAddDrawer: anchor
+      }
+    },
+    {
+      id: 7,
+      name: "Librarian",
+      component: Librarian,
+      props: {
+        toggleDrawer: toggleDrawer,
+        toggleAddDrawer: anchor
+      }
+    },
+    {
+      id: 8,
+      name: "Computer Teacher",
+      component: ComputerTeacher,
+      props: {
+        toggleDrawer: toggleDrawer,
+        toggleAddDrawer: anchor
+      }
+    },
 
 
   ]
@@ -89,4 +118,4 @@ const SystemDataPages=()=>{
      )
 }
 
-export default SystemDataPages;
+export default ToMeet;
