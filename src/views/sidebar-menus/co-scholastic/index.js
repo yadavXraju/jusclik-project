@@ -6,7 +6,7 @@ import { StudentData, StudentData2, StudentData3 } from './Data/studentData';
 import UpperTab from './UpperTab';
 import MiddleBox from './MiddleBox';
 import CustomTextField from './TextField';
-import '../../dashboard/Default/dashboard-css/Overflow.css'
+
 
 const useStyles = makeStyles((theme) => ({
   tableContainer: {

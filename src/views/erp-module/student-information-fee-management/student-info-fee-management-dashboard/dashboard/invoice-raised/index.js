@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid, Paper, Typography, LinearProgress , Box } from '@mui/material';
 import { gridSpacing } from 'store/constant';
-import { HeadingCss } from 'views/dashboard/Default/dashboard-css/CommonCss';
+import { HeadingCss } from 'views/common-section/dashboard-css/CommonCss';
 
 const InvoiceRaised = () => {
   // Define the total amount and the paid amount

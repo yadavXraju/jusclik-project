@@ -2,7 +2,7 @@
 import PropTypes from 'prop-types';
 import { Grid  , Typography , Paper} from '@mui/material';
 import Chart from 'react-apexcharts';
-import { HeadingCss } from 'views/dashboard/Default/dashboard-css/CommonCss';
+import { HeadingCss } from 'views/common-section/dashboard-css/CommonCss';
 
 // project imports
 import SkeletonTotalGrowthBarChart from 'ui-component/cards/Skeleton/TotalGrowthBarChart';

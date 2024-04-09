@@ -1,6 +1,5 @@
 import React from 'react';
 import { Paper, TableCell, TableRow, TableContainer, Table, TableHead, TableBody, Typography, Grid } from '@mui/material';
-import "../../dashboard/Default/dashboard-css/Overflow.css";
 import StudentDataList from './StudentDataList'
 
 export default function StudentData() {

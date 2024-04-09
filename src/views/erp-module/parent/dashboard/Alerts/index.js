@@ -2,7 +2,7 @@ import React from 'react';
 import { Divider, Grid, Typography, Button, } from '@mui/material';
 import MainCard from 'ui-component/cards/MainCard';
 import { gridSpacing } from 'store/constant';
-import { HeadingCss, boxHeight, subTitle, subtitle2 } from '../dashboard-css/CommonCss';
+import { HeadingCss, boxHeight, subTitle, subtitle2 } from '../../../../common-section/dashboard-css/CommonCss';
 import { Box } from '@mui/system';
 import ParentAlertData from './AlertData';
 

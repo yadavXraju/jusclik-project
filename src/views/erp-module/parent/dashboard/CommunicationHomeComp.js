@@ -1,5 +1,5 @@
 import * as React from 'react';
-import AlignItemsList from 'views/sidebar-menus/communication-message/Contact-list';
+import AlignItemsList from 'views/erp-module/parent/parent-sidebar/communication-message/Contact-list';
 // import ListItemDecorator from '@mui/joy/ListItemDecorator';
 // import MailOutlinedIcon from '@mui/icons-material/MailOutlined';
 // import MainCard from 'ui-component/cards/MainCard';
@@ -8,7 +8,7 @@ import AlignItemsList from 'views/sidebar-menus/communication-message/Contact-li
 // import { useNavigate } from 'react-router';
 // import { HeadingCss , boxHeight , subTitle , subtitle2} from './dashboard-css/CommonCss';
 import MainCard from 'ui-component/cards/MainCard';
-import { HeadingCss , boxHeight} from './dashboard-css/CommonCss';
+import { HeadingCss , boxHeight} from 'views/common-section/dashboard-css/CommonCss';
 import { Grid , Typography , useMediaQuery} from '@mui/material';
 // import {
 //   useMediaQuery , 

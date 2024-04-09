@@ -3,7 +3,6 @@ import { Paper, IconButton, TableCell, TableRow, TableContainer, Table, TableHea
 import MoreVertOutlinedIcon from '@mui/icons-material/MoreVertOutlined';
 import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
 import GalleryDrawer from './UploadGalleryDrawer/GalleryDrawer';
-import "../../dashboard/Default/dashboard-css/Overflow.css";
 import UploadGallerydata from './Upload-gallery-data'
 
 export default function UploadGalleryTable() {

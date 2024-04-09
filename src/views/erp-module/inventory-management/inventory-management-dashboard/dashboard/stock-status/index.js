@@ -1,6 +1,6 @@
 import React from 'react';
 import { Paper, Grid, Box, Typography, useMediaQuery } from '@mui/material';
-import { HeadingCss } from 'views/dashboard/Default/dashboard-css/CommonCss';
+import { HeadingCss } from 'views/common-section/dashboard-css/CommonCss'
 
 // icons
 import LiveHelpTwoToneIcon from '@mui/icons-material/LiveHelpTwoTone';

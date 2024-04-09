@@ -1,9 +1,8 @@
 import MainCard from 'ui-component/cards/MainCard';
 import { Typography , Grid} from '@mui/material';
-import {  HeadingCss  } from 'views/dashboard/Default/dashboard-css/CommonCss';
 import { gridSpacing } from 'store/constant';
 import {Divider , Box } from '@mui/material';
-import { subTitle , subtitle2  , boxHeight} from 'views/dashboard/Default/dashboard-css/CommonCss';
+import { subTitle , subtitle2  , boxHeight ,  HeadingCss } from 'views/common-section/dashboard-css/CommonCss';
 import { studnetAttendancePercentage } from './Attendance';
 
 

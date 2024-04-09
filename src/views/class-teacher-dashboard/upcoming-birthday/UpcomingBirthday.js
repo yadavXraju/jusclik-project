@@ -1,10 +1,10 @@
 import MainCard from 'ui-component/cards/MainCard';
 import { Typography , Grid} from '@mui/material';
-import { boxHeight , HeadingCss  } from 'views/dashboard/Default/dashboard-css/CommonCss';
+import { boxHeight , HeadingCss ,  subTitle , subtitle2 } from 'views/common-section/dashboard-css/CommonCss';
 import { gridSpacing } from 'store/constant';
 import { BirthdayList } from './BirthdayList';
 import {Divider , Box } from '@mui/material';
-import { subTitle , subtitle2 } from 'views/dashboard/Default/dashboard-css/CommonCss';
+
 
 
 const UpcomingBirthday =()  => {

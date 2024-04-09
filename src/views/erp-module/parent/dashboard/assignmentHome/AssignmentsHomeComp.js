@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Grid, Paper, Typography, Box, IconButton, Tooltip, Button, Badge , useMediaQuery } from '@mui/material';
-import { data } from 'views/sidebar-menus/assignments/AssignmentData';
+import { data } from 'views/erp-module/parent/parent-sidebar/assignments/AssignmentData';
 import CreateIcon from '@mui/icons-material/Create';
 import { useNavigate } from 'react-router';
-import { HeadingCss, subTitle, subtitle2 } from '../dashboard-css/CommonCss';
+import { HeadingCss, subTitle, subtitle2 } from 'views/common-section/dashboard-css/CommonCss';
 import Checkbox from '@mui/material/Checkbox';
-import Attcgment from 'views/sidebar-menus/assignments/Attachment';
+import Attcgment from 'views/erp-module/parent/parent-sidebar/assignments/Attachment';
 import AttachmentIcon from '@mui/icons-material/Attachment';
-import { commonStyles } from 'views/sidebar-menus/communication-message/Contact-list';
-import { boxHeight } from '../dashboard-css/CommonCss';
+import { commonStyles } from 'views/erp-module/parent/parent-sidebar/communication-message/Contact-list';
+import { boxHeight } from 'views/common-section/dashboard-css/CommonCss';
 import useDialog from '../customHook/UseDialog';
 
 const AssignmentsHomeComp = () => {

@@ -3,7 +3,6 @@ import { Paper, IconButton, TableCell, TableRow, TableContainer, Table, TableHea
 import MoreVertOutlinedIcon from '@mui/icons-material/MoreVertOutlined';
 import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
 import HomeworkDrawer from '../Student-homework-upload/HomeWorkDrawer/HomeworkDrawer';
-import "../../dashboard/Default/dashboard-css/Overflow.css";
 import HomeworkData from '../Student-homework-upload/HomeworkData';
 
 export default function Homework() {

@@ -3,7 +3,7 @@ import ApexCharts from 'react-apexcharts';
 import { present, absent } from './chart-data/AttandanceData';
 import { Grid, Paper, Typography , Button , Box ,useMediaQuery  } from '@mui/material';
 import { gridSpacing } from 'store/constant';
-import { HeadingCss , boxHeight} from './dashboard-css/CommonCss';
+import { HeadingCss , boxHeight} from '../../../common-section/dashboard-css/CommonCss';
 import { useNavigate } from 'react-router';
 
 const AttandanceChartHomeComp = () => {

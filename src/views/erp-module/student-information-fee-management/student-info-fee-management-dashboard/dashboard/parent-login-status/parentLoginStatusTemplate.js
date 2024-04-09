@@ -1,6 +1,6 @@
 import React from 'react';
 import { Paper, Box, Grid, Typography, useMediaQuery } from '@mui/material';
-import { HeadingCss } from 'views/dashboard/Default/dashboard-css/CommonCss';
+import { HeadingCss } from 'views/common-section/dashboard-css/CommonCss';
 import ApexCharts from 'react-apexcharts';
 
 

@@ -7,8 +7,7 @@ import { StudentLeaveData } from './StudentLeaveData';
 import MainCard from 'ui-component/cards/MainCard';
 import { Grid, Typography, Box } from '@mui/material';
 import { gridSpacing } from 'store/constant';
-import { HeadingCss } from 'views/dashboard/Default/dashboard-css/CommonCss';
-import { subTitle, subtitle2 } from 'views/dashboard/Default/dashboard-css/CommonCss';
+import { subTitle, subtitle2 , HeadingCss } from 'views/common-section/dashboard-css/CommonCss';
 import { getCurrentDate } from 'utils/timeUtils';
 
 const StudentLeave = () => {

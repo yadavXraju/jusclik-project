@@ -4,7 +4,6 @@ import { makeStyles, useTheme, ThemeProvider } from '@mui/styles';
 import UpperTab from './UpperTab';
 import MiddleBox from './MiddleBox';
 import { StudentData, StudentData2, StudentData3 } from './dropdown data/StudentData';
-import "../../dashboard/Default/dashboard-css/Overflow.css";
 import NumericTextField from './TextFeild';
 import { subject} from './dropdown data/SubjectData';
 

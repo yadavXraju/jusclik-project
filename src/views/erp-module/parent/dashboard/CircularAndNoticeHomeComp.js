@@ -3,8 +3,8 @@ import {  Divider, Grid, Typography , Button ,Box , useMediaQuery} from '@mui/ma
 import MainCard from 'ui-component/cards/MainCard';
 import SkeletonPopularCard from 'ui-component/cards/Skeleton/PopularCard';
 import { gridSpacing } from 'store/constant';
-import { HeadingCss , boxHeight, subtitle2 } from './dashboard-css/CommonCss';
-import { UpdatesData } from 'views/sidebar-menus/updates/UpdatesData';
+import { HeadingCss , boxHeight, subtitle2 } from 'views/common-section/dashboard-css/CommonCss';
+import { UpdatesData } from 'views/erp-module/parent/parent-sidebar/updates/UpdatesData';
 import { useNavigate } from 'react-router';
 // import CalendarMonthTwoToneIcon from '@mui/icons-material/CalendarMonthTwoTone';
 

@@ -1,8 +1,6 @@
 import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
-// import CurrencyRupeeOutlinedIcon from '@mui/icons-material/CurrencyRupeeOutlined';
-// import BookOutlinedIcon from '@mui/icons-material/BookOutlined';
-import initialData from 'views/sidebar-menus/communication-message/MailBox/InboxNameList';
-import AvatarImg from '../../../assets/images/avatar.png'
+import initialData from 'views/erp-module/parent/parent-sidebar/communication-message/MailBox/InboxNameList';
+import AvatarImg from 'assets/images/avatar.png'
 
 
 // store a first data from initialData in this var

@@ -3,7 +3,6 @@ import { Box, Typography, Paper, IconButton, Popover, Button, Table, TableBody, 
 import MoreVertOutlinedIcon from '@mui/icons-material/MoreVertOutlined';
 import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
 import CircularDrawer from './CircularDrawer/CircularDrawer';
-import "../../dashboard/Default/dashboard-css/Overflow.css";
 import CircularData from './CircularDrawer/CircularData'
 
 const CircularUpload = () => {

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import timeTableData1 from 'views/sidebar-menus/timetable/TimeTableData';
+import timeTableData1 from 'views/erp-module/parent/parent-sidebar/timetable/TimeTableData';
 import { Typography , Grid  , Paper ,  useMediaQuery } from '@mui/material';
-import { HeadingCss , boxHeight } from './dashboard-css/CommonCss';
-import  './dashboard-css/Overflow.css'
+import { HeadingCss , boxHeight } from 'views/common-section/dashboard-css/CommonCss';
+
 
 
 
