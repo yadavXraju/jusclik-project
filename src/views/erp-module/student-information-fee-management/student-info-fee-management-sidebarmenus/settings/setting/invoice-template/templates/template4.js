@@ -15,7 +15,7 @@ export const Template4 = () => {
   const termsAndConditions=useSelector(state=>state.invoiceTemplate.termsAndConditions)
 
   let column1=[],column2=[]
-  for(let i=0;i<14;i++)
+  for(let i=0;i<templateLabels.length;i++)
   {
     if(i<7)
     column1.push( <Box display={'flex'} sx={{display:!templateLabels[i].enable?'none':'flex'}}>
