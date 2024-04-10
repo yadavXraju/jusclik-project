@@ -1,17 +1,14 @@
-
-// import stufee from '../../../../assets/images/stufee.svg';
-// import hr from '../../../../assets/images/hr.svg';
-import progress from '../../../../assets/images/erp-module-icon/progress.svg';
-import library from '../../../../assets/images/erp-module-icon/library.svg';
-import inventory from '../../../../assets/images/erp-module-icon/inventory.svg'
-import finance from '../../../../assets/images/erp-module-icon/finance.svg'
-import website from '../../../../assets/images/erp-module-icon/website.svg'
-import visitor from '../../../../assets/images/erp-module-icon/visitor.svg'
-import medical from '../../../../assets/images/erp-module-icon/medical.svg'
-import admission from '../../../../assets/images/erp-module-icon/admission.svg'
-import relationship from '../../../../assets/images/erp-module-icon/customer.svg'
-import stufee from '../../../../assets/images/erp-module-icon/fee.svg'
-import hr from '../../../../assets/images/erp-module-icon/hr.svg'
+import progress from 'assets/images/erp-module-icon/progress.svg';
+import library from 'assets/images/erp-module-icon/library.svg';
+import inventory from 'assets/images/erp-module-icon/inventory.svg'
+import finance from 'assets/images/erp-module-icon/finance.svg'
+import website from 'assets/images/erp-module-icon/website.svg'
+import visitor from 'assets/images/erp-module-icon/visitor.svg'
+import medical from 'assets/images/erp-module-icon/medical.svg'
+import admission from 'assets/images/erp-module-icon/admission.svg'
+import relationship from 'assets/images/erp-module-icon/customer.svg'
+import stufee from 'assets/images/erp-module-icon/fee.svg'
+import hr from 'assets/images/erp-module-icon/hr.svg'
 
 export const ErpModuleList = [
 

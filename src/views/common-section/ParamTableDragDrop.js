@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-import Typography from '@mui/material/Typography';
+import { Table , TableBody , TableCell , TableContainer , TableHead , TableRow , Paper , Typography , Box , IconButton , Drawer , Button , Tooltip} from '@mui/material';
 import DragIndicatorOutlinedIcon from '@mui/icons-material/DragIndicatorOutlined';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
+import SettingsTwoToneIcon from '@mui/icons-material/SettingsTwoTone';
+import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
+import useDrawer from 'hooks/useDrawer';
 
-const ParamTableDragDrop = ({ columns, initialData, tableStyle, dragIcon = false }) => {
+
+const ParamTableDragDrop = ({ columns, initialData, tableStyle, dragIcon = false , }) => {
     const [data, setData] = useState(initialData);
+    const {anchor , toggleDrawer } = useDrawer(); 
 
     const handleDragEnd = (result) => {
         if (!result.destination) return;
@@ -21,7 +20,7 @@ const ParamTableDragDrop = ({ columns, initialData, tableStyle, dragIcon = false
         items.splice(result.destination.index, 0, reorderedItem);
 
         setData(items); // Update the state with the reordered data
-        console.log(result);
+        // console.log(result);
     };
 
     return (
@@ -60,6 +59,28 @@ const ParamTableDragDrop = ({ columns, initialData, tableStyle, dragIcon = false
                                                             </TableCell>
                                                         );
                                                     })}
+
+                                                       <TableCell>
+                                                            <Box>
+                                                            <Tooltip title="Configure">
+                                                                    <IconButton onClick={toggleDrawer('top', true)}>
+                                                                        <SettingsTwoToneIcon sx={{ color: 'rgb(124, 178, 221)' }} />
+                                                                    </IconButton>
+                                                            </Tooltip>
+
+                                                            <Tooltip title="Edit">
+                                                                <IconButton>                                     
+                                                                     <EditTwoToneIcon/>                              
+                                                                </IconButton>
+                                                            </Tooltip>
+
+                                                            <Tooltip title="Delete">
+                                                                <IconButton>
+                                                                    <DeleteTwoToneIcon sx={{color:'rgb(241, 158, 158)'}}/>
+                                                                </IconButton>
+                                                            </Tooltip>
+                                                            </Box>
+                                                        </TableCell>
                                                 </TableRow>
                                             )}
                                         </Draggable>
@@ -71,6 +92,18 @@ const ParamTableDragDrop = ({ columns, initialData, tableStyle, dragIcon = false
                     </Table>
                 </TableContainer>
             </DragDropContext>
+
+            <Drawer anchor="top" open={anchor.top} onClose={toggleDrawer('top', false)}>
+                <Box  sx={{ width:'100VW' , padding: '1rem' , minHeight:'100vh'}} role='presentation'>
+                <Box sx={{ display: "flex", justifyContent: "space-between", paddingBottom: '0rem', borderBottom: '1px solid #ccc'  }}>
+                    <Typography variant='h4'> Fee Structure </Typography>
+
+
+                    <Button sx={{marginTop:"-6px"}} onClick={toggleDrawer('right', false)}>Close</Button>
+                </Box>
+                
+                </Box>
+          </Drawer>
         </>
     );
 };
