@@ -1,5 +1,5 @@
-import parent from '../../../../assets/images/dashboard-icon/parent-dashboard.svg'
-import teacher from '../../../../assets/images/dashboard-icon/teacher-dashboard.svg'
+import parent from 'assets/images/dashboard-icon/parent-dashboard.svg'
+import teacher from 'assets/images/dashboard-icon/teacher-dashboard.svg'
 
 
 export const DashboardList = [

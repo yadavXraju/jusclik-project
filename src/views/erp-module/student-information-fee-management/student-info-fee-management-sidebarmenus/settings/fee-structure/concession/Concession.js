@@ -28,6 +28,11 @@ const tableHeadings = [
   {
     id: 6,
     tabHeading: 'Valid up to'
+  },
+  
+  {
+    id: 7,
+    tabHeading: 'Action'
   }
 ];
 
@@ -134,6 +139,7 @@ const data = [
 const Concession = ({ anchor , toggleDrawer }) => {
  
 
+
   return (
     <> 
              <ParamTableDragDrop
@@ -151,6 +157,7 @@ const Concession = ({ anchor , toggleDrawer }) => {
                         Close
                         </Button>
                     </Box>
+                     
                     <Tab1 />
                     </Box>
             </Drawer>
