@@ -7,52 +7,56 @@ import ParamTable from 'views/erp-common-component/ParamTable';
 const tableHeadings = [
   {
     id: 2,
-    tabHeading: "Average Meeting Time"
+    tabHeading: "Phone Number"
   },
   {
     id: 3,
-    tabHeading: "Created by"
+    tabHeading: "Reason"
   },
   {
     id: 4,
-    tabHeading: "Created On"
+    tabHeading: "Created by"
   },
   {
     id: 5,
+    tabHeading: "Created On"
+  },
+  {
+    id: 6,
     tabHeading: "Action"
   }
 ]
 
 const data = [
   {
-    "Average Meeting Time": "1:30",
+    "Phone Number": "9874523614",
+    "Reason":"Abusive",
     "createdBy": "John Doe",
     "createdOn": "2024-03-05"
   },
   {
-    "Average Meeting Time": "2:30",
+    "Phone Number": "9874523614",
+    "Reason":"Fight",
     "createdBy": "Jane Smith",
     "createdOn": "2024-03-06"
   },
   {
-    "Average Meeting Time": "0:30",
+    "Phone Number": "9874523614",
+    "Reason":"Fight",
     "createdBy": "Alice Johnson",
     "createdOn": "2024-03-07"
   },
   {
-    "Average Meeting Time": "3:30",
+    "Phone Number": "9874523614",
+    "Reason":"Abusive",
     "createdBy": "Bob Brown",
     "createdOn": "2024-03-08"
   },
-  {
-    "Average Meeting Time": "1:30",
-    "createdBy": "Emma Wilson",
-    "createdOn": "2024-03-09"
-  }
+  
 ];
 
 
-const Admission = () => {
+const ParentsDiscussion = () => {
 //   const handleChange=()=>{
 
 //   }
@@ -67,4 +71,4 @@ const Admission = () => {
   )
 }
 
-export default Admission;
+export default ParentsDiscussion;

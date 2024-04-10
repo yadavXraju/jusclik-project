@@ -7,52 +7,67 @@ import ParamTable from 'views/erp-common-component/ParamTable';
 const tableHeadings = [
   {
     id: 2,
-    tabHeading: "Average Meeting Time"
+    tabHeading: "Name"
   },
   {
     id: 3,
-    tabHeading: "Created by"
+    tabHeading: "To Meet"
   },
+
   {
     id: 4,
-    tabHeading: "Created On"
+    tabHeading: "Phone Number"
   },
   {
     id: 5,
+    tabHeading: "Created On"
+  },
+  {
+    id: 6,
     tabHeading: "Action"
   }
 ]
 
 const data = [
   {
-    "Average Meeting Time": "1:30",
-    "createdBy": "John Doe",
+    
+    "Name":'Sourabh Sharma',
+    "To Meet":" Head Master",
+    "Phone Number": "9568412358",
     "createdOn": "2024-03-05"
   },
   {
-    "Average Meeting Time": "2:30",
-    "createdBy": "Jane Smith",
+    
+    "Name": "Jane Smith",
+    "To Meet":" Principal",
+    "Phone Number": "8754694572",
     "createdOn": "2024-03-06"
   },
   {
-    "Average Meeting Time": "0:30",
-    "createdBy": "Alice Johnson",
+    
+    "Name": "Alice Johnson",
+    "To Meet":" Class Teacher",
+    "Phone Number": "9645782364",
     "createdOn": "2024-03-07"
   },
   {
-    "Average Meeting Time": "3:30",
-    "createdBy": "Bob Brown",
+  
+    "Name": "Bob Brown",
+    "To Meet":" HR Department",
+    "Phone Number": "7548956786",
     "createdOn": "2024-03-08"
   },
   {
-    "Average Meeting Time": "1:30",
-    "createdBy": "Emma Wilson",
+   
+    "Name": "Emma Wilson",
+    "To Meet":"Sports Teacher",
+    "Phone Number": "9214569874",
     "createdOn": "2024-03-09"
   }
 ];
 
 
-const Interview = () => {
+const ToMeet = () => {
 //   const handleChange=()=>{
 
 //   }
@@ -67,4 +82,4 @@ const Interview = () => {
   )
 }
 
-export default Interview;
+export default ToMeet;
