@@ -13,7 +13,7 @@ const Reports =Loadable(lazy(() => import('views/erp-module/visitor/visitor-side
 const Settings =Loadable(lazy(() => import('views/erp-module/visitor/visitor-sidemenus/settings')));
 const Purpose = Loadable(lazy(() => import('views/erp-module/visitor/visitor-sidemenus/settings/purpose')));
 const ToMeet = Loadable(lazy(() => import('views/erp-module/visitor/visitor-sidemenus/settings/to-meet')));
-
+const BlacklistVisitors = Loadable(lazy(() => import('views/erp-module/visitor/visitor-sidemenus/settings/black-listed-visitor')));
 
 
 
@@ -27,9 +27,7 @@ const VisitorRoutes = [
         path: 'dashboard', 
         element: <DashboardDefault />
        },
-
       //  collapse menus
-
        {
         path: 'visitor-management',
         children: [
@@ -37,16 +35,13 @@ const VisitorRoutes = [
             path: 'visitor-entry', 
             element: <VisitorEntry /> 
           },
-
           {
             path: 'scheduled-visit',
             element: <ScheduledVisit />
          },
          {
           path: 'visitor-detail',
-          element: <VisitorDetails/>
-          
-        
+          element: <VisitorDetails/>              
        }
         ]
       },
@@ -68,6 +63,10 @@ const VisitorRoutes = [
           {
             path: 'to-meet', 
             element: <ToMeet />
+          } , 
+          {
+            path: 'blacklist-visitors', 
+            element: <BlacklistVisitors />
           } , 
         ]
        
