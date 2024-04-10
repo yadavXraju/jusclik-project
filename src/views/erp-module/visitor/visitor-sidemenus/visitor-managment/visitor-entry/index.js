@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import CommonDataGrid from 'views/common-section/commonDataGrid'
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 // import WarningDialog from 'views/common-section/WarningDialog';
@@ -14,8 +14,7 @@ import PauseCircleOutlineIcon from '@mui/icons-material/PauseCircleOutline';
 import DoDisturbAltOutlinedIcon from '@mui/icons-material/DoDisturbAltOutlined';
 import Chip from '@mui/material/Chip';
 import Avatar from '@mui/material/Avatar';
-import { useNavigate } from 'react-router';
-
+import VisitorDetails from '../visitor-detail';
  
 
 const renderChipCell = (params) => {
@@ -137,46 +136,56 @@ const columns = [
 const VisitorEntry = () => {  
 
   //const [tableRows, setTableRows] = useState(RouteData);
+  const [tableVisible,setTableVisible] = useState(true)
 
-const navigate=useNavigate();
+  const [detailVisible,setDetailVisible] =useState(false)
+  const[rowDetails,setRowDetails]=useState({});
+// const navigate=useNavigate();
 
   const Click = (rowData) => {
-    navigate('../visitor-detail', { state: { rowData } });
+    setTableVisible(!tableVisible)
+    setDetailVisible(!detailVisible);
+    console.log(detailVisible);
     console.log(rowData);
+    // setIndex(rowData.id)
+    setRowDetails(rowData)
   };
 
+  const table=<><Card>
+  <Box sx={{ borderBottom: '1px solid #ccc' }}>
+    <Grid container spacing={2} p={2} sx={{ alignItems: 'end' ,paddingBottom:'0px' , paddingRight:'0px'}}>
+      <Grid item xs={12} sm={12} lg={12} sx={{}}>
+        <Box sx={{ paddingBottom: '32px' }}>
+          <Typography variant="h4" sx={{ pb: '0px' }}>
+            Visitor List
+          </Typography>
+        </Box>
+      </Grid>
+ 
+
+    </Grid>
+  </Box>
+  <Box p={2} className={'scrollbar-2'}>
+    <CommonDataGrid
+      rows={RouteData}
+      columns={columns} // Use state variable for columns
+      onRowClick={(params) =>Click(params.row)}
+      initialState={{
+        pagination: {
+          paginationModel: { page: 0, pageSize: 50 }
+        }
+      }}
+      pageSizeOptions={[10, 25, 50, 100]}
+      checkboxSelection
+    />
+  </Box>
+</Card></>
+const detail=<VisitorDetails rowDetails={rowDetails}  index={rowDetails.id} setDetailVisible={setDetailVisible} setTableVisible={setTableVisible}  />
   return (
+
     <>
-      <Card>
-        <Box sx={{ borderBottom: '1px solid #ccc' }}>
-          <Grid container spacing={2} p={2} sx={{ alignItems: 'end' ,paddingBottom:'0px' , paddingRight:'0px'}}>
-            <Grid item xs={12} sm={12} lg={12} sx={{}}>
-              <Box sx={{ paddingBottom: '32px' }}>
-                <Typography variant="h4" sx={{ pb: '0px' }}>
-                  Visitor List
-                </Typography>
-              </Box>
-            </Grid>
-       
-
-          </Grid>
-        </Box>
-        <Box p={2} className={'scrollbar-2'}>
-          <CommonDataGrid
-            rows={RouteData}
-            columns={columns} // Use state variable for columns
-            onRowClick={(params) => Click(params.row)}
-            initialState={{
-              pagination: {
-                paginationModel: { page: 0, pageSize: 50 }
-              }
-            }}
-            pageSizeOptions={[10, 25, 50, 100]}
-            checkboxSelection
-          />
-        </Box>
-      </Card>
-
+    {tableVisible&&table}  
+    {detailVisible&&detail}
     </>
   )
 }
