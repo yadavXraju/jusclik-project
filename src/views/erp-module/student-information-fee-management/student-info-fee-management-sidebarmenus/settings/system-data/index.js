@@ -1,9 +1,12 @@
 
 import React from 'react';
-import {Typography, Box, Button } from '@mui/material';
+import { Typography, Box, Button } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
-import Systemdata from 'views/common-section/ParamSearchTabs';
 import useDrawer from 'hooks/useDrawer';
+import React from 'react'; import { Typography, Box, Button } from '@mui/material'; 
+import AddIcon from '@mui/icons-material/Add'; 
+import Systemdata from 'views/common-section/ParamSearchTabs'; 
+import useDrawer from 'hooks/useDrawer'; 
 import {
   Class,
   Section,
@@ -30,8 +33,8 @@ import {
 
 
 
-const SystemDataPages=()=>{
-  const {anchor,toggleDrawer}=useDrawer();
+const SystemDataPages = () => {
+  const { anchor, toggleDrawer } = useDrawer();
   const tabPage = [
     {
       id: 1,
@@ -213,41 +216,22 @@ const SystemDataPages=()=>{
       }
     }
   ]
-     return(
-      <>
-       <Box sx={{ display: "flex", justifyContent: "space-between", width: "97%", alignItems: "center" }}>
+  return (
+    <>
+      <Box sx={{ display: "flex", justifyContent: "space-between", width: "97%", alignItems: "center" }}>
         <Typography variant="p" sx={{ marginTop: "-20px", marginLeft: "20px" }}>
           Setup System Data  as application setting to manage all application settings
         </Typography>
         <Button onClick={toggleDrawer('right', true)} sx={{ margin: "0px 0px 20px 60px", height: "40px", color: '#fff' }} variant="contained" startIcon={<AddIcon />}>Add Field</Button>
       </Box>
-      <Box sx={{ flexGrow: 1, display: 'flex', background: "none" }}>
-        <Box>
-          <ParamSearchBar value={searchTerm}
-            onChange={e => setSearchTerm(e.target.value)} />
-          <Tabs
-            orientation="vertical"
-            value={value}
-            onChange={handleChange}
-            aria-label="Vertical tabs example"
-            sx={{ borderRight: 1, height: "auto", minWidth: "300px !important", bgcolor: 'background.paper', border: "1px solid #EEEDEB", borderRadius: "10px" }}
-            className="testf"
-          >
-            {filterData.map((tab, index) => (
-              <Tab key={tab?.id} label={tab.name} {...a11yProps(index)} sx={{ borderBottom: "1px solid #eef2f6", width: ' 100%', alignItems: "baseline" }} className="testf" />
-            ))}
-          </Tabs>
-        </Box>
-        {
-          filterData.map((tab, index) => {
-            return <TabPanel key={tab?.id} value={value} index={index} sx={{ width: "100%", bgcolor: 'background.paper', marginLeft: "40px", borderRadius: "10px", overflowX: "auto" }}>
-              <tab.component  {...tab.props } />
-            </TabPanel>
-          })
-        }
-      </Box >
+      <Systemdata tabPage={tabPage} />
     </>
   );
 }
 
 export default SystemDataPages;
+
+
+
+
+

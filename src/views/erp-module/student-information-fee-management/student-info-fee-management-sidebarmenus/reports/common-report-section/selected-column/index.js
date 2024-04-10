@@ -203,7 +203,7 @@ const ShowHide = () => {
                 {/* Selected Fields */}
                 <Box sx={style.availableColumnsContainer} >
                     <Typography variant="h5">SELECTED COLUMNS</Typography>
-                    <Droppable droppableId="selected" type="group2">
+                    <Droppable droppableId="selected" type="group1">
                         {(provided) => (
                             <Box className="scrollbar" sx={style.availableFieldsContainer} {...provided.droppableProps} ref={provided.innerRef}>
                                 {selectedFields.map((item, index) => (
