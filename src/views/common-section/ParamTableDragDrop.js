@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { Table , TableBody , TableCell , TableContainer , TableHead , TableRow , Paper , Typography , Box , IconButton , Drawer , Button} from '@mui/material';
-
+import { Table , TableBody , TableCell , TableContainer , TableHead , TableRow , Paper , Typography , Box , IconButton , Drawer , Button , Tooltip} from '@mui/material';
 import DragIndicatorOutlinedIcon from '@mui/icons-material/DragIndicatorOutlined';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
-import TuneTwoToneIcon from '@mui/icons-material/TuneTwoTone';
+import SettingsTwoToneIcon from '@mui/icons-material/SettingsTwoTone';
 import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 import useDrawer from 'hooks/useDrawer';
 
@@ -63,14 +62,23 @@ const ParamTableDragDrop = ({ columns, initialData, tableStyle, dragIcon = false
 
                                                        <TableCell>
                                                             <Box>
-                                                                <IconButton onClick={toggleDrawer('top', true)}>
-                                                                    <TuneTwoToneIcon sx={{ color: 'rgb(124, 178, 221)' }} />
+                                                            <Tooltip title="Configure">
+                                                                    <IconButton onClick={toggleDrawer('top', true)}>
+                                                                        <SettingsTwoToneIcon sx={{ color: 'rgb(124, 178, 221)' }} />
+                                                                    </IconButton>
+                                                            </Tooltip>
+
+                                                            <Tooltip title="Edit">
+                                                                <IconButton>                                     
+                                                                     <EditTwoToneIcon/>                              
                                                                 </IconButton>
-                                                                <IconButton>                                          <EditTwoToneIcon/>                              
-                                                                </IconButton>
+                                                            </Tooltip>
+
+                                                            <Tooltip title="Delete">
                                                                 <IconButton>
                                                                     <DeleteTwoToneIcon sx={{color:'rgb(241, 158, 158)'}}/>
                                                                 </IconButton>
+                                                            </Tooltip>
                                                             </Box>
                                                         </TableCell>
                                                 </TableRow>
