@@ -1,7 +1,7 @@
 import { Typography , useMediaQuery } from '@mui/material'
 import { studentProfileDetails } from 'layout/MainLayout/Header/ProfileSection/ProfileDeatails'
 import React from 'react'
-import { welcomeMsg } from '../../../../common-section/dashboard-css/CommonCss'
+import { welcomeMsg } from 'views/common-section/dashboard-css/CommonCss'
 const WelcomeMessage = () => {
   const isMobile = useMediaQuery('(max-width: 767px)');
   return (

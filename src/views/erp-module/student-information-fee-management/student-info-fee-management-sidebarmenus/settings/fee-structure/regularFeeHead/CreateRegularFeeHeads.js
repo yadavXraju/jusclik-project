@@ -35,6 +35,11 @@ const tableHeadings = [
   {
     id: 7,
     tabHeading: 'Monthly Amount'
+  },
+
+  {
+    id: 8,
+    tabHeading: 'Action'
   }
 ];
 
