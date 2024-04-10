@@ -5,7 +5,7 @@ import { gridSpacing } from 'store/constant';
 
 
 
-import NeedSupport from 'views/erp-module/student-information-fee-management/student-info-fee-management-dashboard/dashboard/support/Support';
+// import NeedSupport from 'views/erp-module/student-information-fee-management/student-info-fee-management-dashboard/dashboard/support/Support';
 
 
 // import VisitorDetail from './visitor-detail';
@@ -13,6 +13,7 @@ import HourlyVisior from './hourly-visitor';
 import DepartmentwiseVisitor from './deparmentwise-visitor';
 import RecentVisitors from './recent visitor';
 import Counters from './counter';
+import NeedHelp from 'views/erp-module/student-information-fee-management/student-info-fee-management-dashboard/dashboard/support/Support2';
 
 const DashboardContent = () => {
   return (
@@ -44,7 +45,8 @@ const DashboardContent = () => {
 
       
           <Grid item xs={12} lg={4} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
-          <NeedSupport /> 
+          {/* <NeedSupport />  */}
+          <NeedHelp/>
           </Grid>
           <Grid item xs={12} lg={8} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
         

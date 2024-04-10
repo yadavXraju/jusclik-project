@@ -5,6 +5,10 @@ import CreateRegularFeeHeads from './regularFeeHead/CreateRegularFeeHeads';
 import Concession from './concession/Concession';
 import OtherSettings from './other-settings/OtherSettings';
 import useDrawer from 'hooks/useDrawer';
+import ReceiptTwoToneIcon from '@mui/icons-material/ReceiptTwoTone';
+import DiscountTwoToneIcon from '@mui/icons-material/DiscountTwoTone';
+import NewReleasesTwoToneIcon from '@mui/icons-material/NewReleasesTwoTone';
+import SettingsTwoToneIcon from '@mui/icons-material/SettingsTwoTone';
 
 // import NewHead from './regularFeeHead/NewHead';
 
@@ -17,46 +21,49 @@ const FeeStructure = () => {
   const tabPage = [
     {
       id: 1,
-      name: 'Regular Fee Heads',
+      name: 'Fee Heads',
       value: '1',
       component: CreateRegularFeeHeads,
       props: {
          anchor:anchor,
          toggleDrawer:toggleDrawer
-      }
+      },
+      icon:<ReceiptTwoToneIcon />,
     },
-    {
-      id: 2,
-      name: 'Optional Fee Heads',
-      value: '2',
-      component: 'test',
-      drawerContetn: 'test',
-      props: {
-        anchor:anchor,
-        toggleDrawer:toggleDrawer
-      }
-    },
+    // {
+    //   id: 2,
+    //   name: 'Optional Fee Heads',
+    //   value: '2',
+    //   component: 'test',
+    //   drawerContetn: 'test',
+    //   props: {
+    //     anchor:anchor,
+    //     toggleDrawer:toggleDrawer
+    //   }
+    // },
   
     {
-      id: 3,
+      id: 2,
       name: 'Concession',
       value: '3',
       component: Concession,
       props: {
         anchor:anchor,
         toggleDrawer:toggleDrawer
-      }
+      },
+      icon:<DiscountTwoToneIcon />,
     },
   
     {
-      id: 4,
+      id: 3,
       name: 'Discount',
       value: '4',
       component: CreateRegularFeeHeads,
       props: {
         anchor:anchor,
         toggleDrawer:toggleDrawer
-      }
+      },
+      icon:<NewReleasesTwoToneIcon />,
     },
   
     {
@@ -67,7 +74,8 @@ const FeeStructure = () => {
       props: {
         anchor:anchor,
         toggleDrawer:toggleDrawer
-      }
+      },
+      icon:<SettingsTwoToneIcon/>,
     }
   ];
   return (
@@ -93,6 +101,7 @@ const FeeStructure = () => {
       <ParamStepper
         variant={isTab ? 'scrollable' : null}
         tabPage={tabPage}
+        numberShow={false}
         orientation={ isTab ? "horizontal" :"vertical"}
         customtabWrapper={{
           display: 'flex',
@@ -104,9 +113,13 @@ const FeeStructure = () => {
             display: 'none'
           }
         }}
-        customtabSytle={{ minWidth: isTab ? 'auto' :'300px', padding: '14px', border: 'none', fontSize: '16px' , marginRight:isTab ? '0' : 'auto'}}
+        // customtabStyle === tab btn style
+        customtabSytle={{  minWidth: isTab ? 'auto' :'250px',width:'100%', margin:'0', border: 'none', fontSize: '16px' , marginRight:isTab ? '0' : 'auto' , display:'flex' , flexDirection:'row' , justifyContent:'start' , alignItems:'center' , gap:'10px' , minHeight:'auto' , padding:'12px 20px' ,
+        
+       }}
+      //  selectedTab={{background:'rgb(248, 250, 252)'}}
         customtabPanelStyle={{ paddingTop: '0', height: 'auto' }}
-        customStyleTabs={{ borderRight: '1px solid rgba(224, 224, 224, 1)' , borderBottom:'1px solid #e0e0e0' }}
+        customStyleTabs={{ borderRight: '1px solid rgba(224, 224, 224, 1)' , borderBottom:'1px solid #e0e0e0' ,  paddingTop:'10px'}}
       />
 
       {/* Drawer */}

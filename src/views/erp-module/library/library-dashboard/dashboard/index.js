@@ -10,10 +10,11 @@ import BookDetailPieChart from './LibraryBook';
 import BookDetail from './bookDetail/BookDetail';
 import IssueReturn2 from './issuedRetun';
 
-import NeedSupport from 'views/erp-module/student-information-fee-management/student-info-fee-management-dashboard/dashboard/support/Support';
+// import NeedSupport from 'views/erp-module/student-information-fee-management/student-info-fee-management-dashboard/dashboard/support/Support';
 import LastestUpdatesOfBooks from './latestbooks';
 import OverDueBook from './OverDueBooks';
 import LateFine from './LateFine';
+import NeedHelp from 'views/erp-module/student-information-fee-management/student-info-fee-management-dashboard/dashboard/support/Support2';
 
 const DashboardContent = () => {
   return (
@@ -58,7 +59,8 @@ const DashboardContent = () => {
           <LateFine />
           </Grid>
           <Grid item xs={12} lg={4} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
-          <NeedSupport /> 
+          {/* <NeedSupport />  */}
+          <NeedHelp/>
           </Grid>
 
         </Grid>

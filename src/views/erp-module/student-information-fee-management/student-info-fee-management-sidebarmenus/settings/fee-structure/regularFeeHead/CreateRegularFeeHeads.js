@@ -1,7 +1,7 @@
 import React from 'react';
 import ParamTableDragDrop from 'views/common-section/ParamTableDragDrop';
-import NewHead from './NewHead';
 import { Drawer,Box,Typography,Button } from '@mui/material';
+import DrawerContent from './DrawerContent';
 
 const tableHeadings = [
   {
@@ -15,7 +15,7 @@ const tableHeadings = [
 
   {
     id: 3,
-    tabHeading: 'Periodicities' //'Prioridicity'
+    tabHeading: 'Periodicity' //'Prioridicity'
   },
 
   {
@@ -27,18 +27,9 @@ const tableHeadings = [
     id: 5,
     tabHeading: 'To be charged from'
   },
+
   {
     id: 6,
-    tabHeading: 'Total Amount'
-  },
-
-  {
-    id: 7,
-    tabHeading: 'Monthly Amount'
-  },
-
-  {
-    id: 8,
     tabHeading: 'Action'
   }
 ];
@@ -50,8 +41,6 @@ const data = [
     prioridicity: 'Annual',
     feeType: 'Supplementary',
     chargeFrom: 'New students ',
-    totalAmount: '8000',
-    monthlyAmount: '4000'
   },
   {
     id: '2',
@@ -59,8 +48,6 @@ const data = [
     prioridicity: 'Annual',
     feeType: 'Supplementary',
     chargeFrom: 'Old and new students',
-    totalAmount: '9000',
-    monthlyAmount: '4000'
   },
   {
     id: '3',
@@ -68,8 +55,6 @@ const data = [
     prioridicity: 'Annual',
     feeType: 'One time ',
     chargeFrom: 'Old students ',
-    totalAmount: '5000',
-    monthlyAmount: '4000'
   },
   {
     id: '4',
@@ -77,8 +62,6 @@ const data = [
     prioridicity: 'Annual',
     feeType: 'One time ',
     chargeFrom: 'New students ',
-    totalAmount: '6000',
-    monthlyAmount: '4000'
   },
   {
     id: '5',
@@ -86,8 +69,6 @@ const data = [
     prioridicity: 'Annual',
     feeType: 'One time ',
     chargeFrom: 'Old and new students',
-    totalAmount: '8000',
-    monthlyAmount: '4000'
   },
   {
     id: '6',
@@ -95,8 +76,6 @@ const data = [
     prioridicity: 'Annual',
     feeType: 'Supplementary',
     chargeFrom: 'New students ',
-    totalAmount: '7000',
-    monthlyAmount: '4000'
   },
   {
     id: '7',
@@ -104,8 +83,6 @@ const data = [
     prioridicity: 'Annual',
     feeType: 'Supplementary',
     chargeFrom: 'Old and new students',
-    totalAmount: '8000',
-    monthlyAmount: '4000'
   },
 
   {
@@ -114,8 +91,6 @@ const data = [
     prioridicity: 'Annual',
     feeType: 'Supplementary',
     chargeFrom: 'New students ',
-    totalAmount: '8000',
-    monthlyAmount: '4000'
   },
   {
     id: '9',
@@ -123,8 +98,6 @@ const data = [
     prioridicity: 'Annual',
     feeType: 'Supplementary',
     chargeFrom: 'Old and new students',
-    totalAmount: '9000',
-    monthlyAmount: '4000'
   },
 
   {
@@ -133,8 +106,6 @@ const data = [
     prioridicity: 'Annual',
     feeType: 'One time ',
     chargeFrom: 'Old students ',
-    totalAmount: '5000',
-    monthlyAmount: '4000'
   },
   {
     id: '11',
@@ -142,8 +113,6 @@ const data = [
     prioridicity: 'Annual',
     feeType: 'One time ',
     chargeFrom: 'New students ',
-    totalAmount: '6000',
-    monthlyAmount: '4000'
   },
   {
     id: '12',
@@ -151,8 +120,6 @@ const data = [
     prioridicity: 'Annual',
     feeType: 'One time ',
     chargeFrom: 'Old and new students',
-    totalAmount: '8000',
-    monthlyAmount: '4000'
   },
   {
     id: '13',
@@ -160,8 +127,6 @@ const data = [
     prioridicity: 'Annual',
     feeType: 'Supplementary',
     chargeFrom: 'New students ',
-    totalAmount: '7000',
-    monthlyAmount: '4000'
   },
   {
     id: '14',
@@ -169,8 +134,6 @@ const data = [
     prioridicity: 'Annual',
     feeType: 'Supplementary',
     chargeFrom: 'Old and new students',
-    totalAmount: '8000',
-    monthlyAmount: '4000'
   },
   {
     id: '15',
@@ -178,8 +141,6 @@ const data = [
     prioridicity: 'Annual',
     feeType: 'Supplementary',
     chargeFrom: 'New students ',
-    totalAmount: '8000',
-    monthlyAmount: '4000'
   },
   {
     id: '16',
@@ -187,8 +148,6 @@ const data = [
     prioridicity: 'Annual',
     feeType: 'Supplementary',
     chargeFrom: 'Old and new students',
-    totalAmount: '9000',
-    monthlyAmount: '4000'
   },
   {
     id: '17',
@@ -196,8 +155,6 @@ const data = [
     prioridicity: 'Annual',
     feeType: 'One time ',
     chargeFrom: 'Old students ',
-    totalAmount: '5000',
-    monthlyAmount: '4000'
   },
   {
     id: '18',
@@ -205,8 +162,6 @@ const data = [
     prioridicity: 'Annual',
     feeType: 'One time ',
     chargeFrom: 'New students ',
-    totalAmount: '6000',
-    monthlyAmount: '4000'
   },
   {
     id: '19',
@@ -214,8 +169,6 @@ const data = [
     prioridicity: 'Annual',
     feeType: 'One time ',
     chargeFrom: 'Old and new students',
-    totalAmount: '8000',
-    monthlyAmount: '4000'
   },
   {
     id: '20',
@@ -223,8 +176,6 @@ const data = [
     prioridicity: 'Annual',
     feeType: 'Supplementary',
     chargeFrom: 'New students ',
-    totalAmount: '7000',
-    monthlyAmount: '4000'
   },
   {
     id: '21',
@@ -232,8 +183,6 @@ const data = [
     prioridicity: 'Annual',
     feeType: 'Supplementary',
     chargeFrom: 'Old and new students',
-    totalAmount: '8000',
-    monthlyAmount: '4000'
   }
 ];
 
@@ -251,7 +200,7 @@ const CreateRegularFeeHeads = ({ anchor, toggleDrawer }) => {
               Close
             </Button>
           </Box>
-          <NewHead />
+            <DrawerContent />
         </Box>
       </Drawer>
     </>

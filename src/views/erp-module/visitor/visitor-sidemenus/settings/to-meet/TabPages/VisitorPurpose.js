@@ -7,44 +7,52 @@ import ParamTable from 'views/erp-common-component/ParamTable';
 const tableHeadings = [
   {
     id: 2,
-    tabHeading: "Average Meeting Time"
+    tabHeading: "Visitor Purpose"
   },
   {
     id: 3,
-    tabHeading: "Created by"
+    tabHeading: "Average Meeting Time"
   },
   {
     id: 4,
-    tabHeading: "Created On"
+    tabHeading: "Created by"
   },
   {
     id: 5,
+    tabHeading: "Created On"
+  },
+  {
+    id: 6,
     tabHeading: "Action"
   }
 ]
 
 const data = [
-  {
+  {  "Visitor Purpose":"Meeting",
     "Average Meeting Time": "1:30",
     "createdBy": "John Doe",
     "createdOn": "2024-03-05"
   },
   {
+    "Visitor Purpose":"Submission",
     "Average Meeting Time": "2:30",
     "createdBy": "Jane Smith",
     "createdOn": "2024-03-06"
   },
   {
+    "Visitor Purpose":"Parents Discussion",
     "Average Meeting Time": "0:30",
     "createdBy": "Alice Johnson",
     "createdOn": "2024-03-07"
   },
   {
+    "Visitor Purpose":"Admission Orientation",
     "Average Meeting Time": "3:30",
     "createdBy": "Bob Brown",
     "createdOn": "2024-03-08"
   },
   {
+    "Visitor Purpose":"Interview",
     "Average Meeting Time": "1:30",
     "createdBy": "Emma Wilson",
     "createdOn": "2024-03-09"
@@ -52,7 +60,7 @@ const data = [
 ];
 
 
-const Conference = () => {
+const VisitorPurpose = () => {
 //   const handleChange=()=>{
 
 //   }
@@ -67,4 +75,4 @@ const Conference = () => {
   )
 }
 
-export default Conference;
+export default VisitorPurpose;
