@@ -20,7 +20,7 @@ import { setMenu } from 'store/customization-slice';
 
 // assets
 import { IconChevronRight } from '@tabler/icons';
-import UrlPage from 'views/navigation-for-pages';
+import UrlPage from 'themes/navigation-for-pages';
 
 // styles
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(({ theme, open }) => ({

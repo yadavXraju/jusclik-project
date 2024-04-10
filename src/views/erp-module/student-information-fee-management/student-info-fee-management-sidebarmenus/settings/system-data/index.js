@@ -1,9 +1,8 @@
-import React, { useState} from 'react';
-import PropTypes from 'prop-types';
-import { Tabs, Tab, Typography, Box, Button } from '@mui/material';
+import React from 'react';
+import {Typography, Box, Button } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
+import Systemdata from 'views/common-section/ParamSearchTabs';
 import useDrawer from 'hooks/useDrawer';
-import ParamSearchBar from 'views/common-section/ParamSearchBar';
 import {
   Class,
   Section,
@@ -26,46 +25,12 @@ import {
   TransportRoute,
   TransportStop
 } from './tabPages';
-import 'assets/scss/tabscustomization.css';
 
 
-const TabPanel = (props) => {
-  const { children, value, index, ...other } = props;
-  return (
-    <Box
-      role="tabpanel"
-      hidden={value !== index}
-      id={`vertical-tabpanel-${index}`}
-      aria-labelledby={`vertical-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
-    </Box>
-  );
-}
-
-TabPanel.propTypes = {
-  children: PropTypes.node,
-  index: PropTypes.number.isRequired,
-  value: PropTypes.number.isRequired,
-};
-
-const a11yProps = (index) => {
-  return {
-    id: `vertical-tab-${index}`,
-    'aria-controls': `vertical-tabpanel-${index}`,
-  };
-}
 
 
-const SetupTabs = () => {
-  const [value, setValue] = useState(0);
-  const { anchor, toggleDrawer } = useDrawer();
-  const [searchTerm, setSearchTerm] = useState('');
+const SystemDataPages=()=>{
+  const {anchor,toggleDrawer}=useDrawer();
   const tabPage = [
     {
       id: 1,
@@ -247,17 +212,9 @@ const SetupTabs = () => {
       }
     }
   ]
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
-
-
-  const filterData = tabPage.filter((tab) => tab.name.toLowerCase().includes(searchTerm.toLowerCase()));
-
-  return (
-    <>
-      <Box sx={{ display: "flex", justifyContent: "space-between", width: "97%", alignItems: "center" }}>
+     return(
+      <>
+       <Box sx={{ display: "flex", justifyContent: "space-between", width: "97%", alignItems: "center" }}>
         <Typography variant="p" sx={{ marginTop: "-20px", marginLeft: "20px" }}>
           Setup System Data  as application setting to manage all application settings
         </Typography>
@@ -292,6 +249,4 @@ const SetupTabs = () => {
   );
 }
 
-
-export default SetupTabs;
-
+export default SystemDataPages;

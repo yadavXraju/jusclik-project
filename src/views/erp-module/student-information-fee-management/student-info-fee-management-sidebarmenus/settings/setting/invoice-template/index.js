@@ -60,7 +60,7 @@ export const CustomCard = ({ cardName, image, orientation, selectedTemplate,badg
                 variant="contained"
                 onClick={() => {
                   dispatch(updateSelectedTemplate(selectedTemplate));
-                  navigate('/erp/student-info-fee/settings/daman');
+                  navigate('/erp/student-info-fee/settings/invoice-template/template');
                 }}
               >
                 Edit

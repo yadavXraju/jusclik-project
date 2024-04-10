@@ -18,7 +18,7 @@ import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 // collapse menu icon
 
 import { IconChevronDown, IconChevronUp } from '@tabler/icons';
-import { urlStore } from 'views/navigation-for-pages/UrlStore';
+import { urlStore } from 'themes/navigation-for-pages/UrlStore';
 // ==============================|| SIDEBAR MENU LIST COLLAPSE ITEMS ||============================== //
 
 const NavCollapse = ({ menu, level }) => {

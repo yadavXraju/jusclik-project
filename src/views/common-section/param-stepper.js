@@ -40,6 +40,7 @@ const SetupTabs = ({
   tabPage,
   orientation = 'horizontal',
   variant = 'scrollable',
+  showBottomNav=true,
   customStyleTabs,
   customtabWrapper = {},
   customtabSytle = {},
@@ -129,7 +130,7 @@ const SetupTabs = ({
           </TabPanel>
         ))}
       </Box>
-      <BottomNavbar tabPageLength={tabPage.length} value={value} setValue={setValue} />
+      {showBottomNav&&<BottomNavbar tabPageLength={tabPage.length} value={value} setValue={setValue} />}
     </>
   );
 };

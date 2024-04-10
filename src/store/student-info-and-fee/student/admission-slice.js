@@ -7,7 +7,7 @@ const intialStudentDetailsData = [
     sectionCode: 0,
     section: [
       {
-        id:2,
+        id: 2,
         name: "Admission Details",
         subSection: [
           {
@@ -31,7 +31,7 @@ const intialStudentDetailsData = [
         ]
       },
       {
-        id:6,
+        id: 6,
         name: "Student Details",
         subSection: [
           {
@@ -85,7 +85,7 @@ const intialStudentDetailsData = [
         ]
       },
       {
-        id:15,
+        id: 15,
         name: "Class Details",
         subSection: [
           {
@@ -98,12 +98,12 @@ const intialStudentDetailsData = [
             name: "Section",
             type: "text",
             selected: true,
-            id:17
+            id: 17
           },
         ]
       },
-      { 
-        id:18,
+      {
+        id: 18,
         name: "Fee Details",
         subSection: [
           {
@@ -140,7 +140,7 @@ const intialStudentDetailsData = [
     sectionCode: 1,
     section: [
       {
-        id:24,
+        id: 24,
         name: "Other Details",
         subSection: [
           {
@@ -182,7 +182,7 @@ const intialStudentDetailsData = [
         ]
       },
       {
-        id:31,
+        id: 31,
         name: "Other Details2",
         subSection: [
           {
@@ -219,7 +219,7 @@ const intialStudentDetailsData = [
             name: "SRN. No.",
             type: "text",
             selected: true,
-            id:37
+            id: 37
           }
 
         ]
@@ -227,19 +227,19 @@ const intialStudentDetailsData = [
     ]
   },
   {
-    id:38,
+    id: 38,
     name: "Address",
     sectionCode: 3,
     section: [
       {
-        id:39,
+        id: 39,
         name: "Current Address",
         subSection: [
           {
             name: "Address",
             type: "textarea",
             selected: true,
-            id:40
+            id: 40
           },
           {
             name: "Country/Region",
@@ -268,7 +268,7 @@ const intialStudentDetailsData = [
         ]
       },
       {
-        id:45,
+        id: 45,
         name: "Permanent Address",
         subSection: [
           {
@@ -299,19 +299,19 @@ const intialStudentDetailsData = [
             name: "Zip Code",
             type: "text",
             selected: true,
-            id:50
+            id: 50
           },
         ]
       }
     ]
   },
   {
-    id:51,
+    id: 51,
     name: "Contact Person",
     sectionCode: 3,
     section: [
       {
-        id:52,
+        id: 52,
         name: "Contact Person",
         subSection: [
           {
@@ -354,84 +354,84 @@ const intialStudentDetailsData = [
             name: "Mobile",
             type: "text",
             selected: true,
-            id: 58
+            id: 59
           },
           {
             name: "Email",
             type: "text",
             selected: true,
-            id: 59
+            id: 60
           },
           {
             name: "Education",
             type: "text",
             selected: true,
-            id: 60
+            id: 61
           },
           {
             name: "Occupation",
             type: "text",
             selected: true,
-            id: 61
-         },
-         {
-          name:"Company",
-          type:"text",
-          selected:true,
-          id: 62
-         },
-         {
-          name:"Designation",
-          type:"text",
-          selected:true,
-          id: 63
-         },{
-          name:"Address(office)",
-          type:"text",
-          selected:true,
-          id: 64
-         },
-         {
-          name:"Adhaar No",
-          type:"text",
-          selected:true,
-          id: 65
-         },
-         {
-          name:"PAN",
-          selected:true,
-          id: 65
-         }
+            id: 62
+          },
+          {
+            name: "Company",
+            type: "text",
+            selected: true,
+            id: 63
+          },
+          {
+            name: "Designation",
+            type: "text",
+            selected: true,
+            id: 64
+          }, {
+            name: "Address(office)",
+            type: "text",
+            selected: true,
+            id: 65
+          },
+          {
+            name: "Adhaar No",
+            type: "text",
+            selected: true,
+            id: 66
+          },
+          {
+            name: "PAN",
+            selected: true,
+            id: 67
+          }
         ]
       }
     ]
   },
   {
-    id:66,
+    id: 68,
     name: "Custom Fields",
     sectionCode: 4,
     section: [
       {
-        id:67,
+        id: 69,
         name: "Custom Fields",
         subSection: [
           {
             name: "name",
             type: "text",
             selected: true,
-            id: 68
+            id: 70
           },
           {
             name: "Class",
             type: "text",
             selected: true,
-            id:69
+            id: 71
           },
           {
             name: "Admission Date",
             type: "text",
             selected: true,
-            id: 70
+            id: 72
           },
         ]
       },
@@ -452,7 +452,7 @@ const rows = [
     Status: 'Active'
   },
   {
-    id:350,
+    id: 350,
     AdmNo: '8575',
     AdmDate: '02-Jun-2024',
     StudentName: 'John',
@@ -1124,12 +1124,13 @@ const initialState = {
     {
       label: 'Fee Details',
       value: 'Fee Details'
-    }]
+    }],
+  isChecked: true
 };
 
 const customizationSlice = createSlice({
   name: 'admission',
-  initialState,
+  initialState: initialState,
   reducers: {
     addField: (state, action) => {
       const updatedData = state.studentDetailsData.map((item) => {
@@ -1154,7 +1155,7 @@ const customizationSlice = createSlice({
     },
     subGroupbyGroup: (state, action) => {
       const section = action.payload;
-      state.subGroups=[];
+      state.subGroups = [];
       const relevantItems = state.studentDetailsData.filter(item => item.name === section);
       relevantItems.forEach(item => {
         item.section.forEach(subItem => {
@@ -1162,13 +1163,49 @@ const customizationSlice = createSlice({
         });
       });
     },
+
+    searchFilter: (state, action) => {
+      const searchQuery = action.payload;
+      if (!searchQuery)
+        state.studentDetailsData = intialStudentDetailsData;
+
+      const x =state.studentDetailsData;
+      const filterData = x.map((group) => {
+        const matchGroup = group.name.toLowerCase().includes(searchQuery.toLowerCase());
+        console.log(matchGroup)
+        if (matchGroup) {
+          console.log("group",JSON.stringify(group))
+          return group;
+        } 
+        else {
+          const matchSection = group.section.map((field) => {
+            const matchField = field.name.toLowerCase().includes(searchQuery.toLowerCase());
+            const matchItem = field.subSection.some((item) => item.name.toLowerCase().includes(searchQuery.toLowerCase()));
+            return matchField || matchItem;
+          });
+          return {
+            name: group.name,
+            id: group.id,
+            sectionCode: group.sectionCode,
+            matchSection: matchSection.some(Boolean) 
+          };
+        }
+      });
+      const stingFilterData = JSON.stringify(filterData);
+      console.log(stingFilterData)
+      const parseFilterData = JSON.parse(stingFilterData);
+      console.log(parseFilterData)
+      // state.studentDetailsData=parseFilterData;
+    }
+
   },
 });
 
 
 export const {
   addField,
-  subGroupbyGroup
+  subGroupbyGroup,
+  searchFilter
 } = customizationSlice.actions;
 
 export default customizationSlice.reducer;

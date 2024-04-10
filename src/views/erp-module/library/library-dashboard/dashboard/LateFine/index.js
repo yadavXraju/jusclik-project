@@ -1,7 +1,7 @@
 import React from 'react';
 import { Paper, Typography, Grid, Table, TableRow, TableCell, TableBody, Avatar, Box, TableHead,useMediaQuery } from '@mui/material';
 
-import { HeadingCss } from 'views/dashboard/Default/dashboard-css/CommonCss';
+import { HeadingCss } from 'views/common-section/dashboard-css/CommonCss'
 import { gridSpacing } from 'store/constant';
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 

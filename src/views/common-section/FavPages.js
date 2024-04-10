@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import MainCard from 'ui-component/cards/MainCard';
 import { Typography, Grid, Box, Button , Divider } from '@mui/material';
-import { boxHeight, HeadingCss } from 'views/dashboard/Default/dashboard-css/CommonCss';
+// import {  } from 'views/dashboard/Default/dashboard-css/CommonCss';
 import { gridSpacing } from 'store/constant';
-import { subTitle } from 'views/dashboard/Default/dashboard-css/CommonCss';
+import { subTitle , boxHeight, HeadingCss } from 'views/common-section/dashboard-css/CommonCss';
 import AttachmentOutlinedIcon from '@mui/icons-material/AttachmentOutlined';
 import { useNavigate } from 'react-router';
 

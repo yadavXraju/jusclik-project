@@ -1,0 +1,9 @@
+export { default as HeadMaster } from './HeadMaster';
+export { default as Principal } from './Principal';
+export { default as VicePrincipal } from './VicePrincipal';
+export { default as ClassTeacher } from './ClassTeacher';
+export { default as HrDepartment } from './HrDepartment';
+export { default as HeadMistress } from './HeadMistress';
+export { default as SportsTeacher } from './SportsTeacher';
+export { default as Librarian } from './Librarian';
+export { default as ComputerTeacher } from './ComputerTeacher';
