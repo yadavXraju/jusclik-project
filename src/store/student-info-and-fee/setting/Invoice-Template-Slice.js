@@ -40,12 +40,12 @@ const initialState = {
     borderEnable: true,
     borderColor: '#000000',
     //   table header props
-    headerFontSize: '9',
+    headerFontSize: '14',
     headerBackgroundColorEnable: true,
     headerBackgroundColor: '#ffffff',
     headerFontColor: '#000000',
     //   table content props
-    itemRowFontSize: '9',
+    itemRowFontSize: '12',
     itemRowBackgroundColorEnable: true,
     itemRowBackgroundColor: '#ffffff',
     itemRowFontColor: '#000000',
@@ -60,7 +60,6 @@ const initialState = {
     { label: "Father's Name:", value: 'krishna Kumar' ,enable:true},
     { label: 'Address:', value: 'Sohna Dhani Road Road Ward No -01 Sohna Gurugram haryana Sohna-122103' ,enable:true},
     { label: 'Class:', value: 'I-A' ,enable:true},
-    { label: 'Tel(R):', value: '9845622785' ,enable:true},
     { label: 'Tel(M):', value: 'XXXXXXXXXX' ,enable:true},
     { label: 'Email:', value: '123@gmail.com' ,enable:true},
     { label: 'Invoice No:[SS*]:', value: '13683' ,enable:true},

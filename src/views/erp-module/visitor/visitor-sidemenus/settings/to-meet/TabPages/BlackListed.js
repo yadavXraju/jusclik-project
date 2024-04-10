@@ -7,52 +7,56 @@ import ParamTable from 'views/erp-common-component/ParamTable';
 const tableHeadings = [
   {
     id: 2,
-    tabHeading: "Name"
-  },
-  {
-    id: 3,
     tabHeading: "Phone Number"
   },
   {
+    id: 3,
+    tabHeading: "Reason"
+  },
+  {
     id: 4,
-    tabHeading: "Created On"
+    tabHeading: "Created by"
   },
   {
     id: 5,
+    tabHeading: "Created On"
+  },
+  {
+    id: 6,
     tabHeading: "Action"
   }
 ]
 
 const data = [
   {
-    "Name":'Sourabh Sharma',
-    "Phone Number": "9568412358",
+    "Phone Number": "9874523614",
+    "Reason":"Abusive",
+    "createdBy": "John Doe",
     "createdOn": "2024-03-05"
   },
   {
-     "createdBy": "Jane Smith",
-     "Phone Number": "8754694572",
+    "Phone Number": "9874523614",
+    "Reason":"Fight",
+    "createdBy": "Jane Smith",
     "createdOn": "2024-03-06"
   },
   {
-    "Name": "Alice Johnson",
-    "Phone Number": "9645782364",
+    "Phone Number": "9874523614",
+    "Reason":"Fight",
+    "createdBy": "Alice Johnson",
     "createdOn": "2024-03-07"
   },
   {
-    "Name": "Bob Brown",
-    "Phone Number": "7548956786",
+    "Phone Number": "9874523614",
+    "Reason":"Abusive",
+    "createdBy": "Bob Brown",
     "createdOn": "2024-03-08"
   },
-  {
-    "Name": "Emma Wilson",
-    "Phone Number": "9214569874",
-    "createdOn": "2024-03-09"
-  }
+  
 ];
 
 
-const HrDepartment = () => {
+const ParentsDiscussion = () => {
 //   const handleChange=()=>{
 
 //   }
@@ -67,4 +71,4 @@ const HrDepartment = () => {
   )
 }
 
-export default HrDepartment;
+export default ParentsDiscussion;

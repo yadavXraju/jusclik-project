@@ -4,13 +4,12 @@ import AddIcon from '@mui/icons-material/Add';
 import Systemdata from 'views/common-section/ParamSearchTabs';
 import useDrawer from 'hooks/useDrawer';
 import {
-  Meeting,
-  Submission,
-  ParentsDiscussion,
-  Admission,
-  Interview,
-  Conference
+  VisitorPurpose,
+  ToMeet,
+  BlackListed,
+ 
 } from './Tabpages';
+
 
 
 
@@ -20,8 +19,8 @@ const SystemDataPages=()=>{
   const tabPage = [
     {
       id: 1,
-      name: "Meeting",
-      component: Meeting,
+      name: "Visitor Purpose",
+      component: VisitorPurpose,
       props: {
         toggleDrawer: toggleDrawer,
         toggleAddDrawer: anchor
@@ -29,50 +28,22 @@ const SystemDataPages=()=>{
     },
     {
       id: 2,
-      name: "Submission",
-      component: Submission,
+      name: "ToMeet",
+      component: ToMeet,
       props: {
         toggleDrawer: toggleDrawer,
         toggleAddDrawer: anchor
       }
     }, {
       id: 3,
-      name: "Parents Discussion",
-      component: ParentsDiscussion,
+      name: "Black Listed Visitor",
+      component: BlackListed,
       props: {
         toggleDrawer: toggleDrawer,
         toggleAddDrawer: anchor
       }
     },
-    {
-      id: 4,
-      name: "Admission Orientation",
-      component: Admission,
-      props: {
-        toggleDrawer: toggleDrawer,
-        toggleAddDrawer: anchor
-      }
-    },
-    {
-      id: 5,
-      name: "Interview",
-      component: Interview,
-      props: {
-        toggleDrawer: toggleDrawer,
-        toggleAddDrawer: anchor
-      }
-    },
-    {
-      id: 6,
-      name: "Conference",
-      component: Conference,
-      props: {
-        toggleDrawer: toggleDrawer,
-        toggleAddDrawer: anchor
-      }
-    },
-    
-  
+   
 
 
   ]
