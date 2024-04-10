@@ -157,6 +157,7 @@ const Concession = ({ anchor , toggleDrawer }) => {
                         Close
                         </Button>
                     </Box>
+                     
                     <Tab1 />
                     </Box>
             </Drawer>
