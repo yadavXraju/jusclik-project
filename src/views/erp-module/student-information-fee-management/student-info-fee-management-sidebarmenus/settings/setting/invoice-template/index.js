@@ -103,7 +103,7 @@ const InvoiceTemplate = () => {
               {/* cards for templates ================================== */}
               <Grid item>
                 
-                <CustomCard cardName={'Standard'} image={PortraitImage1} selectedTemplate={3} />
+                <CustomCard cardName={'Standard'} image={PortraitImage1} selectedTemplate={2} />
                 
               </Grid>
             <Grid item>
@@ -111,7 +111,7 @@ const InvoiceTemplate = () => {
               </Grid>
               
               <Grid item>
-                <CustomCard cardName={'Compact'} image={PortraitImage4} selectedTemplate={2} />
+                <CustomCard cardName={'Compact'} image={PortraitImage4} selectedTemplate={3} />
               </Grid>
 
               {/* new template card  */}
@@ -160,7 +160,7 @@ const InvoiceTemplate = () => {
             <Grid>
               {/* cards for templates ================================== */}
               <Grid item>
-                <CustomCard cardName={'Standard'} image={PortraitImage1} selectedTemplate={3} />
+                <CustomCard cardName={'Standard'} image={PortraitImage1} selectedTemplate={2} />
               </Grid>
             </Grid>
               <Grid item>
@@ -170,7 +170,7 @@ const InvoiceTemplate = () => {
                 <CustomCard cardName={'Simple'} image={PortraitImage3} selectedTemplate={5} />
               </Grid>
               <Grid item>
-                <CustomCard cardName={'Compact'} image={PortraitImage4} selectedTemplate={2} />
+                <CustomCard cardName={'Compact'} image={PortraitImage4} selectedTemplate={3} />
               </Grid>
           </Grid>
           <Typography variant="h4" py={2}>
