@@ -57,6 +57,9 @@ const Mainform1 = ({ currEditItem }) => {
         setOption(prevOption => ({ ...prevOption, ["otherDetails"]: item?.section }));
       }
       if (item?.sectionCode === 2) {
+        setOption(prevOption => ({ ...prevOption, ["address"]: item?.section }));
+      }
+      if(item?.sectionCode===3){
         setOption(prevOption => ({ ...prevOption, ["contactPerson"]: item?.section }));
       }
       if (item?.sectionCode === 3) {
