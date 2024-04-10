@@ -31,7 +31,7 @@ export const  Template5 =()=> {
   let column1=[],column2=[]
 
 
-  for(let i=0;i<14;i++)
+  for(let i=0;i<templateLabels.length;i++)
   {
     if(i<7)
     column1.push( <Grid container sx={{display:templateLabels[i].enable?'flex':'none'}}><Grid item lg={5} xs={6}>
