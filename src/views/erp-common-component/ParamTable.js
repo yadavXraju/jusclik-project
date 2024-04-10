@@ -12,9 +12,17 @@ import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutl
 // import GppMaybeTwoToneIcon from '@mui/icons-material/GppMaybeTwoTone';
 import DragIndicatorOutlinedIcon from '@mui/icons-material/DragIndicatorOutlined';
 
-const ReusableTable = ({ columns, data, tableStyle ,  action = true , dragIcon = false ,}) => {
+const style = {
+   tableContainer :{
+    width: '100%',
+    overflowX: 'auto' ,
+     height:'80vh' , '&::-webkit-scrollbar': { display: 'none' } ,
+   }
+  }
+
+const ReusableTable = ({ columns, data, tableStyle ,  action = true , dragIcon = false , tablePaper}) => {
   return (
-    <TableContainer  component={Paper} sx={{ width: '100%',overflowX: 'auto' , height:'80vh' , '&::-webkit-scrollbar': { display: 'none' } ,}}>
+    <TableContainer  component={Paper} sx={{...style.tableContainer , ...tablePaper}}>
       <Table stickyHeader  sx={{...tableStyle}}>
         <TableHead sx={{ width: '100%', backgroundColor: '#1219260f'  , background:'none' , fontWeight:'600'}}>
           <TableRow>
