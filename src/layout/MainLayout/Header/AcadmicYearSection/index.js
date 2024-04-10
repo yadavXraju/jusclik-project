@@ -30,17 +30,19 @@ const getAcademicYear = () => {
   }
 };
 
-const AcademicYear = () => {
+
+
+const AcademicYear = ({setOpen}) => {
   const theme = useTheme();
   const academicYear = getAcademicYear();
-
     // to store state in this varible
     const {themeColorV2} = useSelector((state) => state.customization);
-
-
     // Extract theme color and set opacity
-
     const opacity = 0.2;  
+
+    const handleClick = () => {
+      setOpen(false); // Close the Popper
+    };
 
   return (
     <Paper
@@ -55,6 +57,7 @@ const AcademicYear = () => {
       },
       borderRadius: '7px',
     }}
+    onClick={handleClick}
   >
       <Tooltip title={`Academic Year ${academicYear}`} arrow>
         <StyledContainer>
