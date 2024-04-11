@@ -15,20 +15,24 @@ export const Template1 = () => {
   const tableSettings=useSelector(state=>state.invoiceTemplate.table)
   const templateLabels=useSelector(state=>state.invoiceTemplate.labels)
   const termsAndConditions=useSelector(state=>state.invoiceTemplate.termsAndConditions)
-  let column1=[],column2=[]
-  for(let i=0;i<templateLabels.length;i++)
-  {
-    if(i<7)
-    column1.push( <Box display={'flex'} sx={{display:!templateLabels[i].enable?'none':'flex'}}>
-    <Typography p={1} variant='h5' sx={{ fontWeight: '400',  width:'110px', color:generalSettings.labelColor}}>{templateLabels[i].label}</Typography>
-    <Typography p={1} variant='h5' sx={{ fontWeight: 'bold',color:generalSettings.fontColor ,fontSize:`${generalSettings.fontSize}px`}}>{templateLabels[i].value}</Typography>
-  </Box>)
-else
-column2.push( <Box display={'flex'} sx={{display:!templateLabels[i].enable?'none':'flex'}}>
-<Typography p={1} variant='h5' sx={{ fontWeight: '400',  width:'110px', color:generalSettings.labelColor}}>{templateLabels[i].label}</Typography>
-<Typography p={1} variant='h5' sx={{ fontWeight: 'bold',color:generalSettings.fontColor ,fontSize:`${generalSettings.fontSize}px`}}>{templateLabels[i].value}</Typography>
-</Box>)
-  }
+  const defaultLables=useSelector(state=>state.invoiceTemplate.defaultLables)
+
+
+
+//   let column1=[],column2=[]
+//   for(let i=0;i<templateLabels.length;i++)
+//   {
+//     if(i<7)
+//     column1.push( <Box display={'flex'} sx={{display:!templateLabels[i].enable?'none':'flex'}}>
+//     <Typography p={1} variant='h5' sx={{ fontWeight: '400',  width:'110px', color:generalSettings.labelColor}}>{templateLabels[i].label}</Typography>
+//     <Typography p={1} variant='h5' sx={{ fontWeight: 'bold',color:generalSettings.fontColor ,fontSize:`${generalSettings.fontSize}px`}}>{templateLabels[i].value}</Typography>
+//   </Box>)
+// else
+// column2.push( <Box display={'flex'} sx={{display:!templateLabels[i].enable?'none':'flex'}}>
+// <Typography p={1} variant='h5' sx={{ fontWeight: '400',  width:'110px', color:generalSettings.labelColor}}>{templateLabels[i].label}</Typography>
+// <Typography p={1} variant='h5' sx={{ fontWeight: 'bold',color:generalSettings.fontColor ,fontSize:`${generalSettings.fontSize}px`}}>{templateLabels[i].value}</Typography>
+// </Box>)
+//   }
 
   let gridSize;
 

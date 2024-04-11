@@ -54,12 +54,14 @@ const initialState = {
   },
   selectedTemplate: 4,
   defaultTemplate: null,
-  labels: [
+  defaultLables:[
     { label: 'Admission No:', value: 'P00912' ,enable:true},
     { label: "Student's Name:", value: 'Shraya Kumari' ,enable:true},
-    { label: "Father's Name:", value: 'krishna Kumar' ,enable:true},
-    { label: 'Address:', value: 'Sohna Dhani Road Road Ward No -01 Sohna Gurugram haryana Sohna-122103' ,enable:true},
     { label: 'Class:', value: 'I-A' ,enable:true},
+  ],
+  labels: [
+    
+    { label: "Father's Name:", value: 'krishna Kumar' ,enable:true},
     { label: 'Tel(M):', value: 'XXXXXXXXXX' ,enable:true},
     { label: 'Email:', value: '123@gmail.com' ,enable:true},
     { label: 'Invoice No:[SS*]:', value: '13683' ,enable:true},
@@ -67,7 +69,8 @@ const initialState = {
     { label: 'Academic Year:', value: '2023-2024' ,enable:true},
     { label: 'Fee Period:', value: 'Feb`24-Mar`24' ,enable:true},
     { label: 'Due Date:', value: '15-Jan-2024' ,enable:true},
-    { label: 'Net Amount Payable:', value: '5,900',enable:true }
+    { label: 'Net Amount Payable:', value: '5,900',enable:true },
+    { label: 'Address:', value: 'Sohna Dhani Road Road Ward No -01 Sohna Gurugram haryana Sohna-122103' ,enable:true},
   ],
   termsAndConditions:'<p>Your School\'s Terms and Conditions will be displayed here. You can add it in the Invoice Preferences page under Settings.</p>'
 };
