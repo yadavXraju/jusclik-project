@@ -9,7 +9,7 @@ const DrawerContent = () => {
   const [feeHead, setFeeHead] = useState('');
   const [periodicity, setperiodicity] = useState('');
   const [feeType, setFeeType] = useState('');
-  const [toBeChargeFrom, setToBeChargeFrom,] = useState('');
+  const [toBeChargeFrom, setToBeChargeFrom] = useState('');
 
 
 

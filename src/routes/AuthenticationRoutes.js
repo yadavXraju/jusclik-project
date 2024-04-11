@@ -11,7 +11,7 @@ import Loadable from 'ui-component/Loadable';
 const Login = Loadable(lazy(() => import('views/pages/authentication')));
 const VisitorRegistration =  Loadable(lazy(() => import('views/pages/authentication/visitor-registration')));
 const Registration =  Loadable(lazy(() => import('views/pages/registartion')));
-// const Pricing =  Loadable(lazy(() => import('views/pages/pricing')));
+const Pricing =  Loadable(lazy(() => import('views/pages/pricing')));
 
 
 // ==============================|| AUTHENTICATION ROUTING ||============================== //
@@ -35,10 +35,10 @@ const AuthenticationRoutes = {
       path:'/registration',
       element: <Registration />
     },
-    // {
-    //   path:'/pricing',
-    //   element: <Pricing/>
-    // },
+    {
+      path:'/pricing',
+      element: <Pricing/>
+    },
     
   ]
 };

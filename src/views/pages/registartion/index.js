@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import { Grid, Box, Typography , Paper , TextField  ,Radio ,RadioGroup ,  FormControlLabel , FormControl , FormLabel , MenuItem, Select, FormHelperText      // ,Button
+import { Grid, Box, Typography , Paper , TextField  ,Radio ,RadioGroup ,  FormControlLabel , FormControl , FormLabel , MenuItem, Select, FormHelperText,Button
     } from '@mui/material';
 
 import IconButton from '@mui/material/IconButton';
@@ -15,7 +15,7 @@ import SelectList from 'views/common-section/ParamSelectList';
 
 const style = {
     formHeader:{
-    marginBottom:'2rem',
+    marginBottom:'24px',
     },
 
     formHeading:{
@@ -42,20 +42,45 @@ const Registration = (setMobileNumber) => {
     const [userName, setUserName] = useState('');
     const [schoolName, setSchoolName] = useState('');
     const [showPassword, setShowPassword] = useState(false);
+    const [role, setRole] = useState('');
+    const [organisationType, setOrganisationType] = useState('Independent School');
 
+    // password
   const handleClickShowPassword = () => setShowPassword((show) => !show);
+
 
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
 
+//   username
     const  handleUserName = (event) => {
         setUserName(event.target.value);
     };
     
+   // org type
+    const handleOrganisationTypeChange = (event) => {
+        setOrganisationType(event.target.value);
+      };
+    
+    // school name
     const  handleSchoolName = (event) => {
     setSchoolName(event.target.value);
     };
+
+    // role option
+    const RoleOptions = [
+        { value: 'Teacher', label: 'Teacher' },
+        { value: 'School Admin', label: 'School Admin' },
+        { value: 'Principal', label: 'Principal' },
+        { value: 'School Owner', label: 'School Owner' },
+    
+      ];
+
+      const handleRole= (event) => {
+        setRole(event.target.value);
+      };
+      
 
     //   number
     const classes = useStyles();
@@ -94,33 +119,49 @@ const Registration = (setMobileNumber) => {
                         </Typography>             
                     </Box>
  
-                   <Grid sx={{marginBottom:'2rem'}}>
-                      <TextField id="name" value={userName} label="Name" variant="outlined" onChange={handleUserName} fullWidth  />
+                   <Grid sx={{marginBottom:'24px'}}>
+                      <TextField id="name" value={userName} label="Insitution Name" variant="outlined" onChange={handleUserName} fullWidth  />
                    </Grid>
 
                     {/* radio btns */}
-                    <Grid sx={{marginBottom:'2rem'}}>
-                        <FormControl>
-                        <FormLabel id="demo-row-radio-buttons-group-label"> Organisation Type</FormLabel>
-                            <RadioGroup
-                                row
-                                aria-labelledby="demo-row-radio-buttons-group-label"
-                                name="row-radio-buttons-group"
-                            >
-                                <FormControlLabel value="Independent School" control={<Radio />} label="Independent School" />
-                                <FormControlLabel value="Group of Schools" control={<Radio />} label="Group of Schools" />
-                        </RadioGroup>
-                        </FormControl>
+                    <Grid sx={{marginBottom:'24px'}}>
+                    <FormControl>
+                       <FormLabel id="demo-row-radio-buttons-group-label"> Insitution Type</FormLabel>
+                  <RadioGroup
+                    row
+                    aria-labelledby="demo-row-radio-buttons-group-label"
+                    name="row-radio-buttons-group"
+                    value={organisationType}
+                    onChange={handleOrganisationTypeChange}
+                  >
+                    <FormControlLabel value="Independent School" control={<Radio />} label="Independent Insitute" />
+                    <FormControlLabel value="Group of Schools" control={<Radio />} label="Group of Insitute" />
+                  </RadioGroup>
+                </FormControl>
                     </Grid>       
 
-                    {/* school name */}
-                    <Grid sx={{marginBottom:'2rem'}}>
-                      <TextField id="school-name" value={schoolName} label="School Name" variant="outlined" onChange={handleSchoolName} fullWidth  />
-                   </Grid>
+             {/* Conditionally render School Name input based on Organisation Type */}
+             {organisationType === 'Independent School' && (
+                <Grid sx={{ marginBottom: '2rem' }}>
+                  <TextField id="school-name" value={schoolName} label="School Name" variant="outlined" onChange={handleSchoolName} fullWidth />
+                </Grid>
+              )}
 
-                   
+                {organisationType === 'Group of Schools' && (
+                <Grid container sx={{ marginBottom: '2rem' , justifyContent:'space-between'}}>
+                    <Grid lg={6}> 
+                       <TextField id="school-name" value={schoolName} label="Name of Insitute" variant="outlined" onChange={handleSchoolName} fullWidth  />
+                    </Grid>
+
+                    <Grid lg={5}> 
+                       <TextField id="number of branches" value={schoolName} label="Number of Branches" variant="outlined" onChange={handleSchoolName} fullWidth  />
+                    </Grid>
+
+                 </Grid>
+                )}
+                
                      {/* role */}
-                     <Grid sx={{marginBottom:'2rem'}}>
+                     <Grid sx={{marginBottom:'24px'}}>
                       <SelectList 
                         label="Role"
                         options={RoleOptions}
@@ -131,7 +172,7 @@ const Registration = (setMobileNumber) => {
 
 
                    {/* password */}
-                   <Grid sx={{marginBottom:'2rem'}}>
+                   <Grid sx={{marginBottom:'24px'}}>
                     <FormControl fullWidth variant="outlined">
                             <InputLabel htmlFor="outlined-adornment-password" >Password</InputLabel>
                             <OutlinedInput
@@ -157,7 +198,7 @@ const Registration = (setMobileNumber) => {
 
                     {/* mobile number */}
 
-                    <Grid sx={{marginBottom:'2rem'}}>
+                    <Grid sx={{marginBottom:'24px'}}>
                             <FormControl fullWidth>
                                 {/* mobile number input box */}  
                                 <TextField
@@ -200,6 +241,12 @@ const Registration = (setMobileNumber) => {
                                 />              
                         </FormControl>
                     </Grid>
+
+                    {/* btn  */}
+
+                    <Button sx={{padding:'10px'}} variant="contained" fullWidth disableElevation>
+                    Sign up </Button>
+
             </Grid>
         </Paper>
 
