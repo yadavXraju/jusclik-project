@@ -1,20 +1,15 @@
 import * as React from 'react';
 import { useState } from 'react';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
 import SelectList from 'views/common-section/ParamSelectList';
-import TextField from '@mui/material/TextField';
+import { Box , IconButton ,Tooltip , TextField ,Paper , TableRow ,TableHead , TableContainer , TableCell ,TableBody ,Table} from '@mui/material';
+import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
+import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 
 
 const headings = [
     {
         id: 1,
-        heading: 'Classes',
+        heading: 'Class',
     },
     {
         id: 2,
@@ -31,7 +26,6 @@ const rows = [
         id: 1,
         name: '',
         amount: 2000,
-        action: '',
     },
 ];
 
@@ -57,7 +51,7 @@ export default function TopDrawer() {
     };
 
     return (
-        <TableContainer component={Paper} sx={{ marginTop: '3rem' }}>
+        <TableContainer component={Paper} sx={{ marginTop: '3rem' , border:'1px solid #ccc' , minHeight:'400px'}}>
             <Table sx={{ minWidth: 650 }} aria-label="caption table">
                 <TableHead>
                     <TableRow>
@@ -69,26 +63,43 @@ export default function TopDrawer() {
                 <TableBody>
                     {rows.map((row) => (
                         <TableRow key={row.id}>
-                            <TableCell sx={{maxWidth:'100px'}}>             
+                            <TableCell sx={{}}>             
                                 <SelectList 
                                     label="Class"
                                     options={selectedClassOptions}
                                     value={selectedClass}
                                     onChange={handleClassChange}
-                                    customStyle={{maxWidth:'100px'}}
+                                    customStyle={{maxWidth:'200px', minWidth:'200px'}}
                                 />
                             </TableCell>
-                            <TableCell sx={{maxWidth:'100px'}}>
+
+                            <TableCell>
                                 <TextField
                                    id="amount" 
                                     value={amount}
                                     onChange={handleAmountChange}
                                     label="Amount" 
                                     variant="outlined"
-                                    // fullWidth
+                                    sx={{maxWidth:'200px', minWidth:'200px'}}
                                 />
                             </TableCell>
-                            <TableCell sx={{maxWidth:'100px'}}>{row.action}</TableCell>
+
+                      
+                            <TableCell>
+                                <Box>
+                                <Tooltip title="Edit">
+                                    <IconButton>                                     
+                                            <EditTwoToneIcon/>                              
+                                    </IconButton>
+                                </Tooltip>
+
+                                <Tooltip title="Delete">
+                                    <IconButton>
+                                        <DeleteTwoToneIcon sx={{color:'rgb(241, 158, 158)'}}/>
+                                    </IconButton>
+                                </Tooltip>
+                                </Box>
+                            </TableCell>
                         </TableRow>
                     ))}
                 </TableBody>
