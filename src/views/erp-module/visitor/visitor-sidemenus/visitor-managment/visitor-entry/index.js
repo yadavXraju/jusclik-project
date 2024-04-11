@@ -15,6 +15,7 @@ import DoDisturbAltOutlinedIcon from '@mui/icons-material/DoDisturbAltOutlined';
 import Chip from '@mui/material/Chip';
 import Avatar from '@mui/material/Avatar';
 import VisitorDetails from '../visitor-detail';
+import WarningDialog from 'views/common-section/WarningDialog';
  
 
 const renderChipCell = (params) => {
@@ -67,89 +68,108 @@ const renderChipCell = (params) => {
 };
 
 
-const columns = [
-  { field: 'status', headerName: 'Status', flex: 1, minWidth: 150, align: 'left', headerAlign: 'left' ,renderCell: renderChipCell, },
-  { field: 'VisitorName', headerName: 'Visitor Name', flex: 1, minWidth: 160, align: 'left', headerAlign: 'left' , renderCell: (params) => (
-    <div style={{ display: 'flex', alignItems: 'center' }}>
-      <Avatar src={params.row.avatarUrl} alt={params.row.altName} />
-      <span style={{ marginLeft: 8 }}>{params.value}</span>
-    </div>)
-     },
-  { field: 'Address', headerName: 'Address', flex: 1, minWidth: 100 },
-  { field: 'Purpose', headerName: 'Purpose', flex: 1, minWidth: 130 },
-  { field: 'ToMeet', headerName: 'To Meet', flex: 1, minWidth: 130 },
-  { field: 'EntryDate', headerName: 'Entry Date', flex: 1, minWidth: 130 },
-  { field: 'GatePass', headerName: 'Gate Pass', flex: 1, minWidth: 130 },
-  { 
-      field: 'Phone', // Custom field name for combined pick start and end time
-      headerName: 'Phone', // Custom header name
-      flex: 1,
-      minWidth: 100
-      
-    },
-    { 
-      field: 'TimeIn', // Custom field name for combined pick start and end time
-      headerName: 'Time In', // Custom header name
-      // flex: 1,
-      minWidth: 100,
-      // valueGetter: (params) => `${params.row.pickstarttime} - ${params.row.pickendtime}`
-   
-    },
-  // { field: 'attachBus', headerName: 'Attach Bus', flex: 1, minWidth: 100 },
-  { field: 'TimeOut',
-   headerName: 'Time Out', flex: 0,
-    minWidth: 100 ,
-  //  valueGetter: (params) => `${params.row.dropstarttime} - ${params.row.dropendtime}`,
-},
- 
-  {
-    field: 'Action',
-    headerName: 'Action',
-    flex: 1,
-    minWidth: 100,
-    sortable: false,
-    filterable: false,
-    disableColumnMenu: true,
-    renderCell: (params) => (
-      <Box >
-        {/* <IconButton>
-          <RoutesManageDrawer/>
-        </IconButton> */}
-        <Tooltip title="Edit">
-        <IconButton >
-            <RemoveRedEyeTwoToneIcon   sx={{ color: 'rgb(124, 178, 221)' }} />
-          </IconButton>
-        <IconButton>
-          <EditTwoToneIcon />
-        </IconButton>
-        </Tooltip>
-        <Tooltip title="Delete">
-        <IconButton>
-          <DeleteTwoToneIcon onClick={() => handleDeleteRow(params.row.id)} sx={{ color: '#f19e9e' }} />
-        </IconButton>
-        </Tooltip>
-      </Box>
-    )
-  }
-];
+
 
 const VisitorEntry = () => {  
 
-  //const [tableRows, setTableRows] = useState(RouteData);
+
   const [tableVisible,setTableVisible] = useState(true)
 
   const [detailVisible,setDetailVisible] =useState(false)
   const[rowDetails,setRowDetails]=useState({});
-// const navigate=useNavigate();
+  const [modalOpen, setmodalOpen] =useState(false);
+ 
 
+  const handleModalClose = () => {
+    setmodalOpen(false);
+  };
   const Click = (rowData) => {
-    setTableVisible(!tableVisible)
-    setDetailVisible(!detailVisible);
+ setTableVisible(!tableVisible)
+ setDetailVisible(!detailVisible) 
+   
     console.log(detailVisible);
     console.log(rowData);
     // setIndex(rowData.id)
     setRowDetails(rowData)
   };
+
+
+
+  const handleDeleteRow = () => {
+  
+    setmodalOpen(true);
+    setDetailVisible(detailVisible);
+    setTableVisible(tableVisible)
+  
+  };
+
+  // columns
+
+  const columns = [
+    { field: 'status', headerName: 'Status', flex: 1, minWidth: 150, align: 'left', headerAlign: 'left' ,renderCell: renderChipCell, },
+    { field: 'VisitorName', headerName: 'Visitor Name', flex: 1, minWidth: 160, align: 'left', headerAlign: 'left' , renderCell: (params) => (
+      <div style={{ display: 'flex', alignItems: 'center' }}>
+        <Avatar src={params.row.avatarUrl} alt={params.row.altName} />
+        <span style={{ marginLeft: 8 }}>{params.value}</span>
+      </div>)
+       },
+    { field: 'Address', headerName: 'Address', flex: 1, minWidth: 100 },
+    { field: 'Purpose', headerName: 'Purpose', flex: 1, minWidth: 130 },
+    { field: 'ToMeet', headerName: 'To Meet', flex: 1, minWidth: 130 },
+    { field: 'EntryDate', headerName: 'Entry Date', flex: 1, minWidth: 130 },
+    { field: 'GatePass', headerName: 'Gate Pass', flex: 1, minWidth: 130 },
+    { 
+        field: 'Phone', // Custom field name for combined pick start and end time
+        headerName: 'Phone', // Custom header name
+        flex: 1,
+        minWidth: 100
+        
+      },
+      { 
+        field: 'TimeIn', // Custom field name for combined pick start and end time
+        headerName: 'Time In', // Custom header name
+        // flex: 1,
+        minWidth: 100,
+        // valueGetter: (params) => `${params.row.pickstarttime} - ${params.row.pickendtime}`
+     
+      },
+    // { field: 'attachBus', headerName: 'Attach Bus', flex: 1, minWidth: 100 },
+    { field: 'TimeOut',
+     headerName: 'Time Out', flex: 0,
+      minWidth: 100 ,
+    //  valueGetter: (params) => `${params.row.dropstarttime} - ${params.row.dropendtime}`,
+  },
+   
+    {
+      field: 'Action',
+      headerName: 'Action',
+      flex: 1,
+      minWidth: 100,
+      sortable: false,
+      filterable: false,
+      disableColumnMenu: true,
+      renderCell: () => (
+        <Box >
+      
+          <Tooltip title="Edit">
+          <IconButton >
+              <RemoveRedEyeTwoToneIcon  sx={{ color: 'rgb(124, 178, 221)' }} />
+            </IconButton>
+          <IconButton onClick={(event) => event.stopPropagation()}>
+            <EditTwoToneIcon />
+          </IconButton>
+          </Tooltip>
+          <Tooltip title="Delete">
+          <IconButton onClick={(event) => event.stopPropagation()}>
+            <DeleteTwoToneIcon onClick={() => handleDeleteRow()} sx={{ color: '#f19e9e' }} />
+          </IconButton>
+          </Tooltip>
+        </Box>
+      )
+    }
+  ];
+
+  // table
 
   const table=<><Card>
   <Box sx={{ borderBottom: '1px solid #ccc' }}>
@@ -180,12 +200,22 @@ const VisitorEntry = () => {
     />
   </Box>
 </Card></>
-const detail=<VisitorDetails rowDetails={rowDetails}  index={rowDetails.id} setDetailVisible={setDetailVisible} setTableVisible={setTableVisible}  />
+
+
+
+const detail=<VisitorDetails   rowDetails={rowDetails} index={rowDetails.id} setDetailVisible={setDetailVisible} setTableVisible={setTableVisible}  />
   return (
 
     <>
     {tableVisible&&table}  
     {detailVisible&&detail}
+    <WarningDialog
+        open={modalOpen}
+        onClose={handleModalClose}
+        contentText="Are you sure you want to delete?"
+       
+      />
+      
     </>
   )
 }
