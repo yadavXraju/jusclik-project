@@ -1,22 +1,3 @@
-// import React from 'react';
-
-// // const heading = [
-// //    {
-// //     id:1,
-
-// //    }
-// // ]
-
-// const TopDrawer = () => {
-//   return (
-//     <>
-//         <h1>table</h1>
-//     </>
-//   )
-// }
-
-// export default TopDrawer
-
 import * as React from 'react';
 import { useState } from 'react';
 import Table from '@mui/material/Table';
@@ -26,9 +7,9 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import MenuItem from '@mui/material/MenuItem';
 import SelectList from 'views/common-section/ParamSelectList';
 import TextField from '@mui/material/TextField';
+
 
 const headings = [
     {
@@ -88,32 +69,26 @@ export default function TopDrawer() {
                 <TableBody>
                     {rows.map((row) => (
                         <TableRow key={row.id}>
-                            <TableCell component="th" scope="row">
-                                <Select
-                                    value={selectedClass}
-                                    onChange={handleClassChange}
-                                >
-                                    <MenuItem value="IV">IV</MenuItem>
-                                    <MenuItem value="V">V</MenuItem>
-                                    <MenuItem value="VI">VI</MenuItem>
-                                    {/* Add more options as needed */}
-                                </Select>
-
+                            <TableCell sx={{maxWidth:'100px'}}>             
                                 <SelectList 
                                     label="Class"
-                                    options={ PeriodicityOptions}
-                                    value={periodicity}
-                                    onChange={Periodicity}
+                                    options={selectedClassOptions}
+                                    value={selectedClass}
+                                    onChange={handleClassChange}
+                                    customStyle={{maxWidth:'100px'}}
                                 />
                             </TableCell>
-                            <TableCell>
+                            <TableCell sx={{maxWidth:'100px'}}>
                                 <TextField
+                                   id="amount" 
                                     value={amount}
                                     onChange={handleAmountChange}
-                                    type="number"
+                                    label="Amount" 
+                                    variant="outlined"
+                                    // fullWidth
                                 />
                             </TableCell>
-                            <TableCell>{row.action}</TableCell>
+                            <TableCell sx={{maxWidth:'100px'}}>{row.action}</TableCell>
                         </TableRow>
                     ))}
                 </TableBody>
