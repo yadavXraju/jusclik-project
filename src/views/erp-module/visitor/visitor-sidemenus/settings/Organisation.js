@@ -15,7 +15,7 @@ const SettingData = [
     items: [
       { name: 'Profile', path: '/erp/visitor/settings/profile' },
       { name: 'Branding', path: '/erp/visitor/settings/branding' },
-      { name: 'Users & Roles', path: '/erp/visitor/settings/users-roles' },
+      { name: 'Users & Roles', path: '/erp/student-info-fee/user-and-roles' },
       { name: 'Student Portal', path: '/erp/visitor/settings/student-portal' }
     ]
   },

@@ -36,7 +36,7 @@ const TabsName = ({ name, number, numberShow, iconShow, lastIndex }) => {
             {number + 1}
           </Typography>
         )}
-        <Typography>{name}</Typography>
+        <Typography sx={{color:'inherit'}}>{name}</Typography>
       </Box>
       {iconShow && number !== lastIndex && <ChevronRightOutlinedIcon sx={{ marginTop: '2px' }} />}
     </Box>

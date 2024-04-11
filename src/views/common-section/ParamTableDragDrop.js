@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
-import { Table , TableBody , TableCell , TableContainer , TableHead , TableRow , Paper , Typography , Box , IconButton , Drawer , Button} from '@mui/material';
-
+import { Table , TableBody , TableCell , TableContainer , TableHead , TableRow , Paper , Typography , Box , IconButton , Drawer , Button , Tooltip , TextField} from '@mui/material';
 import DragIndicatorOutlinedIcon from '@mui/icons-material/DragIndicatorOutlined';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
-import TuneTwoToneIcon from '@mui/icons-material/TuneTwoTone';
+import SettingsTwoToneIcon from '@mui/icons-material/SettingsTwoTone';
 import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 import useDrawer from 'hooks/useDrawer';
+import TopDrawer from 'views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/settings/fee-structure/regularFeeHead/TopDrawer';
 
 
-const ParamTableDragDrop = ({ columns, initialData, tableStyle, dragIcon = false , }) => {
+const ParamTableDragDrop = ({ columns, initialData, tableStyle, dragIcon = false }) => {
     const [data, setData] = useState(initialData);
-    const {anchor , toggleDrawer } = useDrawer(); 
+    const [editId, setEditId] = useState(null); // State to track the id of the row being edited
+    const { anchor , toggleDrawer } = useDrawer(); 
 
     const handleDragEnd = (result) => {
         if (!result.destination) return;
@@ -21,7 +22,14 @@ const ParamTableDragDrop = ({ columns, initialData, tableStyle, dragIcon = false
         items.splice(result.destination.index, 0, reorderedItem);
 
         setData(items); // Update the state with the reordered data
-        // console.log(result);
+    };
+
+    const handleEditClick = (id) => {
+        setEditId(id); // Set the id of the row to be edited
+    };
+
+    const handleSaveClick = () => {
+        console.log(editId); // Log the id when Save button is clicked
     };
 
     return (
@@ -43,6 +51,7 @@ const ParamTableDragDrop = ({ columns, initialData, tableStyle, dragIcon = false
                                         <Draggable key={row.id} draggableId={row.id} index={index}>
                                             {(provided) => (
                                                 <TableRow ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+                                                    {/* drag icon START */}
                                                     {dragIcon && (
                                                         <TableCell sx={{ width: '0', padding: '0', textAlign: 'right' }}>
                                                             <Typography>
@@ -50,29 +59,66 @@ const ParamTableDragDrop = ({ columns, initialData, tableStyle, dragIcon = false
                                                             </Typography>
                                                         </TableCell>
                                                     )}
-                                                    {Object.keys(row).map((key, index) => {
+                                                     {/* drag icon END */}
+                                                    {Object.keys(row).map((key, colIndex) => {
                                                         if (key === 'id') {
                                                             return null;
                                                         }
+                                                        // Render editable text field if the row is being edited
                                                         return (
-                                                            <TableCell key={index}>
-                                                                <Typography>{row[key]}</Typography>
+                                                            <TableCell key={colIndex}>
+                                                                        {/* Check if the current row is being edited */}
+                                                                        {editId === row.id ? (
+                                                                            // Render a TextField for editing when the row is being edited
+                                                                            <TextField
+                                                                                value={row[key]}
+                                                                                // Handle changes to the text field value
+                                                                                onChange={(e) => {
+                                                                                    // Create a copy of the data array
+                                                                                    const updatedData = [...data];
+                                                                                    // Find the index of the row being edited
+                                                                                    const rowIndex = updatedData.findIndex(item => item.id === row.id);
+                                                                                    // Update the value of the edited field
+                                                                                    updatedData[rowIndex][key] = e.target.value;
+                                                                                    // Update the state with the modified data
+                                                                                    setData(updatedData);
+                                                                                }}
+                                                                            />
+                                                                        ) : (
+                                                                            // Render the current value of the field when not in editing mode
+                                                                            <Typography>{row[key]}</Typography>
+                                                                        )}
                                                             </TableCell>
+
                                                         );
                                                     })}
-
-                                                       <TableCell>
+                                                    <TableCell>
+                                                        {editId === row.id ? ( // Render save button if row is being edited
+                                                            <IconButton onClick={handleSaveClick}>
+                                                                <Button>Save</Button>
+                                                            </IconButton>
+                                                        ) : (
                                                             <Box>
-                                                                <IconButton onClick={toggleDrawer('top', true)}>
-                                                                    <TuneTwoToneIcon sx={{ color: 'rgb(124, 178, 221)' }} />
-                                                                </IconButton>
-                                                                <IconButton>                                          <EditTwoToneIcon/>                              
-                                                                </IconButton>
-                                                                <IconButton>
-                                                                    <DeleteTwoToneIcon sx={{color:'rgb(241, 158, 158)'}}/>
-                                                                </IconButton>
+                                                                <Tooltip title="Configure">
+                                                                    <IconButton onClick={toggleDrawer('top', true)}>
+                                                                        <SettingsTwoToneIcon sx={{ color: 'rgb(124, 178, 221)' }} />
+                                                                    </IconButton>
+                                                                </Tooltip>
+    
+                                                                <Tooltip title="Edit">
+                                                                    <IconButton onClick={() => handleEditClick(row.id)}>                                     
+                                                                         <EditTwoToneIcon/>                              
+                                                                    </IconButton>
+                                                                </Tooltip>
+    
+                                                                <Tooltip title="Delete">
+                                                                    <IconButton>
+                                                                        <DeleteTwoToneIcon sx={{color:'rgb(241, 158, 158)'}}/>
+                                                                    </IconButton>
+                                                                </Tooltip>
                                                             </Box>
-                                                        </TableCell>
+                                                        )}
+                                                    </TableCell>
                                                 </TableRow>
                                             )}
                                         </Draggable>
@@ -89,11 +135,9 @@ const ParamTableDragDrop = ({ columns, initialData, tableStyle, dragIcon = false
                 <Box  sx={{ width:'100VW' , padding: '1rem' , minHeight:'100vh'}} role='presentation'>
                 <Box sx={{ display: "flex", justifyContent: "space-between", paddingBottom: '0rem', borderBottom: '1px solid #ccc'  }}>
                     <Typography variant='h4'> Fee Structure </Typography>
-
-
-                    <Button sx={{marginTop:"-6px"}} onClick={toggleDrawer('right', false)}>Close</Button>
+                    <Button sx={{marginTop:"-6px"}} onClick={toggleDrawer('top', false)}>Close</Button>
                 </Box>
-                
+                  <TopDrawer />
                 </Box>
           </Drawer>
         </>

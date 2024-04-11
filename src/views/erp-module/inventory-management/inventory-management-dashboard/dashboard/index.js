@@ -2,13 +2,14 @@
 import React from 'react';
 import Grid from '@mui/material/Grid';
 import { gridSpacing } from 'store/constant';
-import CounterData from './counter-data';
 import StockStatus from './stock-status';
 import StockDetailPieChart from './category-wise-stock';
 import LowStockItemList from './low-stock-items';
 import FrequentlyItems from './frequently-issued-items';
 import VendorContacts from './vendor-contacts';
-import NeedSupport from 'views/erp-module/student-information-fee-management/student-info-fee-management-dashboard/dashboard/support/Support';
+// import NeedSupport from 'views/erp-module/student-information-fee-management/student-info-fee-management-dashboard/dashboard/support/Support';
+import Counters from './counter';
+import NeedHelp from 'views/erp-module/student-information-fee-management/student-info-fee-management-dashboard/dashboard/support/Support2';
 
 const DashboardContent = ({ isLoading }) => {
   return (
@@ -23,7 +24,7 @@ const DashboardContent = ({ isLoading }) => {
             md={12}
             sx={{ marginTop: { md: '0px', lg: '0rem', display: 'flex', flexDirection: 'column', gap: '24px' } }}
           >
-            <CounterData />
+            <Counters/>
           </Grid>
 
           {/* Stock Category */}
@@ -48,7 +49,8 @@ const DashboardContent = ({ isLoading }) => {
           </Grid>
           {/* Help & support */}
           <Grid item xs={12} lg={6} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
-            <NeedSupport isLoading={isLoading} />
+            {/* <NeedSupport isLoading={isLoading} /> */}
+            <NeedHelp isLoading={isLoading} />
           </Grid>
         </Grid>
       </Grid>

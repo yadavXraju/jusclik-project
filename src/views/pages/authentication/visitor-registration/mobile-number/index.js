@@ -10,7 +10,7 @@ import {
 import { withStyles } from '@mui/styles';
 import { useState } from 'react';
 import { makeStyles } from '@mui/styles';
-const useStyles = makeStyles(() => ({
+export const useStyles = makeStyles(() => ({
   helperText: {
     textAlign: 'center', // Center align the text
   },

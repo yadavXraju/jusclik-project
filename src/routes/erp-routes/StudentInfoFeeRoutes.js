@@ -284,7 +284,6 @@ const StudentInfoFeeRoutes = [
         ]
       },
 
-
    // reports
       { 
          path: 'reports', 
@@ -306,215 +305,210 @@ const StudentInfoFeeRoutes = [
          ]
        },
 
+    // Fee Acounting
+    {
+      path: 'fee-accounting',
+      children: [
+
+        {
+          path: 'invoice-modification',
+          element: <InvoiceModification />
+        },
+
+        {
+        path: 'fee-transaction-entry',
+        element: <FeeTransactionEntry />
+      },
 
 
-          // Fee Acounting
+
+      {
+      path: 'optional-fee-heads-entry',
+      element: <OptionalFeeHeadsEntry />
+    },
+
+
+
+    {
+      path: 'student-fee-ledger-details',
+      element: <StudentFeeLedgerDetails />
+    },
+
+    {
+      path: 'head-wise-fee-adjustment-entry',
+      element: <HeadWiseFeeAdjustmentEntry />
+    },
+
+    {
+      path: 'fee-clearance-entry',
+      element: <FeeClearanceEntry />
+    },
+
+    {
+      path: 'security-deposit',
+      element: <SecurityDeposit />
+    },
+
+
+      ]
+    },
+      // transport
+      {
+        path: 'transport',
+        children: [
+
+          { 
+            path: 'routes-slabs', 
+            element: <RoutesAndSlabs /> 
+          },
+
+
 
           {
-            path: 'fee-accounting',
+            path: 'bus-details',
             children: [
-    
               {
-                path: 'invoice-modification',
-                element: <InvoiceModification />
-             },
-    
-             {
-              path: 'fee-transaction-entry',
-              element: <FeeTransactionEntry />
-           },
-    
-    
-    
-           {
-            path: 'optional-fee-heads-entry',
-            element: <OptionalFeeHeadsEntry />
-          },
-    
-
-    
-          {
-            path: 'student-fee-ledger-details',
-            element: <StudentFeeLedgerDetails />
-          },
-    
-          {
-            path: 'head-wise-fee-adjustment-entry',
-            element: <HeadWiseFeeAdjustmentEntry />
-          },
-    
-          {
-            path: 'fee-clearance-entry',
-            element: <FeeClearanceEntry />
-          },
-    
-          {
-            path: 'security-deposit',
-            element: <SecurityDeposit />
-          },
-  
-    
-            ]
+                path : '',
+                element :  <BusDetails/>
+              },
+      
+              {
+                path : ':id',
+                element : <BusDetailsPreveiw/>
+              },
+          ]
           },
 
 
-          // transport
+
+        {
+          path: 'allocation',
+          children: [
+            {
+              path : '',
+              element :  <TransportAllocation/>
+            },
+    
+            {
+              path : ':id',
+              element : <TransportAllocationPreview/>
+            },
+        ]
+        },
+
+        ]
+        },
+
+        // settinga
+        {
+          path: 'settings',
+          children: [
+
+            { 
+              path: '', 
+              element: <Settings /> 
+            },
+
+            { 
+              path: 'system-data', 
+              element: <SystemData /> 
+            },                
+            {
+              path:'invoice-template',
+              children :[
+                {
+                  path:'',
+                  element : <InvoiceTemplate />
+                } ,
+
+                {
+                  path:'template',
+                  element : <Template />
+                } ,
+
+              ]
+            },
+            {
+                path: 'fee-structure',
+                element : <FeeStructure />
+            },
+            {
+              path: 'withdrawal-checklist',
+              element : <WithdrawalChecklist />
+            },
+            
+            
+              // temp routes
+    
+              // { 
+              //   path: 'daman', 
+              //   element: <Daman/> 
+              // },
+
+              // { 
+              //   path: 'kulwinder', 
+              //   element: <Kulwinder /> 
+              // },    
+
+              // { 
+              //   path: 'kulwinder2', 
+              //   element: <Kulwinder2 /> 
+              // },    
+
+              // { 
+              //   path: 'harsh', 
+              //   element: <Harsh /> 
+              // },
+            
+              // { 
+              //   path: 'harsh1', 
+              //   element: <Harsh1 /> 
+              // },
+
+              // { 
+              //   path: 'harsh2', 
+              //   element: <Harsh2 /> 
+              // },
+          ]
+        },
+
+          // tools
+
           {
-            path: 'transport',
+            path: 'tools',
             children: [
+              { 
+                path: 'gps-bus-tracking', 
+                element: <GpsBusTracking /> 
+              },
 
               { 
-                path: 'routes-slabs', 
-                element: <RoutesAndSlabs /> 
+                path: 'whatsapp-conversations', 
+                element: <WhatshapConversations /> 
               },
 
 
-
-              {
-                path: 'bus-details',
-                children: [
-                  {
-                    path : '',
-                    element :  <BusDetails/>
-                  },
-          
-                  {
-                    path : ':id',
-                    element : <BusDetailsPreveiw/>
-                  },
-              ]
+              { 
+                path: 'whatsapp-delivery-report', 
+                element: <WhatshapDeliveryReport /> 
               },
 
 
-
-            {
-              path: 'allocation',
-              children: [
-                {
-                  path : '',
-                  element :  <TransportAllocation/>
-                },
-        
-                {
-                  path : ':id',
-                  element : <TransportAllocationPreview/>
-                },
+              { 
+                path: 'whatsapp-excel-sheet', 
+                element: <WhatshapExcelSheet /> 
+              },
+    
+    
             ]
-            },
+          },
 
-            ]
-            },
+          // user and roles
 
-            // settinga
-            {
-              path: 'settings',
-              children: [
-
-                { 
-                  path: '', 
-                  element: <Settings /> 
-                },
-
-                { 
-                  path: 'system-data', 
-                  element: <SystemData /> 
-                },                
-                {
-                  path:'invoice-template',
-                  children :[
-                    {
-                      path:'',
-                     element : <InvoiceTemplate />
-                    } ,
-
-                    {
-                      path:'template',
-                     element : <Template />
-                    } ,
-
-                  ]
-                },
-                {
-                   path: 'fee-structure',
-                   element : <FeeStructure />
-                },
-                {
-                  path: 'withdrawal-checklist',
-                  element : <WithdrawalChecklist />
-               },
-               
-                
-                  // temp routes
-        
-                  // { 
-                  //   path: 'daman', 
-                  //   element: <Daman/> 
-                  // },
-
-                  // { 
-                  //   path: 'kulwinder', 
-                  //   element: <Kulwinder /> 
-                  // },    
-
-                  // { 
-                  //   path: 'kulwinder2', 
-                  //   element: <Kulwinder2 /> 
-                  // },    
-
-                  // { 
-                  //   path: 'harsh', 
-                  //   element: <Harsh /> 
-                  // },
-                
-                  // { 
-                  //   path: 'harsh1', 
-                  //   element: <Harsh1 /> 
-                  // },
-
-                  // { 
-                  //   path: 'harsh2', 
-                  //   element: <Harsh2 /> 
-                  // },
-              ]
-            },
-
-            // tools
-
-            {
-              path: 'tools',
-              children: [
-                { 
-                  path: 'gps-bus-tracking', 
-                  element: <GpsBusTracking /> 
-                },
-
-                { 
-                  path: 'whatsapp-conversations', 
-                  element: <WhatshapConversations /> 
-                },
-
-
-                { 
-                  path: 'whatsapp-delivery-report', 
-                  element: <WhatshapDeliveryReport /> 
-                },
-
-
-                { 
-                  path: 'whatsapp-excel-sheet', 
-                  element: <WhatshapExcelSheet /> 
-                },
-      
-      
-              ]
-            },
-
-            // user and roles
-  
-            { 
-              path: 'user-and-roles', 
-              element: <UserDetailsRoles /> 
-            },
+          { 
+            path: 'user-and-roles', 
+            element: <UserDetailsRoles /> 
+          },
 
 
 
