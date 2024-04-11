@@ -47,6 +47,7 @@ const SetupTabs = ({
   customtabPanelStyle = {},
   numberShow = true,
   iconShow = true,
+  selectedTab
 }) => {
   const [value, setValue] = useState(0);
   const lastIndex = tabPage.length - 1;
@@ -94,6 +95,9 @@ const SetupTabs = ({
               background: '#2196f3',
               color: '#fff',
             },
+            '& .Mui-selected': {
+              ...selectedTab
+            }
           }}
         >
           {tabPage.map((tab, index) => (

@@ -6,6 +6,7 @@ import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 import SettingsTwoToneIcon from '@mui/icons-material/SettingsTwoTone';
 import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 import useDrawer from 'hooks/useDrawer';
+import TopDrawer from 'views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/settings/fee-structure/regularFeeHead/TopDrawer';
 
 
 const ParamTableDragDrop = ({ columns, initialData, tableStyle, dragIcon = false , }) => {
@@ -97,11 +98,9 @@ const ParamTableDragDrop = ({ columns, initialData, tableStyle, dragIcon = false
                 <Box  sx={{ width:'100VW' , padding: '1rem' , minHeight:'100vh'}} role='presentation'>
                 <Box sx={{ display: "flex", justifyContent: "space-between", paddingBottom: '0rem', borderBottom: '1px solid #ccc'  }}>
                     <Typography variant='h4'> Fee Structure </Typography>
-
-
-                    <Button sx={{marginTop:"-6px"}} onClick={toggleDrawer('right', false)}>Close</Button>
+                    <Button sx={{marginTop:"-6px"}} onClick={toggleDrawer('top', false)}>Close</Button>
                 </Box>
-                
+                  <TopDrawer />
                 </Box>
           </Drawer>
         </>
