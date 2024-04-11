@@ -1,5 +1,7 @@
 import React,{useState} from 'react';
-import { Grid, Box, Typography , Paper , TextField  ,Radio ,RadioGroup ,  FormControlLabel , FormControl , FormLabel , MenuItem, Select, FormHelperText,Button
+import { Grid, Box, Typography , Paper , TextField  ,
+    // Radio ,RadioGroup ,  FormControlLabel ,  FormLabel ,
+     FormControl , MenuItem, Select, FormHelperText,Button
     } from '@mui/material';
 
 import IconButton from '@mui/material/IconButton';
@@ -40,10 +42,13 @@ const style = {
 
 const Registration = (setMobileNumber) => {
     const [userName, setUserName] = useState('');
-    const [schoolName, setSchoolName] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const [role, setRole] = useState('');
-    const [organisationType, setOrganisationType] = useState('Independent School');
+    const [insitute, setInsitute] = useState('');
+    const [insituteName, setInsituteName] = useState('');
+    const [nubmerOfinsitute, setNubmerOfinsitute] = useState('');
+    // const [organisationType, setOrganisationType] = useState('Independent Insitute');
+    // const [NumberOfInsitute, setNumberOFInsitute] = useState(1);
 
     // password
   const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -58,15 +63,20 @@ const Registration = (setMobileNumber) => {
         setUserName(event.target.value);
     };
     
-   // org type
-    const handleOrganisationTypeChange = (event) => {
-        setOrganisationType(event.target.value);
-      };
+//    // org type
+//     const handleOrganisationTypeChange = (event) => {
+//         setOrganisationType(event.target.value);
+//       };
     
-    // school name
-    const  handleSchoolName = (event) => {
-    setSchoolName(event.target.value);
-    };
+//     // school name
+//     const  handleSchoolName = (event) => {
+//     setSchoolName(event.target.value);
+//     };
+
+    // number of insitute
+    // const  handleNumberOfInsitute = (event) => {
+    //     setNumberOFInsitute(event.target.value);
+    //     };
 
     // role option
     const RoleOptions = [
@@ -80,7 +90,37 @@ const Registration = (setMobileNumber) => {
       const handleRole= (event) => {
         setRole(event.target.value);
       };
+
+    //   insitute
+
+    const InsituteOptions = [
+        { value: 'School', label: 'School' },
+        { value: 'Pre School', label: 'Pre School' },
+        { value: 'College', label: 'College' },
+        { value: 'Coaching Center', label: 'Coaching Center' },
+    
+      ];
+
+
+          //   name of insitute
       
+    const handleInsitute = (event) => {
+        setInsitute(event.target.value);
+      };
+
+    //   number of insitute
+      
+    const handleNumberOfInsitute = (event) => {
+        setNubmerOfinsitute(event.target.value);
+      };
+      
+
+    //   insitute name
+
+    const handleInsituteName= (event) => {
+        setInsituteName(event.target.value);
+      };
+
 
     //   number
     const classes = useStyles();
@@ -120,46 +160,31 @@ const Registration = (setMobileNumber) => {
                     </Box>
  
                    <Grid sx={{marginBottom:'24px'}}>
-                      <TextField id="name" value={userName} label="Insitution Name" variant="outlined" onChange={handleUserName} fullWidth  />
+                      <TextField id="name" value={userName} label="Your Name" variant="outlined" onChange={handleUserName} fullWidth  />
                    </Grid>
 
-                    {/* radio btns */}
-                    <Grid sx={{marginBottom:'24px'}}>
-                    <FormControl>
-                       <FormLabel id="demo-row-radio-buttons-group-label"> Insitution Type</FormLabel>
-                  <RadioGroup
-                    row
-                    aria-labelledby="demo-row-radio-buttons-group-label"
-                    name="row-radio-buttons-group"
-                    value={organisationType}
-                    onChange={handleOrganisationTypeChange}
-                  >
-                    <FormControlLabel value="Independent School" control={<Radio />} label="Independent Insitute" />
-                    <FormControlLabel value="Group of Schools" control={<Radio />} label="Group of Insitute" />
-                  </RadioGroup>
-                </FormControl>
-                    </Grid>       
+                      {/* insitute type */}
+                      <Grid sx={{marginBottom:'24px'}}>
+                        <SelectList 
+                            label="Insitute Type"
+                            options={InsituteOptions}
+                            value={insitute}
+                            onChange={handleInsitute}
+                        />
+                       </Grid>
 
-             {/* Conditionally render School Name input based on Organisation Type */}
-             {organisationType === 'Independent School' && (
-                <Grid sx={{ marginBottom: '2rem' }}>
-                  <TextField id="school-name" value={schoolName} label="School Name" variant="outlined" onChange={handleSchoolName} fullWidth />
-                </Grid>
-              )}
+                      {/* insitute name */}
+                      <Grid container sx={{ marginBottom: '24px' , justifyContent:'space-between'}}>
+                        <Grid sx={{ flex:'0 0 60%'}}>
+                            <TextField id="insitute-name" value={insituteName} label="Insitute Name" variant="outlined" onChange= {handleInsituteName} fullWidth  />
+                        </Grid>
 
-                {organisationType === 'Group of Schools' && (
-                <Grid container sx={{ marginBottom: '2rem' , justifyContent:'space-between'}}>
-                    <Grid lg={6}> 
-                       <TextField id="school-name" value={schoolName} label="Name of Insitute" variant="outlined" onChange={handleSchoolName} fullWidth  />
-                    </Grid>
+                        <Grid sx={{flex:'0 0 35%'}}> 
+                           <TextField id="number of branches" value={nubmerOfinsitute} label="Number of Branches" variant="outlined" onChange={handleNumberOfInsitute} fullWidth  />
+                       </Grid>
 
-                    <Grid lg={5}> 
-                       <TextField id="number of branches" value={schoolName} label="Number of Branches" variant="outlined" onChange={handleSchoolName} fullWidth  />
-                    </Grid>
-
-                 </Grid>
-                )}
-                
+                       </Grid>
+                 
                      {/* role */}
                      <Grid sx={{marginBottom:'24px'}}>
                       <SelectList 
