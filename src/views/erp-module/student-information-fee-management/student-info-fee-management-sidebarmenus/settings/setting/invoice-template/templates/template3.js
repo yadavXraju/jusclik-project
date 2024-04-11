@@ -55,56 +55,12 @@ column2.push( <Box display={'flex'} sx={{display:!templateLabels[i].enable?'none
         </Box>
         <Box ml={6} mr={4} pt={6} bgcolor={generalSettings.backgroundColor} sx={{ display: "flex", justifyContent: "space-between" }}>
           <Box pl={4}>
-            {/* <Box display={'flex'}>
-              <Typography p={1} variant='h5' sx={{ fontWeight: '400', width: '116px' , color:generalSettings.labelColor}}>Adm No:</Typography>
-              <Typography p={1} variant='h5' sx={{ fontWeight: 'bold' ,color:generalSettings.fontColor ,fontSize:`${generalSettings.fontSize}px`}}>{commonTemplateContent.admissionNo}</Typography>
-            </Box>
-            <Box display={'flex'}>
-              <Typography p={1} variant='h5' sx={{ fontWeight: '400', width: '117px', color:generalSettings.labelColor }}>Class:</Typography>
-              <Typography p={1} variant='h5' sx={{ fontWeight: 'bold' ,color:generalSettings.fontColor ,fontSize:`${generalSettings.fontSize}px`}}>{commonTemplateContent.className}</Typography>
-            </Box>
-            <Box display={'flex'}>
-              <Typography p={1} variant='h5' sx={{ fontWeight: '400', width: '110px', color:generalSettings.labelColor }}>Name:</Typography>
-              <Typography p={1} variant='h5' sx={{ fontWeight: '400',color:generalSettings.fontColor ,fontSize:`${generalSettings.fontSize}px`}}>{commonTemplateContent.name}</Typography>
-            </Box>
-            <Box display={'flex'}>
-              <Typography p={1} variant='h5' sx={{ fontWeight: '400', width: '110px', color:generalSettings.labelColor }}>Mobile:</Typography>
-              <Typography p={1} variant='h5' sx={{ fontWeight: '400' ,color:generalSettings.fontColor ,fontSize:`${generalSettings.fontSize}px`}}>{commonTemplateContent.mobile}</Typography>
-            </Box>
-            <Box display={'flex'}>
-              <Typography p={1} variant='h5' sx={{ fontWeight: '400', width: '110px' , color:generalSettings.labelColor}}>Father:</Typography>
-              <Typography p={1} variant='h5' sx={{ fontWeight: '400' ,color:generalSettings.fontColor ,fontSize:`${generalSettings.fontSize}px`}}>{commonTemplateContent.fatherName}</Typography>
-            </Box> */}
             {column1}
           </Box>
 
 
           <Box pr={12.5} sx={{ width: '41%' }}>
-            {/* <Box display={'flex'} >
-              <Typography p={1} variant="h5" sx={{ fontWeight: '400', textAlign: 'end', width: '100%', color:generalSettings.labelColor }} >Invoice No:</Typography>
-              <Typography p={1} variant="body1" sx={{ fontWeight: 'bold', textAlign: 'end', width: '100%' ,color:generalSettings.fontColor ,fontSize:`${generalSettings.fontSize}px`
-            }}>{commonTemplateContent.invoiceNo}</Typography>
-            </Box>
-            <Box display={'flex'}>
-              <Typography p={1} variant="h5" sx={{ fontWeight: '400', textAlign: 'end', width: '100%', color:generalSettings.labelColor }}>Invoice Date:</Typography>
-              <Typography p={1} variant="body1" sx={{ fontWeight: '400', textAlign: 'end', width: '100%' ,color:generalSettings.fontColor ,fontSize:`${generalSettings.fontSize}px`
-            }}>{commonTemplateContent.invoiceDate}</Typography>
-            </Box>
-            <Box display={'flex'}>
-              <Typography p={1} variant="h5" sx={{ fontWeight: '400', textAlign: 'end', width: '100%', color:generalSettings.labelColor }}>Academic Year:</Typography>
-              <Typography p={1} variant="body1" sx={{ fontWeight: '400', textAlign: 'end', width: '100%' ,color:generalSettings.fontColor ,fontSize:`${generalSettings.fontSize}px`
-            }}>{commonTemplateContent.academicYear}</Typography>
-            </Box>
-            <Box display={'flex'}>
-              <Typography p={1} variant="h5" sx={{ fontWeight: '400', textAlign: 'end', width: '100%' , color:generalSettings.labelColor}}>Fee Period:</Typography>
-              <Typography p={1} variant="body1" sx={{ fontWeight: 'bold', textAlign: 'end', width: '100%',color:generalSettings.fontColor ,fontSize:`${generalSettings.fontSize}px`
-             }}>{commonTemplateContent.feePeriod}</Typography>
-            </Box>
-            <Box display={'flex'}>
-              <Typography p={1} variant="h5" sx={{ fontWeight: '400', textAlign: 'end', width: '100%' , color:generalSettings.labelColor}}>Due Date:</Typography>
-              <Typography p={1} variant="body1" sx={{ fontWeight: '400', textAlign: 'end', width: '100%' ,color:generalSettings.fontColor ,fontSize:`${generalSettings.fontSize}px`
-            }}>{commonTemplateContent.dueDate}</Typography>
-            </Box> */}
+          
             {column2}
           </Box>
         </Box>
