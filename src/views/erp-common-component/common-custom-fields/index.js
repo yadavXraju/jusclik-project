@@ -1,7 +1,6 @@
-import React, { useState,useEffect} from 'react'; import { Typography, Box, Button, Drawer } from '@mui/material';
+import React, { useState, useEffect } from 'react';
+ import { Typography, Box, Button, Drawer } from '@mui/material';
 import DragIndicatorOutlinedIcon from '@mui/icons-material/DragIndicatorOutlined';
-import useDrawer from 'hooks/useDrawer';
-import AddCustomField from './add-custom-field';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
@@ -9,35 +8,42 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Accordion from '@mui/material/Accordion';
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
-import { useSelector,useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import ParamSearchBar from 'views/common-section/ParamSearchBar';
-import {searchFilter} from 'store/student-info-and-fee/student/admission-slice';
-  
+import useDrawer from 'hooks/useDrawer';
+import AddCustomField from './add-custom-field';
+import EditCustomField from './edit-custom-field'
+import { searchFilter,removeUsedFields } from 'store/student-info-and-fee/student/admission-slice';
+
 const CustomFields = ({ customFieldDrawer, handleAddField, section, handleSubGroup, subGroups }) => {
   const [hoverUnusedField, setHoverUnusedField] = useState(-1);
-  const [searchQuery,setSearchQuery]=useState('');
-  const dispatch=useDispatch();
+  const [searchQuery, setSearchQuery] = useState('');
+  const dispatch = useDispatch();
   // const[searchQuery,setSearchQuery]=useState('');
   const { anchor, toggleDrawer } = useDrawer();
+  const editDrawer = useDrawer();
   const { studentDetailsData } = useSelector((state) => state.admission)
 
   const handleDragAndDrop = (results) => {
     console.log(results)
+    const id=results?.source?.index;
+    dispatch(removeUsedFields(id));
   }
 
-const [ren,setRen]=useState(0)
-  const handleChange=(e)=>{
-      const searchQueryTerm=e.target.value;
-      setSearchQuery(searchQueryTerm)
+  const handleChange = (e) => {
+    const searchQueryTerm = e.target.value;
+    setSearchQuery(searchQueryTerm)
   }
- 
-  useEffect(()=>{
-        setRen(ren+1)
-        dispatch(searchFilter(searchQuery));
-        console.log(ren);
-  },[searchQuery])
-  
+
+  useEffect(() => {
+    dispatch(searchFilter(searchQuery));
+  }, [searchQuery])
+
+  const handleRemove=(id)=>{
+    console.log(id)
+    dispatch(removeUsedFields(id));
+  }
 
   return (
     <Box sx={{ width: "900px" }}>
@@ -52,10 +58,10 @@ const [ren,setRen]=useState(0)
           {/* Used Fields*/}
           <Box sx={{ display: 'flex', flexDirection: "column", gap: "20px", padding: "20px 20px 20px 20px", width: "60%" }} >
             <Typography variant='h3'>Used Fields</Typography>
-            <ParamSearchBar paperStyle={{ width: "80%" }}  onChange={handleChange} />
+            <ParamSearchBar paperStyle={{ width: "80%",border:"1px solid #92969b" }}  onChange={handleChange} />
             <Box sx={{ height: "calc(100vh - 250px)" }} className="scrollbar">
               {
-               studentDetailsData && studentDetailsData.map((field) => (
+                studentDetailsData && studentDetailsData.map((field) => (
                   <Box key={field.id} className="scrollbar">
                     <Accordion defaultExpanded>
                       {/* Group Name */}
@@ -71,12 +77,12 @@ const [ren,setRen]=useState(0)
                           <Box key={item.id}>
                             {/* Sub Group Name */}
                             <Typography variant="h5">{item?.name}</Typography>
-                            <Droppable droppableId={item?.name} type="group">
+                            <Droppable droppableId={`label-${item?.id}`} type="group">
                               {(provided) => (
                                 <Box sx={{ margin: "20px 0px" }} {...provided.droppableProps} ref={provided.innerRef}>
                                   {item?.subSection.map((finalField) =>
                                   (
-                                    finalField.selected && <Draggable draggableId={finalField.name} index={finalField?.id} key={finalField?.id}>
+                                    finalField.selected && <Draggable draggableId={`label-${finalField?.id}`} index={finalField?.id} key={finalField?.id}>
                                       {(provided) => (
                                         <Box
                                           sx={{
@@ -99,8 +105,8 @@ const [ren,setRen]=useState(0)
                                           <Box sx={{ border: "1px solid #eee", height: "40px", borderRadius: "4px", display: "flex", alignItems: "center", width: "85%", paddingLeft: "10px" }}>
                                             <Typography>{finalField?.name}</Typography>
                                           </Box>
-                                          <EditTwoToneIcon sx={{ visibility: hoverUnusedField == finalField?.id ? 'visible' : "hidden", height: "20px", width: "20px", color: "#1980d8", marginLeft: "5px" }} />
-                                          <RemoveCircleIcon sx={{ visibility: hoverUnusedField == finalField?.id ? 'visible' : "hidden", height: "20px", width: "20px", color: "#ff7c80" }} />
+                                          <EditTwoToneIcon sx={{ visibility: hoverUnusedField == finalField?.id ? 'visible' : "hidden", height: "20px", width: "20px", color: "#1980d8", marginLeft: "5px" }} onClick={editDrawer.toggleDrawer("right",true)}/>
+                                          <RemoveCircleIcon sx={{ visibility: hoverUnusedField == finalField?.id ? 'visible' : "hidden", height: "20px", width: "20px", color: "#ff7c80" }} onClick={()=>handleRemove(finalField?.id)}/>
                                         </Box>
                                       )
                                       }
@@ -127,40 +133,57 @@ const [ren,setRen]=useState(0)
             <Box sx={{ display: "flex", justifyContent: "flex-start" }}>
               <Typography variant="h3">Unused Fields</Typography>
             </Box>
-            <ParamSearchBar paperStyle={{ width: "100%" }} onChange={handleChange} />
-           
-            {
-            studentDetailsData&&studentDetailsData.map((field) => (
-                <Box key={field.id}>
-                  {field.section.map((item) => (
-                    <Box key={item.id}>
-                      {item?.subSection.map((finalField) =>
-                        !finalField.selected &&
-                        (<Box
-                          sx={{
-                            display: "flex",
-                            width: "100%",
-                            justifyContent: "space-between",
-                            alignItems: "center",
-                            gap: "5px",
-                            padding: "5px 10px 5px 0px",
-                            backgroundColor: hoverUnusedField == finalField?.id ? '#eef2f682' : "inherit"
-                          }}
-                          key={finalField?.id}
-                          onMouseEnter={() => setHoverUnusedField(finalField?.id)}
-                          onMouseLeave={() => setHoverUnusedField(-1)}
-                        >
-                          <DragIndicatorOutlinedIcon sx={{ color: "#b3b9c1" }} />
-                          <Box sx={{ border: "1px solid #eee", height: "40px", borderRadius: "4px", display: "flex", alignItems: "center", width: "85%", paddingLeft: "10px" }}>
-                            <Typography>{finalField?.name}</Typography>
+            <ParamSearchBar paperStyle={{ width: "100%",border:"1px solid #92969b"}} onChange={handleChange} />
+            <Droppable droppableId="unusedfields" type="group">
+              {(provided) => (
+                <Box
+                  {...provided.dragHandleProps}
+                  {...provided.draggableProps}
+                  ref={provided.innerRef}
+                >
+                  {
+                    studentDetailsData && studentDetailsData.map((field) => (
+                      <Box key={field.id}>
+                        {field.section.map((item) => (
+                          <Box key={item.id}>
+                            {item?.subSection.map((finalField) =>
+                              (
+                                !finalField.selected &&<Draggable draggableId={`label-${finalField.id}`} index={finalField?.id} key={item.id}>
+                                  {(provided) => (
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        width: "100%",
+                                        justifyContent: "space-between",
+                                        alignItems: "center",
+                                        gap: "5px",
+                                        padding: "5px 10px 5px 0px",
+                                        backgroundColor: hoverUnusedField == finalField?.id ? '#eef2f682' : "inherit"
+                                      }}
+                                      key={finalField?.id}
+                                      onMouseEnter={() => setHoverUnusedField(finalField?.id)}
+                                      onMouseLeave={() => setHoverUnusedField(-1)}
+                                      {...provided.dragHandleProps}
+                                      {...provided.draggableProps}
+                                      ref={provided.innerRef}
+                                    >
+                                      <DragIndicatorOutlinedIcon sx={{ color: "#b3b9c1" }} />
+                                      <Box sx={{ border: "1px solid #eee", height: "40px", borderRadius: "4px", display: "flex", alignItems: "center", width: "85%", paddingLeft: "10px" }}>
+                                        <Typography>{finalField?.name}</Typography>
+                                      </Box>
+                                    </Box>
+                                  )}
+                                </Draggable>
+                              )
+                            )}
                           </Box>
-                        </Box>)
-                      )}
-                    </Box>
-                  ))}
+                        ))}
+                      </Box>
+                    ))
+                  }
                 </Box>
-              ))
-            }
+              )}
+            </Droppable>
           </Box>
         </Box>
       </DragDropContext>
@@ -175,6 +198,9 @@ const [ren,setRen]=useState(0)
       </Box>
       <Drawer anchor="right" open={anchor.right} onClose={toggleDrawer("right", true)}>
         <AddCustomField toggleDrawer={toggleDrawer} section={section} handleAddField={handleAddField} handleSubGroup={handleSubGroup} subGroups={subGroups} />
+      </Drawer>
+      <Drawer anchor="right" open={editDrawer.anchor.right} onClose={editDrawer.toggleDrawer("right", true)}>
+        <EditCustomField toggleDrawer={editDrawer.toggleDrawer} section={section} handleAddField={handleAddField} handleSubGroup={handleSubGroup} subGroups={subGroups} />
       </Drawer>
     </Box>
   );
