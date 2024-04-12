@@ -9,6 +9,7 @@ import MailOutlinedIcon from '@mui/icons-material/MailOutlined';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Badge from '@mui/material/Badge';
+import { useMediaQuery } from '@mui/material';
 import { useNavigate } from 'react-router';
 import Image1 from 'assets/images/Avatar-images/IMG_01.png';
 // import Image1 from 'assets/images/Avatar-images/IMG_01.png'
@@ -62,11 +63,19 @@ export default function AlignItemsList() {
     }, {});
   }
 
+  const res2560 = useMediaQuery('(min-width:2000px)')
+  let rem = res2560?'19rem':null;
+
+
   return (
     <>
-      <Box sx={{ display: 'flex', height: '100%' }}>
+       
+      <Box sx={{bgcolor:'background.paper'}}>
+        <Box sx={{paddingLeft:rem , paddingRight:rem}}>
+      <Box sx={{ display: 'flex', height: '100%', bgcolor: 'background.paper'}}>
         {/* Contact List */}
-        <List sx={{ width: '100%', bgcolor: 'background.paper', paddingLeft: '10px' }}>
+        
+        <List sx={{ width: '100%',  paddingLeft: '10px'  }}>
           {Object.entries(groupedContacts)
             .sort(([a], [b]) => a.localeCompare(b)) // Sort letters
             .map(([letter, contacts], index) => (
@@ -107,6 +116,8 @@ export default function AlignItemsList() {
               </React.Fragment>
             ))}
         </List>
+      </Box>
+      </Box>
       </Box>
     </>
   );

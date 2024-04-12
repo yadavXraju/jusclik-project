@@ -1,10 +1,13 @@
 import GmailInboxTemplate from '../MailBox';
-import { Paper } from '@mui/material';
+import { Paper} from '@mui/material';
 
 const RecentMessage = () => {
   return (
     <Paper>
+      
     <GmailInboxTemplate/>
+
+   
     </Paper>
   )
 }

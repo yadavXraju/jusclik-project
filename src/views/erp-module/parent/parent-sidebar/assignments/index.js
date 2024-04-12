@@ -6,7 +6,7 @@ import {
   useMediaQuery,
   useTheme,
   Box,
-  Container, 
+  Container,
 } from '@mui/material';
 import { data } from './AssignmentData';
 import Attachment from './Attachment';
@@ -22,6 +22,14 @@ const Assignments = () => {
   const [openDialog, setOpenDialog] = useState(false);
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [searchCriteria, setSearchCriteria] = useState({}); // Add state for search criteria
+  const res2560 = useMediaQuery('(min-width:2000px)')
+
+  let rem = null;
+
+  if(res2560) {
+
+    rem= '19rem'
+  }
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -78,7 +86,7 @@ const Assignments = () => {
 
   return (
     <>
- 
+      <Box sx={{paddingLeft:rem , paddingRight:rem}}>
       <SearchAssignment onSearch={handleSearch} />
       <Box  xs={12} style={{ marginTop: 20 }}>  {/* Removed  maxWidth="xl" to optimize responsive on 2560 */}
         <Paper style={{ padding: 20 }}>
@@ -94,7 +102,7 @@ const Assignments = () => {
           <div className="tabs">
             {value === 'UPCOMING' && (
               <div className="panel">
-                <Container maxWidth="xl" style={{ marginTop: 20 }}>
+                <Container maxWidth="xl" style={{ marginTop: 20 }} >
                   <Heading />
                   {sortedUpcomingAssignments.map((item, index) => (
                     <AssignmentItem
@@ -129,6 +137,9 @@ const Assignments = () => {
         </Paper>
         <Attachment isOpen={openDialog} onClose={handleCloseDialog} snackOpen={snackbarOpen} snackBarClose={handleSnackbarClose} />
       </Box>
+
+      </Box>
+      
     </>
   );
 };

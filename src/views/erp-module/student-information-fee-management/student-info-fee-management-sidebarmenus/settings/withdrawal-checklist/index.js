@@ -41,9 +41,11 @@ export default function BusDetails() {
   const getStatusStyles = (status) => {
     switch (status) {
       case 'Completed':
-        return { backgroundColor: 'rgba(185, 246, 202, 0.6)', color: 'rgb(0, 200, 83)' }; // Green color for Completed status
-      case 'In Progress':
-        return { backgroundColor: 'rgb(255, 248, 225)', color: 'rgb(255, 193, 7)' }; // Yellow color for In Progress status
+        return { backgroundColor: 'rgba(147, 213, 166, 0.38)', color: 'rgb(0, 200, 83)' }; // Green color for Completed status
+      case 'Pending':
+        return { backgroundColor: 'rgb(251, 233, 231)', color: 'rgb(216, 67, 21)' }; // Yellow color for In Progress status
+        case 'In Progress':
+          return { backgroundColor: 'rgb(30, 136, 229, 0.2)', color: 'rgb(30, 136, 229)' }; // Yellow color for In Progress status
       default:
         return { backgroundColor: '#ffffff', color: '#000000' }; // Default colors
     }

@@ -7,8 +7,7 @@ import Video from './video/Video';
 import Document from './document/Document';
 import Image from './images/Image';
 import Link from './links/Link';
-
-
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 
 const Resources =()=> {
@@ -21,11 +20,15 @@ const Resources =()=> {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+const res2560 = useMediaQuery('(min-width:2000px)')
+const rem=res2560?'19rem':null
+
 
   return (
     <>
     <Box sx={{ width: '100%', typography: 'body1' }}>
       <Paper>
+        <Box sx={{paddingLeft:rem , paddingRight:rem}}>
           <TabContext value={value}>
             <Box sx={{ borderBottom: 1, borderColor: '#e3e8efad' }}>
               <TabLabel handleChange={handleChange}/>
@@ -36,6 +39,7 @@ const Resources =()=> {
             <TabPanel value="3"><Document/></TabPanel>
             <TabPanel value="4"><Link/></TabPanel>
           </TabContext>
+          </Box>
       </Paper>
 
     </Box>
