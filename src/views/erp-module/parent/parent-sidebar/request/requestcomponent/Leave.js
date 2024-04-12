@@ -1,14 +1,24 @@
 import { Grid,  TextField, Paper, Button } from '@mui/material';
-import { Box } from '@mui/system';
+import { Box  } from '@mui/system';
 import React from 'react';
 import LeaveDrop from '../LeaveDrop';
 import Datecomponet from './Datecomponent';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 const Leave = () => {
+ const res2560 = useMediaQuery('(min-width:2000px)')
+ const res530 = useMediaQuery('(max-width:530px)')
+ const rem=res2560?'16rem':null;
+ const toppadding = res530?'10px':null;
+ const toppadding2 = res530?'5px':null;
+ 
+   
+
   return (
     <Box mt={4} mx={2}>
       <Paper style={{ padding: '20px', borderRadius: '12px' }}>
-        <Grid container>
+        <Box sx={{paddingLeft:rem , paddingRight:rem}}>
+        <Grid container >
           <Grid item xs={12} container flexDirection="row" alignItems="center">
             <Grid item xs={12} md={6} style={{ padding: '5px 10px' }}>
               <TextField
@@ -20,12 +30,12 @@ const Leave = () => {
             </Grid>
 
             <Grid container flexDirection="row" item xs={12} md={6} >
-              <Grid item md={6} style={{ paddingLeft:'10px' }}>
+              <Grid item md={6} style={{ paddingLeft:'10px' ,paddingTop:toppadding2 }}>
                 {/* <TextField type="date" fullWidth variant="outlined" label="Leave From:" /> */}
                 <Datecomponet  Margin={'0px'} label="Leave From:"/>
               </Grid>
 
-              <Grid item md={6} style={{ paddingRight:'10px' , paddingLeft:'10px' }}>
+              <Grid item md={6} style={{ paddingRight:'10px' , paddingLeft:'10px' , paddingTop:toppadding }}>
                 {/* <TextField type="date" fullWidth variant="outlined"  label="Leave To:"/> */}
                 <Datecomponet Margin={'0px'} label="Leave To:"/>
               </Grid>
@@ -53,6 +63,7 @@ const Leave = () => {
         <Grid textAlign="end">  
             <Button variant="contained">Submit Request</Button>
             </Grid>
+            </Box>
       </Paper>
     </Box>
   );

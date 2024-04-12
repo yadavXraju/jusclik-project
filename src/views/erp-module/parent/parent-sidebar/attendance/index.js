@@ -5,10 +5,26 @@ import Leaves from './Leaves';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import CalendarMonthly from './NewCal'
+import useMediaQuery from '@mui/material/useMediaQuery';
+
+
 
 export default function BasicDateCalendar() {
+const res2560 = useMediaQuery('(min-width:2000px)')
+
+let rem=null;
+
+if (res2560) {
+
+  rem='20rem'
+}
+
+
   return(
     <>
+
+  
+       <Grid sx={{paddingRight:rem , paddingLeft:rem}}> 
       <ProgressAttendance />
       <Box>
         <Grid container spacing={2} justifyContent="center" alignItems="center">
@@ -19,6 +35,8 @@ export default function BasicDateCalendar() {
         </Grid>
       </Box>
       <Leaves />
+      </Grid>
+     
     </>
   );
 }
