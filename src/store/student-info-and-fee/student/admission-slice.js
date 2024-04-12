@@ -19,7 +19,7 @@ const intialStudentDetailsData = [
           {
             name: "Joining  Class",
             type: "text",
-            selected: true,
+            selected: false,
             id: 4
           },
           {
@@ -229,7 +229,7 @@ const intialStudentDetailsData = [
   {
     id: 38,
     name: "Address",
-    sectionCode: 3,
+    sectionCode: 2,
     section: [
       {
         id: 39,
@@ -1130,7 +1130,7 @@ const initialState = {
 
 const customizationSlice = createSlice({
   name: 'admission',
-  initialState: initialState,
+  initialState,
   reducers: {
     addField: (state, action) => {
       const updatedData = state.studentDetailsData.map((item) => {
@@ -1169,12 +1169,9 @@ const customizationSlice = createSlice({
       if (!searchQuery)
         state.studentDetailsData = intialStudentDetailsData;
 
-      const x =state.studentDetailsData;
-      const filterData = x.map((group) => {
+      const filterData =state.studentDetailsData.map((group) => {
         const matchGroup = group.name.toLowerCase().includes(searchQuery.toLowerCase());
-        console.log(matchGroup)
         if (matchGroup) {
-          console.log("group",JSON.stringify(group))
           return group;
         } 
         else {
@@ -1191,13 +1188,21 @@ const customizationSlice = createSlice({
           };
         }
       });
-      const stingFilterData = JSON.stringify(filterData);
-      console.log(stingFilterData)
-      const parseFilterData = JSON.parse(stingFilterData);
-      console.log(parseFilterData)
-      // state.studentDetailsData=parseFilterData;
+       state.section=filterData;
+    },
+    removeUsedFields: (state, action) => {
+      const idToRemove = action.payload;
+      console.log(idToRemove)
+      state.studentDetailsData.forEach(section => {
+        section.section.forEach(subSection => {
+          subSection.subSection.forEach(field => {
+            if (field.id === idToRemove) {
+              field.selected = !field.selected;
+            }
+          });
+        });
+      });
     }
-
   },
 });
 
@@ -1205,7 +1210,8 @@ const customizationSlice = createSlice({
 export const {
   addField,
   subGroupbyGroup,
-  searchFilter
+  searchFilter,
+  removeUsedFields
 } = customizationSlice.actions;
 
 export default customizationSlice.reducer;
