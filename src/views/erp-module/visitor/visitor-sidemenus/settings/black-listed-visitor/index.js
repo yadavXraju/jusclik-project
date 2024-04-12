@@ -62,13 +62,8 @@ const  SystemDataPages=()=>{
         <Box  sx={{ width:{xs : '100vw' , sm: 650} , padding: '1rem' }} role='presentation'>
           <Box sx={{ display: "flex", justifyContent: "space-between", paddingBottom:'1rem', }}>
             <Typography>  </Typography>
-
-
             <Button sx={{marginTop:"-6px"}} onClick={toggleDrawer('right', false)}>Close</Button>
-          </Box>
-          
-
-
+          </Box>        
         </Box>
       </Drawer>
       </>
