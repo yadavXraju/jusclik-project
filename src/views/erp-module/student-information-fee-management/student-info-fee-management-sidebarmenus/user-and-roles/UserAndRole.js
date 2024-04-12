@@ -53,17 +53,17 @@ export default function UserAndRole() {
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-          <Tab label="Users" {...a11yProps(0)} />
-          <Tab label="Roles" {...a11yProps(1)} />
+          <Tab label="Roles" {...a11yProps(0)} />
+          <Tab label="Users" {...a11yProps(1)} />
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
         {/* =========== Render User Details table ========== */}
-        <UserDetails/>
+        <RoleDetails/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
         {/* =========== Render Role Details table ========== */}
-          <RoleDetails/>
+        <UserDetails/>
       </CustomTabPanel>
     </Box>
   );
