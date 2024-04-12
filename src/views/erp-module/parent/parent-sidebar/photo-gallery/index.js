@@ -3,6 +3,7 @@ import ImgCard from './PHOTOSEC/ImgCard';
 import { Paper, Tab, Box } from '@mui/material';
 import { TabContext, TabList, TabPanel } from '@mui/lab';
 import VideoCard from './VideoSec/VideoCard';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 const PhotoGallery = () => {
   const [value, setValue] = useState('1');
@@ -11,9 +12,13 @@ const PhotoGallery = () => {
     setValue(newValue);
   };
 
+  const res2560 = useMediaQuery('(min-width:2000px)')
+  const rem=res2560?'19rem':null;
+
   return (
     <Box>
       <Paper>
+        <Box sx={{paddingLeft:rem , paddingRight:rem}}>
         <TabContext value={value}>
           <TabList onChange={handleChange}>
             <Tab label="Photos" value="1" />
@@ -27,6 +32,7 @@ const PhotoGallery = () => {
             <VideoCard/>
           </TabPanel>
         </TabContext>
+        </Box>
       </Paper>
     </Box>
   );
