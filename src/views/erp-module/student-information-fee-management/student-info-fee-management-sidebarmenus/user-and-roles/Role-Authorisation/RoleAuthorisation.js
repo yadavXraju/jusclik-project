@@ -1,37 +1,58 @@
 import React from 'react'
-import { Box } from '@mui/system'
+import { Box } from '@mui/material'
 import ReportSection from './ReportSection'
 import DocumentSection from './DocumentSection'
 import AllRecords from './AddRecord'
 import SetupSection from './SetupSection'
 import ApprovalSection from './ApprovalSection'
+import ParamSteppper from 'views/common-section/param-stepper';
 
-function RoleAuthorisation() {
-  return (
-    <>
-      <Box>
-         {/* ========= Add All Records Authorisation ========= */}
-         <Box pb={2}>
-          <AllRecords/>
+
+
+
+const ShowComponent=()=>{
+  return(
+    <Box>
+        {/* ========= Add All Records Authorisation ========= */}
+        <Box pb={2}>
+          <AllRecords />
         </Box>
         {/* ========= Add Setup Authorisation ========= */}
         <Box pb={2}>
-          <SetupSection/>
+          <SetupSection />
         </Box>
-         {/* ========= Add Report Authorisation ========= */}
+        {/* ========= Add Report Authorisation ========= */}
         <Box pb={2}>
-         <ReportSection/>
+          <ReportSection />
         </Box>
-         {/* ========= Add Documents Authorisation ========= */}
+        {/* ========= Add Documents Authorisation ========= */}
         <Box pb={2}>
-          <DocumentSection/>
+          <DocumentSection />
         </Box>
-         {/* ========= Add Approval Authorisation ========= */}
-         <Box pb={2}>
-          <ApprovalSection/>
+        {/* ========= Add Approval Authorisation ========= */}
+        <Box pb={2}>
+          <ApprovalSection />
         </Box>
       </Box>
-    </>
+  )
+}
+
+
+const RoleAuthorisation = () => {
+  const modulesData = [
+    { id: '1', name: 'Stufee', chacked: false,component:ShowComponent  },
+    { id: '2', name: 'Payroll', chacked: true,component:ShowComponent  },
+    { id: '3', name: 'Progress', chacked: false,component:ShowComponent  },
+    { id: '4', name: 'Library', chacked: true,component:ShowComponent  },
+    { id: '5', name: 'Inventory', chacked: false,component:ShowComponent  },
+    { id: '6', name: 'Website', chacked: true,component:ShowComponent  },
+    { id: '7', name: 'Visitor Mgmt', chacked: false,component:ShowComponent  },
+    { id: '8', name: 'Medical', chacked: true,component:ShowComponent }
+  ];
+  return (
+      <Box sx={{display:"flex",flexDirection:"column"}}>
+            <ParamSteppper tabPage={modulesData} orientation="vertical" numberShow={false} showBottomNav={false}/>
+      </Box>
   )
 }
 

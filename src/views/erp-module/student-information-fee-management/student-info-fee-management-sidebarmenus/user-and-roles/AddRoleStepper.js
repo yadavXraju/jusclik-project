@@ -76,10 +76,9 @@ export default function AddRoleStepper() {
                 <Step key={label} {...stepProps}>
                   <Box sx={{fontSize:'10px'}}>
                   <StepLabel classes={{ label: classes.customLabelStyle }}>{label}</StepLabel>
-                  {/* <StepLabel {...labelProps}>{label}</StepLabel> */}
+                   {/* <StepLabel {...labelProps}>{label}</StepLabel>  */}
                 </Box>
               </Step>
-              
             );
           })}
         </Stepper>
