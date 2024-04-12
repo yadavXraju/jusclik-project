@@ -16,7 +16,7 @@ const MakeInvoiceVideo = () => {
 
   return (
     <>
-      <Grid container spacing={3} sx={{ mt: 3 }}>
+      <Grid container spacing={3} sx={{ mt: 2 }}>
           <Grid lg={12} md={6} sm={12} sx={{padding:'20px'}}>
             <Card elevation={3}>
               <CardMedia>

@@ -4,17 +4,17 @@ import { Grid , TextField } from '@mui/material';
 
 
 
-const Tab1 = () => {
+const DrawerContent = () => {
   // ========= state for Attach Slab ============
   const [feeHead, setFeeHead] = useState('');
-  const [periodicities, setperiodicities] = useState('');
+  const [periodicity, setperiodicity] = useState('');
   const [feeType, setFeeType] = useState('');
-  const [toBeChargeFrom, setToBeChargeFrom,] = useState('');
+  const [toBeChargeFrom, setToBeChargeFrom] = useState('');
 
 
 
 
-  const PeriodicitiesOptions = [
+  const PeriodicityOptions = [
     { value: 'Monthly', label: 'Monthly' },
     { value: 'Quarterly ', label: 'Quarterly ' },
     { value: 'Half Yearly', label: 'Half Yearly' },
@@ -42,8 +42,8 @@ const Tab1 = () => {
   };
 
 
-  const Periodicities = (event) => {
-    setperiodicities(event.target.value);
+  const Periodicity = (event) => {
+    setperiodicity(event.target.value);
   };
 
   const FeeType= (event) => {
@@ -65,10 +65,10 @@ const Tab1 = () => {
 
         <Grid item xs={12} sx={{paddingBottom:'16px'}} >
             <SelectList 
-                label="Periodicities"
-                options={ PeriodicitiesOptions}
-                value={periodicities}
-                onChange={Periodicities}
+                label="Periodicity"
+                options={ PeriodicityOptions}
+                value={periodicity}
+                onChange={Periodicity}
             />
         </Grid>
 
@@ -95,4 +95,4 @@ const Tab1 = () => {
   )
 }
 
-export default Tab1
+export default DrawerContent

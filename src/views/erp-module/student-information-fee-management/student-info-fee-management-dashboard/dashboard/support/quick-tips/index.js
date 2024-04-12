@@ -18,7 +18,7 @@ const QuickTips = () => {
                                 {/* Icon */}
                                 <Box sx={{
                                     backgroundColor: item.bgColor,
-                                    padding: '6px',
+                                    padding: '6px !important',
                                     borderRadius: '50%',
                                     color: '#fff',
                                     display: 'flex',

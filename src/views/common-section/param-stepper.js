@@ -47,6 +47,7 @@ const SetupTabs = ({
   customtabPanelStyle = {},
   numberShow = true,
   iconShow = true,
+  selectedTab
 }) => {
   const [value, setValue] = useState(0);
   const lastIndex = tabPage.length - 1;
@@ -94,20 +95,30 @@ const SetupTabs = ({
               background: '#2196f3',
               color: '#fff',
             },
+            '& .Mui-selected': {
+              ...selectedTab
+            }
           }}
         >
           {tabPage.map((tab, index) => (
             <Tab
               key={tab?.id}
-              label={<TabsName name={tab.name} number={index} numberShow={numberShow} iconShow={iconShow} lastIndex={lastIndex} />}
+              label={<TabsName name={tab.name} number={index} numberShow={numberShow} iconShow={iconShow} lastIndex={lastIndex}  />}
+              icon={tab?.icon} 
               {...a11yProps(index)}
               sx={{
                 ...style?.tabStyle,
                 ...customtabSytle,
                 '& .MuiTypography-body1': {
-                  fontSize: '15px',
-                  fontWeight: '500',
+                  fontSize: '14px',
+                  fontWeight: '600',
+                  color:'rgb(18, 25, 38)',
                 },
+
+                '& .MuiSvgIcon-root':{
+                  marginBottom:'0',
+                }
+
               }}
             />
           ))}

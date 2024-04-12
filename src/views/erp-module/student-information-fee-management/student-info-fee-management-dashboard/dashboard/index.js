@@ -7,11 +7,11 @@ import FeeDefaulter from './fee-defaulter';
 // import LiveStudent from './live-student';
 import InvoiceRaised from './invoice-raised';
 import FeeCollection from './fee-collection';
-import NeedSupport from './support/Support';
+// import NeedSupport from './support/Support';
 import Counters from './counters/Counters';
 import EnrollmentStatistics from './enrollment-statistics/EnrollmentStatistics';
 import ParentLoginStatus from './parent-login-status/ParentLoginStatus';
-
+import NeedHelp from './support/Support2';
 
 const DashboardContent = ({ isLoading }) => {
   return (
@@ -54,7 +54,8 @@ const DashboardContent = ({ isLoading }) => {
 
           {/* need support */}
           <Grid item xs={12} lg={4} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
-              <NeedSupport isLoading={isLoading} /> 
+              {/* <NeedSupport isLoading={isLoading} />  */}
+              <NeedHelp isLoading={isLoading} />
           </Grid>
 
         </Grid>

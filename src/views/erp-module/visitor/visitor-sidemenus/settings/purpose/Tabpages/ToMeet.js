@@ -11,48 +11,63 @@ const tableHeadings = [
   },
   {
     id: 3,
+    tabHeading: "To Meet"
+  },
+
+  {
+    id: 4,
     tabHeading: "Phone Number"
   },
   {
-    id: 4,
+    id: 5,
     tabHeading: "Created On"
   },
   {
-    id: 5,
+    id: 6,
     tabHeading: "Action"
   }
 ]
 
 const data = [
   {
+    
     "Name":'Sourabh Sharma',
+    "To Meet":" Head Master",
     "Phone Number": "9568412358",
     "createdOn": "2024-03-05"
   },
   {
-     "createdBy": "Jane Smith",
-     "Phone Number": "8754694572",
+    
+    "Name": "Jane Smith",
+    "To Meet":" Principal",
+    "Phone Number": "8754694572",
     "createdOn": "2024-03-06"
   },
   {
+    
     "Name": "Alice Johnson",
+    "To Meet":" Class Teacher",
     "Phone Number": "9645782364",
     "createdOn": "2024-03-07"
   },
   {
+  
     "Name": "Bob Brown",
+    "To Meet":" HR Department",
     "Phone Number": "7548956786",
     "createdOn": "2024-03-08"
   },
   {
+   
     "Name": "Emma Wilson",
+    "To Meet":"Sports Teacher",
     "Phone Number": "9214569874",
     "createdOn": "2024-03-09"
   }
 ];
 
 
-const HeadMaster = () => {
+const ToMeet = () => {
 //   const handleChange=()=>{
 
 //   }
@@ -67,4 +82,4 @@ const HeadMaster = () => {
   )
 }
 
-export default HeadMaster;
+export default ToMeet;

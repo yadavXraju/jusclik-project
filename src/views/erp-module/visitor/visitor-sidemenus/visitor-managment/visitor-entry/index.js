@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import CommonDataGrid from 'views/common-section/commonDataGrid'
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 // import WarningDialog from 'views/common-section/WarningDialog';
@@ -14,8 +14,8 @@ import PauseCircleOutlineIcon from '@mui/icons-material/PauseCircleOutline';
 import DoDisturbAltOutlinedIcon from '@mui/icons-material/DoDisturbAltOutlined';
 import Chip from '@mui/material/Chip';
 import Avatar from '@mui/material/Avatar';
-import { useNavigate } from 'react-router';
-
+import VisitorDetails from '../visitor-detail';
+import WarningDialog from 'views/common-section/WarningDialog';
  
 
 const renderChipCell = (params) => {
@@ -68,115 +68,154 @@ const renderChipCell = (params) => {
 };
 
 
-const columns = [
-  { field: 'status', headerName: 'Status', flex: 1, minWidth: 150, align: 'left', headerAlign: 'left' ,renderCell: renderChipCell, },
-  { field: 'VisitorName', headerName: 'Visitor Name', flex: 1, minWidth: 160, align: 'left', headerAlign: 'left' , renderCell: (params) => (
-    <div style={{ display: 'flex', alignItems: 'center' }}>
-      <Avatar src={params.row.avatarUrl} alt={params.row.altName} />
-      <span style={{ marginLeft: 8 }}>{params.value}</span>
-    </div>)
-     },
-  { field: 'Address', headerName: 'Address', flex: 1, minWidth: 100 },
-  { field: 'Purpose', headerName: 'Purpose', flex: 1, minWidth: 130 },
-  { field: 'ToMeet', headerName: 'To Meet', flex: 1, minWidth: 130 },
-  { field: 'EntryDate', headerName: 'Entry Date', flex: 1, minWidth: 130 },
-  { field: 'GatePass', headerName: 'Gate Pass', flex: 1, minWidth: 130 },
-  { 
-      field: 'Phone', // Custom field name for combined pick start and end time
-      headerName: 'Phone', // Custom header name
-      flex: 1,
-      minWidth: 100
-      
-    },
-    { 
-      field: 'TimeIn', // Custom field name for combined pick start and end time
-      headerName: 'Time In', // Custom header name
-      // flex: 1,
-      minWidth: 100,
-      // valueGetter: (params) => `${params.row.pickstarttime} - ${params.row.pickendtime}`
-   
-    },
-  // { field: 'attachBus', headerName: 'Attach Bus', flex: 1, minWidth: 100 },
-  { field: 'TimeOut',
-   headerName: 'Time Out', flex: 0,
-    minWidth: 100 ,
-  //  valueGetter: (params) => `${params.row.dropstarttime} - ${params.row.dropendtime}`,
-},
- 
-  {
-    field: 'Action',
-    headerName: 'Action',
-    flex: 1,
-    minWidth: 100,
-    sortable: false,
-    filterable: false,
-    disableColumnMenu: true,
-    renderCell: (params) => (
-      <Box >
-        {/* <IconButton>
-          <RoutesManageDrawer/>
-        </IconButton> */}
-        <Tooltip title="Edit">
-        <IconButton >
-            <RemoveRedEyeTwoToneIcon   sx={{ color: 'rgb(124, 178, 221)' }} />
-          </IconButton>
-        <IconButton>
-          <EditTwoToneIcon />
-        </IconButton>
-        </Tooltip>
-        <Tooltip title="Delete">
-        <IconButton>
-          <DeleteTwoToneIcon onClick={() => handleDeleteRow(params.row.id)} sx={{ color: '#f19e9e' }} />
-        </IconButton>
-        </Tooltip>
-      </Box>
-    )
-  }
-];
+
 
 const VisitorEntry = () => {  
 
-  //const [tableRows, setTableRows] = useState(RouteData);
 
-const navigate=useNavigate();
+  const [tableVisible,setTableVisible] = useState(true)
 
+  const [detailVisible,setDetailVisible] =useState(false)
+  const[rowDetails,setRowDetails]=useState({});
+  const [modalOpen, setmodalOpen] =useState(false);
+ 
+
+  const handleModalClose = () => {
+    setmodalOpen(false);
+  };
   const Click = (rowData) => {
-    navigate('../visitor-detail', { state: { rowData } });
+ setTableVisible(!tableVisible)
+ setDetailVisible(!detailVisible) 
+   
+    console.log(detailVisible);
     console.log(rowData);
+    // setIndex(rowData.id)
+    setRowDetails(rowData)
   };
 
+
+
+  const handleDeleteRow = () => {
+  
+    setmodalOpen(true);
+    setDetailVisible(detailVisible);
+    setTableVisible(tableVisible)
+  
+  };
+
+  // columns
+
+  const columns = [
+    { field: 'status', headerName: 'Status', flex: 1, minWidth: 150, align: 'left', headerAlign: 'left' ,renderCell: renderChipCell, },
+    { field: 'VisitorName', headerName: 'Visitor Name', flex: 1, minWidth: 160, align: 'left', headerAlign: 'left' , renderCell: (params) => (
+      <div style={{ display: 'flex', alignItems: 'center' }}>
+        <Avatar src={params.row.avatarUrl} alt={params.row.altName} />
+        <span style={{ marginLeft: 8 }}>{params.value}</span>
+      </div>)
+       },
+    { field: 'Address', headerName: 'Address', flex: 1, minWidth: 100 },
+    { field: 'Purpose', headerName: 'Purpose', flex: 1, minWidth: 130 },
+    { field: 'ToMeet', headerName: 'To Meet', flex: 1, minWidth: 130 },
+    { field: 'EntryDate', headerName: 'Entry Date', flex: 1, minWidth: 130 },
+    { field: 'GatePass', headerName: 'Gate Pass', flex: 1, minWidth: 130 },
+    { 
+        field: 'Phone', // Custom field name for combined pick start and end time
+        headerName: 'Phone', // Custom header name
+        flex: 1,
+        minWidth: 100
+        
+      },
+      { 
+        field: 'TimeIn', // Custom field name for combined pick start and end time
+        headerName: 'Time In', // Custom header name
+        // flex: 1,
+        minWidth: 100,
+        // valueGetter: (params) => `${params.row.pickstarttime} - ${params.row.pickendtime}`
+     
+      },
+    // { field: 'attachBus', headerName: 'Attach Bus', flex: 1, minWidth: 100 },
+    { field: 'TimeOut',
+     headerName: 'Time Out', flex: 0,
+      minWidth: 100 ,
+    //  valueGetter: (params) => `${params.row.dropstarttime} - ${params.row.dropendtime}`,
+  },
+   
+    {
+      field: 'Action',
+      headerName: 'Action',
+      flex: 1,
+      minWidth: 100,
+      sortable: false,
+      filterable: false,
+      disableColumnMenu: true,
+      renderCell: () => (
+        <Box >
+      
+          <Tooltip title="Edit">
+          <IconButton >
+              <RemoveRedEyeTwoToneIcon  sx={{ color: 'rgb(124, 178, 221)' }} />
+            </IconButton>
+          <IconButton onClick={(event) => event.stopPropagation()}>
+            <EditTwoToneIcon />
+          </IconButton>
+          </Tooltip>
+          <Tooltip title="Delete">
+          <IconButton onClick={(event) => event.stopPropagation()}>
+            <DeleteTwoToneIcon onClick={() => handleDeleteRow()} sx={{ color: '#f19e9e' }} />
+          </IconButton>
+          </Tooltip>
+        </Box>
+      )
+    }
+  ];
+
+  // table
+
+  const table=<><Card>
+  <Box sx={{ borderBottom: '1px solid #ccc' }}>
+    <Grid container spacing={2} p={2} sx={{ alignItems: 'end' ,paddingBottom:'0px' , paddingRight:'0px'}}>
+      <Grid item xs={12} sm={12} lg={12} sx={{}}>
+        <Box sx={{ paddingBottom: '32px' }}>
+          <Typography variant="h4" sx={{ pb: '0px' }}>
+            Visitor List
+          </Typography>
+        </Box>
+      </Grid>
+ 
+
+    </Grid>
+  </Box>
+  <Box p={2} className={'scrollbar-2'}>
+    <CommonDataGrid
+      rows={RouteData}
+      columns={columns} // Use state variable for columns
+      onRowClick={(params) =>Click(params.row)}
+      initialState={{
+        pagination: {
+          paginationModel: { page: 0, pageSize: 50 }
+        }
+      }}
+      pageSizeOptions={[10, 25, 50, 100]}
+      checkboxSelection
+    />
+  </Box>
+</Card></>
+
+
+
+const detail=<VisitorDetails   rowDetails={rowDetails} index={rowDetails.id} setDetailVisible={setDetailVisible} setTableVisible={setTableVisible}  />
   return (
+
     <>
-      <Card>
-        <Box sx={{ borderBottom: '1px solid #ccc' }}>
-          <Grid container spacing={2} p={2} sx={{ alignItems: 'end' ,paddingBottom:'0px' , paddingRight:'0px'}}>
-            <Grid item xs={12} sm={12} lg={12} sx={{}}>
-              <Box sx={{ paddingBottom: '32px' }}>
-                <Typography variant="h4" sx={{ pb: '0px' }}>
-                  Visitor List
-                </Typography>
-              </Box>
-            </Grid>
+    {tableVisible&&table}  
+    {detailVisible&&detail}
+    <WarningDialog
+        open={modalOpen}
+        onClose={handleModalClose}
+        contentText="Are you sure you want to delete?"
        
-
-          </Grid>
-        </Box>
-        <Box p={2} className={'scrollbar-2'}>
-          <CommonDataGrid
-            rows={RouteData}
-            columns={columns} // Use state variable for columns
-            onRowClick={(params) => Click(params.row)}
-            initialState={{
-              pagination: {
-                paginationModel: { page: 0, pageSize: 50 }
-              }
-            }}
-            pageSizeOptions={[10, 25, 50, 100]}
-            checkboxSelection
-          />
-        </Box>
-      </Card>
-
+      />
+      
     </>
   )
 }

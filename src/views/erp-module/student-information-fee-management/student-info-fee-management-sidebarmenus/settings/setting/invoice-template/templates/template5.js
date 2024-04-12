@@ -1,3 +1,4 @@
+// standard
 import React from 'react';
 import Box from '@mui/material/Box';
 import { Grid } from '@mui/material';
@@ -23,55 +24,41 @@ export const  Template5 =()=> {
   const tableSettings=useSelector(state=>state.invoiceTemplate.table)
   const templateLabels=useSelector(state=>state.invoiceTemplate.labels)
   const termsAndConditions=useSelector(state=>state.invoiceTemplate.termsAndConditions)
+  const defaultLables=useSelector(state=>state.invoiceTemplate.defaultLables)
 
+// the array which has enabled lables (data format)
+const enabledLabels=templateLabels.filter((label)=>label.enable==true)
+const labels=[],rows=[]
+// default lables which can't be dragged/dropped/disabled
+defaultLables.map((label)=>{
+  labels.push(<Box  display='flex' width='100%' justifyContent='flex-start'>
+  <Typography p={1} variant='h5' sx={{ fontWeight: '400',  width:'110px', color:generalSettings.labelColor}}>{label.label}</Typography>
+  <Typography p={1} variant='h5' sx={{ fontWeight: 'bold',color:generalSettings.fontColor ,fontSize:`${generalSettings.fontSize}px`}}>{label.value}</Typography>
+</Box>)
+})
+ // jsx for  lables that can be dragged and dropped
+enabledLabels.map((label)=>{
+  labels.push(<Box  display='flex' width='100%' justifyContent='flex-start'>
+  <Typography p={1} variant='h5' sx={{ fontWeight: '400',  width:'110px', color:generalSettings.labelColor}}>{label.label}</Typography>
+  <Typography p={1} variant='h5' sx={{ fontWeight: 'bold',color:generalSettings.fontColor ,fontSize:`${generalSettings.fontSize}px`}}>{label.value}</Typography>
+</Box>)
+})
 
+labels.map((ele,index)=>{
+  if(index%2!==0)
+  rows.push(<Box display='flex' justifyContent='space-between' width='100%'>
+    <Box sx={{borderRight:'1px solid black'}} flex={1}>{labels[index-1]}</Box>
+    <Box flex={1}>{labels[index]}</Box>
+    </Box>)
 
-
-
-  let column1=[],column2=[]
-
-
-  for(let i=0;i<templateLabels.length;i++)
-  {
-    if(i<7)
-    column1.push( <Grid container sx={{display:templateLabels[i].enable?'flex':'none'}}><Grid item lg={5} xs={6}>
-      <Typography variant="body2" sx={{ color: generalSettings.labelColor, paddingBottom: '0.4rem' }}>
-      {templateLabels[i].label}
-      </Typography>
-    </Grid>
-
-<Grid item lg={7} xs={6}>
-  <Typography variant="body2" fontWeight="bold" sx={{ color: generalSettings.fontColor, paddingBottom: '0.4rem', fontSize:`${generalSettings.fontSize}px` }}>
-  {templateLabels[i].value}
-  </Typography>
-</Grid>
-</Grid>
-
-
-  
-  
-  
-    )
-else
-column2.push( <Grid container sx={{display:templateLabels[i].enable?'flex':'none'}}><Grid item lg={6} xs={6}>
-  <Typography variant="body2" sx={{ color: generalSettings.labelColor, paddingBottom: '0.4rem' }}>
-  {templateLabels[i].label}
-  </Typography>
-</Grid>
-
-<Grid item lg={6} xs={6}>
-<Typography variant="body2" fontWeight="bold" sx={{ color: generalSettings.fontColor, paddingBottom: '0.4rem', fontSize:`${generalSettings.fontSize}px` }}>
-{templateLabels[i].value}
-</Typography>
-</Grid>
-</Grid>
-)
-  }
-
-  
+  if(labels.length-1==index&&labels.length%2!=0)
+    rows.push(<Box display='flex' width='50%' >
+    <Box sx={{borderRight:'1px solid black'}} flex={1} >{labels[index]}</Box>
+    </Box>)
+})
   const style = {
-    width: '210mm',
-    height: '297mm',
+    // width: '210mm',
+    // height: '297mm',
     textAlign: ''
   };
   const style2 = {
@@ -104,9 +91,10 @@ column2.push( <Grid container sx={{display:templateLabels[i].enable?'flex':'none
           paddingTop: `${generalSettings.marginTop}rem`,
           paddingRight: ` ${generalSettings.marginRight}rem`,
           paddingBottom: ` ${generalSettings.marginBottom}rem`,
-          paddingLeft: ` ${generalSettings.marginLeft}rem`
-        }}
-      >
+          paddingLeft: ` ${generalSettings.marginLeft}rem`, width: '100%',
+          aspectRatio:'1/1.414',
+          maxWidth:'300mm'}}>
+
         <Grid sx={{ border: `1px solid ${tableSettings.borderColor}`, paddingTop: '2.1%' }}>
         {/* HEADER SECTION ========================================================================== */}
           <Grid sx={{ backgroundColor: headerFooterSettings.headerBackgroundColor }}>
@@ -146,21 +134,8 @@ column2.push( <Grid container sx={{display:templateLabels[i].enable?'flex':'none
           <Grid sx={{ backgroundColor: generalSettings.backgroundColor }}>
             <Grid sx={{ borderTop: `1px solid ${tableSettings.borderColor}`, borderBottom: `1px solid ${tableSettings.borderColor}` }}>
               <Grid container spacing={2} sx={{ padding: '1rem 1.5rem', paddingBottom: '0' , paddingRight:'10px'}}>
-                {/* First Grid item */}
-
-                <Grid item lg={6} xs={12} sx={{ ...style4 }}>
-                  
-                    
-                {column1}
-                    
-                     
-                  
-                </Grid>
-
-                {/* Second Grid item */}
-                <Grid item lg={6} xs={12} sx={{ paddingLeft: '0.4rem' }}>
-                  {column2}
-                </Grid>
+              {/* First Grid item */}                
+              {rows}
               </Grid>
             </Grid>
 
