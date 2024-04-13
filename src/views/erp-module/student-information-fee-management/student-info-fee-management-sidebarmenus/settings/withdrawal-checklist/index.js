@@ -1,12 +1,12 @@
 import React from 'react';
-import { IconButton, Typography, Tooltip, Card , Box} from '@mui/material';
+import { IconButton, Typography, Tooltip, Card , Box, Button} from '@mui/material';
 // import { Box } from '@mui/system';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 import WarningDialog from 'views/common-section/WarningDialog';
 import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 import TableRowData from './TableRowData';
 import DrawerAddNew from './DrawerAddNew';
-import DrawerNewTask from './DrawerNewTask';
+// import DrawerNewTask from './DrawerNewTask';
 import CommonDataGrid from 'views/common-section/commonDataGrid';
 import withParamDrawer from 'views/common-section/withParamDrawer';
 import RemoveRedEyeTwoToneIcon from '@mui/icons-material/RemoveRedEyeTwoTone';
@@ -105,7 +105,7 @@ export default function BusDetails() {
   ];
   const AddNewChecklist = withParamDrawer(DrawerAddNew);
 
-const AddNewTask = withParamDrawer(DrawerNewTask);
+// const AddNewTask = withParamDrawer(DrawerNewTask);
 
   return (
     <>
@@ -117,19 +117,20 @@ const AddNewTask = withParamDrawer(DrawerNewTask);
               Withdrawal Checklist
             </Typography>
           </Box>
-          <Box sx={{display:"flex"}}>
+          <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, gap: 1 }}>
        <div style={{paddingRight:'5px'}}>
       <AddNewChecklist
         buttonLabel="Add New"
         drawerTitle="Withdrawal Checklist" 
       />
     </div>
-    <div>
+    {/* <div>
       <AddNewTask
         buttonLabel="Import New Task" 
         drawerTitle="Withdrawal Checklist" 
       />
-    </div>
+    </div> */}
+       <Button variant="outlined">Import New Task</Button>
        </Box>
         </Box>
         <Box mt={3}>

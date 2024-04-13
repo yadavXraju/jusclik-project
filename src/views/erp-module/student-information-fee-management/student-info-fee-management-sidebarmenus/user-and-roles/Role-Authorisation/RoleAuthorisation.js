@@ -1,58 +1,66 @@
-import React from 'react'
+import React, {useState,useEffect } from 'react'
 import { Box } from '@mui/material'
 import ReportSection from './ReportSection'
 import DocumentSection from './DocumentSection'
 import AllRecords from './AddRecord'
 import SetupSection from './SetupSection'
 import ApprovalSection from './ApprovalSection'
-import ParamSteppper from 'views/common-section/param-stepper';
+import ParamSearchTab from 'views/common-section/ParamSearchTabs';
+import { useSelector } from 'react-redux';
 
 
-
-
-const ShowComponent=()=>{
-  return(
+const ShowComponent = () => {
+  return (
     <Box>
-        {/* ========= Add All Records Authorisation ========= */}
-        <Box pb={2}>
-          <AllRecords />
-        </Box>
-        {/* ========= Add Setup Authorisation ========= */}
-        <Box pb={2}>
-          <SetupSection />
-        </Box>
-        {/* ========= Add Report Authorisation ========= */}
-        <Box pb={2}>
-          <ReportSection />
-        </Box>
-        {/* ========= Add Documents Authorisation ========= */}
-        <Box pb={2}>
-          <DocumentSection />
-        </Box>
-        {/* ========= Add Approval Authorisation ========= */}
-        <Box pb={2}>
-          <ApprovalSection />
-        </Box>
+      {/* ========= Add All Records Authorisation ========= */}
+      <Box pb={2}>
+        <AllRecords />
       </Box>
+      {/* ========= Add Setup Authorisation ========= */}
+      <Box pb={2}>
+        <SetupSection />
+      </Box>
+      {/* ========= Add Report Authorisation ========= */}
+      <Box pb={2}>
+        <ReportSection />
+      </Box>
+      {/* ========= Add Documents Authorisation ========= */}
+      <Box pb={2}>
+        <DocumentSection />
+      </Box>
+      {/* ========= Add Approval Authorisation ========= */}
+      <Box pb={2}>
+        <ApprovalSection />
+      </Box>
+    </Box>
   )
 }
 
 
 const RoleAuthorisation = () => {
-  const modulesData = [
-    { id: '1', name: 'Stufee', chacked: false,component:ShowComponent  },
-    { id: '2', name: 'Payroll', chacked: true,component:ShowComponent  },
-    { id: '3', name: 'Progress', chacked: false,component:ShowComponent  },
-    { id: '4', name: 'Library', chacked: true,component:ShowComponent  },
-    { id: '5', name: 'Inventory', chacked: false,component:ShowComponent  },
-    { id: '6', name: 'Website', chacked: true,component:ShowComponent  },
-    { id: '7', name: 'Visitor Mgmt', chacked: false,component:ShowComponent  },
-    { id: '8', name: 'Medical', chacked: true,component:ShowComponent }
-  ];
+ 
+  const moduleAccess = useSelector((state) => state.userRoleAcess);
+  console.log(moduleAccess)
+  const[moduleData,setModuleData]=useState([]);
+  
+ const  moduleDataTrans=()=>{
+  const filteredData = moduleAccess.moduleAccess.reduce((acc, current) => {
+    if (current.isSelected) {
+      acc.push({...current,component:ShowComponent});
+    }
+    return acc;
+  }, []);
+    setModuleData(filteredData);
+  }
+
+  useEffect(() => {
+     moduleDataTrans();
+  },[])
+
   return (
-      <Box sx={{display:"flex",flexDirection:"column"}}>
-            <ParamSteppper tabPage={modulesData} orientation="vertical" numberShow={false} showBottomNav={false}/>
-      </Box>
+    <Box sx={{ paddingLeft: "100px" }}>
+      <ParamSearchTab tabPage={moduleData} orientation="vertical" numberShow={false} showBottomNav={false} customtabWrapper={{ display: "flex", flexDirection: "row" }} />
+    </Box>
   )
 }
 
