@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import AirplanemodeActiveOutlinedIcon from '@mui/icons-material/AirplanemodeActiveOutlined';
 import TwoWheelerOutlinedIcon from '@mui/icons-material/TwoWheelerOutlined';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
-import { useLocation } from 'react-router-dom';
+
 
 const StyledCard = styled(Card)({
   margin: 'auto',
@@ -97,19 +97,11 @@ const Pricing = () => {
     navigate('/registration');
   };
 
-  const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
-  const selectedTier = searchParams.get('selectedTier');
-
   return (
     <Paper    sx={{minHeight:'100vh', display:'flex',flexDirection:'column', alignItems:'center', justifyContent:'center' }} >
       {/* <Box sx={{ padding: "40px 20px 0px" }}>
         <Typography variant='h1' sx={{ textAlign: "center" }}>Flexible Plans And Pricing</Typography>
       </Box> */}
-
-          { selectedTier && (
-          <Typography  sx={{ textAlign: "center"}}  variant="h4">Selected Tier: {selectedTier}</Typography>
-         )}
 
       <Grid container className='san'
        spacing={3}  

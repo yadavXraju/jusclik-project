@@ -83,9 +83,9 @@ const Registration = () => {
 
       // tier options
       const TierOptions = [
-        { value: 'Essential (₹ 5,000/month)', label: 'Essential (₹ 5,000/month)' },
-        { value: 'Premium (₹ 15,000/month)', label: 'Premium (₹ 15,000/month)' },
-        { value: 'Enterprise (₹ 30,000/month)', label: 'Enterprise (₹ 30,000/month)' },
+        { value: 'Essential (₹ 5,000/month)', label: 'Essential starting from (₹ 5,000/month)' },
+        { value: 'Premium (₹ 15,000/month)', label: 'Premium starting from (₹ 15,000/month)' },
+        { value: 'Enterprise (₹ 30,000/month)', label: 'Enterprise starting from (₹ 30,000/month)' },
     
       ];
 
@@ -111,7 +111,7 @@ const Registration = () => {
     // Add your registration logic here
 
     // After registration, navigate to pricing page with selected tier value
-    navigate(`/pricing?selectedTier=${formData.selectedTier}`);
+    navigate('');
   };
     
   return (
@@ -279,7 +279,7 @@ const Registration = () => {
                     {/*====================== insitution type  drop down 
                       {/* btn  */}
                       <Button sx={{padding:'10px' , borderRadius:'12px'}} variant="contained" fullWidth disableElevation onClick={handleRegistration}>
-                      Register Now </Button>
+                      Submit </Button>
 
               </Grid>
           </Paper>

@@ -112,7 +112,7 @@ const WhatshapExcelSheet =  Loadable(lazy(() => import('views/erp-module/student
 
 // setting
 
-const Settings =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/settings/setting')));
+const Settings =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/settings/setting/setting-stufee')));
 
 // student details and forms
 

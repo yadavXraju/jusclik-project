@@ -31,6 +31,10 @@ const CommunicationHomeComp = () => {
   const isMobile = useMediaQuery('(max-width: 767px)');
 // const contactListToShow = 4
 // const navigate = useNavigate();
+
+  
+
+  
   return (
     <>
       <MainCard  sx={{ fontSize: '22px', fontWeight: 'bold' , paddingLeft: isMobile ? '10px' : 'auto' }} style={boxHeight} className='scrollbar'>
@@ -40,7 +44,7 @@ const CommunicationHomeComp = () => {
               </Typography>
         </Grid>
 
-        <AlignItemsList />
+        <AlignItemsList communication_wrapper_style={{paddingLeft:0,paddingRight:0}}/>
 
       {/* <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
         {contactData.map((contact, index) => (
