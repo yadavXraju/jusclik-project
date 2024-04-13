@@ -30,6 +30,7 @@ const ParamTableDragDrop = ({ columns, initialData, tableStyle, dragIcon = false
 
     const handleSaveClick = () => {
         console.log(editId); // Log the id when Save button is clicked
+        setEditId(null); // Set the id of the row to be edited
     };
 
     return (

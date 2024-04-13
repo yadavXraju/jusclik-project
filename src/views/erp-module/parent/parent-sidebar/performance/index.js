@@ -9,8 +9,14 @@ import MainCard from 'ui-component/cards/MainCard';
 export default function BasicTabs() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const res2560 = useMediaQuery('(min-width:2000px)')
 
   const [value, setValue] = React.useState('1');
+  let rem = null;
+  if(res2560) {
+    rem='20rem'
+
+  }
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -19,7 +25,7 @@ export default function BasicTabs() {
   return (
     <MainCard>
       <Paper>
-      <Box>
+      <Box sx={{paddingLeft:rem , paddingRight:rem}}>
         <TabContext value={value}>
           <Box>
             <TabList
