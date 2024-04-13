@@ -1,7 +1,7 @@
 // Setting.js
 
 import React, { useState } from 'react';
-import Organisation from './Organisation';
+import Organisation, { SettingData } from './SettingStufee';
 // import SettingData from './SettingData';
 import { Typography, Box, Card } from '@mui/material';
 import SearchBar from './SearchBar';

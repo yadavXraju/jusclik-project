@@ -1,13 +1,13 @@
 // Setting.js
 
 import React, { useState } from 'react';
-import Organisation from './Organisation';
+import Organisation from './SettingVisitor';
 // import SettingData from './SettingData';
 import { Typography, Box, Card } from '@mui/material';
 import SearchBar from './SearchBar';
 import { Link } from 'react-router-dom';
 
-const Setting = ({SettingData}) => {
+const Setting = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const filterData = searchTerm.trim() !== '' ? SettingData.filter(item => {
     if (item.title.toLowerCase().includes(searchTerm)) {
@@ -60,6 +60,6 @@ const Setting = ({SettingData}) => {
       <Organisation />
     </div>
   );
-  }
+      }
 
 export default Setting;
