@@ -45,7 +45,7 @@ export const contactData = [
   { name: 'Supriya Sharma', role: 'HR Head', avatar: Image3 }
 ];
 
-export default function AlignItemsList() {
+export default function AlignItemsList({communication_wrapper_style}) {
   const navigate = useNavigate();
 
   const groupedContacts = groupContactsByLetter(contactData);
@@ -63,15 +63,15 @@ export default function AlignItemsList() {
     }, {});
   }
 
-  const res2560 = useMediaQuery('(min-width:2000px)')
-  let rem = res2560?'19rem':null;
+  const isImac = useMediaQuery('(min-width:2000px)')
+  let rem = isImac?'19rem':null;
 
 
   return (
     <>
        
       <Box sx={{bgcolor:'background.paper'}}>
-        <Box sx={{paddingLeft:rem , paddingRight:rem}}>
+        <Box sx={{paddingLeft:rem , paddingRight:rem,...communication_wrapper_style}}>
       <Box sx={{ display: 'flex', height: '100%', bgcolor: 'background.paper'}}>
         {/* Contact List */}
         

@@ -247,10 +247,12 @@ const GmailInboxTemplate = () => {
   }, [searchQuery]);
 
   const isMobile = useMediaQuery(theme.breakpoints.only('xs'));
+ 
 
   return (
     <>
-      <Paper>
+      <Paper >
+       
         <ThemeProvider theme={theme}>
           <Box sx={{ display: 'flex', flexDirection: 'column' }}>
             <CssBaseline />
@@ -357,6 +359,7 @@ const GmailInboxTemplate = () => {
             <MailCompose open={isComposeOpen} onClose={handleComposeClose} onSend={handleComposeSend} />
           </Box>
         </ThemeProvider>
+       
       </Paper>
     </>
   );

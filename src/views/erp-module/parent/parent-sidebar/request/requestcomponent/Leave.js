@@ -7,10 +7,10 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 
 const Leave = () => {
  const res2560 = useMediaQuery('(min-width:2000px)')
- const res530 = useMediaQuery('(max-width:530px)')
+ const res800 = useMediaQuery('(max-width:800px)')
  const rem=res2560?'16rem':null;
- const toppadding = res530?'10px':null;
- const toppadding2 = res530?'5px':null;
+ const toppadding = res800?'10px':null;
+ const toppadding2 = res800?'5px':null;
  
    
 
@@ -30,12 +30,12 @@ const Leave = () => {
             </Grid>
 
             <Grid container flexDirection="row" item xs={12} md={6} >
-              <Grid item md={6} style={{ paddingLeft:'10px' ,paddingTop:toppadding2 }}>
+              <Grid item md={6} xs={12}  style={{ paddingLeft:'10px' ,paddingTop:toppadding2 ,paddingRight:'10px' }}>
                 {/* <TextField type="date" fullWidth variant="outlined" label="Leave From:" /> */}
                 <Datecomponet  Margin={'0px'} label="Leave From:"/>
               </Grid>
 
-              <Grid item md={6} style={{ paddingRight:'10px' , paddingLeft:'10px' , paddingTop:toppadding }}>
+              <Grid item md={6} xs={12} style={{ paddingRight:'10px' , paddingLeft:'10px' , paddingTop:toppadding }}>
                 {/* <TextField type="date" fullWidth variant="outlined"  label="Leave To:"/> */}
                 <Datecomponet Margin={'0px'} label="Leave To:"/>
               </Grid>

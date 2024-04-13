@@ -63,7 +63,7 @@ export default function TeacherContactDetails() {
         image={ClassTeacherProfileDetails.image}
         title="Father image"
       />
-      <Typography variant="h1" m={2}>{ClassTeacherProfileDetails.name}</Typography>
+      <Typography variant="h1" m={2} sx={{fontSize:{lg:'20px' , md:'18px', xs:'16px'}}}>{ClassTeacherProfileDetails.name}</Typography>
     </Typography>
     <Box component="form">
       <CardContent>
