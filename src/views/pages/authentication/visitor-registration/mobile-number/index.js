@@ -16,7 +16,7 @@ export const useStyles = makeStyles(() => ({
   },
 }));
 
-function CountrySelect({state,stateHandler }) {
+export function CountrySelect({state,stateHandler }) {
   return (
     <Select value={state.country} onChange={(e)=>stateHandler('country',e.target.value)} variant="standard" >
       <MenuItem selected value="India">
