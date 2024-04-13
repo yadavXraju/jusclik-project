@@ -8,7 +8,7 @@ const DashboardDefault = Loadable(lazy(() => import('views/erp-module/inventory-
 const Reports = Loadable(lazy(() => import('views/erp-module/inventory-management/inventory-managment-sidebar/report')));
 
 // setting
-const Setting = Loadable(lazy(() => import('views/erp-module/inventory-management/inventory-managment-sidebar/setting')));
+const Setting = Loadable(lazy(() => import('views/erp-module/inventory-management/inventory-managment-sidebar/setting/setting-inventory')));
 
 // ==============================|| Visitor MENUS ||============================== //
 

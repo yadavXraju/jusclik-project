@@ -283,17 +283,18 @@ const Header = ({ handleLeftDrawerToggle }) => {
                   sx={{
                     width: 228,
                     display: 'flex',
+                    alignItems:'center',
                     [theme.breakpoints.down('md')]: {
                       width: 'auto',
                       marginLeft: '0'
                     }
                   }}
                 >
-                  <Box className='logo' component="span" sx={{ display: { xs: 'none', md: 'block' }, flexGrow: 1 }}>
+                  <Box className='logo' component="span" sx={{ display: { xs: 'none', md: 'block' }, flexGrow: 1 , flex:'0 0 78%'}}>
                     <LogoSection />
                   </Box>
 
-                  <ButtonBase className='menuBtn' sx={{ borderRadius: '12px', overflow: 'hidden', }}>
+                  <ButtonBase className='menuBtn' sx={{ borderRadius: '0px', overflow: 'hidden', }}>
                     <Avatar
                       variant="rounded"
                       sx={{

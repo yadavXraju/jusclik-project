@@ -10,7 +10,7 @@ const VisitorEntry = Loadable(lazy(() => import('views/erp-module/visitor/visito
 const ScheduledVisit = Loadable(lazy(() => import('views/erp-module/visitor/visitor-sidemenus/visitor-managment/scheduled-visit')));
 const VisitorDetails=Loadable(lazy(() => import('views/erp-module/visitor/visitor-sidemenus/visitor-managment/visitor-detail')));
 const Reports =Loadable(lazy(() => import('views/erp-module/visitor/visitor-sidemenus/reports')));
-const Settings =Loadable(lazy(() => import('views/erp-module/visitor/visitor-sidemenus/settings')));
+const Settings =Loadable(lazy(() => import('views/erp-module/visitor/visitor-sidemenus/settings/setting-visitor')));
 const Purpose = Loadable(lazy(() => import('views/erp-module/visitor/visitor-sidemenus/settings/purpose')));
 const ToMeet = Loadable(lazy(() => import('views/erp-module/visitor/visitor-sidemenus/settings/to-meet')));
 const BlacklistVisitors = Loadable(lazy(() => import('views/erp-module/visitor/visitor-sidemenus/settings/black-listed-visitor')));

@@ -1,70 +1,87 @@
 import React from 'react';
 import Box from '@mui/material/Box';
-import { Table, TableCell, TableContainer, TableHead, TableRow, Typography, TableBody } from '@mui/material';
 import AddRoleDrawer from './AddRoleDrawer';
+import Avatar from '@mui/material/Avatar';
+// import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
+// import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
+// import { IconButton, Tooltip } from '@mui/material';
+// import RemoveRedEyeTwoToneIcon from '@mui/icons-material/RemoveRedEyeTwoTone';
+import CommonDataGrid from 'views/common-section/commonDataGrid';
+import { Typography } from '@mui/material';
+import Chip from '@mui/material/Chip';
 
-const UserDetailsData = [
+const tableRows = [
   {
     id: '1',
-    details: {
-      roleName: 'Admin',
-      Description: 'Unrestricted access to all modules',
-    }
+    roleName: 'Admin',
+    Description: 'Unrestricted access to all modules',
+    User: 'Abhishek'
   },
   {
     id: '2',
-    details: {
-      roleName: 'manager',
-      Description: 'Access to all modules except organisation settings',
-    }
+    roleName: 'manager',
+    Description: 'Access to all modules except organisation settings',
+    User: 'Daman'
   },
   {
     id: '3',
-    details: {
-      roleName: 'senior manager',
-      Description: 'Access to all modules except organisation settings',
-    }
+    roleName: 'senior manager',
+    Description: 'Access to all modules except organisation settings',
+    User: 'Vikas'
   }
 ];
 
-console.log(UserDetailsData);
 
-function RoleDetails() {
+
+const RoleDetails = () => {
+
+  const stringAvatar = (name) => {
+    return {
+      sx: {
+        fontSize:"16px",
+        bgcolor: '#90caf9',
+        width: "30px",
+        height: "30px"
+      },
+      children: `${name.split(' ')[0][0]}`,
+    };
+  }
+
+  const columns = [
+    { field: 'roleName', headerName: 'Role Name', flex: 1, minWidth: 130, align: 'left', headerAlign: 'left' },
+    { field: 'Description', headerName: 'Description', flex: 1, minWidth: 130 },
+    {
+      field: 'User', headerName: 'User', flex: 1, minWidth: 130, renderCell: (param) => (
+        <>
+          <Chip sx={{ width: "auto",height:"40px",minWidth:"150px",justifyContent:"flex-start" }} 
+          label={
+          <Box sx={{ display: "flex", alignItems: 'center',height:"40px" }}>
+            <Avatar {...stringAvatar(param.value)} /><Typography type="text" sx={{ marginLeft: "10px"}}>{param.value}</Typography>
+          </Box>} 
+          />
+        </>
+      )
+    },
+  ];
+
   return (
-    <>
-    {/* ============== Role details tables ========== */}
-    <Box sx={{display:'flex', justifyContent:'end'}}>
-      <AddRoleDrawer/>
+    <Box x={{ padding: "5px" }}>
+      {/* ============== Role details tables ========== */}
+      <Box sx={{ display: 'flex', justifyContent: 'end', marginBottom: "10px" }}>
+        <AddRoleDrawer />
       </Box>
-      <Box sx={{ width: '100%', bgcolor: 'background.paper' }}>
-        <TableContainer>
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell>
-                  <Typography variant="h4">Role Name</Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography variant="h4">Description</Typography>
-                </TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {UserDetailsData.map((item, index) => (
-                <TableRow key={index}>
-                  <TableCell>
-                    <Typography variant="h5">{item.details.roleName}</Typography>
-                  </TableCell>
-                  <TableCell>
-                    <Typography variant="h5">{item.details.Description}</Typography>
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      </Box>
-    </>
+      <CommonDataGrid
+        className='scrollbar'
+        rows={tableRows} columns={columns} width="100%"
+        onRowClick={(params) => Click(params.id)}
+        checkboxSelection={false}
+        initialState={{
+          pagination: {
+            paginationModel: { page: 0, pageSize: 50 }
+          },
+        }}
+        pageSizeOptions={[10, 25, 50, 100]} />
+    </Box>
   );
 }
 

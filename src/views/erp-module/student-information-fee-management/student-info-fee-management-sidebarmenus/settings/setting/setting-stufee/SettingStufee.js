@@ -97,4 +97,4 @@ const Organisation= () =>{
   )
 }
 
-export default Organisation;
+export { SettingData, Organisation as default };

@@ -7,6 +7,7 @@ import AirplanemodeActiveOutlinedIcon from '@mui/icons-material/AirplanemodeActi
 import TwoWheelerOutlinedIcon from '@mui/icons-material/TwoWheelerOutlined';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 
+
 const StyledCard = styled(Card)({
   margin: 'auto',
   padding: '20px',
@@ -97,7 +98,7 @@ const Pricing = () => {
   };
 
   return (
-    <Paper>
+    <Paper    sx={{minHeight:'100vh', display:'flex',flexDirection:'column', alignItems:'center', justifyContent:'center' }} >
       {/* <Box sx={{ padding: "40px 20px 0px" }}>
         <Typography variant='h1' sx={{ textAlign: "center" }}>Flexible Plans And Pricing</Typography>
       </Box> */}
@@ -105,8 +106,7 @@ const Pricing = () => {
       <Grid container className='san'
        spacing={3}  
        justifyContent={isTab ? "stretch" : "center"} 
-       sx={{padding:"100px 20px "}} >
-
+       sx={{padding:"20px 20px" ,  }} >
         {plansData.map((plan, index) => (
           <Grid item key={index} xs={12} sm={6} md={4} xl={2} lg={3} >
             <StyledCard variant="outlined" sx={{ padding:"20px", border:`${plan.borderWith}px solid ${plan.paperBorder}` }}>

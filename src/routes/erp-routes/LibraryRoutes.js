@@ -4,7 +4,7 @@ import Loadable from 'ui-component/Loadable';
 // project imports
 const DashboardDefault = Loadable(lazy(() => import('views/erp-module/library/library-dashboard')));
 const Reports =  Loadable(lazy(() => import('views/erp-module/library/library-sidebar/reports')));
-const Settings =  Loadable(lazy(() => import('views/erp-module/library/library-sidebar/settings')));
+const Settings =  Loadable(lazy(() => import('views/erp-module/library/library-sidebar/settings/setting-library')));
 
 
 // ==============================|| Visitor MENUS ||============================== //

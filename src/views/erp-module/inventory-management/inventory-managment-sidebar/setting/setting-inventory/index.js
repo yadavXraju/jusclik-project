@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Typography, Box, Card } from '@mui/material';
 import SearchInvBar from './SearchInvBar';
-import SettingOrg from './SettingOrg';
+import SettingOrg from './SettingInv';
 // import SettingData from './SettingData';
 import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 
