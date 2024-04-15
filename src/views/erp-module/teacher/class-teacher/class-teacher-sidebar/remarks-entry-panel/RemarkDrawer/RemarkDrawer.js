@@ -9,6 +9,8 @@ import { EXAM } from 'views/erp-module/teacher/class-teacher/class-teacher-sideb
 import { StudentData, StudentData2, StudentData3 } from 'views/erp-module/teacher/class-teacher/class-teacher-sidebar/marks-entry-panel/dropdown data/StudentData';
 import { useState, useEffect } from 'react';
 import RemarkEditor from './RemarkEditor';
+import useMediaQuery from '@mui/material/useMediaQuery';
+
 
 export default function RemarkDrawer() {
   const [selectedClass, setSelectedClass] = useState('1');
@@ -23,6 +25,9 @@ export default function RemarkDrawer() {
   const [newTemplate, setNewTemplate] = useState('');
   const [templateSubmitted, setTemplateSubmitted] = useState(false);
   const [submittedData, setSubmittedData] = useState([]); // State to hold submitted data
+  const res1102_599 = useMediaQuery('(min-width:599px) and (max-width:1102px)')
+  const topmargin = res1102_599?'10px':null;
+  
 
   let templateOptions = ["Excellent", "Good", "Average", "Needs Improvement", "Poor"];
 
@@ -198,8 +203,10 @@ export default function RemarkDrawer() {
 
   return (
     <div>
+      <Grid>
       <Button variant="outlined" startIcon={<SettingsOutlinedIcon />} onClick={openSettingDialog} sx={{marginRight:'10px'}} >Setting</Button>
-      <Button onClick={toggleDrawer('right', true)} variant="outlined" startIcon={<AddOutlinedIcon />}>Add Remark</Button>
+      <Button onClick={toggleDrawer('right', true)} sx={{marginTop:topmargin}} variant="outlined" startIcon={<AddOutlinedIcon />}>Add Remark</Button>
+      </Grid>
       <Drawer
         anchor="right"
         open={state.right}
