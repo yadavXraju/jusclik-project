@@ -38,6 +38,7 @@ const TableRowData = [
     taskno: 'Intimation Mail',
     assignedto: 'Not Assigned',
     duedate: '08-03-2024',
+    status: 'In Progress'
 
   },
   {

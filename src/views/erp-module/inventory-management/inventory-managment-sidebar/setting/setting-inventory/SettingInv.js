@@ -75,7 +75,7 @@ const SettingData = [
   }
 ];
 
-const Organisation= () =>{
+const SettingInv= () =>{
   return(
     <>
     <ParamSetting SettingData={SettingData} />
@@ -83,4 +83,4 @@ const Organisation= () =>{
   )
 }
 
-export default Organisation;
+export { SettingData, SettingInv as default };

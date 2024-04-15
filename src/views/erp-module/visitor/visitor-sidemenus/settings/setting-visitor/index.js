@@ -1,7 +1,7 @@
 // Setting.js
 
 import React, { useState } from 'react';
-import Organisation from './SettingVisitor';
+import SettingVisitor, { SettingData }  from './SettingVisitor';
 // import SettingData from './SettingData';
 import { Typography, Box, Card } from '@mui/material';
 import SearchBar from './SearchBar';
@@ -57,7 +57,7 @@ const Setting = () => {
           ))
         }
       </Card>
-      <Organisation />
+      <SettingVisitor />
     </div>
   );
       }
