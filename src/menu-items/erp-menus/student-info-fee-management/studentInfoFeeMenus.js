@@ -14,15 +14,8 @@ import DirectionsBusTwoToneIcon from '@mui/icons-material/DirectionsBusTwoTone';
 const StudnetMasterColleagueTitles = [
  {title : 'Enquiry' , url : '/erp/student-info-fee/student-master/enquiry'}, 
  {title : 'Registration' , url : '/erp/student-info-fee/student-master/registration'}, 
-//  {title : 'Registration Data' , url : '/erp/student-info-fee/student-master/registration-data'}, 
-//  {title : 'Admission Process' , url : '/erp/student-info-fee/student-master/admission-process'}, 
  {title :  'Provisional' , url : '/erp/student-info-fee/student-master/provisional'}, 
  {title :  'Admission' , url : '/erp/student-info-fee/student-master/admission'}, 
-//  {title :  'Custom Data' , url : '/erp/student-info-fee/student-master/custom-data'}, 
-//  {title :  'Edit Master Data Field' , url : '/erp/student-info-fee/student-master/edit-master-data-field'}, 
-//  {title :  'Change Enrolment Number' , url : '/erp/student-info-fee/student-master/change-enrolment-number'}, 
-//  {title :  'Change Enrolment Status' , url : '/erp/student-info-fee/student-master/change-enrolment-status'}, 
-//  {title :   'Upload Documents' , url : '/erp/student-info-fee/student-master/upload-document'}, 
 ];
 
 
