@@ -141,7 +141,7 @@ const classTeacherRoutes = [
         {
             path: 'expenses-travel',
             element: <ExpenseAndTravel />
-        },
+        },  
         {
             path: 'leave-application',
             element: <LeaveApplication />

@@ -26,8 +26,8 @@ export const ErpModuleList = [
         id:2,
         name:'HR & Payroll',
         icon : <img src={hr} alt='icon' style={{width:'34px', margin:'auto'}} />,
-        url: '',
-        role : 'hr-pay-roll',
+        url: '/erp/hr-payroll/dashboard',
+        role : 'hr-payroll',
     },
 
 

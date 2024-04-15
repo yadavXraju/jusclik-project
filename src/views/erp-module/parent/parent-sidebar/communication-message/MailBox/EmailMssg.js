@@ -17,6 +17,8 @@ const Message = () => {
     const [isBoxVisible, setIsBoxVisible] = useState(false);
     const isSmScreen = useMediaQuery('(max-width: 400px)');
     const small360 = isSmScreen ? 'ruby-text' : 'flex';
+    const res2560 = useMediaQuery('(min-width:2000px)')
+    const rem=res2560?'19rem':null;
 
     // Function to handle the received data from MailCompose
     const handleEmailSend = (data) => {
@@ -57,6 +59,7 @@ const Message = () => {
     return (
         <>
             <Paper>
+                <Box sx={{paddingLeft:rem , paddingRight:rem}}>
                 <Box style={{ display: small360, justifyContent: 'space-between', alignItems: 'center', padding: '60px' , paddingLeft:'0px' }}>
                     <Box display="flex" alignItems="center">
                         <IconButton onClick={() => navigate('/parent/communication/inbox')} color="primary">
@@ -139,6 +142,7 @@ const Message = () => {
                         emailData={emailData}
                     />
                 )}
+                </Box>
             </Paper>
         </>
     );

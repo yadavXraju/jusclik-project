@@ -6,13 +6,12 @@ import StepLabel from '@mui/material/StepLabel';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import RoleAccess from './RoleAccess';
-import RolePrivileges from './RolePrivileges';
 import RoleAuthorisation from './Role-Authorisation/RoleAuthorisation';
 import { makeStyles } from "@mui/styles";
 
 
-const steps = ['MODULES', 'AUTHORISATION', 'PREFRENCES'];
-const components = [RoleAccess, RoleAuthorisation, RolePrivileges];
+const steps = ['MODULES', 'AUTHORISATION'];
+const components = [RoleAccess, RoleAuthorisation];
 
 // =========== Style for Decrease font size for mobile responsive ==========
 const useStyles = makeStyles((theme) => ({
