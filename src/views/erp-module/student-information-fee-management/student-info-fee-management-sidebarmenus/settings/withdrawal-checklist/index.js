@@ -137,7 +137,7 @@ export default function BusDetails() {
           <CommonDataGrid
             className='scrollbar'
             rows={tableRows} columns={columns}  width="100%"
-            onRowClick={(params) => Click(params.id)}
+            // onRowClick={(params) => Click(params.id)}
             checkboxSelection={false}
             initialState={{
               pagination: {
