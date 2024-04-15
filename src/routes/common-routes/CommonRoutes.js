@@ -5,8 +5,8 @@ import Loadable from 'ui-component/Loadable';
 
 // Class Teacher  Dashboard Menus
 const ContactSupport = Loadable(lazy(() => import('views/erp-common-component/post-support-ticket')));
-const FormBuilder= Loadable(lazy(() => import('views/form-builder')));
-// const Pricing =  Loadable(lazy(() => import('views/pages/pricing')));
+const Forms= Loadable(lazy(() => import('views/erp-module/form-builder')));
+const Builder= Loadable(lazy(() => import('views/erp-module/form-builder/builder')));
 
 // visitor reg
 
@@ -28,14 +28,22 @@ const CommonRoutes = [
           },
 
           { 
-            path: 'form-builder', 
-            element: <FormBuilder />
+            path: 'forms', 
+            children:[
+              {
+              path: '', 
+              element: <Forms/>
+             },
+
+             {
+              path: ':id/builder', 
+              element: <Builder />
+             },
+
+          ]
+            
             },
-        //    {
-        //   path:'/pricing',
-        //   element: <Pricing/>
-        // },
-      
+
 
     ]
 }
