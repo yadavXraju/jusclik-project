@@ -26,6 +26,11 @@ import InventoryMenu from './erp-menus/inventory/inventoryMenus';
 import LibraryDashboard from './erp-menus/library/libraryDashboard';
 import LibraryMenu from './erp-menus/library/libraryMenus';
 
+
+// hr payroll
+import HrPayRollDashboard from './erp-menus/hr-payroll/hrPayRollDashboard';
+import HrPayRollMenu from './erp-menus/hr-payroll/hrPayrollMenus';
+
 // Function to retrieve user role from local storage
 const getUserRole = () => {
   return localStorage.getItem('userRole');
@@ -71,6 +76,11 @@ const generateMenuItems = (userRole) => {
       // inventory
       case 'inventory':
         menuItems.items.push(InventoryDashboard, InventoryMenu);
+        break;
+
+      // hr payroll
+      case 'hr-payroll':
+        menuItems.items.push(HrPayRollDashboard, HrPayRollMenu);
         break;
 
     default:
