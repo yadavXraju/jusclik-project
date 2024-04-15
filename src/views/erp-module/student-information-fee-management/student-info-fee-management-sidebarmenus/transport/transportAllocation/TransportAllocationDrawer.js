@@ -8,6 +8,9 @@ import SelectList from 'views/common-section/ParamSelectList';
 import { useState } from 'react';
 import ParamMultipleSelect from 'views/common-section/ParamMultipleSelect';
 import TextArea from 'antd/es/input/TextArea';
+import TextField from '@mui/material/TextField';
+import TransportTimeline from './TransportTimeline';
+import { Container } from '@mui/system';
 
 const TransportDrawer = () => {
   // ========= call custom hook for toggle drawer ==========
@@ -35,7 +38,7 @@ const TransportDrawer = () => {
     { value: 'Route2', label: 'Route 2' },
     { value: 'Route3', label: 'Route 3' },
     { value: 'Route4', label: 'Route 4' },
-    { value: 'Route5', label: 'Route 5' },
+    { value: 'Route5', label: 'Route 5' }
   ];
   const PickRouteChange = (event) => {
     setPickRoute(event.target.value);
@@ -44,7 +47,7 @@ const TransportDrawer = () => {
   const [pickStop, setPickStop] = useState('');
   const pickStopOptions = [
     { value: 'Route1', label: 'Route 1' },
-    { value: 'Route2', label: 'Route 2' },
+    { value: 'Route2', label: 'Route 2' }
   ];
   const PickStopChange = (event) => {
     setPickStop(event.target.value);
@@ -56,7 +59,7 @@ const TransportDrawer = () => {
     { value: 'Route2', label: 'Route 2' },
     { value: 'Route3', label: 'Route 3' },
     { value: 'Route4', label: 'Route 4' },
-    { value: 'Route5', label: 'Route 5' },
+    { value: 'Route5', label: 'Route 5' }
   ];
   const DropRouteChange = (event) => {
     setDropRoute(event.target.value);
@@ -65,10 +68,22 @@ const TransportDrawer = () => {
   const [dropStop, setDropStop] = useState('');
   const dropStopOptions = [
     { value: 'Route1', label: 'Route 1' },
-    { value: 'Route2', label: 'Route 2' },
+    { value: 'Route2', label: 'Route 2' }
   ];
   const DropStopChange = (event) => {
     setDropStop(event.target.value);
+  };
+
+  // ========= state for Drop stop ============
+  const [enrolmentType, setEnrolmentType] = useState('');
+  const enrolmentTypeOption = [
+    { value: 'Route1', label: 'Enquiry' },
+    { value: 'Route2', label: 'Registration' },
+    { value: 'Route1', label: 'Provisional' },
+    { value: 'Route2', label: 'Admission' },
+  ];
+  const enrolmentTypeChange = (event) => {
+    setEnrolmentType(event.target.value);
   };
 
   const [selectedMonth, setSelectedMonth] = React.useState([]);
@@ -101,40 +116,86 @@ const TransportDrawer = () => {
               Close
             </Button>
           </Box>
-          <Box pt={3} sx={{ width: { md: '100%', lg: '50%' } }}>
+          <Box pt={3} pb={2}>
             {/* ========== Render Drawer Content ============ */}
-            <Box>
-              <Grid container spacing={2}>
-                <Grid item xs={12} md={6}>
-                  <ParameterizedDateComponent label="With Effect From" customStyle={{ width: '100%' }} />
-                </Grid>
-                <Grid item xs={12} md={6}>
-                  <SelectList label="Fee Slab" options={SlabOptions} value={addSlab} onChange={addSlabChange} />
-                </Grid>
-                <Grid item xs={12} md={6}>
-                  <SelectList label="Pick Route" options={pickRouteOptions} value={pickRoute} onChange={PickRouteChange} />
-                </Grid>
-                <Grid item xs={12} md={6}>
-                  <SelectList label="Pick Stop" options={pickStopOptions} value={pickStop} onChange={PickStopChange} />
-                </Grid>
-                <Grid item xs={12} md={6}>
-                  <SelectList label="Drop Route" options={dropRouteOptions} value={dropRoute} onChange={DropRouteChange} />
-                </Grid>
-                <Grid item xs={12} md={6}>
-                  <SelectList label="Drop Stop" options={dropStopOptions} value={dropStop} onChange={DropStopChange} />
-                </Grid>
-                <Grid item xs={12} md={6}>
-                  <ParamMultipleSelect options={transportMonths} label="Select Month" value={selectedMonth} setValue={setSelectedMonth} />
-                </Grid>
-                <Grid item xs={12} md={6}>
-                  <ParameterizedDateComponent label="Transport Left Date" customStyle={{ width: '100%' }} />
-                </Grid>
-                <Grid item xs={12} md={6}>
-                  <Box p={0.5}>Remarks</Box>
-                  <TextArea rows={4} placeholder="Enter your text here..." fullWidth variant="outlined" />
-                </Grid>
+            <Container>
+            <Grid container spacing={2} pb={2}>
+              <Grid item xs={12} md={6}>
+              <Box p={2} sx={{border:'1px solid #ccc', borderRadius:'5px'}}>
+                  <Grid container spacing={2}>
+
+                    <Grid item xs={12} md={12}>
+                      <SelectList label="Enrolment Type" options={enrolmentTypeOption} value={enrolmentType} onChange={enrolmentTypeChange} />
+                    </Grid>
+                    <Grid item xs={12} md={12}>
+                     <TextField id="outlined-basic" label="Admission No." fullWidth variant="outlined" />
+                    </Grid>
+                    <Grid item xs={12} md={12}>
+                    <TextField id="outlined-basic" label="Name" fullWidth variant="outlined" />
+                    </Grid>
+                    <Grid item xs={12} md={12}>
+                    <TextField id="outlined-basic" label="Class" fullWidth variant="outlined" />
+                    </Grid>
+                    <Grid item xs={12} md={12}>
+                    <TextField id="outlined-basic" label="Address" fullWidth variant="outlined" />
+                    </Grid>
+                    <Grid item xs={12} md={12}>
+                    <TextField id="outlined-basic" label="Existing info" fullWidth variant="outlined" />
+                    </Grid>
+                    
+                  </Grid>
+                </Box>
+                
               </Grid>
-            </Box>
+              <Grid item xs={12} md={6}>
+
+              <Box sx={{border:'1px solid #ccc', borderRadius:'5px', height:'419px'}}>
+                <Box p={2} sx={{borderBottom:'1px solid #ccc'}}>
+                  Transport Timeline
+                </Box>
+                    <TransportTimeline/>
+                  </Box>
+              </Grid>
+            </Grid>
+
+            <Box p={2} sx={{border:'1px solid #ccc', borderRadius:'5px'}}>
+                  <Grid container spacing={2}>
+                    <Grid item xs={12} md={6}>
+                      <ParameterizedDateComponent label="With Effect From" customStyle={{ width: '100%' }} />
+                    </Grid>
+                    <Grid item xs={12} md={6}>
+                      <SelectList label="Fee Slab" options={SlabOptions} value={addSlab} onChange={addSlabChange} />
+                    </Grid>
+                    <Grid item xs={12} md={6}>
+                      <SelectList label="Pick Route" options={pickRouteOptions} value={pickRoute} onChange={PickRouteChange} />
+                    </Grid>
+                    <Grid item xs={12} md={6}>
+                      <SelectList label="Pick Stop" options={pickStopOptions} value={pickStop} onChange={PickStopChange} />
+                    </Grid>
+                    <Grid item xs={12} md={6}>
+                      <SelectList label="Drop Route" options={dropRouteOptions} value={dropRoute} onChange={DropRouteChange} />
+                    </Grid>
+                    <Grid item xs={12} md={6}>
+                      <SelectList label="Drop Stop" options={dropStopOptions} value={dropStop} onChange={DropStopChange} />
+                    </Grid>
+                    <Grid item xs={12} md={6}>
+                      <ParamMultipleSelect
+                        options={transportMonths}
+                        label="Select Month"
+                        value={selectedMonth}
+                        setValue={setSelectedMonth}
+                      />
+                    </Grid>
+                    <Grid item xs={12} md={6}>
+                      <ParameterizedDateComponent label="Transport Left Date" customStyle={{ width: '100%' }} />
+                    </Grid>
+                    <Grid item xs={12} md={6}>
+                      <Box p={0.5}>Remarks</Box>
+                      <TextArea rows={4} placeholder="Enter your text here..." fullWidth variant="outlined" />
+                    </Grid>
+                  </Grid>
+                </Box>
+            </Container>
           </Box>
         </Box>
       </Drawer>
