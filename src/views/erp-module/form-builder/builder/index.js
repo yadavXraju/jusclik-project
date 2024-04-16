@@ -17,7 +17,7 @@ const BasicFields = () => {
           {basicFields && basicFields.map((field) => (
             <Draggable draggableId={`label-${field?.id}`} index={field?.id} key={field?.id}>
               {(provided) => (
-                <Box
+                <Box 
                   {...provided.dragHandleProps}
                   {...provided.draggableProps}
                   ref={provided.innerRef}
@@ -36,7 +36,7 @@ const BasicFields = () => {
 const AdvancedFiedls = () => {
   const { advancedFields } = useSelector((state) => state.customForm);
   return (
-    <Box sx={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+    <Box sx={{ display: "flex", flexDirection: "column", gap: "10px"}}>
       {advancedFields && advancedFields.map((field) => (
         <Box key={field.id} className="scrollbar">
           <Box sx={{ border: "1px solid #eee", height: "40px", borderRadius: "4px", display: "flex", alignItems: "center", width: "85%", paddingLeft: "10px" }}>

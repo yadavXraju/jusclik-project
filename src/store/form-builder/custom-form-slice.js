@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+
 const basicFields = [
                     {
                         id: 3,
@@ -66,7 +67,100 @@ const basicFields = [
                         type: "text",
                         selected: false,
                         id: 14
-                    },  
+                    }, 
+                    {
+                        name:"Decision-Box",
+                        type:"text",
+                        selected:false,
+                        id:15
+                    },{
+                        name:"DropDown",
+                        type:"text",
+                        selected:false,
+                        id:16
+                    },{
+                        name:"Radio",
+                        type:"text",
+                        selected:false,
+                        id:17
+                    },{
+                        name:"Multiple Choice",
+                        type:"text",
+                        selected:false,
+                        id:18
+                    },
+                    {
+                        name:"Checkbox",
+                        type:"text",
+                        selected:false,
+                        id:19
+                    },
+                    {
+                        name:"Website",
+                        type:"text",
+                        selected:false,
+                        id:20
+                    },{
+                        name:"Currency",
+                        type:"text",
+                        selected:false,
+                        id:21
+                    },
+                    {
+                        name:"File Upload",
+                        type:"text",
+                        selected:false,
+                        id:22
+                    },{
+                        name:"Image Upload",
+                        type:"text",
+                        selected:false,
+                        id:23
+                    },{
+                        name:"Audio/Video Upload",
+                        type:"text",
+                        selected:false,
+                        id:24
+                    },
+                    {
+                        name:"Description",
+                        type:"text",
+                        selected:false,
+                        id:25
+                    },{
+                        name:"Section",
+                        type:"text",
+                        selected:false,
+                        id:26
+                    },
+                    {
+                        name:"Section",
+                        type:"text",
+                        selected:false,
+                        id:27
+                    },{
+                        name:"Page Break",
+                        type:"text",
+                        selected:false,
+                        id:28
+                    },
+                    {
+                        name:"Slider",
+                        type:'text',
+                        selected:false,
+                        id:29
+                    },
+                    {
+                        name:"Rating",
+                        type:"text",
+                        selected:false,
+                        id:30
+                    },{
+                        name:"Unique ID",
+                        type:"text",
+                        selected:false,
+                        id:31
+                    }
     ]
 
 const advancedFields=[
@@ -105,6 +199,13 @@ const advancedFields=[
     }
 ]
 
+//const selectedComponent=[
+//     {
+//         id:1245,
+//         type:"Number",
+           
+//     }
+// ]
 const initialState = {
     basicFields: basicFields,
     advancedFields:advancedFields
