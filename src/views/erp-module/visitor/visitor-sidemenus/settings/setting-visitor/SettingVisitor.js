@@ -69,7 +69,7 @@ const SettingData = [
   }
 ];
 
-const Organisation= () =>{
+const SettingVisitor= () =>{
   return(
     <>
     <CommonSettings SettingData={SettingData} />
@@ -77,4 +77,4 @@ const Organisation= () =>{
   )
 }
 
-export default Organisation;
+export { SettingData, SettingVisitor as default };

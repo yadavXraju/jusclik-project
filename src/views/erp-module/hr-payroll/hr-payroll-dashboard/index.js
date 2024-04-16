@@ -14,7 +14,7 @@ const Dashboard = () => {
   return (
     <>
       <Box sx={{ width: '100%', typography: 'body1' }}>
-        <TabContext value={value}  variant="scrollable">
+        <TabContext value={value}>
           <Paper sx={{ mx: '24px', background: 'none' }}>
             <Box sx={{ 
               borderBottom: 0,
@@ -25,13 +25,13 @@ const Dashboard = () => {
                 marginBottom: '10px'
               }
             }}>
-              <TabLabel handleChange={handleChange}   />
+              <TabLabel handleChange={handleChange} />
             </Box>
           </Paper>
-          <TabPanel icon={<PhoneIcon />} value="1" sx={{padding:'0'}}><DashboardContent/></TabPanel>
-          <TabPanel value="2" sx={{padding:'0'}}><DashboardPayRoll /></TabPanel>
-          <TabPanel value="3" sx={{padding:'0'}}></TabPanel>
-          <TabPanel value="4" sx={{padding:'0'}}></TabPanel>
+          <TabPanel icon={<PhoneIcon />} value="1"><DashboardContent/></TabPanel>
+          <TabPanel value="2"><DashboardPayRoll /></TabPanel>
+          <TabPanel value="3"></TabPanel>
+          <TabPanel value="4"></TabPanel>
         </TabContext>
       </Box>
     </>

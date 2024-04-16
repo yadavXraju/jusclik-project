@@ -1,14 +1,11 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import { DataGrid } from '@mui/x-data-grid';
-import { Card, IconButton, Button, Grid ,TextField} from '@mui/material';
+import { Card, IconButton, Button, Grid, TextField } from '@mui/material';
 import { Box } from '@mui/system';
 import { useNavigate } from 'react-router-dom';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 import Drawer from '@mui/material/Drawer';
-import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
-import MoreVertTwoToneIcon from '@mui/icons-material/MoreVertTwoTone';
 import Typography from '@mui/material/Typography';
-import Popover from '@mui/material/Popover';
 import FilterListRoundedIcon from '@mui/icons-material/FilterListRounded';
 import AdmissionDrawer from './AdmissionDrawer';
 import RemoveRedEyeTwoToneIcon from '@mui/icons-material/RemoveRedEyeTwoTone';
@@ -17,10 +14,11 @@ import EditDrawer from './EditDrawer';
 import FilterStudents from 'views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/reports/common-report-section/filter-and-sort/Filter';
 import WarningDialog from 'views/common-section/WarningDialog';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
-import {useSelector}  from 'react-redux';
+import { useSelector } from 'react-redux';
+import ChangeEnrolmentDrawer from './ChangeEnrolmentDrawer';
 
- const AdmissionTable=()=>{
-  const {studentDetailsList}=useSelector((state)=>state.admission)
+const AdmissionTable = () => {
+  const { studentDetailsList } = useSelector((state) => state.admission);
   const navigate = useNavigate();
   const [tableRows, setTableRows] = React.useState(studentDetailsList);
   const [currEditItem, setCurrEditItem] = React.useState({});
@@ -31,7 +29,7 @@ import {useSelector}  from 'react-redux';
   //   navigate(`../registration`);
   // };
 
-// search 
+  // search
 
   const [isSearchVisible, setSearchVisible] = useState(false);
 
@@ -42,7 +40,7 @@ import {useSelector}  from 'react-redux';
   const handleCloseSearch = () => {
     setSearchVisible(false);
   };
-  
+
   const Click = (rowData) => {
     navigate('/erp/student-info-fee/student-master/admission-form', { state: { rowData } });
   };
@@ -69,13 +67,13 @@ import {useSelector}  from 'react-redux';
     const updatedRows = tableRows.filter((row) => row.id !== deleteId);
     setTableRows(updatedRows);
     setmodalOpen(false);
-    setdeleteId(null)
+    setdeleteId(null);
   };
 
   // ========== function for handle delete row ===========
   const handleDeleteRow = (id) => {
     // handleModalOpen();
-    setdeleteId(id)
+    setdeleteId(id);
     setmodalOpen(true);
     // const updatedRows = tableRows.filter((row) => row.id !== id);
     // setTableRows(updatedRows);
@@ -116,44 +114,43 @@ import {useSelector}  from 'react-redux';
   // =========== Custom style for filter ============
   const style = {
     customFilterContainerStyle: {
-      position: "relative",
-      border: "1px solid #f0f5f8",
-      width: "100%",
-      height:"calc(100vh - 112px)",
+      position: 'relative',
+      border: '1px solid #f0f5f8',
+      width: '100%',
+      height: 'calc(100vh - 112px)'
     },
     customSelectedFilter: {
-      position: "absolute",
-      display: "flex",
-      flexDirection: "column",
-      top: "80px",
-      width: "100%",
-      height:"calc(100vh - 200px)",
-      overflowY: "auto",
-      backgroundColor: "#eef2f629",
-      zIndex: "3",
+      position: 'absolute',
+      display: 'flex',
+      flexDirection: 'column',
+      top: '80px',
+      width: '100%',
+      height: 'calc(100vh - 200px)',
+      overflowY: 'auto',
+      backgroundColor: '#eef2f629',
+      zIndex: '3'
     },
     customAvialbelFilter: {
       position: 'absolute',
-      width: "calc(100% - 20px)",
+      width: 'calc(100% - 20px)',
       overflowY: 'auto',
-      zIndex: "5",
-      backgroundColor: "white",
-      paddingLeft: "20px"
+      zIndex: '5',
+      backgroundColor: 'white',
+      paddingLeft: '20px'
     },
     customClearFilter: {
-      position: "fixed",
-      bottom:"0px",
-      width:"600px",
-      display: "flex",
-      justifyContent: "flex-end",
-      height: "60px",
-      borderTop: "1px solid #f0f5f8",
-      alignItems: "center",
-      gap: "20px",
-      zIndex:"20"
-    },
-  }
-
+      position: 'fixed',
+      bottom: '0px',
+      width: '600px',
+      display: 'flex',
+      justifyContent: 'flex-end',
+      height: '60px',
+      borderTop: '1px solid #f0f5f8',
+      alignItems: 'center',
+      gap: '20px',
+      zIndex: '20'
+    }
+  };
 
   return (
     <>
@@ -173,42 +170,35 @@ import {useSelector}  from 'react-redux';
                 Add Student
               </Button> */}
                 <AdmissionDrawer />
-                
-      <IconButton
-        sx={{ marginRight: '8px', background: '#cccccc54' }}
-        onClick={handleSearchClick}
-      >
-        <SearchOutlinedIcon />
-      </IconButton>
-      {isSearchVisible && (
-        <TextField
-        sx={{
-          marginRight:"8px",
-          marginTop:"0px",
-          height: '30px', // Adjust the height according to your preference
-          '& input': {
-            paddingTop: '8px',
-            paddingBottom:"8px" // Adjust the top padding to center the text vertically
-          },
-        }}
-        autoFocus
-        variant="outlined"
-        margin="dense"
-        onBlur={handleCloseSearch}
-        onKeyDown={(e) => {
-          if (e.key === 'Escape') {
-            handleCloseSearch();
-          }
-        }}
-        />
-      )}
+
+                <IconButton sx={{ marginRight: '8px', background: '#cccccc54' }} onClick={handleSearchClick}>
+                  <SearchOutlinedIcon />
+                </IconButton>
+                {isSearchVisible && (
+                  <TextField
+                    sx={{
+                      marginRight: '8px',
+                      marginTop: '0px',
+                      height: '30px', // Adjust the height according to your preference
+                      '& input': {
+                        paddingTop: '8px',
+                        paddingBottom: '8px' // Adjust the top padding to center the text vertically
+                      }
+                    }}
+                    autoFocus
+                    variant="outlined"
+                    margin="dense"
+                    onBlur={handleCloseSearch}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Escape') {
+                        handleCloseSearch();
+                      }
+                    }}
+                  />
+                )}
                 <IconButton sx={{ marginRight: '8px', background: '#cccccc54' }}>
                   <FilterListRoundedIcon onClick={toggleDrawer('right', true)} />
-                  <Drawer
-                    anchor="right"
-                    open={anchor.right}
-                    onClose={toggleDrawer('right', false)}
-                  >
+                  <Drawer anchor="right" open={anchor.right} onClose={toggleDrawer('right', false)}>
                     <Box sx={{ width: { xs: '100%', sm: 650 }, padding: 2 }} role="presentation">
                       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #ccc' }}>
                         <Typography variant="h4">Filter</Typography>
@@ -216,41 +206,18 @@ import {useSelector}  from 'react-redux';
                           Close
                         </Button>
                       </Box>
-                      <FilterStudents customFilterContainerStyle={style?.customFilterContainerStyle}
-                        customSelectedFilter={style?.customSelectedFilter} customAvialbelFilter={style?.customAvialbelFilter}
-                         customClearFilter={style?.customClearFilter}
-                         applyFilter={1}
+                      <FilterStudents
+                        customFilterContainerStyle={style?.customFilterContainerStyle}
+                        customSelectedFilter={style?.customSelectedFilter}
+                        customAvialbelFilter={style?.customAvialbelFilter}
+                        customClearFilter={style?.customClearFilter}
+                        applyFilter={1}
                       />
                     </Box>
                   </Drawer>
                 </IconButton>
-                <PopupState variant="popover" popupId="demo-popup-popover">
-                  {(popupState) => (
-                    <div>
-                      <IconButton sx={{ background: '#cccccc54' }} {...bindTrigger(popupState)}>
-                        <MoreVertTwoToneIcon />
-                      </IconButton>
-                      <Popover
-                        {...bindPopover(popupState)}
-                        anchorOrigin={{
-                          vertical: 'bottom',
-                          horizontal: 'center'
-                        }}
-                        transformOrigin={{
-                          vertical: 'top',
-                          horizontal: 'center'
-                        }}
-                      >
-                        <Typography sx={{ p: 1, display: 'Grid' }}>
-                          <Button sx={{ color: 'black', borderBottom: '1px dotted #ccc' }}>Change Enrolment Status</Button>
-                          <Button sx={{ color: 'black', borderBottom: '1px dotted #ccc' }}>Change Enrolment Number</Button>
-                          <Button sx={{ color: 'black', borderBottom: '1px dotted #ccc' }}>Initiate Withdrawal</Button>
-                          <Button sx={{ color: 'black', borderBottom: '1px dotted #ccc' }}>Bulk Editing</Button>
-                        </Typography>
-                      </Popover>
-                    </div>
-                  )}
-                </PopupState>
+                    
+                <ChangeEnrolmentDrawer/>
               </div>
             </Grid>
           </Grid>
@@ -277,9 +244,8 @@ import {useSelector}  from 'react-redux';
         contentText="Are you sure you want to delete?"
         onConfirm={handleConfirmDelete}
       />
-
     </>
   );
-}
+};
 
 export default AdmissionTable;

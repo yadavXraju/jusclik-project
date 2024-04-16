@@ -26,8 +26,8 @@ export const ErpModuleList = [
         id:2,
         name:'HR & Payroll',
         icon : <img src={hr} alt='icon' style={{width:'34px', margin:'auto'}} />,
-        url: '',
-        role : 'hr-pay-roll',
+        url: '/erp/hr-payroll/dashboard',
+        role : 'hr-payroll',
     },
 
 
@@ -102,6 +102,14 @@ export const ErpModuleList = [
         icon : <img src={relationship} alt='icon' style={{width:'34px', margin:'auto'}} />,
         url: '',
         role : 'customer-relationship',
+    },
+
+    {
+        id:12,
+        name:'Form Builder',
+        icon : <img src={relationship} alt='icon' style={{width:'34px', margin:'auto'}} />,
+        url: '/forms',
+        role : '',
     },
 
 ]

@@ -7,12 +7,12 @@ function RemarkTable() {
     <div>
       <Paper>
       <Grid container spacing={2} p={2} alignItems="end">
-          <Grid item xs={12} sm={8} lg={8}>
+          <Grid item xs={12} sm={8} lg={8} >
             <div>
               <Typography variant="h3">Remark Entry</Typography>
             </div>
           </Grid>
-          <Grid item xs={12} sm={4} lg={4}>
+          <Grid item xs={12} sm={4} lg={4} >
             <div style={{ display: 'flex', justifyContent: 'flex-end', width: '100%' }}>
               <RemarkDrawer/>
             </div>
