@@ -1,20 +1,25 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import TextFieldsTwoToneIcon from '@mui/icons-material/TextFieldsTwoTone';
+import { FormControl, Typography } from '@mui/material';
 
-export default function BasicTextFields() {
+const SingleLine=()=>{
   return (
-    <Box
-      component="form"
-      sx={{
-        '& > :not(style)': { m: 1, width: '25ch' },
-      }}
-      noValidate
-      autoComplete="off"
-    >
-        <TextFieldsTwoToneIcon/>
-      <TextField id="" label="" variant="outlined" />
-    </Box>
+    <>
+    <FormControl>
+        <Typography>Single Line</Typography>
+        <TextField
+        id=""
+        label=""
+        variant="outlined"
+        InputProps={{
+          startAdornment: (
+            <TextFieldsTwoToneIcon sx={{ mr: 1 }} />
+          ),
+        }}
+      />
+      </FormControl>
+      </>
   );
 }
+export default SingleLine
