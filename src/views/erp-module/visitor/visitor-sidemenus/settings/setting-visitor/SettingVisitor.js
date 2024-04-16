@@ -25,11 +25,11 @@ const SettingData = [
     items: [
       // { name: 'Department', path: '/erp/visitor/settings/department' },
       
-      { name: 'Purpose', path: '/erp/visitor/settings/purpose' },
-      { name: 'To Meet', path: '/erp/visitor/settings/to-meet' },
+      { name: 'Purpose', path: '/erp/visitor/settings/purpose/',id:245769457 },
+      { name: 'To Meet', path: '/erp/visitor/settings/purpose/',id:245745644 },
       { name: 'Visitor Category', path: '/erp/visitor/settings/visitor-category' },
       { name: 'Location', path: '/erp/visitor/settings/location' },
-      { name: 'Blacklist Visitors', path: '/erp/visitor/settings/blacklist-visitors' },
+      { name: 'Blacklist Visitors', path:  '/erp/visitor/settings/purpose',id:65468742},
     ]
   },
   {
