@@ -89,7 +89,7 @@ export default function ChangeEnrolmentDrawer() {
               fullWidth
             >
               {Enrollment.map((option) => (
-                <MenuItem key={option.value} value={option.value}>
+                <MenuItem key={option.value} value={option.value}> 
                   {option.label}
                 </MenuItem>
               ))}
@@ -151,7 +151,7 @@ export default function ChangeEnrolmentDrawer() {
               </Grid>
             </>
           )}
-          {['Registration', 'Provisional', 'Admission'].includes(selectedChangeStatus) && (
+          {['Registration', 'Provisional', 'Admission','Cancel'].includes(selectedChangeStatus) && (
             <>
               
               <Grid item xs={12} sx={{ paddingTop: '17px', paddingLeft:'8px', paddingRight:'8px',paddingBottom:'12px' }}>
@@ -180,7 +180,9 @@ export default function ChangeEnrolmentDrawer() {
                   <MenuItem value="Any Other">Any Other</MenuItem>
                 </TextField>
               </Grid>
+              
             )}
+            
         </Grid>
         <Box sx={{paddingTop:'30px'}}>
           <Stack spacing={2} direction="row">
