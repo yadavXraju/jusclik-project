@@ -1,5 +1,5 @@
 import React from 'react';
-import { Typography, Paper, Box, Button, useTheme, Grid } from '@mui/material';
+import { Typography, Paper, Box, Button, useTheme, Grid , useMediaQuery} from '@mui/material';
 import { Link } from 'react-router-dom';
 import CheckOutlinedIcon from '@mui/icons-material/CheckOutlined';
 import AccountBalanceRoundedIcon from '@mui/icons-material/AccountBalanceRounded';
@@ -10,6 +10,7 @@ import MainCard from 'ui-component/cards/MainCard';
 import ProgressBar from './ProgressBar';
 import FaqEnquiry from './FaqEnquiry';
 import { useState } from 'react';
+
 
 const stepsData = [
   { title: 'Add Organisation Details', completed: true, path: '/organisation-details' },
@@ -39,6 +40,12 @@ const DashboardMain = () => {
     updatedSteps[index].completed = true;
     setSteps(updatedSteps);
   };
+
+  const responsive = useMediaQuery('(max-width:900px)')
+  const fontresponsive  = useMediaQuery('(max-width:600px)')
+  const padding = responsive?'10px':'50px'
+  const variant_h = fontresponsive?"h6":"h5"
+  const variant_2= fontresponsive?"h5":"h4"
 
   return (
     <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', margin: 'auto' }}>
@@ -78,7 +85,7 @@ const DashboardMain = () => {
       </MainCard>
 {/* getting started titles */}
 
-      <Paper elevation={1} sx={{ padding: '50px',
+      <Paper elevation={1} sx={{ padding: padding,
           marginTop: '-16px',
           width: '100%',
           [theme.breakpoints.up('sm')]: {
@@ -102,13 +109,13 @@ const DashboardMain = () => {
             <Link to={step.completed ? step.path : '/'} style={{ textDecoration: 'none' }}>
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
             <CheckOutlinedIcon sx={{ backgroundColor: step.completed ? '#14B474' : '#D4DADD', borderRadius: '50%', color: 'white', padding: '2px' }} />
-            <Typography variant="h4" sx={{ paddingLeft: '15px' }}>
+            <Typography variant={variant_2} sx={{ paddingLeft: '15px' }}>
               {step.title}
             </Typography>
           </Box>
           </Link>
           {step.completed ? (
-            <Typography variant="h5" sx={{ color: '#35AB91' }}>
+            <Typography variant={variant_h} sx={{ color: '#35AB91' }}>
               Completed
             </Typography>
           ) : (
@@ -137,7 +144,7 @@ const DashboardMain = () => {
                     '&:hover': { backgroundColor: 'rgb(64, 141, 251)', color: 'white' },
                   }}
                 >
-                  Complete Now
+                 <Typography variant={variant_h}>Complete Now </Typography> 
                 </Button>
               </Link>
             </Box>
