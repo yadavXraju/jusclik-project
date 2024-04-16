@@ -28,10 +28,10 @@ const Dashboard = () => {
               <TabLabel handleChange={handleChange}   />
             </Box>
           </Paper>
-          <TabPanel icon={<PhoneIcon />} value="1"><DashboardContent/></TabPanel>
-          <TabPanel value="2"><DashboardPayRoll /></TabPanel>
-          <TabPanel value="3"></TabPanel>
-          <TabPanel value="4"></TabPanel>
+          <TabPanel icon={<PhoneIcon />} value="1" sx={{padding:'0'}}><DashboardContent/></TabPanel>
+          <TabPanel value="2" sx={{padding:'0'}}><DashboardPayRoll /></TabPanel>
+          <TabPanel value="3" sx={{padding:'0'}}></TabPanel>
+          <TabPanel value="4" sx={{padding:'0'}}></TabPanel>
         </TabContext>
       </Box>
     </>

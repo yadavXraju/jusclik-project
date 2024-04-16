@@ -8,6 +8,10 @@ const ContactSupport = Loadable(lazy(() => import('views/erp-common-component/po
 const Forms= Loadable(lazy(() => import('views/erp-module/form-builder')));
 const Builder= Loadable(lazy(() => import('views/erp-module/form-builder/builder')));
 
+// temp routes
+const DamanTemp= Loadable(lazy(() => import('views/erp-module/form-builder/common/common-fields')));
+const CommonDrawer= Loadable(lazy(() => import('views/erp-module/form-builder/common/common-drawer')));
+
 // visitor reg
 
 
@@ -41,10 +45,16 @@ const CommonRoutes = [
              },
 
           ]
-            
+          },
+          // temp routes
+          { 
+            path: 'daman-temp', 
+            element: <DamanTemp />
             },
-
-
+            { 
+              path: 'common-drawer', 
+              element: <CommonDrawer />
+              },
     ]
 }
 ];

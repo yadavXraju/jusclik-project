@@ -18,7 +18,7 @@ const SystemDataPages=()=>{
   const {anchor,toggleDrawer}=useDrawer();
   const tabPage = [
     {
-      id: 1,
+      id: 245769457,
       name: "Visitor Purpose",
       component: VisitorPurpose,
       props: {
@@ -27,7 +27,7 @@ const SystemDataPages=()=>{
       }
     },
     {
-      id: 2,
+      id: 245745644,
       name: "ToMeet",
       component: ToMeet,
       props: {
@@ -35,7 +35,7 @@ const SystemDataPages=()=>{
         toggleAddDrawer: anchor
       }
     }, {
-      id: 3,
+      id: 65468742,
       name: "Black Listed Visitor",
       component: BlackListed,
       props: {
@@ -51,7 +51,7 @@ const SystemDataPages=()=>{
       <>
        <Box sx={{ display: "flex", justifyContent: "space-between", width: "97%", alignItems: "center" }}>
         <Typography variant="p" sx={{ marginTop: "-20px", marginLeft: "20px" }}>
-         Purpose
+     
         </Typography>
         <Button onClick={toggleDrawer('right', true)} sx={{ margin: "0px 0px 20px 60px", height: "40px", color: '#fff' }} variant="contained" startIcon={<AddIcon />}>Add Field</Button>
       </Box>
@@ -63,7 +63,7 @@ const SystemDataPages=()=>{
 
 
             <Button sx={{marginTop:"-6px"}} onClick={toggleDrawer('right', false)}>Close</Button>
-          </Box>
+         </Box>
           
 
 
