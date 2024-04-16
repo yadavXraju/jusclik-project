@@ -4,14 +4,9 @@ import { IconButton, Tooltip } from '@mui/material';
 import { Box } from '@mui/system';
 import { useNavigate } from 'react-router-dom';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
-// import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
-// import MoreVertTwoToneIcon from '@mui/icons-material/MoreVertTwoTone';
-// import Typography from '@mui/material/Typography';
-// import Popover from '@mui/material/Popover';
 import RemoveRedEyeTwoToneIcon from '@mui/icons-material/RemoveRedEyeTwoTone';
 import rows from './TransportTableData';
 import WarningDialog from 'views/common-section/WarningDialog';
-//import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 
 
@@ -51,8 +46,6 @@ const Click = (id) => {
   const columns = [
     { field: 'AdmNo', headerName: 'Admission No.', flex: 1, minWidth: 130, align: 'left', headerAlign: 'left' },
     { field: 'StudentName', headerName: 'Name', flex: 1, minWidth: 130 },
-    // { field: 'class', headerName: 'Class/Section', flex: 1, minWidth: 100 },
-    // { field: 'Section', headerName: 'Section', flex: 1, minWidth: 100 },
     { field: 'ClassSection', headerName: 'Class/Section', flex: 1, minWidth: 100, 
       valueGetter: (params) => `${params.row.class}-${params.row.Section}` 
     },
@@ -99,50 +92,7 @@ const Click = (id) => {
   return (
     <>
       <Box>
-        {/* <Box sx={{ borderBottom: '1px solid #ccc' }}>
-          <Grid container spacing={2} p={2} sx={{ alignItems: 'end' }}>
-            <Grid item xs={12} sm={8} lg={8}>
-              <Box sx={{ paddingBottom: '0px' }}>
-                <Typography variant="h4" sx={{ pb: '0px' }}>
-                  Transport Details
-                </Typography>
-              </Box>
-            </Grid>
-            <Grid item xs={12} sm={4} lg={4}>
-              <div style={{ display: 'flex', justifyContent: 'end', width: '100%' }}>
-                    
-                <IconButton sx={{ marginRight: '8px', background: '#cccccc54' }}>
-                  <SearchOutlinedIcon />
-                </IconButton>
-                <PopupState variant="popover" popupId="demo-popup-popover">
-                  {(popupState) => (
-                    <div>
-                      <IconButton sx={{ background: '#cccccc54' }} {...bindTrigger(popupState)}>
-                        <MoreVertTwoToneIcon />
-                      </IconButton>
-                      <Popover
-                        {...bindPopover(popupState)}
-                        anchorOrigin={{
-                          vertical: 'bottom',
-                          horizontal: 'center'
-                        }}
-                        transformOrigin={{
-                          vertical: 'top',
-                          horizontal: 'center'
-                        }}
-                      >
-                        <Typography sx={{ p: 1, display: 'Grid' }}>
-                          <Button sx={{ color: 'black', borderBottom: '1px dotted #ccc' }}>Import Contact</Button>
-                          <Button sx={{ color: 'black', borderBottom: '1px dotted #ccc' }}>Download Contact</Button>
-                        </Typography>
-                      </Popover>
-                    </div>
-                  )}
-                </PopupState>
-              </div>
-            </Grid>
-          </Grid>
-        </Box> */}
+       
         <Box mt={3}>
           <DataGrid
             rows={tableRows}

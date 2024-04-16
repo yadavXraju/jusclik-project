@@ -104,4 +104,12 @@ export const ErpModuleList = [
         role : 'customer-relationship',
     },
 
+    {
+        id:12,
+        name:'Form Builder',
+        icon : <img src={relationship} alt='icon' style={{width:'34px', margin:'auto'}} />,
+        url: '/forms',
+        role : '',
+    },
+
 ]
