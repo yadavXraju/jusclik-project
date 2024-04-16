@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Grid, Box, Card, Typography, Container } from '@mui/material';
 
 const ParamSetting = ({SettingData}) => {
+
     return (
         <Container>
           <Box sx={{ paddingTop:'2rem'}}>
@@ -19,7 +20,7 @@ const ParamSetting = ({SettingData}) => {
                       </Box>
                       <Box sx={{ paddingTop: '14px' }}>
                         {item.items.map((subItem, subIndex) => (
-                          <Link key={subIndex} to={subItem.path} style={{ textDecoration: 'none', color: 'inherit' }}>
+                          <Link key={subIndex} to={subItem.path} style={{ textDecoration: 'none', color: 'inherit' }} onClick={()=>console.log(subItem.name)}>
                           {/* Use Link to navigate to the specified path */}
                           <Typography sx={{ paddingTop: '14px' }}>{subItem.name}</Typography>
                         </Link>

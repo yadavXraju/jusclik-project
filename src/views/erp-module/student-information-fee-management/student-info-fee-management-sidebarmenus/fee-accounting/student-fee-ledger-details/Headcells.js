@@ -62,29 +62,6 @@ export const headCells = [
       disablePadding: false,
       label: 'Entry Details',
     },
-  
-    // {
-    //   id: 'chq-details',
-    //   numeric: true,
-    //   disablePadding: false,
-    //   label: 'Chq Details',
-    // },
-  
-  
-    // {
-    //   id: 'bank-details',
-    //   numeric: false,
-    //   disablePadding: false,
-    //   label: 'Bank Details',
-    // },
-  
-  
-    // {
-    //   id: 'ref-details',
-    //   numeric: true,
-    //   disablePadding: false,
-    //   label: 'Ref Details',
-    // },
 
      {
       id: 'payment-details',
