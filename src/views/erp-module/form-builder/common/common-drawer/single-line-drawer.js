@@ -8,7 +8,7 @@ import { Typography } from 'antd';
 const SingleLineDrawer = () => {
   const drawerContent = () => (
     <>
-      <Grid container padding='2rem' sx={{height:"calc(100vh - 100px)"}}>
+      <Grid container padding='2rem' sx={{height:"calc(100vh - 100px)"}} className='scrollbar'>
         <Grid item md={12}>
           <TextField placeholder="Feild Label" fullWidth></TextField>
         </Grid>
