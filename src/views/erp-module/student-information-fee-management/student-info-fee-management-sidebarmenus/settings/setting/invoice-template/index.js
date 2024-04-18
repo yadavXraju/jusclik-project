@@ -31,8 +31,9 @@ export const CustomCard = ({ cardName, image, orientation, selectedTemplate,badg
   const [hovered, setHovered] = React.useState(false);
   return (
     <>
-    <Badge badgeContent='Default' color='primary' invisible={!badge} sx={{'& .css-1c7npoy-MuiBadge-badge':{borderRadius:0,    top: '10px',right: '28px'},
-  }}
+    <Badge badgeContent='Default' color='primary'
+     invisible={!badge} 
+    //  sx={{'& .css-1c7npoy-MuiBadge-badge':{borderRadius:0,    top: '10px',right: '28px'},}}
   anchorOrigin={{
     vertical: 'top',
     horizontal: 'right',

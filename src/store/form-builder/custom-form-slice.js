@@ -6,158 +6,186 @@ const basicFields = [
                         id: 3,
                         name: "Single Line",
                         type: "text",
+                        label:"",
                         selected: false
                     },
                     {
                         name: "Multi  Line",
                         type: "text",
+                        label:"",
                         selected: true,
                         id: 4
                     },
                     {
                         name: "Number",
                         type: "date",
+                        label:"",
                         selected: false,
                         id: 5
                     },
                     {
                         name: "Decimal",
                         type: "text",
+                        label:"",
                         selected: true,
                         id: 7
                     },
                     {
                         name: "Name",
                         type: "text",
+                        label:"",
                         selected: false,
                         id: 8
                     },
                     {
                         name: "Address",
                         type: "text",
+                        label:"",
                         selected: false,
                         id: 9
                     },
                     {
                         name: "Phone",
                         type: "text",
+                        label:"",
                         selected: false,
                         id: 10
                     },
                     {
                         name: "Email",
                         type: "date",
+                        label:"",
                         selected: false,
                         id: 11
                     },
                     {
                         name: "Date",
                         type: "text",
+                        label:"",
                         selected: false,
                         id: 12
                     },
                     {
                         name: "Time",
                         type: "text",
+                        label:"",
                         selected: false,
                         id: 13
                     },
                     {
                         name: "Date-Time",
                         type: "text",
+                        label:"",
                         selected: false,
                         id: 14
                     }, 
                     {
                         name:"Decision-Box",
                         type:"text",
+                        label:"",
                         selected:false,
                         id:15
                     },{
                         name:"DropDown",
                         type:"text",
+                        label:"",
                         selected:false,
                         id:16
                     },{
                         name:"Radio",
                         type:"text",
+                        label:"",
                         selected:false,
                         id:17
                     },{
                         name:"Multiple Choice",
                         type:"text",
+                        label:"",
                         selected:false,
                         id:18
                     },
                     {
                         name:"Checkbox",
                         type:"text",
+                        label:"",
                         selected:false,
                         id:19
                     },
                     {
                         name:"Website",
                         type:"text",
+                        label:"",
                         selected:false,
                         id:20
                     },{
                         name:"Currency",
                         type:"text",
+                        label:"",
                         selected:false,
                         id:21
                     },
                     {
                         name:"File Upload",
                         type:"text",
+                        label:"",
                         selected:false,
                         id:22
                     },{
                         name:"Image Upload",
                         type:"text",
+                        label:"",
                         selected:false,
                         id:23
                     },{
                         name:"Audio/Video Upload",
                         type:"text",
+                        label:"",
                         selected:false,
                         id:24
                     },
                     {
                         name:"Description",
                         type:"text",
+                        label:"",
                         selected:false,
                         id:25
                     },{
                         name:"Section",
                         type:"text",
+                        label:"",
                         selected:false,
                         id:26
                     },
                     {
                         name:"Section",
                         type:"text",
+                        label:"",
                         selected:false,
                         id:27
                     },{
                         name:"Page Break",
                         type:"text",
+                        label:"",
                         selected:false,
                         id:28
                     },
                     {
                         name:"Slider",
                         type:'text',
+                        label:"",
                         selected:false,
                         id:29
                     },
                     {
                         name:"Rating",
                         type:"text",
+                        label:"",
                         selected:false,
                         id:30
                     },{
                         name:"Unique ID",
                         type:"text",
+                        label:"",
                         selected:false,
                         id:31
                     }
@@ -199,13 +227,7 @@ const advancedFields=[
     }
 ]
 
-//const selectedComponent=[
-//     {
-//         id:1245,
-//         type:"Number",
-           
-//     }
-// ]
+
 const initialState = {
     basicFields: basicFields,
     advancedFields:advancedFields

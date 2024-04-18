@@ -30,7 +30,7 @@ const Profile = ({ teacherDetails }) => {
 
 
       {/* Button to view profile */}
-      <Button sx={{ textTransform: 'uppercase', background: 'rgb(33, 150, 243)', color: '#fff', marginTop: '1rem' }} variant="contained" onClick={() => navigate(teacherDetails.link)}>
+      <Button sx={{ textTransform: 'uppercase', background: 'rgb(33, 150, 243)', color: '#fff', marginTop: '1rem' , fontSize:{md:'14px' , sm:'12px' , xs:'10px'}}} variant="contained" onClick={() => navigate(teacherDetails.link)}>
         View Profile
       </Button>
     </Box>

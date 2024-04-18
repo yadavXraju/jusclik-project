@@ -28,7 +28,7 @@ const Assignments = () => {
 
   if(res2560) {
 
-    rem= '19rem'
+    rem= '18rem'
   }
 
   const handleChange = (event, newValue) => {
