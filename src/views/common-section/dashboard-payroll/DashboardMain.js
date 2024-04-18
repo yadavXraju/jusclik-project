@@ -12,6 +12,8 @@ import FaqEnquiry from './FaqEnquiry';
 import { useState } from 'react';
 
 
+
+
 const stepsData = [
   { title: 'Add Organisation Details', completed: true, path: '/organisation-details' },
   { title: 'Upload Student Data', completed: false, path: '/upload-student-data' },
@@ -167,8 +169,8 @@ const DashboardMain = () => {
         <Typography variant="h5">ADDITIONAL NOTABLE FEATURES</Typography>
         <Grid container spacing={1} sx={{ paddingTop: '30px' }}>
           {featuresData.map((feature, index) => (
-            <Grid item key={index} xs={6} sm={3} md={3} lg={3} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <Link to={feature.path} style={{ textDecoration: 'none', }}>
+            <Grid item key={index} xs={6} sm={6} md={6} lg={3} sx={{  alignItems: 'center' }}>
+                <Link to={feature.path} style={{ textDecoration: 'none',display:'flex',flexDirection:'column' ,justifyContent:'center' ,alignItems:'center' }} >
               <Box
                 sx={{
                   backgroundColor: '#DCF7EC',
@@ -184,7 +186,7 @@ const DashboardMain = () => {
               >
                 {feature.icon}
               </Box>
-              <Typography sx={{ paddingTop: '8px' , color:'#000'}}>{feature.text}</Typography>
+              <Typography sx={{ paddingTop: '8px' , color:'#000' , textAlign:'center'}}>{feature.text}</Typography>
               </Link>
             </Grid>
           ))}

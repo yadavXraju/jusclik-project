@@ -14,7 +14,7 @@ export default function BasicTabs() {
   const [value, setValue] = React.useState('1');
   let rem = null;
   if(res2560) {
-    rem='20rem'
+    rem='17rem'
 
   }
 

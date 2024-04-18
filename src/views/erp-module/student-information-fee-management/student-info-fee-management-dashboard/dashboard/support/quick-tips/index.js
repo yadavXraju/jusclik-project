@@ -42,11 +42,12 @@ const QuickTips = () => {
                                     <Grid container alignItems="center" justifyContent="space-between">
                                     <Grid item>
                                         <Box>
-                                            <Button variant="contained">{item.btnText}</Button>
+                                            <Button sx={{fontSize:{md:'14px' , sm:'12px' , xs:'10px'}}} variant="contained">{item.btnText}</Button>
                                         </Box>
                                     </Grid>
                                     </Grid>
                                 </Grid>
+    
     
                         </Grid>
                         </Grid>

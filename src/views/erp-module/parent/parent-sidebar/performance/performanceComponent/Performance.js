@@ -1,7 +1,8 @@
 import React from 'react';
-import { Grid, Box, Button, Typography, Paper } from '@mui/material';
+import { Grid, Box, Button, Typography, Paper, useMediaQuery } from '@mui/material';
 import PerformanceChart from './PerformanceChart';
 import SubjectDisplay from './SubjectDisplay';
+
 
 const subjectsData = [
   { subject: 'ENGLISH', progress: 98, Marks: "40", Grade: "A" },
@@ -12,11 +13,13 @@ const subjectsData = [
 ];
 
 function Performance() {
+  const res2560 = useMediaQuery('(min-width:2000px')
+ const item_position = res2560?"baseline":"center"
   return (
     <>
       <Paper sx={{ padding: "10px 0px" }}>
         <Grid container spacing={2}>
-          <Grid item xs={12} lg={4} sx={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
+          <Grid item xs={12} lg={4} sx={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems:item_position }}>
             <Box sx={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
               <PerformanceChart value={78} />
               <Button variant="outlined" sx={{ margin: "30px 10px 10px" }}>
