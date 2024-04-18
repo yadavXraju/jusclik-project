@@ -115,7 +115,6 @@ const Click = (id) => {
         contentText="Are you sure you want to delete?"
         onConfirm={handleConfirmDelete}
       />
-
     </>
   );
 }
