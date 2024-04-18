@@ -68,7 +68,7 @@ const Alert = ({ AlertData }) => {
                                 <Grid container alignItems="center" justifyContent="space-between">
                                   <Grid item>
                                     <Box>
-                                        <Button variant="contained" onClick={()=>navigate(alert.redirect)}>{alert.buttonText}</Button>
+                                        <Button  variant="contained" onClick={()=>navigate(alert.redirect)}>{alert.buttonText}</Button>
                                     </Box>
                                   </Grid>
                                 </Grid>

@@ -5,7 +5,7 @@ import { HeadingCss , boxHeight} from 'views/common-section/dashboard-css/Common
 // import 'views/erp-module/parent/dashboard/dashboard-css/Overflow.css'
 import GmailInboxTemplate from 'views/erp-module/parent/parent-sidebar/communication-message/MailBox'
 
-const Communication = () => {
+const   Communication = () => {
     const isMobile = useMediaQuery('(max-width: 767px)');
   return (
     <>
