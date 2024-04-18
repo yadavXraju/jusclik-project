@@ -3,6 +3,7 @@ import Alert from 'views/common-section/Alerts'
 import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
 import initialData from 'views/erp-module/parent/parent-sidebar/communication-message/MailBox/InboxNameList';
 import AvatarImg from 'assets/images/avatar.png'
+import { Box } from '@mui/material';
 
 
 // store a first data from initialData in this var
@@ -103,7 +104,18 @@ export const ClassTeacherAlertData = [
 const ClassTeacherAlert = () => {
   return (
     <>
+  <Box sx={{
+      '& .css-16ti1tk-MuiButtonBase-root-MuiButton-root': {
+        fontSize: {
+          xs: '10px',
+          sm: '12px',
+          md: '14px'
+        }
+      }
+    }}>
       <Alert AlertData={ClassTeacherAlertData}/>
+    </Box>
+
     </>
   )
 }

@@ -5,11 +5,13 @@ import { Grid , Typography , Box } from '@mui/material';
 import MainCard from 'ui-component/cards/MainCard';
 import { gridSpacing } from 'store/constant';
 import { useNavigate } from 'react-router';
+// import { useSelector } from 'react-redux';
 
 const UrlPage = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
-
+  // const { menuItem } = useSelector((state) => state.menuItemSlice);
+    // console.log(menuItem.id)
   return (
     <>
         <MainCard sx={{ mb: 3 , background:'none' , border:'none' ,}}>

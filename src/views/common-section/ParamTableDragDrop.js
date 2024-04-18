@@ -6,10 +6,10 @@ import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 import SettingsTwoToneIcon from '@mui/icons-material/SettingsTwoTone';
 import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 import useDrawer from 'hooks/useDrawer';
-import TopDrawer from 'views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/settings/fee-structure/regularFeeHead/TopDrawer';
 
 
-const ParamTableDragDrop = ({ columns, initialData, tableStyle, dragIcon = false }) => {
+
+const ParamTableDragDrop = ({ columns, initialData, tableStyle, dragIcon = false, children }) => {
     const [data, setData] = useState(initialData);
     const [editId, setEditId] = useState(null); // State to track the id of the row being edited
     const { anchor , toggleDrawer } = useDrawer(); 
@@ -138,7 +138,7 @@ const ParamTableDragDrop = ({ columns, initialData, tableStyle, dragIcon = false
                     <Typography variant='h4'> Fee Structure </Typography>
                     <Button sx={{marginTop:"-6px"}} onClick={toggleDrawer('top', false)}>Close</Button>
                 </Box>
-                  <TopDrawer />
+                  {children}
                 </Box>
           </Drawer>
         </>

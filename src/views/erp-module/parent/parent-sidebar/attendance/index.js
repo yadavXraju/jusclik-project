@@ -16,7 +16,7 @@ let rem=null;
 
 if (res2560) {
 
-  rem='20rem'
+  rem='18rem'
 }
 
 
