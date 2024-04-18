@@ -1,24 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useDrawer from 'hooks/useDrawer';
 import Drawer from '@mui/material/Drawer';
-import { Button, Typography, Box, Grid } from '@mui/material';
+// import { Button, Typography, Box, Grid, Card, Avatar } from '@mui/material';
+import { Button, Typography, Box, Tab, Tabs, Grid } from '@mui/material';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import ParameterizedDateComponent from 'views/common-section/ParamDateComponent';
 import SelectList from 'views/common-section/ParamSelectList';
-import { useState } from 'react';
 import ParamMultipleSelect from 'views/common-section/ParamMultipleSelect';
 import TextArea from 'antd/es/input/TextArea';
 import TextField from '@mui/material/TextField';
 import TransportTimeline from './TransportTimeline';
-import { Container } from '@mui/system';
+// import { Container } from '@mui/system';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import BottomNavbar from 'views/common-section/BottomNavbar';
 
 const TransportDrawer = () => {
   // ========= call custom hook for toggle drawer ==========
   const { anchor, toggleDrawer } = useDrawer();
+
+  const [tabValue, setTabValue] = useState(0); // State for controlling tabs
+
+  const tabs = ['Basic Info', 'Timeline' ];
+  const tabLength = tabs.length;
+
+  const handleTabChange = (event, newValue) => {
+    setTabValue(newValue);
+  };
+
   //   const [data, setData] = useState({
   //     test : ''
   //   }
   //   )
+
   // ========= state for Slab ============
   const [addSlab, setAddSlab] = useState('');
   const SlabOptions = [
@@ -80,7 +93,7 @@ const TransportDrawer = () => {
     { value: 'Route1', label: 'Enquiry' },
     { value: 'Route2', label: 'Registration' },
     { value: 'Route1', label: 'Provisional' },
-    { value: 'Route2', label: 'Admission' },
+    { value: 'Route2', label: 'Admission' }
   ];
   const enrolmentTypeChange = (event) => {
     setEnrolmentType(event.target.value);
@@ -105,99 +118,156 @@ const TransportDrawer = () => {
 
   return (
     <>
-      <Button onClick={toggleDrawer('top', true)} sx={{ mr: '8px' }} variant="outlined" startIcon={<AddOutlinedIcon />}>
+      <Button onClick={toggleDrawer('right', true)} sx={{ mr: '8px' }} variant="outlined" startIcon={<AddOutlinedIcon />}>
         Add Transport Details
       </Button>
-      <Drawer anchor={'top'} open={anchor.top} onClose={toggleDrawer('top', false)}>
-        <Box sx={{ width: '100%', height: '100vh', padding: 2 }} role="presentation">
+      <Drawer anchor={'right'} open={anchor.right} onClose={toggleDrawer('right', false)}>
+        <Box sx={{ width: { xs: '100vw', sm: 650 }, height: '100vh', padding: 2 }} role="presentation">
           <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #ccc' }}>
             <Typography variant="h4">Add Transport Details</Typography>
-            <Button onClick={toggleDrawer('top', false)} sx={{ alignSelf: 'flex-end' }}>
+            <Button onClick={toggleDrawer('right', false)} sx={{ alignSelf: 'flex-end' }}>
               Close
             </Button>
           </Box>
-          <Box pt={3} pb={2}>
-            {/* ========== Render Drawer Content ============ */}
-            <Container>
-            <Grid container spacing={2} pb={2}>
-              <Grid item xs={12} md={6}>
-              <Box p={2} sx={{border:'1px solid #ccc', borderRadius:'5px'}}>
-                  <Grid container spacing={2}>
 
-                    <Grid item xs={12} md={12}>
-                      <SelectList label="Enrolment Type" options={enrolmentTypeOption} value={enrolmentType} onChange={enrolmentTypeChange} />
-                    </Grid>
-                    <Grid item xs={12} md={12}>
-                     <TextField id="outlined-basic" label="Admission No." fullWidth variant="outlined" />
-                    </Grid>
-                    <Grid item xs={12} md={12}>
-                    <TextField id="outlined-basic" label="Name" fullWidth variant="outlined" />
-                    </Grid>
-                    <Grid item xs={12} md={12}>
-                    <TextField id="outlined-basic" label="Class" fullWidth variant="outlined" />
-                    </Grid>
-                    <Grid item xs={12} md={12}>
-                    <TextField id="outlined-basic" label="Address" fullWidth variant="outlined" />
-                    </Grid>
-                    <Grid item xs={12} md={12}>
-                    <TextField id="outlined-basic" label="Existing info" fullWidth variant="outlined" />
-                    </Grid>
-                    
-                  </Grid>
-                </Box>
-                
-              </Grid>
-              <Grid item xs={12} md={6}>
+          <Box>
+            {/* ========== Render Drawer Contant ============ */}
+            <Box>
+              {/* Tabs for switching between TransportRoutes and Stoppage */}
+              <Tabs
+                value={tabValue}
+                onChange={handleTabChange}
+                sx={{ borderBottom: '1px solid #ccc' }}
+                variant="scrollable"
+                aria-label="Route tabs"
+              >
+                {tabs.map((label, index) => (
+                  // <Tab key={index} label={label} />
+                  <Tab
+                    sx={{ padding: '12px 8px', margin: '0px 10px 0px 0px' }}
+                    key={index}
+                    label={
+                      <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                        <span
+                          style={{
+                            padding: '5px',
+                            border: `1px solid ${tabValue === index ? '#2196f3' : '#ccc'}`,
+                            borderRadius: '50%',
+                            width: '29px',
+                            marginRight: '5px'
+                          }}
+                        >
+                          {index + 1}
+                        </span>
+                        {label}
+                        {<KeyboardArrowRightIcon />}
+                      </Box>
+                    }
+                  />
+                ))}
+              </Tabs>
+              {/* Tab panels based on selected tab */}
+              <Box sx={{ mt: 1 }}>
+                {tabValue === 0 && (
+                  <>
+                    <Box>
+                      <Box p={2} sx={{ border: '1px solid #ccc', borderRadius: '5px' }}>
+                        <Grid container spacing={2}>
+                          <Grid item xs={12} md={12}>
+                            <SelectList
+                              label="Enrolment Type"
+                              options={enrolmentTypeOption}
+                              value={enrolmentType}
+                              onChange={enrolmentTypeChange}
+                            />
+                          </Grid>
+                          <Grid item xs={12} md={12}>
+                            <TextField id="outlined-basic" label="Admission No." fullWidth variant="outlined" />
+                          </Grid>
+                          <Grid item xs={12} md={6}>
+                            <TextField id="outlined-basic" disabled label="Name" fullWidth variant="outlined" />
+                          </Grid>
+                          <Grid item xs={12} md={6}>
+                            <TextField id="outlined-basic" disabled label="Class" fullWidth variant="outlined" />
+                          </Grid>
+                          <Grid item xs={12} md={6}>
+                            <TextField id="outlined-basic" disabled label="Address" fullWidth variant="outlined" />
+                          </Grid>
+                          <Grid item xs={12} md={6}>
+                            <TextField id="outlined-basic" disabled label="Existing info" fullWidth variant="outlined" />
+                          </Grid>
+                        </Grid>
+                      </Box>
 
-              <Box sx={{border:'1px solid #ccc', borderRadius:'5px', height:'419px'}}>
-                <Box p={2} sx={{borderBottom:'1px solid #ccc'}}>
-                  Transport Timeline
-                </Box>
-                    <TransportTimeline/>
-                  </Box>
-              </Grid>
-            </Grid>
+                      <Box mt={1} p={2} sx={{ border: '1px solid #ccc', borderRadius: '5px' }}>
+                        <Box pb={1}>
+                          <Typography variant="h4">Transport Details</Typography>
+                        </Box>
+                        <Grid container spacing={2}>
+                          <Grid item xs={12} md={6}>
+                            <ParameterizedDateComponent label="With Effect From" customStyle={{ width: '100%' }} />
+                          </Grid>
+                          <Grid item xs={12} md={6}>
+                            <SelectList label="Fee Slab" options={SlabOptions} value={addSlab} onChange={addSlabChange} />
+                          </Grid>
+                          <Grid item xs={12} md={6}>
+                            <SelectList label="Pick Route" options={pickRouteOptions} value={pickRoute} onChange={PickRouteChange} />
+                          </Grid>
+                          <Grid item xs={12} md={6}>
+                            <SelectList label="Pick Stop" options={pickStopOptions} value={pickStop} onChange={PickStopChange} />
+                          </Grid>
+                          <Grid item xs={12} md={6}>
+                            <SelectList label="Drop Route" options={dropRouteOptions} value={dropRoute} onChange={DropRouteChange} />
+                          </Grid>
+                          <Grid item xs={12} md={6}>
+                            <SelectList label="Drop Stop" options={dropStopOptions} value={dropStop} onChange={DropStopChange} />
+                          </Grid>
+                          <Grid item xs={12} md={6}>
+                            <ParamMultipleSelect
+                              options={transportMonths}
+                              label="Select Month"
+                              value={selectedMonth}
+                              setValue={setSelectedMonth}
+                            />
+                          </Grid>
+                          <Grid item xs={12} md={6}>
+                            <ParameterizedDateComponent label="Transport Left Date" customStyle={{ width: '100%' }} />
+                          </Grid>
+                          <Grid item xs={12} md={12}>
+                            <Box p={0.5}>Remarks</Box>
+                            <TextArea rows={3} placeholder="Enter your text here..." fullWidth variant="outlined" />
+                          </Grid>
+                        </Grid>
+                      </Box>
+                    </Box>
+                  </>
+                )}
+                {tabValue === 1 && (
+                  <>
+                    <Box>
+                      <TransportTimeline />
+                    </Box>
+                  </>
+                )}
 
-            <Box p={2} sx={{border:'1px solid #ccc', borderRadius:'5px'}}>
-                  <Grid container spacing={2}>
-                    <Grid item xs={12} md={6}>
-                      <ParameterizedDateComponent label="With Effect From" customStyle={{ width: '100%' }} />
-                    </Grid>
-                    <Grid item xs={12} md={6}>
-                      <SelectList label="Fee Slab" options={SlabOptions} value={addSlab} onChange={addSlabChange} />
-                    </Grid>
-                    <Grid item xs={12} md={6}>
-                      <SelectList label="Pick Route" options={pickRouteOptions} value={pickRoute} onChange={PickRouteChange} />
-                    </Grid>
-                    <Grid item xs={12} md={6}>
-                      <SelectList label="Pick Stop" options={pickStopOptions} value={pickStop} onChange={PickStopChange} />
-                    </Grid>
-                    <Grid item xs={12} md={6}>
-                      <SelectList label="Drop Route" options={dropRouteOptions} value={dropRoute} onChange={DropRouteChange} />
-                    </Grid>
-                    <Grid item xs={12} md={6}>
-                      <SelectList label="Drop Stop" options={dropStopOptions} value={dropStop} onChange={DropStopChange} />
-                    </Grid>
-                    <Grid item xs={12} md={6}>
-                      <ParamMultipleSelect
-                        options={transportMonths}
-                        label="Select Month"
-                        value={selectedMonth}
-                        setValue={setSelectedMonth}
-                      />
-                    </Grid>
-                    <Grid item xs={12} md={6}>
-                      <ParameterizedDateComponent label="Transport Left Date" customStyle={{ width: '100%' }} />
-                    </Grid>
-                    <Grid item xs={12} md={6}>
+                {/* {tabValue === 2 && (
+                  <>
+                    <Box>
                       <Box p={0.5}>Remarks</Box>
                       <TextArea rows={4} placeholder="Enter your text here..." fullWidth variant="outlined" />
-                    </Grid>
-                  </Grid>
-                </Box>
-            </Container>
+                    </Box>
+                  </>
+                )} */}
+              </Box>
+            </Box>
           </Box>
         </Box>
+        <BottomNavbar
+          tabPageLength={tabLength}
+          value={tabValue}
+          setValue={setTabValue}
+          customStyle={{ width: { sm: '100vw', md: '42%' }, bottom: '0', borderRadius: '1px' }}
+        />
       </Drawer>
     </>
   );

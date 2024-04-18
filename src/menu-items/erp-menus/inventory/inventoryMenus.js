@@ -10,28 +10,6 @@ const InventoryMenu = {
     id: 'StudentInfoFeeMenu',
     type: 'group',
     children: [
-  
-       // Studnet master      
-          // {
-          //   id: 'student-master',
-          //   title: 'Student',
-          //   type: 'collapse',
-          //   url: '/erp/student-info-fee/student-master',
-          //   icon: PersonOutlineTwoToneIcon,
-          //   children: [
-
-          //     {
-          //         id: 'enquiry',
-          //         title: 'Enquiry',
-          //         type: 'item',
-          //         url: '/erp/student-info-fee/student-master/enquiry',
-          //         breadcrumbs: false,
-            
-          //       },
-
-          //   ]
-          // },
-
         // report
         {
           id: 'reports',

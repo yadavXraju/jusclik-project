@@ -1,10 +1,13 @@
 import GmailInboxTemplate from '../MailBox';
-import { Paper ,Box} from '@mui/material';
+import { Paper ,Box, useMediaQuery} from '@mui/material';
+
 
 const RecentMessage = () => {
+  const res2650 = useMediaQuery('(min-width:2000px)')
+  let rem = res2650?'19rem':null
   return (
     <Paper>
-      <Box sx={{paddingLeft:'19rem' , paddingRight:'19rem'}}>
+      <Box sx={{paddingLeft:rem , paddingRight:rem}}>
       
     <GmailInboxTemplate/>
     </Box>

@@ -71,7 +71,7 @@ const PerformanceChart = (props) => {
           justifyContent: 'center',
         }}
       >
-        <Grid>
+        <Grid >
           <Typography
             component="div"
             color="text.secondary"

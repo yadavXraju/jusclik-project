@@ -1,7 +1,8 @@
 import React from 'react';
 import ParamTableDragDrop from 'views/common-section/ParamTableDragDrop';
 import { Drawer,Box,Typography,Button } from '@mui/material';
-import DrawerContent from './DrawerContent';
+import FeeHeadDrawer from './FeeHeadDrawer';
+import FeeHeadTopDrawer from './FeeHeadTopDrawer';
 
 const tableHeadings = [
   {
@@ -187,11 +188,13 @@ const data = [
 ];
 
 
-const CreateRegularFeeHeads = ({ anchor, toggleDrawer }) => {
+const FeeHeads = ({ anchor, toggleDrawer }) => {
 
   return (
     <>
-      <ParamTableDragDrop tableStyle={{ paddingBottom: '4rem' }} dragIcon={true} columns={tableHeadings} initialData={data} />
+      <ParamTableDragDrop tableStyle={{ paddingBottom: '4rem' }} dragIcon={true} columns={tableHeadings} initialData={data} >
+        <FeeHeadTopDrawer />
+      </ParamTableDragDrop>
       <Drawer anchor="right" open={anchor.right} onClose={toggleDrawer('right', false)}>
         <Box sx={{ width: { xs: '100vw', sm: 650 }, padding: '1rem' }} role="presentation">
           <Box sx={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '0rem', borderBottom: '1px solid #ccc' }}>
@@ -200,11 +203,11 @@ const CreateRegularFeeHeads = ({ anchor, toggleDrawer }) => {
               Close
             </Button>
           </Box>
-            <DrawerContent />
+            <FeeHeadDrawer />
         </Box>
       </Drawer>
     </>
   );
 };
 
-export default CreateRegularFeeHeads;
+export default FeeHeads;
