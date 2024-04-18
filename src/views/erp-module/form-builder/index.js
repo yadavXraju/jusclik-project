@@ -43,9 +43,9 @@ const AllFroms = () => {
               <Box sx={{ display: "flex", alignItems: "center", gap: "10px" }} >
                 <Checkbox {...label} />
                 <DescriptionOutlinedIcon />
-                <Box sx={{ display: "flex", flexDirection: "column", alginItems: "center" }}>
-                  <Typography>{item.name}</Typography>
-                  {isHover == item?.id && <Typography >All Enteries  |  Reports  |  Settings  |  Analytics  |  Audit</Typography>}
+                <Box sx={{ display: "flex", flexDirection: "column"}}>
+                  <Typography sx={{alignItems:"center"}}>{item.name}</Typography>
+                  {isHover == item?.id ?(<Typography>All Enteries  |  Reports  |  Settings  |  Analytics  |  Audit</Typography>):(<Typography>Created On:Apr 15,2024</Typography>)}
                 </Box>
               </Box>
               {isHover == item?.id && <Box sx={{ display: "flex", gap: "20px", alignItems: "center" }}>
