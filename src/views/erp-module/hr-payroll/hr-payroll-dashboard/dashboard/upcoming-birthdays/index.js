@@ -1,7 +1,5 @@
 import React from 'react';
-import { Paper, Typography, TableContainer, Table, TableHead, TableBody, TableRow, TableCell, Avatar, Grid,
-  //  useMediaQuery
-   } from '@mui/material';
+import { Paper, Typography, TableContainer, Table, TableHead, TableBody, TableRow, TableCell, Avatar, Grid } from '@mui/material';
 import { HeadingCss } from 'views/common-section/dashboard-css/CommonCss';
 
 const UpcomingBirthdays = () => {
@@ -29,6 +27,15 @@ const UpcomingBirthdays = () => {
 
   // Filter birthdays that are within the next 7 days
   const upcomingBirthdays = birthdaysData.filter(birthday => isWithinNext7Days(birthday.dob));
+
+  // Sort upcoming birthdays by date
+  upcomingBirthdays.sort((a, b) => {
+    const [dayA, monthA, yearA] = a.dob.split('-').map(Number);
+    const [dayB, monthB, yearB] = b.dob.split('-').map(Number);
+    const dateA = new Date(yearA, monthA - 1, dayA);
+    const dateB = new Date(yearB, monthB - 1, dayB);
+    return dateA - dateB;
+  });
 
   return (
     <Paper>

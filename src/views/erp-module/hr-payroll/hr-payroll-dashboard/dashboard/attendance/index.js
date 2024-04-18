@@ -1,18 +1,18 @@
 import React from 'react';
 import ApexCharts from 'react-apexcharts';
-import { Grid, Paper, Typography, useMediaQuery, Box } from '@mui/material';
+import { Grid, Paper, Typography, useMediaQuery} from '@mui/material';
 import { gridSpacing } from 'store/constant';
 import { HeadingCss } from 'views/common-section/dashboard-css/CommonCss';
-
+import WomanIcon from '@mui/icons-material/Woman';
 const AttendanceChart = () => {
   const isMediumDesktop = useMediaQuery('(max-width: 1600px)');
   const isMobile = useMediaQuery('(max-width: 767px)');
 
 
   const chartData = {
-    series: [60, 10],
+    series: [60, 10,8,3],
     chart: {
-      type: 'donut',
+      type: 'pie',
     },
     stroke: {
       width: 3,
@@ -21,10 +21,10 @@ const AttendanceChart = () => {
       pie: {
         donut: {
           labels: {
-            show: true, 
+            show: false, 
             total: {
-              show: true,
-              label: 'Total Employee',
+              show: false,
+              label: <WomanIcon/>,
               formatter: function () {
                 return chartData.series.reduce((a, b) => a + b, 0).toFixed(0);
               },
@@ -41,13 +41,16 @@ const AttendanceChart = () => {
     labels: [
       'Present',
       'Absent',
-    
+      'Late Comer',
+      'On Duty'
     
     ],
     colors: [
       '#4C88BE',
       '#9FCCE9',
-     
+      '#1162A4',
+      '#6EB2C9',
+
     ],
     responsive: [
       {
@@ -104,7 +107,7 @@ const AttendanceChart = () => {
           }}
         >
           <Typography variant="h2" style={{ ...HeadingCss, border: 'none' }}>
-            Attendance
+           Daily  Attendance
           </Typography>
         </Grid>
 
@@ -117,7 +120,7 @@ const AttendanceChart = () => {
           }}
         >
           {/* =================================  chart =================================   */}
-          <Grid lg={12} md={12} sm={12} xs={12} sx={{ borderRight: '1px solid rgb(227, 227, 227)' }}>
+          <Grid lg={6} md={12} sm={12} xs={12} sx={{ borderRight: '1px solid rgb(227, 227, 227)' }}>
             <Grid
               style={{
                 display: 'flex',
@@ -126,7 +129,7 @@ const AttendanceChart = () => {
                 alignItems: isMobile ? 'center' : 'auto',
               }}
             >
-              <ApexCharts options={chartData} series={chartData.series} type="donut" height={isMediumDesktop ? 200 : 320} />
+              <ApexCharts options={chartData} series={chartData.series} type="pie" height={isMediumDesktop ? 200 : 320} />
             </Grid>
           </Grid>
 
