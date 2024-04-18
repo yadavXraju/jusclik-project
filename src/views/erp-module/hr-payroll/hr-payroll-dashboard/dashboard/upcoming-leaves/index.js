@@ -9,11 +9,11 @@ const UpcomingLeaves = () => {
 
   // Dummy data for table rows
   const leavesData = [
-    { img: "employee1.jpg", name: "John Doe", id: "001", department: "IT", date: "2024-04-20", days: 2, status: "approved", reason: "Personal reasons for leave Per Per Per Per Per", type: "Casual" },
-    { img: "employee2.jpg", name: "Jane Smith", id: "002", department: "HR", date: "2024-04-22", days: 3, status: "pending", reason: "Family emergency", type: "Medical" },
-    { img: "employee3.jpg", name: "Alice Johnson", id: "003", department: "Finance", date: "2024-04-25", days: 1, status: "approved", reason: "Vacation", type: "Earn Leave" },
-    { img: "employee3.jpg", name: "Alice Johnson", id: "004", department: "Finance", date: "2024-04-25", days: 1, status: "approved", reason: "Medical appointment", type: "Medical" },
-    // Add more leaves data
+    { img: "employee1.jpg", name: "John Doe", id: "001", department: "IT", date: "2024-04-20", days: 2, status: "Approved", reason: "Personal reasons for leave Per Per Per Per Per", type: "Casual" },
+    { img: "employee2.jpg", name: "Jane Smith", id: "002", department: "HR", date: "2024-04-22", days: 3, status: "Pending", reason: "Family emergency", type: "Medical" },
+    { img: "employee3.jpg", name: "Alice Johnson", id: "003", department: "Finance", date: "2024-04-25", days: 1, status: "Approved", reason: "Vacation", type: "Earn Leave" },
+    { img: "employee3.jpg", name: "Alice Johnson", id: "004", department: "Finance", date: "2024-04-25", days: 1, status: "Approved", reason: "Medical appointment", type: "Medical" },
+ 
   ];
 
   return (

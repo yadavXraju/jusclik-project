@@ -4,6 +4,7 @@ import { Tabs, Tab, Typography, Box } from '@mui/material';
 import BottomNavbar from 'views/common-section/BottomNavbar';
 import TabsName from './ParamTabStep';
 
+
 const TabPanel = (props) => {
   const { children, value, index, ...other } = props;
   return (
@@ -13,6 +14,7 @@ const TabPanel = (props) => {
       id={`vertical-tabpanel-${index}`}
       aria-labelledby={`vertical-tab-${index}`}
       {...other}
+  
     >
       {value === index && (
         <Box sx={{ p: 3 }}>
@@ -47,6 +49,8 @@ const SetupTabs = ({
   customtabPanelStyle = {},
   numberShow = true,
   iconShow = true,
+  customBoxStyle={},
+  customIconStyle={},
   selectedTab
 }) => {
   const [value, setValue] = useState(0);
@@ -62,6 +66,7 @@ const SetupTabs = ({
       display: 'flex',
       flexDirection: 'column',
       marginTop: '25px',
+   
     },
     tabStyle: {
       width: 'fit-content',
@@ -78,6 +83,12 @@ const SetupTabs = ({
       overflowY: 'auto',
       height: 'calc(100vh - 250px)',
     },
+    boxStyle:{
+      padding:"0",
+    },
+    iconStyle:{
+      marginBottom:'0'
+    }
   };
 
   return (
@@ -116,7 +127,8 @@ const SetupTabs = ({
                 },
 
                 '& .MuiSvgIcon-root':{
-                  marginBottom:'0',
+                 ...style?.iconStyle,
+                 ...customIconStyle,
                 }
 
               }}
@@ -131,8 +143,10 @@ const SetupTabs = ({
             sx={{
               ...style?.tabPanel,
               ...customtabPanelStyle,
-              '& .MuiBox-root': {
-                padding: '0',
+              '& > .MuiBox-root': {
+                ...style?.boxStyle,
+                ...customBoxStyle,
+
               },
             }}
             className="Scrollbar"
