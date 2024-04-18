@@ -5,6 +5,7 @@ import TransportTable from './TransportTable';
 import TransportDrawer from './TransportAllocationDrawer';
 
 const TransportAllocation = () => {
+
   return (
     <>
       <Card sx={{ padding: '16px' }}>
