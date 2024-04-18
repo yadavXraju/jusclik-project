@@ -41,7 +41,7 @@ const Customization = () => {
   const dispatch = useDispatch();
   const {fontFamily,borderRadius,themeColor} = useSelector((state) => state.customization);
   const isMobile = useMediaQuery('(max-width:767px)')
-  console.log(fontFamily)
+  // console.log(fontFamily)
   // drawer on/off
   const [open, setOpen] = useState(false);
   const handleToggle = () => {

@@ -29,7 +29,7 @@ const rows = [
     },
 ];
 
-export default function TopDrawer() {
+export default function  FeeHeadTopDrawer() {
     const [selectedClass, setSelectedClass] = useState('');
     const [amount, setAmount] = useState('');
 

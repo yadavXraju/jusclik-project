@@ -61,6 +61,10 @@ const VisitorRoutes = [
             element: <Purpose />
           } , 
           // {
+          //   path: ':id', 
+          //   element: <Purpose />
+          // } , 
+          // {
           //   path: 'to-meet', 
           //   element: <ToMeet />
           // } , 
