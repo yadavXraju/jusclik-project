@@ -157,14 +157,14 @@ const AdmissionTable = () => {
       <Card>
         <Box sx={{ borderBottom: '1px solid #ccc' }}>
           <Grid container spacing={2} p={2} sx={{ alignItems: 'end' }}>
-            <Grid item xs={12} sm={8} lg={8}>
+            <Grid item xs={12} sm={6} lg={6}>
               <Box sx={{ paddingBottom: '0px' }}>
                 <Typography variant="h4" sx={{ pb: '0px' }}>
                   Students List
                 </Typography>
               </Box>
             </Grid>
-            <Grid item xs={12} sm={4} lg={4}>
+            <Grid item xs={12} sm={6} lg={6}>
               <div style={{ display: 'flex', justifyContent: 'end', width: '100%' }}>
                 {/* <Button sx={{ mr: 1 }} onClick={Click} variant="outlined" startIcon={<AddOutlinedIcon />}>
                 Add Student
