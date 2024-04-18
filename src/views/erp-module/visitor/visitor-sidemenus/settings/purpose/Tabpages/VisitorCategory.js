@@ -1,68 +1,24 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import AddIcon from '@mui/icons-material/Add';
+import React from 'react';
+// import ParamTable from 'views/erp-common-component/ParamTable';
+// import Drawer from '@mui/material/Drawer';
+// import DrawerContent from './DrawerContent';
+// import CommonDataGrid from 'views/common-section/commonDataGrid';
+import { initialRows,initialColumns } from '../../black-listed-visitor/common/VisitorCategoryData';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/DeleteOutlined';
 import SaveIcon from '@mui/icons-material/Save';
 import CancelIcon from '@mui/icons-material/Close';
-import {
-  GridRowModes,
+import {   GridRowModes,
   DataGrid,
   GridToolbarContainer,
   GridActionsCellItem,
-  GridRowEditStopReasons,
-} from '@mui/x-data-grid';
+  GridRowEditStopReasons,} from '@mui/x-data-grid';
+import Button from '@mui/material/Button';
+import AddIcon from '@mui/icons-material/Add';
 import {
-  randomCreatedDate,
-  randomTraderName,
   randomId,
-  randomArrayItem,
 } from '@mui/x-data-grid-generator';
-import { display } from '@mui/system';
-
-const roles = ['Market', 'Finance', 'Development'];
-const randomRole = () => {
-  return randomArrayItem(roles);
-};
-
-const initialRows = [
-  {
-    id: randomId(),
-    name: randomTraderName(),
-    age: 25,
-    joinDate: randomCreatedDate(),
-    role: randomRole(),
-  },
-  {
-    id: randomId(),
-    name: randomTraderName(),
-    age: 36,
-    joinDate: randomCreatedDate(),
-    role: randomRole(),
-  },
-  {
-    id: randomId(),
-    name: randomTraderName(),
-    age: 19,
-    joinDate: randomCreatedDate(),
-    role: randomRole(),
-  },
-  {
-    id: randomId(),
-    name: randomTraderName(),
-    age: 28,
-    joinDate: randomCreatedDate(),
-    role: randomRole(),
-  },
-  {
-    id: randomId(),
-    name: randomTraderName(),
-    age: 23,
-    joinDate: randomCreatedDate(),
-    role: randomRole(),
-  },
-];
+import { useEffect } from 'react';
 
 function EditToolbar(props) {
   const { setRows, setRowModesModel } = props;
@@ -77,7 +33,7 @@ function EditToolbar(props) {
   };
 
   return (
-    <GridToolbarContainer >
+    <GridToolbarContainer>
       <Button color="primary" startIcon={<AddIcon />} onClick={handleClick}>
         Add record
       </Button>
@@ -85,8 +41,11 @@ function EditToolbar(props) {
   );
 }
 
-export default function FullFeaturedCrudGrid() {
+
+
+const ParentsDiscussion = () => {
   const [rows, setRows] = React.useState(initialRows);
+  const [columns,setColumns]=React.useState(initialColumns)
   const [rowModesModel, setRowModesModel] = React.useState({});
 
   const handleRowEditStop = (params, event) => {
@@ -128,34 +87,10 @@ export default function FullFeaturedCrudGrid() {
   const handleRowModesModelChange = (newRowModesModel) => {
     setRowModesModel(newRowModesModel);
   };
-
-  const columns = [
-    { field: 'name', headerName: 'Name', width: 180, editable: true },
-    {
-      field: 'age',
-      headerName: 'Age',
-      type: 'number',
-      width: 80,
-      align: 'left',
-      headerAlign: 'left',
-      editable: true,
-    },
-    {
-      field: 'joinDate',
-      headerName: 'Join date',
-      type: 'date',
-      width: 180,
-      editable: true,
-    },
-    {
-      field: 'role',
-      headerName: 'Department',
-      width: 220,
-      editable: true,
-      type: 'singleSelect',
-      valueOptions: ['Market', 'Finance', 'Development'],
-    },
-    {
+  useEffect(()=>{
+    const updatedColumns=[...columns]
+    
+    updatedColumns.push( {
       field: 'actions',
       type: 'actions',
       headerName: 'Actions',
@@ -163,7 +98,7 @@ export default function FullFeaturedCrudGrid() {
       cellClassName: 'actions',
       getActions: ({ id }) => {
         const isInEditMode = rowModesModel[id]?.mode === GridRowModes.Edit;
-
+  
         if (isInEditMode) {
           return [
             <GridActionsCellItem
@@ -171,22 +106,21 @@ export default function FullFeaturedCrudGrid() {
               key={`save-${id}`}
               label="Save"
               sx={{
-                color: 'primary.main',
+                color: 'primary.main'
               }}
               onClick={handleSaveClick(id)}
             />,
             <GridActionsCellItem
               icon={<CancelIcon />}
               key={`cancel-${id}`}
-
               label="Cancel"
               className="textPrimary"
               onClick={handleCancelClick(id)}
               color="inherit"
-            />,
+            />
           ];
         }
-
+  
         return [
           <GridActionsCellItem
             icon={<EditIcon />}
@@ -196,31 +130,19 @@ export default function FullFeaturedCrudGrid() {
             onClick={handleEditClick(id)}
             color="inherit"
           />,
-          <GridActionsCellItem
-            icon={<DeleteIcon />}
-            key={`delete-${id}`}
-            label="Delete"
-            onClick={handleDeleteClick(id)}
-            color="inherit"
-          />,
+          <GridActionsCellItem icon={<DeleteIcon />} key={`delete-${id}`} label="Delete" onClick={handleDeleteClick(id)} color="inherit" />
         ];
-      },
-    },
-  ];
-
+      }
+    })
+    setColumns(updatedColumns)
+  },[])
   return (
-    <Box
-      sx={{
-        height: 500,
-        width: '100%',
-        '& .actions': {
-          color: 'text.secondary',
-        },
-        '& .textPrimary': {
-          color: 'text.primary',
-        },
-      }}
-    >
+    <>
+      {/* <ParamTable columns={tableHeadings} data={data} /> */}
+      {/* <Drawer anchor={'right'} open={toggleAddDrawer.right} onClose={toggleDrawer('right', false)}>
+        <DrawerContent handleChange={handleChange} data={tableHeadings} toggleDrawer={toggleDrawer} name="Wing {Restricted}"/>
+      </Drawer> */}
+      {/* <CommonDataGrid columns={columns} rows={rows} checkboxSelection={false} /> */}
       <DataGrid
         rows={rows}
         columns={columns}
@@ -236,6 +158,8 @@ export default function FullFeaturedCrudGrid() {
           toolbar: { setRows, setRowModesModel },
         }}
       />
-    </Box>
-  );
+    </>
+  )
 }
+
+export default ParentsDiscussion;

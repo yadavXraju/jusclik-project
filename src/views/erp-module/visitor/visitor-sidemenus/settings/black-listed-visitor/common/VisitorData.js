@@ -50,8 +50,8 @@ export const randomReason = () => {
       minWidth: 130
     },
     { field: 'AverageMeetingTime', headerName: 'Average Meeting Time', editable: true, flex: 1, minWidth: 130 },
-    { field: 'createdBy', headerName: 'Created by', flex: 1, minWidth: 130 },
-    { field: 'createdOn', headerName: 'Created On', flex: 1, minWidth: 130 },
+    { field: 'createdBy', headerName: 'Created by',  editable: true,flex: 1, minWidth: 130 },
+    { field: 'createdOn', headerName: 'Created On', editable: true, flex: 1, minWidth: 130 },
    
   ];
   

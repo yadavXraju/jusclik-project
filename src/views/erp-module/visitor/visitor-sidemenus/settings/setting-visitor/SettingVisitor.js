@@ -6,7 +6,7 @@ import PermDataSettingOutlinedIcon from '@mui/icons-material/PermDataSettingOutl
 import DashboardCustomizeOutlinedIcon from '@mui/icons-material/DashboardCustomizeOutlined';
 import TuneOutlinedIcon from '@mui/icons-material/TuneOutlined';
 import CommonSettings from 'views/erp-common-component/commonSetting';
-
+import { handleConfigure } from 'store/visitor/Visitor-management-slice';
 
 const SettingData = [
   {
@@ -22,14 +22,15 @@ const SettingData = [
   {
     icon: <PermDataSettingOutlinedIcon sx={{ color: '#838195' }} />,
     title: 'Configure',
+    reducer:handleConfigure,
     items: [
       // { name: 'Department', path: '/erp/visitor/settings/department' },
       
-      { name: 'Purpose', path: '/erp/visitor/settings/purpose/',id:245769457 },
-      { name: 'To Meet', path: '/erp/visitor/settings/purpose/',id:245745644 },
-      { name: 'Visitor Category', path: '/erp/visitor/settings/visitor-category' },
+      { name: 'Purpose', path: '/erp/visitor/settings/purpose/',property:0,} ,
+      { name: 'To Meet', path: '/erp/visitor/settings/purpose/' ,property:1,},
+      { name: 'Visitor Category', path:  '/erp/visitor/settings/purpose/',property:3  },
       { name: 'Location', path: '/erp/visitor/settings/location' },
-      { name: 'Blacklist Visitors', path:  '/erp/visitor/settings/purpose',id:65468742},
+      { name: 'Blacklist Visitors', path:  '/erp/visitor/settings/purpose',property:2,},
     ]
   },
   {
@@ -70,11 +71,12 @@ const SettingData = [
 ];
 
 const SettingVisitor= () =>{
+
   return(
     <>
     <CommonSettings SettingData={SettingData} />
     </>
   )
-}
 
+}
 export { SettingData, SettingVisitor as default };
