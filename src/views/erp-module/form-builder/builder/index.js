@@ -54,7 +54,7 @@ const AdvancedFiedls = () => {
 const FormBuilder = () => {
   const dispatch = useDispatch();
   const{anchor,toggleDrawer}=useDrawer();
-  const [isHover, setIsHover] = useState(-1);
+  //const [isHover, setIsHover] = useState(-1);
   const { basicFields } = useSelector((state) => state.customForm);
   const tabPages = [
     {
