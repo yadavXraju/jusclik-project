@@ -100,16 +100,16 @@ export const ErpModuleList = [
         id:11,
         name:'Customer Relationship ',
         icon : <img src={relationship} alt='icon' style={{width:'34px', margin:'auto'}} />,
-        url: '',
-        role : 'customer-relationship',
+        url: '/erp/crm/dashboard',
+        role : 'crm',
     },
 
     {
         id:12,
         name:'Form Builder',
         icon : <img src={relationship} alt='icon' style={{width:'34px', margin:'auto'}} />,
-        url: '/forms',
-        role : '',
+        url: '/erp/forms',
+        role : 'form-builder',
     },
 
 ]

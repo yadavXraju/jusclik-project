@@ -25,6 +25,14 @@ import InventoryRoutes from './erp-routes/InventoryRoutes';
 
 // hr payroll dashbaord
 import HrPayRollRoutes from './erp-routes/HrPayrollRoutes';
+
+// crm dashbaord
+import CrmRoutes from './erp-routes/CrmRoutes';
+
+
+// form builder
+import FormBuilderRoutes from './erp-routes/FormBuilderRoutes';
+
  // subject Teacher  Dashboard Menus
 
 //  const SubjectTeacherDashboard= Loadable(lazy(() => import('views/subject-teacher-dashboard/')));
@@ -67,6 +75,12 @@ const MainRoutes = {
 
     // hr pay roll Dashboard Menus (Include imported routes here)
     ...HrPayRollRoutes,
+
+     // crm Dashboard Menus (Include imported routes here)
+    ...CrmRoutes , 
+
+   // from builder Dashboard Menus (Include imported routes here)
+    ...FormBuilderRoutes,
 
     // common routes  
     ...CommonRoutes
