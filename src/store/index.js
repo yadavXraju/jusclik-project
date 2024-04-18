@@ -6,6 +6,7 @@ import userAndRoleAcess from "./student-info-and-fee/user-and-roles/user-and-rol
 import pricingSlice from "./pages/pricing/pricing-slice";
 import customForm from './form-builder/custom-form-slice';
 import menuItemSlice from "./layout/mainLayout/sidebar/menuList/navItem/menu-item-slice";
+
 const store=configureStore({
     reducer:{
         customization:customizationSlice,
@@ -14,7 +15,8 @@ const store=configureStore({
         userRoleAcess:userAndRoleAcess,
         pricingSlice: pricingSlice  ,
         menuItemSlice:menuItemSlice,
-        customForm:customForm
+        customForm:customForm,
+        visitorSettingsSlice:configureSlice
     },
     devTools:true
 });

@@ -3,7 +3,7 @@ import React from 'react';
 // import Drawer from '@mui/material/Drawer';
 // import DrawerContent from './DrawerContent';
 // import CommonDataGrid from 'views/common-section/commonDataGrid';
-import { initialRows,initialColumns } from '../../black-listed-visitor/common/VisitorData';
+import { initialRows,initialColumns } from '../../black-listed-visitor/common/ToMeetData';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/DeleteOutlined';
 import SaveIcon from '@mui/icons-material/Save';
