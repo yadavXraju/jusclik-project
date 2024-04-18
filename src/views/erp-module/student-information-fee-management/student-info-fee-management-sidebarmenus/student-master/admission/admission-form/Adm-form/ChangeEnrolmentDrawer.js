@@ -4,11 +4,13 @@ import Popover from '@mui/material/Popover';
 import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
 import MoreVertTwoToneIcon from '@mui/icons-material/MoreVertTwoTone';
 import ParameterizedDateComponent from 'views/common-section/ParamDateComponent';
+import InitiateWithdrawal from './InitiateWithdrawal';
 
 export default function ChangeEnrolmentDrawer() {
   const [state, setState] = React.useState({
     right: false,
-    replacementDrawerOpen: false 
+    replacementDrawerOpen: false,
+    InitiateWithdrawalOpen: false
   });
 
   const [selectedEnrollment, setSelectedEnrollment] = useState('');
@@ -33,6 +35,17 @@ export default function ChangeEnrolmentDrawer() {
     }
 
     setState({ ...state, replacementDrawerOpen: open });
+    if (popupState && popupState.close) {
+      popupState.close();
+    }
+  };
+
+  const toggleDrawer1 = (anchor, open, popupState) => (event) => {
+    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+      return;
+    }
+
+    setState({ ...state, [anchor]: open });
     if (popupState && popupState.close) {
       popupState.close();
     }
@@ -229,7 +242,7 @@ export default function ChangeEnrolmentDrawer() {
               <Typography sx={{ p: 1, display: 'Grid' }}>
                 <Button sx={{ color: 'black', borderBottom: '1px dotted #ccc' }} onClick={toggleDrawer('right', true, popupState)}>Change Enrolment Status</Button>
                 <Button sx={{ color: 'black', borderBottom: '1px dotted #ccc' }} onClick={toggleReplacementDrawer('replacementDrawerOpen', true, popupState)}>Change Enrolment Number</Button>
-                <Button sx={{ color: 'black', borderBottom: '1px dotted #ccc' }}>Initiate Withdrawal</Button>
+                <Button sx={{ color: 'black', borderBottom: '1px dotted #ccc' }} onClick={toggleDrawer1('InitiateWithdrawalOpen', true, popupState)}>Initiate Withdrawal</Button>
                 <Button sx={{ color: 'black', borderBottom: '1px dotted #ccc' }}>Bulk Editing</Button>
               </Typography>
             </Popover>
@@ -244,6 +257,21 @@ export default function ChangeEnrolmentDrawer() {
       {/* ====== Replacement Drawer ======= */}
       <Drawer anchor="right" open={state.replacementDrawerOpen} onClose={toggleReplacementDrawer('replacementDrawerOpen', false)}>
         {enrolmentNumberForm}
+      </Drawer>
+
+      {/* ====== Initiate Withdrawal Drawer ======= */}
+      <Drawer anchor="right" open={state.InitiateWithdrawalOpen} onClose={toggleDrawer1('InitiateWithdrawalOpen', false)}>
+        {/* {form} */}
+        <Box sx={{ width: { xs: '100vw', sm: 550 }, padding: 2 }} role="presentation">
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #ccc' }}>
+            <Typography variant="h4">Initiate Withdrawal</Typography>
+            <Button onClick={toggleDrawer1('InitiateWithdrawalOpen', false)} sx={{ alignSelf: 'flex-end' }}>
+              Close
+            </Button>
+          </Box>
+          {/* ========= import Initiate Withdrawal Form ========== */}
+          <InitiateWithdrawal />
+        </Box>
       </Drawer>
     </>
   );

@@ -4,7 +4,7 @@ import { Grid , TextField } from '@mui/material';
 
 
 
-const DrawerContent = () => {
+const FeeHeadDrawer = () => {
   // ========= state for Attach Slab ============
   const [feeHead, setFeeHead] = useState('');
   const [periodicity, setperiodicity] = useState('');
@@ -95,4 +95,4 @@ const DrawerContent = () => {
   )
 }
 
-export default DrawerContent
+export default FeeHeadDrawer
