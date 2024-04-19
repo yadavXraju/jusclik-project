@@ -29,8 +29,10 @@ const SettingData = [
       { name: 'Purpose', path: '/erp/visitor/settings/purpose/',property:0,} ,
       { name: 'To Meet', path: '/erp/visitor/settings/purpose/' ,property:1,},
       { name: 'Visitor Category', path:  '/erp/visitor/settings/purpose/',property:3  },
+      { name: 'Blacklist Visitors', path:  '/erp/visitor/settings/purpose',property:2},
+      { name: 'Gate Pass Series', path:  '/erp/visitor/settings/gatepass',},
       { name: 'Location', path: '/erp/visitor/settings/location' },
-      { name: 'Blacklist Visitors', path:  '/erp/visitor/settings/purpose',property:2,},
+   
     ]
   },
   {
