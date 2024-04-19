@@ -22,7 +22,7 @@ const OnlineClass = () => {
 
    if(res2560){
 
-    rem= '19rem'
+    rem= '17rem'
    }
 
   return (
