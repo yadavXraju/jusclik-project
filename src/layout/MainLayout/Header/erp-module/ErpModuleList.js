@@ -9,6 +9,7 @@ import admission from 'assets/images/erp-module-icon/admission.svg'
 import relationship from 'assets/images/erp-module-icon/customer.svg'
 import stufee from 'assets/images/erp-module-icon/fee.svg'
 import hr from 'assets/images/erp-module-icon/hr.svg'
+import formBuilder from 'assets/images/erp-module-icon/form-builder.svg'
 
 export const ErpModuleList = [
 
@@ -107,7 +108,7 @@ export const ErpModuleList = [
     {
         id:12,
         name:'Form Builder',
-        icon : <img src={relationship} alt='icon' style={{width:'34px', margin:'auto'}} />,
+        icon : <img src={formBuilder} alt='icon' style={{width:'34px', margin:'auto'}} />,
         url: '/erp/forms',
         role : 'form-builder',
     },
