@@ -33,7 +33,7 @@ const FormBuilderMenus = {
           id: 'reports',
           title: 'Reports',
           type: 'item',
-          url: '/erp/forms/reports',
+          url: '/erp/reports',
           icon:  DescriptionTwoToneIcon ,
           breadcrumbs: false
         },
@@ -43,7 +43,7 @@ const FormBuilderMenus = {
             id: 'settings',
             title: 'Settings',
             type: 'item',
-            url: '/erp/forms/settings',
+            url: '/erp/settings',
             icon: SettingsTwoToneIcon,
             breadcrumbs: false
           },

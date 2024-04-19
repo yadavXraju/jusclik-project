@@ -1,7 +1,7 @@
 // Setting.js
 
 import React, { useState } from 'react';
-import SettingDataCrm, { SettingData } from './SettingDataCrm';
+import SettingDataBuilder, { SettingData } from './SettingDataBuilder';
 // import SettingData from './SettingData';
 import { Typography, Box, Card } from '@mui/material';
 import SearchBar from 'views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/settings/setting/setting-stufee/SearchBar';
@@ -57,7 +57,7 @@ const Setting = () => {
           ))
         }
       </Card>
-      <SettingDataCrm />
+      <SettingDataBuilder />
     </div>
   );
       }

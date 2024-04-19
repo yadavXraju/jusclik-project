@@ -129,10 +129,18 @@ export default function ChangeEnrolmentDrawer() {
           </Grid>
 
           {/* Radio button to select Changes */}
-          <Grid item xs={12} sx={{ paddingTop: '17px', paddingLeft: '8px', paddingRight: '8px', paddingBottom:'17px' }}>
+          <Grid item xs={12} sx={{ paddingTop: '17px', paddingLeft: '8px', paddingRight: '8px', paddingBottom: '17px' }}>
             <FormControl fullWidth>
               <FormLabel id="row-radio-buttons-group-label">Select Action</FormLabel>
-              <RadioGroup row aria-labelledby="row-radio-buttons-group-label" name="Select Action" value={value} onChange={handleChange} defaultValue="Change Enrolment Status">
+              <RadioGroup
+                row
+                aria-labelledby="row-radio-buttons-group-label"
+                name="Select Action"
+                value={value}
+                onChange={handleChange}
+                defaultValue="Change Enrolment Status"
+              sx={{paddingBottom:'8px'}}
+              >
                 <FormControlLabel value="Change Enrolment Status" control={<Radio />} label="Change Enrolment Status" />
                 <FormControlLabel value="Cancel Enrolment" control={<Radio />} label="Cancel Enrolment" />
               </RadioGroup>
@@ -141,7 +149,7 @@ export default function ChangeEnrolmentDrawer() {
                 <Box>
                   <Select value={selectedOption} onChange={handleOptionChange} displayEmpty fullWidth style={{ marginBottom: '17px' }}>
                     <MenuItem value="" disabled>
-                     Change Status To
+                      Change Status To
                     </MenuItem>
                     {options.map((option) => (
                       <MenuItem key={option} value={option}>
@@ -149,7 +157,7 @@ export default function ChangeEnrolmentDrawer() {
                       </MenuItem>
                     ))}
                   </Select>
-                  {selectedOption && <ParameterizedDateComponent label={selectedOption} customStyle={{ width: '100%' }} />}
+                  <ParameterizedDateComponent label='Date' customStyle={{ width: '100%' }} />
                 </Box>
               )}
 
@@ -158,7 +166,7 @@ export default function ChangeEnrolmentDrawer() {
                 <Box>
                   <Select value={cancelReason} onChange={handleCancelReasonChange} displayEmpty fullWidth style={{ marginBottom: '17px' }}>
                     <MenuItem value="" disabled>
-                    Cancellation reason
+                      Cancellation reason
                     </MenuItem>
                     {cancelReasonOptions.map((option) => (
                       <MenuItem key={option} value={option}>
@@ -166,12 +174,11 @@ export default function ChangeEnrolmentDrawer() {
                       </MenuItem>
                     ))}
                   </Select>
-                  {cancelReason && <ParameterizedDateComponent label="Cancellation Date" customStyle={{ width: '100%' }} />}
+                  <ParameterizedDateComponent label="Cancellation Date" customStyle={{ width: '100%' }} />
                 </Box>
               )}
             </FormControl>
           </Grid>
-        
         </Grid>
         <Box sx={{ paddingTop: '30px' }}>
           <Stack spacing={2} direction="row">
