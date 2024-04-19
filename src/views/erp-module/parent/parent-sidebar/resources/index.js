@@ -21,7 +21,7 @@ const Resources =()=> {
     setValue(newValue);
   };
 const res2560 = useMediaQuery('(min-width:2000px)')
-const rem=res2560?'19rem':null
+const rem=res2560?'17rem':null
 
 
   return (

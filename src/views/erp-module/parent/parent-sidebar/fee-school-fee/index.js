@@ -9,7 +9,7 @@ import { useMediaQuery } from '@mui/material';
 const Index = () => {
  
   const res2560 = useMediaQuery('(min-width:2000px)');
-  const rem = res2560?('19rem'):null;
+  const rem = res2560?('16rem'):null;
 
  
 
