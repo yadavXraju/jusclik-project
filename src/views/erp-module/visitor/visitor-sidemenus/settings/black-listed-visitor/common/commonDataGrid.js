@@ -6,6 +6,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/DeleteOutlined';
 import SaveIcon from '@mui/icons-material/Save';
 import CancelIcon from '@mui/icons-material/Close';
+
 import {
   GridRowModes,
   DataGrid,
@@ -77,10 +78,11 @@ function EditToolbar(props) {
   };
 
   return (
-    <GridToolbarContainer >
-      <Button color="primary" startIcon={<AddIcon />} onClick={handleClick}>
+    <GridToolbarContainer sx={{justifyContent:'end'}}>
+      <Button  variant="outlined" color="primary" startIcon={<AddIcon />} onClick={handleClick}  className='findcom'>
         Add record
       </Button>
+      
     </GridToolbarContainer>
   );
 }
@@ -155,7 +157,7 @@ export default function FullFeaturedCrudGrid() {
       type: 'singleSelect',
       valueOptions: ['Market', 'Finance', 'Development'],
     },
-    {
+    {   
       field: 'actions',
       type: 'actions',
       headerName: 'Actions',

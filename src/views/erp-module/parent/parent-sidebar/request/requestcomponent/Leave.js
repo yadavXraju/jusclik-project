@@ -8,7 +8,7 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 const Leave = () => {
  const res2560 = useMediaQuery('(min-width:2000px)')
  const res800 = useMediaQuery('(max-width:800px)')
- const rem=res2560?'16rem':null;
+ const rem=res2560?'12rem':null;
  const toppadding = res800?'10px':null;
  const toppadding2 = res800?'5px':null;
  
