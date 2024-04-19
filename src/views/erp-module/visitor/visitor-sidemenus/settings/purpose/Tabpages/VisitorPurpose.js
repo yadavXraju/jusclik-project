@@ -18,7 +18,8 @@ import AddIcon from '@mui/icons-material/Add';
 import {
   randomId,
 } from '@mui/x-data-grid-generator';
-import { useEffect } from 'react';
+import { useEffect , useState} from 'react';
+import WarningDialog from 'views/common-section/WarningDialog';
 
 function EditToolbar(props) {
   const { setRows, setRowModesModel } = props;
@@ -33,8 +34,8 @@ function EditToolbar(props) {
   };
 
   return (
-    <GridToolbarContainer>
-      <Button color="primary" startIcon={<AddIcon />} onClick={handleClick}>
+    <GridToolbarContainer sx={{justifyContent:'end',paddingTop:'8px',paddingRight:'16px'}}>
+      <Button  variant="outlined" color="primary" startIcon={<AddIcon />} onClick={handleClick}>
         Add record
       </Button>
     </GridToolbarContainer>
@@ -47,6 +48,13 @@ const ParentsDiscussion = () => {
   const [rows, setRows] = React.useState(initialRows);
   const [columns,setColumns]=React.useState(initialColumns)
   const [rowModesModel, setRowModesModel] = React.useState({});
+  const [modalOpen, setmodalOpen] =useState(false);
+ 
+  
+
+  const handleModalClose = () => {
+    setmodalOpen(false);
+  };
 
   const handleRowEditStop = (params, event) => {
     if (params.reason === GridRowEditStopReasons.rowFocusOut) {
@@ -54,16 +62,17 @@ const ParentsDiscussion = () => {
     }
   };
 
-  const handleEditClick = (id) => () => {
-    setRowModesModel({ ...rowModesModel, [id]: { mode: GridRowModes.Edit } });
-  };
+  // const handleEditClick = (id) => () => {
+  //   setRowModesModel({ ...rowModesModel, [id]: { mode: GridRowModes.Edit } });
+  // };
 
   const handleSaveClick = (id) => () => {
     setRowModesModel({ ...rowModesModel, [id]: { mode: GridRowModes.View } });
   };
 
-  const handleDeleteClick = (id) => () => {
-    setRows(rows.filter((row) => row.id !== id));
+  const handleDeleteClick = () => () => {
+    // setRows(rows.filter((row) => row.id !== id));
+    setmodalOpen(true);
   };
 
   const handleCancelClick = (id) => () => {
@@ -127,7 +136,7 @@ const ParentsDiscussion = () => {
             key={`edit-${id}`}
             label="Edit"
             className="textPrimary"
-            onClick={handleEditClick(id)}
+            // onClick={handleEditClick(id)}
             color="inherit"
           />,
           <GridActionsCellItem icon={<DeleteIcon />} key={`delete-${id}`} label="Delete" onClick={handleDeleteClick(id)} color="inherit" />
@@ -157,6 +166,14 @@ const ParentsDiscussion = () => {
         slotProps={{
           toolbar: { setRows, setRowModesModel },
         }}
+      />
+        <WarningDialog
+        open={modalOpen}
+        onClose={handleModalClose}
+        contentText="Are you sure you want to delete?"
+        onConfirm={handleDeleteClick}
+        
+       
       />
     </>
   )

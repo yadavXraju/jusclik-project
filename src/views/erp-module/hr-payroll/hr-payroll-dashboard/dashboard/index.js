@@ -5,11 +5,11 @@ import { gridSpacing } from 'store/constant';
 
 import NeedHelp from 'views/erp-module/student-information-fee-management/student-info-fee-management-dashboard/dashboard/support/Support2';
 import Counters from './counter';
-// import AttendanceChart from './attendance';
+import AttendanceChart from './attendance';
 import UpcomingLeaves from './upcoming-leaves';
 import EmployeeDemogaphy from './employee-demography';
 import UpcomingBirthdays from './upcoming-birthdays';
-import AttendanWeekceChart from './attendance-weekly';
+// import AttendanWeekceChart from './attendance-weekly';
 
 const DashboardContent = ({ isLoading }) => {
   return (
@@ -29,8 +29,8 @@ const DashboardContent = ({ isLoading }) => {
 
           {/* Stock Category */}
           <Grid item xs={12} lg={6} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
-          {/* <AttendanceChart/> */}
-          <AttendanWeekceChart/>
+          <AttendanceChart/>
+          {/* <AttendanWeekceChart/> */}
           </Grid>
           {/* Stockt status */}
           <Grid item xs={12} lg={6} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
@@ -38,12 +38,13 @@ const DashboardContent = ({ isLoading }) => {
      
           </Grid>
           {/* Vendor Contacs */}
-          <Grid item xs={12} lg={4} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
-             <UpcomingBirthdays/>
-          </Grid>
-          {/* Low stock items */}
           <Grid item xs={12} lg={8} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
           <UpcomingLeaves/>  
+           
+          </Grid>
+          {/* Low stock items */}
+          <Grid item xs={12} lg={4} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
+          <UpcomingBirthdays/>
           </Grid>
           {/* Frequently Issued Items */}
           <Grid item xs={12} lg={6} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>

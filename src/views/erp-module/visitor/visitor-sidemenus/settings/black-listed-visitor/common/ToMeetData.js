@@ -42,15 +42,15 @@ export const randomReason = () => {
     { field: 'Name', headerName: 'Name', editable: true, flex: 1, minWidth: 130 },
     {
       field: 'ToMeet',
-      headerName: 'ToMeet',
+      headerName: 'To Meet',
       type: 'singleSelect',
       editable: true,
       valueOptions: ['Head Master', 'Principal', 'Class Teacher'],
       flex: 1,
       minWidth: 130
     },
-    { field: 'PhoneNumber', headerName: 'Phone Number', flex: 1, minWidth: 130 },
-    { field: 'createdOn', headerName: 'Created On', flex: 1, minWidth: 130 },
+    { field: 'PhoneNumber', headerName: 'Phone Number', editable: true, flex: 1, minWidth: 130 },
+    { field: 'createdOn', headerName: 'Created On', editable: true, flex: 1, minWidth: 130 },
    
   ];
   

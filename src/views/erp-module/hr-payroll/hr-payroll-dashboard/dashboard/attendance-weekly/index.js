@@ -14,9 +14,9 @@ const AttendanceweekChart = () => {
   const attendanceData = {
     labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
     series: [
-      { name: 'Absent', data: [5, 3, 7, ] },
-      { name: 'Present', data: [20, 18, 22,] },
-      { name: 'Late Comers', data: [3, 2, 4,] }
+      { name: 'Absent', data: [5, 3, 7,7,4 ] },
+      { name: 'Present', data: [20, 18, 22,34,34] },
+      { name: 'Late Comers', data: [3, 2, 4,2,3] }
     ]
   };
   const options = {

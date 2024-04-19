@@ -1,8 +1,17 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import { Grid, Box, Card, Typography, Container } from '@mui/material';
+import { useDispatch } from 'react-redux';
+// import { useEffect } from 'react';
+// import { useState } from 'react';
 
 const ParamSetting = ({SettingData}) => {
+const dispatch=useDispatch()
+const handleClick=(linkProperty,linkReducer)=>{
+  console.log(linkProperty);
+  dispatch(linkReducer(linkProperty))
+  
+}
 
     return (
         <Container>
@@ -20,7 +29,9 @@ const ParamSetting = ({SettingData}) => {
                       </Box>
                       <Box sx={{ paddingTop: '14px' }}>
                         {item.items.map((subItem, subIndex) => (
-                          <Link key={subIndex} to={subItem.path} style={{ textDecoration: 'none', color: 'inherit' }} onClick={()=>console.log(subItem.name)}>
+                          <Link key={subIndex} to={subItem.path} style={{ textDecoration: 'none', color: 'inherit' }} onClick={()=>subItem.property||subItem.property==0?handleClick(subItem.property,item.reducer):null                            
+                            
+                            }>
                           {/* Use Link to navigate to the specified path */}
                           <Typography sx={{ paddingTop: '14px' }}>{subItem.name}</Typography>
                         </Link>

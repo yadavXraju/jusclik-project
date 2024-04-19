@@ -31,6 +31,13 @@ import LibraryMenu from './erp-menus/library/libraryMenus';
 import HrPayRollDashboard from './erp-menus/hr-payroll/hrPayRollDashboard';
 import HrPayRollMenu from './erp-menus/hr-payroll/hrPayrollMenus';
 
+// crm
+import CrmDashboard from './erp-menus/crm/crmDashboard';
+import CrmMenu from './erp-menus/crm/crmMenus';
+
+// from builder
+import FormBuilderMenus from './erp-menus/form-builder/formBuilderMenus';
+
 // Function to retrieve user role from local storage
 const getUserRole = () => {
   return localStorage.getItem('userRole');
@@ -81,6 +88,16 @@ const generateMenuItems = (userRole) => {
       // hr payroll
       case 'hr-payroll':
         menuItems.items.push(HrPayRollDashboard, HrPayRollMenu);
+        break;
+
+    // crm
+      case 'crm':
+        menuItems.items.push(CrmDashboard , CrmMenu);
+        break;
+
+        // form builder
+      case 'form-builder':
+        menuItems.items.push(FormBuilderMenus);
         break;
 
     default:

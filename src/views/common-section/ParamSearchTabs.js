@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Tabs, Tab, Typography, Box} from '@mui/material';
 import ParamSearchBar from 'views/common-section/ParamSearchBar';
 import 'assets/scss/tabscustomization.css';
+import { useEffect } from 'react';
 
 
 const TabPanel = (props) => {
@@ -38,14 +39,18 @@ const a11yProps = (index) => {
 }
 
 
-const SetupTabs = ({tabPage}) => {
+const SetupTabs = (props) => {
   const [value, setValue] = useState(0);
   const [searchTerm, setSearchTerm] = useState('');
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
-  const filterData = tabPage.filter((tab) => tab.name.toLowerCase().includes(searchTerm.toLowerCase()));
+  const filterData = props.tabPage.filter((tab) => tab.name.toLowerCase().includes(searchTerm.toLowerCase()));
+  useEffect(()=>{
+      if(props.selectedTab)
+      setValue(props.selectedTab)
+  },[value])
 
   return (
     <>
