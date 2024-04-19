@@ -4,6 +4,7 @@ import Loadable from 'ui-component/Loadable';
 const Dashboard = Loadable(lazy(() => import('views/erp-module/crm/crm-dashboard')));
 // contact
 const Contact = Loadable(lazy(() => import('views/erp-module/crm/crm-sidebar/contact')));
+const Preview = Loadable(lazy(() => import('views/erp-module/crm/crm-sidebar/contact/Preview')));
 
 // pipeline
 const Pipeline = Loadable(lazy(() => import('views/erp-module/crm/crm-sidebar/pipeline')));
@@ -25,8 +26,19 @@ const CrmRoutes = [
        },
        {
         path: 'contact', 
-        element: <Contact /> 
-    },
+        children:[
+          {
+            path: '', 
+            element: <Contact /> 
+          },
+
+          {
+            path: ':id', 
+            element: <Preview /> 
+          }
+
+        ]
+      },
 
     {
         path: 'pipeline', 
