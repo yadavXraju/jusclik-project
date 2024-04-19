@@ -1,5 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-
+import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
+import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
+import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
+import PhoneAndroidOutlinedIcon from '@mui/icons-material/PhoneAndroidOutlined';
+import RadioButtonCheckedOutlinedIcon from '@mui/icons-material/RadioButtonCheckedOutlined';
+import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
 
 const basicFields = [
                     {
@@ -49,28 +54,32 @@ const basicFields = [
                         type: "text",
                         label:"",
                         selected: false,
-                        id: 10
+                        id: 10,
+                        icon:PhoneAndroidOutlinedIcon,
                     },
                     {
                         name: "Email",
                         type: "date",
                         label:"",
                         selected: false,
-                        id: 11
+                        id: 11,
+                        icon:EmailOutlinedIcon
                     },
                     {
                         name: "Date",
                         type: "text",
                         label:"",
                         selected: false,
-                        id: 12
+                        id: 12,
+                        icon:CalendarMonthOutlinedIcon 
                     },
                     {
                         name: "Time",
                         type: "text",
                         label:"",
                         selected: false,
-                        id: 13
+                        id: 13,
+                        icon:AccessTimeOutlinedIcon 
                     },
                     {
                         name: "Date-Time",
@@ -86,7 +95,7 @@ const basicFields = [
                         selected:false,
                         id:15
                     },{
-                        name:"DropDown",
+                        name:"Drop Down",
                         type:"text",
                         label:"",
                         selected:false,
@@ -96,7 +105,8 @@ const basicFields = [
                         type:"text",
                         label:"",
                         selected:false,
-                        id:17
+                        id:17,
+                        icon:RadioButtonCheckedOutlinedIcon
                     },{
                         name:"Multiple Choice",
                         type:"text",
@@ -116,7 +126,8 @@ const basicFields = [
                         type:"text",
                         label:"",
                         selected:false,
-                        id:20
+                        id:20,
+                        icon:LanguageOutlinedIcon,
                     },{
                         name:"Currency",
                         type:"text",

@@ -4,24 +4,24 @@ import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 
 
-const DrawerContent = ({toggleDrawer}) => (
+const DrawerContent = ({ toggleDrawer }) => (
   <>
-    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #ccc',padding:"0px 20px" }}>
+    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #ccc', padding: "0px 20px" }}>
       <Typography variant="h4">Properties</Typography>
       <Button onClick={toggleDrawer('right', false)} sx={{ alignSelf: 'flex-end' }}>
         Close
       </Button>
     </Box>
-    <Grid container padding='2rem' sx={{ height: "calc(100vh - 100px)",width:"600px" }} className='scrollbar'>
+    <Grid container padding='2rem' sx={{ height: "calc(100vh - 50px)", width: "600px" }} className='scrollbar'>
       <Grid item md={12}>
-        <TextField placeholder="Feild Label" fullWidth></TextField>
+        <TextField placeholder="Feild Label" fullWidth sx={{borderRadius:"4px"}}></TextField>
       </Grid>
       <Grid item md={12}>
         <FormControlLabel control={<Checkbox />} label="Hide Feild Label" />
       </Grid>
       <Grid item md={12}>
         <FormControl fullWidth>
-          <TextField multiline minRows={10} placeholder="Instruction"></TextField>
+          <TextField multiline minRows={10} placeholder="Instruction" sx={{borderRadius:"4px"}}></TextField>
         </FormControl>
       </Grid>
       <Grid item md={8} marginTop='2rem'>
@@ -40,14 +40,14 @@ const DrawerContent = ({toggleDrawer}) => (
       </Grid>
       <Grid item md={12} sx={{ marginTop: "2rem" }}>
         <FormControl fullWidth>
-          <TextField placeholder="Placeholder Text"></TextField>
+          <TextField placeholder="Placeholder Text" sx={{borderRadius:"4px"}}></TextField>
         </FormControl>
       </Grid>
       <Grid item md={12} sx={{ marginTop: "2rem" }} display='flex' flexDirection='column'>
         <Typography sx={{ flex: 1 }}>Character Limit</Typography>
         <Box flexDirection='row' display='flex' gap={2} marginTop='0.5rem'>
-          <TextField placeholder="min"></TextField>
-          <TextField placeholder="max"></TextField>
+          <TextField placeholder="min" sx={{borderRadius:"4px"}}></TextField>
+          <TextField placeholder="max" sx={{borderRadius:"4px"}}></TextField>
         </Box>
       </Grid>
       <Grid item md={12} sx={{ marginTop: "2rem" }} display='flex' flexDirection='column'>
