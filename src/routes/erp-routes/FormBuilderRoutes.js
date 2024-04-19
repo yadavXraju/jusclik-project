@@ -5,7 +5,10 @@ import Loadable from 'ui-component/Loadable';
 
 const Forms= Loadable(lazy(() => import('views/erp-module/form-builder')));
 const Builder= Loadable(lazy(() => import('views/erp-module/form-builder/builder')));
-
+// report
+const Reports = Loadable(lazy(() => import('views/erp-module/form-builder/reports')));
+// setting
+const Settings = Loadable(lazy(() => import('views/erp-module/form-builder/settings')));
 // temp routes
 const DamanTemp= Loadable(lazy(() => import('views/erp-module/form-builder/common/common-fields')));
 const CommonDrawer= Loadable(lazy(() => import('views/erp-module/form-builder/common/common-drawer')));
@@ -33,6 +36,15 @@ const FormBuilderRoutes = [
 
           ]
           },
+      {
+            path: 'settings', 
+            element: <Settings /> 
+        },
+
+        {
+            path: 'reports', 
+            element: <Reports /> 
+        },
           // temp routes
           { 
             path: 'daman-temp', 

@@ -3,7 +3,7 @@ export const randomReason = () => {
     return roles[Math.floor(Math.random() * 3)];
   };
   
-  export const roles = ['Meeting', 'Submission', 'Parent Discussion'];
+    export const roles = ['Meeting', 'Submission', 'Parent Discussion'];
   export const initialRows = [
     {
       id: 1,  
@@ -47,7 +47,8 @@ export const randomReason = () => {
       editable: true,
       valueOptions: ['Meeting', 'Submission', 'Parent Discussion'],
       flex: 1,
-      minWidth: 130
+      minWidth: 130,
+      
     },
     { field: 'AverageMeetingTime', headerName: 'Average Meeting Time', editable: true, flex: 1, minWidth: 130 },
     { field: 'createdBy', headerName: 'Created by',  editable: true,flex: 1, minWidth: 130 },

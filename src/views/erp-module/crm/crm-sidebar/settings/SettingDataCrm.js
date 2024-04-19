@@ -67,7 +67,7 @@ const SettingData = [
     title: 'Configure',
     items: [
       // { name: 'Blacklist Visitors', path: '/erp/student-info-fee/settings/blacklist-visitors' },
-      { name: 'Transaction Number Series', path: '/erp/student-info-fee/settings/transaction-number-series' }
+      { name: 'Admission Number Series', path: '/erp/student-info-fee/settings/admission-number-series' }
     ]
   },
   {
@@ -89,7 +89,7 @@ const SettingData = [
   }
 ];
 
-const Organisation= () =>{
+const SettingDataCrm= () =>{
   return(
     <>
     <ParamSetting SettingData={SettingData} />
@@ -97,4 +97,4 @@ const Organisation= () =>{
   )
 }
 
-export { SettingData, Organisation as default };
+export { SettingData, SettingDataCrm as default };
