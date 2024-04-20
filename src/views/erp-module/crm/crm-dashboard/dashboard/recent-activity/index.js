@@ -10,11 +10,11 @@ const RecentActivity = () => {
 
   // Sample recent activity data
   const recentActivityData = [
-    { id: 1, content: "You have a new email from John Doe", time: "8:30 AM", date: "April 20, 2024" ,by:"John"},
-    { id: 2, content: "Meeting reminder for today", time: "10:00 AM", date: "April 20, 2024",by:"John" },
-    { id: 3, content: "Your order has been shipped", time: "11:45 AM", date: "April 20, 2024",by:"John" },
-    { id: 4, content: "Check out our latest offers", time: "1:30 PM", date: "April 20, 2024" ,by:"John"},
-    { id: 5, content: "New message from Jane Smith", time: "3:20 PM", date: "April 20, 2024",by:"John" },
+    { id: 1, content: "You have a new email from John Doe", time: "8:30 AM",update:"response given", date: "April 20, 2024" ,by:"John"},
+    { id: 2, content: "Meeting reminder for today", time: "10:00 AM",update:"verified", date: "April 20, 2024",by:"John" },
+    { id: 3, content: "Your order has been shipped", time: "11:45 AM",update:"verified", date: "April 20, 2024",by:"John" },
+    { id: 4, content: "Check out our latest offers", time: "1:30 PM",update:"approced", date: "April 20, 2024" ,by:"John"},
+    { id: 5, content: "New message from Jane Smith", time: "3:20 PM",update:"update", date: "April 20, 2024",by:"John" },
   ];
 
   return (
@@ -60,14 +60,16 @@ const RecentActivity = () => {
                   <TableCell>
                     <Grid container spacing={1} alignItems="center">
                       <Grid item>
-                        < MailOutlineIcon sx={{color:"#000"}}/>
+                        <Box sx={{border:"1px solid #57AFF4",borderRadius:"10px",padding:"4px",display:"flex",alignItem:"center",justifyContent:"center"}}>
+                        < MailOutlineIcon sx={{color:"#57AFF4"}}/>
+                        </Box>
+                        
                       </Grid>
                     </Grid>
                   </TableCell>
                   <TableCell>
                     <Box display="" mx="" my="" sx="">
-
-                      <Typography variant="body1" color="initial">{mailData.content}</Typography>
+                      <Typography variant="body1"  color="initial" sx={{display:"flex"}}>{mailData.content} ,<Typography sx={{fontSize:"14px",fontWeight:"600",margingLeft:"15px"}}>{mailData.update}</Typography></Typography>
                     </Box>
                     </TableCell>
                   <TableCell>
