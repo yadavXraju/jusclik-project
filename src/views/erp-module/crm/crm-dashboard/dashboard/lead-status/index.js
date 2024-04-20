@@ -4,13 +4,13 @@ import { Grid, Paper, Typography, useMediaQuery,Box} from '@mui/material';
 import { gridSpacing } from 'store/constant';
 import { HeadingCss } from 'views/common-section/dashboard-css/CommonCss';
 // import WomanIcon from '@mui/icons-material/Woman';
-const AttendanceChart = () => {
+const LeadStatus = () => {
   const isMediumDesktop = useMediaQuery('(max-width: 1600px)');
   const isMobile = useMediaQuery('(max-width: 767px)');
 
 
   const chartData = {
-    series: [60, 5,4,6],
+    series: [6, 5,4,6,9],
     chart: {
       type: 'donut',
     },
@@ -23,22 +23,30 @@ const AttendanceChart = () => {
         return val.toFixed(0) + '%';
       },
     },
+    plotOptions: {
+        pie: {
+          donut: {
+            labels: {
+              show: true, 
+              total: {
+                show: true,
+                label: 'Lead Status',
+                // formatter: function () {
+                //   return chartData.series.reduce((a, b) => a + b, 0).toFixed(0);
+                // },
+              },
+            },
+          },
+        },
+      },
     labels: [
-      'Present',
-      'Absent',
-      'Late Comer',
-      'On Duty'
+      'Unverified',
+      'Verified',
+      'Application Started',
+      'Payment Approved',
+      'Application Submitted'
     
     ],
-    // colors: [
-    //   'rgb(42, 101, 191)',
-    //   '#EE4A3D',
-    //   '#F3DB3F',
-    //   '#34A853',
-   
-    
-
-    // ],
     colors: [
       '#1B1363',
       '#1B84FF',
@@ -97,7 +105,7 @@ const AttendanceChart = () => {
           }}
         >
           <Typography variant="h2" style={{ ...HeadingCss, border: 'none' }}>
-           Daily  Attendance
+          Lead Status
           </Typography>
         </Grid>
 
@@ -186,4 +194,4 @@ const AttendanceChart = () => {
   );
 };
 
-export default AttendanceChart;
+export default LeadStatus;
