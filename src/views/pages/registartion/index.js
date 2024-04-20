@@ -69,7 +69,6 @@ const Registration = () => {
   });
 
   // Generic handleChange function to update form data
-// Generic handleChange function to update form data
 const handleChange = (e) => {
   const { name, value } = e.target;
   // Validate if the field is "mobileNumber" and the length is within the limit

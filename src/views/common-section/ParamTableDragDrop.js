@@ -133,7 +133,7 @@ const ParamTableDragDrop = ({ columns, initialData, tableStyle, dragIcon = false
             </DragDropContext>
 
             <Drawer anchor="top" open={anchor.top} onClose={toggleDrawer('top', false)}>
-                <Box  sx={{ width:'100VW' , padding: '1rem' , minHeight:'100vh'}} role='presentation'>
+                <Box  sx={{ width:'100%' , padding: '1rem' , minHeight:'100vh'}} role='presentation'>
                 <Box sx={{ display: "flex", justifyContent: "space-between", paddingBottom: '0rem', borderBottom: '1px solid #ccc'  }}>
                     <Typography variant='h4'> Fee Structure </Typography>
                     <Button sx={{marginTop:"-6px"}} onClick={toggleDrawer('top', false)}>Close</Button>

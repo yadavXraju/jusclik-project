@@ -114,8 +114,7 @@ const MainLayout = () => {
         <Breadcrumbs separator={IconChevronRight} navigation={getMenuItems} icon title rightAlign />
 
         {/* url page */}
-        {location.pathname !== '/parent/dashboard' && location.pathname !== '/class-teacher/dashboard'  && location.pathname !== '/subject-teacher/dashboard' && location.pathname !== '/erp/visitor/dashboard' && location.pathname !== '/erp/student-info-fee/dashboard' && location.pathname !== '/erp/inventory/dashboard' && location.pathname !== '/erp/library/dashboard' && <UrlPage />}
-
+        { !location.pathname.match(/\/dashboard\b/)&& !location.pathname.match(/\/builder\b/) && <UrlPage />}
 
         {/* <UrlPage /> */}
         <Outlet />
