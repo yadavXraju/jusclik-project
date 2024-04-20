@@ -18,7 +18,7 @@ const Message = () => {
     const isSmScreen = useMediaQuery('(max-width: 400px)');
     const small360 = isSmScreen ? 'ruby-text' : 'flex';
     const res2560 = useMediaQuery('(min-width:2000px)')
-    const rem=res2560?'19rem':null;
+    const rem=res2560?'17rem':null;
 
     // Function to handle the received data from MailCompose
     const handleEmailSend = (data) => {
