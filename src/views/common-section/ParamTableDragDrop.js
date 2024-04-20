@@ -6,6 +6,7 @@ import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 import SettingsTwoToneIcon from '@mui/icons-material/SettingsTwoTone';
 import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 import useDrawer from 'hooks/useDrawer';
+import WarningDialog from './WarningDialog';
 
 
 
@@ -33,6 +34,27 @@ const ParamTableDragDrop = ({ columns, initialData, tableStyle, dragIcon = false
         setEditId(null); // Set the id of the row to be edited
     };
 
+    const [modalOpen, setmodalOpen] = React.useState(false);
+
+    const handleModalClose = () => {
+        setmodalOpen(false);
+      };
+      const handleConfirmDelete = () => {
+        setmodalOpen(false);
+        setdeleteId(null)
+      };
+    
+        // ========== function for handle delete row ===========
+  const handleDeleteRow = () => {
+    setmodalOpen(true);
+  };
+
+
+
+      // ========== function for handle delete row ===========
+      
+    
+      
     return (
         <>
             <DragDropContext onDragEnd={handleDragEnd}>
@@ -114,7 +136,7 @@ const ParamTableDragDrop = ({ columns, initialData, tableStyle, dragIcon = false
     
                                                                 <Tooltip title="Delete">
                                                                     <IconButton>
-                                                                        <DeleteTwoToneIcon sx={{color:'rgb(241, 158, 158)'}}/>
+                                                                        <DeleteTwoToneIcon onClick={() => handleDeleteRow()} sx={{color:'rgb(241, 158, 158)'}}/>
                                                                     </IconButton>
                                                                 </Tooltip>
                                                             </Box>
@@ -141,6 +163,15 @@ const ParamTableDragDrop = ({ columns, initialData, tableStyle, dragIcon = false
                   {children}
                 </Box>
           </Drawer>
+
+                {/* ========= import warning dialog ========== */}
+            <WarningDialog
+                open={modalOpen}
+                onClose={handleModalClose}
+                contentText="Are you sure you want to delete?"
+                onConfirm={handleConfirmDelete}
+            />
+
         </>
     );
 };
