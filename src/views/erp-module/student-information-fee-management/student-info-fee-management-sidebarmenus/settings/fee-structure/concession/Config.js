@@ -4,18 +4,20 @@ import ConfigureStudentWise from './ConfigureStudentWise';
 
 const tabPage = [
     {
-      id: 1,
-      name: 'Configure Student Wise',
-      value: '1',
-      component:  ConfigureStudentWise,
-    },
-    {
-        id: 2,
+        id: 1,
         name: 'Configure Globally',
-        value: '2',
+        value: '1',
         component:'test'
       },
   
+
+    {
+      id: 2,
+      name: 'Configure Student Wise',
+      value: '2',
+      component:  ConfigureStudentWise,
+    },
+
 
   ];
 
