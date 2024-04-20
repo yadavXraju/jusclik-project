@@ -20,24 +20,30 @@ const iconStyles = {
 const CounterData = [
     {
         id: 1,
-        icon: <WomanIcon sx={{ ...iconStyles, color: ' #F6A6BB' }} />,
+        icon: <WomanIcon sx={{ ...iconStyles, color: '#17C653' }} />,
         counterNumber: '56' ,
         counterTitle: 'Total Female',
-        backgroundColor:'rgb(246 166 187 / 36%)',
+        backgroundColor:'#17c6533b',
     },
     {
         id: 2,
-        icon: <ManIcon sx={{ ...iconStyles, color: 'rgb(42, 101, 191)' }} />,
+        icon: <ManIcon sx={{ ...iconStyles, color: '#1B84FF' }} />,
         counterNumber: 83,       
         counterTitle: 'Total Male',
         backgroundColor:'rgb(42 101 191 / 15%)',
     },
+   
+
+
+];
+const CounterData2 = [
+
     {
         id: 3,
-        icon: <PeopleIcon sx={{ ...iconStyles, color: '#F3DB3F' }} />,
+        icon: <PeopleIcon sx={{ ...iconStyles, color: '#A8CD9F' }} />,
         counterNumber: "25",
         counterTitle: 'Avrage Age ',
-        backgroundColor:'rgb(245 238 215)',
+        backgroundColor:'#a8cd9f59',
     },
     {
         id: 4,
@@ -50,18 +56,23 @@ const CounterData = [
 
 ];
 
-
 const Counters = () => {
 
 
     return (
         <>
-        <Grid container lg={12}>
-         <Grid item lg={4}>
+        <Grid container lg={12} spacing={2}>
+         <Grid item lg={5}>
          <TotalGender/>
          </Grid>
-         <Grid item lg={8}>
-         <ParamCounters CounterData={CounterData} />
+         <Grid item lg={7} >
+           < Grid  sx={{mb:1}}>
+           <ParamCounters CounterData={CounterData} />
+           </Grid> 
+           < Grid spacing={1}>
+           <ParamCounters CounterData={CounterData2} />
+           </Grid> 
+        
          </Grid>
         </Grid>
       

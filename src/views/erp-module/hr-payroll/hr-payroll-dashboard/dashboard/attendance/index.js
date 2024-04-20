@@ -1,38 +1,23 @@
 import React from 'react';
 import ApexCharts from 'react-apexcharts';
-import { Grid, Paper, Typography, useMediaQuery} from '@mui/material';
+import { Grid, Paper, Typography, useMediaQuery,Box} from '@mui/material';
 import { gridSpacing } from 'store/constant';
 import { HeadingCss } from 'views/common-section/dashboard-css/CommonCss';
-import WomanIcon from '@mui/icons-material/Woman';
+// import WomanIcon from '@mui/icons-material/Woman';
 const AttendanceChart = () => {
   const isMediumDesktop = useMediaQuery('(max-width: 1600px)');
   const isMobile = useMediaQuery('(max-width: 767px)');
 
 
   const chartData = {
-    series: [60, 10,8,3],
+    series: [60, 5,4,6],
     chart: {
-      type: 'pie',
+      type: 'donut',
     },
     stroke: {
       width: 3,
     },
-    plotOptions: {
-      pie: {
-        donut: {
-          labels: {
-            show: false, 
-            total: {
-              show: false,
-              label: <WomanIcon/>,
-              formatter: function () {
-                return chartData.series.reduce((a, b) => a + b, 0).toFixed(0);
-              },
-            },
-          },
-        },
-      },
-    },
+
     dataLabels: {
       formatter: function (val) {
         return val.toFixed(0) + '%';
@@ -45,12 +30,20 @@ const AttendanceChart = () => {
       'On Duty'
     
     ],
-    colors: [
-      '#4C88BE',
-      '#9FCCE9',
-      '#1162A4',
-      '#6EB2C9',
+    // colors: [
+    //   'rgb(42, 101, 191)',
+    //   '#EE4A3D',
+    //   '#F3DB3F',
+    //   '#34A853',
+   
+    
 
+    // ],
+    colors: [
+      '#1B1363',
+      '#1B84FF',
+      '#4AB8DD',
+      '#57AFF4',
     ],
     responsive: [
       {
@@ -76,9 +69,6 @@ const AttendanceChart = () => {
       markers: {
         width: 12,
         height: 12,
-      },
-      formatter: function (seriesName) {
-        return seriesName;
       },
       offsetY: 10,
       itemDirection: 'row',
@@ -129,11 +119,66 @@ const AttendanceChart = () => {
                 alignItems: isMobile ? 'center' : 'auto',
               }}
             >
-              <ApexCharts options={chartData} series={chartData.series} type="pie" height={isMediumDesktop ? 200 : 320} />
+              <ApexCharts options={chartData} series={chartData.series} type="donut" height={isMediumDesktop ? 200 : 320} />
             </Grid>
           </Grid>
 
           {/* =================================  book detail =================================   */}
+          <Grid lg={6}  md={6} sm={6} sx={{ display: 'flex', justifyContent: 'center', alignItems:"center",paddingLeft: isMobile?"20px": '100px', gap: '20px' }}>
+              <Grid container spacing={0} sx={{display:"flex"}}>
+              {/* detail left */}
+                <Grid lg={12} item xs={12} md={12}>
+                {/* avialable */}
+                <Box sx={{ display: 'flex', flexDirection: 'row',alignItems:"center",}}>
+              
+              
+                <Box sx={{width:"10px",height:"10px",borderRadius:"50%" ,marginRight:"15px",background:chartData.colors[0]}}>
+                </Box>
+          
+              <Typography variant='h5' className='labels'>{chartData.labels[0]}</Typography>
+                </Box>
+            {/* Issued */}
+                <Box sx={{ display: 'flex', flexDirection: 'row',alignItems:"center" }}>
+              
+              
+                <Box sx={{width:"10px",height:"10px",borderRadius:"50%" ,marginRight:"15px",background:chartData.colors[1]}}>
+                </Box>
+          
+              <Typography variant='h5' className='labels'>{chartData.labels[1]}</Typography>
+                </Box>
+                        {/* Issued */}
+                        <Box sx={{ display: 'flex', flexDirection: 'row',alignItems:"center" }}>
+              
+              
+              <Box sx={{width:"10px",height:"10px",borderRadius:"50%" ,marginRight:"15px",background:chartData.colors[2]}}>
+              </Box>
+        
+            <Typography variant='h5' className='labels'>{chartData.labels[2]}</Typography>
+              </Box>
+                                    {/* Issued */}
+                                    <Box sx={{ display: 'flex', flexDirection: 'row',alignItems:"center" }}>
+              
+              
+              <Box sx={{width:"10px",height:"10px",borderRadius:"50%" ,marginRight:"15px",background:chartData.colors[3]}}>
+              </Box>
+        
+            <Typography variant='h5' className='labels'>{chartData.labels[3]}</Typography>
+              </Box>
+                                    {/* Issued */}
+                                    <Box sx={{ display: 'flex', flexDirection: 'row',alignItems:"center" }}>
+              
+              
+              <Box sx={{width:"10px",height:"10px",borderRadius:"50%" ,marginRight:"15px",background:chartData.colors[4]}}>
+              </Box>
+        
+            <Typography variant='h5' className='labels'>{chartData.labels[4]}</Typography>
+              </Box>
+                </Grid>
+              </Grid>
+          
+
+          </Grid>
+
 
         </Grid>
       </Paper>
