@@ -9,6 +9,7 @@ import AttendanceChart from './attendance';
 import UpcomingLeaves from './upcoming-leaves';
 import EmployeeDemogaphy from './employee-demography';
 import UpcomingBirthdays from './upcoming-birthdays';
+import EmployeeTopAndBottom from './employee-performance';
 // import AttendanWeekceChart from './attendance-weekly';
 
 const DashboardContent = ({ isLoading }) => {
@@ -48,7 +49,7 @@ const DashboardContent = ({ isLoading }) => {
           </Grid>
           {/* Frequently Issued Items */}
           <Grid item xs={12} lg={6} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
-          
+          <EmployeeTopAndBottom/>
           </Grid>
           {/* Help & support */}
           <Grid item xs={12} lg={6} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>

@@ -4,11 +4,12 @@ import Grid from '@mui/material/Grid';
 import { gridSpacing } from 'store/constant';
 
 import NeedHelp from 'views/erp-module/student-information-fee-management/student-info-fee-management-dashboard/dashboard/support/Support2';
-import Counters from 'views/erp-module/hr-payroll/hr-payroll-dashboard/dashboard/counter';
-import UpcomingLeaves from 'views/erp-module/hr-payroll/hr-payroll-dashboard/dashboard/upcoming-leaves';
-import EmployeeDemogaphy from 'views/erp-module/hr-payroll/hr-payroll-dashboard/dashboard/employee-demography';
-import UpcomingBirthdays from 'views/erp-module/hr-payroll/hr-payroll-dashboard/dashboard/upcoming-birthdays';
-import AttendanWeekceChart from 'views/erp-module/hr-payroll/hr-payroll-dashboard/dashboard/attendance-weekly';
+
+import CRMCounter from './counter';
+import LeadStatus from './lead-status';
+import AgentLeaderBoard from './Aggent-leaderbord';
+import LeadBySource from './Lead-source';
+import RecentActivity from './recent-activity';
 
 const DashboardContent = ({ isLoading }) => {
   return (
@@ -23,26 +24,26 @@ const DashboardContent = ({ isLoading }) => {
             md={12}
             sx={{ marginTop: { md: '0px', lg: '0rem', display: 'flex', flexDirection: 'column', gap: '24px' } }}
           >
-            <Counters/>
+            <CRMCounter/>
           </Grid>
 
           {/* Stock Category */}
           <Grid item xs={12} lg={6} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
-          {/* <AttendanceChart/> */}
-          <AttendanWeekceChart/>
+            <AgentLeaderBoard/>
           </Grid>
           {/* Stockt status */}
           <Grid item xs={12} lg={6} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
-          <EmployeeDemogaphy/>
+    <LeadStatus/>
      
           </Grid>
           {/* Vendor Contacs */}
-          <Grid item xs={12} lg={4} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
-             <UpcomingBirthdays/>
+          <Grid item xs={12} lg={6} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
+            
+            <LeadBySource/>
           </Grid>
           {/* Low stock items */}
-          <Grid item xs={12} lg={8} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
-          <UpcomingLeaves/>  
+          <Grid item xs={12} lg={6} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
+          <RecentActivity/>
           </Grid>
           {/* Frequently Issued Items */}
           <Grid item xs={12} lg={6} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>

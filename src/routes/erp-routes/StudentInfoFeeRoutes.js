@@ -127,6 +127,8 @@ const MotherDetailsForm =  Loadable(lazy(() => import('views/erp-module/student-
 
 const StudentDetailsForm =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/student-master/registration/student-details/data-forms/StudentDetails')));
 
+const TransactionNoSeries =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/settings/transaction-no-series')));
+
 
 
 // dashboard payroll
@@ -142,21 +144,6 @@ const UserDetailsRoles =  Loadable(lazy(() => import('views/erp-module/student-i
 const InvoiceTemplate =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/settings/setting/invoice-template')));
 
 const Template =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/settings/setting/invoice-template/templates')));
-
-// temp routes will be deleted
-
-// const InvoiceTemplate =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/settings/setting/invoice-template/daman')));
-
-// const Kulwinder =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/settings/setting/invoice-template/kulwinder')));
-
-// const Kulwinder2 =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/settings/setting/invoice-template/kulwinder/template3')));
-
-
-// const Harsh =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/settings/setting/invoice-template/harsh')));
-
-// const Harsh1 =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/settings/setting/invoice-template/harsh/harsh1')));
-
-// const Harsh2 =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/settings/setting/invoice-template/harsh/harsh2')));
 
 // ==============================|| Visitor MENUS ||============================== //
 
@@ -399,7 +386,7 @@ const StudentInfoFeeRoutes = [
         ]
         },
 
-        // settinga
+        // settings
         {
           path: 'settings',
           children: [
@@ -436,39 +423,11 @@ const StudentInfoFeeRoutes = [
               path: 'withdrawal-checklist',
               element : <WithdrawalChecklist />
             },
+            {
+              path: 'transaction-number-series',
+              element : <TransactionNoSeries />
+            },
             
-            
-              // temp routes
-    
-              // { 
-              //   path: 'daman', 
-              //   element: <Daman/> 
-              // },
-
-              // { 
-              //   path: 'kulwinder', 
-              //   element: <Kulwinder /> 
-              // },    
-
-              // { 
-              //   path: 'kulwinder2', 
-              //   element: <Kulwinder2 /> 
-              // },    
-
-              // { 
-              //   path: 'harsh', 
-              //   element: <Harsh /> 
-              // },
-            
-              // { 
-              //   path: 'harsh1', 
-              //   element: <Harsh1 /> 
-              // },
-
-              // { 
-              //   path: 'harsh2', 
-              //   element: <Harsh2 /> 
-              // },
           ]
         },
 

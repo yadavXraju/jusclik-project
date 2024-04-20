@@ -1,9 +1,10 @@
 import React,{useState} from 'react';
-import {Grid, TextField ,styled ,Button ,} from '@mui/material';
+import {Grid, TextField ,styled ,Button , Checkbox ,} from '@mui/material';
 import SelectList from 'views/common-section/ParamSelectList';
 import ParamDateComponent from 'views/common-section/ParamDateComponent';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import CommonDataGrid from 'views/common-section/commonDataGrid';
+
 
 const VisuallyHiddenInput = styled('input')({
     clip: 'rect(0 0 0 0)',
@@ -17,79 +18,94 @@ const VisuallyHiddenInput = styled('input')({
     width: 1,
   });
 
+  const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
+
+
   const TableRowData = [
     {
       id: 1,
-     
-      taskno: 'Withdrawal Approval Principal',
-      assignedto: 'Not Assigned',
-      duedate: '08-03-2024',
-      status: 'In Progress',
+      srNo: '1',
+      concessionCategory: 'Vaccination Discount',
+      amount: '25.00',
+      concessionType: 'In Progress',
       
     },
     {
       id: 2,
-      
-      taskno: 'Withdrawal Approval Class Teacher',
-      assignedto: 'Not Assigned',
-      duedate: '08-03-2024',
-      status: 'In Progress',
+      srNo: '2',
+      concessionCategory: 'Staff Child',
+      amount: '50.00',
+      concessionType: '',
     },
     {
       id: 3,
-     
-      taskno: 'Withdrawal Approval Co-ordinator',
-      assignedto: 'Not Assigned',
-      duedate: '08-03-2024',
-      status: 'Completed',
+      srNo: '3',
+      concessionCategory: 'Scholarship',
+      amount: '75.00',
+      concessionType: '',
     },
     {
-      id: 4,
-     
-      taskno: 'Library Due Clearance',
-      assignedto: 'Not Assigned',
-      duedate: '08-03-2024',
-      status: 'In Progress',
+      id: 4, 
+      srNo: '4',
+      concessionCategory: '50% of Tuition Fee',
+      amount: '60.00',
+      concessionType: '',
     },
     {
       id: 5,
-     
-      taskno: 'Intimation Mail',
-      assignedto: 'Not Assigned',
-      duedate: '08-03-2024',
-      status: 'In Progress'
+      srNo: '5',
+      concessionCategory: '50% in Fee',
+      amount: '55.00',
+      concessionType: '',
   
     },
     {
         id: 6,
-       
-        taskno: 'Generation of SLC',
-        assignedto: 'Not Assigned',
-        duedate: '08-03-2024',
-        status: 'Completed',
+        srNo: '6',
+        concessionCategory: 'Staff',
+        amount: '90.00',
+        concessionType: '',
+      },
+
+      {
+        id: 7,
+        srNo: '7',
+        concessionCategory: '50% of Tuition Fee',
+        amount: '80.00', 
+        concessionType: '',
       },
       
   ];
   
 
   const columns = [
-    { field: 'taskno', headerName: 'Task Name', flex: 1, minWidth: 130, align: 'left', headerAlign: 'left' },
-    { field: 'assignedto', headerName: 'Assigned To', flex: 1, minWidth: 130 },
-    { field: 'duedate', headerName: 'Due Date', flex: 1, minWidth: 130, },
+    { field: 'srNo', headerName: 'Sr No.', flex: 1,  minWidth: 130, align: 'left', headerAlign: 'left' },
+
+    { field: 'concessionCategory', headerName: 'Concession Category', flex: 1, minWidth: 130 },
+    
+    { field: 'amount', headerName: 'Amount', flex: 1, minWidth: 130, },
+    {
+        field: 'concessionType',
+        headerName: 'Concession Type',
+        flex: 1,
+        minWidth: 130,
+        renderCell: () => (
+            <Checkbox {...label} />
+        )
+      },
+
   ]
   
-    
-
 const ConfigureStudentWise = () => {
 
     const [concessionData, setConcessionData] = useState({
         acadmicYear: '2024-25',
-        name:'',
+        studentName:'',
         admissionNo:'',
-        concessionHead: '',
+        classSection:'',
         applicableFromDate : '',
         uptoDate : '',
-        remark:'',
+        remarks:'',
       });
 
       const handleChange = (e) => {
@@ -100,7 +116,6 @@ const ConfigureStudentWise = () => {
           }));
 
       };
-
       
   // Acadmic option
   const AcademicYearOptions = [
@@ -110,19 +125,6 @@ const ConfigureStudentWise = () => {
     { value: '2021-22', label: '2021-22' }
   ];
 
-
-//   ConcessionHead option
-
-const ConcessionHeadOptions = [
-    { value: 'Vaccination Discount', label: 'Vaccination Discount' },
-    { value: 'Staff Child', label: 'Staff Child' },
-    { value: 'Scholarship', label: 'Scholarship' },
-    { value: '50% of Tuition Fee', label: '50% of Tuition Fee' },
-    { value: '50% in Fee', label: '50% in Fee' },
-    { value: 'Staff', label: 'Staff' },
-    { value: '30% of Tuition Fee', label: '30% of Tuition Fee' },
-    { value: '50% of Tuition Fee', label: '50% of Tuition Fee' },
-  ];
 
   return (
     <>
@@ -137,10 +139,10 @@ const ConcessionHeadOptions = [
         {/* =========================== name*/}
         <Grid item  xs={12} md={3} sx={{ marginBottom: '24px' }}>
                 <TextField
-                  id="name"
-                  name="name"
+                  id="studentName"
+                  name="studentName"
                   value={concessionData.name}
-                  label="Name"
+                  label="Student Name"
                   variant="outlined"
                   onChange={handleChange}
                   fullWidth
@@ -150,7 +152,7 @@ const ConcessionHeadOptions = [
        {/* =========================== admission no*/}
         <Grid item  xs={12} md={3} sx={{ marginBottom: '24px' }}>
                 <TextField
-                  id="admission-no"
+                  id="admissionNo"
                   name="admissionNo"
                   value={concessionData.admissionNo}
                   label="Admission No"
@@ -158,15 +160,21 @@ const ConcessionHeadOptions = [
                   onChange={handleChange}
                   fullWidth
                 />
-        </Grid>
+         </Grid>
 
-
- 
-  
-        {/* ===========================  concession head*/}
-        <Grid item xs={12} md={3} sx={{ marginBottom: '24px' }}>
-            <SelectList label="Concession Head" name="concessionHead" options={ConcessionHeadOptions} value={concessionData.concessionHead} onChange={handleChange}  />
-        </Grid>
+         
+       {/* =========================== class section */}
+        <Grid item  xs={12} md={3} sx={{ marginBottom: '24px' }}>
+                <TextField
+                  id="classSection"
+                  name="classSection"
+                  value={concessionData.classSection}
+                  label="Class Section"
+                  variant="outlined"
+                  onChange={handleChange}
+                  fullWidth
+                />
+         </Grid>
 
         {/* ===========================  applicable from date*/}
         <Grid item xs={12} md={3} sx={{ marginBottom: '24px'  }}>
@@ -178,13 +186,13 @@ const ConcessionHeadOptions = [
             <ParamDateComponent label="Upto Date" name="uptoDate"  value={concessionData.uptoDate} customStyle={{ width: '100%' }} />
         </Grid>
 
-        {/* ===========================  remark*/}
+        {/* ===========================  remarks*/}
         <Grid item  xs={12} md={3} sx={{ marginBottom: '24px' }}>
                 <TextField
-                  id="remark"
-                  name="remark"
+                  id="remarks"
+                  name="remarks"
                   value={concessionData.remark}
-                  label="Remark"
+                  label="Remarks"
                   variant="outlined"
                   onChange={handleChange}
                   fullWidth
@@ -210,7 +218,7 @@ const ConcessionHeadOptions = [
 
 
       {/* table */}
-    <Grid sx={{marginTop:'3rem'}}>
+    <Grid sx={{marginTop:'4rem', marginBottom:'40px'}}>
         <CommonDataGrid
             rows={TableRowData} columns={columns}  width="100%"
             checkboxSelection={false}
@@ -221,6 +229,7 @@ const ConcessionHeadOptions = [
             }}
               
             pageSizeOptions={[10, 25, 50, 100]}
+            sx={{borderRadius:'12px'}}
         />
     </Grid>
     </>

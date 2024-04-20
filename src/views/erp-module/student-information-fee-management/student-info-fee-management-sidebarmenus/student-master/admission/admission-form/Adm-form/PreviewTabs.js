@@ -1,7 +1,3 @@
-
-
-
-
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
@@ -158,34 +154,6 @@ export default function PreviewTabs() {
               </Grid>
             </Box>
 
-            {/* <TableContainer component={Paper}>
-              <Table>
-                <TableBody>
-                  <TableRow>
-                    <TableCell width={isMobile ? 'auto' : '250px'} sx={{ padding: '10px', fontWeight: '600' }}>
-                      Address
-                    </TableCell>
-                    <TableCell sx={{ padding: '10px' }}>Dwarka, Delhi</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell sx={{ padding: '10px', fontWeight: '600' }}>Country/Region</TableCell>
-                    <TableCell sx={{ padding: '10px' }}>India</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell sx={{ padding: '10px', fontWeight: '600' }}>City</TableCell>
-                    <TableCell sx={{ padding: '10px' }}>Delhi</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell sx={{ padding: '10px', fontWeight: '600' }}>state</TableCell>
-                    <TableCell sx={{ padding: '10px' }}>Delhi</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell sx={{ padding: '10px', fontWeight: '600' }}>Zip Code</TableCell>
-                    <TableCell sx={{ padding: '10px' }}>857473</TableCell>
-                  </TableRow>
-                </TableBody>
-              </Table>
-            </TableContainer> */}
           </Box>
 
           <Box p={2}>
@@ -306,54 +274,6 @@ export default function PreviewTabs() {
               </Grid>
             </Box>
 
-            {/* <TableContainer component={Paper}>
-              <Table>
-                <TableBody>
-                  <TableRow>
-                    <TableCell width={isMobile ? 'auto' : '250px'} sx={{ padding: '10px', fontWeight: '600' }}>
-                      Name
-                    </TableCell>
-                    <TableCell sx={{ padding: '10px' }}>Mr. Subash</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell sx={{ padding: '10px', fontWeight: '600' }}>Relation</TableCell>
-                    <TableCell sx={{ padding: '10px' }}>Father</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell sx={{ padding: '10px', fontWeight: '600' }}>Mobile</TableCell>
-                    <TableCell sx={{ padding: '10px' }}>8484937834</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell sx={{ padding: '10px', fontWeight: '600' }}>Email</TableCell>
-                    <TableCell sx={{ padding: '10px' }}>abc@gmail.com</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell sx={{ padding: '10px', fontWeight: '600' }}>Education</TableCell>
-                    <TableCell sx={{ padding: '10px' }}>B.Sc</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell sx={{ padding: '10px', fontWeight: '600' }}>Company</TableCell>
-                    <TableCell sx={{ padding: '10px' }}>abc Company</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell sx={{ padding: '10px', fontWeight: '600' }}>Designation</TableCell>
-                    <TableCell sx={{ padding: '10px' }}>Manager</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell sx={{ padding: '10px', fontWeight: '600' }}>Address</TableCell>
-                    <TableCell sx={{ padding: '10px' }}>Delhi</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell sx={{ padding: '10px', fontWeight: '600' }}>Aadhaar No.</TableCell>
-                    <TableCell sx={{ padding: '10px' }}>12456789345</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell sx={{ padding: '10px', fontWeight: '600' }}>PEN</TableCell>
-                    <TableCell sx={{ padding: '10px' }}>AZCIV89345</TableCell>
-                  </TableRow>
-                </TableBody>
-              </Table>
-            </TableContainer> */}
           </Box>
 
           <Box p={2}>
