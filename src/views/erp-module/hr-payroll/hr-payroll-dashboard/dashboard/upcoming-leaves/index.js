@@ -56,12 +56,14 @@ const UpcomingLeaves = () => {
                 <TableCell>{truncateReason(leave.reason)}</TableCell>
                 <TableCell>{leave.type}</TableCell>
                 <TableCell>
+
+                  
                   <Chip
+                  
                     label={leave.status}
                     className={`status-${leave.status}`}
                     style={{
                       backgroundColor: getChipColor(leave.status),
-                      color: '#333', // Darker text color for better contrast
                       fontWeight: 'bold',
                     }}
                   />
@@ -84,10 +86,10 @@ const formatDate = (dateString) => {
 // Function to get pastel light color for Chip based on status
 const getChipColor = (status) => {
   switch (status) {
-    case 'approved':
-      return '#B2EBF2'; // Light blue
-    case 'pending':
-      return '#FFCCBC'; // Light orange
+    case 'Approved':
+      return '#DFFFEA'; // Light blue
+    case 'Pending':
+      return '#FFEEF3'; // Light orange
   
     default:
       return '#E0E0E0'; // Light grey
