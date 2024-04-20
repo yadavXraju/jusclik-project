@@ -4,7 +4,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import ArrowDropDownOutlinedIcon from '@mui/icons-material/ArrowDropDownOutlined';
 
-const ParramPopover = ({selectDropDown,setSelectDropDown}) => {
+const ParramPopover = ({selectDropDown,setSelectDropDown,dropDownOption,variant="text",buttonStyle={}}) => {
     const [anchorEl, setAnchorEl] = React.useState(null);
   
     const handleClick = (event) => {
@@ -20,7 +20,7 @@ const ParramPopover = ({selectDropDown,setSelectDropDown}) => {
 
     return (
         <>
-            <Button aria-describedby={id} endIcon={<ArrowDropDownOutlinedIcon sx={{ alignItems: "center" }} />} onClick={handleClick}>
+            <Button aria-describedby={id} endIcon={<ArrowDropDownOutlinedIcon sx={{ alignItems: "center"}} />} onClick={handleClick} variant={variant} sx={buttonStyle}>
                 {selectDropDown}
             </Button>
             <Popover
@@ -33,9 +33,11 @@ const ParramPopover = ({selectDropDown,setSelectDropDown}) => {
                     horizontal: 'left',
                 }}
             >
-                <Typography sx={{p: 1,cursor: "pointer",'&:hover':{backgroundColor: '#408dfb',color:"white" }}} onClick={() => setSelectDropDown("Only Me")}>Only Me</Typography>
-                <Typography sx={{ p: 1, cursor: "pointer",'&:hover':{backgroundColor: '#408dfb',color:"white" } }} onClick={() => setSelectDropDown("Only Selected Users & Roles")}>Only Selected Users & Roles</Typography>
-                <Typography sx={{ p: 1, cursor: "pointer",'&:hover':{backgroundColor: '#408dfb',color:"white" }}} onClick={() => setSelectDropDown("Everyone")}>Everyone</Typography>
+                {
+                    dropDownOption&&dropDownOption.map((item)=>
+                        <Typography sx={{p: 1,cursor: "pointer",'&:hover':{backgroundColor: '#408dfb',color:"white" }}} onClick={() =>{setSelectDropDown(item),setAnchorEl(null)}} key={item}>{item}</Typography>
+                    )
+                }
             </Popover>
         </>
     );
