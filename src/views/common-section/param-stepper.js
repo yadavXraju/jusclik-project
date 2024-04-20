@@ -93,7 +93,7 @@ const SetupTabs = ({
 
   return (
     <>
-      <Box sx={{ ...style?.tabWrapper, ...customtabWrapper }}>
+      <Box  sx={{ ...style?.tabWrapper, ...customtabWrapper }}>
         <Tabs
           orientation={orientation}
           variant={variant}

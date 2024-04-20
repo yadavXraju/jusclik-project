@@ -64,7 +64,7 @@ export default function AlignItemsList({communication_wrapper_style}) {
   }
 
   const isImac = useMediaQuery('(min-width:2000px)')
-  let rem = isImac?'19rem':null;
+  let rem = isImac?'17rem':null;
 
 
   return (

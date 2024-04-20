@@ -6,7 +6,6 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/DeleteOutlined';
 import SaveIcon from '@mui/icons-material/Save';
 import CancelIcon from '@mui/icons-material/Close';
-
 import {
   GridRowModes,
   DataGrid,
@@ -20,7 +19,6 @@ import {
   randomId,
   randomArrayItem,
 } from '@mui/x-data-grid-generator';
-import { display } from '@mui/system';
 
 const roles = ['Market', 'Finance', 'Development'];
 const randomRole = () => {
@@ -78,11 +76,10 @@ function EditToolbar(props) {
   };
 
   return (
-    <GridToolbarContainer sx={{justifyContent:'end'}}>
-      <Button  variant="outlined" color="primary" startIcon={<AddIcon />} onClick={handleClick}  className='findcom'>
+    <GridToolbarContainer>
+      <Button color="primary" startIcon={<AddIcon />} onClick={handleClick}>
         Add record
       </Button>
-      
     </GridToolbarContainer>
   );
 }
@@ -136,7 +133,6 @@ export default function FullFeaturedCrudGrid() {
     {
       field: 'age',
       headerName: 'Age',
-      type: 'number',
       width: 80,
       align: 'left',
       headerAlign: 'left',
@@ -145,7 +141,6 @@ export default function FullFeaturedCrudGrid() {
     {
       field: 'joinDate',
       headerName: 'Join date',
-      type: 'date',
       width: 180,
       editable: true,
     },
@@ -157,7 +152,7 @@ export default function FullFeaturedCrudGrid() {
       type: 'singleSelect',
       valueOptions: ['Market', 'Finance', 'Development'],
     },
-    {   
+    {
       field: 'actions',
       type: 'actions',
       headerName: 'Actions',
@@ -169,8 +164,8 @@ export default function FullFeaturedCrudGrid() {
         if (isInEditMode) {
           return [
             <GridActionsCellItem
-              icon={<SaveIcon />}
               key={`save-${id}`}
+              icon={<SaveIcon />}
               label="Save"
               sx={{
                 color: 'primary.main',
@@ -178,9 +173,8 @@ export default function FullFeaturedCrudGrid() {
               onClick={handleSaveClick(id)}
             />,
             <GridActionsCellItem
-              icon={<CancelIcon />}
               key={`cancel-${id}`}
-
+              icon={<CancelIcon />}
               label="Cancel"
               className="textPrimary"
               onClick={handleCancelClick(id)}
@@ -188,19 +182,19 @@ export default function FullFeaturedCrudGrid() {
             />,
           ];
         }
-
+        
         return [
           <GridActionsCellItem
-            icon={<EditIcon />}
             key={`edit-${id}`}
+            icon={<EditIcon />}
             label="Edit"
             className="textPrimary"
             onClick={handleEditClick(id)}
             color="inherit"
           />,
           <GridActionsCellItem
-            icon={<DeleteIcon />}
             key={`delete-${id}`}
+            icon={<DeleteIcon />}
             label="Delete"
             onClick={handleDeleteClick(id)}
             color="inherit"
