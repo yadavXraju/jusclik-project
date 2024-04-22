@@ -23,6 +23,9 @@ const NavItem = ({ item, level , }) => {
   const customization = useSelector((state) => state.customization);
   const matchesSM = useMediaQuery(theme.breakpoints.down('lg'));
 
+
+
+
   const Icon = item.icon;
   const itemIcon = item?.icon ? (
     <Icon stroke={1.5} size="1.3rem" />
@@ -112,8 +115,9 @@ const itemHandler = (id) => {
       selected={customization.isOpen.findIndex((id) => id === item.id) > -1}
       onClick={() => itemHandler(item.id)}
     >
-      <ListItemIcon sx={{ my: 'auto', minWidth: !item?.icon ? 18 : 36 }} className='menu-icon'>{itemIcon}  <Typography className='menu-animation'>{item.title}</Typography></ListItemIcon>
+      <ListItemIcon sx={{ my: 'auto', minWidth: !item?.icon ? 18 : 36 }} className='menu-icon'>{itemIcon}</ListItemIcon>
       <ListItemText
+      className='menuList'
         primary={
           <Typography  variant={customization.isOpen.findIndex((id) => id === item.id) > -1 ? 'h5' : 'body1'} color="inherit" className='menu-title'>
             {item.title}
