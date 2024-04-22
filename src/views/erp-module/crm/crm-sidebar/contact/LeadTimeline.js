@@ -50,9 +50,9 @@ const timelineData = [
 export default function LeadTimeline() {
   return (
     <Box>
-      <Timeline position="left">
+      <Timeline position="left" className='scrollbar'>
         {timelineData.map((item, index) => (
-          <TimelineItem key={index}>
+          <TimelineItem key={index} sx={{minWidth:'470px'}}>
             <TimelineOppositeContent sx={{ m: '10px 0 10px 20px', border:'1px dashed rgb(30, 136, 229)', padding:'20px', borderRadius:'8px', background:'rgb(227, 242, 253)' }} variant="body2" color="text.secondary">
               <Box >{item.oppositeContent}</Box>
             </TimelineOppositeContent>
@@ -61,8 +61,8 @@ export default function LeadTimeline() {
               <TimelineDot color='primary'>{item.dotIcon}</TimelineDot>
               <TimelineConnector />
             </TimelineSeparator>
-            <Box sx={{ width: { md: 'auto', lg: '150px' } }}>
-              <TimelineContent sx={{ py: '12px', px: 2 }}>
+            <Box sx={{ width:'130px' }}>
+              <TimelineContent sx={{ pt: '23px', px: 2 , pb:'16px'}}>
                 <Typography component="span">{item.date}</Typography>
                 <Typography  variant="h6">{item.time}</Typography>
               </TimelineContent>

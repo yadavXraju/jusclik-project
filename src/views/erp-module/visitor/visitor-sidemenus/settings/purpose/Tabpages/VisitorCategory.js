@@ -204,7 +204,7 @@ import {
   GridRowEditStopReasons,
 } from '@mui/x-data-grid';
 import {
-  randomCreatedDate,
+  // randomCreatedDate,
   // randomTraderName,
   randomId,
   randomArrayItem,
@@ -220,7 +220,7 @@ const initialRows = [
     id: randomId(),
    
     createdBy: 'Alice Johnson',
-    createdOn: randomCreatedDate(),
+    createdOn: '2024-03-07',
     role: randomRole(),
   },
   {
@@ -228,21 +228,21 @@ const initialRows = [
    
  
     createdBy: 'Alice Johnson',
-    createdOn: randomCreatedDate(),
+    createdOn: '2024-03-07',
     role: randomRole(),
   },
   {
     id: randomId(),
    
     createdBy: 'Alice Johnson',
-    createdOn: randomCreatedDate(),
+    createdOn: '2024-03-07',
     role: randomRole(),
   },
   {
     id: randomId(),
 
     createdBy: 'Alice Johnson',
-    createdOn: randomCreatedDate(),
+    createdOn: '2024-03-07',
     role: randomRole(),
   },
   {
@@ -250,7 +250,7 @@ const initialRows = [
 
 
     createdBy: 'Alice Johnson',
-    createdOn: randomCreatedDate(),
+    createdOn: '2024-03-07',
     role: randomRole(),
   },
 ];
@@ -347,8 +347,8 @@ export default function FullFeaturedCrudGrid() {
     {
       field: 'createdOn',
       headerName: ' Created On',
-      type: 'date',
-      valueGetter: (params) => new Date(params.value),
+      // type: 'date',
+      // valueGetter: (params) => new Date(params.value),
       width: 180,
       editable: true,
       flex:1,

@@ -204,8 +204,8 @@ import {
   GridRowEditStopReasons,
 } from '@mui/x-data-grid';
 import {
-  randomCreatedDate,
-  // randomTraderName,
+  // randomCreatedDate,
+  randomTraderName,
   randomId,
   randomArrayItem,
 } from '@mui/x-data-grid-generator';
@@ -218,41 +218,52 @@ const randomRole = () => {
 const initialRows = [
   {
     id: randomId(),
+    Name: randomTraderName(),
     phoneNumber: '9874523614',
     createdBy: 'Alice Johnson',
-    createdOn: randomCreatedDate(),
+    createdOn: '2024-03-07',
     role: randomRole(),
   },
   {
     id: randomId(),
-   
+    Name: randomTraderName(),
     phoneNumber: '9874523614',
     createdBy: 'Alice Johnson',
-    createdOn: randomCreatedDate(),
+    createdOn: '2024-03-07',
     role: randomRole(),
   },
   {
     id: randomId(),
+    Name: randomTraderName(),
+    phoneNumber: '9874523614',
+    createdBy: 'Alice Johnson',
+    createdOn: '2024-03-07',
+    role: randomRole(),
+  },
+  {
+    id: randomId(),
+    Name: randomTraderName(),
     phoneNumber: '9874523614',
     AverageMeetingTime: '1.30',
     createdBy: 'Alice Johnson',
-    createdOn: randomCreatedDate(),
+    createdOn: '2024-03-07',
     role: randomRole(),
   },
   {
     id: randomId(),
+    Name: randomTraderName(),
     phoneNumber: '9874523614',
     AverageMeetingTime: '1.30',
     createdBy: 'Alice Johnson',
-    createdOn: randomCreatedDate(),
+    createdOn: '2024-03-07',
     role: randomRole(),
   },
   {
     id: randomId(),
-
+    Name: randomTraderName(),
     phoneNumber: '9874523614',
     createdBy: 'Alice Johnson',
-    createdOn: randomCreatedDate(),
+    createdOn: '2024-03-07',
     role: randomRole(),
   },
 ];
@@ -329,6 +340,13 @@ export default function FullFeaturedCrudGrid() {
   const columns = [
  
     {
+      field: 'Name',
+      headerName: 'Name',
+      width: 180,
+      editable: true,
+      flex:1,
+    },
+    {
       field: 'phoneNumber',
       headerName: 'Phone Number',
       // type: 'number',
@@ -364,8 +382,8 @@ export default function FullFeaturedCrudGrid() {
     {
       field: 'createdOn',
       headerName: ' Created On',
-      type: 'date',
-      valueGetter: (params) => new Date(params.value),
+      // type: 'date',
+      // valueGetter: (params) => new Date(params.value),
       width: 180,
       editable: true,
       flex:1,
