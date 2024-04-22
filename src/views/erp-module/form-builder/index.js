@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { Box, Typography, Button, Paper, TextField } from '@mui/material';
-import FilterListRoundedIcon from '@mui/icons-material/FilterListRounded';
+// import FilterListRoundedIcon from '@mui/icons-material/FilterListRounded';
 import VerticalAlignBottomIcon from '@mui/icons-material/VerticalAlignBottom';
 import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
-// import PostAddOutlinedIcon from '@mui/icons-material/PostAddOutlined';
 import ArticleOutlinedIcon from '@mui/icons-material/ArticleOutlined';
 import Checkbox from '@mui/material/Checkbox';
 import CreateOutlinedIcon from '@mui/icons-material/CreateOutlined';
@@ -11,16 +10,19 @@ import MailOutlineOutlinedIcon from '@mui/icons-material/MailOutlineOutlined';
 import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import MoreHorizOutlinedIcon from '@mui/icons-material/MoreHorizOutlined';
+import VerticalAlignTopOutlinedIcon from '@mui/icons-material/VerticalAlignTopOutlined';
 import CreditScoreIcon from '@mui/icons-material/CreditScore';
 import { useNavigate } from 'react-router-dom';
 import { InputBase, IconButton } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
+import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
+import ParramPopover from 'views/common-section/ParamPopOverasDropDown';
 
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
-
 const formNames = [{ id: 1, name: 'Admission' }, { id: 2, name: 'Check' }, { id: 3, name: 'Complain' }];
-
+const filterOption = ["All Forms", "Active Forms", "Disable Forms"];
+const sortingOption = ["Created Time", "Modified Time", "Title"];
 
 
 const SearchBar = () => {
@@ -45,12 +47,12 @@ const SearchBar = () => {
         p: '2px 4px',
         display: 'flex',
         alignItems: 'center',
-        width: expanded ? 200 : 48, 
+        width: expanded ? 200 : 48,
       }}
     >
       {expanded && (
         <InputBase
-          sx={{ ml: 1, flex: 1,border:"1px solid #eee"}}
+          sx={{ ml: 1, flex: 1, border: "1px solid #eee" }}
           placeholder="Search..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
@@ -66,26 +68,31 @@ const SearchBar = () => {
 
 
 
-
-
-
-
-
 const AllFroms = () => {
   const [isHover, setIsHover] = useState(-1);
   const [newFormCard, setNewFormCard] = useState(false);
+  const [selectDropDown, setSelectDropDown] = useState("All Forms");
+  const [selectSorting, setSelectSorting] = useState("Title");
+  const [sortingOrder, setSortingOrder] = useState(true);
   const navigate = useNavigate();
   return (
     <>
       {/* All Forms Component */}
       {!newFormCard && <Box>
         <Paper sx={{ display: "flex", flexDirection: "row", justifyContent: "space-between", height: "60px", alignItems: 'center', padding: "20px", borderRadius: "10px" }}>
-          <Typography>My Forms</Typography>
+          <Typography variant="h4">My Forms</Typography>
           <Box sx={{ display: "flex", flexDirection: "row", gap: "20px", alignItems: "center" }}>
-            <Button variant="contained" onClick={() => setNewFormCard(true)}>New Form</Button>
             <SearchBar />
-            <FilterListRoundedIcon />
-            <VerticalAlignBottomIcon />
+            <Button variant="outlined" onClick={() => setNewFormCard(true)} startIcon={<AddOutlinedIcon />} sx={{height:"40px"}}>New Form</Button>
+            <ParramPopover selectDropDown={selectDropDown} setSelectDropDown={setSelectDropDown} dropDownOption={filterOption} variant="outlined" buttonStyle={{height:"40px"}}/>
+            {/*Sorting Order*/}
+            <Box sx={{ display: "flex", alignItems: "center", border: "1px solid #2196f3", borderRadius: "4px",height:"40px"}}>
+              <ParramPopover selectDropDown={selectSorting} setSelectDropDown={setSelectSorting} dropDownOption={sortingOption} buttonStyle={{height:"38px"}}/>
+              <IconButton aria-label="delete" sx={{ borderLeft: "1px solid #2196f3", borderRadius: '0px', color: '#2196f3',height:"38px"}}>
+                {sortingOrder ? (<VerticalAlignBottomIcon onClick={() => setSortingOrder(!sortingOrder)} />) :
+                  (<VerticalAlignTopOutlinedIcon onClick={() => setSortingOrder(!sortingOrder)} />)}
+              </IconButton>
+            </Box>
           </Box>
         </Paper>
         {
@@ -95,13 +102,13 @@ const AllFroms = () => {
             >
               <Box sx={{ display: "flex", alignItems: "center", gap: "10px" }} >
                 <Checkbox {...label} />
-                  <ArticleOutlinedIcon sx={{
-                    border: '1px solid',
-                    width:'2rem',
-                    height: '2rem',
-                    padding: '3px',
-                     color: "grey"
-                  }} />
+                <ArticleOutlinedIcon sx={{
+                  border: '1px solid',
+                  width: '2rem',
+                  height: '2rem',
+                  padding: '3px',
+                  color: "rgb(0 0 0 / 18%)"
+                }} />
                 <Box sx={{ display: "flex", flexDirection: "column" }}>
                   <Typography sx={{ alignItems: "center" }}>{item.name}</Typography>
                   {isHover == item?.id ? (<Typography>All Enteries  |  Reports  |  Settings  |  Analytics  |  Audit</Typography>) : (<Typography>Created On:  Apr 15,2024</Typography>)}
@@ -161,8 +168,8 @@ const AllFroms = () => {
           </Box>
           {/* Action Button */}
           <Box sx={{ marginTop: "20px", display: "flex", gap: "20px" }}>
-            <Button variant="outlined">Cancel</Button>
-            <Button variant="contained">Create</Button>
+            <Button variant="outlined" onClick={() => setNewFormCard(false)}>Cancel</Button>
+            <Button variant="contained" onClick={() => navigate(`1/builder`)}>Create</Button>
           </Box>
         </Paper >
       }

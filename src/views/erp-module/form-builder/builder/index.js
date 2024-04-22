@@ -14,12 +14,12 @@ import Divider from '@mui/material/Divider';
 import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
 
 const BasicFields = () => {
-  const[isHover,setIsHover]=useState(-1);
+  const [isHover, setIsHover] = useState(-1);
   const { basicFields } = useSelector((state) => state.customForm);
   return (
     <Droppable droppableId="unselectedfields">
       {(provided) => (
-        <Box  sx={{ display: "flex", flexDirection: "row", flexWrap: "wrap", gap: "10px", minheight: "500px", overflowY: "auto", height: "calc(100vh - 300px)",backgroundColor:"white"}} {...provided.droppableProps} ref={provided.innerRef} className="scrollbar-3">
+        <Box sx={{ display: "flex", flexDirection: "row", flexWrap: "wrap", gap: "10px", minheight: "500px", overflowY: "auto", height: "calc(100vh - 300px)", backgroundColor: "white" }} {...provided.droppableProps} ref={provided.innerRef} className="scrollbar-3">
           {basicFields && basicFields.map((field) => (
             <Draggable draggableId={`label-${field?.id}`} index={field?.id} key={field?.id}>
               {(provided) => (
@@ -27,11 +27,13 @@ const BasicFields = () => {
                   {...provided.dragHandleProps}
                   {...provided.draggableProps}
                   ref={provided.innerRef}
-                  sx={{border:isHover!=field.id?"1px solid #eee":"1px dotted black", height: "40px", borderRadius: "4px", display: "flex",
-                   alignItems: "center", width: "45%", paddingLeft: "10px",backgroundColor:"rgb(227 232 235 / 31%)"}} key={field?.id} 
-                  onMouseEnter={()=>setIsHover(field?.id)} onMouseLeave={()=>setIsHover(-1)}>
-                  {field.icon&&<field.icon />}
-                  <Typography sx={{ marginLeft: "10px" }}>{field?.name}</Typography>
+                  sx={{
+                    border: isHover != field.id ? "1px solid #eee" : "1px dotted black", height: "40px", borderRadius: "4px", display: "flex",
+                    alignItems: "center", width: "45%", paddingLeft: "5px", backgroundColor: "rgb(227 232 235 / 31%)"
+                  }} key={field?.id}
+                  onMouseEnter={() => setIsHover(field?.id)} onMouseLeave={() => setIsHover(-1)}>
+                  {field.icon && <field.icon sx={{ height: "20px", width: "20px" }} />}
+                  <Typography sx={{ marginLeft: "5px" }}>{field?.name}</Typography>
                 </Box>
               )}
             </Draggable>
@@ -43,18 +45,34 @@ const BasicFields = () => {
 }
 
 const AdvancedFiedls = () => {
+  const [isHover, setIsHover] = useState(-1);
   const { advancedFields } = useSelector((state) => state.customForm);
   return (
-    <Box sx={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-      {advancedFields && advancedFields.map((field) => (
-        <Box key={field.id} className="scrollbar">
-          <Box sx={{ border: "1px solid #eee", height: "40px", borderRadius: "4px", display: "flex", alignItems: "center", width: "85%", paddingLeft: "10px",backgroundColor:"rgb(227 232 235 / 31%)"}}>
-             {field.icon&&<field.icon />}
-            <Typography sx={{ marginLeft: "10px" }} type="text"> {field?.name}</Typography>
-          </Box>
+    <Droppable droppableId="unselectedfields">
+      {(provided) => (
+        <Box sx={{ display: "flex", flexDirection: "row", flexWrap: "wrap",gap:"10px",backgroundColor: "white" }}
+         {...provided.droppableProps} ref={provided.innerRef} className="scrollbar-3">
+          {advancedFields && advancedFields.map((field) => (
+            <Draggable draggableId={`label-${field?.id}`} index={field?.id} key={field?.id}>
+              {(provided) => (
+                <Box
+                  {...provided.dragHandleProps}
+                  {...provided.draggableProps}
+                  ref={provided.innerRef}
+                  sx={{
+                    border: isHover != field.id ? "1px solid #eee" : "1px dotted black", height: "40px", borderRadius: "4px", display: "flex",
+                    alignItems: "center", width: "45%", paddingLeft: "5px", backgroundColor: "rgb(227 232 235 / 31%)"
+                  }} key={field?.id}
+                  onMouseEnter={() => setIsHover(field?.id)} onMouseLeave={() => setIsHover(-1)}>
+                  {field.icon && <field.icon sx={{ height: "20px", width: "20px" }} />}
+                  <Typography sx={{ marginLeft: "5px" }}>{field?.name}</Typography>
+                </Box>
+              )}
+            </Draggable>
+          ))}
         </Box>
-      ))}
-    </Box>
+        )}
+      </Droppable>
   )
 }
 
@@ -77,7 +95,6 @@ const FormBuilder = () => {
   ]
 
   const handleDragAndDrop = (result) => {
-    console.log(result)
     const { source, destination } = result;
     //if either source or destination is null
     if (!source?.droppableId || !destination?.droppableId)
@@ -111,7 +128,7 @@ const FormBuilder = () => {
   return (
     <>
       <DragDropContext onDragEnd={handleDragAndDrop}>
-        <Box sx={{ overflow: "hidden", display: "flex", gap: "80px", width: "100%", height: "calc(100vh - 700p)" }}>
+        <Box sx={{ overflow: "hidden", display: "flex", marginLeft: "35px", gap: "75px", width: "100%", height: "calc(100vh - 700p)" }}>
           <Box sx={{ width: "30%" }} className="scrollbar">
             <ParamStepper tabPage={tabPages} numberShow={false}
               iconShow={false} showBottomNav={false}
@@ -120,6 +137,7 @@ const FormBuilder = () => {
                 borderTopLeftRadius: '0px',
                 borderTopRightRadius: '0px',
                 overflow: "hidden",
+                padding: '15px'
               }}
             />
           </Box>

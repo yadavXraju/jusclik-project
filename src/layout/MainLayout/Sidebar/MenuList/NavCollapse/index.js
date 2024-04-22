@@ -19,15 +19,31 @@ import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 
 import { IconChevronDown, IconChevronUp } from '@tabler/icons';
 import { urlStore } from 'themes/navigation-for-pages/UrlStore';
+import { setMenu } from 'store/customization-slice';
+import { useDispatch } from 'react-redux';
 // ==============================|| SIDEBAR MENU LIST COLLAPSE ITEMS ||============================== //
 
 const NavCollapse = ({ menu, level }) => {
   const theme = useTheme();
   const customization = useSelector((state) => state.customization);
   const navigate = useNavigate();
-
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState(null);
+  const [isHovered, setIsHovered] = useState(false); // Track hover state
+  const dispatch = useDispatch();
+
+
+  const handleMouseEnter = () => {
+    if (!open) {
+      dispatch(setMenu({ opened: true }));
+    }
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false); // Set hover state to false
+    dispatch(setMenu({ opened: false })); // Close the menu
+  };
 
 
   const handleClick = () => {
@@ -138,25 +154,27 @@ if (menu.children) {
   return (
     <>
 
-        <ListItemButton
-         className='menu-wrapper'
-          sx={{
-            borderRadius: `${customization.borderRadius}px`,
-            mb: 0.5,
-            alignItems: 'flex-start',
-            backgroundColor: level > 1 ? 'transparent !important' : 'inherit',
-            py: level > 1 ? 1 : 1.25,
-            pl: `${level * 24}px`
-          }}
-          selected={selected === menu.id}
-          onClick={handleClick}
-        >
-          <ListItemIcon sx={{ my: 'auto', minWidth: !menu.icon ? 18 : 36 }} className='menu-icon'>{menuIcon} <Typography className='menu-animation'>{menu.title}</Typography> </ListItemIcon>
+ <ListItemButton
+        className='menu-wrapper'
+        sx={{
+          borderRadius: `${customization.borderRadius}px`,
+          mb: 0.5,
+          alignItems: 'flex-start',
+          backgroundColor: level > 1 ? 'transparent !important' : 'inherit',
+          py: level > 1 ? 1 : 1.25,
+          pl: `${level * 24}px`
+        }}
+        selected={selected === menu.id}
+        onClick={handleClick}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+          <ListItemIcon sx={{ my: 'auto', minWidth: !menu.icon ? 18 : 36 }} className='menu-icon'>{menuIcon} </ListItemIcon>
           <ListItemText
+          className='menuList'
             primary={
-              <Typography variant={selected === menu.id ? 'h5' : 'body1'} color="inherit" sx={{ my: 'auto' }} className='menu-title'>
+              <Typography variant={selected === menu.id ? 'h5' : 'body1'} color="inherit" sx={{ my: isHovered ? 'auto'  : 'auto'  }} className='menu-title'>
                 {menu.title}
-                 <Typography variant='span' className='menu-animation'>{menu.title}</Typography>
               </Typography>
             }
             secondary={
