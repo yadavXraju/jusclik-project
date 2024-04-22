@@ -11,6 +11,7 @@ import Popover from '@mui/material/Popover';
 import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
 import MoreVertTwoToneIcon from '@mui/icons-material/MoreVertTwoTone';
 import PreviewTabs from './PreviewTabs';
+import ProgressSteps from './ArrowSteps';
 
 function Preview() {
   // const location = useLocation();
@@ -53,11 +54,11 @@ function Preview() {
                   <Typography variant="h4">Suraj</Typography>
                   <Box> <span style={{fontWeight:'500'}}>Email</span> :  Abc@gmail.com</Box>
                   <Box> <span style={{fontWeight:'500'}}>Mobile</span> :  9864653743</Box>
-                  <Box> <span style={{fontWeight:'500'}}>Added On</span> :  10-03-2024</Box>
+                  <Box> <span style={{fontWeight:'500'}}>Added On</span> :  10-Mar-2024</Box>
                 </Box>
               </Box>
 
-              <Box sx={{ display: 'flex', justifyContent: 'end', width: '100%', gap: issmallMobile ? '10px' : '0px' }}>
+              <Box sx={{ display: 'flex', justifyContent: 'end', marginTop:{xs:'16px'}, width: '100%', gap: issmallMobile ? '10px' : '0px' }}>
                 <IconButton sx={{ marginRight: '8px', background: '#cccccc54' }}>
                   <SearchOutlinedIcon />
                 </IconButton>
@@ -92,6 +93,8 @@ function Preview() {
                 </PopupState>
               </Box>
             </Box>
+
+            <ProgressSteps/>
 
             {/* <Grid container spacing={2}>
               <Grid item xs={12} md={6}>
@@ -138,7 +141,7 @@ function Preview() {
                         <Box pb={0.5} color={'#8b8989'}>
                         Lead Score
                         </Box>
-                        <Box fontSize={16}>50</Box>
+                        <Box fontSize={16} sx={{fontWeight:'500'}}>50</Box>
                         
                       </Grid>
                       <Grid item xs={12} md={6} sx={{ lineHeight: '22px' }}>

@@ -17,7 +17,7 @@ const FeeStructure = () => {
   const tabPage = [
     {
       id: 1,
-      name: 'Fee Heads',
+      name: 'Regular Fee Heads',
       value: '1',
       component: FeeHeads,
       props: {
@@ -26,20 +26,20 @@ const FeeStructure = () => {
       },
       icon:<ReceiptTwoToneIcon />,
     },
-    // {
-    //   id: 2,
-    //   name: 'Optional Fee Heads',
-    //   value: '2',
-    //   component: 'test',
-    //   drawerContetn: 'test',
-    //   props: {
-    //     anchor:anchor,
-    //     toggleDrawer:toggleDrawer
-    //   }
-    // },
-  
     {
       id: 2,
+      name: 'Optional Fee Heads',
+      value: '2',
+      component: FeeHeads,
+      props: {
+         anchor:anchor,
+         toggleDrawer:toggleDrawer
+      },
+      icon:<ReceiptTwoToneIcon />,
+    },
+  
+    {
+      id: 3,
       name: 'Concession',
       value: '3',
       component: Concession,
@@ -51,7 +51,7 @@ const FeeStructure = () => {
     },
   
     {
-      id: 3,
+      id: 4,
       name: 'Discount',
       value: '4',
       component: FeeHeads,
