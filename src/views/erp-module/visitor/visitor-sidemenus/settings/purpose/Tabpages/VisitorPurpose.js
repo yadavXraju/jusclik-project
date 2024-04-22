@@ -204,7 +204,7 @@ import {
   GridRowEditStopReasons,
 } from '@mui/x-data-grid';
 import {
-  randomCreatedDate,
+  // randomCreatedDate,
   randomTraderName,
   randomId,
   randomArrayItem,
@@ -221,7 +221,7 @@ const initialRows = [
     name: randomTraderName(),
     AverageMeetingTime: '1.30',
     createdBy: 'Alice Johnson',
-    createdOn: randomCreatedDate(),
+    createdOn: '2024-03-07',
     role: randomRole(),
   },
   {
@@ -316,6 +316,13 @@ export default function FullFeaturedCrudGrid() {
       setRows(rows.filter((row) => row.id !== id));
     }
   };
+  const handleConfirmDelete = () => {
+    const updatedRows = tableRows.filter((row) => row.id !== deleteId);
+    setTableRows(updatedRows);
+    setmodalOpen(false);
+    setdeleteId(null);
+  };
+
 
   const processRowUpdate = (newRow) => {
     const updatedRow = { ...newRow, isNew: false };
@@ -347,23 +354,28 @@ export default function FullFeaturedCrudGrid() {
       align: 'left',
       headerAlign: 'left',
       editable: true,
-      
+      valueParser: (value) => {
+        // Remove non-digit characters
+        const newValue = value.replace(/[^\d.]/g, '');
+        // Ensure only maximum of 10 digits
+        return newValue.slice(0, 4);
+      }
       
     },
     {
       field: 'createdBy',
       headerName: ' Created By',
       width: 180,
-      editable: true,
+      editable: false,
       flex:1,
     },
     {
       field: 'createdOn',
       headerName: ' Created On',
-      type: 'date',
-      valueGetter: (params) => new Date(params.value),
+     
+      // valueGetter: (params) => new Date(params.value),
       width: 180,
-      editable: true,
+      editable: false,
       flex:1,
     },
     {
@@ -442,7 +454,7 @@ export default function FullFeaturedCrudGrid() {
         open={modalOpen}
         onClose={handleModalClose}
         contentText="Are you sure you want to delete?"
-        onConfirm={handleDeleteClick}
+        onConfirm={handleConfirmDelete}
         
        
       />
