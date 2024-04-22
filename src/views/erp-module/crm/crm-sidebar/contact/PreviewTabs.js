@@ -5,6 +5,10 @@ import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import NoteAltOutlinedIcon from '@mui/icons-material/NoteAltOutlined';
 import FolderOutlinedIcon from '@mui/icons-material/FolderOutlined';
 import LeadTimeline from './LeadTimeline';
+import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
+import CommunicationLogs from './CommunicationLogs';
+import CommonDocuments from 'views/erp-common-component/commonDocuments';
+import documentData from './DocumentData';
 
 const PreviewTabs = () => {
   const [tabValue, setTabValue] = useState(0); // State for controlling tabs
@@ -12,7 +16,7 @@ const PreviewTabs = () => {
   const tabs = [
     { name: 'Basic Info', icon: <InfoOutlinedIcon /> },
     { name: 'Timeline', icon: <AccessTimeOutlinedIcon /> },
-    { name: 'Communication Logs', icon: <AccessTimeOutlinedIcon /> },
+    { name: 'Communication Logs', icon: <EmailOutlinedIcon /> },
     { name: 'Follow Up & Notes', icon: <NoteAltOutlinedIcon /> },
     { name: 'Documents', icon: <FolderOutlinedIcon /> }
   ];
@@ -68,7 +72,7 @@ const PreviewTabs = () => {
                       <Box pb={0.5} color={'#8b8989'}>
                         D.O.B
                       </Box>
-                      <Box fontSize={16}>09-05-2000</Box>
+                      <Box fontSize={16}>09-May-2000</Box>
                     </Grid>
                     <Grid item xs={12} md={6}>
                       <Box pb={0.5} color={'#8b8989'}>
@@ -113,9 +117,9 @@ const PreviewTabs = () => {
           </>
         )}
         {tabValue === 1 && <LeadTimeline/>}
-        {tabValue === 2 && '3'}
+        {tabValue === 2 && <CommunicationLogs/>}
         {tabValue === 3 && '4'}
-        {tabValue === 4 && '5'}
+        {tabValue === 4 && <Box mt={2}><CommonDocuments documentData={documentData}/></Box>}
       </Box>
     </Box>
   );
