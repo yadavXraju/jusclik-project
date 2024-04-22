@@ -86,7 +86,7 @@
 //                     />
 //                   </TableCell>
 //                   <TableCell sx={{padding:'8px', width:'150px'}}>
-//                  <TextField 
+//                  <TextField
 //                    value={row.typeofseries}
 //                  fullWidth/>
 //                   </TableCell>
@@ -129,66 +129,109 @@
 //   );
 // }
 
-
-
-
-
 import React, { useState } from 'react';
-import { Box, Button,Grid ,Stack,TextField} from '@mui/material';
+import {
+  Box,
+  Button,
+  Grid,
+  Stack,
+  TextField,
+  MenuItem,
+  InputAdornment,
+  InputLabel,
+  Select,
+  FormControl,
+  OutlinedInput
+} from '@mui/material';
 import SelectList from 'views/common-section/ParamSelectList';
 // import ParameterizedDateComponent from 'views/common-section/ParamDateComponent';
 
+const DrawerAddTransaction = () => {
+  const [addTransaction, setAddTransaction] = useState('');
+  
 
-const DrawerAddTransaction=() => {
-
-  const [addTask, setAddTask] = useState('');
- 
-const Task = [
-  { value: 'admissionno.', label: 'Admission No.' },
-  { value: 'feereciept', label: 'Fee Reciept' },
-  { value: 'invoice', label: 'Invoice' }
-];
-const addTaskChange = (event) => {
-  setAddTask(event.target.value);
- };
+  const Transaction = [
+    { value: 'admissionno.', label: 'Admission No.' },
+    { value: 'feereciept', label: 'Fee Reciept' },
+    { value: 'invoice', label: 'Invoice' }
+  ];
+  const addTransactionChange = (event) => {
+    setAddTransaction(event.target.value);
+  };
 
 
+  const [merge, setMerge] = useState('');
+  const [prefix, setPrefix] = useState('');
+
+  const handleChange = (event) => {
+    const selectedMerge = event.target.value;
+    setMerge(selectedMerge);
+    setPrefix(`${prefix}[[${selectedMerge}]]`); // Concatenate prefix with merge field
+  };
 
   return (
     <>
-       <Box>
+      <Box>
         {/* <Typography variant="h5" sx={{ paddingTop: '20px', paddingLeft:'8px' }}>
           What is the reason for withdrawal?
         </Typography> */}
         <Grid container>
-        <Grid item xs={12} sx={{ paddingTop: '20px', paddingLeft: '8px', paddingRight: '8px' }}>
+          <Grid item xs={12} sx={{ paddingTop: '20px', paddingLeft: '8px', paddingRight: '8px' }}>
             <TextField label="Series Name" fullWidth />
           </Grid>
-          <Grid mt={1} item xs={12} sx={{ paddingLeft:'8px', paddingRight:'8px', paddingTop:'14px' }}>
+          <Grid mt={1} item xs={12} sx={{ paddingLeft: '8px', paddingRight: '8px', paddingTop: '14px' }}>
             <SelectList
               label="Type of Series"
-              options={Task}
-              value={addTask}
-              onChange={addTaskChange}
+              options={Transaction}
+              value={addTransaction}
+              onChange={addTransactionChange}
               // size={isMobile ? 'small' : 'normal'}
               // customSytle={{ width: '30%' }}
             />
           </Grid>
-          
-          
+          <Grid item xs={12} sx={{ paddingLeft: '8px', paddingRight: '8px', paddingTop: '14px' }}>
+          <FormControl fullWidth variant="outlined">
+      <InputLabel htmlFor="prefix-input">Prefix</InputLabel>
+      <OutlinedInput
+        id="prefix-input"
+        label="Prefix"
+        fullWidth
+        value={prefix} // Set the value of the input field to the prefix
+        endAdornment={
+          <InputAdornment position="end">
+            {!merge && <InputLabel htmlFor="merge-field">Merge Field</InputLabel>}
+            <Select
+              id="merge-field"
+              value={merge}
+              variant="standard"
+              onChange={handleChange}
+              fullWidth
+            >
+              <MenuItem value="Joining Class">Joining Class</MenuItem>
+              <MenuItem value="Joining Year">Joining Year</MenuItem>
+            </Select>
+          </InputAdornment>
+        }
+      />
+    </FormControl>
+          </Grid>
           <Grid item xs={12} sx={{ paddingTop: '20px', paddingLeft: '8px', paddingRight: '8px' }}>
-            <TextField label="Prefix" fullWidth />
-          </Grid> 
-          <Grid item xs={12} sx={{ paddingTop: '20px', paddingLeft: '8px', paddingRight: '8px' }}>
-            <TextField label="Starting" fullWidth />
-          </Grid>    
+            <TextField
+              label="Starting No."
+              fullWidth
+              inputProps={{
+                type: 'number',
+                pattern: '[0-9]*' // Only allows numeric input
+              }}
+            />
+          </Grid>
         </Grid>
-        <Box sx={{paddingTop:'30px'}}>
+        <Box sx={{ paddingTop: '30px' }}>
           <Stack spacing={2} direction="row">
-            <Button variant="contained">Save Changes</Button>
+            <Button variant="contained">Save</Button>
             <Button variant="outlined">Cancel</Button>
           </Stack>
-          </Box>
+        </Box>
       </Box>
     </>
   );
