@@ -3,6 +3,7 @@ import { Box, TextField, Typography} from '@mui/material';
 import ParramPopover from 'views/common-section/ParamPopOverasDropDown';
 import ParamWarningBox from 'views/common-section/ParamWarningBox';
 
+const dropDownOption=["Only Me","Only Select","Everyone"];
 const ReportReference = () => {
   const [value, setValue] = useState('');
   const [selectDropDown, setSelectDropDown] = useState("Only Me");
@@ -40,7 +41,7 @@ const ReportReference = () => {
         <Typography>
           Share this with:
         </Typography>
-        <ParramPopover selectDropDown={selectDropDown} setSelectDropDown={setSelectDropDown}/>
+        <ParramPopover selectDropDown={selectDropDown} setSelectDropDown={setSelectDropDown} dropDownOption={dropDownOption}/>
       </Box>
       <ParamWarningBox cancelIcon={{display:"none"}} customStyle={{marginTop:"20px",backgroundColor:'#fff4e5',width:width}} label="Although you want to limit the access to this report to yourself, users who have full access to reports(Admins) will be able to access it." severity="warning" />
     </Box>

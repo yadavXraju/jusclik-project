@@ -161,89 +161,98 @@
 
 // drawer close effect only
 
-.drawerClose  .menu-wrapper{
-  margin-top: -12px;
-}
+// .drawerClose  .menu-wrapper{
+//   margin-top: -12px;
+// }
 
-.drawerClose .menu-icon {
-  justify-content: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 12px;
-}
+// .drawerClose .menu-icon {
+//   justify-content: center;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   margin-top: 12px;
+// }
 
-.drawerClose  .menu-title{
-  text-align: center;
-}
+// .drawerClose  .menu-title{
+//   text-align: center;
+// }
 
-.drawerClose  .menu-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+// .drawerClose  .menu-wrapper {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+// }
 
 .drawerClose > div {
   visibility: visible !important;
   transform: translateX(0px) !important;
+  // width: 80px !important;
   width: 120px !important;
 }
 
 
 
-.drawerClose .menu-wrapper:hover .menu-animation {
-  display: block;
-  text-align: center;
-}
+// .drawerClose .menu-wrapper:hover .menu-animation {
+//   display: block;
+//   text-align: center;
+// }
 
-.drawerClose .menu-icon .menu-wrapper{
-  display: none;
-}
+// .drawerClose .menu-icon .menu-wrapper{
+//   display: none;
+// }
 
-.drawerClose .menu-wrapper .menu-title , .menu-animation{
-  display: none;
-}
+// .drawerClose .menu-wrapper .menu-title , .menu-animation{
+//   display: none;
+// }
 
-.drawerClose .menu-wrapper .menu-icon svg , .menu-wrapper .menu-animation {
-  transition : .5s ease-in-out ; 
-  text-align: center;
-}
+// .drawerClose .menu-wrapper .menu-icon svg , .menu-wrapper .menu-animation {
+//   transition : .5s ease-in-out ; 
+//   text-align: center;
+// }
 
-.drawerClose .icon-tabler-chevron-right {
-  display: none;
-}
+// .drawerClose .icon-tabler-chevron-right {
+//   display: none;
+// }
 
 // hover animation
 
 
-.drawerClose .menu-wrapper:hover .menu-icon svg  {
-  opacity: 0;
-  visibility: hidden;
-  height: 0;
+// .drawerClose .menu-wrapper:hover .menu-icon svg  {
+//   opacity: 0;
+//   visibility: hidden;
+//   height: 0;
+// }
+
+// .drawerClose  .menu-wrapper:hover .menu-animation {
+//   opacity: 1;
+//   visibility: visible;
+//   height: auto;
+//   overflow: hidden;
+//   transition: opacity 0.5s ease, height 0.5s ease;
+// }
+
+// .drawerClose .menu-animation {
+//   opacity: 0;
+//   visibility: hidden;
+//   height: 0;
+// }
+
+.drawerClose .menuList{
+  display: none;
 }
 
-.drawerClose  .menu-wrapper:hover .menu-animation {
-  opacity: 1;
-  visibility: visible;
-  height: auto;
-  overflow: hidden;
-  transition: opacity 0.5s ease, height 0.5s ease;
-}
 
-.drawerClose .menu-animation {
-  opacity: 0;
-  visibility: hidden;
-  height: 0;
+.drawerClose .menuList ~ svg{
+   display: none;
 }
-
 
 }
 
-@media  (max-width:900px) {
-  .drawerOpen .menu-animation {
-    display: none;
-  }
-}
+// @media  (max-width:900px) {
+//   .drawerOpen .menu-animation {
+//     display: none;
+//   }
+// }
 
 
 
@@ -253,18 +262,18 @@
 .scrollbar {
   overflow-y: auto;
   scrollbar-width: thin;
-  scrollbar-color: #90caf9 #f0f0f0;
+  scrollbar-color: #c0c6cd4f #f0f0f0;
 }
 .scrollbar-2 {
   overflow-y: auto;
   scrollbar-width: thin;
-  scrollbar-color: #90caf9 #f0f0f0;
+  scrollbar-color: #c0c6cd4f #f0f0f0;
   overflow-x: auto;
 }
 .scrollbar-3{
   overflow-y: auto;
   scrollbar-width: thin;
-  scrollbar-color:#a19e9e #f0f0f0 ;
+  scrollbar-color: #c0c6cd4f #a19e9e00;
 }
 /* Track */
 .scrollbar::-webkit-scrollbar {
@@ -273,7 +282,7 @@
 
 .scrollbar-3::-webkit-scrollbar {
   width: 5px; /* Adjust the width as needed */
-  scrollbar-color:#4e0808 #f0f0f0;
+  scrollbar-color:#c0c6cd4f #f0f0f0;
 }
 
 /* Handle */

@@ -21,13 +21,9 @@ const VisuallyHiddenInput = styled('input')({
 
 
 
-const ConfigureStudentWise = () => {
+const ConfigureGlobally = () => {
 
     const [concessionData, setConcessionData] = useState([{
-        id:'',
-        studentName:'',
-        admissionNo:'',
-        classSection:'',
         applicableFromDate : '',
         uptoDate : '',
         remarks:'',
@@ -35,14 +31,6 @@ const ConfigureStudentWise = () => {
         amount:'',
 }]);
 
-      // const handleChange = (e) => {
-      //   const { name, value } = e.target;
-      //     setConcessionData((prevData) => ({
-      //       ...prevData,
-      //       [name]: value,
-      //     }));
-
-      // };
 
       const handleChange = (e, id) => {
         const { name, value } = e.target;
@@ -199,46 +187,6 @@ const ConfigureStudentWise = () => {
       <Grid container spacing={4} sx={{marginTop:'1rem'}}>
           <Grid item lg={4}>
               <Grid container spacing={2} sx={{ borderRadius:'12px' ,margin:'0' , width:'100%', border:'1px solid rgba(224, 224, 224, 1)', padding:'1rem 1rem 1rem 0px'}}>
-            
-                  {/* =========================== name*/}
-                  <Grid item  xs={12} md={12} sx={{ marginBottom: '24px' }}>
-                          <TextField
-                            id="studentName"
-                            name="studentName"
-                            value={concessionData.name}
-                            label="Student Name"
-                            variant="outlined"
-                            onChange={handleChange}
-                            fullWidth
-                          />
-                  </Grid>
-
-                {/* =========================== admission no*/}
-                  <Grid item  xs={12} md={12} sx={{ marginBottom: '24px' }}>
-                          <TextField
-                            id="admissionNo"
-                            name="admissionNo"
-                            value={concessionData.admissionNo}
-                            label="Admission No"
-                            variant="outlined"
-                            onChange={handleChange}
-                            fullWidth
-                          />
-                  </Grid>
-
-                  
-                {/* =========================== class section */}
-                  <Grid item  xs={12} md={12} sx={{ marginBottom: '24px' }}>
-                          <TextField
-                            id="classSection"
-                            name="classSection"
-                            value={concessionData.classSection}
-                            label="Class Section"
-                            variant="outlined"
-                            onChange={handleChange}
-                            fullWidth
-                          />
-                  </Grid>
 
                   {/* ===========================  applicable from date*/}
                   <Grid item xs={12} md={6} sx={{ marginBottom: '24px'  }}>
@@ -308,4 +256,4 @@ const ConfigureStudentWise = () => {
   )
 }
 
-export default ConfigureStudentWise
+export default ConfigureGlobally
