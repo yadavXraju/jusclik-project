@@ -9,7 +9,7 @@ import { Avatar, Chip, ListItemButton, ListItemIcon, ListItemText, Typography, u
 
 // project imports
 import { menuOpen} from 'store/customization-slice';
-
+import { setMenu } from 'store/customization-slice';
 // assets
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 
@@ -22,11 +22,24 @@ const NavItem = ({ item, level , }) => {
   const { pathname } = useLocation();
   const customization = useSelector((state) => state.customization);
   const matchesSM = useMediaQuery(theme.breakpoints.down('lg'));
-
-
-
-
   const Icon = item.icon;
+
+
+  const handleMouseEnter = () => {
+    console.log("breakpoint1")
+    if (!customization.opened) {
+      dispatch(setMenu({ opened: true }));
+    }
+  };
+  
+
+  const handleMouseLeave = () => {
+    console.log("breakpoint2")
+      dispatch(setMenu({ opened: false }));
+  };
+
+
+
   const itemIcon = item?.icon ? (
     <Icon stroke={1.5} size="1.3rem" />
   ) : (
@@ -81,9 +94,6 @@ const itemHandler = (id) => {
   // console.log(item.id)
 };
 
-
-
-
   // active menu item on page load
   useEffect(() => {
     const currentIndex = document.location.pathname
@@ -107,11 +117,15 @@ const itemHandler = (id) => {
       sx={{
         borderRadius: `${customization.borderRadius}px`,
         mb: 0.5,
+        height:'38px',
         alignItems: 'flex-start',
         backgroundColor: level > 1 ? 'transparent !important' : 'inherit',
         py: level > 1 ? 1 : 1.25,
+        justifyContent:'center',
         pl: `${level * 24}px`,
       }}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
       selected={customization.isOpen.findIndex((id) => id === item.id) > -1}
       onClick={() => itemHandler(item.id)}
     >

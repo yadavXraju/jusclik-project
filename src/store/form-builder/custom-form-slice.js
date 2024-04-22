@@ -27,13 +27,13 @@ import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 import CheckBoxOutlinedIcon from '@mui/icons-material/CheckBoxOutlined';
 import TuneOutlinedIcon from '@mui/icons-material/TuneOutlined';
-// import RemoveOutlinedIcon from '@mui/icons-material/RemoveOutlined';
 import CommitOutlinedIcon from '@mui/icons-material/CommitOutlined';
 import FunctionsOutlinedIcon from '@mui/icons-material/FunctionsOutlined';
 import ImageOutlinedIcon from '@mui/icons-material/ImageOutlined';
 import AutoFixHighOutlinedIcon from '@mui/icons-material/AutoFixHighOutlined';
 import IndeterminateCheckBoxOutlinedIcon from '@mui/icons-material/IndeterminateCheckBoxOutlined';
 import GridOnOutlinedIcon from '@mui/icons-material/GridOnOutlined';
+import SummarizeOutlinedIcon from '@mui/icons-material/SummarizeOutlined';
 
 const basicFields = [
                     {
@@ -252,7 +252,8 @@ const advancedFields=[
     },
     {
         id:16,
-        name:"Subform"
+        name:"Subform",
+        icon:SummarizeOutlinedIcon
     },
     {
         id:17,
@@ -301,6 +302,7 @@ const customizationSlice = createSlice({
 
 export const {
     handleSelectField,
+    handleSelectedDrag
 } = customizationSlice.actions;
 
 export default customizationSlice.reducer;

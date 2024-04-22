@@ -24,6 +24,7 @@ const initialState = {
   defaultId: 'default',
   fontFamily: initialFontFamily,
   borderRadius: intialborderRadius,
+  userClicked:false,
   opened: true,
   themeColor: initialThemeColor,
   themeColorV2: initialThemeColorV2
@@ -60,6 +61,9 @@ const customizationSlice = createSlice({
       state.themeColorV2 = newThemeColorV2;
       localStorage.setItem('themeColorV2', JSON.stringify(newThemeColorV2));
     },
+    handleUserclickedtoggle:(state,action)=>{
+         state.userClicked=action.payload.opened;
+    }
   },
 });
 
@@ -71,6 +75,7 @@ export const {
   setBorderRadius,
   setColorTheme,
   setColorThemeV2,
+  handleUserclickedtoggle
 } = customizationSlice.actions;
 
 export default customizationSlice.reducer;

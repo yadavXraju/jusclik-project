@@ -14,12 +14,12 @@ const DrawerContent = ({ toggleDrawer }) => (
     </Box>
     <Grid container padding='2rem' sx={{ height: "calc(100vh - 50px)", width: "600px" }} className='scrollbar'>
       <Grid item md={12}>
-        <TextField placeholder="Feild Label" fullWidth sx={{borderRadius:"4px"}}></TextField>
+        <TextField placeholder="Field Label" fullWidth sx={{borderRadius:"4px"}}></TextField>
       </Grid>
-      <Grid item md={12}>
-        <FormControlLabel control={<Checkbox />} label="Hide Feild Label" />
+      <Grid item md={12} sx={{marginTop:"10px"}}>
+        <FormControlLabel control={<Checkbox />} label="Hide Field Label" />
       </Grid>
-      <Grid item md={12}>
+      <Grid item md={12} sx={{marginTop:"10px"}}>
         <FormControl fullWidth>
           <TextField multiline minRows={10} placeholder="Instruction" sx={{borderRadius:"4px"}}></TextField>
         </FormControl>
@@ -27,13 +27,13 @@ const DrawerContent = ({ toggleDrawer }) => (
       <Grid item md={8} marginTop='2rem'>
         <Typography>Input Text Base</Typography>
         <ToggleButtonGroup exclusive aria-label="text alignment" sx={{ marginTop: '0.5rem' }}>
-          <ToggleButton value="left" aria-label="left aligned">
+          <ToggleButton value="left" aria-label="left aligned" sx={{width:"33%"}}>
             Small
           </ToggleButton>
-          <ToggleButton value="center" aria-label="centered">
+          <ToggleButton value="center" aria-label="centered" sx={{width:"33%"}}>
             Medium
           </ToggleButton>
-          <ToggleButton value="right" aria-label="right aligned">
+          <ToggleButton value="right" aria-label="right aligned" sx={{width:"33%"}}>
             Large
           </ToggleButton>
         </ToggleButtonGroup>
@@ -60,8 +60,8 @@ const DrawerContent = ({ toggleDrawer }) => (
       <Grid item md={12} sx={{ marginTop: "2rem" }} display='flex' flexDirection='column'>
         <Typography sx={{ flex: 1 }}>Visibilithy</Typography>
         <RadioGroup flexDirection='row' display='flex' gap={2}>
-          <FormControlLabel control={<Radio />} label="Hide Feild" />
-          <FormControlLabel control={<Radio />} label="Disable Feild" />
+          <FormControlLabel control={<Radio />} label="Hide Field" />
+          <FormControlLabel control={<Radio />} label="Disable Field" />
         </RadioGroup>
       </Grid>
       <Grid item sx={{ marginTop: "2rem" }} flexDirection='column' display='flex'>
@@ -85,7 +85,7 @@ const DrawerContent = ({ toggleDrawer }) => (
         </FormControl>
       </Grid>
       <Grid item md={8} marginTop='2rem' >
-        <Typography>Feild Size</Typography>
+        <Typography>Field Size</Typography>
         <ToggleButtonGroup exclusive aria-label="text alignment" sx={{ marginTop: '0.5rem' }}>
           <ToggleButton value="left" aria-label="left aligned">
             Small

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Box, Typography, Button, Paper, TextField } from '@mui/material';
 // import FilterListRoundedIcon from '@mui/icons-material/FilterListRounded';
 import VerticalAlignBottomIcon from '@mui/icons-material/VerticalAlignBottom';
-import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
+// import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
 import ArticleOutlinedIcon from '@mui/icons-material/ArticleOutlined';
 import Checkbox from '@mui/material/Checkbox';
 import CreateOutlinedIcon from '@mui/icons-material/CreateOutlined';
@@ -11,13 +11,14 @@ import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import MoreHorizOutlinedIcon from '@mui/icons-material/MoreHorizOutlined';
 import VerticalAlignTopOutlinedIcon from '@mui/icons-material/VerticalAlignTopOutlined';
-import CreditScoreIcon from '@mui/icons-material/CreditScore';
+// import CreditScoreIcon from '@mui/icons-material/CreditScore';
 import { useNavigate } from 'react-router-dom';
 import { InputBase, IconButton } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import ParramPopover from 'views/common-section/ParamPopOverasDropDown';
-
+import Standard from 'assets/images/Form-Builder/standard.gif';
+import Card from 'assets/images/Form-Builder/card.gif';
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 const formNames = [{ id: 1, name: 'Admission' }, { id: 2, name: 'Check' }, { id: 3, name: 'Complain' }];
@@ -141,7 +142,7 @@ const AllFroms = () => {
                 height: '100%',
                 gap: '5px'
               }}>
-                <DescriptionOutlinedIcon sx={{ height: "100px", width: "100px" }} />
+                <img src={Standard} style={{height: "69px",width:"64px"}} alt="standard"/>
                 <Typography>Standard</Typography>
                 <Typography>Show Multiple fields on a page</Typography>
               </Box>
@@ -155,7 +156,7 @@ const AllFroms = () => {
                 height: '100%',
                 gap: '5px'
               }}>
-                <CreditScoreIcon sx={{ height: "100px", width: "100px" }} />
+                <img src={Card} alt="card" style={{height: "69px",width:"73px"}} />
                 <Typography>Card</Typography>
                 <Typography>Show One Field on a Page</Typography>
               </Box>
