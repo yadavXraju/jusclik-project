@@ -1,13 +1,14 @@
 import React from 'react';
 import  ParamStepper from 'views/common-section/param-stepper';
 import ConfigureStudentWise from './ConfigureStudentWise';
+import ConfigureGlobally from './ConfigureGlobally';
 
 const tabPage = [
     {
         id: 1,
         name: 'Configure Globally',
         value: '1',
-        component:'test'
+        component:ConfigureGlobally,
       },
   
 
