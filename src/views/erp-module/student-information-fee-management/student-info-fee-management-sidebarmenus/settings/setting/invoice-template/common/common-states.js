@@ -131,7 +131,7 @@ tableLayout:{
 }
 
 // compact template 4 default values
-export const CompactTemplate4DeafultValues={
+export const ate4DeafultValues={
 general:{
 
   templateName: 'standard',

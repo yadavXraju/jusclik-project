@@ -27,7 +27,7 @@ export default function SearchFilterBox({
 
   return (
     <Paper sx={{ borderRadius: '30px' }}>
-      <Box sx={{ display: 'flex', flexWrap: 'wrap', alignItems: 'baseline', p: 2, gap: 1, justifyContent: isMobile ? 'center' : 'left' }}>
+      <Box sx={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', p: 2, gap: 1, justifyContent: isMobile ? 'center' : 'left' }}>
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <DatePicker
             label={datePickerLabel}
@@ -74,7 +74,7 @@ export default function SearchFilterBox({
             ))}
           </Select>
         </FormControl>
-
+        
         <Button
           variant="contained"
           startIcon={<SearchTwoToneIcon />}
@@ -83,6 +83,7 @@ export default function SearchFilterBox({
         >
           Search
         </Button>
+       
       </Box>
     </Paper>
   );
