@@ -52,6 +52,7 @@ const LeadStatus = () => {
       '#1B84FF',
       '#4AB8DD',
       '#57AFF4',
+      "#2A65BF"
     ],
     responsive: [
       {
@@ -127,7 +128,7 @@ const LeadStatus = () => {
                 alignItems: isMobile ? 'center' : 'auto',
               }}
             >
-              <ApexCharts options={chartData} series={chartData.series} type="donut" height={isMediumDesktop ? 200 : 320} />
+              <ApexCharts options={chartData} series={chartData.series} type="donut" height={isMediumDesktop ? 200 : 310} />
             </Grid>
           </Grid>
 

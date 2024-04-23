@@ -12,7 +12,6 @@ import HelpSection from './HelpSection';
 import ErpModule from './erp-module';
 import DashboardSwitch from './dashboard-switch';
 import ExpandMoreTwoToneIcon from '@mui/icons-material/ExpandMoreTwoTone';
-
 // ==============================|| MAIN NAVBAR / HEADER ||============================== //
 
 const Header = ({ handleLeftDrawerToggle }) => {
@@ -21,6 +20,7 @@ const Header = ({ handleLeftDrawerToggle }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery('(max-width:900px)')
   const smallMobile = useMediaQuery('(max-width:425px)')
+
 
   const [open, setOpen] = useState(false);
 
@@ -95,7 +95,7 @@ const Header = ({ handleLeftDrawerToggle }) => {
                           color: theme.palette.secondary.light
                         }
                       }}
-                      onClick={handleLeftDrawerToggle}
+                      onClick={ handleLeftDrawerToggle}
                       color="inherit"
                       ref={anchorRef}
                     >
