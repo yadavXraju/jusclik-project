@@ -56,42 +56,42 @@ const ConfigureGlobally = () => {
     {
       id: 1,
       srNo: '1',
-      concessionCategory: 'Vaccination Discount',
+      feeHead: 'Vaccination Discount',
       concessionType: '',
       amount: '',
     },
     {
       id: 2,
       srNo: '2',
-      concessionCategory: 'Staff Child',
+      feeHead: 'Staff Child',
       concessionType: '',
       amount: '',
     },
     {
       id: 3,
       srNo: '3',
-      concessionCategory: 'Scholarship',
+      feeHead: 'Scholarship',
       concessionType: '',
       amount: '',
     },
     {
       id: 4, 
       srNo: '4',
-      concessionCategory: '50% of Tuition Fee',
+      feeHead: '50% of Tuition Fee',
       concessionType: '',
       amount: '',
     },
     {
       id: 5,
       srNo: '5',
-      concessionCategory: '50% in Fee',
+      feeHead: '50% in Fee',
       concessionType: '',
       amount: '',
     },
     {
         id: 6,
         srNo: '6',
-        concessionCategory: 'Staff',
+        feeHead: 'Staff',
         concessionType: '',
         amount: '',
       },
@@ -99,7 +99,7 @@ const ConfigureGlobally = () => {
       {
         id: 7,
         srNo: '7',
-        concessionCategory: '50% of Tuition Fee',
+        feeHead: '50% of Tuition Fee',
         concessionType: '',
         amount: '', 
       },
@@ -109,7 +109,7 @@ const ConfigureGlobally = () => {
 
   const columns = [
     { field: 'srNo', headerName: 'Sr No.', flex: 1,  maxWidth: 130, align: 'left', headerAlign: 'left' },
-    { field: 'concessionCategory', headerName: 'Concession Category', flex: 1, minWidth: 130 },
+    { field: 'feeHead', headerName: 'Fee Head', flex: 1, minWidth: 130 },
 
     { field: 'concessionType',
       headerName: 'Concession Type',
@@ -196,6 +196,19 @@ const ConfigureGlobally = () => {
                   {/* ===========================  up to date*/}
                   <Grid item xs={12} md={6} sx={{ marginBottom: '24px'  }}>
                       <ParamDateComponent label="Upto Date" name="uptoDate"  value={concessionData.uptoDate} customStyle={{ width: '100%' }} />
+                  </Grid>
+
+                    {/* ===========================  fee head */}
+                    <Grid item  xs={12} md={12} sx={{ marginBottom: '24px' }}>
+                          <TextField
+                            id="remarks"
+                            name="remarks"
+                            value={concessionData.remark}
+                            label="Fee Head"
+                            variant="outlined"
+                            onChange={handleChange}
+                            fullWidth
+                          />
                   </Grid>
 
                   {/* ===========================  remarks*/}
