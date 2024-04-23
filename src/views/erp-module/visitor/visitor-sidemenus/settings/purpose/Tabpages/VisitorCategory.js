@@ -205,7 +205,7 @@ import {
 } from '@mui/x-data-grid';
 import {
   // randomCreatedDate,
-  // randomTraderName,
+  randomTraderName,
   randomId,
   randomArrayItem,
 } from '@mui/x-data-grid-generator';
@@ -255,31 +255,12 @@ const initialRows = [
   },
 ];
 
-function EditToolbar(props) {
-  const { setRows, setRowModesModel } = props;
-
-  const handleClick = () => {
-    const id = randomId();
-    setRows((oldRows) => [...oldRows, { id, name: '', age: '', isNew: true }]);
-    setRowModesModel((oldModel) => ({
-      ...oldModel,
-      [id]: { mode: GridRowModes.Edit, fieldToFocus: 'name' },
-    }));
-  };
-
-  return (
-    <GridToolbarContainer sx={{justifyContent:'end',paddingTop:'8px',paddingRight:'16px'}}>
-    <Button  variant="outlined" color="primary" startIcon={<AddIcon />} onClick={handleClick}>
-      Add record
-    </Button>
-  </GridToolbarContainer>
-  );
-}
-
 export default function FullFeaturedCrudGrid() {
   const [rows, setRows] = React.useState(initialRows);
   const [rowModesModel, setRowModesModel] = React.useState({});
   const [modalOpen, setmodalOpen] =useState(false);
+  const [isChangeEnable,setIsChangeEnable]=useState(-1);
+
   const handleModalClose = () => {
     setmodalOpen(false);
   };
@@ -290,11 +271,15 @@ export default function FullFeaturedCrudGrid() {
   };
 
   const handleEditClick = (id) => () => {
-    setRowModesModel({ ...rowModesModel, [id]: { mode: GridRowModes.Edit } });
+    if(isChangeEnable==-1){
+      setRowModesModel({ ...rowModesModel, [id]: { mode: GridRowModes.Edit } });
+      setIsChangeEnable(2);
+    }
   };
 
   const handleSaveClick = (id) => () => {
     setRowModesModel({ ...rowModesModel, [id]: { mode: GridRowModes.View } });
+    setIsChangeEnable(-1);
   };
 
   const handleDeleteClick = () => () => {
@@ -313,6 +298,13 @@ export default function FullFeaturedCrudGrid() {
       setRows(rows.filter((row) => row.id !== id));
     }
   };
+  const handleConfirmDelete = () => {
+    const updatedRows = tableRows.filter((row) => row.id !== deleteId);
+    setTableRows(updatedRows);
+    setmodalOpen(false);
+    setdeleteId(null);
+  };
+
 
   const processRowUpdate = (newRow) => {
     const updatedRow = { ...newRow, isNew: false };
@@ -341,7 +333,7 @@ export default function FullFeaturedCrudGrid() {
       field: 'createdBy',
       headerName: ' Created By',
       width: 180,
-      editable: true,
+      editable: false,
       flex:1,
     },
     {
@@ -350,7 +342,7 @@ export default function FullFeaturedCrudGrid() {
       // type: 'date',
       // valueGetter: (params) => new Date(params.value),
       width: 180,
-      editable: true,
+      editable: false,
       flex:1,
     },
     {
@@ -407,6 +399,28 @@ export default function FullFeaturedCrudGrid() {
     },
   ];
 
+
+
+function EditToolbar(props) {
+  const { setRows, setRowModesModel } = props;
+
+  const handleClick = () => {
+    const id = randomId();
+    setRows((oldRows) => [...oldRows, { id, name: '', age: '', isNew: true ,createdOn:'2023-04-07',createdBy:randomTraderName()}]);
+    setRowModesModel((oldModel) => ({
+      ...oldModel,
+      [id]: { mode: GridRowModes.Edit, fieldToFocus: 'name' },
+    }));
+  };
+
+  return (
+    <GridToolbarContainer sx={{justifyContent:'end',paddingTop:'8px',paddingRight:'16px'}}>
+    <Button  variant="outlined" color="primary" startIcon={<AddIcon />} onClick={handleClick}>
+      Add record
+    </Button>
+  </GridToolbarContainer>
+  );
+}
   return (
     
    <>
@@ -429,7 +443,7 @@ export default function FullFeaturedCrudGrid() {
         open={modalOpen}
         onClose={handleModalClose}
         contentText="Are you sure you want to delete?"
-        onConfirm={handleDeleteClick}
+        onConfirm={handleConfirmDelete}
         
        
       />
