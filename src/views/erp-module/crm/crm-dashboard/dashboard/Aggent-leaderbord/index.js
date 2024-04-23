@@ -52,14 +52,14 @@ const AgentLeaderBoard = () => {
           alignItems: 'center',
           justifyContent: 'space-between',
           padding: '20px',
-          height:"335px",
+          height:"425px",
           overflowY:"auto,"
         }}
         className='scrollbar'
       >
         {agentData.map(agent => (
           <Grid key={agent.id} container alignItems="center" spacing={2} md={12} xs={12} sx={{py:2, borderBottom:"1px solid #ccc"}}>
-            <Grid item md={4}>
+            <Grid item md={6}>
               <Box sx={{ display: "flex", alignItems: "center" }}>
                 <Avatar />
                 <Box sx={{ ml: 2 }}>
@@ -68,13 +68,8 @@ const AgentLeaderBoard = () => {
                 </Box>
               </Box>
             </Grid>
-            <Grid item md={4}>
-              <Box sx={{ ml: 2, textAlign: 'left' }}>
-                <Typography variant="subtitle1" sx={{ fontWeight: 'bold', mb: 0.5 }}>Last Lead:</Typography> {/* Added bold and margin-bottom */}
-                <Typography variant="body2">{agent.lastLead}</Typography>
-              </Box>
-            </Grid>
-            <Grid item md={4}>
+
+            <Grid item md={6}>
               <Box sx={{ ml: 2, textAlign: 'left' }}>
                 <Typography variant="subtitle1" sx={{ fontWeight: 'bold', mb: 0.5 }}>Total Leads:</Typography> {/* Added bold and margin-bottom */}
                 <Typography variant="body2">{agent.TotalLeads}</Typography>

@@ -9,7 +9,7 @@ import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import LocalOfferOutlinedIcon from '@mui/icons-material/LocalOfferOutlined';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
-import { useEffect } from 'react';
+
 const PipelineCard = (props) => {
   // Define the color you want to lighten
   const iconColor = '#121926'; // For example, red color
@@ -22,16 +22,20 @@ const PipelineCard = (props) => {
   const handleClick = (event) => {
     setAnchorEl(anchorEl ? null : event.currentTarget);
   };
+  
   // card color #eef2f773
   const open = Boolean(anchorEl);
   const id = open ? 'simple-popper' : undefined;
   return (
     <>
-      <Paper sx={{ backgroundColor: '#eef2f773', padding: '8px', minWidth: '17rem' }}>
+      <Paper sx={{ backgroundColor: '#eef2f773', padding: '8px', minWidth: '17rem' }} 
+      // key={props.id}
+      >
         <Grid container justifyContent={'space-between'} sx={{ paddingBottom: '8px' }}>
           <Grid item rowSpacing={2} sx={{ maxWidth: '70%' }}>
-            <Box display="flex" alignItems="start" gap={2}>
-              <Avatar display="flex" alt={data._name} alignItems="start" />
+            <Box display="flex" alignItems="center" gap={2}>
+              {/* <Avatar display="flex" alt={data._name} alignItems="start" /> */}
+              <Avatar>{data._name.charAt(0).toUpperCase()}</Avatar>
               <Box>
                 <Typography display="flex">{data._name}</Typography>
                 {/* <Button variant="outlined" color={'primary'} size="small" sx={{ lineHeight: '0.75', marginTop: '8px' }}>
@@ -89,17 +93,14 @@ export default PipelineCard;
 // second component for lane heading
 
 
-export const LaneHeading = ({ title, laneCount,id }) => {
-  console.log(laneCount);
-  useEffect(()=>{  
-  },[id,title])
-  
+export const LaneHeading = ({ title,lane}) => {
+
   return (
     <>
       <Box>
-        <Grid container display="flex" justifyContent="space-between">
+        <Grid container display="flex" justifyContent="space-between" >
           <Grid item sx={{ display: 'flex', alignItems: 'center' }}>
-            <Badge badgeContent={laneCount[id]}>
+            <Badge badgeContent={lane?.cards?.length} >
               <Typography variant="h4" display="flex">
                 {title}
               </Typography>
@@ -109,10 +110,10 @@ export const LaneHeading = ({ title, laneCount,id }) => {
             <Button
               sx={{ fontSize: '1.5rem', minWidth: '0px', width: '2rem', height: '2rem', padding: '8px', fontWeight: 'bold' }}
               display="flex"
-              variant="outlined"
+              variant="outlined"              
             >
-              <AddOutlinedIcon />
-            </Button>
+              <AddOutlinedIcon  sx={{height:'1.2rem'}} />
+            </Button >
           </Grid>
         </Grid>
       </Box>

@@ -210,7 +210,7 @@ const ClassTeacherMenu = {
              
               {
                 id: 'upload-resource',
-                title: 'Upload Resources',
+                title: 'Resources',
                 type: 'item',
                 url: '/class-teacher/upload-resources',
                 icon:   FolderCopyTwoToneIcon ,
@@ -219,7 +219,7 @@ const ClassTeacherMenu = {
 
              {
               id: 'upload-photo-gallery',
-              title: 'Upload Photo Gallery',
+              title: 'Photo Gallery',
               type: 'item',
               url: '/class-teacher/upload-photo-gallery',
               icon:   FolderCopyTwoToneIcon ,

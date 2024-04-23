@@ -66,7 +66,6 @@ const SetupTabs = ({
       display: 'flex',
       flexDirection: 'column',
       marginTop: '25px',
-   
     },
     tabStyle: {
       width: 'fit-content',
@@ -93,7 +92,7 @@ const SetupTabs = ({
 
   return (
     <>
-      <Box  sx={{ ...style?.tabWrapper, ...customtabWrapper }}>
+      <Box  sx={{ ...style?.tabWrapper, ...customtabWrapper }} className="testf">
         <Tabs
           orientation={orientation}
           variant={variant}
