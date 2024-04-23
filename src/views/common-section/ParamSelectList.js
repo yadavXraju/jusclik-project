@@ -20,7 +20,7 @@ const SelectList = ({ label, options, value, onChange, name="", size="",rootStyl
           disabled={disabled}
           className={className}
         >
-          {options.map((option) => (
+          {options&&options.map((option) => (
             <MenuItem key={option.value} value={option.value}>
               {option.label}
             </MenuItem>

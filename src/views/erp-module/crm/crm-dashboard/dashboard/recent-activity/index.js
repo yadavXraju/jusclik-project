@@ -52,7 +52,7 @@ const RecentActivity = () => {
           paddingBottom: isMobile ? '10px' : '0px',
         }}
       >
-        <TableContainer component={Paper}>
+        <TableContainer className='scrollbar' component={Paper} sx={{height:"305px"}}>
           <Table>
             <TableBody>
               {recentActivityData.map((mailData) => (

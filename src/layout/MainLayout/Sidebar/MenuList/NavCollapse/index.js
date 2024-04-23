@@ -1,26 +1,13 @@
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router';
-
-// material-ui
 import { useTheme } from '@mui/material/styles';
-
-// import Collapse if you want collapse menu  and below collpase component too
 import { Collapse ,List, ListItemButton, ListItemIcon, ListItemText, Typography } from '@mui/material';
-
-// project imports
 import NavItem from '../NavItem';
-
-// assets
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
-
-// collapse menu icon
-
 import { IconChevronDown, IconChevronUp } from '@tabler/icons';
 import { urlStore } from 'themes/navigation-for-pages/UrlStore';
-import { setMenu } from 'store/customization-slice';
-import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 // ==============================|| SIDEBAR MENU LIST COLLAPSE ITEMS ||============================== //
 
 const NavCollapse = ({ menu, level }) => {
@@ -29,22 +16,6 @@ const NavCollapse = ({ menu, level }) => {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState(null);
-  const [isHovered, setIsHovered] = useState(false); // Track hover state
-  const dispatch = useDispatch();
-
-
-  const handleMouseEnter = () => {
-    if (!open) {
-      dispatch(setMenu({ opened: true }));
-    }
-    setIsHovered(true);
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovered(false); // Set hover state to false
-    dispatch(setMenu({ opened: false })); // Close the menu
-  };
-
 
   const handleClick = () => {
     setOpen(!open);
@@ -53,22 +24,9 @@ const NavCollapse = ({ menu, level }) => {
       navigate(menu.children[0]?.url);
     }
      
-    // Output title and URL to the console
-
-    // console.log("Clicked Menu Title:", menu.title);
-    // console.log("Clicked Menu URL:", menu.url);
-
-
-    // console.log( 'collapse' , menu)
-    
-    // Store title and URL in urlStore
-
     urlStore.title=''
     urlStore.url=''
     urlStore.children=''
-
-    // urlStore.title = menu.title;
-    // urlStore.url = menu.url;
   
 // Store children titles in an array
 const childrenTitles = [];
@@ -85,9 +43,7 @@ if (menu.children) {
   });
   urlStore.children = childrenData;
 }
-
   };
-
 
 
   const { pathname } = useLocation();
@@ -148,13 +104,10 @@ if (menu.children) {
       fontSize={level > 0 ? 'inherit' : 'medium'}
     />
   );
-
-
-
   return (
     <>
 
- <ListItemButton
+       <ListItemButton
         className='menu-wrapper'
         sx={{
           borderRadius: `${customization.borderRadius}px`,
@@ -162,18 +115,18 @@ if (menu.children) {
           alignItems: 'flex-start',
           backgroundColor: level > 1 ? 'transparent !important' : 'inherit',
           py: level > 1 ? 1 : 1.25,
-          pl: `${level * 24}px`
+          justifyContent:'center',
+          pl: `${level * 24}px`,
+          height:'38px',
         }}
         selected={selected === menu.id}
         onClick={handleClick}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
       >
           <ListItemIcon sx={{ my: 'auto', minWidth: !menu.icon ? 18 : 36 }} className='menu-icon'>{menuIcon} </ListItemIcon>
           <ListItemText
           className='menuList'
             primary={
-              <Typography variant={selected === menu.id ? 'h5' : 'body1'} color="inherit" sx={{ my: isHovered ? 'auto'  : 'auto'  }} className='menu-title'>
+              <Typography variant={selected === menu.id ? 'h5' : 'body1'} color="inherit" sx={{ my:'auto'  }} className='menu-title'>
                 {menu.title}
               </Typography>
             }
@@ -193,14 +146,9 @@ if (menu.children) {
           ) : (
             <IconChevronDown stroke={1.5} size="1rem" style={{ marginTop: 'auto', marginBottom: 'auto' }} />
           )}
-
-
         </ListItemButton>
 
-
-
       {/* here is collapse menu */}
-
       <Collapse in={open} timeout="auto" unmountOnExit>
         <List
           component="div"

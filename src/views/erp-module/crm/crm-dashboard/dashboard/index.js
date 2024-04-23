@@ -10,6 +10,9 @@ import LeadStatus from './lead-status';
 import AgentLeaderBoard from './Aggent-leaderbord';
 import LeadBySource from './Lead-source';
 import RecentActivity from './recent-activity';
+import LeadInProcess from './process-lead';
+import HotAndColdLeads from './Hot-coldLeads';
+import FollowUpCalender from './follow-up-calednder';
 
 const DashboardContent = ({ isLoading }) => {
   return (
@@ -29,28 +32,36 @@ const DashboardContent = ({ isLoading }) => {
 
           {/* Stock Category */}
           <Grid item xs={12} lg={6} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
-            <AgentLeaderBoard/>
+          <LeadStatus/>
           </Grid>
           {/* Stockt status */}
           <Grid item xs={12} lg={6} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
-    <LeadStatus/>
+   <LeadBySource/>
      
           </Grid>
           {/* Vendor Contacs */}
           <Grid item xs={12} lg={6} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
-            
-            <LeadBySource/>
+          <HotAndColdLeads/>
+  
           </Grid>
           {/* Low stock items */}
           <Grid item xs={12} lg={6} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
           <RecentActivity/>
           </Grid>
           {/* Frequently Issued Items */}
-          <Grid item xs={12} lg={6} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
-          
+          <Grid item xs={12} lg={8} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
+          <LeadInProcess />
           </Grid>
           {/* Help & support */}
-          <Grid item xs={12} lg={6} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
+          <Grid item xs={12} lg={4} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
+            {/* <NeedSupport isLoading={isLoading} /> */}
+            <AgentLeaderBoard/>
+          </Grid>
+          <Grid item xs={12} lg={8} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
+          <FollowUpCalender />
+          </Grid>
+          {/* Help & support */}
+          <Grid item xs={12} lg={4} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
             {/* <NeedSupport isLoading={isLoading} /> */}
             <NeedHelp isLoading={isLoading} />
           </Grid>

@@ -10,11 +10,11 @@ const LeadbySource = () => {
   const isMobile = useMediaQuery('(max-width: 767px)');
 
   const source = [
-    { id: '1', source: "Google", color: "#2196f3" },
-    { id: '2', source: "Website", color: "#4caf50" },
-    { id: '3', source: "Cold Emailing", color: "#f44336" },
-    { id: '4', source: "Social Media", color: "#ff9800" },
-    { id: '5', source: "Recommendation", color: "#9c27b0" },
+    { id: '1', source: "Google", color: "#2196f3" ,data:"5"},
+    { id: '2', source: "Website", color: "#4caf50",data:"3" },
+    { id: '3', source: "Cold Emailing", color: "#f44336",data:"5" },
+    { id: '4', source: "Social Media", color: "#ff9800",data:"2" },
+    { id: '5', source: "Recommendation", color: "#9c27b0",data:"5" },
 
   ];
 
@@ -37,7 +37,7 @@ const LeadbySource = () => {
     plotOptions: {
       bar: {
         horizontal: true,
-        barHeight: '100%',
+        barHeight: '70%',
         borderRadius: 5,
         columnWidth: '40px',
       },
@@ -88,7 +88,7 @@ const LeadbySource = () => {
         }}
       >
         <Typography variant="h2" style={{ ...HeadingCss, border: 'none' }}>
-          Lead Status
+          Lead Sources
         </Typography>
       </Grid>
 
@@ -107,10 +107,10 @@ const LeadbySource = () => {
         {/* Divider */}
         <Divider orientation="horizontal" />
         {/* Source */}
-        <Grid>
+        <Grid  sx={{padding:"10px 0px"}}>
           {source.map(item => (
-            <Grid key={item.id} sx={{ display: 'flex', alignItems: 'center' ,justifyContent:"space-between",padding:"10px"}}>
-              <Typography variant="body1" sx={{fontSize:"18px",fontWeight:'600',color:"#000"}}>{item.source}</Typography>
+            <Grid key={item.id} sx={{ display: 'flex', alignItems: 'center' ,justifyContent:"space-between",padding:" 10px"}}>
+              <Typography variant="body1" sx={{fontSize:"18px",fontWeight:'600',color:"#000"}}>{item.source}[{item.data}]</Typography>
               <Box sx={{ height: "10px", width: "10px", background: item.color, marginLeft: '10px' }}></Box>
             </Grid>
           ))}

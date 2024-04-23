@@ -246,6 +246,10 @@
    display: none;
 }
 
+.drawerClose .submenutitle{
+  display: none;
+}
+
 }
 
 // @media  (max-width:900px) {
@@ -259,7 +263,7 @@
 // overflow css
 
 /* Custom CSS for the scrollbar */
-.scrollbar {
+.scrollbar ,  .sc-jsEeTM::-webkit-scrollbar {
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: #c0c6cd4f #f0f0f0;
@@ -276,11 +280,11 @@
   scrollbar-color: #c0c6cd4f #a19e9e00;
 }
 /* Track */
-.scrollbar::-webkit-scrollbar {
+.scrollbar::-webkit-scrollbar , .sc-jsEeTM::-webkit-scrollbar{
   width: 5px; /* Adjust the width as needed */
 }
 
-.scrollbar-3::-webkit-scrollbar {
+.scrollbar-3::-webkit-scrollbar  {
   width: 5px; /* Adjust the width as needed */
   scrollbar-color:#c0c6cd4f #f0f0f0;
 }
@@ -301,6 +305,5 @@
 }
 
 .MuiTooltip-popper[data-popper-placement*="right"] .css-2lvrrp-MuiTooltip-tooltip {
-  margin-left: -5px;
-  background: none;
+  margin-left: 0px;
 }
