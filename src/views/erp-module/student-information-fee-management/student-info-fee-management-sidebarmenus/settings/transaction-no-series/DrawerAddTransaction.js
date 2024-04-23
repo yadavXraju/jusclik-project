@@ -148,7 +148,6 @@ import SelectList from 'views/common-section/ParamSelectList';
 
 const DrawerAddTransaction = () => {
   const [addTransaction, setAddTransaction] = useState('');
-  
 
   const Transaction = [
     { value: 'admissionno.', label: 'Admission No.' },
@@ -158,7 +157,6 @@ const DrawerAddTransaction = () => {
   const addTransactionChange = (event) => {
     setAddTransaction(event.target.value);
   };
-
 
   const [merge, setMerge] = useState('');
   const [prefix, setPrefix] = useState('');
@@ -190,30 +188,35 @@ const DrawerAddTransaction = () => {
             />
           </Grid>
           <Grid item xs={12} sx={{ paddingLeft: '8px', paddingRight: '8px', paddingTop: '14px' }}>
-          <FormControl fullWidth variant="outlined">
-      <InputLabel htmlFor="prefix-input">Prefix</InputLabel>
-      <OutlinedInput
-        id="prefix-input"
-        label="Prefix"
-        fullWidth
-        value={prefix} // Set the value of the input field to the prefix
-        endAdornment={
-          <InputAdornment position="end">
-            {!merge && <InputLabel htmlFor="merge-field">Merge Field</InputLabel>}
-            <Select
-              id="merge-field"
-              value={merge}
-              variant="standard"
-              onChange={handleChange}
-              fullWidth
-            >
-              <MenuItem value="Joining Class">Joining Class</MenuItem>
-              <MenuItem value="Joining Year">Joining Year</MenuItem>
-            </Select>
-          </InputAdornment>
-        }
-      />
-    </FormControl>
+            <FormControl fullWidth variant="outlined">
+              <InputLabel htmlFor="prefix-input">Prefix</InputLabel>
+              <OutlinedInput
+                id="prefix-input"
+                label="Prefix"
+                fullWidth
+                value={prefix}
+                onChange={(e) => setPrefix(e.target.value)}
+                endAdornment={
+                  <InputAdornment position="end">
+                    <Select
+                      id="merge-field"
+                      value={merge}
+                      variant="standard"
+                      onChange={handleChange}
+                      fullWidth
+                      displayEmpty
+                      inputProps={{ 'aria-label': 'Without label' }}
+                    >
+                      <MenuItem value="" disabled>
+                        + Merge Field
+                      </MenuItem>
+                      <MenuItem value="Joining Class">Joining Class</MenuItem>
+                      <MenuItem value="Joining Year">Joining Year</MenuItem>
+                    </Select>
+                  </InputAdornment>
+                }
+              />
+            </FormControl>
           </Grid>
           <Grid item xs={12} sx={{ paddingTop: '20px', paddingLeft: '8px', paddingRight: '8px' }}>
             <TextField

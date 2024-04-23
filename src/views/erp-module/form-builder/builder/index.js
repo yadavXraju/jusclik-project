@@ -1,17 +1,23 @@
 import React, { useState } from 'react'
 import { Box, Typography, Paper, Drawer, TextField, Button } from '@mui/material';
-import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
-import ControlPointDuplicateOutlinedIcon from '@mui/icons-material/ControlPointDuplicateOutlined';
-import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 import ParamStepper from 'views/common-section/param-stepper';
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import { useSelector, useDispatch } from 'react-redux';
-import { handleSelectField} from 'store/form-builder/custom-form-slice';
+import { handleSelectField } from 'store/form-builder/custom-form-slice';
 import Tooltip from '@mui/material/Tooltip';
 import useDrawer from 'hooks/useDrawer';
 import SingleLineDrawer from '../common/common-drawer/single-line-drawer';
 import Divider from '@mui/material/Divider';
 import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
+import ParamSelectList from 'views/common-section/ParamSelectList';
+import ParamTime from 'views/common-section/ParamTime';
+import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
+import ControlPointDuplicateOutlinedIcon from '@mui/icons-material/ControlPointDuplicateOutlined';
+import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
+import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+import AddCircleOutlinedIcon from '@mui/icons-material/AddCircleOutlined';
+import RemoveCircleOutlinedIcon from '@mui/icons-material/RemoveCircleOutlined';
 
 const BasicFields = () => {
   const [isHover, setIsHover] = useState(-1);
@@ -136,7 +142,7 @@ const SelectedFormFields = () => {
   return (
     <>
       <DragDropContext onDragEnd={handleDragAndDrop} >
-        <Box sx={{ overflow: "hidden", display: "flex", gap: "75px", width: "100%",minHeight: "700p"}}>
+        <Box sx={{ overflow: "hidden", display: "flex", gap: "75px", width: "100%", minHeight: "700p" }}>
           <Box sx={{ width: "30%" }} className="scrollbar">
             <ParamStepper tabPage={tabPages} numberShow={false}
               iconShow={false} showBottomNav={false}
@@ -150,7 +156,7 @@ const SelectedFormFields = () => {
             />
           </Box>
           {/*Selected Fields */}
-          <Paper sx={{ width: "75%", marginTop: "22px", padding: "20px 0px",overflow:'auto'}} className="scrollbar">
+          <Paper sx={{ width: "75%", marginTop: "22px", padding: "20px 0px", overflow: 'auto' }} className="scrollbar">
             <Typography sx={{ marginLeft: "20px", display: "flex", alignItems: "center", gap: "10px" }}>
               <Typography variant="text"><DescriptionOutlinedIcon /></Typography>
               <Typography variant="h4">Admission</Typography>
@@ -181,7 +187,7 @@ const SelectedFormFields = () => {
                               {...provided.draggableProps}
                               ref={provided.innerRef}
                             >
-                              <Box 
+                              <Box
                                 sx={{
                                   border: "1px solid rgb(0 0 0 / 32%)", height: "40px",
                                   borderRadius: "0px", display: "flex", alignItems: "center",
@@ -210,34 +216,174 @@ const SelectedFormFields = () => {
   )
 }
 
-const FormRule = () => {
+
+const option = [
+  {
+    id: 1,
+    label: 'Time',
+    value: 'time'
+  },
+  {
+    id: 2,
+    label: 'Decision Box',
+    value: 'decision_box'
+  },
+  {
+    id: 3,
+    label: 'Multi Line',
+    value: 'multi_line'
+  },
+  {
+    id: 4,
+    label: 'Website',
+    value: 'website'
+  },
+  {
+    id: 5,
+    label: 'Single Line',
+    value: 'single_line'
+  }
+];
+
+
+const validation = [
+  {
+    id: 1,
+    label: 'Is',
+    value: 'is'
+  },
+  {
+    id: 2,
+    label: 'Is Not',
+    value: 'is_not'
+  },
+  {
+    id: 3,
+    label: 'Is Empty',
+    value: 'is_empty'
+  },
+  {
+    id: 4,
+    label: 'Is Not Empty',
+    value: 'is_not_empty'
+  },
+  {
+    id: 5,
+    label: 'Is Less Than',
+    value: 'is_less_than'
+  },
+  {
+    id: 6,
+    label: 'Is Greater Than',
+    value: 'is_greater_than'
+  },
+  {
+    id: 7,
+    label: 'Is Between',
+    value: 'is_between'
+  },
+  {
+    id: 8,
+    label: 'Is Any Of',
+    value: 'is_any_of'
+  },
+  {
+    id: 9,
+    label: 'Is None Of',
+    value: 'is_none_of'
+  }
+];
+
+const FormRuleDrawer = ({ toggleDrawer }) => {
+  const [optionRule, setOption] = useState();
+  const [validationRule, setValidation] = useState(1);
+  const [ruleno, setRuleNo] = useState();
+
+  const handleChange = () => {
+    setOption("hello");
+    setValidation("hello");
+  }
+
   return (
-    <Paper sx={{ marginTop: "20px", width: "50%", padding: "20px"}}>
-      <Typography>Rule Name</Typography>
-      <TextField id="outlined-basic" label="Outlined" variant="outlined"
-        helperText="Some important text"
-        fullWidth
-      />
-      <Divider />
-      <Box sx={{display: "flex",gap:"20px",alignItems:"center"}}>
-        <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", width: "20px",marginLeft:"20px"}}>
-          <Box>
-            <Button variant="outlined">
-              If
-            </Button>
-          </Box>
-          <Box sx={{ width: "1px", height: "150px", background: "blue" }}></Box>
-          <Button variant="outlined">
-            Then
+    <>
+      <Box sx={{ width: "900px", padding: "20px" }} role="presentation">
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #ccc' }}>
+          <Typography variant="h4">Add Rule</Typography>
+          <Button onClick={toggleDrawer('right', false)} sx={{ alignSelf: 'flex-end' }}>
+            Close
           </Button>
         </Box>
-        <Box sx={{ backgroundColor: "#f3f5f7", width: "100%", height: "100%" }}>
-          hello this is 
-          hello this is 
-          hello this is 
+        <Box sx={{ marginTop: "20px" }}>
+          <Box sx={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+            <Typography>Rule Name</Typography>
+            <TextField id="outlined-basic" label="Outlined" variant="outlined"
+              helperText="(Maximum 100 characters)"
+              fullWidth
+              sx={{ borderRadius: "8px" }}
+            />
+          </Box>
+          <Divider sx={{ marginTop: '20px' }} />
+          <Box sx={{ display: "flex", gap: "40px", alignItems: "center", marginTop: "20px",minHeight:"300px",height:"auto" }}>
+            <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", width: "20px",height:"100%", marginLeft: "20px" }}>
+              <Button variant="outlined">
+                If
+              </Button>
+              <Box sx={{ width: "1px", height: "150px", backgroundColor: "#f3f5f7" }}></Box>
+              <Button variant="outlined">
+                Then
+              </Button>
+            </Box>
+            <Box sx={{ width: "100%",height:"100%", backgroundColor: "#f3f5f7"}}>
+              <Box sx={{
+                display: "flex", gap: "20px",
+                alignItems: "center", width: "100%",
+                padding: "20px"
+              }}>
+                <ParamSelectList label="Rule" value={optionRule} options={option} onChange={handleChange} rootStyle={{ width: "30%" }} />
+                <ParamSelectList label="Equal" value={validationRule} options={validation} onChange={handleChange} rootStyle={{ width: "30%" }} />
+                <ParamTime customStyle={{ width: "30%", paddingTop: '-8px', borderRadius: "5px" }} />
+                <Box sx={{ display: "flex", flexDirection: "row", gap: "10px" }} >
+                  <AddCircleOutlinedIcon sx={{ color: "#24A68A" }} onClick={() => setRuleNo(ruleno + 1)} />
+                  <RemoveCircleOutlinedIcon sx={{ color: "#e83232" }} />
+                </Box>
+              </Box>
+            </Box>
+          </Box>
         </Box>
       </Box>
-    </Paper>
+    </>
+  )
+}
+
+const FormRule = () => {
+  const { anchor, toggleDrawer } = useDrawer();
+  return (
+    <Box>
+      <Paper sx={{
+        display: "flex", flexDirection: "row",
+        justifyContent: "space-between", height: "80px",
+        marginTop: "20px", padding: "20px", alignItems: "center"
+      }}>
+        <Box sx={{ marginTop: "5px" }}>
+          <Typography variant="h5">Field Rule</Typography>
+          <Typography sx={{ fontSize: "smaller" }}>
+            Configure rules to show or hide fields based on the input of another field.
+          </Typography>
+        </Box>
+        <Box sx={{ display: "flex", gap: "20px" }}>
+          <Button sx={{ textDecoration: 'underlined' }}>Switch to Advanced Rules</Button>
+          <Button variant="outlined" startIcon={<AddOutlinedIcon />}>Add Rule</Button>
+        </Box>
+      </Paper>
+      <Box sx={{ width: "100%", display: "flex", flexDirection: "column", alignItems: "center", marginTop: "150px", gap: "10px" }}>
+        <InfoOutlinedIcon />
+        <Typography>No field rules are configured for this form.</Typography>
+        <Button onClick={toggleDrawer("right", true)} variant="outlined">Configure Rule</Button>
+      </Box>
+      <Drawer anchor="right" open={anchor.right} onClose={toggleDrawer("right", false)}>
+        <FormRuleDrawer toggleDrawer={toggleDrawer} />
+      </Drawer>
+    </Box>
   )
 }
 
