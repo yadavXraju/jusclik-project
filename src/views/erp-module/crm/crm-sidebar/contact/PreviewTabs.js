@@ -9,6 +9,7 @@ import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import CommunicationLogs from './CommunicationLogs';
 import CommonDocuments from 'views/erp-common-component/commonDocuments';
 import documentData from './DocumentData';
+import FollowUpAndNotes from './FollowUpAndNotes';
 
 const PreviewTabs = () => {
   const [tabValue, setTabValue] = useState(0); // State for controlling tabs
@@ -118,8 +119,8 @@ const PreviewTabs = () => {
         )}
         {tabValue === 1 && <LeadTimeline/>}
         {tabValue === 2 && <CommunicationLogs/>}
-        {tabValue === 3 && '4'}
-        {tabValue === 4 && <Box mt={2}><CommonDocuments documentData={documentData}/></Box>}
+        {tabValue === 3 && <FollowUpAndNotes/>}
+        {tabValue === 4 && <Box px={4} mt={2}><CommonDocuments documentData={documentData} customStyle={{height:'100%'}}/></Box>}
       </Box>
     </Box>
   );
