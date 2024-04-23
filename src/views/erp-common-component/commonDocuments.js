@@ -18,7 +18,7 @@ const columns = [
   { id: 'lastupdated', label: 'Last Updated', minWidth: 170, align: 'right' }
 ];
 
-export default function CommonDocuments({ documentData }) {
+export default function CommonDocuments({ documentData, customStyle }) {
   const [uploadedFile, setUploadedFile] = React.useState(null);
 
   const handleFileUpload = (event, rowIndex) => {
@@ -30,10 +30,17 @@ export default function CommonDocuments({ documentData }) {
     }
   };
 
+  const style = {
+    documentStyle: {
+      height: 'calc(100vh - 188px)',
+      '&::-webkit-scrollbar': { display: 'none' },
+    }
+};
+
   return (
     <>
       <Paper sx={{ width: '100%', overflow: 'hidden', borderRadius: 0 }}>
-        <TableContainer className="scrollbar" sx={{ height: 'calc(100vh - 188px)', '&::-webkit-scrollbar': { display: 'none' } }}>
+        <TableContainer className="scrollbar" sx={{ ...style.documentStyle,  ...customStyle }}>
           <Table stickyHeader aria-label="sticky table" sx={{ border: '1px solid #ccc' }}>
             <TableHead>
               <TableRow>

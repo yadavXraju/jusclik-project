@@ -11,7 +11,7 @@ const ParamTime = ({ label="", value=null, onChange,customStyle })=>{
   const selectedDate = value ? dayjs(value) : null;
 
   return (
-    <LocalizationProvider dateAdapter={AdapterDayjs}>
+    <LocalizationProvider dateAdapter={AdapterDayjs} sx={{paddingTop:"0px"}}>
       <DemoContainer components={['TimePicker']} sx={customStyle}>
         <TimePicker
           label={label}

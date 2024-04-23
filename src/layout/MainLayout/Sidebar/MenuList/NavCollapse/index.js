@@ -7,29 +7,8 @@ import NavItem from '../NavItem';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import { IconChevronDown, IconChevronUp } from '@tabler/icons';
 import { urlStore } from 'themes/navigation-for-pages/UrlStore';
-import { setMenu } from 'store/customization-slice';
-import { useDispatch,useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 // ==============================|| SIDEBAR MENU LIST COLLAPSE ITEMS ||============================== //
-
-// Custom hook for debouncing
-// function useDebouncedFunction(callback, delay) {
-//   const [timeoutId, setTimeoutId] = useState(null);
-
-//   const debouncedFunction = (...args) => {
-//     if (timeoutId) {
-//       clearTimeout(timeoutId);
-//     }
-
-//     const id = setTimeout(() => {
-//       callback(...args);
-//     }, delay);
-
-//     setTimeoutId(id);
-//   };
-
-//   return debouncedFunction;
-// }
-
 
 const NavCollapse = ({ menu, level }) => {
   const theme = useTheme();
@@ -37,25 +16,6 @@ const NavCollapse = ({ menu, level }) => {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState(null);
-  const dispatch = useDispatch();
-  
-  const handleMouseEnter = () => {
-    console.log("mouseenter")
-    setTimeout(() => {
-      if (!customization.userClicked) {
-        dispatch(setMenu({ opened: true }));
-      }
-    },300);
-   
-  };
-
-  const handleMouseLeave = () => {
-    console.log("mouseclose")
-    setTimeout(()=>{
-      dispatch(setMenu({ opened: false }));
-    },300)
-  };
-
 
   const handleClick = () => {
     setOpen(!open);
@@ -161,8 +121,6 @@ if (menu.children) {
         }}
         selected={selected === menu.id}
         onClick={handleClick}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
       >
           <ListItemIcon sx={{ my: 'auto', minWidth: !menu.icon ? 18 : 36 }} className='menu-icon'>{menuIcon} </ListItemIcon>
           <ListItemText

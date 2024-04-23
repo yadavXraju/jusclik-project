@@ -1,190 +1,4 @@
-// import React from 'react';
-// // import ParamTable from 'views/erp-common-component/ParamTable';
-// // import Drawer from '@mui/material/Drawer';
-// // import DrawerContent from './DrawerContent';
-// // import CommonDataGrid from 'views/common-section/commonDataGrid';
-// import { initialRows,initialColumns } from '../../black-listed-visitor/common/VisitorData';
-// import EditIcon from '@mui/icons-material/Edit';
-// import DeleteIcon from '@mui/icons-material/DeleteOutlined';
-// import SaveIcon from '@mui/icons-material/Save';
-// import CancelIcon from '@mui/icons-material/Close';
-// import {   GridRowModes,
-//   DataGrid,
-//   GridToolbarContainer,
-//   GridActionsCellItem,
-//   GridRowEditStopReasons,} from '@mui/x-data-grid';
-// import Button from '@mui/material/Button';
-// import AddIcon from '@mui/icons-material/Add';
-// import {
-//   randomId,
-// } from '@mui/x-data-grid-generator';
-// import { useEffect , useState} from 'react';
-// import WarningDialog from 'views/common-section/WarningDialog';
 
-// function EditToolbar(props) {
-//   const { setRows, setRowModesModel } = props;
-
-//   const handleClick = () => {
-//     const id = randomId();
-//     setRows((oldRows) => [...oldRows, { id, name: '', age: '', isNew: true }]);
-//     setRowModesModel((oldModel) => ({
-//       ...oldModel,
-//       [id]: { mode: GridRowModes.Edit, fieldToFocus: 'name' },
-//     }));
-//   };
-
-//   return (
-//     <GridToolbarContainer sx={{justifyContent:'end',paddingTop:'8px',paddingRight:'16px'}}>
-//       <Button  variant="outlined" color="primary" startIcon={<AddIcon />} onClick={handleClick}>
-//         Add record
-//       </Button>
-//     </GridToolbarContainer>
-//   );
-// }
-
-
-
-// const ParentsDiscussion = () => {
-//   const [rows, setRows] = React.useState(initialRows);
-//   const [columns,setColumns]=React.useState(initialColumns)
-//   const [rowModesModel, setRowModesModel] = React.useState({});
-//   const [modalOpen, setmodalOpen] =useState(false);
- 
-  
-
-  
-
-//   const handleRowEditStop = (params, event) => {
-//     if (params.reason === GridRowEditStopReasons.rowFocusOut) {
-//       event.defaultMuiPrevented = true;
-//     }
-//   };
-// const handleModalClose = () => {
-//     setmodalOpen(false);
-//   };
-//   // const handleEditClick = (id) => () => {
-//   //   setRowModesModel({ ...rowModesModel, [id]: { mode: GridRowModes.Edit } });
-//   // };
-
-//   const handleSaveClick = (id) => () => {
-//     setRowModesModel({ ...rowModesModel, [id]: { mode: GridRowModes.View } });
-//   };
-
-//   const handleDeleteClick = () => () => {
-//     // setRows(rows.filter((row) => row.id !== id));
-//     setmodalOpen(true);
-//   };
-
-//   const handleCancelClick = (id) => () => {
-//     setRowModesModel({
-//       ...rowModesModel,
-//       [id]: { mode: GridRowModes.View, ignoreModifications: true },
-//     });
-
-//     const editedRow = rows.find((row) => row.id === id);
-//     if (editedRow.isNew) {
-//       setRows(rows.filter((row) => row.id !== id));
-//     }
-//   };
-
-//   const processRowUpdate = (newRow) => {
-//     const updatedRow = { ...newRow, isNew: false };
-//     setRows(rows.map((row) => (row.id === newRow.id ? updatedRow : row)));
-//     return updatedRow;
-//   };
-
-//   const handleRowModesModelChange = (newRowModesModel) => {
-//     setRowModesModel(newRowModesModel);
-//   };
-//   useEffect(()=>{
-//     const updatedColumns=[...columns]
-    
-//     updatedColumns.push( {
-//       field: 'actions',
-//       type: 'actions',
-//       headerName: 'Actions',
-//       width: 100,
-//       cellClassName: 'actions',
-//       getActions: ({ id }) => {
-//         const isInEditMode = rowModesModel[id]?.mode === GridRowModes.Edit;
-  
-//         if (isInEditMode) {
-//           return [
-//             <GridActionsCellItem
-//               icon={<SaveIcon />}
-//               key={`save-${id}`}
-//               label="Save"
-//               sx={{
-//                 color: 'primary.main'
-//               }}
-//               onClick={handleSaveClick(id)}
-//             />,
-//             <GridActionsCellItem
-//               icon={<CancelIcon />}
-//               key={`cancel-${id}`}
-//               label="Cancel"
-//               className="textPrimary"
-//               onClick={handleCancelClick(id)}
-//               color="inherit"
-//             />
-//           ];
-//         }
-  
-//         return [
-//           <GridActionsCellItem
-//             icon={<EditIcon />}
-//             key={`edit-${id}`}
-//             label="Edit"
-//             className="textPrimary"
-//             // onClick={handleEditClick(id)}
-//             color="inherit"
-//           />,
-//           <GridActionsCellItem icon={<DeleteIcon />} key={`delete-${id}`} label="Delete" onClick={handleDeleteClick(id)} color="inherit" />
-//         ];
-//       }
-//     })
-//     setColumns(updatedColumns)
-//   },[])
-//   return (
-//     <>
-//       {/* <ParamTable columns={tableHeadings} data={data} /> */}
-//       {/* <Drawer anchor={'right'} open={toggleAddDrawer.right} onClose={toggleDrawer('right', false)}>
-//         <DrawerContent handleChange={handleChange} data={tableHeadings} toggleDrawer={toggleDrawer} name="Wing {Restricted}"/>
-//       </Drawer> */}
-//       {/* <CommonDataGrid columns={columns} rows={rows} checkboxSelection={false} /> */}
-//       <DataGrid
-//         className='findcomp'
-//         rows={rows}
-//         columns={columns}
-//         editMode="row"
-//         rowModesModel={rowModesModel}
-//         onRowModesModelChange={handleRowModesModelChange}
-//         onRowEditStop={handleRowEditStop}
-//         processRowUpdate={processRowUpdate}
-//         slots={{
-//           toolbar: EditToolbar,
-//         }}
-//         slotProps={{
-//           toolbar: { setRows, setRowModesModel },
-//         }}
-//         sx={{
-//           '& .MuiInputBase-fullWidth fieldset':{
-//             borderRadius: '0 !important'
-//           }
-//         }}
-//       />
-
-//         <WarningDialog
-//         open={modalOpen}
-//         onClose={handleModalClose}
-//         contentText="Are you sure you want to delete?"
-//         onConfirm={handleDeleteClick}
-     
-       
-//       />
-//     </>
-//   )
-// }
 
 // export default ParentsDiscussion;
 import * as React from 'react';
@@ -268,31 +82,12 @@ const initialRows = [
   },
 ];
 
-function EditToolbar(props) {
-  const { setRows, setRowModesModel } = props;
-
-  const handleClick = () => {
-    const id = randomId();
-    setRows((oldRows) => [...oldRows, { id, name: '', age: '', isNew: true }]);
-    setRowModesModel((oldModel) => ({
-      ...oldModel,
-      [id]: { mode: GridRowModes.Edit, fieldToFocus: 'name' },
-    }));
-  };
-
-  return (
-    <GridToolbarContainer sx={{justifyContent:'end',paddingTop:'8px',paddingRight:'16px'}}>
-    <Button  variant="outlined" color="primary" startIcon={<AddIcon />} onClick={handleClick}>
-      Add record
-    </Button>
-  </GridToolbarContainer>
-  );
-}
-
 export default function FullFeaturedCrudGrid() {
   const [rows, setRows] = React.useState(initialRows);
   const [rowModesModel, setRowModesModel] = React.useState({});
   const [modalOpen, setmodalOpen] =useState(false);
+  const [isChangeEnable,setIsChangeEnable]=useState(-1);
+
   const handleModalClose = () => {
     setmodalOpen(false);
   };
@@ -303,11 +98,15 @@ export default function FullFeaturedCrudGrid() {
   };
 
   const handleEditClick = (id) => () => {
-    setRowModesModel({ ...rowModesModel, [id]: { mode: GridRowModes.Edit } });
+    if(isChangeEnable==-1){
+      setRowModesModel({ ...rowModesModel, [id]: { mode: GridRowModes.Edit } });
+      setIsChangeEnable(2);
+    }
   };
 
   const handleSaveClick = (id) => () => {
     setRowModesModel({ ...rowModesModel, [id]: { mode: GridRowModes.View } });
+    setIsChangeEnable(-1);
   };
 
   const handleDeleteClick = () => () => {
@@ -326,6 +125,13 @@ export default function FullFeaturedCrudGrid() {
       setRows(rows.filter((row) => row.id !== id));
     }
   };
+  const handleConfirmDelete = () => {
+    const updatedRows = tableRows.filter((row) => row.id !== deleteId);
+    setTableRows(updatedRows);
+    setmodalOpen(false);
+    setdeleteId(null);
+  };
+
 
   const processRowUpdate = (newRow) => {
     const updatedRow = { ...newRow, isNew: false };
@@ -376,7 +182,7 @@ export default function FullFeaturedCrudGrid() {
       field: 'createdBy',
       headerName: ' Created By',
       width: 180,
-      editable: true,
+      editable: false,
       flex:1,
     },
     {
@@ -385,7 +191,7 @@ export default function FullFeaturedCrudGrid() {
       // type: 'date',
       // valueGetter: (params) => new Date(params.value),
       width: 180,
-      editable: true,
+      editable: false,
       flex:1,
     },
     {
@@ -442,6 +248,28 @@ export default function FullFeaturedCrudGrid() {
     },
   ];
 
+  function EditToolbar(props) {
+    const { setRows, setRowModesModel } = props;
+    const handleClick = () => {
+      setIsChangeEnable(2);
+      const id = randomId();
+      setRows((oldRows) => [...oldRows, { id, name: '', age: '', isNew: true,createdOn:'2023-04-07',createdBy:randomTraderName()}]);
+      setRowModesModel((oldModel) => ({
+        ...oldModel,
+        [id]: { mode: GridRowModes.Edit, fieldToFocus: 'name' },
+      }));
+
+    };
+
+  return (
+    <GridToolbarContainer sx={{justifyContent:'end',paddingTop:'8px',paddingRight:'16px'}}>
+    <Button  variant="outlined" color="primary" startIcon={<AddIcon />} onClick={handleClick}>
+      Add record
+    </Button>
+  </GridToolbarContainer>
+  );
+}
+
   return (
     
    <>
@@ -464,7 +292,7 @@ export default function FullFeaturedCrudGrid() {
         open={modalOpen}
         onClose={handleModalClose}
         contentText="Are you sure you want to delete?"
-        onConfirm={handleDeleteClick}
+        onConfirm={handleConfirmDelete}
         
        
       />
