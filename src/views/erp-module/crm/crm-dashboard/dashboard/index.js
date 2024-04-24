@@ -50,19 +50,19 @@ const DashboardContent = ({ isLoading }) => {
           </Grid>
           {/* Frequently Issued Items */}
           <Grid item xs={12} lg={8} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
-         
-          <FollowUpCalender />
+          <LeadInProcess />
+        
           </Grid>
           {/* Help & support */}
           <Grid item xs={12} lg={4} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
             {/* <NeedSupport isLoading={isLoading} /> */}
             <AgentLeaderBoard/>
           </Grid>
-          <Grid item xs={12} lg={8} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
-          <LeadInProcess />
+          <Grid item xs={12} lg={6} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
+          <FollowUpCalender />
           </Grid>
           {/* Help & support */}
-          <Grid item xs={12} lg={4} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
+          <Grid item xs={12} lg={6} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
             {/* <NeedSupport isLoading={isLoading} /> */}
             <NeedHelp isLoading={isLoading} />
             {/* <AgentLeaderBoard/> */}
