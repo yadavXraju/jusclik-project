@@ -3,9 +3,7 @@ import Avatar from '@mui/material/Avatar';
 import { Badge, Box, Button, Divider, Grid, Paper, Typography, alpha } from '@mui/material';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import Popper from '@mui/material/Popper';
-
 import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
-// import InsertLinkOutlinedIcon from '@mui/icons-material/InsertLinkOutlined';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import LocalOfferOutlinedIcon from '@mui/icons-material/LocalOfferOutlined';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
@@ -23,24 +21,18 @@ const PipelineCard = (props) => {
     setAnchorEl(anchorEl ? null : event.currentTarget);
   };
   
-  // card color #eef2f773
   const open = Boolean(anchorEl);
   const id = open ? 'simple-popper' : undefined;
   return (
     <>
       <Paper sx={{ backgroundColor: '#eef2f773', padding: '8px', minWidth: '17rem' }} 
-      // key={props.id}
       >
         <Grid container justifyContent={'space-between'} sx={{ paddingBottom: '8px' }}>
           <Grid item rowSpacing={2} sx={{ maxWidth: '70%' }}>
             <Box display="flex" alignItems="center" gap={2}>
-              {/* <Avatar display="flex" alt={data._name} alignItems="start" /> */}
               <Avatar>{data._name.charAt(0).toUpperCase()}</Avatar>
               <Box>
                 <Typography display="flex">{data._name}</Typography>
-                {/* <Button variant="outlined" color={'primary'} size="small" sx={{ lineHeight: '0.75', marginTop: '8px' }}>
-                  {'status'}
-                </Button> */}
               </Box>
             </Box>
           </Grid>
@@ -68,12 +60,6 @@ const PipelineCard = (props) => {
             </Typography>
             <Typography sx={{ display: 'flex', alignItems: 'center' }}>{data.email}</Typography>
           </Box>
-          {/* <Box display="flex">
-            <Typography sx={{ display: 'flex', alignItems: 'center', padding: '8px' }} variant="h4">
-              <InsertLinkOutlinedIcon  style={{ color: lightenedColor }}/>
-            </Typography>
-            <Typography sx={{ display: 'flex', alignItems: 'center' }}>{data.website}</Typography>
-          </Box> */}
           <Box display="flex">
             <Typography sx={{ display: 'flex', alignItems: 'center', padding: '8px' }} variant="h4">
               <LocalOfferOutlinedIcon style={{ color: lightenedColor }} />
@@ -90,7 +76,6 @@ const PipelineCard = (props) => {
 
 export default PipelineCard;
 
-// second component for lane heading
 
 
 export const LaneHeading = ({ title,lane}) => {
