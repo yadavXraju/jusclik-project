@@ -201,7 +201,8 @@ const Header = ({ handleLeftDrawerToggle }) => {
               {/* { isERP ? <ErpModule />  : <SiblingSwitch />} */}
               <DashboardSwitch />
               <ErpModule />
-              <HelpSection  />
+              {/* <HelpSection  /> */}
+              <HelpSection setOpen={setOpen} />
               <AcadmicYear  />
               <NotificationSection />
               <ProfileSection />

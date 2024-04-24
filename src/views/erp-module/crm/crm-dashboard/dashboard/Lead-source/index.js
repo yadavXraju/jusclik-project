@@ -3,19 +3,18 @@ import ApexCharts from 'react-apexcharts';
 import { Grid, Paper, Typography, useMediaQuery, Divider, Box } from '@mui/material';
 import { gridSpacing } from 'store/constant';
 import { HeadingCss } from 'views/common-section/dashboard-css/CommonCss';
-
+import '../follow-up-calednder/FollowUpCalender.css';
 
 const LeadbySource = () => {
 
   const isMobile = useMediaQuery('(max-width: 767px)');
 
   const source = [
-    { id: '1', source: "Google", color: "#2196f3" ,data:"5"},
-    { id: '2', source: "Website", color: "#4caf50",data:"3" },
-    { id: '3', source: "Cold Emailing", color: "#f44336",data:"5" },
-    { id: '4', source: "Social Media", color: "#ff9800",data:"2" },
-    { id: '5', source: "Recommendation", color: "#9c27b0",data:"5" },
-
+    { id: '1', source: "Google", color: "#2196f3" ,data:"5",percentage:"45%"},
+    { id: '2', source: "Website", color: "#4caf50",data:"3",percentage:"35%" },
+    { id: '3', source: "Cold Emailing", color: "#f44336",data:"5",percentage:"45%" },
+    { id: '4', source: "Social Media", color: "#ff9800",data:"2",percentage:"25%" },
+    { id: '5', source: "Recommendation", color: "#9c27b0",data:"5",percentage:"45%" }
   ];
 
   const chartData = {
@@ -108,13 +107,24 @@ const LeadbySource = () => {
         <Divider orientation="horizontal" />
         {/* Source */}
         <Grid  sx={{padding:"10px 0px"}}>
-          {source.map(item => (
-            <Grid key={item.id} sx={{ display: 'flex', alignItems: 'center' ,justifyContent:"space-between",padding:" 10px"}}>
-              <Typography variant="body1" sx={{fontSize:"18px",fontWeight:'600',color:"#000"}}>{item.source}[{item.data}]</Typography>
-              <Box sx={{ height: "10px", width: "10px", background: item.color, marginLeft: '10px' }}></Box>
-            </Grid>
+          {source.map((item, index) => (
+            <React.Fragment key={item.id}>
+              <Grid sx={{ display: 'flex', alignItems: 'center' ,justifyContent:"space-between",padding:" 10px"}}>
+                <Box sx={{display:"flex",alignItems:"center"}}>
+                  <Box sx={{ height: "10px", width: "10px", border:`2px solid ${item.color}`, marginLeft: '20px',marginRight:"10px" }}></Box>
+                  <Typography variant="body1" sx={{fontSize:"16px",fontWeight:'500',color:"#000"}}>{item.source}</Typography>
+                </Box>
+              
+                <Grid>
+                  <Typography variant="body1" sx={{fontSize:"16px",fontWeight:'400',color:"#000"}}>[{item.data}]   {item.percentage}</Typography>
+                </Grid>
+              </Grid>
+              {index !== source.length - 1 && <Divider sx={{width:"90%",margin:"auto"}}/>}
+            </React.Fragment>
           ))}
         </Grid>
+        {/* Divider */}
+        <Divider sx={{width:"90%",margin:"auto"}}/>
       </Grid>
     </Paper>
   );
