@@ -15,6 +15,8 @@ const AgentLeaderBoard = () => {
     { id: 5, name: "Emily Davis", department: "Operations", lastLead: "April 17, 2024", TotalLeads: 80, successRate: "78%" },
     { id: 6, name: "Emily Davis", department: "Operations", lastLead: "April 17, 2024", TotalLeads: 80, successRate: "78%" },
     { id: 7, name: "Emily Davis", department: "Operations", lastLead: "April 17, 2024", TotalLeads: 80, successRate: "78%" },
+    { id: 8, name: "Emily Davis", department: "Operations", lastLead: "April 17, 2024", TotalLeads: 80, successRate: "78%" },
+    { id: 9, name: "Emily Davis", department: "Operations", lastLead: "April 17, 2024", TotalLeads: 80, successRate: "78%" },
   ];
 
   return (
@@ -27,6 +29,7 @@ const AgentLeaderBoard = () => {
         justifyContent: 'space-between',
         border: '1px solid rgb(227, 227, 227)',
         boxShadow: '4px 4px 9px 2px #ddddddc2',
+        height:"734px",
       }}
     >
       {/* Heading */}
@@ -52,7 +55,7 @@ const AgentLeaderBoard = () => {
           alignItems: 'center',
           justifyContent: 'space-between',
           padding: '20px',
-          height:"425px",
+     
           overflowY:"auto,"
         }}
         className='scrollbar'
