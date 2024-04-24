@@ -297,7 +297,8 @@ const validation = [
 const FormRuleDrawer = ({ toggleDrawer }) => {
   const [optionRule, setOption] = useState();
   const [validationRule, setValidation] = useState(1);
-  const [ruleno, setRuleNo] = useState();
+  const [ruleno, setRuleNo] = useState(1);
+  const [isHover, setIsHover] = useState(-1);
 
   const handleChange = () => {
     setOption("hello");
@@ -306,50 +307,107 @@ const FormRuleDrawer = ({ toggleDrawer }) => {
 
   return (
     <>
-      <Box sx={{ width: "900px", padding: "20px" }} role="presentation">
+      <Box sx={{ width: "950px", padding: "20px", height: "100vh", overflowY: "auto" }} role="presentation" className="scrollbar">
         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #ccc' }}>
           <Typography variant="h4">Add Rule</Typography>
           <Button onClick={toggleDrawer('right', false)} sx={{ alignSelf: 'flex-end' }}>
             Close
           </Button>
         </Box>
-        <Box sx={{ marginTop: "20px" }}>
-          <Box sx={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-            <Typography>Rule Name</Typography>
-            <TextField id="outlined-basic" label="Outlined" variant="outlined"
-              helperText="(Maximum 100 characters)"
-              fullWidth
-              sx={{ borderRadius: "8px" }}
-            />
+        <Box sx={{ display: "flex", flexDirection: "column", gap: "5px", marginTop: "20px" }}>
+          <Typography>Rule Name</Typography>
+          <TextField id="outlined-basic" label="Outlined" variant="outlined"
+            helperText="(Maximum 100 characters)"
+            fullWidth
+            sx={{ borderRadius: "8px" }}
+          />
+        </Box>
+        <Divider sx={{ marginTop: '20px' }} />
+        <Box sx={{
+          display: "flex", alignItems: "center", gap: "10px",
+          marginTop: "20px", height: "auto",
+          position: "relative", borderRadius: "5px",
+          '&:before': {
+            position: 'absolute',
+            content: '" "',
+            width: '1px',
+            height: 'calc(100% - 82px)',
+            left: '3.7%',
+            top: '47px',
+            background: '#ccc',
+          }
+        }}>
+          <Box sx={{ width: "100%", height: "80%", backgroundColor: "#afafaf2e", margin: "50px 50px 50px 100px", paddingLeft: "50px",position:"relative" }}>
+            <Box sx={{
+              borderLeft: "1px solid red", padding: "20px",
+              '&:before': {
+                position: 'absolute',
+                content: '" "',
+                width: '20px',
+                height:"1px",
+                background: 'red',
+                left:"50px",
+                top:"10px"
+              },
+              '&:after': {
+                position: 'absolute',
+                content: '" "',
+                width: '80px',
+                height:"1px",
+                background: 'red',
+                left:"50px",
+                bottom:"10px"
+              }
+            }} className="test">
+              {
+                Array.from({ length: ruleno }, (_, index) =>
+                  <Box sx={{
+                    display: "flex", gap: "20px",
+                    alignItems: "center", width: "100%",
+                  }} onMouseEnter={() => setIsHover(index)} onMouseLeave={() => setIsHover(-1)} key={index}>
+                    <ParamSelectList label="Rule" value={optionRule} options={option} onChange={handleChange} rootStyle={{ width: "30%" }} />
+                    <ParamSelectList label="Is" value={validationRule} options={validation} onChange={handleChange} rootStyle={{ width: "30%" }} />
+                    <ParamTime customStyle={{ width: "30%", paddingTop: '-8px', borderRadius: "5px" }} />
+                    <Box sx={{ visibility: isHover == index ? "show" : "hidden", display: "flex", flexDirection: "row", gap: "10px" }} >
+                      <AddCircleOutlinedIcon sx={{ color: "#24A68A" }} onClick={() => setRuleNo(ruleno + 1)} />
+                      <RemoveCircleOutlinedIcon sx={{ color: "#e83232" }} onClick={() => setRuleNo(ruleno - 1)} />
+                    </Box>
+                  </Box>
+                )}
+            </Box>
           </Box>
-          <Divider sx={{ marginTop: '20px' }} />
-          <Box sx={{ display: "flex", gap: "40px", alignItems: "center", marginTop: "20px",minHeight:"300px",height:"auto" }}>
-            <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", width: "20px",height:"100%", marginLeft: "20px" }}>
-              <Button variant="outlined">
-                If
-              </Button>
-              <Box sx={{ width: "1px", height: "150px", backgroundColor: "#f3f5f7" }}></Box>
-              <Button variant="outlined">
-                Then
-              </Button>
-            </Box>
-            <Box sx={{ width: "100%",height:"100%", backgroundColor: "#f3f5f7"}}>
-              <Box sx={{
-                display: "flex", gap: "20px",
-                alignItems: "center", width: "100%",
-                padding: "20px"
-              }}>
-                <ParamSelectList label="Rule" value={optionRule} options={option} onChange={handleChange} rootStyle={{ width: "30%" }} />
-                <ParamSelectList label="Equal" value={validationRule} options={validation} onChange={handleChange} rootStyle={{ width: "30%" }} />
-                <ParamTime customStyle={{ width: "30%", paddingTop: '-8px', borderRadius: "5px" }} />
-                <Box sx={{ display: "flex", flexDirection: "row", gap: "10px" }} >
-                  <AddCircleOutlinedIcon sx={{ color: "#24A68A" }} onClick={() => setRuleNo(ruleno + 1)} />
-                  <RemoveCircleOutlinedIcon sx={{ color: "#e83232" }} />
-                </Box>
-              </Box>
-            </Box>
+          <Box sx={{ position: "absolute", top: "10px" }}>
+            <Button variant="outlined" >
+              If
+            </Button>
+          </Box>
+          <Box sx={{ position: "absolute", bottom: "0px", display: "flex" }}>
+            <Button variant="outlined">
+              Then
+            </Button>
+            <Typography sx={{ marginTop: "10px", marginLeft: "20px" }}>Perform the following actions</Typography>
           </Box>
         </Box>
+        {
+          Array.from({ length: ruleno }, (_, index) =>
+            <Box sx={{ marginLeft: "88px", marginTop: "20px", display: "flex", gap: "20px" }}
+              onMouseEnter={() => setIsHover(index)}
+              onMouseLeave={() => setIsHover(-1)}
+              key={index}
+            >
+              <ParamSelectList label="Rule" value={optionRule} options={option} onChange={handleChange} rootStyle={{ width: "30%" }} />
+              <TextField id="outlined-basic" label="Outlined" variant="outlined"
+                fullWidth
+                sx={{ borderRadius: "8px" }}
+              />
+              <Box sx={{ visibility: isHover == index ? "show" : "hidden", display: "flex", flexDirection: "row", alignItems: "center" }} >
+                <AddCircleOutlinedIcon sx={{ color: "#24A68A" }} onClick={() => setRuleNo(ruleno + 1)} />
+                <RemoveCircleOutlinedIcon sx={{ color: "#e83232" }} onClick={() => setRuleNo(ruleno - 1)} />
+              </Box>
+            </Box>
+          )}
+      </Box>
+      <Box>
       </Box>
     </>
   )
