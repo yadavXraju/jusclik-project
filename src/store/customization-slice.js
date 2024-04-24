@@ -24,7 +24,7 @@ const initialState = {
   defaultId: 'default',
   fontFamily: initialFontFamily,
   borderRadius: intialborderRadius,
-  userClicked:false,
+  userClicked:true,
   opened: true,
   themeColor: initialThemeColor,
   themeColorV2: initialThemeColorV2

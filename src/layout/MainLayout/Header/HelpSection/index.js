@@ -5,7 +5,7 @@ import { useTheme, Tooltip, Paper } from '@mui/material';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
 
-const HelpSection = ( {setOpen} ) => {
+const HelpSection = ({ setOpen }) => {
   const theme = useTheme();
   const navigate = useNavigate();
 
