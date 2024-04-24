@@ -52,3 +52,13 @@ button.fc-timeGridDay-button.fc-button.fc-button-primary {
 button.fc-timeGridDay-button.fc-button.fc-button-primary.fc-button-active {
     background: none;
 }
+
+
+table.fc-scrollgrid-sync-table {
+height:733px;
+width: 100% !important;
+}
+
+.fc-view-harness.fc-view-harness-active {
+    height: 344.889px !important;
+}
