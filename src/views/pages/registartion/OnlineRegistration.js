@@ -3,13 +3,7 @@ import {
   Grid,
   Box,
   Typography,
-  //Paper,
-  
-  
-  
-  
- 
-  
+  //Paper, 
 
 } from '@mui/material';
 import LeftLogo from '../authentication/LeftLogo';
@@ -18,6 +12,12 @@ import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 import Tab from '@mui/material/Tab';
 import MobileLogin from '../authentication/MobileLogin';
+import Dropdown from 'views/common-section/ParamSelectList'
+import TextField from '@mui/material/TextField';
+import ParameterizedDateComponent from 'views/common-section/ParamDateComponent'
+
+
+
 
 
 const style = {
@@ -35,6 +35,24 @@ const style = {
   }
 };
 
+const SessionOptions = [
+  { value: '2024-2025', label: '2024-2025' },
+
+]
+
+const ClassOptions = [
+
+  {value:'3' , label:'III'},
+  {value:'5' , label:'V'},
+  {value:'6' , label:'VI'},
+  {value:'8' , label:'VI'},
+  {value:'9' , label:'IX'},
+  {value:'10' , label:'X'},
+  {value:'11' , label:'XI'},
+  {value:'12A' , label:'XII A'},
+
+]
+
 
 const OnlineRegistration = () => {
   const [value, setValue] = React.useState('1');
@@ -43,6 +61,7 @@ const OnlineRegistration = () => {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+  
 
   return (
     <>
@@ -83,7 +102,113 @@ const OnlineRegistration = () => {
           
           </TabList>
         </Box>
-        <TabPanel value="1"> New Registration</TabPanel>
+        <TabPanel value="1"> 
+        
+        <Dropdown  
+    label='Select Class'
+    options={SessionOptions}  
+    className='findcomp'
+    rootStyle={{
+        marginTop: '20px',
+       
+    }}
+    customStyle={{
+        '& .MuiOutlinedInput-notchedOutline': {
+            borderRadius: '50px'
+        },
+        '& .MuiSelect-select' :{
+          borderRadius:'50px',
+        },
+        '& .MuiSelect-select::focus' :{
+          borderRadius:'50px',
+        },
+
+        background:'none',
+    }}
+/>
+
+
+
+<Dropdown  
+    label='Select Class'
+    options={ClassOptions}  
+    className='findcomp'
+    rootStyle={{
+        marginTop: '20px',
+       
+    }}
+    customStyle={{
+        '& .MuiOutlinedInput-notchedOutline': {
+            borderRadius: '50px'
+        },
+        '& .MuiSelect-select' :{
+          borderRadius:'50px',
+        },
+        '& .MuiSelect-select::focus' :{
+          borderRadius:'50px',
+        },
+
+        background:'none',
+    }}
+/>
+
+
+{/* <TextField
+  id="outlined-basic"
+  label="Student's Name"
+  variant="outlined"
+  fullWidth
+/> */}
+
+<TextField
+  id="outlined-basic"
+  label="Student's Name"
+  variant="outlined"
+  fullWidth
+  sx={{
+    marginTop: '20px',
+    '& fieldset': {
+      borderRadius: '50px',
+    },
+    '& .css-x77xb3-MuiInputBase-root-MuiOutlinedInput-root': {
+      borderRadius: '50px',
+    },
+    background:'none',
+  }}
+/>
+
+
+
+
+<ParameterizedDateComponent  label='Date of Birth' customStyle ={{marginTop:'20px' , width:'100%' ,borderRadius:'50px' }}/>
+           
+<TextField
+  id="outlined-basic"
+  label="Mobile"
+  variant="outlined"
+  fullWidth
+  inputProps={{
+    inputMode: 'numeric', // Set input mode to numeric
+    pattern: '[0-9]*',    // Allow only numeric input
+  }}
+  sx={{
+    marginTop: '20px',
+    '& fieldset': {
+      borderRadius: '50px',
+    },
+    '& .css-x77xb3-MuiInputBase-root-MuiOutlinedInput-root': {
+      borderRadius: '50px',
+    },
+    background: 'none',
+  }}
+/>
+
+       
+       
+        </TabPanel>
+        
+        
+        
         <TabPanel value="2"> 
         <Box sx={{}}> 
         <MobileLogin />
@@ -94,23 +219,23 @@ const OnlineRegistration = () => {
       </TabContext>
     </Box>
 
-          
-           
-            
 
-            {/* ======================= email */}
-            
+   
+    
+
+
+    
+          
 
           
          
 
        
-            {/* plans ====================== */}
-
+           
            
 
-            {/*====================== insitution type  drop down 
-                    {/* btn  */}
+           
+                   
          
           </Grid>
           {/*</Paper>   */}

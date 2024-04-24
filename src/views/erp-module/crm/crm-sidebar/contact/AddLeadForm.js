@@ -3,6 +3,7 @@ import { Box, TextField, useMediaQuery, Card, Grid, Typography } from '@mui/mate
 // import SelectList from 'views/common-section/ParamSelectList';
 import ParamMultipleSelect from 'views/common-section/ParamMultipleSelect';
 import ParameterizedDateComponent from 'views/common-section/ParamDateComponent';
+import TextArea from 'antd/es/input/TextArea';
 
 function AddLeadForm() {
   const isMobile = useMediaQuery('(max-width: 767px)');
@@ -47,7 +48,7 @@ function AddLeadForm() {
           </Typography>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={12} md={6}>
-              <TextField id="Lead-No" size={isMobile ? 'small' : 'normal'} fullWidth label="Lead No." variant="outlined" />
+              <TextField id="Lead-No" size={isMobile ? 'small' : 'normal'} fullWidth label="Lead No." variant="outlined"  />
             </Grid>
             <Grid item xs={12} sm={12} md={6}>
               <TextField id="first-Name" size={isMobile ? 'small' : 'normal'} fullWidth label="First Name" variant="outlined" />
@@ -82,6 +83,10 @@ function AddLeadForm() {
             <Grid item xs={12} sm={12} md={6}>
               <TextField id="Previous School" size={isMobile ? 'small' : 'normal'} fullWidth label="Previous School" variant="outlined" />
             </Grid>
+          </Grid>
+          <Grid item xs={12} md={12}>
+            <Box p={0.5}>Remarks</Box>
+            <TextArea rows={3} placeholder="Enter your text here..." fullWidth variant="outlined" />
           </Grid>
 
           {/* <Box pb={2}>
