@@ -1,0 +1,54 @@
+button.fc-today-button.fc-button.fc-button-primary {
+    color: #2196f3;
+    border: 1px solid #2196f3;
+    background: none;
+}
+
+
+
+button.fc--button.fc-button.fc-button-primary {
+    display: none;
+}
+
+
+.fc-toolbar-chunk {
+    display: flex;
+    align-items: center;
+}
+
+button.fc-prev-button.fc-button.fc-button-primary {
+    border: none;
+    background: none;
+    color: #2196f3;
+}
+
+button.fc-next-button.fc-button.fc-button-primary {
+    border: none;
+    background: none;
+    color: #2196f3;
+}
+
+button.fc-dayGridMonth-button.fc-button.fc-button-primary.fc-button-active {
+    border: 1px solid #2196f3;
+
+    background: none;
+    color: #2196f3;
+}
+
+button.fc-timeGridWeek-button.fc-button.fc-button-primary {
+    border: 1px solid #2196f3;
+
+    background: none;
+    color: #2196f3;
+}
+
+button.fc-timeGridDay-button.fc-button.fc-button-primary {
+    border: 1px solid #2196f3;
+
+    background: none;
+    color: #2196f3;
+}
+
+button.fc-timeGridDay-button.fc-button.fc-button-primary.fc-button-active {
+    background: none;
+}

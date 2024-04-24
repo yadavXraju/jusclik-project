@@ -110,12 +110,12 @@ const FeeStructure = () => {
           }
         }}
         // customtabStyle === tab btn style
-        customtabSytle={{  minWidth: isTab ? '0px' :'250px',width:'100%', margin:'0', border: 'none', fontSize: '16px' , marginRight:isTab ? '0' : 'auto' , display:'flex' , flexDirection:'row' , justifyContent:'start' , alignItems:'center' , gap:'10px' , minHeight:'auto' , padding:'12px 20px' ,
+        customtabSytle={{ width:'100%', margin:'0', border: 'none', fontSize: '16px' , marginRight:isTab ? '0' : 'auto' , display:'flex' , flexDirection:'row' , justifyContent:'start' , alignItems:'center' , gap:'10px' , minHeight:'auto' , padding:'12px 20px' ,
         
        }}
         selectedTab={{background:'rgb(231 243 255)'}}
         customtabPanelStyle={{ paddingTop: '0', height: 'auto' }}
-        customStyleTabs={{ borderRight: '1px solid rgba(224, 224, 224, 1)' , borderBottom:'1px solid #e0e0e0' ,  paddingTop:'10px'}}
+        customStyleTabs={{  minWidth: isTab ? 'auto' :'250px' ,borderRight: '1px solid rgba(224, 224, 224, 1)' , borderBottom:'1px solid #e0e0e0' ,  paddingTop:'10px'}}
       />
     </>
   );

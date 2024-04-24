@@ -83,7 +83,7 @@ const SearchFilter = ({ onSearch }) => {
 
       />
       
-      <Stack direction="row" spacing={2}>
+      <Stack direction="row" spacing={2} sx={{marginBottom:'2px'}}>
         <Button
           variant="contained"
           startIcon={<SearchTwoToneIcon />}
