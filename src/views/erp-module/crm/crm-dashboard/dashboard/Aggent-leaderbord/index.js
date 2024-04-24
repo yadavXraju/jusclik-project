@@ -29,7 +29,7 @@ const AgentLeaderBoard = () => {
         justifyContent: 'space-between',
         border: '1px solid rgb(227, 227, 227)',
         boxShadow: '4px 4px 9px 2px #ddddddc2',
-        height:"734px",
+        height:"500px",
       }}
     >
       {/* Heading */}

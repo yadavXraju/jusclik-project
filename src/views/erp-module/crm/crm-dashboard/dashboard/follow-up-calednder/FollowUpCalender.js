@@ -7,7 +7,7 @@ import { Box } from '@mui/system';
 
 const EventUpCalendar = () => {
   return (
-    <Box className="scrollbar" sx={{ height:"648px", overflow: "auto" }}>
+    <Box className="scrollbar" sx={{overflow: "auto" }}>
       <FullCalendar
         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
         initialView={'dayGridMonth'}
