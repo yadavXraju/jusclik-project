@@ -1,12 +1,11 @@
 import React from 'react';
 import Avatar from '@mui/material/Avatar';
-import { Badge, Box, Button, Divider, Grid, Paper, Typography, alpha } from '@mui/material';
+import {  Box, Button, Divider, Grid, Paper, Typography, alpha } from '@mui/material';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import Popper from '@mui/material/Popper';
 import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import LocalOfferOutlinedIcon from '@mui/icons-material/LocalOfferOutlined';
-import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 
 const PipelineCard = (props) => {
   // Define the color you want to lighten
@@ -76,32 +75,3 @@ const PipelineCard = (props) => {
 
 export default PipelineCard;
 
-
-
-export const LaneHeading = ({ title,lane}) => {
-
-  return (
-    <>
-      <Box>
-        <Grid container display="flex" justifyContent="space-between" >
-          <Grid item sx={{ display: 'flex', alignItems: 'center' }}>
-            <Badge badgeContent={lane?.cards?.length} >
-              <Typography variant="h4" display="flex">
-                {title}
-              </Typography>
-            </Badge>
-          </Grid>
-          <Grid item sx={{ display: 'flex', alignItems: 'center' }}>
-            <Button
-              sx={{ fontSize: '1.5rem', minWidth: '0px', width: '2rem', height: '2rem', padding: '8px', fontWeight: 'bold' }}
-              display="flex"
-              variant="outlined"              
-            >
-              <AddOutlinedIcon  sx={{height:'1.2rem'}} />
-            </Button >
-          </Grid>
-        </Grid>
-      </Box>
-    </>
-  );
-};
