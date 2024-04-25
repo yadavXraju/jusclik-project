@@ -63,7 +63,9 @@ const AddContactDrawer = () => {
             <Box sx={{ mt: 1 }}>
               {tabValue === 0 && <AddLeadForm/>}
               {tabValue === 1 &&  'Other Details'}
-              {tabValue === 2 &&  <CommonDocuments documentData={documentData} customStyle={{height:'100%'}}/>}
+              {tabValue === 2 &&  <>
+                <CommonDocuments documentData={documentData} customStyle={{height:'100%'}}/>
+              </>}
               
             </Box>
           </Box>
