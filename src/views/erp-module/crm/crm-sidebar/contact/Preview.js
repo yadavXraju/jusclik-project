@@ -11,7 +11,7 @@ import Popover from '@mui/material/Popover';
 import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
 import MoreVertTwoToneIcon from '@mui/icons-material/MoreVertTwoTone';
 import PreviewTabs from './PreviewTabs';
-import ProgressSteps from './ArrowSteps';
+import ProgressSteps from './ProgressSteps';
 
 function Preview() {
   // const location = useLocation();
