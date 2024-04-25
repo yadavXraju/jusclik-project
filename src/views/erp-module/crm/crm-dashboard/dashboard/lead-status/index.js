@@ -128,7 +128,7 @@ const LeadStatus = () => {
                 alignItems: isMobile ? 'center' : 'auto',
               }}
             >
-              <ApexCharts options={chartData} series={chartData.series} type="donut" height={isMediumDesktop ? 200 : 310} />
+              <ApexCharts options={chartData} series={chartData.series} type="donut" height={isMediumDesktop ? 200 : 290} />
             </Grid>
           </Grid>
 
