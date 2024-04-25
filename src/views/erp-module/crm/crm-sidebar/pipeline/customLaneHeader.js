@@ -1,4 +1,4 @@
-import { Badge, Box, Button, Grid, Typography } from '@mui/material';
+import {  Box, Button, Grid, Typography } from '@mui/material';
 import React from 'react';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 function CustomLaneHeader({ title,length}) {
@@ -7,13 +7,12 @@ function CustomLaneHeader({ title,length}) {
     <Box>
       <Grid container display="flex" justifyContent="space-between" >
         <Grid item sx={{ display: 'flex', alignItems: 'center' }}>
-          <Badge
-           badgeContent={length}
-            >
             <Typography variant="h4" display="flex">
               {title}
             </Typography>
-          </Badge>
+          <Typography sx={{marginLeft:'0.5rem',padding:'5px 10px',borderRadius:'50px',backgroundColor:'#F7F9FB',fontWeight:'600' }}>
+           {length}
+          </Typography>
         </Grid>
         <Grid item sx={{ display: 'flex', alignItems: 'center' }}>
           <Button

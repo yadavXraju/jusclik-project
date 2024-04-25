@@ -24,7 +24,7 @@ const PipelineCard = (props) => {
   const id = open ? 'simple-popper' : undefined;
   return (
     <>
-      <Paper sx={{ backgroundColor: '#eef2f773', padding: '8px', minWidth: '17rem' }} 
+      <Paper sx={{ backgroundColor: '#eef2f773', padding: '8px', width: '17rem' }} 
       >
         <Grid container justifyContent={'space-between'} sx={{ paddingBottom: '8px' }}>
           <Grid item rowSpacing={2} sx={{ maxWidth: '70%' }}>

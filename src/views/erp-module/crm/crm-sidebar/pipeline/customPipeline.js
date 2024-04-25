@@ -4,7 +4,8 @@ import CustomLaneHeader from './customLaneHeader'; // Assuming LaneHeading is a 
 import { kanbanData } from './data';
 import Board from 'react-trello';
 import { Box } from '@mui/material';
-
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 // board container style
 const styles = {
@@ -32,15 +33,22 @@ const styles = {
   },
   '& .fEEMxz ': {
     width: '100%'
-  }
+  },
+  '& .react-trello-lane::-webkit-scrollbar':{
+    width: "5px"
+  },
+  
 };
 const boardStylyes = {
   backgroundColor: 'transparent',
   padding: '20px',
   height: 'auto',
-  width: '100%'
+  width: '100%',
+  overflowY: "auto",
+  scrollbarWidth: "thin",
+  scrollbarColor: "#c0c6cd4f #f0f0f0"
 };
-// card styles 
+// card styles
 const cardStyles = {
   maxWidth: 'none'
 };
@@ -49,19 +57,18 @@ const laneColors = {
   lane2: '#EE9C21', // Tour Scheduled
   lane3: '#3366FF', // Application Received
   lane4: '#0F9FC4', // Application Approved
-  lane5: '#59D5A0', // Leads Won 
+  lane5: '#59D5A0', // Leads Won
   lane6: '#CA171B' // Leads Lost
 };
 
-
 const CustomPipeline = () => {
-    // lane heading and card
-    const laneHeadingComponent = (title, length) => <CustomLaneHeader title={title} length={length} />;
-    const pipelineCardComponent = (data) => <PipelineCard data={data} />;
+  // lane heading and card
+  const laneHeadingComponent = (title, length) => <CustomLaneHeader title={title} length={length} />;
+  const pipelineCardComponent = (data) => <PipelineCard data={data} />;
 
-    // JSX injection of data
-    const modifyData=(data)=> {
-      const  modifedData = data.lanes.map((lane) => ({
+  // JSX injection of data
+  const modifyData = (data) => {
+    const modifedData = data.lanes.map((lane) => ({
       ...lane,
       title: laneHeadingComponent(lane.title, lane.cards.length),
       cards: lane.cards.map((card) => ({
@@ -72,39 +79,49 @@ const CustomPipeline = () => {
           email: card.details?.email,
           website: card.details?.website
         }),
-        name: null, 
+        name: null,
         details: null
       })),
-    //   style for lanes
+      //   style for lanes
       style: {
-              borderTop: `3px solid ${laneColors[lane.id]}`,
-              backgroundColor: '#fff',
-
-              borderRadius: '15px',
-              overflowY: 'auto',
-              scrollbarWidth: 'thin',
-              scrollbarColor: '#c0c6cd4f #f0f0f0'
-            }
-      
+        borderTop: `3px solid ${laneColors[lane.id]}`,
+        backgroundColor: '#fff',
+        minHeight: '70vh',
+        borderRadius: '15px'
+        // overflowY: 'auto',
+        // scrollbarWidth: 'thin',
+        // scrollbarColor: '#c0c6cd4f #f0f0f0'
+      }
     }));
-  return modifedData
+    return modifedData;
   };
 
-const initialData=modifyData(kanbanData)
-const handleDataChange = () => {
+  const [data, setData] = useState([]);
+  const handleDataChange = (newData) => {
+    newData.lanes.map((lane) => {
+      console.log(lane.title.props);
+    });
+    const updatedData = newData.lanes.map((lane) => ({
+      ...lane,
+      title: <CustomLaneHeader title={lane?.title?.props?.title} length={lane.cards.length} />
+    }));
+    setData(updatedData);
+  };
 
-};
+  useEffect(() => {
+    const boardData = modifyData(kanbanData);
+    setData(boardData);
+  }, []);
 
   return (
     <Box sx={styles}>
       <Board
-        data={{ lanes: initialData }}
+        data={{ lanes: data }}
         style={boardStylyes}
         //  laneStyle={laneStyles}
         cardStyle={cardStyles}
         onDataChange={handleDataChange}
       />
-      ;
     </Box>
   );
 };
