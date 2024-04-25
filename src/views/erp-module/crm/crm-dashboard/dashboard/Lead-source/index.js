@@ -14,7 +14,9 @@ const LeadbySource = () => {
     { id: '2', source: "Website", color: "#4caf50",data:"3",percentage:"35%" },
     { id: '3', source: "Cold Emailing", color: "#f44336",data:"5",percentage:"45%" },
     { id: '4', source: "Social Media", color: "#ff9800",data:"2",percentage:"25%" },
-    { id: '5', source: "Recommendation", color: "#9c27b0",data:"5",percentage:"45%" }
+    { id: '5', source: "Recommendation", color: "#9c27b0",data:"5",percentage:"45%" },
+    { id: '6', source: "LinkedIN", color: "#1B1363",data:"5",percentage:"45%" },
+    { id: '7', source: "Recommendation", color: "#57AFF4",data:"5",percentage:"45%" }
   ];
 
   const chartData = {
@@ -23,6 +25,8 @@ const LeadbySource = () => {
       { name: 'Website', data: [3] },
       { name: 'Cold Emailing', data: [5] },
       { name: 'Social Media', data: [2] },
+      { name: 'Recommendation', data: [5] },
+      { name: 'LinkedIN', data: [5] },
       { name: 'Recommendation', data: [5] }
     ],
     chart: {
@@ -62,7 +66,7 @@ const LeadbySource = () => {
     legend: {
         show:false,
     },
-    colors: ['#2196f3', '#4caf50', '#f44336', '#ff9800', '#9c27b0'] // Custom colors
+    colors: ['#2196f3', '#4caf50', '#f44336', '#ff9800', '#9c27b0','#1B1363','#57AFF4'] // Custom colors
   };
 
   return (
@@ -97,6 +101,7 @@ const LeadbySource = () => {
           display: 'flex',
           flexDirection:'column',
           paddingBottom: isMobile ? '10px' : '0px',
+      
         }}
       >
         {/* Chart */}
@@ -106,7 +111,8 @@ const LeadbySource = () => {
         {/* Divider */}
         <Divider orientation="horizontal" />
         {/* Source */}
-        <Grid  sx={{padding:"10px 0px"}}>
+        <Grid  sx={{padding:"10px 0px",    height:'333px',
+          overflow:"auto",}}>
           {source.map((item, index) => (
             <React.Fragment key={item.id}>
               <Grid sx={{ display: 'flex', alignItems: 'center' ,justifyContent:"space-between",padding:" 10px"}}>

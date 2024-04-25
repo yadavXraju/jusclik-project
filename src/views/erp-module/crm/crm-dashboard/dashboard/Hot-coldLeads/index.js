@@ -3,6 +3,7 @@ import ApexCharts from 'react-apexcharts';
 import { Grid, Paper, Typography, useMediaQuery} from '@mui/material';
 import { HeadingCss } from 'views/common-section/dashboard-css/CommonCss';
 
+
 const HotAndColdLeads = () => {
   const isMobile = useMediaQuery('(max-width: 767px)');
 
@@ -80,6 +81,21 @@ const HotAndColdLeads = () => {
 
 
       </Grid>
+        {/* <Divider>
+
+        </Divider> */}
+{/* 
+      <Grid>
+        <Box> 
+          <Box sx={{height:"10px",width:"10px" ,border:`2px solid ${chartData.colors[0]}`}}></Box>
+        <Typography variant="body1" color="initial"> Hot</Typography>
+       </Box>
+         <Box>
+         <Box sx={{height:"10px",width:"10px" ,border:`2px solid ${chartData.colors[1]}`}}></Box>
+            <Typography variant="body1" color="initial">Cold</Typography>
+         </Box>
+         
+      </Grid> */}
     </Paper>
   );
 };
