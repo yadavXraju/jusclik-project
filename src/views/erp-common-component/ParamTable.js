@@ -16,7 +16,7 @@ const style = {
    tableContainer :{
     width: '100%',
     overflowX: 'auto' ,
-     height:'80vh' , '&::-webkit-scrollbar': { display: 'none' } ,
+     maxHeight:'80vh' , '&::-webkit-scrollbar': { display: 'none' } ,
    }
   }
 
