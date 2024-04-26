@@ -1,0 +1,110 @@
+import React,{useState} from 'react';
+import { Box, Typography, Drawer, Button, Paper,TextField} from '@mui/material';
+import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+import Divider from '@mui/material/Divider';
+import useDrawer from 'hooks/useDrawer';
+import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
+import FormRuleDrawer from './form-rule-drawer';
+import ParamSelectList from 'views/common-section/ParamSelectList';
+import AddCircleOutlinedIcon from '@mui/icons-material/AddCircleOutlined';
+import RemoveCircleOutlinedIcon from '@mui/icons-material/RemoveCircleOutlined';
+
+const option = [
+  {
+    id: 1,
+    label: 'Time',
+    value: 'time'
+  },
+  {
+    id: 2,
+    label: 'Decision Box',
+    value: 'decision_box'
+  },
+  {
+    id: 3,
+    label: 'Multi Line',
+    value: 'multi_line'
+  },
+  {
+    id: 4,
+    label: 'Website',
+    value: 'website'
+  },
+  {
+    id: 5,
+    label: 'Single Line',
+    value: 'single_line'
+  }
+];
+
+
+const FieldRule = () => {
+  const { anchor, toggleDrawer } = useDrawer();
+  const [noThen, setNoThen] = useState(1);
+  const [isHoverThen, setIsHoverThen] = useState(-1);
+  const [optionRule, setOption] = useState();
+  
+  const handleChange = () => {
+    setOption("hello");
+    setValidation("hello");
+  }
+
+  return (
+    <Paper sx={{ height: "calc(100vh - 300px)" }}>
+      <Box sx={{
+        display: "flex", flexDirection: "row",
+        justifyContent: "space-between", height: "80px",
+        alignItems: "center", backgroundColor: "#f8fafccc",
+        padding: "0px 20px"
+      }}>
+        <Box sx={{ marginTop: "5px" }}>
+          <Typography sx={{ marginLeft: "20px", display: "flex", alignItems: "center", gap: "10px" }}>
+            <Typography variant="text"><DescriptionOutlinedIcon /></Typography>
+            <Typography variant="h4">Form Rule</Typography>
+          </Typography>
+          <Typography sx={{ fontSize: "smaller" }}>
+            Configure rules to show or hide fields based on the input of another field.
+          </Typography>
+        </Box>
+        <Box sx={{ display: "flex", gap: "20px" }}>
+          <Button variant="outlined" startIcon={<AddOutlinedIcon />}>Add Rule</Button>
+        </Box>
+      </Box>
+      <Divider component="div" role="presentation" >
+        <Typography></Typography>
+      </Divider>
+      <Box sx={{ width: "100%", display: "flex", flexDirection: "column", alignItems: "center", marginTop: '300px', gap: "10px" }}>
+        <InfoOutlinedIcon />
+        <Typography>No field rules are configured for this form.</Typography>
+        <Button onClick={toggleDrawer("right", true)} variant="outlined">Configure Rule</Button>
+      </Box>
+      <Drawer anchor="right" open={anchor.right} onClose={toggleDrawer("right", false)}>
+        <>
+          <FormRuleDrawer toggleDrawer={toggleDrawer} />
+          {
+            Array.from({ length: noThen }, (_, index) =>
+              <Box sx={{ marginLeft: "88px", marginTop: "20px", display: "flex", gap: "20px" }}
+                onMouseEnter={() => setIsHoverThen(index)}
+                onMouseLeave={() => setIsHoverThen(-1)}
+                key={index}
+              >
+                <ParamSelectList label="Rule" value={optionRule} options={option} onChange={handleChange} rootStyle={{ width: "30%" }} />
+                <TextField id="outlined-basic" label="Outlined" variant="outlined"
+                  fullWidth
+                  sx={{ borderRadius: "8px" }}
+                />
+                <Box sx={{ visibility: isHoverThen == index ? "show" : "hidden", display: "flex", flexDirection: "row", alignItems: "center" }} >
+                  <AddCircleOutlinedIcon sx={{ color: "#24A68A" }} onClick={() => setNoThen(noThen + 1)} />
+                  <RemoveCircleOutlinedIcon sx={{ color: "#e83232" }} onClick={() =>{if(noThen>1)setNoThen(noThen - 1)}}/>
+                </Box>
+              </Box>
+            )
+          }
+        </>
+      </Drawer>
+    </Paper>
+  )
+}
+
+export default FieldRule;
