@@ -42,7 +42,7 @@ const ClassOptions = [
   { value: '12A', label: 'XII A' }
 ];
 
-const OnlineRegistration = () => {
+const SignUpRegisteration = () => {
   const [value, setValue] = React.useState('1');
   //Object to store data of all Filed 
   const [allDataform, setallDataform] = useState({
@@ -307,7 +307,7 @@ const OnlineRegistration = () => {
   );
 };
 
-export default OnlineRegistration;
+export default SignUpRegisteration;
 
 
 
