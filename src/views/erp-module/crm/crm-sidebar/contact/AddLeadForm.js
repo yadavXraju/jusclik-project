@@ -5,7 +5,7 @@ import ParamMultipleSelect from 'views/common-section/ParamMultipleSelect';
 import ParameterizedDateComponent from 'views/common-section/ParamDateComponent';
 import TextArea from 'antd/es/input/TextArea';
 
-function AddLeadForm() {
+function AddLeadForm({currEditItem}) {
   const isMobile = useMediaQuery('(max-width: 767px)');
 
   //   // ========= state for Attach Slab ============
@@ -39,6 +39,52 @@ function AddLeadForm() {
     { id: 9, name: 'Google' }
   ];
 
+  // State for form fields
+  const defaultFormFields = {
+    leadNo: '',
+    firstName: '',
+    // lastName: '',
+    // email: '',
+    // dob: '',
+    // mobileNumber: '',
+    // leadSource: [],
+  };
+
+  const [formFields, setFormFields] = React.useState(currEditItem ? {
+    leadNo: currEditItem.contactNo || '',
+    firstName: currEditItem.firstName || '',
+    // lastName: currEditItem.lastName || '',
+    // email: currEditItem.email || '',
+    // dob: currEditItem.dob || '',
+    // mobileNumber: currEditItem.mobileNumber || '',
+    // leadSource: currEditItem.leadSource || [],
+  } : defaultFormFields);
+
+  // Update formFields when on changes
+  React.useEffect(() => {
+    if (currEditItem) {
+      setFormFields({
+        leadNo: currEditItem.contactNo || '',
+        firstName: currEditItem.firstName || '',
+        // lastName: currEditItem.lastName || '',
+        // email: currEditItem.email || '',
+        // dob: currEditItem.dob || '',
+        // mobileNumber: currEditItem.mobileNumber || '',
+        // leadSource: currEditItem.leadSource || [],
+      });
+    } else {
+      setFormFields(defaultFormFields);
+    }
+  }, [currEditItem]);
+
+  const handleChange = (field, value) => {
+    setFormFields((prevFields) => ({
+      ...prevFields,
+      [field]: value,
+    }));
+  };
+
+
   return (
     <>
       <Card sx={{ border: '1px solid #ccc', p: 2, borderRadius: '5px' }}>
@@ -48,10 +94,10 @@ function AddLeadForm() {
           </Typography>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={12} md={6}>
-              <TextField id="Lead-No" size={isMobile ? 'small' : 'normal'} fullWidth label="Lead No." variant="outlined"  />
+              <TextField id="Lead-No" size={isMobile ? 'small' : 'normal'} value={formFields.leadNo} onChange={(e) => handleChange('leadNo', e.target.value)} fullWidth label="Lead No." variant="outlined"  />
             </Grid>
             <Grid item xs={12} sm={12} md={6}>
-              <TextField id="first-Name" size={isMobile ? 'small' : 'normal'} fullWidth label="First Name" variant="outlined" />
+              <TextField id="first-Name" size={isMobile ? 'small' : 'normal'} value={formFields.firstName} onChange={(e) => handleChange('firstName', e.target.value)} fullWidth label="First Name" variant="outlined" />
             </Grid>
             <Grid item xs={12} sm={12} md={6}>
               <TextField id="first-Name" size={isMobile ? 'small' : 'normal'} fullWidth label="Last Name" variant="outlined" />

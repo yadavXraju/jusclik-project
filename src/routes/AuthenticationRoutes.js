@@ -11,7 +11,7 @@ import Loadable from 'ui-component/Loadable';
 const Login = Loadable(lazy(() => import('views/pages/authentication')));
 const VisitorRegistration =  Loadable(lazy(() => import('views/pages/authentication/visitor-registration')));
 const Registration =  Loadable(lazy(() => import('views/pages/registartion')));
-const OnlineRegistration =  Loadable(lazy(() => import('views/pages/registartion/OnlineRegistration')));
+const OnlineRegistration =  Loadable(lazy(() => import('views/pages/online-registration')));
 const Pricing =  Loadable(lazy(() => import('views/pages/pricing')));
 
 
