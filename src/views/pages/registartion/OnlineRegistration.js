@@ -185,7 +185,7 @@ const OnlineRegistration = () => {
                 )}
 
                 <Dropdown
-                  label="Select Class"
+                  label="Class For Admission"
                   options={ClassOptions}
                   name="class"
                   onChange={changeHandler}
@@ -301,7 +301,23 @@ const OnlineRegistration = () => {
         </Grid>
       </Grid>
     </Grid>
+
+ 
+
   );
 };
 
 export default OnlineRegistration;
+
+
+
+
+
+
+
+
+
+
+
+
+
