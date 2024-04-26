@@ -12,10 +12,12 @@ import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
 import MoreVertTwoToneIcon from '@mui/icons-material/MoreVertTwoTone';
 import PreviewTabs from './PreviewTabs';
 import ProgressSteps from './ProgressSteps';
+import { useLocation } from 'react-router-dom';
+// import EditLead from './EditLead';
 
 function Preview() {
-  // const location = useLocation();
-  // const { rowData } = location.state;
+  const location = useLocation();
+  const { rowData } = location.state;
 
   const navigate = useNavigate();
   const BackClick = () => {
@@ -24,6 +26,8 @@ function Preview() {
 
   const isMobile = useMediaQuery('(max-width: 767px)');
   const issmallMobile = useMediaQuery('(max-width: 425px)');
+
+  console.log(rowData)
 
   return (
     <>
@@ -64,6 +68,7 @@ function Preview() {
                 </IconButton>
                 <IconButton sx={{ marginRight: '8px', background: '#cccccc54' }}>
                   <EditTwoToneIcon />
+                  {/* <EditLead currEditItem={rowData} handleClick={() => {}}/> */}
                 </IconButton>
 
                 <PopupState variant="popover" popupId="demo-popup-popover">

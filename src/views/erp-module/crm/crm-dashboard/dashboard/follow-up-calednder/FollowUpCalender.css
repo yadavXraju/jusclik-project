@@ -18,14 +18,15 @@ button.fc--button.fc-button.fc-button-primary {
 
 button.fc-prev-button.fc-button.fc-button-primary {
     border: none;
-    background: none;
-    color: #2196f3;
+    background: #F6F8F8;
+    color: #91A1A6;
 }
 
 button.fc-next-button.fc-button.fc-button-primary {
     border: none;
-    background: none;
-    color: #2196f3;
+    background: #F6F8F8;
+    margin-left: 0px;
+    color: #91A1A6;
 }
 
 button.fc-dayGridMonth-button.fc-button.fc-button-primary.fc-button-active {
