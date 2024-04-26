@@ -68,8 +68,8 @@ const SettingData = [
     items: [
       // { name: 'Blacklist Visitors', path: '/erp/student-info-fee/settings/blacklist-visitors' },
       { name: 'Admission Number Series', path: '/erp/student-info-fee/settings/admission-number-series' },
-      { name: 'Lead Stage', path: '/erp/student-info-fee/settings/lead-stage' },
-      { name: 'Lead Score', path: '/erp/student-info-fee/settings/lead-score' }
+      { name: 'Lead Stage', path: '/erp/crm/settings/lead-stage' },
+      { name: 'Lead Score', path: '/erp/crm/settings/lead-score' }
     ]
   },
   {
