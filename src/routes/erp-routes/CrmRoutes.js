@@ -13,6 +13,9 @@ const Pipeline = Loadable(lazy(() => import('views/erp-module/crm/crm-sidebar/pi
 const Reports = Loadable(lazy(() => import('views/erp-module/crm/crm-sidebar/reports')));
 // // settings
 const Settings = Loadable(lazy(() => import('views/erp-module/crm/crm-sidebar/settings')));
+const LeadStage = Loadable(lazy(() => import('views/erp-module/crm/crm-sidebar/settings/configure/lead-stage')));
+const LeadScore = Loadable(lazy(() => import('views/erp-module/crm/crm-sidebar/settings/configure/lead-score')));
+
 
 // ==============================|| Visitor MENUS ||============================== //
 
@@ -44,10 +47,28 @@ const CrmRoutes = [
         path: 'pipeline', 
         element: <Pipeline /> 
     },
+    { 
+      path: 'settings', 
+      children : [
         {
-            path: 'settings', 
-            element: <Settings /> 
-        },
+          path: '', 
+          element: <Settings />
+        } , 
+
+        {
+          path: 'lead-stage', 
+          element: <LeadStage />
+        } , 
+
+        {
+          path: 'lead-score', 
+          element: <LeadScore />
+        } , 
+
+      ]
+     
+     },
+
 
         {
             path: 'reports', 

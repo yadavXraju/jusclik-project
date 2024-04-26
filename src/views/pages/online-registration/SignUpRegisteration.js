@@ -42,7 +42,7 @@ const ClassOptions = [
   { value: '12A', label: 'XII A' }
 ];
 
-const OnlineRegistration = () => {
+const SignUpRegisteration = () => {
   const [value, setValue] = React.useState('1');
   //Object to store data of all Filed 
   const [allDataform, setallDataform] = useState({
@@ -185,7 +185,7 @@ const OnlineRegistration = () => {
                 )}
 
                 <Dropdown
-                  label="Select Class"
+                  label="Class For Admission"
                   options={ClassOptions}
                   name="class"
                   onChange={changeHandler}
@@ -301,7 +301,23 @@ const OnlineRegistration = () => {
         </Grid>
       </Grid>
     </Grid>
+
+ 
+
   );
 };
 
-export default OnlineRegistration;
+export default SignUpRegisteration;
+
+
+
+
+
+
+
+
+
+
+
+
+
