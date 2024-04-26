@@ -8,11 +8,14 @@ export default function ParamMultipleSelect({ options, value, setValue, label = 
     setValue(newValue);
   };
 
+  // Filter out selected options from the available options
+  const filteredOptions = options.filter(option => !value.some(val => val.id === option.id));
+
   return (
     <Autocomplete
       multiple
       id="student-autocomplete"
-      options={options} // Ensure options is an array
+      options={filteredOptions}
       getOptionLabel={(option) => option.name}
       value={value}
       onChange={handleChange}
@@ -41,3 +44,4 @@ export default function ParamMultipleSelect({ options, value, setValue, label = 
     />
   );
 }
+
