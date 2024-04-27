@@ -1,3 +1,10 @@
+import FileOpenOutlinedIcon from '@mui/icons-material/FileOpenOutlined';
+import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
+import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
+import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
+import ApprovalOutlinedIcon from '@mui/icons-material/ApprovalOutlined';
+import IntegrationInstructionsOutlinedIcon from '@mui/icons-material/IntegrationInstructionsOutlined';
+import FormatPaintOutlinedIcon from '@mui/icons-material/FormatPaintOutlined';
 import ParamStepper from 'views/common-section/param-stepper';
 import BuilderComponent from './builder-component';
 import Rule from '../Rule'
@@ -8,45 +15,52 @@ const FormBuilder = () => {
     {
       id: 1,
       name: "Builder",
-      component:BuilderComponent
+      component:BuilderComponent,
+      icon:<FileOpenOutlinedIcon />
     },
     {
       id: 2,
       name: "Rule",
-      component:Rule
+      component:Rule,
+      icon:<DescriptionOutlinedIcon/>
     },
     {
       id:3,
       name:"Settings",
-      component:Rule
+      component:Rule,
+      icon:<SettingsOutlinedIcon />
     },
     {
       id:4,
       name:"Themes",
-      component:Rule
+      component:Rule,
+      icon:<FormatPaintOutlinedIcon />
     },
     {
       id:5,
       name:"Share",
-      component:Rule
+      component:Rule,
+      icon:<ShareOutlinedIcon />
     },
     {
       id:6,
       name:"Integrations",
-      component:Rule
+      component:Rule,
+      icon:<IntegrationInstructionsOutlinedIcon />
     },
     {
       id:7,
       name:"Approvals",
-      component:Rule
+      component:Rule,
+      icon:<ApprovalOutlinedIcon />
     }
   ]
   return (
     <>
       <ParamStepper tabPage={tabPages} numberShow={false}
         iconShow={false} showBottomNav={false}
-        customtabSytle={{ backgroundColor: "white", marginRight: "0px", minWidth: "auto" }}
-        customStyleTabs={{ backgroundColor: "white", paddingLeft: "20px", marginRight: "0px", minWidth: "auto", }}
+        customtabSytle={{ backgroundColor: "white", marginRight: "0px", minWidth: "auto" , flexDirection:'row' , gap:'10px',alignItems:'center'}}
+        customStyleTabs={{ backgroundColor: "white", paddingLeft: "20px", marginRight: "0px", minWidth: "auto",gap:"20px" }}
         customtabPanelStyle={{
           borderTopLeftRadius: '0px',
           borderTopRightRadius: '0px',

@@ -1,14 +1,22 @@
 import React from 'react'
-import SignUpRegisteration from './SignUpRegisteration';
-import TermsAndConditions from './TermsandConditions';
+
+// import SignUpRegisteration from './SignUpRegisteration';
+
 
 const OnlineRegistration = () => {
+
+ 
   return (
     <>
-    <SignUpRegisteration />
-    <TermsAndConditions />
+    {/* <SignUpRegisteration /> */}
+
+    
+   
     </>
   )
 }
 
 export default OnlineRegistration
+
+
+

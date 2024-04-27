@@ -10,7 +10,9 @@ import Dropdown from 'views/common-section/ParamSelectList';
 import TextField from '@mui/material/TextField';
 import ParameterizedDateComponent from 'views/common-section/ParamDateComponent';
 import { useState } from 'react';
-import PoweredBySection from '../authentication/PoweredBy';
+import TermsAndConditions from './TermsandConditions';
+import PoweredBySection from './PoweredByComp';
+
 
 
 // Online Registration Styling
@@ -52,6 +54,9 @@ const SignUpRegisteration = () => {
     session: '',
     class: ''
   });
+
+  const [showDiv1, setShowDiv1] = useState(true);
+  const [showDiv2, setShowDiv2] = useState(false);
 
   //To Store All the Values 
 
@@ -113,13 +118,19 @@ const SignUpRegisteration = () => {
 
    // SaVe and Next Submit Button
 
+ 
   const handleSubmit = () => {
+    
+    
     if (validateForm()) {
       console.log('Form is valid');
+      setShowDiv1(false);
+    setShowDiv2(true);
       
-    } else {
+    } else{
       console.log('Form is invalid');
     }
+    
   };
 
  
@@ -131,8 +142,9 @@ const SignUpRegisteration = () => {
   
   return (
 
-   
-    <Grid container sx={{ backgroundColor: '#f8fafc' }}>
+    <>
+   {showDiv1 && ( <Grid container sx={{ backgroundColor: '#f8fafc' }}>
+      
       <Grid lg={6} sx={{ minHeight: '100vh' }}>
         <LeftLogo />
       </Grid>
@@ -288,10 +300,10 @@ const SignUpRegisteration = () => {
           </Box>
            
           
-                   <Box sx={{paddingTop:'2.5rem' , paddingLeft:'4rem'}}>
+                   <Box sx={{paddingTop:'2.5rem' , paddingLeft:'4rem' }}>
                 
-                  <PoweredBySection />
-
+                     <PoweredBySection/>
+                    
                   </Box>
 
                   
@@ -300,10 +312,54 @@ const SignUpRegisteration = () => {
           
         </Grid>
       </Grid>
+      
+
+
+      
+    </Grid> )}
+
+    {/* Page Term and Conditions */}
+
+    {showDiv2 && (<Grid>
+
+     <Grid container sx={{ backgroundColor: '#f8fafc' }}>
+      
+      <Grid lg={6} sx={{ minHeight: '100vh' }}>
+        <LeftLogo />
+      </Grid>
+      <Grid
+        xs={12}
+        lg={6}
+        sx={{
+          minHeight: '100vh',
+          display: 'flex',
+          alignItems: 'center',
+          flexDirection: 'column',
+          background: 'rgb(255, 236, 236)',
+          justifyContent: 'center',
+          padding: '20px',
+          borderTopLeftRadius: '20px',
+          borderBottomLeftRadius: '20px'
+        }}
+      >
+        <Grid sx={{ maxWidth: '100%', width: { xs: '100%', lg: '100%' }, margin: 'auto', padding: '20px' }}>
+        
+        <TermsAndConditions/>
+                  
+              
+              
+          
+        </Grid>
+      </Grid>
+      
+
+
+      
     </Grid>
 
- 
 
+     </Grid> )}
+    </>
   );
 };
 

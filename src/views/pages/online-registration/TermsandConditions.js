@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid , Box , Paper, Typography, Button} from '@mui/material';
+import { Grid , Box , Typography, Button} from '@mui/material';
 
 function TermsAndConditions() {
 
@@ -9,7 +9,7 @@ function TermsAndConditions() {
 
   return (
     <Grid >
-      <Paper>
+      
      
        <Box sx={{padding:'2rem'}}>
        <Typography variant='h2' sx={{textDecoration:'underline', marginBottom:'20px'}}>Important Guidelines For Filling Up The Form</Typography>
@@ -29,7 +29,7 @@ function TermsAndConditions() {
        <Typography variant='h4' sx={{marginBottom:'2rem' , fontWeight:'bold'}}>Note: Submission of a complete application form is a request for admission and does not guarantee admission as the seats available are limited.  </Typography>
        <Typography  sx={{marginBottom:'2rem' , fontWeight:'bold' , fontSize:'18px' , color:'#006400'}}>For technical support, please write to techsupport@dpsgurgaon.in</Typography>
        
-       
+       <Box sx={{ textAlign: 'right' , paddingRight:'1rem' }}>
        <Button
                   // Call handleSubmit on button click
                   sx={{
@@ -42,19 +42,20 @@ function TermsAndConditions() {
                     fontSize: '15px',
                     fontFamily: 'plus Jakarta sans',
                     cursor: 'pointer',
-                    width: '10%',
+                    width: '20%',
                     height: '50px',
                     '&:hover': { backgroundColor: '#e64b4c', color: '#fff' }
                   }}
                 >
                  Continue 
                 </Button>
+                </Box>
        
        </Box>
 
       
 
-      </Paper>
+    
 
       
      
