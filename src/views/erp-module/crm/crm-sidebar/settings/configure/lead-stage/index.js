@@ -1,8 +1,9 @@
 import React from 'react'
-
+import LeadStageComp from './leadStage'
 const LeadStage = () => {
   return (
-    <div>LeadStage</div>
+    <LeadStageComp />
+
   )
 }
 

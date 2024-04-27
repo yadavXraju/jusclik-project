@@ -1,4 +1,5 @@
 import React from 'react'
+import StudentDetails from './StudentDetails'
 
 // import SignUpRegisteration from './SignUpRegisteration';
 
@@ -10,7 +11,7 @@ const OnlineRegistration = () => {
     <>
     {/* <SignUpRegisteration /> */}
 
-    
+    <StudentDetails/>
    
     </>
   )

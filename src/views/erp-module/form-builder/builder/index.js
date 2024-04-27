@@ -59,8 +59,8 @@ const FormBuilder = () => {
     <>
       <ParamStepper tabPage={tabPages} numberShow={false}
         iconShow={false} showBottomNav={false}
-        customtabSytle={{ backgroundColor: "white", marginRight: "0px", minWidth: "auto" , flexDirection:'row' , gap:'10px',alignItems:'center'}}
-        customStyleTabs={{ backgroundColor: "white", paddingLeft: "20px", marginRight: "0px", minWidth: "auto",gap:"20px" }}
+        customtabSytle={{backgroundColor: "white", marginRight: "10px", minWidth: "auto" , flexDirection:'row' , gap:'10px',alignItems:'center'}}
+        customStyleTabs={{backgroundColor: "white", paddingLeft: "20px", marginRight: "0px", minWidth: "auto",gap:"20px",height:"63px" }}
         customtabPanelStyle={{
           borderTopLeftRadius: '0px',
           borderTopRightRadius: '0px',
