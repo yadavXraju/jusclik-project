@@ -8,7 +8,8 @@ import rows from './LeadTableData';
 import WarningDialog from 'views/common-section/WarningDialog';
 // import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 import CommonDataGrid from 'views/common-section/commonDataGrid';
-import EditLead from './EditLead';
+// import EditLead from './EditLead';
+import AddContactDrawer from './AddContactDrawer';
 
 
 export default function ContactTable() {
@@ -76,9 +77,10 @@ const Click = (rowData) => {
           </Tooltip>
           <Tooltip >
           <IconButton onClick={(event) => event.stopPropagation()}>
-            {/* <EditTwoToneIcon  /> */}
-            <EditLead currEditItem={currEditItem} handleClick={() => handleEditClick(params.row)}/>
+            <AddContactDrawer editIcon={true} currEditItem={currEditItem} handleClick={() => handleEditClick(params.row)} />
+            {/* <EditLead currEditItem={currEditItem} handleClick={() => handleEditClick(params.row)}/> */}
           </IconButton>
+          
           </Tooltip>
           <Tooltip title="Delete">
           <IconButton onClick={(event) => event.stopPropagation()}>
