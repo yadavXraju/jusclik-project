@@ -1,5 +1,5 @@
-export const leadScoreData=[
-    {
+export const leadScoreData={
+   leadRegistrationAndVerification: {
         title: "Lead Registration and Verification",
         description: "Set up lead scores for lead registration, verification, and multiple instances/attempts.",
         steps: [
@@ -13,7 +13,7 @@ export const leadScoreData=[
             "Lead Registered through Email Bypass"
         ]
     },
-    {
+    applicationActivities:{
         title: "Application Activities",
         description: "Assign lead scores when a candidate starts an application or makes a payment.",
         steps: [
@@ -25,7 +25,7 @@ export const leadScoreData=[
             "Student has printed the Application form"
         ]
     },
-    {
+    emailActivities: {
         title: "Email Activities",
         description: "Allocate lead scores based on different email activities, such as opens or clicks.",
         steps: [
@@ -39,7 +39,7 @@ export const leadScoreData=[
             "Email Dropped"
         ]
     },
-    {
+    smsActivities: {
         title: "SMS Activities",
         description: "Determine lead scores based on various SMS activities, including opens or clicks.",
         steps: [
@@ -54,7 +54,7 @@ export const leadScoreData=[
             "SMS Invalid Subscriber"
         ]
     },
-    {
+    whatsappActivities: {
         title: "WhatsApp Activities",
         description: "Assign lead scores based on different WhatsApp interactions, such as reads or replies.",
         steps: [
@@ -64,7 +64,7 @@ export const leadScoreData=[
             "WhatsApp Unsubscribed"
         ]
     },
-    {
+    otherApplicantActivities:{
         title: "Other Applicant Activities",
         description: "Set up lead scores based on various activities performed by the applicant or the counselor.",
         steps: [
@@ -73,7 +73,7 @@ export const leadScoreData=[
             "Applicant provided Feedback on Query closure"
         ]
     },
-    {
+    telephonyActivities:{
         title: "Telephony Activities",
         description: "Allocate lead scores based on different telephony activities, including missed, inbound, and outbound calls.",
         steps: [
@@ -84,4 +84,4 @@ export const leadScoreData=[
             "Applicant Missed Counsellors Call"
         ]
     }
-]
+}
