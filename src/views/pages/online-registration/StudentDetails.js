@@ -110,7 +110,7 @@ function StudentDetails() {
 
           <Grid sx={{ padding: '1rem 4rem' }} container spacing={4}>
             <Grid item xs={4}>
-              <TextField label="Student`s Name" variant="outlined" fullWidth value={Student_Name} inputProps={{ style: { backgroundColor: '#ffffff' } }} />
+              <TextField label="Student`s Name" variant="outlined" fullWidth  inputProps={{ style: { backgroundColor: '#ffffff' } }} />
 
               <Dropdown
                 label="Gender"
