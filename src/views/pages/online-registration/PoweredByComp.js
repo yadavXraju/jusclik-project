@@ -17,7 +17,7 @@ const PoweredBySection = () => {
   // console.log(belowXl);
   const viewportWidth = window.innerWidth;
   
-  console.log(viewportWidth);
+
   // for padding if position is static
   let pad=false
   const pos=()=>{if(belowXl||isMobile||viewportWidth==1600){

@@ -1,5 +1,5 @@
-import React,{useState} from 'react';
-import { Box, Typography, Drawer, Button, Paper,TextField} from '@mui/material';
+import React, { useState } from 'react';
+import { Box, Typography, Drawer, Button, Paper, TextField } from '@mui/material';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import Divider from '@mui/material/Divider';
@@ -10,42 +10,43 @@ import ParamSelectList from 'views/common-section/ParamSelectList';
 import AddCircleOutlinedIcon from '@mui/icons-material/AddCircleOutlined';
 import RemoveCircleOutlinedIcon from '@mui/icons-material/RemoveCircleOutlined';
 
+
 const option = [
   {
     id: 1,
-    label: 'Time',
-    value: 'time'
+    label: 'Redirect To',
+    value: 'redirect to'
   },
   {
     id: 2,
-    label: 'Decision Box',
-    value: 'decision_box'
+    label: 'Assign Task',
+    value: 'assing task'
   },
   {
     id: 3,
-    label: 'Multi Line',
-    value: 'multi_line'
+    label: 'Send Email',
+    value: 'send email'
   },
   {
     id: 4,
-    label: 'Website',
-    value: 'website'
+    label: 'Send Sms',
+    value: 'send sms'
   },
   {
     id: 5,
-    label: 'Single Line',
-    value: 'single_line'
+    label: 'Push Notification to Mobile',
+    value: 'push notification'
   }
 ];
 
 
 const FieldRule = () => {
   const { anchor, toggleDrawer } = useDrawer();
-  const [noThen, setNoThen] = useState(1);
+  const [noThen, setNoThen] = useState(2);
   const [isHoverThen, setIsHoverThen] = useState(-1);
   const [optionRule, setOption] = useState();
-  
-  const handleChange = () => {
+  const handleChange = (e) => {
+    console.log(e.target.value)
     setOption("hello");
     setValidation("hello");
   }
@@ -80,28 +81,34 @@ const FieldRule = () => {
         <Button onClick={toggleDrawer("right", true)} variant="outlined">Configure Rule</Button>
       </Box>
       <Drawer anchor="right" open={anchor.right} onClose={toggleDrawer("right", false)}>
-        <>
+        <Box sx={{ display: "flex", flexDirection: "column", height: "calc(100vh - 20px)" }} className="scrollbar">
           <FormRuleDrawer toggleDrawer={toggleDrawer} />
-          {
-            Array.from({ length: noThen }, (_, index) =>
-              <Box sx={{ marginLeft: "88px", marginTop: "20px", display: "flex", gap: "20px" }}
-                onMouseEnter={() => setIsHoverThen(index)}
-                onMouseLeave={() => setIsHoverThen(-1)}
-                key={index}
-              >
-                <ParamSelectList label="Rule" value={optionRule} options={option} onChange={handleChange} rootStyle={{ width: "30%" }} />
-                <TextField id="outlined-basic" label="Outlined" variant="outlined"
-                  fullWidth
-                  sx={{ borderRadius: "8px" }}
-                />
-                <Box sx={{ visibility: isHoverThen == index ? "show" : "hidden", display: "flex", flexDirection: "row", alignItems: "center" }} >
-                  <AddCircleOutlinedIcon sx={{ color: "#24A68A" }} onClick={() => setNoThen(noThen + 1)} />
-                  <RemoveCircleOutlinedIcon sx={{ color: "#e83232" }} onClick={() =>{if(noThen>1)setNoThen(noThen - 1)}}/>
+          <Box sx={{ display: "flex", flexDirection: "column", gap: "20px", padding: "20px" }}>
+            {
+              Array.from({ length: noThen }, (_, index) =>
+                <Box sx={{ display: "flex", gap: "20px", marginLeft: "88px" }}
+                  onMouseEnter={() => setIsHoverThen(index)}
+                  onMouseLeave={() => setIsHoverThen(-1)}
+                  key={index}
+                >
+                  <ParamSelectList label="Rule" value={optionRule}
+                    rootStyle={{ width: "30%", borderRadius: "4px" }}
+                    customStyle={{ borderRadius: "16px" }}
+                    options={option} onChange={handleChange}
+                  />
+                  <TextField id="outlined-basic" label="Outlined" variant="outlined"
+                    fullWidth
+                    sx={{ borderRadius: "8px" }}
+                  />
+                  <Box sx={{ visibility: isHoverThen == index ? "show" : "hidden", display: "flex", flexDirection: "row", alignItems: "center" }} >
+                    <AddCircleOutlinedIcon sx={{ color: "#24A68A" }} onClick={() => setNoThen(noThen + 1)} />
+                    <RemoveCircleOutlinedIcon sx={{ visibility: noThen > 1 ? "show" : "hide", color: "#e83232" }} onClick={() => { if (noThen > 1) setNoThen(noThen - 1) }} />
+                  </Box>
                 </Box>
-              </Box>
-            )
-          }
-        </>
+              )
+            }
+          </Box>
+        </Box>
       </Drawer>
     </Paper>
   )
