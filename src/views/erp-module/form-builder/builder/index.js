@@ -1,14 +1,15 @@
+import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import FileOpenOutlinedIcon from '@mui/icons-material/FileOpenOutlined';
 import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
-import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
 import ApprovalOutlinedIcon from '@mui/icons-material/ApprovalOutlined';
 import IntegrationInstructionsOutlinedIcon from '@mui/icons-material/IntegrationInstructionsOutlined';
 import FormatPaintOutlinedIcon from '@mui/icons-material/FormatPaintOutlined';
 import ParamStepper from 'views/common-section/param-stepper';
 import BuilderComponent from './builder-component';
-import Rule from '../Rule'
-
+import Rule from './form-pages/Rule';
+import Settings from './form-pages/settings';
+import Integration from './form-pages/Integration';
 
 const FormBuilder = () => {
   const tabPages = [
@@ -27,7 +28,7 @@ const FormBuilder = () => {
     {
       id:3,
       name:"Settings",
-      component:Rule,
+      component:Settings,
       icon:<SettingsOutlinedIcon />
     },
     {
@@ -45,7 +46,7 @@ const FormBuilder = () => {
     {
       id:6,
       name:"Integrations",
-      component:Rule,
+      component:Integration,
       icon:<IntegrationInstructionsOutlinedIcon />
     },
     {
