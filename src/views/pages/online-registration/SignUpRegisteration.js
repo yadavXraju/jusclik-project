@@ -14,7 +14,6 @@ import TermsAndConditions from './TermsandConditions';
 import PoweredBySection from './PoweredByComp';
 
 
-
 // Online Registration Styling
 const style = {
   formHeader: {
@@ -44,7 +43,7 @@ const ClassOptions = [
   { value: '12A', label: 'XII A' }
 ];
 
-const SignUpRegisteration = () => {
+const SignUpRegisteration = ({continueHandler}) => {
   const [value, setValue] = React.useState('1');
   //Object to store data of all Filed 
   const [allDataform, setallDataform] = useState({
@@ -52,8 +51,11 @@ const SignUpRegisteration = () => {
     mobile: '',
     student_name: '',
     session: '',
-    class: ''
+    class: '',
+    dob:null,
   });
+
+console.log(allDataform)
 
   const [showDiv1, setShowDiv1] = useState(true);
   const [showDiv2, setShowDiv2] = useState(false);
@@ -63,6 +65,12 @@ const SignUpRegisteration = () => {
   const changeHandler = (e) => {
     setallDataform({ ...allDataform, [e.target.name]: e.target.value });
   };
+
+
+  const DatePickerSelector = (date) =>
+  {
+     setallDataform({...allDataform, dob:date}) ; 
+  }
 
   // Error Handling 
 
@@ -124,6 +132,7 @@ const SignUpRegisteration = () => {
     
     if (validateForm()) {
       console.log('Form is valid');
+     
       setShowDiv1(false);
     setShowDiv2(true);
       
@@ -228,6 +237,8 @@ const SignUpRegisteration = () => {
 
                 <ParameterizedDateComponent
                   label="Date of Birth"
+                  onChange={DatePickerSelector}
+                  value={allDataform.dob}
                  // error={formErrors.dob} // Pass error prop if applicable
                   //onChange={changeHandler} // Pass onChange handler if applicable
                   customStyle={{ marginTop: '20px', width: '100%', borderRadius: '50px' }}
@@ -271,6 +282,13 @@ const SignUpRegisteration = () => {
                     Please enter a valid email address
                   </Typography>
                 )}
+
+
+
+
+
+
+
                 <Button
                   onClick={handleSubmit} // Call handleSubmit on button click
                   sx={{
@@ -344,7 +362,7 @@ const SignUpRegisteration = () => {
       >
         <Grid sx={{ maxWidth: '100%', width: { xs: '100%', lg: '100%' }, margin: 'auto', padding: '20px' }}>
         
-        <TermsAndConditions/>
+        <TermsAndConditions continueHandler={continueHandler}/>
                   
               
               
