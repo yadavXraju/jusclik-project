@@ -1,13 +1,11 @@
 import React,{useState , useEffect} from 'react';
-import {Grid, TextField ,styled ,Button , Paper , Box ,} from '@mui/material';
+import {Grid, TextField ,styled ,Button , Paper , Box, Typography ,} from '@mui/material';
 import SelectList from 'views/common-section/ParamSelectList';
 import ParamDateComponent from 'views/common-section/ParamDateComponent';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import CommonDataGrid from 'views/common-section/commonDataGrid';
 import ParamMultipleSelect from 'views/common-section/ParamMultipleSelect';
 import ParamTable from 'views/erp-common-component/ParamTable';
-
-
 
 const ConfigureGlobally = ({customStyle}) => {
   
@@ -134,18 +132,22 @@ const handleFeeHeadChange = (selectedFeeHead) => {
     { id: 33, name: 'X C' },
   ];
 
+  // const handleClassChange = (selectedClass) => {
+  //   // console.log(selectedClass)
+  //   if (selectedClass[0]?.name==="All") {
+  //     // If "All" is selected, set classes to all options except "All"
+  //     const allClasses = classesOptions.filter(option => option?.name !== "All");
+  //     // console.log(allClasses)
+  //     setClasses(allClasses); // Adjust here to set the names of all classes
+  //   } else {
+  //     // If any other option is selected, set classes to the selected option
+  //     setClasses(selectedClass);
+  //   }
+  // };
+
   const handleClassChange = (selectedClass) => {
-    // console.log(selectedClass)
-    if (selectedClass[0].name==="All") {
-      // If "All" is selected, set classes to all options except "All"
-      const allClasses = classesOptions.filter(option => option.name !== "All");
-      // console.log(allClasses)
-      setClasses(allClasses); // Adjust here to set the names of all classes
-    } else {
-      // If any other option is selected, set classes to the selected option
-      setClasses(selectedClass);
-    }
-  };
+    setClasses(selectedClass)
+  }
   
   useEffect(() => {
     // If no fee head is selected, create an empty row
@@ -176,7 +178,7 @@ const handleFeeHeadChange = (selectedFeeHead) => {
       });
       setConcessionData(newRows);
     }
-  }, [feeHead, concessionData]); // Include concessionData in the dependencies
+  }, [feeHead, ]); // Include concessionData in the dependencies
 
   const TableRowData = concessionData.map((row) => ({
     id: row.id,
@@ -366,31 +368,37 @@ const handleFeeHeadChange = (selectedFeeHead) => {
             </Grid>
         </Grid>
 
-        {/* table */}
-        <Grid  item lg={8} sx={{}}>
-        <CommonDataGrid
-            rows={TableRowData}
-            columns={columns}
-            width="100%"
-            checkboxSelection={false}
-            initialState={{
-              pagination: {
-                paginationModel: { page: 0, pageSize: 50 }
-              },
-            }}
-            pageSizeOptions={[10, 25, 50, 100]}
-            sx={{
-              borderRadius: '12px',
-              '& .MuiDataGrid-cell': {
-                outline: 'none !important',
-              },
-              '& .MuiDataGrid-row:hover': {
-                backgroundColor: 'inherit', // or 'transparent'
-              },
-            }}
-   
-       />
+        {/* data grid*/}
+        <Grid  item lg={8} sx={{position:'relative'}}>
+            <CommonDataGrid
+                rows={TableRowData}
+                columns={columns}
+                width="100%"
+                checkboxSelection={false}
+                initialState={{
+                  pagination: {
+                    paginationModel: { page: 0, pageSize: 50 }
+                  },
+                }}
+                pageSizeOptions={[10, 25, 50, 100]}
+                sx={{
+                  borderRadius: '12px',
+                  '& .MuiDataGrid-cell': {
+                    outline: 'none !important',
+                  },
+                  '& .MuiDataGrid-row:hover': {
+                    backgroundColor: 'inherit', // or 'transparent'
+                  },
+                }}
+           />
+ 
+          <Box sx={{ position: 'absolute', bottom: '0px', left: '60px' , width:'50%' , minHeight:'80px' , display:'flex' , alignItems:'center' }}>
+              <Typography variant='h5' sx={{lineHeight:'34px'}}>
+                {classes.length > 0 ? `Class: ${classes.map(cls => cls.name).join(', ')}` : null}
+              </Typography>
+           </Box>
 
+           
         </Grid>
 
         <Grid item lg={12}>

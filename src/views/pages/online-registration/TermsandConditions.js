@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid , Box , Typography, Button} from '@mui/material';
 
-function TermsAndConditions() {
+function TermsAndConditions({continueHandler}) {
 
 
   
@@ -46,6 +46,7 @@ function TermsAndConditions() {
                     height: '50px',
                     '&:hover': { backgroundColor: '#e64b4c', color: '#fff' }
                   }}
+                  onClick={continueHandler}
                 >
                  Continue 
                 </Button>
