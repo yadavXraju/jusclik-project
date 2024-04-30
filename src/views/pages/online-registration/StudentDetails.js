@@ -1,5 +1,6 @@
 import React from 'react';
 import { Grid, Typography, Box, Paper, TextField, Button } from '@mui/material';
+import { useSelector } from 'react-redux'; // Import useSelector hook
 // import Tabs from '@mui/material/Tabs';
 // import Tab from '@mui/material/Tab';
 
@@ -14,6 +15,8 @@ function StudentDetails() {
   // const handleChange = (event, newValue) => {
   //   setTabChange(newValue);
   // };
+
+  const allDataform = useSelector((state) => state.allDataform);
 
   const SelectGender = [
     { value: 'male', label: 'Male' },
@@ -88,6 +91,7 @@ function StudentDetails() {
     { value: '15-30 km', label: '15-30 Km' }
   ];
 
+  console.log(allDataform.name)
   return (
     <>
       <Grid item xs={10} sx={{ paddingTop: '0 !important', paddingRight: '4rem' }}>
@@ -110,7 +114,7 @@ function StudentDetails() {
 
           <Grid sx={{ padding: '1rem 4rem' }} container spacing={4}>
             <Grid item xs={4}>
-              <TextField label="Student`s Name" variant="outlined" fullWidth  inputProps={{ style: { backgroundColor: '#ffffff' } }} />
+              <TextField label="Student`s Name" variant="outlined" fullWidth value={allDataform.name}  inputProps={{ style: { backgroundColor: '#ffffff' } }} />
 
               <Dropdown
                 label="Gender"

@@ -12,6 +12,9 @@ import ParameterizedDateComponent from 'views/common-section/ParamDateComponent'
 import { useState } from 'react';
 import TermsAndConditions from './TermsandConditions';
 import PoweredBySection from './PoweredByComp';
+// imported to use redux 
+import { useDispatch } from 'react-redux';
+import { updateAllDataform } from 'store/pages/online-Registration/allDataformSlice';
 
 
 // Online Registration Styling
@@ -54,19 +57,28 @@ const SignUpRegisteration = ({continueHandler}) => {
     class: '',
     dob:null,
   });
+ 
+  // Redux Implement  with also local state because setallDataform also used for Validation  
+  const dispatch = useDispatch();
 
-console.log(allDataform)
+  const changeHandler = (e) => {
+    const { name, value } = e.target;
+    setallDataform({ ...allDataform, [name]: value });
+    dispatch(updateAllDataform({ [name]: value }));
+  };
+
 
   const [showDiv1, setShowDiv1] = useState(true);
   const [showDiv2, setShowDiv2] = useState(false);
 
   //To Store All the Values 
 
-  const changeHandler = (e) => {
-    setallDataform({ ...allDataform, [e.target.name]: e.target.value });
-  };
+  // const changeHandler = (e) => {
+  //   setallDataform({ ...allDataform, [e.target.name]: e.target.value });
+  // };
 
 
+  // Data can not directly stored in Dob , by this function using dob in setallDataform
   const DatePickerSelector = (date) =>
   {
      setallDataform({...allDataform, dob:date}) ; 
