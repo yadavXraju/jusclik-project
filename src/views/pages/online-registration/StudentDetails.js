@@ -27,6 +27,7 @@ function StudentDetails() {
     { value: 'father', label: 'Father' },
     { value: 'mother', label: 'Mother' }
   ];
+  //
 
   const ChildIdProof = [
     { value: 'aadhar_no', label: 'Aadhar No' },
