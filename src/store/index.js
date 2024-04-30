@@ -8,6 +8,7 @@ import customForm from './form-builder/custom-form-slice';
 import menuItemSlice from "./layout/mainLayout/sidebar/menuList/navItem/menu-item-slice";
 import configureSlice from './visitor/Visitor-management-slice'
 import allDataformReducer from "./pages/online-Registration/allDataformSlice";
+import leadScoreSlice from "./crm/settings/leadScoreSlice";
 
 const store=configureStore({
     reducer:{
@@ -19,7 +20,9 @@ const store=configureStore({
         menuItemSlice:menuItemSlice,
         customForm:customForm,
         visitorSettingsSlice:configureSlice,
+        leadScoreSlice,
         allDataform:allDataformReducer
+
     },
     devTools:true
 });
