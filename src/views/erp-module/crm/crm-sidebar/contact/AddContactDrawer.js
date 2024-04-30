@@ -12,6 +12,7 @@ import PersonAddAltTwoToneIcon from '@mui/icons-material/PersonAddAltTwoTone';
 import DriveFolderUploadTwoToneIcon from '@mui/icons-material/DriveFolderUploadTwoTone';
 import DescriptionTwoToneIcon from '@mui/icons-material/DescriptionTwoTone';
 import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
+import OtherDetails from './OtherDetails';
 
 const AddContactDrawer = ({ DrawerBtn = false, editIcon = false, currEditItem , handleClick }) => {
   const { anchor, toggleDrawer } = useDrawer();
@@ -81,7 +82,7 @@ const AddContactDrawer = ({ DrawerBtn = false, editIcon = false, currEditItem , 
             {/* Tab panels based on selected tab */}
             <Box sx={{ mt: 1, height: 'calc(100vh - 188px)' , overflowY:'auto' }}>
               {tabValue === 0 && <AddLeadForm currEditItem={currEditItem} />}
-              {tabValue === 1 && 'Other Details'}
+              {tabValue === 1 && <OtherDetails/>}
               {tabValue === 2 && (
                 <>
                   <CommonDocuments documentData={documentData} customStyle={{ height: '100%' }} />
