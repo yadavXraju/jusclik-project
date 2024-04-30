@@ -1,106 +1,79 @@
+
 import React, { useState } from 'react';
 import { Accordion, AccordionSummary, AccordionDetails, Typography, Tabs, Tab, Box } from '@mui/material';
-import { ArrowDownward as ArrowDownwardIcon } from '@mui/icons-material';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
-
-// Dummy components for the content
-const Component1 = () => <Typography>Content for Tab 1</Typography>;
-const Component2 = () => <Typography>Content for Tab 2</Typography>;
-const Component3 = () => <Typography>Content for Tab 3</Typography>;
-const Component4 = () => <Typography>Content for Tab 4</Typography>;
-const Component5 = () => <Typography>Content for Tab 5</Typography>;
-
-// Dummy data for the accordions
-const accordionData = [
+const data = [
   {
-    title: 'Accordion 1',
+    id: 1,
+    title: 'Accordion Item 1',
+    content: 'Content for Accordion Item 1',
     tabs: [
-      { label: 'Tab 1', component: <Component1 /> },
-      { label: 'Tab 2', component: <Component2 /> },
-      { label: 'Tab 3', component: <Component3 /> }
+      { id: 1, label: 'Tab 1', content: 'Content for Tab 1' },
+      { id: 2, label: 'Tab 2', content: 'Content for Tab 2' },
+      { id: 3, label: 'Tab 3', content: 'Content for Tab 3' }
     ]
   },
   {
-    title: 'Accordion 2',
+    id: 2,
+    title: 'Accordion Item 2',
+    content: 'Content for Accordion Item 2',
     tabs: [
-      { label: 'Tab 4', component: <Component4 /> },
-      { label: 'Tab 5', component: <Component5 /> }
+      { id: 1, label: 'Tab 1', content: 'Content for Tab 1' },
+      { id: 2, label: 'Tab 2', content: 'Content for Tab 2' }
     ]
-  }
-  // Add more data as needed
+  },
 ];
 
-const MyAccordionWithTabs = () => {
-  const [expanded, setExpanded] = useState(Array(accordionData.length).fill(false));
-  const [selectedTab, setSelectedTab] = useState(0);
 
-  const handleChange = (index, tabValue) => {
-    setSelectedTab(tabValue);
-    setExpanded((prevExpanded) =>
-      prevExpanded.map((value, idx) => (idx === index ? !value : false))
-    );
+const AccordionWithTabs = ({ data }) => {
+  const [expanded, setExpanded] = useState(null);
+  const [activeTab, setActiveTab] = useState(0);
+
+  const handleChange = (panel) => (event, isExpanded) => {
+    setExpanded(isExpanded ? panel : null);
+  };
+
+  const handleTabChange = (event, newValue) => {
+    setActiveTab(newValue);
   };
 
   return (
-    <div style={{ display: 'flex' }}>
-      {accordionData.map((accordion, index) => (
-        <Accordion
-          key={index}
-          expanded={expanded[index]}
-          onChange={() => setExpanded((prevExpanded) => prevExpanded.map((value, idx) => (idx === index ? !value : false)))}
-        >
-          <AccordionSummary
-            expandIcon={<ArrowDownwardIcon />}
-            aria-controls={`panel-${index}-content`}
-            id={`panel-${index}-header`}
-          >
-            <Typography>{accordion.title}</Typography>
+    <Box display="flex">
+      <Box flex={1}>
+        <Accordion elevation={0} expanded={expanded === `panel-${data[0].id}`} onChange={handleChange(`panel-${data[0].id}`)}>
+          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+            <Typography>{data[0].title}</Typography>
           </AccordionSummary>
-          <AccordionDetails style={{ display: 'flex', flexDirection: 'column' }}>
-            <Tabs
-              orientation="vertical"
-              variant="scrollable"
-              value={selectedTab}
-              onChange={(event, newValue) => handleChange(index, newValue)}
-              aria-label={`Vertical tabs for ${accordion.title}`}
-            >
-              {accordion.tabs.map((tab, tabIndex) => (
-                <Tab key={tabIndex} label={tab.label} />
-              ))}
-            </Tabs>
+          <AccordionDetails>
+            <Typography>{data[0].content}</Typography>
           </AccordionDetails>
         </Accordion>
-      ))}
-      <div style={{ flex: 1 }}>
-        {accordionData.map((accordion, index) => (
-          <TabPanel key={index} value={expanded[index] ? selectedTab : null}>
-            {accordion.tabs[selectedTab].component}
-          </TabPanel>
+        {data.slice(1).map(item => (
+          <Accordion key={item.id} elevation={0} expanded={expanded === `panel-${item.id}`} onChange={handleChange(`panel-${item.id}`)}>
+            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+              <Typography>{item.title}</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <Typography>{item.content}</Typography>
+            </AccordionDetails>
+          </Accordion>
         ))}
-      </div>
-    </div>
+      </Box>
+      <Box flex={1}>
+        <Tabs value={activeTab} onChange={handleTabChange} orientation="vertical">
+          {data.map((item) => (
+            <Tab key={item.id} label={item.title} />
+          ))}
+        </Tabs>
+        {data.map((item, index) => (
+          <Box key={item.id} hidden={activeTab !== index}>
+            <Typography>{item.content}</Typography>
+          </Box>
+        ))}
+      </Box>
+    </Box>
   );
 };
 
-const TabPanel = (props) => {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`tabpanel-${index}`}
-      aria-labelledby={`tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box p={3}>
-          {children}
-        </Box>
-      )}
-    </div>
-  );
-};
-
-
-export default MyAccordionWithTabs;
+export default AccordionWithTabs;
