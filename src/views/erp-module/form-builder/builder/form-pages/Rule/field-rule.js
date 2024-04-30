@@ -8,7 +8,10 @@ import FormRuleDrawer from './form-rule-drawer';
 import ParamSelectList from 'views/common-section/ParamSelectList';
 import AddCircleOutlinedIcon from '@mui/icons-material/AddCircleOutlined';
 import RemoveCircleOutlinedIcon from '@mui/icons-material/RemoveCircleOutlined';
-import UnfoldMoreOutlinedIcon from '@mui/icons-material/UnfoldMoreOutlined';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 
 const option = [
@@ -39,101 +42,82 @@ const option = [
   }
 ];
 
-
-
 const FiedRuleExample = () => {
-  const [formLogic, setFormLogic] = useState(0);
   return (
-    <Box sx={{
-      display: "flex", alignItems: "center", gap: "10px",
-      marginTop: "20px", height: "auto",
-      position: "relative", borderRadius: "5px",
-      marginLeft: "20px",
-      '&:before': {
-        position: 'absolute',
-        content: '" "',
-        width: '1px',
-        height: 'calc(100% - 82px)',
-        left: '3.7%',
-        top: '47px',
-        background: '#ccc',
-      }
-    }}>
-       <Typography>When All the condition met</Typography>
-      <Box sx={{
-        width: "100%", height: "80%", backgroundColor: "#f8fafccc",
-        margin: "50px 50px 50px 100px", paddingLeft: "50px", padding: "10px 50px",
-        position: "relative", borderRadius: "10px"
-      }}>
-        
+    <Accordion  defaultExpanded={true}>
+      <AccordionSummary
+        expandIcon={<ExpandMoreIcon />}
+        aria-controls="panel1-content"
+        id="panel1-header"
+         sx={{padding:"0px 35px"}}
+      >
+        Rule 1
+      </AccordionSummary>
+      <AccordionDetails>
         <Box sx={{
-          borderLeft: formLogic == 0 ? "1px solid #2196f3" : "1px solid #697586", padding: "20px",
+          display: "flex", alignItems: "center", gap: "10px", height: "auto",
+          position: "relative", borderRadius: "5px",
+          marginLeft: "20px",
           '&:before': {
             position: 'absolute',
             content: '" "',
-            width: '20px',
-            height: "1px",
-            background: formLogic == 0 ? " #2196f3" : "#697586",
-            left: "50px",
-            top: "10px"
-          },
-          '&:after': {
-            position: 'absolute',
-            content: '" "',
-            width: '60px',
-            height: "1px",
-            background: formLogic == 0 ? "#2196f3" : "#697586",
-            left: "50px",
-            bottom: "10px"
+            width: '1px',
+            height: 'calc(100% - 82px)',
+            left: '3.7%',
+            top: '47px',
+            background: '#ccc',
           }
         }}>
-          <Button sx={{
-            position: "absolute", top: "38%",
-            left: "15px", borderRadius: "10px", padding: "5px 5px",
-            backgroundColor: formLogic == 0 ? "#2196f3" : "#697586",
-            '& span': {
-              marginLeft: '0',
-            },
-            "&:hover": {
-              backgroundColor: formLogic === 0 ? "#2196f3" : "#697586",
-            }
-          }}
-            endIcon={<UnfoldMoreOutlinedIcon />}
-            variant="contained" onClick={() => setFormLogic(!formLogic)}>
-            {formLogic == 0 ? (<Typography>OR</Typography>) :
-              (<Typography>And</Typography>)}
-          </Button>
-          <Box sx={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-            <>
-             
-              {
-                Array.from({ length: 1 }, (_, index) =>
-                  <Box sx={{
-                    display: "flex", gap: "20px",
-                    alignItems: "center", width: "100%",
-                    marginLeft: "40px"
-                  }}
-                    key={index}
-                  >
-                    <Typography variant="h4">Decision Box <Typography varaint="text">True</Typography></Typography>
-                  </Box>
-                )}
-            </>
+          <Box sx={{
+            width: "100%", height: "80%", backgroundColor: "#FDF6EC",
+            margin: "50px 50px 50px 85px", padding: "10px 10px",
+            position: "relative", borderRadius: "10px", borderLeft: "2px solid #ff9233"
+          }}>
+            <Box sx={{ padding: "20px" }}>
+              <Box sx={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+                {
+                  Array.from({ length: 2 }, (_, index) =>
+                    <Box sx={{
+                      display: "flex", gap: "5px",
+                      alignItems: "center", width: "100%",
+                    }}
+                      key={index}
+                    >
+                      <Typography variant="h5">Decision Box</Typography>
+                      <Typography varaint="h6" sx={{ color: "#ff9233`" }}>True</Typography>
+                    </Box>
+                  )}
+              </Box>
+            </Box>
+          </Box>
+          <Box sx={{ position: "absolute", top: "10px", display: "flex", gap: "20px", alignItems: "center" }}>
+            <Button variant="outlined" >
+              If
+            </Button>
+            <Typography variant="h4" sx={{ color: "#444" }}>--ALL--</Typography>
+            <Typography variant="h4" sx={{ color: "#7b7b7b" }}>of the following conditions are met</Typography>
+          </Box>
+          <Box sx={{ position: "absolute", bottom: "0px", display: "flex" }}>
+            <Button variant="outlined">
+              Then
+            </Button>
+            <Typography sx={{ marginTop: "10px", marginLeft: "20px" }}>Perform the following actions</Typography>
           </Box>
         </Box>
-      </Box>
-      <Box sx={{ position: "absolute", top: "10px" }}>
-        <Button variant="outlined" >
-          If
-        </Button>
-      </Box>
-      <Box sx={{ position: "absolute", bottom: "0px", display: "flex" }}>
-        <Button variant="outlined">
-          Then
-        </Button>
-        <Typography sx={{ marginTop: "10px", marginLeft: "20px" }}>Perform the following actions</Typography>
-      </Box>
-    </Box>
+        <Box sx={{
+          margin: "10px 50px 50px 100px", padding: "20px", borderLeft: "2px solid #ff6969",
+          backgroundColor: "#FFF3F5", borderRadius: "10px"
+        }}>
+          <Box sx={{
+            border: "1px dotted #eee", height: "40px",
+            borderRadius: "4px", display: "flex", alignItems: "center",
+            width: "85%", paddingLeft: "15px"
+          }}>
+            <Typography>Website</Typography>
+          </Box>
+        </Box>
+      </AccordionDetails>
+    </Accordion>
   )
 }
 
@@ -153,7 +137,7 @@ const FieldRule = () => {
       <Box sx={{
         display: "flex", flexDirection: "row",
         justifyContent: "space-between", height: "80px",
-        alignItems: "center", backgroundColor: "#f8fafccc",
+        alignItems: "center",backgroundColor:'rgb(0 0 0 / 0%)',
         padding: "0px 20px"
       }}>
         <Box sx={{ marginTop: "5px" }}>

@@ -86,6 +86,14 @@ const validation = [
   }
 ];
 
+const DynamicInputForm = () => {
+  return (
+    <>
+      <ParamTime customStyle={{ width: "30%", paddingTop: '-8px', borderRadius: "5px" }} />
+    </>
+  )
+}
+
 const FormRuleDrawer = ({ toggleDrawer }) => {
   const [optionRule, setOption] = useState();
   const [validationRule, setValidation] = useState();
@@ -103,14 +111,14 @@ const FormRuleDrawer = ({ toggleDrawer }) => {
 
   return (
     <>
-      <Box sx={{ width: "1050px", padding: "20px"}} role="presentation">
+      <Box sx={{ width: "1050px", padding: "20px" }} role="presentation">
         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #ccc' }}>
           <Typography variant="h4">Add Rule</Typography>
           <Button onClick={toggleDrawer('right', false)} sx={{ alignSelf: 'flex-end' }}>
             Close
           </Button>
         </Box>
-        <Box sx={{ display: "flex", flexDirection: "column", gap: "5px",marginTop:"20px" }}>
+        <Box sx={{ display: "flex", flexDirection: "column", gap: "5px", marginTop: "20px" }}>
           <Typography>Rule Name</Typography>
           <TextField id="outlined-basic" label="Outlined" variant="outlined"
             helperText="(Maximum 100 characters)"
@@ -186,9 +194,9 @@ const FormRuleDrawer = ({ toggleDrawer }) => {
                       onMouseLeave={() => setIsHover(-1)} key={index}>
                       <ParamSelectList label="Rule" value={optionRule} options={option}
                         onChange={handleChange} rootStyle={{ width: "30%" }} />
-                      <ParamSelectList label="Is" value={validationRule} options={validation} 
-                      onChange={handleChange} rootStyle={{ width: "30%" }} />
-                      <ParamTime customStyle={{ width: "30%", paddingTop: '-8px', borderRadius: "5px" }} />
+                      <ParamSelectList label="Is" value={validationRule} options={validation}
+                        onChange={handleChange} rootStyle={{ width: "30%" }} />
+                      <DynamicInputForm />
                       <Box sx={{ visibility: isHover == index ? "show" : "hidden", display: "flex", flexDirection: "row", gap: "10px" }} >
                         <AddCircleOutlinedIcon sx={{ color: "#24A68A" }} onClick={() => setRuleNo(ruleno + 1)} />
                         {ruleno > 1 && <RemoveCircleOutlinedIcon sx={{ color: "#e83232" }} onClick={() => setRuleNo(ruleno - 1)} />}
