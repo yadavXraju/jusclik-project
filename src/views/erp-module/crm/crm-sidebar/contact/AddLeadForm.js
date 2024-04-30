@@ -84,7 +84,12 @@ function AddLeadForm({currEditItem}) {
     }));
   };
 
-  console.log(currEditItem);
+  const handleDateChange = (newDate) => {
+    const formattedDate = newDate ? newDate.format('DD-MM-YYYY') : ''; // Format the date or set empty string if newDate is null
+    handleChange('dob', formattedDate); // Update the dob field with the formatted date
+  };
+
+  // console.log(currEditItem);
 
   return (
     <>
@@ -107,7 +112,7 @@ function AddLeadForm({currEditItem}) {
               <TextField id="email" size={isMobile ? 'small' : 'normal'} value={formFields.email} onChange={(e) => handleChange('email', e.target.value)} fullWidth label="Email" variant="outlined" />
             </Grid>
             <Grid item xs={12} sm={12} md={6}>
-              <ParameterizedDateComponent customStyle={{ width: '100%' }} value={formFields.dob} onChange={(e) => handleChange('dob', e.target.value)} label="D.O.B" />
+              <ParameterizedDateComponent customStyle={{ width: '100%' }} value={formFields.dob} onChange={handleDateChange} label="D.O.B" />
             </Grid>
             <Grid item xs={12} sm={12} md={6}>
               <TextField id="mobile-Number" size={isMobile ? 'small' : 'normal'} value={formFields.mobile} onChange={(e) => handleChange('mobile', e.target.value)} fullWidth label="Mobile" variant="outlined" />

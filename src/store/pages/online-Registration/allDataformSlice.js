@@ -1,7 +1,6 @@
-// allDataformSlice.js
 import { createSlice } from '@reduxjs/toolkit';
 
-const InitialStateForm = {
+const initialState = {
   email: '',
   mobile: '',
   student_name: '',
@@ -10,17 +9,15 @@ const InitialStateForm = {
   dob: null,
 };
 
-const initialState = {
-  InitialStateForm  : InitialStateForm,
-}
-
 const allDataformSlice = createSlice({
   name: 'allDataform',
   initialState,
   reducers: {
     updateAllDataform: (state, action) => {
-      const {student_name} = action.payload;
-      state.InitialStateForm.student_name = student_name
+      return {
+        ...state,
+        ...action.payload,
+      };
     },
   },
 });
