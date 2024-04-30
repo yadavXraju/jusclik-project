@@ -7,6 +7,7 @@ import pricingSlice from "./pages/pricing/pricing-slice";
 import customForm from './form-builder/custom-form-slice';
 import menuItemSlice from "./layout/mainLayout/sidebar/menuList/navItem/menu-item-slice";
 import configureSlice from './visitor/Visitor-management-slice'
+import leadScoreSlice from "./crm/settings/leadScoreSlice";
 
 const store=configureStore({
     reducer:{
@@ -17,7 +18,8 @@ const store=configureStore({
         pricingSlice: pricingSlice  ,
         menuItemSlice:menuItemSlice,
         customForm:customForm,
-        visitorSettingsSlice:configureSlice
+        visitorSettingsSlice:configureSlice,
+        leadScoreSlice,
     },
     devTools:true
 });
