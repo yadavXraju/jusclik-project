@@ -7,9 +7,7 @@ import CommonDataGrid from 'views/common-section/commonDataGrid';
 import ParamMultipleSelect from 'views/common-section/ParamMultipleSelect';
 import ParamTable from 'views/erp-common-component/ParamTable';
 
-const ConfigureGlobally = ({customStyle}) => {
-  
-const VisuallyHiddenInput = styled('input')({
+export const VisuallyHiddenInput = styled('input')({
   clip: 'rect(0 0 0 0)',
   clipPath: 'inset(50%)',
   height: 1,
@@ -21,7 +19,7 @@ const VisuallyHiddenInput = styled('input')({
   width: 1,
 });
 
-const style = {
+export const style = {
   BottomNavbar: {
       width:'100%',
       display: 'flex',
@@ -38,6 +36,8 @@ const style = {
       zIndex:'999',
   }
 };
+
+const ConfigureGlobally = ({customStyle}) => {
 
 const [concessionData, setConcessionData] = useState([{
         applicableFromDate : '',
@@ -131,19 +131,6 @@ const handleFeeHeadChange = (selectedFeeHead) => {
     { id: 32, name: 'X B' },
     { id: 33, name: 'X C' },
   ];
-
-  // const handleClassChange = (selectedClass) => {
-  //   // console.log(selectedClass)
-  //   if (selectedClass[0]?.name==="All") {
-  //     // If "All" is selected, set classes to all options except "All"
-  //     const allClasses = classesOptions.filter(option => option?.name !== "All");
-  //     // console.log(allClasses)
-  //     setClasses(allClasses); // Adjust here to set the names of all classes
-  //   } else {
-  //     // If any other option is selected, set classes to the selected option
-  //     setClasses(selectedClass);
-  //   }
-  // };
 
   const handleClassChange = (selectedClass) => {
     setClasses(selectedClass)
@@ -407,6 +394,7 @@ const handleFeeHeadChange = (selectedFeeHead) => {
             data={TableData}
             action={false}
             tablePaper={{border:'1px solid rgba(224, 224, 224, 1)'}}
+            tableStyle={{paddingBottom:'5rem'}}
            />
         </Grid>
 
