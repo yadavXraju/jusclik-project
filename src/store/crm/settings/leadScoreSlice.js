@@ -264,32 +264,32 @@ const leadScoreSlice=createSlice({
     initialState,
     reducers:{
         updateLeadRegistrationAndVerification (state,action){
-            const {key,value}=action.payload
-            state.leadRegistrationAndVerification[key]=value
+            const {key,value,subKey}=action.payload
+            state.leadRegistrationAndVerification.steps[subKey][key]=value
         } ,
         updateApplicationActivities (state,action){
-            const {key,value}=action.payload
-            state.applicationActivities[key]=value
+            const {key,subKey,value}=action.payload
+            state.applicationActivities.steps[subKey][key]=value
         } ,
         updateEmailActivities(state,action){
-            const {key,value}=action.payload
-            state.emailActivities[key]=value
+            const {key,subKey,value}=action.payload
+            state.emailActivities.steps[subKey][key]=value
         } ,
         updateSmsActivities(state,action){
-            const {key,value}=action.payload
-            state.smsActivities[key]=value
+            const {key,subKey,value}=action.payload
+            state.smsActivities.steps[subKey][key]=value
         } ,
         updateWhatsappActivities(state,action){
-            const {key,value}=action.payload
-            state.whatsappActivities[key]=value
+            const {key,subKey,value}=action.payload
+            state.whatsappActivities.steps[subKey][key]=value
         } ,
         updateOtherApplicantActivities(state,action){
-            const {key,value}=action.payload
-            state.otherApplicantActivities[key]=value
+            const {key,subKey,value}=action.payload
+            state.otherApplicantActivities.steps[subKey][key]=value
         } ,
         updateTelephonyActivities(state,action){
-            const {key,value}=action.payload
-            state.telephonyActivities[key]=value
+            const {key,subKey,value}=action.payload
+            state.telephonyActivities.steps[subKey][key]=value
         } ,
     }
 })
