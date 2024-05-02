@@ -354,7 +354,7 @@ const feeHeadOptions = [
               </Grid>
           </Grid>
           {/* table */}
-          <Grid  item lg={8} sx={{}}>
+          <Grid  item lg={8} sx={{position:'relative'}}>
               <CommonDataGrid
                   rows={TableRowData} columns={columns}  width="100%"
                   checkboxSelection={false}
@@ -372,7 +372,10 @@ const feeHeadOptions = [
                   '& .MuiDataGrid-row:hover': {
                     backgroundColor: 'inherit', // or 'transparent'
                   },
-
+                   
+                  '& .MuiDataGrid-selectedRowCount' :{
+                      visibility:'hidden',
+                  }
                 }}
               />
 
@@ -380,7 +383,7 @@ const feeHeadOptions = [
                     <Typography variant='h5' sx={{lineHeight:'34px'}}>
                       {classes.length > 0 ? `Class: ${classes.map(cls => cls.name).join(', ')}` : null}
                     </Typography>
-                </Box>
+              </Box>
           </Grid>
 
           <Grid item lg={12}>

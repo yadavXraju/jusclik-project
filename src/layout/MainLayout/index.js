@@ -85,8 +85,9 @@ const MainLayout = () => {
     handleUserClickToggle();
   };
 
+  const { menuItem } = useSelector((state) => state.menuItemSlice);
+  console.log(menuItem?.item?.item?.title);
 
-  console.log('userClicked:', userClicked);
   const isMobile = useMediaQuery('(max-width: 767px)');
   return (
     <Box  sx={{ display: 'flex' }}>

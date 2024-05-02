@@ -376,6 +376,9 @@ const handleFeeHeadChange = (selectedFeeHead) => {
                   '& .MuiDataGrid-row:hover': {
                     backgroundColor: 'inherit', // or 'transparent'
                   },
+                  '& .MuiDataGrid-selectedRowCount' :{
+                    visibility:'hidden',
+                }
                 }}
            />
  

@@ -2,17 +2,12 @@ import PropTypes from 'prop-types';
 import { forwardRef, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-
-// material-ui
 import { useTheme } from '@mui/material/styles';
 import { Avatar, Chip, ListItemButton, ListItemIcon, ListItemText, Typography, useMediaQuery } from '@mui/material';
-
-// project imports
 import { menuOpen} from 'store/customization-slice';
-// assets
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
-
 import { urlStore } from 'themes/navigation-for-pages/UrlStore';
+import { handleMenu } from 'store/layout/mainLayout/sidebar/menuList/navItem/menu-item-slice';
 // ==============================|| SIDEBAR MENU LIST ITEMS ||============================== //
 
 const NavItem = ({ item, level , }) => {
@@ -75,6 +70,8 @@ const itemHandler = (id) => {
   }
   // dispatch(handlMenuItem({id}))
   // console.log(item.id)
+
+  dispatch(handleMenu({item}))
 };
 
   // active menu item on page load
