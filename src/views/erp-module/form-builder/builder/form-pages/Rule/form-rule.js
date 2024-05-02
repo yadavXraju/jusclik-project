@@ -1,55 +1,21 @@
-import React, { useState } from 'react';
-import { Box, Typography, Drawer, Button, Paper, TextField } from '@mui/material';
+import React from 'react';
+import { Box, Typography, Drawer, Button, Paper } from '@mui/material';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import Divider from '@mui/material/Divider';
 import useDrawer from 'hooks/useDrawer';
 import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
 import FormRuleDrawer from './form-rule-drawer';
-import ParamSelectList from 'views/common-section/ParamSelectList';
-import AddCircleOutlinedIcon from '@mui/icons-material/AddCircleOutlined';
-import RemoveCircleOutlinedIcon from '@mui/icons-material/RemoveCircleOutlined';
 
 
-const option = [
-  {
-    id: 1,
-    label: 'Redirect To',
-    value: 'redirect to'
-  },
-  {
-    id: 2,
-    label: 'Assign Task',
-    value: 'assing task'
-  },
-  {
-    id: 3,
-    label: 'Send Email',
-    value: 'send email'
-  },
-  {
-    id: 4,
-    label: 'Send Sms',
-    value: 'send sms'
-  },
-  {
-    id: 5,
-    label: 'Push Notification to Mobile',
-    value: 'push notification'
-  }
-];
+
+
 
 
 const FieldRule = () => {
   const { anchor, toggleDrawer } = useDrawer();
-  const [noThen, setNoThen] = useState(2);
-  const [isHoverThen, setIsHoverThen] = useState(-1);
-  const [optionRule, setOption] = useState();
-  const handleChange = (e) => {
-    console.log(e.target.value)
-    setOption("hello");
-    setValidation("hello");
-  }
+ 
+  
 
   return (
     <Paper sx={{ height: "calc(100vh - 300px)" }}>
@@ -84,7 +50,7 @@ const FieldRule = () => {
         <Box sx={{ display: "flex", flexDirection: "column", height: "calc(100vh - 20px)" }} className="scrollbar">
           <FormRuleDrawer toggleDrawer={toggleDrawer} />
           <Box sx={{ display: "flex", flexDirection: "column", gap: "20px", padding: "20px" }}>
-            {
+            {/* {
               Array.from({ length: noThen }, (_, index) =>
                 <Box sx={{ display: "flex", gap: "20px", marginLeft: "88px" }}
                   onMouseEnter={() => setIsHoverThen(index)}
@@ -106,7 +72,7 @@ const FieldRule = () => {
                   </Box>
                 </Box>
               )
-            }
+            } */}
           </Box>
         </Box>
       </Drawer>
