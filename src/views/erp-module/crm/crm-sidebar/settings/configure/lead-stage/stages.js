@@ -14,6 +14,8 @@ export const stage = (noOfSubStages, index, stageName) => {
     const handleBoxClick=(e)=>{
         e.stopPropagation()
     }
+
+
   return (
     <>
       <Box
@@ -26,7 +28,6 @@ export const stage = (noOfSubStages, index, stageName) => {
         <Accordion
           className="findcomp"
           sx={{ margin: '1rem 0' }}
-          expanded={true}
         >
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
@@ -60,7 +61,7 @@ export const stage = (noOfSubStages, index, stageName) => {
 
               <Grid item xs={2}>
                 {/* stage status*/}
-                <Box sx={{ display: 'flex', width: '100%' }}>
+                <Box onClick={handleBoxClick} sx={{ display: 'flex', width: '100%' }}>
                   <FormControl fullWidth>
                     <Box sx={{ display: 'flex', alignItems: 'center' }}>
                       <TextField placeholder="status" sx={{ marginRight: '10px', width: '100%' }} />
@@ -72,7 +73,7 @@ export const stage = (noOfSubStages, index, stageName) => {
               {/* follow up required select box yes/no */}
 
               <Grid item xs={2}>
-                <Box>
+                <Box onClick={handleBoxClick}>
                   <FormControl fullWidth>
                     <InputLabel>Follow up Required</InputLabel>
                     <Select
@@ -89,7 +90,7 @@ export const stage = (noOfSubStages, index, stageName) => {
               {/* sub stage required select box yes/no*/}
 
               <Grid item xs={2}>
-                <Box>
+                <Box onClick={handleBoxClick}>
                   <FormControl fullWidth>
                     <InputLabel>Sub Stage Required</InputLabel>
                     <Select
@@ -107,6 +108,7 @@ export const stage = (noOfSubStages, index, stageName) => {
               {/* select score -10 to 10 */}
 
               <Grid item xs={2}>
+                <Box onClick={handleBoxClick}>
                 <FormControl fullWidth>
                   <InputLabel>Select Score</InputLabel>
                   <Select
@@ -121,11 +123,12 @@ export const stage = (noOfSubStages, index, stageName) => {
                     ))}
                   </Select>
                 </FormControl>
+                </Box>
               </Grid>
               {/* toggle button */}
 
               <Grid item container xs={2} justifyContent="end">
-                <Box  onClick={handleBoxClick}>
+                <Box onClick={handleBoxClick}>
                 <FormControlLabel
                   fullWidth
                   control={

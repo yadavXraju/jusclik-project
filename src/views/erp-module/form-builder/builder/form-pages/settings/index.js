@@ -123,17 +123,26 @@ import columns from './data';
 
 // Import your different components here
 import DisplayComponent from './DisplayComponent';
-import TimeAndWorkComponent from './TimeAndWorkComponent';
 import OtherComponent from './OtherComponent';
+import FormAvailability from './FormAvailability';
+import ThankYou from './ThankYou';
 
 function MyAccordionWithTabs() {
   const [selectedAccordion, setSelectedAccordion] = useState(columns[0].id);
   const [selectedTab, setSelectedTab] = useState(0); // Default selected tab index is set to 0
   const [selectedLabel, setSelectedLabel] = useState('Display');
 
-  const handleAccordionChange = (panel, index) => (event, isExpanded) => {
-    setSelectedAccordion(isExpanded ? panel : null);
-    setSelectedTab(isExpanded ? index : null);
+  const handleAccordionChange = (panel, column) => (event, isExpanded) => {
+    // setSelectedAccordion(isExpanded ? panel : null);
+    // setSelectedTab(isExpanded ? index : null);
+    if (isExpanded) {
+      setSelectedAccordion(panel);
+      setSelectedTab(0); // Always set the selected tab to the first one when expanding the accordion
+      const selectedDetail = column.details[0];
+      setSelectedLabel(selectedDetail.label);
+    } else {
+      setSelectedAccordion(null);
+    }
   };
 
   // Get the selected detail label
@@ -142,16 +151,16 @@ function MyAccordionWithTabs() {
     setSelectedLabel(label);
   };
 
-  console.log(selectedLabel);
+  // console.log(selectedLabel);
   console.log(selectedTab)
 
   return (
     <Box mt={2}>
       <Grid container spacing={2}>
-        <Grid item xs={3}>
-          <Box pr={2}>
-            {columns.map((column, index) => (
-              <Accordion key={column.id} expanded={selectedAccordion === column.id} onChange={handleAccordionChange(column.id, index)}>
+        <Grid item xs={12} md={3}>
+          <Box className='scrollbar' sx={{height:'71vh'}}>
+            {columns.map((column) => (
+              <Accordion sx={{'&.Mui-expanded': { margin: 0 } }} key={column.id} expanded={selectedAccordion === column.id} onChange={handleAccordionChange(column.id, column)}>
                 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                   <Typography variant="h4">{column.accordionName}</Typography>
                 </AccordionSummary>
@@ -160,9 +169,10 @@ function MyAccordionWithTabs() {
                     {column.details.map((detail, tabIndex) => (
                       <Button
                         sx={{
-                          padding: '5px',
-                          margin: '5px',
+                          padding: '12px',
+                          margin: '4px',
                           borderLeft: selectedTab === tabIndex ? '2px solid #2196f3' : 'none',
+                          background: selectedTab === tabIndex ? '#48a4ed2e' : 'none',
                           justifyContent: 'start',
                           color: 'black'
                         }}
@@ -186,7 +196,7 @@ function MyAccordionWithTabs() {
             ))}
           </Box>
         </Grid>
-        <Grid item xs={9}>
+        <Grid item xs={12} md={9}>
           <Card>
             {columns.map((column) => (
               <>
@@ -205,8 +215,9 @@ function MyAccordionWithTabs() {
             <Box>
               {/* Conditional rendering based on the selected label */}
               {selectedLabel === 'Display' && <DisplayComponent />}
-              {selectedLabel === 'Time and Work' && <TimeAndWorkComponent />}
+              {selectedLabel === 'Thank You Page & Redirection' && <ThankYou />}
               {selectedLabel === 'Other' && <OtherComponent />}
+              {selectedLabel === 'Form Availability' && <FormAvailability />}
             </Box>
           </Card>
         </Grid>
