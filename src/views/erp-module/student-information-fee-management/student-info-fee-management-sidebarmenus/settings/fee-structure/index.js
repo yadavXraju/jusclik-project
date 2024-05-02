@@ -6,6 +6,7 @@ import Concession from './concession/Concession';
 import OtherSettings from './other-settings/OtherSettings';
 import useDrawer from 'hooks/useDrawer';
 import ReceiptTwoToneIcon from '@mui/icons-material/ReceiptTwoTone';
+import FeedTwoToneIcon from '@mui/icons-material/FeedTwoTone';
 import DiscountTwoToneIcon from '@mui/icons-material/DiscountTwoTone';
 import NewReleasesTwoToneIcon from '@mui/icons-material/NewReleasesTwoTone';
 import SettingsTwoToneIcon from '@mui/icons-material/SettingsTwoTone';
@@ -35,7 +36,7 @@ const FeeStructure = () => {
          anchor:anchor,
          toggleDrawer:toggleDrawer
       },
-      icon:<ReceiptTwoToneIcon />,
+      icon:<FeedTwoToneIcon />,
     },
   
     {

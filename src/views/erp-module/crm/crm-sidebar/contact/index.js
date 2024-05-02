@@ -14,7 +14,7 @@ const Contact = () => {
             </Typography>
           </Box>
           <Box>
-            <AddContactDrawer/>
+            <AddContactDrawer DrawerBtn={true}/>
           </Box>
         </Box>
     <ContactTable/>

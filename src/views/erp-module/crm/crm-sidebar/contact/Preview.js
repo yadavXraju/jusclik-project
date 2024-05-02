@@ -6,16 +6,18 @@ import { CardMedia } from '@mui/material';
 import ArrowBackOutlinedIcon from '@mui/icons-material/ArrowBackOutlined';
 import { useNavigate } from 'react-router-dom';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
-import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
+// import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 import Popover from '@mui/material/Popover';
 import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
 import MoreVertTwoToneIcon from '@mui/icons-material/MoreVertTwoTone';
 import PreviewTabs from './PreviewTabs';
-import ProgressSteps from './ArrowSteps';
+import ProgressSteps from './ProgressSteps';
+import { useLocation } from 'react-router-dom';
+import AddContactDrawer from './AddContactDrawer';
 
 function Preview() {
-  // const location = useLocation();
-  // const { rowData } = location.state;
+  const location = useLocation();
+  const { rowData } = location.state;
 
   const navigate = useNavigate();
   const BackClick = () => {
@@ -24,6 +26,8 @@ function Preview() {
 
   const isMobile = useMediaQuery('(max-width: 767px)');
   const issmallMobile = useMediaQuery('(max-width: 425px)');
+
+  console.log(rowData);
 
   return (
     <>
@@ -52,18 +56,37 @@ function Preview() {
                 </Box>
                 <Box>
                   <Typography variant="h4">Suraj</Typography>
-                  <Box> <span style={{fontWeight:'500'}}>Email</span> :  Abc@gmail.com</Box>
-                  <Box> <span style={{fontWeight:'500'}}>Mobile</span> :  9864653743</Box>
-                  <Box> <span style={{fontWeight:'500'}}>Added On</span> :  10-Mar-2024</Box>
+                  <Box>
+                    {' '}
+                    <span style={{ fontWeight: '500' }}>Email</span> : Abc@gmail.com
+                  </Box>
+                  <Box>
+                    {' '}
+                    <span style={{ fontWeight: '500' }}>Mobile</span> : 9864653743
+                  </Box>
+                  <Box>
+                    {' '}
+                    <span style={{ fontWeight: '500' }}>Added On</span> : 10-Mar-2024
+                  </Box>
                 </Box>
               </Box>
 
-              <Box sx={{ display: 'flex', justifyContent: 'end', marginTop:{xs:'16px'}, width: '100%', gap: issmallMobile ? '10px' : '0px' }}>
+              <Box
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'end',
+                  marginTop: { xs: '16px' },
+                  width: '100%',
+                  gap: issmallMobile ? '10px' : '0px'
+                }}
+              >
                 <IconButton sx={{ marginRight: '8px', background: '#cccccc54' }}>
                   <SearchOutlinedIcon />
                 </IconButton>
+
                 <IconButton sx={{ marginRight: '8px', background: '#cccccc54' }}>
-                  <EditTwoToneIcon />
+                  {/* <EditLead currEditItem={rowData} handleClick={() => {}}/> */}
+                  <AddContactDrawer editIcon={true} currEditItem={rowData} />
                 </IconButton>
 
                 <PopupState variant="popover" popupId="demo-popup-popover">
@@ -94,7 +117,7 @@ function Preview() {
               </Box>
             </Box>
 
-            <ProgressSteps/>
+            <ProgressSteps />
 
             {/* <Grid container spacing={2}>
               <Grid item xs={12} md={6}>
@@ -125,7 +148,6 @@ function Preview() {
             </Grid> */}
           </Box>
 
-
           <Grid container spacing={2}>
             <Grid item xs={12} md={4}>
               <Box sx={{ borderRight: isMobile ? 'none' : '1px solid #ccc', height: '100%' }}>
@@ -137,12 +159,13 @@ function Preview() {
 
                   <Box p={2}>
                     <Grid container spacing={3}>
-                    <Grid item xs={12} md={6} sx={{ lineHeight: '22px' }}>
+                      <Grid item xs={12} md={6} sx={{ lineHeight: '22px' }}>
                         <Box pb={0.5} color={'#8b8989'}>
-                        Lead Score
+                          Lead Score
                         </Box>
-                        <Box fontSize={16} sx={{fontWeight:'500'}}>50</Box>
-                        
+                        <Box fontSize={16} sx={{ fontWeight: '500' }}>
+                          50
+                        </Box>
                       </Grid>
                       <Grid item xs={12} md={6} sx={{ lineHeight: '22px' }}>
                         <Box pb={0.5} color={'#8b8989'}>
@@ -179,17 +202,11 @@ function Preview() {
                       </Grid>
                       <Grid item xs={12} md={6} sx={{ lineHeight: '22px' }}>
                         <Box pb={0.5} color={'#8b8989'}>
-                        Last Contacted
+                          Last Contacted
                         </Box>
                         <Box fontSize={16}>10-May-2020</Box>
                       </Grid>
                     </Grid>
-
-                    
-                    
-
-
-
                   </Box>
                 </Box>
               </Box>

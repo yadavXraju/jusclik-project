@@ -10,11 +10,11 @@ const RecentActivity = () => {
 
   // Sample recent activity data
   const recentActivityData = [
-    { id: 1, content: "You have a new email from John Doe", time: "8:30 AM",update:"response given", date: "April 20, 2024" ,by:"John"},
-    { id: 2, content: "Meeting reminder for today", time: "10:00 AM",update:"verified", date: "April 20, 2024",by:"John" },
-    { id: 3, content: "Your order has been shipped", time: "11:45 AM",update:"verified", date: "April 20, 2024",by:"John" },
-    { id: 4, content: "Check out our latest offers", time: "1:30 PM",update:"approced", date: "April 20, 2024" ,by:"John"},
-    { id: 5, content: "New message from Jane Smith", time: "3:20 PM",update:"update", date: "April 20, 2024",by:"John" },
+    { id: 1, content: "Muskaan Sharma [Counsellor] added Note: gfhff  for  neihaa.sharma@gmail.com .", time: "8:30 AM",update:"response given", date: "April 20, 2024" ,by:"John"},
+    { id: 2, content: " Muskaan Sharma [Counsellor] added Follow up with neihaa.sharma@gmail.com  for  24/04/2024 03:33 PM ", time: "10:00 AM",update:"verified", date: "April 20, 2024",by:"John" },
+    { id: 3, content: "Muskaan Sharma [Counsellor] added Note: i7776  for  neihaa.sharma@gmail.com .", time: "11:45 AM",update:"verified", date: "April 20, 2024",by:"John" },
+    { id: 4, content: "Muskaan Sharma [Counsellor] changed lead  stage of  shripati.s@gmail.com  from Stage: Hot (Selected) to Stage: Hot (Admitted)  .", time: "1:30 PM",update:"approced", date: "April 20, 2024" ,by:"John"},
+    { id: 5, content: "Muskaan Sharma [Counsellor] changed lead  stage of  pradeepkumar.tyagi@gmail.com  from Stage: Warm to Stage: Cold  .", time: "3:20 PM",update:"update", date: "April 20, 2024",by:"John" },
   ];
 
   return (
@@ -52,14 +52,14 @@ const RecentActivity = () => {
           paddingBottom: isMobile ? '10px' : '0px',
         }}
       >
-        <TableContainer className='scrollbar' component={Paper} sx={{height:"305px"}}>
+        <TableContainer className='scrollbar' component={Paper} sx={{height:"332px"}}>
           <Table>
             <TableBody>
               {recentActivityData.map((mailData) => (
                 <TableRow key={mailData.id}>
-                  <TableCell>
+                  <TableCell sx={{width:"60px"}}>
                     <Grid container spacing={1} alignItems="center">
-                      <Grid item>
+                      <Grid item  >
                         <Box sx={{border:"1px solid #57AFF4",borderRadius:"10px",padding:"4px",display:"flex",alignItem:"center",justifyContent:"center"}}>
                         < MailOutlineIcon sx={{color:"#57AFF4"}}/>
                         </Box>

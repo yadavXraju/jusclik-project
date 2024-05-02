@@ -36,22 +36,23 @@ const DashboardContent = ({ isLoading }) => {
           </Grid>
           {/* Stockt status */}
           <Grid item xs={12} lg={6} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
-   <LeadBySource/>
+          <HotAndColdLeads/>
      
           </Grid>
           {/* Vendor Contacs */}
           <Grid item xs={12} lg={6} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
-          <HotAndColdLeads/>
-  
+       
+          <LeadBySource/>
           </Grid>
           {/* Low stock items */}
           <Grid item xs={12} lg={6} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
-          <RecentActivity/>
+          <FollowUpCalender />
+      
           </Grid>
           {/* Frequently Issued Items */}
           <Grid item xs={12} lg={8} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
-         
-          <FollowUpCalender />
+        
+          <RecentActivity/>
           </Grid>
           {/* Help & support */}
           <Grid item xs={12} lg={4} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
@@ -59,6 +60,7 @@ const DashboardContent = ({ isLoading }) => {
             <AgentLeaderBoard/>
           </Grid>
           <Grid item xs={12} lg={8} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
+
           <LeadInProcess />
           </Grid>
           {/* Help & support */}
