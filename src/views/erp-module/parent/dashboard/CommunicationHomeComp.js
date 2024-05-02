@@ -7,9 +7,8 @@ import AlignItemsList from 'views/erp-module/parent/parent-sidebar/communication
 // import { commonStyles } from 'views/sidebar-menus/communication-message/Contact-list';
 // import { useNavigate } from 'react-router';
 // import { HeadingCss , boxHeight , subTitle , subtitle2} from './dashboard-css/CommonCss';
-import MainCard from 'ui-component/cards/MainCard';
-import { HeadingCss , boxHeight} from 'views/common-section/dashboard-css/CommonCss';
-import { Grid , Typography , useMediaQuery} from '@mui/material';
+import { HeadingCss } from 'views/common-section/dashboard-css/CommonCss';
+import { Grid , Typography ,Paper} from '@mui/material';
 // import {
 //   useMediaQuery , 
 //   List ,
@@ -28,64 +27,42 @@ import { Grid , Typography , useMediaQuery} from '@mui/material';
 
 
 const CommunicationHomeComp = () => {
-  const isMobile = useMediaQuery('(max-width: 767px)');
+  // const isMobile = useMediaQuery('(max-width: 767px)');
 // const contactListToShow = 4
 // const navigate = useNavigate();
 
   
 
   
-  return (
-    <>
-      <MainCard  sx={{ fontSize: '22px', fontWeight: 'bold' , paddingLeft: isMobile ? '10px' : 'auto' }} style={boxHeight} className='scrollbar'>
-        <Grid item>
-            <Typography variant="h2" style={HeadingCss}>
-                    communication
-              </Typography>
-        </Grid>
-
-        <AlignItemsList communication_wrapper_style={{paddingLeft:0,paddingRight:0}}/>
-
-      {/* <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
-        {contactData.map((contact, index) => (
-          <React.Fragment key={index}>
-            <ListItem sx={{borderBottom:'1px solid #80808024' , paddingLeft: isMobile ? '0px' : 'auto' }}>
-              <ListItemAvatar>
-                <Avatar src="/static/images/avatar/1.jpg" sx={{ width: 50, height: 50 }} />
-              </ListItemAvatar>
-              <ListItemText sx={{ paddingLeft: '10px' }}>
-                <Typography variant="h4" style={subTitle}>{contact.name}</Typography>
-                <React.Fragment>
-                  <Typography
-                    sx={{ display: 'inline' }}
-                    component="span"
-                    variant="subtitle2"
-                   style={subtitle2}
-                  >
-
-                    {contact.role}
-                  </Typography>
-                </React.Fragment>
-              </ListItemText>
-              <ListItemDecorator sx={{cursor:'pointer'}}>
-                <Badge badgeContent={4} color="primary">
-                  <Box sx={{ ...commonStyles, borderColor: 'primary.main'  }} onClick={()=>navigate('/communication/inbox')}>
-                    <MailOutlinedIcon color="primary" fontSize="small" />
-                  </Box>
-                </Badge>
-              </ListItemDecorator>
-            </ListItem>
-          </React.Fragment>
-        ))}
-
-
-      </List> */}
-    </MainCard> 
-
-
- 
-    </>
-  );
+return (
+  <Paper
+  sx={{
+    display: 'flex',
+    flexDirection: 'column',
+    borderRadius: '12px',
+    border: '1px solid rgba(128, 128, 128, 0.25)',
+    boxShadow: '4px 4px 9px 2px #ddddddc2',
+    marginBottom: '20px', // Add some bottom margin for spacing
+  }}
+>
+<Grid
+        sx={{
+            padding: '24px 24px 0 24px',
+            background: '#f9f9fb',
+            borderBottom: '1px solid rgba(128, 128, 128, 0.25)',
+            borderRadius: '12px 12px 0px 0',
+        }}
+      >
+      <Typography variant="h2" sx={HeadingCss}>
+        communication
+      </Typography>
+    </Grid>
+    <Grid sx={{ padding: '24px', height: '470px',overflowY:"auto" }}>
+      {/* Assuming AlignItemsList is a custom component */}
+      <AlignItemsList communication_wrapper_style={{ paddingLeft: 0, paddingRight: 0 }} />
+    </Grid>
+  </Paper>
+);
 };
 
 export default CommunicationHomeComp;

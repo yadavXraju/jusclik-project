@@ -5,7 +5,7 @@ import CreateIcon from '@mui/icons-material/Create';
 import { useNavigate } from 'react-router';
 import { HeadingCss, subTitle, subtitle2 } from 'views/common-section/dashboard-css/CommonCss';
 import Checkbox from '@mui/material/Checkbox';
-import Attcgment from 'views/erp-module/parent/parent-sidebar/assignments/Attachment';
+import Attachment from 'views/erp-module/parent/parent-sidebar/assignments/Attachment';
 import AttachmentIcon from '@mui/icons-material/Attachment';
 import { commonStyles } from 'views/erp-module/parent/parent-sidebar/communication-message/Contact-list';
 import { boxHeight } from 'views/common-section/dashboard-css/CommonCss';
@@ -76,16 +76,22 @@ const AssignmentsHomeComp = () => {
   const sortedData = [...data].sort((a, b) => new Date(b.date) - new Date(a.date));
 
   return (
-    <Grid >
-      <Grid item component={Paper} lg={12} md={12} sm={12} xs={12} sx={{ p: 3, display: 'flex', flexDirection: 'column', gap: '24px' , border:'1px solid #80808026' }}
-      style={boxHeight} className='scrollbar' >
+    < Paper>
+     <Grid
+        sx={{
+            padding: '24px 24px 0 24px',
+            background: '#f9f9fb',
+            borderBottom: '1px solid rgba(128, 128, 128, 0.25)',
+            borderRadius: '12px 12px 0px 0',
+        }}
+      >
         <Typography variant='h2' sx={{ textAlign: 'left', }} style={HeadingCss}>
           recent homework & assignments
         </Typography>
-
-             {/* getting data and slicing */}
+</Grid>
+<Grid  sx={{ padding: '24px' }} style={boxHeight}>             {/* getting data and slicing */}
             {sortedData.slice(0 , AssignmentToShow).map((item) => (
-              <Grid item container key={item.id} lg={12} sx={{ gap: '8px', borderBottom:'1px solid #80808024', paddingBottom:'10px'}}>
+              <Grid item container key={item.id} lg={12} sx={{ gap: '8px', borderBottom:'1px solid #80808024', paddingBottom:'10px',paddingTop:'24px'}}>
                 {/* left */}
                   <Grid container item lg={7} md={7} sx={{gap:'8px'}}>
                       <Grid item  sx={{ display: 'flex', flex: '0 0 10%' , gap: '3px', alignItems:'center' }}   className="notchecked" >
@@ -189,16 +195,18 @@ const AssignmentsHomeComp = () => {
               </Grid>         
             ))}
 
-            <Box sx={{px:3, textAlign:'right'}}>
+            <Box sx={{px:3, textAlign:'right',paddingTop:'16px'}}>
                 <Button variant="contained" onClick={() => navigate('/parent/assignments')}>
                   View More
                 </Button>
             </Box>
 
+</Grid>
+ 
 
-      </Grid>
-        <Attcgment isOpen={openDialog} onClose={handleCloseDialog} snackOpen={snackbarOpen} snackBarClose={handleSnackbarClose} />
-    </Grid>
+        <Attachment isOpen={openDialog} onClose={handleCloseDialog} snackOpen={snackbarOpen} snackBarClose={handleSnackbarClose} />
+    
+    </Paper>
   );
 }
 
