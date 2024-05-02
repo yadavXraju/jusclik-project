@@ -4,10 +4,10 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
-const SelectList = ({ label, options, value, onChange, name="", size="",rootStyle={},customStyle={}, disabled=null , className=''}) => {
+const SelectList = ({ label, options, value, onChange, name="", size="",rootStyle={},customStyle={}, disabled=null , className='',error}) => {
     
   return (
-      <FormControl sx={{width:'100%',...rootStyle}}>
+      <FormControl sx={{width:'100%',...rootStyle}} error={error}>
         <InputLabel id="select-label">{label}</InputLabel>
         <Select
           labelId="select-label"
@@ -19,6 +19,8 @@ const SelectList = ({ label, options, value, onChange, name="", size="",rootStyl
           size={size}
           disabled={disabled}
           className={className}
+         
+          
         >
           {options&&options.map((option) => (
             <MenuItem key={option.value} value={option.value}>
