@@ -16,16 +16,51 @@ import {
 } from '@mui/material';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import {updateLeadRegistrationAndVerification,updateApplicationActivities,updateEmailActivities,updateSmsActivities,updateWhatsappActivities,updateOtherApplicantActivities,updateTelephonyActivities} from '../../../../../../../store/crm/settings/leadScoreSlice'
-const dispatchers=[updateLeadRegistrationAndVerification,updateApplicationActivities,updateEmailActivities,updateSmsActivities,updateWhatsappActivities,updateOtherApplicantActivities,updateTelephonyActivities]
+import {
+  updateLeadRegistrationAndVerification,
+  updateApplicationActivities,
+  updateEmailActivities,
+  updateSmsActivities,
+  updateWhatsappActivities,
+  updateOtherApplicantActivities,
+  updateTelephonyActivities
+} from '../../../../../../../store/crm/settings/leadScoreSlice';
+import { useEffect } from 'react';
+const dispatchers = [
+  updateLeadRegistrationAndVerification,
+  updateApplicationActivities,
+  updateEmailActivities,
+  updateSmsActivities,
+  updateWhatsappActivities,
+  updateOtherApplicantActivities,
+  updateTelephonyActivities
+];
 
 export default function LeadScore() {
   const leadScore = useSelector((state) => state.leadScoreSlice);
-const leadScoreKeys=Object.keys(leadScore)
+  const leadScoreKeys = Object.keys(leadScore);
   const [value, setValue] = useState(0);
+  const [selectedTab, setSelectedTab] = useState(leadScoreKeys[0]);
+  const [tabContent, setTabContent] = useState([]);
   const handleChange = (event, newValue) => {
     setValue(newValue);
+    setSelectedTab(leadScoreKeys[newValue]);
   };
+  const generateTabs = () => {
+    let newContent = [];
+
+    Object.keys(leadScore[selectedTab].steps).map((stepName, index) => {
+      const stepData = leadScore[selectedTab].steps[stepName];
+      newContent.push(
+        <TabPanel key={index} value={value} index={value} stepData={stepData} stepName={stepName} selectedTab={selectedTab} />
+      );
+    });
+    setTabContent(newContent);
+  };
+
+  useEffect(() => {
+    generateTabs();
+  }, [value, selectedTab]);
   return (
     <Paper elevation={2}>
       {/* tba heading */}
@@ -35,76 +70,81 @@ const leadScoreKeys=Object.keys(leadScore)
         ))}
       </Tabs>
       <>
-      <Typography sx={{padding:'1rem'}} variant='h4'>{leadScore[leadScoreKeys[value]].description}</Typography>
-      {Object.keys(leadScore).map((tabName) => {
-        return (
-          <>
-          {Object.keys(leadScore[tabName].steps).map((stepName, index) => {
-            const stepData = leadScore[tabName].steps[stepName];
-            return <TabPanel key={index} value={value} index={index} stepData={stepData} stepName={stepName}  />
-          })}
-          </>
-      )
-    })}
-    </>
+        <Typography sx={{ padding: '1rem' }} variant="h4">
+          {leadScore[leadScoreKeys[value]].description}
+        </Typography>
+        {tabContent}
+      </>
     </Paper>
   );
 }
 
 function TabPanel(props) {
-  const { children, value, index, stepData,stepName, description, ...other } = props;
-  const dispatch=useDispatch()
+  const { children, value, index, stepData, stepName, selectedTab, description, ...other } = props;
+  const dispatch = useDispatch();
+  const leadScore = useSelector((state) => state.leadScoreSlice);
+  const selectValue = leadScore[selectedTab].steps[stepName].value;
+  const radio = leadScore[selectedTab].steps[stepName].radio;
 
   // Function to handle the change in select box
-  const handleSelectChange = (e) => {      
+  const handleSelectChange = (e) => {
     // Your logic here to handle the change in select box value
-    console.log(stepName);
-    dispatch(dispatchers[value]({key:'value',subKey:stepName,value:e.target.value}))
+    dispatch(dispatchers[value]({ key: 'value', subKey: stepName, value: e.target.value }));
+  };
+  const handleRadioChange = (e) => {
+    dispatch(dispatchers[value]({ key: 'radio', subKey: stepName, value: e.target.value }));
   };
 
   return (
     <Box component="div" role="tabpanel" hidden={value !== index} id={`tabpanel-${index}`} aria-labelledby={`tab-${index}`} {...other}>
-      <Box p={3}>
-        <Typography></Typography>
-        <List>
-          <ListItem>
-            <ListItemText primary={stepData.title} sx={{ width: '30%' }} />
-            {
-              <Box sx={{ display: 'flex', width: '100%' }}>
-                {(stepData.value == 0 || stepData.value) && (
-                  <Select
-                    // labelId={`select-label-${stepIndex}`}
-                    // id={`select-${stepIndex}`}
-                    value={stepData?.value} // Initial value, change this according to your logic
-                    onChange={handleSelectChange} // Call handleSelectChange on select change
-                    style={{ margin: '0 1rem', width: '20%', justifyContent: 'start' }} // Adjust style as needed
-                  >
-                    {[...Array(31).keys()].map((value) => (
-                      <MenuItem key={value} value={value - 15}>
-                        {value - 15}
-                      </MenuItem>
-                    ))}
-                  </Select>
-                )}
-                <RadioGroup row defaultValue="A" sx={{ justifyContent: 'center', width: '100%' }}>
-                  {(stepData?.everytime == false || stepData?.everytime == true) && (
-                    <FormControlLabel value="A" control={<Radio />} label="Everytime" sx={{ margin: '0 0.5rem', width: '30%' }} fullWidth />
+      {value === index && (
+        <Box p={3}>
+          <Typography></Typography>
+          <List>
+            <ListItem>
+              <ListItemText primary={stepData.title} sx={{ width: '30%' }} />
+              {
+                <Box sx={{ display: 'flex', width: '100%' }}>
+                  {(stepData.value == 0 || stepData.value) && (
+                    <Select
+                      // labelId={`select-label-${stepIndex}`}
+                      // id={`select-${stepIndex}`}
+                      value={selectValue && selectValue} // Initial value, change this according to your logic
+                      onChange={handleSelectChange} // Call handleSelectChange on select change
+                      style={{ margin: '0 1rem', width: '20%', justifyContent: 'start' }} // Adjust style as needed
+                    >
+                      {[...Array(31).keys()].map((value) => (
+                        <MenuItem key={value} value={value - 15}>
+                          {value - 15}
+                        </MenuItem>
+                      ))}
+                    </Select>
                   )}
-                  {(stepData?.firstTimeOnly == false || stepData?.firstTimeOnly == true) && (
-                    <FormControlLabel
-                      value="B"
-                      control={<Radio />}
-                      label="First Time Only"
-                      sx={{ margin: '0 0.5rem', width: '30%' }}
-                      fullWidth
-                    />
+                  {radio && (
+                    <RadioGroup row defaultValue={radio} sx={{ justifyContent: 'center', width: '100%' }} onChange={handleRadioChange}>
+                      <FormControlLabel
+                        value="everytime"
+                        control={<Radio />}
+                        label="Everytime"
+                        sx={{ margin: '0 0.5rem', width: '30%' }}
+                        fullWidth
+                      />
+
+                      <FormControlLabel
+                        value="firstTimeOnly"
+                        control={<Radio />}
+                        label="First Time Only"
+                        sx={{ margin: '0 0.5rem', width: '30%' }}
+                        fullWidth
+                      />
+                    </RadioGroup>
                   )}
-                </RadioGroup>
-              </Box>
-            }
-          </ListItem>
-        </List>
-      </Box>
+                </Box>
+              }
+            </ListItem>
+          </List>
+        </Box>
+      )}
     </Box>
   );
 }
