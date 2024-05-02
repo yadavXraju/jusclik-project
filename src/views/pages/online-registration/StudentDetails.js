@@ -1,20 +1,49 @@
 import React from 'react';
 import { Grid, Typography, Box, Paper, TextField, Button } from '@mui/material';
-import { useSelector } from 'react-redux'; // Import useSelector hook
-// import Tabs from '@mui/material/Tabs';
-// import Tab from '@mui/material/Tab';
-
-// import CloudLogo from '../../../assets/images/Untitled-2.png';
+import { useSelector } from 'react-redux'; 
 import Divider from '@mui/material/Divider';
 import Dropdown from 'views/common-section/ParamSelectList';
+import { useState } from 'react';
 
-
-function StudentDetails() {
-  // const [TabChange, setTabChange] = React.useState(0);
-
-  // const handleChange = (event, newValue) => {
-  //   setTabChange(newValue);
-  // };
+function StudentDetails({ handleClick }) {
+  const [allStudentDetails, setAllStudentDetails] = useState({
+    gender: '',
+    id_number: '',
+    email_address: '',
+    city: '',
+    enrolled_since: '',
+    test: '',
+    primary_contact: '',
+    preferred_mobile: '',
+    house_no: '',
+    pincode: '',
+    board: '',
+    nationality: '',
+    child_photo_id: '',
+    blood_group: '',
+    current_address: '',
+    last_school: '',
+    school_distance: ''
+  });
+  const [errors, setErrors] = useState({
+    gender: false,
+    id_number: false,
+    email_address: false,
+    city: false,
+    enrolled_since: false,
+    test: false,
+    primary_contact: false,
+    preferred_mobile: false,
+    house_no: false,
+    pincode: false,
+    board: false,
+    nationality: false,
+    child_photo_id: false,
+    blood_group: false,
+    current_address: false,
+    last_school: false,
+    school_distance: false
+  });
 
   const allDataform = useSelector((state) => state.allDataform);
 
@@ -30,8 +59,8 @@ function StudentDetails() {
   //
 
   const ChildIdProof = [
-    { value: 'aadhar_no', label: 'Aadhar No' },
-    { value: 'passport_no', label: 'Passport Number' }
+    { value: 'aadhar_card', label: 'Aadhar Card' },
+    { value: 'passport', label: 'Passport' }
   ];
 
   const BloodGroup = [
@@ -92,51 +121,122 @@ function StudentDetails() {
     { value: '15-30 km', label: '15-30 Km' }
   ];
 
-  console.log(allDataform.name)
+  const ChangeHandlerStudentDetails = (e) => {
+    setAllStudentDetails({ ...allStudentDetails, [e.target.name]: e.target.value });
+  };
+
+  //Error Validation
+
+  const validateFields = (fields) => {
+    const newErrors = {};
+    Object.keys(fields).forEach((key) => {
+      newErrors[key] = !fields[key].trim();
+    });
+    return newErrors;
+  };
+
+  const handleSubmit = (tab) => {
+    const newErrors = validateFields(allStudentDetails);
+    setErrors(newErrors);
+
+    if (!Object.values(newErrors).some((error) => error)) {
+      handleClick(tab);
+    }
+  };
+  //Error Handling  End
+
+  // Error Handling preferred mobile
+  const mobileHandler = (e) => {
+    const { name, value } = e.target;
+
+    if (name === 'preferred_mobile') {
+      // Check if the value contains non-numeric characters or commas
+      if (!/^[0-9,]*$/.test(value)) {
+        // If non-numeric characters or commas are found, return without updating the state
+        return;
+      }
+    }
+    // Update the state with the value
+    setAllStudentDetails({ ...allStudentDetails, [name]: value });
+  };
+
+  const PincodeHandler = (e) => {
+    const { name, value } = e.target;
+
+    if (name === 'pincode') {
+      // Check if the value contains non-numeric characters or commas
+      if (!/^[0-9]*$/.test(value)) {
+        // If non-numeric characters or commas are found, return without updating the state
+        return;
+      }
+    }
+    // Update the state with the value
+    setAllStudentDetails({ ...allStudentDetails, [name]: value });
+  };
+
   return (
     <>
       <Grid item xs={10} sx={{ paddingTop: '0 !important', paddingRight: '4rem' }}>
         <Paper>
-
-          
           <Box sx={{ padding: '2rem' }}>
             <Typography variant="h3" sx={{ fontWeight: 'bold', paddingBottom: '1rem' }}>
               {' '}
               STEP 1 : STUDENT&apos;S DETAILS{' '}
             </Typography>
 
-            <Box sx={{  paddingBottom: '1.5rem' }}>
-            <Button variant="contained" sx={{ height: '38px', width: '144px' }}>
-              Back to Login
-            </Button>
-          </Box>
+            <Box sx={{ paddingBottom: '1.5rem' }}>
+              <Button variant="contained" sx={{ height: '38px', width: '144px' }}>
+                Back to Login
+              </Button>
+            </Box>
             <Divider />
           </Box>
 
           <Grid sx={{ padding: '1rem 4rem' }} container spacing={4}>
             <Grid item xs={4}>
-              <TextField label="Student`s Name" variant="outlined" fullWidth value={allDataform.name}  inputProps={{ style: { backgroundColor: '#ffffff' } }} />
+              <TextField
+                label="Student`s Name"
+                variant="outlined"
+                fullWidth
+                value={allDataform?.student_name}
+                disabled
+                inputProps={{ style: { backgroundColor: '#ffffff' } }}
+              />
 
               <Dropdown
                 label="Gender"
                 options={SelectGender}
-                name=""
+                name="gender"
+                required
+                error={errors.gender}
+                onChange={ChangeHandlerStudentDetails}
+                value={allStudentDetails.gender}
                 rootStyle={{ marginTop: '20px' }}
                 customStyle={{ '& > div': { background: '#ffffff' } }}
               />
 
               <TextField
                 sx={{ marginTop: '25px' }}
-                label="Aadhar Card Number"
+                label={allStudentDetails.child_photo_id === 'passport' ? 'Enter Passport Number' : 'Enter Aadhar Card Number'}
                 variant="outlined"
+                required
+                name="id_number"
+                onChange={ChangeHandlerStudentDetails}
+                value={allStudentDetails.id_number}
                 fullWidth
+                error={errors.id_number} // Set error prop based on the error state
                 inputProps={{ style: { backgroundColor: '#ffffff' } }}
               />
 
               <TextField
                 sx={{ marginTop: '25px' }}
-                label="Email Address"
+                label="Email Address (you can add up to 2 numbers separated by commas)"
                 variant="outlined"
+                required
+                error={errors.email_address}
+                name="email_address"
+                onChange={ChangeHandlerStudentDetails}
+                value={allStudentDetails.email_address}
                 fullWidth
                 inputProps={{ style: { backgroundColor: '#ffffff' } }}
               />
@@ -144,9 +244,13 @@ function StudentDetails() {
               <TextField
                 id="outlined-basic"
                 required
+                error={errors.city}
                 sx={{ marginTop: '25px' }}
                 label="City"
                 variant="outlined"
+                name="city"
+                onChange={ChangeHandlerStudentDetails}
+                value={allStudentDetails.city}
                 fullWidth
                 inputProps={{ style: { backgroundColor: '#ffffff' } }}
               />
@@ -154,7 +258,11 @@ function StudentDetails() {
               <Dropdown
                 label="Enrolled Since"
                 options={EnrolledSince}
-                name=""
+                name="enrolled_since"
+                required
+                error={errors.enrolled_since}
+                onChange={ChangeHandlerStudentDetails}
+                value={allStudentDetails.enrolled_since}
                 rootStyle={{ marginTop: '20px' }}
                 customStyle={{ '& > div': { background: '#ffffff' } }}
               />
@@ -163,6 +271,11 @@ function StudentDetails() {
                 id="outlined-basic"
                 sx={{ marginTop: '25px' }}
                 label="Test"
+                required
+                error={errors.test}
+                name="test"
+                onChange={ChangeHandlerStudentDetails}
+                value={allStudentDetails.test}
                 variant="outlined"
                 fullWidth
                 inputProps={{ style: { backgroundColor: '#ffffff' } }}
@@ -174,14 +287,20 @@ function StudentDetails() {
                 id="outlined-basic"
                 label="Date of Birth (dd-mm-yyyy)"
                 variant="outlined"
+                disabled
                 fullWidth
-                inputProps={{ style: { backgroundColor: '#ffffff' } }}
+                value={allDataform?.dob}
+                inputProps={{ style: { backgroundColor: '#ffffff', color: 'black !important' } }}
               />
 
               <Dropdown
-                label="Primary Contact"
+                label="Primary Contact Person"
                 options={PrimaryContact}
-                name=""
+                required
+                error={errors.primary_contact}
+                name="primary_contact"
+                onChange={ChangeHandlerStudentDetails}
+                value={allStudentDetails.primary_contact}
                 rootStyle={{ marginTop: '20px' }}
                 customStyle={{ '& > div': { background: '#ffffff' } }}
               />
@@ -189,6 +308,11 @@ function StudentDetails() {
               <TextField
                 id="outlined-basic"
                 label="Preferred Mobile (you can add up to 2 numbers separated by commas)"
+                name="preferred_mobile"
+                onChange={mobileHandler}
+                value={allStudentDetails.preferred_mobile}
+                required
+                error={errors.preferred_mobile}
                 variant="outlined"
                 sx={{ marginTop: '25px' }}
                 fullWidth
@@ -198,6 +322,11 @@ function StudentDetails() {
               <TextField
                 sx={{ marginTop: '25px' }}
                 label="Flat No / House No "
+                name="house_no"
+                required
+                error={errors.house_no}
+                onChange={ChangeHandlerStudentDetails}
+                value={allStudentDetails.house_no}
                 variant="outlined"
                 fullWidth
                 inputProps={{ style: { backgroundColor: '#ffffff' } }}
@@ -207,6 +336,11 @@ function StudentDetails() {
                 id="outlined-basic"
                 sx={{ marginTop: '25px' }}
                 label="Pincode"
+                required
+                error={errors.pincode}
+                name="pincode"
+                onChange={PincodeHandler}
+                value={allStudentDetails.pincode}
                 variant="outlined"
                 fullWidth
                 inputProps={{ style: { backgroundColor: '#ffffff' } }}
@@ -214,8 +348,12 @@ function StudentDetails() {
 
               <Dropdown
                 label="Board"
+                required
+                error={errors.board}
                 options={SelectBoard}
-                name=""
+                name="board"
+                onChange={ChangeHandlerStudentDetails}
+                value={allStudentDetails.board}
                 rootStyle={{ marginTop: '20px' }}
                 customStyle={{ '& > div': { background: '#ffffff' } }}
               />
@@ -225,6 +363,11 @@ function StudentDetails() {
               <TextField
                 id="outlined-basic"
                 label="Nationality"
+                required
+                error={errors.nationality}
+                name="nationality"
+                onChange={ChangeHandlerStudentDetails}
+                value={allStudentDetails.nationality}
                 variant="outlined"
                 fullWidth
                 inputProps={{ style: { backgroundColor: '#ffffff' } }}
@@ -233,14 +376,22 @@ function StudentDetails() {
               <Dropdown
                 label="Child Photo ID (Either Aadhar or Passport No.)"
                 options={ChildIdProof}
-                name=""
+                required
+                error={errors.child_photo_id}
+                name="child_photo_id"
+                onChange={ChangeHandlerStudentDetails}
+                value={allStudentDetails.child_photo_id}
                 rootStyle={{ marginTop: '20px' }}
                 customStyle={{ '& > div': { background: '#ffffff' } }}
               />
               <Dropdown
                 label="Blood Group"
                 options={BloodGroup}
-                name=""
+                required
+                error={errors.blood_group}
+                name="blood_group"
+                onChange={ChangeHandlerStudentDetails}
+                value={allStudentDetails.blood_group}
                 rootStyle={{ marginTop: '20px' }}
                 customStyle={{ '& > div': { background: '#ffffff' } }}
               />
@@ -248,6 +399,11 @@ function StudentDetails() {
               <TextField
                 id="outlined-basic"
                 label="Current Address"
+                required
+                error={errors.current_address}
+                name="current_address"
+                onChange={ChangeHandlerStudentDetails}
+                value={allStudentDetails.current_address}
                 variant="outlined"
                 sx={{ marginTop: '25px' }}
                 fullWidth
@@ -258,6 +414,11 @@ function StudentDetails() {
                 id="outlined-basic"
                 label="Name of the school last enrolled in"
                 variant="outlined"
+                name="last_school"
+                required
+                error={errors.last_school}
+                onChange={ChangeHandlerStudentDetails}
+                value={allStudentDetails.last_school}
                 sx={{ marginTop: '25px' }}
                 fullWidth
                 inputProps={{ style: { backgroundColor: '#ffffff' } }}
@@ -266,22 +427,26 @@ function StudentDetails() {
               <Dropdown
                 label="Distance From School"
                 options={Select_School_Distance}
-                name=""
+                name="school_distance"
+                required
+                error={errors.school_distance}
+                onChange={ChangeHandlerStudentDetails}
+                value={allStudentDetails.school_distance}
                 rootStyle={{ marginTop: '20px' }}
                 customStyle={{ '& > div': { background: '#ffffff' } }}
               />
             </Grid>
           </Grid>
 
-          <Box sx={{ paddingBottom: '2rem', display: 'flex' ,paddingRight:'4.2rem'}}>
-  <Button variant="contained" sx={{ height: '38px', width: '144px', marginLeft: 'auto'  }}>
-    Save and Next
-  </Button>
-</Box>
+          <Box sx={{ paddingBottom: '2rem', display: 'flex', paddingRight: '4.2rem' }}>
+            <Button onClick={() => handleSubmit('two')} variant="contained" sx={{ height: '38px', width: '144px', marginLeft: 'auto' }}>
+              Save and Next
+            </Button>
+          </Box>
         </Paper>
       </Grid>
     </>
-  );  
+  );
 }
 
 export default StudentDetails;

@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
-import {  Divider, Grid, Typography , Button ,Box , useMediaQuery} from '@mui/material';
-import MainCard from 'ui-component/cards/MainCard';
+import {  Divider, Grid, Typography , Button ,Box , useMediaQuery,Paper} from '@mui/material';
+
 import SkeletonPopularCard from 'ui-component/cards/Skeleton/PopularCard';
-import { gridSpacing } from 'store/constant';
+
 import { HeadingCss , boxHeight, subtitle2 } from 'views/common-section/dashboard-css/CommonCss';
 import { UpdatesData } from 'views/erp-module/parent/parent-sidebar/updates/UpdatesData';
 import { useNavigate } from 'react-router';
@@ -36,19 +36,29 @@ const CircularAndNoticeHomeComp = ({ isLoading }) => {
       {isLoading ? (
         <SkeletonPopularCard /> 
       ) : (
-        <MainCard style={boxHeight} className='scrollbar'> 
+        <Paper
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        borderRadius: '12px',
+        border: '1px solid rgba(128, 128, 128, 0.25)',
+        boxShadow: '4px 4px 9px 2px #ddddddc2',
+        marginBottom: '20px', // Add some bottom margin for spacing
+      }}
+    > <Grid
+    sx={{
+        padding: '24px 24px 0 24px',
+        background: '#f9f9fb',
+        borderBottom: '1px solid rgba(128, 128, 128, 0.25)',
+        borderRadius: '12px 12px 0px 0',
+    }}
+  >
     
-            <Grid container spacing={gridSpacing}>
-              <Grid item xs={12}>
-                <Grid  alignContent="center" justifyContent="space-between">
-                  <Grid item>
                     <Typography variant="h2" style={HeadingCss}>
                       latest updates
                     </Typography>
                   </Grid>
-                </Grid>
-              </Grid>
-
+                  <Grid sx={{ padding: '24px' }} style={boxHeight}>
               {UpdatesData.slice(0,CirculatToShow).map((data) => (
                 <Grid item xs={12} key={data.id} >
                   <Grid container direction="column">
@@ -105,9 +115,8 @@ const CircularAndNoticeHomeComp = ({ isLoading }) => {
                       View More
                     </Button>
                 </Box>
-            </Grid>
-      
-        </MainCard>
+                </Grid>
+        </Paper>
       )}
     </>
   );
