@@ -110,7 +110,7 @@ const CircularAndNoticeHomeComp = ({ isLoading }) => {
                 </Grid>
               ))}
 
-                <Box sx={{ pt: 3 , marginLeft:'auto'}}>
+                <Box sx={{ pt: 3 , marginLeft:'auto' ,display:'flex', justifyContent:'end'}}>
                     <Button variant="contained" onClick={() => navigate('/parent/updates')}>
                       View More
                     </Button>

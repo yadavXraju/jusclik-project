@@ -9,6 +9,7 @@ import { useState } from 'react';
 import SignUpRegisteration from './SignUpRegisteration';
 import OtherDetails from './OtherDetails';
 import SiblingDetails from './SiblingDetails';
+import PermanentAddress from './PermanentAddress';
 
 const OnlineRegistration = () => {
   //  Tab Changer for Details Form Stepper
@@ -19,29 +20,38 @@ const OnlineRegistration = () => {
     setShowSignUp(false);
   };
 
+  const handleClick = (tab) => {
+    setTabChange(tab);
+  };
+
+  const backToLogin =()=>{
+    setShowSignUp(true)
+  }
+
   // Render the appropriate component based on TabChange state
   const renderComponent = () => {
     switch (TabChange) {
       case 'one':
-        return <StudentDetails handleClick={handleClick} />;
+        return <StudentDetails handleClick={handleClick}  backToLogin={backToLogin} />;
       case 'two':
         return <OtherDetails handleClick={handleClick} />;
         case 'three':
-          return <SiblingDetails/>;  
+          return <SiblingDetails handleClick={handleClick}/>;  
+          case 'five':
+            return <PermanentAddress/>;    
           
 
     }
   };
 
+  
+  // Onclick function to used on Save and Next Button in Student details
+
+
+
   // Use to handle Tab
   const handleChange = (event, newValue) => {
     setTabChange(newValue);
-  };
-
-  // Onclick function to used on Save and Next Button in Student details
-
-  const handleClick = (tab) => {
-    setTabChange(tab);
   };
 
   //  Tab Changer for Details Form Stepper End
@@ -81,9 +91,8 @@ const OnlineRegistration = () => {
                       />
                       <Tab value="two" sx={{ fontSize: '14px', fontWeight: 'bold', alignItems: 'start' }} label="2. OTHER DETAILS" />
                       <Tab value="three" sx={{ fontSize: '14px', fontWeight: 'bold', alignItems: 'start' }} label="3. SIBLING DETAILS (IF ANY)" />
-                      <Tab sx={{ alignItems: 'start' }} label="Item Three" />
-                      <Tab label="Item Two" />
-                      <Tab label="Item Three" />
+                      <Tab disabled value="four" sx={{ fontSize: '14px', fontWeight: 'bold', alignItems: 'start' }} label="4. EMPLOYEE DETAILS" />
+                      <Tab  value="five" sx={{ fontSize: '14px', fontWeight: 'bold', alignItems: 'start' }} label="5. PERMANENT ADDRESS" />
                     </Tabs>
                   </Box>
                 </Grid>

@@ -12,7 +12,8 @@ import {
   RadioGroup,
   FormControlLabel,
   Radio,
-  Paper
+  Paper,
+  Grid
 } from '@mui/material';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
@@ -99,51 +100,61 @@ function TabPanel(props) {
     <Box component="div" role="tabpanel" hidden={value !== index} id={`tabpanel-${index}`} aria-labelledby={`tab-${index}`} {...other}>
       {value === index && (
         <Box p={3}>
-          <Typography></Typography>
-          <List>
-            <ListItem>
-              <ListItemText primary={stepData.title} sx={{ width: '30%' }} />
-              {
-                <Box sx={{ display: 'flex', width: '100%' }}>
-                  {(stepData.value == 0 || stepData.value) && (
-                    <Select
-                      // labelId={`select-label-${stepIndex}`}
-                      // id={`select-${stepIndex}`}
-                      value={selectValue && selectValue} // Initial value, change this according to your logic
-                      onChange={handleSelectChange} // Call handleSelectChange on select change
-                      style={{ margin: '0 1rem', width: '20%', justifyContent: 'start' }} // Adjust style as needed
-                    >
-                      {[...Array(31).keys()].map((value) => (
-                        <MenuItem key={value} value={value - 15}>
-                          {value - 15}
-                        </MenuItem>
-                      ))}
-                    </Select>
-                  )}
-                  {radio && (
-                    <RadioGroup row defaultValue={radio} sx={{ justifyContent: 'center', width: '100%' }} onChange={handleRadioChange}>
-                      <FormControlLabel
-                        value="everytime"
-                        control={<Radio />}
-                        label="Everytime"
-                        sx={{ margin: '0 0.5rem', width: '30%' }}
-                        fullWidth
-                      />
+            <List>
+              <ListItem>
+              <Grid container sx={{width:'100%'}}>
+                <Grid item xs={3}>
+                <ListItemText primary={stepData.title} sx={{ width: '100%' }} />
+                </Grid>
+                {
+                    <Grid item xs={9}>
+                  <Box sx={{ display: 'flex', width: '100%' }}>
+                      <Grid xs={6} >
 
-                      <FormControlLabel
-                        value="firstTimeOnly"
-                        control={<Radio />}
-                        label="First Time Only"
-                        sx={{ margin: '0 0.5rem', width: '30%' }}
-                        fullWidth
-                      />
-                    </RadioGroup>
-                  )}
-                </Box>
-              }
-            </ListItem>
-          </List>
-        </Box>
+                      {(stepData.value == 0 || stepData.value) && (
+                        <Select
+                        // labelId={`select-label-${stepIndex}`}
+                        // id={`select-${stepIndex}`}
+                        value={selectValue && selectValue} // Initial value, change this according to your logic
+                        onChange={handleSelectChange} // Call handleSelectChange on select change
+                          style={{ margin: '0', width:'50%', justifyContent: 'start' }} // Adjust style as needed
+                          >
+                          {[...Array(31).keys()].map((value) => (
+                            <MenuItem key={value} value={value - 15}>
+                              {value - 15}
+                            </MenuItem>
+                          ))}
+                        </Select>
+                      )}
+                      </Grid>
+                    {radio && (
+                      <Grid container item xs={6}>
+                        <RadioGroup row defaultValue={radio} sx={{ justifyContent: 'center', width: '100%' }} onChange={handleRadioChange}>
+                          <FormControlLabel
+                            value="everytime"
+                            control={<Radio />}
+                            label="Everytime"
+                            sx={{ margin: '0 0.5rem', width: '50%',flex:'1' }}
+                            fullWidth
+                          />
+
+                          <FormControlLabel
+                            value="firstTimeOnly"
+                            control={<Radio />}
+                            label="First Time Only"
+                            sx={{ margin: '0 0.5rem', width: '50%',flex:'1' }}
+                            fullWidth
+                            />
+                        </RadioGroup>
+                      </Grid>
+                    )}
+                  </Box>
+                    </Grid>
+                }
+                </Grid>
+              </ListItem>
+            </List>
+          </Box>
       )}
     </Box>
   );

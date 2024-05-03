@@ -4,7 +4,7 @@ import Divider from '@mui/material/Divider';
 import Dropdown from 'views/common-section/ParamSelectList';
 import { useState } from 'react';
 
-function SiblingDetails() {
+function SiblingDetails({handleClick}) {
   const [Formdata, SetFormdata] = useState({
     name: '',
     class: '',
@@ -80,7 +80,10 @@ function SiblingDetails() {
     { value: 'yes', label: 'Yes' }
   ];
 
-
+ const handleSubmit= (tab)=> {
+  
+  handleClick(tab);
+ }
   
 
   return (
@@ -190,7 +193,7 @@ function SiblingDetails() {
           </Grid>
 
           <Box sx={{ paddingBottom: '2rem', display: 'flex', paddingRight: '4.2rem', paddingTop: '2rem' }}>
-            <Button onClick={() => handleSubmit('three')} variant="contained" sx={{ height: '38px', width: '144px', marginLeft: 'auto' }}>
+            <Button onClick={() => handleSubmit('five')} variant="contained" sx={{ height: '38px', width: '144px', marginLeft: 'auto' }}>
               Save and Next
             </Button>
           </Box>
