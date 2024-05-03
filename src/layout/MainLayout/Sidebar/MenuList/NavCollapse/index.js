@@ -43,6 +43,10 @@ if (menu.children) {
   });
   urlStore.children = childrenData;
 }
+
+menus.forEach(item=>{
+  console.log(item.props.item)
+})
   };
 
 
