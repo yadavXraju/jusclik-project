@@ -8,9 +8,9 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import MainCard from 'ui-component/cards/MainCard';
+// import MainCard from 'ui-component/cards/MainCard';
 import { Grid , Typography } from '@mui/material';
-import { gridSpacing } from 'store/constant';
+// import { gridSpacing } from 'store/constant';
 import { HeadingCss } from 'views/common-section/dashboard-css/CommonCss';
 import { getCurrentDate } from 'utils/timeUtils';
 
@@ -22,11 +22,26 @@ export default function TeacherTimeTable( { TeacherTimeTableDetails }) {
   return (
     <>
 
-        <MainCard>
-           <Grid container spacing={gridSpacing}>
-               <Grid item xs={12} sx={{ mb: 0, padding: '10px 40px !important', paddingTop: '24px !important' }}>
-                    <Grid alignContent="center" justifyContent="space-between" sx={{ marginBottom: '1rem' }}>
-                        <Grid sx={{ display: 'flex', justifyContent: 'space-between' }}>
+<Paper
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        borderRadius: '12px',
+        border: '1px solid rgba(128, 128, 128, 0.25)',
+        boxShadow: '4px 4px 9px 2px #ddddddc2',
+        marginBottom: '20px', // Add some bottom margin for spacing
+      }}
+    >
+           <Grid
+        sx={{
+            padding: '24px 24px 0 24px',
+            background: '#f9f9fb',
+            borderBottom: '1px solid rgba(128, 128, 128, 0.25)',
+            borderRadius: '12px 12px 0px 0',
+            display:'flex',
+            justifyContent:'space-between'
+        }}
+      >
                             <Typography variant="h2" style={HeadingCss}>
                               Time Table
                             </Typography>
@@ -35,7 +50,7 @@ export default function TeacherTimeTable( { TeacherTimeTableDetails }) {
                             {currentDate}
                             </Typography>
                         </Grid>
-                    </Grid>
+ 
 
                     <TableContainer component={Paper}>
                     <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -64,9 +79,8 @@ export default function TeacherTimeTable( { TeacherTimeTableDetails }) {
                         </TableBody>
                     </Table>
                     </TableContainer>
-                </Grid>
-            </Grid>
-        </MainCard>
+             
+        </Paper>
     </>
   );
 }

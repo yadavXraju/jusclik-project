@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import MainCard from 'ui-component/cards/MainCard';
-import { Typography, Grid, Box, Button , Divider } from '@mui/material';
+// import MainCard from 'ui-component/cards/MainCard';
+import { Typography, Grid, Box, Button , Divider ,Paper} from '@mui/material';
 // import {  } from 'views/dashboard/Default/dashboard-css/CommonCss';
-import { gridSpacing } from 'store/constant';
+// import { gridSpacing } from 'store/constant';
 import { subTitle , boxHeight, HeadingCss } from 'views/common-section/dashboard-css/CommonCss';
 import AttachmentOutlinedIcon from '@mui/icons-material/AttachmentOutlined';
 import { useNavigate } from 'react-router';
@@ -28,18 +28,30 @@ const FavPages = ( { FavPagesList }) => {
   const topVisitedURLs = sortedURLs.filter(item => FavPagesList.find(page => page.url === item.url)).slice(0, 6);
 
   return (
-    <MainCard style={boxHeight} className='scrollbar'>
-      <Grid container spacing={gridSpacing}>
-        <Grid item xs={12} sx={{ mb: 3 }}>
-          <Grid alignContent="center" justifyContent="space-between" >
-            <Grid item>
+    <Paper
+    sx={{
+      display: 'flex',
+      flexDirection: 'column',
+      borderRadius: '12px',
+      border: '1px solid rgba(128, 128, 128, 0.25)',
+      boxShadow: '4px 4px 9px 2px #ddddddc2',
+      marginBottom: '20px', // Add some bottom margin for spacing
+    }}
+  >
+     <Grid
+        sx={{
+            padding: '24px 24px 0 24px',
+            background: '#f9f9fb',
+            borderBottom: '1px solid rgba(128, 128, 128, 0.25)',
+            borderRadius: '12px 12px 0px 0',
+        }}
+      >
               <Typography variant="h2" style={HeadingCss}>
                 Most Visited Pages
               </Typography>
             </Grid>
-          </Grid>
-        </Grid>
-
+       
+            <Grid sx={{ padding: '24px' }}style={boxHeight}>
         {topVisitedURLs.map(({ url }, index) => {
           // Find the corresponding page object from FavPagesList based on URL
           const page = FavPagesList.find(page => page.url === url);
@@ -92,8 +104,8 @@ const FavPages = ( { FavPagesList }) => {
             </Grid>
           );
         })}
-      </Grid>
-    </MainCard>
+        </Grid>
+ </Paper>
   );
 };
 

@@ -5,7 +5,7 @@ import Divider from '@mui/material/Divider';
 import Dropdown from 'views/common-section/ParamSelectList';
 import { useState } from 'react';
 
-function StudentDetails({ handleClick }) {
+function StudentDetails({ handleClick ,backToLogin }) {
   const [allStudentDetails, setAllStudentDetails] = useState({
     gender: '',
     id_number: '',
@@ -185,7 +185,7 @@ function StudentDetails({ handleClick }) {
             </Typography>
 
             <Box sx={{ paddingBottom: '1.5rem' }}>
-              <Button variant="contained" sx={{ height: '38px', width: '144px' }}>
+              <Button onClick={()=>backToLogin()} variant="contained" sx={{ height: '38px', width: '144px' }}>
                 Back to Login
               </Button>
             </Box>
@@ -450,3 +450,4 @@ function StudentDetails({ handleClick }) {
 }
 
 export default StudentDetails;
+// 
