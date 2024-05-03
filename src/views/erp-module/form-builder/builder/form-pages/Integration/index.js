@@ -1,25 +1,104 @@
-import React from 'react';
-import { Box,Typography} from '@mui/material';
+import React, { useState } from 'react';
+import { Box, Typography, Button } from '@mui/material';
+import Divider from '@mui/material/Divider';
 import ParamTabs from 'views/common-section/ParamSearchTabs';
 import useDrawer from 'hooks/useDrawer';
+import Fee from 'assets/images/erp-module-icon/fee.svg';
+import FormBuilder from 'assets/images/erp-module-icon/form-builder.svg';
+import ArrowRightAltOutlinedIcon from '@mui/icons-material/ArrowRightAltOutlined';
+import BusinessOutlinedIcon from '@mui/icons-material/BusinessOutlined';
+import ParamSelectList from 'views/common-section/ParamSelectList';
 
-const Component=()=>{
-    return(
-        <Box sx={{
-            display: "flex", flexDirection: "row",
-            justifyContent: "space-between", height: "80px",
-            alignItems: "center", backgroundColor: "#f8fafccc",
-            padding: "0px 20px"
-        }}>
-            <Box sx={{ marginTop: "5px" }}>
-                <Typography sx={{ marginLeft: "20px", display: "flex", alignItems: "center", gap: "10px" }} variant="h4">
-                   Field Rule
-                </Typography>
-                <Typography sx={{ fontSize: "smaller" }}>
-                    Configure rules to show or hide fields based on the input of another field.
-                </Typography>
+const Component = () => {
+    const [isIntegratClicked, setIsIntegrateClicked] = useState(false);
+    return (
+        <>
+            <Box>
+                <Box sx={{
+                    display: "flex", flexDirection: "row",
+                    justifyContent: "space-between", height: "80px",
+                    alignItems: "center", backgroundColor: 'rgb(0 0 0 / 0%)',
+                    padding: "0px 20px"
+                }}>
+                    <Box sx={{ marginTop: "5px" }}>
+                        <Typography sx={{ marginLeft: "20px", display: "flex", alignItems: "center", gap: "10px" }}>
+                            <Typography variant="h4">Integrate with Zoho CRM</Typography>
+                        </Typography>
+                        <Typography sx={{ fontSize: "smaller", marginLeft: "20px" }}>
+                            Integrate Zoho Forms with Zoho CRM.
+                        </Typography>
+                    </Box>
+                </Box>
+                <Divider />
             </Box>
-        </Box>
+
+            {
+                isIntegratClicked == false ?
+                    (
+                        <>
+                            <Box sx={{
+                                display: "flex", flexDirection: "row",
+                                gap: "40px", marginLeft: "100px", marginTop: "50px",
+                                alignItems: "center"
+                            }}>
+                                <Box sx={{
+                                    height: "150px", width: "150px", backgroundColor: "#fbfbfb",
+                                    border: "1px solid #EAEAEA", borderRadius: "50%", position: "relative"
+                                }}>
+                                    <Box sx={{ position: "absolute", top: "30%", left: "38%" }}>
+                                        <Typography>Form Entries</Typography>
+                                        <img src={FormBuilder} alt="stufee icon" style={{ height: "50px", width: "50px" }} />
+                                    </Box>
+                                </Box>
+                                <ArrowRightAltOutlinedIcon />
+                                <Box sx={{
+                                    height: "150px", width: "150px", backgroundColor: "#fbfbfb",
+                                    border: "1px solid #EAEAEA", borderRadius: "50%", position: "relative",
+                                    left: "300px"
+                                }}>
+                                    <Box sx={{ position: "absolute", top: "30%", left: "38%" }}>
+                                        <Typography>Stufee</Typography>
+                                        <img src={Fee} alt="stufee icon" style={{ height: "50px", width: "50px" }} />
+                                    </Box>
+                                </Box>
+                            </Box>
+                            <Typography sx={{ marginTop: "40px" }}>Integrate your form with Zoho CRM modules like Leads, Accounts,<br /> Contacts and more</Typography>
+                            <Button varaint="contained" sx={{ background: "#0c192b" }} onClick={() => setIsIntegrateClicked(true)}>Integrate</Button>
+                        </>
+                    ) :
+                    (
+                        <>
+                            <Box>
+                                <Box sx={{
+                                    '&:before': {
+                                        position: 'absolute',
+                                        content: '" "',
+                                        width: '2px',
+                                        height: 'calc(100% - 82px)',
+                                        left: '3.7%',
+                                        top: '47px',
+                                        background: '#ccc',
+                                    }
+                                   }}>
+                                    <Box>
+                                        <Typography>Organization</Typography>
+                                        <BusinessOutlinedIcon />
+                                        <Typography>indiviudal</Typography>
+                                    </Box>
+                                    <Box>
+                                        <Typography>Module</Typography>
+                                        <ParamSelectList />
+                                    </Box>
+                                </Box>
+                                <Box>
+                                   
+                                </Box>
+                            </Box>
+                            <Typography>ttt</Typography>
+                        </>
+                    )
+            }
+        </>
     )
 }
 
@@ -125,7 +204,7 @@ const Rule = () => {
             }
         },
         {
-            id:12,
+            id: 12,
             name: "Parent",
             component: Component,
             props: {
@@ -134,7 +213,7 @@ const Rule = () => {
             }
         },
         {
-            id:13,
+            id: 13,
             name: "Teacher",
             component: Component,
             props: {
@@ -145,7 +224,7 @@ const Rule = () => {
     ]
 
     return (
-        <Box sx={{ marginTop: "20px" }}> 
+        <Box sx={{ marginTop: "20px" }}>
             <ParamTabs tabPage={tabPage} />
         </Box>
     )
