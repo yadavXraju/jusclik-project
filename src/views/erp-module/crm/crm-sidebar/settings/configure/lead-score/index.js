@@ -111,7 +111,7 @@ function TabPanel(props) {
                       // id={`select-${stepIndex}`}
                       value={selectValue && selectValue} // Initial value, change this according to your logic
                       onChange={handleSelectChange} // Call handleSelectChange on select change
-                      style={{ margin: '0 1rem', width: '20%', justifyContent: 'start' }} // Adjust style as needed
+                      style={{ margin: '0', width: radio?'19%':'16%', justifyContent: 'start' }} // Adjust style as needed
                     >
                       {[...Array(31).keys()].map((value) => (
                         <MenuItem key={value} value={value - 15}>
