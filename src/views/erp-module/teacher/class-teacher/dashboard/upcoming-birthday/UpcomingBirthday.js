@@ -1,9 +1,9 @@
-import MainCard from 'ui-component/cards/MainCard';
+
 import { Typography , Grid} from '@mui/material';
 import { boxHeight , HeadingCss ,  subTitle , subtitle2 } from 'views/common-section/dashboard-css/CommonCss';
-import { gridSpacing } from 'store/constant';
+
 import { BirthdayList } from './BirthdayList';
-import {Divider , Box } from '@mui/material';
+import {Divider , Box , Paper} from '@mui/material';
 
 
 
@@ -11,18 +11,30 @@ const UpcomingBirthday =()  => {
 
   return (
      <>
-       <MainCard  style={boxHeight} className='scrollbar' > 
-          <Grid container spacing={gridSpacing}>
-            <Grid item xs={12} sx={{mb:3}}>
-              <Grid  alignContent="center" justifyContent="space-between">
-                <Grid item>
+     <Paper
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        borderRadius: '12px',
+        border: '1px solid rgba(128, 128, 128, 0.25)',
+        boxShadow: '4px 4px 9px 2px #ddddddc2',
+        marginBottom: '20px', // Add some bottom margin for spacing
+      }}
+    >
+          <Grid
+        sx={{
+            padding: '24px 24px 0 24px',
+            background: '#f9f9fb',
+            borderBottom: '1px solid rgba(128, 128, 128, 0.25)',
+            borderRadius: '12px 12px 0px 0',
+        }}
+      >
                   <Typography variant="h2" style={HeadingCss}>
                      Upcoming Birthdays
                   </Typography>
                 </Grid>
-              </Grid>
-            </Grid>
-     
+             
+     <Grid sx={{padding:'24px'}}style={boxHeight}>
            {/* maping data */}
             {BirthdayList.map((item, index) => (
                 <Grid item xs={12} key={index} sx={{paddingTop:'0 !important'}}>
@@ -79,8 +91,8 @@ const UpcomingBirthday =()  => {
                 </Grid>
             ))}
            
-          </Grid> 
-      </MainCard> 
+           </Grid>
+      </Paper> 
   </>
   )
 }
