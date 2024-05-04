@@ -100,6 +100,7 @@ const FeeStructure = () => {
         tabPage={tabPage}
         numberShow={false}
         orientation={ isTab ? "horizontal" :"vertical"}
+        nextBtnText='Next'
         customtabWrapper={{
           display: 'flex',
           flexDirection: isTab ? 'column' : 'row',

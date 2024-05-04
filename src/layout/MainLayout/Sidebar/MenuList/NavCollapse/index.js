@@ -44,7 +44,7 @@ if (menu.children) {
   urlStore.children = childrenData;
 }
 
-menus.forEach(item=>{
+menus.map(item=>{
   console.log(item.props.item)
 })
   };
@@ -167,9 +167,15 @@ menus.forEach(item=>{
               height: '100%',
               width: '1px',
               opacity: 1,
-              background: theme.palette.primary.light
+              background: theme.palette.primary.light,
             }
           }}
+
+          onClick={() => {
+            console.log(menus.map(item => item.props.item.title));
+        }}
+
+        
           className='submenutitle'
         >
           {menus}
