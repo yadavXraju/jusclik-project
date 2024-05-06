@@ -146,7 +146,6 @@ const SetupTabs = ({
               '& > .MuiBox-root': {
                 ...style?.boxStyle,
                 ...customBoxStyle,
-
               },
             }}
             className="Scrollbar"
