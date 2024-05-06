@@ -4,6 +4,15 @@ import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOu
 import FilterListIcon from '@mui/icons-material/FilterList';
 import SearchIcon from '@mui/icons-material/Search';
 import TablePagination from '@mui/material/TablePagination';
+import styled from '@emotion/styled';
+
+
+export const stylesPagination= styled.div`
+.css-jtlhu6-MuiTablePagination-root {
+   overflow: hidden !important;
+ 
+}
+`
 
 const InboxHeader = ({
   theme,
@@ -105,6 +114,7 @@ const InboxHeader = ({
           </Grid>
           <Grid>
             {/* Pagination Section */}
+            <stylesPagination>
             <TablePagination
               component="div"
               count={searchResults.length || initialData.length}
@@ -114,6 +124,7 @@ const InboxHeader = ({
               onRowsPerPageChange={handleChangeRowsPerPage}
               labelRowsPerPage="Pages"
             />
+            </stylesPagination>
           </Grid>
         </Grid>
       </Box>
