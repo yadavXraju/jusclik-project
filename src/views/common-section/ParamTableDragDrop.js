@@ -89,7 +89,7 @@ const ParamTableDragDrop = ({ columns, initialData, tableStyle, dragIcon = false
                                                         }
                                                         // Render editable text field if the row is being edited
                                                         return (
-                                                            <TableCell key={colIndex}>
+                                                            <TableCell key={colIndex} sx={{minWidth: { xs: '150px', lg: 'auto' }}}>
                                                                         {/* Check if the current row is being edited */}
                                                                         {editId === row.id ? (
                                                                             // Render a TextField for editing when the row is being edited
@@ -115,7 +115,7 @@ const ParamTableDragDrop = ({ columns, initialData, tableStyle, dragIcon = false
 
                                                         );
                                                     })}
-                                                    <TableCell>
+                                                    <TableCell sx={{minWidth:'200px'}}>
                                                         {editId === row.id ? ( // Render save button if row is being edited
                                                             <IconButton onClick={handleSaveClick}>
                                                                 <Button>Save</Button>

@@ -26,7 +26,6 @@ import InventoryMenu from './erp-menus/inventory/inventoryMenus';
 import LibraryDashboard from './erp-menus/library/libraryDashboard';
 import LibraryMenu from './erp-menus/library/libraryMenus';
 
-
 // hr payroll
 import HrPayRollDashboard from './erp-menus/hr-payroll/hrPayRollDashboard';
 import HrPayRollMenu from './erp-menus/hr-payroll/hrPayrollMenus';
@@ -38,6 +37,18 @@ import CrmMenu from './erp-menus/crm/crmMenus';
 // from builder
 import FormBuilderMenus from './erp-menus/form-builder/formBuilderMenus';
 
+import { useSelector } from 'react-redux';
+
+// Export function to retrieve and generate menu items
+export const GetMenuItems = () => {
+  const {erpModule} = useSelector((state) =>  state.erpModuleSlice);
+  console.log(erpModule.role)
+
+  const userRole = getUserRole();
+  return generateMenuItems(userRole);
+};
+
+
 // Function to retrieve user role from local storage
 const getUserRole = () => {
   return localStorage.getItem('userRole');
@@ -45,6 +56,7 @@ const getUserRole = () => {
 
 // Function to generate menu items based on the user role
 const generateMenuItems = (userRole) => {
+
   const menuItems = {
     items: [],
   };
@@ -108,8 +120,3 @@ const generateMenuItems = (userRole) => {
   return menuItems;
 };
 
-// Export function to retrieve and generate menu items
-export const getMenuItems = () => {
-  const userRole = getUserRole();
-  return generateMenuItems(userRole);
-};

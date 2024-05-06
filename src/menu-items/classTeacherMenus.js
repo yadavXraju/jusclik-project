@@ -13,27 +13,7 @@ import FolderCopyTwoToneIcon from '@mui/icons-material/FolderCopyTwoTone';
 import LocalLibraryTwoToneIcon from '@mui/icons-material/LocalLibraryTwoTone';
 import MovingIcon from '@mui/icons-material/Moving';
 
-
 // ==================== colleagueTitles  ==================== 
-
-//  attndance
-
-const  AttendanceColleagueTitles  = [
-  {title : 'Daily Attendance' , url : '/class-teacher/attendance-entry/daily-attendance'}, 
-  {title : 'Monthly Attendance' , url : '/class-teacher/attendance-entry/monthly-attendance'}, 
-];
-
-
-//  result
-
-const  ResultColleagueTitles  = [
-  {title : 'Marks' , url : '/class-teacher/result/marks-entry'}, 
-  {title : 'Co Scholastic' , url : '/class-teacher/result/co-scholastic'}, 
-  {title : 'Remark Entry' , url : '/class-teacher/result/remarks-entry'}, 
-];
-
-
-
 
 const ClassTeacherMenu = {
     id: 'teacherMenu',
@@ -55,7 +35,6 @@ const ClassTeacherMenu = {
                      type: 'item',
                      url: '/class-teacher/attendance-entry/daily-attendance',
                      breadcrumbs: false,
-                     colleagueTitle : AttendanceColleagueTitles,
                    },
     
 
@@ -65,7 +44,6 @@ const ClassTeacherMenu = {
                      type: 'item',
                      url: '/class-teacher/attendance-entry/monthly-attendance',
                      breadcrumbs: false,
-                     colleagueTitle : AttendanceColleagueTitles,
                    },
     
                 ]
@@ -86,7 +64,6 @@ const ClassTeacherMenu = {
                      type: 'item',
                      url: '/class-teacher/result/marks-entry',
                      breadcrumbs: false,
-                     colleagueTitle : ResultColleagueTitles,
                    },
     
 
@@ -96,7 +73,6 @@ const ClassTeacherMenu = {
                      type: 'item',
                      url: '/class-teacher/result/co-scholastic',
                      breadcrumbs: false,
-                     colleagueTitle : ResultColleagueTitles,
                    },
 
                    {
@@ -105,10 +81,7 @@ const ClassTeacherMenu = {
                      type: 'item',
                      url: '/class-teacher/result/remarks-entry',
                      breadcrumbs: false,
-                     colleagueTitle : ResultColleagueTitles,
                    },
-    
-    
                 ]
               },
               
@@ -120,27 +93,6 @@ const ClassTeacherMenu = {
                  icon:  LocalLibraryTwoToneIcon,
                  breadcrumbs: false
                },
-
-
-
-              //  {
-              //    id: 'marks-entry-panel',
-              //    title: 'Marks',
-              //    type: 'item',
-              //    url: '/class-teacher/marks-entry-panel',
-              //    icon:  DriveFileRenameOutlineTwoToneIcon,
-              //    breadcrumbs: false
-              //  },
-
-              //  {
-              //   id: 'co-scholastic',
-              //   title: 'Co Scholastic',
-              //   type: 'item',
-              //   url: '/class-teacher/co-scholastic',
-              //   icon:  DriveFileRenameOutlineTwoToneIcon,
-              //   breadcrumbs: false
-              // },
-            
                {
                  id: 'time-table-entry',
                  title: 'Timetable',
@@ -149,37 +101,6 @@ const ClassTeacherMenu = {
                  icon: AlarmTwoToneIcon,
                  breadcrumbs: false
                },
-
-
-              // {
-              //   id: 'time-table-entry',
-              //   title: 'Timetable',
-              //   type: 'collapse',
-              //   url: '/class-teacher/time-table-entry',
-              //   icon: AlarmTwoToneIcon,
-              //   children: [
-
-              //     {
-              //       id: 'class-time-table',
-              //        title: 'Class Timetable',
-              //        type: 'item',
-              //        url: '/class-teacher/time-table-entry/class-timetable',
-              //        breadcrumbs: false
-              //      },
-    
-
-              //      {
-              //       id: 'my-time-table',
-              //        title: 'My Timetable',
-              //        type: 'item',
-              //        url: '/class-teacher/time-table-entry/my-timetable',
-              //        breadcrumbs: false
-              //      },
-    
-              //   ]
-              // },
-
-
             
                {
                  id: 'student-allocation',
@@ -226,7 +147,6 @@ const ClassTeacherMenu = {
               breadcrumbs: false
            },
 
-
             {
                 id: 'teacher-inbox',
                 title: 'Inbox',
@@ -262,16 +182,6 @@ const ClassTeacherMenu = {
                 icon:  DocumentScannerTwoToneIcon,
                 breadcrumbs: false
              },
-              // {
-              //    id: 'api-test',
-              //    title: 'API Test',
-              //    type: 'item',
-              //    url: '/class-teacher/apitest',
-              //    icon:   CameraAltTwoToneIcon,
-              //    breadcrumbs: false
-              //  },
-
-
     ]
   };
   

@@ -269,7 +269,7 @@ const feeHeadOptions = [
     <>
 
       <Grid container spacing={4} sx={{marginTop:'1rem'}}>
-          <Grid item lg={4}>
+          <Grid item  xs={12} lg={4}>
               <Grid container spacing={2} sx={{ borderRadius:'12px' ,margin:'0' , width:'100%', border:'1px solid rgba(224, 224, 224, 1)', padding:'1rem 1rem 1rem 0px'}}>
               
                   {/* ===========================  applicable from date*/}
@@ -296,7 +296,7 @@ const feeHeadOptions = [
                   </Grid>
 
                 {/* =========================== admission no*/}
-                  <Grid item  xs={12} md={12} sx={{ marginBottom: '5px' }}>
+                  <Grid item  xs={12} md={6} sx={{ marginBottom: '5px' }}>
                           <TextField
                             id="admissionNo"
                             name="admissionNo"
@@ -308,6 +308,11 @@ const feeHeadOptions = [
                           />
                   </Grid>
 
+                {/* ===========================  Class */}
+                <Grid item  xs={12} md={6} sx={{ marginBottom: '5px' }}>
+                    <ParamMultipleSelect options={classesOptions} label="Class" value={classes}  setValue={handleClassChange} />
+                </Grid>
+
                 {/* ===========================  fee head */}
                 <Grid item  xs={12} md={12} sx={{ marginBottom: '5px' }}>
                     <ParamMultipleSelect
@@ -318,10 +323,6 @@ const feeHeadOptions = [
                     />
                 </Grid>
 
-                {/* ===========================  Class */}
-                <Grid item  xs={12} md={12} sx={{ marginBottom: '5px' }}>
-                    <ParamMultipleSelect options={classesOptions} label="Class" value={classes}  setValue={handleClassChange} />
-                </Grid>
 
                   {/* ===========================  remarks*/}
                   <Grid item  xs={12} md={12} sx={{ marginBottom: '5px' }}>
@@ -354,7 +355,7 @@ const feeHeadOptions = [
               </Grid>
           </Grid>
           {/* table */}
-          <Grid  item lg={8} sx={{position:'relative'}}>
+          <Grid  item  xs={12} lg={8} sx={{position:'relative'}}>
               <CommonDataGrid
                   rows={TableRowData} columns={columns}  width="100%"
                   checkboxSelection={false}
@@ -386,7 +387,7 @@ const feeHeadOptions = [
               </Box>
           </Grid>
 
-          <Grid item lg={12}>
+          <Grid item  xs={12} lg={12}>
             <ParamTable 
               columns={TableHeading}
               data={TableData}
