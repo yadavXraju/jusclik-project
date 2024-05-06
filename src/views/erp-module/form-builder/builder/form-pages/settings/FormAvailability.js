@@ -105,6 +105,7 @@ function FormAvailability() {
             startIcon={activeButton === 'always' ? <RadioButtonCheckedIcon /> : <LensOutlinedIcon />}
             value="always"
             onClick={() => handleButtonClick('always')}
+            variant= {activeButton === 'always' ? 'contained' :'outlined' }
           >
             Always
           </Button>
@@ -112,6 +113,7 @@ function FormAvailability() {
             startIcon={activeButton === 'between-dates' ? <RadioButtonCheckedIcon /> : <LensOutlinedIcon />}
             value="between-dates"
             onClick={() => handleButtonClick('between-dates')}
+            variant= {activeButton === 'between-dates' ? 'contained' :'outlined' }
           >
             Between Dates
           </Button>
@@ -119,6 +121,7 @@ function FormAvailability() {
             startIcon={activeButton === 'between-dates-time' ? <RadioButtonCheckedIcon /> : <LensOutlinedIcon />}
             value="between-dates-time"
             onClick={() => handleButtonClick('between-dates-time')}
+            variant= {activeButton === 'between-dates-time' ? 'contained' :'outlined' }
           >
             Between Dates & Time
           </Button>
