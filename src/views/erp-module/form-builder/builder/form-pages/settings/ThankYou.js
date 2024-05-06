@@ -32,7 +32,7 @@ function ThankYou() {
                 <FormControl component="fieldset">
                   <FormGroup aria-label="position" row>
                     <FormControlLabel
-                      value="top"
+                      value=""
                       control={<Checkbox />}
                       label="Include a link to allow respondents to add another response."
                       labelPlacement="end"
@@ -40,7 +40,7 @@ function ThankYou() {
                   </FormGroup>
                   <FormGroup aria-label="position" row>
                     <FormControlLabel
-                      value="top"
+                      value=""
                       control={<Checkbox />}
                       label="Include a link to download PDF of submitted response in the thank you page."
                       labelPlacement="end"
@@ -48,7 +48,7 @@ function ThankYou() {
                   </FormGroup>
                   <FormGroup aria-label="position" row>
                     <FormControlLabel
-                      value="top"
+                      value=""
                       control={<Checkbox />}
                       label="Add Google Analytics or Facebook Pixel tracking code"
                       labelPlacement="end"
