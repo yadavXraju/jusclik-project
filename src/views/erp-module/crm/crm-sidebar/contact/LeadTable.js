@@ -6,16 +6,24 @@ import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 import RemoveRedEyeTwoToneIcon from '@mui/icons-material/RemoveRedEyeTwoTone';
 import rows from './LeadTableData';
 import WarningDialog from 'views/common-section/WarningDialog';
-import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
+// import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 import CommonDataGrid from 'views/common-section/commonDataGrid';
+// import EditLead from './EditLead';
+import AddContactDrawer from './AddContactDrawer';
 
 
 export default function ContactTable() {
   const navigate = useNavigate();
   const [tableRows, setTableRows] = React.useState(rows);
+  const [currEditItem, setCurrEditItem] = React.useState({});
 
-const Click = (id) => {
-    navigate(`/erp/crm/contact/${id}`);
+const Click = (rowData) => {
+    navigate(`/erp/crm/contact/${rowData.id}`, { state: { rowData }});
+  };
+
+   // ========== function for handle Edit row ===========
+   const handleEditClick = (editItem) => {
+    setCurrEditItem(editItem);
   };
 
   
@@ -67,10 +75,12 @@ const Click = (id) => {
             <RemoveRedEyeTwoToneIcon sx={{ color: 'rgb(124, 178, 221)' }} />
           </IconButton>
           </Tooltip>
-          <Tooltip title="Edit">
+          <Tooltip >
           <IconButton onClick={(event) => event.stopPropagation()}>
-            <EditTwoToneIcon  />
+            <AddContactDrawer editIcon={true} currEditItem={currEditItem} handleClick={() => handleEditClick(params.row)} />
+            {/* <EditLead currEditItem={currEditItem} handleClick={() => handleEditClick(params.row)}/> */}
           </IconButton>
+          
           </Tooltip>
           <Tooltip title="Delete">
           <IconButton onClick={(event) => event.stopPropagation()}>
@@ -90,7 +100,7 @@ const Click = (id) => {
           <CommonDataGrid
             rows={tableRows}
             columns={columns} // Use state variable for columns
-            onRowClick={(params) => Click(params.id)}
+            onRowClick={(params) => Click(params.row)}
             initialState={{
               pagination: {
                 paginationModel: { page: 0, pageSize: 50 }

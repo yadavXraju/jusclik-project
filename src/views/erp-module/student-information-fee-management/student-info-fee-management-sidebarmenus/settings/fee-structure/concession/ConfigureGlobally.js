@@ -1,5 +1,5 @@
 import React,{useState , useEffect} from 'react';
-import {Grid, TextField ,styled ,Button ,} from '@mui/material';
+import {Grid, TextField ,styled ,Button , Paper , Box, Typography ,} from '@mui/material';
 import SelectList from 'views/common-section/ParamSelectList';
 import ParamDateComponent from 'views/common-section/ParamDateComponent';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
@@ -7,21 +7,39 @@ import CommonDataGrid from 'views/common-section/commonDataGrid';
 import ParamMultipleSelect from 'views/common-section/ParamMultipleSelect';
 import ParamTable from 'views/erp-common-component/ParamTable';
 
-const VisuallyHiddenInput = styled('input')({
-    clip: 'rect(0 0 0 0)',
-    clipPath: 'inset(50%)',
-    height: 1,
-    overflow: 'hidden',
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    whiteSpace: 'nowrap',
-    width: 1,
-  });
+export const VisuallyHiddenInput = styled('input')({
+  clip: 'rect(0 0 0 0)',
+  clipPath: 'inset(50%)',
+  height: 1,
+  overflow: 'hidden',
+  position: 'absolute',
+  bottom: 0,
+  left: 0,
+  whiteSpace: 'nowrap',
+  width: 1,
+});
 
-const ConfigureGlobally = () => {
+export const style = {
+  BottomNavbar: {
+      width:'100%',
+      display: 'flex',
+      paddingRight: "40px",
+      paddingLeft: "40px",
+      alignItems: 'center',
+      gap: "20px",
+      position: "fixed",
+      bottom: "0px",
+      backgroundColor: "#fafafa",
+      height: "60px",
+      borderBottom: '1px solid #eee',
+      borderTop: '1px solid #eee',
+      zIndex:'999',
+  }
+};
 
-    const [concessionData, setConcessionData] = useState([{
+const ConfigureGlobally = ({customStyle}) => {
+
+const [concessionData, setConcessionData] = useState([{
         applicableFromDate : '',
         uptoDate : '',
         remarks:'',
@@ -36,27 +54,7 @@ const ConfigureGlobally = () => {
 // multiple select dropdown states
 const [feeHead, setFeeHead] = useState([]);
 const [classes , setClasses] = useState([]);
-
-// const handleChange = (e, id) => {
-//   const { name, value } = e.target;
-//   setConcessionData((prevData) =>
-//     prevData.map((row) => {
-//       if (row.id === id) {
-//         // console.log('Row values:', {
-//         //   id: row.id,
-//         //   srNo: row.srNo,
-//         //   feeHead: row.feeHead,
-//         //   amount: row.amount,
-//         //   [name]: value,
-//         // });
-//         return { ...row, [name]: value };
-//       } else {
-//         return row;
-//       }
-//     })
-//   );
-// };
-
+const [TableData, setTableData] = useState([]);
 
 const handleChange = (e, id) => {
   const { name, value } = e.target;
@@ -69,7 +67,6 @@ const handleChange = (e, id) => {
     })
   );
 };
-
 
  // Update feeHead state when a new value is selected
 const handleFeeHeadChange = (selectedFeeHead) => {
@@ -136,42 +133,9 @@ const handleFeeHeadChange = (selectedFeeHead) => {
   ];
 
   const handleClassChange = (selectedClass) => {
-    // console.log(selectedClass)
-    if (selectedClass[0].name==="All") {
-      // If "All" is selected, set classes to all options except "All"
-      const allClasses = classesOptions.filter(option => option.name !== "All");
-      // console.log(allClasses)
-      setClasses(allClasses); // Adjust here to set the names of all classes
-    } else {
-      // If any other option is selected, set classes to the selected option
-      setClasses(selectedClass);
-    }
-  };
+    setClasses(selectedClass)
+  }
   
-  // useEffect(() => {
-  //   // If no fee head is selected, create an empty row
-  //   if (feeHead.length === 0) {
-  //     setConcessionData([
-  //       {
-  //         id: 0,
-  //         srNo: '',
-  //         feeHead: '',
-  //         concessionType: '',
-  //         amount: '',
-  //       },
-  //     ]);
-  //   } else {
-  //     const newRows = feeHead.map((fh, index) => ({
-  //       id: index + 1,
-  //       srNo: `${index + 1}`, // Increment the Sr No. by 1 for each new row
-  //       feeHead: fh.name,
-  //       concessionType: '',
-  //       amount: '',
-  //     }));
-  //     setConcessionData(newRows);
-  //   }
-  // }, [feeHead]); // Only include feeHead in the dependencies
-
   useEffect(() => {
     // If no fee head is selected, create an empty row
     if (feeHead.length === 0) {
@@ -201,10 +165,7 @@ const handleFeeHeadChange = (selectedFeeHead) => {
       });
       setConcessionData(newRows);
     }
-  }, [feeHead, concessionData]); // Include concessionData in the dependencies
-
-  
-  
+  }, [feeHead, ]); // Include concessionData in the dependencies
 
   const TableRowData = concessionData.map((row) => ({
     id: row.id,
@@ -214,7 +175,6 @@ const handleFeeHeadChange = (selectedFeeHead) => {
     amount: row.amount,
   }));
 
-  
   const columns = [
     { field: 'srNo', headerName: 'Sr No.', flex: 1, maxWidth: 130, align: 'left', headerAlign: 'left' },
     { field: 'feeHead', headerName: 'Fee Head', flex: 1, minWidth: 130 },
@@ -316,13 +276,21 @@ const handleFeeHeadChange = (selectedFeeHead) => {
     },
   ]
   
-  const TableData = concessionData.map((row) => ({
-    id: row.id,
-    srNO: row.srNo,
-    feeHead: row.feeHead,
-    concessionType: row.concessionType, // Set concessionType to the value in concessionData
-    amount: row.amount, // Set amount to the value in concessionData
-  }));
+  const updateTableData = () => {
+    const newData = concessionData.map((row) => ({
+      id: row.id,
+      srNO: row.srNo,
+      feeHead: row.feeHead,
+      concessionType: row.concessionType,
+      amount: row.amount,
+    }));
+    setTableData(newData);
+  };
+
+  // print data onclick on submit
+  const handleSubmit = () => {
+    updateTableData();
+  };
     
   return (
     <>
@@ -387,28 +355,40 @@ const handleFeeHeadChange = (selectedFeeHead) => {
             </Grid>
         </Grid>
 
-        {/* table */}
-        <Grid  item lg={8} sx={{}}>
+        {/* data grid*/}
+        <Grid  item lg={8} sx={{position:'relative'}}>
             <CommonDataGrid
-                rows={TableRowData} columns={columns}  width="100%"
+                rows={TableRowData}
+                columns={columns}
+                width="100%"
                 checkboxSelection={false}
                 initialState={{
                   pagination: {
                     paginationModel: { page: 0, pageSize: 50 }
                   },
                 }}
-                  
                 pageSizeOptions={[10, 25, 50, 100]}
-                sx={{borderRadius:'12px', '& .MuiDataGrid-cell':{
-                  outline:'none !important',
-                },
-              
-                '& .MuiDataGrid-row:hover': {
-                  backgroundColor: 'inherit', // or 'transparent'
-                },
+                sx={{
+                  borderRadius: '12px',
+                  '& .MuiDataGrid-cell': {
+                    outline: 'none !important',
+                  },
+                  '& .MuiDataGrid-row:hover': {
+                    backgroundColor: 'inherit', // or 'transparent'
+                  },
+                  '& .MuiDataGrid-selectedRowCount' :{
+                    visibility:'hidden',
+                }
+                }}
+           />
+ 
+          <Box sx={{ position: 'absolute', bottom: '0px', left: '60px' , width:'50%' , minHeight:'80px' , display:'flex' , alignItems:'center' }}>
+              <Typography variant='h5' sx={{lineHeight:'34px'}}>
+                {classes.length > 0 ? `Class: ${classes.map(cls => cls.name).join(', ')}` : null}
+              </Typography>
+           </Box>
 
-              }}
-            />
+           
         </Grid>
 
         <Grid item lg={12}>
@@ -416,8 +396,23 @@ const handleFeeHeadChange = (selectedFeeHead) => {
             columns={TableHeading}
             data={TableData}
             action={false}
+            tablePaper={{border:'1px solid rgba(224, 224, 224, 1)'}}
+            tableStyle={{paddingBottom:'5rem'}}
            />
         </Grid>
+
+        {/* botttom nav  */}
+        <Paper sx={{ ...style.BottomNavbar, ...customStyle }}>
+            <Box sx={{ display: "flex", gap: "20px" }}>
+                 <Button variant="contained" sx={{ height: "38px",marginTop: "auto",marginBottom:"auto", width: "144px" }} onClick={handleSubmit}>
+                        Submit
+                 </Button>
+  
+            </Box>
+            <Button variant="outlined" sx={{ height: "38px",marginTop: "auto",marginBottom:"auto", width: "144px" }}>
+                Cancel
+            </Button>
+        </Paper>
 
      </Grid> 
     </>

@@ -1,8 +1,7 @@
-
 import { createSlice } from '@reduxjs/toolkit';
 
 const intialMenuItem ={
-    id:""
+  item:""
 }
 
 const initialState = {
@@ -13,23 +12,18 @@ const menuItemSlice = createSlice({
   name: 'menuItem',
   initialState,
   reducers: {
-    handleMenuItem:(state,action)=>{
+    handleMenu:(state,action)=>{
 
-       const id=action.payload;
-       console.log(action.payload)
-       state.menuItem.id=id;
+       const item=action.payload;
+      //  console.log(action.payload)
+       state.menuItem.item=item;
     }
   }
 });
 
 
 export const {
-    handleMenuItem
+    handleMenu
 } = menuItemSlice.actions;
 
 export default menuItemSlice.reducer;
-
-
-
-
-

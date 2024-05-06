@@ -6,6 +6,7 @@ const rows = [
       lastName: 'Kumar',
       leadOwner: 'Vijay',
       email:'abc@gmail.com',
+      dob: '03-05-2000',
       mobile:'3248769832',
       createdBy: '03-05-2000',
       description: 'Good Service'
@@ -17,6 +18,7 @@ const rows = [
         lastName: 'Doe',
         leadOwner: 'Alice',
         email: 'john.doe@example.com',
+        dob: '03-05-2000',
         mobile: '5559481234',
         createdBy: '15-01-2023',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
@@ -28,6 +30,7 @@ const rows = [
         lastName: 'Smith',
         leadOwner: 'Bob',
         email: 'jane.smith@example.com',
+        dob: '03-05-2000',
         mobile: '5550935678',
         createdBy: '20-02-2023',
         description: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
@@ -39,6 +42,7 @@ const rows = [
         lastName: 'Johnson',
         leadOwner: 'Carol',
         email: 'michael.johnson@example.com',
+        dob: '03-05-2000',
         mobile: '5550489876',
         createdBy: '25-032023',
         description: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
@@ -50,6 +54,7 @@ const rows = [
         lastName: 'Doe',
         leadOwner: 'Alice',
         email: 'john.doe@example.com',
+        dob: '03-05-2000',
         mobile: '55503291234',
         createdBy: '10-04-2023',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
@@ -61,6 +66,7 @@ const rows = [
         lastName: 'Smith',
         leadOwner: 'Bob',
         email: 'jane.smith@example.com',
+        dob: '03-05-2000',
         mobile: '5559285678',
         createdBy: '11-06-2023',
         description: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
@@ -72,6 +78,7 @@ const rows = [
         lastName: 'Johnson',
         leadOwner: 'Carol',
         email: 'michael.johnson@example.com',
+        dob: '03-05-2000',
         mobile: '5552309876',
         createdBy: '20-05-2023',
         description: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'

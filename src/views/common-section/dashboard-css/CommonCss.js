@@ -2,7 +2,7 @@
 export const HeadingCss = {
     color: 'rgb(17, 25, 39)',
    //  letterSpacing: '.5px' ,
-     borderBottom:'1px solid #80808040' ,
+    //  borderBottom:'1px solid #80808040' ,
      paddingBottom:'20px',
    //   textTransform : 'uppercase',
    //   fontSize:'20px',
@@ -13,7 +13,7 @@ export const HeadingCss = {
 
 export const boxHeight = {
     overflow: 'hidden',
-    height: '535px',
+    height: '470px',
     overflowY: 'auto',
     background:'#fff',
  }
