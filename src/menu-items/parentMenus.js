@@ -1,5 +1,3 @@
-
-
 import CalendarMonthTwoToneIcon from '@mui/icons-material/CalendarMonthTwoTone';
 import LibraryBooksTwoToneIcon from '@mui/icons-material/LibraryBooksTwoTone';
 import DraftsTwoToneIcon from '@mui/icons-material/DraftsTwoTone';
@@ -13,36 +11,6 @@ import CameraAltTwoToneIcon from '@mui/icons-material/CameraAltTwoTone';
 import CategoryTwoToneIcon from '@mui/icons-material/CategoryTwoTone';
 
 // ==============================||All MENU ITEMS Here ||============================== //
-
-
-// ==================== colleagueTitles  ==================== 
-
-//  digital-learning
-
-const  DigitalLearningColleagueTitles  = [
-  {title : 'Online Assessment' , url : '/parent/digital-learning/online-assessment'}, 
-  {title : 'Online Class' , url : '/parent/digital-learning/online-class'}, 
-
-];
-
-
-//  communication
-
-const  CommunicationColleagueTitles  = [
-  {title : 'Contact List' , url : '/parent/communication/contact-list'}, 
-  {title : 'Inbox' , url : '/parent/communication/inbox'}, 
-
-];
-
-
-//  request
-
-const  RequestColleagueTitles  = [
-  {title : 'Add Meeting' , url : '/parent/request/add-meeting'}, 
-  {title : 'Item Request Gate Pass' , url : '/parent/request/item-request-gate-pass'}, 
-];
-
-
 
 const parentMenu = {
   id: 'parent-Menu',
@@ -112,7 +80,6 @@ const parentMenu = {
             type: 'item',
             url: '/parent/digital-learning/online-assessment',
             breadcrumbs: false,
-            colleagueTitle : DigitalLearningColleagueTitles,
           },
           {
             id: 'digital-learning-online-class',
@@ -120,12 +87,9 @@ const parentMenu = {
             type: 'item',
             url: '/parent/digital-learning/online-class',
             breadcrumbs: false,
-            colleagueTitle : DigitalLearningColleagueTitles,
           }
         ]
       },
-
-
 
       {
         id: 'communication',
@@ -139,9 +103,7 @@ const parentMenu = {
             title: 'Contact List',
             type: 'item',
             url: '/parent/communication/contact-list',
-            breadcrumbs: false,
-            colleagueTitle : CommunicationColleagueTitles,
-      
+            breadcrumbs: false, 
           },
           {
             id: 'communication-inbox',
@@ -149,12 +111,9 @@ const parentMenu = {
             type: 'item',
             url: '/parent/communication/inbox',
             breadcrumbs: false,
-            colleagueTitle : CommunicationColleagueTitles,
           }
         ]
       },
-
-
 
     {
         id: 'request',
@@ -168,7 +127,6 @@ const parentMenu = {
             type: 'item',
             url: '/parent/request/add-meeting',
             breadcrumbs: false,
-            colleagueTitle : RequestColleagueTitles,
           },
           {
             id: 'item-request-gate-pass',
@@ -176,13 +134,9 @@ const parentMenu = {
             type: 'item',
             url: '/parent/request/item-request-gate-pass',
             breadcrumbs: false,
-            colleagueTitle : RequestColleagueTitles,
           }
         ]
       },
-
-
-
       {
         id: 'resources',
         title: 'Resources',
@@ -200,9 +154,6 @@ const parentMenu = {
         icon:   CameraAltTwoToneIcon,
         breadcrumbs: false
       },
-
-
-
   ]
 };
 

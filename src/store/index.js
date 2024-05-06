@@ -5,10 +5,12 @@ import InvoiceTemplateSlice from "./student-info-and-fee/setting/Invoice-Templat
 import userAndRoleAcess from "./student-info-and-fee/user-and-roles/user-and-roles-slice";
 import pricingSlice from "./pages/pricing/pricing-slice";
 import customForm from './form-builder/custom-form-slice';
-import menuItemSlice from "./layout/mainLayout/sidebar/menuList/navItem/menu-item-slice";
 import configureSlice from './visitor/Visitor-management-slice'
 import allDataformReducer from "./pages/online-Registration/allDataformSlice";
 import leadScoreSlice from "./crm/settings/leadScoreSlice";
+import menuNavItemSlice from "./layout/nav-item-slice";
+import menuNavCollapseSlice from "./layout/nav-collapse-slice";
+import erpModuleSlice from "./layout/erp-module-slice";
 
 const store=configureStore({
     reducer:{
@@ -17,12 +19,13 @@ const store=configureStore({
         invoiceTemplate:InvoiceTemplateSlice,
         userRoleAcess:userAndRoleAcess,
         pricingSlice: pricingSlice  ,
-        menuItemSlice:menuItemSlice,
         customForm:customForm,
         visitorSettingsSlice:configureSlice,
         leadScoreSlice,
-        allDataform:allDataformReducer
-
+        allDataform:allDataformReducer,
+        menuNavItemSlice:menuNavItemSlice,
+        menuNavCollapseSlice:menuNavCollapseSlice,
+        erpModuleSlice : erpModuleSlice,
     },
     devTools:true
 });

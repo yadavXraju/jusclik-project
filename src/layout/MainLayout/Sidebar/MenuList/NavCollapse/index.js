@@ -6,13 +6,16 @@ import { Collapse ,List, ListItemButton, ListItemIcon, ListItemText, Typography 
 import NavItem from '../NavItem';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import { IconChevronDown, IconChevronUp } from '@tabler/icons';
-import { urlStore } from 'themes/navigation-for-pages/UrlStore';
-import { useSelector } from 'react-redux';
+import { useSelector , useDispatch} from 'react-redux';
+import { handleMenuNavCollapse } from 'store/layout/nav-collapse-slice';
+import { resetMenuNavItem } from 'store/layout/nav-item-slice';
+
 // ==============================|| SIDEBAR MENU LIST COLLAPSE ITEMS ||============================== //
 
 const NavCollapse = ({ menu, level }) => {
   const theme = useTheme();
   const customization = useSelector((state) => state.customization);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState(null);
@@ -23,31 +26,9 @@ const NavCollapse = ({ menu, level }) => {
     if (menu?.id !== 'authentication') {
       navigate(menu.children[0]?.url);
     }
-     
-    urlStore.title=''
-    urlStore.url=''
-    urlStore.children=''
-  
-// Store children titles in an array
-const childrenTitles = [];
-
-// Store children titles and URLs in urlStore
-if (menu.children) {
-  const childrenData = menu.children.map(child => {
-    childrenTitles.push(child.title); // Store child title
-    return {
-      title: child.title,
-      url: child.url
-    };
-    
-  });
-  urlStore.children = childrenData;
-}
-
-menus.map(item=>{
-  console.log(item.props.item)
-})
-  };
+dispatch(handleMenuNavCollapse(menu.children.map(child => child)));
+dispatch(resetMenuNavItem());
+};
 
 
   const { pathname } = useLocation();
@@ -172,9 +153,8 @@ menus.map(item=>{
           }}
 
           onClick={() => {
-            console.log(menus.map(item => item.props.item.title));
-        }}
-
+            dispatch(handleMenuNavCollapse(menus.map(item => item.props.item)));
+          }}
         
           className='submenutitle'
         >
