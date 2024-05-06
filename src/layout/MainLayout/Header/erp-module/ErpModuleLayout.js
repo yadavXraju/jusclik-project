@@ -4,6 +4,8 @@ import { List, ListItem, Box, ListItemText, Divider } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { ErpModuleList } from './ErpModuleList';
 import { useNavigate } from 'react-router';
+import { handleErpModule } from 'store/layout/erp-module-slice';
+import { useDispatch } from 'react-redux';
 
 // styles
 const ListItemWrapper = styled('div')(({ theme }) => ({
@@ -20,14 +22,12 @@ const ListItemWrapper = styled('div')(({ theme }) => ({
 const ErpModuleLayout = ({ setOpen }) => {
   const theme = useTheme();
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
   const handleClick = (url, role) => {
-    // Update role in local storage
     localStorage.setItem('userRole', role);
-    // Navigate to the specified URL
     navigate(url);
-    // window.location.reload()
-    setOpen(false); // Close the Popper
+    setOpen(false); 
+    dispatch(handleErpModule({url , role}))
   };
 
   return (

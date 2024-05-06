@@ -3,14 +3,15 @@ import { IconButton, Typography, Tooltip, Card , Box} from '@mui/material';
 // import { Box } from '@mui/system';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 import WarningDialog from 'views/common-section/WarningDialog';
-import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
+// import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 import TableRowData from './TableRowData';
-import DrawerAddTransaction from './DrawerAddTransaction';
+// import DrawerAddTransaction from './DrawerAddTransaction';
 // import DrawerNewTask from './DrawerNewTask';
 import CommonDataGrid from 'views/common-section/commonDataGrid';
-import withParamDrawer from 'views/common-section/withParamDrawer';
+// import withParamDrawer from 'views/common-section/withParamDrawer';
 import RemoveRedEyeTwoToneIcon from '@mui/icons-material/RemoveRedEyeTwoTone';
 import { useNavigate } from 'react-router-dom';
+import AddTransactionDrawer from './AddTransactionDrawer';
 
 export default function BusDetails() {
   const [tableRows, setTableRows] = React.useState(TableRowData);
@@ -63,7 +64,8 @@ export default function BusDetails() {
           </Tooltip>
           <Tooltip title="Edit">
           <IconButton>
-            <EditTwoToneIcon />
+            {/* <EditTwoToneIcon /> */}
+            <AddTransactionDrawer editIcon='true' />
           </IconButton>
           </Tooltip>
           <Tooltip title="Delete">
@@ -75,7 +77,7 @@ export default function BusDetails() {
       )
     }
   ];
-  const AddNewChecklist = withParamDrawer(DrawerAddTransaction);
+  // const AddNewChecklist = withParamDrawer(DrawerAddTransaction);
 
   return (
     <>
@@ -89,11 +91,12 @@ export default function BusDetails() {
           </Box>
           <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, gap: 1 }}>
        <div style={{paddingRight:'5px'}}>
-      <AddNewChecklist
+      {/* <AddNewChecklist
         buttonLabel="Add Transaction Series"
         drawerTitle="Add Transaction Number Series" 
   
-      />
+      /> */}
+      <AddTransactionDrawer DrawerBtn='true' />
     </div>
        </Box>
         </Box>

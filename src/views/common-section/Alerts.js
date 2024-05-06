@@ -64,16 +64,22 @@ const Alert = ({ AlertData }) => {
                               <Typography variant="h3" style={subTitle}>
                                  {alert.title}
                                </Typography>
-                      
-                               {/* desc */}
-                                <Grid item>
-                                   <Typography variant="subtitle" style={subtitle2}>
-                                          {alert.description}
-                                    </Typography>
-                                </Grid>
-                            </Box>
 
-                        </Grid>
+                                      {/* desc */}
+                                      <Grid item sx={{
+                                            maxWidth: '400px !important', 
+                                            overflow: 'hidden !important',
+                                            textOverflow: 'ellipsis !important',
+                                            whiteSpace: 'nowrap !important',
+                                          }}>
+                                        <Typography variant="subtitle" style={subtitle2}
+                                          >
+                                          {alert.description}
+                                        </Typography>
+                                      </Grid>
+                                    </Box>
+
+                                  </Grid>
 
                         {/* Button */}
                           {alert.showButton && (

@@ -136,7 +136,7 @@ function AddLeadForm({currEditItem}) {
               <TextField id="Previous School" size={isMobile ? 'small' : 'normal'} fullWidth label="Previous School" variant="outlined" />
             </Grid>
           </Grid>
-          <Grid item xs={12} md={12}>
+          <Grid pt={1} item xs={12} md={12}>
             <Box p={0.5}>Remarks</Box>
             <TextArea rows={3} placeholder="Enter your text here..." fullWidth variant="outlined" />
           </Grid>

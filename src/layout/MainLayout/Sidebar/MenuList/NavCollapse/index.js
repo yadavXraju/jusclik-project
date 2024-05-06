@@ -6,13 +6,16 @@ import { Collapse ,List, ListItemButton, ListItemIcon, ListItemText, Typography 
 import NavItem from '../NavItem';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import { IconChevronDown, IconChevronUp } from '@tabler/icons';
-import { urlStore } from 'themes/navigation-for-pages/UrlStore';
-import { useSelector } from 'react-redux';
+import { useSelector , useDispatch} from 'react-redux';
+import { handleMenuNavCollapse } from 'store/layout/nav-collapse-slice';
+import { resetMenuNavItem } from 'store/layout/nav-item-slice';
+
 // ==============================|| SIDEBAR MENU LIST COLLAPSE ITEMS ||============================== //
 
 const NavCollapse = ({ menu, level }) => {
   const theme = useTheme();
   const customization = useSelector((state) => state.customization);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState(null);
@@ -23,27 +26,9 @@ const NavCollapse = ({ menu, level }) => {
     if (menu?.id !== 'authentication') {
       navigate(menu.children[0]?.url);
     }
-     
-    urlStore.title=''
-    urlStore.url=''
-    urlStore.children=''
-  
-// Store children titles in an array
-const childrenTitles = [];
-
-// Store children titles and URLs in urlStore
-if (menu.children) {
-  const childrenData = menu.children.map(child => {
-    childrenTitles.push(child.title); // Store child title
-    return {
-      title: child.title,
-      url: child.url
-    };
-    
-  });
-  urlStore.children = childrenData;
-}
-  };
+dispatch(handleMenuNavCollapse(menu.children.map(child => child)));
+dispatch(resetMenuNavItem());
+};
 
 
   const { pathname } = useLocation();
@@ -163,9 +148,14 @@ if (menu.children) {
               height: '100%',
               width: '1px',
               opacity: 1,
-              background: theme.palette.primary.light
+              background: theme.palette.primary.light,
             }
           }}
+
+          onClick={() => {
+            dispatch(handleMenuNavCollapse(menus.map(item => item.props.item)));
+          }}
+        
           className='submenutitle'
         >
           {menus}
