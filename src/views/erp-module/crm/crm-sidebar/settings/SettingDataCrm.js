@@ -71,12 +71,12 @@ const SettingData = [
       { name: 'Lead Stage', path: '/erp/crm/settings/lead-stage' },
       { name: 'Lead Score', path: '/erp/crm/settings/lead-score' }
     ]
-  },
+  }, 
   {
     icon: <TuneOutlinedIcon sx={{ color: '#838195' }} />,
     title: 'Integrations',
     items: [
-      { name: 'Zoom', path: '/zoom' },
+      { name: 'Zoom', path: '/erp/student-info-fee/settings/zoom' },
       { name: 'Google Meet', path: '/erp/student-info-fee/settings/google-meet' },
       { name: 'WhatsApp', path: '/erp/student-info-fee/settings/whatsapp-integration' },
       { name: 'Payment Gateways', path: '/erp/student-info-fee/settings/payment-gateways' }

@@ -1,9 +1,9 @@
 import React from 'react';
 import { Divider, Grid, Typography, Button, } from '@mui/material';
-import MainCard from 'ui-component/cards/MainCard';
-import { gridSpacing } from 'store/constant';
+// import MainCard from 'ui-component/cards/MainCard';
+// import { gridSpacing } from 'store/constant';
 import { HeadingCss, boxHeight, subTitle, subtitle2} from 'views/common-section/dashboard-css/CommonCss';
-import { Box } from '@mui/system';
+import { Box ,Paper} from '@mui/material';
 import { useNavigate } from 'react-router';
 
 
@@ -13,20 +13,33 @@ const Alert = ({ AlertData }) => {
     const navigate = useNavigate()
   return (
     <>
-      <MainCard  style={boxHeight} className='scrollbar' > 
-          <Grid container spacing={gridSpacing}>
-            <Grid item xs={12} sx={{mb:3}}>
-              <Grid  alignContent="center" justifyContent="space-between">
-                <Grid item>
+       <Paper
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        borderRadius: '12px',
+        border: '1px solid rgba(128, 128, 128, 0.25)',
+        boxShadow: '4px 4px 9px 2px #ddddddc2',
+        marginBottom: '20px', // Add some bottom margin for spacing
+      }}
+    >
+            <Grid
+        sx={{
+            padding: '24px 24px 0 24px',
+            background: '#f9f9fb',
+            borderBottom: '1px solid rgba(128, 128, 128, 0.25)',
+            borderRadius: '12px 12px 0px 0',
+        }}
+      >
                   <Typography variant="h2" style={HeadingCss}>
                     alerts
                   </Typography>
                 </Grid>
-              </Grid>
-            </Grid>
+              
      
            {/* maping data  */}
-            {AlertData.map((alert, index) => (
+           <Grid sx={{padding:'24px'}} style={boxHeight}>
+                        {AlertData.map((alert, index) => (
                 <Grid item xs={12} key={index} sx={{paddingTop:'0 !important'}}>
                   <Grid container direction="column">
                     <Grid item>
@@ -82,8 +95,9 @@ const Alert = ({ AlertData }) => {
                 </Grid>
             ))}
            
-          </Grid> 
-      </MainCard> 
+           </Grid>
+
+      </Paper> 
   </>
   )
 }

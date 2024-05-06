@@ -43,20 +43,20 @@ function AddLeadForm({currEditItem}) {
   const defaultFormFields = {
     leadNo: '',
     firstName: '',
-    // lastName: '',
-    // email: '',
-    // dob: '',
-    // mobileNumber: '',
+    lastName: '',
+    email: '',
+    dob: '',
+    mobile: '',
     // leadSource: [],
   };
 
   const [formFields, setFormFields] = React.useState(currEditItem ? {
     leadNo: currEditItem.contactNo || '',
     firstName: currEditItem.firstName || '',
-    // lastName: currEditItem.lastName || '',
-    // email: currEditItem.email || '',
-    // dob: currEditItem.dob || '',
-    // mobileNumber: currEditItem.mobileNumber || '',
+    lastName: currEditItem.lastName || '',
+    email: currEditItem.email || '',
+    dob: currEditItem.dob || '',
+    mobile: currEditItem.mobile || '',
     // leadSource: currEditItem.leadSource || [],
   } : defaultFormFields);
 
@@ -66,10 +66,10 @@ function AddLeadForm({currEditItem}) {
       setFormFields({
         leadNo: currEditItem.contactNo || '',
         firstName: currEditItem.firstName || '',
-        // lastName: currEditItem.lastName || '',
-        // email: currEditItem.email || '',
-        // dob: currEditItem.dob || '',
-        // mobileNumber: currEditItem.mobileNumber || '',
+        lastName: currEditItem.lastName || '',
+        email: currEditItem.email || '',
+        dob: currEditItem.dob || '',
+        mobile: currEditItem.mobile || '',
         // leadSource: currEditItem.leadSource || [],
       });
     } else {
@@ -84,6 +84,12 @@ function AddLeadForm({currEditItem}) {
     }));
   };
 
+  const handleDateChange = (newDate) => {
+    const formattedDate = newDate ? newDate.format('DD-MM-YYYY') : ''; // Format the date or set empty string if newDate is null
+    handleChange('dob', formattedDate); // Update the dob field with the formatted date
+  };
+
+  // console.log(currEditItem);
 
   return (
     <>
@@ -100,16 +106,16 @@ function AddLeadForm({currEditItem}) {
               <TextField id="first-Name" size={isMobile ? 'small' : 'normal'} value={formFields.firstName} onChange={(e) => handleChange('firstName', e.target.value)} fullWidth label="First Name" variant="outlined" />
             </Grid>
             <Grid item xs={12} sm={12} md={6}>
-              <TextField id="first-Name" size={isMobile ? 'small' : 'normal'} fullWidth label="Last Name" variant="outlined" />
+              <TextField id="first-Name" size={isMobile ? 'small' : 'normal'} value={formFields.lastName} onChange={(e) => handleChange('lastName', e.target.value)} fullWidth label="Last Name" variant="outlined" />
             </Grid>
             <Grid item xs={12} sm={12} md={6}>
-              <TextField id="email" size={isMobile ? 'small' : 'normal'} fullWidth label="Email" variant="outlined" />
+              <TextField id="email" size={isMobile ? 'small' : 'normal'} value={formFields.email} onChange={(e) => handleChange('email', e.target.value)} fullWidth label="Email" variant="outlined" />
             </Grid>
             <Grid item xs={12} sm={12} md={6}>
-              <ParameterizedDateComponent customStyle={{ width: '100%' }} label="D.O.B" />
+              <ParameterizedDateComponent customStyle={{ width: '100%' }} value={formFields.dob} onChange={handleDateChange} label="D.O.B" />
             </Grid>
             <Grid item xs={12} sm={12} md={6}>
-              <TextField id="mobile-Number" size={isMobile ? 'small' : 'normal'} fullWidth label="Mobile" variant="outlined" />
+              <TextField id="mobile-Number" size={isMobile ? 'small' : 'normal'} value={formFields.mobile} onChange={(e) => handleChange('mobile', e.target.value)} fullWidth label="Mobile" variant="outlined" />
             </Grid>
             <Grid item xs={12} sm={12} md={6}>
               <ParamMultipleSelect options={Sources} label="Lead Source" value={leadSource} setValue={setLeadSource} />
