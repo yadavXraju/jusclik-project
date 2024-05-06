@@ -37,6 +37,7 @@ const CommunicationHomeComp = () => {
   
   return (
     <>
+    
       <MainCard  sx={{ fontSize: '22px', fontWeight: 'bold' , paddingLeft: isMobile ? '10px' : 'auto' }} style={boxHeight} className='scrollbar'>
         <Grid item>
             <Typography variant="h2" style={HeadingCss}>
