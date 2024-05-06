@@ -5,7 +5,7 @@ import Divider from '@mui/material/Divider';
 import Dropdown from 'views/common-section/ParamSelectList';
 import { useState } from 'react';
 
-function StudentDetails({ handleClick ,backToLogin }) {
+function StudentDetails({ handleClick  }) {
   const [allStudentDetails, setAllStudentDetails] = useState({
     gender: '',
     id_number: '',
@@ -122,7 +122,18 @@ function StudentDetails({ handleClick ,backToLogin }) {
   ];
 
   const ChangeHandlerStudentDetails = (e) => {
-    setAllStudentDetails({ ...allStudentDetails, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+  
+    // Check if the input field is a text field and not email or Aadhar card
+    if (e.target.nodeName === "INPUT" && e.target.type === "text" && name !== "email_address" && name !== "id_number") {
+      // Capitalize the first letter
+      const capitalizedValue = value.charAt(0).toUpperCase() + value.slice(1);
+      // Update the state with the capitalized value
+      setAllStudentDetails({ ...allStudentDetails, [name]: capitalizedValue });
+    } else {
+      // For other types of input fields, update the state directly
+      setAllStudentDetails({ ...allStudentDetails, [name]: value });
+    }
   };
 
   //Error Validation
@@ -177,18 +188,14 @@ function StudentDetails({ handleClick ,backToLogin }) {
   return (
     <>
       <Grid item xs={10} sx={{ paddingTop: '0 !important', paddingRight: '4rem' }}>
-        <Paper>
+        <Paper sx={{height:'86vh'}}>
           <Box sx={{ padding: '2rem' }}>
             <Typography variant="h3" sx={{ fontWeight: 'bold', paddingBottom: '1rem' }}>
               {' '}
               STEP 1 : STUDENT&apos;S DETAILS{' '}
             </Typography>
 
-            <Box sx={{ paddingBottom: '1.5rem' }}>
-              <Button onClick={()=>backToLogin()} variant="contained" sx={{ height: '38px', width: '144px' }}>
-                Back to Login
-              </Button>
-            </Box>
+          
             <Divider />
           </Box>
 
