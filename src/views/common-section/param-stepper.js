@@ -51,7 +51,8 @@ const SetupTabs = ({
   iconShow = true,
   customBoxStyle={},
   customIconStyle={},
-  selectedTab
+  selectedTab,
+  nextBtnText = 'Save and Next'
 }) => {
   const [value, setValue] = useState(0);
   const lastIndex = tabPage.length - 1;
@@ -153,7 +154,7 @@ const SetupTabs = ({
           </TabPanel>
         ))}
       </Box>
-      {showBottomNav&&<BottomNavbar tabPageLength={tabPage.length} value={value} setValue={setValue} />}
+      {showBottomNav&&<BottomNavbar  tabPageLength={tabPage.length} value={value} setValue={setValue}   nextBtnText={nextBtnText} />}
     </>
   );
 };
