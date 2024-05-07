@@ -6,7 +6,7 @@ import Stage from './stages';
 
 export default function AccordionUsage() {
   // number of substages in each stage 
-  const [indexes, setIndexes] = React.useState([2, 3, 3, 3]);
+  const [indexes, setIndexes] = React.useState([2, 3, 5, 1]);
   const [stageNames, setStageNames] = React.useState([]);
 //generate initial stage names  
   useEffect(() => {
