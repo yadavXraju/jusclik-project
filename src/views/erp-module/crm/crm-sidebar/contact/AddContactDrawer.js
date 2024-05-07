@@ -5,7 +5,7 @@ import { Button, Typography, Box, Tab, Tabs } from '@mui/material';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import BottomNavbar from 'views/common-section/BottomNavbar';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
-import CommonDocuments from 'views/erp-common-component/commonDocuments';
+// import CommonDocuments from 'views/erp-common-component/commonDocuments';
 import documentData from './DocumentData';
 import AddLeadForm from './AddLeadForm';
 import PersonAddAltTwoToneIcon from '@mui/icons-material/PersonAddAltTwoTone';
@@ -13,6 +13,7 @@ import DriveFolderUploadTwoToneIcon from '@mui/icons-material/DriveFolderUploadT
 import DescriptionTwoToneIcon from '@mui/icons-material/DescriptionTwoTone';
 import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 import OtherDetails from './OtherDetails';
+import DocumentTest from './DocumentTest';
 
 const AddContactDrawer = ({ DrawerBtn = false, editIcon = false, currEditItem , handleClick }) => {
   const { anchor, toggleDrawer } = useDrawer();
@@ -85,7 +86,8 @@ const AddContactDrawer = ({ DrawerBtn = false, editIcon = false, currEditItem , 
               {tabValue === 1 && <OtherDetails/>}
               {tabValue === 2 && (
                 <>
-                  <CommonDocuments documentData={documentData} customStyle={{ height: '100%' }} />
+                  {/* <CommonDocuments documentData={documentData} customStyle={{ height: '100%' }} /> */}
+                  <DocumentTest documentData={documentData}/>
                 </>
               )}
             </Box>
@@ -98,6 +100,7 @@ const AddContactDrawer = ({ DrawerBtn = false, editIcon = false, currEditItem , 
           setValue={setTabValue}
           customStyle={{ width: '100%', bottom: '0', borderRadius: '1px' }}
         />
+        
       </Drawer>
     </>
   );
