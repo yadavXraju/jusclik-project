@@ -1,199 +1,166 @@
-import React from 'react'
+import React from 'react';
+import { Grid, Typography, Box, Paper } from '@mui/material';
+import Divider from '@mui/material/Divider';
+import Button from '@mui/material/Button';
+import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+import { styled } from '@mui/material/styles';
 
-function Upload_Document_Photos() {
+function Upload_Document_Photos({handleClick}) {
+  const VisuallyHiddenInput = styled('input')({
+    clip: 'rect(0 0 0 0)',
+    clipPath: 'inset(50%)',
+    height: 1,
+    overflow: 'hidden',
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    whiteSpace: 'nowrap',
+    width: 1
+  });
+
+
+  const handleSubmit =(tab)=>{
+    handleClick(tab)
+  }
+
   return (
     <>
-    <Grid item xs={10} sx={{ paddingTop: '0 !important', paddingRight: '4rem' }}>
-      <Paper sx={{height:'86vh'}}>
-        <Box sx={{ padding: '2rem' }}>
-          <Typography variant="h3" sx={{ fontWeight: 'bold', paddingBottom: '1rem' }}>
-            {' '}
-            STEP 10 : UPLOAD DOCUMENTS / PHOTOS{' '}
-          </Typography>
+      <Grid item xs={10} sx={{ paddingTop: '0 !important', paddingRight: '4rem' }}>
+        <Paper sx={{ height: '86vh' }}>
+          <Box sx={{ padding: '2rem' }}>
+            <Typography variant="h3" sx={{ fontWeight: 'bold', paddingBottom: '1rem' }}>
+              {' '}
+              STEP 10 : UPLOAD DOCUMENTS / PHOTOS{' '}
+            </Typography>
 
-          <Divider />
-        </Box>
+            <Divider />
+          </Box>
+          <Box sx={{ padding: '1rem 2rem' }}>
+            <Box sx={{ height: '4rem', background: '#d9edf7' }}>
+              <Typography varient="h6" sx={{ color: 'black', padding: '1rem 1rem' }}>
+                All documents and photos are compulsory to upload except (optional). Kindly upload appropriate documents and photos (jpg,
+                png and pdf). Once all documents are uploaded, then you can proceed to the final submission.
+              </Typography>
+            </Box>
+          </Box>
 
-        <Grid sx={{ padding: '1rem 4rem' }} container spacing={4}>
-          <Grid item xs={4}>
-            <TextField
-              label="Mother`s Name (Biological)"
-              name="mother_name"
-              value={Formdata.mother_name}
-              error={FormError.mother_name}
-              onChange={MotherDetailsChangeHandler}
-              fullWidth
-              required
-              inputProps={{ style: { backgroundColor: '#ffffff' } }}
-            />
+          <Grid sx={{ padding: '1rem 4rem' }} container spacing={4}>
+            <Grid item xs={4}>
+              <Typography variant="h3">Documents</Typography>
+              <Divider />
 
-            <TextField
-              label="Aadhaar card no"
-              name="aadhar_card_no"
-              sx={{ marginTop: '20px' }}
-              value={Formdata.aadhar_card_no}
-              error={FormError.aadhar_card_no}
-              onChange={MotherDetailsChangeHandler}
-              fullWidth
-              required
-              inputProps={{ style: { backgroundColor: '#ffffff' } }}
-            />
+              <Box sx={{ padding: '2rem 2rem' }}>
+                <Typography variant="h4">Date Of Birth Proof</Typography>
 
-            <TextField
-              label="Organisation"
-              name="organisation"
-              sx={{ marginTop: '20px' }}
-              value={Formdata.organisation}
-              error={FormError.organisation}
-              onChange={MotherDetailsChangeHandler}
-              fullWidth
-              required
-              inputProps={{ style: { backgroundColor: '#ffffff' } }}
-            />
+                <Button
+                  component="label"
+                  role={undefined}
+                  variant="contained"
+                  tabIndex={-1}
+                  width="50%"
+                  sx={{ marginTop: '15px' }}
+                  startIcon={<CloudUploadIcon />}
+                >
+                  Choose File
+                  <VisuallyHiddenInput type="file" />
+                </Button>
+              </Box>
+              <Divider />
+              <Box sx={{ padding: '2rem 2rem' }}>
+                <Typography variant="h4">Passport</Typography>
 
-            <TextField
-              label="Last Institute Attended"
-              name="last_institute_attended"
-              value={Formdata.last_institute_attended}
-              onChange={MotherDetailsChangeHandler}
-              sx={{ marginTop: '20px' }}
-              error={FormError.last_institute_attended}
-              fullWidth
-              required
-              inputProps={{ style: { backgroundColor: '#ffffff' } }}
-            />
+                <Button
+                  component="label"
+                  role={undefined}
+                  variant="contained"
+                  tabIndex={-1}
+                  width="50%"
+                  sx={{ marginTop: '15px' }}
+                  startIcon={<CloudUploadIcon />}
+                >
+                  Choose File
+                  <VisuallyHiddenInput type="file" />
+                </Button>
+              </Box>
+              <Divider />
+            </Grid>
 
-            <TextField
-              label="PAN Card"
-              name="pan_card"
-              value={Formdata.pan_card}
-              sx={{ marginTop: '20px' }}
-              onChange={MotherDetailsChangeHandler}
-              fullWidth
-              inputProps={{ style: { backgroundColor: '#ffffff' } }}
-            />
+            <Grid item xs={8}>
+              <Typography variant="h3">Photos</Typography>
+              <Divider />
+
+              <Grid container spacing={2}>
+                <Grid item xs={6}>
+                  <Box sx={{ padding: '2rem 2rem' }}>
+                    <Typography variant="h4">Student</Typography>
+
+                    <Button
+                      component="label"
+                      role={undefined}
+                      variant="contained"
+                      tabIndex={-1}
+                      width="50%"
+                      sx={{ marginTop: '15px' }}
+                      startIcon={<CloudUploadIcon />}
+                    >
+                      Choose File
+                      <VisuallyHiddenInput type="file" />
+                    </Button>
+                  </Box>
+                  <Divider />
+                 
+                </Grid>
+                <Grid item xs={6}>
+                  <Box sx={{ padding: '2rem 2rem' }}>
+                    <Typography variant="h4">Mother</Typography>
+
+                    <Button
+                      component="label"
+                      role={undefined}
+                      variant="contained"
+                      tabIndex={-1}
+                      width="50%"
+                      sx={{ marginTop: '15px' }}
+                      startIcon={<CloudUploadIcon />}
+                    >
+                      Choose File
+                      <VisuallyHiddenInput type="file" />
+                    </Button>
+                  </Box>
+                  <Divider />
+                </Grid>
+              </Grid>
+
+              <Box sx={{ padding: '2rem 2rem' }}>
+                    <Typography variant="h4">Father</Typography>
+
+                    <Button
+                      component="label"
+                      role={undefined}
+                      variant="contained"
+                      tabIndex={-1}
+                      width="50%"
+                      sx={{ marginTop: '15px' }}
+                      startIcon={<CloudUploadIcon />}
+                    >
+                      Choose File
+                      <VisuallyHiddenInput type="file" />
+                    </Button>
+                  </Box>
+                  <Divider />
+
+            </Grid>
           </Grid>
 
-          <Grid item xs={4}>
-            <TextField
-              label="Phone No"
-              name="phone_no"
-              value={Formdata.phone_no}
-              onChange={PhoneNumberHandler}
-              error={FormError.phone_no}
-              fullWidth
-              required
-              inputProps={{ style: { backgroundColor: '#ffffff' } }}
-            />
-
-            <TextField
-              label="Qualification"
-              name="qualification"
-              value={Formdata.qualification}
-              onChange={MotherDetailsChangeHandler}
-              sx={{ marginTop: '20px' }}
-              error={FormError.qualification}
-              fullWidth
-              required
-              inputProps={{ style: { backgroundColor: '#ffffff' } }}
-            />
-
-            <TextField
-              label="Designation"
-              name="designation"
-              value={Formdata.designation}
-              error={FormError.designation}
-              sx={{ marginTop: '20px' }}
-              onChange={MotherDetailsChangeHandler}
-              fullWidth
-              required
-              inputProps={{ style: { backgroundColor: '#ffffff' } }}
-            />
-
-            <TextField
-              label="Office Address"
-              name="office_address"
-              value={Formdata.office_address}
-              onChange={MotherDetailsChangeHandler}
-              sx={{ marginTop: '20px' }}
-              error={FormError.office_address}
-              fullWidth
-              required
-              inputProps={{ style: { backgroundColor: '#ffffff' } }}
-            />
-
-            <TextField
-              label="Age"
-              name="age"
-              value={Formdata.age}
-              onChange={MotherDetailsChangeHandler}
-              sx={{ marginTop: '20px' }}
-              error={FormError.age}
-              fullWidth
-              required
-              inputProps={{ style: { backgroundColor: '#ffffff' } }}
-            />
-          </Grid>
-
-          <Grid item xs={4}>
-            <TextField
-              label="Email"
-              name="email"
-              value={Formdata.email}
-              onChange={MotherDetailsChangeHandler}
-              error={FormError.email}
-              fullWidth
-              required
-              inputProps={{ style: { backgroundColor: '#ffffff' } }}
-            />
-
-            <TextField
-              label="Profession"
-              name="profession"
-              value={Formdata.profession}
-              onChange={MotherDetailsChangeHandler}
-              sx={{ marginTop: '20px' }}
-              error={FormError.profession}
-              fullWidth
-              required
-              inputProps={{ style: { backgroundColor: '#ffffff' } }}
-            />
-
-            <TextField
-              label="Annual Income"
-              name="annual_income"
-              value={Formdata.annual_income}
-              error={FormError.annual_income}
-              onChange={MotherDetailsChangeHandler}
-              sx={{ marginTop: '20px' }}
-              fullWidth
-              required
-              inputProps={{ style: { backgroundColor: '#ffffff' } }}
-            />
-
-            <TextField
-              label="Area of Interest"
-              name="area_of_interest"
-              value={Formdata.area_of_interest}
-              onChange={MotherDetailsChangeHandler}
-              sx={{ marginTop: '20px' }}
-              error={FormError.area_of_interest}
-              fullWidth
-              required
-              inputProps={{ style: { backgroundColor: '#ffffff' } }}
-            />
-          </Grid>
-        </Grid>
-
-        <Box sx={{ paddingBottom: '6rem', display: 'flex', paddingRight: '4.2rem', paddingTop: '2rem' }}>
-          <Button onClick={() => handleSubmit('eight')} variant="contained" sx={{ height: '38px', width: '144px', marginLeft: 'auto' }}>
-            Save and Next
-          </Button>
-        </Box>
-      </Paper>
-    </Grid>
-  </>
-  )
+          <Box sx={{ paddingBottom: '2rem', display: 'flex', paddingRight: '4.2rem', paddingTop: '2rem' }}>
+                    <Button onClick={() => handleSubmit('eleven')}variant="contained" sx={{ height: '38px', width: '148px', marginLeft: 'auto' }}>
+                        Upload and Next
+                    </Button>
+                </Box>
+        </Paper>
+      </Grid>
+    </>
+  );
 }
 
-export default Upload_Document_Photos
+export default Upload_Document_Photos;
