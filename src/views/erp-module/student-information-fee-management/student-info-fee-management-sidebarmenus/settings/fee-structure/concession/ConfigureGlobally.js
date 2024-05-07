@@ -265,15 +265,23 @@ const handleFeeHeadChange = (selectedFeeHead) => {
       id:2,
       tabHeading:'Fee Head',
     },
+
     {
       id:3,
-      tabHeading:'Concession Type',
+      tabHeading:'Class',
     },
 
     {
       id:4,
+      tabHeading:'Concession Type',
+    },
+
+    {
+      id:5,
       tabHeading:'Amount',
     },
+
+
   ]
   
   const updateTableData = () => {
@@ -281,6 +289,7 @@ const handleFeeHeadChange = (selectedFeeHead) => {
       id: row.id,
       srNO: row.srNo,
       feeHead: row.feeHead,
+      class:'test',
       concessionType: row.concessionType,
       amount: row.amount,
     }));
@@ -296,7 +305,7 @@ const handleFeeHeadChange = (selectedFeeHead) => {
     <>
 
       <Grid container spacing={4} sx={{marginTop:'1rem'}}>
-        <Grid item lg={4}>
+        <Grid item xs={12} lg={4}>
             <Grid container spacing={2} sx={{ borderRadius:'12px' ,margin:'0' , width:'100%', border:'1px solid rgba(224, 224, 224, 1)', padding:'1rem 1rem 1rem 0px'}}>
 
                 {/* ===========================  applicable from date*/}
@@ -356,7 +365,7 @@ const handleFeeHeadChange = (selectedFeeHead) => {
         </Grid>
 
         {/* data grid*/}
-        <Grid  item lg={8} sx={{position:'relative'}}>
+        <Grid  item xs={12} lg={8} sx={{position:'relative'}}>
             <CommonDataGrid
                 rows={TableRowData}
                 columns={columns}
@@ -391,7 +400,7 @@ const handleFeeHeadChange = (selectedFeeHead) => {
            
         </Grid>
 
-        <Grid item lg={12}>
+        <Grid item  xs={12} lg={12}>
            <ParamTable 
             columns={TableHeading}
             data={TableData}

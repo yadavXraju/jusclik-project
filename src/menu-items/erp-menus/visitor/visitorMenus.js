@@ -4,18 +4,6 @@ import GroupsTwoToneIcon from '@mui/icons-material/GroupsTwoTone';
 import SettingsTwoToneIcon from '@mui/icons-material/SettingsTwoTone';
 import DescriptionTwoToneIcon from '@mui/icons-material/DescriptionTwoTone';
 
-
-
-// ==================== colleagueTitles  ==================== 
-
-//  Visitor
-
-const  VisitorColleagueTitles  = [
-  {title : 'Visitor Entry' , url : '/erp/visitor/visitor-management/visitor-entry'}, 
-  {title : 'Scheduled Visit' , url : '/erp/visitor/visitor-management/scheduled-visit'}, 
-];
-
-
 const VisitorMenu = {
     id: 'visitorMenu',
     type: 'group',
@@ -36,7 +24,6 @@ const VisitorMenu = {
                      type: 'item',
                      url: '/erp/visitor/visitor-management/visitor-entry',
                      breadcrumbs: false,
-                     colleagueTitle : VisitorColleagueTitles,
                    },
     
 
@@ -46,17 +33,7 @@ const VisitorMenu = {
                      type: 'item',
                      url: '/erp/visitor/visitor-management/scheduled-visit',
                      breadcrumbs: false,
-                     colleagueTitle : VisitorColleagueTitles,
                    },
-                  //  {
-                  //   id: 'visitor-details',
-                  //   title: 'Visitor Deatils',
-                  //   type: 'item',
-                  //   url: '/erp/visitor/visitor-management/visitor-detail',
-                  //   breadcrumbs: false,
-                  //   colleagueTitle : VisitorColleagueTitles,
-                  // },
-    
                 ]
               },
        //  reports
@@ -76,25 +53,6 @@ const VisitorMenu = {
                 icon: SettingsTwoToneIcon,
               },
 
-              // {
-              //   id: 'tools',
-              //   title: 'Tools',
-              //   type: 'collapse',
-              //   url: '/erp/visitor/tools',
-              //   icon: BuildTwoToneIcon,
-              //   children: [
-
-              //       {
-              //           id: 'sms-delivery-report',
-              //           title: 'SMS Delivery Report',
-              //           type: 'item',
-              //           url: '/erp/visitor/tools/sms-delivery-report',
-              //           breadcrumbs: false,
-              //           colleagueTitle : ToolsColleagueTitles,
-              //         },       
-              //   ]
-              // },
-              
       
            //  visitor registration
 

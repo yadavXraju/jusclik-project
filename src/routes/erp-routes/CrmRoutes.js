@@ -15,8 +15,9 @@ const Reports = Loadable(lazy(() => import('views/erp-module/crm/crm-sidebar/rep
 const Settings = Loadable(lazy(() => import('views/erp-module/crm/crm-sidebar/settings')));
 const LeadStage = Loadable(lazy(() => import('views/erp-module/crm/crm-sidebar/settings/configure/lead-stage')));
 const LeadScore = Loadable(lazy(() => import('views/erp-module/crm/crm-sidebar/settings/configure/lead-score')));
-
-
+const LeadOwner = Loadable(lazy(() => import('views/erp-module/crm/crm-sidebar/settings/configure/lead-owner')));
+const LeadSource = Loadable(lazy(() => import('views/erp-module/crm/crm-sidebar/settings/configure/lead-source')));
+const LeadClassification = Loadable(lazy(() => import('views/erp-module/crm/crm-sidebar/settings/configure/lead-classification')));
 // ==============================|| Visitor MENUS ||============================== //
 
 const CrmRoutes = [
@@ -65,6 +66,18 @@ const CrmRoutes = [
           element: <LeadScore />
         } , 
 
+        {
+          path: 'lead-owner', 
+          element: <LeadOwner />
+        } , 
+        {
+          path: 'lead-source', 
+          element: <LeadSource />
+        } , 
+        {
+          path: 'lead-classification', 
+          element: <LeadClassification />
+        } , 
       ]
      
      },

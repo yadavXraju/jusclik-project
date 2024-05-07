@@ -34,13 +34,13 @@ import { Typography } from '@mui/material';
 
 // project imports
 import NavGroup from './NavGroup';
-import { getMenuItems } from 'menu-items';
+import { GetMenuItems } from 'menu-items';
 // ==============================|| SIDEBAR MENU LIST ||============================== //
 
 const MenuList = () => {
-  // console.log('Calling getMenuItems');
+  // console.log('Calling GetMenuItems');
 
-  const menuItems = getMenuItems();
+  const menuItems = GetMenuItems();
   
   // console.log('menuItems:', menuItems);
 

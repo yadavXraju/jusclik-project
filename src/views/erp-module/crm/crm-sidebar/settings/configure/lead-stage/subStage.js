@@ -1,12 +1,16 @@
-import EditIcon from '@mui/icons-material/Edit';
+import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import * as React from 'react';
 import { FormControl, TextField, Typography, Select, MenuItem, InputLabel, FormControlLabel, Switch, Box, Grid } from '@mui/material';
 
-export const subStage = (subIndex) => {
+ const  SubStage = ({subIndex}) => {
   return (
-    <Box sx={{ margin: '1rem 0rem 1rem 1rem' }}>
+    <Box sx={{ margin: '1rem 0rem ' }}>
       <Grid container spacing={2}>
-        <Grid item xs={1}>
+        <Grid item xs={2} 
+        sx={{display:'flex',justifyContent:'end',
+        // paddingRight:'2%'
+      }}
+        >
           <Typography
             sx={{
               backgroundColor: '#EEF2F6',
@@ -16,8 +20,8 @@ export const subStage = (subIndex) => {
               marginRight: '10px',
               textAlign: 'center',
               borderRadius: '8px',
-              width: '100%',
-              height: '100%'
+              width: '60%',
+              height: '100%',
             }}
           >
             Stage{subIndex + 1}
@@ -30,7 +34,7 @@ export const subStage = (subIndex) => {
             <FormControl fullWidth>
               <Box sx={{ display: 'flex', alignItems: 'center' }}>
                 <TextField placeholder="status" sx={{ marginRight: '10px', width: '100%' }} />
-                <EditIcon />
+                <EditOutlinedIcon sx={{color:'grey'}} />
               </Box>
             </FormControl>
           </Box>
@@ -39,7 +43,7 @@ export const subStage = (subIndex) => {
 
         <Grid item xs={2}>
           <Box>
-            <FormControl fullWidth>
+            <FormControl fullWidth sx={{width:'97%'}}>
               <InputLabel>Follow up Required</InputLabel>
               <Select
                 //   value={value} onChange={handleChange}
@@ -53,10 +57,13 @@ export const subStage = (subIndex) => {
         </Grid>
 
         {/* toggle button */}
-
-        <Grid item container xs={3} justifyContent="end">
+        {/* <Grid item xs={4}/> */}
+        <Grid item container xs={5} justifyContent="end">
           <FormControlLabel
             fullWidth
+            sx={{
+              marginRight:'9%'
+            }}
             control={
               <Switch
                 //  checked={checked} onChange={handleChange}+
@@ -73,3 +80,4 @@ export const subStage = (subIndex) => {
     </Box>
   );
 };
+export default SubStage

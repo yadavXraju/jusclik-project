@@ -6,10 +6,11 @@ import { useTheme } from '@mui/material/styles';
 import { Avatar, Chip, ListItemButton, ListItemIcon, ListItemText, Typography, useMediaQuery } from '@mui/material';
 import { menuOpen} from 'store/customization-slice';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
-import { urlStore } from 'themes/navigation-for-pages/UrlStore';
-import { handleMenu } from 'store/layout/mainLayout/sidebar/menuList/navItem/menu-item-slice';
-// ==============================|| SIDEBAR MENU LIST ITEMS ||============================== //
+import { handleMenuNavItem } from 'store/layout/nav-item-slice';
+import { resetMenuNavCollapse } from 'store/layout/nav-collapse-slice';
 
+// ==============================|| SIDEBAR MENU LIST ITEMS ||============================== //
+  
 const NavItem = ({ item, level , }) => {
   const theme = useTheme();
   const dispatch = useDispatch();
@@ -36,7 +37,8 @@ const NavItem = ({ item, level , }) => {
   }
 
   let listItemProps = {
-    component: forwardRef((props, ref) => <Link ref={ref} {...props} to={item.url} target={itemTarget} />)
+    component: forwardRef((props, ref) => <Link  
+    ref={ref} {...props} to={item.url} target={itemTarget} />)
   };
   if (item?.external) {
     listItemProps = { component: 'a', href: item.url, target: itemTarget };
@@ -45,33 +47,8 @@ const NavItem = ({ item, level , }) => {
 const itemHandler = (id) => {
   dispatch(menuOpen({id }));
   if (matchesSM) dispatch(setMENU({opened: false}));
-  // Clear existing children
-  urlStore.children = [];
-  // Update URL store with the main title
-  urlStore.url = item.url;
-  // Check if colleagueTitle exists
-  if (item.colleagueTitle) {
-    // Iterate over the colleagueTitle array
-    item.colleagueTitle.forEach((colleague) => {
-      // Add each title to the children array with its respective URL
-      urlStore.children.push({
-        title: colleague.title,
-        url: colleague.url
-      });
-    });
-  } else {
-    // If colleagueTitle does not exist, save item title directly into urlStore.title
-    urlStore.title = item.title;
-    // Add item title to the children array with its respective URL
-    urlStore.children.push({
-      title: item.title,
-      url: item.url
-    });
-  }
-  // dispatch(handlMenuItem({id}))
-  // console.log(item.id)
-
-  dispatch(handleMenu({item}))
+  dispatch(handleMenuNavItem(item)); 
+  dispatch(resetMenuNavCollapse());
 };
 
   // active menu item on page load

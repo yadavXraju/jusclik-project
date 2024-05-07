@@ -8,48 +8,6 @@ import ReceiptLongTwoToneIcon from '@mui/icons-material/ReceiptLongTwoTone';
 import AdminPanelSettingsTwoToneIcon from '@mui/icons-material/AdminPanelSettingsTwoTone';
 import DirectionsBusTwoToneIcon from '@mui/icons-material/DirectionsBusTwoTone';
 
-// ==================== colleagueTitles  ==================== 
-
-// student master
-const StudnetMasterColleagueTitles = [
- {title : 'Enquiry' , url : '/erp/student-info-fee/student-master/enquiry'}, 
- {title : 'Registration' , url : '/erp/student-info-fee/student-master/registration'}, 
- {title :  'Provisional' , url : '/erp/student-info-fee/student-master/provisional'}, 
- {title :  'Admission' , url : '/erp/student-info-fee/student-master/admission'}, 
-];
-
-
-// Fee receipt
-
-const FeeReceiptColleagueTitles = [
-  {title : 'Fee Transaction ' , url : '/erp/student-info-fee/fee-accounting/fee-transaction-entry'}, 
-  {title :  'Head Wise Fee Adjustment ' , url : '/erp/student-info-fee/fee-accounting/head-wise-fee-adjustment-entry'}, 
-  {title :  'Fee Clearance ' , url : '/erp/student-info-fee/fee-accounting/fee-clearance-entry'}, 
-  {title :  'Security Deposit' , url : '/erp/student-info-fee/fee-accounting/security-deposit'}, 
-];
-
-
-// invoice modification
-
-const InvoiceModificationColleagueTitles = [
-  {title : 'Invoice Modification' , url : '/erp/student-info-fee/fee-accounting/invoice-modification'}, 
-  {title :  'Student Fee Ledger ' , url : '/erp/student-info-fee/fee-accounting/student-fee-ledger-details'}, 
-  {title :  'Optional Fee Heads ' , url : '/erp/student-info-fee/fee-accounting/optional-fee-heads-entry'}, 
-
-];
-
-
-// transport
-
-const TransportColleagueTitles = [
-  {title :  'Bus Details ' , url : '/erp/student-info-fee/transport/bus-details'}, 
-  {title : 'Routes & Slabs' , url : '/erp/student-info-fee/transport/routes-slabs'}, 
-  {title :  'Transport Allocation' , url : '/erp/student-info-fee/transport/allocation'}, 
-
-];
-
-
-
 const StudentInfoFeeMenu = {
     id: 'StudentInfoFeeMenu',
     type: 'group',
@@ -70,7 +28,6 @@ const StudentInfoFeeMenu = {
                   type: 'item',
                   url: '/erp/student-info-fee/student-master/enquiry',
                   breadcrumbs: false,
-                  colleagueTitle : StudnetMasterColleagueTitles,
                 },
 
 
@@ -80,7 +37,6 @@ const StudentInfoFeeMenu = {
                   type: 'item',
                   url: '/erp/student-info-fee/student-master/registration',
                   breadcrumbs: false,
-                  colleagueTitle : StudnetMasterColleagueTitles,
                 },
 
 
@@ -90,7 +46,6 @@ const StudentInfoFeeMenu = {
                 type: 'item',
                 url: '/erp/student-info-fee/student-master/provisional',
                 breadcrumbs: false,
-                colleagueTitle : StudnetMasterColleagueTitles,
               },
 
               
@@ -100,48 +55,7 @@ const StudentInfoFeeMenu = {
                 type: 'item',
                 url: '/erp/student-info-fee/student-master/admission',
                 breadcrumbs: false,
-                colleagueTitle : StudnetMasterColleagueTitles,
               },
-
-                                
-
-              // {
-              //   id: 'edit-master-data-field',
-              //   title: 'Edit Master Data Field',
-              //   type: 'item',
-              //   url: '/erp/student-info-fee/student-master/edit-master-data-field',
-              //   breadcrumbs: false,
-              //   colleagueTitle : StudnetMasterColleagueTitles,
-              // },
-
-                  
-              // {
-              //   id: 'change-enrolment-status',
-              //   title: 'Change Enrolment Status',
-              //   type: 'item',
-              //   url: '/erp/student-info-fee/student-master/change-enrolment-status',
-              //   breadcrumbs: false,
-              //   colleagueTitle : StudnetMasterColleagueTitles,
-              // },
-
-              // {
-              //   id: 'change-enrolment-number',
-              //   title: 'Change Enrolment Number',
-              //   type: 'item',
-              //   url: '/erp/student-info-fee/student-master/change-enrolment-number',
-              //   breadcrumbs: false,
-              //   colleagueTitle : StudnetMasterColleagueTitles,
-              // },
-
-              // {
-              //   id: 'upload-documents',
-              //   title: 'Upload Documents',
-              //   type: 'item',
-              //   url: '/erp/student-info-fee/student-master/upload-document',
-              //   breadcrumbs: false,
-              //   colleagueTitle : StudnetMasterColleagueTitles,
-              // },
-
 
             ]
           },
@@ -152,7 +66,7 @@ const StudentInfoFeeMenu = {
             id: 'invoice',
             title: 'Invoice',
             type: 'collapse',
-            url: '/erp/student-info-fee/fee-invoice', //change
+            url: '/erp/student-info-fee/fee-invoice', 
             icon: ReceiptLongTwoToneIcon,
             children: [
 
@@ -162,7 +76,6 @@ const StudentInfoFeeMenu = {
                   type: 'item',
                   url: '/erp/student-info-fee/fee-accounting/invoice-modification',
                   breadcrumbs: false,
-                  colleagueTitle : InvoiceModificationColleagueTitles,
                 },
 
                 {
@@ -171,7 +84,6 @@ const StudentInfoFeeMenu = {
                   type: 'item',
                   url: '/erp/student-info-fee/fee-accounting/student-fee-ledger-details',
                   breadcrumbs: false,
-                  colleagueTitle : InvoiceModificationColleagueTitles,
                 },
 
                 
@@ -181,7 +93,6 @@ const StudentInfoFeeMenu = {
                 type: 'item',
                 url: '/erp/student-info-fee/fee-accounting/optional-fee-heads-entry',
                 breadcrumbs: false,
-                colleagueTitle : InvoiceModificationColleagueTitles,
               },   
 
 
@@ -202,14 +113,9 @@ const StudentInfoFeeMenu = {
                 id: 'fee-transaction',
                 title: 'Fee Transaction ',
                  type: 'item',
-                url: '/erp/student-info-fee/fee-accounting/fee-transaction-entry',  //change
+                url: '/erp/student-info-fee/fee-accounting/fee-transaction-entry', 
                 breadcrumbs: false,
-                colleagueTitle : FeeReceiptColleagueTitles,
-              },
-
-
-
-                  
+              },                
 
               {
                 id: 'head-wise-fee-adjustment',
@@ -217,7 +123,6 @@ const StudentInfoFeeMenu = {
                 type: 'item',
                 url: '/erp/student-info-fee/fee-accounting/head-wise-fee-adjustment-entry',
                 breadcrumbs: false,
-                colleagueTitle : FeeReceiptColleagueTitles,
               },
 
                   
@@ -227,7 +132,6 @@ const StudentInfoFeeMenu = {
                 type: 'item',
                 url: '/erp/student-info-fee/fee-accounting/fee-clearance-entry',
                 breadcrumbs: false,
-                colleagueTitle : FeeReceiptColleagueTitles,
               },
 
               {
@@ -236,14 +140,10 @@ const StudentInfoFeeMenu = {
                 type: 'item',
                 url: '/erp/student-info-fee/fee-accounting/security-deposit',
                 breadcrumbs: false,
-                colleagueTitle : FeeReceiptColleagueTitles,
               },
               ]
             },
 
-
-
-          
           // hostel
           {
             id: 'hostel' ,
@@ -261,8 +161,6 @@ const StudentInfoFeeMenu = {
                   breadcrumbs: false,
                   // colleagueTitle : SetUpColleagueTitles,
                 },
-
-
             ]
           },
 
@@ -282,7 +180,6 @@ const StudentInfoFeeMenu = {
                 type: 'item',
                 url: '/erp/student-info-fee/transport/bus-details',
                 breadcrumbs: false,
-                colleagueTitle : TransportColleagueTitles,
               },
 
 
@@ -293,7 +190,6 @@ const StudentInfoFeeMenu = {
                 type: 'item',
                 url: '/erp/student-info-fee/transport/routes-slabs',
                 breadcrumbs: false,
-                colleagueTitle : TransportColleagueTitles,
               },
 
 
@@ -303,7 +199,6 @@ const StudentInfoFeeMenu = {
                   type: 'item',
                   url: '/erp/student-info-fee/transport/allocation',
                   breadcrumbs: false,
-                  colleagueTitle : TransportColleagueTitles,
                 },
 
              ]
@@ -330,8 +225,6 @@ const StudentInfoFeeMenu = {
             breadcrumbs: false
           },
          
-  
-          
             // User and roles
             {
               id: 'user-and-roles',
@@ -341,10 +234,6 @@ const StudentInfoFeeMenu = {
               icon: AdminPanelSettingsTwoToneIcon,
               breadcrumbs: false
             },
-           
-
- 
-
     ]
   };
   

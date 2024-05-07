@@ -37,7 +37,7 @@ const dispatchers = [
   updateTelephonyActivities
 ];
 
-export default function LeadScore() {
+ const LeadScore=React.memo(()=> {
   const leadScore = useSelector((state) => state.leadScoreSlice);
   const leadScoreKeys = Object.keys(leadScore);
   const [value, setValue] = useState(0);
@@ -57,7 +57,7 @@ export default function LeadScore() {
       );
     });
     setTabContent(newContent);
-  };
+  }
 
   useEffect(() => {
     generateTabs();
@@ -79,8 +79,8 @@ export default function LeadScore() {
     </Paper>
   );
 }
-
-function TabPanel(props) {
+)
+const TabPanel = React.memo((props)=> {
   const { children, value, index, stepData, stepName, selectedTab, description, ...other } = props;
   const dispatch = useDispatch();
   const leadScore = useSelector((state) => state.leadScoreSlice);
@@ -102,14 +102,15 @@ function TabPanel(props) {
         <Box p={3}>
             <List>
               <ListItem>
-              <Grid container sx={{width:'100%'}}>
-                <Grid item xs={3}>
-                <ListItemText primary={stepData.title} sx={{ width: '100%' }} />
-                </Grid>
-                {
+              <Grid container sx={{width:'100%',display:'flex'}} columnSpacing={4}>
+                <Grid item xs={2} sx={{display:'flex',alignItems:'center'}}>
+                <ListItemText primary={stepData.title} />                
+                </Grid>                
                     <Grid item xs={9}>
+
                   <Box sx={{ display: 'flex', width: '100%' }}>
-                      <Grid xs={6} >
+                      <Grid container columnSpacing={2}>
+                      <Grid xs={3} >
 
                       {(stepData.value == 0 || stepData.value) && (
                         <Select
@@ -117,7 +118,7 @@ function TabPanel(props) {
                         // id={`select-${stepIndex}`}
                         value={selectValue && selectValue} // Initial value, change this according to your logic
                         onChange={handleSelectChange} // Call handleSelectChange on select change
-                          style={{ margin: '0', width:'50%', justifyContent: 'start' }} // Adjust style as needed
+                          style={{ margin: '0', justifyContent: 'start',width:'100%' }} // Adjust style as needed
                           >
                           {[...Array(31).keys()].map((value) => (
                             <MenuItem key={value} value={value - 15}>
@@ -127,8 +128,9 @@ function TabPanel(props) {
                         </Select>
                       )}
                       </Grid>
+
                     {radio && (
-                      <Grid container item xs={6}>
+                      <Grid container item xs={4}>
                         <RadioGroup row defaultValue={radio} sx={{ justifyContent: 'center', width: '100%' }} onChange={handleRadioChange}>
                           <FormControlLabel
                             value="everytime"
@@ -148,9 +150,10 @@ function TabPanel(props) {
                         </RadioGroup>
                       </Grid>
                     )}
+                      </Grid>
                   </Box>
                     </Grid>
-                }
+                
                 </Grid>
               </ListItem>
             </List>
@@ -159,3 +162,8 @@ function TabPanel(props) {
     </Box>
   );
 }
+)
+
+
+
+export default LeadScore
