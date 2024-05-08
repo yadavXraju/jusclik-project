@@ -3,11 +3,14 @@ import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import Stage from './stages';
+import { Box , useMediaQuery, useTheme} from '@mui/material';
 
 export default function AccordionUsage() {
   // number of substages in each stage 
   const [indexes, setIndexes] = React.useState([2, 3, 5, 1]);
   const [stageNames, setStageNames] = React.useState([]);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 //generate initial stage names  
   useEffect(() => {
     let initialStageName = [];
@@ -53,6 +56,8 @@ export default function AccordionUsage() {
 
   return (
     <>
+    <Box sx={{overflowX:isMobile?'auto':null}}>
+      <Box sx={{width:isMobile?'1200px':null,maxWidth:'1920px'}}>        
       <DragDropContext onDragEnd={handleDragAndDrop}>
         <Droppable droppableId="droppable">
           {(provided) => (
@@ -62,6 +67,8 @@ export default function AccordionUsage() {
           )}
         </Droppable>
       </DragDropContext>
+      </Box>
+    </Box>
     </>
   );
 }

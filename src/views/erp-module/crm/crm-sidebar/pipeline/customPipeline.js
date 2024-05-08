@@ -89,7 +89,8 @@ const CustomPipeline = () => {
         borderTop: `3px solid ${laneColors[lane.id]}`,
         backgroundColor: '#fff',
         minHeight: '70vh',
-        borderRadius: '15px'
+        borderRadius: '15px',
+        marginRight:'20px'
       }
     }));
     return modifedData;
@@ -107,6 +108,7 @@ const CustomPipeline = () => {
   useEffect(() => {
     const boardData = modifyData(kanbanData);
     setData(boardData);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
