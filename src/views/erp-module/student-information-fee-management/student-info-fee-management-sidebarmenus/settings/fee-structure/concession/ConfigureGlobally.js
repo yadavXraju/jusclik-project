@@ -1,12 +1,12 @@
 import React,{useState , useEffect} from 'react';
-import {Grid, TextField ,styled ,Button , Paper , Box, Typography ,} from '@mui/material';
+import {Grid, TextField ,styled ,Button , Paper , Box, Typography , FormControlLabel , Checkbox} from '@mui/material';
 import SelectList from 'views/common-section/ParamSelectList';
 import ParamDateComponent from 'views/common-section/ParamDateComponent';
-import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import CommonDataGrid from 'views/common-section/commonDataGrid';
 import ParamMultipleSelect from 'views/common-section/ParamMultipleSelect';
 import ParamTable from 'views/erp-common-component/ParamTable';
 
+// style for bottom nav bar start
 export const VisuallyHiddenInput = styled('input')({
   clip: 'rect(0 0 0 0)',
   clipPath: 'inset(50%)',
@@ -36,6 +36,8 @@ export const style = {
       zIndex:'999',
   }
 };
+
+// style for bottom nav bar end
 
 const ConfigureGlobally = ({customStyle}) => {
 
@@ -100,17 +102,11 @@ const handleFeeHeadChange = (selectedFeeHead) => {
     { id: 1, name: 'kg' },
     { id: 2, name: 'Nursery' },
     { id: 3, name: 'I ' },
-    // { id: 4, name: 'I B' },
-    // { id: 5, name: 'I C' },
     { id: 6, name: 'II ' },
-    // { id: 7, name: 'II B' },
-    // { id: 8, name: 'II C' },
     { id: 9, name: 'III A' },
     { id: 10, name: 'III B' },
-    // { id: 11, name: 'III C' },
     { id: 12, name: 'IV A' },
     { id: 13, name: 'IV B' },
-    // { id: 14, name: 'IV C' },
     { id: 15, name: 'V A' },
     { id: 16, name: 'V B' },
     { id: 17, name: 'V C' },
@@ -136,6 +132,7 @@ const handleFeeHeadChange = (selectedFeeHead) => {
     setClasses(selectedClass)
   }
   
+  // data grid row creating from here
   useEffect(() => {
     // If no fee head is selected, create an empty row
     if (feeHead.length === 0) {
@@ -153,7 +150,8 @@ const handleFeeHeadChange = (selectedFeeHead) => {
         const existingRow = concessionData.find((row) => row.feeHead === fh.name);
         if (existingRow) {
           return existingRow; // Preserve existing row if fee head already exists
-        } else {
+        }
+         else {
           return {
             id: index + 1,
             srNo: `${index + 1}`,
@@ -175,13 +173,20 @@ const handleFeeHeadChange = (selectedFeeHead) => {
     amount: row.amount,
   }));
 
+  // data grid columns
   const columns = [
     { field: 'srNo', headerName: 'Sr No.', flex: 1, maxWidth: 130, align: 'left', headerAlign: 'left' },
     { field: 'feeHead', headerName: 'Fee Head', flex: 1, minWidth: 130 },
     { field: 'concessionType',
-      headerName: 'Concession Type',
+      // headerName: 'Concession Type',
       flex: 1,
       minWidth: 130,
+      renderHeader: () => (
+          <>
+            {'Concession Type '}
+            <FormControlLabel  control={<Checkbox />} sx={{marginLeft:'5px' , marginRight:'0'}} />
+          </>
+      ),
       renderCell: (params) => {
         const row = concessionData.find((row) => row.id === params.id);
         // Render SelectList only if feeHead is not empty for the current row
@@ -284,26 +289,60 @@ const handleFeeHeadChange = (selectedFeeHead) => {
 
   ]
   
+  // const updateTableData = () => {
+  //   const newData = [];
+  //   let dataIndex = 0;
+  //   feeHead.forEach((fh) => {
+  //     const clsIndex = dataIndex % classes.length;
+  //     const row = concessionData.find((item) => item.feeHead === fh.name);
+  //     if (row) {
+  //       newData.push({
+  //         id: dataIndex + 1,
+  //         srNO: `${dataIndex + 1}`,
+  //         feeHead: fh.name,
+  //         class: classes[clsIndex].name,
+  //         concessionType: row.concessionType,
+  //         amount: row.amount,
+  //       });
+  //     } else {
+  //       newData.push({
+  //         id: dataIndex + 1,
+  //         srNO: `${dataIndex + 1}`,
+  //         feeHead: fh.name,
+  //         class: classes[clsIndex].name,
+  //         concessionType: '',
+  //         amount: '',
+  //       });
+  //     }
+  //     dataIndex++;
+  //   });
+  //   setTableData(newData);
+  // };
+  
+  
   const updateTableData = () => {
     const newData = concessionData.map((row) => ({
       id: row.id,
       srNO: row.srNo,
       feeHead: row.feeHead,
-      class:'test',
+      class: classes.map(cls => cls.name).join(', '), // Join selected classes into a string
       concessionType: row.concessionType,
       amount: row.amount,
     }));
-    setTableData(newData);
+    setTableData(newData); // Update TableData state with the new data
   };
 
+    
   // print data onclick on submit
-  const handleSubmit = () => {
-    updateTableData();
-  };
+const handleSubmit = () => {
+  updateTableData();
+  setFeeHead([]);
+  setClasses([]);
+};
+
     
   return (
     <>
-
       <Grid container spacing={4} sx={{marginTop:'1rem'}}>
         <Grid item xs={12} lg={4}>
             <Grid container spacing={2} sx={{ borderRadius:'12px' ,margin:'0' , width:'100%', border:'1px solid rgba(224, 224, 224, 1)', padding:'1rem 1rem 1rem 0px'}}>
@@ -319,12 +358,17 @@ const handleFeeHeadChange = (selectedFeeHead) => {
                 </Grid>
 
                 {/* ===========================  fee head */}
-                <Grid item  xs={12} md={12} sx={{ marginBottom: '5px' }}>
+                <Grid item  xs={12} md={12} sx={{ marginBottom: '5px', flexWrap:'nowrap' }}>
                     <ParamMultipleSelect
                       options={feeHeadOptions}
+                      // sx={{
+                      //   '& .MuiAutocomplete-inputRoot':{
+                      //     flexWrap:'nowrap',
+                      //   }
+                      // }}
                       label="Fee Head"
                       value={feeHead} 
-                      setValue={handleFeeHeadChange} // Pass handleFeeHeadChange function
+                      setValue={handleFeeHeadChange} 
                     />
                 </Grid>
 
@@ -346,21 +390,6 @@ const handleFeeHeadChange = (selectedFeeHead) => {
                         />
                 </Grid>
 
-                {/* ===========================  upload file*/}
-                <Grid item  xs={12} md={12} sx={{ marginBottom: '5px' }}>
-                    <Button
-                        component="label"
-                        role={undefined}
-                        sx={{width:'100%' , padding:'12px' , borderRadius:'12px'}}
-                        variant="contained"
-                        tabIndex={-1}
-                        startIcon={<CloudUploadIcon />}
-                        >
-                        Upload file
-                        <VisuallyHiddenInput type="file" />
-                    </Button>
-                </Grid>
-
             </Grid>
         </Grid>
 
@@ -371,6 +400,7 @@ const handleFeeHeadChange = (selectedFeeHead) => {
                 columns={columns}
                 width="100%"
                 checkboxSelection={false}
+                className='scrollbar'
                 initialState={{
                   pagination: {
                     paginationModel: { page: 0, pageSize: 50 }
@@ -387,10 +417,28 @@ const handleFeeHeadChange = (selectedFeeHead) => {
                   },
                   '& .MuiDataGrid-selectedRowCount' :{
                     visibility:'hidden',
+                },
+                '& .MuiDataGrid-virtualScrollerContent' :{
+                   height:'auto !important'
+                },
+                '& .MuiDataGrid-virtualScroller' :{
+                     height:'300px',
+                     overflowY:'auto',
+                     overflowX:'hidden',
+                },
+                '& .MuiDataGrid-virtualScrollerRenderZone':{
+                  paddingBottom:'4rem',
                 }
                 }}
+                
+   
            />
  
+           <Box sx={{ position: 'absolute', bottom: '83px', left: '36px' , width:'calc(100% - 55px)' , minHeight:'50px' , display:'flex' , alignItems:'center', background:'#fff' }}>
+             <FormControlLabel  control={<Checkbox />} sx={{marginLeft:'0px' , marginRight:'0' , paddingLeft:'0'}} label='Concession Type'/>
+             <FormControlLabel  control={<Checkbox />} sx={{marginLeft:'5px' , marginRight:'0' ,  paddingLeft:'0'}} label='Amount'/>
+           </Box>
+
           <Box sx={{ position: 'absolute', bottom: '0px', left: '60px' , width:'50%' , minHeight:'80px' , display:'flex' , alignItems:'center' }}>
               <Typography variant='h5' sx={{lineHeight:'34px'}}>
                 {classes.length > 0 ? `Class: ${classes.map(cls => cls.name).join(', ')}` : null}
@@ -414,7 +462,7 @@ const handleFeeHeadChange = (selectedFeeHead) => {
         <Paper sx={{ ...style.BottomNavbar, ...customStyle }}>
             <Box sx={{ display: "flex", gap: "20px" }}>
                  <Button variant="contained" sx={{ height: "38px",marginTop: "auto",marginBottom:"auto", width: "144px" }} onClick={handleSubmit}>
-                        Submit
+                        Save
                  </Button>
   
             </Box>

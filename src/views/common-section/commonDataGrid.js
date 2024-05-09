@@ -2,7 +2,7 @@ import React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 
 
-const CommonDataGrid = ({ rows, columns, sx , onRowClick, pageSizeOptions = [5, 10], ...otherProps  }) => {
+const CommonDataGrid = ({ className='' , rows, columns, sx , onRowClick, pageSizeOptions = [5, 10], ...otherProps  }) => {
 
   return (
       <DataGrid
@@ -13,6 +13,7 @@ const CommonDataGrid = ({ rows, columns, sx , onRowClick, pageSizeOptions = [5, 
         checkboxSelection
         {...otherProps} 
         sx={sx}
+        className={className}
       />
   );
 };

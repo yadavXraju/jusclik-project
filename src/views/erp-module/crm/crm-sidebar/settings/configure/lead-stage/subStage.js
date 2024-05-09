@@ -24,7 +24,7 @@ import { FormControl, TextField, Typography, Select, MenuItem, InputLabel, FormC
               height: '100%',
             }}
           >
-            Stage{subIndex + 1}
+           Sub Stage{subIndex + 1}
           </Typography>
         </Grid>
 
@@ -48,6 +48,8 @@ import { FormControl, TextField, Typography, Select, MenuItem, InputLabel, FormC
               <Select
                 //   value={value} onChange={handleChange}
                 onChange={() => {}}
+                label="Follow up Required"
+
               >
                 <MenuItem value="Yes">Yes</MenuItem>
                 <MenuItem value="No">No</MenuItem>
