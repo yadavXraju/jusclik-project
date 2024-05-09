@@ -1,8 +1,5 @@
 
-
-// export default ParentsDiscussion;
 import * as React from 'react';
-// import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import { useState} from 'react';
 import AddIcon from '@mui/icons-material/Add';
@@ -18,7 +15,6 @@ import {
   GridRowEditStopReasons,
 } from '@mui/x-data-grid';
 import {
-  // randomCreatedDate,
   randomTraderName,
   randomId,
   randomArrayItem,
@@ -93,6 +89,9 @@ export default function FullFeaturedCrudGrid() {
   const [rowModesModel, setRowModesModel] = React.useState({});
   const [modalOpen, setmodalOpen] =useState(false);
   const [isChangeEnable,setIsChangeEnable]=useState(-1);
+  const [confirm, setConfirm] = useState(false);
+  const [idToDelete, setIdToDelete] = useState(null);
+
 
   const handleModalClose = () => {
     setmodalOpen(false);
@@ -106,7 +105,7 @@ export default function FullFeaturedCrudGrid() {
   const handleEditClick = (id) => () => {
     if(isChangeEnable==-1){
       setRowModesModel({ ...rowModesModel, [id]: { mode: GridRowModes.Edit } });
-      setIsChangeEnable(2);
+      setIsChangeEnable(1);
     }
   };
 
@@ -115,10 +114,12 @@ export default function FullFeaturedCrudGrid() {
     setIsChangeEnable(-1);
   };
 
-  const handleDeleteClick = () => () => {
-    // setRows(rows.filter((row) => row.id !== id));
+  const handleDeleteClick = (id) => () => {
+    // Set id to delete and open modal
+    setIdToDelete(id);
     setmodalOpen(true);
   };
+
 
   const handleCancelClick = (id) => () => {
     setRowModesModel({
@@ -131,13 +132,18 @@ export default function FullFeaturedCrudGrid() {
       setRows(rows.filter((row) => row.id !== id));
     }
   };
+  
   const handleConfirmDelete = () => {
-    const updatedRows = tableRows.filter((row) => row.id !== deleteId);
-    setTableRows(updatedRows);
+    console.log(idToDelete);
+    setConfirm(true)
+    console.log(confirm);
+    if (confirm == true) {
+      setRows(rows.filter((row) => row.id !== idToDelete));
+      console.log('Deleting item with ID:', idToDelete);
+      setIdToDelete(null);
+    }
     setmodalOpen(false);
-    setdeleteId(null);
   };
-
 
   const processRowUpdate = (newRow) => {
     const updatedRow = { ...newRow, isNew: false };
@@ -234,7 +240,7 @@ export default function FullFeaturedCrudGrid() {
     const handleClick = () => {
       setIsChangeEnable(2);
       const id = randomId();
-      setRows((oldRows) => [...oldRows, { id, name: '', age: '', isNew: true,createdOn:'2023-04-07',createdBy:randomTraderName()}]);
+      setRows((oldRows) => [...oldRows, { id, name: '', age: '', isNew: true,createdOn:'2023-04-07',createdBy:'Alice Johnson'}]);
       setRowModesModel((oldModel) => ({
         ...oldModel,
         [id]: { mode: GridRowModes.Edit, fieldToFocus: 'LeadClassfication' },
@@ -273,8 +279,10 @@ export default function FullFeaturedCrudGrid() {
         open={modalOpen}
         onClose={handleModalClose}
         contentText="Are you sure you want to delete?"
-        onConfirm={handleConfirmDelete}
-        
+        onConfirm={() => {
+          setConfirm(!confirm);
+          handleConfirmDelete();
+        }}
        
       />
     </>
