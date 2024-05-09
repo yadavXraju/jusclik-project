@@ -293,7 +293,7 @@ export default function FullFeaturedCrudGrid() {
     const handleClick = () => {
       setIsChangeEnable(2);
       const id = randomId();
-      setRows((oldRows) => [...oldRows, { id, name: '', age: '', isNew: true,createdOn:'2023-04-07',createdBy:randomTraderName()}]);
+      setRows((oldRows) => [...oldRows, { id, name: '', age: '', isNew: true,createdOn:'2023-04-07',createdBy:"Alice Johnson"}]);
       setRowModesModel((oldModel) => ({
         ...oldModel,
         [id]: { mode: GridRowModes.Edit, fieldToFocus: 'leadSource' },
