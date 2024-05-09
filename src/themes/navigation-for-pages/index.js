@@ -14,6 +14,7 @@ const UrlPage = () => {
   const pathname = Location.pathname;
   return (
     <>
+        <MainCard sx={{ background:'none' , border:'none' ,}}>
         <MainCard sx={{ mb: 2 , background:'none' , border:'none' , '& .MuiCardContent-root' :{
           padding:'8px !important'
         }}}>

@@ -11,6 +11,7 @@ export const kanbanData = {
             phone: '(252)555-0106',
             email: 'tim.jennings@example.com',
             website: 'Zillow.com',
+            status:'status'
           },
         },
         {
@@ -20,6 +21,7 @@ export const kanbanData = {
             phone: '(861)555-0111',
             email: 'tim.jennings@example.com',
             website: 'Zillow.com',
+            status:'status'
           },
         },
         {
@@ -29,6 +31,7 @@ export const kanbanData = {
             phone: '(629)555-0129',
             email: 'tim.jennings@zexample.co',
             website: 'Zillow.co',
+            status:'status'
           },
         },
       ],
@@ -44,6 +47,7 @@ export const kanbanData = {
             phone: '(305)555-0121',
             email: 'tim.jennings@example.com',
             website: 'Airbnb.com',
+            status:'status'
           },
         },
         {
@@ -53,6 +57,7 @@ export const kanbanData = {
             phone: '(302)555-0107',
             email: 'tim.jennings@example.com',
             website: 'Redfin.com',
+            status:'status'
           },
         },
         {
@@ -62,6 +67,7 @@ export const kanbanData = {
             phone: '(300)555-0121',
             email: 'timjennigs@xample.c',
             website: 'Zillow.c',
+            status:'status'
           },
         },
       ],
@@ -77,6 +83,7 @@ export const kanbanData = {
             phone: '(319)555-0115',
             email: 'tim.jennings@example.com',
             website: 'Redfin.com',
+            status:'status'
           },
         },
         {
@@ -86,6 +93,7 @@ export const kanbanData = {
             phone: '(307)555-0133',
             email: 'tim.jennings@example.com',
             website: 'Redfin.com',
+            status:'status'
           },
         },
       ],
@@ -101,6 +109,7 @@ export const kanbanData = {
             phone: '(603)555-0123',
             email: 'tim.jennings@example.com',
             website: 'None',
+            status:'status'
           },
         },
         {
@@ -110,6 +119,7 @@ export const kanbanData = {
             phone: '(303)555-0105',
             email: 'tim.jennings@example.co',
             website: 'Zillow.co',
+            status:'status'
           },
         },
       ],
@@ -126,6 +136,7 @@ export const kanbanData = {
             phone: '(123)555-0123',
             email: 'sophia.lee@example.com',
             website: 'Zillow.com',
+            status:'status'
           },
         },
         {
@@ -135,6 +146,7 @@ export const kanbanData = {
             phone: '(456)555-0123',
             email: 'matthew.davis@example.com',
             website: 'Redfin.com',
+            status:'status'
           },
         },
       ],
@@ -151,6 +163,7 @@ export const kanbanData = {
             phone: '(789)555-0123',
             email: 'emily.taylor@example.com',
             website: 'Zillow.com',
+            status:'status'
           },
         },
         {
@@ -160,6 +173,7 @@ export const kanbanData = {
             phone: '(987)555-0123',
             email: 'nathan.thompson@example.com',
             website: 'Redfin.com',
+            status:'status'
           },
         },
       ],
