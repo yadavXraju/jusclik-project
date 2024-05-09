@@ -81,8 +81,6 @@ const CrmRoutes = [
       ]
      
      },
-
-
         {
             path: 'reports', 
             element: <Reports /> 

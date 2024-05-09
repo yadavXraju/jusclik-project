@@ -1,5 +1,5 @@
 import React,{useState , useEffect} from 'react';
-import {Grid, TextField ,Button , Box , Paper , Typography } from '@mui/material';
+import {Grid, TextField ,Button , Box , Paper , } from '@mui/material';
 import SelectList from 'views/common-section/ParamSelectList';
 import ParamDateComponent from 'views/common-section/ParamDateComponent';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
@@ -14,7 +14,6 @@ const [concessionData, setConcessionData] = useState([{
         id:0,
         studentName:'',
         admissionNo:'',
-        classSection:'',
         applicableFromDate : '',
         uptoDate : '',
         remarks:'',
@@ -22,13 +21,14 @@ const [concessionData, setConcessionData] = useState([{
         amount:'',
         srNo: '', 
         feeHead: '', 
+        classSection:'',
 }]);
 
+// const classSection = 'V A';
 // multiple select dropdown states
 const [feeHead, setFeeHead] = useState([]);
-const [classes , setClasses] = useState([]);
+// const [classes , setClasses] = useState([]);
 const [TableData, setTableData] = useState([]);
-
 const handleChange = (e, id) => {
   const { name, value } = e.target;
   setConcessionData((prevData) =>
@@ -47,42 +47,42 @@ const handleChange = (e, id) => {
 };
       
   // class options
-  const classesOptions = [
-    { id: 0, name: 'All' },
-    { id: 1, name: 'kg' },
-    { id: 2, name: 'Nursery' },
-    { id: 3, name: 'I ' },
-    // { id: 4, name: 'I B' },
-    // { id: 5, name: 'I C' },
-    { id: 6, name: 'II ' },
-    // { id: 7, name: 'II B' },
-    // { id: 8, name: 'II C' },
-    { id: 9, name: 'III A' },
-    { id: 10, name: 'III B' },
-    // { id: 11, name: 'III C' },
-    { id: 12, name: 'IV A' },
-    { id: 13, name: 'IV B' },
-    // { id: 14, name: 'IV C' },
-    { id: 15, name: 'V A' },
-    { id: 16, name: 'V B' },
-    { id: 17, name: 'V C' },
-    { id: 18, name: 'VI A' },
-    { id: 19, name: 'VI B' },
-    { id: 20, name: 'VI C' },
-    { id: 21, name: 'VII A' },
-    { id: 22, name: 'VII B' },
-    { id: 23, name: 'VII C' },
-    { id: 24, name: 'VIII A' },
-    { id:25, name: 'VIII B' },
-    { id: 26, name: 'VIII C' },
-    { id: 27, name: 'IX A' },
-    { id: 28, name: 'IX B' },
-    { id: 29, name: 'IX C' },
-    { id: 30, name: 'X' },
-    { id: 31, name: 'X A' },
-    { id: 32, name: 'X B' },
-    { id: 33, name: 'X C' },
-  ];
+  // const classesOptions = [
+  //   { id: 0, name: 'All' },
+  //   { id: 1, name: 'kg' },
+  //   { id: 2, name: 'Nursery' },
+  //   { id: 3, name: 'I ' },
+  //   // { id: 4, name: 'I B' },
+  //   // { id: 5, name: 'I C' },
+  //   { id: 6, name: 'II ' },
+  //   // { id: 7, name: 'II B' },
+  //   // { id: 8, name: 'II C' },
+  //   { id: 9, name: 'III A' },
+  //   { id: 10, name: 'III B' },
+  //   // { id: 11, name: 'III C' },
+  //   { id: 12, name: 'IV A' },
+  //   { id: 13, name: 'IV B' },
+  //   // { id: 14, name: 'IV C' },
+  //   { id: 15, name: 'V A' },
+  //   { id: 16, name: 'V B' },
+  //   { id: 17, name: 'V C' },
+  //   { id: 18, name: 'VI A' },
+  //   { id: 19, name: 'VI B' },
+  //   { id: 20, name: 'VI C' },
+  //   { id: 21, name: 'VII A' },
+  //   { id: 22, name: 'VII B' },
+  //   { id: 23, name: 'VII C' },
+  //   { id: 24, name: 'VIII A' },
+  //   { id:25, name: 'VIII B' },
+  //   { id: 26, name: 'VIII C' },
+  //   { id: 27, name: 'IX A' },
+  //   { id: 28, name: 'IX B' },
+  //   { id: 29, name: 'IX C' },
+  //   { id: 30, name: 'X' },
+  //   { id: 31, name: 'X A' },
+  //   { id: 32, name: 'X B' },
+  //   { id: 33, name: 'X C' },
+  // ];
      
  // concession type
  const concessionTypeOptions = [
@@ -105,9 +105,9 @@ const feeHeadOptions = [
   { id: 9, name: 'Tuition Fee' }
 ];
 
-  const handleClassChange = (selectedClass) => {
-    setClasses(selectedClass)
-  }
+  // const handleClassChange = (selectedClass) => {
+  //   setClasses(selectedClass)
+  // }
   
   useEffect(() => {
     // If no fee head is selected, create an empty row
@@ -310,7 +310,16 @@ const feeHeadOptions = [
 
                 {/* ===========================  Class */}
                 <Grid item  xs={12} md={6} sx={{ marginBottom: '5px' }}>
-                    <ParamMultipleSelect options={classesOptions} label="Class" value={classes}  setValue={handleClassChange} />
+                    {/* <ParamMultipleSelect options={classesOptions} label="Class" value={classes}  setValue={handleClassChange} /> */}
+                    <TextField
+                            id="classSection"
+                            name="classSection"
+                            value={concessionData.classSection}
+                            label="Class"
+                            variant="outlined"
+                            onChange={handleChange}
+                            fullWidth
+                          />
                 </Grid>
 
                 {/* ===========================  fee head */}
@@ -354,6 +363,7 @@ const feeHeadOptions = [
 
               </Grid>
           </Grid>
+
           {/* table */}
           <Grid  item  xs={12} lg={8} sx={{position:'relative'}}>
               <CommonDataGrid
@@ -380,11 +390,11 @@ const feeHeadOptions = [
                 }}
               />
 
-              <Box sx={{ position: 'absolute', bottom: '0px', left: '60px' , width:'50%' , minHeight:'80px' , display:'flex' , alignItems:'center' }}>
+              {/* <Box sx={{ position: 'absolute', bottom: '0px', left: '60px' , width:'50%' , minHeight:'80px' , display:'flex' , alignItems:'center' }}>
                     <Typography variant='h5' sx={{lineHeight:'34px'}}>
                       {classes.length > 0 ? `Class: ${classes.map(cls => cls.name).join(', ')}` : null}
                     </Typography>
-              </Box>
+              </Box> */}
           </Grid>
 
           <Grid item  xs={12} lg={12}>
@@ -401,7 +411,7 @@ const feeHeadOptions = [
         <Paper sx={{ ...style.BottomNavbar, ...customStyle }}>
             <Box sx={{ display: "flex", gap: "20px" }}>
                  <Button variant="contained" sx={{ height: "38px",marginTop: "auto",marginBottom:"auto", width: "144px" }} onClick={handleSubmit}>
-                        Submit
+                        Save
                  </Button>
   
             </Box>

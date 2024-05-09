@@ -14,7 +14,9 @@ const UrlPage = () => {
   const pathname = Location.pathname;
   return (
     <>
-        <MainCard sx={{ mb: 3 , background:'none' , border:'none' ,}}>
+        <MainCard sx={{ mb: 2 , background:'none' , border:'none' , '& .MuiCardContent-root' :{
+          padding:'8px !important'
+        }}}>
             <Grid container spacing={gridSpacing}>
                 <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'space-between' , flexDirection:'column'}}>
                     <Grid alignContent="center" justifyContent="space-between">
