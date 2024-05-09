@@ -359,7 +359,7 @@ const GmailInboxTemplate = () => {
             <MailCompose open={isComposeOpen} onClose={handleComposeClose} onSend={handleComposeSend} />
           </Box>
         </ThemeProvider>
-       
+        
       </Paper>
     </>
   );

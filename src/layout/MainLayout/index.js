@@ -1,28 +1,18 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Outlet ,  useLocation } from 'react-router-dom';
-
-
-// material-ui
 import { styled, useTheme } from '@mui/material/styles';
 import { AppBar, Box, CssBaseline,  Toolbar, useMediaQuery } from '@mui/material';
-
-
-// project imports
 import Breadcrumbs from 'ui-component/extended/Breadcrumbs';
 import Header from './Header';
 import Sidebar from './Sidebar';
 import Customization from '../Customization';
-// import navigation from 'menu-items';
-import { getMenuItems } from 'menu-items';
-
+import { GetMenuItems } from 'menu-items';
 import { drawerWidth } from 'store/constant';
 import { setMenu , handleUserclickedtoggle} from 'store/customization-slice';
-
-// assets
 import { IconChevronRight } from '@tabler/icons';
 import UrlPage from 'themes/navigation-for-pages';
 
-// styles
+
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(({ theme, open }) => ({
   ...theme.typography.mainContent,
   borderBottomLeftRadius: 0,
@@ -62,16 +52,10 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(({
 const MainLayout = () => {
   const theme = useTheme();
   const matchDownMd = useMediaQuery(theme.breakpoints.down('md'));
-  // location for checking page url
   const location = useLocation();
-  // Handle left drawer
   const leftDrawerOpened = useSelector((state) => state.customization.opened);
   const dispatch = useDispatch();
   const userClicked = useSelector((state) => state.customization.userClicked);
-  // const handleLeftDrawerToggle = () => {
-  //   dispatch(setMenu({opened:!leftDrawerOpened}));
-  // };
-
   const handleLeftDrawerToggle = () => {
     dispatch(setMenu({ opened: !leftDrawerOpened }));
   };
@@ -85,8 +69,6 @@ const MainLayout = () => {
     handleUserClickToggle();
   };
 
-  const { menuItem } = useSelector((state) => state.menuItemSlice);
-  console.log(menuItem?.item?.item?.title);
 
   const isMobile = useMediaQuery('(max-width: 767px)');
   return (
@@ -117,7 +99,7 @@ const MainLayout = () => {
       <Main theme={theme} open={leftDrawerOpened} >
 
         {/* breadcrumb */}
-        <Breadcrumbs separator={IconChevronRight} navigation={getMenuItems} icon title rightAlign />
+        <Breadcrumbs separator={IconChevronRight} navigation={GetMenuItems} icon title rightAlign />
 
         {/* url page */}
         { !location.pathname.match(/\/dashboard\b/)&& !location.pathname.match(/\/builder\b/) && <UrlPage />}

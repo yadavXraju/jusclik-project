@@ -42,7 +42,7 @@ export const boxHeight = {
     lineHeight: '1.57',
     fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji"',
     color: 'rgb(108, 115, 127)',
-
+  
  }
 
 

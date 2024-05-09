@@ -46,8 +46,10 @@ const boardStylyes = {
   width: '100%',
   overflowY: "auto",
   scrollbarWidth: "thin",
-  scrollbarColor: "#c0c6cd4f #f0f0f0"
+  scrollbarColor: "#c0c6cd4f #f0f0f0",
+  
 };
+// #root > div > main > div.MuiBox-root.css-wqz5sn > div > div > div > section:nth-child(2) > div
 // card styles
 const cardStyles = {
   maxWidth: 'none'
@@ -87,10 +89,8 @@ const CustomPipeline = () => {
         borderTop: `3px solid ${laneColors[lane.id]}`,
         backgroundColor: '#fff',
         minHeight: '70vh',
-        borderRadius: '15px'
-        // overflowY: 'auto',
-        // scrollbarWidth: 'thin',
-        // scrollbarColor: '#c0c6cd4f #f0f0f0'
+        borderRadius: '15px',
+        marginRight:'20px'
       }
     }));
     return modifedData;
@@ -98,9 +98,6 @@ const CustomPipeline = () => {
 
   const [data, setData] = useState([]);
   const handleDataChange = (newData) => {
-    newData.lanes.map((lane) => {
-      console.log(lane.title.props);
-    });
     const updatedData = newData.lanes.map((lane) => ({
       ...lane,
       title: <CustomLaneHeader title={lane?.title?.props?.title} length={lane.cards.length} />
@@ -111,6 +108,7 @@ const CustomPipeline = () => {
   useEffect(() => {
     const boardData = modifyData(kanbanData);
     setData(boardData);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

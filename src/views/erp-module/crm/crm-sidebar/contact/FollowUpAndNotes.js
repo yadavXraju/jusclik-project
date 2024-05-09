@@ -12,9 +12,11 @@ import ThumbUpOffAltOutlinedIcon from '@mui/icons-material/ThumbUpOffAltOutlined
 import MailOutlinedIcon from '@mui/icons-material/MailOutlined';
 import CreditCardOutlinedIcon from '@mui/icons-material/CreditCardOutlined';
 import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
-import { Button } from '@mui/material';
-import AddIcon from '@mui/icons-material/Add';
-import AccessAlarmsOutlinedIcon from '@mui/icons-material/AccessAlarmsOutlined';
+// import { Button } from '@mui/material';
+// import AddIcon from '@mui/icons-material/Add';
+// import AccessAlarmsOutlinedIcon from '@mui/icons-material/AccessAlarmsOutlined';
+import AddNoteDrawer from './AddNoteDrawer';
+import AddFollowUpDrawer from './AddFollowUpDrawer';
 
 // Sample timeline data
 const timelineData = [
@@ -60,8 +62,10 @@ export default function FollowUpAndNotes() {
             </Typography>
           </Box>
           <Box>
-            <Button variant='outlined' sx={{marginRight:'8px'}} startIcon={<AddIcon/>} >Add Note</Button>
-            <Button variant='outlined' startIcon={<AccessAlarmsOutlinedIcon/>} >Add Follow Up</Button>
+            {/* <Button variant='outlined' sx={{marginRight:'8px'}} startIcon={<AddIcon/>} >Add Note</Button> */}
+            <AddNoteDrawer/>
+            {/* <Button variant='outlined' startIcon={<AccessAlarmsOutlinedIcon/>} >Add Follow Up</Button> */}
+            <AddFollowUpDrawer/>
           </Box>
         </Box>
     <Box>

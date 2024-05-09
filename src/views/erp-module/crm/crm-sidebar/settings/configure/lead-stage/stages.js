@@ -1,5 +1,5 @@
-import { subStage } from './subStage';
-import EditIcon from '@mui/icons-material/Edit';
+import SubStage from './subStage';
+import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import DragIndicatorOutlinedIcon from '@mui/icons-material/DragIndicatorOutlined';
 import * as React from 'react';
 import Accordion from '@mui/material/Accordion';
@@ -9,12 +9,23 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Button from '@mui/material/Button';
 import { FormControl, TextField, Typography, Select, MenuItem, InputLabel, FormControlLabel, Switch, Box, Grid } from '@mui/material';
+import { useState } from 'react';
 
-export const stage = (noOfSubStages, index, stageName) => {
-    const handleBoxClick=(e)=>{
-        e.stopPropagation()
-    }
+ const Stage = ({noOfSubStages, index, stageNames}) => {
+  const handleBoxClick=(e)=>{
+    e.stopPropagation()
+  }
+  const [open,setOpen]=useState(false)
+  const toggleAccordion = () => {
+    setOpen(!open);
+  };
+  const MemorizedSubStage=React.memo(SubStage)
 
+  const substages= open&&(<AccordionDetails>
+  {[...Array(noOfSubStages).keys()].map((subIndex) => (
+    <div key={`stage=${index}-subStage-${subIndex}`}>{<MemorizedSubStage subIndex={subIndex} />}</div>
+  ))}
+</AccordionDetails>)
 
   return (
     <>
@@ -22,25 +33,29 @@ export const stage = (noOfSubStages, index, stageName) => {
         sx={{
           '& .Mui-expanded:last-of-type': {
             marginBottom: '1rem !important'
-          }
+          },
         }}
       >
         <Accordion
-          className="findcomp"
           sx={{ margin: '1rem 0' }}
         >
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1-content"
             id="panel1-header"
-            sx={{ width: '100%', flex: '1' }}
+            sx={{ width: '100%', flex: '1',
+            marginLeft:'6px'
+             }}
+            onClick={toggleAccordion}
+            
           >
             {/* stage name  */}
 
             <Grid container spacing={2}>
+
               <Grid item xs={2} sx={{ display: 'flex' }}>
                 <Box sx={{ alignItems: 'center', display: 'flex' }}>
-                  <DragIndicatorOutlinedIcon />
+                  <DragIndicatorOutlinedIcon sx={{color:'grey'}}/>
                 </Box>
                 <Typography
                   sx={{
@@ -51,11 +66,11 @@ export const stage = (noOfSubStages, index, stageName) => {
                     marginRight: '10px',
                     textAlign: 'center',
                     borderRadius: '8px',
-                    width: '80%',
+                    width: '100%',
                     height: '100%'
                   }}
                 >
-                  {stageName}
+                  {stageNames}
                 </Typography>
               </Grid>
 
@@ -65,7 +80,7 @@ export const stage = (noOfSubStages, index, stageName) => {
                   <FormControl fullWidth>
                     <Box sx={{ display: 'flex', alignItems: 'center' }}>
                       <TextField placeholder="status" sx={{ marginRight: '10px', width: '100%' }} />
-                      <EditIcon />
+                      <EditOutlinedIcon sx={{color:'grey'}} />
                     </Box>
                   </FormControl>
                 </Box>
@@ -127,7 +142,7 @@ export const stage = (noOfSubStages, index, stageName) => {
               </Grid>
               {/* toggle button */}
 
-              <Grid item container xs={2} justifyContent="end">
+              <Grid item container xs={1} justifyContent="center">
                 <Box onClick={handleBoxClick}>
                 <FormControlLabel
                   fullWidth
@@ -144,11 +159,8 @@ export const stage = (noOfSubStages, index, stageName) => {
             {/* expand icon  it is already provided */}
           </AccordionSummary>
 
-          <AccordionDetails>
-            {[...Array(noOfSubStages).keys()].map((subIndex) => (
-              <div key={`stage=${index}-subStage-${subIndex}`}>{subStage(subIndex)}</div>
-            ))}
-          </AccordionDetails>
+                  {open&&substages}
+         
 
           <AccordionActions>
             <Button>Add Subfeild</Button>
@@ -157,4 +169,5 @@ export const stage = (noOfSubStages, index, stageName) => {
       </Box>
     </>
   );
-};
+}
+export default Stage

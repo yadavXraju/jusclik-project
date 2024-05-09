@@ -117,35 +117,9 @@ function Preview() {
               </Box>
             </Box>
 
+             {/* ========== Progress steps component =========== */}
             <ProgressSteps />
 
-            {/* <Grid container spacing={2}>
-              <Grid item xs={12} md={6}>
-                <Box p={2} sx={{ display: 'flex' }}>
-                  <Box p={3} py={1} mx={1} sx={{ border: '1px solid #ccc', textAlign: 'center', borderRadius: '4px' }}>
-                    <Typography variant="h4" color={'#8b8989'}>
-                      Last Contacted
-                    </Typography>
-                    <Typography variant="h4">10-May-2020</Typography>
-                  </Box>
-
-                  <Box px={3} py={1} mx={1} sx={{ border: '1px solid #ccc', textAlign: 'center', borderRadius: '4px' }}>
-                    <Typography variant="h4" color={'#8b8989'}>
-                      Next Appointment
-                    </Typography>
-                    <Typography variant="h4">20-May-2020</Typography>
-                  </Box>
-                </Box>
-              </Grid>
-              <Grid item xs={12} md={6}>
-                <Box p={2} sx={{ display: 'flex', justifyContent: 'end', alignItems: 'center' }}>
-                  <Button sx={{ marginRight: '5px' }} variant="outlined">
-                    Send Mail
-                  </Button>
-                  <Button variant="contained">Convert Lead</Button>
-                </Box>
-              </Grid>
-            </Grid> */}
           </Box>
 
           <Grid container spacing={2}>

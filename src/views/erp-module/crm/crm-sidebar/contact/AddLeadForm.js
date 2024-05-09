@@ -117,9 +117,7 @@ function AddLeadForm({currEditItem}) {
             <Grid item xs={12} sm={12} md={6}>
               <TextField id="mobile-Number" size={isMobile ? 'small' : 'normal'} value={formFields.mobile} onChange={(e) => handleChange('mobile', e.target.value)} fullWidth label="Mobile" variant="outlined" />
             </Grid>
-            <Grid item xs={12} sm={12} md={6}>
-              <ParamMultipleSelect options={Sources} label="Lead Source" value={leadSource} setValue={setLeadSource} />
-            </Grid>
+           
             <Grid item xs={12} sm={12} md={6}>
               <TextField
                 id="Class Looking for"
@@ -136,10 +134,6 @@ function AddLeadForm({currEditItem}) {
               <TextField id="Previous School" size={isMobile ? 'small' : 'normal'} fullWidth label="Previous School" variant="outlined" />
             </Grid>
           </Grid>
-          <Grid item xs={12} md={12}>
-            <Box p={0.5}>Remarks</Box>
-            <TextArea rows={3} placeholder="Enter your text here..." fullWidth variant="outlined" />
-          </Grid>
 
           {/* <Box pb={2}>
             <SelectList
@@ -153,6 +147,36 @@ function AddLeadForm({currEditItem}) {
           <Box pb={2}>
           <ParamMultipleSelect options={students} label="Classes" value={selectedStudents} setValue={setSelectedStudents} />
           </Box> */}
+        </Box>
+
+        <Box pt={2}>
+          <Typography variant={'h4'} p={1} mb={2} sx={{ borderBottom: '1px solid #ccc' }}>
+            Lead Details
+          </Typography>
+          <Grid container spacing={2}>
+          <Grid item xs={12} sm={12} md={6}>
+              <TextField id="Lead-Owner" size={isMobile ? 'small' : 'normal'} fullWidth label="Lead Owner" variant="outlined" />
+            </Grid>
+            <Grid item xs={12} sm={12} md={6}>
+              {/* <TextField id="Lead-status" size={isMobile ? 'small' : 'normal'} value={formFields.leadNo} onChange={(e) => handleChange('leadNo', e.target.value)} fullWidth label="Lead No." variant="outlined"  /> */}
+              <TextField id="Lead-status" size={isMobile ? 'small' : 'normal'} fullWidth label="Lead Status" variant="outlined"  />
+            </Grid>
+            <Grid item xs={12} sm={12} md={6}>
+              <TextField id="Lead-Stage" size={isMobile ? 'small' : 'normal'} fullWidth label="Lead Stage" variant="outlined" />
+            </Grid>
+            <Grid item xs={12} sm={12} md={6}>
+              <ParamMultipleSelect options={Sources} label="Lead Source" value={leadSource} setValue={setLeadSource} />
+            </Grid>
+
+            <Grid pt={1} item xs={12} md={12}>
+            <Box p={0.5}>Remarks</Box>
+            <TextArea rows={3} placeholder="Enter your text here..." fullWidth variant="outlined" />
+          </Grid>
+            
+          </Grid>
+
+          
+        
         </Box>
       </Card>
     </>

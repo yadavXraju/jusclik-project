@@ -1,43 +1,57 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
-import { urlStore } from './UrlStore';
 import { Grid , Typography , Box } from '@mui/material';
 import MainCard from 'ui-component/cards/MainCard';
 import { gridSpacing } from 'store/constant';
-import { useNavigate } from 'react-router';
-// import { useSelector } from 'react-redux';
+import { useNavigate , useLocation } from 'react-router';
+import { useSelector } from 'react-redux';
+
 
 const UrlPage = () => {
+  const { menuNavItem } = useSelector((state) => state.menuNavItemSlice);
+  const menuNavCollapse = useSelector((state) => state.menuNavCollapseSlice);
   const navigate = useNavigate();
-  const { pathname } = useLocation();
-  // const { menuItem } = useSelector((state) => state.menuItemSlice);
-    // console.log(menuItem.id)
+  const Location = useLocation();
+  const pathname = Location.pathname;
   return (
     <>
-        <MainCard sx={{ mb: 3 , background:'none' , border:'none' ,}}>
+        <MainCard sx={{ background:'none' , border:'none' ,}}>
             <Grid container spacing={gridSpacing}>
                 <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'space-between' , flexDirection:'column'}}>
                     <Grid alignContent="center" justifyContent="space-between">
 
                       <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '20px' , borderBottom:'2px solid #b7b7b742' , }}>
-                          {/* mapping the children menus */}
-                          {urlStore.children.map((child, index) => (
+                      {menuNavCollapse.NavCollapse.map(item => 
                             <Typography
-                              key={index}
+                              key={item.id}
                               variant="h4"
                               sx={{
                                 cursor: 'pointer',
                                 fontSize: '14px',
                                 paddingBottom:'14px',
-                                color: child.url === pathname ? '#2196f3' : 'inherit', // Change color if URL matches current pathname
-                                borderBottom: child.url === pathname ? '2px solid #2196f3' : 'none', // add border bottom of  current url
-                                // transition:'.3s all ease-in-out'
+                                color: item?.url === pathname ? '#2196f3' : 'inherit', 
+                                borderBottom: item?.url === pathname ? '2px solid #2196f3' : 'none',
                               }}
-                              onClick={() => navigate(child.url)}
+                              onClick={() => navigate(item?.url)}
                             >
-                              {child.title}
+                                 {item?.title}
                             </Typography>
-                          ))}
+                      )}
+
+                            {menuNavCollapse.NavCollapse.length === 0 &&
+                            <Typography
+                              variant="h4"
+                              sx={{
+                                cursor: 'pointer',
+                                fontSize: '14px',
+                                paddingBottom:'14px',
+                                color: menuNavItem?.NavItem?.url === pathname ? '#2196f3' : 'inherit', 
+                                borderBottom: menuNavItem?.NavItem?.url === pathname ? '2px solid #2196f3' : 'none',
+                              }}
+                              onClick={() => navigate(menuNavItem?.NavItem?.url)}
+                            >
+                               {menuNavItem?.NavItem?.title}
+                            </Typography>
+                           }
                       </Box>
 
                     </Grid>
@@ -49,3 +63,4 @@ const UrlPage = () => {
 };
 
 export default UrlPage;
+

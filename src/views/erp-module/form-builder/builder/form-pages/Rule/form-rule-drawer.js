@@ -62,6 +62,7 @@ const inputOptions = [
 ];
 
 const DynamicInputForm = ({ type }) => {
+  console.log(type)
   return (
     <>
       {type === 'time' ? (
@@ -136,13 +137,13 @@ const RuleFormDrawer = ({ toggleDrawer }) => {
           }}>
             {/*Before After  */}
             <Box sx={{
-              borderLeft: formLogic === 0 ? "1px solid #2196f3" : "1px solid #697586", padding: "20px",
+              borderLeft: formLogic == 0 ? "1px solid #2196f3" : "1px solid #697586", padding: "20px",
               '&:before': {
                 position: 'absolute',
                 content: '" "',
                 width: '20px',
                 height: "1px",
-                background: formLogic === 0 ? " #2196f3" : "#697586",
+                background: formLogic == 0 ? " #2196f3" : "#697586",
                 left: "50px",
                 top: "10px"
               },
@@ -151,7 +152,7 @@ const RuleFormDrawer = ({ toggleDrawer }) => {
                 content: '" "',
                 width: '60px',
                 height: "1px",
-                background: formLogic === 0 ? "#2196f3" : "#697586",
+                background: formLogic == 0 ? "#2196f3" : "#697586",
                 left: "50px",
                 bottom: "10px"
               }
@@ -159,17 +160,17 @@ const RuleFormDrawer = ({ toggleDrawer }) => {
               <Button sx={{
                 position: "absolute", top: ruleCount !== 1 ? "47%" : "38%",
                 left: "15px", borderRadius: "10px", padding: "5px 5px",
-                backgroundColor: formLogic === 0 ? "#2196f3" : "#697586",
+                backgroundColor: formLogic == 0 ? "#2196f3" : "#697586",
                 '& span': {
                   marginLeft: '0',
                 },
                 "&:hover": {
-                  backgroundColor: formLogic === 0 ? "#2196f3" : "#697586",
+                  backgroundColor: formLogic == 0 ? "#2196f3" : "#697586",
                 }
               }}
                 endIcon={<UnfoldMoreOutlinedIcon />}
                 variant="contained" onClick={() => setFormLogic(!formLogic)}>
-                {formLogic === 0 ? (<Typography>OR</Typography>) :
+                {formLogic==0 ? (<Typography>OR</Typography>) :
                   (<Typography>And</Typography>)}
               </Button>
               <Box sx={{ display: "flex", flexDirection: "column", gap: "20px" }}>

@@ -5,6 +5,8 @@ import { List, ListItem, Box, ListItemText, Divider } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { DashboardList } from './DashboardList';
 import { useNavigate } from 'react-router';
+import { useDispatch } from 'react-redux';
+import { handleErpModule } from 'store/layout/erp-module-slice';
 
 const ListItemWrapper = styled('div')(({ theme }) => ({
   cursor: 'pointer',
@@ -20,11 +22,12 @@ const ListItemWrapper = styled('div')(({ theme }) => ({
 const DashboardSwitchLayout = ({ setOpen }) => {
   const theme = useTheme();
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
   const handleClick = (url, role) => {
     localStorage.setItem('userRole', role);
     navigate(url);
     setOpen(false); // Close the Popper
+    dispatch(handleErpModule({url ,role }))
   };
 
   return (

@@ -15,8 +15,7 @@ const Reports = Loadable(lazy(() => import('views/erp-module/crm/crm-sidebar/rep
 const Settings = Loadable(lazy(() => import('views/erp-module/crm/crm-sidebar/settings')));
 const LeadStage = Loadable(lazy(() => import('views/erp-module/crm/crm-sidebar/settings/configure/lead-stage')));
 const LeadScore = Loadable(lazy(() => import('views/erp-module/crm/crm-sidebar/settings/configure/lead-score')));
-
-
+const SystemDataEnter = Loadable(lazy(() => import('views/erp-module/crm/crm-sidebar/settings/configure/system-data')));
 // ==============================|| Visitor MENUS ||============================== //
 
 const CrmRoutes = [
@@ -65,11 +64,13 @@ const CrmRoutes = [
           element: <LeadScore />
         } , 
 
+        {
+          path: 'system-data-enter', 
+          element: <SystemDataEnter />
+        } , 
       ]
      
      },
-
-
         {
             path: 'reports', 
             element: <Reports /> 

@@ -1,7 +1,7 @@
 import { Box, Paper, Button } from '@mui/material';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 
-const BottomNavbar = ({ tabPageLength, value, setValue, customStyle }) => {
+const BottomNavbar = ({ tabPageLength, value, setValue, customStyle , nextBtnText='Save and Next' }) => {
     const handlePrev = () => {
         setValue(Math.max(0, value - 1));
     };
@@ -33,7 +33,7 @@ const BottomNavbar = ({ tabPageLength, value, setValue, customStyle }) => {
         <Paper  sx={{ ...style.BottomNavbar, ...customStyle }}>
             <Box sx={{ display: "flex", gap: "20px" }}>
                 {value != tabPageLength - 1 && <Button variant="contained" sx={{ height: "38px",marginTop: "auto",marginBottom:"auto",width: "144px" }} onClick={() => handleNext()}>
-                   Save and Next
+                 {nextBtnText}
                 </Button>}
                 {
                    value==tabPageLength-1&&<Button variant="contained" sx={{ height: "38px",marginTop: "auto",marginBottom:"auto", width: "144px" }} onClick={() => handleNext()}>

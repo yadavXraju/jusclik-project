@@ -15,6 +15,7 @@ const NavGroup = ({ item }) => {
 
   // menu list collapse & items
   const items = item.children?.map((menu) => {
+    // console.log(menu)
     switch (menu.type) {
       case 'collapse':
         return <NavCollapse key={menu.id} menu={menu} level={1} />;
