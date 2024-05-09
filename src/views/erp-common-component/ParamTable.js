@@ -20,7 +20,7 @@ const style = {
    }
   }
 
-const ReusableTable = ({ columns, data, tableStyle ,  action = true , dragIcon = false , tablePaper}) => {
+const ReusableTable = ({children, columns,  data, tableStyle ,  action = true , dragIcon = false , tablePaper}) => {
   return (
     <TableContainer  component={Paper} sx={{...style.tableContainer , ...tablePaper}}>
       <Table stickyHeader  sx={{...tableStyle}}>
@@ -66,6 +66,8 @@ const ReusableTable = ({ columns, data, tableStyle ,  action = true , dragIcon =
           ))}
         </TableBody>
       </Table>
+      
+      {children}
     </TableContainer>
   );
 };
