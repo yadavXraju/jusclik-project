@@ -14,7 +14,7 @@ const UrlPage = () => {
   const pathname = Location.pathname;
   return (
     <>
-        <MainCard sx={{ mb: 3 , background:'none' , border:'none' ,}}>
+        <MainCard sx={{ background:'none' , border:'none' ,}}>
             <Grid container spacing={gridSpacing}>
                 <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'space-between' , flexDirection:'column'}}>
                     <Grid alignContent="center" justifyContent="space-between">

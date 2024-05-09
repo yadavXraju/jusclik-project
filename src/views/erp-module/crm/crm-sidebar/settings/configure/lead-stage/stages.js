@@ -11,7 +11,7 @@ import Button from '@mui/material/Button';
 import { FormControl, TextField, Typography, Select, MenuItem, InputLabel, FormControlLabel, Switch, Box, Grid } from '@mui/material';
 import { useState } from 'react';
 
- const Stage = React.memo(({noOfSubStages, index, stageNames}) => {
+ const Stage = ({noOfSubStages, index, stageNames}) => {
   const handleBoxClick=(e)=>{
     e.stopPropagation()
   }
@@ -169,5 +169,5 @@ import { useState } from 'react';
       </Box>
     </>
   );
-})
+}
 export default Stage

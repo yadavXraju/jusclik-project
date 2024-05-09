@@ -2,8 +2,6 @@
 // import { Box, Grid, Paper } from '@mui/material';
 // import CloudUploadTwoToneIcon from '@mui/icons-material/CloudUploadTwoTone';
 
-
-
 // const documentData = [
 //   {
 //     id: 1,
@@ -132,7 +130,7 @@
 //             )}
 //           </Box>
 //         </Box>
-//       </Grid>      
+//       </Grid>
 //       </>
 //     );
 //   };
@@ -170,89 +168,234 @@
 
 
 
-import * as React from 'react';
-import { Box, Button, Grid, Typography } from '@mui/material';
-import UploadFileOutlinedIcon from '@mui/icons-material/UploadFileOutlined';
 
+
+// import * as React from 'react';
+// import { useState } from 'react';
+// import { Box, Grid, Typography, IconButton, Tooltip } from '@mui/material';
+// import UploadFileOutlinedIcon from '@mui/icons-material/UploadFileOutlined';
+// import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
+// import CloudUploadTwoToneIcon from '@mui/icons-material/CloudUploadTwoTone';
 
 // const documentData = [
 //   {
 //     id: 1,
-//     title: ' Aadhar',
-//     lastUpdated: '20-Jan-2029'
+//     title: 'Aadhar Card'
 //   },
-
 //   {
 //     id: 2,
-//     title: ' Fitness',
-//     lastUpdated: '20-Jan-2022'
+//     title: 'Fitness'
 //   },
-
 //   {
 //     id: 3,
-//     title: ' License',
-//     lastUpdated: '20-Feb-2022'
+//     title: 'License'
 //   },
 //   {
 //     id: 4,
-//     title: ' Permit',
-//     lastUpdated: '20-Jan-2027'
+//     title: 'Permit'
 //   },
-
 //   {
 //     id: 5,
-//     title: ' RegCertificate',
-//     lastUpdated: '20-July-2021'
+//     title: 'RegCertificate'
 //   },
-
 //   {
 //     id: 6,
-//     title: ' SpeedGovernor',
-//     lastUpdated: '20-Feb-2026'
+//     title: 'SpeedGovernor'
 //   },
-
 //   {
 //     id: 7,
-//     title: ' Insurance',
-//     subtitle: ' Rudyard Kipling',
-//     lastUpdated: '20-Jan-2023'
+//     title: 'Insurance'
 //   },
-
 //   {
 //     id: 8,
-//     title: ' GPS',
-//     subtitle: ' Rudyard Kipling',
-//     lastUpdated: '20-Jan-2025'
+//     title: 'GPS' 
 //   }
 // ];
 
+// export default function DocumentTest() {
+//   const [selectedFiles, setSelectedFiles] = useState({});
+
+//   const handleFileChange = (event, documentId) => {
+//     const file = event.target.files[0];
+//     setSelectedFiles((prevSelectedFiles) => ({
+//       ...prevSelectedFiles,
+//       [documentId]: file
+//     }));
+//   };
+
+//   const removeFile = (documentId) => {
+//     setSelectedFiles((prevSelectedFiles) => {
+//       const updatedFiles = { ...prevSelectedFiles };
+//       delete updatedFiles[documentId];
+//       return updatedFiles;
+//     });
+//   };
+
+//   return (
+//     <>
+//       {documentData.map((document) => (
+//         <Box key={document.id} p={0.5}>
+//           <Grid container spacing={1}>
+//             <Grid item xs={12} sm={12}>
+//               <Box pb={1} sx={{ borderBottom: '1px solid #ccc', display: 'flex', justifyContent: 'space-between' }}>
+//                 <Box sx={{ display: 'flex', alignItems: 'center' }}>
+//                   <Box>
+//                     <UploadFileOutlinedIcon sx={{ fontSize: '3rem', marginRight: '10px' }} />
+//                   </Box>
+//                   <Box>
+//                     <Typography variant="h4" fontWeight={400}>{document.title}</Typography>
+//                     {selectedFiles[document.id] && <Box>{selectedFiles[document.id].name}</Box>}
+//                   </Box>
+//                 </Box>
+//                 <Box pt={1}>
+//                   <Box>
+//                   {selectedFiles[document.id] && (
+//                     <Tooltip title='Remove'>
+//                       <IconButton onClick={() => removeFile(document.id)}>
+//                         <DeleteTwoToneIcon sx={{ color: '#f19e9e' }} />
+//                       </IconButton>
+//                     </Tooltip>
+//                   )}
+//                   <label htmlFor={`file-upload-${document.id}`}>
+//                       <input
+//                         id={`file-upload-${document.id}`}
+//                         type="file"
+//                         accept=".jpg,.jpeg,.png,.pdf"
+//                         style={{ display: 'none' }}
+//                         onChange={(event) => handleFileChange(event, document.id)}
+//                       />
+//                       {/* <Button variant="contained" component="span">
+//                         Choose
+//                       </Button> */}
+//                       <Tooltip title='Upload'>
+//                       <IconButton>
+//                         <CloudUploadTwoToneIcon  />
+//                       </IconButton>
+//                     </Tooltip>
+
+//                     </label>
+//                   </Box>
+//                 </Box>
+//               </Box>
+//             </Grid>
+//           </Grid>
+//         </Box>
+//       ))}
+//     </>
+//   );
+// }
+
+
+
+
+
+import * as React from 'react';
+import { useState } from 'react';
+import { Box, Grid, Typography, IconButton, Tooltip, ButtonBase } from '@mui/material';
+// import UploadFileOutlinedIcon from '@mui/icons-material/UploadFileOutlined';
+import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
+import CloudUploadTwoToneIcon from '@mui/icons-material/CloudUploadTwoTone';
+import FileUploadTwoToneIcon from '@mui/icons-material/FileUploadTwoTone';
+
+const documentData = [
+  {
+    id: 1,
+    title: 'Aadhar Card'
+  },
+  {
+    id: 2,
+    title: 'Fitness'
+  },
+  {
+    id: 3,
+    title: 'License'
+  },
+  {
+    id: 4,
+    title: 'Permit'
+  },
+  {
+    id: 5,
+    title: 'RegCertificate'
+  },
+  {
+    id: 6,
+    title: 'SpeedGovernor'
+  },
+  {
+    id: 7,
+    title: 'Insurance'
+  },
+  {
+    id: 8,
+    title: 'GPS' 
+  }
+];
+
 export default function DocumentTest() {
+  const [selectedFiles, setSelectedFiles] = useState({});
+
+  const handleFileChange = (event, documentId) => {
+    const file = event.target.files[0];
+    setSelectedFiles((prevSelectedFiles) => ({
+      ...prevSelectedFiles,
+      [documentId]: file
+    }));
+  };
+
+  const removeFile = (documentId) => {
+    setSelectedFiles((prevSelectedFiles) => {
+      const updatedFiles = { ...prevSelectedFiles };
+      delete updatedFiles[documentId];
+      return updatedFiles;
+    });
+  };
 
   return (
     <>
-      <Box p={2}>
-        <Grid container spacing={2}>
-          <Grid item xs={12} sm={12} >
-            
-            <Box pb={1} sx={{borderBottom:'1px solid #ccc', display:'flex', justifyContent:'space-between'}}>
-            <Box sx={{display:'flex', alignItems:'center'}}>
-              <Box >
-                <UploadFileOutlinedIcon sx={{fontSize:'3rem', marginRight:'10px'}} /> 
+      {documentData.map((document) => (
+        <Box key={document.id} p={0.5}>
+          <Grid container spacing={1}>
+            <Grid item xs={12} sm={12}>
+              <Box pb={1} px={1} sx={{ borderBottom: '1px solid #ccc', display: 'flex', justifyContent: 'space-between' }}>
+                <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                  <Box>
+                    <FileUploadTwoToneIcon sx={{ fontSize: '3rem', marginRight: '10px' }} />
+                  </Box>
+                  <Box>
+                    <Typography variant="h4" fontWeight={400}>{document.title}</Typography>
+                    {selectedFiles[document.id] && <Box>{selectedFiles[document.id].name}</Box>}
+                  </Box>
+                </Box>
+                <Box pt={1}>
+                  <Box>
+                  {selectedFiles[document.id] && (
+                    <Tooltip title='Remove'>
+                      <IconButton onClick={() => removeFile(document.id)}>
+                        <DeleteTwoToneIcon sx={{ color: '#f19e9e' }} />
+                      </IconButton>
+                    </Tooltip>
+                  )}
+                  <div style={{ display: 'inline-block' }}>
+                    <Tooltip title='Upload'>
+                      <ButtonBase component="label">
+                        <CloudUploadTwoToneIcon sx={{color:'#2196f3'}} />
+                        <input
+                          type="file"
+                          accept=".jpg,.jpeg,.png,.pdf"
+                          style={{ display: 'none' }}
+                          onChange={(event) => handleFileChange(event, document.id)}
+                        />
+                      </ButtonBase>
+                    </Tooltip>
+                  </div>
+                  </Box>
+                </Box>
               </Box>
-              <Box>
-                <Typography variant='h4' >Aadhar Card</Typography>
-                <Box>Aadharcard32435.jpg</Box>
-              </Box>
-             </Box>
-             <Box>
-              {/* <Button sx={{marginRight:'10px'}} variant='text'>Download template</Button> */}
-              <Button variant='contained'>Choose</Button>
-             </Box>
-            </Box>
-
+            </Grid>
           </Grid>
-        </Grid>
-      </Box>
+        </Box>
+      ))}
     </>
   );
 }

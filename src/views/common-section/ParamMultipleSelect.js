@@ -3,7 +3,7 @@ import { Autocomplete } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import Chip from '@mui/material/Chip';
 
-export default function ParamMultipleSelect({ options, value, setValue, label = '' }) {
+export default function ParamMultipleSelect({ options, value, setValue, label = '' , sx }) {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -19,6 +19,7 @@ export default function ParamMultipleSelect({ options, value, setValue, label = 
       getOptionLabel={(option) => option.name}
       value={value}
       onChange={handleChange}
+      sx={sx}
       renderInput={(params) => (
         <TextField
           {...params}
