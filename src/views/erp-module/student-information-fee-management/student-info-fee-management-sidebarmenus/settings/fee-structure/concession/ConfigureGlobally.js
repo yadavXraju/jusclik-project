@@ -6,11 +6,14 @@ import {
   Paper,
   Box,
   styled ,
+  FormControlLabel,
+  Typography,
+  Checkbox,
 } from '@mui/material';
 import SelectList from 'views/common-section/ParamSelectList';
 import ParamDateComponent from 'views/common-section/ParamDateComponent';
 import ParamMultipleSelect from 'views/common-section/ParamMultipleSelect';
-import ParamTable from 'views/erp-common-component/ParamTable';
+import ParamTable from './ParamTable';
 
 // style for bottom nav bar start
 export const VisuallyHiddenInput = styled('input')({
@@ -171,89 +174,104 @@ const ConfigureGlobally = ({ customStyle }) => {
     }
   }, [feeHead, concessionData]); // Include concessionData in the dependencies
 
-  const TableRowData = concessionData.map((row) => ({
-    id: row.id,
-    srNo: row.srNo,
-    feeHead: row.feeHead,
-    concessionType: row.feeHead !== '' ? (
-      <SelectList
-        hiddenLabel
-        name="concessionType"
-        id={`concessionType-${row.id}`}
-        options={concessionTypeOptions}
-        value={row.concessionType}
-        onChange={(e) => handleChange(e, row.id)}
-        className='findcomp'
-        customStyle={{
-          borderRadius:'0 !important',     
-          '& fieldset' :{
-            borderRadius:'0 !important',
-            border:'none !important',
-          },
-          '& .MuiSelect-select' :{
-            background:'#fff',
-            border:'1px solid #ccc',
-            padding:'12px',
-            borderRadius:'0',
-          }
-        }}
-      />
-    ) : null,
-    amount: row.id > 0 ?
-     (
-      <TextField
-        hiddenLabel
-        name="amount"
-        id={`amount-${row.id}`}
-        value={row.amount}
-        onChange={(e) => handleChange(e, row.id)}
-        fullWidth
-        type='number'
-        sx={{ 
-          borderRadius:'0 !important',
-          '& input' :{
-            padding:'12px',
-            background:'#fff',
-          },
-          '& fieldset' :{
-            borderRadius:'0',
-            border:'1px solid #ccc',
-          },
-          "input::-webkit-outer-spin-button, input::-webkit-inner-spin-button": {
-            WebkitAppearance: "none",
-            margin: 0,
-          },
-          "input[type=number]": {
-            MozAppearance: "textfield",
-          },
-        }}
-      />
-    )
-    : null
-  }));
+    // first table heading
+    const FirstTableHeading = [
+      {
+        id: 1,
+        tabHeading: 'Sr No.',
+        showCheckbox: false, 
+      },
+  
+      {
+        id: 2,
+        tabHeading: 'Fee Head',
+        showCheckbox: false, 
+      },
+  
+      {
+        id: 3,
+        tabHeading: 'Concession Type',
+        showCheckbox: true, 
+      },
+  
+      {
+        id: 4,
+        tabHeading: 'Amount',
+        showCheckbox: true, 
+      },
+    ];
 
-  // first table heading
-  const FirstTableHeading = [
-    {
-      id: 1,
-      tabHeading: 'Sr No.',
-    },
+    // first table row 
+      const TableRowData = concessionData.map((row) => ({
+        id: row.id,
+        srNo: row.srNo,
+        feeHead: row.feeHead,
+        concessionType: row.feeHead !== '' ?
+        (
+          <Box sx={{display:'flex'}}>
+          <Checkbox color="primary" />
+          <SelectList
+            hiddenLabel
+            name="concessionType"
+            id={`concessionType-${row.id}`}
+            options={concessionTypeOptions}
+            value={row.concessionType}
+            onChange={(e) => handleChange(e, row.id)}
+            className='findcomp'
+            customStyle={{
+              borderRadius:'0 !important',     
+              '& fieldset' :{
+                borderRadius:'0 !important',
+                border:'none !important',
+              },
+              '& .MuiSelect-select' :{
+                background:'#fff',
+                border:'1px solid #ccc',
+                padding:'12px',
+                borderRadius:'0',
+              }
+            }}
+          />
+          </Box>
+        ) 
+        : null,
 
-    {
-      id: 2,
-      tabHeading: 'Fee Head',
-    },
+        amount: row.id > 0 ?
+        (
+          <Box sx={{display:'flex'}}>
+            <Checkbox color="primary" />
+            <TextField
+              hiddenLabel
+              name="amount"
+              id={`amount-${row.id}`}
+              value={row.amount}
+              onChange={(e) => handleChange(e, row.id)}
+              fullWidth
+              type='number'
+              sx={{ 
+                borderRadius:'0 !important',
+                '& input' :{
+                  padding:'12px',
+                  background:'#fff',
+                },
+                '& fieldset' :{
+                  borderRadius:'0',
+                  border:'1px solid #ccc',
+                },
+                "input::-webkit-outer-spin-button, input::-webkit-inner-spin-button": {
+                  WebkitAppearance: "none",
+                  margin: 0,
+                },
+                "input[type=number]": {
+                  MozAppearance: "textfield",
+                },
+              }}
+            />
+          </Box>
+        )
+        : null
+      }));
 
-    {
-      id: 3,
-      tabHeading: 'Concession Type',
-    },
-
-    {
-      id: 4,
-      tabHeading: 'Amount',
-    },
-  ];
 
   // table
   const TableHeading = [
@@ -295,7 +313,7 @@ const ConfigureGlobally = ({ customStyle }) => {
     setTableData(newData); // Update TableData state with the new data
   };
 
-
+  
   // print data onclick on submit
   const handleSubmit = () => {
     updateTableData();
@@ -358,8 +376,84 @@ const ConfigureGlobally = ({ customStyle }) => {
             data={TableRowData}
             action={false}
             tablePaper={{ border: '1px solid rgba(224, 224, 224, 1)' }}
-            tableStyle={{ paddingBottom: '5rem' }}
-          />
+            tableStyle={{ paddingBottom: '5rem' , '& td':{
+              width:'25%',
+              padding:'6px 20px'
+            },
+            '&  tr td:nth-child(1)':{
+              width:'8%',
+            }
+           
+           }}
+           >
+              <Box sx={{paddingLeft:'18px' , mb:'12px', display:'flex'}}>
+                {/* concession type */}
+                <Box sx={{display:'flex', width:'30%'}}>
+                  <FormControlLabel  control={<Checkbox />} sx={{marginLeft:'0px' , marginRight:'0' , paddingLeft:'0' , width:'100%'}} label='Concession Type'/>
+                  <SelectList
+                    hiddenLabel
+                    name="concessionType"
+                    id='concessionType'
+                    options={concessionTypeOptions}
+                    value={concessionData.concessionType}
+                    onChange={handleChange}
+                    customStyle={{
+                      borderRadius:'0 !important',     
+                      '& fieldset' :{
+                        borderRadius:'0 !important',
+                        border:'none !important',
+                      },
+                      '& .MuiSelect-select' :{
+                        background:'#fff',
+                        border:'1px solid #ccc',
+                        padding:'12px',
+                        borderRadius:'0',
+                      }
+                    }}
+                  />
+                </Box>
+                {/* amount */}
+                <Box sx={{display:'flex', width:'30%' , gap:'16px'}}>
+                   <FormControlLabel  control={<Checkbox />} sx={{marginLeft:'5px' , marginRight:'0' ,  paddingLeft:'0'}} label='Amount'/>
+                   <TextField
+                      hiddenLabel
+                      name="amount"
+                      id='amount'
+                      value={concessionData.amount}
+                      onChange={handleChange}
+                      fullWidth
+                      type='number'
+                      sx={{ 
+                        borderRadius:'0 !important',
+                        '& input' :{
+                          padding:'12px',
+                          background:'#fff',
+                        },
+                        '& fieldset' :{
+                          borderRadius:'0',
+                          border:'1px solid #ccc',
+                        },
+                        "input::-webkit-outer-spin-button, input::-webkit-inner-spin-button": {
+                          WebkitAppearance: "none",
+                          margin: 0,
+                        },
+                        "input[type=number]": {
+                          MozAppearance: "textfield",
+                        },
+                      }}
+                   />
+                </Box>
+              </Box>
+
+     
+              <Box sx={{padding:'10px 10px 10px 30px' , borderTop:'1px solid rgba(224, 224, 224, 1)'}}>
+                  <Typography variant='h5' sx={{lineHeight:'34px'}}>
+                  Class:
+                    {classes.length > 0 ? ` ${classes.map(cls => cls.name).join(', ')}` : null}
+                  </Typography>
+              </Box>
+           </ParamTable>
+      
         </Grid>
 
         <Grid item xs={12} lg={12}>
