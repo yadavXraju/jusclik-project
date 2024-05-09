@@ -1,7 +1,8 @@
-import React from 'react';
-import { Box, Typography } from '@mui/material'; // Assuming you are using Material-UI
 
-function TabNumber({ number, text }) {
+import React from 'react';
+import { Box, Typography } from '@mui/material';
+
+function TabNumber({ number, text, isActive }) {
   return (
     <Box
       sx={{
@@ -13,27 +14,28 @@ function TabNumber({ number, text }) {
     >
       <Box sx={{ display: 'flex', gap: '5px', alignItems: 'center' }}>
         <Typography
-          style={{
+          variant="body1"
+          sx={{
             width: '30px',
             height: '30px',
             borderRadius: '50%',
             textAlign: 'center',
-            lineHeight: '22px',
+            lineHeight: '30px',
             fontSize: '15px',
             fontWeight: 'bold',
-            border: '1px solid rgb(221, 221, 221)',
-            boxSizing: 'border-box',
-            borderColor: 'inherit',
+            border: isActive ? '1px solid white' : '1px solid black',
+            backgroundColor: isActive ? '#ffe71b' : 'white',
+            color: isActive ? 'black' : 'black',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             marginRight: '5px',
           }}
-          className="number-bg"
+         
         >
           {number}
         </Typography>
-        <Typography sx={{ color: 'inherit', fontWeight: 'bold' }}>{text}</Typography>
+        <Typography sx={{ fontWeight: 'bold' }}>{text}</Typography>
       </Box>
     </Box>
   );

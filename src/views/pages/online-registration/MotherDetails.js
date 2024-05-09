@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Typography, Box, Paper, TextField, Button } from '@mui/material';
+import { Grid, Typography, Box, TextField } from '@mui/material';
 import Divider from '@mui/material/Divider';
 import { useState } from 'react';
 
@@ -45,6 +45,9 @@ function MotherDetails({handleClick}) {
         });
         return newErrors;
       };
+
+
+      
     
       const PhoneNumberHandler = (e) => {
         const { name, value } = e.target;
@@ -57,6 +60,16 @@ function MotherDetails({handleClick}) {
           }
         }
         Setformdata({ ...Formdata, [name]: value });
+      };
+
+      const AgeHandler = (e) => {
+        const {name ,value} = e.target;
+       
+        if (!/^\d*$/.test(value) || value.length>3) {
+          return
+        }
+         Setformdata({...Formdata,[name]:value});
+         
       };
     
       const handleSubmit = (tab) => {
@@ -86,11 +99,14 @@ function MotherDetails({handleClick}) {
           Setformdata({ ...Formdata, [name]: value });
         }
       };
+
+       //Below Function will use in button to validate validation
+  console.log(() => handleSubmit(() => {}));
+
     
   return (
     <>
-      <Grid item xs={10} sx={{ paddingTop: '0 !important', paddingRight: '4rem' }}>
-        <Paper sx={{height:'86vh'}}>
+ 
           <Box sx={{ padding: '2rem' }}>
             <Typography variant="h3" sx={{ fontWeight: 'bold', paddingBottom: '1rem' }}>
               {' '}
@@ -212,7 +228,7 @@ function MotherDetails({handleClick}) {
                 label="Age"
                 name="age"
                 value={Formdata.age}
-                onChange={MotherDetailsChangeHandler}
+                onChange={AgeHandler}
                 sx={{ marginTop: '20px' }}
                 error={FormError.age}
                 fullWidth
@@ -271,13 +287,12 @@ function MotherDetails({handleClick}) {
             </Grid>
           </Grid>
 
-          <Box sx={{ paddingBottom: '6rem', display: 'flex', paddingRight: '4.2rem', paddingTop: '2rem' }}>
+          {/* <Box sx={{ paddingBottom: '6rem', display: 'flex', paddingRight: '4.2rem', paddingTop: '2rem' }}>
             <Button onClick={() => handleSubmit('eight')} variant="contained" sx={{ height: '38px', width: '144px', marginLeft: 'auto' }}>
               Save and Next
             </Button>
-          </Box>
-        </Paper>
-      </Grid>
+          </Box> */}
+      
     </>
   )
 }

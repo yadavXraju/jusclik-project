@@ -261,7 +261,8 @@ const SignUpRegisteration = ({ continueHandler }) => {
                       value={allDataform.dob}
                       // error={formErrors.dob} // Pass error prop if applicable
                       //onChange={changeHandler} // Pass onChange handler if applicable
-                      customStyle={{ marginTop: '20px', width: '100%', borderRadius: '50px' }}
+                      customStyle={{ marginTop: '20px', width: '100%', borderRadius: '50px' ,'& .MuiInputBase-root input , & .MuiInputBase-adornedEnd':{background:'white'}}}
+                      
                     />
                     {formErrors.dob && (
                       <Typography variant="body2" color="error">

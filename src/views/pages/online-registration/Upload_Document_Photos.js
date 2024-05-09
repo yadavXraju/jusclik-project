@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Typography, Box, Paper } from '@mui/material';
+import { Grid, Typography, Box,  } from '@mui/material';
 import Divider from '@mui/material/Divider';
 import Button from '@mui/material/Button';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
@@ -22,11 +22,12 @@ function Upload_Document_Photos({handleClick}) {
   const handleSubmit =(tab)=>{
     handleClick(tab)
   }
+ //Below Function will use in button to validate validation
+ console.log(() => handleSubmit(() => {}));
 
   return (
     <>
-      <Grid item xs={10} sx={{ paddingTop: '0 !important', paddingRight: '4rem' }}>
-        <Paper sx={{ height: '86vh' }}>
+   
           <Box sx={{ padding: '2rem' }}>
             <Typography variant="h3" sx={{ fontWeight: 'bold', paddingBottom: '1rem' }}>
               {' '}
@@ -152,13 +153,12 @@ function Upload_Document_Photos({handleClick}) {
             </Grid>
           </Grid>
 
-          <Box sx={{ paddingBottom: '2rem', display: 'flex', paddingRight: '4.2rem', paddingTop: '2rem' }}>
+          {/* <Box sx={{ paddingBottom: '2rem', display: 'flex', paddingRight: '4.2rem', paddingTop: '2rem' }}>
                     <Button onClick={() => handleSubmit('eleven')}variant="contained" sx={{ height: '38px', width: '148px', marginLeft: 'auto' }}>
                         Upload and Next
                     </Button>
                 </Box>
-        </Paper>
-      </Grid>
+       */}
     </>
   );
 }

@@ -1,74 +1,42 @@
 import React from 'react';
-import { Grid, Typography, Box, Paper, Button, TextField } from '@mui/material';
+import { Grid, Typography, Box,Button } from '@mui/material';
 import Divider from '@mui/material/Divider';
 import Checkbox from '@mui/material/Checkbox';
 import { useState } from 'react';
+import Captcha from './Captcha';
 
 
 
 function PreviewAndSubmit() {
-  const [checked, setChecked] = React.useState(false);
-  const [checkboxError, setCheckboxError] = useState('');
-  const [FormCaptcha , SetFormCaptcha] = useState('');
-  const [FormCaptchaError , SetFormCaptchaError ]= useState('')
-  const [captcha, setCaptcha] = useState(generateCaptcha());
-
-
-  const ChangeHandler=(e)=>{
-    
-    SetFormCaptcha(e.target.value) 
-  }
+  const [checked, setChecked] =useState(false);
 
 
 
- console.log(FormCaptcha)
+
+
+
   const handleChange = (event) => {
     setChecked(event.target.checked);
   };
 
 
-  const handleSubmit = () => {
-    if (!checked) {
-      setCheckboxError('Please check the Declaration Checkbox');
-    } else {
-      setCheckboxError('');
-    }
+ 
+
+
+ 
+
+
+
   
-    if (captcha !== FormCaptcha) {
-      SetFormCaptchaError('INCORRECT CAPTCHA');
-    } else {
-      SetFormCaptchaError('');
-    }
-  
-    if (checked && captcha === FormCaptcha) {
-      alert('Yes');
-    }
-  };
+ 
 
-  // Function to generate random captcha
-  function generateCaptcha() {
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    let result = '';
-    const charactersLength = characters.length;
-    for (let i = 0; i < 6; i++) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-    return result;
-  }
-
-  console.log(captcha)
-console.log(FormCaptcha)
-
-
-  // Function to handle refresh button click
-  function handleRefresh() {
-    setCaptcha(generateCaptcha());
-  }
+   //Below Function will use in button to validate validation
+   console.log(() => handleSubmit(() => {}));
 
   return (
     <>
-      <Grid item xs={10} sx={{ paddingTop: '0 !important', paddingRight: '4rem' }}>
-        <Paper sx={{ height: '86vh', overflowY: 'auto' }}>
+   
+        <Box sx={{ height: '78vh', overflowY: 'auto' }}>
           <Box sx={{ padding: '2rem' }}>
             <Typography variant="h3" sx={{ fontWeight: 'bold', paddingBottom: '1rem' }}>
               {' '}
@@ -103,8 +71,8 @@ console.log(FormCaptcha)
               </Typography>
             </Box>
 
-            <Box sx={{ border: '1px solid lightgrey' }}>
-              <Box sx={{ paddingLeft: '2rem', paddingRight: '2rem', paddingTop: '2rem', paddingBottom: '1rem' }}>
+            <Box sx={{ }}>
+              <Box sx={{ paddingLeft: '1rem', paddingRight: '1rem', paddingTop: '1rem', paddingBottom: '1rem' }}>
                 <Typography variant="h3" sx={{ fontWeight: 'bold', paddingBottom: '1rem' }}>
                   {' '}
                   Declaration *{' '}
@@ -165,11 +133,15 @@ console.log(FormCaptcha)
                 <Typography variant="body1" sx={{ marginBottom: '1rem', fontWeight: 'bold' }}>
                   8. I have noted the instructions and agree to the same.
                 </Typography>
+                
+                <Box sx={{paddingBottom:'1.5rem' , paddingTop:'1rem'}}>
+                <Captcha/>
+                </Box>
               </Box>
             </Box>
           </Grid>
 
-          <Box sx={{ paddingBottom: '2rem', paddingTop: '2rem', paddingLeft: '3.8rem' }}>
+          <Box sx={{ paddingBottom: '0rem', paddingTop: '1rem', paddingLeft: '3.8rem' }}>
             
             
             
@@ -177,46 +149,19 @@ console.log(FormCaptcha)
               ENTER CAPTCHA
             </Typography> */}
 
-<Typography
-  variant="h5"
-  sx={{
-    fontWeight: 'bold',
-    marginLeft: '5px',
-    color: captcha !== FormCaptcha ? 'black': 'red' , // Set color based on captcha validation
-  }}
->
-   {FormCaptcha.length!==6 &&'ENTER CAPTCHA'} 
-  {captcha !== FormCaptcha ? FormCaptchaError : null}
-</Typography>
 
 
-            <Grid sx={{ paddingBottom: '0.2rem', marginTop: '10px', display: 'flex', alignItems: 'center' }}>
-              <TextField
-                variant="outlined"
-                onChange={ChangeHandler}
-                inputProps={{ style: { backgroundColor: '#ffffff', height: '8px', width: '3.5rem' } }}
-              />
 
-              <Button
-                variant="contained"
-                sx={{ marginLeft: '10px', background: 'white', color: 'black', borderRadius: '10px', border: '1px solid #d3d3d3' }}
-                onClick={handleRefresh}
-              >
-                Refresh
-              </Button>
-              <Typography variant="h3" sx={{ fontWeight: 'bold', color: '#4caf50', marginLeft: '10px' }}>
-                {captcha}
-              </Typography>
-            </Grid>
-            <Grid sx={{ paddingTop: '1rem' }}>
-            <Typography variant='h5' sx={{color:'red', marginBottom:'10px' }} className='Find' >{checkboxError}</Typography>
-              <Button onClick={()=>handleSubmit()} variant="contained" sx={{ height: '38px', width: 'auto' }}>
+         
+           
+           
+              {/* <Button onClick={()=>handleSubmit()} variant="contained" sx={{ height: '38px', width: 'auto' }}>
                 Click Here To Submit Your Registration
-              </Button>
-            </Grid>
+              </Button> */}
+           
           </Box>
-        </Paper>
-      </Grid>
+        </Box>
+   
     </>
   );
 }

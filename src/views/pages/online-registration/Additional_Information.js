@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Grid, Typography, Box, Paper, TextField, Button } from '@mui/material';
+import { Grid, Typography, Box, TextField } from '@mui/material';
 import Divider from '@mui/material/Divider';
 import Dropdown from 'views/common-section/ParamSelectList';
 
@@ -92,6 +92,7 @@ const ClassOptions = [
       newErrors[key] = !fields[key].trim();
     });
     return newErrors;
+    
   };
 
   const handleSubmit = (tab) => {
@@ -114,115 +115,122 @@ const ClassOptions = [
     }
   };
 
+  //Below Function will use in button to validate validation
+  console.log(() => handleSubmit(() => {}));
+
   return (
     <>
-      <Grid item xs={10} sx={{ paddingTop: '0 !important', paddingRight: '4rem' }}>
-        <Paper sx={{ height: '86vh' }}>
-          <Box sx={{ padding: '2rem' }}>
-            <Typography variant="h3" sx={{ fontWeight: 'bold', paddingBottom: '1rem' }}>
-              {' '}
-              STEP 8: ADDITIONAL INFORMATION{' '}
-            </Typography>
-            <Divider />
-          </Box>
+      <Box sx={{ padding: '2rem' }}>
+        <Typography variant="h3" sx={{ fontWeight: 'bold', paddingBottom: '1rem' }}>
+          {' '}
+          STEP 8: ADDITIONAL INFORMATION{' '}
+        </Typography>
+        <Divider />
+      </Box>
 
-          <Grid sx={{ padding: '1rem 4rem' }} container spacing={4}>
-            <Grid item xs={4}>
-              <Dropdown
-                label="Are Parents Separated OR Divorced ?"
-                options={SelectParentsStatusOptions}
-                name="parents_status"
-                onChange={handleChange}
-                value={formData.parents_status}
-                error={formError.parents_status}
-                required
-                customStyle={{ '& > div': { background: '#ffffff' } }}
-              />
-              <Dropdown
-                label="Have you applied to SHIKSHANTAR SCHOOL earlier ?"
-                options={AppliedEarlierOptions}
-                name="applied_earlier"
-                onChange={handleChange}
-                value={formData.applied_earlier}
-                error={formError.applied_earlier}
-                required
-                customStyle={{ '& > div': { background: '#ffffff' } }}
-                rootStyle={{ marginTop: '20px' }}
-              />
-              <TextField
-                name="reason_to_join"
-                required
-                multiline
-                rows={2}
-                sx={{ marginTop: '20px' }}
-                fullWidth
-                helperText="Why would you like your child to join SHIKSHANTAR SCHOOL ? (upto 100 words) *"
-                inputProps={{ style: { backgroundColor: '#ffffff' } }}
-                style={{ backgroundColor: '#ffffff' }}
-                onChange={handleChange}
-                value={formData.reason_to_join}
-                error={formError.reason_to_join}
-              />
-            </Grid>
+      <Grid sx={{ padding: '1rem 4rem' }} container spacing={4}>
+        <Grid item xs={4}>
+          <Dropdown
+            label="Are Parents Separated OR Divorced ?"
+            options={SelectParentsStatusOptions}
+            name="parents_status"
+            onChange={handleChange}
+            value={formData.parents_status}
+            error={formError.parents_status}
+            required
+            customStyle={{ '& > div': { background: '#ffffff' } }}
+          />
+          <Dropdown
+            label="Have you applied to SHIKSHANTAR SCHOOL earlier ?"
+            options={AppliedEarlierOptions}
+            name="applied_earlier"
+            onChange={handleChange}
+            value={formData.applied_earlier}
+            error={formError.applied_earlier}
+            required
+            customStyle={{ '& > div': { background: '#ffffff' } }}
+            rootStyle={{ marginTop: '20px' }}
+          />
+         
 
-            <Grid item xs={4}>
-              <TextField
-                label="Do you live in a nuclear, joint OR extended family situation ?"
-                name="family_situation"
-                required
-                fullWidth
-                inputProps={{ style: { backgroundColor: '#ffffff' } }}
-                onChange={handleChange}
-                value={formData.family_situation}
-                error={formError.family_situation}
-              />
-              <Dropdown
-                label= {formData.applied_earlier==='no'?"Disabled":'Applied Year'} 
-                options={AppliedYearOptions}
-                name="applied_year"
-                required
-                disabled={formData.applied_earlier==='no'}
-                rootStyle={{ marginTop: '20px' }}
-                customStyle={{ '& > div': { background: '#ffffff' } }}
-                onChange={handleChange}
-                value={formData.applied_year}
-                error={formError.applied_year}
-              />
-            </Grid>
+          <TextField
+            name="reason_to_join"
+            required
+            multiline
+            rows={2}
+            sx={{
+              marginTop: '20px',
+              '& .MuiInputBase-root textarea': {
+                backgroundColor: 'white'
+              }
+            }}
+            fullWidth
+            helperText="Why would you like your child to join SHIKSHANTAR SCHOOL ? (upto 100 words) *"
+            inputProps={{ style: { backgroundColor: '#ffffff' } }}
+            style={{ backgroundColor: '#ffffff' }}
+            onChange={handleChange}
+            value={formData.reason_to_join}
+            error={formError.reason_to_join}
+          />  
 
-            <Grid item xs={4}>
-              <TextField
-                label="Which other school(s) have you applied to ?"
-                name="other_schools"
-                required
-                fullWidth
-                inputProps={{ style: { backgroundColor: '#ffffff' } }}
-                onChange={handleChange}
-                value={formData.other_schools}
-                error={formError.other_schools}
-              />
-              <Dropdown
-                label=  {formData.applied_earlier==='no'?"Disabled":'For which Class'}  
-                options={ClassOptions}
-                name="applied_class"
-                disabled={formData.applied_earlier==='no'}
-                required
-                rootStyle={{ marginTop: '20px' }}
-                customStyle={{ '& > div': { background: '#ffffff' } }}
-                onChange={handleChange}
-                value={formData.applied_class}
-                error={formError.applied_class}
-              />
-            </Grid>
-          </Grid>
+        </Grid>
 
-          <Box sx={{ paddingBottom: '5rem', display: 'flex', paddingRight: '4.2rem', paddingTop: '2rem' }}>
+        <Grid item xs={4}>
+          <TextField
+            label="Do you live in a nuclear, joint OR extended family situation ?"
+            name="family_situation"
+            required
+            fullWidth
+            inputProps={{ style: { backgroundColor: '#ffffff' } }}
+            onChange={handleChange}
+            value={formData.family_situation}
+            error={formError.family_situation}
+          />
+          <Dropdown
+            label={formData.applied_earlier === 'no' ? 'Disabled' : 'Applied Year'}
+            options={AppliedYearOptions}
+            name="applied_year"
+            required
+            disabled={formData.applied_earlier === 'no'}
+            rootStyle={{ marginTop: '20px' }}
+            customStyle={{ '& > div': { background: '#ffffff' } }}
+            onChange={handleChange}
+            value={formData.applied_year}
+            error={formError.applied_year}
+          />
+        </Grid>
+
+        <Grid item xs={4}>
+          <TextField
+            label="Which other school(s) have you applied to ?"
+            name="other_schools"
+            required
+            fullWidth
+            inputProps={{ style: { backgroundColor: '#ffffff' } }}
+            onChange={handleChange}
+            value={formData.other_schools}
+            error={formError.other_schools}
+          />
+          <Dropdown
+            label={formData.applied_earlier === 'no' ? 'Disabled' : 'For which Class'}
+            options={ClassOptions}
+            name="applied_class"
+            disabled={formData.applied_earlier === 'no'}
+            required
+            rootStyle={{ marginTop: '20px' }}
+            customStyle={{ '& > div': { background: '#ffffff' } }}
+            onChange={handleChange}
+            value={formData.applied_class}
+            error={formError.applied_class}
+          />
+        </Grid>
+      </Grid>
+
+      {/* <Box sx={{ paddingBottom: '5rem', display: 'flex', paddingRight: '4.2rem', paddingTop: '2rem' }}>
             <Button onClick={() => handleSubmit('nine')} variant="contained" sx={{ height: '38px', width: '144px', marginLeft: 'auto' }}>
               Save and Next
             </Button>
-          </Box>
-        </Paper>
-      </Grid>
+          </Box> */}
     </>
   );
 }
