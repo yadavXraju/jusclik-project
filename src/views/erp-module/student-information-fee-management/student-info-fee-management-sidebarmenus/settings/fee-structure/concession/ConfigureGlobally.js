@@ -66,6 +66,8 @@ const ConfigureGlobally = ({ customStyle }) => {
   const [classes, setClasses] = useState([]);
   const [TableData, setTableData] = useState([]);
 
+  
+
   const handleChange = (e, id) => {
     const { name, value } = e.target;
     setConcessionData((prevData) =>
@@ -371,6 +373,7 @@ const ConfigureGlobally = ({ customStyle }) => {
 
         {/* data table*/}
         <Grid item xs={12} lg={8} sx={{ position: 'relative' }}>
+          
           <ParamTable
             columns={FirstTableHeading}
             data={TableRowData}
@@ -455,6 +458,9 @@ const ConfigureGlobally = ({ customStyle }) => {
            </ParamTable>
       
         </Grid>
+
+
+        {/*=============== bottom table  start ================ */}
 
         <Grid item xs={12} lg={12}>
           <ParamTable
