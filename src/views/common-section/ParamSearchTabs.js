@@ -58,7 +58,7 @@ const a11yProps = (index) => {
 }
 
 const SetupTabs = (props) => {
-  const { tabPage, selectedTab, tabsStyles, tabPanelStyles } = props;
+  const { tabPage, selectedTab, tabsStyles, tabPanelStyles,rootStyle } = props;
   const [value, setValue] = useState(selectedTab || 0);
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -75,7 +75,7 @@ const SetupTabs = (props) => {
 
   return (
     <>
-      <Box sx={{ flexGrow: 1, display: 'flex', background: "none" }}>
+      <Box sx={{ flexGrow: 1, display: 'flex', background: "none",...rootStyle }} className="scrollbar">
         <Box >
           <ParamSearchBar value={searchTerm}
             onChange={e => setSearchTerm(e.target.value)} />
@@ -85,7 +85,6 @@ const SetupTabs = (props) => {
             onChange={handleChange}
             aria-label="Vertical tabs example"
             sx={{ ...defaultStyles.tabs, ...tabsStyles }}
-            className="find"
           >
             {filterData && filterData.map((tab, index) => (
               <Tab key={tab?.id} label={tab.name} {...a11yProps(index)} sx={{ borderBottom: "1px solid #eef2f6", width: ' 100%', alignItems: "baseline"}}  className="heelo1" />
@@ -96,7 +95,8 @@ const SetupTabs = (props) => {
           filterData && filterData.map((tab, index) => {
             return <TabPanel  key={tab?.id} value={value} index={index} sx={{...defaultStyles.tabPanel,...tabPanelStyles, '& > .MuiBox-root':{
               padding:'0',
-            }}}>
+            }}}
+            className="scrollbar">
               <tab.component  {...tab.props} />
             </TabPanel>
           })
@@ -109,7 +109,7 @@ const SetupTabs = (props) => {
 SetupTabs.defaultProps = {
   tabsStyles: {},
   tabPanelStyles: {},
-  root
+  rootStyle:{}
 };
 
 SetupTabs.propTypes = {
