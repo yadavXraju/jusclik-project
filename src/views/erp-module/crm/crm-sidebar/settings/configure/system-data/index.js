@@ -2,10 +2,18 @@ import React from 'react'
 import Systemdata from 'views/common-section/ParamSearchTabs';
 import { leadClassification , leadSource,leadOwnerConfig} from './TabPages';
 
-const LeadSystemData = () => {
+import { useSelector } from 'react-redux';
 
+const LeadSystemData = () => {
+  const selectedTab = useSelector(state => state.crmSettingSlice.selectedTab);
+  console.log(selectedTab);
 
   const tabPage = [
+    {
+      id: 654687,
+      name: "Lead Owner Configurations",
+      component: leadOwnerConfig,
+    },
     {
       id: 2457694,
       name: "Lead Classification",
@@ -16,11 +24,7 @@ const LeadSystemData = () => {
       name: "Lead Source",
       component: leadSource,
     },
-     {
-      id: 654687,
-      name: "Lead Owner Configurations",
-      component: leadOwnerConfig,
-    },
+
  
    
 
@@ -31,7 +35,7 @@ const LeadSystemData = () => {
 
   return (
     <>
-     <Systemdata tabPage={tabPage} />
+     <Systemdata tabPage={tabPage} selectedTab={selectedTab} />
     </>
   )
 }

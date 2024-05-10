@@ -11,7 +11,7 @@ import leadScoreSlice from "./crm/settings/leadScoreSlice";
 import menuNavItemSlice from "./layout/nav-item-slice";
 import menuNavCollapseSlice from "./layout/nav-collapse-slice";
 import erpModuleSlice from "./layout/erp-module-slice";
-
+import crmConfigureSlice from "./crm/settings/SystemTap-slice"
 const store=configureStore({
     reducer:{
         customization:customizationSlice,
@@ -26,6 +26,7 @@ const store=configureStore({
         menuNavItemSlice:menuNavItemSlice,
         menuNavCollapseSlice:menuNavCollapseSlice,
         erpModuleSlice : erpModuleSlice,
+        crmSettingSlice:crmConfigureSlice,
     },
     devTools:true
 });
