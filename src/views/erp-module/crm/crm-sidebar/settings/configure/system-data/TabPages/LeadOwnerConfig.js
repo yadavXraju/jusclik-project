@@ -1,7 +1,7 @@
 
 
 // export default ParentsDiscussion;
-import * as React from 'react';
+import  React,{useEffect} from 'react';
 // import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import { useState} from 'react';
@@ -123,6 +123,8 @@ export default function FullFeaturedCrudGrid() {
   const [rowModesModel, setRowModesModel] = React.useState({});
   const [modalOpen, setmodalOpen] =useState(false);
   const [isChangeEnable,setIsChangeEnable]=useState(-1);
+  const [confirm, setConfirm] = useState(false);
+  const [idToDelete, setIdToDelete] = useState(null);
 
   const handleModalClose = () => {
     setmodalOpen(false);
@@ -145,8 +147,9 @@ export default function FullFeaturedCrudGrid() {
     setIsChangeEnable(-1);
   };
 
-  const handleDeleteClick = () => () => {
-    // setRows(rows.filter((row) => row.id !== id));
+  const handleDeleteClick = (id) => () => {
+    // Set id to delete and open modal
+    setIdToDelete(id);
     setmodalOpen(true);
   };
 
@@ -161,13 +164,18 @@ export default function FullFeaturedCrudGrid() {
       setRows(rows.filter((row) => row.id !== id));
     }
   };
-  const handleConfirmDelete = () => {
-    const updatedRows = tableRows.filter((row) => row.id !== deleteId);
-    setTableRows(updatedRows);
-    setmodalOpen(false);
-    setdeleteId(null);
-  };
 
+  const handleConfirmDelete = () => {
+    console.log(idToDelete);
+    setConfirm(true)
+    console.log(confirm);
+    if (confirm == true) {
+      setRows(rows.filter((row) => row.id !== idToDelete));
+      console.log('Deleting item with ID:', idToDelete);
+      setIdToDelete(null);
+    }
+    setmodalOpen(false);
+  };
 
   const processRowUpdate = (newRow) => {
     const updatedRow = { ...newRow, isNew: false };
@@ -179,8 +187,11 @@ export default function FullFeaturedCrudGrid() {
     setRowModesModel(newRowModesModel);
   };
 
+   useEffect(()=>{
+     console.log("render")
+   },[rows,idToDelete])
+
   const columns = [
- 
     {
       field: 'leadSource',
       headerName: 'Lead Owner Config',
