@@ -18,7 +18,7 @@ import BottomNavbar from 'views/common-section/BottomNavbar';
 
 const OnlineRegistration = () => {
   const [TabChange, setTabChange] = useState(0);
-  const [showSignUp, setShowSignUp] = useState(false);
+  const [showSignUp, setShowSignUp] = useState(true);
 
   const continueHandler = () => {
     setShowSignUp(false);
