@@ -13265,7 +13265,7 @@ prop-types-exact@^1.2.0:
     object.assign "^4.1.0"
     reflect.ownkeys "^0.2.0"
 
-prop-types@^15.5.6, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2, prop-types@^15.8.1:
+prop-types@^15.5.0, prop-types@^15.5.6, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.npmjs.org/prop-types/-/prop-types-15.8.1.tgz"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -13839,6 +13839,14 @@ react-app-polyfill@^3.0.0:
     regenerator-runtime "^0.13.9"
     whatwg-fetch "^3.6.2"
 
+react-async-script@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.npmjs.org/react-async-script/-/react-async-script-1.2.0.tgz"
+  integrity sha512-bCpkbm9JiAuMGhkqoAiC0lLkb40DJ0HOEJIku+9JDjxX3Rcs+ztEOG13wbrOskt3n2DTrjshhaQ/iay+SnGg5Q==
+  dependencies:
+    hoist-non-react-statics "^3.3.0"
+    prop-types "^15.5.0"
+
 react-beautiful-dnd@^13.1.1:
   version "13.1.1"
   resolved "https://registry.npmjs.org/react-beautiful-dnd/-/react-beautiful-dnd-13.1.1.tgz"
@@ -13946,6 +13954,14 @@ react-fontawesome@^1.7.1:
   integrity sha512-kottReWW1I9Uupub6A5YX4VK7qfpFnEjAcm5zB4Aepst7iofONT27GJYdTcRsj7q5uQu9PXBL7GsxAFKANNUVg==
   dependencies:
     prop-types "^15.5.6"
+
+react-google-recaptcha@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.npmjs.org/react-google-recaptcha/-/react-google-recaptcha-3.1.0.tgz"
+  integrity sha512-cYW2/DWas8nEKZGD7SCu9BSuVz8iOcOLHChHyi7upUuVhkpkhYG/6N3KDiTQ3XAiZ2UAZkfvYKMfAHOzBOcGEg==
+  dependencies:
+    prop-types "^15.5.0"
+    react-async-script "^1.2.0"
 
 react-is@^16.10.2:
   version "16.13.1"
@@ -14292,7 +14308,7 @@ react-trello@^2.2.11:
     trello-smooth-dnd "1.0.0"
     uuid "^3.3.2"
 
-react@*, "react@^0.14.0 || ^15.0.0-0 || ^16.0.0-0", "react@^0.14.0 || ^15.0.1 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react@^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react@^16 || ^17 || ^18", "react@^16.0.0 || ^17.0.0 || ^18.0.0", "react@^16.7.0 || ^17 || ^18", "react@^16.8 || ^17.0 || ^18.0", "react@^16.8.0 || ^17 || ^18", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^16.8.3 || ^17 || ^18", "react@^16.8.5 || ^17.0.0 || ^18.0.0", "react@^16.9.0 || ^17.0.0 || ^18", "react@^16.x || 17.x || 18.x", react@^17.0.0, "react@^17.0.0 || ^18.0.0", "react@^17.0.1 || ^18.0.0", react@^18.2.0, "react@>= 0.14.0", "react@>= 16", "react@>= 16.14", "react@>= 16.3", "react@>= 16.8.0", react@>=0.12.0, react@>=0.13, react@>=0.14.0, react@>=15.0.0, react@>=16.0.0, react@>=16.11.0, react@>=16.3, react@>=16.3.3, react@>=16.6.0, react@>=16.8, "react@>=16.8 || ^17.0.0", "react@>=16.8 || ^17.0.0 || ^18.0.0", react@>=16.8.0, react@>=16.9.0, react@18.2.0:
+react@*, "react@^0.14.0 || ^15.0.0-0 || ^16.0.0-0", "react@^0.14.0 || ^15.0.1 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react@^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react@^16 || ^17 || ^18", "react@^16.0.0 || ^17.0.0 || ^18.0.0", "react@^16.7.0 || ^17 || ^18", "react@^16.8 || ^17.0 || ^18.0", "react@^16.8.0 || ^17 || ^18", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^16.8.3 || ^17 || ^18", "react@^16.8.5 || ^17.0.0 || ^18.0.0", "react@^16.9.0 || ^17.0.0 || ^18", "react@^16.x || 17.x || 18.x", react@^17.0.0, "react@^17.0.0 || ^18.0.0", "react@^17.0.1 || ^18.0.0", react@^18.2.0, "react@>= 0.14.0", "react@>= 16", "react@>= 16.14", "react@>= 16.3", "react@>= 16.8.0", react@>=0.12.0, react@>=0.13, react@>=0.14.0, react@>=15.0.0, react@>=16.0.0, react@>=16.11.0, react@>=16.3, react@>=16.3.3, react@>=16.4.1, react@>=16.6.0, react@>=16.8, "react@>=16.8 || ^17.0.0", "react@>=16.8 || ^17.0.0 || ^18.0.0", react@>=16.8.0, react@>=16.9.0, react@18.2.0:
   version "18.2.0"
   resolved "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
   integrity sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==

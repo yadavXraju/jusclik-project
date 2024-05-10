@@ -104,7 +104,7 @@ export default function FullFeaturedCrudGrid() {
   const handleEditClick = (id) => () => {
     if(isChangeEnable==-1){
       setRowModesModel({ ...rowModesModel, [id]: { mode: GridRowModes.Edit } });
-      setIsChangeEnable(2);
+      setIsChangeEnable(-1);
     }
   };
 
@@ -241,7 +241,7 @@ export default function FullFeaturedCrudGrid() {
     const handleClick = () => {
       setIsChangeEnable(2);
       const id = randomId();
-      setRows((oldRows) => [...oldRows, { id, name: '', age: '', isNew: true,createdOn:'2023-04-07',createdBy:"Sangeeta"}]);
+      setRows((oldRows) => [...oldRows, { id, name: '', age: '', isNew: true,createdOn:'2023-04-07',createdBy:"Alice Johnson"}]);
       setRowModesModel((oldModel) => ({
         ...oldModel,
         [id]: { mode: GridRowModes.Edit, fieldToFocus: 'leadSource' },

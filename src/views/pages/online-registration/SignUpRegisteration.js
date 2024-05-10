@@ -16,6 +16,7 @@ import PoweredBySection from './PoweredByComp';
 import { useDispatch } from 'react-redux';
 import { updateAllDataform } from 'store/pages/online-Registration/allDataformSlice';
 
+
 // Online Registration Styling
 const style = {
   formHeader: {
@@ -71,9 +72,22 @@ const SignUpRegisteration = ({ continueHandler }) => {
 
   const changeHandler = (e) => {
     const { name, value } = e.target;
-    setallDataform({ ...allDataform, [name]: value });
-    dispatch(updateAllDataform({ [name]: value }));
+  
+    // Check if the input field is a text field and not email or Aadhar card
+    if (e.target.nodeName === "INPUT" && e.target.type === "text" && name !== "email") {
+      // Capitalize the first letter
+      const capitalizedValue = value.charAt(0).toUpperCase() + value.slice(1);
+      // Update the state with the capitalized value
+      setallDataform({ ...allDataform, [name]: capitalizedValue });
+      dispatch(updateAllDataform({ [name]: capitalizedValue }));
+    } else {
+      // For other types of input fields, update the state directly
+      setallDataform({ ...allDataform, [name]: value });
+      dispatch(updateAllDataform({ [name]: value }));
+    }
   };
+
+
   const [showDiv1, setShowDiv1] = useState(true);
   const [showDiv2, setShowDiv2] = useState(false);
 
@@ -180,7 +194,7 @@ const SignUpRegisteration = ({ continueHandler }) => {
             <Grid sx={{ maxWidth: '575px', width: { xs: '100%', lg: '575px' }, margin: 'auto', padding: '30px' }}>
               <Box sx={style.formHeader}>
                 <Typography variant="h1" sx={style.formHeading}>
-                  Online Registration
+                  Online Registration  
                 </Typography>
               </Box>
 
@@ -247,7 +261,8 @@ const SignUpRegisteration = ({ continueHandler }) => {
                       value={allDataform.dob}
                       // error={formErrors.dob} // Pass error prop if applicable
                       //onChange={changeHandler} // Pass onChange handler if applicable
-                      customStyle={{ marginTop: '20px', width: '100%', borderRadius: '50px' }}
+                      customStyle={{ marginTop: '20px', width: '100%', borderRadius: '50px' ,'& .MuiInputBase-root input , & .MuiInputBase-adornedEnd':{background:'white'}}}
+                      
                     />
                     {formErrors.dob && (
                       <Typography variant="body2" color="error">

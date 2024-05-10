@@ -1,11 +1,11 @@
 import React from 'react';
-import { Grid, Typography, Box, Paper, TextField, Button } from '@mui/material';
+import { Grid, Typography, Box,  TextField } from '@mui/material';
 import { useSelector } from 'react-redux'; 
 import Divider from '@mui/material/Divider';
 import Dropdown from 'views/common-section/ParamSelectList';
 import { useState } from 'react';
 
-function StudentDetails({ handleClick ,backToLogin }) {
+function StudentDetails({ handleClick  }) {
   const [allStudentDetails, setAllStudentDetails] = useState({
     gender: '',
     id_number: '',
@@ -72,7 +72,7 @@ function StudentDetails({ handleClick ,backToLogin }) {
     { value: 'a rh-', label: 'A RH+' },
     { value: 'b+', label: 'B+' },
     { value: 'b-', label: 'B-' },
-    { value: 'o-', label: 'O-' },
+    { value: 'O+', label: 'O+' },
     { value: 'o-', label: 'O-' },
     { value: 'o rh+', label: 'O RH+' },
     { value: 'rh-', label: 'RH-' },
@@ -122,7 +122,18 @@ function StudentDetails({ handleClick ,backToLogin }) {
   ];
 
   const ChangeHandlerStudentDetails = (e) => {
-    setAllStudentDetails({ ...allStudentDetails, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+  
+    // Check if the input field is a text field and not email or Aadhar card
+    if (e.target.nodeName === "INPUT" && e.target.type === "text" && name !== "email_address" && name !== "id_number") {
+      // Capitalize the first letter
+      const capitalizedValue = value.charAt(0).toUpperCase() + value.slice(1);
+      // Update the state with the capitalized value
+      setAllStudentDetails({ ...allStudentDetails, [name]: capitalizedValue });
+    } else {
+      // For other types of input fields, update the state directly
+      setAllStudentDetails({ ...allStudentDetails, [name]: value });
+    }
   };
 
   //Error Validation
@@ -173,22 +184,20 @@ function StudentDetails({ handleClick ,backToLogin }) {
     // Update the state with the value
     setAllStudentDetails({ ...allStudentDetails, [name]: value });
   };
+ //Below Function will use in button to validate validation
+ console.log(() => handleSubmit(() => {}));
 
   return (
     <>
-      <Grid item xs={10} sx={{ paddingTop: '0 !important', paddingRight: '4rem' }}>
-        <Paper>
+     
+       
           <Box sx={{ padding: '2rem' }}>
             <Typography variant="h3" sx={{ fontWeight: 'bold', paddingBottom: '1rem' }}>
               {' '}
               STEP 1 : STUDENT&apos;S DETAILS{' '}
             </Typography>
 
-            <Box sx={{ paddingBottom: '1.5rem' }}>
-              <Button onClick={()=>backToLogin()} variant="contained" sx={{ height: '38px', width: '144px' }}>
-                Back to Login
-              </Button>
-            </Box>
+          
             <Divider />
           </Box>
 
@@ -438,13 +447,13 @@ function StudentDetails({ handleClick ,backToLogin }) {
             </Grid>
           </Grid>
 
-          <Box sx={{ paddingBottom: '2rem', display: 'flex', paddingRight: '4.2rem' }}>
+          {/* <Box sx={{ paddingBottom: '2rem', display: 'flex', paddingRight: '4.2rem' }}>
             <Button onClick={() => handleSubmit('two')} variant="contained" sx={{ height: '38px', width: '144px', marginLeft: 'auto' }}>
               Save and Next
             </Button>
           </Box>
-        </Paper>
-      </Grid>
+         */}
+    
     </>
   );
 }

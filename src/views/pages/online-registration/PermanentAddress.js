@@ -1,69 +1,113 @@
 import React from 'react';
-import { Grid, Typography, Box, Paper, TextField, Button } from '@mui/material';
+import { Grid, Typography, Box, TextField } from '@mui/material';
 import Divider from '@mui/material/Divider';
+import { useState } from 'react';
+
+function PermanentAddress({ handleClick }) {
+  const [Formdata, SetFormdata] = useState({
+    area: '',
+    city: '',
+    state: ''
+  });
+
+  const PermanentAddChangeHandler = (e) => {
+    const { name, value } = e.target;
+      const capitalizedValue = value.charAt(0).toUpperCase() + value.slice(1);
+      SetFormdata({ ...Formdata, [name]: capitalizedValue });
+    
+  };
+
+  const [Formerror, Setformerror] = useState({
+    area: false,
+    city: false,
+    state: false
+  });
+
+  const handleSubmit = (tab) => {
+    const errors = {};
+
+    if (Formdata.area.trim() === '') {
+      errors.area = true;
+    }
+    if (Formdata.city.trim() === '') {
+      errors.city = true;
+    }
+
+    if (Formdata.state.trim() == '') {
+      errors.state = true;
+    }
+
+    Setformerror(errors);
+
+    if (Object.keys(errors).length == 0) {
+      handleClick(tab);
+    }
+  };
+ //Below Function will use in button to validate validation
+ console.log(() => handleSubmit(() => {}));
 
 
-function PermanentAddress() {
+  
   return (
     <>
-      <Grid item xs={10} sx={{ paddingTop: '0 !important', paddingRight: '4rem' }}>
-        <Paper>
+   
           <Box sx={{ padding: '2rem' }}>
             <Typography variant="h3" sx={{ fontWeight: 'bold', paddingBottom: '1rem' }}>
               {' '}
               STEP 5 : PERMANENT ADDRESS{' '}
             </Typography>
 
-            <Box sx={{ paddingBottom: '1.5rem' }}>
-              <Button variant="contained" sx={{ height: '38px', width: '144px' }}>
-                Back to Login
-              </Button>
-            </Box>
+          
             <Divider />
           </Box>
 
           <Grid sx={{ padding: '1rem 4rem' }} container spacing={4}>
             <Grid item xs={4}>
-              <TextField fullWidth name="name" label="Area"   required inputProps={{ style: { backgroundColor: '#ffffff' } }} />
-
-             
+              <TextField
+                fullWidth
+                name="area"
+                value={Formdata.area}
+                error={Formerror.area}
+                onChange={PermanentAddChangeHandler}
+                label="Area"
+                required
+                inputProps={{ style: { backgroundColor: '#ffffff' } }}
+              />
             </Grid>
 
             <Grid item xs={4}>
-             
-
               <TextField
                 label="City"
                 required
-                name="school_name"
-               
+                name="city"
+                value={Formdata.city}
+                error={Formerror.city}
+                onChange={PermanentAddChangeHandler}
                 fullWidth
-                
                 inputProps={{ style: { backgroundColor: '#ffffff' } }}
               />
             </Grid>
 
             <Grid item xs={4}>
-              
-            <TextField
+              <TextField
                 label="State"
-                name="school_name"
+                name="state"
+                value={Formdata.state}
+                error={Formerror.state}
+                onChange={PermanentAddChangeHandler}
                 required
                 fullWidth
-              
                 inputProps={{ style: { backgroundColor: '#ffffff' } }}
               />
-              
             </Grid>
           </Grid>
 
-          <Box sx={{ paddingBottom: '2rem', display: 'flex', paddingRight: '4.2rem', paddingTop: '2rem' }}>
-            <Button onClick={() => handleSubmit('three')} variant="contained" sx={{ height: '38px', width: '144px', marginLeft: 'auto' }}>
+          {/* <Box sx={{ paddingBottom: '5rem', display: 'flex', paddingRight: '4.2rem', paddingTop: '2rem' }}>
+            <Button onClick={() => handleSubmit('six')} variant="contained" sx={{ height: '38px', width: '144px', marginLeft: 'auto' }}>
               Save and Next
             </Button>
-          </Box>
-        </Paper>
-      </Grid>
+          </Box> */}
+     
     </>
   );
 }

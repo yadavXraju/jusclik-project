@@ -1,6 +1,5 @@
 import React from 'react';
-
-import { Grid, Typography, Box, Paper, TextField, Button } from '@mui/material';
+import { Grid, Typography, Box, TextField } from '@mui/material';
 import Divider from '@mui/material/Divider';
 import { useState } from 'react';
 
@@ -12,7 +11,18 @@ function OtherDetails({ handleClick }) {
   });
 
   const OtherDetailsChangeHandler = (e) => {
-    Setformdata({ ...Formdata, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+  
+    // Check if the input field is a text field and not email or Aadhar card
+    if (e.target.nodeName === "INPUT" && e.target.type === "text" && name === "sibling_name") {
+      // Capitalize the first letter
+      const capitalizedValue = value.charAt(0).toUpperCase() + value.slice(1);
+      // Update the state with the capitalized value
+      Setformdata({ ...Formdata, [name]: capitalizedValue });
+    } else {
+      // For other types of input fields, update the state directly
+      Setformdata({ ...Formdata, [name]: value });
+    }
   };
 
   //Error Validation
@@ -39,23 +49,20 @@ function OtherDetails({ handleClick }) {
     }
   };
 
-  console.log(Formdata);
+ //Below Function will use in button to validate validation
+ console.log(() => handleSubmit(() => {}));
+
 
   return (
     <>
-      <Grid item xs={10} sx={{ paddingTop: '0 !important', paddingRight: '4rem' }}>
-        <Paper>
+     
           <Box sx={{ padding: '2rem' }}>
             <Typography variant="h3" sx={{ fontWeight: 'bold', paddingBottom: '1rem' }}>
               {' '}
               STEP 2 :OTHER DETAILS{' '}
             </Typography>
 
-            <Box sx={{ paddingBottom: '1.5rem' }}>
-              <Button variant="contained" sx={{ height: '38px', width: '144px' }}>
-                Back to Login
-              </Button>
-            </Box>
+            
             <Divider />
           </Box>
 
@@ -104,13 +111,12 @@ function OtherDetails({ handleClick }) {
             </Grid>
           </Grid>
 
-          <Box sx={{ paddingBottom: '2rem', display: 'flex', paddingRight: '4.2rem', paddingTop: '2rem' }}>
+          {/* <Box sx={{ paddingBottom: '2rem', display: 'flex', paddingRight: '4.2rem', paddingTop: '2rem' }}>
             <Button onClick={() => handleSubmit('three')} variant="contained" sx={{ height: '38px', width: '144px', marginLeft: 'auto' }}>
               Save and Next
             </Button>
-          </Box>
-        </Paper>
-      </Grid>
+          </Box> */}
+     
     </>
   );
 }

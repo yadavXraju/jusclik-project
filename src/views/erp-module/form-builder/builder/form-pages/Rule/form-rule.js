@@ -57,7 +57,7 @@ const FieldRule = () => {
                   onMouseLeave={() => setIsHoverThen(-1)}
                   key={index}
                 >
-                  <ParamSelectList label="Rule" value={optionRule}
+                  <ParamSelectList label="Rule" value={optionRule}  
                     rootStyle={{ width: "30%", borderRadius: "4px" }}
                     customStyle={{ borderRadius: "16px" }}
                     options={option} onChange={handleChange}
