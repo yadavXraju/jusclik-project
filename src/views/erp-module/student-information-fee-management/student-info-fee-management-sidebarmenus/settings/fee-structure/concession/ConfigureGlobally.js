@@ -6,7 +6,6 @@ import {
   Paper,
   Box,
   styled ,
-  FormControlLabel,
   Typography,
   Checkbox,
 } from '@mui/material';
@@ -14,6 +13,7 @@ import SelectList from 'views/common-section/ParamSelectList';
 import ParamDateComponent from 'views/common-section/ParamDateComponent';
 import ParamMultipleSelect from 'views/common-section/ParamMultipleSelect';
 import ParamTable from './ParamTable';
+import { useSelector } from 'react-redux';
 
 // style for bottom nav bar start
 export const VisuallyHiddenInput = styled('input')({
@@ -65,9 +65,44 @@ const ConfigureGlobally = ({ customStyle }) => {
   const [feeHead, setFeeHead] = useState([]);
   const [classes, setClasses] = useState([]);
   const [TableData, setTableData] = useState([]);
+  const [selectConcessionType , setSelectConcessionType ] = useState('');
+  const [enterAmount, setEnterAmount ] = useState('');
+  const [testCheckedValue , SetCheckedValue ] = useState('')
+
+
+  const handleManualToggle= ()=>{
+      if(isChecked)
+        SetCheckedValue(false)
+    
+      else
+        SetCheckedValue(true)
+      
+  }
+
+  console.log(`value ${testCheckedValue}`)
+
+  const selectConcessionTypeHandle = (e) =>{
+   setSelectConcessionType(e.target.value)
+  }
+
+  const enterAmountHandle = (e) =>{
+    setEnterAmount(e.target.value)
+   }
+
+  const {concessionType} = useSelector((state) => state?.feeStructureConfigSlice);
+  
+  const firstConcessionTypeValue = Object.values(concessionType)[0];
 
   
+  let isChecked;
+  if(Object.keys(concessionType).length==0)
+    isChecked=false;
+  else 
+  isChecked=firstConcessionTypeValue;
+  
+     console.log(`test ${isChecked}`)
 
+  
   const handleChange = (e, id) => {
     const { name, value } = e.target;
     setConcessionData((prevData) =>
@@ -105,7 +140,6 @@ const ConfigureGlobally = ({ customStyle }) => {
     { id: 8, name: 'Chemistry Lab Charges' },
     { id: 9, name: 'Tuition Fee' }
   ];
-
   // class options
   const classesOptions = [
     { id: 0, name: 'All' },
@@ -165,7 +199,7 @@ const ConfigureGlobally = ({ customStyle }) => {
         else {
           return {
             id: index + 1,
-            srNo: `${index + 1}`,
+            srNo:`${index + 1}`,
             feeHead: fh.name,
             concessionType: '',
             amount: '',
@@ -174,7 +208,7 @@ const ConfigureGlobally = ({ customStyle }) => {
       });
       setConcessionData(newRows);
     }
-  }, [feeHead, concessionData]); // Include concessionData in the dependencies
+  }, [feeHead]); // Include concessionData in the dependencies
 
     // first table heading
     const FirstTableHeading = [
@@ -185,7 +219,6 @@ const ConfigureGlobally = ({ customStyle }) => {
       },
   
       {
-        id: 2,
         tabHeading: 'Fee Head',
         showCheckbox: false, 
       },
@@ -204,75 +237,73 @@ const ConfigureGlobally = ({ customStyle }) => {
     ];
 
     // first table row 
-      const TableRowData = concessionData.map((row) => ({
-        id: row.id,
-        srNo: row.srNo,
-        feeHead: row.feeHead,
-        concessionType: row.feeHead !== '' ?
-        (
-          <Box sx={{display:'flex'}}>
-          <Checkbox color="primary" />
+    const TableRowData = concessionData.map((row) => ({
+      id: row.id,
+      srNo: row.srNo,
+      feeHead: row.feeHead,
+      concessionType: row.feeHead !== '' ? (
+        <Box sx={{ display: 'flex' }}>
+          <Checkbox  checked={isChecked } onClick={handleManualToggle}/>
           <SelectList
             hiddenLabel
             name="concessionType"
             id={`concessionType-${row.id}`}
             options={concessionTypeOptions}
-            value={row.concessionType}
+            value={firstConcessionTypeValue ? selectConcessionType :   row.concessionType}            
             onChange={(e) => handleChange(e, row.id)}
-            className='findcomp'
             customStyle={{
-              borderRadius:'0 !important',     
-              '& fieldset' :{
-                borderRadius:'0 !important',
-                border:'none !important',
+              borderRadius: '0 !important',
+              '& fieldset': {
+                borderRadius: '0 !important',
+                border: 'none !important',
               },
-              '& .MuiSelect-select' :{
-                background:'#fff',
-                border:'1px solid #ccc',
-                padding:'12px',
-                borderRadius:'0',
+              '& .MuiSelect-select': {
+                background: '#fff',
+                border: '1px solid #ccc',
+                padding: '12px',
+                borderRadius: '0',
               }
             }}
           />
-          </Box>
-        ) 
-        : null,
-
-        amount: row.id > 0 ?
-        (
-          <Box sx={{display:'flex'}}>
-            <Checkbox color="primary" />
-            <TextField
-              hiddenLabel
-              name="amount"
-              id={`amount-${row.id}`}
-              value={row.amount}
-              onChange={(e) => handleChange(e, row.id)}
-              fullWidth
-              type='number'
-              sx={{ 
-                borderRadius:'0 !important',
-                '& input' :{
-                  padding:'12px',
-                  background:'#fff',
-                },
-                '& fieldset' :{
-                  borderRadius:'0',
-                  border:'1px solid #ccc',
-                },
-                "input::-webkit-outer-spin-button, input::-webkit-inner-spin-button": {
-                  WebkitAppearance: "none",
-                  margin: 0,
-                },
-                "input[type=number]": {
-                  MozAppearance: "textfield",
-                },
-              }}
-            />
-          </Box>
-        )
-        : null
-      }));
+        </Box>
+      ) : null,
+      amount: row.id > 0 ? (
+        <Box sx={{display:'flex'}}>
+          <Checkbox checked={isChecked} />
+          <TextField
+            hiddenLabel
+            name="amount"
+            id={`amount-${row.id}`}
+            value={ firstConcessionTypeValue ? enterAmount : row.amount}
+            onChange={(e) => handleChange(e, row.id)}
+            fullWidth
+            type='number'
+            sx={{ 
+              borderRadius:'0 !important',
+              '& input' :{
+                padding:'12px',
+                background:'#fff',
+              },
+              '& fieldset' :{
+                borderRadius:'0',
+                border:'1px solid #ccc',
+              },
+              "input::-webkit-outer-spin-button, input::-webkit-inner-spin-button": {
+                WebkitAppearance: "none",
+                margin: 0,
+              },
+              "input[type=number]": {
+                MozAppearance: "textfield",
+              },
+            }}
+          />
+        </Box>
+      ) : null
+    }));
+    
+    // Log TableRowData with id
+    console.log(TableRowData);
+    
 
 
   // table
@@ -315,14 +346,12 @@ const ConfigureGlobally = ({ customStyle }) => {
     setTableData(newData); // Update TableData state with the new data
   };
 
-  
   // print data onclick on submit
   const handleSubmit = () => {
     updateTableData();
-    setFeeHead([]);
-    setClasses([]);
+    // setFeeHead([]);
+    // setClasses([]);
   };
-
 
   return (
     <>
@@ -388,18 +417,19 @@ const ConfigureGlobally = ({ customStyle }) => {
             }
            
            }}
+
            >
-              <Box sx={{paddingLeft:'18px' , mb:'12px', display:'flex'}}>
+              <Box sx={{paddingLeft:'18px' ,alignItems:'center', gap:'30px', mb:'12px', display:'flex' , paddingTop:'20px' ,borderTop:'1px solid rgba(224, 224, 224, 1)'}}>
                 {/* concession type */}
-                <Box sx={{display:'flex', width:'30%'}}>
-                  <FormControlLabel  control={<Checkbox />} sx={{marginLeft:'0px' , marginRight:'0' , paddingLeft:'0' , width:'100%'}} label='Concession Type'/>
+                <Box sx={{display:'flex', width:'30%', alignItems:'center',gap:'10px' }}>
+                  <Typography sx={{flex:'0 0 35%'}}>Concession Type</Typography>
                   <SelectList
                     hiddenLabel
-                    name="concessionType"
-                    id='concessionType'
+                    name="selectConcessionType"
+                    id='selectConcessionType'
                     options={concessionTypeOptions}
-                    value={concessionData.concessionType}
-                    onChange={handleChange}
+                    value={selectConcessionType}
+                    onChange={selectConcessionTypeHandle}
                     customStyle={{
                       borderRadius:'0 !important',     
                       '& fieldset' :{
@@ -416,14 +446,14 @@ const ConfigureGlobally = ({ customStyle }) => {
                   />
                 </Box>
                 {/* amount */}
-                <Box sx={{display:'flex', width:'30%' , gap:'16px'}}>
-                   <FormControlLabel  control={<Checkbox />} sx={{marginLeft:'5px' , marginRight:'0' ,  paddingLeft:'0'}} label='Amount'/>
+                <Box sx={{display:'flex', width:'25%', alignItems:'center',gap:'10px'}}>
+                   <Typography>Amount</Typography>
                    <TextField
                       hiddenLabel
                       name="amount"
                       id='amount'
-                      value={concessionData.amount}
-                      onChange={handleChange}
+                      value={enterAmount}
+                      onChange={enterAmountHandle}
                       fullWidth
                       type='number'
                       sx={{ 
@@ -446,6 +476,10 @@ const ConfigureGlobally = ({ customStyle }) => {
                       }}
                    />
                 </Box>
+
+                <Box sx={{marginLeft:'auto' , paddingRight:'30px'}}>
+                  <Button variant="contained" >Submit</Button>
+                </Box>
               </Box>
 
      
@@ -455,10 +489,9 @@ const ConfigureGlobally = ({ customStyle }) => {
                     {classes.length > 0 ? ` ${classes.map(cls => cls.name).join(', ')}` : null}
                   </Typography>
               </Box>
-           </ParamTable>
+          </ParamTable>
       
         </Grid>
-
 
         {/*=============== bottom table  start ================ */}
 
@@ -474,15 +507,15 @@ const ConfigureGlobally = ({ customStyle }) => {
 
         {/* bottom nav */}
         <Paper sx={{ ...style.BottomNavbar, ...customStyle }}>
-          <Box sx={{ display: "flex", gap: "20px" }}>
-            <Button variant="contained" sx={{ height: "38px", marginTop: "auto", marginBottom: "auto", width: "144px" }} onClick={handleSubmit}>
-              Save
-            </Button>
+            <Box sx={{ display: "flex", gap: "20px" }}>
+                  <Button variant="contained" sx={{ height: "38px", marginTop: "auto", marginBottom: "auto", width: "144px" }} onClick={handleSubmit}>
+                    Save 
+                  </Button>
 
-          </Box>
-          <Button variant="outlined" sx={{ height: "38px", marginTop: "auto", marginBottom: "auto", width: "144px" }}>
-            Cancel
-          </Button>
+                  <Button variant="outlined" sx={{ height: "38px", marginTop: "auto", marginBottom: "auto", width: "144px" }}>
+                    Cancel
+                </Button>
+            </Box>
         </Paper>
 
       </Grid>

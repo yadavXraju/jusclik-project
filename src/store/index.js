@@ -11,7 +11,8 @@ import leadScoreSlice from "./crm/settings/leadScoreSlice";
 import menuNavItemSlice from "./layout/nav-item-slice";
 import menuNavCollapseSlice from "./layout/nav-collapse-slice";
 import erpModuleSlice from "./layout/erp-module-slice";
-import crmConfigureSlice from "./crm/settings/SystemTap-slice"
+import crmConfigureSlice from "./crm/settings/SystemTap-slice";
+import feeStructureConfigSlice  from "./student-info-and-fee/setting/fee-structure-config";
 const store=configureStore({
     reducer:{
         customization:customizationSlice,
@@ -27,6 +28,7 @@ const store=configureStore({
         menuNavCollapseSlice:menuNavCollapseSlice,
         erpModuleSlice : erpModuleSlice,
         crmSettingSlice:crmConfigureSlice,
+        feeStructureConfigSlice : feeStructureConfigSlice,
     },
     devTools:true
 });
