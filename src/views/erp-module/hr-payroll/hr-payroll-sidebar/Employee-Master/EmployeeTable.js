@@ -7,8 +7,8 @@ import RemoveRedEyeTwoToneIcon from '@mui/icons-material/RemoveRedEyeTwoTone';
 import EmployeeData from './EmployeeData';
 import WarningDialog from 'views/common-section/WarningDialog';
 import CommonDataGrid from 'views/common-section/commonDataGrid';
-import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
-// import AddContactDrawer from './AddContactDrawer';
+// import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
+import EmployeeDrawer from './AddEmployeeDrawer';
 
 
 export default function EmployeeTable() {
@@ -78,9 +78,9 @@ const Click = (rowData) => {
           </Tooltip>
           <Tooltip >
           <IconButton onClick={(event) => event.stopPropagation()}>
-            <EditTwoToneIcon/>
+            {/* <EditTwoToneIcon/> */}
+            <EmployeeDrawer editIcon="true" handleClick={() => {}} />
             {/* <AddContactDrawer editIcon={true} currEditItem={currEditItem} handleClick={() => handleEditClick(params.row)} /> */}
-            {/* <EditLead currEditItem={currEditItem} handleClick={() => handleEditClick(params.row)}/> */}
           </IconButton>
           
           </Tooltip>

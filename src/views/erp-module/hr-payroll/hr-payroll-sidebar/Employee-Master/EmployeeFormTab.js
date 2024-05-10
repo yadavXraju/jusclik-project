@@ -10,7 +10,9 @@ import TextsmsTwoToneIcon from '@mui/icons-material/TextsmsTwoTone';
 import DescriptionTwoToneIcon from '@mui/icons-material/DescriptionTwoTone';
 import BottomNavbar from 'views/common-section/BottomNavbar';
 import { useSelector,useDispatch } from 'react-redux';
-import  {addField,subGroupbyGroup}  from 'store/student-info-and-fee/student/admission-slice';
+import ProfileDetail from './ProfileDetails';
+import EmployeeProfile from './EmployeeProfile';
+// import  {addField,subGroupbyGroup}  from 'store/Hr-Payroll/AddEmployee-slice';
 
 
 const buttonsData = [
@@ -25,43 +27,43 @@ const buttonsData = [
 
 const EmployeeFormTab = () => {
   const dispatch=useDispatch();
-  const { studentDetailsData,subGroups } = useSelector((state) => state.admission);
+  const { studentDetailsData,subGroups } = useSelector((state) => state.employeeSlice);
   const [selectedButton, setSelectedButton] = useState(0);
   const [section,setSection]=useState([]);
-//   const [option, setOption] = useState({
-//     primaryDetails: [],
-//     otherDetails: [],
-//     address: [],
-//     contactPerson: [],
-//     customFields: [],
-//     remarks: []
-//   });
+  const [option, setOption] = useState({
+    primaryDetails: [],
+    otherDetails: [],
+    address: [],
+    contactPerson: [],
+    customFields: [],
+    remarks: []
+  });
 
   const handleButtonClick = (buttonName) => {
     setSelectedButton(buttonName);
   };
 
-//   const [student, setStudentDetails] = useState('');
+  const [employee, setEmployeeDetails] = useState('');
 
-//   useEffect(() => {
-//     studentDetailsData.forEach((item) => {
-//       if (item?.sectionCode === 0) {
-//         setOption(prevOption => ({ ...prevOption, ["primaryDetails"]: item?.section }));
-//       }
-//       if (item?.sectionCode === 1) {
-//         setOption(prevOption => ({ ...prevOption, ["otherDetails"]: item?.section }));
-//       }
-//       if (item?.sectionCode === 2) {
-//         setOption(prevOption => ({ ...prevOption, ["address"]: item?.section }));
-//       }
-//       if(item?.sectionCode===3){
-//         setOption(prevOption => ({ ...prevOption, ["contactPerson"]: item?.section }));
-//       }
-//       if (item?.sectionCode === 3) {
-//         setOption(prevOption => ({ ...prevOption, ["customFields"]: item?.section }));
-//       }
-//     });
-//   }, [studentDetailsData])
+  useEffect(() => {
+    studentDetailsData.forEach((item) => {
+      if (item?.sectionCode === 0) {
+        setOption(prevOption => ({ ...prevOption, ["primaryDetails"]: item?.section }));
+      }
+      if (item?.sectionCode === 1) {
+        setOption(prevOption => ({ ...prevOption, ["otherDetails"]: item?.section }));
+      }
+      if (item?.sectionCode === 2) {
+        setOption(prevOption => ({ ...prevOption, ["address"]: item?.section }));
+      }
+      if(item?.sectionCode === 3){
+        setOption(prevOption => ({ ...prevOption, ["contactPerson"]: item?.section }));``
+      }
+      if (item?.sectionCode === 4) {
+        setOption(prevOption => ({ ...prevOption, ["customFields"]: item?.section }));
+      }
+    });
+  }, [studentDetailsData])
 
  
   const getSectionName = () => {
@@ -78,18 +80,18 @@ const EmployeeFormTab = () => {
     getSectionName();
   }, [])
 
-//   const handleChange =(name, newValue) => {
-//     setStudentDetails({ ...student, [name]: newValue });
-//   };
+  const handleChange =(name, newValue) => {
+    setEmployeeDetails({ ...employee, [name]: newValue });
+  };
 
   
   let cardComponent;
   switch (selectedButton) {
     case 0:
-      cardComponent = 1;
+      cardComponent = <ProfileDetail setStudentDetail={handleChange} EmployeeFields={option?.primaryDetails} type="Primary Details" />;
       break;
     case 1:
-      cardComponent = 2;
+      cardComponent = <ProfileDetail EmployeeFields={option?.otherDetails} type="Other  Details" />;
       break;
     case 2:
       cardComponent = 3;
@@ -120,10 +122,10 @@ const EmployeeFormTab = () => {
       <Card>
         <Grid container spacing={3} mb={8} sx={{ display: 'flex', height: '100%' }}>
           <Grid item xs={12} sm={12} lg={3}>
-            <Box sx={{ border: '1px solid #ccc', borderRadius: '10px' }}>
+            <Box sx={{ border: '1px solid #ccc', borderRadius: '4px' }}>
               
                 <Box sx={{ borderBottom: '1px solid #ccc' }}>
-                  {/* <Profile profileDetails={student} /> */}
+                  <EmployeeProfile profileDetails={employee} />
                 </Box>
 
                 <Box sx={{ flex: '0 0 auto', display: 'flex', flexDirection: 'column', padding: '20px' }}>
@@ -150,7 +152,7 @@ const EmployeeFormTab = () => {
           </Grid>
 
           <Grid item xs={12} sm={12} lg={9}>
-            <Box sx={{ flex: '1', overflow: 'auto', border: '1px solid #ccc', borderRadius: '10px' }}>
+            <Box sx={{ flex: '1', overflow: 'auto', border: '1px solid #ccc', borderRadius: '4px' }}>
               <Box>{cardComponent}</Box>
             </Box>
           </Grid>
