@@ -57,9 +57,9 @@ const OnlineRegistration = () => {
         <Grid>
           {/* background color  = #EEF2F6 */}
           <Grid sx={{ background: '#ffecec', height: '102.5vh' }}>
-            <Grid container spacing={3} sx={{ paddingLeft: '6rem', paddingTop: '4rem' }}>
-              <Grid item xs={2} component={Paper} elevation={2} sx={{ height: '87vh', marginTop: '1.5rem', marginLeft: '-20px ' }}>
-                <Grid sx={{ paddingRight: '1rem', marginTop: '-6px' }}>
+            <Grid container spacing={3} sx={{ paddingLeft: '5rem', paddingTop: '4rem' }}>
+              <Grid item xs={2} component={Paper} elevation={2} sx={{ height: '87vh', marginTop: '1.5rem'}}>
+                <Grid sx={{ paddingRight: '1rem', marginTop: '-5px' }}>
                   <Box sx={{ marginRight: '53px' }}>
                     <img src={SchoolLogo} alt="Logo" width="250px" style={{ marginRight: '8px' }} />
                   </Box>
