@@ -64,16 +64,26 @@ const SignUpRegisteration = ({ continueHandler }) => {
     dob: ''
   });
 
- 
-
   // Redux Implement  with also local state because setallDataform also used for Validation
   const dispatch = useDispatch();
 
   const changeHandler = (e) => {
     const { name, value } = e.target;
-    setallDataform({ ...allDataform, [name]: value });
-    dispatch(updateAllDataform({ [name]: value }));
+
+    // Check if the input field is a text field and not email or Aadhar card
+    if (e.target.nodeName === 'INPUT' && e.target.type === 'text' && name !== 'email') {
+      // Capitalize the first letter
+      const capitalizedValue = value.charAt(0).toUpperCase() + value.slice(1);
+      // Update the state with the capitalized value
+      setallDataform({ ...allDataform, [name]: capitalizedValue });
+      dispatch(updateAllDataform({ [name]: capitalizedValue }));
+    } else {
+      // For other types of input fields, update the state directly
+      setallDataform({ ...allDataform, [name]: value });
+      dispatch(updateAllDataform({ [name]: value }));
+    }
   };
+
   const [showDiv1, setShowDiv1] = useState(true);
   const [showDiv2, setShowDiv2] = useState(false);
 
@@ -155,6 +165,13 @@ const SignUpRegisteration = ({ continueHandler }) => {
     setValue(newValue);
   };
 
+  function NamehandleChange(e) {
+    const { name, value } = e.target;
+    const alphabeticValue = value.replace(/[^A-Za-z\s]/g, ''); // Filter out non-alphabetical characters and spaces
+    setallDataform({ ...allDataform, [name]: alphabeticValue });
+    dispatch(updateAllDataform({ [name]: alphabeticValue })); // Dispatch action to update Redux state
+  }
+
   return (
     <>
       {showDiv1 && (
@@ -229,7 +246,7 @@ const SignUpRegisteration = ({ continueHandler }) => {
                       variant="outlined"
                       name="student_name"
                       value={allDataform.student_name}
-                      onChange={changeHandler}
+                      onChange={NamehandleChange}
                       fullWidth
                       sx={{ marginTop: '20px' }}
                       inputProps={{ style: { backgroundColor: '#ffffff' } }}
@@ -247,7 +264,12 @@ const SignUpRegisteration = ({ continueHandler }) => {
                       value={allDataform.dob}
                       // error={formErrors.dob} // Pass error prop if applicable
                       //onChange={changeHandler} // Pass onChange handler if applicable
-                      customStyle={{ marginTop: '20px', width: '100%', borderRadius: '50px' }}
+                      customStyle={{
+                        marginTop: '20px',
+                        width: '100%',
+                        borderRadius: '50px',
+                        '& .MuiInputBase-root input , & .MuiInputBase-adornedEnd': { background: 'white' }
+                      }}
                     />
                     {formErrors.dob && (
                       <Typography variant="body2" color="error">

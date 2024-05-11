@@ -11,12 +11,12 @@ import ParamDragDropImage from 'views/common-section/ParamDragDropImage';
   
 // };
 
-export default function Profile({profileDetails }) {
+export default function EmployeeProfile({profileDetails }) {
 
   return (
     <Card>
       <Typography sx={{ p: 2, mb: 3, borderBottom: '1px solid #ccc' }} variant="h4" component="div">
-        Student Profile
+        Employee Profile
       </Typography>
       <Box mt={2} sx={{ textAlign: 'center' }}>
         {/* =========== import image drag & drop box ============ */}

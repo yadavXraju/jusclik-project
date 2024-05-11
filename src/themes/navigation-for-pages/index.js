@@ -5,7 +5,6 @@ import { gridSpacing } from 'store/constant';
 import { useNavigate , useLocation } from 'react-router';
 import { useSelector } from 'react-redux';
 
-
 const UrlPage = () => {
   const { menuNavItem } = useSelector((state) => state.menuNavItemSlice);
   const menuNavCollapse = useSelector((state) => state.menuNavCollapseSlice);
@@ -14,7 +13,9 @@ const UrlPage = () => {
   const pathname = Location.pathname;
   return (
     <>
-        <MainCard sx={{ background:'none' , border:'none' ,}}>
+        <MainCard sx={{ marginBottom:'10px',background:'none' , border:'none' , '& .MuiCardContent-root':{
+          padding:'9px !important'
+        }}}>
             <Grid container spacing={gridSpacing}>
                 <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'space-between' , flexDirection:'column'}}>
                     <Grid alignContent="center" justifyContent="space-between">

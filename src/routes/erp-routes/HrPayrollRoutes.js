@@ -6,7 +6,8 @@ const Dashboard = Loadable(lazy(() => import('views/erp-module/hr-payroll/hr-pay
 // const Reports = Loadable(lazy(() => import('views/erp-module/inventory-management/inventory-managment-sidebar/report')));
 // // setting
 // const Setting = Loadable(lazy(() => import('views/erp-module/inventory-management/inventory-managment-sidebar/setting/setting-inventory')));
-
+const EmployeeMaster =  Loadable(lazy(() => import('views/erp-module/hr-payroll/hr-payroll-sidebar/Employee-Master')));
+const EmployeeMasterPreview =  Loadable(lazy(() => import('views/erp-module/hr-payroll/hr-payroll-sidebar/Employee-Master/EmployeePreview')));
 // ==============================|| Visitor MENUS ||============================== //
 
 const HrPayRollRoutes = [
@@ -17,9 +18,22 @@ const HrPayRollRoutes = [
         path: 'dashboard', 
         element: <Dashboard />
        },
+        {
+          path: 'employee-master', 
+          children : [
+            {
+                path : '' ,
+                element: <EmployeeMaster /> 
+            },
+            {
+              path : ':id' ,
+              element: <EmployeeMasterPreview /> 
+            },
+        ]
+        },
         // {
         //     path: 'settings', 
-        //     element: <Setting /> 
+        //     element: <Settings /> 
         // },
 
         // {

@@ -24,6 +24,7 @@ const AddContactDrawer = ({ DrawerBtn = false, editIcon = false, currEditItem , 
     { name: 'Other Details', icon: <DescriptionTwoToneIcon /> },
     { name: 'Documents', icon: <DriveFolderUploadTwoToneIcon /> }
   ];
+  
   const tabLength = tabs.length;
 
   const handleTabChange = (event, newValue) => {
