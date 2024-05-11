@@ -1,7 +1,7 @@
 import React from 'react'
 import { Card, Box, Typography } from '@mui/material'
 import EmployeeTable from './EmployeeTable'
-// import EmployeeDrawer from './AddEmployeeDrawer'
+import EmployeeDrawer from './AddEmployeeDrawer'
 
 const EmployeeMaster = () => {
   return (
@@ -14,7 +14,7 @@ const EmployeeMaster = () => {
             </Typography>
           </Box>
           <Box>
-            {/* <EmployeeDrawer/> */}
+            <EmployeeDrawer DrawerBtn="true" />
           </Box>
         </Box>
         <EmployeeTable/>
