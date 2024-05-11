@@ -131,6 +131,7 @@ const handleCheckboxClick = (id) => {
   setIsChecked(!isChecked);
   console.log(`id : ${id}`)
 };
+
 // Calculate the checked value for the Checkbox component based on isChecked state and isCheckedAmount
 const checkboxCheckedValue = isCheckedClicked ? isChecked : isCheckedAmount;
 
@@ -304,7 +305,7 @@ const checkboxCheckedValue = isCheckedClicked ? isChecked : isCheckedAmount;
       ) : null,
       amount: row.id > 0 ? (
         <Box sx={{display:'flex'}}>
-          <Checkbox checked={checkboxCheckedValue} onClick={handleCheckboxClick} />
+          <Checkbox checked={checkboxCheckedValue} onClick={()=>handleCheckboxClick(row.id)} />
           <TextField
             hiddenLabel
             name="amount"
