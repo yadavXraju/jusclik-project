@@ -30,6 +30,7 @@ const EmployeeDrawer = ({DrawerBtn = false, editIcon = false, handleClick}) => {
       {editIcon && (
           <EditTwoToneIcon onClick={() => handleEditClick(event)}/>
       )}
+
       <Drawer anchor={'top'} open={anchor.top} onClose={toggleDrawer('top', false)}>
         <Box sx={{ width: '100%', height:'100vh', padding: 2 }} role="presentation">
           <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #ccc' }}>
@@ -39,7 +40,7 @@ const EmployeeDrawer = ({DrawerBtn = false, editIcon = false, handleClick}) => {
             </Button>
           </Box>
           <Box pt={3}>
-            {/* ========== Render Drawer Contant ============ */}
+            {/* ========== Render Drawer Content ============ */}
             <EmployeeFormTab/>
           </Box>
         </Box>

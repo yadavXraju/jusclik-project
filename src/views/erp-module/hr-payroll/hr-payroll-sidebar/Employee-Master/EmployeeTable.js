@@ -94,7 +94,6 @@ const Click = (rowData) => {
     }
   ];
 
-
   return (
     <>
       <Box>
