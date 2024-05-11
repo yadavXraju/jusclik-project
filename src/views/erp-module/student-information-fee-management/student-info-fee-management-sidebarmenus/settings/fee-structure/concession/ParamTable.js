@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+// import React, { useState } from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -11,6 +11,8 @@ import Checkbox from '@mui/material/Checkbox'; // Import Checkbox from @mui/mate
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutlined';
 import DragIndicatorOutlinedIcon from '@mui/icons-material/DragIndicatorOutlined';
+import { useDispatch ,  } from 'react-redux';
+import { handleFeeStructureConfig } from 'store/student-info-and-fee/setting/fee-structure-config';
 
 const style = {
   tableContainer: {
@@ -22,19 +24,11 @@ const style = {
 };
 
 const ReusableTable = ({ children, columns, data, tableStyle, action = true, dragIcon = false, tablePaper }) => {
-  const [checkedItems, setCheckedItems] = useState({}); // State to keep track of checked items
+const dispatch = useDispatch();
+const handleCheckboxClick = (id) => {
+  dispatch(handleFeeStructureConfig(id))
 
-  // Function to handle checkbox click event
-  const handleCheckboxClick = (id) => {
-    setCheckedItems((prevCheckedItems) => {
-      const updatedCheckedItems = {
-        ...prevCheckedItems,
-        [id]: !prevCheckedItems[id], // Toggle the value of the checkbox
-      };
-      console.log(updatedCheckedItems); // Log the updated checked items to the console
-      return updatedCheckedItems;
-    });
-  };
+ };
 
   return (
     <TableContainer component={Paper} sx={{ ...style.tableContainer, ...tablePaper }}>
@@ -49,12 +43,12 @@ const ReusableTable = ({ children, columns, data, tableStyle, action = true, dra
                     <Checkbox 
                       color="primary" 
                       onClick={() => handleCheckboxClick(column.id)} 
-                      checked={checkedItems[column.id]} 
+                      // checked={firstConcessionTypeValue} 
                     />
                     {column.tabHeading}
                   </>
                 ) : (
-                  column.tabHeading // Render regular column heading
+                  column.tabHeading 
                 )}
               </TableCell>
             ))}
