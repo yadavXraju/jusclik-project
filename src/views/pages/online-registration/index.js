@@ -127,17 +127,30 @@ const OnlineRegistration = () => {
                   <Paper elevation={2} sx={{ height: '87vh' }}>
                     {tabsData.map((tab) => TabChange === tab.value && tab.component)}
 
-                   <Box>
 
-                  </Box>
+
                     <Box sx={{ display: 'flex',  justifyContent: 'center', alignItems: 'center', paddingLeft: '0.3rem' }}>
                       <BottomNavbar
                         tabPageLength={tabsData.length - 1}
                         value={TabChange}
                         setValue={setTabChange}
-                        customStyle={{ width: '76%', backgroundColor: 'white', bottom: '3.8rem', borderBottom: 'none', borderTop:'1px solid #ccc', borderRadius:'0px' }}
+                        customStyle={{ width: '76%', backgroundColor: 'white', bottom: '4rem', borderBottom: 'none', borderTop:'1px solid #ccc', borderRadius:'0px' , height:'5rem' ,paddingLeft:'3.7rem' }}
                       />
                     </Box>
+
+
+
+                  
+
+
+                    {/* <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', paddingLeft: '0.3rem' }}>
+                      <BottomNavbar
+                        tabPageLength={tabsData.length - 1}
+                        value={TabChange}
+                        setValue={setTabChange}
+                        customStyle={{ width: '71%', backgroundColor: 'white', bottom: '3.8rem', borderBottom: 'none', borderTop: 'none' }}
+                      />
+                    </Box> */}
                   </Paper>
                 </Box>
               </Grid>
@@ -163,6 +176,11 @@ const OnlineRegistration = () => {
 };
 
 export default OnlineRegistration;
+
+
+
+
+
 
 // Same Copy
 // import React, { useState } from 'react';
