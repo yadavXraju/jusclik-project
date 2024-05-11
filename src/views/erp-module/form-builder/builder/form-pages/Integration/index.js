@@ -9,7 +9,7 @@ import FormBuilder from 'assets/images/erp-module-icon/form-builder.svg';
 // import HR from 'assets/images/erp-module-icon/hr.svg';
 // import Progress from 'assets/images/erp-module-icon/progress.svg';
 import ArrowRightAltOutlinedIcon from '@mui/icons-material/ArrowRightAltOutlined';
-import BusinessOutlinedIcon from '@mui/icons-material/BusinessOutlined';
+// import BusinessOutlinedIcon from '@mui/icons-material/BusinessOutlined';
 import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 import ParamSelectList from 'views/common-section/ParamSelectList';
 import ReplayOutlinedIcon from '@mui/icons-material/ReplayOutlined';
@@ -17,24 +17,45 @@ import SyncAltOutlinedIcon from '@mui/icons-material/SyncAltOutlined';
 import ParamSelectPlaceholder from 'views/common-section/ParamSelectPlaceholder';
 import AddCircleOutlinedIcon from '@mui/icons-material/AddCircleOutlined';
 import RemoveCircleOutlinedIcon from '@mui/icons-material/RemoveCircleOutlined';
-
+import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 
 const moduleName = [
     {
         id: 1,
-        label: "Student Info & Fee",
+        label: "Dwarka",
         value: "Stufee",
         // icon:<Fee />
     },
     {
         id: 2,
-        label: "HR & Payroll",
+        label: "GuruGaon",
         // icon:<HR />,
         value: "HR & Payroll"
     },
     {
         id: 3,
-        label: "Progress & Result",
+        label: "New Delhi",
+        // icon:<Progress />,
+        value: "Progress & Result"
+    }
+]
+
+const layoutOption = [
+    {
+        id: 1,
+        label: "Admission",
+        value: "Stufee",
+        // icon:<Fee />
+    },
+    {
+        id: 2,
+        label: "Enquiry",
+        // icon:<HR />,
+        value: "HR & Payroll"
+    },
+    {
+        id: 3,
+        label: "Registration",
         // icon:<Progress />,
         value: "Progress & Result"
     }
@@ -58,9 +79,8 @@ const fieldName=[
     }
 ]
 
-const FieldMapping = () => {
-    const [isHoverThen, setIsHoverThen] = useState(-1);
-    const [thenCount, setThenCount] = useState(1);
+const FieldMapping = ({isIntegratClicked,setIsIntegrateClicked}) => {
+    const [thenCount, setThenCount] = useState(2);
     const [integrate, SetIntegrate] = useState({
         module: "",
         layout: ""
@@ -82,14 +102,14 @@ const FieldMapping = () => {
     }
 
     return (
-        <>
+        <Box>
             <Grid container spacing={2} sx={{ padding: "40px" }}>
                 <Grid item xs={6} sm={4}>
                     <Box sx={{
                         display: "flex", justifyContent: "space-between",
                         flexDirection: "column", width: "100%"
                     }}>
-                        <Box sx={{
+                        {/* <Box sx={{
                             display: "flex", justifyContent: "space-between",
                             gap: "10px", width: "calc(100% - 103px)", alignItems: 'center'
                         }}>
@@ -98,15 +118,15 @@ const FieldMapping = () => {
                                 <BusinessOutlinedIcon />
                                 <Typography>Individual</Typography>
                             </Box>
-                        </Box>
+                        </Box> */}
                         {/* Select Module */}
                         <Box sx={{
                             display: "flex", flexDirection: "row",
                             justifyContent: "space-between", width: "100%",
                             marginTop: "10px",alignItems:"center"
                         }}>
-                            <Typography sx={{ color: "#e47d18" }}>Module</Typography>
-                            <ParamSelectPlaceholder placeholder="select" options={moduleName}
+                            <Typography sx={{ color: "#e47d18" }}>Branch</Typography>
+                            <ParamSelectPlaceholder placeholder="Select" options={moduleName}
                                 value={integrate.module} rootStyle={{ width: "200px"}}
                                 onChange={handleIntegrate} name="module"
                             />
@@ -117,8 +137,8 @@ const FieldMapping = () => {
                             justifyContent: "space-between", width: "100%",
                             marginTop: "10px",alignItems:"center"
                         }}>
-                            <Typography sx={{ color: "#e47d18" }}>Layout</Typography>
-                            <ParamSelectPlaceholder placeholder="select" options={moduleName}
+                            <Typography sx={{ color: "#e47d18" }}>Forms</Typography>
+                            <ParamSelectPlaceholder placeholder="Select" options={layoutOption}
                                 value={integrate.layout} rootStyle={{ width: "200px"}}
                                 onChange={handleIntegrate} name="layout" />
                         </Box>
@@ -157,6 +177,7 @@ const FieldMapping = () => {
                 <Box sx={{
                     backgroundColor: '#f6f6f6', display: 'flex',
                     justifyContent: "space-between", padding: "10px",
+                    paddingLeft:"20px",width:"80%",
                     borderRadius: "5px", border: "1px solid #EBEBEB"
                 }}>
                     <Box sx={{ display: "flex", gap: "10px" }}>
@@ -170,18 +191,16 @@ const FieldMapping = () => {
                     <ReplayOutlinedIcon />
                 </Box>
                 {/*Field Mapping */}
-                <Box sx={{ marginTop: "20px", width: '70%' }}>
+                <Box sx={{ marginTop: "20px", width: '80%' }}>
                     <Typography variant="h5">Field Mapping</Typography>
                     {
                         <Box sx={{
                             display: "flex", flexDirection: "column",
                             gap: "40px", border: '1px solid #EBEBEB', padding: "40px",
-                            marginTop: "20px"
+                            paddingLeft:"20px",marginTop: "20px",width:"100%", 
                         }}>
                             {Array.from({ length: thenCount }, (_, index) =>
                                 <Box sx={{ display: "flex", gap: "20px", alignItems: 'center', height: "20px" }}
-                                    onMouseEnter={() => setIsHoverThen(index)}
-                                    onMouseLeave={() => setIsHoverThen(-1)}
                                     key={index}
                                 >
                                     <ParamSelectList label="Select" value={filedMapping?.mapFrom} 
@@ -192,7 +211,7 @@ const FieldMapping = () => {
                                     <ParamSelectList  label="Select" value={filedMapping?.mapTo} 
                                     onChange={handleSelect} options={fieldName} 
                                     name="mapTo" />
-                                    <Box sx={{ visibility: isHoverThen === index ? "show" : "hidden", display: "flex", flexDirection: "row", alignItems: "center", gap: "10px" }} >
+                                    <Box sx={{ visibility: thenCount>1? "show" : "hidden", display: "flex", flexDirection: "row", alignItems: "center", gap: "10px" }} >
                                         <AddCircleOutlinedIcon sx={{ color: "#24A68A" }} onClick={() => setThenCount(thenCount + 1)} />
                                         <RemoveCircleOutlinedIcon sx={{ visibility: thenCount > 1 ? "show" : "hide", color: "#e83232" }}
                                             onClick={() => {
@@ -203,11 +222,31 @@ const FieldMapping = () => {
                                     </Box>
                                 </Box>
                             )}
+                            {thenCount==1&&<Button variant="contained" 
+                            startIcon={<AddOutlinedIcon />} onClick={() => 
+                                setThenCount(thenCount + 1)
+                            }
+                            sx={{width:"120px",alignItems:"center",
+                            ml:'auto',mr:'auto'}}>Add Field</Button>}
                         </Box>
                     }
                 </Box>
             </Box >
-        </>
+            {
+                isIntegratClicked && <Box sx={{
+                    display: "flex", gap: "20px", width: "100%",
+                    height: "60px", backgroundColor: "#fafafa",
+                    bottom: "0",padding:"10px",
+                    marginRight: "20px", marginTop: "auto", marginBottom: 'auto'
+                }}>
+                    <Button variant="contained" sx={{ height: "40px" }}>Integrate</Button>
+                    <Button variant="contained" sx={{ height: "40px" }}
+                        onClick={() => setIsIntegrateClicked(false)}>
+                        Cancel
+                    </Button>
+                </Box>
+            }
+        </Box>
     )
 }
 
@@ -308,7 +347,7 @@ const Component = ({ isIntegratClicked, setIsIntegrateClicked }) => {
                 <Divider />
             </Box>
             {isIntegratClicked == false && <ConfigureIntgration setIsIntegrateClicked={setIsIntegrateClicked} />}
-            {isIntegratClicked == true && <FieldMapping />}
+            {isIntegratClicked == true && <FieldMapping isIntegratClicked={isIntegratClicked} setIsIntegrateClicked={setIsIntegrateClicked}/>}
         </Box>
     )
 }
@@ -440,23 +479,7 @@ const Rule = () => {
 
     return (
         <Box sx={{ marginTop: "20px" }}>
-            <ParamTabs tabPage={tabPage} tabsStyles={{ height: "560px !important", overflowY: "auto" }}
-                tabPanelStyles={{ height: "600px !important", overflowY: "auto" }}
-            />
-            {
-                isIntegratClicked && <Box sx={{
-                    display: "flex", gap: "20px", width: "81.5%",
-                    height: "60px", backgroundColor: "#fafafa",
-                    position: "fixed", bottom: "0", padding: "10px",
-                    marginRight: "20px", marginTop: "auto", marginBottom: 'auto'
-                }}>
-                    <Button variant="contained" sx={{ height: "40px" }}>Integrate</Button>
-                    <Button variant="contained" sx={{ height: "40px" }}
-                        onClick={() => setIsIntegrateClicked(false)}>
-                        Cancel
-                    </Button>
-                </Box>
-            }
+            <ParamTabs tabPage={tabPage} />
         </Box >
     )
 }

@@ -2,6 +2,9 @@
 
 import SettingsTwoToneIcon from '@mui/icons-material/SettingsTwoTone';
 import DescriptionTwoToneIcon from '@mui/icons-material/DescriptionTwoTone';
+import BadgeOutlinedIcon from '@mui/icons-material/BadgeOutlined';
+import CalendarMonthTwoToneIcon from '@mui/icons-material/CalendarMonthTwoTone';
+
 
 const HrPayRollMenu = {
     id: 'hr-payrollMenu',
@@ -13,7 +16,7 @@ const HrPayRollMenu = {
         title: 'Employee Master',
         type: 'item',
         url: '/erp/hr-payroll/employee-master',
-        icon: SettingsTwoToneIcon,
+        icon: BadgeOutlinedIcon,
         breadcrumbs: false
       },
       // salary
@@ -31,7 +34,7 @@ const HrPayRollMenu = {
         title: 'Attendence',
         type: 'item',
         url: '/erp/hr-payroll/attendence',
-        icon: SettingsTwoToneIcon,
+        icon: CalendarMonthTwoToneIcon,
         breadcrumbs: false
       },
         // report

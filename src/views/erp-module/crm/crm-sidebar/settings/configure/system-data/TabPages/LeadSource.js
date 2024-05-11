@@ -91,6 +91,9 @@ export default function FullFeaturedCrudGrid() {
   const [rowModesModel, setRowModesModel] = React.useState({});
   const [modalOpen, setmodalOpen] =useState(false);
   const [isChangeEnable,setIsChangeEnable]=useState(-1);
+  const [confirm, setConfirm] = useState(false);
+  const [idToDelete, setIdToDelete] = useState(null);
+
 
   const handleModalClose = () => {
     setmodalOpen(false);
@@ -113,8 +116,9 @@ export default function FullFeaturedCrudGrid() {
     setIsChangeEnable(-1);
   };
 
-  const handleDeleteClick = () => () => {
-    // setRows(rows.filter((row) => row.id !== id));
+  const handleDeleteClick = (id) => () => {
+    // Set id to delete and open modal
+    setIdToDelete(id);
     setmodalOpen(true);
   };
 
@@ -130,12 +134,16 @@ export default function FullFeaturedCrudGrid() {
     }
   };
   const handleConfirmDelete = () => {
-    const updatedRows = tableRows.filter((row) => row.id !== deleteId);
-    setTableRows(updatedRows);
+    console.log(idToDelete);
+    setConfirm(true)
+    console.log(confirm);
+    if (confirm == true) {
+      setRows(rows.filter((row) => row.id !== idToDelete));
+      console.log('Deleting item with ID:', idToDelete);
+      setIdToDelete(null);
+    }
     setmodalOpen(false);
-    setdeleteId(null);
   };
-
 
   const processRowUpdate = (newRow) => {
     const updatedRow = { ...newRow, isNew: false };
@@ -145,6 +153,20 @@ export default function FullFeaturedCrudGrid() {
 
   const handleRowModesModelChange = (newRowModesModel) => {
     setRowModesModel(newRowModesModel);
+  };
+
+
+  const handleKeyDown = (event) => {
+    // Prevent moving to the next cell when Enter key is pressed
+    if (event.key === 'Enter') {
+      event.preventDefault();
+    }
+  };
+  const handleCellKeyDown = (params, event) => {
+   
+    if (event.key === 'Enter') {
+      event.stopPropagation();
+    }
   };
 
   const columns = [
@@ -227,6 +249,7 @@ export default function FullFeaturedCrudGrid() {
           <GridActionsCellItem
             key={`delete-${id}`}
             icon={<DeleteIcon />}
+            onMouseDown={handleKeyDown}
             label="Delete"
             onClick={handleDeleteClick(id)}
             color="inherit"
@@ -269,12 +292,14 @@ export default function FullFeaturedCrudGrid() {
         onRowModesModelChange={handleRowModesModelChange}
         onRowEditStop={handleRowEditStop}
         processRowUpdate={processRowUpdate}
+       
         slots={{
           toolbar: EditToolbar,
         }}
         slotProps={{
           toolbar: { setRows, setRowModesModel },
         }}
+        onCellKeyDown={handleCellKeyDown}
       />
        <WarningDialog
         open={modalOpen}

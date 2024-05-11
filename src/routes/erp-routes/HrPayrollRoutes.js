@@ -1,3 +1,4 @@
+
 import { lazy } from 'react';
 import Loadable from 'ui-component/Loadable';
 // project imports
@@ -7,6 +8,8 @@ const Dashboard = Loadable(lazy(() => import('views/erp-module/hr-payroll/hr-pay
 const Settings = Loadable(lazy(() => import('views/erp-module/hr-payroll/hr-payroll-sidebar/settings')));
 const EmployeeMaster =  Loadable(lazy(() => import('views/erp-module/hr-payroll/hr-payroll-sidebar/Employee-Master')));
 const EmployeeMasterPreview =  Loadable(lazy(() => import('views/erp-module/hr-payroll/hr-payroll-sidebar/Employee-Master/EmployeePreview')));
+const EmployeeSalary=Loadable(lazy(()=>import('views/erp-module/hr-payroll/hr-payroll-sidebar/salary')));
+
 // ==============================|| Visitor MENUS ||============================== //
 
 const HrPayRollRoutes = [
@@ -29,6 +32,10 @@ const HrPayRollRoutes = [
               element: <EmployeeMasterPreview /> 
             },
         ]
+        },
+        {
+          path:'salary',
+          element:<EmployeeSalary/>
         },
         {
             path: 'settings', 
