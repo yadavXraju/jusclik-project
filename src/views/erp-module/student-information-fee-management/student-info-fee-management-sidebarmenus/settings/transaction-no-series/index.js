@@ -18,9 +18,15 @@ export default function BusDetails() {
   const [modalOpen, setmodalOpen] = React.useState(false);
   const [deleteId, setdeleteId] = React.useState(null);
   const navigate = useNavigate();
+  const [currEditItem, setCurrEditItem] = React.useState({});
 
   const Click = (id) => {
     navigate(`/erp/student-info-fee/transport/bus-details/${id}`);
+  };
+
+   // ========== function for handle Edit row ===========
+   const handleEditClick = (editItem) => {
+    setCurrEditItem(editItem);
   };
 
   const handleModalClose = () => {
@@ -62,10 +68,10 @@ export default function BusDetails() {
             <RemoveRedEyeTwoToneIcon  sx={{ color: 'rgb(124, 178, 221)' }} />
           </IconButton>
           </Tooltip>
-          <Tooltip title="Edit">
+          <Tooltip  >
           <IconButton>
             {/* <EditTwoToneIcon /> */}
-            <AddTransactionDrawer editIcon='true' />
+            <AddTransactionDrawer editIcon='true' currEditItem={currEditItem} handleClick={() => handleEditClick(params.row)} />
           </IconButton>
           </Tooltip>
           <Tooltip title="Delete">
