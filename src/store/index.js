@@ -13,7 +13,6 @@ import menuNavCollapseSlice from "./layout/nav-collapse-slice";
 import erpModuleSlice from "./layout/erp-module-slice";
 import crmConfigureSlice from "./crm/settings/SystemTap-slice";
 import EmployeeSlice from "./Hr-Payroll/AddEmployee-slice";
-;
 import feeStructureConfigSlice  from "./student-info-and-fee/setting/fee-structure-config";
 const store=configureStore({
     reducer:{

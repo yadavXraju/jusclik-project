@@ -11,7 +11,7 @@ import Checkbox from '@mui/material/Checkbox'; // Import Checkbox from @mui/mate
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutlined';
 import DragIndicatorOutlinedIcon from '@mui/icons-material/DragIndicatorOutlined';
-import { useDispatch } from 'react-redux';
+import { useDispatch ,  } from 'react-redux';
 import { handleFeeStructureConfig } from 'store/student-info-and-fee/setting/fee-structure-config';
 
 const style = {
@@ -29,7 +29,6 @@ const handleCheckboxClick = (id) => {
   dispatch(handleFeeStructureConfig(id))
 
  };
-
 
   return (
     <TableContainer component={Paper} sx={{ ...style.tableContainer, ...tablePaper }}>

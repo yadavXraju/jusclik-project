@@ -67,42 +67,76 @@ const ConfigureGlobally = ({ customStyle }) => {
   const [TableData, setTableData] = useState([]);
   const [selectConcessionType , setSelectConcessionType ] = useState('');
   const [enterAmount, setEnterAmount ] = useState('');
-  const [testCheckedValue , SetCheckedValue ] = useState('')
+  const [previewSubmit, setPreviewSubmit] = useState(false); 
 
 
-  const handleManualToggle= ()=>{
-      if(isChecked)
-        SetCheckedValue(false)
-    
-      else
-        SetCheckedValue(true)
-      
-  }
+    const handlePreviewSubmit = () => {
+      setPreviewSubmit(true); 
+    };
 
-  console.log(`value ${testCheckedValue}`)
 
   const selectConcessionTypeHandle = (e) =>{
    setSelectConcessionType(e.target.value)
+   setPreviewSubmit(false)
   }
 
   const enterAmountHandle = (e) =>{
     setEnterAmount(e.target.value)
    }
 
-  const {concessionType} = useSelector((state) => state?.feeStructureConfigSlice);
+  // const {concessionType} = useSelector((state) => state?.feeStructureConfigSlice);
   
-  const firstConcessionTypeValue = Object.values(concessionType)[0];
+
+  // console.log(`check ${concessionType}`)
+
+  const { concessionType } = useSelector((state) => state.feeStructureConfigSlice); 
+
+  // let isCheckedConcessionType = concessionType.concessionType;
+
+  // let isCheckedAmount = concessionType.amount;
 
   
-  let isChecked;
+  // const firstConcessionTypeValue = Object.values(concessionType)[0];
+
+
+  let isCheckedConcessionType ;
   if(Object.keys(concessionType).length==0)
-    isChecked=false;
+    isCheckedConcessionType =false;
   else 
-  isChecked=firstConcessionTypeValue;
-  
-     console.log(`test ${isChecked}`)
+  isCheckedConcessionType=concessionType.concessionType;
 
+
+  let  isCheckedAmount ;
+  if(Object.keys(concessionType).length==0)
+    isCheckedAmount =false;
+  else 
+  isCheckedAmount=concessionType.amount;
+  // console.log(isCheckedConcessionType ,isCheckedAmount )
+
+  // =========== new ================
   
+  const [isChecked, setIsChecked] = useState(isCheckedAmount);
+
+const [isCheckedClicked, setIsCheckedClicked] = useState(false);
+
+
+// const handleCheckboxClick = () => {
+//   setIsCheckedClicked(true);
+//   setIsChecked(!isChecked);
+// };
+
+// Update handleCheckboxClick to accept the id of the row whose checkbox was clicked
+const handleCheckboxClick = (id) => {
+  setIsCheckedClicked(id);
+  setIsChecked(!isChecked);
+  console.log(`id : ${id}`)
+};
+// Calculate the checked value for the Checkbox component based on isChecked state and isCheckedAmount
+const checkboxCheckedValue = isCheckedClicked ? isChecked : isCheckedAmount;
+
+ 
+// ============== end ============
+
   const handleChange = (e, id) => {
     const { name, value } = e.target;
     setConcessionData((prevData) =>
@@ -213,29 +247,30 @@ const ConfigureGlobally = ({ customStyle }) => {
     // first table heading
     const FirstTableHeading = [
       {
-        id: 1,
+        id:'srNo',
         tabHeading: 'Sr No.',
         showCheckbox: false, 
       },
   
       {
+        id:'feeHead',
         tabHeading: 'Fee Head',
         showCheckbox: false, 
       },
   
       {
-        id: 3,
+        id: 'concessionType',
         tabHeading: 'Concession Type',
         showCheckbox: true, 
       },
   
       {
-        id: 4,
+        id: 'amount',
         tabHeading: 'Amount',
         showCheckbox: true, 
       },
     ];
-
+    
     // first table row 
     const TableRowData = concessionData.map((row) => ({
       id: row.id,
@@ -243,13 +278,13 @@ const ConfigureGlobally = ({ customStyle }) => {
       feeHead: row.feeHead,
       concessionType: row.feeHead !== '' ? (
         <Box sx={{ display: 'flex' }}>
-          <Checkbox  checked={isChecked } onClick={handleManualToggle}/>
+          <Checkbox  checked={isCheckedConcessionType} />
           <SelectList
             hiddenLabel
             name="concessionType"
             id={`concessionType-${row.id}`}
             options={concessionTypeOptions}
-            value={firstConcessionTypeValue ? selectConcessionType :   row.concessionType}            
+            value={previewSubmit && isCheckedConcessionType ? (row.concessionType = selectConcessionType) : row.concessionType}       
             onChange={(e) => handleChange(e, row.id)}
             customStyle={{
               borderRadius: '0 !important',
@@ -269,12 +304,12 @@ const ConfigureGlobally = ({ customStyle }) => {
       ) : null,
       amount: row.id > 0 ? (
         <Box sx={{display:'flex'}}>
-          <Checkbox checked={isChecked} />
+          <Checkbox checked={checkboxCheckedValue} onClick={handleCheckboxClick} />
           <TextField
             hiddenLabel
             name="amount"
             id={`amount-${row.id}`}
-            value={ firstConcessionTypeValue ? enterAmount : row.amount}
+            value={previewSubmit && isCheckedAmount ? (row.amount = enterAmount) : row.amount}
             onChange={(e) => handleChange(e, row.id)}
             fullWidth
             type='number'
@@ -302,7 +337,7 @@ const ConfigureGlobally = ({ customStyle }) => {
     }));
     
     // Log TableRowData with id
-    console.log(TableRowData);
+    // console.log(TableRowData);
     
 
 
@@ -339,11 +374,11 @@ const ConfigureGlobally = ({ customStyle }) => {
       id: row.id,
       srNO: row.srNo,
       feeHead: row.feeHead,
-      class: classes.map(cls => cls.name).join(', '), // Join selected classes into a string
+      class: classes.map(cls => cls.name).join(', '), 
       concessionType: row.concessionType,
       amount: row.amount,
     }));
-    setTableData(newData); // Update TableData state with the new data
+    setTableData(newData); 
   };
 
   // print data onclick on submit
@@ -353,8 +388,10 @@ const ConfigureGlobally = ({ customStyle }) => {
     // setClasses([]);
   };
 
+  console.log(TableRowData)
   return (
     <>
+    
       <Grid container spacing={4} sx={{ marginTop: '1rem' }}>
         <Grid item xs={12} lg={4}>
           <Grid container spacing={2} sx={{ borderRadius: '12px', margin: '0', width: '100%', border: '1px solid rgba(224, 224, 224, 1)', padding: '1rem 1rem 1rem 0px' }}>
@@ -410,7 +447,7 @@ const ConfigureGlobally = ({ customStyle }) => {
             tablePaper={{ border: '1px solid rgba(224, 224, 224, 1)' }}
             tableStyle={{ paddingBottom: '5rem' , '& td':{
               width:'25%',
-              padding:'6px 20px'
+              padding:'6px px'
             },
             '&  tr td:nth-child(1)':{
               width:'8%',
@@ -478,7 +515,7 @@ const ConfigureGlobally = ({ customStyle }) => {
                 </Box>
 
                 <Box sx={{marginLeft:'auto' , paddingRight:'30px'}}>
-                  <Button variant="contained" >Submit</Button>
+                  <Button variant="contained" onClick={handlePreviewSubmit}>Submit</Button>
                 </Box>
               </Box>
 
