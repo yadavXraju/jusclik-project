@@ -5,7 +5,7 @@ import {Box} from '@mui/material'
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { updateTermsAndConditions } from 'store/student-info-and-fee/setting/Invoice-Template-Slice';
+import { updateTermsAndConditions } from 'store/student-info-and-fee/settings/Invoice-Template-Slice';
 
 const TermsAndConditions = () => {
   const termsAndConditions=useSelector(state=>state.invoiceTemplate.termsAndConditions)

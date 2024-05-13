@@ -7,7 +7,6 @@ import { useSelector } from 'react-redux';
 
 const ConfigureGlobally = () => {
   const configGlobally = useSelector((state) => state.configGloballyFormSlice.configGlobally);
-  const classes = useSelector((state) => state.configGloballyFormSlice.classes);
 
     const TableHeading = [
       {
@@ -40,7 +39,7 @@ const ConfigureGlobally = () => {
         id: item?.id ,
         srNO: item?.srNo,
         feeHead: item?.feeHead,
-        class:  classes.map((item)=> item.name).join(','), 
+        class:  item.classes.join(' , '), 
         concessionType: item?.concessionType,
         amount: item?.amount,
       }));
@@ -57,7 +56,7 @@ const ConfigureGlobally = () => {
             columns={TableHeading}
             data={TableData}
             action={false}
-            tablePaper={{ border: '1px solid rgba(224, 224, 224, 1)' }}
+            tablePaper={{ border: '1px solid rgba(224, 224, 224, 1)' , maxHeight:'400px'}}
             tableStyle={{ paddingBottom: '5rem' }}
           />
         </Grid>

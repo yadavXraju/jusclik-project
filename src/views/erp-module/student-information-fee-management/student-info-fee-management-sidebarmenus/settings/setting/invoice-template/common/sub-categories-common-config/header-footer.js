@@ -4,7 +4,7 @@ import React from 'react';
 import ColorPicker from '../../common/color-picker';
 import FontSize from '../../common/font-size';
 import { useDispatch } from 'react-redux';
-import { updateHeaderFooterProperty } from 'store/student-info-and-fee/setting/Invoice-Template-Slice';
+import { updateHeaderFooterProperty } from 'store/student-info-and-fee/settings/Invoice-Template-Slice';
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import DragAndDropFile from '../../common/image-upload-and-preview';

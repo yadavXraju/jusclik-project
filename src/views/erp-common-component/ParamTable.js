@@ -22,7 +22,7 @@ const style = {
 
 const ReusableTable = ({children, columns,  data, tableStyle ,  action = true , dragIcon = false , tablePaper}) => {
   return (
-    <TableContainer  component={Paper} sx={{...style.tableContainer , ...tablePaper}}>
+    <TableContainer className='scrollbar'  component={Paper} sx={{...style.tableContainer , ...tablePaper}}>
       <Table stickyHeader  sx={{...tableStyle}}>
         <TableHead sx={{ width: '100%', backgroundColor: '#1219260f'  , background:'none' , fontWeight:'600'}}>
           <TableRow>
