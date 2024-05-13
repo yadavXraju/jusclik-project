@@ -1,6 +1,4 @@
 
-
-// export default ParentsDiscussion;
 import  React,{useEffect} from 'react';
 // import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -129,6 +127,7 @@ export default function FullFeaturedCrudGrid() {
   const handleModalClose = () => {
     setmodalOpen(false);
   };
+  
   const handleRowEditStop = (params, event) => {
     if (params.reason === GridRowEditStopReasons.rowFocusOut) {
       event.defaultMuiPrevented = true;
@@ -165,17 +164,6 @@ export default function FullFeaturedCrudGrid() {
     }
   };
 
-  const handleConfirmDelete = () => {
-    console.log(idToDelete);
-    setConfirm(true)
-    console.log(confirm);
-    if (confirm == true) {
-      setRows(rows.filter((row) => row.id !== idToDelete));
-      console.log('Deleting item with ID:', idToDelete);
-      setIdToDelete(null);
-    }
-    setmodalOpen(false);
-  };
 
   const processRowUpdate = (newRow) => {
     const updatedRow = { ...newRow, isNew: false };
@@ -194,9 +182,18 @@ export default function FullFeaturedCrudGrid() {
     }
   };
 
-   useEffect(()=>{
-     console.log("render")
-   },[rows,idToDelete])
+  const  handleSetconfirm=()=>{
+    setConfirm(true);
+ }
+
+  useEffect(()=>{
+    if (confirm == true) {
+      setRows(prevRows => prevRows.filter((row) => row.id !== idToDelete)); 
+      console.log('Deleting item with ID:', idToDelete);
+      setIdToDelete(null);
+    }
+    setmodalOpen(false);
+  },[confirm,idToDelete])
 
   const columns = [
     {
@@ -351,7 +348,7 @@ export default function FullFeaturedCrudGrid() {
         open={modalOpen}
         onClose={handleModalClose}
         contentText="Are you sure you want to delete?"
-        onConfirm={handleConfirmDelete}
+        onConfirm={()=>{handleSetconfirm()}}   
         
        
       />

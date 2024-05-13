@@ -92,22 +92,22 @@ const columns = [
       disableColumnMenu: true,
       renderCell: () => (
         <Box>
-          <Tooltip title="Preview">
+       
             <IconButton>
               <RemoveRedEyeTwoToneIcon sx={{ color: 'rgb(124, 178, 221)' }} />
             </IconButton>
-          </Tooltip>
+        
           <Tooltip title="Edit">
           <IconButton onClick={(event) => event.stopPropagation()}>
             <EditTwoToneIcon />
           </IconButton>
           </Tooltip>
-          <Tooltip title="Delete">
+        
             <IconButton onClick={(event) => event.stopPropagation()}>
                 <ExitEmployee  editIcon="true" handleClick={() => {}}/>
               {/* <DeleteTwoToneIcon onClick={() => handleDeleteRow()} sx={{ color: '#f19e9e' }} /> */}
             </IconButton>
-          </Tooltip>
+        
         </Box>
       )
     }
@@ -119,9 +119,7 @@ const columns = [
 
 // Functions
 
-const handleDeleteRow=()=>{
 
-}
   return (
     <>
     <Card>

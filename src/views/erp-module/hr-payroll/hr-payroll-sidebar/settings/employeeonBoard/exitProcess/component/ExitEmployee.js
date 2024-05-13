@@ -4,6 +4,7 @@ import Drawer from '@mui/material/Drawer';
 import { Button, Typography, Box } from '@mui/material';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 import WarningDialog from 'views/common-section/WarningDialog';
+import EmployeeExitForm from './EmployeeExitForm';
 
 const ExitEmployee = ({ DrawerBtn = false, editIcon = false, handleClick }) => {
   const [modalOpen, setmodalOpen] = useState(false);
@@ -52,7 +53,7 @@ const ExitEmployee = ({ DrawerBtn = false, editIcon = false, handleClick }) => {
             </Button>
           </Box>
           <Box pt={3}>
-            
+            <EmployeeExitForm/>
          </Box>
         </Box>
       </Drawer>
