@@ -13,7 +13,6 @@ import menuNavCollapseSlice from "./layout/nav-collapse-slice";
 import erpModuleSlice from "./layout/erp-module-slice";
 import crmConfigureSlice from "./crm/settings/SystemTap-slice";
 import EmployeeSlice from "./Hr-Payroll/AddEmployee-slice";
-import feeStructureConfigSlice  from "./student-info-and-fee/setting/fee-structure-config";
 import configGloballyFormSlice from "./config-globally-form-slice";
 
 const store=configureStore({
@@ -31,7 +30,6 @@ const store=configureStore({
         menuNavCollapseSlice:menuNavCollapseSlice,
         erpModuleSlice : erpModuleSlice,
         crmSettingSlice:crmConfigureSlice,
-        feeStructureConfigSlice : feeStructureConfigSlice,
         employeeSlice: EmployeeSlice,
         configGloballyFormSlice:configGloballyFormSlice,
     },
