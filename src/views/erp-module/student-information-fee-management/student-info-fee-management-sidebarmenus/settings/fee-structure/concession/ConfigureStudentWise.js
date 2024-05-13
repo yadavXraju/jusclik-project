@@ -4,7 +4,7 @@ import SelectList from 'views/common-section/ParamSelectList';
 import ParamDateComponent from 'views/common-section/ParamDateComponent';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import CommonDataGrid from 'views/common-section/commonDataGrid';
-import { VisuallyHiddenInput , style } from './ConfigureGlobally';
+import { VisuallyHiddenInput , style } from './ConfigureGloballyPreview';
 import ParamTable from 'views/erp-common-component/ParamTable';
 import ParamMultipleSelect from 'views/common-section/ParamMultipleSelect';
 
