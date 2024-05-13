@@ -4,10 +4,10 @@ import Divider from '@mui/material/Divider';
 import Button from '@mui/material/Button';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import { styled } from '@mui/material/styles';
-
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
+
 
 function Upload_Document_Photos({ handleClick }) {
   const [selectedFiles, setSelectedFiles] = useState({
@@ -32,17 +32,29 @@ function Upload_Document_Photos({ handleClick }) {
 
   const handleFileChange = (fieldName) => (event) => {
     const file = event.target.files[0];
-    setSelectedFiles((prevState) => ({
-      ...prevState,
-      [fieldName]: file
-    }));
+    const allowedTypes = ['image/png', 'image/jpeg', 'image/jpg', 'application/pdf'];
+
+    // Check if the selected file type is allowed
+    if (file && allowedTypes.includes(file.type)) {
+      setSelectedFiles((prevState) => ({
+        ...prevState,
+        [fieldName]: file
+      }));
+    } else {
+      // Display an error message or handle invalid file type here
+      window.alert('Invalid file type. Please select a PNG, JPG, JPEG, or PDF file.');
+      // Optionally, you can clear the input field
+      event.target.value = null;
+    }
   };
 
   const handleSubmit = (tab) => {
     handleClick(tab);
   };
 
-  console.log(() => handleSubmit(() => {}));
+  console.log(()=>{
+    handleSubmit()
+  })
 
   return (
     <>
@@ -88,7 +100,7 @@ function Upload_Document_Photos({ handleClick }) {
                   <Typography variant="body1">{selectedFiles.dateOfBirthProof.name}</Typography>
                   <Tooltip title="Delete">
                     <IconButton onClick={() => setSelectedFiles((prevState) => ({ ...prevState, dateOfBirthProof: null }))} size="small">
-                      <DeleteTwoToneIcon sx={{ color: 'red' }} />
+                      <DeleteTwoToneIcon sx={{ color: '#f19e9e' }} />
                     </IconButton>
                   </Tooltip>
                 </Box>
@@ -117,7 +129,7 @@ function Upload_Document_Photos({ handleClick }) {
                   <Typography variant="body1">{selectedFiles.passport.name}</Typography>
                   <Tooltip title="Delete">
                     <IconButton onClick={() => setSelectedFiles((prevState) => ({ ...prevState, passport: null }))} size="small">
-                      <DeleteTwoToneIcon sx={{ color: 'red' }} />
+                      <DeleteTwoToneIcon sx={{ color: '#f19e9e' }} />
                     </IconButton>
                   </Tooltip>
                 </Box>
@@ -156,7 +168,7 @@ function Upload_Document_Photos({ handleClick }) {
                   <Typography variant="body1">{selectedFiles.studentPhoto.name}</Typography>
                   <Tooltip title="Delete">
                     <IconButton onClick={() => setSelectedFiles((prevState) => ({ ...prevState, studentPhoto: null }))} size="small">
-                      <DeleteTwoToneIcon sx={{ color: 'red' }} />
+                      <DeleteTwoToneIcon sx={{ color: '#f19e9e' }} />
                     </IconButton>
                   </Tooltip>
                 </Box>
@@ -184,7 +196,7 @@ function Upload_Document_Photos({ handleClick }) {
                   <Typography variant="body1">{selectedFiles.motherPhoto.name}</Typography>
                   <Tooltip title="Delete">
                     <IconButton onClick={() => setSelectedFiles((prevState) => ({ ...prevState, motherPhoto: null }))} size="small">
-                      <DeleteTwoToneIcon sx={{ color: 'red' }} />
+                      <DeleteTwoToneIcon sx={{ color: '#f19e9e' }} />
                     </IconButton>
                   </Tooltip>
                 </Box>
@@ -212,7 +224,7 @@ function Upload_Document_Photos({ handleClick }) {
                   <Typography variant="body1">{selectedFiles.fatherPhoto.name}</Typography>
                   <Tooltip title="Delete">
                     <IconButton onClick={() => setSelectedFiles((prevState) => ({ ...prevState, fatherPhoto: null }))} size="small">
-                      <DeleteTwoToneIcon sx={{ color: 'red' }} />
+                      <DeleteTwoToneIcon sx={{ color: '#f19e9e' }} />
                     </IconButton>
                   </Tooltip>
                 </Box>

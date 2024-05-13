@@ -1,7 +1,8 @@
 import React from 'react';
-import { Grid, Typography, Box, TextField } from '@mui/material';
+import { Grid, Typography, Box, TextField ,InputLabel} from '@mui/material';
 import Divider from '@mui/material/Divider';
 import { useState } from 'react';
+
 
 function OtherDetails({ handleClick }) {
   const [Formdata, Setformdata] = useState({
@@ -52,11 +53,19 @@ function OtherDetails({ handleClick }) {
  //Below Function will use in button to validate validation
  console.log(() => handleSubmit(() => {}));
 
+ const labelStyles = {
+  marginBottom: '8px',
+  fontWeight: '500',
+  color: 'rgb(54, 65, 82)',
+  whiteSpace: 'pre-wrap'
+  // fontFamily: 'Roboto, sans-serif'
+};
+
 
   return (
     <>
      
-          <Box sx={{ padding: '2rem' }}>
+          <Box sx={{ padding: '2rem ' }}>
             <Typography variant="h3" sx={{ fontWeight: 'bold', paddingBottom: '1rem' }}>
               {' '}
               STEP 2 :OTHER DETAILS{' '}
@@ -68,8 +77,11 @@ function OtherDetails({ handleClick }) {
 
           <Grid sx={{ padding: '1rem 4rem' }} container spacing={4}>
             <Grid item xs={4}>
+            <InputLabel sx={{ ...labelStyles}} htmlFor="sibling_adm_no">
+            Sibling: Adm No
+            </InputLabel>
               <TextField
-                label="Sibling: Adm No"
+             
                 fullWidth
                 name="sibling_adm_no"
                 onChange={OtherDetailsChangeHandler}
@@ -81,9 +93,13 @@ function OtherDetails({ handleClick }) {
             </Grid>
 
             <Grid item xs={4}>
+
+            <InputLabel sx={{ ...labelStyles}} htmlFor="sibling_class_section">
+            Sibling: Class & Section
+            </InputLabel>
               <TextField
                 id="outlined-basic"
-                label="Sibling: Class & Section"
+                
                 name="sibling_class_section"
                 onChange={OtherDetailsChangeHandler}
                 value={Formdata.sibling_class_section}
@@ -96,9 +112,12 @@ function OtherDetails({ handleClick }) {
             </Grid>
 
             <Grid item xs={4}>
+            <InputLabel sx={{ ...labelStyles}} htmlFor="sibling_name">
+            Sibling: Name
+            </InputLabel>
               <TextField
                 id="outlined-basic"
-                label="Sibling: Name"
+                
                 name="sibling_name"
                 onChange={OtherDetailsChangeHandler}
                 value={Formdata.sibling_name}
@@ -109,6 +128,8 @@ function OtherDetails({ handleClick }) {
                 inputProps={{ style: { backgroundColor: '#ffffff' } }}
               />
             </Grid>
+
+
           </Grid>
 
           {/* <Box sx={{ paddingBottom: '2rem', display: 'flex', paddingRight: '4.2rem', paddingTop: '2rem' }}>

@@ -10,7 +10,7 @@ import FormBuilder from 'assets/images/erp-module-icon/form-builder.svg';
 // import Progress from 'assets/images/erp-module-icon/progress.svg';
 import ArrowRightAltOutlinedIcon from '@mui/icons-material/ArrowRightAltOutlined';
 // import BusinessOutlinedIcon from '@mui/icons-material/BusinessOutlined';
-import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
+// import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 import ParamSelectList from 'views/common-section/ParamSelectList';
 import ReplayOutlinedIcon from '@mui/icons-material/ReplayOutlined';
 import SyncAltOutlinedIcon from '@mui/icons-material/SyncAltOutlined';
@@ -18,7 +18,7 @@ import ParamSelectPlaceholder from 'views/common-section/ParamSelectPlaceholder'
 import AddCircleOutlinedIcon from '@mui/icons-material/AddCircleOutlined';
 import RemoveCircleOutlinedIcon from '@mui/icons-material/RemoveCircleOutlined';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
-
+import TrendingFlatOutlinedIcon from '@mui/icons-material/TrendingFlatOutlined';
 const moduleName = [
     {
         id: 1,
@@ -28,7 +28,7 @@ const moduleName = [
     },
     {
         id: 2,
-        label: "GuruGaon",
+        label: "Gurgoan",
         // icon:<HR />,
         value: "HR & Payroll"
     },
@@ -61,55 +61,61 @@ const layoutOption = [
     }
 ]
 
-const fieldName=[
+const fieldName = [
     {
-        id:1,
-        label:'First Name',
-        value:'firstname'
+        id: 1,
+        label: 'First Name',
+        value: 'firstname'
     },
     {
-        id:2,
-        label:'Last Name',
-        value:'lastname'
+        id: 2,
+        label: 'Last Name',
+        value: 'lastname'
     },
     {
-        id:3,
-        label:'Email',
-        value:'email'
+        id: 3,
+        label: 'Email',
+        value: 'email'
     }
 ]
 
-const FieldMapping = ({isIntegratClicked,setIsIntegrateClicked}) => {
+const FieldMapping = ({ isIntegratClicked, setIsIntegrateClicked, name }) => {
     const [thenCount, setThenCount] = useState(2);
     const [integrate, SetIntegrate] = useState({
         module: "",
         layout: ""
     });
-    
-    const [filedMapping,setFieldMapping]=useState({
-        mapfrom:"",
-        mapTo:""
+
+    const [filedMapping, setFieldMapping] = useState({
+        mapfrom: "",
+        mapTo: ""
     });
 
     const handleIntegrate = (e) => {
         const { name, value } = e.target;
         SetIntegrate({ ...integrate, [name]: value });
     }
-    
-    const handleSelect=(e)=>{
-        const {name,value} = e.target;
+
+    const handleSelect = (e) => {
+        const { name, value } = e.target;
         setFieldMapping({ ...integrate, [name]: value });
     }
 
     return (
-        <Box>
-            <Grid container spacing={2} sx={{ padding: "40px" }}>
-                <Grid item xs={6} sm={4}>
-                    <Box sx={{
-                        display: "flex", justifyContent: "space-between",
-                        flexDirection: "column", width: "100%"
-                    }}>
-                        {/* <Box sx={{
+        <>
+            <Box sx={{
+                minheight: "500px",
+                height: "calc(100vh - 440px)", overflowY: 'auto'
+            }} className="scrollbar">
+                <Grid container spacing={2} sx={{
+                    padding: "40px",
+                }} className="scrollbar">
+                    <Grid item xs={6} sm={4}>
+                        <Box sx={{
+                            display: "flex", justifyContent: "space-between",
+                            flexDirection: "column", width: "100%"
+                        }}>
+                            {/* <Box sx={{
                             display: "flex", justifyContent: "space-between",
                             gap: "10px", width: "calc(100% - 103px)", alignItems: 'center'
                         }}>
@@ -119,125 +125,126 @@ const FieldMapping = ({isIntegratClicked,setIsIntegrateClicked}) => {
                                 <Typography>Individual</Typography>
                             </Box>
                         </Box> */}
-                        {/* Select Module */}
-                        <Box sx={{
-                            display: "flex", flexDirection: "row",
-                            justifyContent: "space-between", width: "100%",
-                            marginTop: "10px",alignItems:"center"
-                        }}>
-                            <Typography sx={{ color: "#e47d18" }}>Branch</Typography>
-                            <ParamSelectPlaceholder placeholder="Select" options={moduleName}
-                                value={integrate.module} rootStyle={{ width: "200px"}}
-                                onChange={handleIntegrate} name="module"
-                            />
+                            {/* Select Module */}
+                            <Box sx={{
+                                display: "flex", flexDirection: "row",
+                                justifyContent: "space-between", width: "100%",
+                                alignItems: "center"
+                            }}>
+                                <Typography sx={{ color: "#e47d18" }}>Branch</Typography>
+                                <ParamSelectPlaceholder placeholder="Select" options={moduleName}
+                                    value={integrate.module} rootStyle={{ width: "200px" }}
+                                    onChange={handleIntegrate} name="module"
+                                />
+                            </Box>
+                            {/* Select Layout */}
+                            <Box sx={{
+                                display: "flex", flexDirection: "row",
+                                justifyContent: "space-between", width: "100%",
+                                marginTop: "10px", alignItems: "center"
+                            }}>
+                                <Typography sx={{ color: "#e47d18" }}>Forms</Typography>
+                                <ParamSelectPlaceholder placeholder="Select" options={layoutOption}
+                                    value={integrate.layout} rootStyle={{ width: "200px" }}
+                                    onChange={handleIntegrate} name="layout" />
+                            </Box>
                         </Box>
-                        {/* Select Layout */}
-                        <Box sx={{
-                            display: "flex", flexDirection: "row",
-                            justifyContent: "space-between", width: "100%",
-                            marginTop: "10px",alignItems:"center"
+                    </Grid>
+                    <Grid item xs={3} sm={2}>
+                        <Box
+                            sx={{
+                                position: "relative", '&:after': {
+                                    position: 'absolute',
+                                    content: '" "',
+                                    width: '1px',
+                                    height: "100px",
+                                    background: "#697586",
+                                    left: "100px",
+                                    top: "5px"
+                                }
+                            }}></Box>
+                    </Grid>
+                    <Grid item xs={12} sm={3}>
+                        <Typography sx={{
+                            color: "#e47d18"
                         }}>
-                            <Typography sx={{ color: "#e47d18" }}>Forms</Typography>
-                            <ParamSelectPlaceholder placeholder="Select" options={layoutOption}
-                                value={integrate.layout} rootStyle={{ width: "200px"}}
-                                onChange={handleIntegrate} name="layout" />
-                        </Box>
-                    </Box>
+                            Note:
+                        </Typography>
+                        <Typography sx={{ display: "flex", gap: "10px", marginTop: "10px" }}>
+                            <TrendingFlatOutlinedIcon  sx={{ color: "rgb(0 0 0 / 32%)" }} />
+                            You can add a new record from
+                            Jusklik Forms to modules in your {name}.
+                        </Typography>
+                    </Grid>
                 </Grid>
-                <Grid item xs={3} sm={2}>
-                    <Box
-                        sx={{
-                            position: "relative", '&:after': {
-                                position: 'absolute',
-                                content: '" "',
-                                width: '1px',
-                                height: "100px",
-                                background: "#697586",
-                                left: "100px",
-                                top: "5px"
-                            }
-                        }}></Box>
-                </Grid>
-                <Grid item xs={12} sm={3}>
-                    <Typography sx={{
-                        color: "#e47d18"
+
+                <Box sx={{ padding: "20px" }}>
+                    {/*Strip*/}
+                    <Box sx={{
+                        backgroundColor: '#f6f6f6', display: 'flex',
+                        justifyContent: "space-between", padding: "10px",
+                        paddingLeft: "20px", width: "80%",
+                        borderRadius: "5px", border: "1px solid #EBEBEB"
                     }}>
-                        Note:
-                    </Typography>
-                    <Typography sx={{ display: "flex", gap: "10px",marginTop:"10px" }}>
-                        <ArrowRightAltIcon sx={{ color: "rgb(0 0 0 / 32%)" }} />
-                        You can add a new record from
-                        Jusklik Forms to modules in your Bigin.
-                    </Typography>
-                </Grid>
-            </Grid>
-            
-            <Box sx={{padding: "20px" }}>
-                {/*Strip*/}
-                <Box sx={{
-                    backgroundColor: '#f6f6f6', display: 'flex',
-                    justifyContent: "space-between", padding: "10px",
-                    paddingLeft:"20px",width:"80%",
-                    borderRadius: "5px", border: "1px solid #EBEBEB"
-                }}>
-                    <Box sx={{ display: "flex", gap: "10px" }}>
-                        <img src={Customer} width="20px" height="20px" alt="jusklik crm" />
-                        <Typography>Jusklik CRM</Typography>
-                    </Box>
-                    <Box sx={{ display: "flex", gap: "10px" }}>
-                        <img src={FormBuilder} width="20px" height="20px" alt="form builder" />
-                        <Typography>Jusklik Forms</Typography>
-                    </Box>
-                    <ReplayOutlinedIcon />
-                </Box>
-                {/*Field Mapping */}
-                <Box sx={{ marginTop: "20px", width: '80%' }}>
-                    <Typography variant="h5">Field Mapping</Typography>
-                    {
-                        <Box sx={{
-                            display: "flex", flexDirection: "column",
-                            gap: "40px", border: '1px solid #EBEBEB', padding: "40px",
-                            paddingLeft:"20px",marginTop: "20px",width:"100%", 
-                        }}>
-                            {Array.from({ length: thenCount }, (_, index) =>
-                                <Box sx={{ display: "flex", gap: "20px", alignItems: 'center', height: "20px" }}
-                                    key={index}
-                                >
-                                    <ParamSelectList label="Select" value={filedMapping?.mapFrom} 
-                                    onChange={handleSelect} options={fieldName}
-                                    name="mapFrom"
-                                    />
-                                    <SyncAltOutlinedIcon   />
-                                    <ParamSelectList  label="Select" value={filedMapping?.mapTo} 
-                                    onChange={handleSelect} options={fieldName} 
-                                    name="mapTo" />
-                                    <Box sx={{ visibility: thenCount>1? "show" : "hidden", display: "flex", flexDirection: "row", alignItems: "center", gap: "10px" }} >
-                                        <AddCircleOutlinedIcon sx={{ color: "#24A68A" }} onClick={() => setThenCount(thenCount + 1)} />
-                                        <RemoveCircleOutlinedIcon sx={{ visibility: thenCount > 1 ? "show" : "hide", color: "#e83232" }}
-                                            onClick={() => {
-                                                if (thenCount > 1)
-                                                    setThenCount(thenCount - 1)
-                                            }}
-                                        />
-                                    </Box>
-                                </Box>
-                            )}
-                            {thenCount==1&&<Button variant="contained" 
-                            startIcon={<AddOutlinedIcon />} onClick={() => 
-                                setThenCount(thenCount + 1)
-                            }
-                            sx={{width:"120px",alignItems:"center",
-                            ml:'auto',mr:'auto'}}>Add Field</Button>}
+                        <Box sx={{ display: "flex", gap: "10px" }}>
+                            <img src={Customer} width="20px" height="20px" alt="jusklik crm" />
+                            <Typography>{name}</Typography>
                         </Box>
-                    }
-                </Box>
-            </Box >
+                        <Box sx={{ display: "flex", gap: "10px"}}>
+                            <img src={FormBuilder} style={{marginLeft:"-20px"}} width="20px" height="20px" alt="form builder" />
+                            <Typography>Jusklik Forms</Typography>
+                        </Box>
+                        <ReplayOutlinedIcon />
+                    </Box>
+                    {/*Field Mapping */}
+                    <Box sx={{ marginTop: "20px", width: '80%' }}>
+                        <Typography variant="h5">Field Mapping</Typography>
+                        {
+                            <Box sx={{
+                                display: "flex", flexDirection: "column",
+                                gap: "40px", border: '1px solid #EBEBEB', padding: "40px",
+                                paddingLeft: "20px", marginTop: "20px", width: "100%",
+                            }}>
+                                {Array.from({ length: thenCount }, (_, index) =>
+                                    <Box sx={{ display: "flex", gap: "20px", alignItems: 'center', height: "20px" }}
+                                        key={index}
+                                    >
+                                        <ParamSelectList label="Select" value={filedMapping?.mapFrom}
+                                            onChange={handleSelect} options={fieldName}
+                                            name="mapFrom"
+                                        />
+                                        <SyncAltOutlinedIcon />
+                                        <ParamSelectList label="Select" value={filedMapping?.mapTo}
+                                            onChange={handleSelect} options={fieldName}
+                                            name="mapTo" />
+                                        <Box sx={{ visibility: thenCount > 1 ? "show" : "hidden", display: "flex", flexDirection: "row", alignItems: "center", gap: "10px" }} >
+                                            <AddCircleOutlinedIcon sx={{ color: "#24A68A" }} onClick={() => setThenCount(thenCount + 1)} />
+                                            <RemoveCircleOutlinedIcon sx={{ visibility: thenCount > 1 ? "show" : "hide", color: "#e83232" }}
+                                                onClick={() => {
+                                                    if (thenCount > 1)
+                                                        setThenCount(thenCount - 1)
+                                                }}
+                                            />
+                                        </Box>
+                                    </Box>
+                                )}
+                                {thenCount == 1 && <Button variant="contained"
+                                    startIcon={<AddOutlinedIcon />} onClick={() =>
+                                        setThenCount(thenCount + 1)
+                                    }
+                                    sx={{ width: "120px", alignItems: "center", marginLeft: "40%" }}>Add Field</Button>}
+                            </Box>
+                        }
+                    </Box>
+                </Box >
+            </Box>
+            {/*Bottom Navbar*/}
             {
                 isIntegratClicked && <Box sx={{
                     display: "flex", gap: "20px", width: "100%",
                     height: "60px", backgroundColor: "#fafafa",
-                    bottom: "0",padding:"10px",
-                    marginRight: "20px", marginTop: "auto", marginBottom: 'auto'
+                    bottom: "0px", padding: "10px", marginTop: "25px",
+                    paddingLeft: '20px'
                 }}>
                     <Button variant="contained" sx={{ height: "40px" }}>Integrate</Button>
                     <Button variant="contained" sx={{ height: "40px" }}
@@ -246,12 +253,12 @@ const FieldMapping = ({isIntegratClicked,setIsIntegrateClicked}) => {
                     </Button>
                 </Box>
             }
-        </Box>
+        </>
     )
 }
 
 
-const ConfigureIntgration = ({ setIsIntegrateClicked }) => {
+const ConfigureIntgration = ({ setIsIntegrateClicked, name }) => {
     return (
         <>
             <Box sx={{
@@ -304,7 +311,7 @@ const ConfigureIntgration = ({ setIsIntegrateClicked }) => {
                         alignItems: 'center',
                         height: '100vh'
                     }}>
-                        <Typography>Stufee</Typography>
+                        <Typography>{name}</Typography>
                         <img src={Fee} alt="stufee icon"
                             style={{ height: "50px", width: "50px", marginLeft: '2px', marginTop: "2px" }}
                         />
@@ -325,7 +332,8 @@ const ConfigureIntgration = ({ setIsIntegrateClicked }) => {
     )
 }
 
-const Component = ({ isIntegratClicked, setIsIntegrateClicked }) => {
+const Component = ({ isIntegratClicked, setIsIntegrateClicked, name }) => {
+    { console.log(name, setIsIntegrateClicked) }
     return (
         <Box>
             <Box>
@@ -337,17 +345,17 @@ const Component = ({ isIntegratClicked, setIsIntegrateClicked }) => {
                 }}>
                     <Box sx={{ marginTop: "5px" }}>
                         <Typography sx={{ marginLeft: "20px", display: "flex", alignItems: "center", gap: "10px" }}>
-                            <Typography variant="h4">Integrate with Jusklik CRM</Typography>
+                            <Typography variant="h4">Integrate with {name}</Typography>
                         </Typography>
                         <Typography sx={{ fontSize: "smaller", marginLeft: "20px" }}>
-                            Integrate Jusklik Forms with Jusklik CRM.
+                            Integrate Jusklik Forms with {name}.
                         </Typography>
                     </Box>
                 </Box>
                 <Divider />
             </Box>
-            {isIntegratClicked == false && <ConfigureIntgration setIsIntegrateClicked={setIsIntegrateClicked} />}
-            {isIntegratClicked == true && <FieldMapping isIntegratClicked={isIntegratClicked} setIsIntegrateClicked={setIsIntegrateClicked}/>}
+            {isIntegratClicked == false && <ConfigureIntgration setIsIntegrateClicked={setIsIntegrateClicked} name={name} />}
+            {isIntegratClicked == true && <FieldMapping isIntegratClicked={isIntegratClicked} setIsIntegrateClicked={setIsIntegrateClicked} name={name} />}
         </Box>
     )
 }
@@ -362,6 +370,7 @@ const Rule = () => {
             name: "Student Info & Fee",
             component: Component,
             props: {
+                name: "Student Info & Fee",
                 toggleDrawer: toggleDrawer,
                 toggleAddDrawer: anchor,
                 isIntegratClicked: isIntegratClicked,
@@ -373,16 +382,22 @@ const Rule = () => {
             name: "HR & Payroll",
             component: Component,
             props: {
+                name: "HR & Payroll",
                 toggleDrawer: toggleDrawer,
-                toggleAddDrawer: anchor
+                toggleAddDrawer: anchor,
+                isIntegratClicked: isIntegratClicked,
+                setIsIntegrateClicked: setIsIntegrateClicked
             }
         }, {
             id: 3,
             name: "Progress & Result",
             component: Component,
             props: {
+                name: "Progress & Result",
                 toggleDrawer: toggleDrawer,
-                toggleAddDrawer: anchor
+                toggleAddDrawer: anchor,
+                isIntegratClicked: isIntegratClicked,
+                setIsIntegrateClicked: setIsIntegrateClicked
             }
         },
         {
@@ -390,8 +405,11 @@ const Rule = () => {
             name: "Library",
             component: Component,
             props: {
+                name: "Library",
                 toggleDrawer: toggleDrawer,
-                toggleAddDrawer: anchor
+                toggleAddDrawer: anchor,
+                isIntegratClicked: isIntegratClicked,
+                setIsIntegrateClicked: setIsIntegrateClicked
             }
         },
         {
@@ -399,8 +417,11 @@ const Rule = () => {
             name: "Inventory",
             component: Component,
             props: {
+                name: "Inventory",
                 toggleDrawer: toggleDrawer,
-                toggleAddDrawer: anchor
+                toggleAddDrawer: anchor,
+                isIntegratClicked: isIntegratClicked,
+                setIsIntegrateClicked: setIsIntegrateClicked
             }
         },
         {
@@ -408,8 +429,11 @@ const Rule = () => {
             name: "Financial Accounting",
             component: Component,
             props: {
+                name: "Financial Accounting",
                 toggleDrawer: toggleDrawer,
-                toggleAddDrawer: anchor
+                toggleAddDrawer: anchor,
+                isIntegratClicked: isIntegratClicked,
+                setIsIntegrateClicked: setIsIntegrateClicked
             }
         },
         {
@@ -417,8 +441,11 @@ const Rule = () => {
             name: "Website",
             component: Component,
             props: {
+                name: "Website",
                 toggleDrawer: toggleDrawer,
-                toggleAddDrawer: anchor
+                toggleAddDrawer: anchor,
+                isIntegratClicked: isIntegratClicked,
+                setIsIntegrateClicked: setIsIntegrateClicked
             }
         },
         {
@@ -426,8 +453,11 @@ const Rule = () => {
             name: "Visitor",
             component: Component,
             props: {
+                name: "Visitor",
                 toggleDrawer: toggleDrawer,
-                toggleAddDrawer: anchor
+                toggleAddDrawer: anchor,
+                isIntegratClicked: isIntegratClicked,
+                setIsIntegrateClicked: setIsIntegrateClicked
             }
         },
         {
@@ -435,8 +465,11 @@ const Rule = () => {
             name: "Medical Examination",
             component: Component,
             props: {
+                name: "Medical Examination",
                 toggleDrawer: toggleDrawer,
-                toggleAddDrawer: anchor
+                toggleAddDrawer: anchor,
+                isIntegratClicked: isIntegratClicked,
+                setIsIntegrateClicked: setIsIntegrateClicked
             }
         },
         {
@@ -444,8 +477,11 @@ const Rule = () => {
             name: "Admission",
             component: Component,
             props: {
+                name: "Admission",
                 toggleDrawer: toggleDrawer,
-                toggleAddDrawer: anchor
+                toggleAddDrawer: anchor,
+                isIntegratClicked: isIntegratClicked,
+                setIsIntegrateClicked: setIsIntegrateClicked
             }
         },
         {
@@ -453,8 +489,11 @@ const Rule = () => {
             name: "Customer Relationship",
             component: Component,
             props: {
+                name: "Customer Relationship",
                 toggleDrawer: toggleDrawer,
-                toggleAddDrawer: anchor
+                toggleAddDrawer: anchor,
+                isIntegratClicked: isIntegratClicked,
+                setIsIntegrateClicked: setIsIntegrateClicked
             }
         },
         {
@@ -462,8 +501,11 @@ const Rule = () => {
             name: "Parent",
             component: Component,
             props: {
+                name: "Parent",
                 toggleDrawer: toggleDrawer,
-                toggleAddDrawer: anchor
+                toggleAddDrawer: anchor,
+                isIntegratClicked: isIntegratClicked,
+                setIsIntegrateClicked: setIsIntegrateClicked
             }
         },
         {
@@ -471,8 +513,11 @@ const Rule = () => {
             name: "Teacher",
             component: Component,
             props: {
+                name: "Teacher",
                 toggleDrawer: toggleDrawer,
-                toggleAddDrawer: anchor
+                toggleAddDrawer: anchor,
+                isIntegratClicked: isIntegratClicked,
+                setIsIntegrateClicked: setIsIntegrateClicked
             }
         },
     ]

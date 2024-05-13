@@ -133,17 +133,19 @@ export default function FullFeaturedCrudGrid() {
     }
   };
   
-  const handleConfirmDelete = () => {
-    console.log(idToDelete);
-    setConfirm(true)
-    console.log(confirm);
+ 
+  const  handleSetconfirm=()=>{
+    setConfirm(true);
+ }
+
+  useEffect(()=>{
     if (confirm == true) {
-      setRows(rows.filter((row) => row.id !== idToDelete));
+      setRows(prevRows => prevRows.filter((row) => row.id !== idToDelete)); 
       console.log('Deleting item with ID:', idToDelete);
       setIdToDelete(null);
     }
     setmodalOpen(false);
-  };
+  },[confirm,idToDelete])
 
   const processRowUpdate = (newRow) => {
     const updatedRow = { ...newRow, isNew: false };
@@ -240,6 +242,10 @@ export default function FullFeaturedCrudGrid() {
     },
   ];
 
+
+
+
+
   function EditToolbar(props) {
     const { setRows, setRowModesModel } = props;
     const handleClick = () => {
@@ -285,10 +291,7 @@ export default function FullFeaturedCrudGrid() {
         open={modalOpen}
         onClose={handleModalClose}
         contentText="Are you sure you want to delete?"
-        onConfirm={() => {
-          setConfirm(!confirm);
-          handleConfirmDelete();
-        }}
+        onConfirm={()=>{handleSetconfirm()}} 
        
       />
     </>

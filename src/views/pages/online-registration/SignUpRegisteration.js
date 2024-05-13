@@ -163,13 +163,14 @@ const SignUpRegisteration = ({ continueHandler }) => {
   // Function to Handle New Registration and Already Registered
   const handleChange = (event, newValue) => {
     setValue(newValue);
-  };
 
-  function NamehandleChange(e) {
+  };
+  const NamehandleChange =(e)=>{
     const { name, value } = e.target;
     const alphabeticValue = value.replace(/[^A-Za-z\s]/g, ''); // Filter out non-alphabetical characters and spaces
-    setallDataform({ ...allDataform, [name]: alphabeticValue });
-    dispatch(updateAllDataform({ [name]: alphabeticValue })); // Dispatch action to update Redux state
+    const capitalizedValue = alphabeticValue.charAt(0).toUpperCase() + alphabeticValue.slice(1); // Capitalize first letter
+    setallDataform({ ...allDataform, [name]: capitalizedValue });
+    dispatch(updateAllDataform({ [name]: capitalizedValue })); // Dispatch action to update Redux state
   }
 
   return (

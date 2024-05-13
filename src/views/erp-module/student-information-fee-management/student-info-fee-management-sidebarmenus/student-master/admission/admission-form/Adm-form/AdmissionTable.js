@@ -63,6 +63,7 @@ const AdmissionTable = () => {
   const handleModalClose = () => {
     setmodalOpen(false);
   };
+  
   const handleConfirmDelete = () => {
     const updatedRows = tableRows.filter((row) => row.id !== deleteId);
     setTableRows(updatedRows);
