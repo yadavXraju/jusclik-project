@@ -26,13 +26,13 @@ const ReusableTable = ({children, columns,  data, tableStyle ,  action = true , 
       <Table stickyHeader  sx={{...tableStyle}}>
         <TableHead sx={{ width: '100%', backgroundColor: '#1219260f'  , background:'none' , fontWeight:'600'}}>
           <TableRow>
-            {columns.map((column) => (
+            {columns?.map((column) => (
               <TableCell key={column.id}>{column.tabHeading}</TableCell>
             ))}
           </TableRow>
         </TableHead>
         <TableBody>
-          {data.map((row) => (
+          {data?.map((row) => (
             <TableRow key={row?.id}>
 
             {dragIcon && (

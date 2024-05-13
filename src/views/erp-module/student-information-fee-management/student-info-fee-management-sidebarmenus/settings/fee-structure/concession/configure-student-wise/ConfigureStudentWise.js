@@ -6,7 +6,8 @@ import ParamTable from 'views/erp-common-component/ParamTable';
 import { useSelector } from 'react-redux';
 
 const ConfigureStudentWise = () => {
-  const configGlobally = useSelector((state) => state.configGloballyFormSlice.configGlobally);
+  const configGlobally = useSelector((state) => state.configGloballyFormSlice?.configGlobally);
+
 
     const TableHeading = [
       {

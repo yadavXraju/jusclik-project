@@ -55,7 +55,7 @@ const ConfigureGlobally = () => {
           <ParamTable
             columns={TableHeading}
             data={TableData}
-            action={false}
+            action={true}
             tablePaper={{ border: '1px solid rgba(224, 224, 224, 1)' , maxHeight:'400px'}}
             tableStyle={{ paddingBottom: '5rem' }}
           />
