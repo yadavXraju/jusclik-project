@@ -98,7 +98,7 @@ const FieldRule = () => {
   
 
   return (
-    <Paper sx={{ height: "calc(100vh - 300px)" }}>
+    <Paper sx={{height:"calc(100vh - 300px)"}}>
       <Box sx={{
         display: "flex", flexDirection: "row",
         justifyContent: "space-between", height: "80px",

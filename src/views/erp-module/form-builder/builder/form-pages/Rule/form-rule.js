@@ -9,14 +9,9 @@ import FormRuleDrawer from './form-rule-drawer';
 
 
 
-
-
-
 const FieldRule = () => {
   const { anchor, toggleDrawer } = useDrawer();
  
-  
-
   return (
     <Paper sx={{ height: "calc(100vh - 300px)" }}>
       <Box sx={{

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import SchoolLogo from '../../../assets/images/Arwachin School (Test Logo) (2).png';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import { Grid, Box, Paper, Typography } from '@mui/material';
+import { Grid, Box, Paper, Typography} from '@mui/material';
 import StudentDetails from './StudentDetails';
 import Upload_Document_Photos from './Upload_Document_Photos';
 import SignUpRegisteration from './SignUpRegisteration';
@@ -20,6 +20,7 @@ const OnlineRegistration = () => {
   const [TabChange, setTabChange] = useState(0);
   const [showSignUp, setShowSignUp] = useState(false);
 
+
   const continueHandler = () => {
     setShowSignUp(false);
   };
@@ -27,6 +28,9 @@ const OnlineRegistration = () => {
   const handleClick = (tab) => {
     setTabChange(tab);
   };
+
+
+
 
   // Array containing information about each tab
 
@@ -46,6 +50,9 @@ const OnlineRegistration = () => {
   const handleChange = (event, newValue) => {
     setTabChange(newValue);
   };
+
+
+
 
   return (
     <>
@@ -127,17 +134,23 @@ const OnlineRegistration = () => {
                   <Paper elevation={2} sx={{ height: '87vh' }}>
                     {tabsData.map((tab) => TabChange === tab.value && tab.component)}
 
-                   <Box>
-
-                  </Box>
                     <Box sx={{ display: 'flex',  justifyContent: 'center', alignItems: 'center', paddingLeft: '0.3rem' }}>
                       <BottomNavbar
                         tabPageLength={tabsData.length - 1}
                         value={TabChange}
                         setValue={setTabChange}
-                        customStyle={{ width: '76%', backgroundColor: 'white', bottom: '3.8rem', borderBottom: 'none', borderTop:'1px solid #ccc', borderRadius:'0px' }}
+                        customStyle={{ width: '76%', backgroundColor: 'white', bottom: '4rem', borderBottom: 'none', borderTop:'1px solid #ccc', borderRadius:'0px' , height:'5rem' ,paddingLeft:'3.7rem' }}
                       />
                     </Box>
+
+                    {/* <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', paddingLeft: '0.3rem' }}>
+                      <BottomNavbar
+                        tabPageLength={tabsData.length - 1}
+                        value={TabChange}
+                        setValue={setTabChange}
+                        customStyle={{ width: '71%', backgroundColor: 'white', bottom: '3.8rem', borderBottom: 'none', borderTop: 'none' }}
+                      />
+                    </Box> */}
                   </Paper>
                 </Box>
               </Grid>
@@ -148,7 +161,7 @@ const OnlineRegistration = () => {
 
 <Box style={{ position: "fixed", bottom: 0, textAlign: "center", width: "100%" }}>
  
-    <Typography variant='h5'>Powered by Jusklik</Typography>
+    <Typography variant='h5' sx={{marginBottom:'0.5rem'}}>Powered by Jusklik</Typography>
  
 </Box>
 
@@ -163,6 +176,14 @@ const OnlineRegistration = () => {
 };
 
 export default OnlineRegistration;
+
+
+
+
+
+
+
+
 
 // Same Copy
 // import React, { useState } from 'react';

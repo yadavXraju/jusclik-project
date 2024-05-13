@@ -3,11 +3,11 @@ import { Grid , TextField } from '@mui/material';
 import ParamDateComponent from 'views/common-section/ParamDateComponent';
 import ParamMultipleSelect from 'views/common-section/ParamMultipleSelect';
 import { useDispatch , useSelector} from 'react-redux';
-import { setFeeHeads , setClass} from 'store/config-globally-form-slice';
+import { setFeeHeads , setClass} from 'store/student-info-and-fee/settings/FeeStructureConfigure';
 
 const ConfigGloballyForm = () => {
- const [applicableFromDate , setApplicableFromDate] = useState('');
- const [uptoDate , setUptoDate] = useState('');
+//  const [applicableFromDate , setApplicableFromDate] = useState('');
+//  const [uptoDate , setUptoDate] = useState('');
  const [feeHead , setFeeHead] = useState([]);
  const [classes , setClasses] = useState([]);
  const [remark , setRemark] = useState('');
@@ -15,13 +15,13 @@ const ConfigGloballyForm = () => {
 const feeHeadOptions = useSelector((state) => state.configGloballyFormSlice.feeHeadOptions);
 const classesOptions = useSelector((state) => state.configGloballyFormSlice.classesOptions);
 
- const handleApplicableFromDate = (e)=>{
-    setApplicableFromDate(e.target.value)
- }
+//  const handleApplicableFromDate = (e)=>{
+//     setApplicableFromDate(e.target.value)
+//  }
 
- const handleUpToDate = (e)=>{
-    setUptoDate(e.target.value)
- }
+//  const handleUpToDate = (e)=>{
+//     setUptoDate(e.target.value)
+//  }
 
  const handleRemark = (e)=>{
     setRemark(e.target.value)
@@ -38,12 +38,12 @@ dispatch(setClass(classes))
 
             {/* ===========================  applicable from date*/}
             <Grid item xs={12} md={6} sx={{ marginBottom: '5px' }}>
-              <ParamDateComponent label="Applicable From Date" name="applicableFromDate" value={applicableFromDate} customStyle={{ width: '100%' }} onChange={handleApplicableFromDate} />
+              <ParamDateComponent label="Applicable From Date" name="applicableFromDate" value=''  customStyle={{ width: '100%' }}  />
             </Grid>
 
             {/* ===========================  up to date*/}
             <Grid item xs={12} md={6} sx={{ marginBottom: '5px' }}>
-              <ParamDateComponent label="Upto Date" name="uptoDate" value={uptoDate} onChange={handleUpToDate} customStyle={{ width: '100%' }} />
+              <ParamDateComponent label="Upto Date" name="uptoDate" value='' customStyle={{ width: '100%' }} />
             </Grid>
 
             {/* ===========================  fee head */}

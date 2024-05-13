@@ -1,7 +1,7 @@
 import React from 'react';
 import  ParamStepper from 'views/common-section/param-stepper';
-import ConfigureStudentWise from './ConfigureStudentWise';
-import ConfigureGlobally from './ConfigureGlobally';
+import ConfigureStudentWise from './configure-student-wise/ConfigureStudentWise';
+import ConfigureGlobally from './configure-globally/ConfigureGlobally';
 
 const tabPage = [
     {

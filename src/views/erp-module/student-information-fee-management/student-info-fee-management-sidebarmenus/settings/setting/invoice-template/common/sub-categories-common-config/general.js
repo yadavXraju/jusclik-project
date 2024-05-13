@@ -7,7 +7,7 @@ import FontSize from '../../common/font-size';
 // import ImageUploadAndPreview from '../../common/image-upload-and-preview';
 import { fontFamily} from '../../common/common-states';
 import { useDispatch } from 'react-redux';
-import { updateGeneralProperty } from 'store/student-info-and-fee/setting/Invoice-Template-Slice';
+import { updateGeneralProperty } from 'store/student-info-and-fee/settings/Invoice-Template-Slice';
 import { useSelector } from 'react-redux';
 import DragAndDropFile from '../../common/image-upload-and-preview';
 // to view data this import not needed in general

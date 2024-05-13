@@ -1,13 +1,13 @@
 import React from 'react';
-import ConfigGloballyForm from './ConfigGloballyForm';
+import ConfigStudentWiseForm from './ConfigStudentWiseForm';
 import { Grid } from '@mui/material';
-import ConfigGloballyPreview from './ConfigureGloballyPreview';
+import ConfigureStudentWisePreview from './ConfigureStudentWisePreview';
 import ParamTable from 'views/erp-common-component/ParamTable';
 import { useSelector } from 'react-redux';
 
-const ConfigureGlobally = () => {
-  const configGlobally = useSelector((state) => state.configGloballyFormSlice.configGlobally);
-  const classes = useSelector((state) => state.configGloballyFormSlice.classes);
+const ConfigureStudentWise = () => {
+  const configGlobally = useSelector((state) => state.configGloballyFormSlice?.configGlobally);
+
 
     const TableHeading = [
       {
@@ -40,7 +40,7 @@ const ConfigureGlobally = () => {
         id: item?.id ,
         srNO: item?.srNo,
         feeHead: item?.feeHead,
-        class:  classes.map((item)=> item.name).join(','), 
+        class:  item.classes.join(' , '), 
         concessionType: item?.concessionType,
         amount: item?.amount,
       }));
@@ -48,8 +48,8 @@ const ConfigureGlobally = () => {
   return (
     <>
        <Grid container spacing={4} sx={{ marginTop: '1rem' }}>
-         <ConfigGloballyForm />
-         <ConfigGloballyPreview />
+         <ConfigStudentWiseForm />
+         <ConfigureStudentWisePreview />
       </Grid>
 
       <Grid item xs={12} lg={12} sx={{marginTop:'3rem'}}>
@@ -57,7 +57,7 @@ const ConfigureGlobally = () => {
             columns={TableHeading}
             data={TableData}
             action={false}
-            tablePaper={{ border: '1px solid rgba(224, 224, 224, 1)' }}
+            tablePaper={{ border: '1px solid rgba(224, 224, 224, 1)' , maxHeight:'400px'}}
             tableStyle={{ paddingBottom: '5rem' }}
           />
         </Grid>
@@ -65,4 +65,4 @@ const ConfigureGlobally = () => {
   )
 }
 
-export default ConfigureGlobally
+export default ConfigureStudentWise
