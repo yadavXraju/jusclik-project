@@ -154,7 +154,12 @@ export default function FullFeaturedCrudGrid() {
   const handleRowModesModelChange = (newRowModesModel) => {
     setRowModesModel(newRowModesModel);
   };
-
+  const handleCellKeyDown = (params, event) => {
+   
+    if (event.key === 'Enter') {
+      event.stopPropagation();
+    }
+  };
   const columns = [
  
     {
@@ -274,6 +279,7 @@ export default function FullFeaturedCrudGrid() {
         slotProps={{
           toolbar: { setRows, setRowModesModel },
         }}
+        onCellKeyDown={handleCellKeyDown}
       />
        <WarningDialog
         open={modalOpen}
