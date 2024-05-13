@@ -4,7 +4,7 @@ import Loadable from 'ui-component/Loadable';
 // project imports
 const Dashboard = Loadable(lazy(() => import('views/erp-module/hr-payroll/hr-payroll-dashboard')));
 // report
-// const Reports = Loadable(lazy(() => import('views/erp-module/inventory-management/inventory-managment-sidebar/report')));
+const Reports = Loadable(lazy(() => import('views/erp-module/hr-payroll/hr-payroll-sidebar/report')));
 const Settings = Loadable(lazy(() => import('views/erp-module/hr-payroll/hr-payroll-sidebar/settings')));
 const EmployeeMaster =  Loadable(lazy(() => import('views/erp-module/hr-payroll/hr-payroll-sidebar/Employee-Master')));
 const EmployeeMasterPreview =  Loadable(lazy(() => import('views/erp-module/hr-payroll/hr-payroll-sidebar/Employee-Master/EmployeePreview')));
@@ -53,12 +53,10 @@ const HrPayRollRoutes = [
 
             ]
         },
-
-        // {
-        //     path: 'reports', 
-        //     element: <Reports /> 
-        // },
-
+        {
+            path: 'reports', 
+            element: <Reports /> 
+        },
     ]
   }
 ];
