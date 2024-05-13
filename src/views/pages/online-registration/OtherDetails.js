@@ -57,7 +57,6 @@ function OtherDetails({ handleClick }) {
   marginBottom: '8px',
   fontWeight: '500',
   color: 'rgb(54, 65, 82)',
-  marginTop: '20px',
   whiteSpace: 'pre-wrap'
   // fontFamily: 'Roboto, sans-serif'
 };
@@ -66,7 +65,7 @@ function OtherDetails({ handleClick }) {
   return (
     <>
      
-          <Box sx={{ padding: '2rem' }}>
+          <Box sx={{ padding: '2rem ' }}>
             <Typography variant="h3" sx={{ fontWeight: 'bold', paddingBottom: '1rem' }}>
               {' '}
               STEP 2 :OTHER DETAILS{' '}
@@ -78,7 +77,7 @@ function OtherDetails({ handleClick }) {
 
           <Grid sx={{ padding: '1rem 4rem' }} container spacing={4}>
             <Grid item xs={4}>
-            <InputLabel sx={{ ...labelStyles, marginTop: '0px' }} htmlFor="student-name">
+            <InputLabel sx={{ ...labelStyles}} htmlFor="sibling_adm_no">
             Sibling: Adm No
             </InputLabel>
               <TextField
@@ -94,9 +93,13 @@ function OtherDetails({ handleClick }) {
             </Grid>
 
             <Grid item xs={4}>
+
+            <InputLabel sx={{ ...labelStyles}} htmlFor="sibling_class_section">
+            Sibling: Class & Section
+            </InputLabel>
               <TextField
                 id="outlined-basic"
-                label="Sibling: Class & Section"
+                
                 name="sibling_class_section"
                 onChange={OtherDetailsChangeHandler}
                 value={Formdata.sibling_class_section}
@@ -109,9 +112,12 @@ function OtherDetails({ handleClick }) {
             </Grid>
 
             <Grid item xs={4}>
+            <InputLabel sx={{ ...labelStyles}} htmlFor="sibling_name">
+            Sibling: Name
+            </InputLabel>
               <TextField
                 id="outlined-basic"
-                label="Sibling: Name"
+                
                 name="sibling_name"
                 onChange={OtherDetailsChangeHandler}
                 value={Formdata.sibling_name}
