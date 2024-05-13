@@ -1,45 +1,16 @@
 import React, { useState } from 'react';
-import { Grid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Checkbox, TextField , Box , Typography , Button , styled } from '@mui/material';
+import { Grid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Checkbox, TextField , Box , Typography , Button , } from '@mui/material';
 import { useSelector ,useDispatch } from 'react-redux';
 import SelectList from 'views/common-section/ParamSelectList';
-import { configGlobally } from 'store/config-globally-form-slice';
+import { configGlobally } from 'store/student-info-and-fee/settings/FeeStructureConfigure';
+import { style } from '../configure-globally/ConfigureGloballyPreview';
 
-// style for bottom nav bar start
-export const VisuallyHiddenInput = styled('input')({
-    clip: 'rect(0 0 0 0)',
-    clipPath: 'inset(50%)',
-    height: 1,
-    overflow: 'hidden',
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    whiteSpace: 'nowrap',
-    width: 1,
-  });
-  
-  export const style = {
-    BottomNavbar: {
-      width: '100%',
-      display: 'flex',
-      paddingRight: "40px",
-      paddingLeft: "40px",
-      alignItems: 'center',
-      gap: "20px",
-      position: "fixed",
-      bottom: "0px",
-      backgroundColor: "#fafafa",
-      height: "60px",
-      borderBottom: '1px solid #eee',
-      borderTop: '1px solid #eee',
-      zIndex: '999',
-    }
-  };
-  
-
-const ConfigureGloballyPreview = ({customStyle}) => {
+const ConfigureStudentWisePreview = ({customStyle}) => {
     const dispatch = useDispatch();
     const [concessionTypes, setConcessionTypes] = useState([]);
     const [amounts, setAmounts] = useState([]);
+    const [isCheckedConcessionType , setIsCheckedConcessionType] = useState({});
+    const [isCheckedAmount , setIsCheckedAmount] = useState({});
     const [selectAllConcessionTypeChecked, setSelectAllConcessionTypeChecked] = useState(false);
     const [selectAllAmountChecked, setSelectAllAmountChecked] = useState(false);
     const [checkedConcessionType , setCheckedConcessionType]= useState('');
@@ -64,15 +35,21 @@ const ConfigureGloballyPreview = ({customStyle}) => {
     const handleSelectAllConcessionType = () => {
         const newSelectAllConcessionTypeChecked = !selectAllConcessionTypeChecked;
         setSelectAllConcessionTypeChecked(newSelectAllConcessionTypeChecked);
-        const newConcessionTypes = Array(feeHead.length).fill(newSelectAllConcessionTypeChecked);
-        setConcessionTypes(newConcessionTypes);
+    
+        // Update the isChecked state for all checkboxes in the table body
+        const newIsChecked = {};
+        PreviewData.forEach((rowData, index) => {
+            newIsChecked[index] = newSelectAllConcessionTypeChecked;
+        });
+        setIsCheckedConcessionType(newIsChecked);
     };
-
+    
     const handleSelectAllAmount = () => {
         const newSelectAllAmountChecked = !selectAllAmountChecked;
         setSelectAllAmountChecked(newSelectAllAmountChecked);
         const newAmounts = Array(feeHead.length).fill(newSelectAllAmountChecked);
-        setAmounts(newAmounts);
+        // setAmounts(newAmounts);
+        setIsCheckedAmount(newAmounts)
     };
 
     const handleCheckedConcessionType = (e)=>{
@@ -83,33 +60,57 @@ const ConfigureGloballyPreview = ({customStyle}) => {
         setCheckedAmount(e.target.value)
     }
 
+    const handleConcessionTypeCheckboxValue = (index) => {
+        setIsCheckedConcessionType((prevState) => ({
+            ...prevState,
+            [index]: !prevState[index], // Toggle the state of the checkbox
+        }));
+    };
+
+    const handleAmountCheckboxValue = (index) => {
+        setIsCheckedAmount((prevState) => ({
+            ...prevState,
+            [index]: !prevState[index], // Toggle the state of the checkbox
+        }));
+    };
+
     const PreviewData = feeHead?.map((head, index) => ({
         id: index,
         srNo: index + 1,
         feeHead: head.name,
         concessionType: concessionTypes[index] || false,
         amount: amounts[index] || '',
+        CheckboxConcessionTypeValue: isCheckedConcessionType[index] || false, 
+        CheckboxAmountValue: isCheckedAmount[index] || false, 
+        classes: classes.map((item)=> item.name),
     }));
 
     const handleSubmit = () => {
         const newConcessionTypes = [...concessionTypes];
         const newAmounts = [...amounts];
-    
+        
         // Loop through the PreviewData and update only the checked rows
         PreviewData.forEach((rowData, index) => {
-            if (rowData.concessionType) {
-                newConcessionTypes[index] = checkedConcessionType;
+            if (isCheckedConcessionType[index]) { // Check if the checkbox is checked
+                if (checkedConcessionType !== '') { // Check if a value is selected in the bottom section
+                    newConcessionTypes[index] = checkedConcessionType;
+                }
             }
-            if (rowData.amount !== '') {
-                newAmounts[index] = checkedAmount;
+            if (isCheckedAmount[index]) {
+                if (checkedAmount !== '') { // Check if a value is entered in the amount field in the bottom section
+                    newAmounts[index] = checkedAmount;
+                }
             }
         });
-    
+        
         // Update the state with the new values
         setConcessionTypes(newConcessionTypes);
         setAmounts(newAmounts);
     };
     
+    
+    
+
     const handleSave = (PreviewData)=>{
         dispatch(configGlobally(PreviewData))
       }
@@ -123,14 +124,14 @@ const ConfigureGloballyPreview = ({customStyle}) => {
                         <TableRow sx={{display:'flex'}}>
                             <TableCell sx={{flex:'0 0 10%'}}>Sr No.</TableCell>
                             <TableCell sx={{flex:'0 0 20%'}}>Fee Head</TableCell>
-                            <TableCell sx={{flex:'0 0 30%'}}>
+                            <TableCell sx={{flex:'0 0 35%'}}>
                                 <Checkbox
                                     checked={selectAllConcessionTypeChecked}
                                     onChange={handleSelectAllConcessionType}
                                 />
                                 Concession Type
                             </TableCell>
-                            <TableCell sx={{flex:'0 0 30%'}}>
+                            <TableCell sx={{flex:'0 0 35%'}}>
                                 <Checkbox
                                     checked={selectAllAmountChecked}
                                     onChange={handleSelectAllAmount}
@@ -138,19 +139,15 @@ const ConfigureGloballyPreview = ({customStyle}) => {
                             </TableCell>
                         </TableRow>
                     </TableHead>
-                    <TableBody className='scrollbar' sx={{display:'flex' , height:'300px' , flexDirection:'column', overflowY:'auto' , paddingBottom:'20px'}}>
+                    <TableBody className='scrollbar' sx={{display:'flex' , maxHeight:'300px' , flexDirection:'column', overflowY:'auto' , paddingBottom:'20px'}}>
                         {PreviewData?.map((rowData, index) => (
                             <TableRow key={rowData.id} sx={{ display:'flex', '&:last-child td, &:last-child th': { border: 0 } }}>
                                 <TableCell sx={{flex:'0 0 10%'}}>{rowData.srNo}</TableCell>
                                 <TableCell sx={{flex:'0 0 20%'}}>{rowData.feeHead}</TableCell>
-                                <TableCell sx={{ display: 'flex' , flex:'0 0 30%'}}>
+                                <TableCell sx={{ display: 'flex' , flex:'0 0 35%'}}>
                                     <Checkbox
-                                        checked={rowData.concessionType}
-                                        onChange={() => {
-                                            const newConcessionTypes = [...concessionTypes];
-                                            newConcessionTypes[index] = !newConcessionTypes[index];
-                                            setConcessionTypes(newConcessionTypes);
-                                        }}
+                                            checked={rowData.CheckboxConcessionTypeValue}
+                                            onChange={() =>handleConcessionTypeCheckboxValue(index)}
                                     />
                                     <SelectList
                                         hiddenLabel
@@ -174,14 +171,10 @@ const ConfigureGloballyPreview = ({customStyle}) => {
                                         }}
                                     />
                                 </TableCell>
-                                <TableCell sx={{ display: 'flex' , flex:'0 0 30%' }}>
+                                <TableCell sx={{ display: 'flex' , flex:'0 0 35%' }}>
                                 <Checkbox
-                                    checked={rowData.amount !== ''}
-                                    onChange={(e) => {
-                                        const newAmounts = [...amounts];
-                                        newAmounts[index] = e.target.checked ? 'checked' : '';
-                                        setAmounts(newAmounts);
-                                    }}
+                                    checked={rowData.CheckboxAmountValue}
+                                    onChange={() =>handleAmountCheckboxValue(index)}
                                     />
 
                                     <TextField
@@ -218,8 +211,8 @@ const ConfigureGloballyPreview = ({customStyle}) => {
 
                     <Box sx={{paddingLeft:'18px' ,alignItems:'center', gap:'30px', mb:'12px', display:'flex' , paddingTop:'20px' ,borderTop:'1px solid rgba(224, 224, 224, 1)'}}>
                         {/* concession type */}
-                        <Box sx={{display:'flex', width:'30%', alignItems:'center',gap:'10px' }}>
-                        <Typography sx={{flex:'0 0 35%'}}>Concession Type</Typography>
+                        <Box sx={{display:'flex', width:'35%', alignItems:'center',gap:'10px' }}>
+                        <Typography sx={{flex:'0 0 116px'}}>Concession Type</Typography>
                         <SelectList
                             hiddenLabel
                             name="selectConcessionType"
@@ -243,7 +236,7 @@ const ConfigureGloballyPreview = ({customStyle}) => {
                         />
                         </Box>
                         {/* amount */}
-                        <Box sx={{display:'flex', width:'25%', alignItems:'center',gap:'10px'}}>
+                        <Box sx={{display:'flex', width:'28%', alignItems:'center',gap:'10px'}}>
                         <Typography>Amount</Typography>
                         <TextField
                             hiddenLabel
@@ -307,4 +300,4 @@ const ConfigureGloballyPreview = ({customStyle}) => {
     );
 };
 
-export default ConfigureGloballyPreview;
+export default ConfigureStudentWisePreview;

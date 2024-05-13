@@ -5,9 +5,10 @@ const initialState = {
     amount : '',
     classes : [],
     configGlobally:[],
+    configStudentWise:[],
 
-      // fee  head options
- feeHeadOptions : [
+  // fee  head options
+  feeHeadOptions : [
     { id: 1, name: 'Late Fee' },
     { id: 2, name: 'SRD Charges' },
     { id: 3, name: 'Admission Fee ' },
@@ -74,8 +75,11 @@ const configGloballySlice = createSlice({
         configGlobally: (state, action) => {
             state.configGlobally = action.payload;
         },
+        configStudentWise: (state, action) => {
+            state.configStudentWise = action.payload;
+        },
     },
 });
 
-export const { setFeeHeads , setClass ,  configGlobally } = configGloballySlice.actions;
+export const { setFeeHeads , setClass ,  configGlobally , configStudentWise} = configGloballySlice.actions;
 export default configGloballySlice.reducer;

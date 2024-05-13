@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { updateLabels } from 'store/student-info-and-fee/setting/Invoice-Template-Slice';
+import { updateLabels } from 'store/student-info-and-fee/settings/Invoice-Template-Slice';
 const Labels = () => {
   const label=useSelector((state)=>state.invoiceTemplate.labels)
   const defaultLables=useSelector(state=>state.invoiceTemplate.defaultLables)
