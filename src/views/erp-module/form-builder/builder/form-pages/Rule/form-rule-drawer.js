@@ -14,52 +14,62 @@ const comparisonOptions = [
   { id: 4, label: 'Is Not Empty', value: 'is_not_empty' },
 ];
 
-const timeOptions = [
-  ...comparisonOptions,
-  { id: 5, label: 'Is Less Than', value: 'is_less_than' },
-  { id: 6, label: 'Is Greater Than', value: 'is_greater_than' },
-  { id: 7, label: 'Is Between', value: 'is_between' },
-  { id: 8, label: 'Is Any Of', value: 'is_any_of' },
-  { id: 9, label: 'Is None Of', value: 'is_none_of' }
-];
+const timeOptions = {
+  "Time": [
+    { id: 5, label: 'Is Less Than', value: 'is_less_than' },
+    { id: 6, label: 'Is Greater Than', value: 'is_greater_than' },
+    { id: 7, label: 'Is Between', value: 'is_between' },
+    { id: 8, label: 'Is Any Of', value: 'is_any_of' },
+    { id: 9, label: 'Is None Of', value: 'is_none_of' }
+  ]
+};
 
-const decisionBoxOptions = [
-  { id: 5, label: 'True', value: true },
-  { id: 6, label: 'False', value: false },
-];
 
-const multiLineOptions = [
-  ...comparisonOptions,
-  { id: 1, label: 'Contains', value: 'contains' },
-  { id: 2, label: 'Not Contains', value: 'not_contains' },
-  { id: 3, label: 'Starts With', value: 'start_with' },
-  { id: 4, label: 'Ends With', value: 'end_with' },
-];
+const decisionBoxOptions = {
+  "decisionBoxOptions": [
+    { id: 5, label: 'True', value: true },
+    { id: 6, label: 'False', value: false },
+  ]
+}
 
-const websiteOptions = [
-  { id: 5, label: 'Start With', value: 'start_with' },
-  { id: 6, label: 'Ends With', value: 'ends_with' },
-  { id: 7, label: 'Is Any of', value: 'is_any_of' },
-  { id: 8, label: 'Is None of', value: 'is_none_of' }
-];
+const multiLineOptions = {
+  "multiLineOptions": [
+    ...comparisonOptions,
+    { id: 1, label: 'Contains', value: 'contains' },
+    { id: 2, label: 'Not Contains', value: 'not_contains' },
+    { id: 3, label: 'Starts With', value: 'start_with' },
+    { id: 4, label: 'Ends With', value: 'end_with' },
+  ]
+}
 
-const singleLineOptions = [
-  ...multiLineOptions,
-  { id: 1, label: 'Contains', value: 'contains' },
-  { id: 2, label: 'Not Contains', value: 'not_contains' },
-  { id: 3, label: 'Starts With', value: 'start_with' },
-  { id: 4, label: 'Ends With', value: 'end_with' },
-  { id: 7, label: 'Is Any of', value: 'is-any-of' },
-  { id: 8, label: "Is None of", value: "is-none-of" }
-];
+const websiteOptions = {
+  "websiteOptions": [
+    { id: 5, label: 'Start With', value: 'start_with' },
+    { id: 6, label: 'Ends With', value: 'ends_with' },
+    { id: 7, label: 'Is Any of', value: 'is_any_of' },
+    { id: 8, label: 'Is None of', value: 'is_none_of' }
+  ]
+}
+
+const singleLineOptions = {
+  "singleLineOptions": [
+    ...multiLineOptions.multiLineOptions,
+    { id: 1, label: 'Contains', value: 'contains' },
+    { id: 2, label: 'Not Contains', value: 'not_contains' },
+    { id: 3, label: 'Starts With', value: 'start_with' },
+    { id: 4, label: 'Ends With', value: 'end_with' },
+    { id: 7, label: 'Is Any of', value: 'is-any-of' },
+    { id: 8, label: "Is None of", value: "is-none-of" }
+  ]
+}
 
 const inputOptions = [
-  { id: 1, label: 'Time',timeOptions},
-  { id: 2, label: 'Decision Box', value: decisionBoxOptions },
-  { id: 3, label: 'Multi Line', value: multiLineOptions },
-  { id: 4, label: 'Website', value: websiteOptions },
-  { id: 5, label: 'Single Line', value: singleLineOptions }
-];
+    { id: 1, label: 'Time', value: timeOptions },
+    { id: 2, label: 'Decision Box', value: decisionBoxOptions },
+    { id: 3, label: 'Multi Line', value: multiLineOptions },
+    { id: 4, label: 'Website', value: websiteOptions },
+    { id: 5, label: 'Single Line', value: singleLineOptions }
+]
 
 const DynamicInputForm = ({ type }) => {
   console.log(type)
@@ -76,8 +86,8 @@ const DynamicInputForm = ({ type }) => {
 
 const RuleFormDrawer = ({ toggleDrawer }) => {
   //State for Rule(IF)
-  const [selectedOption, setSelectedOption] = useState();
-  const [validationRule, setValidationRule] = useState();
+  const [selectedOption, setSelectedOption] = useState(null);
+  const [validationRule, setValidationRule] = useState(null);
   const [ruleCount, setRuleCount] = useState(1);
   const [isHover, setIsHover] = useState(-1);
   //State for Then(Then)
@@ -86,9 +96,12 @@ const RuleFormDrawer = ({ toggleDrawer }) => {
   const [isHoverThen, setIsHoverThen] = useState(-1);
 
   const handleChange = (e) => {
-    console.log(e.target.label,e.target.name, e.target.value);
-    setSelectedOption(e.target.name);
-    setValidationRule(e.target.value);
+    console.log(e)
+    const inputOption=Object.keys(e.target.value);
+    console.log(inputOption)
+    setSelectedOption(inputOption[0]);
+    // console.log(e.target.value[inputOption[0]])
+    setValidationRule(e.target.value[inputOption[0]]);
   };
 
   return (
@@ -170,7 +183,7 @@ const RuleFormDrawer = ({ toggleDrawer }) => {
               }}
                 endIcon={<UnfoldMoreOutlinedIcon />}
                 variant="contained" onClick={() => setFormLogic(!formLogic)}>
-                {formLogic==0 ? (<Typography>OR</Typography>) :
+                {formLogic == 0 ? (<Typography>OR</Typography>) :
                   (<Typography>And</Typography>)}
               </Button>
               <Box sx={{ display: "flex", flexDirection: "column", gap: "20px" }}>
