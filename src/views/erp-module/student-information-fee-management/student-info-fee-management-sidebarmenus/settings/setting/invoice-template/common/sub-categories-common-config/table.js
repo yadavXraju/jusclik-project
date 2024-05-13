@@ -4,7 +4,7 @@ import ColorPicker from '../../common/color-picker';
 import FontSize from '../../common/font-size';
 import Divider from '@mui/material/Divider';
 import { useDispatch } from 'react-redux';
-import { updateTableProperty } from 'store/student-info-and-fee/setting/Invoice-Template-Slice';
+import { updateTableProperty } from 'store/student-info-and-fee/settings/Invoice-Template-Slice';
 import { useSelector } from 'react-redux';
 
 const TableConfig = ({ settings }) => {

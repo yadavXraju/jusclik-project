@@ -6,7 +6,7 @@ import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 import DrawerAddTransaction from './DrawerAddTransaction';
 
-const AddTransactionDrawer = ({ DrawerBtn = false, editIcon = false}) => {
+const AddTransactionDrawer = ({ DrawerBtn = false, editIcon = false, currEditItem , handleClick }) => {
   const { anchor, toggleDrawer } = useDrawer();
 
   const handleEditClick = (event) => {
@@ -38,7 +38,7 @@ const AddTransactionDrawer = ({ DrawerBtn = false, editIcon = false}) => {
           </Box>
           <Box>
             {/* Tabs for switching between TransportRoutes and Stoppage */}
-           <DrawerAddTransaction/>
+           <DrawerAddTransaction currEditItem={currEditItem}/>
           </Box>
         </Box>
 

@@ -360,7 +360,7 @@ export default function DocumentTest() {
               <Box pb={1} px={1} sx={{ borderBottom: '1px solid #ccc', display: 'flex', justifyContent: 'space-between' }}>
                 <Box sx={{ display: 'flex', alignItems: 'center' }}>
                   <Box>
-                    <FileUploadTwoToneIcon sx={{ fontSize: '3rem', marginRight: '10px' }} />
+                    <FileUploadTwoToneIcon sx={{ fontSize: '45px', marginRight: '10px' }} />
                   </Box>
                   <Box>
                     <Typography variant="h4" fontWeight={400}>{document.title}</Typography>
@@ -372,14 +372,14 @@ export default function DocumentTest() {
                   {selectedFiles[document.id] && (
                     <Tooltip title='Remove'>
                       <IconButton onClick={() => removeFile(document.id)}>
-                        <DeleteTwoToneIcon sx={{ color: '#f19e9e' }} />
+                        <DeleteTwoToneIcon sx={{ color: '#f19e9e', fontSize:'30px' }} />
                       </IconButton>
                     </Tooltip>
                   )}
                   <div style={{ display: 'inline-block' }}>
                     <Tooltip title='Upload'>
                       <ButtonBase component="label">
-                        <CloudUploadTwoToneIcon sx={{color:'#2196f3'}} />
+                        <CloudUploadTwoToneIcon sx={{color:'#2196f3', fontSize:'35px'}} />
                         <input
                           type="file"
                           accept=".jpg,.jpeg,.png,.pdf"

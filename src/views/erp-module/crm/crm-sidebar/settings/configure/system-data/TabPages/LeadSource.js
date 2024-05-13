@@ -22,6 +22,7 @@ import {
   randomArrayItem,
 } from '@mui/x-data-grid-generator';
 import WarningDialog from 'views/common-section/WarningDialog';
+import { useEffect } from 'react';
 const roles = ['Yes','No'];
 const randomRole = () => {
   return randomArrayItem(roles);
@@ -91,6 +92,9 @@ export default function FullFeaturedCrudGrid() {
   const [rowModesModel, setRowModesModel] = React.useState({});
   const [modalOpen, setmodalOpen] =useState(false);
   const [isChangeEnable,setIsChangeEnable]=useState(-1);
+  const [confirm, setConfirm] = useState(false);
+  const [idToDelete, setIdToDelete] = useState(null);
+
 
   const handleModalClose = () => {
     setmodalOpen(false);
@@ -113,8 +117,9 @@ export default function FullFeaturedCrudGrid() {
     setIsChangeEnable(-1);
   };
 
-  const handleDeleteClick = () => () => {
-    // setRows(rows.filter((row) => row.id !== id));
+  const handleDeleteClick = (id) => () => {
+    // Set id to delete and open modal
+    setIdToDelete(id);
     setmodalOpen(true);
   };
 
@@ -129,13 +134,22 @@ export default function FullFeaturedCrudGrid() {
       setRows(rows.filter((row) => row.id !== id));
     }
   };
-  const handleConfirmDelete = () => {
-    const updatedRows = tableRows.filter((row) => row.id !== deleteId);
-    setTableRows(updatedRows);
-    setmodalOpen(false);
-    setdeleteId(null);
-  };
 
+  const  handleSetconfirm=async()=>{
+    await setConfirm(true);
+  }
+
+  const handleConfirmDelete = () => {
+    console.log(idToDelete);
+    console.log(confirm);
+    console.log(rows)
+    if (confirm == true) {
+      setRows(prevRows => prevRows.filter((row) => row.id !== idToDelete)); 
+      console.log('Deleting item with ID:', idToDelete);
+      setIdToDelete(null);
+    }
+    setmodalOpen(false);
+  };
 
   const processRowUpdate = (newRow) => {
     const updatedRow = { ...newRow, isNew: false };
@@ -146,6 +160,24 @@ export default function FullFeaturedCrudGrid() {
   const handleRowModesModelChange = (newRowModesModel) => {
     setRowModesModel(newRowModesModel);
   };
+
+
+  const handleKeyDown = (event) => {
+    // Prevent moving to the next cell when Enter key is pressed
+    if (event.key === 'Enter') {
+      event.preventDefault();
+    }
+  };
+  const handleCellKeyDown = (params, event) => {
+   
+    if (event.key === 'Enter') {
+      event.stopPropagation();
+    }
+  };
+
+  useEffect(()=>{
+
+  },[rows,confirm,idToDelete])
 
   const columns = [
  
@@ -227,6 +259,7 @@ export default function FullFeaturedCrudGrid() {
           <GridActionsCellItem
             key={`delete-${id}`}
             icon={<DeleteIcon />}
+            onMouseDown={handleKeyDown}
             label="Delete"
             onClick={handleDeleteClick(id)}
             color="inherit"
@@ -269,18 +302,20 @@ export default function FullFeaturedCrudGrid() {
         onRowModesModelChange={handleRowModesModelChange}
         onRowEditStop={handleRowEditStop}
         processRowUpdate={processRowUpdate}
+       
         slots={{
           toolbar: EditToolbar,
         }}
         slotProps={{
           toolbar: { setRows, setRowModesModel },
         }}
+        onCellKeyDown={handleCellKeyDown}
       />
        <WarningDialog
         open={modalOpen}
         onClose={handleModalClose}
         contentText="Are you sure you want to delete?"
-        onConfirm={handleConfirmDelete}   
+        onConfirm={()=>{handleSetconfirm(),handleConfirmDelete()}}   
       />
     </>
   );

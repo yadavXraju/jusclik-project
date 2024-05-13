@@ -12,7 +12,7 @@ import LandscapeImage1 from '../../../../../../../assets/images/invoice-template
 import {Badge} from '@mui/material'
 import useDrawer from 'hooks/useDrawer';
 import { useDispatch } from 'react-redux';
-import { updateSelectedTemplate } from 'store/student-info-and-fee/setting/Invoice-Template-Slice';
+import { updateSelectedTemplate } from 'store/student-info-and-fee/settings/Invoice-Template-Slice';
 import { useNavigate } from 'react-router';
 
 

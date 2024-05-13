@@ -1,13 +1,17 @@
+
 import { lazy } from 'react';
 import Loadable from 'ui-component/Loadable';
 // project imports
 const Dashboard = Loadable(lazy(() => import('views/erp-module/hr-payroll/hr-payroll-dashboard')));
 // report
-// const Reports = Loadable(lazy(() => import('views/erp-module/inventory-management/inventory-managment-sidebar/report')));
-// // setting
-// const Setting = Loadable(lazy(() => import('views/erp-module/inventory-management/inventory-managment-sidebar/setting/setting-inventory')));
+const Reports = Loadable(lazy(() => import('views/erp-module/hr-payroll/hr-payroll-sidebar/report')));
+const Settings = Loadable(lazy(() => import('views/erp-module/hr-payroll/hr-payroll-sidebar/settings')));
 const EmployeeMaster =  Loadable(lazy(() => import('views/erp-module/hr-payroll/hr-payroll-sidebar/Employee-Master')));
 const EmployeeMasterPreview =  Loadable(lazy(() => import('views/erp-module/hr-payroll/hr-payroll-sidebar/Employee-Master/EmployeePreview')));
+const EmployeeSalary=Loadable(lazy(()=>import('views/erp-module/hr-payroll/hr-payroll-sidebar/salary')));
+const EmployeeOnBoard=Loadable(lazy(()=>import('views/erp-module/hr-payroll/hr-payroll-sidebar/settings/employeeonBoard')));
+const OnboardingTaskList=Loadable(lazy(()=>import('views/erp-module/hr-payroll/hr-payroll-sidebar/settings/onboarding-tasklist')));
+
 // ==============================|| Visitor MENUS ||============================== //
 
 const HrPayRollRoutes = [
@@ -31,16 +35,34 @@ const HrPayRollRoutes = [
             },
         ]
         },
-        // {
-        //     path: 'settings', 
-        //     element: <Settings /> 
-        // },
+        {
+          path:'salary',
+          element:<EmployeeSalary/>
+        },
+        {
+            path: 'settings', 
+            children : [
+              {
+                path: '', 
+                element: <Settings />
+              },
 
-        // {
-        //     path: 'reports', 
-        //     element: <Reports /> 
-        // },
+              {
+                path: 'employee-on-boarding', 
+                element: <EmployeeOnBoard />
+              },
 
+              {
+                path: 'onboarding-tasklist', 
+                element: <OnboardingTaskList />
+              },
+
+            ]
+        },
+        {
+            path: 'reports', 
+            element: <Reports /> 
+        },
     ]
   }
 ];

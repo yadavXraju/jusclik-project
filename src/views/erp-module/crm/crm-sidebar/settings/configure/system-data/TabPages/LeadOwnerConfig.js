@@ -187,6 +187,13 @@ export default function FullFeaturedCrudGrid() {
     setRowModesModel(newRowModesModel);
   };
 
+  const handleCellKeyDown = (params, event) => {
+   
+    if (event.key === 'Enter') {
+      event.stopPropagation();
+    }
+  };
+
    useEffect(()=>{
      console.log("render")
    },[rows,idToDelete])
@@ -338,6 +345,7 @@ export default function FullFeaturedCrudGrid() {
         slotProps={{
           toolbar: { setRows, setRowModesModel },
         }}
+        onCellKeyDown={handleCellKeyDown}
       />
        <WarningDialog
         open={modalOpen}
