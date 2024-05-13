@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Grid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Checkbox, TextField , Box , Typography , Button , styled } from '@mui/material';
+import { Grid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Checkbox, TextField , Box , Typography , Button , styled , } from '@mui/material';
 import { useSelector ,useDispatch } from 'react-redux';
 import SelectList from 'views/common-section/ParamSelectList';
 import { configGlobally } from 'store/config-globally-form-slice';
@@ -40,6 +40,8 @@ const ConfigureGloballyPreview = ({customStyle}) => {
     const dispatch = useDispatch();
     const [concessionTypes, setConcessionTypes] = useState([]);
     const [amounts, setAmounts] = useState([]);
+    const [isCheckedConcessionType , setIsCheckedConcessionType] = useState({});
+    const [isCheckedAmount , setIsCheckedAmount] = useState({});
     const [selectAllConcessionTypeChecked, setSelectAllConcessionTypeChecked] = useState(false);
     const [selectAllAmountChecked, setSelectAllAmountChecked] = useState(false);
     const [checkedConcessionType , setCheckedConcessionType]= useState('');
@@ -64,15 +66,21 @@ const ConfigureGloballyPreview = ({customStyle}) => {
     const handleSelectAllConcessionType = () => {
         const newSelectAllConcessionTypeChecked = !selectAllConcessionTypeChecked;
         setSelectAllConcessionTypeChecked(newSelectAllConcessionTypeChecked);
-        const newConcessionTypes = Array(feeHead.length).fill(newSelectAllConcessionTypeChecked);
-        setConcessionTypes(newConcessionTypes);
+    
+        // Update the isChecked state for all checkboxes in the table body
+        const newIsChecked = {};
+        PreviewData.forEach((rowData, index) => {
+            newIsChecked[index] = newSelectAllConcessionTypeChecked;
+        });
+        setIsCheckedConcessionType(newIsChecked);
     };
-
+    
     const handleSelectAllAmount = () => {
         const newSelectAllAmountChecked = !selectAllAmountChecked;
         setSelectAllAmountChecked(newSelectAllAmountChecked);
         const newAmounts = Array(feeHead.length).fill(newSelectAllAmountChecked);
-        setAmounts(newAmounts);
+        // setAmounts(newAmounts);
+        setIsCheckedAmount(newAmounts)
     };
 
     const handleCheckedConcessionType = (e)=>{
@@ -83,33 +91,56 @@ const ConfigureGloballyPreview = ({customStyle}) => {
         setCheckedAmount(e.target.value)
     }
 
+    const handleConcessionTypeCheckboxValue = (index) => {
+        setIsCheckedConcessionType((prevState) => ({
+            ...prevState,
+            [index]: !prevState[index], // Toggle the state of the checkbox
+        }));
+    };
+
+    const handleAmountCheckboxValue = (index) => {
+        setIsCheckedAmount((prevState) => ({
+            ...prevState,
+            [index]: !prevState[index], // Toggle the state of the checkbox
+        }));
+    };
+
     const PreviewData = feeHead?.map((head, index) => ({
         id: index,
         srNo: index + 1,
         feeHead: head.name,
         concessionType: concessionTypes[index] || false,
         amount: amounts[index] || '',
+        CheckboxConcessionTypeValue: isCheckedConcessionType[index] || false, 
+        CheckboxAmountValue: isCheckedAmount[index] || false, 
     }));
 
     const handleSubmit = () => {
         const newConcessionTypes = [...concessionTypes];
         const newAmounts = [...amounts];
-    
+        
         // Loop through the PreviewData and update only the checked rows
         PreviewData.forEach((rowData, index) => {
-            if (rowData.concessionType) {
-                newConcessionTypes[index] = checkedConcessionType;
+            if (isCheckedConcessionType[index]) { // Check if the checkbox is checked
+                if (checkedConcessionType !== '') { // Check if a value is selected in the bottom section
+                    newConcessionTypes[index] = checkedConcessionType;
+                }
             }
-            if (rowData.amount !== '') {
-                newAmounts[index] = checkedAmount;
+            if (isCheckedAmount[index]) {
+                if (checkedAmount !== '') { // Check if a value is entered in the amount field in the bottom section
+                    newAmounts[index] = checkedAmount;
+                }
             }
         });
-    
+        
         // Update the state with the new values
         setConcessionTypes(newConcessionTypes);
         setAmounts(newAmounts);
     };
     
+    
+    
+
     const handleSave = (PreviewData)=>{
         dispatch(configGlobally(PreviewData))
       }
@@ -145,12 +176,8 @@ const ConfigureGloballyPreview = ({customStyle}) => {
                                 <TableCell sx={{flex:'0 0 20%'}}>{rowData.feeHead}</TableCell>
                                 <TableCell sx={{ display: 'flex' , flex:'0 0 30%'}}>
                                     <Checkbox
-                                        checked={rowData.concessionType}
-                                        onChange={() => {
-                                            const newConcessionTypes = [...concessionTypes];
-                                            newConcessionTypes[index] = !newConcessionTypes[index];
-                                            setConcessionTypes(newConcessionTypes);
-                                        }}
+                                            checked={rowData.CheckboxConcessionTypeValue}
+                                            onChange={() =>handleConcessionTypeCheckboxValue(index)}
                                     />
                                     <SelectList
                                         hiddenLabel
@@ -176,12 +203,8 @@ const ConfigureGloballyPreview = ({customStyle}) => {
                                 </TableCell>
                                 <TableCell sx={{ display: 'flex' , flex:'0 0 30%' }}>
                                 <Checkbox
-                                    checked={rowData.amount !== ''}
-                                    onChange={(e) => {
-                                        const newAmounts = [...amounts];
-                                        newAmounts[index] = e.target.checked ? 'checked' : '';
-                                        setAmounts(newAmounts);
-                                    }}
+                                        checked={rowData.CheckboxAmountValue}
+                                        onChange={() =>handleAmountCheckboxValue(index)}
                                     />
 
                                     <TextField
