@@ -71,11 +71,11 @@ const SettingData = [
     items: [
       // { name: 'Blacklist Visitors', path: '/erp/hr-payroll/settings/blacklist-visitors' },
       { name: 'Admission Number Series', path: '/erp/hr-payroll/settings/admission-number-series' },
-      { name: 'Lead Stage', path: '/erp/hr-payroll/settings/lead-stage' },
-      { name: 'Lead Score', path: '/erp/hr-payroll/settings/lead-score' },
-      { name: 'Lead Owner', path: '/erp/hr-payroll/settings/system-data-enter',property:0 },
-      { name: 'Lead Source', path: '/erp/hr-payroll/settings/system-data-enter',property:2 },
-      { name: 'Lead Classification', path: '/erp/hr-payroll/settings/system-data-enter',property:1 },
+    //   { name: 'Lead Stage', path: '/erp/hr-payroll/settings/lead-stage' },
+    //   { name: 'Lead Score', path: '/erp/hr-payroll/settings/lead-score' },
+    //   { name: 'Lead Owner', path: '/erp/hr-payroll/settings/system-data-enter',property:0 },
+    //   { name: 'Lead Source', path: '/erp/hr-payroll/settings/system-data-enter',property:2 },
+    //   { name: 'Lead Classification', path: '/erp/hr-payroll/settings/system-data-enter',property:1 },
       { name: 'Employee On Boarding', path: '/erp/hr-payroll/settings/employee-on-boarding',property:1 }
     ]
   }, 
