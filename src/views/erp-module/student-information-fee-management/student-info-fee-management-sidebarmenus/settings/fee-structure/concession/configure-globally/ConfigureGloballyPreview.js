@@ -139,8 +139,6 @@ const ConfigureGloballyPreview = ({customStyle}) => {
         setAmounts(newAmounts);
     };
     
-    
-    
 
     const handleSave = (PreviewData)=>{
         dispatch(configGlobally(PreviewData))
@@ -170,7 +168,7 @@ const ConfigureGloballyPreview = ({customStyle}) => {
                                 </TableCell>
                             </TableRow>
                         </TableHead>
-                        <TableBody className='scrollbar' sx={{display:'flex' , maxHeight:'300px' , flexDirection:'column', overflowY:'auto' , paddingBottom:'20px'}}>
+                        <TableBody className='scrollbar' sx={{display:'flex' , maxHeight:'300px' , flexDirection:'column', overflowY:'auto' , paddingBottom:'20px', minHeight:'120px'}}>
                             {PreviewData?.map((rowData, index) => (
                                 <TableRow key={rowData.id} sx={{ display:'flex', '&:last-child td, &:last-child th': { border: 0 } }}>
                                     <TableCell sx={{flex:'0 0 10%'}}>{rowData.srNo}</TableCell>
