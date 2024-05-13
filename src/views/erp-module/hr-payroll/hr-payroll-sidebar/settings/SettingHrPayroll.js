@@ -34,7 +34,7 @@ const SettingData = [
   },
   {
     icon: <PeopleAltOutlinedIcon sx={{ color: '#838195' }} />,
-    title: 'Students',
+    title: 'Employee',
     items: [
       { name: 'Class Promotion', path: '/erp/hr-payroll/settings/class-promotion' },
       { name: 'Section Shuffling', path: '/erp/hr-payroll/settings/section-shuffling' },
@@ -43,25 +43,58 @@ const SettingData = [
   },
   {
     icon: <CreditCardOutlinedIcon sx={{ color: '#838195' }} />,
-    title: 'Fee',
+    title: 'Salary',
     items: [
-      { name: 'Fee Heads', path: '/erp/hr-payroll/settings/system-data' },
-      { name: 'Fee Structure', path: '/erp/hr-payroll/settings/fee-structure' },
-      { name: 'Concession', path: '/erp/hr-payroll/settings/concession' },
-      { name: 'Discount', path: '/erp/hr-payroll/settings/discount' },
-      { name: 'Fee Account', path: '/erp/hr-payroll/settings/fee-account' },
+      // { name: 'Fee Heads', path: '/erp/hr-payroll/settings/system-data' },
+      // { name: 'Fee Structure', path: '/erp/hr-payroll/settings/fee-structure' },
+      // { name: 'Concession', path: '/erp/hr-payroll/settings/concession' },
+      // { name: 'Discount', path: '/erp/hr-payroll/settings/discount' },
+      // { name: 'Fee Account', path: '/erp/hr-payroll/settings/fee-account' },
       { name: 'Invoice', path: '/erp/hr-payroll/settings/invoice-template' }
     ]
   },
   {
     icon: <FolderOpenOutlinedIcon sx={{ color: '#838195' }} />,
-    title: 'Student Records',
+    title: 'Employee Records',
     items: [
       { name: 'Tuition Fee Certificate', path: '/erp/hr-payroll/settings/tuition-fee-certificate' },
       { name: 'School Learning Certificate', path: '/erp/hr-payroll/settings/school-learning-certificate' },
       { name: 'Gate Pass', path: '/erp/hr-payroll/settings/gate-pass' },
       { name: 'Identity Card', path: '/erp/hr-payroll/settings/identity-card' },
       { name: 'Withdrawal Checklist', path: '/erp/hr-payroll/settings/withdrawal-checklist' }
+    ]
+  },
+  {
+    icon: <FolderOpenOutlinedIcon sx={{ color: '#838195' }} />,
+    title: 'Biometric ',
+    items: [
+      // { name: 'Tuition Fee Certificate', path: '/erp/hr-payroll/settings/tuition-fee-certificate' },
+      // { name: 'School Learning Certificate', path: '/erp/hr-payroll/settings/school-learning-certificate' },
+      // { name: 'Gate Pass', path: '/erp/hr-payroll/settings/gate-pass' },
+      // { name: 'Identity Card', path: '/erp/hr-payroll/settings/identity-card' },
+      // { name: 'Withdrawal Checklist', path: '/erp/hr-payroll/settings/withdrawal-checklist' }
+    ]
+  },
+  {
+    icon: <FolderOpenOutlinedIcon sx={{ color: '#838195' }} />,
+    title: 'Income Tax ',
+    items: [
+      // { name: 'Tuition Fee Certificate', path: '/erp/hr-payroll/settings/tuition-fee-certificate' },
+      // { name: 'School Learning Certificate', path: '/erp/hr-payroll/settings/school-learning-certificate' },
+      // { name: 'Gate Pass', path: '/erp/hr-payroll/settings/gate-pass' },
+      // { name: 'Identity Card', path: '/erp/hr-payroll/settings/identity-card' },
+      // { name: 'Withdrawal Checklist', path: '/erp/hr-payroll/settings/withdrawal-checklist' }
+    ]
+  },
+  {
+    icon: <FolderOpenOutlinedIcon sx={{ color: '#838195' }} />,
+    title: 'Leave',
+    items: [
+      // { name: 'Tuition Fee Certificate', path: '/erp/hr-payroll/settings/tuition-fee-certificate' },
+      // { name: 'School Learning Certificate', path: '/erp/hr-payroll/settings/school-learning-certificate' },
+      // { name: 'Gate Pass', path: '/erp/hr-payroll/settings/gate-pass' },
+      // { name: 'Identity Card', path: '/erp/hr-payroll/settings/identity-card' },
+      // { name: 'Withdrawal Checklist', path: '/erp/hr-payroll/settings/withdrawal-checklist' }
     ]
   },
   {
@@ -76,7 +109,8 @@ const SettingData = [
     //   { name: 'Lead Owner', path: '/erp/hr-payroll/settings/system-data-enter',property:0 },
     //   { name: 'Lead Source', path: '/erp/hr-payroll/settings/system-data-enter',property:2 },
     //   { name: 'Lead Classification', path: '/erp/hr-payroll/settings/system-data-enter',property:1 },
-      { name: 'Employee On Boarding', path: '/erp/hr-payroll/settings/employee-on-boarding',property:1 }
+      { name: 'Employee On Boarding', path: '/erp/hr-payroll/settings/employee-on-boarding',property:1 },
+      { name: 'On Boarding Task List', path: '/erp/hr-payroll/settings/on-boarding-task-list'}
     ]
   }, 
   {

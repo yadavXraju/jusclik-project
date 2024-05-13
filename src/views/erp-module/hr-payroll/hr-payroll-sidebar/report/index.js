@@ -1,9 +1,188 @@
-import React from 'react'
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import PropTypes from 'prop-types';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import PolicyOutlinedIcon from '@mui/icons-material/PolicyOutlined';
+import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
+import DirectionsBusFilledOutlinedIcon from '@mui/icons-material/DirectionsBusFilledOutlined';
+import ReceiptOutlinedIcon from '@mui/icons-material/ReceiptOutlined';
+import CreditCardOutlinedIcon from '@mui/icons-material/CreditCardOutlined';
+import FolderOpenOutlinedIcon from '@mui/icons-material/FolderOpenOutlined';
+import ManageHistoryOutlinedIcon from '@mui/icons-material/ManageHistoryOutlined';
+import ReportsHrPayroll from './ReportsHrPayroll';
+import SearchBar from 'views/common-section/ParamSearchBar';
 
-const Report = () => {
+const sections = [
+  {
+    title: 'PF Reports',
+    icon: <PolicyOutlinedIcon />,
+    pages: [
+      { name: 'PF Reports ', path: '/erp/student-info-fee/reports/enquiry' },
+      { name: 'PF Statement ', path: '/erp/student-info-fee/reports/enquiry' },
+      { name: 'PF Text File ', path: '/erp/student-info-fee/reports/register' },
+      
+    ]
+  },
+  {
+    title: 'ESIC Reports',
+    icon: <PeopleAltOutlinedIcon />,
+    pages: [
+      { name: 'ESIC Salary Reports', path: '/erp/student-info-fee/reports/student-age' },
+      { name: 'ESIC Challan Form Separate', path: '/erp/student-info-fee/reports/student-strength' },
+      { name: 'ESIC Challan Form Combined All Wing', path: '/erp/student-info-fee/reports/student-strength' },
+      { name: 'ESIC Contribution Separate Report', path: '/erp/student-info-fee/reports/student-strength' },
+      
+    ]
+  },
+  {
+    title: 'Employee Documents',
+    icon: <DirectionsBusFilledOutlinedIcon />,
+    pages: [
+      { name: '', path: '/erp/student-info-fee/reports/user-list' },
+      { name: 'Attendance', path: '/erp/student-info-fee/reports/attendance' },
+      { name: 'Transport user as on', path: '/erp/student-info-fee/reports/transport-user' },
+      { name: 'Logs', path: '/erp/student-info-fee/reports/logs' },
+      { name: 'Routes & Stops', path: '/erp/student-info-fee/reports/routes-stops' }
+    ]
+  },
+  {
+    title: 'Income Tax',
+    icon: <ReceiptOutlinedIcon />,
+    pages: [
+      { name: 'Ledger', path: '/erp/student-info-fee/reports/ledger' }
+    ]
+  },
+  {
+    title: 'Employee',
+    icon: <CreditCardOutlinedIcon />,
+    pages: [
+      { name: 'Details', path: '/erp/student-info-fee/reports/transaction' },
+      { name: 'Ledger', path: '/erp/student-info-fee/reports/concession' },
+      { name: 'Enrolment Review', path: '/erp/student-info-fee/reports/adjustment' },
+      // { name: 'PG Settlement Report', path: '/erp/student-info-fee/reports/pg-settlement' },
+      // { name: 'Fee Structure', path: '/erp/student-info-fee/reports/fee-structure' }
+    ]
+  },
+  {
+    title: 'Salary',
+    icon: <FolderOpenOutlinedIcon />,
+    pages: [
+      { name: 'Tuition Fee Certificate', path: '/erp/student-info-fee/reports/tuition-certificate' },
+      { name: 'School Learning Certificate', path: '/erp/student-info-fee/reports/learning-certificate' },
+      { name: 'Gate Pass', path: '/erp/student-info-fee/reports/gate-pass' },
+      { name: 'Identity Card', path: '/erp/student-info-fee/reports/identity-card' }
+    ]
+  },
+  {
+    title: 'Other Reports',
+    icon: <ManageHistoryOutlinedIcon />,
+    pages: [
+      { name: 'Parent/Teacher Login List', path: '/erp/student-info-fee/reports/login-list' },
+      { name: 'User Logs', path: '/erp/student-info-fee/reports/user-logs' },
+      { name: 'Deleted Fee Invoices', path: '/erp/student-info-fee/reports/deleted-invoices' },
+      { name: 'Deleted Fee Transactions', path: '/erp/student-info-fee/reports/deleted-transactions' }
+]
+}
+];
+
+
+function CustomTabPanel(props) {
+  const { children, value, index, ...other } = props;
+
   return (
-    <div>Report</div>
-  )
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box sx={{ p: 3 }}>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
+    </div>
+  );
 }
 
-export default Report
+CustomTabPanel.propTypes = {
+  children: PropTypes.node,
+  index: PropTypes.number.isRequired,
+  value: PropTypes.number.isRequired,
+};
+
+function a11yProps(index) {
+  return {
+    id: `simple-tab-${index}`,
+    'aria-controls': `simple-tabpanel-${index}`,
+  };
+}
+
+const ReportTabs = () => {
+  const [value, setValue] = React.useState(0);
+  const [searchTerm, setSearchTerm] = useState('');
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
+  const filterData = searchTerm.trim() !== '' ? sections.filter(item => {
+    if (item.title.toLowerCase().includes(searchTerm)) {
+      return true;
+    } else {
+      return item?.pages.some(submenu =>
+        submenu.name.toLowerCase().includes(searchTerm) && submenu.path
+      );
+    }
+  }) : [];
+
+  return (
+    <Card>
+      <Box sx={{ display: 'flex', width: '100%' }}>
+        <Box sx={{ flexGrow: 1 }}>
+          <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+            <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+              <Tab label="General Reports" {...a11yProps(0)} />
+              <Tab label="Custom Reports" {...a11yProps(1)} />
+            </Tabs>
+          </Box>
+        </Box>
+        <Box sx={{width:'40%', borderBottom:'1px solid #cbcbcb85'}}>
+          <SearchBar onChange={(e) => setSearchTerm(e.target.value)} />
+          <Box>
+            <Card className='scrollbar'
+              sx={{
+                overflowY: 'scroll',
+                maxHeight: '200px',
+                margin: 'auto',
+                paddingLeft: '30px'
+              }}>
+              {filterData.map((item) => (
+                <React.Fragment key={item.title}>
+                  <p style={{paddingBottom:'10px',paddingTop:'10px',fontWeight: 'bold' }}>{item?.title}</p>
+                  {item.pages.map((submenu) => (
+                    <Link key={submenu.name} to={submenu.path} style={{ textDecoration: 'none' }}>
+                      <Typography key={submenu.name} style={{padding:'4px 0',color:'#000'}}>{submenu.name}</Typography>
+                    </Link>
+                  ))}
+                </React.Fragment>
+              ))}
+            </Card>
+          </Box>
+        </Box>
+      </Box>
+      <CustomTabPanel value={value} index={0}>
+        <ReportsHrPayroll sections={sections} />
+      </CustomTabPanel>
+      <CustomTabPanel value={value} index={1}>
+        Custom Reports
+      </CustomTabPanel>
+    </Card>
+  );
+}
+
+export default ReportTabs;
