@@ -171,7 +171,8 @@ const VisitorEntry = () => {
 
   // table
 
-  const table=<><Card>
+  const table=<>
+  <Card>
   <Box sx={{ borderBottom: '1px solid #ccc' }}>
     <Grid container spacing={2} p={2} sx={{ alignItems: 'end' ,paddingBottom:'0px' , paddingRight:'0px'}}>
       <Grid item xs={12} sm={12} lg={12} sx={{}}>
@@ -199,7 +200,9 @@ const VisitorEntry = () => {
       checkboxSelection
     />
   </Box>
-</Card></>
+</Card>
+
+</>
 
 
 

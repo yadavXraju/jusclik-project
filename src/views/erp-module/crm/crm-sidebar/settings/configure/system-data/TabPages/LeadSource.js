@@ -22,6 +22,7 @@ import {
   randomArrayItem,
 } from '@mui/x-data-grid-generator';
 import WarningDialog from 'views/common-section/WarningDialog';
+import { useEffect } from 'react';
 const roles = ['Yes','No'];
 const randomRole = () => {
   return randomArrayItem(roles);
@@ -133,12 +134,17 @@ export default function FullFeaturedCrudGrid() {
       setRows(rows.filter((row) => row.id !== id));
     }
   };
+
+  const  handleSetconfirm=async()=>{
+    await setConfirm(true);
+  }
+
   const handleConfirmDelete = () => {
     console.log(idToDelete);
-    setConfirm(true)
     console.log(confirm);
+    console.log(rows)
     if (confirm == true) {
-      setRows(rows.filter((row) => row.id !== idToDelete));
+      setRows(prevRows => prevRows.filter((row) => row.id !== idToDelete)); 
       console.log('Deleting item with ID:', idToDelete);
       setIdToDelete(null);
     }
@@ -168,6 +174,10 @@ export default function FullFeaturedCrudGrid() {
       event.stopPropagation();
     }
   };
+
+  useEffect(()=>{
+
+  },[rows,confirm,idToDelete])
 
   const columns = [
  
@@ -305,7 +315,7 @@ export default function FullFeaturedCrudGrid() {
         open={modalOpen}
         onClose={handleModalClose}
         contentText="Are you sure you want to delete?"
-        onConfirm={handleConfirmDelete}   
+        onConfirm={()=>{handleSetconfirm(),handleConfirmDelete()}}   
       />
     </>
   );
