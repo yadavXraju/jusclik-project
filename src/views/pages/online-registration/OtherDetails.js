@@ -1,7 +1,8 @@
 import React from 'react';
-import { Grid, Typography, Box, TextField } from '@mui/material';
+import { Grid, Typography, Box, TextField ,InputLabel} from '@mui/material';
 import Divider from '@mui/material/Divider';
 import { useState } from 'react';
+
 
 function OtherDetails({ handleClick }) {
   const [Formdata, Setformdata] = useState({
@@ -52,6 +53,15 @@ function OtherDetails({ handleClick }) {
  //Below Function will use in button to validate validation
  console.log(() => handleSubmit(() => {}));
 
+ const labelStyles = {
+  marginBottom: '8px',
+  fontWeight: '500',
+  color: 'rgb(54, 65, 82)',
+  marginTop: '20px',
+  whiteSpace: 'pre-wrap'
+  // fontFamily: 'Roboto, sans-serif'
+};
+
 
   return (
     <>
@@ -68,8 +78,11 @@ function OtherDetails({ handleClick }) {
 
           <Grid sx={{ padding: '1rem 4rem' }} container spacing={4}>
             <Grid item xs={4}>
+            <InputLabel sx={{ ...labelStyles, marginTop: '0px' }} htmlFor="student-name">
+            Sibling: Adm No
+            </InputLabel>
               <TextField
-                label="Sibling: Adm No"
+             
                 fullWidth
                 name="sibling_adm_no"
                 onChange={OtherDetailsChangeHandler}
@@ -109,6 +122,8 @@ function OtherDetails({ handleClick }) {
                 inputProps={{ style: { backgroundColor: '#ffffff' } }}
               />
             </Grid>
+
+
           </Grid>
 
           {/* <Box sx={{ paddingBottom: '2rem', display: 'flex', paddingRight: '4.2rem', paddingTop: '2rem' }}>

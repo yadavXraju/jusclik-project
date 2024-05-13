@@ -23,20 +23,13 @@ function PreviewAndSubmit() {
  
 
 
- 
-
-
-
-  
- 
-
    //Below Function will use in button to validate validation
    console.log(() => handleSubmit(() => {}));
 
   return (
     <>
    
-        <Box sx={{ height: '78vh', overflowY: 'auto' }}>
+       
           <Box sx={{ padding: '2rem' }}>
             <Typography variant="h3" sx={{ fontWeight: 'bold', paddingBottom: '1rem' }}>
               {' '}
@@ -46,7 +39,7 @@ function PreviewAndSubmit() {
             <Divider />
           </Box>
 
-          <Grid sx={{ padding: '0rem 4rem' }}>
+          <Grid sx={{ padding: '0rem 4rem' ,overflowY:'auto' , height:'67vh' }}>
             <Box>
               <Button variant="contained" sx={{ background: '#4caf50' }}>
                 PREVIEW FORM
@@ -141,13 +134,13 @@ function PreviewAndSubmit() {
             </Box>
           </Grid>
 
-          <Box sx={{ paddingBottom: '0rem', paddingTop: '1rem', paddingLeft: '3.8rem' }}>
+          {/* <Box sx={{ paddingBottom: '0rem', paddingTop: '1rem', paddingLeft: '3.8rem' }}>
             
             
             
-            {/* <Typography variant="h5" sx={{ fontWeight: 'bold', marginLeft: '5px' }}>
+           <Typography variant="h5" sx={{ fontWeight: 'bold', marginLeft: '5px' }}>
               ENTER CAPTCHA
-            </Typography> */}
+            </Typography> 
 
 
 
@@ -155,12 +148,12 @@ function PreviewAndSubmit() {
          
            
            
-              {/* <Button onClick={()=>handleSubmit()} variant="contained" sx={{ height: '38px', width: 'auto' }}>
+               <Button onClick={()=>handleSubmit()} variant="contained" sx={{ height: '38px', width: 'auto' }}>
                 Click Here To Submit Your Registration
-              </Button> */}
+              </Button> 
            
-          </Box>
-        </Box>
+          </Box> */}
+       
    
     </>
   );
