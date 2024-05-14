@@ -24,7 +24,7 @@ function EmployeePreview() {
   const isMobile = useMediaQuery('(max-width: 767px)');
   const issmallMobile = useMediaQuery('(max-width: 425px)');
 
-  console.log(rowData);
+  // console.log(rowData);
 
   return (
     <>
@@ -52,7 +52,7 @@ function EmployeePreview() {
                   />
                 </Box>
                 <Box>
-                  <Typography variant="h4">Abhishek</Typography>
+                  <Typography variant="h4">{rowData.firstName + ' ' + rowData.lastName}</Typography>
                   <Box>
                     {' '}
                     <span style={{ fontWeight: '500' }}>Email</span> : Abc@gmail.com

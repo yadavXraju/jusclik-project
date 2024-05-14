@@ -8,7 +8,7 @@ import PeopleAltTwoToneIcon from '@mui/icons-material/PeopleAltTwoTone';
 // import HandymanTwoToneIcon from '@mui/icons-material/HandymanTwoTone';
 import TextsmsTwoToneIcon from '@mui/icons-material/TextsmsTwoTone';
 import DescriptionTwoToneIcon from '@mui/icons-material/DescriptionTwoTone';
-import BottomNavbar from 'views/common-section/BottomNavbar';
+// import BottomNavbar from 'views/common-section/BottomNavbar';
 import { useSelector,useDispatch } from 'react-redux';
 import ProfileDetail from './ProfileDetails';
 import EmployeeProfile from './EmployeeProfile';
@@ -19,8 +19,8 @@ import Address from './Address';
 import Experience from './Experience';
 import ContactPerson from './ContactPerson';
 import TextArea from 'antd/es/input/TextArea';
-// import BottomNavbar from 'views/erp-common-component/bottom-navbar';
-// import {addField,subGroupbyGroup} from 'store/Hr-Payroll/AddEmployee-slice';
+import BottomNavbar from 'views/erp-common-component/bottom-navbar';
+import {addField,subGroupbyGroup} from 'store/Hr-Payroll/AddEmployee-slice';
 
 
 const buttonsData = [

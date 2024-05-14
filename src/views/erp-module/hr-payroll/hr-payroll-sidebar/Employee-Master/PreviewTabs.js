@@ -5,6 +5,7 @@ import DescriptionTwoToneIcon from '@mui/icons-material/DescriptionTwoTone';
 import HomeWorkTwoToneIcon from '@mui/icons-material/HomeWorkTwoTone';
 import PeopleAltTwoToneIcon from '@mui/icons-material/PeopleAltTwoTone';
 import LeaderboardTwoToneIcon from '@mui/icons-material/LeaderboardTwoTone';
+// import Experience from './Experience';
 
 
 const PreviewTabs = () => {
@@ -126,7 +127,9 @@ const PreviewTabs = () => {
           </>
         )}
         {tabValue === 1 && 1}
-        {tabValue === 2 && 2}
+        {tabValue === 2 && <Box mt={2}>
+          {/* <Experience disabled='true' /> */}
+          </Box>}
         {tabValue === 3 && 
          <>
          {/* ================ Render Address tab content ============== */}
@@ -220,7 +223,7 @@ const PreviewTabs = () => {
         {tabValue === 4 && 
          <>
          {/* ================ Render Contact Person tab content ============== */}
-         {/* <Box p={2}>
+         <Box p={2}>
            <Typography pb={1} variant="h4" gutterBottom>
              Contact Person (Father)
            </Typography>
@@ -363,7 +366,7 @@ const PreviewTabs = () => {
                </Grid>
              </Grid>
            </Box>
-         </Box> */}
+         </Box>
        </>
         }
       </Box>
