@@ -53,7 +53,7 @@ const HrPayRollRoutes = [
               },
 
               {
-                path: 'onboarding-tasklist', 
+                path: 'on-boarding-task-list', 
                 element: <OnboardingTaskList />
               },
 
