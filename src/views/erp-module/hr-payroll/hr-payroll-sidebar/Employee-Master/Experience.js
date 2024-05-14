@@ -10,6 +10,7 @@ import { IconButton, TextField, Tooltip, Button, Box } from '@mui/material';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 import WarningDialog from 'views/common-section/WarningDialog';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
+import ParameterizedDateComponent from 'views/common-section/ParamDateComponent';
 
 
 const columns = [
@@ -61,7 +62,6 @@ export default function Experience() {
     setTableRows(updatedRows);
   };
 
-
   return (
     <>
       <Paper sx={{ width: {xs:'93vw', md:'100%'}, overflow: 'hidden', borderRadius: 0, marginTop: { xs: 2, sm: 0 } }}>
@@ -88,20 +88,13 @@ export default function Experience() {
                     />
                   </TableCell>
                   <TableCell sx={{padding:'8px'}}>
-                  <TextField
-                      fullWidth
-                      value={row.fromDate}
-                      variant="outlined"
-                      onChange={(e) => handleRowChange(row.id, e.target.value, 'fromDate')}
-                    />
+                    <ParameterizedDateComponent 
+                       value={row.fromDate}
+                        onChange={(date) => handleRowChange(row.id, date ? date.format('DD-MM-YYYY') : '', 'fromDate')}
+                      />
                   </TableCell>
                   <TableCell sx={{padding:'8px'}}>
-                  <TextField
-                      fullWidth
-                      value={row.toDate}
-                      variant="outlined"
-                      onChange={(e) => handleRowChange(row.id, e.target.value, 'toDate')}
-                    />
+                    <ParameterizedDateComponent value={row.toDate} onChange={(e) => handleRowChange(row.id, e.format('DD-MM-YYYY'), 'toDate')} />
                   </TableCell>
                   <TableCell sx={{padding:'8px'}}>
                   <TextField

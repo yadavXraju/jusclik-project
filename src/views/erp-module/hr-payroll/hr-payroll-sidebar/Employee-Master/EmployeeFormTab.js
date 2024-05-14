@@ -12,12 +12,13 @@ import BottomNavbar from 'views/common-section/BottomNavbar';
 import { useSelector,useDispatch } from 'react-redux';
 import ProfileDetail from './ProfileDetails';
 import EmployeeProfile from './EmployeeProfile';
-// import Address from './Address';
 import SchoolTwoToneIcon from '@mui/icons-material/SchoolTwoTone';
 import LeaderboardTwoToneIcon from '@mui/icons-material/LeaderboardTwoTone';
 import Education from './Education';
 import Address from './Address';
 import Experience from './Experience';
+import ContactPerson from './ContactPerson';
+import TextArea from 'antd/es/input/TextArea';
 // import BottomNavbar from 'views/erp-common-component/bottom-navbar';
 // import {addField,subGroupbyGroup} from 'store/Hr-Payroll/AddEmployee-slice';
 
@@ -112,13 +113,24 @@ const EmployeeFormTab = () => {
       cardComponent = <Address /> ;
       break;
     case 5:
-      cardComponent = 6;
+      cardComponent = <ContactPerson/>;
       break;
     // case 6:
     //   cardComponent = 7;
     //   break;
       case 6:
-        cardComponent = 7;
+        cardComponent = <>
+        <Box p={2}>
+              <Box p={0.5}>Remarks</Box>
+              <TextArea
+                rows={4}
+                placeholder="Enter your text here..."
+                fullWidth
+                variant="outlined"
+                name="Remarks"
+              />
+            </Box>
+        </>;
         break;
     default:
       cardComponent = null;
