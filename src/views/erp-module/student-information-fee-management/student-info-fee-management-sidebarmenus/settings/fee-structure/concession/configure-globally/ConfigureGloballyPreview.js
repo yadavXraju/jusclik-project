@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Grid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Checkbox, TextField , Box , Typography , Button , styled , } from '@mui/material';
 import { useSelector ,useDispatch } from 'react-redux';
 import SelectList from 'views/common-section/ParamSelectList';
-import { configGlobally } from 'store/student-info-and-fee/settings/FeeStructureConfigure';
+import { configGlobally , setFeeHeads } from 'store/student-info-and-fee/settings/FeeStructureConfigure';
 
 // style for bottom nav bar start
 export const VisuallyHiddenInput = styled('input')({
@@ -139,11 +139,10 @@ const ConfigureGloballyPreview = ({customStyle}) => {
         setAmounts(newAmounts);
     };
     
-    
-    
 
-    const handleSave = (PreviewData)=>{
+    const handleSave = (PreviewData , feeHeads)=>{
         dispatch(configGlobally(PreviewData))
+        dispatch(setFeeHeads(feeHeads))
       }
 
     return (
@@ -170,7 +169,7 @@ const ConfigureGloballyPreview = ({customStyle}) => {
                                 </TableCell>
                             </TableRow>
                         </TableHead>
-                        <TableBody className='scrollbar' sx={{display:'flex' , maxHeight:'300px' , flexDirection:'column', overflowY:'auto' , paddingBottom:'20px'}}>
+                        <TableBody className='scrollbar' sx={{display:'flex' , maxHeight:'300px' , flexDirection:'column', overflowY:'auto' , paddingBottom:'20px', minHeight:'120px'}}>
                             {PreviewData?.map((rowData, index) => (
                                 <TableRow key={rowData.id} sx={{ display:'flex', '&:last-child td, &:last-child th': { border: 0 } }}>
                                     <TableCell sx={{flex:'0 0 10%'}}>{rowData.srNo}</TableCell>

@@ -1,26 +1,26 @@
-import React from 'react'
+import React,{useState} from 'react'
 import CommonDataGrid from 'views/common-section/commonDataGrid'
 import { Box,Tooltip,IconButton, Card,Typography,Grid } from '@mui/material'
-
+import WarningDialog from 'views/common-section/WarningDialog';
 
 // icon
 import RemoveRedEyeTwoToneIcon from '@mui/icons-material/RemoveRedEyeTwoTone';
 import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
-
+import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 
 // rowData
 
 import { initialRows } from 'views/erp-module/hr-payroll/hr-payroll-sidebar/settings/employeeonBoard/component/employeData';
 import OnBoardDrawer from './OnBoardDrawew';
-import ExitEmployee from '../exitProcess/component/ExitEmployee';
+
 
 
 
 const OnBoardEmpTable = () => {
 
-// const [row,setRow]=useState(initialRows)
-
-
+  const [tableRows, setTableRows] = useState(initialRows);
+const [modalOpen, setmodalOpen] = useState(false);
+const [deleteId, setdeleteId] = React.useState(null);
 
 
 // columns
@@ -90,24 +90,23 @@ const columns = [
       sortable: false,
       filterable: false,
       disableColumnMenu: true,
-      renderCell: () => (
+      renderCell: (params) => (
         <Box>
-          <Tooltip title="Preview">
+       
             <IconButton>
               <RemoveRedEyeTwoToneIcon sx={{ color: 'rgb(124, 178, 221)' }} />
             </IconButton>
-          </Tooltip>
+        
           <Tooltip title="Edit">
           <IconButton onClick={(event) => event.stopPropagation()}>
             <EditTwoToneIcon />
           </IconButton>
           </Tooltip>
-          <Tooltip title="Delete">
+        
             <IconButton onClick={(event) => event.stopPropagation()}>
-                <ExitEmployee  editIcon="true" handleClick={() => {}}/>
-              {/* <DeleteTwoToneIcon onClick={() => handleDeleteRow()} sx={{ color: '#f19e9e' }} /> */}
+            <DeleteTwoToneIcon onClick={() => handleDeleteRow(params.row.id)} sx={{ color: '#f19e9e' }} />
             </IconButton>
-          </Tooltip>
+        
         </Box>
       )
     }
@@ -118,10 +117,22 @@ const columns = [
 
 
 // Functions
+const handleDeleteRow=(id)=>{
+  setmodalOpen(true);
+  setdeleteId(id)
+}
 
-const handleDeleteRow=()=>{
+const confirmDelete=()=>{
+  const updatedRows = tableRows.filter((row) => row.id !== deleteId);
+  setTableRows(updatedRows);
+  setmodalOpen(false);
+  setdeleteId(null)
 
 }
+const handleModalClose=()=>{
+  setmodalOpen(false);
+}
+
   return (
     <>
     <Card>
@@ -137,7 +148,7 @@ const handleDeleteRow=()=>{
       <Grid item xs={12} sm={6} lg={6}>
               <div style={{ display: 'flex', justifyContent: 'end', width: '100%' }}>
                <OnBoardDrawer/>
-                <ExitEmployee DrawerBtn="true" />
+                {/* <ExitEmployee DrawerBtn="true" /> */}
          
                 {/* <IconButton sx={{ marginRight: '8px', background: '#cccccc54' }} onClick={handleSearchClick}>
                   <SearchOutlinedIcon />
@@ -194,7 +205,7 @@ const handleDeleteRow=()=>{
     <Box p={2} className={'scrollbar-2'}>
     <CommonDataGrid
     columns={columns}
-    rows={ initialRows}
+    rows={ tableRows}
     initialState={{
         pagination: {
           paginationModel: { page: 0, pageSize: 50 }
@@ -205,7 +216,7 @@ const handleDeleteRow=()=>{
     />
     </Box>
     </Card>
-
+    <WarningDialog open={modalOpen} onClose={handleModalClose} contentText="Are you sure you want to delete?" onConfirm={confirmDelete} />
 
 
 
