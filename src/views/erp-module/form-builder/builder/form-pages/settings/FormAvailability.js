@@ -4,6 +4,7 @@ import LensOutlinedIcon from '@mui/icons-material/LensOutlined';
 import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
 import TextArea from 'antd/es/input/TextArea';
 import ParameterizedDateComponent from 'views/common-section/ParamDateComponent';
+import ParamTime from 'views/common-section/ParamTime';
 
 function FormAvailability() {
   const [activeButton, setActiveButton] = useState('always');
@@ -51,37 +52,27 @@ function FormAvailability() {
               <Typography pb={1} color="#ccc" variant="h5">
                 The form will be accessible only between the specified dates.
               </Typography>
-              <Box pt={1}>
-                <Box sx={{ width: { md: '70%', lg: '40%' } }}>
-                  <Box pb={2}>
-                    <ParameterizedDateComponent label="Start Date" />
-                  </Box>
-                  <Box pb={1}>
-                    <ParameterizedDateComponent label="End Date" />
-                  </Box>
+              <Box >
+                <Box sx={{ width:{md:'70%',lg:'40%'}}} mt={1}>
                   <Box>
-                    <Box p={0.5}>Message on form expiry</Box>
-                    <TextArea rows={3} placeholder="Enter your text here..." fullWidth variant="outlined" />
+                    <Grid container spacing={2}>
+                      <Grid item xs={6}>
+                        <ParameterizedDateComponent label="Start Date" />
+                      </Grid>
+                      <Grid item xs={6}>
+                        <ParamTime label="Start Time" customStyle={{ padding: "0px !important" }} />
+                      </Grid>
+                    </Grid>
                   </Box>
-                </Box>
-              </Box>
-            </Box>
-          </>
-        );
-      case 'between-dates-time':
-        return (
-          <>
-            <Box p={2} sx={{ borderBottom: '1px solid #ccc' }}>
-              <Typography pb={1} color="#ccc" variant="h5">
-                The form will be accessible only between the specified dates.
-              </Typography>
-              <Box pt={1}>
-                <Box sx={{ width: { md: '70%', lg: '40%' } }}>
-                  <Box pb={2}>
-                    <ParameterizedDateComponent label="Start Date" />
-                  </Box>
-                  <Box pb={1}>
-                    <ParameterizedDateComponent label="End Date" />
+                  <Box mt={2}>
+                    <Grid container spacing={2}>
+                      <Grid item xs={6}>
+                        <ParameterizedDateComponent label="End Date" />
+                      </Grid>
+                      <Grid item xs={6}>
+                        <ParamTime label="End Time" customStyle={{ padding: "0px !important" }} />
+                      </Grid>
+                    </Grid>
                   </Box>
                   <Box>
                     <Box p={0.5}>Message on form expiry</Box>
@@ -105,7 +96,7 @@ function FormAvailability() {
             startIcon={activeButton === 'always' ? <RadioButtonCheckedIcon /> : <LensOutlinedIcon />}
             value="always"
             onClick={() => handleButtonClick('always')}
-            variant= {activeButton === 'always' ? 'contained' :'outlined' }
+            variant={activeButton === 'always' ? 'contained' : 'outlined'}
           >
             Always
           </Button>
@@ -113,18 +104,18 @@ function FormAvailability() {
             startIcon={activeButton === 'between-dates' ? <RadioButtonCheckedIcon /> : <LensOutlinedIcon />}
             value="between-dates"
             onClick={() => handleButtonClick('between-dates')}
-            variant= {activeButton === 'between-dates' ? 'contained' :'outlined' }
+            variant={activeButton === 'between-dates' ? 'contained' : 'outlined'}
           >
             Between Dates
           </Button>
-          <Button
+          {/* <Button
             startIcon={activeButton === 'between-dates-time' ? <RadioButtonCheckedIcon /> : <LensOutlinedIcon />}
             value="between-dates-time"
             onClick={() => handleButtonClick('between-dates-time')}
             variant= {activeButton === 'between-dates-time' ? 'contained' :'outlined' }
           >
             Between Dates & Time
-          </Button>
+          </Button> */}
         </ButtonGroup>
       </Box>
 

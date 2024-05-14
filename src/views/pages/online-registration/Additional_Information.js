@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Grid, Typography, Box, TextField } from '@mui/material';
+import { Grid, Typography, Box, TextField ,InputLabel } from '@mui/material';
 import Divider from '@mui/material/Divider';
 import Dropdown from 'views/common-section/ParamSelectList';
 
@@ -25,16 +25,19 @@ function Additional_Information({handleClick}) {
   });
 
   const SelectParentsStatusOptions = [
+    { value: 'select', label: 'Select' },
     { value: 'no', label: 'No' },
     { value: 'yes', label: 'Yes' },
 ];
 
 const AppliedEarlierOptions = [
+  { value: 'select', label: 'Select' },
     { value: 'no', label: 'No' },
     { value: 'yes', label: 'Yes' },
 ];
 
 const AppliedYearOptions = [
+  { value: 'select', label: 'Select' },
     { value: '2021-22', label: '2021-22' },
     { value: '2020-21', label: '2020-21' },
     { value: '2019-20', label: '2019-20' },
@@ -61,6 +64,7 @@ const AppliedYearOptions = [
 
 
 const ClassOptions = [
+  { value: 'select', label: 'Select' },
     { value: 'playgroup', label: 'Playgroup' },
     { value: 'nursery', label: 'Nursery' },
     { value: 'kg', label: 'KG' },
@@ -78,12 +82,25 @@ const ClassOptions = [
     { value: 'XII', label: 'XII' }
 ];
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-    
-  };
- console.log(formData)
+const handleChange = (e) => {
+  const { name, value } = e.target;
+
+  if (name === 'reason_to_join') {
+      // Check if the input value exceeds 100 characters
+      if (value.length > 150) {
+          // Truncate the value to 100 characters
+          const truncatedValue = value.slice(0, 150);
+          // Update the state with the truncated value
+          setFormData({ ...formData, [name]: truncatedValue });
+      } else {
+          // If the input value is within the limit, update the state with the value
+          setFormData({ ...formData, [name]: value });
+      }
+  } else {
+      // For other fields, update the state with the value directly
+      setFormData({ ...formData, [name]: value });
+  }
+};
 
 
   const validateFields = (fields) => {
@@ -118,6 +135,17 @@ const ClassOptions = [
   //Below Function will use in button to validate validation
   console.log(() => handleSubmit(() => {}));
 
+  const labelStyles = {
+    marginBottom: '8px',
+    fontWeight: '500',
+    color: 'rgb(54, 65, 82)',
+    whiteSpace: 'pre-wrap',
+    marginTop: '20px'
+    // fontFamily: 'Roboto, sans-serif'
+  };
+
+  
+
   return (
     <>
       <Box sx={{ padding: '2rem' }}>
@@ -130,26 +158,33 @@ const ClassOptions = [
 
       <Grid sx={{ padding: '1rem 4rem' }} container spacing={4}>
         <Grid item xs={4}>
+          
+        <InputLabel sx={{ ...labelStyles, marginTop: '0px' }} htmlFor="parents_status">
+        Are Parents Separated OR Divorced ?
+          </InputLabel>
           <Dropdown
-            label="Are Parents Separated OR Divorced ?"
+       
             options={SelectParentsStatusOptions}
             name="parents_status"
             onChange={handleChange}
-            value={formData.parents_status}
+            value={formData.parents_status || 'select'}
             error={formError.parents_status}
             required
             customStyle={{ '& > div': { background: '#ffffff' } }}
           />
+          
+          <InputLabel sx={{ ...labelStyles}} htmlFor="applied_earlier">
+          Have you applied to SHIKSHANTAR SCHOOL earlier ?
+          </InputLabel>
           <Dropdown
-            label="Have you applied to SHIKSHANTAR SCHOOL earlier ?"
             options={AppliedEarlierOptions}
             name="applied_earlier"
             onChange={handleChange}
-            value={formData.applied_earlier}
+            value={formData.applied_earlier || 'select'}
             error={formError.applied_earlier}
             required
             customStyle={{ '& > div': { background: '#ffffff' } }}
-            rootStyle={{ marginTop: '20px' }}
+          
           />
          
 
@@ -159,13 +194,13 @@ const ClassOptions = [
             multiline
             rows={2}
             sx={{
-              marginTop: '20px',
+              marginTop: '30px',
               '& .MuiInputBase-root textarea': {
                 backgroundColor: 'white'
               }
             }}
             fullWidth
-            helperText="Why would you like your child to join SHIKSHANTAR SCHOOL ? (upto 100 words) *"
+            helperText="Why would you like your child to join SHIKSHANTAR SCHOOL ? (upto 150 words) *"
             inputProps={{ style: { backgroundColor: '#ffffff' } }}
             style={{ backgroundColor: '#ffffff' }}
             onChange={handleChange}
@@ -176,8 +211,12 @@ const ClassOptions = [
         </Grid>
 
         <Grid item xs={4}>
+
+        <InputLabel sx={{ ...labelStyles , marginTop:'0px'}} htmlFor="family_situation">
+        Do you live in a nuclear, joint OR extended family situation ?
+          </InputLabel>
           <TextField
-            label="Do you live in a nuclear, joint OR extended family situation ?"
+            
             name="family_situation"
             required
             fullWidth
@@ -186,23 +225,28 @@ const ClassOptions = [
             value={formData.family_situation}
             error={formError.family_situation}
           />
+         
+         <InputLabel sx={{ ...labelStyles }} htmlFor="family_situation">
+         {formData.applied_earlier === 'no' ? 'Disabled' : 'Applied Year'}
+          </InputLabel>
           <Dropdown
-            label={formData.applied_earlier === 'no' ? 'Disabled' : 'Applied Year'}
             options={AppliedYearOptions}
             name="applied_year"
             required
             disabled={formData.applied_earlier === 'no'}
-            rootStyle={{ marginTop: '20px' }}
             customStyle={{ '& > div': { background: '#ffffff' } }}
             onChange={handleChange}
-            value={formData.applied_year}
+            value={formData.applied_year || 'select'}
             error={formError.applied_year}
           />
         </Grid>
 
         <Grid item xs={4}>
+        <InputLabel sx={{ ...labelStyles, marginTop:'0px' }} htmlFor="other_schools">
+        Which other school(s) have you applied to ?
+          </InputLabel>
           <TextField
-            label="Which other school(s) have you applied to ?"
+            
             name="other_schools"
             required
             fullWidth
@@ -211,16 +255,19 @@ const ClassOptions = [
             value={formData.other_schools}
             error={formError.other_schools}
           />
+          <InputLabel sx={{ ...labelStyles }} htmlFor="applied_class">
+          {formData.applied_earlier === 'no' ? 'Disabled' : 'For which Class'}
+          </InputLabel>
           <Dropdown
-            label={formData.applied_earlier === 'no' ? 'Disabled' : 'For which Class'}
+            
             options={ClassOptions}
             name="applied_class"
             disabled={formData.applied_earlier === 'no'}
             required
-            rootStyle={{ marginTop: '20px' }}
+        
             customStyle={{ '& > div': { background: '#ffffff' } }}
             onChange={handleChange}
-            value={formData.applied_class}
+            value={formData.applied_class || 'select'}
             error={formError.applied_class}
           />
         </Grid>

@@ -989,9 +989,6 @@
 
 // export default StudentDetails;
 
-
-
-
 import React from 'react';
 import { Grid, Typography, Box, TextField, InputLabel } from '@mui/material';
 import { useSelector } from 'react-redux';
@@ -1129,14 +1126,22 @@ function StudentDetails({ handleClick }) {
     if (e.target.nodeName === 'INPUT' && e.target.type === 'text' && name !== 'email_address' && name !== 'id_number') {
       // Capitalize the first letter
       const capitalizedValue = value.charAt(0).toUpperCase() + value.slice(1);
-      // Update the state with the capitalized value
-      setAllStudentDetails({ ...allStudentDetails, [name]: capitalizedValue });
+
+      // Check if the field is 'nationality' or 'city' and ensure no numeric values
+      if (name === 'nationality' || name === 'city') {
+        if (!/\d/.test(capitalizedValue)) {
+          // Check if capitalizedValue contains any numeric digit
+          setAllStudentDetails({ ...allStudentDetails, [name]: capitalizedValue });
+        }
+      } else {
+        // Update the state with the capitalized value for other fields
+        setAllStudentDetails({ ...allStudentDetails, [name]: capitalizedValue });
+      }
     } else {
       // For other types of input fields, update the state directly
       setAllStudentDetails({ ...allStudentDetails, [name]: value });
     }
   };
-
   //Error Validation
 
   const validateFields = (fields) => {
@@ -1299,7 +1304,7 @@ function StudentDetails({ handleClick }) {
               required
               error={errors.enrolled_since}
               onChange={ChangeHandlerStudentDetails}
-              value={allStudentDetails.enrolled_since}
+              value={allStudentDetails.enrolled_since || 'select'}
               customStyle={{ '& > div': { background: '#ffffff' } }}
             />
 
@@ -1388,18 +1393,18 @@ function StudentDetails({ handleClick }) {
               fullWidth
               inputProps={{ style: { backgroundColor: '#ffffff' } }}
             />
-<InputLabel sx={{ ...labelStyles }} htmlFor="board">
-  Board
-</InputLabel>
-<Dropdown
-  required
-  error={errors.board}
-  options={[{ value: 'welcome', label: 'Welcome' }, ...SelectBoard]} // Adding the placeholder option
-  name="board"
-  onChange={ChangeHandlerStudentDetails}
-  value={allStudentDetails.board }
-  customStyle={{ '& > div': { background: '#ffffff' } }}
-/>
+            <InputLabel sx={{ ...labelStyles }} htmlFor="board">
+              Board
+            </InputLabel>
+            <Dropdown
+              required
+              error={errors.board}
+              options={SelectBoard} // Adding the placeholder option
+              name="board"
+              onChange={ChangeHandlerStudentDetails}
+              value={allStudentDetails.board || 'select'}
+              customStyle={{ '& > div': { background: '#ffffff' } }}
+            />
           </Grid>
 
           <Grid item xs={4}>
