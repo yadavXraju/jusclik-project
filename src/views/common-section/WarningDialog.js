@@ -4,6 +4,7 @@ import WarningTwoToneIcon from '@mui/icons-material/WarningTwoTone';
 import { Box } from '@mui/system';
 
 const WarningDialog = ({ open = {}, onClose = {}, contentText = {}, onConfirm = {} }) => {
+  
   return (
     <Dialog open={open} onClose={onClose}>
       <Box sx={{ display: 'flex', justifyContent: 'center' }}>
