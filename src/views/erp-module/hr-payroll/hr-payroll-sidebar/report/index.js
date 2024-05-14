@@ -21,9 +21,9 @@ const sections = [
     title: 'PF Reports',
     icon: <PolicyOutlinedIcon />,
     pages: [
-      { name: 'PF Reports ', path: '/erp/student-info-fee/reports/enquiry' },
-      { name: 'PF Statement ', path: '/erp/student-info-fee/reports/enquiry' },
-      { name: 'PF Text File ', path: '/erp/student-info-fee/reports/register' },
+      { name: 'PF Reports ', path: '/erp/hr-payroll/reports/pf-reports' },
+      { name: 'PF Statement ', path: '/erp/hr-payroll/reports/pf-statement' },
+      { name: 'PF Text File ', path: '/erp/hr-payroll/reports/pf-text-file' },
       
     ]
   },
@@ -31,62 +31,89 @@ const sections = [
     title: 'ESIC Reports',
     icon: <PeopleAltOutlinedIcon />,
     pages: [
-      { name: 'ESIC Salary Reports', path: '/erp/student-info-fee/reports/student-age' },
-      { name: 'ESIC Challan Form Separate', path: '/erp/student-info-fee/reports/student-strength' },
-      { name: 'ESIC Challan Form Combined All Wing', path: '/erp/student-info-fee/reports/student-strength' },
-      { name: 'ESIC Contribution Separate Report', path: '/erp/student-info-fee/reports/student-strength' },
+      { name: 'ESIC Salary Reports', path: '/erp/hr-payroll/reports/esic-reports' },
+      { name: 'ESIC Challan Form Separate', path: '/erp/hr-payroll/reports/esic-challan-form-separate' },
+      { name: 'ESIC Challan Form Combined All Wing', path: '/erp/hr-payroll/reports/esic-challan-form-combined-all-wing' },
+      { name: 'ESIC Contribution Separate Report', path: '/erp/hr-payroll/reports/esic-contribution-separate-report' },
       
     ]
   },
   {
-    title: 'Employee Documents',
-    icon: <DirectionsBusFilledOutlinedIcon />,
+    title: 'Leave ',
+    icon: <ManageHistoryOutlinedIcon />,
     pages: [
-      { name: '', path: '/erp/student-info-fee/reports/user-list' },
-      { name: 'Attendance', path: '/erp/student-info-fee/reports/attendance' },
-      { name: 'Transport user as on', path: '/erp/student-info-fee/reports/transport-user' },
-      { name: 'Logs', path: '/erp/student-info-fee/reports/logs' },
-      { name: 'Routes & Stops', path: '/erp/student-info-fee/reports/routes-stops' }
-    ]
-  },
+      { name: 'Leave Application', path: '/erp/hr-payroll/reports/leave-application' },
+      { name: 'LWP Reports', path: '/erp/hr-payroll/reports/lwp-reports' },
+]
+},
+ 
   {
     title: 'Income Tax',
     icon: <ReceiptOutlinedIcon />,
     pages: [
-      { name: 'Ledger', path: '/erp/student-info-fee/reports/ledger' }
+      { name: 'Income Tax Computation Reports', path: '/erp/hr-payroll/reports/income-tax-computation-reports' },
+      { name: 'Income Tax Calculation Reports', path: '/erp/hr-payroll/reports/income-tax-calculation-reports' },
+      { name: 'Income Tax Final Form-16', path: '/erp/hr-payroll/reports/income-tax-final-form-16' },
+      
     ]
   },
   {
     title: 'Employee',
     icon: <CreditCardOutlinedIcon />,
     pages: [
-      { name: 'Details', path: '/erp/student-info-fee/reports/transaction' },
-      { name: 'Ledger', path: '/erp/student-info-fee/reports/concession' },
-      { name: 'Enrolment Review', path: '/erp/student-info-fee/reports/adjustment' },
-      // { name: 'PG Settlement Report', path: '/erp/student-info-fee/reports/pg-settlement' },
-      // { name: 'Fee Structure', path: '/erp/student-info-fee/reports/fee-structure' }
+      { name: 'Details', path: '/erp/hr-payroll/reports/details' },
+      { name: 'Ledger', path: '/erp/hr-payroll/reports/ledger' },
+      { name: 'Enrolment Review', path: '/erp/hr-payroll/reports/enrolment-review' },
+      { name: 'Employee Master', path: '/erp/hr-payroll/reports/employee-master' },
+      { name: ' Employees Strength as on', path: '/erp/hr-payroll/reports/employees-strength-as-on' },
+      { name: ' Employee Attendance', path: '/erp/hr-payroll/reports/employee-attendance' },
+      { name: ' Employee Leave', path: '/erp/hr-payroll/reports/employee-leave' },
+      { name: ' Employee Macps/Promotion Report', path: '/erp/hr-payroll/reports/employee-macps/promotion-report' },
+      
     ]
   },
   {
     title: 'Salary',
     icon: <FolderOpenOutlinedIcon />,
     pages: [
-      { name: 'Tuition Fee Certificate', path: '/erp/student-info-fee/reports/tuition-certificate' },
-      { name: 'School Learning Certificate', path: '/erp/student-info-fee/reports/learning-certificate' },
-      { name: 'Gate Pass', path: '/erp/student-info-fee/reports/gate-pass' },
-      { name: 'Identity Card', path: '/erp/student-info-fee/reports/identity-card' }
+      { name: 'Salary Statement', path: '/erp/hr-payroll/reports/salary-statement' },
+      { name: 'Salary Slip', path: '/erp/hr-payroll/reports/salary-slip' },
+      { name: 'Bank Statement', path: '/erp/hr-payroll/reports/bank-statement' },
+      { name: 'Salary Comparison Report', path: '/erp/hr-payroll/reports/salary-comparison-report' },
+      { name: 'Salary Statement Summary', path: '/erp/hr-payroll/reports/salary-statement-summary' },
+      { name: 'Salary Certificate', path: '/erp/hr-payroll/reports/salary-certificate' },
+      { name: 'ECR Text File', path: '/erp/hr-payroll/reports/ecr-text-file' },
+      { name: 'Bank Statement Text File', path: '/erp/hr-payroll/reports/bank-statement-text-file' },
+      { name: 'Salary Transaction', path: '/erp/hr-payroll/reports/salary-transaction' },
     ]
   },
+  {
+    title: 'Employee Documents',
+    icon: <DirectionsBusFilledOutlinedIcon />,
+    pages: [
+      { name: 'Employee I-Card', path: '/erp/hr-payroll/reports/employee-i-card' },
+      { name: 'Employee Document Report', path: '/erp/hr-payroll/reports/employee-document-report' },
+      { name: 'Employee Gate Pass ', path: '/erp/hr-payroll/reports/employee-gate-pass' },
+      { name: 'Employee Barcode Report', path: '/erp/hr-payroll/reports/logs' },
+      { name: 'Employee Enrollment Review Report ', path: '/erp/hr-payroll/reports/employee-enrollment-review-report' },
+      { name: 'Employee Education Details Report ', path: '/erp/hr-payroll/reports/employee-education-details-report' },
+      { name: 'Employee Experience Details Report ', path: '/erp/hr-payroll/reports/employee-experience-details-report' },
+      { name: 'Employee Salary Sheet Report ', path: '/erp/hr-payroll/reports/employee-salary-sheet-report' },
+      
+    ]
+  },
+ 
   {
     title: 'Other Reports',
     icon: <ManageHistoryOutlinedIcon />,
     pages: [
-      { name: 'Parent/Teacher Login List', path: '/erp/student-info-fee/reports/login-list' },
-      { name: 'User Logs', path: '/erp/student-info-fee/reports/user-logs' },
-      { name: 'Deleted Fee Invoices', path: '/erp/student-info-fee/reports/deleted-invoices' },
-      { name: 'Deleted Fee Transactions', path: '/erp/student-info-fee/reports/deleted-transactions' }
+      { name: 'Contact/Probation History Report', path: '/erp/hr-payroll/reports/contact/probation-history-report' },
+      { name: 'Contact/Probation Ending Report', path: '/erp/hr-payroll/reports/contact/probation-ending-report' },
+      { name: 'Superannuation/Retirement Report', path: '/erp/hr-payroll/reports/superannuation/retirement-report' },
+      
 ]
-}
+},
+
 ];
 
 
