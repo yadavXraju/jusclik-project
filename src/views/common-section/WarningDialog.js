@@ -3,7 +3,7 @@ import { Dialog,  DialogContent, DialogContentText, DialogActions, Button, Typog
 import WarningTwoToneIcon from '@mui/icons-material/WarningTwoTone';
 import { Box } from '@mui/system';
 
-const WarningDialog = ({ open = {}, onClose = {}, contentText = {}, onConfirm = {} }) => {
+const WarningDialog = ({ open = {}, onClose = {}, contentText = {}, onConfirm = {} ,hideCancel = false }) => {
   return (
     <Dialog open={open} onClose={onClose}>
       <Box sx={{ display: 'flex', justifyContent: 'center' }}>
@@ -20,9 +20,11 @@ const WarningDialog = ({ open = {}, onClose = {}, contentText = {}, onConfirm = 
       </Box>
       
       <DialogActions>
-        <Button onClick={onClose} color="primary">
-          Cancel
-        </Button>
+      {!hideCancel && (
+          <Button onClick={onClose} color="primary">
+            Cancel
+          </Button>
+        )}
         <Button onClick={onConfirm} color="primary" autoFocus>
           OK
         </Button>
