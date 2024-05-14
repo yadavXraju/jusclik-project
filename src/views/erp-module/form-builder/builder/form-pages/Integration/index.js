@@ -6,19 +6,16 @@ import useDrawer from 'hooks/useDrawer';
 import Fee from 'assets/images/erp-module-icon/fee.svg';
 import Customer from 'assets/images/erp-module-icon/customer.svg';
 import FormBuilder from 'assets/images/erp-module-icon/form-builder.svg';
-// import HR from 'assets/images/erp-module-icon/hr.svg';
-// import Progress from 'assets/images/erp-module-icon/progress.svg';
 import ArrowRightAltOutlinedIcon from '@mui/icons-material/ArrowRightAltOutlined';
-// import BusinessOutlinedIcon from '@mui/icons-material/BusinessOutlined';
-// import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 import ParamSelectList from 'views/common-section/ParamSelectList';
 import ReplayOutlinedIcon from '@mui/icons-material/ReplayOutlined';
-import SyncAltOutlinedIcon from '@mui/icons-material/SyncAltOutlined';
 import ParamSelectPlaceholder from 'views/common-section/ParamSelectPlaceholder';
 import AddCircleOutlinedIcon from '@mui/icons-material/AddCircleOutlined';
 import RemoveCircleOutlinedIcon from '@mui/icons-material/RemoveCircleOutlined';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import TrendingFlatOutlinedIcon from '@mui/icons-material/TrendingFlatOutlined';
+import EastOutlinedIcon from '@mui/icons-material/EastOutlined';
+
 const moduleName = [
     {
         id: 1,
@@ -213,7 +210,7 @@ const FieldMapping = ({ isIntegratClicked, setIsIntegrateClicked, name }) => {
                                             onChange={handleSelect} options={fieldName}
                                             name="mapFrom"
                                         />
-                                        <SyncAltOutlinedIcon />
+                                        <EastOutlinedIcon />
                                         <ParamSelectList label="Select" value={filedMapping?.mapTo}
                                             onChange={handleSelect} options={fieldName}
                                             name="mapTo" />
