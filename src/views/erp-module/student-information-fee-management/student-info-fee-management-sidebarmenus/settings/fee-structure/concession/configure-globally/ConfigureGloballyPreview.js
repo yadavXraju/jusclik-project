@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Grid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Checkbox, TextField , Box , Typography , Button , styled , } from '@mui/material';
 import { useSelector ,useDispatch } from 'react-redux';
 import SelectList from 'views/common-section/ParamSelectList';
-import { configGlobally } from 'store/student-info-and-fee/settings/FeeStructureConfigure';
+import { configGlobally , setFeeHeads } from 'store/student-info-and-fee/settings/FeeStructureConfigure';
 
 // style for bottom nav bar start
 export const VisuallyHiddenInput = styled('input')({
@@ -140,8 +140,9 @@ const ConfigureGloballyPreview = ({customStyle}) => {
     };
     
 
-    const handleSave = (PreviewData)=>{
+    const handleSave = (PreviewData , feeHeads)=>{
         dispatch(configGlobally(PreviewData))
+        dispatch(setFeeHeads(feeHeads))
       }
 
     return (

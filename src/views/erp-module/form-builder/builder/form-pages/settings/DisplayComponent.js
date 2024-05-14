@@ -1,4 +1,4 @@
-import { Box, Radio, FormControlLabel, FormControl, FormLabel, RadioGroup, TextField, Grid } from '@mui/material';
+import { Box, Radio, FormControlLabel, FormControl, FormLabel, RadioGroup, TextField, Grid, InputLabel } from '@mui/material';
 import React, { useState } from 'react';
 import SelectList from 'views/common-section/ParamSelectList';
 
@@ -48,7 +48,8 @@ function DisplayComponent() {
             </Grid>
             <Grid item xs={12}>
               <Box>
-                <TextField fullWidth label="Submit Button Label" />
+                <InputLabel>Submit Button Label</InputLabel>
+                <TextField fullWidth placeholder="Submit Button Label" />
               </Box>
             </Grid>
             

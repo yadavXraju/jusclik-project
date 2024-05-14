@@ -4,7 +4,7 @@ import {AdapterDayjs} from '@mui/x-date-pickers/AdapterDayjs';
 import {LocalizationProvider} from '@mui/x-date-pickers/LocalizationProvider';
 import dayjs from 'dayjs';
 
-const  ParameterizedDateComponent=({label, name="",value, onChange,className="",customStyle={},id="", inputRef = null})=>{
+const  ParameterizedDateComponent=({label, name="",value, onChange,className="",customStyle={},id="", inputRef = null, disabled})=>{
 
   // ======== Convert value to a valid Date object using dayjs ==========
   const selectedDate = value ? dayjs(value) : null;
@@ -17,6 +17,7 @@ const  ParameterizedDateComponent=({label, name="",value, onChange,className="",
               label={label}
               format="DD-MM-YYYY"
               value={selectedDate}
+              disabled={disabled}
               sx={customStyle}
               onChange={onChange}
               className={className}

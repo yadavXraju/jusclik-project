@@ -6,7 +6,7 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import { IconButton, TextField, Tooltip, Button, Box } from '@mui/material';
+import { IconButton, TextField, Tooltip, Button, Box, Typography } from '@mui/material';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 import WarningDialog from 'views/common-section/WarningDialog';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
@@ -94,6 +94,9 @@ export default function Education() {
 
   return (
     <>
+        <Box mb={2} sx={{borderBottom:'1px solid #ccc'}}>
+        <Typography p={1} variant='h4'>Education</Typography>
+      </Box>
       <Paper sx={{ width: {xs:'93vw', md:'100%'}, overflow: 'hidden', borderRadius: 0, marginTop: { xs: 2, sm: 0 } }}>
         <TableContainer className='scrollbar' sx={{ maxHeight: 'calc(100vh - 220px)' }}>
           <Table stickyHeader aria-label="sticky table" sx={{ border: '1px solid #ccc' }}>
