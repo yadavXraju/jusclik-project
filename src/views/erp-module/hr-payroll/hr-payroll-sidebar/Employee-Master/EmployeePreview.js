@@ -12,6 +12,7 @@ import MoreVertTwoToneIcon from '@mui/icons-material/MoreVertTwoTone';
 import { useLocation } from 'react-router-dom';
 import EmployeeDrawer from './AddEmployeeDrawer';
 import PreviewTabs from './PreviewTabs';
+import ExitEmployee from './exitProcess/ExitEmployee';
 
 
 function EmployeePreview() {
@@ -104,7 +105,8 @@ function EmployeePreview() {
                       >
                         <Typography sx={{ p: 1, display: 'Grid' }}>
                           <Button sx={{ color: 'black', borderBottom: '1px dotted #ccc' }}>Upload</Button>
-                          <Button sx={{ color: 'black', borderBottom: '1px dotted #ccc' }}>Bulk Editing</Button>
+                          <Button sx={{ color: 'black', borderBottom: '1px dotted #ccc' }}>Bulk Editing</Button> 
+                        <ExitEmployee/>
                         </Typography>
                       </Popover>
                     </div>
