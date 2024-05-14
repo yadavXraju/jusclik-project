@@ -1,41 +1,70 @@
 import React from 'react';
-import useDrawer from 'hooks/useDrawer';
-import Drawer from '@mui/material/Drawer';
-import { Button, Typography, Box  } from '@mui/material';
+import { Box, Drawer, Button, Typography, IconButton } from '@mui/material';
+import Popover from '@mui/material/Popover';
+import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
+import MoreVertTwoToneIcon from '@mui/icons-material/MoreVertTwoTone';
 import EmployeeExitForm from './EmployeeExitForm';
 
 
+export default function ExitEmployee() {
+  const [state, setState] = React.useState({
+    InitiateEmployeeExit: false
+  });
 
-const ExitEmployee = () => {
-  // ========= call custom hook for toggle drawer ==========
-  const { anchor, toggleDrawer } = useDrawer();
+  const toggleDrawer = (anchor, open, popupState) => (event) => {
+    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+      return;
+    }
 
+    setState({ ...state, [anchor]: open });
+    if (popupState && popupState.close) {
+      popupState.close();
+    }
+  };
 
 
   return (
     <>
-      <Button onClick={toggleDrawer('right', true)} sx={{mr:'8px', color:"black"}}>
-       Initiate Employee Exit 
-      </Button>
-      <Drawer anchor={'right'} open={anchor.right} onClose={toggleDrawer('right', false)}>
-        <Box sx={{ width: '30vw', height:'100vh', padding: 2 }} role="presentation">
+      <PopupState variant="popover" popupId="demo-popup-popover">
+        {(popupState) => (
+          <div>
+            <IconButton sx={{ marginRight: '8px', background: '#cccccc54' }} {...bindTrigger(popupState)}>
+              <MoreVertTwoToneIcon />
+            </IconButton>
+            <Popover
+              {...bindPopover(popupState)}
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'center'
+              }}
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'center'
+              }}
+            >
+              <Typography sx={{ p: 1, display: 'Grid' }}>
+                <Button sx={{ color: 'black', borderBottom: '1px dotted #ccc' }} onClick={toggleDrawer('InitiateEmployeeExit', true, popupState)}>Initiate Employee Exit</Button>
+                <Button sx={{ color: 'black', borderBottom: '1px dotted #ccc' }}>Bulk Editing</Button>
+              </Typography>
+            </Popover>
+          </div>
+        )}
+      </PopupState>
+
+      {/* ====== Initiate Withdrawal Drawer ======= */}
+      <Drawer anchor="right" open={state.InitiateEmployeeExit} onClose={toggleDrawer('InitiateEmployeeExit', false)}>
+        {/* {form} */}
+        <Box sx={{ width: { xs: '100vw', sm: 650 }, padding: 2 }} role="presentation">
           <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #ccc' }}>
             <Typography variant="h4">Initiate On Board</Typography>
-             <Button onClick={toggleDrawer('right', false)} sx={{ alignSelf: 'flex-end' }}>
+            <Button onClick={toggleDrawer('InitiateEmployeeExit', false)} sx={{ alignSelf: 'flex-end' }}>
               Close
             </Button>
           </Box>
-          <Box pt={3}>
-            {/* ========== Render Drawer Contant ============ */}
-         <EmployeeExitForm />
-
-           <Button variant='contained' sx={{position:'fixed',bottom:'10px',right:'10px' }} >Exit</Button>
-          </Box> 
+          {/* ========= import Initiate Withdrawal Form ========== */}
+          <EmployeeExitForm />
         </Box>
       </Drawer>
-    
     </>
   );
-};
-
-export default ExitEmployee;
+}

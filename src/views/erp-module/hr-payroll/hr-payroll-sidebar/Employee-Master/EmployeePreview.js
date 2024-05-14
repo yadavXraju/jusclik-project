@@ -1,14 +1,11 @@
 import React from 'react';
 import MainCard from 'ui-component/cards/MainCard';
-import { Box, Grid, Typography, IconButton, useMediaQuery, Button, Divider } from '@mui/material';
+import { Box, Grid, Typography, IconButton, useMediaQuery, Divider } from '@mui/material';
 import { studentProfileDetails } from 'layout/MainLayout/Header/ProfileSection/ProfileDeatails';
 import { CardMedia } from '@mui/material';
 import ArrowBackOutlinedIcon from '@mui/icons-material/ArrowBackOutlined';
 import { useNavigate } from 'react-router-dom';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
-import Popover from '@mui/material/Popover';
-import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
-import MoreVertTwoToneIcon from '@mui/icons-material/MoreVertTwoTone';
 import { useLocation } from 'react-router-dom';
 import EmployeeDrawer from './AddEmployeeDrawer';
 import PreviewTabs from './PreviewTabs';
@@ -86,32 +83,9 @@ function EmployeePreview() {
                   <EmployeeDrawer editIcon="true" />
                 </IconButton>
 
-                <PopupState variant="popover" popupId="demo-popup-popover">
-                  {(popupState) => (
-                    <div>
-                      <IconButton sx={{ marginRight: '8px', background: '#cccccc54' }} {...bindTrigger(popupState)}>
-                        <MoreVertTwoToneIcon />
-                      </IconButton>
-                      <Popover
-                        {...bindPopover(popupState)}
-                        anchorOrigin={{
-                          vertical: 'bottom',
-                          horizontal: 'center'
-                        }}
-                        transformOrigin={{
-                          vertical: 'top',
-                          horizontal: 'center'
-                        }}
-                      >
-                        <Typography sx={{ p: 1, display: 'Grid' }}>
-                          <Button sx={{ color: 'black', borderBottom: '1px dotted #ccc' }}>Upload</Button>
-                          <Button sx={{ color: 'black', borderBottom: '1px dotted #ccc' }}>Bulk Editing</Button> 
-                        <ExitEmployee/>
-                        </Typography>
-                      </Popover>
-                    </div>
-                  )}
-                </PopupState>
+                 {/* =========== Three dots popover =========== */}
+                <ExitEmployee/>
+
               </Box>
             </Box>
 
