@@ -36,7 +36,7 @@ export const VisuallyHiddenInput = styled('input')({
   };
   
 
-const ConfigureGloballyPreview = ({customStyle}) => {
+const ConfigureGloballyPreview = ({customStyle , clearStates }) => {
     const dispatch = useDispatch();
     const [concessionTypes, setConcessionTypes] = useState([]);
     const [amounts, setAmounts] = useState([]);
@@ -138,12 +138,14 @@ const ConfigureGloballyPreview = ({customStyle}) => {
         setConcessionTypes(newConcessionTypes);
         setAmounts(newAmounts);
     };
-    
 
-    const handleSave = (PreviewData , feeHeads)=>{
+    const handleSave = (PreviewData )=>{
         dispatch(configGlobally(PreviewData))
-        dispatch(setFeeHeads(feeHeads))
-      }
+        dispatch(setFeeHeads([])); 
+        setConcessionTypes([]);
+        setAmounts([]);
+        clearStates();
+    }
 
     return (
         <>
