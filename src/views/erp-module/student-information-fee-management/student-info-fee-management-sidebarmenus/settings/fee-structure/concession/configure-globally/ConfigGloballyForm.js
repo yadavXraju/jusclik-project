@@ -7,6 +7,8 @@ import { setFeeHeads, setClass } from 'store/student-info-and-fee/settings/FeeSt
 import ConfigureGloballyPreview from './ConfigureGloballyPreview';
 
 const ConfigGloballyForm = () => {
+  const [applicableFromDate, setApplicableFromDate] = useState('');
+  const [uptoDate, setUptoDate] = useState('');
   const [feeHead, setFeeHead] = useState([]);
   const [classes, setClasses] = useState([]);
   const [remark, setRemark] = useState('');
@@ -25,7 +27,10 @@ const ConfigGloballyForm = () => {
     setFeeHead([]);
     setClasses([]);
     setRemark('');
+    setUptoDate('');
+    setApplicableFromDate('');
   };
+
 
   return (
     <>
@@ -34,12 +39,16 @@ const ConfigGloballyForm = () => {
 
           {/* ===========================  applicable from date*/}
           <Grid item xs={12} md={6} sx={{ marginBottom: '5px' }}>
-            <ParamDateComponent label="Applicable From Date" name="applicableFromDate" value='' customStyle={{ width: '100%' }} />
+            <ParamDateComponent label="Applicable From Date" name="applicableFromDate" value={applicableFromDate} customStyle={{ width: '100%' }}
+            onChange={(date) => setApplicableFromDate(date.format('DD-MM-YYYY'))} 
+              />
           </Grid>
 
           {/* ===========================  up to date*/}
           <Grid item xs={12} md={6} sx={{ marginBottom: '5px' }}>
-            <ParamDateComponent label="Upto Date" name="uptoDate" value='' customStyle={{ width: '100%' }} />
+            <ParamDateComponent label="Upto Date" name="uptoDate" value={uptoDate} customStyle={{ width: '100%' }}  
+            onChange={(date) => setUptoDate(date.format('DD-MM-YYYY'))} 
+            />
           </Grid>
 
           {/* ===========================  fee head */}

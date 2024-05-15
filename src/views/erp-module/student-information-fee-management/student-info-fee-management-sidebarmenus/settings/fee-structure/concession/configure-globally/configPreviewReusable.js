@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Grid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Checkbox, TextField , Box , Typography , Button , styled , } from '@mui/material';
-import { useSelector ,useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import SelectList from 'views/common-section/ParamSelectList';
 import { configGlobally , setFeeHeads } from 'store/student-info-and-fee/settings/FeeStructureConfigure';
 
@@ -36,7 +36,17 @@ export const VisuallyHiddenInput = styled('input')({
   };
   
 
-const ConfigureGloballyPreview = ({customStyle , clearStates }) => {
+  const ConfigureGloballyPreview = ({
+    feeHead,
+    classes,
+    concessionTypeOptions,
+    onSave,
+    onCancel,
+    customStyle,
+    clearStates,
+    dispatchActions, // Pass an array of dispatch actions
+}) => {
+
     const dispatch = useDispatch();
     const [concessionTypes, setConcessionTypes] = useState([]);
     const [amounts, setAmounts] = useState([]);
@@ -46,9 +56,7 @@ const ConfigureGloballyPreview = ({customStyle , clearStates }) => {
     const [selectAllAmountChecked, setSelectAllAmountChecked] = useState(false);
     const [checkedConcessionType , setCheckedConcessionType]= useState('');
     const [checkedAmount , setCheckedAmount]= useState('');
-    const feeHead = useSelector((state) => state.configGloballyFormSlice.feeHeads);
-    const classes = useSelector((state) => state.configGloballyFormSlice.classes);
-    const concessionTypeOptions = useSelector((state) => state.configGloballyFormSlice.concessionTypeOptions);
+
 
 
     const handleConcessionType = (index, value) => {
@@ -139,16 +147,14 @@ const ConfigureGloballyPreview = ({customStyle , clearStates }) => {
         setAmounts(newAmounts);
     };
 
-    const handleSave = (PreviewData )=>{
-        dispatch(configGlobally(PreviewData))
+
+    const handleSave = (PreviewData) => {
+        dispatchActions.forEach(action => dispatch(action(PreviewData))); // Dispatch each action in the array
         dispatch(setFeeHeads([])); 
         setConcessionTypes([]);
         setAmounts([]);
-        setConcessionTypes([]);
         clearStates();
-        setCheckedConcessionType(['']);
-        setCheckedAmount(['']);
-    }
+    };
 
     return (
         <>
@@ -326,7 +332,7 @@ const ConfigureGloballyPreview = ({customStyle , clearStates }) => {
                         Save 
                     </Button>
 
-                    <Button variant="outlined" sx={{ height: "38px", marginTop: "auto", marginBottom: "auto", width: "144px" }}>
+                    <Button variant="outlined" sx={{ height: "38px", marginTop: "auto", marginBottom: "auto", width: "144px" }} onClick={onCancel}>
                         Cancel
                     </Button>
                 </Box>
