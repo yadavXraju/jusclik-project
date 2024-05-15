@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { Grid, Typography, Box, TextField ,InputLabel } from '@mui/material';
+import { Grid, Typography, Box, TextField, InputLabel } from '@mui/material';
 import Divider from '@mui/material/Divider';
 import Dropdown from 'views/common-section/ParamSelectList';
 
-function Additional_Information({handleClick}) {
+function Additional_Information({ handleClick }) {
   const [formData, setFormData] = useState({
     parents_status: '',
     applied_earlier: '',
@@ -27,17 +27,17 @@ function Additional_Information({handleClick}) {
   const SelectParentsStatusOptions = [
     { value: 'select', label: 'Select' },
     { value: 'no', label: 'No' },
-    { value: 'yes', label: 'Yes' },
-];
+    { value: 'yes', label: 'Yes' }
+  ];
 
-const AppliedEarlierOptions = [
-  { value: 'select', label: 'Select' },
+  const AppliedEarlierOptions = [
+    { value: 'select', label: 'Select' },
     { value: 'no', label: 'No' },
-    { value: 'yes', label: 'Yes' },
-];
+    { value: 'yes', label: 'Yes' }
+  ];
 
-const AppliedYearOptions = [
-  { value: 'select', label: 'Select' },
+  const AppliedYearOptions = [
+    { value: 'select', label: 'Select' },
     { value: '2021-22', label: '2021-22' },
     { value: '2020-21', label: '2020-21' },
     { value: '2019-20', label: '2019-20' },
@@ -60,11 +60,10 @@ const AppliedYearOptions = [
     { value: '2002-03', label: '2002-03' },
     { value: '2001-02', label: '2001-02' },
     { value: '2000-01', label: '2000-01' }
-];
+  ];
 
-
-const ClassOptions = [
-  { value: 'select', label: 'Select' },
+  const ClassOptions = [
+    { value: 'select', label: 'Select' },
     { value: 'playgroup', label: 'Playgroup' },
     { value: 'nursery', label: 'Nursery' },
     { value: 'kg', label: 'KG' },
@@ -80,28 +79,27 @@ const ClassOptions = [
     { value: 'X', label: 'X' },
     { value: 'XI', label: 'XI' },
     { value: 'XII', label: 'XII' }
-];
+  ];
 
-const handleChange = (e) => {
-  const { name, value } = e.target;
+  const handleChange = (e) => {
+    const { name, value } = e.target;
 
-  if (name === 'reason_to_join') {
+    if (name === 'reason_to_join') {
       // Check if the input value exceeds 100 characters
       if (value.length > 150) {
-          // Truncate the value to 100 characters
-          const truncatedValue = value.slice(0, 150);
-          // Update the state with the truncated value
-          setFormData({ ...formData, [name]: truncatedValue });
+        // Truncate the value to 100 characters
+        const truncatedValue = value.slice(0, 150);
+        // Update the state with the truncated value
+        setFormData({ ...formData, [name]: truncatedValue });
       } else {
-          // If the input value is within the limit, update the state with the value
-          setFormData({ ...formData, [name]: value });
+        // If the input value is within the limit, update the state with the value
+        setFormData({ ...formData, [name]: value });
       }
-  } else {
+    } else {
       // For other fields, update the state with the value directly
       setFormData({ ...formData, [name]: value });
-  }
-};
-
+    }
+  };
 
   const validateFields = (fields) => {
     const newErrors = {};
@@ -109,12 +107,11 @@ const handleChange = (e) => {
       newErrors[key] = !fields[key].trim();
     });
     return newErrors;
-    
   };
 
   const handleSubmit = (tab) => {
     let newErrors = validateFields(formData);
-    
+
     // If "Have you applied" is 'no', skip validation for "Applied Year" and "For which Class"
     if (formData.applied_earlier === 'no') {
       newErrors = {
@@ -123,12 +120,12 @@ const handleChange = (e) => {
         applied_class: false
       };
     }
-  
+
     setFormError(newErrors);
-  
+
     if (!Object.values(newErrors).some((error) => error)) {
       // Perform action on valid submission, like navigating to next step
-      handleClick(tab)
+      handleClick(tab);
     }
   };
 
@@ -144,8 +141,6 @@ const handleChange = (e) => {
     // fontFamily: 'Roboto, sans-serif'
   };
 
-  
-
   return (
     <>
       <Box sx={{ padding: '2rem' }}>
@@ -158,12 +153,10 @@ const handleChange = (e) => {
 
       <Grid sx={{ padding: '1rem 4rem' }} container spacing={4}>
         <Grid item xs={4}>
-          
-        <InputLabel sx={{ ...labelStyles, marginTop: '0px' }} htmlFor="parents_status">
-        Are Parents Separated OR Divorced ?
+          <InputLabel sx={{ ...labelStyles, marginTop: '0px' }} htmlFor="parents_status">
+            Are Parents Separated OR Divorced ?
           </InputLabel>
           <Dropdown
-       
             options={SelectParentsStatusOptions}
             name="parents_status"
             onChange={handleChange}
@@ -172,9 +165,9 @@ const handleChange = (e) => {
             required
             customStyle={{ '& > div': { background: '#ffffff' } }}
           />
-          
-          <InputLabel sx={{ ...labelStyles}} htmlFor="applied_earlier">
-          Have you applied to SHIKSHANTAR SCHOOL earlier ?
+
+          <InputLabel sx={{ ...labelStyles }} htmlFor="applied_earlier">
+            Have you applied to SHIKSHANTAR SCHOOL earlier ?
           </InputLabel>
           <Dropdown
             options={AppliedEarlierOptions}
@@ -184,9 +177,7 @@ const handleChange = (e) => {
             error={formError.applied_earlier}
             required
             customStyle={{ '& > div': { background: '#ffffff' } }}
-          
           />
-         
 
           <TextField
             name="reason_to_join"
@@ -206,17 +197,14 @@ const handleChange = (e) => {
             onChange={handleChange}
             value={formData.reason_to_join}
             error={formError.reason_to_join}
-          />  
-
+          />
         </Grid>
 
         <Grid item xs={4}>
-
-        <InputLabel sx={{ ...labelStyles , marginTop:'0px'}} htmlFor="family_situation">
-        Do you live in a nuclear, joint OR extended family situation ?
+          <InputLabel sx={{ ...labelStyles, marginTop: '0px' }} htmlFor="family_situation">
+            Do you live in a nuclear, joint OR extended family situation ?
           </InputLabel>
           <TextField
-            
             name="family_situation"
             required
             fullWidth
@@ -225,9 +213,9 @@ const handleChange = (e) => {
             value={formData.family_situation}
             error={formError.family_situation}
           />
-         
-         <InputLabel sx={{ ...labelStyles }} htmlFor="family_situation">
-         {formData.applied_earlier === 'no' ? 'Disabled' : 'Applied Year'}
+
+          <InputLabel sx={{ ...labelStyles }} htmlFor="family_situation">
+            {formData.applied_earlier === 'no' ? 'Disabled' : 'Applied Year'}
           </InputLabel>
           <Dropdown
             options={AppliedYearOptions}
@@ -242,11 +230,10 @@ const handleChange = (e) => {
         </Grid>
 
         <Grid item xs={4}>
-        <InputLabel sx={{ ...labelStyles, marginTop:'0px' }} htmlFor="other_schools">
-        Which other school(s) have you applied to ?
+          <InputLabel sx={{ ...labelStyles, marginTop: '0px' }} htmlFor="other_schools">
+            Which other school(s) have you applied to ?
           </InputLabel>
           <TextField
-            
             name="other_schools"
             required
             fullWidth
@@ -256,15 +243,13 @@ const handleChange = (e) => {
             error={formError.other_schools}
           />
           <InputLabel sx={{ ...labelStyles }} htmlFor="applied_class">
-          {formData.applied_earlier === 'no' ? 'Disabled' : 'For which Class'}
+            {formData.applied_earlier === 'no' ? 'Disabled' : 'For which Class'}
           </InputLabel>
           <Dropdown
-            
             options={ClassOptions}
             name="applied_class"
             disabled={formData.applied_earlier === 'no'}
             required
-        
             customStyle={{ '& > div': { background: '#ffffff' } }}
             onChange={handleChange}
             value={formData.applied_class || 'select'}

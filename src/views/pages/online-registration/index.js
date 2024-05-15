@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import SchoolLogo from '../../../assets/images/Arwachin School (Test Logo) (2).png';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import { Grid, Box, Paper, Typography} from '@mui/material';
+import { Grid, Box, Paper, Typography ,useMediaQuery} from '@mui/material';
 import StudentDetails from './StudentDetails';
 import Upload_Document_Photos from './Upload_Document_Photos';
 import SignUpRegisteration from './SignUpRegisteration';
@@ -16,6 +16,9 @@ import PreviewAndSubmit from './PreviewAndSubmit';
 import TabNumber from './TabNumber';
 import BottomNavbar from 'views/common-section/BottomNavbar';
 
+
+
+
 const OnlineRegistration = () => {
   const [TabChange, setTabChange] = useState(0);
   const [showSignUp, setShowSignUp] = useState(false);
@@ -28,9 +31,6 @@ const OnlineRegistration = () => {
   const handleClick = (tab) => {
     setTabChange(tab);
   };
-
-
-
 
   // Array containing information about each tab
 
@@ -51,11 +51,59 @@ const OnlineRegistration = () => {
     setTabChange(newValue);
   };
 
+  //Responsive
+  const XXL = useMediaQuery('(min-width:1920px)')
+  const Res1680 =useMediaQuery('(max-width:1680px)')
+  const Res1536 = useMediaQuery('(max-width:1536px)')
+  const Res1280 = useMediaQuery('(max-width:1280px)')
+
+   let ResNavbar = {
+    bottom:'4rem',
+    width:'76%'
+   }
+
+  const Res2560 = useMediaQuery('(min-width:2560px)'); 
+
+  if (Res2560) {
+    ResNavbar = {
+      bottom: '6rem',
+      width: '77.5%'
+    };
+  }
+  
+  if (Res1680) {
+    ResNavbar = {
+      bottom: '3rem',
+      width: '66%'
+    };
+  }
+
+  if (Res1680) {
+    ResNavbar = {
+      bottom: '3rem',
+      width: '66%'
+    };
+  }
+
+  if (Res1536) {
+    ResNavbar = {
+      bottom: '3rem',
+      width: '56%'
+    };
+  }
+
+  if (Res1280) {
+    ResNavbar = {
+      bottom: '3rem',
+      width: '42%'
+    };
+  }
 
 
 
   return (
     <>
+     
       {showSignUp ? (
         <Grid>
           <SignUpRegisteration continueHandler={continueHandler} />
@@ -65,8 +113,8 @@ const OnlineRegistration = () => {
           {/* background color  = #EEF2F6 */}
           <Grid sx={{ background: '#ffecec', height: '102.5vh' }}>
             <Grid container spacing={3} sx={{ paddingLeft: '5rem', paddingTop: '4rem' }}>
-              <Grid item xs={2} component={Paper} elevation={2} sx={{ height: '87vh', marginTop: '1.5rem'}}>
-                <Grid sx={{ paddingRight: '1rem', marginTop: '-5px' }}>
+              <Grid item xl={XXL ? 2 : 3} lg={4} md={4} sm={12} component={Paper} elevation={2} sx={{ height: '87vh', marginTop: '1.5rem'}}>
+                <Grid sx={{ paddingRight: '1rem', marginTop: '-5px'  }}>
                   <Box sx={{ marginRight: '53px' }}>
                     <img src={SchoolLogo} alt="Logo" width="250px" style={{ marginRight: '8px' }} />
                   </Box>
@@ -129,7 +177,7 @@ const OnlineRegistration = () => {
               </Grid>
 
               {/* Render the selected component */}
-              <Grid item xs={10}>
+              <Grid item xl={XXL ? 10 : 9} lg={8} md={8}  >
                 <Box sx={{ paddingRight: '4rem' }}>
                   <Paper elevation={2} sx={{ height: '87vh' }}>
                     {tabsData.map((tab) => TabChange === tab.value && tab.component)}
@@ -139,7 +187,7 @@ const OnlineRegistration = () => {
                         tabPageLength={tabsData.length - 1}
                         value={TabChange}
                         setValue={setTabChange}
-                        customStyle={{ width: '76%', backgroundColor: 'white', bottom: '4rem', borderBottom: 'none', borderTop:'1px solid #ccc', borderRadius:'0px' , height:'5rem' ,paddingLeft:'3.7rem' }}
+                        customStyle={{ ...ResNavbar,backgroundColor: 'white', borderBottom: 'none', borderTop:'1px solid #ccc', borderRadius:'0px' , height:'5rem' ,paddingLeft:'3.7rem' }}
                       />
                     </Box>
 
@@ -171,6 +219,7 @@ const OnlineRegistration = () => {
   </Paper>
 </Box> */}
 
+
     </>
   );
 };
@@ -185,7 +234,7 @@ export default OnlineRegistration;
 
 
 
-// Same Copy
+// Same Copy Reuseable
 // import React, { useState } from 'react';
 // import CloudLogo from '../../../assets/images/Untitled-2.png';
 // import { Grid, Typography, Box } from '@mui/material';
