@@ -18,6 +18,8 @@ const TabsName = ({ name, number, numberShow, iconShow, lastIndex }) => {
             style={{
               width: '30px',
               height: '30px',
+              minHeight:'30px',
+              minWidth:'30px',
               borderRadius: '50%',
               textAlign: 'center',
               lineHeight: '22px',

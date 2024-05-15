@@ -5,14 +5,15 @@ import { Button, Typography, Box  } from '@mui/material';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import ParameterizedAutoComplete from 'views/common-section/ParamAutoComplete';
 import { countries } from './CountryData';
+import { useNavigate } from 'react-router';
 
 
 
 const OnBoardDrawer = () => {
-  // ========= call custom hook for toggle drawer ==========
-  const { anchor, toggleDrawer } = useDrawer();
+  const navigate=useNavigate()
 
-
+//    ============================================ call custom hook for toggle drawer ============================================
+const { anchor, toggleDrawer } = useDrawer();
 
   return (
     <>
@@ -28,15 +29,14 @@ const OnBoardDrawer = () => {
             </Button>
           </Box>
           <Box pt={3}>
-            {/* ========== Render Drawer Contant ============ */}
-           <ParameterizedAutoComplete   option={countries} customStyle={{width:"60vh !important"}} label={'Select Department'} />
-
-           <Button variant='contained' sx={{position:'fixed',bottom:'10px',right:'10px' }} >Initate</Button>
+{/*     ================================================= Render Drawer Contant ================================================ */}
+           <ParameterizedAutoComplete   option={countries} customStyle={{width:"60vh !important"}} label={'Select Department'} />           
+           <Button variant='contained' sx={{position:'fixed',bottom:'10px',right:'10px' }} onClick={(()=>navigate('/erp/hr-payroll/settings/on-boarding-task-list'))}>Initiate</Button>
           </Box> 
         </Box>
-      </Drawer>
-    
+      </Drawer>    
     </>
+
   );
 };
 
