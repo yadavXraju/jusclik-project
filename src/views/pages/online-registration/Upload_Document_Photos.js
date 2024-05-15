@@ -9,7 +9,6 @@ import Tooltip from '@mui/material/Tooltip';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 import WarningDialog from 'views/common-section/WarningDialog';
 
-
 function Upload_Document_Photos({ handleClick }) {
   const [selectedFiles, setSelectedFiles] = useState({
     dateOfBirthProof: null,
@@ -18,6 +17,7 @@ function Upload_Document_Photos({ handleClick }) {
     motherPhoto: null,
     fatherPhoto: null
   });
+  const [itemtoDelte, setItemtoDelete] = useState();
 
   const VisuallyHiddenInput = styled('input')({
     clip: 'rect(0 0 0 0)',
@@ -31,9 +31,9 @@ function Upload_Document_Photos({ handleClick }) {
     width: 1
   });
 
-  const [openWarning, setOpenWarning] = useState(false); 
-  const [warningContent, setWarningContent] = useState("");
-  const [DeleteWarning, setDeleteWarning] = useState(false); 
+  const [openWarning, setOpenWarning] = useState(false);
+  const [warningContent, setWarningContent] = useState('');
+  const [DeleteWarning, setDeleteWarning] = useState(false);
 
   const handleFileChange = (fieldName) => (event) => {
     const file = event.target.files[0];
@@ -51,7 +51,6 @@ function Upload_Document_Photos({ handleClick }) {
       setOpenWarning(true);
       // Optionally, you can clear the input field
       event.target.value = null;
-      
     }
   };
 
@@ -59,14 +58,14 @@ function Upload_Document_Photos({ handleClick }) {
     handleClick(tab);
   };
 
-  console.log(()=>{
-    handleSubmit()
-  })
+  console.log(() => {
+    handleSubmit();
+  });
 
   const DeleteUploadFiles = () => {
     if (DeleteWarning) {
-      setSelectedFiles((prevState) => ({ ...prevState, dateOfBirthProof: null }));
-      setDeleteWarning(false); 
+      setSelectedFiles((prevState) => ({ ...prevState, [itemtoDelte]: null }));
+      setDeleteWarning(false);
     }
   };
   return (
@@ -112,9 +111,14 @@ function Upload_Document_Photos({ handleClick }) {
                 <Box sx={{ marginLeft: '15px', display: 'flex', alignItems: 'center', marginTop: '10px' }}>
                   <Typography variant="body1">{selectedFiles.dateOfBirthProof.name}</Typography>
                   <Tooltip title="Delete">
-                  <IconButton onClick={() => setDeleteWarning(true)} size="small">
-  <DeleteTwoToneIcon sx={{ color: '#f19e9e' }} />
-</IconButton>
+                    <IconButton
+                      onClick={() => {
+                        setDeleteWarning(true), setItemtoDelete('dateOfBirthProof');
+                      }}
+                      size="small"
+                    >
+                      <DeleteTwoToneIcon sx={{ color: '#f19e9e' }} />
+                    </IconButton>
                   </Tooltip>
                 </Box>
               )}
@@ -141,7 +145,13 @@ function Upload_Document_Photos({ handleClick }) {
                 <Box sx={{ marginLeft: '15px', display: 'flex', alignItems: 'center', marginTop: '10px' }}>
                   <Typography variant="body1">{selectedFiles.passport.name}</Typography>
                   <Tooltip title="Delete">
-                    <IconButton onClick={() => setSelectedFiles((prevState) => ({ ...prevState, passport: null }))} size="small">
+                    <IconButton
+                      IconButton
+                      onClick={() => {
+                        setDeleteWarning(true), setItemtoDelete('passport');
+                      }}
+                      size="small"
+                    >
                       <DeleteTwoToneIcon sx={{ color: '#f19e9e' }} />
                     </IconButton>
                   </Tooltip>
@@ -180,7 +190,13 @@ function Upload_Document_Photos({ handleClick }) {
                 <Box sx={{ marginLeft: '15px', display: 'flex', alignItems: 'center', marginTop: '10px' }}>
                   <Typography variant="body1">{selectedFiles.studentPhoto.name}</Typography>
                   <Tooltip title="Delete">
-                    <IconButton onClick={() => setSelectedFiles((prevState) => ({ ...prevState, studentPhoto: null }))} size="small">
+                    <IconButton
+                      IconButton
+                      onClick={() => {
+                        setDeleteWarning(true), setItemtoDelete('studentPhoto');
+                      }}
+                      size="small"
+                    >
                       <DeleteTwoToneIcon sx={{ color: '#f19e9e' }} />
                     </IconButton>
                   </Tooltip>
@@ -208,7 +224,13 @@ function Upload_Document_Photos({ handleClick }) {
                 <Box sx={{ marginLeft: '15px', display: 'flex', alignItems: 'center', marginTop: '10px' }}>
                   <Typography variant="body1">{selectedFiles.motherPhoto.name}</Typography>
                   <Tooltip title="Delete">
-                    <IconButton onClick={() => setSelectedFiles((prevState) => ({ ...prevState, motherPhoto: null }))} size="small">
+                    <IconButton
+                      IconButton
+                      onClick={() => {
+                        setDeleteWarning(true), setItemtoDelete('motherPhoto');
+                      }}
+                      size="small"
+                    >
                       <DeleteTwoToneIcon sx={{ color: '#f19e9e' }} />
                     </IconButton>
                   </Tooltip>
@@ -236,7 +258,13 @@ function Upload_Document_Photos({ handleClick }) {
                 <Box sx={{ marginLeft: '15px', display: 'flex', alignItems: 'center', marginTop: '10px' }}>
                   <Typography variant="body1">{selectedFiles.fatherPhoto.name}</Typography>
                   <Tooltip title="Delete">
-                    <IconButton onClick={() => setSelectedFiles((prevState) => ({ ...prevState, fatherPhoto: null }))} size="small">
+                    <IconButton
+                      IconButton
+                      onClick={() => {
+                        setDeleteWarning(true), setItemtoDelete('fatherPhoto');
+                      }}
+                      size="small"
+                    >
                       <DeleteTwoToneIcon sx={{ color: '#f19e9e' }} />
                     </IconButton>
                   </Tooltip>
@@ -250,26 +278,24 @@ function Upload_Document_Photos({ handleClick }) {
         <Grid item xs={1}></Grid>
 
         {/* Warning Dialog Used for File Type */}
-      <WarningDialog 
-        open={openWarning} 
-        onClose={() => setOpenWarning(false)} 
-        contentText={warningContent} 
-        onConfirm={() => setOpenWarning(false)} 
-        hideCancel ={true}
-      />
+        <WarningDialog
+          open={openWarning}
+          onClose={() => setOpenWarning(false)}
+          contentText={warningContent}
+          onConfirm={() => setOpenWarning(false)}
+          hideCancel={true}
+        />
 
- {/* Warning Dialog Used for Delete File */}
-   <WarningDialog 
-  open={DeleteWarning} 
-  onClose={() => setDeleteWarning(false)}
-  contentText="Are you sure you want to delete this file?"
-  onConfirm={DeleteUploadFiles} // Remove the parentheses here
-/>
+        {/* Warning Dialog Used for Delete File */}
+        <WarningDialog
+          open={DeleteWarning}
+          onClose={() => setDeleteWarning(false)}
+          contentText="Are you sure you want to delete this file?"
+          onConfirm={() => DeleteUploadFiles(itemtoDelte)} // Remove the parentheses here
+        />
       </Grid>
     </>
   );
 }
 
 export default Upload_Document_Photos;
-
-

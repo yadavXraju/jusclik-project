@@ -40,6 +40,7 @@ const a11yProps = (index) => {
 
 const SetupTabs = ({
   tabPage,
+  component=null,
   orientation = 'horizontal',
   variant = 'scrollable',
   showBottomNav=true,
@@ -97,6 +98,7 @@ const SetupTabs = ({
         <Tabs
           orientation={orientation}
           variant={variant}
+          component={component}
           value={value}
           onChange={handleChange}
           aria-label="Vertical tabs example"
@@ -125,7 +127,6 @@ const SetupTabs = ({
                   fontWeight: '600',
                   color:'rgb(18, 25, 38)',
                 },
-
                 '& .MuiSvgIcon-root':{
                  ...style?.iconStyle,
                  ...customIconStyle,

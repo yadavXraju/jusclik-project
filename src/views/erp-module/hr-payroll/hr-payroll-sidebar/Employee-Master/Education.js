@@ -32,7 +32,7 @@ const initialRows = [
   { id: 5,  },
 ];
 
-export default function Education() {
+export default function Education({ disabled=false }) {
   const [tableRows, setTableRows] = React.useState(initialRows);
   const [modalOpen, setModalOpen] = React.useState(false);
   const [deleteId, setDeleteId] = React.useState(null);
@@ -117,6 +117,7 @@ export default function Education() {
                       fullWidth
                       value={row.programmes}
                       variant="outlined"
+                      disabled={disabled}
                       onChange={(e) => handleRowChange(row.id, e.target.value, 'programmes')}
                     />
                   </TableCell>
@@ -125,6 +126,7 @@ export default function Education() {
                       fullWidth
                       value={row.school}
                       variant="outlined"
+                      disabled={disabled}
                       onChange={(e) => handleRowChange(row.id, e.target.value, 'school')}
                     />
                   </TableCell>
@@ -133,6 +135,7 @@ export default function Education() {
                       fullWidth
                       value={row.university}
                       variant="outlined"
+                      disabled={disabled}
                       onChange={(e) => handleRowChange(row.id, e.target.value, 'university')}
                     />
                   </TableCell>
@@ -141,6 +144,7 @@ export default function Education() {
                       fullWidth
                       value={row.subjects}
                       variant="outlined"
+                      disabled={disabled}
                       onChange={(e) => handleRowChange(row.id, e.target.value, 'subjects')}
                     />
                   </TableCell>
@@ -149,6 +153,7 @@ export default function Education() {
                       fullWidth
                       value={row.marks}
                       variant="outlined"
+                      disabled={disabled}
                       onChange={(e) => handleRowChange(row.id, e.target.value, 'marks')}
                     />
                   </TableCell>
@@ -157,6 +162,7 @@ export default function Education() {
                       hiddenLabel
                       options={mediumOptions}
                       value={row.medium}
+                      disabled={disabled}
                       onChange={(e) => handleRowChange(row.id, e.target.value, 'medium')}
                     />
                   </TableCell>
@@ -165,10 +171,12 @@ export default function Education() {
                       hiddenLabel
                       options={PassingYearOptions}
                       value={row.passingYear}
+                      disabled={disabled}
                       onChange={(e) => handleRowChange(row.id, e.target.value, 'passingYear')}
                     />
                   </TableCell>
-                  <TableCell align="right" sx={{padding:'8px'}}>
+                  {disabled === false && (
+                    <TableCell align="right" sx={{padding:'8px'}}>
                     <Box onClick={(event) => event.stopPropagation()}>
                       <Tooltip title="Delete">
                         <IconButton size="small" onClick={() => handleDeleteRow(row.id)} sx={{ color: '#f19e9e' }}>
@@ -177,13 +185,17 @@ export default function Education() {
                       </Tooltip>
                     </Box>
                   </TableCell>
+                  )}
+                  
                 </TableRow>
               ))}
             </TableBody>
           </Table>
         </TableContainer>
         <Box p={1}>
-        <Button variant="outlined" size='small' onClick={handleAddRow} startIcon={<AddOutlinedIcon/>}>Add Row</Button>
+          {disabled === false && (
+             <Button variant="outlined" size='small' onClick={handleAddRow} startIcon={<AddOutlinedIcon/>}>Add Row</Button>
+          )}
         </Box>
       </Paper>
       {/* ========= Import warning dialog ========== */}

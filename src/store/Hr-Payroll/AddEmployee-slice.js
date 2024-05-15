@@ -23,7 +23,7 @@ const intialStudentDetailsData = [
             id: 4
           },
           {
-            name: "Joining  Date",
+            name: "Joining Date",
             type: "date",
             selected: true,
             id: 5

@@ -117,10 +117,10 @@ const columns = [
 
 
 // Functions
-const handleDeleteRow=(id)=>{
-  setmodalOpen(true);
-  setdeleteId(id)
-}
+// const handleDeleteRow=(id)=>{
+//   setmodalOpen(true);
+//   setdeleteId(id)
+// }
 
 const confirmDelete=()=>{
   const updatedRows = tableRows.filter((row) => row.id !== deleteId);
@@ -129,6 +129,7 @@ const confirmDelete=()=>{
   setdeleteId(null)
 
 }
+
 const handleModalClose=()=>{
   setmodalOpen(false);
 }
