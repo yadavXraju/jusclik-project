@@ -14,16 +14,16 @@ import EmployeeDrawer from './AddEmployeeDrawer';
 export default function EmployeeTable() {
   const navigate = useNavigate();
   const [tableRows, setTableRows] = React.useState(EmployeeData);
-  // const [currEditItem, setCurrEditItem] = React.useState({});
+  const [currEditItem, setCurrEditItem] = React.useState({});
 
 const Click = (rowData) => {
     navigate(`/erp/hr-payroll/employee-master/${rowData.id}`, { state: { rowData }});
   };
 
   // ========== function for handle Edit row ===========
-  //  const handleEditClick = (editItem) => {
-  //   setCurrEditItem(editItem);
-  // };
+   const handleEditClick = (editItem) => {
+    setCurrEditItem(editItem);
+  };
 
   
   // ========= render error model for Delete row ==========
@@ -79,7 +79,7 @@ const Click = (rowData) => {
           <Tooltip >
           <IconButton onClick={(event) => event.stopPropagation()}>
             {/* <EditTwoToneIcon/> */}
-            <EmployeeDrawer editIcon="true" handleClick={() => {}} />
+            <EmployeeDrawer editIcon="true" currEditItem={currEditItem} handleClick={() => handleEditClick(params.row)} />
             {/* <AddContactDrawer editIcon={true} currEditItem={currEditItem} handleClick={() => handleEditClick(params.row)} /> */}
           </IconButton>
           

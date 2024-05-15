@@ -35,7 +35,7 @@ const buttonsData = [
 ];
 
 
-const EmployeeFormTab = () => {
+const EmployeeFormTab = ({ currEditItem }) => {
   const dispatch=useDispatch();
   const { studentDetailsData,subGroups } = useSelector((state) => state.employeeSlice);
   const [selectedButton, setSelectedButton] = useState(0);
@@ -98,7 +98,7 @@ const EmployeeFormTab = () => {
   let cardComponent;
   switch (selectedButton) {
     case 0:
-      cardComponent = <ProfileDetail setStudentDetail={handleChange} EmployeeFields={option?.primaryDetails} type="Primary Details" />;
+      cardComponent = <ProfileDetail setEditItem={currEditItem} setStudentDetail={handleChange} EmployeeFields={option?.primaryDetails} type="Primary Details" />;
       break;
     case 1:
       cardComponent = <ProfileDetail EmployeeFields={option?.otherDetails} type="Other  Details" />;

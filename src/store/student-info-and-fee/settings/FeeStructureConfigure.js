@@ -67,7 +67,7 @@ const configGloballySlice = createSlice({
     reducers: {
         setFeeHeads : (state, action) => {
             state.feeHeads = action.payload;
-            state.amount = action.payload;
+            // state.amount = action.payload;
         },
         setClass: (state, action) => {
             state.classes = action.payload;
@@ -81,5 +81,5 @@ const configGloballySlice = createSlice({
     },
 });
 
-export const { setFeeHeads , setClass ,  configGlobally , configStudentWise} = configGloballySlice.actions;
+export const { setFeeHeads , setClass ,  configGlobally , configStudentWise ,  resetFeeHeads } = configGloballySlice.actions;
 export default configGloballySlice.reducer;
