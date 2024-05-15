@@ -11,16 +11,9 @@ function PreviewAndSubmit() {
   const [checked, setChecked] =useState(false);
 
 
-
-
-
-
   const handleChange = (event) => {
     setChecked(event.target.checked);
   };
-
-
- 
 
 
    //Below Function will use in button to validate validation

@@ -5,7 +5,8 @@ import DescriptionTwoToneIcon from '@mui/icons-material/DescriptionTwoTone';
 import HomeWorkTwoToneIcon from '@mui/icons-material/HomeWorkTwoTone';
 import PeopleAltTwoToneIcon from '@mui/icons-material/PeopleAltTwoTone';
 import LeaderboardTwoToneIcon from '@mui/icons-material/LeaderboardTwoTone';
-// import Experience from './Experience';
+import Experience from './Experience';
+import Education from './Education';
 
 
 const PreviewTabs = () => {
@@ -126,9 +127,11 @@ const PreviewTabs = () => {
             </Box>
           </>
         )}
-        {tabValue === 1 && 1}
+        {tabValue === 1 && <Box mt={2}>
+          <Education disabled='true'/>
+          </Box>}
         {tabValue === 2 && <Box mt={2}>
-          {/* <Experience disabled='true' /> */}
+          <Experience disabled='true' />
           </Box>}
         {tabValue === 3 && 
          <>

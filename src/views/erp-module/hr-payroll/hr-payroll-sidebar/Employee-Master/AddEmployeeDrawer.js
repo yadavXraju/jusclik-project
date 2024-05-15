@@ -8,7 +8,7 @@ import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 
 
 
-const EmployeeDrawer = ({DrawerBtn = false, editIcon = false, handleClick}) => {
+const EmployeeDrawer = ({DrawerBtn = false, editIcon = false, handleClick, currEditItem}) => {
   // ========= call custom hook for toggle drawer ==========
   const { anchor, toggleDrawer } = useDrawer();
 
@@ -41,7 +41,7 @@ const EmployeeDrawer = ({DrawerBtn = false, editIcon = false, handleClick}) => {
           </Box>
           <Box pt={3}>
             {/* ========== Render Drawer Content ============ */}
-            <EmployeeFormTab/>
+            <EmployeeFormTab currEditItem={currEditItem} />
           </Box>
         </Box>
       </Drawer>

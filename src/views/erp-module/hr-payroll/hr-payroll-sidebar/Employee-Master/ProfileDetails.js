@@ -4,42 +4,52 @@ import ParameterizedDateComponent from 'views/common-section/ParamDateComponent'
 
 const ProfileDetail = ({ setStudentDetail, setEditItem, EmployeeFields }) => {
   const isMobile = useMediaQuery('(max-width: 767px)');
+
   
-  const [admissionDetails, setAdmissionDetails] = React.useState(() => {
+  const [employeeDetails, setEmployeeDetails] = React.useState(() => {
     const initialState = {
-      stdName: '',
-      AdmNo: '',
-      admDate: '',
+      employeeId: '',
+      firstName: '',
+      lastName: '',
+      gender: '',
       dob: '',
-      stdCategory: '',
-      joiningClass: '',
-      joiningDate: ''
+      joiningDate: '',
+      designation: '',
+      department: '',
+      email: '',
+      mobile: '',
     };
 
-    if (setEditItem) {
-      initialState.stdName = setEditItem.StudentName || '';
-      initialState.AdmNo = setEditItem.AdmNo || '';
-      initialState.admDate = setEditItem.AdmDate || null;
-      initialState.dob = setEditItem.DOB || null;
-      initialState.stdCategory = setEditItem.Studentcategory || '';
-      initialState.joiningClass = setEditItem.class || '';
-      initialState.joiningDate = setEditItem.joiningDate || '';
-    }
+    // if (setEditItem) {
+    //   initialState.employeeId = setEditItem.employeeId || '';
+    //   initialState.firstName = setEditItem.firstName || '';
+    //   initialState.lastName = setEditItem.lastName || null;
+    //   initialState.gender = setEditItem.gender || null;
+    //   initialState.dob = setEditItem.dob || '';
+    //   initialState.joiningDate = setEditItem.doj || '';
+    //   initialState.designation = setEditItem.designation || '';
+    //   initialState.department = setEditItem.department || '';
+    //   initialState.email = setEditItem.email || '';
+    //   initialState.mobile = setEditItem.mobile || '';
+    // }
     
     return initialState;
   });
 
   useEffect(() => {
     if (setEditItem) {
-      setAdmissionDetails((prevState) => ({
+      setEmployeeDetails((prevState) => ({
         ...prevState,
-        stdName: setEditItem.StudentName || '',
-        AdmNo: setEditItem.AdmNo || '',
-        admDate: setEditItem.AdmDate || null,
-        dob: setEditItem.DOB || null,
-        stdCategory: setEditItem.Studentcategory || '',
-        joiningClass: setEditItem.class || '',
-        joiningDate: setEditItem.joiningDate || ''
+        employeeId: setEditItem.employeeId || '',
+        firstName: setEditItem.firstName || '',
+        lastName: setEditItem.lastName || null,
+        gender: setEditItem.gender || null,
+        dob: setEditItem.dob || '',
+        joiningDate: setEditItem.doj || '',
+        designation: setEditItem.designation || '',
+        department: setEditItem.department || '',
+        email: setEditItem.email || '',
+        mobile: setEditItem.mobile || '',
       }));
     }
   }, [setEditItem]);
@@ -51,7 +61,7 @@ const ProfileDetail = ({ setStudentDetail, setEditItem, EmployeeFields }) => {
   }, [setEditItem]);
 
   const handleInputChange = (fieldName, value) => {
-    setAdmissionDetails((prevState) => ({
+    setEmployeeDetails((prevState) => ({
       ...prevState,
       [fieldName]: value
     }));
@@ -64,9 +74,19 @@ const ProfileDetail = ({ setStudentDetail, setEditItem, EmployeeFields }) => {
     }
   };
 
+  const toCamelCase = (str) => {
+    // Remove dots from the string
+    const stringCamelCase = str.replace(/\./g, '').toLowerCase();
+  
+    return stringCamelCase.replace(/\s(.)/g, function(match, group1) {
+      return group1.toUpperCase();
+    })
+  };
+
+
   return (
     <>
-      {EmployeeFields&&EmployeeFields.map((field) => (
+      {EmployeeFields && EmployeeFields.map((field) => (
         <Card key={field} sx={{ padding: '10px', mb: 3 }}>
           <Typography variant={'h4'} p={1.4} mb={2} sx={{ borderBottom: '1px solid #ccc' }}>
             {field.name}
@@ -74,11 +94,13 @@ const ProfileDetail = ({ setStudentDetail, setEditItem, EmployeeFields }) => {
           <Grid container spacing={2} sx={{ display: 'flex', height: '100%' }}>
             {
               field&&field?.subSection.map((item)=>
+             <>
               <Grid item xs={12} sm={12} md={6} lg={field.name === 'Employee Details' ? 4 : 6} key={item.id}>
                 {item.type === 'date' ? (
                   <ParameterizedDateComponent
                     customStyle={{ width: '100%' }}
-                    value={admissionDetails[field.name]}
+                    value={employeeDetails[item.name]}
+                    // value={employeeDetails[toCamelCase(item.name) || '']}
                     // onChange={(date) => handleInputChange(field.name, date)}
                     label={item.name}
                   />
@@ -86,15 +108,17 @@ const ProfileDetail = ({ setStudentDetail, setEditItem, EmployeeFields }) => {
                   <TextField
                     size={isMobile ? 'small' : 'normal'}
                     id={`outlined-${field?.id}`}
-                    value={admissionDetails[field.name]}
-                    onChange={(e) => handleInputChange(field.type, e.target.value)}
-                    onLoad={() => console.log('vikash poonia')}
+                    value={employeeDetails[item.name]}
+                    onChange={(e) => handleInputChange(toCamelCase(item.name), e.target.value)}
+                    onLoad={() => console.log('Tarun Panday')}
                     fullWidth
                     label={item.name}
                     variant="outlined"
                   />
                 )}
               </Grid>
+              {/* {console.log(toCamelCase(item.name))} */}
+             </>
             )}
           </Grid>
         </Card>
@@ -104,20 +128,3 @@ const ProfileDetail = ({ setStudentDetail, setEditItem, EmployeeFields }) => {
 }
 
 export default ProfileDetail;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
