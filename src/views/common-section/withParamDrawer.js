@@ -4,16 +4,17 @@ import Drawer from '@mui/material/Drawer';
 import { Button, Typography, Box } from '@mui/material';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 
-const withParamDrawer = (WrappedComponent) => {
+const withParamDrawer = (WrappedComponent,WrappedButton) => {
     const WithParamDrawer = (props) => {
         const { anchor, toggleDrawer, customStyle={} } = useDrawer();
         const { buttonLabel, drawerTitle } = props;
 
         return (
             <>
-                <Button onClick={toggleDrawer('right', true)} variant="outlined" sx={customStyle} startIcon={<AddOutlinedIcon />}>
+                {!WrappedButton&&(<Button onClick={toggleDrawer('right', true)} variant="outlined" sx={customStyle} startIcon={<AddOutlinedIcon />}>
                     {buttonLabel}
-                </Button>
+                </Button>)}
+                {WrappedButton&&(<WrappedButton onClick={toggleDrawer('right', true)}  />)}
                 <Drawer anchor={'right'} open={anchor.right} onClose={toggleDrawer('right', false)}>
                     <Box sx={{ width: { xs: '100%', sm: 650 }, padding: 2 }} role="presentation">
                         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #ccc' }}>

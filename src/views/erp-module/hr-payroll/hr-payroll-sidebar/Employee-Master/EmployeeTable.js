@@ -24,7 +24,6 @@ const Click = (rowData) => {
    const handleEditClick = (editItem) => {
     setCurrEditItem(editItem);
   };
-
   
   // ========= render error model for Delete row ==========
   const [modalOpen, setmodalOpen] = React.useState(false);
@@ -80,7 +79,6 @@ const Click = (rowData) => {
           <IconButton onClick={(event) => event.stopPropagation()}>
             {/* <EditTwoToneIcon/> */}
             <EmployeeDrawer editIcon="true" currEditItem={currEditItem} handleClick={() => handleEditClick(params.row)} />
-            {/* <AddContactDrawer editIcon={true} currEditItem={currEditItem} handleClick={() => handleEditClick(params.row)} /> */}
           </IconButton>
           
           </Tooltip>

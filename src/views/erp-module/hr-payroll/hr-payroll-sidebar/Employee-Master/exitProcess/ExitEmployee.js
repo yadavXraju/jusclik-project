@@ -51,7 +51,7 @@ export default function ExitEmployee() {
         )}
       </PopupState>
 
-      {/* ====== Initiate Withdrawal Drawer ======= */}
+      {/* ====== Initiate Employee Exit Drawer ======= */}
       <Drawer anchor="right" open={state.InitiateEmployeeExit} onClose={toggleDrawer('InitiateEmployeeExit', false)}>
         {/* {form} */}
         <Box sx={{ width: { xs: '100vw', sm: 650 }, padding: 2 }} role="presentation">
@@ -61,7 +61,7 @@ export default function ExitEmployee() {
               Close
             </Button>
           </Box>
-          {/* ========= import Initiate Withdrawal Form ========== */}
+          {/* ========= import Initiate Employee Exit Form ========== */}
           <EmployeeExitForm />
         </Box>
       </Drawer>
