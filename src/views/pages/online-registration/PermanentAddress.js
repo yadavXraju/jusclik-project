@@ -72,8 +72,8 @@ function PermanentAddress({ handleClick }) {
         <Divider />
       </Box>
 
-      <Grid sx={{ padding: '1rem 4rem' }} container spacing={4}>
-        <Grid item xs={4}>
+      <Grid sx={{ padding: '1rem 4rem' }} container spacing={2}>
+        <Grid  item xl={4} lg={6} md={12}>
           <InputLabel sx={{ ...labelStyles }} htmlFor="area">
             Area
           </InputLabel>
@@ -88,7 +88,7 @@ function PermanentAddress({ handleClick }) {
           />
         </Grid>
 
-        <Grid item xs={4}>
+        <Grid  item xl={4} lg={6} md={12}>
           <InputLabel sx={{ ...labelStyles }} htmlFor="city">
             City
           </InputLabel>
@@ -103,7 +103,7 @@ function PermanentAddress({ handleClick }) {
           />
         </Grid>
 
-        <Grid item xs={4}>
+        <Grid  item xl={4} lg={6} md={12}>
           <InputLabel sx={{ ...labelStyles }} htmlFor="state">
             State
           </InputLabel>

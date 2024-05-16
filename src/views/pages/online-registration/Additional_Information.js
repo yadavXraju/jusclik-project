@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { Grid, Typography, Box, TextField, InputLabel } from '@mui/material';
+import { Grid, Typography, Box, TextField, InputLabel , useMediaQuery } from '@mui/material';
 import Divider from '@mui/material/Divider';
 import Dropdown from 'views/common-section/ParamSelectList';
 
 function Additional_Information({ handleClick }) {
   const [formData, setFormData] = useState({
     parents_status: '',
-    applied_earlier: '',
+    applied_earlier: 'select',
     reason_to_join: '',
     family_situation: '',
     applied_year: '',
@@ -136,10 +136,52 @@ function Additional_Information({ handleClick }) {
     marginBottom: '8px',
     fontWeight: '500',
     color: 'rgb(54, 65, 82)',
-    whiteSpace: 'pre-wrap',
-    marginTop: '20px'
+    whiteSpace: 'pre-wrap'
+
     // fontFamily: 'Roboto, sans-serif'
   };
+
+
+
+ const Res1600 = useMediaQuery('(max-width:1600px)')
+ const Res1480 = useMediaQuery('(max-width:1480px)')
+ const Res1366 = useMediaQuery('(max-width:1366px)')
+ const Res1366_1281 = useMediaQuery('(min-width:1024px) and (max-width:1356)')
+ const Res1024 = useMediaQuery('(max-width:1024px)')
+
+ let Responsive = {
+  marginBottom :'8px'
+}
+
+
+
+if (Res1600) {
+ Responsive= {
+  marginBottom :'28px'
+ }
+
+}
+
+if (Res1480) {
+  Responsive= {
+   marginBottom :'8px'
+  }
+ 
+ }
+ 
+if (Res1366) {
+  Responsive= {
+   marginBottom :'28px'
+  }
+ }
+
+ if(Res1024){
+  Responsive= {
+    marginBottom :'8px'
+   }
+ }
+
+
 
   return (
     <>
@@ -151,9 +193,10 @@ function Additional_Information({ handleClick }) {
         <Divider />
       </Box>
 
-      <Grid sx={{ padding: '1rem 4rem' }} container spacing={4}>
-        <Grid item xs={4}>
-          <InputLabel sx={{ ...labelStyles, marginTop: '0px' }} htmlFor="parents_status">
+      <Grid sx={{ overflowY: 'auto', height: '66vh' }}>
+      <Grid sx={{ padding: '1rem 4rem' }} container spacing={2}>
+        <Grid item xl={4} lg={6} md={12}>
+          <InputLabel sx={{ ...labelStyles, marginTop: '0px',...Responsive  }} htmlFor="parents_status">
             Are Parents Separated OR Divorced ?
           </InputLabel>
           <Dropdown
@@ -165,42 +208,9 @@ function Additional_Information({ handleClick }) {
             required
             customStyle={{ '& > div': { background: '#ffffff' } }}
           />
-
-          <InputLabel sx={{ ...labelStyles }} htmlFor="applied_earlier">
-            Have you applied to SHIKSHANTAR SCHOOL earlier ?
-          </InputLabel>
-          <Dropdown
-            options={AppliedEarlierOptions}
-            name="applied_earlier"
-            onChange={handleChange}
-            value={formData.applied_earlier || 'select'}
-            error={formError.applied_earlier}
-            required
-            customStyle={{ '& > div': { background: '#ffffff' } }}
-          />
-
-          <TextField
-            name="reason_to_join"
-            required
-            multiline
-            rows={2}
-            sx={{
-              marginTop: '30px',
-              '& .MuiInputBase-root textarea': {
-                backgroundColor: 'white'
-              }
-            }}
-            fullWidth
-            helperText="Why would you like your child to join SHIKSHANTAR SCHOOL ? (upto 150 words) *"
-            inputProps={{ style: { backgroundColor: '#ffffff' } }}
-            style={{ backgroundColor: '#ffffff' }}
-            onChange={handleChange}
-            value={formData.reason_to_join}
-            error={formError.reason_to_join}
-          />
         </Grid>
 
-        <Grid item xs={4}>
+        <Grid item xl={4} lg={6} md={12}>
           <InputLabel sx={{ ...labelStyles, marginTop: '0px' }} htmlFor="family_situation">
             Do you live in a nuclear, joint OR extended family situation ?
           </InputLabel>
@@ -213,24 +223,10 @@ function Additional_Information({ handleClick }) {
             value={formData.family_situation}
             error={formError.family_situation}
           />
-
-          <InputLabel sx={{ ...labelStyles }} htmlFor="family_situation">
-            {formData.applied_earlier === 'no' ? 'Disabled' : 'Applied Year'}
-          </InputLabel>
-          <Dropdown
-            options={AppliedYearOptions}
-            name="applied_year"
-            required
-            disabled={formData.applied_earlier === 'no'}
-            customStyle={{ '& > div': { background: '#ffffff' } }}
-            onChange={handleChange}
-            value={formData.applied_year || 'select'}
-            error={formError.applied_year}
-          />
         </Grid>
 
-        <Grid item xs={4}>
-          <InputLabel sx={{ ...labelStyles, marginTop: '0px' }} htmlFor="other_schools">
+        <Grid item xl={4} lg={6} md={12}>
+          <InputLabel sx={{ ...labelStyles, marginTop: '0px' ,...Responsive }} htmlFor="other_schools">
             Which other school(s) have you applied to ?
           </InputLabel>
           <TextField
@@ -242,13 +238,47 @@ function Additional_Information({ handleClick }) {
             value={formData.other_schools}
             error={formError.other_schools}
           />
-          <InputLabel sx={{ ...labelStyles }} htmlFor="applied_class">
-            {formData.applied_earlier === 'no' ? 'Disabled' : 'For which Class'}
+        </Grid>
+
+        <Grid item xl={4} lg={6} md={12}>
+          <InputLabel sx={{ ...labelStyles , marginBottom:Res1366_1281?'28px':'8px' }} htmlFor="applied_earlier">
+            Have you applied to SHIKSHANTAR SCHOOL earlier ?
+          </InputLabel>
+          <Dropdown
+            options={AppliedEarlierOptions}
+            name="applied_earlier"
+            onChange={handleChange}
+            value={formData.applied_earlier || 'select'}
+            error={formError.applied_earlier}
+            required
+            customStyle={{ '& > div': { background: '#ffffff' } }}
+          />
+        </Grid>
+
+        <Grid item xl={4} lg={6} md={12}>
+          <InputLabel sx={{ ...labelStyles ,...Responsive }} htmlFor="family_situation">
+            {(formData.applied_earlier === 'no' || formData.applied_earlier === 'select') ? 'Disabled' : 'Applied Year'}
+          </InputLabel>
+          <Dropdown
+            options={AppliedYearOptions}
+            name="applied_year"
+            required
+            disabled={(formData.applied_earlier === 'no' || formData.applied_earlier === 'select')}
+            customStyle={{ '& > div': { background: '#ffffff' } }}
+            onChange={handleChange}
+            value={formData.applied_year || 'select'}
+            error={formError.applied_year}
+          />
+        </Grid>
+
+        <Grid item xl={4} lg={6} md={12}>
+          <InputLabel sx={{ ...labelStyles,...Responsive }} htmlFor="applied_class">
+            {(formData.applied_earlier === 'no' || formData.applied_earlier === 'select') ? 'Disabled' : 'For which Class'}
           </InputLabel>
           <Dropdown
             options={ClassOptions}
             name="applied_class"
-            disabled={formData.applied_earlier === 'no'}
+            disabled={(formData.applied_earlier === 'no' || formData.applied_earlier === 'select')}
             required
             customStyle={{ '& > div': { background: '#ffffff' } }}
             onChange={handleChange}
@@ -256,7 +286,36 @@ function Additional_Information({ handleClick }) {
             error={formError.applied_class}
           />
         </Grid>
+
+        
       </Grid>
+
+      <Grid sx={{ padding: '1rem 4rem' }} container spacing={2}>
+        <Grid item  xl={4} lg={6} md={12}>
+          <TextField
+            name="reason_to_join"
+            required
+            multiline
+            
+            rows={2}
+            sx={{
+              marginTop: '10px',
+              '& .MuiInputBase-root textarea': {
+                backgroundColor: 'white'
+              }
+            }}
+            width='20%'
+            helperText="Why would you like your child to join SHIKSHANTAR SCHOOL ? (upto 150 words) *"
+            inputProps={{ style: { backgroundColor: '#ffffff' } }}
+            style={{ backgroundColor: '#ffffff' }}
+            onChange={handleChange}
+            value={formData.reason_to_join}
+            error={formError.reason_to_join}
+          />
+        </Grid>
+        </Grid>
+        </Grid>
+
 
       {/* <Box sx={{ paddingBottom: '5rem', display: 'flex', paddingRight: '4.2rem', paddingTop: '2rem' }}>
             <Button onClick={() => handleSubmit('nine')} variant="contained" sx={{ height: '38px', width: '144px', marginLeft: 'auto' }}>

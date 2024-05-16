@@ -1802,6 +1802,10 @@ function StudentDetails({ handleClick }) {
             />
           </Grid>
 
+        
+        
+       
+        
           <Grid item xl={4} lg={6} md={12}>
             <InputLabel sx={{ ...labelStyles }} htmlFor="primary_contact">
               Primary Contact Person
@@ -1819,7 +1823,7 @@ function StudentDetails({ handleClick }) {
 
           <Grid item xl={4} lg={6} md={12}>
             <InputLabel sx={{ ...labelStyles }} htmlFor="child_photo_id">
-              Child Photo ID (Either Aadhar or Passport No.)
+              Child Photo ID (Aadhar Card or Passport)
             </InputLabel>
             <Dropdown
               options={ChildIdProof}
@@ -1831,6 +1835,8 @@ function StudentDetails({ handleClick }) {
               customStyle={{ '& > div': { background: '#ffffff' } }}
             />
           </Grid>
+
+          
 
           <Grid item xl={4} lg={6} md={12}>
             <InputLabel sx={{ ...labelStyles, ...(Res2560 ? null : { marginTop: '20px' }) }} htmlFor="id_number">
