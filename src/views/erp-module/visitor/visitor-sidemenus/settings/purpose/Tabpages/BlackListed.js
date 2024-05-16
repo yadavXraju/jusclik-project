@@ -91,6 +91,8 @@ export default function FullFeaturedCrudGrid() {
   const handleModalClose = () => {
     setmodalOpen(false);
   };
+
+  
   const handleRowEditStop = (params, event) => {
     if (params.reason === GridRowEditStopReasons.rowFocusOut) {
       event.defaultMuiPrevented = true;
@@ -125,6 +127,8 @@ export default function FullFeaturedCrudGrid() {
       setRows(rows.filter((row) => row.id !== id));
     }
   };
+
+
   const handleConfirmDelete = () => {
     const updatedRows = tableRows.filter((row) => row.id !== deleteId);
     setTableRows(updatedRows);
@@ -247,6 +251,8 @@ export default function FullFeaturedCrudGrid() {
       },
     },
   ];
+
+
 
   function EditToolbar(props) {
     const { setRows, setRowModesModel } = props;

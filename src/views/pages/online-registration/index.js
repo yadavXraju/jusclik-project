@@ -56,10 +56,13 @@ const OnlineRegistration = () => {
   const Res1680 =useMediaQuery('(max-width:1680px)')
   const Res1536 = useMediaQuery('(max-width:1536px)')
   const Res1280 = useMediaQuery('(max-width:1280px)')
+  const Res1440 = useMediaQuery('(max-width:1440px)')
+  const Res1024 = useMediaQuery('(max-width:1024px)')
 
    let ResNavbar = {
     bottom:'4rem',
-    width:'76%'
+    width:'75%',
+    paddingLeft:'2.8rem'
    }
 
   const Res2560 = useMediaQuery('(min-width:2560px)'); 
@@ -67,39 +70,51 @@ const OnlineRegistration = () => {
   if (Res2560) {
     ResNavbar = {
       bottom: '6rem',
-      width: '77.5%'
+      width: '77.5%',
+      paddingLeft:'3.1rem'
     };
   }
   
-  if (Res1680) {
-    ResNavbar = {
-      bottom: '3rem',
-      width: '66%'
-    };
-  }
 
   if (Res1680) {
     ResNavbar = {
       bottom: '3rem',
-      width: '66%'
+      width: '66%',
+      paddingLeft:'3.2rem'
     };
   }
 
   if (Res1536) {
     ResNavbar = {
       bottom: '3rem',
-      width: '56%'
+      width: '65%',
+      paddingLeft:'3rem'
+    };
+  }
+
+  if (Res1440) {
+    ResNavbar = {
+      bottom: '3rem',
+      width: '64%',
+      paddingLeft:'2.8rem'
     };
   }
 
   if (Res1280) {
     ResNavbar = {
       bottom: '3rem',
-      width: '42%'
+      width: '55.5%',
+      paddingLeft:'10rem'
     };
   }
 
-
+  if (Res1024) {
+    ResNavbar = {
+      bottom: '3rem',
+      width: '52%',
+      paddingLeft:'4.2rem'
+    };
+  }
 
   return (
     <>
@@ -111,9 +126,9 @@ const OnlineRegistration = () => {
       ) : (
         <Grid>
           {/* background color  = #EEF2F6 */}
-          <Grid sx={{ background: '#ffecec', height: '102.5vh' }}>
+          <Grid sx={{ background: '#ffecec', height: '101.5vh' }}>
             <Grid container spacing={3} sx={{ paddingLeft: '5rem', paddingTop: '4rem' }}>
-              <Grid item xl={XXL ? 2 : 3} lg={4} md={4} sm={12} component={Paper} elevation={2} sx={{ height: '87vh', marginTop: '1.5rem'}}>
+              <Grid item xl={XXL ? 2 : 3} lg={Res1280 ? 4 : 3} md={4} sm={12} component={Paper} elevation={2} sx={{ height: '87vh', marginTop: '1.5rem'}}>
                 <Grid sx={{ paddingRight: '1rem', marginTop: '-5px'  }}>
                   <Box sx={{ marginRight: '53px' }}>
                     <img src={SchoolLogo} alt="Logo" width="250px" style={{ marginRight: '8px' }} />
@@ -177,7 +192,7 @@ const OnlineRegistration = () => {
               </Grid>
 
               {/* Render the selected component */}
-              <Grid item xl={XXL ? 10 : 9} lg={8} md={8}  >
+              <Grid item xl={XXL ? 10 : 9} lg={Res1280 ? 8 : 9} md={8}  >
                 <Box sx={{ paddingRight: '4rem' }}>
                   <Paper elevation={2} sx={{ height: '87vh' }}>
                     {tabsData.map((tab) => TabChange === tab.value && tab.component)}
@@ -187,7 +202,7 @@ const OnlineRegistration = () => {
                         tabPageLength={tabsData.length - 1}
                         value={TabChange}
                         setValue={setTabChange}
-                        customStyle={{ ...ResNavbar,backgroundColor: 'white', borderBottom: 'none', borderTop:'1px solid #ccc', borderRadius:'0px' , height:'5rem' ,paddingLeft:'3.7rem' }}
+                        customStyle={{ ...ResNavbar,backgroundColor: 'white', borderBottom: 'none', borderTop:'1px solid #ccc', borderRadius:'0px' , height:'5rem'  }}
                       />
                     </Box>
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import { Box, Typography, TextField, Button } from '@mui/material';
 import AddCircleOutlinedIcon from '@mui/icons-material/AddCircleOutlined';
 import RemoveCircleOutlinedIcon from '@mui/icons-material/RemoveCircleOutlined';
@@ -72,10 +72,10 @@ const inputOptions = [
 ]
 
 const DynamicInputForm = ({ type }) => {
-  console.log(type)
+   const typeField=Object.keys(type);
   return (
     <>
-      {type === 'time' ? (
+      {typeField[0]==='Time' ? (
         <ParamTime customStyle={{ width: "30%", paddingTop: '-8px', borderRadius: "5px" }} />
       ) : (
         <TextField id="outlined-basic" label="Outlined" variant="outlined" />
@@ -86,8 +86,9 @@ const DynamicInputForm = ({ type }) => {
 
 const RuleFormDrawer = ({ toggleDrawer }) => {
   //State for Rule(IF)
-  const [selectedOption, setSelectedOption] = useState(null);
-  const [validationRule, setValidationRule] = useState(null);
+  const [selectedOption, setSelectedOption] = useState("");
+  const [validationRule, setValidationRule] = useState(comparisonOptions);
+  const [comp,setComp]=useState();
   const [ruleCount, setRuleCount] = useState(1);
   const [isHover, setIsHover] = useState(-1);
   //State for Then(Then)
@@ -96,14 +97,16 @@ const RuleFormDrawer = ({ toggleDrawer }) => {
   const [isHoverThen, setIsHoverThen] = useState(-1);
 
   const handleChange = (e) => {
-    console.log(e)
+    if(e.target.name=="ruleType"){
     const inputOption=Object.keys(e.target.value);
-    console.log(inputOption)
-    setSelectedOption(inputOption[0]);
-    // console.log(e.target.value[inputOption[0]])
+    setSelectedOption(e.target.value);
     setValidationRule(e.target.value[inputOption[0]]);
+    }
+    else{
+       setComp(e.target.value)
+    }
   };
-
+  
   return (
     <>
       <Box sx={{ width: "1050px", padding: "20px", height: 'calc(100vh - 100px)', overflow: "auto" }}
@@ -196,7 +199,7 @@ const RuleFormDrawer = ({ toggleDrawer }) => {
                     onMouseLeave={() => setIsHover(-1)} key={index}>
                     <ParamSelectList label="Rule" value={selectedOption} options={inputOptions}
                       name="ruleType" onChange={handleChange} rootStyle={{ width: "30%" }} />
-                    <ParamSelectList label="Is" value={validationRule} options={validationRule}
+                    <ParamSelectList label="Is" value={comp} options={validationRule}
                       name="comp" onChange={handleChange} rootStyle={{ width: "30%" }} />
                     {selectedOption && <DynamicInputForm type={selectedOption} />}
                     <Box sx={{
@@ -235,7 +238,7 @@ const RuleFormDrawer = ({ toggleDrawer }) => {
               onMouseLeave={() => setIsHoverThen(-1)}
               key={index}
             >
-              <ParamSelectList label="Rule" value={selectedOption}
+              <ParamSelectList label="Rule" value="tarun"
                 rootStyle={{ width: "30%", borderRadius: "4px" }}
                 customStyle={{ borderRadius: "16px" }}
                 options={inputOptions} onChange={handleChange}

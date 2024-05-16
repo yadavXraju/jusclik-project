@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Grid, Typography, Box } from '@mui/material';
+import { Grid, Typography, Box, useMediaQuery } from '@mui/material';
 import Divider from '@mui/material/Divider';
 import Button from '@mui/material/Button';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
@@ -68,8 +68,12 @@ function Upload_Document_Photos({ handleClick }) {
       setDeleteWarning(false);
     }
   };
+
+  const Res1300 = useMediaQuery('(max-width:1300px)');
   return (
     <>
+     
+     
       <Box sx={{ padding: '2rem' }}>
         <Typography variant="h3" sx={{ fontWeight: 'bold', paddingBottom: '1rem' }}>
           STEP 10 : UPLOAD DOCUMENTS / PHOTOS
@@ -77,7 +81,7 @@ function Upload_Document_Photos({ handleClick }) {
         <Divider />
       </Box>
       <Box sx={{ padding: '1rem 2rem' }}>
-        <Box sx={{ height: '4rem', background: '#d9edf7' }}>
+        <Box sx={{ height: Res1300 ? '6rem' : '4rem', background: '#d9edf7' }}>
           <Typography variant="h5" sx={{ color: 'black', padding: '1rem 1rem' }}>
             All documents and photos are compulsory to upload except (optional). Kindly upload appropriate documents and photos (jpg, png
             and pdf). Once all documents are uploaded, then you can proceed to the final submission.
@@ -85,23 +89,41 @@ function Upload_Document_Photos({ handleClick }) {
         </Box>
       </Box>
 
+      <Grid sx={{ overflowY: 'auto', height: '51vh' }}>
       <Grid sx={{ padding: '1rem 4rem' }} container spacing={0}>
-        <Grid item xs={5}>
-          <Typography variant="h3" sx={{ paddingLeft: '1.9rem', paddingBottom: '0.5rem' }}>
+        <Grid item xs={12} md={12} lg={5}>
+          <Typography variant="h3"  sx={{ paddingLeft: '1.9rem', paddingBottom: '0.5rem' }}>
             Documents
           </Typography>
           <Divider />
 
-          <Box sx={{ padding: '2rem 2rem' }}>
-            <Typography variant="h4">Date Of Birth Proof</Typography>
-            <Box sx={{ display: 'flex', alignItems: 'center', position: 'relative' }}>
+          
+          <Grid container spacing={1}>
+
+
+          <Grid item lg={12} md={6}>
+          
+          <Box
+            sx={{
+              padding: '2rem 2rem',
+              textAlign: 'center',
+              minHeight: '100px',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center'
+            }}
+          >
+            <Typography variant="h4" sx={{ marginBottom: '10px' }}>
+              Date Of Birth Proof
+            </Typography>
+            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative' }}>
               <Button
                 component="label"
                 role={undefined}
                 variant="contained"
                 tabIndex={-1}
                 width="50%"
-                sx={{ marginTop: '15px' }}
+                sx={{ marginTop: 'auto', marginBottom: 'auto' }} // Adjusted margin to center vertically
                 startIcon={<CloudUploadIcon />}
               >
                 Choose File
@@ -126,16 +148,31 @@ function Upload_Document_Photos({ handleClick }) {
           </Box>
           <Divider />
 
-          <Box sx={{ padding: '2rem 2rem' }}>
-            <Typography variant="h4">Passport</Typography>
-            <Box sx={{ display: 'flex', alignItems: 'center', position: 'relative' }}>
+          </Grid>
+
+         
+          <Grid item lg={12} md={6}>
+          <Box
+            sx={{
+              padding: '2rem 2rem',
+              textAlign: 'center',
+              minHeight: '100px',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center'
+            }}
+          >
+            <Typography variant="h4" sx={{ marginBottom: '10px' }}>
+              Passport
+            </Typography>
+            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative' }}>
               <Button
                 component="label"
                 role={undefined}
                 variant="contained"
                 tabIndex={-1}
                 width="50%"
-                sx={{ marginTop: '15px' }}
+                sx={{ marginTop: 'auto', marginBottom: 'auto' }} // Adjusted margin to center vertically
                 startIcon={<CloudUploadIcon />}
               >
                 Choose File
@@ -146,7 +183,6 @@ function Upload_Document_Photos({ handleClick }) {
                   <Typography variant="body1">{selectedFiles.passport.name}</Typography>
                   <Tooltip title="Delete">
                     <IconButton
-                      IconButton
                       onClick={() => {
                         setDeleteWarning(true), setItemtoDelete('passport');
                       }}
@@ -160,27 +196,53 @@ function Upload_Document_Photos({ handleClick }) {
             </Box>
           </Box>
           <Divider />
+
+          </Grid>
         </Grid>
+
+
+        </Grid>
+
 
         <Grid item xs={1} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <Divider orientation="vertical" />
         </Grid>
 
-        <Grid item xs={5}>
+
+
+
+        <Grid item xs={12} md={12} lg={5}>
           <Typography variant="h3" sx={{ paddingLeft: '1.9rem', paddingBottom: '0.5rem' }}>
             Photos
           </Typography>
           <Divider />
-          <Box sx={{ padding: '2rem 2rem' }}>
-            <Typography variant="h4">Student</Typography>
-            <Box sx={{ display: 'flex', alignItems: 'center', position: 'relative' }}>
+
+          <Grid container spacing={1}>
+
+
+<Grid item lg={12} md={6}>
+         
+          <Box
+            sx={{
+              padding: '2rem 2rem',
+              textAlign: 'center',
+              minHeight: '100px',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center'
+            }}
+          >
+            <Typography variant="h4" sx={{ marginBottom: '10px' }}>
+              Student
+            </Typography>
+            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative' }}>
               <Button
                 component="label"
                 role={undefined}
                 variant="contained"
                 tabIndex={-1}
                 width="50%"
-                sx={{ marginTop: '15px' }}
+                sx={{ marginTop: 'auto', marginBottom: 'auto' }} // Adjusted margin to center vertically
                 startIcon={<CloudUploadIcon />}
               >
                 Choose File
@@ -191,7 +253,6 @@ function Upload_Document_Photos({ handleClick }) {
                   <Typography variant="body1">{selectedFiles.studentPhoto.name}</Typography>
                   <Tooltip title="Delete">
                     <IconButton
-                      IconButton
                       onClick={() => {
                         setDeleteWarning(true), setItemtoDelete('studentPhoto');
                       }}
@@ -205,16 +266,33 @@ function Upload_Document_Photos({ handleClick }) {
             </Box>
           </Box>
           <Divider />
-          <Box sx={{ padding: '2rem 2rem' }}>
-            <Typography variant="h4">Mother</Typography>
-            <Box sx={{ display: 'flex', alignItems: 'center', position: 'relative' }}>
+
+</Grid>
+
+
+<Grid item lg={12} md={6}>
+
+          <Box
+            sx={{
+              padding: '2rem 2rem',
+              textAlign: 'center',
+              minHeight: '100px',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center'
+            }}
+          >
+            <Typography variant="h4" sx={{ marginBottom: '10px' }}>
+              Mother
+            </Typography>
+            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative' }}>
               <Button
                 component="label"
                 role={undefined}
                 variant="contained"
                 tabIndex={-1}
                 width="50%"
-                sx={{ marginTop: '15px' }}
+                sx={{ marginTop: 'auto', marginBottom: 'auto' }} // Adjusted margin to center vertically
                 startIcon={<CloudUploadIcon />}
               >
                 Choose File
@@ -225,7 +303,6 @@ function Upload_Document_Photos({ handleClick }) {
                   <Typography variant="body1">{selectedFiles.motherPhoto.name}</Typography>
                   <Tooltip title="Delete">
                     <IconButton
-                      IconButton
                       onClick={() => {
                         setDeleteWarning(true), setItemtoDelete('motherPhoto');
                       }}
@@ -239,16 +316,33 @@ function Upload_Document_Photos({ handleClick }) {
             </Box>
           </Box>
           <Divider />
-          <Box sx={{ padding: '2rem 2rem' }}>
-            <Typography variant="h4">Father</Typography>
-            <Box sx={{ display: 'flex', alignItems: 'center', position: 'relative' }}>
+
+          </Grid>
+
+
+          <Grid item lg={12} md={6}>
+
+          <Box
+            sx={{
+              padding: '2rem 2rem',
+              textAlign: 'center',
+              minHeight: '100px',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center'
+            }}
+          >
+            <Typography variant="h4" sx={{ marginBottom: '10px' }}>
+              Father
+            </Typography>
+            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative' }}>
               <Button
                 component="label"
                 role={undefined}
                 variant="contained"
                 tabIndex={-1}
                 width="50%"
-                sx={{ marginTop: '15px' }}
+                sx={{ marginTop: 'auto', marginBottom: 'auto' }} // Adjusted margin to center vertically
                 startIcon={<CloudUploadIcon />}
               >
                 Choose File
@@ -259,7 +353,6 @@ function Upload_Document_Photos({ handleClick }) {
                   <Typography variant="body1">{selectedFiles.fatherPhoto.name}</Typography>
                   <Tooltip title="Delete">
                     <IconButton
-                      IconButton
                       onClick={() => {
                         setDeleteWarning(true), setItemtoDelete('fatherPhoto');
                       }}
@@ -273,6 +366,11 @@ function Upload_Document_Photos({ handleClick }) {
             </Box>
           </Box>
           <Divider />
+
+          </Grid>
+          </Grid>
+
+
         </Grid>
 
         <Grid item xs={1}></Grid>
@@ -293,6 +391,7 @@ function Upload_Document_Photos({ handleClick }) {
           contentText="Are you sure you want to delete this file?"
           onConfirm={() => DeleteUploadFiles(itemtoDelte)} // Remove the parentheses here
         />
+      </Grid>
       </Grid>
     </>
   );
