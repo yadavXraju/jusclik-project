@@ -94,6 +94,7 @@ export default function Experience({ disabled=false }) {
                     <ParameterizedDateComponent
                       value={row.fromDate}
                       disabled={disabled}
+                      customStyle={{width:'100%'}}
                       onChange={(date) => handleRowChange(row.id, date ? date.format('DD-MM-YYYY') : '', 'fromDate')}
                     />
                   </TableCell>
@@ -101,6 +102,7 @@ export default function Experience({ disabled=false }) {
                     <ParameterizedDateComponent
                       value={row.toDate}
                       disabled={disabled}
+                      customStyle={{width:'100%'}}
                       onChange={(e) => handleRowChange(row.id, e.format('DD-MM-YYYY'), 'toDate')}
                     />
                   </TableCell>

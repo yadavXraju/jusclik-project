@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import CommonDataGrid from 'views/common-section/commonDataGrid'
-import { Box,Tooltip,IconButton, Card,Typography,Grid } from '@mui/material'
+import { Box,Tooltip,IconButton, Card,Typography,Grid,Chip } from '@mui/material'
 import WarningDialog from 'views/common-section/WarningDialog';
 
 // icon
@@ -11,7 +11,7 @@ import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 // rowData
 
 import { initialRows } from 'views/erp-module/hr-payroll/hr-payroll-sidebar/settings/employeeonBoard/component/employeData';
-import OnBoardDrawer from './OnBoardDrawew';
+import OnBoardDrawer from './OnBoardDrawer';
 
 
 
@@ -23,6 +23,54 @@ const [modalOpen, setmodalOpen] = useState(false);
 const [deleteId, setdeleteId] = React.useState(null);
 
 
+
+
+const renderChipCell = (params) => {
+  const { status } = params.row;
+
+  let chipStyle = { color: '#364152',width:'100px',display: 'flex', alignItems: 'center' ,justifyContent:'center',border:'none'};
+  switch (status) {
+    
+    case 'Completed':
+
+      chipStyle = { ...chipStyle,color:'rgb(16, 185, 129)' ,background:'rgb(240, 253, 249)' };
+      break;
+    case 'In Process':
+
+      chipStyle = { ...chipStyle, color:'#1e88e5', background:'rgb(242,252,255)' };
+      break;
+    case 'HR Approved':
+
+      chipStyle = { ...chipStyle, background:'rgb(247, 249, 251)' };
+      break;
+      case 'Cancelled':
+      chipStyle = { ...chipStyle, color:'rgb(216, 67, 21)', background:'rgb(251, 233, 231)' };
+      break;
+      case 'Pending':
+     
+      chipStyle = { ...chipStyle, color:'rgb(247, 144, 9)' ,background:'rgb(255, 250, 235)'}
+      break;
+    default:
+     null;
+      break;
+  }
+
+
+
+  return (
+    
+    <Chip
+      label= {status}
+      style={{ ...chipStyle,}}
+      color="default"
+      variant="outlined"
+      width="200"
+      
+    /> 
+    
+ 
+  );
+};
 // columns
 
 const columns = [
@@ -33,6 +81,15 @@ const columns = [
       minWidth: 150,
       align: 'left',
       headerAlign: 'left'
+    },
+    {
+      field: 'status',
+      headerName: 'Status',
+      flex: 1,
+      minWidth: 150,
+      align: 'left',
+      headerAlign: 'left',
+      renderCell:renderChipCell,
     },
     {
       field: "D_O_J",
