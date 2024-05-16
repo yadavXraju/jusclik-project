@@ -171,6 +171,7 @@ export default function FullFeaturedCrudGrid() {
       setIdToDelete(null);
     }
     setmodalOpen(false);
+    setConfirm(false)
   },[confirm,idToDelete])
 
   const columns = [
@@ -255,7 +256,7 @@ export default function FullFeaturedCrudGrid() {
             icon={<DeleteIcon />}
             onMouseDown={handleKeyDown}
             label="Delete"
-            onClick={handleDeleteClick(id)}
+            onClick={() => handleDeleteClick(id)}
             color="inherit"
           />,
         ];

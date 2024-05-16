@@ -121,7 +121,7 @@ export default function BusDetails() {
        <div style={{paddingRight:'5px'}}>
       <AddNewChecklist
         buttonLabel="Add New"
-        drawerTitle="Withdrawal Checklist" 
+        drawerTitle="Withdrawal Checklist"
       />
     </div>
     {/* <div>
