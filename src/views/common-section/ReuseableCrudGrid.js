@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import {
     DataGrid,
     GridActionsCellItem,
@@ -19,6 +19,7 @@ import {
 
     randomId,
 } from '@mui/x-data-grid-generator';
+import WarningDialog from './WarningDialog';
 
 
 
@@ -26,13 +27,14 @@ const ReusableCrudGrid = ({ rowsData, columns }) => {
 
     const [rows, setRows] = useState(rowsData);
     const [rowModesModel, setRowModesModel] = useState({});
-    // const [modalOpen, setmodalOpen] = useState(false);
+    const [modalOpen, setmodalOpen] = useState(false);
     const [isChangeEnable, setIsChangeEnable] = useState(-1);
+    const [confirm, setConfirm] = useState(false);
+    const [idToDelete, setIdToDelete] = useState(null);
 
-
-    // const handleModalClose = () => {
-    //     setmodalOpen(false);
-    // };
+    const handleModalClose = () => {
+        setmodalOpen(false);
+    };
 
     const handleRowEditStop = (params, event) => {
         if (params.reason === GridRowEditStopReasons.rowFocusOut) {
@@ -52,8 +54,11 @@ const ReusableCrudGrid = ({ rowsData, columns }) => {
         setIsChangeEnable(-1);
     };
 
-    const handleDeleteClick = () => () => {
-        // Handle delete operation
+    const handleDeleteClick = (id) => () => {
+        setIdToDelete(id);
+        setmodalOpen(true);
+        
+
     };
     const handleCancelClick = (id) => () => {
         setRowModesModel({
@@ -78,6 +83,27 @@ const ReusableCrudGrid = ({ rowsData, columns }) => {
     const handleRowModesModelChange = (newRowModesModel) => {
         setRowModesModel(newRowModesModel);
     };
+
+
+    const  handleSetconfirm=()=>{
+        setConfirm(true);
+        setmodalOpen(false);
+     }
+
+    useEffect(()=>{
+
+        
+        if (confirm && idToDelete !== null) {
+            // Filter out the row with the specified id
+            setRows(prevRows => prevRows.filter(row => row.id !== idToDelete));
+            // Reset idToDelete
+            setIdToDelete(null);
+            // Reset confirm
+            setConfirm(false);
+        }
+    
+      },[confirm,idToDelete])
+
 
     const gridColumns = [...columns,
     {
@@ -138,7 +164,11 @@ const ReusableCrudGrid = ({ rowsData, columns }) => {
         console.log(field);
         newRowObj[field] = '';
     })
-  
+
+    // console.log(fieldName);
+
+
+
 
     // console.log(newRowObj);
     function EditToolbar(props) {
@@ -164,6 +194,7 @@ const ReusableCrudGrid = ({ rowsData, columns }) => {
         );
     }
     return (
+        <>
         <DataGrid
             rows={rows}
             columns={gridColumns}
@@ -181,8 +212,13 @@ const ReusableCrudGrid = ({ rowsData, columns }) => {
             }}
 
         />
-
-
+     <WarningDialog 
+     open={modalOpen}
+     onClose={handleModalClose}
+     contentText="Are you sure you want to delete?"
+     onConfirm={()=>{handleSetconfirm()}} 
+      />
+    </>
     );
 };
 

@@ -1,7 +1,7 @@
 
 import * as React from 'react';
 import Button from '@mui/material/Button';
-import { useState} from 'react';
+import { useState,useEffect} from 'react';
 import AddIcon from '@mui/icons-material/Add';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/DeleteOutlined';
@@ -115,7 +115,7 @@ export default function FullFeaturedCrudGrid() {
   };
 
   const handleDeleteClick = (id) => () => {
-    // Set id to delete and open modal
+    
     setIdToDelete(id);
     setmodalOpen(true);
   };
@@ -135,6 +135,7 @@ export default function FullFeaturedCrudGrid() {
   
  
   const  handleSetconfirm=()=>{
+    
     setConfirm(true);
  }
 
@@ -145,6 +146,8 @@ export default function FullFeaturedCrudGrid() {
       setIdToDelete(null);
     }
     setmodalOpen(false);
+    setConfirm(false)
+
   },[confirm,idToDelete])
 
   const processRowUpdate = (newRow) => {
@@ -162,6 +165,9 @@ export default function FullFeaturedCrudGrid() {
       event.stopPropagation();
     }
   };
+
+
+
   const columns = [
  
     {

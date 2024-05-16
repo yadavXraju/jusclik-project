@@ -120,7 +120,8 @@ export const initialRows = [
       flex: 1,
       minWidth: 150,
       align: 'left',
-      headerAlign: 'left'
+      headerAlign: 'left',
+      editable: true,
     },
     {
       field: "D_O_J",
@@ -128,7 +129,8 @@ export const initialRows = [
       flex: 1,
       minWidth: 150,
       align: 'left',
-      headerAlign: 'left'
+      headerAlign: 'left',
+      editable: true,
     },
     {
       field: "Loc",
@@ -136,7 +138,8 @@ export const initialRows = [
       flex: 1,
       minWidth: 150,
       align: 'left',
-      headerAlign: 'left'
+      headerAlign: 'left',
+      editable: true,
     },
     {
       field: "Dept",
@@ -144,7 +147,8 @@ export const initialRows = [
       flex: 1,
       minWidth: 150,
       align: 'left',
-      headerAlign: 'left'
+      headerAlign: 'left',
+      editable: true,
     },
     {
       field: "post",
@@ -152,7 +156,8 @@ export const initialRows = [
       flex: 1,
       minWidth: 150,
       align: 'left',
-      headerAlign: 'left'
+      headerAlign: 'left',
+      editable: true,
     },
     {
       field: "phn",
@@ -160,7 +165,9 @@ export const initialRows = [
       flex: 1,
       minWidth: 150,
       align: 'left',
-      headerAlign: 'left'
+      headerAlign: 'left',
+      editable: true,
+
     },
     {
       field: "reporting-manager",
@@ -168,7 +175,9 @@ export const initialRows = [
       flex: 1,
       minWidth: 150,
       align: 'left',
-      headerAlign: 'left'
+      headerAlign: 'left',   editable: true,
     },
+
+    
    
   ];
