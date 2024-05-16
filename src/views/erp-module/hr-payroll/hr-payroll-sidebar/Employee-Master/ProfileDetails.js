@@ -19,19 +19,6 @@ const ProfileDetail = ({ setStudentDetail, setEditItem, EmployeeFields }) => {
       email: '',
       mobile: '',
     };
-
-    // if (setEditItem) {
-    //   initialState.employeeId = setEditItem.employeeId || '';
-    //   initialState.firstName = setEditItem.firstName || '';
-    //   initialState.lastName = setEditItem.lastName || null;
-    //   initialState.gender = setEditItem.gender || null;
-    //   initialState.dob = setEditItem.dob || '';
-    //   initialState.joiningDate = setEditItem.doj || '';
-    //   initialState.designation = setEditItem.designation || '';
-    //   initialState.department = setEditItem.department || '';
-    //   initialState.email = setEditItem.email || '';
-    //   initialState.mobile = setEditItem.mobile || '';
-    // }
     
     return initialState;
   });
@@ -99,8 +86,8 @@ const ProfileDetail = ({ setStudentDetail, setEditItem, EmployeeFields }) => {
                 {item.type === 'date' ? (
                   <ParameterizedDateComponent
                     customStyle={{ width: '100%' }}
-                    value={employeeDetails[item.name]}
-                    // value={employeeDetails[toCamelCase(item.name) || '']}
+                    // value={employeeDetails[item.name]}
+                    value={employeeDetails[toCamelCase(item.name) || '']}
                     // onChange={(date) => handleInputChange(field.name, date)}
                     label={item.name}
                   />
@@ -108,7 +95,7 @@ const ProfileDetail = ({ setStudentDetail, setEditItem, EmployeeFields }) => {
                   <TextField
                     size={isMobile ? 'small' : 'normal'}
                     id={`outlined-${field?.id}`}
-                    value={employeeDetails[item.name]}
+                    value={employeeDetails[toCamelCase(item.name) || '']}
                     onChange={(e) => handleInputChange(toCamelCase(item.name), e.target.value)}
                     onLoad={() => console.log('Tarun Panday')}
                     fullWidth

@@ -10,7 +10,6 @@ import {
 export const initialRows = [
     {
       id:randomId(),
-      status:'In Process',
       emp: randomTraderName(),
       D_O_J:'21-05-2005',
       Loc: randomCity(),
@@ -21,7 +20,6 @@ export const initialRows = [
     },
     {
         id:randomId(),
-        status:'In Process',
         emp: randomTraderName(),
         D_O_J:'21-05-2005',
         Loc: randomCity(),
@@ -32,7 +30,6 @@ export const initialRows = [
       },
       { 
         id:randomId(),
-        status:'Cancelled',
         emp: randomTraderName(),
         D_O_J:'21-05-2005',
         Loc: randomCity(),
@@ -43,7 +40,6 @@ export const initialRows = [
       },
       { 
         id:randomId(),
-        status:'In Process',
         emp: randomTraderName(),
         D_O_J:'21-05-2005',
         Loc: randomCity(),
@@ -55,7 +51,6 @@ export const initialRows = [
       },
       {
         id:randomId(),
-        status:'Pending',
         emp: randomTraderName(),
         D_O_J:'21-05-2005',
         Loc: randomCity(),
@@ -66,7 +61,6 @@ export const initialRows = [
       },
       {
         id:randomId(),
-        status:'Completed',
         emp: randomTraderName(),
         D_O_J:'21-05-2005',
         Loc: randomCity(),
@@ -77,7 +71,6 @@ export const initialRows = [
       },
       {
         id:randomId(),
-        status:'Pending',
         emp: randomTraderName(),
         D_O_J:'21-05-2005',
         Loc: randomCity(),
@@ -88,7 +81,6 @@ export const initialRows = [
       },
       {
         id:randomId(),
-        status:'HR Approved',
         emp: randomTraderName(),
         D_O_J:'21-05-2005',
         Loc: randomCity(),
@@ -99,7 +91,6 @@ export const initialRows = [
       },
       {
         id:randomId(),
-        status:'Cancelled',
         emp: randomTraderName(),
         D_O_J:'21-05-2005',
         Loc: randomCity(),
@@ -110,7 +101,6 @@ export const initialRows = [
       },
       {
         id:randomId(),
-        status:'In Process',
         emp: randomTraderName(),
         D_O_J:'21-05-2005',
         Loc: randomCity(),
@@ -121,3 +111,73 @@ export const initialRows = [
       },
   ];
   
+
+
+  export const columns = [
+    {
+      field: 'emp',
+      headerName: 'Employee',
+      flex: 1,
+      minWidth: 150,
+      align: 'left',
+      headerAlign: 'left',
+      editable: true,
+    },
+    {
+      field: "D_O_J",
+      headerName: "Date Of Joining",
+      flex: 1,
+      minWidth: 150,
+      align: 'left',
+      headerAlign: 'left',
+      editable: true,
+    },
+    {
+      field: "Loc",
+      headerName: "Location",
+      flex: 1,
+      minWidth: 150,
+      align: 'left',
+      headerAlign: 'left',
+      editable: true,
+    },
+    {
+      field: "Dept",
+      headerName: "Department",
+      flex: 1,
+      minWidth: 150,
+      align: 'left',
+      headerAlign: 'left',
+      editable: true,
+    },
+    {
+      field: "post",
+      headerName: "Position",
+      flex: 1,
+      minWidth: 150,
+      align: 'left',
+      headerAlign: 'left',
+      editable: true,
+    },
+    {
+      field: "phn",
+      headerName: "Phone No",
+      flex: 1,
+      minWidth: 150,
+      align: 'left',
+      headerAlign: 'left',
+      editable: true,
+
+    },
+    {
+      field: "reporting-manager",
+      headerName: "Reporting Manager",
+      flex: 1,
+      minWidth: 150,
+      align: 'left',
+      headerAlign: 'left',   editable: true,
+    },
+
+    
+   
+  ];
