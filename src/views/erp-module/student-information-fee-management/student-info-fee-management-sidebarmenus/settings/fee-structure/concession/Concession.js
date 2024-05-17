@@ -3,6 +3,7 @@ import ParamTableDragDrop from "views/common-section/ParamTableDragDrop";
 import { Drawer,Box,Typography,Button } from '@mui/material';
 import Tab1 from './Tab1';
 import Config from './Config';
+// import ParentComponent from './configure-globally/TestComp';
 
 const tableHeadings = [
   {
@@ -164,6 +165,8 @@ const Concession = ({ anchor , toggleDrawer }) => {
                     <Tab1 />
                     </Box>
             </Drawer>
+
+            {/* <ParentComponent /> */}
     </>
   );
 };

@@ -37,8 +37,13 @@ const tabPage = [
 
 const EnquiryDrawer = ({ name, setClickedCustomize }) => {
   const [activeStep, setActiveStep] = useState(1);
+
+  const windowWidth=window.innerWidth;
+  const largeWidth=windowWidth>=900;
+
   return (
-    <Box className="enquiry-customize-report" sx={{marginTop:"10px",marginLeft:"40px"}}>
+    <Box sx={{marginTop:"10px",marginLeft:"40px",overflowX:'hidden',
+      width:largeWidth?'calc(100vw - 300px)':'100vw',paddingRight:largeWidth?'':'40px'}}>
       <Box sx={{ width: "100%"}}>
         <Box sx={{paddingRight:"40px",width: "100%",display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #ccc' }}>
           <Typography variant="h4">{name}</Typography>
