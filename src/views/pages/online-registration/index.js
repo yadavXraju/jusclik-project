@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import SchoolLogo from '../../../assets/images/Arwachin School (Test Logo) (2).png';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import { Grid, Box, Paper, Typography ,useMediaQuery} from '@mui/material';
+import { Grid, Box, Paper, useMediaQuery, IconButton, Drawer, List, ListItem, ListItemText ,Typography} from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
 import StudentDetails from './StudentDetails';
 import Upload_Document_Photos from './Upload_Document_Photos';
 import SignUpRegisteration from './SignUpRegisteration';
@@ -15,14 +16,12 @@ import Additional_Information from './Additional_Information';
 import PreviewAndSubmit from './PreviewAndSubmit';
 import TabNumber from './TabNumber';
 import BottomNavbar from 'views/common-section/BottomNavbar';
-
-
-
+import SchoolLogo2 from '../../../assets/images/Logo (Online Registration form Application).png';
 
 const OnlineRegistration = () => {
   const [TabChange, setTabChange] = useState(0);
   const [showSignUp, setShowSignUp] = useState(false);
-
+  const [drawerOpen, setDrawerOpen] = useState(false);
 
   const continueHandler = () => {
     setShowSignUp(false);
@@ -30,15 +29,14 @@ const OnlineRegistration = () => {
 
   const handleClick = (tab) => {
     setTabChange(tab);
+    setDrawerOpen(false); // Close drawer when a tab is clicked
   };
-
-  // Array containing information about each tab
 
   const tabsData = [
     { id: 1, value: 0, component: <StudentDetails handleClick={handleClick} />, label: "STUDENT'S DETAILS" },
     { id: 2, value: 1, component: <OtherDetails handleClick={handleClick} />, label: 'OTHER DETAILS' },
     { id: 3, value: 2, component: <SiblingDetails handleClick={handleClick} />, label: 'SIBLING DETAILS (IF ANY)' },
-    { id: 4, label: 'EMPLOYEE DETAILS', disabled: true }, // No component specified for this tab
+    { id: 4, label: 'EMPLOYEE DETAILS', disabled: true },
     { id: 5, value: 3, component: <PermanentAddress handleClick={handleClick} />, label: 'PERMANENT ADDRESS' },
     { id: 6, value: 4, component: <FatherDetails handleClick={handleClick} />, label: "FATHER'S DETAILS" },
     { id: 7, value: 5, component: <MotherDetails handleClick={handleClick} />, label: "MOTHER'S DETAILS" },
@@ -51,36 +49,38 @@ const OnlineRegistration = () => {
     setTabChange(newValue);
   };
 
-  //Responsive
-  const XXL = useMediaQuery('(min-width:1920px)')
-  const Res1680 =useMediaQuery('(max-width:1680px)')
-  const Res1536 = useMediaQuery('(max-width:1536px)')
-  const Res1280 = useMediaQuery('(max-width:1280px)')
-  const Res1440 = useMediaQuery('(max-width:1440px)')
-  const Res1024 = useMediaQuery('(max-width:1024px)')
+  const XXL = useMediaQuery('(min-width:1920px)');
+  const Res1680 = useMediaQuery('(max-width:1680px)');
+  const Res1536 = useMediaQuery('(max-width:1536px)');
+  const Res1280 = useMediaQuery('(max-width:1280px)');
+  const Res1440 = useMediaQuery('(max-width:1440px)');
+  const Res1024 = useMediaQuery('(max-width:1024px)');
+  const ResBurger = useMediaQuery('(max-width:990px)');
+  const Res2560 = useMediaQuery('(min-width:2560px)');
+  const Res821 = useMediaQuery('(max-width:821px)');
+  const Res575 = useMediaQuery('(max-width:575px)');
 
-   let ResNavbar = {
-    bottom:'4rem',
-    width:'75%',
-    paddingLeft:'2.8rem'
-   }
-
-  const Res2560 = useMediaQuery('(min-width:2560px)'); 
+  
+  
+  let ResNavbar = {
+    bottom: '4rem',
+    width: '75%',
+    paddingLeft: '2.8rem'
+  };
 
   if (Res2560) {
     ResNavbar = {
       bottom: '6rem',
       width: '77.5%',
-      paddingLeft:'3.1rem'
+      paddingLeft: '3.1rem'
     };
   }
-  
 
   if (Res1680) {
     ResNavbar = {
       bottom: '3rem',
       width: '66%',
-      paddingLeft:'3.2rem'
+      paddingLeft: '3.2rem'
     };
   }
 
@@ -88,7 +88,7 @@ const OnlineRegistration = () => {
     ResNavbar = {
       bottom: '3rem',
       width: '65%',
-      paddingLeft:'3rem'
+      paddingLeft: '3rem'
     };
   }
 
@@ -96,7 +96,7 @@ const OnlineRegistration = () => {
     ResNavbar = {
       bottom: '3rem',
       width: '64%',
-      paddingLeft:'2.8rem'
+      paddingLeft: '2.8rem'
     };
   }
 
@@ -104,7 +104,7 @@ const OnlineRegistration = () => {
     ResNavbar = {
       bottom: '3rem',
       width: '55.5%',
-      paddingLeft:'10rem'
+      paddingLeft: '10rem'
     };
   }
 
@@ -112,142 +112,421 @@ const OnlineRegistration = () => {
     ResNavbar = {
       bottom: '3rem',
       width: '52%',
-      paddingLeft:'4.2rem'
+      paddingLeft: '4.2rem'
     };
   }
 
+  if (Res821) {
+    ResNavbar = {
+      bottom: '3rem',
+      width: '94%',
+      paddingLeft: '11.2rem'
+    };
+  }
+
+  
+  if (Res575) {
+    ResNavbar = {
+      bottom: '3rem',
+      width: '91%',
+      paddingLeft: '5rem'
+    };
+  }
+
+  const handleDrawerOpen = () => {
+    setDrawerOpen(true);
+  };
+
+  const handleDrawerClose = () => {
+    setDrawerOpen(false);
+  };
+
   return (
     <>
-     
       {showSignUp ? (
         <Grid>
           <SignUpRegisteration continueHandler={continueHandler} />
         </Grid>
       ) : (
-        <Grid>
-          {/* background color  = #EEF2F6 */}
-          <Grid sx={{ background: '#ffecec', height: '101.5vh' }}>
-            <Grid container spacing={3} sx={{ paddingLeft: '5rem', paddingTop: '4rem' }}>
-              <Grid item xl={XXL ? 2 : 3} lg={Res1280 ? 4 : 3} md={4} sm={12} component={Paper} elevation={2} sx={{ height: '87vh', marginTop: '1.5rem'}}>
-                <Grid sx={{ paddingRight: '1rem', marginTop: '-5px'  }}>
-                  <Box sx={{ marginRight: '53px' }}>
-                    <img src={SchoolLogo} alt="Logo" width="250px" style={{ marginRight: '8px' }} />
-                  </Box>
-
-                  <Box
-                    sx={{
-                      width: '100%',
-                      paddingTop: '1.5rem',
-                      '& .number-bg': {
-                        background: '#2196f3',
-                        color: 'white'
-                      }
-                    }}
-                  >
-                    {/* <Tabs
-                      value={TabChange}
-                      onChange={handleChange}
-                      centered
-                      orientation="vertical"
-                      sx={{ '& .MuiTabs-indicator': { left: 0, right: 'auto' } }}
-                      TabIndicatorProps={{ style: { backgroundColor: '#ffe71b' } }}
+        
+          <Grid sx={{ background: '#ffecec', minHeight: '100vh' }}>
+            <Grid container spacing={3} sx={{ paddingLeft:ResBurger?'1rem':'5rem', paddingTop: ResBurger?'1rem':'4rem' }}>
+              {!ResBurger && (
+                <Grid
+                  item
+                  xl={XXL ? 2 : 3}
+                  lg={Res1280 ? 4 : 3}
+                  md={4}
+                  sm={12}
+                  component={Paper}
+                  elevation={2}
+                  sx={{ minHeight: '87vh', marginTop: '1.5rem' }}
+                >
+                  <Grid sx={{ paddingRight: '1rem', marginTop: '-5px' }}>
+                    <Box sx={{ marginRight: '53px' }}>
+                      <img src={SchoolLogo} alt="Logo" width="250px" style={{ marginRight: '8px' }} />
+                    </Box>
+                    <Box
+                      sx={{
+                        width: '100%',
+                        paddingTop: '1.5rem',
+                        '& .number-bg': {
+                          background: '#2196f3',
+                          color: 'white'
+                        }
+                      }}
                     >
-                       {tabsData.map(tab => (
-  <Tab
-    key={tab.value}
-    value={tab.value}
-    disabled={tab.disabled}
-    sx={{ fontSize: '14px', fontWeight: 'bold', alignItems: 'start' }}
-    label={<TabNumber number={tab.id} text={tab.label} isActive={TabChange === tab.value} />}
-  />
-))}
-                    </Tabs> */}
-
-                    <Tabs
-                      value={TabChange}
-                      onChange={handleChange}
-                      centered
-                      orientation="vertical"
-                      sx={{ '& .MuiTabs-indicator': { left: 0, right: 'auto' } }}
-                      TabIndicatorProps={{ style: { backgroundColor: '#ffe71b', width: '3px' } }}
-                    >
-                      {tabsData.map((tab) => (
-                        <Tab
-                          key={tab.id}
-                          value={tab.value}
-                          disabled={tab.disabled}
-                          sx={{
-                            fontSize: '14px',
-                            fontWeight: 'bold',
-                            alignItems: 'start', //#ffe71b
-                            color: TabChange === tab.value ? 'inherit !important' : 'inherit', // Change color to pink if tab is active
-                            marginLeft: '7px'
-                          }}
-                          label={<TabNumber number={tab.id} text={tab.label} isActive={TabChange === tab.value} />}
-                        />
-                      ))}
-                    </Tabs>
-                  </Box>
+                      <Tabs
+                        value={TabChange}
+                        onChange={handleChange}
+                        centered
+                        orientation="vertical"
+                        sx={{ '& .MuiTabs-indicator': { left: 0, right: 'auto' } }}
+                        TabIndicatorProps={{ style: { backgroundColor: '#ffe71b', width: '3px' } }}
+                      >
+                        {tabsData.map((tab) => (
+                          <Tab
+                            key={tab.id}
+                            value={tab.value}
+                            disabled={tab.disabled}
+                            sx={{
+                              fontSize: '14px',
+                              fontWeight: 'bold',
+                              alignItems: 'start',
+                              color: TabChange === tab.value ? 'inherit !important' : 'inherit',
+                              marginLeft: '7px'
+                            }}
+                            label={<TabNumber number={tab.id} text={tab.label} isActive={TabChange === tab.value} />}
+                          />
+                        ))}
+                      </Tabs>
+                    </Box>
+                  </Grid>
                 </Grid>
-              </Grid>
+              )}
+              <Grid item xl={XXL ? 10 : 9} lg={Res1280 ? 8 : 9} md={8} sm={12}>
+                <Box sx={{ paddingRight: ResBurger ? '1rem' : '4rem' }}>
+                  <Paper elevation={2} sx={{ minHeight: ResBurger ? '94vh' : '87vh'}}>
+                    {ResBurger && (
+                      <>
+                        <IconButton
+                          edge="start"
+                          color="yellow"
+                          aria-label="menu"
+                          onClick={handleDrawerOpen}
+                          sx={{ position: '', top: 20, left: 20 }}
+                        >
+                          <MenuIcon />
+                        </IconButton>
+                        <Drawer
+  anchor="left"
+  open={drawerOpen}
+  
+  onClose={handleDrawerClose}
+  sx={{ 
+    '& .MuiPaper-root': {
+      borderTopRightRadius: '10px',
+      borderBottomRightRadius: '10px',
+      background:'#ffecec',
+      
+      
+    }
+  }}
+>          
+                  <Box sx={{ width: '275px !important' }} role="presentation">
+                            <Box sx={{ padding: '1rem', marginTop: '2rem', marginLeft: '2.4rem' }}>
+                              <img src={SchoolLogo2} alt="Logo" width="75%" />
+                            </Box>
+                            <List>
+                              {tabsData.map((tab) => (
+                                <ListItem button key={tab.id} onClick={() => handleClick(tab.value)} disabled={tab.disabled}>
+                                  <ListItemText
+                                    primary={<TabNumber number={tab.id} text={tab.label} isActive={TabChange === tab.value} />}
+                                  />
+                                </ListItem>
+                              ))}
+                            </List>
+                          </Box>
+                        </Drawer>
+                      </>
+                    )}
 
-              {/* Render the selected component */}
-              <Grid item xl={XXL ? 10 : 9} lg={Res1280 ? 8 : 9} md={8}  >
-                <Box sx={{ paddingRight: '4rem' }}>
-                  <Paper elevation={2} sx={{ height: '87vh' }}>
                     {tabsData.map((tab) => TabChange === tab.value && tab.component)}
 
-                    <Box sx={{ display: 'flex',  justifyContent: 'center', alignItems: 'center', paddingLeft: '0.3rem' }}>
+                    <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', paddingLeft: '0.3rem' }}>
                       <BottomNavbar
                         tabPageLength={tabsData.length - 1}
                         value={TabChange}
                         setValue={setTabChange}
-                        customStyle={{ ...ResNavbar,backgroundColor: 'white', borderBottom: 'none', borderTop:'1px solid #ccc', borderRadius:'0px' , height:'5rem'  }}
+                        // cancelCustomStyle={{width:'10px'}}
+                        // submitCustomStyle = {{width:'10px'}}
+                        customStyle={{
+                          ...ResNavbar,
+                          backgroundColor: 'white',
+                          borderBottom: 'none',
+                          borderTop: '1px solid #ccc',
+                          borderRadius: '0px',
+                          height: '5rem'
+                        }}
                       />
                     </Box>
-
-                    {/* <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', paddingLeft: '0.3rem' }}>
-                      <BottomNavbar
-                        tabPageLength={tabsData.length - 1}
-                        value={TabChange}
-                        setValue={setTabChange}
-                        customStyle={{ width: '71%', backgroundColor: 'white', bottom: '3.8rem', borderBottom: 'none', borderTop: 'none' }}
-                      />
-                    </Box> */}
                   </Paper>
                 </Box>
               </Grid>
             </Grid>
           </Grid>
-        </Grid>
+       
       )}
 
-<Box style={{ position: "fixed", bottom: 0, textAlign: "center", width: "100%" }}>
- 
-    <Typography variant='h5' sx={{marginBottom:'0.5rem'}}>Powered by Jusklik</Typography>
- 
-</Box>
-
-{/* <Box style={{ position: "fixed", bottom: 0, textAlign: "center", width: "100%" }}>
-  <Paper elevation={2} sx={{width:'100%' , borderRadius:'0px !important', backgroundColor:'#FFECEC'}}>
-    <Typography variant='h5'>Powered by Jusklik</Typography>
-  </Paper>
-</Box> */}
-
-
+      <Box style={{ position: 'fixed', textAlign: 'center', width: '100%' , background:'#ffecec' }}>
+        <Typography variant="h5" sx={{ marginBottom: '0.5rem' }}>
+          Powered by Jusklik
+        </Typography>
+      </Box>
     </>
   );
 };
 
 export default OnlineRegistration;
 
+// Without Burger
 
+// import React, { useState } from 'react';
+// import SchoolLogo from '../../../assets/images/Arwachin School (Test Logo) (2).png';
+// import Tabs from '@mui/material/Tabs';
+// import Tab from '@mui/material/Tab';
+// import { Grid, Box, Paper, Typography ,useMediaQuery} from '@mui/material';
+// import StudentDetails from './StudentDetails';
+// import Upload_Document_Photos from './Upload_Document_Photos';
+// import SignUpRegisteration from './SignUpRegisteration';
+// import OtherDetails from './OtherDetails';
+// import SiblingDetails from './SiblingDetails';
+// import PermanentAddress from './PermanentAddress';
+// import FatherDetails from './FatherDetails';
+// import MotherDetails from './MotherDetails';
+// import Additional_Information from './Additional_Information';
+// import PreviewAndSubmit from './PreviewAndSubmit';
+// import TabNumber from './TabNumber';
+// import BottomNavbar from 'views/common-section/BottomNavbar';
 
+// const OnlineRegistration = () => {
+//   const [TabChange, setTabChange] = useState(0);
+//   const [showSignUp, setShowSignUp] = useState(false);
 
+//   const continueHandler = () => {
+//     setShowSignUp(false);
+//   };
 
+//   const handleClick = (tab) => {
+//     setTabChange(tab);
+//   };
 
+//   // Array containing information about each tab
 
+//   const tabsData = [
+//     { id: 1, value: 0, component: <StudentDetails handleClick={handleClick} />, label: "STUDENT'S DETAILS" },
+//     { id: 2, value: 1, component: <OtherDetails handleClick={handleClick} />, label: 'OTHER DETAILS' },
+//     { id: 3, value: 2, component: <SiblingDetails handleClick={handleClick} />, label: 'SIBLING DETAILS (IF ANY)' },
+//     { id: 4, label: 'EMPLOYEE DETAILS', disabled: true }, // No component specified for this tab
+//     { id: 5, value: 3, component: <PermanentAddress handleClick={handleClick} />, label: 'PERMANENT ADDRESS' },
+//     { id: 6, value: 4, component: <FatherDetails handleClick={handleClick} />, label: "FATHER'S DETAILS" },
+//     { id: 7, value: 5, component: <MotherDetails handleClick={handleClick} />, label: "MOTHER'S DETAILS" },
+//     { id: 8, value: 6, component: <Additional_Information handleClick={handleClick} />, label: 'ADDITIONAL INFORMATION' },
+//     { id: 9, value: 7, component: <Upload_Document_Photos handleClick={handleClick} />, label: 'UPLOAD DOCUMENTS' },
+//     { id: 10, value: 8, component: <PreviewAndSubmit />, label: 'PREVIEW AND SUBMIT' }
+//   ];
 
+//   const handleChange = (event, newValue) => {
+//     setTabChange(newValue);
+//   };
+
+//   //Responsive
+//   const XXL = useMediaQuery('(min-width:1920px)')
+//   const Res1680 =useMediaQuery('(max-width:1680px)')
+//   const Res1536 = useMediaQuery('(max-width:1536px)')
+//   const Res1280 = useMediaQuery('(max-width:1280px)')
+//   const Res1440 = useMediaQuery('(max-width:1440px)')
+//   const Res1024 = useMediaQuery('(max-width:1024px)')
+
+//    let ResNavbar = {
+//     bottom:'4rem',
+//     width:'75%',
+//     paddingLeft:'2.8rem'
+//    }
+
+//   const Res2560 = useMediaQuery('(min-width:2560px)');
+
+//   if (Res2560) {
+//     ResNavbar = {
+//       bottom: '6rem',
+//       width: '77.5%',
+//       paddingLeft:'3.1rem'
+//     };
+//   }
+
+//   if (Res1680) {
+//     ResNavbar = {
+//       bottom: '3rem',
+//       width: '66%',
+//       paddingLeft:'3.2rem'
+//     };
+//   }
+
+//   if (Res1536) {
+//     ResNavbar = {
+//       bottom: '3rem',
+//       width: '65%',
+//       paddingLeft:'3rem'
+//     };
+//   }
+
+//   if (Res1440) {
+//     ResNavbar = {
+//       bottom: '3rem',
+//       width: '64%',
+//       paddingLeft:'2.8rem'
+//     };
+//   }
+
+//   if (Res1280) {
+//     ResNavbar = {
+//       bottom: '3rem',
+//       width: '55.5%',
+//       paddingLeft:'10rem'
+//     };
+//   }
+
+//   if (Res1024) {
+//     ResNavbar = {
+//       bottom: '3rem',
+//       width: '52%',
+//       paddingLeft:'4.2rem'
+//     };
+//   }
+
+//   return (
+//     <>
+
+//       {showSignUp ? (
+//         <Grid>
+//           <SignUpRegisteration continueHandler={continueHandler} />
+//         </Grid>
+//       ) : (
+//         <Grid>
+//           {/* background color  = #EEF2F6 */}
+//           <Grid sx={{ background: '#ffecec', height: '102.5vh' }}>
+//             <Grid container spacing={3} sx={{ paddingLeft: '5rem', paddingTop: '4rem' }}>
+//               <Grid item xl={XXL ? 2 : 3} lg={Res1280 ? 4 : 3} md={4} sm={12} component={Paper} elevation={2} sx={{ height: '87vh', marginTop: '1.5rem'}}>
+//                 <Grid sx={{ paddingRight: '1rem', marginTop: '-5px'  }}>
+//                   <Box sx={{ marginRight: '53px' }}>
+//                     <img src={SchoolLogo} alt="Logo" width="250px" style={{ marginRight: '8px' }} />
+//                   </Box>
+
+//                   <Box
+//                     sx={{
+//                       width: '100%',
+//                       paddingTop: '1.5rem',
+//                       '& .number-bg': {
+//                         background: '#2196f3',
+//                         color: 'white'
+//                       }
+//                     }}
+//                   >
+//                     {/* <Tabs
+//                       value={TabChange}
+//                       onChange={handleChange}
+//                       centered
+//                       orientation="vertical"
+//                       sx={{ '& .MuiTabs-indicator': { left: 0, right: 'auto' } }}
+//                       TabIndicatorProps={{ style: { backgroundColor: '#ffe71b' } }}
+//                     >
+//                        {tabsData.map(tab => (
+//   <Tab
+//     key={tab.value}
+//     value={tab.value}
+//     disabled={tab.disabled}
+//     sx={{ fontSize: '14px', fontWeight: 'bold', alignItems: 'start' }}
+//     label={<TabNumber number={tab.id} text={tab.label} isActive={TabChange === tab.value} />}
+//   />
+// ))}
+//                     </Tabs> */}
+
+//                     <Tabs
+//                       value={TabChange}
+//                       onChange={handleChange}
+//                       centered
+//                       orientation="vertical"
+//                       sx={{ '& .MuiTabs-indicator': { left: 0, right: 'auto' } }}
+//                       TabIndicatorProps={{ style: { backgroundColor: '#ffe71b', width: '3px' } }}
+//                     >
+//                       {tabsData.map((tab) => (
+//                         <Tab
+//                           key={tab.id}
+//                           value={tab.value}
+//                           disabled={tab.disabled}
+//                           sx={{
+//                             fontSize: '14px',
+//                             fontWeight: 'bold',
+//                             alignItems: 'start', //#ffe71b
+//                             color: TabChange === tab.value ? 'inherit !important' : 'inherit', // Change color to pink if tab is active
+//                             marginLeft: '7px'
+//                           }}
+//                           label={<TabNumber number={tab.id} text={tab.label} isActive={TabChange === tab.value} />}
+//                         />
+//                       ))}
+//                     </Tabs>
+//                   </Box>
+//                 </Grid>
+//               </Grid>
+
+//               {/* Render the selected component */}
+//               <Grid item xl={XXL ? 10 : 9} lg={Res1280 ? 8 : 9} md={8} sm={12} >
+//                 <Box sx={{ paddingRight: '4rem' }}>
+//                   <Paper elevation={2} sx={{ height: '87vh' }}>
+//                     {tabsData.map((tab) => TabChange === tab.value && tab.component)}
+
+//                     <Box sx={{ display: 'flex',  justifyContent: 'center', alignItems: 'center', paddingLeft: '0.3rem' }}>
+//                       <BottomNavbar
+//                         tabPageLength={tabsData.length - 1}
+//                         value={TabChange}
+//                         setValue={setTabChange}
+//                         customStyle={{ ...ResNavbar,backgroundColor: 'white', borderBottom: 'none', borderTop:'1px solid #ccc', borderRadius:'0px' , height:'5rem'  }}
+//                       />
+//                     </Box>
+
+//                     {/* <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', paddingLeft: '0.3rem' }}>
+//                       <BottomNavbar
+//                         tabPageLength={tabsData.length - 1}
+//                         value={TabChange}
+//                         setValue={setTabChange}
+//                         customStyle={{ width: '71%', backgroundColor: 'white', bottom: '3.8rem', borderBottom: 'none', borderTop: 'none' }}
+//                       />
+//                     </Box> */}
+//                   </Paper>
+//                 </Box>
+//               </Grid>
+//             </Grid>
+//           </Grid>
+//         </Grid>
+//       )}
+
+// <Box style={{ position: "fixed", bottom: 0, textAlign: "center", width: "100%" }}>
+
+//     <Typography variant='h5' sx={{marginBottom:'0.5rem'}}>Powered by Jusklik</Typography>
+
+// </Box>
+
+// {/* <Box style={{ position: "fixed", bottom: 0, textAlign: "center", width: "100%" }}>
+//   <Paper elevation={2} sx={{width:'100%' , borderRadius:'0px !important', backgroundColor:'#FFECEC'}}>
+//     <Typography variant='h5'>Powered by Jusklik</Typography>
+//   </Paper>
+// </Box> */}
+
+//     </>
+//   );
+// };
+
+// export default OnlineRegistration;
 
 // Same Copy Reuseable
 // import React, { useState } from 'react';

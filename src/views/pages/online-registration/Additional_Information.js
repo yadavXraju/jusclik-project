@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Grid, Typography, Box, TextField, InputLabel , useMediaQuery } from '@mui/material';
+import { Grid, Typography, Box, TextField, InputLabel, useMediaQuery } from '@mui/material';
 import Divider from '@mui/material/Divider';
 import Dropdown from 'views/common-section/ParamSelectList';
 
@@ -141,52 +141,45 @@ function Additional_Information({ handleClick }) {
     // fontFamily: 'Roboto, sans-serif'
   };
 
+  const Res1600 = useMediaQuery('(max-width:1600px)');
+  const Res1480 = useMediaQuery('(max-width:1480px)');
+  const Res1366 = useMediaQuery('(max-width:1366px)');
+  const Res1366_1281 = useMediaQuery('(min-width:1024px) and (max-width:1356)');
+  const Res1024 = useMediaQuery('(max-width:1024px)');
+  const Res500 = useMediaQuery('(max-width:500px)')
 
+  let Responsive = {
+    marginBottom: '8px'
+  };
 
- const Res1600 = useMediaQuery('(max-width:1600px)')
- const Res1480 = useMediaQuery('(max-width:1480px)')
- const Res1366 = useMediaQuery('(max-width:1366px)')
- const Res1366_1281 = useMediaQuery('(min-width:1024px) and (max-width:1356)')
- const Res1024 = useMediaQuery('(max-width:1024px)')
-
- let Responsive = {
-  marginBottom :'8px'
-}
-
-
-
-if (Res1600) {
- Responsive= {
-  marginBottom :'28px'
- }
-
-}
-
-if (Res1480) {
-  Responsive= {
-   marginBottom :'8px'
+  if (Res1600) {
+    Responsive = {
+      marginBottom: '28px'
+    };
   }
- 
- }
- 
-if (Res1366) {
-  Responsive= {
-   marginBottom :'28px'
+
+  if (Res1480) {
+    Responsive = {
+      marginBottom: '8px'
+    };
   }
- }
 
- if(Res1024){
-  Responsive= {
-    marginBottom :'8px'
-   }
- }
+  if (Res1366) {
+    Responsive = {
+      marginBottom: '28px'
+    };
+  }
 
-
+  if (Res1024) {
+    Responsive = {
+      marginBottom: '8px'
+    };
+  }
 
   return (
     <>
       <Box sx={{ padding: '2rem' }}>
-        <Typography variant="h3" sx={{ fontWeight: 'bold', paddingBottom: '1rem' }}>
+        <Typography variant="h3" sx={{ fontWeight: 'bold', paddingBottom: '1rem' ,fontSize: Res500?'17px':'20px' }}>
           {' '}
           STEP 8: ADDITIONAL INFORMATION{' '}
         </Typography>
@@ -194,128 +187,124 @@ if (Res1366) {
       </Box>
 
       <Grid sx={{ overflowY: 'auto', height: '66vh' }}>
-      <Grid sx={{ padding: '1rem 4rem' }} container spacing={2}>
-        <Grid item xl={4} lg={6} md={12}>
-          <InputLabel sx={{ ...labelStyles, marginTop: '0px',...Responsive  }} htmlFor="parents_status">
-            Are Parents Separated OR Divorced ?
-          </InputLabel>
-          <Dropdown
-            options={SelectParentsStatusOptions}
-            name="parents_status"
-            onChange={handleChange}
-            value={formData.parents_status || 'select'}
-            error={formError.parents_status}
-            required
-            customStyle={{ '& > div': { background: '#ffffff' } }}
-          />
+        <Grid sx={{ paddingTop:'1rem' , paddingBottom:'1rem' , paddingLeft:Res500?'1rem':'4rem' , paddingRight:Res500?'1rem':'4rem' }} container spacing={2}>
+          <Grid item xl={4} lg={6} md={12} sm={12} xs={12}>
+            <InputLabel sx={{ ...labelStyles, marginTop: '0px', ...Responsive }} htmlFor="parents_status">
+              Are Parents Separated OR Divorced ?
+            </InputLabel>
+            <Dropdown
+              options={SelectParentsStatusOptions}
+              name="parents_status"
+              onChange={handleChange}
+              value={formData.parents_status || 'select'}
+              error={formError.parents_status}
+              required
+              customStyle={{ '& > div': { background: '#ffffff' } }}
+            />
+          </Grid>
+
+          <Grid item xl={4} lg={6} md={12} sm={12} xs={12}>
+            <InputLabel sx={{ ...labelStyles, marginTop: '0px' }} htmlFor="family_situation">
+              Do you live in a nuclear, joint OR extended family situation ?
+            </InputLabel>
+            <TextField
+              name="family_situation"
+              required
+              fullWidth
+              inputProps={{ style: { backgroundColor: '#ffffff' } }}
+              onChange={handleChange}
+              value={formData.family_situation}
+              error={formError.family_situation}
+            />
+          </Grid>
+
+          <Grid item xl={4} lg={6} md={12} sm={12} xs={12}>
+            <InputLabel sx={{ ...labelStyles, marginTop: '0px', ...Responsive }} htmlFor="other_schools">
+              Which other school(s) have you applied to ?
+            </InputLabel>
+            <TextField
+              name="other_schools"
+              required
+              fullWidth
+              inputProps={{ style: { backgroundColor: '#ffffff' } }}
+              onChange={handleChange}
+              value={formData.other_schools}
+              error={formError.other_schools}
+            />
+          </Grid>
+
+          <Grid item xl={4} lg={6} md={12} sm={12} xs={12}>
+            <InputLabel sx={{ ...labelStyles, marginBottom: Res1366_1281 ? '28px' : '8px' }} htmlFor="applied_earlier">
+              Have you applied to SHIKSHANTAR SCHOOL earlier ?
+            </InputLabel>
+            <Dropdown
+              options={AppliedEarlierOptions}
+              name="applied_earlier"
+              onChange={handleChange}
+              value={formData.applied_earlier || 'select'}
+              error={formError.applied_earlier}
+              required
+              customStyle={{ '& > div': { background: '#ffffff' } }}
+            />
+          </Grid>
+
+          <Grid item xl={4} lg={6} md={12} sm={12} xs={12}>
+            <InputLabel sx={{ ...labelStyles, ...Responsive }} htmlFor="family_situation">
+              {formData.applied_earlier === 'no' || formData.applied_earlier === 'select' ? 'Disabled' : 'Applied Year'}
+            </InputLabel>
+            <Dropdown
+              options={AppliedYearOptions}
+              name="applied_year"
+              required
+              disabled={formData.applied_earlier === 'no' || formData.applied_earlier === 'select'}
+              customStyle={{ '& > div': { background: '#ffffff' } }}
+              onChange={handleChange}
+              value={formData.applied_year || 'select'}
+              error={formError.applied_year}
+            />
+          </Grid>
+
+          <Grid item xl={4} lg={6} md={12} sm={12} xs={12}>
+            <InputLabel sx={{ ...labelStyles, ...Responsive }} htmlFor="applied_class">
+              {formData.applied_earlier === 'no' || formData.applied_earlier === 'select' ? 'Disabled' : 'For which Class'}
+            </InputLabel>
+            <Dropdown
+              options={ClassOptions}
+              name="applied_class"
+              disabled={formData.applied_earlier === 'no' || formData.applied_earlier === 'select'}
+              required
+              customStyle={{ '& > div': { background: '#ffffff' } }}
+              onChange={handleChange}
+              value={formData.applied_class || 'select'}
+              error={formError.applied_class}
+            />
+          </Grid>
         </Grid>
 
-        <Grid item xl={4} lg={6} md={12}>
-          <InputLabel sx={{ ...labelStyles, marginTop: '0px' }} htmlFor="family_situation">
-            Do you live in a nuclear, joint OR extended family situation ?
-          </InputLabel>
-          <TextField
-            name="family_situation"
-            required
-            fullWidth
-            inputProps={{ style: { backgroundColor: '#ffffff' } }}
-            onChange={handleChange}
-            value={formData.family_situation}
-            error={formError.family_situation}
-          />
+        <Grid sx={{ paddingTop:'1rem' , paddingBottom:'1rem' , paddingLeft:Res500?'1rem':'4rem' , paddingRight:Res500?'1rem':'4rem' }} container spacing={2}>
+          <Grid item xl={4} lg={6} md={12} sm={12} xs={12}>
+            <TextField
+              name="reason_to_join"
+              required
+              multiline
+              rows={2}
+              sx={{
+                marginTop: '10px',
+                '& .MuiInputBase-root textarea': {
+                  backgroundColor: 'white'
+                }
+              }}
+              width="20%"
+              helperText="Why would you like your child to join SHIKSHANTAR SCHOOL ? (upto 150 words) *"
+              inputProps={{ style: { backgroundColor: '#ffffff' } }}
+              style={{ backgroundColor: '#ffffff' }}
+              onChange={handleChange}
+              value={formData.reason_to_join}
+              error={formError.reason_to_join}
+            />
+          </Grid>
         </Grid>
-
-        <Grid item xl={4} lg={6} md={12}>
-          <InputLabel sx={{ ...labelStyles, marginTop: '0px' ,...Responsive }} htmlFor="other_schools">
-            Which other school(s) have you applied to ?
-          </InputLabel>
-          <TextField
-            name="other_schools"
-            required
-            fullWidth
-            inputProps={{ style: { backgroundColor: '#ffffff' } }}
-            onChange={handleChange}
-            value={formData.other_schools}
-            error={formError.other_schools}
-          />
-        </Grid>
-
-        <Grid item xl={4} lg={6} md={12}>
-          <InputLabel sx={{ ...labelStyles , marginBottom:Res1366_1281?'28px':'8px' }} htmlFor="applied_earlier">
-            Have you applied to SHIKSHANTAR SCHOOL earlier ?
-          </InputLabel>
-          <Dropdown
-            options={AppliedEarlierOptions}
-            name="applied_earlier"
-            onChange={handleChange}
-            value={formData.applied_earlier || 'select'}
-            error={formError.applied_earlier}
-            required
-            customStyle={{ '& > div': { background: '#ffffff' } }}
-          />
-        </Grid>
-
-        <Grid item xl={4} lg={6} md={12}>
-          <InputLabel sx={{ ...labelStyles ,...Responsive }} htmlFor="family_situation">
-            {(formData.applied_earlier === 'no' || formData.applied_earlier === 'select') ? 'Disabled' : 'Applied Year'}
-          </InputLabel>
-          <Dropdown
-            options={AppliedYearOptions}
-            name="applied_year"
-            required
-            disabled={(formData.applied_earlier === 'no' || formData.applied_earlier === 'select')}
-            customStyle={{ '& > div': { background: '#ffffff' } }}
-            onChange={handleChange}
-            value={formData.applied_year || 'select'}
-            error={formError.applied_year}
-          />
-        </Grid>
-
-        <Grid item xl={4} lg={6} md={12}>
-          <InputLabel sx={{ ...labelStyles,...Responsive }} htmlFor="applied_class">
-            {(formData.applied_earlier === 'no' || formData.applied_earlier === 'select') ? 'Disabled' : 'For which Class'}
-          </InputLabel>
-          <Dropdown
-            options={ClassOptions}
-            name="applied_class"
-            disabled={(formData.applied_earlier === 'no' || formData.applied_earlier === 'select')}
-            required
-            customStyle={{ '& > div': { background: '#ffffff' } }}
-            onChange={handleChange}
-            value={formData.applied_class || 'select'}
-            error={formError.applied_class}
-          />
-        </Grid>
-
-        
       </Grid>
-
-      <Grid sx={{ padding: '1rem 4rem' }} container spacing={2}>
-        <Grid item  xl={4} lg={6} md={12}>
-          <TextField
-            name="reason_to_join"
-            required
-            multiline
-            
-            rows={2}
-            sx={{
-              marginTop: '10px',
-              '& .MuiInputBase-root textarea': {
-                backgroundColor: 'white'
-              }
-            }}
-            width='20%'
-            helperText="Why would you like your child to join SHIKSHANTAR SCHOOL ? (upto 150 words) *"
-            inputProps={{ style: { backgroundColor: '#ffffff' } }}
-            style={{ backgroundColor: '#ffffff' }}
-            onChange={handleChange}
-            value={formData.reason_to_join}
-            error={formError.reason_to_join}
-          />
-        </Grid>
-        </Grid>
-        </Grid>
-
 
       {/* <Box sx={{ paddingBottom: '5rem', display: 'flex', paddingRight: '4.2rem', paddingTop: '2rem' }}>
             <Button onClick={() => handleSubmit('nine')} variant="contained" sx={{ height: '38px', width: '144px', marginLeft: 'auto' }}>
