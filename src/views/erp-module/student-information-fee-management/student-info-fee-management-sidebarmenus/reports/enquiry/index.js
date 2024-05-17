@@ -12,7 +12,8 @@ import IconButton from '@mui/material/IconButton';
 // import useDrawer from 'hooks/useDrawer';
 import EnquiryDrawer from './EnquiryDrawer';
 import ReportTable from '../common-report-section/report-table';
-import '../drawer-set.css';
+import {useSelector} from 'react-redux';
+
 
 const studentData = [];
 
@@ -68,8 +69,6 @@ for (let i = 1; i <= 50; i++) {
     studentData.push(student);
 }
 
-console.log(studentData);
-
 
 const columns = [
     { id: 'enqNo', field: 'enqNo', headerName: 'Enq No', editable: true },
@@ -101,6 +100,34 @@ const columns = [
 const Enquiry = () => {
     const printRef = useRef();
     const [clickedCustomize, setClickedCustomize] = useState(false);
+    const {opened}=useSelector((state)=>state.customization);
+
+    const windowWidth=window.innerWidth;
+    const largeWidth=windowWidth>=900;
+
+    const style={
+        beforeClickStyle:{
+            position:'absolute',
+            transform:'translateY(-1000vh)',
+            top:'-1000vh',
+            overflowX:'hidden',
+            left:largeWidth?opened?'120px':'260px':'0px',
+        },
+        afterClickStyle:{
+            position:'absolute',
+            width:largeWidth?`calc(100vw - ${opened ? '261px' : '125px'})`:'100vw',            
+            height:largeWidth?'calc(100vh - 110px)':'calc(100vh - 162px)',
+            left:largeWidth?opened?'260px':'120px':'0px',
+            top:largeWidth?'110px':'162px',
+            borderRadius:'10px',
+            transform:'translateY(0vh)',
+            backgroundColor:'#fff',
+            zIndex:'99',
+            transition:'0.3s all ease-in-out',
+            overflowX: 'hidden'
+        }
+    }
+
     return (
         <>
             <Box>
@@ -142,7 +169,7 @@ const Enquiry = () => {
                     </Paper>
                 }
             </Box>
-            {clickedCustomize && <Box className={clickedCustomize ? "afterClick" : "beforeClick"}>
+            {<Box sx={clickedCustomize?style?.afterClickStyle:style?.beforeClickStyle}>
                 <EnquiryDrawer name="Customize Report" setClickedCustomize={setClickedCustomize} />
             </Box>}
         </>

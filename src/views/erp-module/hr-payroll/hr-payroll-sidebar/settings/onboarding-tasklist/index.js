@@ -71,6 +71,7 @@ export default function OnboardingTasklist() {
   
   return (
     <>
+    {/* TABS FOR TASKLISTS */}
       <ParamStepper
         orientation="vertical"
         value={value}
@@ -81,6 +82,7 @@ export default function OnboardingTasklist() {
         component={Paper}
         customStyleTabs={{paddingLeft:'1rem'}}
         customtabPanelStyle={{backgroundColor:'transparent'}}
+        customtabSytle={{textAlign:'left'}}
       />
     </>
   );

@@ -110,7 +110,7 @@ const EmployeeFormTab = ({ currEditItem }) => {
       cardComponent = <Address /> ;
       break;
     case 5:
-      cardComponent = <ContactPerson/>;
+      cardComponent = <ContactPerson />;
       break;
       case 6:
         cardComponent = <>
@@ -137,7 +137,7 @@ const EmployeeFormTab = ({ currEditItem }) => {
   const handleSubGroup=(subGroupName)=>{
      dispatch(subGroupbyGroup(subGroupName));
   }
-  
+
   return (
     <>
       <Card>
@@ -168,7 +168,6 @@ const EmployeeFormTab = ({ currEditItem }) => {
                     </Button>
                   ))}
                 </Box>
-              
             </Box>
           </Grid>
 

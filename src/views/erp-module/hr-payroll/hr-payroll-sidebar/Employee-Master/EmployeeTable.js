@@ -75,7 +75,7 @@ const Click = (rowData) => {
             <RemoveRedEyeTwoToneIcon sx={{ color: 'rgb(124, 178, 221)' }} />
           </IconButton>
           </Tooltip>
-          <Tooltip >
+          <Tooltip title='Edit' >
           <IconButton onClick={(event) => event.stopPropagation()}>
             {/* <EditTwoToneIcon/> */}
             <EmployeeDrawer editIcon="true" currEditItem={currEditItem} handleClick={() => handleEditClick(params.row)} />
