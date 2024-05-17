@@ -80,7 +80,7 @@ const handleFieldChange = (field, value) => {
       tabHeading: 'Fee Head',
     },
     {
-      id: 'classes',
+      id: 'classSection',
       tabHeading: 'Class',
     },
     {
@@ -91,18 +91,14 @@ const handleFieldChange = (field, value) => {
       id: 'amount',
       tabHeading: 'Amount',
     },
-    // {
-    //   id: 'action',
-    //   tabHeading: 'Action',
-    // },
   ];
 
-  // Map data to render table rows
+  // Map data to render table rows make sure table head id  and these key are same
   const data = configStudentWiseData.map((item, index) => ({
     id: item.id,
     srNo: index + 1,
     feeHead: item.feeHead,
-    classes: item.classSection,
+    classSection: item.classSection,
     concessionType: item.concessionType,
     amount: item.amount,
   }));
