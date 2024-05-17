@@ -97,7 +97,7 @@ export default function Education({ disabled=false }) {
         <Box mb={2} sx={{borderBottom:'1px solid #ccc'}}>
         <Typography p={1} variant='h4'>Education</Typography>
       </Box>
-      <Paper sx={{ width: {xs:'93vw', md:'100%'}, overflow: 'hidden', borderRadius: 0, marginTop: { xs: 2, sm: 0 } }}>
+      <Paper sx={{ width: {xs:'100%', md:'100%'}, overflow: 'hidden', borderRadius: 0, marginTop: { xs: 2, sm: 0 } }}>
         <TableContainer className='scrollbar' sx={{ maxHeight: 'calc(100vh - 220px)' }}>
           <Table stickyHeader aria-label="sticky table" sx={{ border: '1px solid #ccc' }}>
             <TableHead>
