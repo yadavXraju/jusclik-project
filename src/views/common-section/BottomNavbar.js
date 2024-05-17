@@ -1,7 +1,7 @@
 import { Box, Paper, Button } from '@mui/material';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 
-const BottomNavbar = ({ tabPageLength, value, setValue, customStyle , nextBtnText='Save and Next' }) => {
+const BottomNavbar = ({ tabPageLength, value, setValue, customStyle , nextBtnText='Save and Next' , submitCustomStyle ,cancelCustomStyle}) => {
     const handlePrev = () => {
         setValue(Math.max(0, value - 1));
     };
@@ -26,17 +26,27 @@ const BottomNavbar = ({ tabPageLength, value, setValue, customStyle , nextBtnTex
             borderTop: '1px solid #eee',
             zIndex:'999',
             marginBottom:''
+        },
+
+        submitBtn :{
+            height: "38px",marginTop: "auto",marginBottom:"auto", width: "144px" ,
+        },
+
+
+        cancelBtn : {
+            height: "38px",marginTop: "auto",marginBottom:"auto", width: "144px"
         }
+
     };
 
     return (
         <Paper  sx={{ ...style.BottomNavbar, ...customStyle }}>
             <Box sx={{ display: "flex", gap: "20px" }}>
-                {value != tabPageLength - 1 && <Button variant="contained" sx={{ height: "38px",marginTop: "auto",marginBottom:"auto",width: "144px" }} onClick={() => handleNext()}>
+                {value != tabPageLength - 1 && <Button variant="contained" sx={{ ...style.submitBtn , ...submitCustomStyle  }} onClick={() => handleNext()}>
                  {nextBtnText}
                 </Button>}
                 {
-                   value==tabPageLength-1&&<Button variant="contained" sx={{ height: "38px",marginTop: "auto",marginBottom:"auto", width: "144px" }} onClick={() => handleNext()}>
+                   value==tabPageLength-1&&<Button variant="contained" sx={{ }} onClick={() => handleNext()}>
                         Submit
                     </Button>
                 }
@@ -44,7 +54,7 @@ const BottomNavbar = ({ tabPageLength, value, setValue, customStyle , nextBtnTex
                     <ChevronLeftIcon />
                 </Button>}
             </Box>
-            <Button variant="outlined" sx={{ height: "38px",marginTop: "auto",marginBottom:"auto", width: "144px" }}>
+            <Button variant="outlined" sx={{ ...style.cancelBtn,...cancelCustomStyle }}>
                 Cancel
             </Button>
         </Paper>

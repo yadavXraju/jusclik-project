@@ -80,7 +80,7 @@ function EmployeePreview() {
                 <IconButton sx={{ marginRight: '8px', background: '#cccccc54' }}>
                   {/* <EditLead currEditItem={rowData} handleClick={() => {}}/> */}
                   {/* <AddContactDrawer editIcon={true} currEditItem={rowData} /> */}
-                  <EmployeeDrawer editIcon="true" />
+                  <EmployeeDrawer editIcon="true" currEditItem={rowData} />
                 </IconButton>
 
                  {/* =========== Three dots popover =========== */}

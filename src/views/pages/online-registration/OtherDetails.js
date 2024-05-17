@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Typography, Box, TextField, InputLabel } from '@mui/material';
+import { Grid, Typography, Box, TextField, InputLabel, useMediaQuery} from '@mui/material';
 import Divider from '@mui/material/Divider';
 import { useState } from 'react';
 
@@ -68,10 +68,14 @@ function OtherDetails({ handleClick }) {
     // fontFamily: 'Roboto, sans-serif'
   };
 
+  const Res500 = useMediaQuery('(max-width:500px)')
+
+
+
   return (
     <>
       <Box sx={{ padding: '2rem ' }}>
-        <Typography variant="h3" sx={{ fontWeight: 'bold', paddingBottom: '1rem' }}>
+        <Typography variant="h3" sx={{ fontWeight: 'bold', paddingBottom: '1rem', fontSize: Res500?'17px':'20px'}}>
           {' '}
           STEP 2 :OTHER DETAILS{' '}
         </Typography>
@@ -79,8 +83,8 @@ function OtherDetails({ handleClick }) {
         <Divider />
       </Box>
 
-      <Grid sx={{ padding: '1rem 4rem' }} container spacing={4}>
-        <Grid item xs={4}>
+      <Grid sx={{ paddingTop:'1rem' , paddingBottom:'1rem' , paddingLeft:Res500?'1rem':'4rem' , paddingRight:Res500?'1rem':'4rem' }} container spacing={2}>
+        <Grid item xl={4} lg={6} md={12} sm={12} xs={12}>
           <InputLabel sx={{ ...labelStyles }} htmlFor="sibling_adm_no">
             Sibling: Adm No
           </InputLabel>
@@ -95,7 +99,7 @@ function OtherDetails({ handleClick }) {
           />
         </Grid>
 
-        <Grid item xs={4}>
+        <Grid item xl={4} lg={6} md={12} sm={12} xs={12} >
           <InputLabel sx={{ ...labelStyles }} htmlFor="sibling_class_section">
             Sibling: Class & Section
           </InputLabel>
@@ -112,7 +116,7 @@ function OtherDetails({ handleClick }) {
           />
         </Grid>
 
-        <Grid item xs={4}>
+        <Grid item xl={4} lg={6} md={12} sm={12} xs={12} >
           <InputLabel sx={{ ...labelStyles }} htmlFor="sibling_name">
             Sibling: Name
           </InputLabel>

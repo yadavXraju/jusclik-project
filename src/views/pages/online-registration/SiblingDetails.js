@@ -1,9 +1,8 @@
 import React from 'react';
-import { Grid, Typography, Box, TextField, InputLabel } from '@mui/material';
+import { Grid, Typography, Box, TextField, InputLabel, useMediaQuery} from '@mui/material';
 import Divider from '@mui/material/Divider';
 import Dropdown from 'views/common-section/ParamSelectList';
 import { useState } from 'react';
-
 
 function SiblingDetails({ handleClick }) {
   const [Formdata, SetFormdata] = useState({
@@ -136,13 +135,12 @@ function SiblingDetails({ handleClick }) {
     // fontFamily: 'Roboto, sans-serif'
   };
 
+  const Res500 = useMediaQuery('(max-width:500px)')
 
-  
-  
   return (
     <>
       <Box sx={{ padding: '2rem' }}>
-        <Typography variant="h3" sx={{ fontWeight: 'bold', paddingBottom: '1rem' }}>
+        <Typography variant="h3" sx={{ fontWeight: 'bold', paddingBottom: '1rem',fontSize: Res500?'17px':'20px' }}>
           {' '}
           STEP 3 : SIBLING DETAILS (IF ANY){' '}
         </Typography>
@@ -150,8 +148,9 @@ function SiblingDetails({ handleClick }) {
         <Divider />
       </Box>
 
-      <Grid sx={{ padding: '1rem 4rem' }} container spacing={4}>
-        <Grid item xs={4}>
+      <Grid sx={{ overflowY: 'auto', height: '66vh' }}>
+      <Grid sx={{ paddingTop:'1rem' , paddingBottom:'1rem' , paddingLeft:Res500?'1rem':'4rem' , paddingRight:Res500?'1rem':'4rem' }} container spacing={2}>
+        <Grid item xl={4} lg={6} md={12} sm={12} xs={12}>
           <InputLabel sx={{ ...labelStyles }} htmlFor="name">
             Name
           </InputLabel>
@@ -162,35 +161,9 @@ function SiblingDetails({ handleClick }) {
             onChange={SiblingChangeHandler}
             inputProps={{ style: { backgroundColor: '#ffffff' } }}
           />
-
-          <InputLabel sx={{ ...labelStyles, marginTop: '20px' }} htmlFor="current_school">
-            Current School
-          </InputLabel>
-          <Dropdown
-            options={SchoolOptions}
-            name="current_school"
-            onChange={SiblingChangeHandler}
-            value={Formdata.current_school || 'select'}
-            customStyle={{ '& > div': { background: '#ffffff' } }}
-          />
-
-          {Formdata.current_school !== 'select' && Formdata.sibling_twin === 'yes' && (
-            <>
-              <InputLabel sx={{ ...labelStyles, marginTop: '20px' }} htmlFor="applied_for_twin">
-                Have you applied for Twin
-              </InputLabel>
-              <Dropdown
-                options={AppliedTwinOptions}
-                value={Formdata.applied_for_twin || 'select'}
-                onChange={SiblingChangeHandler}
-                name="applied_for_twin"
-                customStyle={{ '& > div': { background: '#ffffff' } }}
-              />
-            </>
-          )}
         </Grid>
 
-        <Grid item xs={4}>
+        <Grid item xl={4} lg={6} md={12} sm={12} xs={12} >
           <InputLabel sx={{ ...labelStyles }} htmlFor="applied_for_twin">
             Class
           </InputLabel>
@@ -202,59 +175,9 @@ function SiblingDetails({ handleClick }) {
             rootStyle={{}}
             customStyle={{ '& > div': { background: '#ffffff' } }}
           />
-
-          {Formdata.current_school === 'select' && (
-            <>
-              <InputLabel sx={{ ...labelStyles, marginTop: '20px' }} htmlFor="sibling_twin">
-                If sibling is a twin
-              </InputLabel>
-              <Dropdown
-                options={SiblingTwinOptions}
-                name="sibling_twin"
-                onChange={SiblingChangeHandler}
-                value={Formdata.sibling_twin || 'select'}
-                customStyle={{ '& > div': { background: '#ffffff' } }}
-              />
-            </>
-          )}
-
-          {Formdata.current_school !== 'select' &&
-            (Formdata.current_school === 'other_school' ? (
-              <>
-                <InputLabel sx={{ ...labelStyles, marginTop: '20px' }} htmlFor="school_name">
-                  Name of the school
-                </InputLabel>
-                <TextField
-                  name="school_name"
-                  required
-                  error={Formerror.school_name}
-                  value={Formdata.school_name}
-                  onChange={SiblingChangeHandler}
-                  fullWidth
-                  inputProps={{ style: { backgroundColor: '#ffffff' } }}
-                />
-              </>
-            ) : (
-              Formdata.current_school === 'shikshantar' && (
-                <>
-                  <InputLabel sx={{ ...labelStyles, marginTop: '20px' }} htmlFor="sibling_admin_no">
-                    Sibling Admission No
-                  </InputLabel>
-                  <TextField
-                    name="sibling_admin_no"
-                    required
-                    error={Formerror.sibling_admin_no}
-                    value={Formdata.sibling_admin_no}
-                    onChange={SiblingChangeHandler}
-                    fullWidth
-                    inputProps={{ style: { backgroundColor: '#ffffff' } }}
-                  />
-                </>
-              )
-            ))}
         </Grid>
 
-        <Grid item xs={4}>
+        <Grid item xl={4} lg={6} md={12} sm={12} xs={12}>
           <InputLabel sx={{ ...labelStyles }} htmlFor="enrolled_since">
             Enrolled Since
           </InputLabel>
@@ -266,42 +189,92 @@ function SiblingDetails({ handleClick }) {
             rootStyle={{}}
             customStyle={{ '& > div': { background: '#ffffff' } }}
           />
+        </Grid>
 
-          {Formdata.current_school === 'select' ? null : (
-            <>
-              <InputLabel sx={{ ...labelStyles, marginTop: '20px' }} htmlFor="sibling_twin">
-                If sibling is a twin
-              </InputLabel>
-              <Dropdown
-                options={SiblingTwinOptions}
-                name="sibling_twin"
-                onChange={SiblingChangeHandler}
-                value={Formdata.sibling_twin || 'select'}
-                customStyle={{ '& > div': { background: '#ffffff' } }}
-              />
-            </>
-          )}
+        <Grid item xl={4} lg={6} md={12} sm={12} xs={12}>
+          <InputLabel sx={{ ...labelStyles }} htmlFor="current_school">
+            Current School
+          </InputLabel>
+          <Dropdown
+            options={SchoolOptions}
+            name="current_school"
+            onChange={SiblingChangeHandler}
+            value={Formdata.current_school || 'select'}
+            customStyle={{ '& > div': { background: '#ffffff' } }}
+          />
+        </Grid>
 
-          {Formdata.current_school === 'select' && Formdata.sibling_twin === 'yes' && (
+        {Formdata.current_school !== 'select' ? (
+          <Grid item xl={4} lg={6} md={12} sm={12} xs={12}>
+            {Formdata.current_school !== 'select' &&
+              (Formdata.current_school === 'other_school' ? (
+                <>
+                  <InputLabel sx={{ ...labelStyles }} htmlFor="school_name">
+                    Name of the school
+                  </InputLabel>
+                  <TextField
+                    name="school_name"
+                    required
+                    error={Formerror.school_name}
+                    value={Formdata.school_name}
+                    onChange={SiblingChangeHandler}
+                    fullWidth
+                    inputProps={{ style: { backgroundColor: '#ffffff' } }}
+                  />
+                </>
+              ) : (
+                Formdata.current_school === 'shikshantar' && (
+                  <>
+                    <InputLabel sx={{ ...labelStyles }} htmlFor="sibling_admin_no">
+                      Sibling Admission No
+                    </InputLabel>
+                    <TextField
+                      name="sibling_admin_no"
+                      required
+                      error={Formerror.sibling_admin_no}
+                      value={Formdata.sibling_admin_no}
+                      onChange={SiblingChangeHandler}
+                      fullWidth
+                      inputProps={{ style: { backgroundColor: '#ffffff' } }}
+                    />
+                  </>
+                )
+              ))}
+          </Grid>
+        ) : null}
+
+        <Grid item xl={4} lg={6} md={12} sm={12} xs={12}>
+          <InputLabel sx={{ ...labelStyles }} htmlFor="sibling_twin">
+            If sibling is a twin
+          </InputLabel>
+          <Dropdown
+            options={SiblingTwinOptions}
+            name="sibling_twin"
+            onChange={SiblingChangeHandler}
+            value={Formdata.sibling_twin || 'select'}
+            customStyle={{ '& > div': { background: '#ffffff' } }}
+          />
+        </Grid>
+
+        <Grid item xl={4} lg={6} md={12} sm={12} xs={12}>
+          {Formdata.sibling_twin === 'yes' && (
             <>
-              <InputLabel sx={{ ...labelStyles, marginTop: '20px' }} htmlFor="applied_for_twin">
+              <InputLabel sx={{ ...labelStyles }} htmlFor="applied_for_twin">
                 Have you applied for Twin
               </InputLabel>
               <Dropdown
                 options={AppliedTwinOptions}
+                value={Formdata.applied_for_twin || 'select'}
                 onChange={SiblingChangeHandler}
                 name="applied_for_twin"
-                value={Formdata.applied_for_twin || 'select'}
                 customStyle={{ '& > div': { background: '#ffffff' } }}
               />
-
-
-            
-
             </>
           )}
         </Grid>
       </Grid>
+      </Grid>
+
       {/* 
           <Box sx={{ paddingBottom: '2rem', display: 'flex', paddingRight: '4.2rem', paddingTop: '2rem' }}>
             <Button onClick={() => handleSubmit('five')} variant="contained" sx={{ height: '38px', width: '144px', marginLeft: 'auto' }}>

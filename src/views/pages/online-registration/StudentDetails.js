@@ -1727,12 +1727,13 @@ function StudentDetails({ handleClick }) {
 
   //Responsive
   const Res2560 = useMediaQuery('(min-width:2560px)');
+  const Res500 = useMediaQuery('(max-width:500px)')
   
 
   return (
     <>
       <Box sx={{ padding: '2rem' }}>
-        <Typography variant="h3" sx={{ fontWeight: 'bold', paddingBottom: '1rem' }}>
+        <Typography variant="h3" sx={{ fontWeight: 'bold', paddingBottom: '1rem', fontSize: Res500?'17px':'20px' }}>
           {' '}
           STEP 1 : STUDENT&apos;S DETAILS{' '}
         </Typography>
@@ -1740,8 +1741,8 @@ function StudentDetails({ handleClick }) {
         <Divider />
       </Box>
       <Grid sx={{ overflowY: 'auto', height: '66vh' }}>
-        <Grid sx={{ padding: '1rem 4rem' }} container spacing={2}>
-          <Grid item xl={4} lg={6} md={12}>
+        <Grid sx={{ paddingTop:'1rem' , paddingBottom:'1rem' , paddingLeft:Res500?'1rem':'4rem' , paddingRight:Res500?'1rem':'4rem' }} container spacing={2}>
+          <Grid item xl={4} lg={6} md={12} sm={12} xs={12}>
             <InputLabel sx={{ ...labelStyles, marginTop: '0px' }} htmlFor="student-name">
               Student&apos;s Name
             </InputLabel>
@@ -1755,7 +1756,7 @@ function StudentDetails({ handleClick }) {
             />
           </Grid>
 
-          <Grid item xl={4} lg={6} md={12}>
+          <Grid item xl={4} lg={6} md={12} sm={12} xs={12}>
             <InputLabel sx={{ ...labelStyles, marginTop: '0px' }} htmlFor="Date_of_Birth">
               Date of Birth (dd-mm-yyyy)
             </InputLabel>
@@ -1769,7 +1770,7 @@ function StudentDetails({ handleClick }) {
             />
           </Grid>
 
-          <Grid item xl={4} lg={6} md={12}> 
+          <Grid item xl={4} lg={6} md={12} sm={12} xs={12}> 
             <InputLabel sx={{ ...labelStyles, marginTop: '0px' }} htmlFor="nationality">
               Nationality
             </InputLabel>
@@ -1786,7 +1787,7 @@ function StudentDetails({ handleClick }) {
             />
           </Grid>
 
-          <Grid item xl={4} lg={6} md={12}>
+          <Grid item xl={4} lg={6} md={12} sm={12} xs={12}>
             <InputLabel sx={{ ...labelStyles }} htmlFor="student-name">
               Gender
             </InputLabel>
@@ -1801,8 +1802,8 @@ function StudentDetails({ handleClick }) {
               customStyle={{ '& > div': { background: '#ffffff' } }}
             />
           </Grid>
-
-          <Grid item xl={4} lg={6} md={12}>
+        
+          <Grid item xl={4} lg={6} md={12} sm={12} xs={12}>
             <InputLabel sx={{ ...labelStyles }} htmlFor="primary_contact">
               Primary Contact Person
             </InputLabel>
@@ -1817,9 +1818,9 @@ function StudentDetails({ handleClick }) {
             />
           </Grid>
 
-          <Grid item xl={4} lg={6} md={12}>
+          <Grid item xl={4} lg={6} md={12} sm={12} xs={12}>
             <InputLabel sx={{ ...labelStyles }} htmlFor="child_photo_id">
-              Child Photo ID (Either Aadhar or Passport No.)
+              Child Photo ID (Aadhar Card or Passport)
             </InputLabel>
             <Dropdown
               options={ChildIdProof}
@@ -1832,7 +1833,8 @@ function StudentDetails({ handleClick }) {
             />
           </Grid>
 
-          <Grid item xl={4} lg={6} md={12}>
+
+          <Grid item xl={4} lg={6} md={12} sm={12} xs={12}>
             <InputLabel sx={{ ...labelStyles, ...(Res2560 ? null : { marginTop: '20px' }) }} htmlFor="id_number">
               {allStudentDetails.child_photo_id === 'passport' ? 'Enter Passport Number' : 'Enter Aadhar Card Number'}
             </InputLabel>
@@ -1849,7 +1851,7 @@ function StudentDetails({ handleClick }) {
             />
           </Grid>
 
-          <Grid item xl={4} lg={6} md={12}>
+          <Grid item xl={4} lg={6} md={12} sm={12} xs={12}>
             <InputLabel sx={{ ...labelStyles }} htmlFor="preferred_mobile">
               Preferred Mobile (you can add up to 2 numbers separated by commas)
             </InputLabel>
@@ -1866,7 +1868,7 @@ function StudentDetails({ handleClick }) {
             />
           </Grid>
 
-          <Grid item xl={4} lg={6} md={12}>
+          <Grid item xl={4} lg={6} md={12} sm={12} xs={12}>
             <InputLabel sx={{ ...labelStyles, ...(Res2560 ? null : { marginTop: '20px' }) }} htmlFor="blood_group">
               Blood Group
             </InputLabel>
@@ -1882,7 +1884,7 @@ function StudentDetails({ handleClick }) {
             />
           </Grid>
 
-          <Grid item xl={4} lg={6} md={12}>
+          <Grid item xl={4} lg={6} md={12} sm={12} xs={12}>
             <InputLabel sx={{ ...labelStyles }} htmlFor="email_address">
               Email Address (you can add up to 2 numbers separated by commas)
             </InputLabel>
@@ -1899,7 +1901,7 @@ function StudentDetails({ handleClick }) {
             />
           </Grid>
 
-          <Grid item xl={4} lg={6} md={12}>
+          <Grid item xl={4} lg={6} md={12} sm={12} xs={12}> 
             <InputLabel sx={{ ...labelStyles, ...(Res2560 ? null : { marginTop: '20px' }) }} htmlFor="house_no">
               Flat No / House No
             </InputLabel>
@@ -1915,7 +1917,7 @@ function StudentDetails({ handleClick }) {
             />
           </Grid>
 
-          <Grid item xl={4} lg={6} md={12}>
+          <Grid item xl={4} lg={6} md={12} sm={12} xs={12}>
             <InputLabel sx={{ ...labelStyles, ...(Res2560 ? null : { marginTop: '20px' }) }} htmlFor="current_address">
               Current Address
             </InputLabel>
@@ -1932,7 +1934,7 @@ function StudentDetails({ handleClick }) {
             />
           </Grid>
 
-          <Grid item xl={4} lg={6} md={12}>
+          <Grid item xl={4} lg={6} md={12} sm={12} xs={12}>
             <InputLabel sx={{ ...labelStyles }} htmlFor="city">
               City
             </InputLabel>
@@ -1950,7 +1952,7 @@ function StudentDetails({ handleClick }) {
             />
           </Grid>
 
-          <Grid item xl={4} lg={6} md={12}>
+          <Grid item xl={4} lg={6} md={12} sm={12} xs={12}>
             <InputLabel sx={{ ...labelStyles }} htmlFor="pincode">
               Pincode
             </InputLabel>
@@ -1967,7 +1969,7 @@ function StudentDetails({ handleClick }) {
             />
           </Grid>
 
-          <Grid item xl={4} lg={6} md={12}>
+          <Grid item xl={4} lg={6} md={12} sm={12} xs={12}>
             <InputLabel sx={{ ...labelStyles }} htmlFor="last_school">
               Name of the school last enrolled in
             </InputLabel>
@@ -1984,7 +1986,7 @@ function StudentDetails({ handleClick }) {
             />
           </Grid>
 
-          <Grid item xl={4} lg={6} md={12}>
+          <Grid item xl={4} lg={6} md={12} sm={12} xs={12}>
             <InputLabel sx={{ ...labelStyles }} htmlFor="enrolled_since">
               Enrolled Since
             </InputLabel>
@@ -1999,7 +2001,7 @@ function StudentDetails({ handleClick }) {
             />
           </Grid>
 
-          <Grid item xl={4} lg={6} md={12}>
+          <Grid item xl={4} lg={6} md={12} sm={12} xs={12}>
             <InputLabel sx={{ ...labelStyles }} htmlFor="board">
               Board
             </InputLabel>
@@ -2014,7 +2016,7 @@ function StudentDetails({ handleClick }) {
             />
           </Grid>
 
-          <Grid item xl={4} lg={6} md={12}>
+          <Grid item xl={4} lg={6} md={12} sm={12} xs={12} >
             <InputLabel sx={{ ...labelStyles }} htmlFor="school_distance">
               Distance From School
             </InputLabel>
@@ -2029,7 +2031,7 @@ function StudentDetails({ handleClick }) {
             />
           </Grid>
 
-          <Grid item xl={4} lg={6} md={12}>
+          <Grid item xl={4} lg={6} md={12} sm={12} xs={12}>
             <InputLabel sx={{ ...labelStyles }} htmlFor="test">
               Test
             </InputLabel>

@@ -31,7 +31,7 @@ const EmployeeDrawer = ({DrawerBtn = false, editIcon = false, handleClick, currE
           <EditTwoToneIcon onClick={() => handleEditClick(event)}/>
       )}
 
-      <Drawer anchor={'top'} open={anchor.top} onClose={toggleDrawer('top', false)}>
+      <Drawer anchor={'top'} open={anchor.top} onClose={toggleDrawer('top', false)} sx={{zIndex:'99999'}}>
         <Box sx={{ width: '100%', height:'100vh', padding: 2 }} role="presentation">
           <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #ccc' }}>
             <Typography variant="h4">Add Employee</Typography>

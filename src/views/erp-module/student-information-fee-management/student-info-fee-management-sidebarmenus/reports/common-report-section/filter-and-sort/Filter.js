@@ -7,153 +7,7 @@ import {
     FilterByClass, FilterBySection
 } from './filter-options';
 
-const availableColumns = [
-    {
-        id: '001',
-        field: 'enqNo',
-        headerName: 'Enq No',
-        filter: FilterByEnquiryNo
-    },
-    {
-        id: '002',
-        field: 'enqDate',
-        headerName: 'Enq Date',
-        filter: FilterByEnquiryDate
-    },
-    {
-        id: '003',
-        field: 'studentName',
-        headerName: 'Student Name',
-        filter: FilterByStudentName
-    },
-    {
-        id: '004',
-        field: 'class',
-        headerName: 'Class',
-        type: "multiselect",
-        filter: FilterByClass
-    },
-    {
-        id: '005',
-        field: 'section',
-        headerName: 'Section',
-        filter: FilterBySection
-    },
-    {
-        id: '006',
-        field: 'classSection',
-        headerName: 'Class Section',
-        filter: FilterByEnquiryNo
-    },
-    {
-        id: '007',
-        field: 'gender',
-        headerName: 'Gender',
-        filter: FilterByEnquiryNo
-    },
-    {
-        id: '008',
-        field: 'birthDate',
-        headerName: 'Birth Date',
-        filter: FilterByEnquiryNo
-    },
-    {
-        id: '009',
-        field: 'age',
-        headerName: 'Age (Today)',
-        filter: FilterByEnquiryNo
-    },
-    {
-        id: '010',
-        field: 'address',
-        headerName: 'Address (Complete)',
-        filter: FilterByEnquiryNo
-    },
-    {
-        id: '011',
-        field: 'commPhone',
-        headerName: 'Comm Phone (M)',
-        filter: FilterByEnquiryNo
-    },
-    {
-        id: '012',
-        field: 'commEmail',
-        headerName: 'Comm Email',
-        filter: FilterByEnquiryNo
-    },
-    {
-        id: '013',
-        field: 'joinClass',
-        headerName: 'Join Class',
-        filter: FilterByEnquiryNo
-    },
-    {
-        id: '014',
-        field: 'concessionCategory',
-        headerName: 'Concession Category',
-        filter: FilterByEnquiryNo
-    },
-    {
-        id: '015',
-        field: 'fatherName',
-        headerName: 'Father Name',
-        filter: FilterByEnquiryNo
-    },
-    {
-        id: '016',
-        field: 'motherName',
-        headerName: 'Mother Name',
-        filter: FilterByEnquiryNo
-    },
-    {
-        id: '017',
-        field: 'nationality',
-        headerName: 'Nationality',
-        filter: FilterByEnquiryNo
-    },
-    {
-        id: '018',
-        field: 'religion',
-        headerName: 'Religion',
-        filter: FilterByEnquiryNo
-    },
-    {
-        id: '019',
-        field: 'previousSchool',
-        headerName: 'Previous School',
-        filter: FilterByEnquiryNo
-    },
-    {
-        id: '020',
-        field: 'lastGradeCompleted',
-        headerName: 'Last Grade Completed',
-        filter: FilterByEnquiryNo
-    },
-    {
-        id: '021',
-        field: 'guardianName',
-        headerName: 'Guardian Name',
-        filter: FilterByEnquiryNo
-    },
-    {
-        id: '022',
-        field: 'guardianRelationship',
-        headerName: 'Guardian Relationship',
-        filter: FilterByEnquiryNo
-    },
-    {
-        id: '023',
-        field: 'guardianPhone',
-        headerName: 'Guardian Phone',
-        filter: FilterByEnquiryNo
-    },
-    {
-        id: '024',
-        field: 'guardianEmail',
-        headerName: 'Guardian Email',
-        filter: FilterByEnquiryNo
-    },
-];
+
 
 const Filter = ({ customFilterContainerStyle = {}, customSelectedFilter = {}, customAvialbelFilter = {}, customClearFilter = {}, applyFilter = 0 }) => {
     const { ref, isOpen, setIsOpen } = useOutsideClick(false);
@@ -161,9 +15,10 @@ const Filter = ({ customFilterContainerStyle = {}, customSelectedFilter = {}, cu
     const [selectedFilter, setSelectedFilter] = useState([]);
 
     const handleFilterSelected = (item) => {
+        console.log(item)
         setIsOpen(false);
-        if(!selectedFilter.includes(item))
-         setSelectedFilter([...selectedFilter, item]);
+        if (!selectedFilter.includes(item))
+            setSelectedFilter([...selectedFilter, item]);
     }
 
     const filterAvailableFields = () => {
@@ -172,21 +27,172 @@ const Filter = ({ customFilterContainerStyle = {}, customSelectedFilter = {}, cu
         ) : [];
     };
 
+    const handleRemove = (itemToRemove) => {
+        setSelectedFilter(selectedFilter.filter(item => item.id !== itemToRemove));
+      };
 
+    const availableColumns = [
+        {
+            id: '001',
+            field: 'enqNo',
+            headerName: 'Enq No',
+            filter: FilterByEnquiryNo,
+
+        },
+        {
+            id: '002',
+            field: 'enqDate',
+            headerName: 'Enq Date',
+            filter: FilterByEnquiryDate
+        },
+        {
+            id: '003',
+            field: 'studentName',
+            headerName: 'Student Name',
+            filter: FilterByStudentName
+        },
+        {
+            id: '004',
+            field: 'class',
+            headerName: 'Class',
+            type: "multiselect",
+            filter: FilterByClass
+        },
+        {
+            id: '005',
+            field: 'section',
+            headerName: 'Section',
+            filter: FilterBySection
+        },
+        {
+            id: '006',
+            field: 'classSection',
+            headerName: 'Class Section',
+            filter: FilterByEnquiryNo
+        },
+        {
+            id: '007',
+            field: 'gender',
+            headerName: 'Gender',
+            filter: FilterByEnquiryNo
+        },
+        {
+            id: '008',
+            field: 'birthDate',
+            headerName: 'Birth Date',
+            filter: FilterByEnquiryNo
+        },
+        {
+            id: '009',
+            field: 'age',
+            headerName: 'Age (Today)',
+            filter: FilterByEnquiryNo
+        },
+        {
+            id: '010',
+            field: 'address',
+            headerName: 'Address (Complete)',
+            filter: FilterByEnquiryNo
+        },
+        {
+            id: '011',
+            field: 'commPhone',
+            headerName: 'Comm Phone (M)',
+            filter: FilterByEnquiryNo
+        },
+        {
+            id: '012',
+            field: 'commEmail',
+            headerName: 'Comm Email',
+            filter: FilterByEnquiryNo
+        },
+        {
+            id: '013',
+            field: 'joinClass',
+            headerName: 'Join Class',
+            filter: FilterByEnquiryNo
+        },
+        {
+            id: '014',
+            field: 'concessionCategory',
+            headerName: 'Concession Category',
+            filter: FilterByEnquiryNo
+        },
+        {
+            id: '015',
+            field: 'fatherName',
+            headerName: 'Father Name',
+            filter: FilterByEnquiryNo
+        },
+        {
+            id: '016',
+            field: 'motherName',
+            headerName: 'Mother Name',
+            filter: FilterByEnquiryNo
+        },
+        {
+            id: '017',
+            field: 'nationality',
+            headerName: 'Nationality',
+            filter: FilterByEnquiryNo
+        },
+        {
+            id: '018',
+            field: 'religion',
+            headerName: 'Religion',
+            filter: FilterByEnquiryNo
+        },
+        {
+            id: '019',
+            field: 'previousSchool',
+            headerName: 'Previous School',
+            filter: FilterByEnquiryNo
+        },
+        {
+            id: '020',
+            field: 'lastGradeCompleted',
+            headerName: 'Last Grade Completed',
+            filter: FilterByEnquiryNo
+        },
+        {
+            id: '021',
+            field: 'guardianName',
+            headerName: 'Guardian Name',
+            filter: FilterByEnquiryNo
+        },
+        {
+            id: '022',
+            field: 'guardianRelationship',
+            headerName: 'Guardian Relationship',
+            filter: FilterByEnquiryNo
+        },
+        {
+            id: '023',
+            field: 'guardianPhone',
+            headerName: 'Guardian Phone',
+            filter: FilterByEnquiryNo
+        },
+        {
+            id: '024',
+            field: 'guardianEmail',
+            headerName: 'Guardian Email',
+            filter: FilterByEnquiryNo
+        },
+    ];
 
     const style = {
         defaultFilterContainerStyle: {
             position: "relative",
             border: "1px solid #f0f5f8",
-            zIndex: "2", 
+            zIndex: "2",
             width: "100%",
-            height:"480px"
+            height: "480px"
         },
         defaultSelectedFilter: {
             display: "flex",
             flexDirection: "column",
             position: "absolute",
-            top:'100px',
+            top: '100px',
             height: "320px",
             width: "100%",
             overflowY: "auto",
@@ -230,7 +236,7 @@ const Filter = ({ customFilterContainerStyle = {}, customSelectedFilter = {}, cu
     const clearFilterStyle = Object.keys(customClearFilter).length === 0
         ? style?.defaultClearFilter
         : customClearFilter;
-
+    
     return (
         <>
             <Box sx={filterContainerStyle} ref={ref}>
@@ -256,7 +262,7 @@ const Filter = ({ customFilterContainerStyle = {}, customSelectedFilter = {}, cu
                 <Box sx={selectedFilterStyle} className="scrollbar">
                     {
                         selectedFilter && selectedFilter.map((item) =>
-                            <item.filter key={item?.id} />
+                            <item.filter key={item?.id} handleRemove={handleRemove} id={item?.id}/>
                         )
                     }
                 </Box>
@@ -268,7 +274,9 @@ const Filter = ({ customFilterContainerStyle = {}, customSelectedFilter = {}, cu
                             <Box
                                 key={item.id}
                             >
-                                <Typography variant="h5" sx={{ border: "1px solid #f5f8fa", height: "30px", cursor: "pointer" }} onClick={() => handleFilterSelected(item)}>{item.id}: {item.headerName}</Typography>
+                                <Typography variant="h5" sx={{ border: "1px solid #f5f8fa", height: "30px", cursor: "pointer" }}
+                                    onClick={() => handleFilterSelected(item)}>{item.id}: {item.headerName}
+                                </Typography>
                             </Box>
                         )
                         )}

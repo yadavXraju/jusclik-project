@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Typography, Box, TextField, InputLabel} from '@mui/material';
+import { Grid, Typography, Box, TextField, InputLabel,useMediaQuery } from '@mui/material';
 import Divider from '@mui/material/Divider';
 import { useState } from 'react';
 
@@ -85,7 +85,14 @@ function FatherDetails({ handleClick }) {
     const { name, value } = e.target;
 
     // Check if the input field is a text field
-    if (e.target.nodeName === 'INPUT' && e.target.type === 'text' && name !== 'pan_card' && name !== 'aadhar_card_no' && name !== 'email' &&name!=='annual_income') {
+    if (
+      e.target.nodeName === 'INPUT' &&
+      e.target.type === 'text' &&
+      name !== 'pan_card' &&
+      name !== 'aadhar_card_no' &&
+      name !== 'email' &&
+      name !== 'annual_income'
+    ) {
       // Check if the value contains only non-numeric characters
       const noNumeric = /^[a-zA-Z\s]+$/;
       if (noNumeric.test(value)) {
@@ -94,22 +101,18 @@ function FatherDetails({ handleClick }) {
         // Update the state with the capitalized value
         Setformdata({ ...Formdata, [name]: capitalizedValue });
       }
-    } 
-    
-    else if (name==='aadhar_card_no'|| name==='annual_income') {
+    } else if (name === 'aadhar_card_no' || name === 'annual_income') {
       // Check if the value contains only numeric characters and spaces
       const isNumericWithSpaces = /^[0-9\s]*$/;
       if (isNumericWithSpaces.test(value) || value === '') {
-          // Update the state with the value
-          Setformdata({ ...Formdata, [name]: value });
+        // Update the state with the value
+        Setformdata({ ...Formdata, [name]: value });
       }
-  }
-    
-    else {
+    } else {
       // For other types of input fields, update the state directly
       Setformdata({ ...Formdata, [name]: value });
     }
-};
+  };
 
   //Below Function will use in button to validate validation
   console.log(() => handleSubmit(() => {}));
@@ -118,15 +121,17 @@ function FatherDetails({ handleClick }) {
     marginBottom: '8px',
     fontWeight: '500',
     color: 'rgb(54, 65, 82)',
-    whiteSpace: 'pre-wrap',
-    marginTop: '20px'
+    whiteSpace: 'pre-wrap'
+
     // fontFamily: 'Roboto, sans-serif'
   };
+
+  const Res500 = useMediaQuery('(max-width:500px)')
 
   return (
     <>
       <Box sx={{ padding: '2rem' }}>
-        <Typography variant="h3" sx={{ fontWeight: 'bold', paddingBottom: '1rem' }}>
+        <Typography variant="h3" sx={{ fontWeight: 'bold', paddingBottom: '1rem' , fontSize: Res500?'17px':'20px'}}>
           {' '}
           STEP 6 : FATHER&#39;S DETAILS{' '}
         </Typography>
@@ -134,8 +139,9 @@ function FatherDetails({ handleClick }) {
         <Divider />
       </Box>
 
-      <Grid sx={{ padding: '1rem 4rem' }} container spacing={4}>
-        <Grid item xs={4}>
+      <Grid sx={{ overflowY: 'auto', height: '66vh' }}>
+      <Grid sx={{ paddingTop:'1rem' , paddingBottom:'1rem' , paddingLeft:Res500?'1rem':'4rem' , paddingRight:Res500?'1rem':'4rem' }} container spacing={2} >
+        <Grid item xl={4} lg={6} md={12} sm={12} xs={12}>
           <InputLabel sx={{ ...labelStyles, marginTop: '0px' }} htmlFor="father_name">
             Father`s Name (Biological)
           </InputLabel>
@@ -148,59 +154,9 @@ function FatherDetails({ handleClick }) {
             required
             inputProps={{ style: { backgroundColor: '#ffffff' } }}
           />
-
-          <InputLabel sx={{ ...labelStyles }} htmlFor="aadhar_card_no">
-            Aadhaar card no
-          </InputLabel>
-          <TextField
-            name="aadhar_card_no"
-            value={Formdata.aadhar_card_no}
-            error={FormError.aadhar_card_no}
-            onChange={FatherDetailsChangeHandler}
-            fullWidth
-            required
-            inputProps={{ style: { backgroundColor: '#ffffff' } }}
-          />
-
-          <InputLabel sx={{ ...labelStyles }} htmlFor="organisation">
-            Organisation
-          </InputLabel>
-          <TextField
-            name="organisation"
-            value={Formdata.organisation}
-            error={FormError.organisation}
-            onChange={FatherDetailsChangeHandler}
-            fullWidth
-            required
-            inputProps={{ style: { backgroundColor: '#ffffff' } }}
-          />
-
-          <InputLabel sx={{ ...labelStyles }} htmlFor="organisation">
-            Last Institute Attended
-          </InputLabel>
-          <TextField
-            name="last_institute_attended"
-            value={Formdata.last_institute_attended}
-            onChange={FatherDetailsChangeHandler}
-            error={FormError.last_institute_attended}
-            fullWidth
-            required
-            inputProps={{ style: { backgroundColor: '#ffffff' } }}
-          />
-
-          <InputLabel sx={{ ...labelStyles }} htmlFor="pan_card">
-            PAN Card
-          </InputLabel>
-          <TextField
-            name="pan_card"
-            value={Formdata.pan_card}
-            onChange={FatherDetailsChangeHandler}
-            fullWidth
-            inputProps={{ style: { backgroundColor: '#ffffff' } }}
-          />
         </Grid>
 
-        <Grid item xs={4}>
+        <Grid item xl={4} lg={6} md={12} sm={12} xs={12}>
           <InputLabel sx={{ ...labelStyles, marginTop: '0px' }} htmlFor="phone_no">
             Phone No
           </InputLabel>
@@ -213,61 +169,9 @@ function FatherDetails({ handleClick }) {
             required
             inputProps={{ style: { backgroundColor: '#ffffff' } }}
           />
-
-          <InputLabel sx={{ ...labelStyles }} htmlFor="qualification">
-            Qualification
-          </InputLabel>
-          <TextField
-            name="qualification"
-            value={Formdata.qualification}
-            onChange={FatherDetailsChangeHandler}
-            error={FormError.qualification}
-            fullWidth
-            required
-            inputProps={{ style: { backgroundColor: '#ffffff' } }}
-          />
-
-          <InputLabel sx={{ ...labelStyles }} htmlFor="designation">
-            Designation
-          </InputLabel>
-          <TextField
-            name="designation"
-            value={Formdata.designation}
-            error={FormError.designation}
-            onChange={FatherDetailsChangeHandler}
-            fullWidth
-            required
-            inputProps={{ style: { backgroundColor: '#ffffff' } }}
-          />
-
-          <InputLabel sx={{ ...labelStyles }} htmlFor="office_address">
-            Office Address
-          </InputLabel>
-          <TextField
-            name="office_address"
-            value={Formdata.office_address}
-            onChange={FatherDetailsChangeHandler}
-            error={FormError.office_address}
-            fullWidth
-            required
-            inputProps={{ style: { backgroundColor: '#ffffff' } }}
-          />
-
-          <InputLabel sx={{ ...labelStyles }} htmlFor="age">
-            Age
-          </InputLabel>
-          <TextField
-            name="age"
-            value={Formdata.age}
-            onChange={AgeHandler}
-            error={FormError.age}
-            fullWidth
-            required
-            inputProps={{ style: { backgroundColor: '#ffffff' } }}
-          />
         </Grid>
 
-        <Grid item xs={4}>
+        <Grid item xl={4} lg={6} md={12} sm={12} xs={12}>
           <InputLabel sx={{ ...labelStyles, marginTop: '0px' }} htmlFor="email">
             Email
           </InputLabel>
@@ -280,7 +184,39 @@ function FatherDetails({ handleClick }) {
             required
             inputProps={{ style: { backgroundColor: '#ffffff' } }}
           />
+        </Grid>
 
+        <Grid item xl={4} lg={6} md={12} sm={12} xs={12}>
+          <InputLabel sx={{ ...labelStyles }} htmlFor="aadhar_card_no">
+            Aadhaar card no
+          </InputLabel>
+          <TextField
+            name="aadhar_card_no"
+            value={Formdata.aadhar_card_no}
+            error={FormError.aadhar_card_no}
+            onChange={FatherDetailsChangeHandler}
+            fullWidth
+            required
+            inputProps={{ style: { backgroundColor: '#ffffff' } }}
+          />
+        </Grid>
+
+        <Grid item xl={4} lg={6} md={12} sm={12} xs={12}>
+          <InputLabel sx={{ ...labelStyles }} htmlFor="qualification">
+            Qualification
+          </InputLabel>
+          <TextField
+            name="qualification"
+            value={Formdata.qualification}
+            onChange={FatherDetailsChangeHandler}
+            error={FormError.qualification}
+            fullWidth
+            required
+            inputProps={{ style: { backgroundColor: '#ffffff' } }}
+          />
+        </Grid>
+
+        <Grid item xl={4} lg={6} md={12} sm={12} xs={12}>
           <InputLabel sx={{ ...labelStyles }} htmlFor="profession">
             Profession
           </InputLabel>
@@ -293,25 +229,86 @@ function FatherDetails({ handleClick }) {
             required
             inputProps={{ style: { backgroundColor: '#ffffff' } }}
           />
+        </Grid>
 
-<InputLabel sx={{ ...labelStyles }} htmlFor="annual_income">
-    Annual Income
-</InputLabel>
-<TextField
-    name="annual_income"
-    value={Formdata.annual_income}
-    error={FormError.annual_income}
-    onChange={FatherDetailsChangeHandler}
-    fullWidth
-    required
-    inputProps={{
-        style: { backgroundColor: '#ffffff' },
-        
-    }}
-/>
+        <Grid item xl={4} lg={6} md={12} sm={12} xs={12}>
+          <InputLabel sx={{ ...labelStyles }} htmlFor="organisation">
+            Organisation
+          </InputLabel>
+          <TextField
+            name="organisation"
+            value={Formdata.organisation}
+            error={FormError.organisation}
+            onChange={FatherDetailsChangeHandler}
+            fullWidth
+            required
+            inputProps={{ style: { backgroundColor: '#ffffff' } }}
+          />
+        </Grid>
 
+        <Grid  item xl={4} lg={6} md={12} sm={12} xs={12}>
+          <InputLabel sx={{ ...labelStyles }} htmlFor="designation">
+            Designation
+          </InputLabel>
+          <TextField
+            name="designation"
+            value={Formdata.designation}
+            error={FormError.designation}
+            onChange={FatherDetailsChangeHandler}
+            fullWidth
+            required
+            inputProps={{ style: { backgroundColor: '#ffffff' } }}
+          />
+        </Grid>
 
+        <Grid item xl={4} lg={6} md={12} sm={12} xs={12}>
+          <InputLabel sx={{ ...labelStyles }} htmlFor="annual_income">
+            Annual Income
+          </InputLabel>
+          <TextField
+            name="annual_income"
+            value={Formdata.annual_income}
+            error={FormError.annual_income}
+            onChange={FatherDetailsChangeHandler}
+            fullWidth
+            required
+            inputProps={{
+              style: { backgroundColor: '#ffffff' }
+            }}
+          />
+        </Grid>
 
+        <Grid item xl={4} lg={6} md={12} sm={12} xs={12}>
+          <InputLabel sx={{ ...labelStyles }} htmlFor="organisation">
+            Last Institute Attended
+          </InputLabel>
+          <TextField
+            name="last_institute_attended"
+            value={Formdata.last_institute_attended}
+            onChange={FatherDetailsChangeHandler}
+            error={FormError.last_institute_attended}
+            fullWidth
+            required
+            inputProps={{ style: { backgroundColor: '#ffffff' } }}
+          />
+        </Grid>
+
+        <Grid item xl={4} lg={6} md={12} sm={12} xs={12}>
+          <InputLabel sx={{ ...labelStyles }} htmlFor="office_address">
+            Office Address
+          </InputLabel>
+          <TextField
+            name="office_address"
+            value={Formdata.office_address}
+            onChange={FatherDetailsChangeHandler}
+            error={FormError.office_address}
+            fullWidth
+            required
+            inputProps={{ style: { backgroundColor: '#ffffff' } }}
+          />
+        </Grid>
+
+        <Grid item xl={4} lg={6} md={12} sm={12} xs={12}>
           <InputLabel sx={{ ...labelStyles }} htmlFor="area_of_interest">
             Area of Interest
           </InputLabel>
@@ -325,6 +322,35 @@ function FatherDetails({ handleClick }) {
             inputProps={{ style: { backgroundColor: '#ffffff' } }}
           />
         </Grid>
+
+        <Grid item xl={4} lg={6} md={12} sm={12} xs={12}>
+          <InputLabel sx={{ ...labelStyles }} htmlFor="pan_card">
+            PAN Card
+          </InputLabel>
+          <TextField
+            name="pan_card"
+            value={Formdata.pan_card}
+            onChange={FatherDetailsChangeHandler}
+            fullWidth
+            inputProps={{ style: { backgroundColor: '#ffffff' } }}
+          />
+        </Grid>
+
+        <Grid item xl={4} lg={6} md={12} sm={12} xs={12}>
+          <InputLabel sx={{ ...labelStyles }} htmlFor="age">
+            Age
+          </InputLabel>
+          <TextField
+            name="age"
+            value={Formdata.age}
+            onChange={AgeHandler}
+            error={FormError.age}
+            fullWidth
+            required
+            inputProps={{ style: { backgroundColor: '#ffffff' } }}
+          />
+        </Grid>
+      </Grid>
       </Grid>
 
       {/* <Box sx={{ paddingBottom: '6rem', display: 'flex', paddingRight: '4.2rem', paddingTop: '2rem' }}>
