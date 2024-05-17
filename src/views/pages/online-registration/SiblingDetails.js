@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Typography, Box, TextField, InputLabel } from '@mui/material';
+import { Grid, Typography, Box, TextField, InputLabel, useMediaQuery} from '@mui/material';
 import Divider from '@mui/material/Divider';
 import Dropdown from 'views/common-section/ParamSelectList';
 import { useState } from 'react';
@@ -135,10 +135,12 @@ function SiblingDetails({ handleClick }) {
     // fontFamily: 'Roboto, sans-serif'
   };
 
+  const Res500 = useMediaQuery('(max-width:500px)')
+
   return (
     <>
       <Box sx={{ padding: '2rem' }}>
-        <Typography variant="h3" sx={{ fontWeight: 'bold', paddingBottom: '1rem' }}>
+        <Typography variant="h3" sx={{ fontWeight: 'bold', paddingBottom: '1rem',fontSize: Res500?'17px':'20px' }}>
           {' '}
           STEP 3 : SIBLING DETAILS (IF ANY){' '}
         </Typography>
@@ -147,8 +149,8 @@ function SiblingDetails({ handleClick }) {
       </Box>
 
       <Grid sx={{ overflowY: 'auto', height: '66vh' }}>
-      <Grid sx={{ padding: '1rem 4rem' }} container spacing={2}>
-        <Grid item xl={4} lg={6} md={12}>
+      <Grid sx={{ paddingTop:'1rem' , paddingBottom:'1rem' , paddingLeft:Res500?'1rem':'4rem' , paddingRight:Res500?'1rem':'4rem' }} container spacing={2}>
+        <Grid item xl={4} lg={6} md={12} sm={12} xs={12}>
           <InputLabel sx={{ ...labelStyles }} htmlFor="name">
             Name
           </InputLabel>
@@ -161,7 +163,7 @@ function SiblingDetails({ handleClick }) {
           />
         </Grid>
 
-        <Grid item xl={4} lg={6} md={12}>
+        <Grid item xl={4} lg={6} md={12} sm={12} xs={12} >
           <InputLabel sx={{ ...labelStyles }} htmlFor="applied_for_twin">
             Class
           </InputLabel>
@@ -175,7 +177,7 @@ function SiblingDetails({ handleClick }) {
           />
         </Grid>
 
-        <Grid item xl={4} lg={6} md={12}>
+        <Grid item xl={4} lg={6} md={12} sm={12} xs={12}>
           <InputLabel sx={{ ...labelStyles }} htmlFor="enrolled_since">
             Enrolled Since
           </InputLabel>
@@ -189,7 +191,7 @@ function SiblingDetails({ handleClick }) {
           />
         </Grid>
 
-        <Grid item xl={4} lg={6} md={12}>
+        <Grid item xl={4} lg={6} md={12} sm={12} xs={12}>
           <InputLabel sx={{ ...labelStyles }} htmlFor="current_school">
             Current School
           </InputLabel>
@@ -203,7 +205,7 @@ function SiblingDetails({ handleClick }) {
         </Grid>
 
         {Formdata.current_school !== 'select' ? (
-          <Grid item xl={4} lg={6} md={12}>
+          <Grid item xl={4} lg={6} md={12} sm={12} xs={12}>
             {Formdata.current_school !== 'select' &&
               (Formdata.current_school === 'other_school' ? (
                 <>
@@ -241,7 +243,7 @@ function SiblingDetails({ handleClick }) {
           </Grid>
         ) : null}
 
-        <Grid item xl={4} lg={6} md={12}>
+        <Grid item xl={4} lg={6} md={12} sm={12} xs={12}>
           <InputLabel sx={{ ...labelStyles }} htmlFor="sibling_twin">
             If sibling is a twin
           </InputLabel>
@@ -254,7 +256,7 @@ function SiblingDetails({ handleClick }) {
           />
         </Grid>
 
-        <Grid item xl={4} lg={6} md={12}>
+        <Grid item xl={4} lg={6} md={12} sm={12} xs={12}>
           {Formdata.sibling_twin === 'yes' && (
             <>
               <InputLabel sx={{ ...labelStyles }} htmlFor="applied_for_twin">

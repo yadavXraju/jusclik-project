@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Typography, Box, TextField, InputLabel } from '@mui/material';
+import { Grid, Typography, Box, TextField, InputLabel ,useMediaQuery} from '@mui/material';
 import Divider from '@mui/material/Divider';
 import { useState } from 'react';
 
@@ -61,10 +61,11 @@ function PermanentAddress({ handleClick }) {
     // fontFamily: 'Roboto, sans-serif'
   };
 
+  const Res500 = useMediaQuery('(max-width:500px)')
   return (
     <>
       <Box sx={{ padding: '2rem' }}>
-        <Typography variant="h3" sx={{ fontWeight: 'bold', paddingBottom: '1rem' }}>
+        <Typography variant="h3" sx={{ fontWeight: 'bold', paddingBottom: '1rem', fontSize: Res500?'17px':'20px'}}>
           {' '}
           STEP 5 : PERMANENT ADDRESS{' '}
         </Typography>
@@ -72,8 +73,8 @@ function PermanentAddress({ handleClick }) {
         <Divider />
       </Box>
 
-      <Grid sx={{ padding: '1rem 4rem' }} container spacing={2}>
-        <Grid  item xl={4} lg={6} md={12}>
+      <Grid  sx={{ paddingTop:'1rem' , paddingBottom:'1rem' , paddingLeft:Res500?'1rem':'4rem' , paddingRight:Res500?'1rem':'4rem' }} container spacing={2} >
+        <Grid  item xl={4} lg={6} md={12} sm={12} xs={12}>
           <InputLabel sx={{ ...labelStyles }} htmlFor="area">
             Area
           </InputLabel>
@@ -88,7 +89,7 @@ function PermanentAddress({ handleClick }) {
           />
         </Grid>
 
-        <Grid  item xl={4} lg={6} md={12}>
+        <Grid  item xl={4} lg={6} md={12} sm={12} xs={12}>
           <InputLabel sx={{ ...labelStyles }} htmlFor="city">
             City
           </InputLabel>
@@ -103,7 +104,7 @@ function PermanentAddress({ handleClick }) {
           />
         </Grid>
 
-        <Grid  item xl={4} lg={6} md={12}>
+        <Grid  item xl={4} lg={6} md={12} sm={12} xs={12}>
           <InputLabel sx={{ ...labelStyles }} htmlFor="state">
             State
           </InputLabel>
