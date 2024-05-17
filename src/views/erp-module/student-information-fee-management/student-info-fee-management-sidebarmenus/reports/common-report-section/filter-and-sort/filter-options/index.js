@@ -3,6 +3,7 @@ import ParamSelectList from 'views/common-section/ParamSelectList';
 import ParamChackboxSelectAll from 'views/common-section/ParamChackboxSelectAll';
 import { Typography, Box, TextField } from '@mui/material';
 import ParamDateComponent from 'views/common-section/ParamDateComponent';
+import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 
 const compareOptions = [
     {
@@ -94,52 +95,68 @@ const style = {
     }
 }
 
-const FilterByEnquiryNo = () => {
+const FilterByEnquiryNo = ({ handleRemove, id }) => {
     const [value, setValue] = useState();
     return (
         <Box sx={style?.mainStyle}>
-            <Typography>Enq No</Typography>
+            <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+                <Typography>Enq No</Typography>
+                <CloseOutlinedIcon onClick={() => handleRemove(id)} />
+            </Box>
             <Box sx={style?.filterFieldStyle}>
-                <ParamSelectList label="= equal to" options={compareOptions} value={value} setValue={setValue} size="medium" customSytle={{ width: "100%" }} rootStyle={{width:"33%"}}/>
-                <ParamDateComponent label="From" value={null} customStyle={{width:"33%"}}/>
-                <ParamDateComponent label="To" value={null} customSytle={{width:"33%"}}/>
+                <ParamSelectList label="= equal to" options={compareOptions} value={value} setValue={setValue}
+                 size="medium" customSytle={{ width: "100%" }} rootStyle={{ width: "33%" }} />
+                <ParamDateComponent label="From" value={null} customStyle={{ width: "33%" }} />
+                <ParamDateComponent label="To" value={null} customSytle={{ width: "33%" }} />
             </Box>
         </Box>
     )
 }
 
-const FilterByEnquiryDate = () => {
+const FilterByEnquiryDate = ({handleRemove,id}) => {
     const [value, setValue] = useState("");
     return (
         <Box sx={style?.mainStyle}>
-            <Typography>Enq Date</Typography>
+            <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+                <Typography>Enq Date</Typography>
+                <CloseOutlinedIcon onClick={() => handleRemove(id)} />
+            </Box>
             <Box sx={style?.filterFieldStyle}>
-                <ParamSelectList label="= equal to" options={compareOptions} value={value} setValue={setValue} size="medium"customSytle={{ width: "100%" }} rootStyle={{width:"33%"}} />
-                <ParamDateComponent label="From" value={null} />
-                <ParamDateComponent label="To" value={null} />
+                <ParamSelectList label="= equal to" options={compareOptions} value={value}
+                 setValue={setValue} size="medium" customSytle={{ width: "100%" }} 
+                 rootStyle={{ width: "33%" }} />
+                <ParamDateComponent label="From" value={null} customStyle={{ width: "33%" }}/>
+                <ParamDateComponent label="To" value={null} customStyle={{ width: "33%" }}/>
             </Box>
         </Box>
     )
 }
 
-const FilterByStudentName = () => {
+const FilterByStudentName = ({handleRemove,id}) => {
     const [value, setValue] = useState("Filter from Left");
     return (
         <Box sx={style?.mainStyle}>
-            <Typography>Student Name</Typography>
+            <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+                <Typography>Student Name</Typography>
+                <CloseOutlinedIcon onClick={() => handleRemove(id)} />
+            </Box>
             <Box sx={style?.filterFieldStyle}>
-                <TextField id="outlined-basic" label="Input text to filter from" variant="outlined" />
-                <ParamSelectList label={value} options={studentFilterOption} value={value} setValue={setValue} size="medium" />
+                <TextField id="outlined-basic" label="Input text to filter from" variant="outlined" sx={{width:'33%'}} />
+                <ParamSelectList label={value} options={studentFilterOption} 
+                value={value} setValue={setValue} size="medium" />
             </Box>
         </Box>
     )
 }
 
-const FilterByClass = () => {
+const FilterByClass = ({handleRemove,id}) => {
     const [value, setValue] = useState("Class");
     return (
         <Box sx={style?.mainStyle}>
-            <Typography>Class</Typography>
+             <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+                <Typography>Class</Typography>
+                <CloseOutlinedIcon onClick={() => handleRemove(id)} />
+            </Box>
             <Box sx={style?.filterFieldStyle}>
                 <ParamSelectList label={value} options={compareOptions} value={value} setValue={setValue} size="medium" />
                 <ParamChackboxSelectAll heading={value} data={ClassOption} value={value} setValue={setValue} size="medium" />
