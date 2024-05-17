@@ -79,8 +79,8 @@ function OtherDetails({ handleClick }) {
         <Divider />
       </Box>
 
-      <Grid sx={{ padding: '1rem 4rem' }} container spacing={4}>
-        <Grid item xs={4}>
+      <Grid sx={{ padding: '1rem 4rem' }} container spacing={2}>
+        <Grid item xl={4} lg={6} md={12}>
           <InputLabel sx={{ ...labelStyles }} htmlFor="sibling_adm_no">
             Sibling: Adm No
           </InputLabel>
@@ -95,7 +95,7 @@ function OtherDetails({ handleClick }) {
           />
         </Grid>
 
-        <Grid item xs={4}>
+        <Grid item xl={4} lg={6} md={12}>
           <InputLabel sx={{ ...labelStyles }} htmlFor="sibling_class_section">
             Sibling: Class & Section
           </InputLabel>
@@ -112,7 +112,7 @@ function OtherDetails({ handleClick }) {
           />
         </Grid>
 
-        <Grid item xs={4}>
+        <Grid item xl={4} lg={6} md={12}>
           <InputLabel sx={{ ...labelStyles }} htmlFor="sibling_name">
             Sibling: Name
           </InputLabel>
