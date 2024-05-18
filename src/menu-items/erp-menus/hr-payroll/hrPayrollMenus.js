@@ -36,6 +36,16 @@ const HrPayRollMenu = {
         icon: CalendarMonthTwoToneIcon,
         breadcrumbs: false
       },
+
+        // leave application
+        {
+          id: 'leave-application',
+          title: 'Leave Application',
+          type: 'item',
+          url: '/erp/hr-payroll/leave-application',
+          icon: CalendarMonthTwoToneIcon,
+          breadcrumbs: false
+        },
         // report
         {
           id: 'reports',
