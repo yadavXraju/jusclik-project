@@ -7,7 +7,7 @@ const initialState = {
     configGlobally:[],
     configStudentWise:[],
     studentWiseClass:'',
-
+ 
   // fee  head options
   feeHeadOptions : [
     { id: 1, name: 'Late Fee' },
