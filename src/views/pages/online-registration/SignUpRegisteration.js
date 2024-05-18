@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Box, Button, Typography } from '@mui/material';
+import { Grid, Box, Button, Typography, useMediaQuery } from '@mui/material';
 import LeftLogo from '../authentication/LeftLogo';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
@@ -173,179 +173,192 @@ const SignUpRegisteration = ({ continueHandler }) => {
     dispatch(updateAllDataform({ [name]: capitalizedValue })); // Dispatch action to update Redux state
   }
 
+  //Responsive
+
+  let PowerByRem = '1.5rem'
+
+  const Res1600 = useMediaQuery('(max-width:1600px)')
+
+  if (Res1600) {
+    PowerByRem = ''
+  }
+
   return (
     <>
       {showDiv1 && (
         <Grid container sx={{ backgroundColor: '#f8fafc' }}>
-          <Grid lg={6} sx={{ minHeight: '100vh' }}>
-            <LeftLogo />
-          </Grid>
-          <Grid
-            xs={12}
-            lg={6}
-            sx={{
-              minHeight: '100vh',
-              display: 'flex',
-              alignItems: 'center',
-              flexDirection: 'column',
-              background: 'rgb(255, 236, 236)',
-              justifyContent: 'center',
-              padding: '20px',
-              borderTopLeftRadius: '20px',
-              borderBottomLeftRadius: '20px'
-            }}
-          >
-            <Grid sx={{ maxWidth: '575px', width: { xs: '100%', lg: '575px' }, margin: 'auto', padding: '30px' }}>
-              <Box sx={style.formHeader}>
-                <Typography variant="h1" sx={style.formHeading}>
-                  Online Registration
-                </Typography>
-              </Box>
-
-              <Box sx={{ width: '100%', typography: 'body1' }}>
-                <TabContext value={value}>
-                  <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                    <TabList variant="fullWidth" onChange={handleChange} aria-label="lab API tabs example">
-                      <Tab label="New Registration" value="1" />
-                      <Tab label="Already Registered" value="2" />
-                    </TabList>
+        <Grid lg={6} md={6} sx={{ minHeight: '100vh', position: 'sticky', top: 0 }}>
+          <LeftLogo />
+        </Grid>
+        <Grid
+          xs={12}
+          md={6}
+          lg={6}
+          sx={{
+            
+            display: 'flex',
+            alignItems: 'center',
+            flexDirection: 'column',
+            background: 'rgb(255, 236, 236)',
+            justifyContent: 'center',
+            padding: '20px',
+            borderTopLeftRadius: '20px',
+            borderBottomLeftRadius: '20px',
+            height:'100vh',
+            overflowY: 'auto',
+            overflowX:'hidden'
+            
+          }}
+        >
+          <Grid sx={{ maxWidth: '575px', width: { xs: '100%', lg: '575px' }, margin: 'auto', padding: '30px' }}>
+            <Box sx={style.formHeader}>
+              <Typography variant="h1" sx={style.formHeading}>
+                Online Registration
+              </Typography>
+            </Box>
+      
+            <Box sx={{ width: '100%', typography: 'body1' }}>
+              <TabContext value={value}>
+                <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+                  <TabList variant="fullWidth" onChange={handleChange} aria-label="lab API tabs example">
+                    <Tab label="New Registration" value="1" />
+                    <Tab label="Already Registered" value="2" />
+                  </TabList>
+                </Box>
+                <TabPanel value="1">
+                  <Dropdown
+                    label="Session"
+                    name="session"
+                    error={formErrors.session}
+                    onChange={changeHandler}
+                    options={SessionOptions}
+                    className="findcomp"
+                    sx={{ backgroundColor: '#ffffff' }}
+                    rootStyle={{ marginTop: '20px' }}
+                    customStyle={{ '& > div': { background: '#ffffff' } }}
+                  />
+                  {formErrors.session && (
+                    <Typography variant="body2" color="error">
+                      Please select a session
+                    </Typography>
+                  )}
+      
+                  <Dropdown
+                    label="Class For Admission"
+                    options={ClassOptions}
+                    name="class"
+                    onChange={changeHandler}
+                    rootStyle={{ marginTop: '20px' }}
+                    customStyle={{ '& > div': { background: '#ffffff' } }}
+                  />
+                  {formErrors.class && (
+                    <Typography variant="body2" color="error">
+                      Please select a class
+                    </Typography>
+                  )}
+                  <TextField
+                    id="outlined-basic"
+                    label="Student's Name"
+                    variant="outlined"
+                    name="student_name"
+                    value={allDataform.student_name}
+                    onChange={NamehandleChange}
+                    fullWidth
+                    sx={{ marginTop: '20px' }}
+                    inputProps={{ style: { backgroundColor: '#ffffff' } }}
+                  />
+                  {formErrors.student_name && (
+                    <Typography variant="body2" color="error">
+                      Please enter the student name
+                    </Typography>
+                  )}
+      
+                  <ParameterizedDateComponent
+                    label="Date of Birth"
+                    onChange={DatePickerSelector}
+                    name="dob"
+                    value={allDataform.dob}
+                    customStyle={{
+                      marginTop: '20px',
+                      width: '100%',
+                      borderRadius: '50px',
+                      '& .MuiInputBase-root input , & .MuiInputBase-adornedEnd': { background: 'white' }
+                    }}
+                  />
+                  {formErrors.dob && (
+                    <Typography variant="body2" color="error">
+                      Please enter the date of birth
+                    </Typography>
+                  )}
+      
+                  <TextField
+                    id="outlined-basic"
+                    label="Mobile Number"
+                    onChange={mobileHandler}
+                    value={allDataform.mobile}
+                    name="mobile"
+                    variant="outlined"
+                    fullWidth
+                    sx={{ marginTop: '20px' }}
+                    inputProps={{ style: { backgroundColor: '#ffffff' }, inputMode: 'numeric' }}
+                  />
+                  {formErrors.mobile && (
+                    <Typography variant="body2" color="error">
+                      Please enter a valid mobile number
+                    </Typography>
+                  )}
+      
+                  <TextField
+                    id="outlined-basic"
+                    label="Email Address"
+                    variant="outlined"
+                    onChange={changeHandler}
+                    name="email"
+                    value={allDataform.email}
+                    fullWidth
+                    sx={{ marginTop: '20px' }}
+                    inputProps={{ style: { backgroundColor: '#ffffff' } }}
+                  />
+                  {formErrors.email && (
+                    <Typography variant="body2" color="error">
+                      Please enter a valid email address
+                    </Typography>
+                  )}
+      
+                  <Button
+                    onClick={handleSubmit}
+                    sx={{
+                      backgroundColor: '#fff',
+                      color: '#364152b5',
+                      borderRadius: '10px',
+                      marginTop: '20px',
+                      border: '1px solid #c4c4c4',
+                      label: 'Next',
+                      fontSize: '15px',
+                      fontFamily: 'plus Jakarta sans',
+                      cursor: 'pointer',
+                      width: '40%',
+                      height: '50px',
+                      '&:hover': { backgroundColor: '#e64b4c', color: '#fff' }
+                    }}
+                  >
+                    Save & Next
+                  </Button>
+                </TabPanel>
+                <TabPanel value="2">
+                  <Box>
+                    <MobileLogin />
                   </Box>
-                  <TabPanel value="1">
-                    <Dropdown
-                      label="Session"
-                      name="session"
-                      error={formErrors.session}
-                      onChange={changeHandler}
-                      options={SessionOptions}
-                      className="findcomp"
-                      sx={{ backgroundColor: '#ffffff' }}
-                      rootStyle={{ marginTop: '20px' }}
-                      customStyle={{ '& > div': { background: '#ffffff' } }}
-                    />
-                    {formErrors.session && (
-                      <Typography variant="body2" color="error">
-                        Please select a session
-                      </Typography>
-                    )}
-
-                    <Dropdown
-                      label="Class For Admission"
-                      options={ClassOptions}
-                      name="class"
-                      onChange={changeHandler}
-                      rootStyle={{ marginTop: '20px' }}
-                      customStyle={{ '& > div': { background: '#ffffff' } }}
-                    />
-                    {formErrors.class && (
-                      <Typography variant="body2" color="error">
-                        Please select a class
-                      </Typography>
-                    )}
-                    <TextField
-                      id="outlined-basic"
-                      label="Student's Name"
-                      variant="outlined"
-                      name="student_name"
-                      value={allDataform.student_name}
-                      onChange={NamehandleChange}
-                      fullWidth
-                      sx={{ marginTop: '20px' }}
-                      inputProps={{ style: { backgroundColor: '#ffffff' } }}
-                    />
-                    {formErrors.student_name && (
-                      <Typography variant="body2" color="error">
-                        Please enter the student name
-                      </Typography>
-                    )}
-
-                    <ParameterizedDateComponent
-                      label="Date of Birth"
-                      onChange={DatePickerSelector}
-                      name="dob"
-                      value={allDataform.dob}
-                      // error={formErrors.dob} // Pass error prop if applicable
-                      //onChange={changeHandler} // Pass onChange handler if applicable
-                      customStyle={{
-                        marginTop: '20px',
-                        width: '100%',
-                        borderRadius: '50px',
-                        '& .MuiInputBase-root input , & .MuiInputBase-adornedEnd': { background: 'white' }
-                      }}
-                    />
-                    {formErrors.dob && (
-                      <Typography variant="body2" color="error">
-                        Please enter the date of birth
-                      </Typography>
-                    )}
-
-                    <TextField
-                      id="outlined-basic"
-                      label="Mobile Number"
-                      onChange={mobileHandler}
-                      value={allDataform.mobile}
-                      name="mobile"
-                      variant="outlined"
-                      fullWidth
-                      sx={{ marginTop: '20px' }}
-                      inputProps={{ style: { backgroundColor: '#ffffff' }, inputMode: 'numeric' }}
-                    />
-                    {formErrors.mobile && (
-                      <Typography variant="body2" color="error">
-                        Please enter a valid mobile number
-                      </Typography>
-                    )}
-
-                    <TextField
-                      id="outlined-basic"
-                      label="Email Address"
-                      variant="outlined"
-                      onChange={changeHandler}
-                      name="email"
-                      value={allDataform.email}
-                      fullWidth
-                      sx={{ marginTop: '20px' }}
-                      inputProps={{ style: { backgroundColor: '#ffffff' } }}
-                    />
-                    {formErrors.email && (
-                      <Typography variant="body2" color="error">
-                        Please enter a valid email address
-                      </Typography>
-                    )}
-
-                    <Button
-                      onClick={handleSubmit} // Call handleSubmit on button click
-                      sx={{
-                        backgroundColor: '#fff',
-                        color: '#364152b5',
-                        borderRadius: '10px',
-                        marginTop: '20px',
-                        border: '1px solid #c4c4c4',
-                        label: 'Next',
-                        fontSize: '15px',
-                        fontFamily: 'plus Jakarta sans',
-                        cursor: 'pointer',
-                        width: '40%',
-                        height: '50px',
-                        '&:hover': { backgroundColor: '#e64b4c', color: '#fff' }
-                      }}
-                    >
-                      Save & Next
-                    </Button>
-                  </TabPanel>
-                  <TabPanel value="2">
-                    <Box sx={{}}>
-                      <MobileLogin />
-                    </Box>
-                  </TabPanel>
-                </TabContext>
-              </Box>
-
-              <Box sx={{ paddingTop: '2.5rem', paddingLeft: '4rem' }}>
-                <PoweredBySection />
-              </Box>
-            </Grid>
+                </TabPanel>
+              </TabContext>
+            </Box>
+            <Box sx={{ paddingTop: PowerByRem, paddingLeft: '4rem' }}>
+              <PoweredBySection />
+            </Box>
           </Grid>
         </Grid>
+      </Grid>
+      
       )}
 
       {/* Page Term and Conditions */}
@@ -353,14 +366,17 @@ const SignUpRegisteration = ({ continueHandler }) => {
       {showDiv2 && (
         <Grid>
           <Grid container sx={{ backgroundColor: '#f8fafc' }}>
-            <Grid lg={6} sx={{ minHeight: '100vh' }}>
+            <Grid lg={6} xs={12}
+              
+              md={6} sx={{ minHeight: '100vh' }}>
               <LeftLogo />
             </Grid>
             <Grid
               xs={12}
               lg={6}
+              md={6}
               sx={{
-                minHeight: '100vh',
+                Height: '98vh',
                 display: 'flex',
                 alignItems: 'center',
                 flexDirection: 'column',
@@ -368,7 +384,10 @@ const SignUpRegisteration = ({ continueHandler }) => {
                 justifyContent: 'center',
                 padding: '20px',
                 borderTopLeftRadius: '20px',
-                borderBottomLeftRadius: '20px'
+                borderBottomLeftRadius: '20px',
+                
+            overflowY: 'auto',
+            overflowX:'hidden'
               }}
             >
               <Grid sx={{ maxWidth: '100%', width: { xs: '100%', lg: '100%' }, margin: 'auto', padding: '20px' }}>
@@ -378,6 +397,8 @@ const SignUpRegisteration = ({ continueHandler }) => {
           </Grid>
         </Grid>
       )}
+
+
     </>
   );
 };
