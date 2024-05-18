@@ -103,7 +103,7 @@ const columns = [
       field: "Loc",
       headerName: "Location",
       flex: 1,
-      minWidth: 150,
+      minWidth: 130,
       align: 'left',
       headerAlign: 'left'
     },
@@ -151,7 +151,7 @@ const columns = [
       field: 'Action',
       headerName: 'Action',
       flex: 1,
-      minWidth: 100,
+      minWidth: 90,
       sortable: false,
       filterable: false,
       disableColumnMenu: true,
