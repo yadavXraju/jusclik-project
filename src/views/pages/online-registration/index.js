@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState  } from 'react';
 import SchoolLogo from '../../../assets/images/Arwachin School (Test Logo) (2).png';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import { Grid, Box, Paper, useMediaQuery, IconButton, Drawer, List, ListItem, ListItemText ,Typography} from '@mui/material';
+import { Grid, Box, Paper, useMediaQuery, IconButton, Drawer, List, ListItem, ListItemText, Typography } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import StudentDetails from './StudentDetails';
 import Upload_Document_Photos from './Upload_Document_Photos';
@@ -17,6 +17,9 @@ import PreviewAndSubmit from './PreviewAndSubmit';
 import TabNumber from './TabNumber';
 import BottomNavbar from 'views/common-section/BottomNavbar';
 import SchoolLogo2 from '../../../assets/images/Logo (Online Registration form Application).png';
+import CloseIcon from '@mui/icons-material/Close';
+
+
 
 const OnlineRegistration = () => {
   const [TabChange, setTabChange] = useState(0);
@@ -46,7 +49,9 @@ const OnlineRegistration = () => {
   ];
 
   const handleChange = (event, newValue) => {
+   
     setTabChange(newValue);
+  
   };
 
   const XXL = useMediaQuery('(min-width:1920px)');
@@ -60,12 +65,15 @@ const OnlineRegistration = () => {
   const Res821 = useMediaQuery('(max-width:821px)');
   const Res575 = useMediaQuery('(max-width:575px)');
 
-  
-  
   let ResNavbar = {
     bottom: '4rem',
     width: '75%',
     paddingLeft: '2.8rem'
+  };
+
+  let ResNavbarBtn = {
+    fontsize: '14px',
+    width: '144px'
   };
 
   if (Res2560) {
@@ -104,7 +112,7 @@ const OnlineRegistration = () => {
     ResNavbar = {
       bottom: '3rem',
       width: '55.5%',
-      paddingLeft: '10rem'
+      paddingLeft: '3.1rem'
     };
   }
 
@@ -112,7 +120,7 @@ const OnlineRegistration = () => {
     ResNavbar = {
       bottom: '3rem',
       width: '52%',
-      paddingLeft: '4.2rem'
+      paddingLeft: '3.1rem'
     };
   }
 
@@ -120,18 +128,22 @@ const OnlineRegistration = () => {
     ResNavbar = {
       bottom: '3rem',
       width: '94%',
-      paddingLeft: '11.2rem'
+      paddingLeft:TabChange==0?'13.9rem':'11.1rem'
     };
   }
 
-  
   if (Res575) {
-    ResNavbar = {
+    (ResNavbar = {
       bottom: '3rem',
       width: '91%',
-      paddingLeft: '5rem'
-    };
+      paddingLeft:TabChange==0?'10.2rem':'8rem'
+    }),
+      (ResNavbarBtn = {
+        fontSize: '10px',
+        width: '80px'
+      });
   }
+
 
   const handleDrawerOpen = () => {
     setDrawerOpen(true);
@@ -141,6 +153,8 @@ const OnlineRegistration = () => {
     setDrawerOpen(false);
   };
 
+
+
   return (
     <>
       {showSignUp ? (
@@ -148,137 +162,141 @@ const OnlineRegistration = () => {
           <SignUpRegisteration continueHandler={continueHandler} />
         </Grid>
       ) : (
-        
-          <Grid sx={{ background: '#ffecec', minHeight: '100vh' }}>
-            <Grid container spacing={3} sx={{ paddingLeft:ResBurger?'1rem':'5rem', paddingTop: ResBurger?'1rem':'4rem' }}>
-              {!ResBurger && (
-                <Grid
-                  item
-                  xl={XXL ? 2 : 3}
-                  lg={Res1280 ? 4 : 3}
-                  md={4}
-                  sm={12}
-                  component={Paper}
-                  elevation={2}
-                  sx={{ minHeight: '87vh', marginTop: '1.5rem' }}
-                >
-                  <Grid sx={{ paddingRight: '1rem', marginTop: '-5px' }}>
-                    <Box sx={{ marginRight: '53px' }}>
-                      <img src={SchoolLogo} alt="Logo" width="250px" style={{ marginRight: '8px' }} />
-                    </Box>
-                    <Box
-                      sx={{
-                        width: '100%',
-                        paddingTop: '1.5rem',
-                        '& .number-bg': {
-                          background: '#2196f3',
-                          color: 'white'
-                        }
-                      }}
+        <Grid sx={{ background: '#ffecec', minHeight: '100vh' }}>
+          <Grid container spacing={3} sx={{ paddingLeft: ResBurger ? '1rem' : '5rem', paddingTop: ResBurger ? '1rem' : '4rem' }}>
+            {!ResBurger && (
+              <Grid
+                item
+                xl={XXL ? 2 : 3}
+                lg={Res1280 ? 4 : 3}
+                md={4}
+                sm={12}
+                component={Paper}
+                elevation={2}
+                sx={{ minHeight: '87vh', marginTop: '1.5rem' }}
+              >
+                <Grid sx={{ paddingRight: '1rem', marginTop: '-5px' }}>
+                  <Box sx={{ marginRight: '53px' }}>
+                    <img src={SchoolLogo} alt="Logo" width="250px" style={{ marginRight: '8px' }} />
+                  </Box>
+                  <Box
+                    sx={{
+                      width: '100%',
+                      paddingTop: '1.5rem',
+                      '& .number-bg': {
+                        background: '#2196f3',
+                        color: 'white'
+                      }
+                    }}
+                  >
+                    <Tabs
+                      value={TabChange}
+                      onChange={handleChange}
+                      centered
+                      orientation="vertical"
+                      sx={{ '& .MuiTabs-indicator': { left: 0, right: 'auto' } }}
+                      TabIndicatorProps={{ style: { backgroundColor: '#ffe71b', width: '3px' } }}
                     >
-                      <Tabs
-                        value={TabChange}
-                        onChange={handleChange}
-                        centered
-                        orientation="vertical"
-                        sx={{ '& .MuiTabs-indicator': { left: 0, right: 'auto' } }}
-                        TabIndicatorProps={{ style: { backgroundColor: '#ffe71b', width: '3px' } }}
-                      >
-                        {tabsData.map((tab) => (
-                          <Tab
-                            key={tab.id}
-                            value={tab.value}
-                            disabled={tab.disabled}
-                            sx={{
-                              fontSize: '14px',
-                              fontWeight: 'bold',
-                              alignItems: 'start',
-                              color: TabChange === tab.value ? 'inherit !important' : 'inherit',
-                              marginLeft: '7px'
-                            }}
-                            label={<TabNumber number={tab.id} text={tab.label} isActive={TabChange === tab.value} />}
-                          />
-                        ))}
-                      </Tabs>
-                    </Box>
-                  </Grid>
+                      {tabsData.map((tab) => (
+                        <Tab
+                          key={tab.id}
+                          value={tab.value}
+                          disabled={tab.disabled}
+                          sx={{
+                            fontSize: '14px',
+                            fontWeight: 'bold',
+                            alignItems: 'start',
+                            color: TabChange === tab.value ? 'inherit !important' : 'inherit',
+                            marginLeft: '7px'
+                            
+                          }}
+                          label={<TabNumber number={tab.id} text={tab.label} isActive={TabChange === tab.value} />}
+                        />
+                     
+                      ))}
+                      
+                    </Tabs>
+                  </Box>
                 </Grid>
-              )}
-              <Grid item xl={XXL ? 10 : 9} lg={Res1280 ? 8 : 9} md={8} sm={12}>
-                <Box sx={{ paddingRight: ResBurger ? '1rem' : '4rem' }}>
-                  <Paper elevation={2} sx={{ minHeight: ResBurger ? '94vh' : '87vh'}}>
-                    {ResBurger && (
-                      <>
-                        <IconButton
-                          edge="start"
-                          color="yellow"
-                          aria-label="menu"
-                          onClick={handleDrawerOpen}
-                          sx={{ position: '', top: 20, left: 20 }}
-                        >
-                          <MenuIcon />
-                        </IconButton>
-                        <Drawer
-  anchor="left"
-  open={drawerOpen}
-  
-  onClose={handleDrawerClose}
-  sx={{ 
-    '& .MuiPaper-root': {
-      borderTopRightRadius: '10px',
-      borderBottomRightRadius: '10px',
-      background:'#ffecec',
-      
-      
-    }
-  }}
->          
-                  <Box sx={{ width: '275px !important' }} role="presentation">
-                            <Box sx={{ padding: '1rem', marginTop: '2rem', marginLeft: '2.4rem' }}>
-                              <img src={SchoolLogo2} alt="Logo" width="75%" />
-                            </Box>
-                            <List>
-                              {tabsData.map((tab) => (
-                                <ListItem button key={tab.id} onClick={() => handleClick(tab.value)} disabled={tab.disabled}>
-                                  <ListItemText
-                                    primary={<TabNumber number={tab.id} text={tab.label} isActive={TabChange === tab.value} />}
-                                  />
-                                </ListItem>
-                              ))}
-                            </List>
-                          </Box>
-                        </Drawer>
-                      </>
-                    )}
-
-                    {tabsData.map((tab) => TabChange === tab.value && tab.component)}
-
-                    <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', paddingLeft: '0.3rem' }}>
-                      <BottomNavbar
-                        tabPageLength={tabsData.length - 1}
-                        value={TabChange}
-                        setValue={setTabChange}
-                        // cancelCustomStyle={{width:'10px'}}
-                        // submitCustomStyle = {{width:'10px'}}
-                        customStyle={{
-                          ...ResNavbar,
-                          backgroundColor: 'white',
-                          borderBottom: 'none',
-                          borderTop: '1px solid #ccc',
-                          borderRadius: '0px',
-                          height: '5rem'
-                        }}
-                      />
-                    </Box>
-                  </Paper>
-                </Box>
               </Grid>
+            )}
+            <Grid item xl={XXL ? 10 : 9} lg={Res1280 ? 8 : 9} md={8} sm={12}>
+              <Box sx={{ paddingRight: ResBurger ? '1rem' : '4rem' }}>
+                <Paper elevation={2} sx={{ minHeight: ResBurger ? '94vh' : '87vh' }}>
+                  {ResBurger && (
+                    <>
+                      <IconButton
+                        edge="start"
+                        color="yellow"
+                        aria-label="menu"
+                        onClick={handleDrawerOpen}
+                        sx={{ position: '', top: 20, left: 20 }}
+                      >
+                        <MenuIcon />
+                      </IconButton>
+                      <Drawer
+                        anchor="left"
+                        open={drawerOpen}
+                        onClose={handleDrawerClose}
+                        sx={{
+                          '& .MuiPaper-root': {
+                            borderTopRightRadius: '10px',
+                            borderBottomRightRadius: '10px',
+                            background: '#ffecec'
+                          }
+                        }}
+                      >
+                        <Box sx={{ display: 'flex', justifyContent: 'flex-end', padding: '8px' }}>
+                          <IconButton onClick={handleDrawerClose}>
+                            <CloseIcon />
+                          </IconButton>
+                        </Box>
+
+                        <Box sx={{ width: '275px !important' }} role="presentation">
+                          <Box sx={{ marginLeft: '2.4rem' }}>
+                            <img src={SchoolLogo2} alt="Logo" width="75%" />
+                          </Box>
+                          <List>
+                            {tabsData.map((tab) => (
+                              <ListItem button key={tab.id} onClick={() => handleClick(tab.value)} disabled={tab.disabled}>
+                                <ListItemText primary={<TabNumber number={tab.id} text={tab.label} isActive={TabChange === tab.value} />} />
+                              </ListItem>
+                            ))}
+                          </List>
+                        </Box>
+                      </Drawer>
+                    </>
+                  )}
+
+                  {tabsData.map((tab) => TabChange === tab.value && tab.component)}
+
+                  <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', paddingLeft: '0.3rem' }}>
+                    <BottomNavbar
+                      tabPageLength={tabsData.length - 1}
+                      value={TabChange}
+                      setValue={setTabChange}
+                      cancelCustomStyle={{...ResNavbarBtn}}
+                      SaveNnextCustomStyle={{...ResNavbarBtn}}
+                      SubmitCustomStyle={{...ResNavbarBtn}}
+                      
+                      customStyle={{
+                        ...ResNavbar,
+                        backgroundColor: 'white',
+                        borderBottom: 'none',
+                        borderTop: '1px solid #ccc',
+                        borderRadius: '0px',
+                        height: '5rem'
+                      }}
+                    />
+                  </Box>
+                </Paper>
+              </Box>
             </Grid>
           </Grid>
-       
+        </Grid>
       )}
 
-      <Box style={{ position: 'fixed', textAlign: 'center', width: '100%' , background:'#ffecec' }}>
+      <Box style={{ position: 'fixed', textAlign: 'center', width: '100%', background: showSignUp ? '' : '#ffecec', bottom: '0' }}>
         <Typography variant="h5" sx={{ marginBottom: '0.5rem' }}>
           Powered by Jusklik
         </Typography>
