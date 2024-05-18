@@ -10,7 +10,7 @@ import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 
 // rowData
 
-import { initialRows } from 'views/erp-module/hr-payroll/hr-payroll-sidebar/settings/employeeonBoard/component/employeData';
+import { initialRows } from 'views/erp-module/hr-payroll/hr-payroll-sidebar/Employee-Master/employeeonBoard/component/employeData';
 import OnBoardDrawer from './OnBoardDrawer';
 
 
@@ -132,6 +132,14 @@ const columns = [
       headerAlign: 'left'
     },
     {
+      field: "group",
+      headerName: "Group",
+      flex: 1,
+      minWidth: 150,
+      align: 'left',
+      headerAlign: 'left'
+    },
+    {
       field: "reporting-manager",
       headerName: "Reporting Manager",
       flex: 1,
@@ -174,10 +182,10 @@ const columns = [
 
 
 // Functions
-// const handleDeleteRow=(id)=>{
-//   setmodalOpen(true);
-//   setdeleteId(id)
-// }
+const handleDeleteRow=(id)=>{
+  setmodalOpen(true);
+  setdeleteId(id)
+}
 
 const confirmDelete=()=>{
   const updatedRows = tableRows.filter((row) => row.id !== deleteId);
@@ -262,6 +270,7 @@ const handleModalClose=()=>{
   </Box>
     <Box p={2} className={'scrollbar-2'}>
     <CommonDataGrid
+    className={'scrollbar-2'}
     columns={columns}
     rows={ tableRows}
     initialState={{

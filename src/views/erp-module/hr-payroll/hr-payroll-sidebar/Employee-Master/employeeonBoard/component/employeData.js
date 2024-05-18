@@ -12,6 +12,7 @@ export const initialRows = [
       id:randomId(),
       status:'In Process',
       emp: randomTraderName(),
+      group:"Onboarding -US",
       D_O_J:'21-05-2005',
       Loc: randomCity(),
       Dept:randomDesk(),
@@ -28,6 +29,7 @@ export const initialRows = [
         Dept:randomDesk(),
         post: randomJobTitle(),
         phn: randomPhoneNumber(),
+        group:"Onboarding -UK",
         'reporting-manager':randomTraderName(),
       },
       { 
@@ -39,6 +41,7 @@ export const initialRows = [
         Dept:randomDesk(),
         post: randomJobTitle(),
         phn: randomPhoneNumber(),
+        group:"NA",
         'reporting-manager':randomTraderName(),
       },
       { 
@@ -50,6 +53,7 @@ export const initialRows = [
         Dept:randomDesk(),
         post: randomJobTitle(),
         phn: randomPhoneNumber(),
+        group:"Onboarding -UK",
         'reporting-manager':randomTraderName(),
 
       },
@@ -62,6 +66,7 @@ export const initialRows = [
         Dept:randomDesk(),
         post: randomJobTitle(),
         phn: randomPhoneNumber(),
+        group:"NA",
         'reporting-manager':randomTraderName(),
       },
       {
@@ -73,6 +78,7 @@ export const initialRows = [
         Dept:randomDesk(),
         post: randomJobTitle(),
         phn: randomPhoneNumber(),
+        group:"Onboarding -UK",
         'reporting-manager':randomTraderName(),
       },
       {
@@ -84,6 +90,7 @@ export const initialRows = [
         Dept:randomDesk(),
         post: randomJobTitle(),
         phn: randomPhoneNumber(),
+        group:"NA",
         'reporting-manager':randomTraderName(),
       },
       {
@@ -95,6 +102,7 @@ export const initialRows = [
         Dept:randomDesk(),
         post: randomJobTitle(),
         phn: randomPhoneNumber(),
+        group:"Onboarding -UK",
         'reporting-manager':randomTraderName(),
       },
       {
@@ -106,6 +114,7 @@ export const initialRows = [
         Dept:randomDesk(),
         post: randomJobTitle(),
         phn: randomPhoneNumber(),
+        group:"NA",
         'reporting-manager':randomTraderName(),
       },
       {
@@ -117,6 +126,7 @@ export const initialRows = [
         Dept:randomDesk(),
         post: randomJobTitle(),
         phn: randomPhoneNumber(),
+        group:"Onboarding -UK",
         'reporting-manager':randomTraderName(),
       },
   ];
