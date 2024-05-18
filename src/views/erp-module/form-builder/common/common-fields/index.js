@@ -5,10 +5,10 @@ import MultiLine from './multi-line'
 import Address from './address'
 const DamanTemp = () => {
   return (
-<>
-<SingleLine/>
-    <MultiLine/>
-    <Address/>
+    <>
+      <SingleLine />
+      <MultiLine />
+      <Address />
     </>
   )
 }

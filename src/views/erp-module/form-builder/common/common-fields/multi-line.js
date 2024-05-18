@@ -6,21 +6,21 @@ import * as React from 'react';
 
 
 
-const MultiLine=()=>{
+const MultiLine = () => {
 
   return (
     <>
-    <FormControl>
-  <Typography>Multiline</Typography>
-  <TextField
-        id=""
-        label=""
-        variant="outlined"
-        multiline
-        minRows={6}
-      />
+      <FormControl>
+        <Typography>Multiline</Typography>
+        <TextField
+          id=""
+          label=""
+          variant="outlined"
+          multiline
+          minRows={6}
+        />
       </FormControl>
-      </>
+    </>
   );
 }
 export default MultiLine
