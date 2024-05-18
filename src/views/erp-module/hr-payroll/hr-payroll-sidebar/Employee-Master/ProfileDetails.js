@@ -104,7 +104,6 @@ const ProfileDetail = ({ setStudentDetail, setEditItem, EmployeeFields }) => {
                   />
                 )}
               </Grid>
-              {console.log(toCamelCase(item.name))}
              </>
             )}
           </Grid>

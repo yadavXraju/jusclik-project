@@ -12,10 +12,10 @@ import DescriptionTwoToneIcon from '@mui/icons-material/DescriptionTwoTone';
 import BottomNavbar from '../../../../../../../erp-common-component/bottom-navbar';
 import Profile from './Profile';
 import ProfileDetail from './PrimaryDetails';
-import AddressForm from './Address';
 import ContactPerson from './ContactPerson';
 import { useSelector,useDispatch } from 'react-redux';
 import  {addField,subGroupbyGroup}  from 'store/student-info-and-fee/student/admission-slice';
+import CommonAddress from 'views/common-section/CommonAddress';
 
 
 const buttonsData = [
@@ -39,7 +39,7 @@ const Mainform1 = ({ currEditItem }) => {
     address: [],
     contactPerson: [],
     customFields: [],
-    remarks: []
+    remarks: [],
   });
 
   const handleButtonClick = (buttonName) => {
@@ -87,6 +87,15 @@ const Mainform1 = ({ currEditItem }) => {
     setStudentDetails({ ...student, [name]: newValue });
   };
 
+  // ======= data for Address component ==========
+  const studentAddressFields = [
+    { name: 'currentAddress', label: 'Address', type: 'textarea', fullWidth: true },
+    { name: 'country', label: 'Country/Region', type: 'text' },
+    { name: 'city', label: 'City', type: 'text' },
+    { name: 'state', label: 'State', type: 'text' },
+    { name: 'zipCode', label: 'Zip Code', type: 'text' }
+  ];
+
   
   let cardComponent;
   switch (selectedButton) {
@@ -97,7 +106,7 @@ const Mainform1 = ({ currEditItem }) => {
       cardComponent = <ProfileDetail studentFields={option?.otherDetails} type="Other  Details" />;
       break;
     case 2:
-      cardComponent = <AddressForm  />;
+      cardComponent = <CommonAddress addressFields={studentAddressFields} title="Current" />;
       break;
     case 3:
       cardComponent = <ContactPerson studentFields={option?.contactPerson}/>;

@@ -13,11 +13,11 @@ import ButtonGroup from '@mui/material/ButtonGroup';
 import { Divider, ListItem, ListItemText } from '@mui/material';
 import Paper from '@mui/material/Paper';
 import dayjs from 'dayjs';
-import NotifyStudent from './Notify_student';
 import QueryBuilderOutlinedIcon from '@mui/icons-material/QueryBuilderOutlined';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import {Dialog, DialogTitle , DialogContent ,DialogContentText ,DialogActions } from '@mui/material';
+import ParamMultipleSelect from 'views/common-section/ParamMultipleSelect';
 
 function LeaveApplicationDrawerContent() {
     const [state, setState] = React.useState({
@@ -33,6 +33,17 @@ function LeaveApplicationDrawerContent() {
     const [AttendanceStatus, setAttendanceStatus] = React.useState('Full Day Leave(LV)');
     const [Statusfrom, setStatusfrom] = React.useState('Full Day Leave(LV)');
     const [StatusTo, setStatusTo] = React.useState('Full Day Leave(LV)');
+
+    const [selectedStudent, setSelectedStudent] = React.useState([]);
+    // =========== list of students for notify ===========
+    const Students = [
+      { id: 1, name: 'Suraj' },
+      { id: 2, name: 'Abhishek' },
+      { id: 3, name: 'Sangeeta' },
+      { id: 4, name: 'Amit' },
+      { id: 5, name: 'Ruby' },
+      { id: 6, name: 'Tarun' },
+    ];
   
     // ========= Update Default leave type =============
     const handleLeaveTypeChange = (event) => {
@@ -475,7 +486,7 @@ function LeaveApplicationDrawerContent() {
             </Box>
 
             <Box>
-              <NotifyStudent />
+              <ParamMultipleSelect options={Students} label="Notify" value={selectedStudent} setValue={setSelectedStudent} />
             </Box>
             <Box sx={{ padding: 2 }}>
               <Button type="submit" variant="contained">
