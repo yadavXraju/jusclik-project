@@ -1,17 +1,10 @@
 import { useDispatch, useSelector  } from 'react-redux';
-import { useState } from 'react';
 import ParamFeeStructureConfig from 'views/common-section/ParamFeeStructureConfig';
 import { configGlobally } from 'store/student-info-and-fee/settings/FeeStructureConfigure';
 import ConfigGloballyForm from './ConfigGloballyForm';
 
 const ConfigureGlobally = () => {
-  const [val , setVal] = useState(0)
 
- const handle = ()=>{
-  setVal(val+1)
-
-  console.log(val)
- }
   const dispatch = useDispatch();
   const configGloballyData = useSelector((state) => state.configGloballyFormSlice.configGlobally); 
 
@@ -53,7 +46,7 @@ const ConfigureGlobally = () => {
   // Render the ParamFeeStructureConfig component with appropriate props
   return (
     <>
-        <button onClick={handle}>test {val}</button>
+     
     <ParamFeeStructureConfig
       data={data}
       tableHeadings={tableHeadings}
