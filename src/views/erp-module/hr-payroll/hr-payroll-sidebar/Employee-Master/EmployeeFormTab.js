@@ -13,12 +13,12 @@ import EmployeeProfile from './EmployeeProfile';
 import SchoolTwoToneIcon from '@mui/icons-material/SchoolTwoTone';
 import LeaderboardTwoToneIcon from '@mui/icons-material/LeaderboardTwoTone';
 import Education from './Education';
-import Address from './Address';
 import Experience from './Experience';
-import ContactPerson from './ContactPerson';
 import TextArea from 'antd/es/input/TextArea';
 import BottomNavbar from 'views/erp-common-component/bottom-navbar';
 import {addField,subGroupbyGroup} from 'store/Hr-Payroll/AddEmployee-slice';
+import CommonAddress from '../../../../common-section/CommonAddress';
+import CommonContactPerson from 'views/common-section/CommonContactPerson';
 
 
 const buttonsData = [
@@ -91,6 +91,32 @@ const EmployeeFormTab = ({ currEditItem }) => {
     setEmployeeDetails({ ...employee, [name]: newValue });
   };
 
+  // =========== Data for Address Component ==========
+  const employeeAddressFields = [
+    { name: 'currentAddress', label: 'Address', type: 'textarea', fullWidth: true },
+    { name: 'country', label: 'Country/Region', type: 'text' },
+    { name: 'city', label: 'City', type: 'text' },
+    { name: 'state', label: 'State', type: 'text' },
+    { name: 'zipCode', label: 'Zip Code', type: 'text' }
+  ];
+
+  // =========== data for Contact Person ===========
+  const employeeFields = [
+    { name: 'title', label: 'Title' },
+    { name: 'firstName', label: 'First Name' },
+    { name: 'lastName', label: 'Last Name' },
+    { name: 'relation', label: 'Relation' },
+    { name: 'mobile', label: 'Mobile' },
+    { name: 'email', label: 'Email' },
+    { name: 'education', label: 'Education' },
+    { name: 'occupation', label: 'Occupation' },
+    { name: 'company', label: 'Company' },
+    { name: 'designation', label: 'Designation' },
+    { name: 'address', label: 'Address (Office)' },
+    { name: 'aadhaar', label: 'Aadhaar No' },
+    { name: 'pan', label: 'PAN' },
+  ];
+
   
   let cardComponent;
   switch (selectedButton) {
@@ -107,10 +133,10 @@ const EmployeeFormTab = ({ currEditItem }) => {
         cardComponent = <Box p={2}><Experience /></Box> ;
         break;
     case 4:
-      cardComponent = <Address /> ;
+      cardComponent = <CommonAddress addressFields={employeeAddressFields} title="Current" /> ;
       break;
     case 5:
-      cardComponent = <ContactPerson />;
+      cardComponent = <CommonContactPerson fields={employeeFields}/>;
       break;
       case 6:
         cardComponent = <>

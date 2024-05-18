@@ -16,7 +16,7 @@ export default function EmployeeTable() {
   const [tableRows, setTableRows] = React.useState(EmployeeData);
   const [currEditItem, setCurrEditItem] = React.useState({});
 
-const Click = (rowData) => {
+  const Click = (rowData) => {
     navigate(`/erp/hr-payroll/employee-master/${rowData.id}`, { state: { rowData }});
   };
 
@@ -75,7 +75,7 @@ const Click = (rowData) => {
             <RemoveRedEyeTwoToneIcon sx={{ color: 'rgb(124, 178, 221)' }} />
           </IconButton>
           </Tooltip>
-          <Tooltip title='Edit' >
+          <Tooltip >
           <IconButton onClick={(event) => event.stopPropagation()}>
             {/* <EditTwoToneIcon/> */}
             <EmployeeDrawer editIcon="true" currEditItem={currEditItem} handleClick={() => handleEditClick(params.row)} />
@@ -92,6 +92,7 @@ const Click = (rowData) => {
     }
   ];
 
+  
   return (
     <>
       <Box>

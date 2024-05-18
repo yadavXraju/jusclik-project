@@ -1,9 +1,12 @@
 import React from 'react'
+import LeaveApplication from 'views/erp-module/teacher/class-teacher/class-teacher-sidebar/leave-application/index'
 
-const LeaveApplication = () => {
+const LeaveApplication1 = () => {
   return (
-    <div>LeaveApplication</div>
+    <>
+      <LeaveApplication/>
+    </>
   )
 }
 
-export default LeaveApplication
+export default LeaveApplication1
