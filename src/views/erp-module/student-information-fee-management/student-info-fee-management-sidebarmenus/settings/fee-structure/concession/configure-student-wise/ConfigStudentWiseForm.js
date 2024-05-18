@@ -44,7 +44,7 @@ const clearStates = () => {
     setApplicableFromDate('');
     setStudentName('');
     setAdmissionNo('');
-    setClassSection([]);
+    setClassSection('');
     setFeeHead([]);
     setRemark('');
   };
