@@ -11,6 +11,7 @@ const EmployeeMasterPreview =  Loadable(lazy(() => import('views/erp-module/hr-p
 const EmployeeSalary=Loadable(lazy(()=>import('views/erp-module/hr-payroll/hr-payroll-sidebar/salary')));
 const EmployeeOnBoard=Loadable(lazy(()=>import('views/erp-module/hr-payroll/hr-payroll-sidebar/settings/employeeonBoard')));
 const OnboardingTaskList=Loadable(lazy(()=>import('views/erp-module/hr-payroll/hr-payroll-sidebar/settings/onboarding-tasklist')));
+const LeaveApplication=Loadable(lazy(()=>import('views/erp-module/hr-payroll/hr-payroll-sidebar/leave-application')));
 
 // ==============================|| Visitor MENUS ||============================== //
 
@@ -40,6 +41,10 @@ const HrPayRollRoutes = [
           element:<EmployeeSalary/>
         },
         {
+          path:'leave-application',
+          element:<LeaveApplication />
+        },
+        {
             path: 'settings', 
             children : [
               {
@@ -63,6 +68,7 @@ const HrPayRollRoutes = [
             path: 'reports', 
             element: <Reports /> 
         },
+        
     ]
   }
 ];

@@ -20,7 +20,7 @@ import SchoolLogo2 from '../../../assets/images/Logo (Online Registration form A
 
 const OnlineRegistration = () => {
   const [TabChange, setTabChange] = useState(0);
-  const [showSignUp, setShowSignUp] = useState(false);
+  const [showSignUp, setShowSignUp] = useState(true);
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const continueHandler = () => {

@@ -1,182 +1,68 @@
-// ConfigureGlobally.js
-import React, { useState } from 'react';
-import ConfigGloballyForm from './ConfigGloballyForm';
-import { Grid, Button , Paper,TextField ,Table,TableBody , TableCell , TableContainer , TableHead , TableRow} from '@mui/material';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch, useSelector  } from 'react-redux';
+import { useState } from 'react';
+import ParamFeeStructureConfig from 'views/common-section/ParamFeeStructureConfig';
 import { configGlobally } from 'store/student-info-and-fee/settings/FeeStructureConfigure';
-import WarningDialog from 'views/common-section/WarningDialog';
-import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
-import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
-
+import ConfigGloballyForm from './ConfigGloballyForm';
 
 const ConfigureGlobally = () => {
-  const [modalOpen, setModalOpen] = useState(false);
-  const [rowToDelete, setRowToDelete] = useState(null);
-  const [editingRow, setEditingRow] = useState(null);
+  const [val , setVal] = useState(0)
+
+ const handle = ()=>{
+  setVal(val+1)
+
+  console.log(val)
+ }
   const dispatch = useDispatch();
-  const configGloballyData = useSelector((state) => state.configGloballyFormSlice.configGlobally);
+  const configGloballyData = useSelector((state) => state.configGloballyFormSlice.configGlobally); 
 
-  // Function to handle closing modal
-  const handleModalClose = () => {
-    setModalOpen(false);
+
+  const handleSaveRow = (updatedRow) => {
+    // Map through the current data and update the row with the matching ID
+    const updatedData = configGloballyData.map((row) => (row.id === updatedRow.id ? updatedRow : row));
+    // Dispatch the updated data to the Redux store
+    dispatch(configGlobally(updatedData));
   };
 
-  // Function to handle deleting row
-  const handleDeleteRow = (id) => {
-    const row = configGloballyData.find((row) => row.id === id);
-    setRowToDelete(row);
-    setModalOpen(true);
-    setEditingRow(null);
+  // Handler function to delete a row
+  const handleDeleteRow = (rowToDelete) => {
+    // Filter out the row to be deleted based on its ID
+    const updatedData = configGloballyData.filter((row) => row.id !== rowToDelete.id);
+    // Dispatch the updated data to the Redux store
+    dispatch(configGlobally(updatedData));
   };
 
-  // Function to confirm row deletion
-  const handleConfirmDelete = () => {
-    if (rowToDelete) {
-      const updatedData = configGloballyData.filter((row) => row.id !== rowToDelete.id);
-      dispatch(configGlobally(updatedData));
-      setEditingRow(null);
-    }
-    setRowToDelete(null);
-    setModalOpen(false);
-  };
 
-  // Function to handle editing row
-  const handleEditRow = (rowData) => {
-    setEditingRow({ ...rowData });
-  };
-
-  // Function to save edited row
-  const handleSaveRow = () => {
-    if (editingRow) {
-      const updatedData = configGloballyData.map((row) =>
-        row.id === editingRow.id ? editingRow : row
-      );
-      dispatch(configGlobally(updatedData));
-      setEditingRow(null);
-    }
-  };
-
-// Function to handle changes in editable field
-const handleFieldChange = (field, value) => {
-  setEditingRow(prevRow => {
-    if (field && !Array.isArray(value)) {
-      // If the field is 'classes' and the new value is not an array, assign the current value
-      return { ...prevRow, [field]: value };
-    } else {
-      // For other fields or if the value is an array, update normally
-      return { ...prevRow, [field]: value };
-    }
-  });
-};
-
-
-  // Define table headings
-  const TableHeading = [
-    {
-      id: 'srNo',
-      tabHeading: 'Sr No.',
-    },
-    {
-      id: 'feeHead',
-      tabHeading: 'Fee Head',
-    },
-    {
-      id: 'classes',
-      tabHeading: 'Class',
-    },
-    {
-      id: 'concessionType',
-      tabHeading: 'Concession Type',
-    },
-    {
-      id: 'amount',
-      tabHeading: 'Amount',
-    },
-    // {
-    //   id: 'action',
-    //   tabHeading: 'Action',
-    // },
+  const tableHeadings = [
+    { id: 'srNo', tabHeading: 'Sr No.' },
+    { id: 'feeHead', tabHeading: 'Fee Head' },
+    { id: 'classes', tabHeading: 'Class' },
+    { id: 'concessionType', tabHeading: 'Concession Type' },
+    { id: 'amount', tabHeading: 'Amount' },
   ];
 
-  // Map data to render table rows
+  // Prepare data for the ParamFeeStructureConfig component
   const data = configGloballyData.map((item, index) => ({
     id: item.id,
-    srNo: index + 1,
+    srNo: index + 1, // Add 1 to index for Sr No.
     feeHead: item.feeHead,
-    classes: Array.isArray(item.classes) ? item.classes.join(', ') : item.classes,
+    classes: Array.isArray(item.classes) ? item.classes.join(', ') : item.classes, // Convert array of classes to string
     concessionType: item.concessionType,
     amount: item.amount,
   }));
 
+  // Render the ParamFeeStructureConfig component with appropriate props
   return (
     <>
+        <button onClick={handle}>test {val}</button>
+    <ParamFeeStructureConfig
+      data={data}
+      tableHeadings={tableHeadings}
+      onSaveRow={handleSaveRow}
+      onDeleteRow={handleDeleteRow}
+    >
+      <ConfigGloballyForm /> 
+    </ParamFeeStructureConfig>
 
-    
-      <Grid container spacing={4} sx={{ marginTop: '1rem' }}>
-        <ConfigGloballyForm />
-      </Grid>
-
-      <Grid item xs={12} lg={12} sx={{ marginTop: '3rem' }}>
-        <TableContainer component={Paper} sx={{ border: '1px solid rgba(224, 224, 224, 1)' }}>
-          <Table sx={{ width: '100%' }} aria-label="simple table">
-            <TableHead>
-              <TableRow sx={{ display: 'flex' }}>
-                {TableHeading.map((field) => (
-                  <>
-                      <TableCell sx={{ flex: '0 0 16.67%' }} key={field.id}>
-                        {field.tabHeading}
-                      </TableCell>
-                </>
-                ))}
-                
-                <TableCell sx={{ flex: '0 0 16.67%' }}>
-                     Action
-                </TableCell>
-              </TableRow>
-            </TableHead>
-
-            <TableBody className="scrollbar" sx={{ display: 'flex', maxHeight: '300px', flexDirection: 'column', overflowY: 'auto', paddingBottom: '20px', minHeight: '120px' }}>
-              {data.map((rowData) => (
-                <TableRow key={rowData.id} sx={{ display: 'flex', '&:last-child td, &:last-child th': { border: 0 } }}>
-                  {TableHeading.map((field) => (
-                    <TableCell sx={{ flex: '0 0 16.67%' }} key={field.id}>
-                      {editingRow && editingRow.id === rowData.id && field.id !== 'action' ? ( // Check if the row is being edited and exclude action column
-                        <TextField
-                          fullWidth
-                          value={editingRow[field.id]}
-                          onChange={(e) => handleFieldChange(field.id, e.target.value)}
-                        />
-                      ) : (
-                        rowData[field.id]
-                      )}
-                    </TableCell>
-                  ))}
-                  <TableCell sx={{ display: 'flex', alignItems:'center', gap: '15px', flex: '0 0 16.67%' }}>
-                    {!editingRow || editingRow.id !== rowData.id ? (
-                      <EditTwoToneIcon sx={{ cursor: 'pointer' }} onClick={() => handleEditRow(rowData)} />
-                    ) : (
-                      <Button  onClick={handleSaveRow}>
-                        Save
-                        </Button>
-                    )}
-                    <DeleteTwoToneIcon
-                      sx={{ color: '#f19e9e', cursor: 'pointer' }}
-                      onClick={() => handleDeleteRow(rowData.id)}
-                    />
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      </Grid>
-
-      <WarningDialog
-        open={modalOpen}
-        onClose={handleModalClose}
-        contentText="Are you sure you want to delete?"
-        onConfirm={handleConfirmDelete}
-      />
     </>
   );
 };
