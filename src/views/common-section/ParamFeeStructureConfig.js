@@ -10,7 +10,8 @@ const ParamFeeStructureConfig = ({
   tableHeadings,
   onSaveRow,
   onDeleteRow,
-  children
+  children,
+  tablColumnWidth
 }) => {
   // State variables
   const [modalOpen, setModalOpen] = useState(false); 
@@ -72,11 +73,11 @@ const ParamFeeStructureConfig = ({
             <TableHead>
               <TableRow sx={{ display: 'flex' }}>
                 {tableHeadings.map((field) => (
-                  <TableCell sx={{ flex: '0 0 16.67%' }} key={field.id}>
+                  <TableCell sx={{ flex: '0 0 16.67%' ,...tablColumnWidth}} key={field.id}>
                     {field.tabHeading}
                   </TableCell>
                 ))}
-                <TableCell sx={{ flex: '0 0 16.67%' }}>Action</TableCell>
+                <TableCell  sx={{ flex: '0 0 16.67%',...tablColumnWidth }}>Action</TableCell>
               </TableRow>
             </TableHead>
 
@@ -85,7 +86,7 @@ const ParamFeeStructureConfig = ({
               {data.map((rowData) => (
                 <TableRow key={rowData.id} sx={{ display: 'flex', '&:last-child td, &:last-child th': { border: 0 } }}>
                   {tableHeadings.map((field) => (
-                    <TableCell sx={{ flex: '0 0 16.67%' }} key={field.id}>
+                    <TableCell sx={{ flex: '0 0 16.67%',...tablColumnWidth }} key={field.id}>
                       {/* Render text field if editing, otherwise display original data */}
                       {editingRow && editingRow.id === rowData.id && field.id !== 'action' ? (
                         <TextField
@@ -99,7 +100,7 @@ const ParamFeeStructureConfig = ({
                     </TableCell>
                   ))}
                   {/* Actions */}
-                  <TableCell sx={{ display: 'flex', alignItems: 'center', gap: '15px', flex: '0 0 16.67%' }}>
+                  <TableCell sx={{ display: 'flex', alignItems: 'center', gap: '15px', flex: '0 0 16.67%',...tablColumnWidth }}>
                     {/* Edit icon or Save button */}
                     {!editingRow || editingRow.id !== rowData.id ? (
                       <EditTwoToneIcon sx={{ cursor: 'pointer' }} onClick={() => handleEditRow(rowData)} />

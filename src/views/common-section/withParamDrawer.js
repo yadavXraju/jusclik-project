@@ -8,25 +8,30 @@ import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 const withParamDrawer = (WrappedComponent, WrappedButton) => {
   const WithParamDrawer = (props) => {
     const { anchor, toggleDrawer, customStyle = {} } = useDrawer();
-    const { buttonLabel, drawerTitle, popupState } = props;
-
+    const { buttonLabel, drawerTitle } = props;
+    // console.log(popupState);
     const trigger = (e) => {
-      popupState && popupState.close();
-      const toggleDrawerEventHandle = toggleDrawer('right', true);
-      toggleDrawerEventHandle(e);
+        const toggleDrawerEventHandle = toggleDrawer('right', true);
+        toggleDrawerEventHandle(e); 
+        
     };
+    const closeDrawer=(e)=>{
+      console.log('e.target',e.target,'e.currentTarget',e.currentTarget);
+      const closeDrawerEventHandle=toggleDrawer('right',false)
+      closeDrawerEventHandle(e)
+    }
 
     return (
-      <>
+      <Box>
         {!WrappedButton && (
           <Button onClick={(e) => trigger(e)} variant="outlined" sx={customStyle} startIcon={<AddOutlinedIcon />}>
             {buttonLabel}
           </Button>
         )}
 
-        {WrappedButton && <WrappedButton onClick={(e) => trigger(e)} />}
+        {WrappedButton && <WrappedButton onClick={(e) => trigger(e)}  />}
 
-        <Drawer anchor={'right'} open={anchor.right} onClose={toggleDrawer('right', false)}>
+        <Drawer anchor={'right'} open={anchor.right} onClose={(e)=>closeDrawer(e)}>
           <Box sx={{ width: { xs: '100%', sm: 650 }, padding: 2 }} role="presentation">
             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #ccc' }}>
               <Typography variant="h4">{drawerTitle}</Typography>
@@ -37,7 +42,7 @@ const withParamDrawer = (WrappedComponent, WrappedButton) => {
             <WrappedComponent {...props} />
           </Box>
         </Drawer>
-      </>
+      </Box>
     );
   };
   return WithParamDrawer;

@@ -1,83 +1,59 @@
-import { Box, Button, IconButton, MenuItem, Paper, TextField, Tooltip, Typography } from '@mui/material';
+import { Box
+  // ,Button, Drawer
+  , IconButton, Paper,  Tooltip, Typography } from '@mui/material';
 import React from 'react';
 import CommonDataGrid from 'views/common-section/commonDataGrid';
 import withParamDrawer from 'views/common-section/withParamDrawer';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
-import Popover from '@mui/material/Popover';
-import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
-import MoreVertTwoToneIcon from '@mui/icons-material/MoreVertTwoTone';
-import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
+// import Popover from '@mui/material/Popover';
+// import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
+// import MoreVertTwoToneIcon from '@mui/icons-material/MoreVertTwoTone';
+import {  AddTaskListDrawer } from './drawers/add-task-list';
+import { EditTaskListDrawer } from './drawers/edit-task-list';
+import AddTask from './drawers/add-task';
+// import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
+// import { useState } from 'react';
 
 // these are panels of drawer componnent
-const AddTaskList = () => {
-  return (
-    <>
-      <Box sx={{ display: 'flex', flexDirection: 'column', height: 'calc(100vh - 70px)' ,marginTop:'1rem' }}>
-        <TextField label="Task List Name" sx={{ marginBottom: '1rem' }} />
-        <TextField label="Description" sx={{ marginBottom: '1rem' }} multiline={true} minRows={3} />
-        <TextField select label="Copy Tasks From Existing Task List (Optional)" sx={{ marginBottom: '1rem' }}>
-          {/* Dropdown options */}
-          <MenuItem value="">None</MenuItem>
-          {/* Add other dropdown options here */}
-        </TextField>
-        <Box sx={{ position: 'fixed', bottom: '10px', right: '10px' }}>
-          <Button variant="contained" color="primary" sx={{ marginRight: '10px' }}>
-            Add
-          </Button>
-          <Button variant="outlined" color="secondary">
-            Cancel
-          </Button>
-        </Box>
-        
-      </Box>
-    </>
-  );
-};
-const AddTask = () => {
-  return <></>;
-};
+
+// const AddTask = () => {
+//   return <></>;
+// };
 const EditTask = () => {
   return <></>;
 };
-const EditTaskList = () => {
-  return <></>;
-};
-
-
+// const EditTaskList = () => {
+//   return <></>;
+// };
 // custom drawer button
 const EditTaskButton = ({ onClick }) => (
-  <IconButton onClick={onClick}>
+  <IconButton onClick={onClick} id="tarun">
     <EditTwoToneIcon />
   </IconButton>
 );
-const EditTaskListButton = ({ onClick }) => (
-  <Typography>
-    <IconButton onClick={onClick} sx={{ fontSize: '0.875rem', lineHeight: '1.75' }}>
-      <EditTwoToneIcon />
-      Edit Task List
-    </IconButton>
-  </Typography>
-);
+// const EditTaskListButton = ({ onClick }) => (
+//   <Typography>
+//     <IconButton onClick={onClick} sx={{ fontSize: '0.875rem', lineHeight: '1.75' }}>
+//       <EditTwoToneIcon />
+//       Edit Task List
+//     </IconButton>
+//   </Typography>
+// );
 const DeleteTaskListButton = ({ onClick }) => (
   <IconButton onClick={onClick} sx={{ fontSize: '0.875rem', lineHeight: '1.75' }}>
     <DeleteTwoToneIcon sx={{ color: '#f19e9e' }} />
-    Delete Task List
   </IconButton>
 );
-const AddTaskListButton = ({ onClick }) => (
-  <IconButton onClick={onClick} sx={{ fontSize: '0.875rem', lineHeight: '1.75' }}>
-    <AddOutlinedIcon />
-    Add Task List
-  </IconButton>
-);
+
 // MAIN COMPONENT
 const Onboarding = ({ panelSubheading, panelHeading }) => {
   // DRAWERS
-  const AddTaskListDrawer = withParamDrawer(AddTaskList, AddTaskListButton);
+  // withparamDrawer(DrawerContetnt,button)
+  // const AddTaskListDrawer = withParamDrawer(AddTaskList, AddTaskListButton);
   const AddTaskDrawer = withParamDrawer(AddTask);
   const EditTaskDrawer = withParamDrawer(EditTask, EditTaskButton);
-  const EditTaskListDrawer = withParamDrawer(EditTaskList, EditTaskListButton);
+  // const EditTaskListDrawer = withParamDrawer(EditTaskList, EditTaskListButton);
 
   // data for datagrid
   const columns = [
@@ -94,7 +70,7 @@ const Onboarding = ({ panelSubheading, panelHeading }) => {
       filterable: false,
       disableColumnMenu: true,
       renderCell: () => (
-        <Box>
+        <Box display='flex'> 
           <Tooltip>
             <EditTaskDrawer />
           </Tooltip>
@@ -119,6 +95,19 @@ const Onboarding = ({ panelSubheading, panelHeading }) => {
     { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 }
   ];
 
+  const [state, setState] = React.useState({
+    addTaskGroup: false,
+    editTaskGroup:false,
+
+  });
+
+const toggleDrawer = (anchor, open) => (event) => {
+  if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+    return;
+  }
+
+  setState({ ...state, [anchor]: open });
+}
   return (
     <>
       <Box sx={{ margin: '-40px 0 0 0' }}>
@@ -132,31 +121,22 @@ const Onboarding = ({ panelSubheading, panelHeading }) => {
             <Typography variant="h4">{panelSubheading}</Typography>
           </Box>
           {/*  POPUP ---- DRAWERS FOR TASK-LISTS: ADD, EDIT, DELETE */}
-          <PopupState variant="popover" popupId="demo-popup-popover">
-            {(popupState) => (
-              <div>
-                <IconButton sx={{ marginRight: '8px', background: '#cccccc54' }} {...bindTrigger(popupState)}>
-                  <MoreVertTwoToneIcon />
-                </IconButton>
-                <Popover
-                  {...bindPopover(popupState)}
-                  anchorOrigin={{
-                    vertical: 'bottom',
-                    horizontal: 'center'
-                  }}
-                  transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'center'
-                  }}
-                >
-                  
-                  <AddTaskListDrawer buttonLabel="Add New Task List" drawerTitle="Add New Task List" popupState={popupState} />              
-                  <EditTaskListDrawer buttonLabel="Edit Task List" drawerTitle="Edit Task List" popupState={popupState} />
-                  <DeleteTaskListButton buttonLabel="Delete Task List" drawerTitle="Delete Task List" popupState={popupState} />
-                </Popover>
-              </div>
-            )}
-          </PopupState>
+          
+        
+            
+                 
+{/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */}
+{/* -----------------------------------popup drawers   ------------------------------------------------------- */}
+                      {/* <AddTaskListButton toggleDrawer={toggleDrawer} popupState={popupState}/> */}
+                      <AddTaskListDrawer toggleDrawer={toggleDrawer} state={state}/>
+                      <EditTaskListDrawer toggleDrawer={toggleDrawer} state={state} />
+                      <DeleteTaskListButton buttonLabel="Delete Task List" drawerTitle="Delete Task List" />
+
+                    {/* <AddTaskListDrawer buttonLabel="Add New Task List" drawerTitle="Add New Task List" popupState={popupState} setpopupOpen={setpopupOpen}/> */}
+                    {/* <EditTaskListDrawer buttonLabel="Edit Task List" drawerTitle="Edit Task List" />
+                 */}
+               
+           
         </Paper>
 
         <Paper sx={{ padding: '1rem' }}>
@@ -175,6 +155,7 @@ const Onboarding = ({ panelSubheading, panelHeading }) => {
           />
         </Paper>
       </Box>
+
     </>
   );
 };
