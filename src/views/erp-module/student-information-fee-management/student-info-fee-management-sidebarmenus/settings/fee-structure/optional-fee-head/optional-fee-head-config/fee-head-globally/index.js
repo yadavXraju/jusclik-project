@@ -1,20 +1,20 @@
 import React from 'react';
 import { useDispatch, useSelector  } from 'react-redux';
-import FeeHeadForm from './FeeHeadForm';
-import { feeHeadConfigGlobally } from 'store/student-info-and-fee/settings/fee-structure/fee-structure-slice';
+import OptionalFeeHeadForm from './OptionalFeeHeadForm';
+import { OptionalFeeHeadConfigGlobally } from 'store/student-info-and-fee/settings/fee-structure/fee-structure-slice';
 import ParamFeeStructureConfig from 'views/common-section/ParamFeeStructureConfig';
 
-const FeeHeadGlobally = () => {
+const OptionalFeeHeadGlobally = () => {
 
     const dispatch = useDispatch();
-    const configGloballyData = useSelector((state) => state.configGloballyFormSlice.feeHeadConfigGlobally); 
+    const configGloballyData = useSelector((state) => state.configGloballyFormSlice.OptionalFeeHeadConfigGlobally); 
   
   
     const handleSaveRow = (updatedRow) => {
       // Map through the current data and update the row with the matching ID
       const updatedData = configGloballyData.map((row) => (row.id === updatedRow.id ? updatedRow : row));
       // Dispatch the updated data to the Redux store
-      dispatch(feeHeadConfigGlobally(updatedData));
+      dispatch(OptionalFeeHeadConfigGlobally(updatedData));
     };
   
     // Handler function to delete a row
@@ -22,7 +22,7 @@ const FeeHeadGlobally = () => {
       // Filter out the row to be deleted based on its ID
       const updatedData = configGloballyData.filter((row) => row.id !== rowToDelete.id);
       // Dispatch the updated data to the Redux store
-      dispatch(feeHeadConfigGlobally(updatedData));
+      dispatch(OptionalFeeHeadConfigGlobally(updatedData));
     };
   
   
@@ -51,10 +51,10 @@ const FeeHeadGlobally = () => {
       onDeleteRow={handleDeleteRow}
       tablColumnWidth={{flex:'0 0 20%'}}
     >
-       <FeeHeadForm />
+       <OptionalFeeHeadForm />
       </ParamFeeStructureConfig>
     </>
   )
 }
 
-export default FeeHeadGlobally
+export default OptionalFeeHeadGlobally

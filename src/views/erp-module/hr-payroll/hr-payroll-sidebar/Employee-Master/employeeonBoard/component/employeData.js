@@ -41,7 +41,7 @@ export const initialRows = [
         Dept:randomDesk(),
         post: randomJobTitle(),
         phn: randomPhoneNumber(),
-        group:"NA",
+        group:"-",
         'reporting-manager':randomTraderName(),
       },
       { 
@@ -66,7 +66,7 @@ export const initialRows = [
         Dept:randomDesk(),
         post: randomJobTitle(),
         phn: randomPhoneNumber(),
-        group:"NA",
+        group:"-",
         'reporting-manager':randomTraderName(),
       },
       {
@@ -90,7 +90,7 @@ export const initialRows = [
         Dept:randomDesk(),
         post: randomJobTitle(),
         phn: randomPhoneNumber(),
-        group:"NA",
+        group:"-",
         'reporting-manager':randomTraderName(),
       },
       {
@@ -114,7 +114,7 @@ export const initialRows = [
         Dept:randomDesk(),
         post: randomJobTitle(),
         phn: randomPhoneNumber(),
-        group:"NA",
+        group:"-",
         'reporting-manager':randomTraderName(),
       },
       {

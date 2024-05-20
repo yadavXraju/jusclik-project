@@ -60,7 +60,6 @@ const StudentInfoFeeMenu = {
             ]
           },
 
-
           // Fee invoice
           {
             id: 'invoice',
@@ -214,7 +213,6 @@ const StudentInfoFeeMenu = {
             breadcrumbs: false
           },
          
-
           //  setting
           {
             id: 'settings',
