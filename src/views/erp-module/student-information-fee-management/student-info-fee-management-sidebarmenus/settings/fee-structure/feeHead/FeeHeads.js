@@ -2,7 +2,7 @@ import React from 'react';
 import ParamTableDragDrop from 'views/common-section/ParamTableDragDrop';
 import { Drawer,Box,Typography,Button } from '@mui/material';
 import FeeHeadDrawer from './FeeHeadDrawer';
-import FeeHeadTopDrawer from './FeeHeadTopDrawer';
+import FeeHeadConfigTab from './fee-head-config/FeeHeadConfigTab';
 
 const tableHeadings = [
   {
@@ -193,7 +193,7 @@ const FeeHeads = ({ anchor, toggleDrawer }) => {
   return (
     <>
       <ParamTableDragDrop tableStyle={{ paddingBottom: '4rem' }} dragIcon={true} columns={tableHeadings} initialData={data} >
-        <FeeHeadTopDrawer />
+         <FeeHeadConfigTab />
       </ParamTableDragDrop>
       <Drawer anchor="right" open={anchor.right} onClose={toggleDrawer('right', false)}>
         <Box sx={{ width: { xs: '100vw', sm: 650 }, padding: '1rem' }} role="presentation">
