@@ -1,7 +1,7 @@
-import { Box, Button, Drawer, IconButton, MenuItem, TextField } from '@mui/material';
+import { Box, Button, Drawer, IconButton, MenuItem, TextField, Typography } from '@mui/material';
 import React from 'react'
 import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
-const AddTaskListDrawerContent = () => {
+const EditTaskListDrawerContent = () => {
   return (
     <>
     <Box sx={{ display: 'flex', flexDirection: 'column', height: 'calc(100vh - 70px)', marginTop: '1rem' }}>
@@ -24,11 +24,11 @@ const AddTaskListDrawerContent = () => {
   </>
   )
 }
- 
+
 //  export const AddTaskListButton = ({toggleDrawer,popupState}) => (
 //   );
 
-export const AddTaskListDrawer=({toggleDrawer,state})=>{
+export const EditTaskListDrawer=({toggleDrawer,state})=>{
     return (
         <>
         <IconButton onClick={toggleDrawer('editTaskGroup', true)} sx={{ fontSize: '0.875rem', lineHeight: '1.75' }} id="editTaskGroup">
@@ -38,14 +38,14 @@ export const AddTaskListDrawer=({toggleDrawer,state})=>{
         {/* {form} */}
         <Box sx={{ width: { xs: '100vw', sm: 650 }, padding: 2 }} role="presentation">
           <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #ccc' }}>
-            {/* <Typography variant="h4">Initiate On Board</Typography> */}
+            <Typography variant="h4">Edit Task Group</Typography>
 
             <Button onClick={toggleDrawer('editTaskGroup', false)} sx={{ alignSelf: 'flex-end' }}>
               Close
             </Button>
           </Box>
           {/* ========= import Initiate Employee Exit Form ========== */}
-          <AddTaskListDrawerContent/>
+          <EditTaskListDrawerContent/>
         </Box>
       </Drawer>
       </>

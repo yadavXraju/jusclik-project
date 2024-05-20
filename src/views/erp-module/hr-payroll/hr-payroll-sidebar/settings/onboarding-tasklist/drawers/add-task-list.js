@@ -1,4 +1,4 @@
-import { Box, Button, Drawer, IconButton, MenuItem, TextField } from '@mui/material';
+import { Box, Button, Drawer, IconButton, MenuItem, TextField, Typography } from '@mui/material';
 import React from 'react'
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 const AddTaskListDrawerContent = () => {
@@ -38,7 +38,7 @@ export const AddTaskListDrawer=({toggleDrawer,state})=>{
         {/* {form} */}
         <Box sx={{ width: { xs: '100vw', sm: 650 }, padding: 2 }} role="presentation">
           <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #ccc' }}>
-            {/* <Typography variant="h4">Initiate On Board</Typography> */}
+            <Typography variant="h4">Add Task Group</Typography>
 
             <Button onClick={toggleDrawer('addTaskGroup', false)} sx={{ alignSelf: 'flex-end' }}>
               Close

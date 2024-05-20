@@ -5,31 +5,33 @@ import React from 'react';
 import CommonDataGrid from 'views/common-section/commonDataGrid';
 import withParamDrawer from 'views/common-section/withParamDrawer';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
-// import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
+import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 // import Popover from '@mui/material/Popover';
 // import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
 // import MoreVertTwoToneIcon from '@mui/icons-material/MoreVertTwoTone';
 import {  AddTaskListDrawer } from './drawers/add-task-list';
+import { EditTaskListDrawer } from './drawers/edit-task-list';
+import AddTask from './drawers/add-task';
 // import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 // import { useState } from 'react';
 
 // these are panels of drawer componnent
 
-const AddTask = () => {
-  return <></>;
-};
-// const EditTask = () => {
+// const AddTask = () => {
 //   return <></>;
 // };
+const EditTask = () => {
+  return <></>;
+};
 // const EditTaskList = () => {
 //   return <></>;
 // };
 // custom drawer button
-// const EditTaskButton = ({ onClick }) => (
-//   <IconButton onClick={onClick} id="tarun">
-//     <EditTwoToneIcon />
-//   </IconButton>
-// );
+const EditTaskButton = ({ onClick }) => (
+  <IconButton onClick={onClick} id="tarun">
+    <EditTwoToneIcon />
+  </IconButton>
+);
 // const EditTaskListButton = ({ onClick }) => (
 //   <Typography>
 //     <IconButton onClick={onClick} sx={{ fontSize: '0.875rem', lineHeight: '1.75' }}>
@@ -50,7 +52,7 @@ const Onboarding = ({ panelSubheading, panelHeading }) => {
   // withparamDrawer(DrawerContetnt,button)
   // const AddTaskListDrawer = withParamDrawer(AddTaskList, AddTaskListButton);
   const AddTaskDrawer = withParamDrawer(AddTask);
-  // const EditTaskDrawer = withParamDrawer(EditTask, EditTaskButton);
+  const EditTaskDrawer = withParamDrawer(EditTask, EditTaskButton);
   // const EditTaskListDrawer = withParamDrawer(EditTaskList, EditTaskListButton);
 
   // data for datagrid
@@ -68,9 +70,9 @@ const Onboarding = ({ panelSubheading, panelHeading }) => {
       filterable: false,
       disableColumnMenu: true,
       renderCell: () => (
-        <Box>
+        <Box display='flex'> 
           <Tooltip>
-            {/* <EditTaskDrawer /> */}
+            <EditTaskDrawer />
           </Tooltip>
           <Tooltip title="Delete">
             <IconButton onClick={(event) => event.stopPropagation()}>
@@ -95,6 +97,7 @@ const Onboarding = ({ panelSubheading, panelHeading }) => {
 
   const [state, setState] = React.useState({
     addTaskGroup: false,
+    editTaskGroup:false,
 
   });
 
@@ -126,7 +129,7 @@ const toggleDrawer = (anchor, open) => (event) => {
 {/* -----------------------------------popup drawers   ------------------------------------------------------- */}
                       {/* <AddTaskListButton toggleDrawer={toggleDrawer} popupState={popupState}/> */}
                       <AddTaskListDrawer toggleDrawer={toggleDrawer} state={state}/>
-
+                      <EditTaskListDrawer toggleDrawer={toggleDrawer} state={state} />
                       <DeleteTaskListButton buttonLabel="Delete Task List" drawerTitle="Delete Task List" />
 
                     {/* <AddTaskListDrawer buttonLabel="Add New Task List" drawerTitle="Add New Task List" popupState={popupState} setpopupOpen={setpopupOpen}/> */}
