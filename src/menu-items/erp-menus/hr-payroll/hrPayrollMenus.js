@@ -29,7 +29,7 @@ const HrPayRollMenu = {
             id: 'employee-on-board',
             title: 'Employee On Board',
             type: 'item',
-            url: '/erp/hr-payroll/employee-master/employee-on-board',
+            url: '/erp/hr-payroll/settings/employee-on-boarding',
             breadcrumbs: false
           },
 
