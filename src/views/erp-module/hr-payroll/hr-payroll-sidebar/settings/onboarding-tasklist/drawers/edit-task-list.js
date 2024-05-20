@@ -1,4 +1,4 @@
-import { Box, Button, Drawer, IconButton, MenuItem, TextField, Typography } from '@mui/material';
+import { Box, Button, Drawer, IconButton, TextField, Typography } from '@mui/material';
 import React from 'react'
 import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 const EditTaskListDrawerContent = () => {
@@ -7,11 +7,6 @@ const EditTaskListDrawerContent = () => {
     <Box sx={{ display: 'flex', flexDirection: 'column', height: 'calc(100vh - 70px)', marginTop: '1rem' }}>
       <TextField label="Task List Name" sx={{ marginBottom: '1rem' }} />
       <TextField label="Description" sx={{ marginBottom: '1rem' }} multiline={true} minRows={3} />
-      <TextField select label="Copy Tasks From Existing Task List (Optional)" sx={{ marginBottom: '1rem' }}>
-        {/* Dropdown options */}
-        <MenuItem value="">None</MenuItem>
-        {/* Add other dropdown options here */}
-      </TextField>
       <Box sx={{ position: 'fixed', bottom: '10px', right: '10px' }}>
         <Button variant="contained" color="primary" sx={{ marginRight: '10px' }}>
           Add
@@ -25,8 +20,6 @@ const EditTaskListDrawerContent = () => {
   )
 }
 
-//  export const AddTaskListButton = ({toggleDrawer,popupState}) => (
-//   );
 
 export const EditTaskListDrawer=({toggleDrawer,state})=>{
     return (

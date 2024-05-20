@@ -6,68 +6,80 @@ import Onboarding from './onboarding-tasklist';
 
 export default function OnboardingTasklist() {
   const [value, setValue] = React.useState(0);
-
+  const [taskGroups, setTaskGroups] = React.useState({
+    '0': {
+      name: 'Document Submission',
+      description: 'Tasks related to submitting documents'
+    },
+    '1': {
+      name: 'Payroll Tasks',
+      description: 'Tasks related to payroll processing'
+    },
+    '2': {
+      name: 'Interns Tasks',
+      description: 'Tasks related to interns management'
+    },
+    '3': {
+      name: 'IT Team Tasks',
+      description: 'Tasks related to IT team activities'
+    },
+    '4': {
+      name: 'HR Tasks',
+      description: 'Tasks related to HR management'
+    }
+  });
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
-
   const tabPage = [
     {
       id: 0,
-      name: 'Onboarding - US: 6 tasks',
-      component: Onboarding,
+      name: 'Document Submission',
+      component:Onboarding,
       props: {
-        panelHeading: 'Onboarding - US',
-        panelSubheading: 'Onboarding for US citizens'
+        panelHeading: 'Document Submission',
+        panelSubheading: 'Tasks related to submitting documents'
       }
     },
     {
       id: 1,
-      name: 'Onboarding - UK: 5 tasks',
-      component: Onboarding, // Use the same component type as the first element
+      name: 'Payroll Tasks',
+      component:Onboarding,
       props: {
-        panelHeading: 'Onboarding - UK',
-        panelSubheading: 'Onboarding for UK citizens'
+        panelHeading: 'Payroll Tasks',
+        panelSubheading: 'Tasks related to payroll processing'
       }
     },
     {
       id: 2,
-      name: 'Onboarding - India: 6 tasks',
-      component: Onboarding, // Use the same component type as the first element
+      name: 'Interns Tasks',
+      component:Onboarding,
       props: {
-        panelHeading: 'Onboarding - India',
-        panelSubheading: 'Onboarding for Indian citizens'
+        panelHeading: 'Interns Tasks',
+        panelSubheading: 'Tasks related to interns management'
       }
     },
     {
       id: 3,
-      name: 'Onboarding - Middle East (ME): 18 tasks',
-      component: Onboarding, // Use the same component type as the first element
+      name: 'IT Team Tasks',
+      component:Onboarding,
       props: {
-        panelHeading: 'Onboarding - Middle East (ME)',
-        panelSubheading: 'Onboarding for Middle Eastern citizens'
+        panelHeading: 'IT Team Tasks',
+        panelSubheading: 'Tasks related to IT team activities'
       }
     },
     {
       id: 4,
-      name: 'Onboarding - Southeast Asia (SEA): 18 tasks',
-      component: Onboarding, // Use the same component type as the first element
+      name: 'HR Tasks',
+      component:Onboarding,
       props: {
-        panelHeading: 'Onboarding - Southeast Asia (SEA)',
-        panelSubheading: 'Onboarding for Southeast Asian citizens'
-      }
-    },
-    {
-      id: 5,
-      name: 'Onboarding - US Sales: 11 tasks',
-      component: Onboarding, // Use the same component type as the first element
-      props: {
-        panelHeading: 'Onboarding - US Sales',
-        panelSubheading: 'Onboarding for US Sales'
+        panelHeading: 'HR Tasks',
+        panelSubheading: 'Tasks related to HR management'
       }
     }
   ];
+
   
   return (
     <>
