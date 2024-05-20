@@ -13,10 +13,34 @@ const HrPayRollMenu = {
       {
         id: 'employee-master',
         title: 'Employee Master',
-        type: 'item',
+        type: 'collapse',
         url: '/erp/hr-payroll/employee-master',
         icon: BadgeTwoToneIcon,
-        breadcrumbs: false
+        children: [
+          {
+            id: 'employee-master',
+            title: 'Employee Master',
+            type: 'item',
+            url: '/erp/hr-payroll/employee-master',
+            breadcrumbs: false
+          },
+
+          {
+            id: 'employee-on-board',
+            title: 'Employee On Board',
+            type: 'item',
+            url: '/erp/hr-payroll/employee-master/employee-on-board',
+            breadcrumbs: false
+          },
+
+          {
+            id: 'exit-process',
+            title: 'Exit Process',
+            type: 'item',
+            url: '/erp/hr-payroll/employee-master/exit-process',
+            breadcrumbs: false
+          },
+        ]
       },
       // salary
       {
