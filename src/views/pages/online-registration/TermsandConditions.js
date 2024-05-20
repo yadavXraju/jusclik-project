@@ -4,6 +4,9 @@ import { Grid , Box , Typography, Button , useMediaQuery} from '@mui/material';
 function TermsAndConditions({continueHandler}) {
 
  const Res1800 = useMediaQuery('(max-width:1800px)')
+ const Res1024 = useMediaQuery('(max-width:1024px)')
+ const Res821 = useMediaQuery('(max-width:821px)')
+
 
   
 
@@ -12,7 +15,7 @@ function TermsAndConditions({continueHandler}) {
     <Grid >
       
      
-       <Box sx={{padding:'2rem'}}>
+       <Box sx={{padding:Res821?null:'2rem'}}>
        <Typography variant={Res1800?'h4':'h2'} sx={{textDecoration:'underline', marginBottom:'20px'}}>Important Guidelines For Filling Up The Form</Typography>
        <Typography variant={Res1800?'h5':'h4'} sx={{marginBottom:'10px'}}>1.  All fields marked with asterisk (*) are mandatory. In case any field is not applicable, mention NA.</Typography>
        <Typography variant={Res1800?'h5':'h4'} sx={{marginBottom:'10px'}}>2.  The incomplete registration form and those with incorrect information will automatically stand rejected. </Typography>
@@ -30,7 +33,7 @@ function TermsAndConditions({continueHandler}) {
        <Typography variant={Res1800?'h5':'h4'} sx={{marginBottom:'2rem' , fontWeight:'bold'}}>Note: Submission of a complete application form is a request for admission and does not guarantee admission as the seats available are limited.  </Typography>
        <Typography  sx={{marginBottom:Res1800?'':'2rem' , fontWeight:'bold' , fontSize:Res1800?'14px':'18px' , color:'#006400'}}>For technical support, please write to techsupport@dpsgurgaon.in</Typography>
        
-       <Box sx={{ textAlign: 'right' , paddingRight:'1rem' }}>
+       <Box sx={{ textAlign:Res821?'center':'right' , paddingRight:Res821?null:'1rem' }}>
        <Button
                   // Call handleSubmit on button click
                   sx={{
@@ -43,7 +46,7 @@ function TermsAndConditions({continueHandler}) {
                     fontSize: '15px',
                     fontFamily: 'plus Jakarta sans',
                     cursor: 'pointer',
-                    width: '20%',
+                    width: Res1024?'40%':'20%',
                     height: '50px',
                     '&:hover': { backgroundColor: '#e64b4c', color: '#fff' }
                   }}
@@ -54,12 +57,6 @@ function TermsAndConditions({continueHandler}) {
                 </Box>
        
        </Box>
-
-      
-
-    
-
-      
      
     </Grid>
   );
