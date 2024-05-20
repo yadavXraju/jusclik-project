@@ -12,7 +12,7 @@ const EmployeeSalary=Loadable(lazy(()=>import('views/erp-module/hr-payroll/hr-pa
 const EmployeeOnBoard=Loadable(lazy(()=>import('views/erp-module/hr-payroll/hr-payroll-sidebar/Employee-Master/employeeonBoard')));
 const OnboardingTaskList=Loadable(lazy(()=>import('views/erp-module/hr-payroll/hr-payroll-sidebar/settings/onboarding-tasklist')));
 const LeaveApplication=Loadable(lazy(()=>import('views/erp-module/hr-payroll/hr-payroll-sidebar/leave-application')));
-const ExitProcess = Loadable(lazy(()=>import('views/erp-module/hr-payroll/hr-payroll-sidebar/Employee-Master/exitProcess/EmployeeExitForm')));
+const ExitEmployee = Loadable(lazy(()=>import('views/erp-module/hr-payroll/hr-payroll-sidebar/Employee-Master/exit-employee')));
 
 // ==============================|| Visitor MENUS ||============================== //
 
@@ -36,8 +36,8 @@ const HrPayRollRoutes = [
               element: <EmployeeMasterPreview /> 
             },
             {
-              path : 'exit-process' ,
-              element: <ExitProcess /> 
+              path : 'exit-employee' ,
+              element: <ExitEmployee /> 
             },
         ]
         },

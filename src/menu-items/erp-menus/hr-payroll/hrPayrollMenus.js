@@ -34,10 +34,10 @@ const HrPayRollMenu = {
           },
 
           {
-            id: 'exit-process',
-            title: 'Exit Process',
+            id: 'exit-employee',
+            title: 'Exit Employee',
             type: 'item',
-            url: '/erp/hr-payroll/employee-master/exit-process',
+            url: '/erp/hr-payroll/employee-master/exit-employee',
             breadcrumbs: false
           },
         ]
