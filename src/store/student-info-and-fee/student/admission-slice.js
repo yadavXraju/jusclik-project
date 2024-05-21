@@ -1163,7 +1163,6 @@ const customizationSlice = createSlice({
         });
       });
     },
-
     searchFilter: (state, action) => {
       const searchQuery = action.payload;
       if (!searchQuery)

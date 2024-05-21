@@ -1,3 +1,4 @@
+// @page owner-Tarun Pandey
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Tabs, Tab, Typography, Box } from '@mui/material';
@@ -37,6 +38,25 @@ const a11yProps = (index) => {
     'aria-controls': `vertical-tabpanel-${index}`,
   };
 };
+
+//Tab component(Customized like Stepper)
+
+//TabPage Structure:-
+// const tabPage = [
+//   {
+//     id: 0,
+//     name: 'Onboarding - US: 6 tasks',
+//     component: Onboarding,
+//     props: {
+//       panelHeading: 'Onboarding - US',
+//       panelSubheading: 'Onboarding for US citizens'
+//     }
+//   }
+// ]
+// Customize each tab with a name, component, and any additional props needed for tab pages.
+//Show BottomNavbar: true to display the bottom Navbar
+
+
 
 const SetupTabs = ({
   tabPage,
