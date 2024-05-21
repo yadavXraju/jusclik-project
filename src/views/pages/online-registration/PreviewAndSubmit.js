@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Typography, Box,Button } from '@mui/material';
+import { Grid, Typography, Box,Button , useMediaQuery } from '@mui/material';
 import Divider from '@mui/material/Divider';
 import Checkbox from '@mui/material/Checkbox';
 import { useState } from 'react';
@@ -14,7 +14,9 @@ function PreviewAndSubmit() {
   const handleChange = (event) => {
     setChecked(event.target.checked);
   };
-
+ 
+   const Res1366 = useMediaQuery('(max-width:1366px)')
+   const Res430 = useMediaQuery('(max-width:430px)');
 
    //Below Function will use in button to validate validation
    console.log(() => handleSubmit(() => {}));
@@ -32,7 +34,7 @@ function PreviewAndSubmit() {
             <Divider />
           </Box>
 
-          <Grid sx={{ padding: '0rem 4rem' ,overflowY:'auto' , height:'67vh' }}>
+          <Grid sx={{ paddingRight:Res1366?'1rem':'4rem' , paddingLeft:Res1366?'1rem':'4rem' ,overflowY:'auto' , height:'67vh' }}>
             <Box>
               <Button variant="contained" sx={{ background: '#4caf50' }}>
                 PREVIEW FORM
@@ -71,7 +73,10 @@ function PreviewAndSubmit() {
                   I agree that,
                 </Typography>
               </Box>
-              <Box sx={{ padding: '0rem 2rem' }}>
+              <Box sx={{ 
+      paddingLeft: Res430 ? '0' : '2rem',
+      paddingRight: Res430 ? '0' : '2rem'
+    }}>
                 <Typography variant="body1" sx={{ marginBottom: '1rem', fontWeight: 'bold' }}>
                   1. I, fully understand, that the school, upon accepting the application of my ward, is not any way bound to grant
                   admission, as the admission is purely based upon the availability of seats and upon qualifying the pre-admission

@@ -1,4 +1,4 @@
-import React, { useState  } from 'react';
+import React, { useState } from 'react';
 import SchoolLogo from '../../../assets/images/Arwachin School (Test Logo) (2).png';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -19,11 +19,9 @@ import BottomNavbar from 'views/common-section/BottomNavbar';
 import SchoolLogo2 from '../../../assets/images/Logo (Online Registration form Application).png';
 import CloseIcon from '@mui/icons-material/Close';
 
-
-
 const OnlineRegistration = () => {
   const [TabChange, setTabChange] = useState(0);
-  const [showSignUp, setShowSignUp] = useState(true);
+  const [showSignUp, setShowSignUp] = useState(true) ;
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const continueHandler = () => {
@@ -49,9 +47,7 @@ const OnlineRegistration = () => {
   ];
 
   const handleChange = (event, newValue) => {
-   
     setTabChange(newValue);
-  
   };
 
   const XXL = useMediaQuery('(min-width:1920px)');
@@ -60,10 +56,13 @@ const OnlineRegistration = () => {
   const Res1280 = useMediaQuery('(max-width:1280px)');
   const Res1440 = useMediaQuery('(max-width:1440px)');
   const Res1024 = useMediaQuery('(max-width:1024px)');
-  const ResBurger = useMediaQuery('(max-width:990px)');
+  const ReshamBurger = useMediaQuery('(max-width:990px)');
   const Res2560 = useMediaQuery('(min-width:2560px)');
   const Res821 = useMediaQuery('(max-width:821px)');
   const Res575 = useMediaQuery('(max-width:575px)');
+  const Res500 = useMediaQuery('(max-width:500px)');
+  const Res430 = useMediaQuery('(max-width:430px)');
+  const Res400 = useMediaQuery('(max-width:400px)');
 
   let ResNavbar = {
     bottom: '4rem',
@@ -128,7 +127,7 @@ const OnlineRegistration = () => {
     ResNavbar = {
       bottom: '3rem',
       width: '94%',
-      paddingLeft:TabChange==0?'13.9rem':'11.1rem'
+      paddingLeft: TabChange == 0 ? '13.9rem' : '11.1rem'
     };
   }
 
@@ -136,7 +135,7 @@ const OnlineRegistration = () => {
     (ResNavbar = {
       bottom: '3rem',
       width: '91%',
-      paddingLeft:TabChange==0?'10.2rem':'8rem'
+      paddingLeft: TabChange == 0 ? '10.5rem' : '7.5rem'
     }),
       (ResNavbarBtn = {
         fontSize: '10px',
@@ -144,6 +143,41 @@ const OnlineRegistration = () => {
       });
   }
 
+  if (Res500) {
+    (ResNavbar = {
+      bottom: '3rem',
+      width: '91%',
+      paddingLeft: TabChange == 0 ? '7.6rem' : '5.5rem'
+    }),
+      (ResNavbarBtn = {
+        fontSize: '10px',
+        width: '80px'
+      });
+  }
+
+  if (Res430) {
+    (ResNavbar = {
+      bottom: '3rem',
+      width: '88%',
+      paddingLeft: TabChange == 0 ? '6.2rem' : '3.8rem'
+    }),
+      (ResNavbarBtn = {
+        fontSize: '10px',
+        width: '80px'
+      });
+  }
+
+  if (Res400) {
+    (ResNavbar = {
+      bottom: '3rem',
+      width: '88%',
+      paddingLeft: TabChange == 0 ? '4.2rem' : '2.7rem'
+    }),
+      (ResNavbarBtn = {
+        fontSize: '10px',
+        width: '80px'
+      });
+  }
 
   const handleDrawerOpen = () => {
     setDrawerOpen(true);
@@ -158,13 +192,13 @@ const OnlineRegistration = () => {
   return (
     <>
       {showSignUp ? (
-        <Grid>
+        <Grid >
           <SignUpRegisteration continueHandler={continueHandler} />
         </Grid>
       ) : (
         <Grid sx={{ background: '#ffecec', minHeight: '100vh' }}>
-          <Grid container spacing={3} sx={{ paddingLeft: ResBurger ? '1rem' : '5rem', paddingTop: ResBurger ? '1rem' : '4rem' }}>
-            {!ResBurger && (
+          <Grid container spacing={3} sx={{ paddingLeft: ReshamBurger ? '1rem' : '5rem', paddingTop: ReshamBurger ? '1rem' : '4rem' }}>
+            {!ReshamBurger && (
               <Grid
                 item
                 xl={XXL ? 2 : 3}
@@ -208,22 +242,19 @@ const OnlineRegistration = () => {
                             alignItems: 'start',
                             color: TabChange === tab.value ? 'inherit !important' : 'inherit',
                             marginLeft: '7px'
-                            
                           }}
                           label={<TabNumber number={tab.id} text={tab.label} isActive={TabChange === tab.value} />}
                         />
-                     
                       ))}
-                      
                     </Tabs>
                   </Box>
                 </Grid>
               </Grid>
             )}
             <Grid item xl={XXL ? 10 : 9} lg={Res1280 ? 8 : 9} md={8} sm={12}>
-              <Box sx={{ paddingRight: ResBurger ? '1rem' : '4rem' }}>
-                <Paper elevation={2} sx={{ minHeight: ResBurger ? '94vh' : '87vh' }}>
-                  {ResBurger && (
+              <Box sx={{ paddingRight: ReshamBurger ? '1rem' : '4rem' }}>
+                <Paper elevation={2} sx={{ minHeight: ReshamBurger ? '94vh' : '87vh' }}>
+                  {ReshamBurger && (
                     <>
                       <IconButton
                         edge="start"
@@ -275,10 +306,9 @@ const OnlineRegistration = () => {
                       tabPageLength={tabsData.length - 1}
                       value={TabChange}
                       setValue={setTabChange}
-                      cancelCustomStyle={{...ResNavbarBtn}}
-                      SaveNnextCustomStyle={{...ResNavbarBtn}}
-                      SubmitCustomStyle={{...ResNavbarBtn}}
-                      
+                      cancelCustomStyle={{ ...ResNavbarBtn }}
+                      SaveNnextCustomStyle={{ ...ResNavbarBtn }}
+                      SubmitCustomStyle={{ ...ResNavbarBtn }}
                       customStyle={{
                         ...ResNavbar,
                         backgroundColor: 'white',
@@ -297,7 +327,7 @@ const OnlineRegistration = () => {
       )}
 
       <Box style={{ position: 'fixed', textAlign: 'center', width: '100%', background: showSignUp ? '' : '#ffecec', bottom: '0' }}>
-        <Typography variant="h5" sx={{ marginBottom: '0.5rem' }}>
+        <Typography variant="h5" sx={{ paddingBottom: '0.5rem' }}>
           Powered by Jusklik
         </Typography>
       </Box>
@@ -307,7 +337,7 @@ const OnlineRegistration = () => {
 
 export default OnlineRegistration;
 
-// Without Burger
+// Without hamburger
 
 // import React, { useState } from 'react';
 // import SchoolLogo from '../../../assets/images/Arwachin School (Test Logo) (2).png';
