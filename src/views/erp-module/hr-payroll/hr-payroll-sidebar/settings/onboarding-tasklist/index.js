@@ -28,6 +28,7 @@ export default function OnboardingTasklist() {
       description: 'Tasks related to HR management'
     }
   });
+  
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -35,52 +36,66 @@ export default function OnboardingTasklist() {
   const tabPage = [
     {
       id: 0,
-      name: 'Document Submission',
+      name: taskGroups['0'].name,
       component:Onboarding,
       props: {
-        panelHeading: 'Document Submission',
-        panelSubheading: 'Tasks related to submitting documents'
+        panelHeading: taskGroups['0'].name,
+        panelSubheading:taskGroups['0'].description,
+        setTaskGroups:setTaskGroups,
+        value:value,
+        taskGroups:taskGroups
       }
     },
     {
       id: 1,
-      name: 'Payroll Tasks',
+      name: taskGroups['1'].name,
       component:Onboarding,
       props: {
-        panelHeading: 'Payroll Tasks',
-        panelSubheading: 'Tasks related to payroll processing'
+        panelHeading: taskGroups['1'].name,
+        panelSubheading:taskGroups['1'].description,
+        setTaskGroups:setTaskGroups,
+        value:value,
+        taskGroups:taskGroups
       }
     },
     {
       id: 2,
-      name: 'Interns Tasks',
+      name: taskGroups['2'].name,
       component:Onboarding,
       props: {
-        panelHeading: 'Interns Tasks',
-        panelSubheading: 'Tasks related to interns management'
+        panelHeading: taskGroups['2'].name,
+        panelSubheading:taskGroups['2'].description,
+        setTaskGroups:setTaskGroups,
+        value:value,
+        taskGroups:taskGroups
       }
     },
     {
       id: 3,
-      name: 'IT Team Tasks',
+      name: taskGroups['3'].name,
       component:Onboarding,
       props: {
-        panelHeading: 'IT Team Tasks',
-        panelSubheading: 'Tasks related to IT team activities'
+        panelHeading: taskGroups['3'].name,
+        panelSubheading:taskGroups['3'].description,
+        setTaskGroups:setTaskGroups,
+        value:value,
+        taskGroups:taskGroups
       }
     },
     {
       id: 4,
-      name: 'HR Tasks',
+      name: taskGroups['4'].name,
       component:Onboarding,
       props: {
-        panelHeading: 'HR Tasks',
-        panelSubheading: 'Tasks related to HR management'
+        panelHeading: taskGroups['4'].name,
+        panelSubheading:taskGroups['4'].description,
+        setTaskGroups:setTaskGroups,
+        value:value,
+        taskGroups:taskGroups
       }
     }
   ];
 
-  
   return (
     <>
     {/* TABS FOR TASKLISTS */}

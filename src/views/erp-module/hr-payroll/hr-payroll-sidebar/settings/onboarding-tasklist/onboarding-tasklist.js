@@ -22,7 +22,7 @@ const DeleteTaskListButton = ({ onClick }) => (
 );
 
 // MAIN COMPONENT
-const Onboarding = ({ panelSubheading, panelHeading }) => {
+const Onboarding = ({ panelSubheading, panelHeading,taskGroups,setTaskGroups,value }) => {
     // rows state
     const [rows, setRows] = React.useState(
       [
@@ -108,8 +108,8 @@ const Onboarding = ({ panelSubheading, panelHeading }) => {
           {/*  POPUP ---- DRAWERS FOR TASK-LISTS: ADD, EDIT, DELETE */}
           {/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */}
           {/* -----------------------------------popup drawers   ------------------------------------------------------- */}
-          <AddTaskListDrawer toggleDrawer={toggleDrawer} state={state} />
-          <EditTaskListDrawer toggleDrawer={toggleDrawer} state={state} />
+          <AddTaskListDrawer toggleDrawer={toggleDrawer}  value={value} taskGroups={taskGroups} setTaskGroups={setTaskGroups} state={state} />
+          <EditTaskListDrawer toggleDrawer={toggleDrawer} value={value} taskGroups={taskGroups} setTaskGroups={setTaskGroups} state={state} />
           <DeleteTaskListButton buttonLabel="Delete Task List" drawerTitle="Delete Task List" />
         </Paper>
 
