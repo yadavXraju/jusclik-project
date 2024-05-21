@@ -14,7 +14,9 @@ import OptionalFeeHead from './optional-fee-head/OptionalFeeHead';
 
 
 const FeeStructure = () => {
-  const isTab = useMediaQuery('(max-width:991px)')
+  const isTab = useMediaQuery('(max-width:991px)');
+
+
   // drawer btn
   const { anchor, toggleDrawer } = useDrawer();
   const tabPage = [
