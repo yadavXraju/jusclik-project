@@ -141,9 +141,6 @@ const InvoiceTemplate = () => {
       </Paper>
 
 
-
-
-
       {/*  invoice gallery drawer */}
       <Drawer anchor="top" open={anchor.top} onClose={toggleDrawer('top', false)} sx={{ minHeight: '100vh' }}>
         <Paper sx={{ minHeight: '100vh', padding: '2rem' }}>
