@@ -11,10 +11,10 @@ const HrPayRollMenu = {
     children: [
   // employee master
       {
-        id: 'employee-master',
-        title: 'Employee Master',
+        id: 'employee',
+        title: 'Employee',
         type: 'collapse',
-        url: '/erp/hr-payroll/employee-master',
+        url: '/erp/hr-payroll/employee',
         icon: BadgeTwoToneIcon,
         children: [
           {
