@@ -21,7 +21,7 @@ import CloseIcon from '@mui/icons-material/Close';
 
 const OnlineRegistration = () => {
   const [TabChange, setTabChange] = useState(0);
-  const [showSignUp, setShowSignUp] = useState(true);
+  const [showSignUp, setShowSignUp] = useState(true) ;
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const continueHandler = () => {
