@@ -1,3 +1,5 @@
+// ownedby------------ San
+
 import React from 'react';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
@@ -6,6 +8,8 @@ import interactionPlugin from '@fullcalendar/interaction';
 import { Box } from '@mui/system';
 import styled from '@emotion/styled'
 
+
+// calender style overides
 export const StyleCalender = styled.div`
 
   thead {
@@ -54,6 +58,71 @@ border-radius:10px;
 }
 .fc .fc-daygrid-day.fc-day-today {
   border-radius: 11px;
+}
+button.fc-today-button.fc-button.fc-button-primary {
+  color: #2196f3;
+  border: 1px solid #2196f3;
+  background: none;
+}
+
+
+
+button.fc--button.fc-button.fc-button-primary {
+  display: none;
+}
+
+
+.fc-toolbar-chunk {
+  display: flex;
+  align-items: center;
+}
+
+button.fc-prev-button.fc-button.fc-button-primary {
+  border: none;
+  background: #F6F8F8;
+  color: #91A1A6;
+}
+
+button.fc-next-button.fc-button.fc-button-primary {
+  border: none;
+  background: #F6F8F8;
+  margin-left: 0px;
+  color: #91A1A6;
+}
+
+button.fc-dayGridMonth-button.fc-button.fc-button-primary.fc-button-active {
+  border: 1px solid #2196f3;
+
+  background: none;
+  color: #2196f3;
+}
+
+button.fc-timeGridWeek-button.fc-button.fc-button-primary {
+  border: 1px solid #2196f3;
+
+  background: none;
+  color: #2196f3;
+}
+
+button.fc-timeGridDay-button.fc-button.fc-button-primary {
+  border: 1px solid #2196f3;
+
+  background: none;
+  color: #2196f3;
+}
+
+button.fc-timeGridDay-button.fc-button.fc-button-primary.fc-button-active {
+  background: none;
+}
+
+
+table.fc-scrollgrid-sync-table {
+height:733px;
+width: 100% !important;
+}
+
+.fc-view-harness.fc-view-harness-active {
+  height: 344.889px !important;
 }
 `
 

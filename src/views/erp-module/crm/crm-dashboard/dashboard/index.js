@@ -1,4 +1,4 @@
-//inventory module Dashboard.js
+//inventory module Dashboard.js   owned by sangeeta
 import React from 'react';
 import Grid from '@mui/material/Grid';
 import { gridSpacing } from 'store/constant';
@@ -30,44 +30,46 @@ const DashboardContent = ({ isLoading }) => {
             <CRMCounter/>
           </Grid>
 
-          {/* Stock Category */}
+          {/* LeadStatus*/}
           <Grid item xs={12} lg={6} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
           <LeadStatus/>
           </Grid>
-          {/* Stockt status */}
+          {/* HotAndColdLeads */}
           <Grid item xs={12} lg={6} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
           <HotAndColdLeads/>
      
           </Grid>
-          {/* Vendor Contacs */}
+          {/*LeadBySource */}
           <Grid item xs={12} lg={6} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
        
           <LeadBySource/>
           </Grid>
-          {/* Low stock items */}
+          {/* FollowUpCalender*/}
           <Grid item xs={12} lg={6} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
           <FollowUpCalender />
       
           </Grid>
-          {/* Frequently Issued Items */}
+          {/* RecentActivity */}
           <Grid item xs={12} lg={8} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
         
           <RecentActivity/>
           </Grid>
-          {/* Help & support */}
+          {/*AgentLeaderBoard */}
           <Grid item xs={12} lg={4} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
-            {/* <NeedSupport isLoading={isLoading} /> */}
+           
             <AgentLeaderBoard/>
           </Grid>
+
+          {/*  LeadInProcess*/}
           <Grid item xs={12} lg={8} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
 
           <LeadInProcess />
           </Grid>
           {/* Help & support */}
           <Grid item xs={12} lg={4} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
-            {/* <NeedSupport isLoading={isLoading} /> */}
+          
             <NeedHelp isLoading={isLoading} />
-            {/* <AgentLeaderBoard/> */}
+       
           </Grid>
 
         </Grid>
