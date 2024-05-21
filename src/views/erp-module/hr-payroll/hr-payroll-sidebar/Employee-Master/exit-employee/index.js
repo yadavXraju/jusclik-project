@@ -1,10 +1,20 @@
 import React from 'react'
-// import EmployeeOnBoard from '../employeeonBoard'
+import ExitEmpoyeeTable from './component/Exit-employee-table'
 
 const index = () => {
+
+    var s="i love react ";
+  
+
+
+console.log(s)
+    //  var s2 = s.split(" ").reverse();
+    // console.log(`reverse ${s2}`);
+
   return (
     <div>
-      {/* <EmployeeOnBoard/> */}adf
+    <ExitEmpoyeeTable/>
+
     </div>
   )
 }

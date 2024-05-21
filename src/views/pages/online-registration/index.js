@@ -21,7 +21,7 @@ import CloseIcon from '@mui/icons-material/Close';
 
 const OnlineRegistration = () => {
   const [TabChange, setTabChange] = useState(0);
-  const [showSignUp, setShowSignUp] = useState(false);
+  const [showSignUp, setShowSignUp] = useState(true) ;
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const continueHandler = () => {
@@ -187,18 +187,7 @@ const OnlineRegistration = () => {
     setDrawerOpen(false);
   };
 
-// let string = "i love React"
 
-// let newString = ""
-
-// for (var i = string.length , i > 0 , i-- )
-//   { 
-
-//  newString = string[i]
-
-//  console.log(newString)
-
-// }
 
   return (
     <>
