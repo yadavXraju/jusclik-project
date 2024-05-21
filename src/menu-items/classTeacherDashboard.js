@@ -1,8 +1,6 @@
+// Page Owner Abhishek
+// Description : Teacher Dashboard Menu Items
 import HomeTwoToneIcon from '@mui/icons-material/HomeTwoTone';
-
-
-
-// ==============================|| DASHBOARD MENU ITEMS ||============================== //
 
 const ClassTeacherDashboard = {
   id: 'dashboard',
