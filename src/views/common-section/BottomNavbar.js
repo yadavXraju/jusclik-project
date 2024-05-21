@@ -1,7 +1,9 @@
 import { Box, Paper, Button } from '@mui/material';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 
-const BottomNavbar = ({ tabPageLength, value, setValue, customStyle , nextBtnText='Save and Next' , submitCustomStyle ,cancelCustomStyle}) => {
+
+
+const BottomNavbar = ({ tabPageLength, value, setValue, customStyle , nextBtnText='Save and Next' , SaveNnextCustomStyle ,cancelCustomStyle ,SubmitCustomStyle}) => {
     const handlePrev = () => {
         setValue(Math.max(0, value - 1));
     };
@@ -28,13 +30,14 @@ const BottomNavbar = ({ tabPageLength, value, setValue, customStyle , nextBtnTex
             marginBottom:''
         },
 
-        submitBtn :{
-            height: "38px",marginTop: "auto",marginBottom:"auto", width: "144px" ,
+        SaveNnext :{
+            height: "38px",marginTop: "auto",marginBottom:"auto", width: "144px" , fontSize:'14px'
         },
-
+ 
+         submitBtn :{height: "38px",marginTop: "auto",marginBottom:"auto", width: "144px", fontSize:'14px'},
 
         cancelBtn : {
-            height: "38px",marginTop: "auto",marginBottom:"auto", width: "144px"
+            height: "38px",marginTop: "auto",marginBottom:"auto", width: "144px", fontSize:'14px'
         }
 
     };
@@ -42,11 +45,11 @@ const BottomNavbar = ({ tabPageLength, value, setValue, customStyle , nextBtnTex
     return (
         <Paper  sx={{ ...style.BottomNavbar, ...customStyle }}>
             <Box sx={{ display: "flex", gap: "20px" }}>
-                {value != tabPageLength - 1 && <Button variant="contained" sx={{ ...style.submitBtn , ...submitCustomStyle  }} onClick={() => handleNext()}>
+                {value != tabPageLength - 1 && <Button variant="contained" sx={{ ...style.SaveNnext , ...SaveNnextCustomStyle  }} onClick={() => handleNext()}>
                  {nextBtnText}
                 </Button>}
                 {
-                   value==tabPageLength-1&&<Button variant="contained" sx={{ }} onClick={() => handleNext()}>
+                   value==tabPageLength-1&&<Button variant="contained" sx={{...style.submitBtn , ...SubmitCustomStyle }} onClick={() => handleNext()}>
                         Submit
                     </Button>
                 }

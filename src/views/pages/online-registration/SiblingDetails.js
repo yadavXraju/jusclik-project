@@ -273,6 +273,7 @@ function SiblingDetails({ handleClick }) {
           )}
         </Grid>
       </Grid>
+      
       </Grid>
 
       {/* 

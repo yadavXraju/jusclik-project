@@ -1,8 +1,8 @@
 import React from 'react';
 import ParamTableDragDrop from 'views/common-section/ParamTableDragDrop';
 import { Drawer,Box,Typography,Button } from '@mui/material';
-import FeeHeadDrawer from './FeeHeadDrawer';
-import FeeHeadConfigTab from './fee-head-config/FeeHeadConfigTab';
+import OptionalFeeHeadDrawer from './OptionalFeeHeadDrawer';
+import OptionalFeeHeadConfigTab from './optional-fee-head-config/OptionalFeeHeadConfig';
 
 const tableHeadings = [
   {
@@ -188,12 +188,12 @@ const data = [
 ];
 
 
-const FeeHeads = ({ anchor, toggleDrawer }) => {
+const OptionalFeeHead = ({ anchor, toggleDrawer }) => {
 
   return (
     <>
       <ParamTableDragDrop tableStyle={{ paddingBottom: '4rem' }} dragIcon={true} columns={tableHeadings} initialData={data} >
-         <FeeHeadConfigTab />
+         <OptionalFeeHeadConfigTab />
       </ParamTableDragDrop>
       <Drawer anchor="right" open={anchor.right} onClose={toggleDrawer('right', false)}>
         <Box sx={{ width: { xs: '100vw', sm: 650 }, padding: '1rem' }} role="presentation">
@@ -203,11 +203,11 @@ const FeeHeads = ({ anchor, toggleDrawer }) => {
               Close
             </Button>
           </Box>
-            <FeeHeadDrawer />
+            <OptionalFeeHeadDrawer />
         </Box>
       </Drawer>
     </>
   );
 };
 
-export default FeeHeads;
+export default OptionalFeeHead;

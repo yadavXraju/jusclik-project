@@ -15,7 +15,6 @@ export default function ExitEmployee() {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return;
     }
-
     setState({ ...state, [anchor]: open });
     if (popupState && popupState.close) {
       popupState.close();

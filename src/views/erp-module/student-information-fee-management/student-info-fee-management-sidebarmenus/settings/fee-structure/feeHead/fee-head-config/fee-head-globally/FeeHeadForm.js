@@ -4,9 +4,9 @@ import ParamDateComponent from 'views/common-section/ParamDateComponent';
 import ParamMultipleSelect from 'views/common-section/ParamMultipleSelect';
 import { useDispatch, useSelector } from 'react-redux';
 import { setFeeHeads, setClass } from 'store/student-info-and-fee/settings/fee-structure/fee-structure-slice';
-import ConfigureGloballyPreview from './ConfigureGloballyPreview';
+import FeeHeadPreview from './FeeHeadGloballyPreview';
 
-const ConfigGloballyForm = () => {
+const FeeHeadForm = () => {
   const [applicableFromDate, setApplicableFromDate] = useState('');
   const [uptoDate, setUptoDate] = useState('');
   const [feeHead, setFeeHead] = useState([]);
@@ -84,10 +84,9 @@ const ConfigGloballyForm = () => {
           </Grid>
         </Grid>
       </Grid>
-
-      <ConfigureGloballyPreview clearStates={clearStates}/>
+      <FeeHeadPreview clearStates={clearStates}/>
     </>
   )
 }
 
-export default ConfigGloballyForm;
+export default FeeHeadForm;

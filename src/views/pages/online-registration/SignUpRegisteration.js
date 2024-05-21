@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Box, Button, Typography } from '@mui/material';
+import { Grid, Box, Button, Typography, useMediaQuery } from '@mui/material';
 import LeftLogo from '../authentication/LeftLogo';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
@@ -15,20 +15,6 @@ import PoweredBySection from './PoweredByComp';
 // imported to use redux
 import { useDispatch } from 'react-redux';
 import { updateAllDataform } from 'store/pages/online-Registration/allDataformSlice';
-
-// Online Registration Styling
-const style = {
-  formHeader: {
-    marginBottom: '24px'
-  },
-  formHeading: {
-    fontWeight: '500',
-    fontSize: '30px',
-    lineHeight: '40px',
-    color: 'rgb(58, 58, 58)',
-    fontFamily: 'plus Jakarta sans'
-  }
-};
 
 // Session Dropdown List Const
 const SessionOptions = [{ value: '2024-2025', label: '2024-2025' }];
@@ -163,28 +149,53 @@ const SignUpRegisteration = ({ continueHandler }) => {
   // Function to Handle New Registration and Already Registered
   const handleChange = (event, newValue) => {
     setValue(newValue);
-
   };
-  const NamehandleChange =(e)=>{
+  const NamehandleChange = (e) => {
     const { name, value } = e.target;
     const alphabeticValue = value.replace(/[^A-Za-z\s]/g, ''); // Filter out non-alphabetical characters and spaces
     const capitalizedValue = alphabeticValue.charAt(0).toUpperCase() + alphabeticValue.slice(1); // Capitalize first letter
     setallDataform({ ...allDataform, [name]: capitalizedValue });
     dispatch(updateAllDataform({ [name]: capitalizedValue })); // Dispatch action to update Redux state
+  };
+
+  // Online Registration Styling
+  const Res575 = useMediaQuery('(max-width:575px)');
+  const style = {
+    formHeader: {
+      marginBottom: '24px'
+    },
+    formHeading: {
+      fontWeight: '500',
+      fontSize: '30px',
+      lineHeight: '40px',
+      color: 'rgb(58, 58, 58)',
+      fontFamily: 'plus Jakarta sans',
+      textAlign: Res575 ? 'center' : null
+    }
+  };
+  //Responsive
+
+  let PowerByRem = '1.5rem';
+
+  const Res1600 = useMediaQuery('(max-width:1600px)');
+
+  if (Res1600) {
+    PowerByRem = '';
   }
 
   return (
     <>
       {showDiv1 && (
         <Grid container sx={{ backgroundColor: '#f8fafc' }}>
-          <Grid lg={6} sx={{ minHeight: '100vh' }}>
+          <Grid lg={6} md={6} sm={6} xs={12} sx={{ marginTop: '2rem', marginBottom: '2rem' }}>
             <LeftLogo />
           </Grid>
           <Grid
-            xs={12}
             lg={6}
+            md={6}
+            sm={6}
+            xs={12}
             sx={{
-              minHeight: '100vh',
               display: 'flex',
               alignItems: 'center',
               flexDirection: 'column',
@@ -192,10 +203,14 @@ const SignUpRegisteration = ({ continueHandler }) => {
               justifyContent: 'center',
               padding: '20px',
               borderTopLeftRadius: '20px',
-              borderBottomLeftRadius: '20px'
+              borderBottomLeftRadius: Res575 ? null : '20px',
+              borderTopRightRadius: Res575 ? '20px' : null,
+              minHeight: '100vh'
+              // // overflowY: 'auto',
+              // // overflowX:'hidden'
             }}
           >
-            <Grid sx={{ maxWidth: '575px', width: { xs: '100%', lg: '575px' }, margin: 'auto', padding: '30px' }}>
+            <Grid sx={{ maxWidth: '575px', width: { xs: '100%', lg: '575px' }, margin: 'auto', padding: Res575 ? '0px' : '30px' }}>
               <Box sx={style.formHeader}>
                 <Typography variant="h1" sx={style.formHeading}>
                   Online Registration
@@ -263,8 +278,6 @@ const SignUpRegisteration = ({ continueHandler }) => {
                       onChange={DatePickerSelector}
                       name="dob"
                       value={allDataform.dob}
-                      // error={formErrors.dob} // Pass error prop if applicable
-                      //onChange={changeHandler} // Pass onChange handler if applicable
                       customStyle={{
                         marginTop: '20px',
                         width: '100%',
@@ -312,35 +325,35 @@ const SignUpRegisteration = ({ continueHandler }) => {
                       </Typography>
                     )}
 
-                    <Button
-                      onClick={handleSubmit} // Call handleSubmit on button click
-                      sx={{
-                        backgroundColor: '#fff',
-                        color: '#364152b5',
-                        borderRadius: '10px',
-                        marginTop: '20px',
-                        border: '1px solid #c4c4c4',
-                        label: 'Next',
-                        fontSize: '15px',
-                        fontFamily: 'plus Jakarta sans',
-                        cursor: 'pointer',
-                        width: '40%',
-                        height: '50px',
-                        '&:hover': { backgroundColor: '#e64b4c', color: '#fff' }
-                      }}
-                    >
-                      Save & Next
-                    </Button>
+
+  <Button
+    onClick={handleSubmit}
+    sx={{
+      backgroundColor: '#fff',
+      color: '#364152b5',
+      borderRadius: '10px',
+      marginTop: '20px',
+      border: '1px solid #c4c4c4',
+      label: 'Next',
+      fontSize: '15px',
+      fontFamily: 'plus Jakarta sans',
+      cursor: 'pointer',
+      width: '40%',
+      height: '50px',
+      '&:hover': { backgroundColor: '#e64b4c', color: '#fff' }
+    }}
+  >
+    Save & Next
+  </Button>
                   </TabPanel>
                   <TabPanel value="2">
-                    <Box sx={{}}>
+                    <Box>
                       <MobileLogin />
                     </Box>
                   </TabPanel>
                 </TabContext>
               </Box>
-
-              <Box sx={{ paddingTop: '2.5rem', paddingLeft: '4rem' }}>
+              <Box sx={{ paddingTop: PowerByRem }}>
                 <PoweredBySection />
               </Box>
             </Grid>
@@ -353,14 +366,15 @@ const SignUpRegisteration = ({ continueHandler }) => {
       {showDiv2 && (
         <Grid>
           <Grid container sx={{ backgroundColor: '#f8fafc' }}>
-            <Grid lg={6} sx={{ minHeight: '100vh' }}>
+            <Grid lg={6} xs={12} sm={6} md={6} sx={{ marginTop: '2rem', marginBottom: '2rem' }}>
               <LeftLogo />
             </Grid>
             <Grid
-              xs={12}
               lg={6}
+              md={6}
+              sm={6}
+              xs={12}
               sx={{
-                minHeight: '100vh',
                 display: 'flex',
                 alignItems: 'center',
                 flexDirection: 'column',
@@ -368,7 +382,12 @@ const SignUpRegisteration = ({ continueHandler }) => {
                 justifyContent: 'center',
                 padding: '20px',
                 borderTopLeftRadius: '20px',
-                borderBottomLeftRadius: '20px'
+                borderBottomLeftRadius: Res575 ? null : '20px',
+                borderTopRightRadius: Res575 ? '20px' : null,
+
+                minHeight: '100vh',
+                overflowY: 'auto',
+                overflowX: 'hidden'
               }}
             >
               <Grid sx={{ maxWidth: '100%', width: { xs: '100%', lg: '100%' }, margin: 'auto', padding: '20px' }}>
