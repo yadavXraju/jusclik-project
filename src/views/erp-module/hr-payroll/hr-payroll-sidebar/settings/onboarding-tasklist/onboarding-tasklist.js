@@ -1,45 +1,20 @@
-import { Box
-  // ,Button, Drawer
-  , IconButton, Paper,  Tooltip, Typography } from '@mui/material';
+import { Box, IconButton, Paper, Tooltip, Typography } from '@mui/material';
 import React from 'react';
 import CommonDataGrid from 'views/common-section/commonDataGrid';
 import withParamDrawer from 'views/common-section/withParamDrawer';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
-// import Popover from '@mui/material/Popover';
-// import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
-// import MoreVertTwoToneIcon from '@mui/icons-material/MoreVertTwoTone';
-import {  AddTaskListDrawer } from './drawers/add-task-list';
+import { AddTaskListDrawer } from './drawers/add-task-list';
 import { EditTaskListDrawer } from './drawers/edit-task-list';
 import AddTask from './drawers/add-task';
-// import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
-// import { useState } from 'react';
+import EditTask from './drawers/edit-task';
 
-// these are panels of drawer componnent
-
-// const AddTask = () => {
-//   return <></>;
-// };
-const EditTask = () => {
-  return <></>;
-};
-// const EditTaskList = () => {
-//   return <></>;
-// };
 // custom drawer button
 const EditTaskButton = ({ onClick }) => (
   <IconButton onClick={onClick} id="tarun">
     <EditTwoToneIcon />
   </IconButton>
 );
-// const EditTaskListButton = ({ onClick }) => (
-//   <Typography>
-//     <IconButton onClick={onClick} sx={{ fontSize: '0.875rem', lineHeight: '1.75' }}>
-//       <EditTwoToneIcon />
-//       Edit Task List
-//     </IconButton>
-//   </Typography>
-// );
 const DeleteTaskListButton = ({ onClick }) => (
   <IconButton onClick={onClick} sx={{ fontSize: '0.875rem', lineHeight: '1.75' }}>
     <DeleteTwoToneIcon sx={{ color: '#f19e9e' }} />
@@ -47,67 +22,77 @@ const DeleteTaskListButton = ({ onClick }) => (
 );
 
 // MAIN COMPONENT
-const Onboarding = ({ panelSubheading, panelHeading }) => {
+const Onboarding = ({ panelSubheading, panelHeading,taskGroups,setTaskGroups,value }) => {
+    // rows state
+    const [rows, setRows] = React.useState(
+      [
+        { id: 1, task: 'IT Declaration', dueOn: '1 day(s) after joining day', assignedTo: 'Employee', validator: 'Payroll Admin' },
+        { id: 2, task: 'Submit Bank Account Details', dueOn: '1 day(s) after joining day', assignedTo: 'Employee', validator: 'Payroll Admin' },
+        { id: 3, task: 'Submit PAN Card details', dueOn: '0 day(s) after joining day', assignedTo: 'Employee', validator: 'Payroll Admin' },
+        { id: 4, task: 'Collection of Forms', dueOn: '3 day(s) after joining day', assignedTo: 'Employee', validator: 'Payroll Admin' },
+        { id: 5, task: 'Bank Account Creation', dueOn: '3 day(s) after joining day', assignedTo: 'Payroll Admin', validator: 'Not Available' },
+        { id: 6, task: 'Submit Previous Employment...', dueOn: '1 day(s) after joining day', assignedTo: 'Employee', validator: 'Payroll Admin' },
+        { id: 7, task: 'Enroll employee in benefit...', dueOn: '1 day(s) after joining day', assignedTo: 'Payroll Admin', validator: 'Not Available' }
+      ]);
+  
   // DRAWERS
-  // withparamDrawer(DrawerContetnt,button)
-  // const AddTaskListDrawer = withParamDrawer(AddTaskList, AddTaskListButton);
   const AddTaskDrawer = withParamDrawer(AddTask);
   const EditTaskDrawer = withParamDrawer(EditTask, EditTaskButton);
-  // const EditTaskListDrawer = withParamDrawer(EditTaskList, EditTaskListButton);
 
-  // data for datagrid
+  const handleDeleteRow = (id) => {
+    // Filter out the row with the given id
+    console.log(id);
+    const updatedRows = rows.filter(row => row.id !== id);
+    // Update the rows state
+    setRows(updatedRows);
+  };
+
   const columns = [
-    { field: 'id', headerName: 'ID', width: 70 },
-    { field: 'firstName', headerName: 'First name', width: 130 },
-    { field: 'lastName', headerName: 'Last name', width: 130 },
-    { field: 'age', headerName: 'Age', type: 'number', width: 90, align: 'left', headerAlign: 'left' },
+    { field: 'task', headerName: 'Task', width: 200 },
+    { field: 'dueOn', headerName: 'Due On', width: 150 },
+    { field: 'assignedTo', headerName: 'Assigned To', width: 200 },
+    { field: 'validator', headerName: 'Validator', width: 200 },
     {
-      field: 'Action',
-      headerName: 'Action',
-      flex: 1,
-      minWidth: 130,
-      sortable: false,
-      filterable: false,
-      disableColumnMenu: true,
-      renderCell: () => (
-        <Box display='flex'> 
-          <Tooltip>
-            <EditTaskDrawer />
-          </Tooltip>
-          <Tooltip title="Delete">
-            <IconButton onClick={(event) => event.stopPropagation()}>
-              <DeleteTwoToneIcon onClick={(event) => event.stopPropagation()} sx={{ color: '#f19e9e' }} />
-            </IconButton>
-          </Tooltip>
-        </Box>
-      )
-    }
-  ];
-  const rows = [
-    { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35 },
-    { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
-    { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
-    { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
-    { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
-    { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
-    { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
-    { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
-    { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 }
+          field: 'Action',
+          headerName: 'Action',
+          flex: 1,
+          minWidth: 130,
+          sortable: false,
+          filterable: false,
+          disableColumnMenu: true,
+          renderCell: (params) => (
+            <Box display="flex">
+              <Tooltip>
+                <EditTaskDrawer />
+              </Tooltip>
+              <Tooltip title="Delete">
+                <IconButton onClick={(event) => {
+              event.stopPropagation();
+              handleDeleteRow(params.row.id);
+            }}>
+                  <DeleteTwoToneIcon 
+                  // onClick={(event) => event.stopPropagation()}
+                   sx={{ color: '#f19e9e' }} />
+                </IconButton>
+              </Tooltip>
+            </Box>
+          )
+        }
   ];
 
+  
   const [state, setState] = React.useState({
     addTaskGroup: false,
-    editTaskGroup:false,
-
+    editTaskGroup: false
   });
 
-const toggleDrawer = (anchor, open) => (event) => {
-  if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-    return;
-  }
+  const toggleDrawer = (anchor, open) => (event) => {
+    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+      return;
+    }
 
-  setState({ ...state, [anchor]: open });
-}
+    setState({ ...state, [anchor]: open });
+  };
   return (
     <>
       <Box sx={{ margin: '-40px 0 0 0' }}>
@@ -121,22 +106,11 @@ const toggleDrawer = (anchor, open) => (event) => {
             <Typography variant="h4">{panelSubheading}</Typography>
           </Box>
           {/*  POPUP ---- DRAWERS FOR TASK-LISTS: ADD, EDIT, DELETE */}
-          
-        
-            
-                 
-{/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */}
-{/* -----------------------------------popup drawers   ------------------------------------------------------- */}
-                      {/* <AddTaskListButton toggleDrawer={toggleDrawer} popupState={popupState}/> */}
-                      <AddTaskListDrawer toggleDrawer={toggleDrawer} state={state}/>
-                      <EditTaskListDrawer toggleDrawer={toggleDrawer} state={state} />
-                      <DeleteTaskListButton buttonLabel="Delete Task List" drawerTitle="Delete Task List" />
-
-                    {/* <AddTaskListDrawer buttonLabel="Add New Task List" drawerTitle="Add New Task List" popupState={popupState} setpopupOpen={setpopupOpen}/> */}
-                    {/* <EditTaskListDrawer buttonLabel="Edit Task List" drawerTitle="Edit Task List" />
-                 */}
-               
-           
+          {/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */}
+          {/* -----------------------------------popup drawers   ------------------------------------------------------- */}
+          <AddTaskListDrawer toggleDrawer={toggleDrawer}  value={value} taskGroups={taskGroups} setTaskGroups={setTaskGroups} state={state} />
+          <EditTaskListDrawer toggleDrawer={toggleDrawer} value={value} taskGroups={taskGroups} setTaskGroups={setTaskGroups} state={state} />
+          <DeleteTaskListButton buttonLabel="Delete Task List" drawerTitle="Delete Task List" />
         </Paper>
 
         <Paper sx={{ padding: '1rem' }}>
@@ -155,7 +129,6 @@ const toggleDrawer = (anchor, open) => (event) => {
           />
         </Paper>
       </Box>
-
     </>
   );
 };
