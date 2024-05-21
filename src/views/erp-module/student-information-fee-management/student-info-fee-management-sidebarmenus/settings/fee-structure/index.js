@@ -10,9 +10,13 @@ import FeedTwoToneIcon from '@mui/icons-material/FeedTwoTone';
 import DiscountTwoToneIcon from '@mui/icons-material/DiscountTwoTone';
 import NewReleasesTwoToneIcon from '@mui/icons-material/NewReleasesTwoTone';
 import SettingsTwoToneIcon from '@mui/icons-material/SettingsTwoTone';
+import OptionalFeeHead from './optional-fee-head/OptionalFeeHead';
+
 
 const FeeStructure = () => {
-  const isTab = useMediaQuery('(max-width:991px)')
+  const isTab = useMediaQuery('(max-width:991px)');
+
+
   // drawer btn
   const { anchor, toggleDrawer } = useDrawer();
   const tabPage = [
@@ -31,7 +35,7 @@ const FeeStructure = () => {
       id: 2,
       name: 'Optional Fee Heads',
       value: '2',
-      component: FeeHeads,
+      component: OptionalFeeHead,
       props: {
          anchor:anchor,
          toggleDrawer:toggleDrawer

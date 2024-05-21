@@ -6,7 +6,7 @@ import {
 } from '@mui/material';
 import { useSelector, useDispatch } from 'react-redux';
 import SelectList from 'views/common-section/ParamSelectList';
-import { configGlobally, setFeeHeads } from 'store/student-info-and-fee/settings/FeeStructureConfigure';
+import { configGlobally, setFeeHeads } from 'store/student-info-and-fee/settings/fee-structure/fee-structure-slice';
 
 // Styled component for visually hidden input
 export const VisuallyHiddenInput = styled('input')({

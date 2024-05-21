@@ -1,8 +1,9 @@
-import { useState, useRef, useEffect } from 'react';
+// Page Owner Abhishek
+// Description :  Profile Toggler Btn  name and picture setting  according to user 
 
+import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-
 // material-ui
 import { useTheme } from '@mui/material/styles';
 import {
@@ -32,11 +33,8 @@ import { IconLogout, IconSettings, IconUser } from '@tabler/icons';
 import { useLocation } from 'react-router-dom';
 // for parent
 import { studentProfileDetails } from '../parent/student-profile-section/StudentProfile';
-
 // for class teacher
 import { ClassTeacherProfileDetails } from '../class-teacher/teacher-profile-section/TeacherProfile';
-
-
 // for subject teacher
 import { SubjectTeacherProfileDetails } from '../subject-teacher/subject-teacher-profile-section/subjectTeacherProfile';
 

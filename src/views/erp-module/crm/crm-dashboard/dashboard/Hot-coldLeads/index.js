@@ -1,3 +1,5 @@
+// ownedby Sanggeta
+
 import React from 'react';
 import ApexCharts from 'react-apexcharts';
 import { Grid, Paper, Typography, useMediaQuery} from '@mui/material';
@@ -57,7 +59,7 @@ const HotAndColdLeads = () => {
         borderRadius: '12px',
         border: '1px solid rgba(128, 128, 128, 0.25)',
         boxShadow: '4px 4px 9px 2px #ddddddc2',
-        marginBottom: '20px', // Add some bottom margin for spacing
+        marginBottom: '20px', 
       }}
     >
       {/* Heading */}
@@ -81,21 +83,7 @@ const HotAndColdLeads = () => {
 
 
       </Grid>
-        {/* <Divider>
-
-        </Divider> */}
-{/* 
-      <Grid>
-        <Box> 
-          <Box sx={{height:"10px",width:"10px" ,border:`2px solid ${chartData.colors[0]}`}}></Box>
-        <Typography variant="body1" color="initial"> Hot</Typography>
-       </Box>
-         <Box>
-         <Box sx={{height:"10px",width:"10px" ,border:`2px solid ${chartData.colors[1]}`}}></Box>
-            <Typography variant="body1" color="initial">Cold</Typography>
-         </Box>
-         
-      </Grid> */}
+  
     </Paper>
   );
 };

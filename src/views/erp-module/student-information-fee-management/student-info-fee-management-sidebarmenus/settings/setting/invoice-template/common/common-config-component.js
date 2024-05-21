@@ -1,3 +1,4 @@
+// OWNER : DAMANDEEP
 import React from 'react';
 import {  Accordion, AccordionSummary, AccordionDetails, Typography} from '@mui/material';
 import General from './sub-categories-common-config/general';

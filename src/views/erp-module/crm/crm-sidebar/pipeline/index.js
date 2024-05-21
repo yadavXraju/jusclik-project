@@ -1,3 +1,5 @@
+// PAGE OWNER : DAMANDEEP
+// DESCRIPTION  kanban component that uses react-trello package
 import React from 'react';
 import CustomPipeline from './customPipeline';
 import { IconButton, ButtonGroup } from '@mui/material';

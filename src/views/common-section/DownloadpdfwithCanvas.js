@@ -1,3 +1,7 @@
+
+   // Page Owner - Kulwinder Singh 
+   //Description  - This component can be use to download PDF File by using html2canvas Method
+
 import React from 'react';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';

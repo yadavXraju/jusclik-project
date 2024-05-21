@@ -1,7 +1,7 @@
+// Page Owner Abhishek
+// Description : Hr Payroll Dashboard Menu
+
 import HomeTwoToneIcon from '@mui/icons-material/HomeTwoTone';
-
-// ==============================|| DASHBOARD MENU ITEMS ||============================== //
-
 const HrPayRollDashboard = {
   id: 'dashboard',
   title: '',

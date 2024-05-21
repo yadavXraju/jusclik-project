@@ -1,3 +1,5 @@
+// owned by sangeeta
+
 import React from 'react';
 import { Paper, Grid, Typography, TableContainer, Table, TableHead, TableRow, TableBody, TableCell, Chip } from '@mui/material';
 import { gridSpacing } from 'store/constant';
@@ -76,6 +78,8 @@ const LeadInProcess = () => {
           Leads In Process
         </Typography>
       </Grid>
+
+      {/* process-lead table */}
       <div style={{ overflowX: 'auto', overflowY: 'auto' }}>
         <TableContainer  className='scrollbar' component={Paper}  sx={{height:"425px",overflow: 'hidden'}}>
           <Table>
