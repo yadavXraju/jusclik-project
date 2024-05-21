@@ -68,6 +68,8 @@ export default function OnboardingTasklist() {
       }
     }
   ];
+
+  console.log(tabPage.id)
   
   return (
     <>
