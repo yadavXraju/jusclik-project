@@ -1,3 +1,5 @@
+// PAGE OWNER : DAMANDEEP
+// custom card that is used in kanban
 import React from 'react';
 import Avatar from '@mui/material/Avatar';
 import {  Box, Button, Divider, Grid, Paper, Typography, alpha } from '@mui/material';
@@ -9,8 +11,7 @@ import LocalOfferOutlinedIcon from '@mui/icons-material/LocalOfferOutlined';
 
 const PipelineCard = (props) => {
   // Define the color you want to lighten
-  const iconColor = '#121926'; // For example, red color
-
+  const iconColor = '#121926';
   // Use alpha function to lighten the color
   const lightenedColor = alpha(iconColor, 0.5); // Adjust the opacity as needed
   const { data } = props;

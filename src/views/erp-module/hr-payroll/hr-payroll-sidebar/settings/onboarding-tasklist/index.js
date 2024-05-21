@@ -1,11 +1,15 @@
-// import { DataGrid } from '@mui/x-data-grid';
+// PAGE OWNER: DAMANDEEP
+// uses a reusable component "ParamStepper"
+// renders a panel with datagrid
 import React from 'react';
 import ParamStepper from 'views/common-section/param-stepper';
 import { Paper } from '@mui/material';
 import Onboarding from './onboarding-tasklist';
 
 export default function OnboardingTasklist() {
-  const [value, setValue] = React.useState(0);
+  // selected tab value
+  const [value, setValue] = React.useState(0); 
+  // tab and panel data based on selected tab
   const [taskGroups, setTaskGroups] = React.useState({
     '0': {
       name: 'Document Submission',

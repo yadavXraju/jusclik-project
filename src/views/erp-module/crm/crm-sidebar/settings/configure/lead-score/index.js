@@ -1,3 +1,5 @@
+// PAGE OWNER : DAMANDEEP
+// THIS component i a simple list
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import {
