@@ -1,6 +1,8 @@
+// PAGE OWNER : DAMANDEEP
+// custom lane for kanban
 import React from 'react';
-import PipelineCard from './pipelineCard'; // Assuming PipelineCard is a Material-UI component
-import CustomLaneHeader from './customLaneHeader'; // Assuming LaneHeading is a Material-UI component
+import PipelineCard from './pipelineCard';
+import CustomLaneHeader from './customLaneHeader';
 import { kanbanData } from './data';
 import Board from 'react-trello';
 import { Box } from '@mui/material';
