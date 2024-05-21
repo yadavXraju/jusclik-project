@@ -5,12 +5,12 @@ import { Button, Typography, Box  } from '@mui/material';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import ParameterizedAutoComplete from 'views/common-section/ParamAutoComplete';
 import {groups } from './CountryData';
-import { useNavigate } from 'react-router';
+
 
 
 
 const OnBoardDrawer = () => {
-  const navigate=useNavigate()
+
 
 //    ============================================ call custom hook for toggle drawer ============================================
 const { anchor, toggleDrawer } = useDrawer();
@@ -30,8 +30,8 @@ const { anchor, toggleDrawer } = useDrawer();
           </Box>
           <Box pt={3}>
 {/*     ================================================= Render Drawer Contant ================================================ */}
-           <ParameterizedAutoComplete   option={groups} customStyle={{width:"60vh !important"}} label={'Select Department'} />           
-           <Button variant='contained' sx={{position:'fixed',bottom:'10px',right:'10px' }} onClick={(()=>navigate('/erp/hr-payroll/settings/on-boarding-task-list'))}>Initiate</Button>
+           <ParameterizedAutoComplete   option={groups} customStyle={{width:"60vh !important"}} label={'Select Group Name'} />           
+           <Button variant='contained' sx={{position:'fixed',bottom:'10px',right:'10px' }} >Initiate</Button>
           </Box> 
         </Box>
       </Drawer>    

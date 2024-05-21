@@ -1,12 +1,16 @@
-// DashboardSwitchLayout.jsx
+// Page Owner Abhishek
+// Description : Parent Dashboard And Teacher Dashboard icon and name 
+
 import React from 'react';
 import { styled } from '@mui/material/styles';
 import { List, ListItem, Box, ListItemText, Divider } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
-import { DashboardList } from './DashboardList';
+// import { DashboardList } from './DashboardList';
 import { useNavigate } from 'react-router';
 import { useDispatch } from 'react-redux';
 import { handleErpModule } from 'store/layout/erp-module-slice';
+import parent from 'assets/images/dashboard-icon/parent-dashboard.svg';
+import teacher from 'assets/images/dashboard-icon/teacher-dashboard.svg';
 
 const ListItemWrapper = styled('div')(({ theme }) => ({
   cursor: 'pointer',
@@ -18,6 +22,26 @@ const ListItemWrapper = styled('div')(({ theme }) => ({
     padding: 0
   }
 }));
+
+export const DashboardList = [
+
+    {
+        id:1,
+        name:'Parent',
+        icon :  <img src={parent} alt='icon' style={{width:'34px', margin:'auto'}} />,
+        url: '/parent/dashboard',
+        role : 'parent',
+    },
+
+    {
+        id:2,
+        name:'Teacher',
+        icon :  <img src={teacher} alt='icon' style={{width:'34px', margin:'auto'}} />,
+        url: '/class-teacher/dashboard',
+        role : 'class-teacher',
+    },
+
+]
 
 const DashboardSwitchLayout = ({ setOpen }) => {
   const theme = useTheme();
