@@ -1,3 +1,7 @@
+
+// Page owner - Kulwinder Singh
+// Description -  Online Registration Form 
+
 import React, { useState } from 'react';
 import SchoolLogo from '../../../assets/images/Arwachin School (Test Logo) (2).png';
 import Tabs from '@mui/material/Tabs';

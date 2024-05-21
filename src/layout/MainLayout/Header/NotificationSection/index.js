@@ -1,7 +1,7 @@
+// Page Owner Abhishek
+// Description :  Notification Layout
+
 import { useState, useRef, useEffect } from 'react';
-
-
-// material-ui
 import { useTheme } from '@mui/material/styles';
 import {
   Avatar,

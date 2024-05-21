@@ -48,7 +48,6 @@ export const Template4 = () => {
   })
     
   
-  
   return (
 
     <Box sx={{  height: '100%',
@@ -141,10 +140,6 @@ export const Template4 = () => {
             </Box>
 
             <Grid sx={{display:'flex' ,justifyContent:'end' }}>
-
-              
-
-           
 
             <Box  pr={8}>
             <Box display={"flex"} justifyContent={'flex-end'} sx={{flexDirection:'column', alignItems:"end"}}> 

@@ -1,4 +1,6 @@
-// Import all dashboard and menu components
+// Page Owner Abhishek
+//   Description : Push the menu items accroding to erp module 
+
 // parent
 import parentDashboard from './parentDashboard';
 import parentMenu from './parentMenus';
@@ -8,7 +10,7 @@ import ClassTeacherDashboard from './classTeacherDashboard';
 import ClassTeacherMenu from './classTeacherMenus';
 
 // subject teacher
-import SubjectTeacherDashboard from './subjectTeacherDashboard';
+// import SubjectTeacherDashboard from './subjectTeacherDashboard';
 
 // visitor
 import VisitorDashboard from './erp-menus/visitor/visitorDashboard';
@@ -47,7 +49,6 @@ export const GetMenuItems = () => {
   const userRole = getUserRole();
   return generateMenuItems(userRole);
 };
-
 
 // Function to retrieve user role from local storage
 const getUserRole = () => {

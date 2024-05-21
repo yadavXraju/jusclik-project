@@ -1,3 +1,6 @@
+// Page owner - Kulwinder Singh
+// online Registration 
+
 import React from 'react';
 import { Grid , Box , Typography, Button , useMediaQuery} from '@mui/material';
 
@@ -6,9 +9,6 @@ function TermsAndConditions({continueHandler}) {
  const Res1800 = useMediaQuery('(max-width:1800px)')
  const Res1024 = useMediaQuery('(max-width:1024px)')
  const Res821 = useMediaQuery('(max-width:821px)')
-
-
-  
 
 
   return (

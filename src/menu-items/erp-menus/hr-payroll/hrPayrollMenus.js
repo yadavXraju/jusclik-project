@@ -1,9 +1,14 @@
-// icons
+// Page Owner Abhishek
+// Description : Hr Payroll Dashboard Menu
+
 
 import SettingsTwoToneIcon from '@mui/icons-material/SettingsTwoTone';
 import DescriptionTwoToneIcon from '@mui/icons-material/DescriptionTwoTone';
 import CalendarMonthTwoToneIcon from '@mui/icons-material/CalendarMonthTwoTone';
 import BadgeTwoToneIcon from '@mui/icons-material/BadgeTwoTone';
+import PaymentTwoToneIcon from '@mui/icons-material/PaymentTwoTone';
+import DocumentScannerTwoToneIcon from '@mui/icons-material/DocumentScannerTwoTone';
+import DesktopWindowsTwoToneIcon from '@mui/icons-material/DesktopWindowsTwoTone';
 
 const HrPayRollMenu = {
     id: 'hr-payrollMenu',
@@ -11,36 +16,70 @@ const HrPayRollMenu = {
     children: [
   // employee master
       {
-        id: 'employee-master',
-        title: 'Employee Master',
+        id: 'employee',
+        title: 'Employee',
         type: 'collapse',
-        url: '/erp/hr-payroll/employee-master',
+        url: '/erp/hr-payroll/employee',
         icon: BadgeTwoToneIcon,
         children: [
           {
             id: 'employee-master',
             title: 'Employee Master',
             type: 'item',
-            url: '/erp/hr-payroll/employee-master',
+            url: '/erp/hr-payroll/employee/employee-master',
             breadcrumbs: false
           },
 
           {
-            id: 'employee-on-board',
-            title: 'Employee On Board',
+            id: 'on-boarding',
+            title: 'On Boarding',
             type: 'item',
             url: '/erp/hr-payroll/settings/employee-on-boarding',
             breadcrumbs: false
           },
 
           {
-            id: 'exit-employee',
-            title: 'Exit Employee',
+            id: 'exits',
+            title: 'Exits',
             type: 'item',
-            url: '/erp/hr-payroll/employee-master/exit-employee',
+            url: '/erp/hr-payroll/employee/exits',
             breadcrumbs: false
           },
+
+          {
+            id: 'expense-and-travel',
+            title: 'Expense & Travel',
+            type: 'item',
+            url: '/erp/hr-payroll/employee/expense-and-travel',
+            breadcrumbs: false
+          },
+
+          {
+            id: 'document',
+            title: 'Document',
+            type: 'item',
+            url: '/erp/hr-payroll/employee/document',
+            breadcrumbs: false
+          },
+
+          {
+            id: 'assets',
+            title: 'Assets',
+            type: 'item',
+            url: '/erp/hr-payroll/employee/assets',
+            breadcrumbs: false
+          },
+          
         ]
+      },
+      // attendence
+      {
+        id: 'attendance',
+        title: 'Attendance',
+        type: 'item',
+        url: '/erp/hr-payroll/attendance',
+        icon: CalendarMonthTwoToneIcon,
+        breadcrumbs: false
       },
       // salary
       {
@@ -48,54 +87,49 @@ const HrPayRollMenu = {
         title: 'Salary',
         type: 'item',
         url: '/erp/hr-payroll/salary',
-        icon: SettingsTwoToneIcon,
+        icon: PaymentTwoToneIcon,
         breadcrumbs: false
       },
-      // attendence
+      // leave application
       {
-        id: 'attendence',
-        title: 'Attendence',
+        id: 'leave-application',
+        title: 'Leave Application',
         type: 'item',
-        url: '/erp/hr-payroll/attendence',
-        icon: CalendarMonthTwoToneIcon,
+        url: '/erp/hr-payroll/leave-application',
+        icon: DocumentScannerTwoToneIcon,
         breadcrumbs: false
       },
-
-        // leave application
+       // pay roll
         {
-          id: 'leave-application',
-          title: 'Leave Application',
+          id: 'pay-roll',
+          title: 'Payroll',
           type: 'item',
-          url: '/erp/hr-payroll/leave-application',
-          icon: CalendarMonthTwoToneIcon,
+          url: '/erp/hr-payroll/payroll',
+          icon: DesktopWindowsTwoToneIcon,
           breadcrumbs: false
         },
-        // report
+      // report
+      {
+        id: 'reports',
+        title: 'Reports',
+        type: 'item',
+        url: '/erp/hr-payroll/reports',
+        icon:  DescriptionTwoToneIcon ,
+        breadcrumbs: false
+      },
+      // setting
         {
-          id: 'reports',
-          title: 'Reports',
+          id: 'setting',
+          title: 'Settings',
           type: 'item',
-          url: '/erp/hr-payroll/reports',
-          icon:  DescriptionTwoToneIcon ,
+          url: '/erp/hr-payroll/settings',
+          icon: SettingsTwoToneIcon,
           breadcrumbs: false
         },
-
-
-        // setting
-          {
-            id: 'setting',
-            title: 'Settings',
-            type: 'item',
-            url: '/erp/hr-payroll/settings',
-            icon: SettingsTwoToneIcon,
-            breadcrumbs: false
-          },
          
-
     ]
 
 
   };
   
   export default HrPayRollMenu;
-  

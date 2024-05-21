@@ -1,7 +1,7 @@
+// Page Owner Abhishek
+// Description : erp modules popper
+
 import { useState, useRef } from 'react';
-
-
-// material-ui
 import { useTheme } from '@mui/material/styles';
 import {
   Avatar,
@@ -17,20 +17,14 @@ import {
   useMediaQuery
 } from '@mui/material';
 
-// third-party
-import PerfectScrollbar from 'react-perfect-scrollbar';
 
-// project imports
+import PerfectScrollbar from 'react-perfect-scrollbar';
 import MainCard from 'ui-component/cards/MainCard';
 import Transitions from 'ui-component/extended/Transitions';
 import { useSelector } from 'react-redux';
 import ErpModuleLayout from './ErpModuleLayout';
-
-// icon
 import AppsTwoToneIcon from '@mui/icons-material/AppsTwoTone';
 
-
-// ==============================|| NOTIFICATION ||============================== //
 
 const ErpModule = () => {
   const theme = useTheme();
@@ -56,12 +50,8 @@ const ErpModule = () => {
     setOpen(false);
   };
 
-
-
   // to store state in this varible
   const customization = useSelector((state) => state.customization);
-
-    
   // Extract theme color and set opacity
   const themeColor = customization.themeColorV2 || 'rgb(30, 136, 229)';
   const opacity = 0.2;

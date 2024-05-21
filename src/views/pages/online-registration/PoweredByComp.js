@@ -1,3 +1,6 @@
+// Page owner - Kulwinder Singh
+// online Registration
+
 import React from 'react';
 import { Typography, Link, Box, useMediaQuery, useTheme, Grid } from '@mui/material';
 import CloudLogo from '../../../assets/images/Untitled-2.png';

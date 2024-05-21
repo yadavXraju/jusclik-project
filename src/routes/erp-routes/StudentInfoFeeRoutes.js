@@ -1,3 +1,6 @@
+// Page Owner Abhishek
+// Description : Stufee Routes
+
 import { lazy } from 'react';
 import Loadable from 'ui-component/Loadable';
 
@@ -6,85 +9,46 @@ const DashboardDefault = Loadable(lazy(() => import('views/erp-module/student-in
 
 
 // student master
-
 const Enquiry = Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/student-master/enquiry')));
-
 const Registration = Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/student-master/registration')));
-
-// const RegistrationData =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/student-master/registration-data')));
-
 const AdmissionProcess =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/student-master/admission-process')));
-
 const Provisional =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/student-master/provisional')));
-
 const Admission =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/student-master/admission')));
 
 // admission dynamic routes
-
 const AdmissionDynamicRoutes =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/student-master/admission/dynamic-admission-routes')));
 // dynamic routes end 
-
-
 const AdmissionForm =Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/student-master/admission/admission-form')));
-// const CustomeData =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/student-master/custom-data')));
-
 const EditMasterDataField =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/student-master/edit-master-data-field')));
-
-
 const ChangeEnrolmentStatus =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/student-master/change-enrolment-status')));
-
 const ChangeEnrolmentNumber =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/student-master/change-enrolment-number')));
-
 const UploadDocument =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/student-master/upload-document')));
 
-
 // Fee invoice
-
 const InvoiceModification =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/fee-accounting/invoice-modification')));
-
-
 const StudentFeeLedgerDetails =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/fee-accounting/student-fee-ledger-details')));
-
-
 const OptionalFeeHeadsEntry =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/fee-accounting/optional-fee-heads-entry')));
 
 // fee receipt
-
 const FeeTransactionEntry =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/fee-accounting/fee-transaction-entry')));
-
-
 const HeadWiseFeeAdjustmentEntry =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/fee-accounting/headwise-fee-adjustment-entry')));
-
 const FeeClearanceEntry=  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/fee-accounting/fee-clearance-entry')));
-
-
 const SecurityDeposit=  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/fee-accounting/security-deposit')));
 
 // hostel
-
 const DormEntry=  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/hostel/dorm-entry')));
 
 
 // transport
-
-
 const RoutesAndSlabs =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/transport/routes-slabs')));
-
-
 const BusDetails =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/transport/bus-details')));
 // dynamic routes
-
 const BusDetailsPreveiw =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/transport/bus-details/Preview')));
 // dynamic routes
-
-
 const TransportAllocation =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/transport/transportAllocation')));
-
-
 const TransportAllocationPreview =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/transport/transportAllocation/transportPreview')));
 
 // setings
-
 const SystemData = Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/settings/system-data')));
 const FeeStructure = Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/settings/fee-structure')));
 const WithdrawalChecklist = Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/settings/withdrawal-checklist')));
@@ -92,57 +56,32 @@ const WithdrawalChecklist = Loadable(lazy(() => import('views/erp-module/student
 
 // reports
 const Reports = Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/reports/')));
-// const InvoicePrinting = Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/reports/invoice-printing')));
 const EnquiryReport =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/reports/enquiry')));
-
 const EnquiryRegister =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/reports/register')));
 
 // tools
 const GpsBusTracking =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/tool/gps-bus-tracking')));
-
-
 const WhatshapConversations =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/tool/gps-bus-tracking')));
-
-
 const WhatshapDeliveryReport =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/tool/whatsapp-delivery-report')));
-
-
-
 const WhatshapExcelSheet =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/tool/whatsapp-excel-sheet')));
 
 // setting
 
 const Settings =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/settings/setting/setting-stufee')));
-
 // student details and forms
 
 const StudentDetails =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/student-master/registration/student-details')));
-
 const FatherDetailsForm =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/student-master/registration/student-details/data-forms/FatherDetails')));
-
-
 const MotherDetailsForm =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/student-master/registration/student-details/data-forms/MotherDetails')));
-
-
-
 const StudentDetailsForm =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/student-master/registration/student-details/data-forms/StudentDetails')));
-
 const TransactionNoSeries =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/settings/transaction-no-series')));
 
-
-
 // dashboard payroll
-
-
 const DashboardPayroll =  Loadable(lazy(() => import('views/common-section/dashboard-payroll')));
-
-
 // user details and roles
 const UserDetailsRoles =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/user-and-roles')));
-
 // invoice template
 const InvoiceTemplate =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/settings/setting/invoice-template')));
-
 const Template =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/settings/setting/invoice-template/templates')));
 
 // ==============================|| Visitor MENUS ||============================== //

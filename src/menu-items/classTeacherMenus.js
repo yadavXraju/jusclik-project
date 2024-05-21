@@ -1,8 +1,9 @@
-// new icon
+// Page Owner Abhishek
+// Description :  Teacher Menu Items
+
 import CalendarMonthTwoToneIcon from '@mui/icons-material/CalendarMonthTwoTone';
 import AlarmTwoToneIcon from '@mui/icons-material/AlarmTwoTone';
 import MarkUnreadChatAltTwoToneIcon from '@mui/icons-material/MarkUnreadChatAltTwoTone';
-// import CameraAltTwoToneIcon from '@mui/icons-material/CameraAltTwoTone';
 import FingerprintTwoToneIcon from '@mui/icons-material/FingerprintTwoTone';
 import DriveFileRenameOutlineTwoToneIcon from '@mui/icons-material/DriveFileRenameOutlineTwoTone';
 import CoPresentTwoToneIcon from '@mui/icons-material/CoPresentTwoTone';
@@ -13,7 +14,6 @@ import FolderCopyTwoToneIcon from '@mui/icons-material/FolderCopyTwoTone';
 import LocalLibraryTwoToneIcon from '@mui/icons-material/LocalLibraryTwoTone';
 import MovingIcon from '@mui/icons-material/Moving';
 
-// ==================== colleagueTitles  ==================== 
 
 const ClassTeacherMenu = {
     id: 'teacherMenu',

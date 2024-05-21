@@ -1,3 +1,4 @@
+// PAGE OWNER: DAMANDEEP
 import { Box, IconButton, Paper, Tooltip, Typography } from '@mui/material';
 import React from 'react';
 import CommonDataGrid from 'views/common-section/commonDataGrid';
@@ -8,6 +9,7 @@ import { AddTaskListDrawer } from './drawers/add-task-list';
 import { EditTaskListDrawer } from './drawers/edit-task-list';
 import AddTask from './drawers/add-task';
 import EditTask from './drawers/edit-task';
+import WarningDialog from 'views/common-section/WarningDialog';
 
 // custom drawer button
 const EditTaskButton = ({ onClick }) => (
@@ -41,12 +43,22 @@ const Onboarding = ({ panelSubheading, panelHeading,taskGroups,setTaskGroups,val
 
   const handleDeleteRow = (id) => {
     // Filter out the row with the given id
+    setmodalOpen(true);
     console.log(id);
     const updatedRows = rows.filter(row => row.id !== id);
     // Update the rows state
     setRows(updatedRows);
   };
-
+  const [modalOpen, setmodalOpen] = React.useState(false);
+  const handleModalClose = () => {
+    setmodalOpen(false);
+  };
+  const handleConfirmDelete = () => {
+    const updatedRows = tableRows.filter((row) => row.id !== deleteId);
+    setTableRows(updatedRows);
+    setmodalOpen(false);
+    setdeleteId(null)
+  };
   const columns = [
     { field: 'task', headerName: 'Task', width: 200 },
     { field: 'dueOn', headerName: 'Due On', width: 150 },
@@ -80,7 +92,7 @@ const Onboarding = ({ panelSubheading, panelHeading,taskGroups,setTaskGroups,val
         }
   ];
 
-  
+  // states to check which drawer is open
   const [state, setState] = React.useState({
     addTaskGroup: false,
     editTaskGroup: false
@@ -129,6 +141,13 @@ const Onboarding = ({ panelSubheading, panelHeading,taskGroups,setTaskGroups,val
           />
         </Paper>
       </Box>
+           {/* ========= import warning dialog ========== */}
+           <WarningDialog
+        open={modalOpen}
+        onClose={handleModalClose}
+        contentText="Are you sure you want to delete?"
+        onConfirm={handleConfirmDelete}
+      />
     </>
   );
 };
