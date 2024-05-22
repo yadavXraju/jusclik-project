@@ -31,12 +31,6 @@ export default function RoleForm() {
               <TextArea rows={4} placeholder="Enter your text here..." fullWidth variant="outlined" />
             </Box>
         
-            {/* <Box sx={{ padding: 2 }}>
-              <Button type="submit" variant="contained">
-                Submit
-              </Button>
-              <Button sx={{ alignSelf: 'flex-end' }}>Cancal</Button>
-            </Box> */}
           </Box>
         </form>
     </>

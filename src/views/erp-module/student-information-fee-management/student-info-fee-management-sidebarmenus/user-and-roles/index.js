@@ -5,8 +5,8 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { Card } from '@mui/material'
-import UserDetails from './UserDetails';
-import RoleDetails from './RoleDetails';
+import UserDetails from './User-Authorisation/UserDetails';
+import RoleDetails from './Role-Authorisation/RoleDetails';
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;

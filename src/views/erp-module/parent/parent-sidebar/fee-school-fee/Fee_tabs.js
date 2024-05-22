@@ -1,14 +1,15 @@
+// ======= Page Owner Vikash =========
+// ======= Return Tabs For School Fee Component =========
 import React, { useState } from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-//import MainCard from 'ui-component/cards/MainCard';
 import { useTheme, useMediaQuery, Box, Typography } from '@mui/material';
 import FeeDataTable from './Fee_table';
 import Summary from './Summary';
 import ReceiptDetails from './ReceiptDetails';
 
 
-// Custom component for rendering the content of each tab panel
+// ====== Custom component for rendering the content of each tab panel ========
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
   const theme = useTheme();
