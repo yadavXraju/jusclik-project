@@ -12,7 +12,7 @@ import QRCODE from 'assets/images/Demo_QR.jpg';
 import Button from '@mui/material/Button';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import WithPrintPdf from 'views/common-section/withPrintPdf';
-import DownloadpdfwithCanvas from 'views/common-section/DownloadpdfwithCanvas';
+import DownloadpdfwithCanvas from 'views/common-section/CommonDownloadpdfwithCanvas';
 import { List, ListItemText } from '@mui/material';
 import jsPDF from 'jspdf';
 import { getCurrentDate } from 'utils/timeUtils';
