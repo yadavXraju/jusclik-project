@@ -13,7 +13,7 @@ import AdmissionDrawer from './AdmissionDrawer';
 import RemoveRedEyeTwoToneIcon from '@mui/icons-material/RemoveRedEyeTwoTone';
 import useDrawer from 'hooks/useDrawer';
 import EditDrawer from './EditDrawer';
-import FilterStudents from 'views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/reports/common-report-section/filter-and-sort/Filter';
+import FilterStudents from 'views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/reports/common-report-section/filter-and-sort/temp-Filter';
 import WarningDialog from 'views/common-section/WarningDialog';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import { useSelector } from 'react-redux';

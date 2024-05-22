@@ -13,7 +13,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
-import { commonTemplateContent } from '../common/common-states';
+import { commonTemplateContent } from '../common/sample-dropdown-values';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useSelector } from 'react-redux';
 

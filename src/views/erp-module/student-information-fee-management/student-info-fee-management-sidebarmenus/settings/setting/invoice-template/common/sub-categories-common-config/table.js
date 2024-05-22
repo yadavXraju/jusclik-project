@@ -1,7 +1,7 @@
 // OWNER : DAMANDEEP
 import { Checkbox, FormControl, FormControlLabel, Grid, Typography } from '@mui/material';
 import React from 'react';
-import ColorPicker from '../../common/color-picker';
+import { CommonColorPicker } from 'views/common-section/CommonColorPicker'; 
 import FontSize from '../../common/font-size';
 import Divider from '@mui/material/Divider';
 import { useDispatch } from 'react-redux';
@@ -24,7 +24,7 @@ const TableConfig = ({ settings }) => {
           <Grid container columnSpacing={2}>
             <Grid item md>
               <FormControl fullWidth>
-                <ColorPicker
+                <CommonColorPicker
                   initialColor={tableSettings.borderColor}
                   onColorChange={handleStateChange}
                   colorKey="borderColor"
@@ -71,7 +71,7 @@ const TableConfig = ({ settings }) => {
           {/* (font color) */}
           <Grid item md>
             <FormControl fullWidth>
-              <ColorPicker
+              <CommonColorPicker
                 initialColor={tableSettings.headerFontColor}
                 onColorChange={handleStateChange}
                 colorKey="headerFontColor"
@@ -84,7 +84,7 @@ const TableConfig = ({ settings }) => {
           <Grid item container columnSpacing={2}>
             <Grid item md>
               <FormControl fullWidth>
-                <ColorPicker
+                <CommonColorPicker
                   initialColor={tableSettings.headerBackgroundColor}
                   onColorChange={handleStateChange}
                   colorKey="headerBackgroundColor"
@@ -131,7 +131,7 @@ const TableConfig = ({ settings }) => {
           {/* (font color) */}
           <Grid item md>
             <FormControl fullWidth>
-              <ColorPicker
+              <CommonColorPicker
                 initialColor={tableSettings.itemRowFontColor}
                 onColorChange={handleStateChange}
                 colorKey="itemRowFontColor"
@@ -145,7 +145,7 @@ const TableConfig = ({ settings }) => {
             <Grid container columnSpacing={2}>
               <Grid item md>
                 <FormControl fullWidth>
-                  <ColorPicker
+                  <CommonColorPicker
                     initialColor={tableSettings.itemRowBackgroundColor}
                     onColorChange={handleStateChange}
                     colorKey="itemRowBackgroundColor"

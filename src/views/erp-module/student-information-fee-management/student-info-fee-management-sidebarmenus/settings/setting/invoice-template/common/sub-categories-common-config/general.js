@@ -1,10 +1,10 @@
 // OWNER : DAMANDEEP
 import { Box, Checkbox, FormControl, FormControlLabel, Grid, Radio, RadioGroup, Tab, Tabs, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react';
-import ColorPicker from '../../common/color-picker';
+import { CommonColorPicker } from 'views/common-section/CommonColorPicker';
 import CommonSelect from '../../common/common-select';
 import FontSize from '../../common/font-size';
-import { fontFamily} from '../../common/common-states';
+import { fontFamily} from '../sample-dropdown-values';
 import { useDispatch } from 'react-redux';
 import { updateGeneralProperty } from 'store/student-info-and-fee/settings/Invoice-Template-Slice';
 import { useSelector } from 'react-redux';
@@ -123,7 +123,7 @@ const General = () => {
         </Grid>
         <Grid item md={12}>
           {/*=========== Label Color ============== */}
-          <ColorPicker
+          <CommonColorPicker
             initialColor={generalSettings.labelColor}
             onColorChange={handleStateChange}
             colorKey="labelColor"
@@ -134,7 +134,7 @@ const General = () => {
         <Grid item container md={12} spacing={2}>
           <Grid item md={6}>
             {/* ========== Font Color =============== */}
-            <ColorPicker
+            <CommonColorPicker
               initialColor={generalSettings.fontColor}
               onColorChange={handleStateChange}
               colorKey="fontColor"
@@ -166,7 +166,7 @@ const General = () => {
           <Grid container columnSpacing={2}>
             <Grid item md>
               <FormControl fullWidth>
-                <ColorPicker
+                <CommonColorPicker
                   initialColor={generalSettings.backgroundColor}
                   onColorChange={handleStateChange}
                   colorKey="backgroundColor"

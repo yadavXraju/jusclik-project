@@ -10,7 +10,7 @@ import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import ContentCutIcon from '@mui/icons-material/ContentCut';
 import {  styled } from '@mui/system';
 import { List, ListItemText } from '@mui/material';
-import { commonTemplateContent } from '../common/common-states';
+import { commonTemplateContent } from '../common/sample-dropdown-values';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import schoollogo from 'assets/images/24x24-inch-logo-1.png';
 import { useSelector } from 'react-redux';

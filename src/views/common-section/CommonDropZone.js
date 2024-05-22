@@ -1,4 +1,5 @@
 // OWNER : DAMANDEEP
+// file upload component , supposts selection and dropping files
 import React from 'react';
 import { Button, Typography, Box, Chip, IconButton, Grid } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
@@ -17,9 +18,21 @@ const useStyles = makeStyles((theme) => ({
 }));
 // PARAMS: 
 //  stateHandler : this is  a handdler function  which takes (key,value) to set value
-// state handler ensures if we are using React.useState or Redux it can handle both
 // UpdateKey : this is the key which is to be updated
-// selectedFile : its the state which file is selected  
+// selectedFile : its the value which file is selected eg state/redux state  
+
+// usage: with Redux
+// stateHandler=(key,val)=>{
+//     dispatch(reducer(updatekey,val))
+// }
+
+// usage : with React State:
+// SAMPLE CODE
+//  const [selectedFile,setSelectedFile]=React.useState(null)
+//  const stateHandler=(_,value)=>setSelectedFile(value)
+// CALLING with React.state :<CommonDropZone stateHandler={stateHandler} selectedFile={selectedFile} updatekey={'_'} />
+          
+
 export const CommonDropZone = ({stateHandler, updatekey,selectedFile}) => {
   const classes = useStyles();
 

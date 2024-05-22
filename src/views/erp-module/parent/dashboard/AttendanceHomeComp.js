@@ -12,13 +12,10 @@ import SkeletonAttendanceCard from 'ui-component/cards/Skeleton/CounterCard';
 import CalendarMonthTwoToneIcon from '@mui/icons-material/CalendarMonthTwoTone';
 import ArrowForwardTwoToneIcon from '@mui/icons-material/ArrowForwardTwoTone';
 import { useNavigate } from 'react-router';
-import { present } from './chart-data/AttandanceData';
+// import { present } from './chart-data/AttandanceData';
 import { useSelector } from 'react-redux';
 
-
-// ===========================|| DASHBOARD DEFAULT Attandance Counter||=========================== //
-
-
+export const present = '63.3%';
 const AttendanceHomeComp = ({ isLoading }) => {
   const theme = useTheme();
   const navigate = useNavigate();
