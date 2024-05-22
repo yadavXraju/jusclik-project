@@ -110,8 +110,6 @@ const DragAndDropFile = ({stateHandler, updatekey,selectedFile}) => {
       </Box>
     </Grid>
 
-    //   </div>
-    // </div>
   );
 };
 

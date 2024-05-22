@@ -5,11 +5,11 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { Box, Grid, Typography, useMediaQuery, useTheme } from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import LogoImg from '../../../../assets/images/WhatsApp_Image_2020-03-21_at_8_04_53_PM__1-removebg-preview 1.png';
-import VisitorDetails from './visitor-details/index';
+import VisitorDetails from './visitor-details';
 import SelfieVerification from './selfie-verification';
-import { MobileNumber } from './mobile-number/index';
-import OtpVerification from './otp-verification/index';
-import VisitorAppointmentPass from './appointment-pass/index';
+import { MobileNumber } from './mobile-number';
+import OtpVerification from './otp-verification';
+import VisitorAppointmentPass from './apointment-pass';
 import { useState } from 'react';
 const defaultTheme = createTheme({
   palette: {
@@ -18,7 +18,7 @@ const defaultTheme = createTheme({
     }
   }
 });
-const VisitorRegistrationTemplate = () => {
+export const VisitorRegistrationTemplate = () => {
   const theme = useTheme(); // Accessing theme object using useTheme hook
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const betweenMdLg=useMediaQuery(theme.breakpoints.between('md','lg'));
@@ -162,4 +162,3 @@ const VisitorRegistrationTemplate = () => {
   );
 };
 
-export default VisitorRegistrationTemplate;
