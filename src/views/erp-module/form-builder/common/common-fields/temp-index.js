@@ -1,8 +1,8 @@
 import React from 'react'
-import SingleLine from './single-line'
-import MultiLine from './multi-line'
+import SingleLine from './temp-single-line'
+import MultiLine from './temp-multi-line'
 
-import Address from './address'
+import Address from './temp-address'
 const DamanTemp = () => {
   return (
     <>

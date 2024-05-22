@@ -1,3 +1,4 @@
+//@Page Onwer-Tarun Pandey
 import React, { useState } from 'react'
 import { Box, Typography, Paper, Drawer} from '@mui/material';
 import ParamStepper from 'views/common-section/param-stepper';
@@ -6,7 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { handleSelectField } from 'store/form-builder/custom-form-slice';
 import Tooltip from '@mui/material/Tooltip';
 import useDrawer from 'hooks/useDrawer';
-import SingleLineDrawer from '../common/common-drawer/single-line-drawer';
+import SingleLineDrawer from '../../common/common-drawer/single-line-drawer';
 import Divider from '@mui/material/Divider';
 import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
@@ -15,7 +16,7 @@ import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 
 
 
-
+// Fields to build form includes basic Field and Form Field
 const BasicFields = () => {
   const [isHover, setIsHover] = useState(-1);
   const { basicFields } = useSelector((state) => state.customForm);
