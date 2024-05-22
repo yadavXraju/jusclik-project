@@ -1,8 +1,8 @@
+// ======= Page Owner Vikash =========
+// ======= Return Transport Route Table =========
 import React from 'react';
-//import { DataGrid } from '@mui/x-data-grid';
 import { IconButton, Typography, Switch, Tooltip } from '@mui/material';
 import { Box } from '@mui/system';
-//import { useNavigate } from 'react-router-dom';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 import WarningDialog from 'views/common-section/WarningDialog';
 import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
@@ -45,24 +45,22 @@ export default function TransportRouteTable() {
     { field: 'routeName', headerName: 'Route Name', flex: 1, minWidth: 130, align: 'left', headerAlign: 'left' },
     { field: 'schedule', headerName: 'Schedule', flex: 1, minWidth: 130 },
     { 
-        field: 'pickTimeRange', // Custom field name for combined pick start and end time
-        headerName: 'Pick Time Range', // Custom header name
+        field: 'pickTimeRange', 
+        headerName: 'Pick Time Range',
         flex: 1,
         minWidth: 130,
-        valueGetter: (params) => `${params.row.pickstarttime} - ${params.row.pickendtime}`, // Custom value getter to combine times
+        valueGetter: (params) => `${params.row.pickstarttime} - ${params.row.pickendtime}`,
       },
       { 
-        field: 'dropTimeRange', // Custom field name for combined pick start and end time
-        headerName: 'Drop Time Range', // Custom header name
+        field: 'dropTimeRange', 
+        headerName: 'Drop Time Range', 
         flex: 1,
         minWidth: 130,
         valueGetter: (params) => `${params.row.dropstarttime} - ${params.row.dropendtime}`,
       },
-    // { field: 'attachBus', headerName: 'Attach Bus', flex: 1, minWidth: 100 },
     { field: 'seatingCapacity', headerName: 'Seating Capacity', flex: 1, minWidth: 100 },
     { field: 'attachSlab', headerName: 'Attach Bus', flex: 1, minWidth: 100 },
     { field: 'classes', headerName: 'Classes', flex: 1, minWidth: 100 },
-    // { field: 'status', headerName: 'Status', flex: 1, minWidth: 100 },
     {field: 'status',
     headerName: 'Status',
     flex: 1,
@@ -83,9 +81,6 @@ export default function TransportRouteTable() {
       disableColumnMenu: true,
       renderCell: (params) => (
         <Box onClick={(event) => event.stopPropagation()}>
-          {/* <IconButton>
-            <RoutesManageDrawer/>
-          </IconButton> */}
           <Tooltip title="Edit">
           <IconButton>
             <EditTwoToneIcon />

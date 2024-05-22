@@ -1,3 +1,5 @@
+// ======= Page Owner Vikash =========
+// ======= Fee Data Table =========
 import React, { useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { alpha, Box, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TableSortLabel, Toolbar, Typography, Checkbox, IconButton, Tooltip } from '@mui/material';
@@ -195,22 +197,6 @@ function EnhancedTableToolbar(props) {
         </Tooltip>
       ) : (
         <>
-          {/* Add the icons inside the Tooltip component */}
-          {/* <Tooltip title="Copy">
-            <IconButton>
-              <ContentCopyTwoToneIcon />
-            </IconButton>
-          </Tooltip>
-          <Tooltip title="Print">
-            <IconButton>
-              <PrintTwoToneIcon />
-            </IconButton>
-          </Tooltip>
-          <Tooltip title="Filter list">
-            <IconButton>
-              <FilterListIcon />
-            </IconButton>
-          </Tooltip> */}
         </>
       )}
     </Toolbar>
@@ -320,12 +306,9 @@ export default function FeeDataTable() {
                 return (
                   <TableRow
                     hover
-                    //onClick={(event) => handleClick(event, row.id)}
                     role="checkbox"
-                    //aria-checked={isItemSelected}
                     tabIndex={-1}
                     key={row.id}
-                    //selected={isItemSelected}
                     sx={{ cursor: 'pointer' }}
                   >
                     <TableCell padding="checkbox">
@@ -347,8 +330,6 @@ export default function FeeDataTable() {
                         <span style={{ fontWeight: 'bold' }}>{row.name}</span><br />
                         {row.date}
                       </div>
-                      {/* {`${row.name}`}<br />
-                       {`${row.date}`} */}
                     </TableCell>
                     <TableCell align="right">{row.ldate}</TableCell>
                     <TableCell align="right">{row.netpay}</TableCell>
@@ -368,12 +349,6 @@ export default function FeeDataTable() {
                       <Box sx={{ width: '100%', display: 'flex', justifyContent: 'end' }}>
                       
                         <Box sx={{
-                          // color: row.status === 'paid' ? 'rgb(0, 200, 83)' : 'rgb(216, 67, 21)',
-                          // borderRadius: '16px',
-                          // background: row.status === 'paid' ? 'rgba(147, 213, 166, 0.38)' : 'rgb(251, 233, 231)',
-                          // '&:hover': {
-                          //   background: row.status === 'paid' ? 'rgb(0, 200, 83)' : 'rgb(216, 67, 21)',
-                          //   color: 'white',
                           color: row.status === 'Paid' ? 'rgb(0, 200, 83)' : (row.status === 'overdue' ? '#433e1a' : 'rgb(216, 67, 21)'),
                           borderRadius: '16px',
                           background: row.status === 'Paid' ? 'rgba(147, 213, 166, 0.38)' : (row.status === 'overdue' ? '#ffff003b' : 'rgb(251, 233, 231)'),
@@ -386,8 +361,6 @@ export default function FeeDataTable() {
                           paddingLeft: '8px',
                           textAlign: 'center'
                         }}>
-                          {/* {row.status} */}
-                          {/* {new Date(row.lastDate) > new Date() ? 'overdue' : row.status} */}
                           
                           {new Date(row.ldate) < new Date() ? 'Overdue' : row.status}
                         </Box>

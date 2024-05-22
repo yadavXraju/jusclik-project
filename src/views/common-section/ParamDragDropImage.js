@@ -1,8 +1,9 @@
+// ======= Page Owner Vikash =========
+// ======= Common img Drag and Drop Component ========
 import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import CloudUploadTwoToneIcon from '@mui/icons-material/CloudUploadTwoTone';
 import { Typography } from '@mui/material';
-///import LocalSeeOutlinedIcon from '@mui/icons-material/LocalSeeOutlined';
 
 const UploadBox = ({ onImageChange }) => {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -30,7 +31,7 @@ const UploadBox = ({ onImageChange }) => {
     if (droppedFiles.length > 0) {
       const imagePath = URL.createObjectURL(droppedFiles[0]);
       setSelectedImage(imagePath);
-      // Check if onImageChange is a function before calling it
+      // ===== Check if onImageChange is a function before calling it =======
       if (typeof onImageChange === 'function') {
         onImageChange(imagePath);
       }
@@ -46,7 +47,6 @@ const UploadBox = ({ onImageChange }) => {
           sx={{
             height: '110px',
             width: '110px',
-            //background: '#EDE6F6',
             border: '2px dotted rgb(33, 150, 243)',
             borderRadius: '50%',
             cursor: 'pointer'
@@ -58,8 +58,6 @@ const UploadBox = ({ onImageChange }) => {
           ) : (
             <>
               <Box>
-                {/* <LocalSeeOutlinedIcon sx={{ fontSize: 40, mt: '30px', color: '#5E35B1' }}/>
-                <Box sx={{ fontSize: '14px' }}> Upload</Box> */}
                 <CloudUploadTwoToneIcon sx={{ fontSize: 40, mt: '20px', color: 'rgb(33, 150, 243)' }} />
                 <Box sx={{ fontSize: '14px' }}> Upload</Box>
               </Box>

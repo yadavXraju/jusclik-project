@@ -1,3 +1,5 @@
+// ======= Page Owner Vikash =========
+// =======  Employee profile ==========
 import React from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -5,11 +7,7 @@ import Typography from '@mui/material/Typography';
 import {Box, Checkbox} from '@mui/material'; // Import Box from @mui/material
 import ParamDragDropImage from 'views/common-section/ParamDragDropImage';
 
-// Assuming studentProfileDetails is defined elsewhere
-// const studentProfileDetails = {
-//   StudentName: 'Student Name',
-  
-// };
+
 
 export default function EmployeeProfile({profileDetails }) {
 

@@ -1,7 +1,8 @@
+// ======= Page Owner Vikash =========
+// ======= Return Transport Allocation Drawer =========
 import React, { useState } from 'react';
 import useDrawer from 'hooks/useDrawer';
 import Drawer from '@mui/material/Drawer';
-// import { Button, Typography, Box, Grid, Card, Avatar } from '@mui/material';
 import { Button, Typography, Box, Tab, Tabs, Grid } from '@mui/material';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import ParameterizedDateComponent from 'views/common-section/ParamDateComponent';
@@ -10,7 +11,6 @@ import ParamMultipleSelect from 'views/common-section/ParamMultipleSelect';
 import TextArea from 'antd/es/input/TextArea';
 import TextField from '@mui/material/TextField';
 import TransportTimeline from './TransportTimeline';
-// import { Container } from '@mui/system';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import BottomNavbar from 'views/common-section/BottomNavbar';
 
@@ -27,10 +27,6 @@ const TransportDrawer = () => {
     setTabValue(newValue);
   };
 
-  //   const [data, setData] = useState({
-  //     test : ''
-  //   }
-  //   )
 
   // ========= state for Slab ============
   const [addSlab, setAddSlab] = useState('');

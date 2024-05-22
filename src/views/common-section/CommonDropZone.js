@@ -15,8 +15,12 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(1)
   }
 }));
-
-const DragAndDropFile = ({stateHandler, updatekey,selectedFile}) => {
+// PARAMS: 
+//  stateHandler : this is  a handdler function  which takes (key,value) to set value
+// state handler ensures if we are using React.useState or Redux it can handle both
+// UpdateKey : this is the key which is to be updated
+// selectedFile : its the state which file is selected  
+export const CommonDropZone = ({stateHandler, updatekey,selectedFile}) => {
   const classes = useStyles();
 
   const handleFileChange = (event) => {
@@ -110,9 +114,5 @@ const DragAndDropFile = ({stateHandler, updatekey,selectedFile}) => {
       </Box>
     </Grid>
 
-    //   </div>
-    // </div>
   );
 };
-
-export default DragAndDropFile;

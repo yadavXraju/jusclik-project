@@ -4,13 +4,11 @@ import React, { useState } from 'react';
 import ColorPicker from '../../common/color-picker';
 import CommonSelect from '../../common/common-select';
 import FontSize from '../../common/font-size';
-// import ImageUploadAndPreview from '../../common/image-upload-and-preview';
 import { fontFamily} from '../../common/common-states';
 import { useDispatch } from 'react-redux';
 import { updateGeneralProperty } from 'store/student-info-and-fee/settings/Invoice-Template-Slice';
 import { useSelector } from 'react-redux';
-import DragAndDropFile from '../../common/image-upload-and-preview';
-// to view data this import not needed in general
+import { CommonDropZone } from 'views/common-section/CommonDropZone';
 
 const General = () => {
   const dispatch = useDispatch();
@@ -159,7 +157,7 @@ const General = () => {
       <Grid container spacing={1} rowSpacing={3}>
         <Grid item md={12}>
           {/* =========== background image  =========== */}
-          <DragAndDropFile stateHandler={handleStateChange}
+          <CommonDropZone stateHandler={handleStateChange}
             updatekey={'backgroundImage'} 
             selectedFile={generalSettings.backgroundImage}/>
         </Grid>
