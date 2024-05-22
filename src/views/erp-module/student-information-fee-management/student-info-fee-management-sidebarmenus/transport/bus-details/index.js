@@ -6,7 +6,7 @@ import { Box } from '@mui/system';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 import WarningDialog from 'views/common-section/WarningDialog';
 import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
-import BusDetailsData from './BusDetailsData';
+import BusDetailsData from './Sample-BusDetailsData';
 import CommonDataGrid from 'views/common-section/commonDataGrid';
 import BusDetailsDrawer from './BusDetailsDrawer';
 import RemoveRedEyeTwoToneIcon from '@mui/icons-material/RemoveRedEyeTwoTone';

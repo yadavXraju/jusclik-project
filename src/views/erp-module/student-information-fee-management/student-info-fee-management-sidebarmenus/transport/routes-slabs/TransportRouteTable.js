@@ -6,7 +6,7 @@ import { Box } from '@mui/system';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 import WarningDialog from 'views/common-section/WarningDialog';
 import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
-import RouteData from './RoutesData';
+import RouteData from './Sample-RoutesData';
 import RoutesFormDrawer from './RoutesFormDrawer';
 import CommonDataGrid from 'views/common-section/commonDataGrid';
 //import SettingsTwoToneIcon from '@mui/icons-material/SettingsTwoTone';

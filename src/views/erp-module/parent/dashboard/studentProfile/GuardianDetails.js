@@ -1,3 +1,5 @@
+// ======= Page Owner Vikash =========
+// ======= Guardian Detail in Student Profile =========
 import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -14,10 +16,8 @@ import { studentProfileDetails } from 'layout/MainLayout/Header/ProfileSection/P
 
 export default function GuardianDetails() {
 
- 
-
  // Email validation
-    const [email, setEmail] = React.useState('');
+  const [email, setEmail] = React.useState('');
   const [emailError, setEmailError] = React.useState(false);
 
   const validateEmail = () => {
