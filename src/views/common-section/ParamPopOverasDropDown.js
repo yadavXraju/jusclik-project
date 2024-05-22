@@ -1,9 +1,10 @@
+//Page Owner-Tarun Pandey
 import React from 'react';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import ArrowDropDownOutlinedIcon from '@mui/icons-material/ArrowDropDownOutlined';
-
+//open dropdown on click 
 const ParramPopover = ({selectDropDown,setSelectDropDown,dropDownOption,variant="text",buttonStyle={}}) => {
     const [anchorEl, setAnchorEl] = React.useState(null);
   

@@ -1,8 +1,16 @@
+// Page Owner Abhishek
+// Description : Component holds school logo and name
+
 import React from 'react';
 import { Box } from '@mui/system';
 import { Typography ,  useMediaQuery } from '@mui/material';
-import { SchoolData } from './SchoolData';
- 
+import logo from './logo.png';
+
+export const SchoolData = {
+  logo: logo, 
+  name: 'THE WISDOM TREE SCHOOL',
+};
+
 // school data like logo and name  from school data
 const SchoolName = () => {
   const isMediumDesktop = useMediaQuery('(max-width: 1600px)');

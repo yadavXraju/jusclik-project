@@ -1,11 +1,10 @@
+//@Page Owner-Tarun Pandey
 import React from 'react';
 import { Box } from '@mui/material';
 import ReactToPrint from "react-to-print";
 
 
-
 const withPrintPdf = React.forwardRef((props,ref) => {
-    // console.log(props)
     const {Children}=props;
     
     return (

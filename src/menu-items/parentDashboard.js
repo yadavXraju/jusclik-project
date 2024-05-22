@@ -1,6 +1,7 @@
-import HomeTwoToneIcon from '@mui/icons-material/HomeTwoTone';
+// Page Owner Abhishek
+// Description : Parent Dashboard Menu Items
 
-// ==============================|| DASHBOARD MENU ITEMS ||============================== //
+import HomeTwoToneIcon from '@mui/icons-material/HomeTwoTone';
 
 const parentDashboard = {
   id: 'parent-dashboard',

@@ -1,3 +1,6 @@
+// Page owner - Kulwinder Singh
+// online Registration 
+
 import React, { useState } from 'react';
 import { Grid, Typography, Box, useMediaQuery } from '@mui/material';
 import Divider from '@mui/material/Divider';

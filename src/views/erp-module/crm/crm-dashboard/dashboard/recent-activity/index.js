@@ -1,3 +1,5 @@
+// ownedby sangeeta
+
 import React from 'react';
 import { Grid, Paper, Typography, useMediaQuery, Table, TableContainer, TableBody, TableRow, TableCell, Box } from '@mui/material';
 import { gridSpacing } from 'store/constant';
@@ -54,6 +56,7 @@ const RecentActivity = () => {
       >
         <TableContainer className='scrollbar' component={Paper} sx={{height:"332px"}}>
           <Table>
+            {/* mapping data */}
             <TableBody>
               {recentActivityData.map((mailData) => (
                 <TableRow key={mailData.id}>

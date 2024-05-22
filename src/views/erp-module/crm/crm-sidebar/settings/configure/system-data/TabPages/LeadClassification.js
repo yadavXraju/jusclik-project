@@ -1,4 +1,5 @@
-
+// owmed by sangeeta
+ 
 import * as React from 'react';
 import Button from '@mui/material/Button';
 import { useState,useEffect} from 'react';
@@ -25,6 +26,8 @@ const randomRole = () => {
   return randomArrayItem(roles);
 };
 
+
+// rows data
 const initialRows = [
   {
     id: randomId(),
@@ -93,15 +96,21 @@ export default function FullFeaturedCrudGrid() {
   const [idToDelete, setIdToDelete] = useState(null);
 
 
+
+  // model close
   const handleModalClose = () => {
     setmodalOpen(false);
   };
+
+  // stop editing
   const handleRowEditStop = (params, event) => {
     if (params.reason === GridRowEditStopReasons.rowFocusOut) {
       event.defaultMuiPrevented = true;
     }
   };
 
+
+  // edit function 
   const handleEditClick = (id) => () => {
     if(isChangeEnable==-1){
       setRowModesModel({ ...rowModesModel, [id]: { mode: GridRowModes.Edit } });
@@ -109,6 +118,8 @@ export default function FullFeaturedCrudGrid() {
     }
   };
 
+
+  // saving data
   const handleSaveClick = (id) => () => {
     setRowModesModel({ ...rowModesModel, [id]: { mode: GridRowModes.View } });
     setIsChangeEnable(-1);
@@ -120,7 +131,7 @@ export default function FullFeaturedCrudGrid() {
     setmodalOpen(true);
   };
 
-
+// cancel the change
   const handleCancelClick = (id) => () => {
     setRowModesModel({
       ...rowModesModel,
@@ -133,12 +144,14 @@ export default function FullFeaturedCrudGrid() {
     }
   };
   
- 
+//  part of delete function
   const  handleSetconfirm=()=>{
     
     setConfirm(true);
  }
 
+
+//  delete function
   useEffect(()=>{
     if (confirm == true) {
       setRows(prevRows => prevRows.filter((row) => row.id !== idToDelete)); 
@@ -167,7 +180,7 @@ export default function FullFeaturedCrudGrid() {
   };
 
 
-
+// columns
   const columns = [
  
     {
@@ -251,7 +264,7 @@ export default function FullFeaturedCrudGrid() {
 
 
 
-
+// add toolbar for adding newRow
   function EditToolbar(props) {
     const { setRows, setRowModesModel } = props;
     const handleClick = () => {

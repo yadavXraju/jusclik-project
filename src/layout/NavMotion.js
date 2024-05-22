@@ -1,3 +1,6 @@
+// Page Owner Abhishek
+// Description : ANIMATION FOR CONTENT 
+
 import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
 

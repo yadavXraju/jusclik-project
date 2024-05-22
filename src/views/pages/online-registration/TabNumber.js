@@ -1,4 +1,6 @@
 
+// Page owner - Kulwinder Singh
+// online Registration - Tab Change Icon
 import React from 'react';
 import { Box, Typography } from '@mui/material';
 

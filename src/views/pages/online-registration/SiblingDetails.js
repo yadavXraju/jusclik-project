@@ -1,3 +1,6 @@
+// Page owner - Kulwinder Singh
+// online Registration
+
 import React from 'react';
 import { Grid, Typography, Box, TextField, InputLabel, useMediaQuery} from '@mui/material';
 import Divider from '@mui/material/Divider';
@@ -273,7 +276,7 @@ function SiblingDetails({ handleClick }) {
           )}
         </Grid>
       </Grid>
-      
+
       </Grid>
 
       {/* 
