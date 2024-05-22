@@ -1,3 +1,6 @@
+// ======= Page Owner Vikash =========
+// ======= Common Layout For Timetable ===========
+
 import * as React from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -6,14 +9,12 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-// import MainCard from 'ui-component/cards/MainCard';
 import { Grid, Typography } from '@mui/material';
-// import { gridSpacing } from 'store/constant';
 import { HeadingCss } from 'views/common-section/dashboard-css/CommonCss';
 import { getCurrentDate } from 'utils/timeUtils';
 
 export default function TeacherTimeTable({ TeacherTimeTableDetails }) {
-  // getting current date
+  // ====== Getting current date ===========
   const currentDate = getCurrentDate(); // Use getCurrentDate function
 
   return (
@@ -25,7 +26,7 @@ export default function TeacherTimeTable({ TeacherTimeTableDetails }) {
           borderRadius: '12px',
           border: '1px solid rgba(128, 128, 128, 0.25)',
           boxShadow: '4px 4px 9px 2px #ddddddc2',
-          marginBottom: '20px' // Add some bottom margin for spacing
+          marginBottom: '20px'
         }}
       >
         <Grid

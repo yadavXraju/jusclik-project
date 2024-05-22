@@ -1,3 +1,5 @@
+// ======= Page Owner Vikash =========
+// ======= Render DataGrid Table for Bus Details ========
 import React from 'react';
 import { IconButton, Typography, Tooltip, Card } from '@mui/material';
 import { Box } from '@mui/system';
@@ -35,82 +37,6 @@ export default function BusDetails() {
     setdeleteId(id);
     setmodalOpen(true);
   };
-
-  // ========= Data Grid Columns ==========
-  // const columns = [
-  //   { field: 'registrationNo', headerName: 'Registration No', flex: 1, minWidth: 130, align: 'left', headerAlign: 'left' },
-  //   { field: 'seatingCapacity', headerName: 'Seating Capacity', flex: 1, minWidth: 130 },
-  //   { field: 'ownerName', headerName: 'Owner', flex: 1, minWidth: 130, 
-  //   renderCell: (params) => (
-  //     <Box>
-  //       <Box >{params.row.ownerName}</Box>
-  //       <Box>{params.row.ownerMobile}</Box>
-  //     </Box>
-  //   )
-  //   },
-  //   { field: 'driverName', headerName: 'Driver', flex: 1, minWidth: 130, 
-  //   renderCell: (params) => (
-  //     <Box>
-  //       <Box >{params.row.driverName}</Box>
-  //       <Box>{params.row.driverMobile}</Box>
-  //     </Box>
-  //   )
-  //   },
-  //   { field: 'conductorName', headerName: 'Conductor', flex: 1, minWidth: 130, 
-  //     // valueGetter: (params) => `${params.row.conductorName}-${params.row.conductorMobile}` 
-  //     renderCell: (params) => (
-  //       <Box>
-  //         <Box >{params.row.conductorName}</Box>
-  //         <Box>{params.row.conductorMobile}</Box>
-  //       </Box>
-  //     )
-  //   },
-  //   { field: 'attendantName', headerName: 'Attendant', flex: 1, minWidth: 130, 
-  //     renderCell: (params) => (
-  //       <Box>
-  //         <Box >{params.row.attendantName}</Box>
-  //         <Box>{params.row.attendantMobile}</Box>
-  //       </Box>
-  //     )
-  //   },
-  //   { field: 'inchargeName', headerName: 'Incharge', flex: 1, minWidth: 130, 
-  //     renderCell: (params) => (
-  //       <Box>
-  //         <Box >{params.row.inchargeName}</Box>
-  //         <Box>{params.row.inchargeMobile}</Box>
-  //       </Box>
-  //     )
-  //   },
-
-  //   {
-  //     field: 'Action',
-  //     headerName: 'Action',
-  //     flex: 1,
-  //     minWidth: 130,
-  //     sortable: false,
-  //     filterable: false,
-  //     disableColumnMenu: true,
-  //     renderCell: (params) => (
-  //       <Box onClick={(event) => event.stopPropagation()}>
-  //         <Tooltip title="Preview">
-  //         <IconButton>
-  //           <RemoveRedEyeTwoToneIcon onClick={() => Click(params.row.id)} sx={{ color: 'rgb(124, 178, 221)' }} />
-  //         </IconButton>
-  //         </Tooltip>
-  //         <Tooltip title="Edit">
-  //         <IconButton>
-  //           <EditTwoToneIcon />
-  //         </IconButton>
-  //         </Tooltip>
-  //         <Tooltip title="Delete">
-  //         <IconButton>
-  //           <DeleteTwoToneIcon onClick={() => handleDeleteRow(params.row.id)} sx={{ color: '#f19e9e' }} />
-  //         </IconButton>
-  //         </Tooltip>
-  //       </Box>
-  //     )
-  //   }
-  // ];
 
   const columns = [
     { field: 'registrationNo', headerName: 'Registration No', flex: 1, minWidth: 130, align: 'left', headerAlign: 'left' },

@@ -1,3 +1,5 @@
+// ======= Page Owner Vikash =========
+// =======  Line Chart for Leaves ===========
 import React from 'react';
 import ApexCharts from 'react-apexcharts';
 import { Grid, Paper, Typography, useMediaQuery } from '@mui/material';
@@ -66,7 +68,6 @@ const LeaveConsumedChart = () => {
         style: {
           fontSize: '12px',
         },
-        
       },
       
     },
@@ -74,8 +75,6 @@ const LeaveConsumedChart = () => {
       title: {
         text: 'Number of Leaves',
       },
-      min: 0, // You can set the minimum value for the y-axis
-      max: 3, // You can set the maximum value for the y-axis
       labels: {
         style: {
           fontSize: '14px',
@@ -85,20 +84,19 @@ const LeaveConsumedChart = () => {
     },
     grid:{
         show:false,
-       
     }
   };
 
   return (
     <Paper spacing={gridSpacing} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', border: '1px solid rgb(227, 227, 227)'}}>
    {/* ================================= heading ================================= */}
-     <Grid sx={{ padding: '24px 24px 0 24px', background: '#f9f9fb', borderBottom: '1px solid rgba(128, 128, 128, 0.25)', borderRadius: '12px 12px 0px 0' }}>
+       <Grid sx={{ padding: '24px 24px 0 24px', background: '#f9f9fb', borderBottom: '1px solid rgba(128, 128, 128, 0.25)', borderRadius: '12px 12px 0px 0' }}>
           <Typography variant='h2' style={{ ...HeadingCss, border: 'none' }}>Leave Consumption Trend</Typography>
         </Grid>
 
-      <Grid className="attendance-graph" style={AttendanceBox}>
-        <ApexCharts options={ChartData} series={ChartData.series} type="line" height={isMediumDesktop ? 200 : 350} />
-      </Grid>
+       <Grid className="attendance-graph" style={AttendanceBox}>
+          <ApexCharts options={ChartData} series={ChartData.series} type="line" height={isMediumDesktop ? 200 : 350} />
+       </Grid>
     </Paper>
   );
 };
