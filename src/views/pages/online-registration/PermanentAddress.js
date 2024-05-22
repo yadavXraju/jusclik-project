@@ -6,7 +6,7 @@ import { Grid, Typography, Box, TextField, InputLabel ,useMediaQuery} from '@mui
 import Divider from '@mui/material/Divider';
 import { useState } from 'react';
 
-function PermanentAddress({ handleClick }) {
+const PermanentAddress = ({ handleClick }) => {
   const [Formdata, SetFormdata] = useState({
     area: '',
     city: '',

@@ -6,11 +6,11 @@ import { Grid, Typography, Box,Button , useMediaQuery } from '@mui/material';
 import Divider from '@mui/material/Divider';
 import Checkbox from '@mui/material/Checkbox';
 import { useState } from 'react';
-import Captcha from './Captcha';
+import CommonGoogleCaptcha from 'views/common-section/CommonGoogleCaptcha';
 
 
 
-function PreviewAndSubmit() {
+const PreviewAndSubmit=()=> {
   const [checked, setChecked] =useState(false);
 
 
@@ -129,7 +129,7 @@ function PreviewAndSubmit() {
                 </Typography>
                 
                 <Box sx={{paddingBottom:'1.5rem' , paddingTop:'1rem'}}>
-                <Captcha/>
+                <CommonGoogleCaptcha/>
                 </Box>
               </Box>
             </Box>

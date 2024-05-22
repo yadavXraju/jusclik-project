@@ -6,7 +6,7 @@ import { Grid, Typography, Box, Paper, Button } from '@mui/material';
 import Divider from '@mui/material/Divider';
 import Dropdown from 'views/common-section/ParamSelectList';
 
-function Declaration({handleClick}) {
+const Declaration =({handleClick}) => {
     const [selectedDeclare, setSelectedDeclare] = useState('');
     const [declareError, setDeclareError] = useState(false);
 
@@ -16,7 +16,7 @@ function Declaration({handleClick}) {
       setDeclareError(false); 
   };
 
-    console.log(selectedDeclare)
+ 
 
     const handleSubmit = (tab) => {
         if (!selectedDeclare) {

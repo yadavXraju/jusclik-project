@@ -3,7 +3,7 @@
 import React from 'react';
 import ReCAPTCHA from 'react-google-recaptcha'; // Google Recaptcha Library Used 
 
-function Captcha() {
+const CommonGoogleCaptcha = () => {
   
   const onChange=()=>{
     CompassOutlined.log('pass')
@@ -21,6 +21,6 @@ function Captcha() {
   );
 }
 
-export default Captcha;
+export default CommonGoogleCaptcha;
 
 //   sitekey="6Le4ndUpAAAAAPK7ivIYiADnAhyERxnj4I_WmAKu"
