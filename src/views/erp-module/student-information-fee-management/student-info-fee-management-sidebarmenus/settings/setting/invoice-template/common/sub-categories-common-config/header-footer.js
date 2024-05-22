@@ -8,7 +8,7 @@ import { useDispatch } from 'react-redux';
 import { updateHeaderFooterProperty } from 'store/student-info-and-fee/settings/Invoice-Template-Slice';
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
-import DragAndDropFile from '../../common/image-upload-and-preview';
+import { CommonDropZone } from 'views/common-section/CommonDropZone';
 
 const HeaderFooter = () => {
   const dispatch = useDispatch();
@@ -23,7 +23,7 @@ const HeaderFooter = () => {
    <Grid container rowSpacing={2} spacing={1}>
             <Grid item md={12}>
               {/* ========= Background Image ============ */}
-                  <DragAndDropFile stateHandler={handleStateChange}
+                  <CommonDropZone stateHandler={handleStateChange}
             updatekey={'headerImage'} 
             selectedFile={headerFooterSettings.headerImage}/>
             </Grid>
