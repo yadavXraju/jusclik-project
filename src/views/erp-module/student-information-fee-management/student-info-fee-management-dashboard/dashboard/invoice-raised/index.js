@@ -54,19 +54,6 @@ const InvoiceRaised = () => {
                       fontSize:'16px',
                       }}>
 
-                      {/* blank typography for labels */}
-
-                        {/* <Typography variant='span' sx={{
-                            background:'rgb(30, 136, 229) !important',
-                            display:'inline-block',
-                            width:'10px',
-                            height:'10px',
-                            borderRadius:'50%',
-                            marginRight:'8px',
-                        }}>
-
-                        </Typography> */}
-                        
                         ₹ {paidAmount}
 
                     </Typography>
@@ -85,18 +72,6 @@ const InvoiceRaised = () => {
                 }}>
 
                   <Typography variant="h3" sx={{fontSize:'16px'}}>
-                       {/* blank typography for labels */}
-
-                       {/* <Typography variant='span' sx={{
-                        background:'rgb(170, 215, 250) !important',
-                        display:'inline-block',
-                        width:'10px',
-                        height:'10px',
-                        borderRadius:'50%',
-                        marginRight:'8px',
-                    }}>
-
-                    </Typography> */}
                          ₹ {totalAmount - paidAmount}
                     </Typography>
 

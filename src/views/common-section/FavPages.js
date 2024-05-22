@@ -1,3 +1,7 @@
+// Page Owner : Abhishek
+// Description : Fav pages on the teacher dashboard
+
+
 import React, { useState, useEffect } from 'react';
 // import MainCard from 'ui-component/cards/MainCard';
 import { Typography, Grid, Box, Button , Divider ,Paper} from '@mui/material';
