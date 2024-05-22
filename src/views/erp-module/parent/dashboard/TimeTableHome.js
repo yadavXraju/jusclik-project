@@ -1,11 +1,11 @@
+// page owner abhishek
+// description : Student Time Table
+
 import React, { useEffect, useState } from 'react';
 import timeTableData1 from 'views/erp-module/parent/parent-sidebar/timetable/TimeTableData';
 import { Typography, Grid, Paper, useMediaQuery } from '@mui/material';
-import { HeadingCss, boxHeight } from 'views/common-section/dashboard-css/CommonCss';
-
-
-
-
+import { boxHeight } from 'views/common-section/dashboard-css/CommonCss';
+import ParamWidgetHeader from 'views/common-section/ParamWidgetHeader';
 
 
 const TimeTableHome = () => {
@@ -67,16 +67,9 @@ const TimeTableHome = () => {
           marginBottom: '20px', // Add some bottom margin for spacing
         }}
       >
-        <Grid
-          sx={{
-            // padding: '24px 24px 0 24px',
-            background: '#f9f9fb',
-            borderBottom: '1px solid rgba(128, 128, 128, 0.25)',
-            borderRadius: '12px 12px 0px 0',
-          }}
-        >
-          <Typography variant='h2' sx={{ textAlign: 'left', p: 3 }} style={HeadingCss}>today Timetable</Typography>
-        </Grid>
+
+        <ParamWidgetHeader title='today Timetable' />
+         
         <Grid style={boxHeight} >
           {/* header sec start */}
           <Grid container sx={{ borderBottom: '1px solid #80808040;', padding: '10px 24px' }} >
@@ -174,10 +167,8 @@ const TimeTableHome = () => {
                   )}
 
                 </Grid>
-
-
-
               }
+
               {/* map function for getting details  object*/}
 
             </Grid>

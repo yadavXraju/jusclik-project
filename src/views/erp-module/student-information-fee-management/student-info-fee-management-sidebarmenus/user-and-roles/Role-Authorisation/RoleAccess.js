@@ -7,7 +7,7 @@ import TableCell from '@mui/material/TableCell';
 import { Checkbox, Box, Card, Typography } from '@mui/material';
 import { Grid } from '@mui/material';
 import { useSelector,useDispatch} from 'react-redux';
-import RoleForm from './Role-Authorisation/RoleForm';
+import RoleForm from './RoleForm';
 import {handleFullAccesssChange,hanldeAccessChange} from 'store/student-info-and-fee/user-and-roles/user-and-roles-slice';
 
 const RoleAccess = () => {

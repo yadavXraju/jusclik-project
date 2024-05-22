@@ -1,3 +1,5 @@
+// ======= Page Owner Vikash =========
+// ======= Timetable for class teacher =========
 import React, { useState, useEffect } from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -5,7 +7,7 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
-import ClasstimeTableData from './ClassTimetableData';
+import ClasstimeTableData from './Sample-ClassTimetableData';
 
 const ClassTimeTable = () => {
   const [value, setValue] = useState('Monday');

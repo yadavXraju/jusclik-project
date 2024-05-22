@@ -1,3 +1,5 @@
+// ======= Page Owner Vikash =========
+// ======= Timetable tabs =========
 import React, { useState, useEffect } from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -5,8 +7,8 @@ import Card from '@mui/material/Card';
 import { useTheme, useMediaQuery, Box, Typography } from '@mui/material';
 import { useLocation } from 'react-router';
 import TeacherTimeTable from './TeacherTimetable';
-import TeachertimeTableData from './TeacherTimetableData';
-import ClasstimeTableData from './ClassTimetableData';
+import TeachertimeTableData from './Sample-TeacherTimetableData';
+import ClasstimeTableData from './Sample-ClassTimetableData';
 
 // ====== Custom component for rendering the content of each tab panel ======
 function CustomTabPanel(props) {
@@ -52,10 +54,6 @@ function TimetableTab() {
     setValue(location.state.initialTab);
   }
 }, [location.state]);
-
-
-
-  // const [value, setValue] = useState(0);
 
   // Event handler for tab change
   const handleChange = (event, newValue) => {

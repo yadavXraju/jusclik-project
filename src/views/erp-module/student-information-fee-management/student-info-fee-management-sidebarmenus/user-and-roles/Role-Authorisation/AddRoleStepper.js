@@ -6,7 +6,7 @@ import StepLabel from '@mui/material/StepLabel';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import RoleAccess from './RoleAccess';
-import RoleAuthorisation from './Role-Authorisation/RoleAuthorisation';
+import RoleAuthorisation from './RoleAuthorisation';
 import { makeStyles } from "@mui/styles";
 
 
