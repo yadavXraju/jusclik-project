@@ -4,8 +4,8 @@ import Grid from '@mui/material/Grid';
 import { Typography } from '@mui/material';
 import schoollogo from 'assets/images/24x24-inch-logo-1.png';
 import CurrencyRupeeOutlinedIcon from '@mui/icons-material/CurrencyRupeeOutlined';
-import { commonTemplateContent } from '../common/common-states';
-import { templateCompact } from '../common/common-states';
+import { commonTemplateContent } from '../common/sample-dropdown-values';
+import { templateCompact } from '../common/sample-dropdown-values';
 import { useSelector } from 'react-redux';
 
 

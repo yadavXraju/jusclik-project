@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 
 import CurrencyRupeeOutlinedIcon from '@mui/icons-material/CurrencyRupeeOutlined';
 import schoollogo from 'assets/images/24x24-inch-logo-1.png';
-import { commonTemplateContent } from '../common/common-states';
+import { commonTemplateContent } from '../common/sample-dropdown-values';
 
 export const Template4 = () => {
   // states

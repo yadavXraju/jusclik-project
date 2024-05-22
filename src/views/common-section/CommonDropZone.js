@@ -1,4 +1,5 @@
 // OWNER : DAMANDEEP
+// file upload component , supposts selection and dropping files
 import React from 'react';
 import { Button, Typography, Box, Chip, IconButton, Grid } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';

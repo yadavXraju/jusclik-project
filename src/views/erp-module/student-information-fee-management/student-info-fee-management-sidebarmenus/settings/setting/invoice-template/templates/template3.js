@@ -1,7 +1,7 @@
 // simple
 import React from 'react'
 import { Box, Paper, Typography, Table, TableContainer, TableRow, TableHead, TableCell, TableBody ,Grid} from '@mui/material'
-import { commonTemplateContent } from '../common/common-states';
+import { commonTemplateContent } from '../common/sample-dropdown-values';
 import Divider from '@mui/material/Divider';
 import CurrencyRupeeOutlinedIcon from '@mui/icons-material/CurrencyRupeeOutlined';
 import { useSelector } from 'react-redux';

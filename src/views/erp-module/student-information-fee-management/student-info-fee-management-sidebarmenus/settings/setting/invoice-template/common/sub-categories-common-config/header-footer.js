@@ -1,14 +1,13 @@
 // OWNER : DAMANDEEP
 import {  Box, Checkbox, FormControl, FormControlLabel, Grid, Tab, Tabs } from '@mui/material';
 import React from 'react';
-// import ImageUploadAndPreview from '../../common/image-upload-and-preview';
-import ColorPicker from '../../common/color-picker';
+import { CommonColorPicker } from 'views/common-section/CommonColorPicker'; 
+import { CommonDropZone } from 'views/common-section/CommonDropZone';
 import FontSize from '../../common/font-size';
 import { useDispatch } from 'react-redux';
 import { updateHeaderFooterProperty } from 'store/student-info-and-fee/settings/Invoice-Template-Slice';
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
-import { CommonDropZone } from 'views/common-section/CommonDropZone';
 
 const HeaderFooter = () => {
   const dispatch = useDispatch();
@@ -32,7 +31,7 @@ const HeaderFooter = () => {
               <Grid container columnSpacing={2}>
                 <Grid item md>
                   <FormControl fullWidth>
-                    <ColorPicker
+                    <CommonColorPicker
                       initialColor={headerFooterSettings.headerBackgroundColor}
                       onColorChange={handleStateChange}
                       colorKey="headerBackgroundColor"
@@ -70,7 +69,7 @@ const HeaderFooter = () => {
             </Grid>
             <Grid item md>
               {/* ========= Font Color ============== */}
-              <ColorPicker
+              <CommonColorPicker
                 initialColor={headerFooterSettings.footerFontColor}
                 onColorChange={handleStateChange}
                 colorKey="footerFontColor"
@@ -83,7 +82,7 @@ const HeaderFooter = () => {
               <Grid container columnSpacing={2}>
                 <Grid item md>
                   <FormControl fullWidth>
-                    <ColorPicker
+                    <CommonColorPicker
                       initialColor={headerFooterSettings.footerBackgroundColor}
                       onColorChange={handleStateChange}
                       colorKey="footerBackgroundColor"
