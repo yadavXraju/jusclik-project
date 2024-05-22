@@ -1,3 +1,5 @@
+// PAGE OWNER : DAMANDEEP
+// static data for kanban component
 export const kanbanData = {
   lanes: [
     {

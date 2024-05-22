@@ -1,4 +1,6 @@
-// Import necessary libraries and components
+// Page Owner Abhishek
+// Description : popper for parent and teacher dashboard 
+
 import React, { useState, useRef } from 'react';
 import { useTheme } from '@mui/material/styles';
 import {
@@ -15,19 +17,18 @@ import {
   useMediaQuery
 } from '@mui/material';
 import PerfectScrollbar from 'react-perfect-scrollbar';
-import MainCard from 'ui-component/cards/MainCard'; // Assuming this is a custom component
-import Transitions from 'ui-component/extended/Transitions'; // Assuming this is a custom component
+import MainCard from 'ui-component/cards/MainCard'; 
+import Transitions from 'ui-component/extended/Transitions'; 
 import GridViewOutlinedIcon from '@mui/icons-material/GridViewOutlined';
-import { useSelector } from 'react-redux'; // Assuming you are using Redux
-import DashboardSwitchLayout from './DashboardSwitchLayout'; // Assuming this is another component in the same directory
+import { useSelector } from 'react-redux'; 
+import DashboardSwitchLayout from './DashboardSwitchLayout'; 
 
-// Define the DashboardSwitch component
 const DashboardSwitch = () => {
   const theme = useTheme(); // Access the MUI theme
-  const matchesXs = useMediaQuery(theme.breakpoints.down('md')); // Check for media query matches
+  const matchesXs = useMediaQuery(theme.breakpoints.down('md')); 
   const [open, setOpen] = useState(false); // State for controlling Popper open/close
   const anchorRef = useRef(null); // Ref for the Popper anchor
-  const customization = useSelector((state) => state.customization); // Get customization state from Redux
+  const customization = useSelector((state) => state.customization); 
   const themeColor = customization.themeColor || ''; // Extract theme color from state (or default to empty string)
   const opacity = 0.2; // Define opacity value for background color transition
 
@@ -44,7 +45,6 @@ const DashboardSwitch = () => {
     setOpen(false);
   };
 
-  // Render the DashboardSwitch component UI
   return (
     <>
       {/* Button to toggle Popper */}

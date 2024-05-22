@@ -1,4 +1,4 @@
-
+// OWNER : DAMANDEEP
 import React from 'react';
 import { Button, Typography, Box, Chip, IconButton, Grid } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
@@ -110,8 +110,6 @@ const DragAndDropFile = ({stateHandler, updatekey,selectedFile}) => {
       </Box>
     </Grid>
 
-    //   </div>
-    // </div>
   );
 };
 

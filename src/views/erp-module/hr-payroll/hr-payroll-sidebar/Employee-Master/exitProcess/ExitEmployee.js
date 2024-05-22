@@ -1,3 +1,5 @@
+// onwer---------- sangeeta
+
 import React from 'react';
 import { Box, Drawer, Button, Typography, IconButton } from '@mui/material';
 import Popover from '@mui/material/Popover';
@@ -55,7 +57,7 @@ export default function ExitEmployee() {
         {/* {form} */}
         <Box sx={{ width: { xs: '100vw', sm: 650 }, padding: 2 }} role="presentation">
           <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #ccc' }}>
-            <Typography variant="h4">Initiate On Board</Typography>
+            <Typography variant="h4">Initiate Exit</Typography>
             <Button onClick={toggleDrawer('InitiateEmployeeExit', false)} sx={{ alignSelf: 'flex-end' }}>
               Close
             </Button>

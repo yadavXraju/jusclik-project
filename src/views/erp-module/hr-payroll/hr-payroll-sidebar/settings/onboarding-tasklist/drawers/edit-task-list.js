@@ -1,3 +1,4 @@
+// PAGE OWNER: DAMANDEEP
 import { Box, Button, Drawer, IconButton, TextField, Typography } from '@mui/material';
 import React from 'react'
 import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
@@ -7,19 +8,16 @@ export const EditTaskListDrawer=({toggleDrawer,state,value,taskGroups,setTaskGro
   const [desc,setDesc]=React.useState(taskGroups[value]?.description)
   const handleNameChange=(e)=>{
     const newName=e.target.value
-      // console.log(name);
-      setName(newName)
-   
+      setName(newName)   
   }
   const handleDescChange=(e)=>{
     const newDesc=e.target.value
     setDesc(newDesc)
-
   }
 const handleAdd=()=>{
     const newData=taskGroups[value]
     newData.name=name
-    newData.desc=desc
+    newData.description=desc
     setTaskGroups((prev)=>({...prev,newData}))
 
 }
@@ -43,11 +41,11 @@ const handleAdd=()=>{
       <TextField label="Task Group Name" value={name} sx={{ marginBottom: '1rem' }} onChange={(e)=>{handleNameChange(e)}} />
       <TextField label="Description" value={desc} sx={{ marginBottom: '1rem' }} multiline={true} minRows={3} onChange={(e)=>{handleDescChange(e)}} />
       <Box sx={{ position: 'fixed', bottom: '10px', right: '10px' }}>
-        <Button variant="contained" color="primary" sx={{ marginRight: '10px' }} onClick={handleAdd}>
-          Add
-        </Button>
-        <Button variant="outlined" color="secondary">
+        <Button variant="outlined" color="primary" sx={{ marginRight: '10px' }}>
           Cancel
+        </Button>
+        <Button variant="contained" color="primary" sx={{ marginRight: '15px' }} onClick={handleAdd}>
+          Add
         </Button>
       </Box>
     </Box>

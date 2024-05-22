@@ -186,7 +186,7 @@ const SelectedFilterComponent = ({ selectedFilter }) => {
           <Grid item xs={12} sm={12} md={12} lg={12} key={item}
             sx={{ height:'108px', borderBottom: "1px solid #e5ebef" }}>
             <Grid item xs={12} sm={12} md={6} lg={12} sx={{display:"flex",justifyContent:"flex-end"}}>
-              <CloseOutlinedIcon />
+              <CloseOutlinedIcon sx={{color:"rgb(35 32 41 / 38%)"}}/>
             </Grid>
             <Grid container spacing={1}>
               <Grid item xs={12} sm={12} md={6} lg={6}>

@@ -1,3 +1,6 @@
+// Page owner - Kulwinder Singh
+// online Registration
+
 import React from 'react';
 import { Grid, Box, Button, Typography, useMediaQuery } from '@mui/material';
 import LeftLogo from '../authentication/LeftLogo';

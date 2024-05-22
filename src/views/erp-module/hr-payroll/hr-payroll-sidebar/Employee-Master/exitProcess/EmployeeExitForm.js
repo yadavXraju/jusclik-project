@@ -1,5 +1,9 @@
+
+// owner ------- Sangeeta
+
+
 import React from 'react';
-import { Typography, TextField, FormControlLabel, FormGroup, Switch, Grid } from '@mui/material';
+import { Typography, TextField, FormControlLabel, FormGroup, Switch, Grid, Button } from '@mui/material';
 import ParameterizedAutoComplete from 'views/common-section/ParamAutoComplete';
 import ParameterizedDateComponent from 'views/common-section/ParamDateComponent';
 import RadioButtonsGroup from 'views/common-section/ParamRadioButton';
@@ -60,6 +64,12 @@ const EmployeeExitForm = () => {
                 <FormGroup>
                     <FormControlLabel control={<Switch />} label="OK to rehire?" />
                 </FormGroup>
+            </Grid>
+
+            <Grid item xs={12}>
+          <Button variant="contained" color="primary" sx={{position:"absolute",bottom:"10px",right:"10px"}}>
+            Submit
+          </Button>
             </Grid>
         </Grid>
     );

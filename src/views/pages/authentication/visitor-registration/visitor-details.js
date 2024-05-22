@@ -1,27 +1,22 @@
+// OWNER : DAMANDEEP
 import React, { useState } from 'react';
 import { Box, Button, Paper, TextField, InputAdornment, IconButton } from '@mui/material';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-
-// import ArrowBackIosNewOutlinedIcon from '@mui/icons-material/ArrowBackIosNewOutlined';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
-import { css } from '../css';
+import { css } from './css';
 import { useEffect } from 'react';
 
-const VisitorDetails = ({ step, handleSteps, setPersonalDetails }) => {
+export const VisitorDetails = ({ step, handleSteps, setPersonalDetails }) => {
   const [name, setName] = useState('');
   const [address, setAddress] = useState('');
   const [nameError, setNameError] = useState(false);
   const [addressError, setAddressError] = useState(false);
   const [purpose, setPurpose] = useState('');
   const [meet, setMeet] = useState('');
-  // states for setting InputLabel on/off
-  //  const [wantToMeet,setWantToMeet]=useState(true)
-  //  const [purposeToMeet,setPurposeToMeet]=useState(true)
-  // setting personal details =========================
   useEffect(() => {
     setPersonalDetails({
       name: name,
@@ -109,16 +104,22 @@ const VisitorDetails = ({ step, handleSteps, setPersonalDetails }) => {
                   '& .MuiOutlinedInput-notchedOutline': {
                     borderRadius: '50px'
                   },
-                  mt: '1rem',
-                 
+                  mt: '1rem'
                 }}
               />
-              <FormControl fullWidth variant="outlined" sx={{ mt: '1rem','& .css-1jy569b-MuiFormLabel-root-MuiInputLabel-root.Mui-focused ':{
-                display:'none' 
-              },
-              '& .css-1jy569b-MuiFormLabel-root-MuiInputLabel-root':{
-                display:'none !important'
-              } }}>
+              <FormControl
+                fullWidth
+                variant="outlined"
+                sx={{
+                  mt: '1rem',
+                  '& .css-1jy569b-MuiFormLabel-root-MuiInputLabel-root.Mui-focused ': {
+                    display: 'none'
+                  },
+                  '& .css-1jy569b-MuiFormLabel-root-MuiInputLabel-root': {
+                    display: 'none !important'
+                  }
+                }}
+              >
                 <InputLabel id="purpose-label" htmlFor="custom-select">
                   Purpose
                 </InputLabel>
@@ -133,12 +134,14 @@ const VisitorDetails = ({ step, handleSteps, setPersonalDetails }) => {
                   sx={{
                     '& .MuiOutlinedInput-notchedOutline': {
                       borderRadius: '50px'
-                    },
+                    }
                   }}
-                >   {/* Placeholder */}
-                <MenuItem value="placeholder" disabled>
-                  Purpose
-                </MenuItem>
+                >
+                  {' '}
+                  {/* Placeholder */}
+                  <MenuItem value="placeholder" disabled>
+                    Purpose
+                  </MenuItem>
                   <MenuItem value="Employee">Employee</MenuItem>
                   <MenuItem value="Meeting Appointment">Meeting Appointment</MenuItem>
                   <MenuItem value="Delivery">Delivery</MenuItem>
@@ -147,13 +150,20 @@ const VisitorDetails = ({ step, handleSteps, setPersonalDetails }) => {
                 </Select>
               </FormControl>
 
-              <FormControl fullWidth variant="outlined" sx={{ mt: '1rem','& .css-1jy569b-MuiFormLabel-root-MuiInputLabel-root.Mui-focused ':{
-                display:'none' 
-              },
-              '& .css-1jy569b-MuiFormLabel-root-MuiInputLabel-root':{
-                display:'none !important'
-              } }}>
-                <InputLabel id="want-to-meet-label" >Want To Meet</InputLabel>
+              <FormControl
+                fullWidth
+                variant="outlined"
+                sx={{
+                  mt: '1rem',
+                  '& .css-1jy569b-MuiFormLabel-root-MuiInputLabel-root.Mui-focused ': {
+                    display: 'none'
+                  },
+                  '& .css-1jy569b-MuiFormLabel-root-MuiInputLabel-root': {
+                    display: 'none !important'
+                  }
+                }}
+              >
+                <InputLabel id="want-to-meet-label">Want To Meet</InputLabel>
                 <Select
                   className="findmeselect"
                   labelId="want-to-meet-label"
@@ -201,4 +211,4 @@ const VisitorDetails = ({ step, handleSteps, setPersonalDetails }) => {
   );
 };
 
-export default VisitorDetails;
+

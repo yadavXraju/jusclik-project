@@ -101,7 +101,8 @@ const FilterByEnquiryNo = ({ handleRemove, id }) => {
         <Box sx={style?.mainStyle}>
             <Box sx={{ display: "flex", justifyContent: "space-between" }}>
                 <Typography>Enq No</Typography>
-                <CloseOutlinedIcon onClick={() => handleRemove(id)} />
+                <CloseOutlinedIcon onClick={() => handleRemove(id)} 
+                 sx={{color:'rgb(35 32 41 / 38%)'}}/>
             </Box>
             <Box sx={style?.filterFieldStyle}>
                 <ParamSelectList label="= equal to" options={compareOptions} value={value} setValue={setValue}
@@ -119,7 +120,8 @@ const FilterByEnquiryDate = ({handleRemove,id}) => {
         <Box sx={style?.mainStyle}>
             <Box sx={{ display: "flex", justifyContent: "space-between" }}>
                 <Typography>Enq Date</Typography>
-                <CloseOutlinedIcon onClick={() => handleRemove(id)} />
+                <CloseOutlinedIcon onClick={() => handleRemove(id)} 
+                sx={{color:'rgb(35 32 41 / 38%)'}}/>
             </Box>
             <Box sx={style?.filterFieldStyle}>
                 <ParamSelectList label="= equal to" options={compareOptions} value={value}

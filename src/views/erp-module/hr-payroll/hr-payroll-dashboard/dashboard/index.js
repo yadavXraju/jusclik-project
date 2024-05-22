@@ -1,4 +1,4 @@
-//inventory module Dashboard.js
+//  hr-payroll module Dashboard.js  onedby Sangeeta
 import React from 'react';
 import Grid from '@mui/material/Grid';
 import { gridSpacing } from 'store/constant';
@@ -28,32 +28,32 @@ const DashboardContent = ({ isLoading }) => {
             <Counters/>
           </Grid>
 
-          {/* Stock Category */}
+          {/* AttendanceChart */}
           <Grid item xs={12} lg={6} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
           <AttendanceChart/>
-          {/* <AttendanWeekceChart/> */}
+      
           </Grid>
-          {/* Stockt status */}
+          {/* EmployeeDemogaphy */}
           <Grid item xs={12} lg={6} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
           <EmployeeDemogaphy/>
      
           </Grid>
-          {/* Vendor Contacs */}
+          {/*UpcomingLeaves */}
           <Grid item xs={12} lg={8} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
           <UpcomingLeaves/>  
            
           </Grid>
-          {/* Low stock items */}
+          {/*UpcomingBirthdays*/}
           <Grid item xs={12} lg={4} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
           <UpcomingBirthdays/>
           </Grid>
-          {/* Frequently Issued Items */}
+          {/* EmployeeTopAndBottom */}
           <Grid item xs={12} lg={6} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
           <EmployeeTopAndBottom/>
           </Grid>
           {/* Help & support */}
           <Grid item xs={12} lg={6} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
-            {/* <NeedSupport isLoading={isLoading} /> */}
+
             <NeedHelp isLoading={isLoading} />
           </Grid>
         </Grid>

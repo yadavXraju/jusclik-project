@@ -1,4 +1,6 @@
 
+// owned by sangeeta 
+
 import  React,{useEffect} from 'react';
 // import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -29,6 +31,7 @@ const randomRole = () => {
   return randomArrayItem(roles);
 };
 
+// rows
 const initialRows = [
   {
     id: randomId(),
@@ -124,16 +127,22 @@ export default function FullFeaturedCrudGrid() {
   const [confirm, setConfirm] = useState(false);
   const [idToDelete, setIdToDelete] = useState(null);
 
+
+  // modal close -warning on delete
   const handleModalClose = () => {
     setmodalOpen(false);
   };
   
+
+  // row edit stop on 2nd enter
   const handleRowEditStop = (params, event) => {
     if (params.reason === GridRowEditStopReasons.rowFocusOut) {
       event.defaultMuiPrevented = true;
     }
   };
 
+
+  // row  edit 
   const handleEditClick = (id) => () => {
     if(isChangeEnable==-1){
       setRowModesModel({ ...rowModesModel, [id]: { mode: GridRowModes.Edit } });
@@ -141,17 +150,23 @@ export default function FullFeaturedCrudGrid() {
     }
   };
 
+
+  // save row after edit or enter data
   const handleSaveClick = (id) => () => {
     setRowModesModel({ ...rowModesModel, [id]: { mode: GridRowModes.View } });
     setIsChangeEnable(-1);
   };
 
+
+  // handle delete part saving id and open warning pop up
   const handleDeleteClick = (id) => () => {
     // Set id to delete and open modal
     setIdToDelete(id);
     setmodalOpen(true);
   };
 
+
+  // cancel changes in row after edit
   const handleCancelClick = (id) => () => {
     setRowModesModel({
       ...rowModesModel,
@@ -185,7 +200,7 @@ export default function FullFeaturedCrudGrid() {
   const  handleSetconfirm=()=>{
     setConfirm(true);
  }
-
+// delete function
   useEffect(()=>{
     if (confirm == true) {
       setRows(prevRows => prevRows.filter((row) => row.id !== idToDelete)); 
@@ -195,6 +210,8 @@ export default function FullFeaturedCrudGrid() {
     setmodalOpen(false);
   },[confirm,idToDelete])
 
+
+  // columns
   const columns = [
     {
       field: 'leadSource',
@@ -303,6 +320,10 @@ export default function FullFeaturedCrudGrid() {
     },
   ];
 
+
+
+
+  // handle adding new rows
   function EditToolbar(props) {
     const { setRows, setRowModesModel } = props;
     const handleClick = () => {

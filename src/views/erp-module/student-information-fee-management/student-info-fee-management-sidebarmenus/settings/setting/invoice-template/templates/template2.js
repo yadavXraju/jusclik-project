@@ -1,3 +1,6 @@
+// Page owner - Kulwinder Singh
+// Invoice Template
+
 import React from 'react';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
@@ -93,8 +96,6 @@ column3.push (
 
   }
   
-
-
 
   const style = {
     width:'240mm',

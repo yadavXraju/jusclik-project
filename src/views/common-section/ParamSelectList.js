@@ -7,7 +7,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
 const SelectList = ({ label, options, value, onChange, name="", size="",rootStyle={},customStyle={}, disabled=null , className='',error}) => {
-    {console.log(value)}
+    // {console.log(value)}
   return (
       <FormControl sx={{width:'100%',...rootStyle}} error={error}>
         <InputLabel id="select-label">{label}</InputLabel>

@@ -1,5 +1,5 @@
+// OWNER : DAMANDEEP
 import { Box, Checkbox, FormControl, FormControlLabel, Grid, Radio, RadioGroup, Tab, Tabs, TextField, Typography } from '@mui/material';
-
 import React, { useState } from 'react';
 import ColorPicker from '../../common/color-picker';
 import CommonSelect from '../../common/common-select';
@@ -10,6 +10,7 @@ import { useDispatch } from 'react-redux';
 import { updateGeneralProperty } from 'store/student-info-and-fee/settings/Invoice-Template-Slice';
 import { useSelector } from 'react-redux';
 import DragAndDropFile from '../../common/image-upload-and-preview';
+
 // to view data this import not needed in general
 
 const General = () => {

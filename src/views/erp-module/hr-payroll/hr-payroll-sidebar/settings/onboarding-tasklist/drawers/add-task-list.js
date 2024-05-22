@@ -1,3 +1,4 @@
+// PAGE OWNER: DAMANDEEP
 import { Box, Button, Drawer, IconButton, TextField, Typography } from '@mui/material';
 import React from 'react'
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
@@ -8,12 +9,14 @@ const AddTaskListDrawerContent = () => {
       <TextField label="Task List Name" sx={{ marginBottom: '1rem' }} />
       <TextField label="Description" sx={{ marginBottom: '1rem' }} multiline={true} minRows={3} />
       <Box sx={{ position: 'fixed', bottom: '10px', right: '10px' }}>
-        <Button variant="contained" color="primary" sx={{ marginRight: '10px' }}>
-          Add
-        </Button>
-        <Button variant="outlined" color="secondary">
+        
+      <Button variant="outlined" color="primary" sx={{ marginRight: '10px' }}>
           Cancel
         </Button>
+        <Button variant="contained" color="primary" sx={{ marginRight: '15px' }}>
+          Add
+        </Button>
+  
       </Box>
     </Box>
   </>
