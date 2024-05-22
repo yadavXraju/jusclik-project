@@ -23,6 +23,8 @@ import { updateAllDataform } from 'store/pages/online-Registration/allDataformSl
 const SessionOptions = [{ value: '2024-2025', label: '2024-2025' }];
 
 // Class Dropdown List Cons
+
+//Dummy data 
 const ClassOptions = [
   { value: 'playgroup', label: 'Playgroup' },
   { value: 'nursery', label: 'Nursery' },

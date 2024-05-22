@@ -9,7 +9,7 @@ import Divider from '@mui/material/Divider';
 import Dropdown from 'views/common-section/ParamSelectList';
 import { useState } from 'react';
 
-function StudentDetails({ handleClick }) {
+const StudentDetails =({ handleClick }) => {
   const [allStudentDetails, setAllStudentDetails] = useState({
     gender: '',
     id_number: '',
@@ -51,24 +51,31 @@ function StudentDetails({ handleClick }) {
 
   const allDataform = useSelector((state) => state.allDataform);
 
+  //Dummy Data
+
   const SelectGender = [
     { value: 'select', label: 'Select' },
     { value: 'male', label: 'Male' },
     { value: 'female', label: 'Female' }
   ];
 
+  //Dummy Data 
+
   const PrimaryContact = [
     { value: 'select', label: 'Select' },
     { value: 'father', label: 'Father' },
     { value: 'mother', label: 'Mother' }
   ];
-  //
+  
+  //Dummy data 
 
   const ChildIdProof = [
     { value: 'select', label: 'Select' },
     { value: 'aadhar_card', label: 'Aadhar Card' },
     { value: 'passport', label: 'Passport' }
   ];
+
+  //Dummy Data 
 
   const BloodGroup = [
     { value: 'select', label: 'Select' },
@@ -87,6 +94,7 @@ function StudentDetails({ handleClick }) {
     { value: 'unknown', label: 'Unknown' }
   ];
 
+  //Dummy Data
   const EnrolledSince = [
     { value: 'select', label: 'Select' },
     { value: 'na', label: 'NA' },
@@ -114,6 +122,8 @@ function StudentDetails({ handleClick }) {
     { value: '2000-01', label: '2000-01' }
   ];
 
+  //Dummy data 
+
   const SelectBoard = [
     { value: 'select', label: 'Select' },
     { value: 'cbse', label: 'CBSE' },
@@ -122,6 +132,8 @@ function StudentDetails({ handleClick }) {
     { value: 'ib', label: 'IB' },
     { value: 'others', label: 'Others' }
   ];
+
+//Dummy Data 
 
   const Select_School_Distance = [
     { value: 'select', label: 'Select' },

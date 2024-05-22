@@ -7,7 +7,7 @@ import { Grid, Typography, Box, TextField, InputLabel, useMediaQuery } from '@mu
 import Divider from '@mui/material/Divider';
 import Dropdown from 'views/common-section/ParamSelectList';
 
-function Additional_Information({ handleClick }) {
+const Additional_Information = ({ handleClick }) => {
   const [formData, setFormData] = useState({
     parents_status: '',
     applied_earlier: 'select',
@@ -28,18 +28,21 @@ function Additional_Information({ handleClick }) {
     applied_class: false
   });
 
+//Dummy Data 
   const SelectParentsStatusOptions = [
     { value: 'select', label: 'Select' },
     { value: 'no', label: 'No' },
     { value: 'yes', label: 'Yes' }
   ];
 
+// Dummy Data                      
   const AppliedEarlierOptions = [
     { value: 'select', label: 'Select' },
     { value: 'no', label: 'No' },
     { value: 'yes', label: 'Yes' }
   ];
 
+// Dummy Data 
   const AppliedYearOptions = [
     { value: 'select', label: 'Select' },
     { value: '2021-22', label: '2021-22' },
@@ -66,6 +69,8 @@ function Additional_Information({ handleClick }) {
     { value: '2000-01', label: '2000-01' }
   ];
 
+  
+  //Dummy data 
   const ClassOptions = [
     { value: 'select', label: 'Select' },
     { value: 'playgroup', label: 'Playgroup' },

@@ -4,7 +4,7 @@
 import React from 'react';
 import { Box, Typography } from '@mui/material';
 
-function TabNumber({ number, text, isActive }) {
+const TabNumber=({ number, text, isActive })=> {
   return (
     <Box
       sx={{
