@@ -6,7 +6,7 @@ import { Grid, Typography, Box, TextField, InputLabel, useMediaQuery} from '@mui
 import Divider from '@mui/material/Divider';
 import { useState } from 'react';
 
-function OtherDetails({ handleClick }) {
+const OtherDetails =({ handleClick }) => {
   const [Formdata, Setformdata] = useState({
     sibling_adm_no: '',
     sibling_class_section: '',

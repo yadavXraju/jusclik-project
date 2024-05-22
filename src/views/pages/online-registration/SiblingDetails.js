@@ -7,7 +7,7 @@ import Divider from '@mui/material/Divider';
 import Dropdown from 'views/common-section/ParamSelectList';
 import { useState } from 'react';
 
-function SiblingDetails({ handleClick }) {
+const SiblingDetails=({ handleClick }) =>{
   const [Formdata, SetFormdata] = useState({
     name: '',
     class: '',
@@ -40,7 +40,7 @@ function SiblingDetails({ handleClick }) {
     }
   };
 
-  console.log(Formdata);
+  //Sample data 
 
   const ClassOptions = [
     { value: 'select', label: 'Select' },
@@ -60,6 +60,8 @@ function SiblingDetails({ handleClick }) {
     { value: '11', label: 'XI' },
     { value: '12A', label: 'XII' }
   ];
+
+  //Sample Data 
 
   const EnrolledSince = [
     { value: 'select', label: 'Select' },
@@ -86,6 +88,8 @@ function SiblingDetails({ handleClick }) {
     { value: '2001-02', label: '2001-02' },
     { value: '2000-01', label: '2000-01' }
   ];
+ 
+  // Sample data
 
   const SchoolOptions = [
     { value: 'select', label: 'Select' },
@@ -93,11 +97,14 @@ function SiblingDetails({ handleClick }) {
     { value: 'other_school', label: 'Other School' }
   ];
 
+  //Sample Data 
   const SiblingTwinOptions = [
     { value: 'select', label: 'Select' },
     { value: 'no', label: 'No' },
     { value: 'yes', label: 'Yes' }
   ];
+  
+  //Sample data 
 
   const AppliedTwinOptions = [
     { value: 'select', label: 'Select' },

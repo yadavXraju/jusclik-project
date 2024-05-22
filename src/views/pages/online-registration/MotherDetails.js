@@ -6,7 +6,7 @@ import { Grid, Typography, Box, TextField ,InputLabel ,useMediaQuery } from '@mu
 import Divider from '@mui/material/Divider';
 import { useState } from 'react';
 
-function MotherDetails({handleClick}) {
+const MotherDetails =({handleClick})=> {
   const [Formdata, Setformdata] = useState({
     mother_name: '',
     phone_no: '',

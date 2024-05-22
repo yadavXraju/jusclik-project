@@ -41,7 +41,7 @@ const Counters = () => {
 
     return (
         <>
-        <ParamCounters CounterData={CounterData} />
+          <ParamCounters CounterData={CounterData} />
         </>
     );
 };

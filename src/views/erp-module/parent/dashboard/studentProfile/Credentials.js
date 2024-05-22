@@ -1,6 +1,7 @@
+// ======= Page Owner Vikash =========
+// ======= Credential Component in Student Profile =========
 import * as React from 'react';
 import Card from '@mui/material/Card';
-//import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
@@ -17,7 +18,6 @@ import TextField from '@mui/material/TextField';
 import { Label } from 'reactstrap';
 import Checkbox from '@mui/material/Checkbox';
 import sidebarMenu from 'menu-items/parentMenus';
-
 
 
 export default function Credentials() {
@@ -316,12 +316,6 @@ export default function Credentials() {
               <Box sx={{ display: 'flex', alignItems:'center', p: 2, borderBottom: '1px dotted #7d828e' }}>
                 <Checkbox defaultChecked />
                 <Typography variant="h4">{item.title}</Typography>
-                {/* <Box>
-                  <Typography variant="h4">{item.title}</Typography>
-                  <Typography variant='body2'>
-                    Configure Student Account to share limited access of the dashbord  with your word.
-                  </Typography>
-                </Box> */}
               </Box>
             </Box>
           ))}

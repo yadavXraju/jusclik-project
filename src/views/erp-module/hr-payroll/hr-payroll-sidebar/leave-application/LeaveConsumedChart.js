@@ -50,9 +50,9 @@ const LeaveConsumedChart = () => {
       curve: 'smooth',
     },
     fill: {
-      type: 'line', // Changed fill type to 'line' for borders only
-      colors: ['#75BB75', '#ff5050'], // Border colors for each series #987ECD
-      opacity: 1, // Ensure opacity is 1 for solid border
+      type: 'line',
+      colors: ['#75BB75', '#ff5050'],
+      opacity: 1,
     },
     legend: {
       position: 'bottom',

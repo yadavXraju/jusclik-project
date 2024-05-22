@@ -1,5 +1,7 @@
-import React from 'react'
+// Page Owner : Abhishek
+// Description : Used in Parent and teacher Dashboard  after alteration in counter 1 file then no need to use this file
 
+import React from 'react'
 import PropTypes from 'prop-types';
 // import { useState } from 'react';
 

@@ -4,11 +4,19 @@ import { Grid, Box, Typography , useMediaQuery } from '@mui/material';
 
 
 
-const ParamCounters = ( {CounterData }  ) => {
+const ParamCounters = ( {CounterData,reverseOrderFlag ,headingstyle ,subheadingstyle}  ) => {
     
 const isTab =  useMediaQuery('(max-width: 1280px)');
 const isMobile =  useMediaQuery('(max-width: 575px)');
 
+// Destyle1 ={
+//     fontSize: isTab ? '24px' : '32px', color: '#000'
+// }
+
+const  defaultStyles={
+    heading:{fontSize: isTab ? '24px' : '32px', color: '#000'},
+    subHeading:{fontSize: isTab ? '14px' : '16px', textTransform: 'uppercase', paddingTop: '7px', fontWeight: '500'}
+}
     return (
         <Grid container spacing={2}>
             {CounterData.map((item, ) => (
@@ -40,11 +48,12 @@ const isMobile =  useMediaQuery('(max-width: 575px)');
 
                         {/* counter title and number */}
                         <Box>
-                            <Typography variant="h3" sx={{ fontSize: isTab ? '24px' : '32px', color: '#000' }}>
-                                {item.counterNumber}
+                            <Typography variant="h3" sx={{  ...defaultStyles.heading , ...headingstyle}}>
+                            {reverseOrderFlag?item.counterTitle:item.counterNumber}
                             </Typography>
-                            <Typography variant="h4" sx={{ fontSize: isTab ? '14px' : '16px', textTransform: 'uppercase', paddingTop: '7px', fontWeight: '500' }}>
-                                {item.counterTitle}
+                            <Typography variant="h4" sx={{...defaultStyles.subHeading , ...subheadingstyle  }}>
+                                {reverseOrderFlag?item.counterNumber:item.counterTitle}
+
                             </Typography>
                         </Box>
                     </Box>

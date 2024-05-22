@@ -8,7 +8,6 @@ import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import RadioButtonsGroup from 'views/common-section/ParamRadioButton';
 import ParamTime from 'views/common-section/ParamTime';
 import ParamMultipleSelect from 'views/common-section/ParamMultipleSelect';
-//import ParamDateRangePicker from 'views/common-section/ParamDateRange';
 import ParameterizedDateComponent from 'views/common-section/ParamDateComponent';
 
 function TransportRoutes() {
@@ -82,17 +81,6 @@ function TransportRoutes() {
     { id: 7, name: 'Sunday' },
   ];
 
-  // const [startDate, setStartDate] = useState(null);
-  // const [endDate, setEndDate] = useState(null);
-
-  // const handleStartDateChange = (date) => {
-  //   setStartDate(date);
-  // };
-
-  // const handleEndDateChange = (date) => {
-  //   setEndDate(date);
-  // };
-
   return (
     <>
       <Card
@@ -110,7 +98,6 @@ function TransportRoutes() {
               value={statusValue}
               onChange={statusChange}
               size={isMobile ? 'small' : 'normal'}
-              // customSytle={{ width: '30%' }}
             />
           </Box>
 
@@ -126,7 +113,6 @@ function TransportRoutes() {
                   value={addBus}
                   onChange={addBusChange}
                   size={isMobile ? 'small' : 'normal'}
-                  // customSytle={{ width: '30%' }}
                 />
               </Grid>
               <Grid mt={1} item xs={12} md={6}>
@@ -156,16 +142,6 @@ function TransportRoutes() {
                 </>
               )
 
-              //   <Box>
-              //   <ParamDateRangePicker
-              //   startLabel='Start Date'
-              //   endLabel='End Date'
-              //   startDateValue={startDate}
-              //   endDateValue={endDate}
-              //   onStartDateChange={handleStartDateChange}
-              //   onEndDateChange={handleEndDateChange}
-              //   />
-              //  </Box>
             }
             {
               schedule === 'days' && (
@@ -216,7 +192,6 @@ function TransportRoutes() {
                 value={addSlab}
                 onChange={slabChange}
                 size={isMobile ? 'small' : 'normal'}
-                // customSytle={{ width: '30%' }}
               />
             </Box>
           </Box>

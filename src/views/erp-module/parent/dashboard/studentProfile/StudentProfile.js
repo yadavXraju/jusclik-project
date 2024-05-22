@@ -1,3 +1,5 @@
+// ======= Page Owner Vikash =========
+// ======= Student Profile Card Component =========
 import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -6,7 +8,6 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Box } from '@mui/system';
-// import logo from '../../../assets/images/brand.png';
 import { studentProfileDetails } from 'layout/MainLayout/Header/ProfileSection/ProfileDeatails';
 
 

@@ -14,7 +14,7 @@ import Test from './SlabStructure';
 const SlabFormDrawer = () => {
   // ========= call custom hook for toggle drawer ==========
   const { anchor, toggleDrawer } = useDrawer();
-  const [tabValue, setTabValue] = useState(0); // State for controlling tabs
+  const [tabValue, setTabValue] = useState(0);
 
   const tabs = ['Basic Info', 'Slab Structure'];
   const tabLength = tabs.length; 
