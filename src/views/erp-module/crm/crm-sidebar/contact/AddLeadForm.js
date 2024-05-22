@@ -1,28 +1,13 @@
+// ======= Page Owner Vikash =========
+// ======= Add Lead Form =========
 import React from 'react';
 import { Box, TextField, useMediaQuery, Card, Grid, Typography } from '@mui/material';
-// import SelectList from 'views/common-section/ParamSelectList';
 import ParamMultipleSelect from 'views/common-section/ParamMultipleSelect';
 import ParameterizedDateComponent from 'views/common-section/ParamDateComponent';
 import TextArea from 'antd/es/input/TextArea';
 
 function AddLeadForm({currEditItem}) {
   const isMobile = useMediaQuery('(max-width: 767px)');
-
-  //   // ========= state for Attach Slab ============
-  //   const [academicYear, setAcademicYear] = useState('');
-  //   const AcademicYearOptions = [
-  //     { value: 'Slab1', label: '2009-2010' },
-  //     { value: 'Slab2', label: '2010-2011' },
-  //     { value: 'Slab1', label: '2011-2012' },
-  //     { value: 'Slab2', label: '2012-2013' },
-  //     { value: 'Slab1', label: '2014-2015' },
-  //     { value: 'Slab2', label: '2015-2016' },
-  //     { value: 'Slab1', label: '2016-2017' },
-  //     { value: 'Slab2', label: '2017-2018' },
-  //   ];
-  //   const AcademicYearChange = (event) => {
-  //     setAcademicYear(event.target.value);
-  //   };
 
   const [leadSource, setLeadSource] = React.useState([]);
   // =========== list of students ===========
@@ -57,7 +42,6 @@ function AddLeadForm({currEditItem}) {
     email: currEditItem.email || '',
     dob: currEditItem.dob || '',
     mobile: currEditItem.mobile || '',
-    // leadSource: currEditItem.leadSource || [],
   } : defaultFormFields);
 
   // Update formFields when on changes
@@ -70,7 +54,6 @@ function AddLeadForm({currEditItem}) {
         email: currEditItem.email || '',
         dob: currEditItem.dob || '',
         mobile: currEditItem.mobile || '',
-        // leadSource: currEditItem.leadSource || [],
       });
     } else {
       setFormFields(defaultFormFields);
@@ -85,8 +68,8 @@ function AddLeadForm({currEditItem}) {
   };
 
   const handleDateChange = (newDate) => {
-    const formattedDate = newDate ? newDate.format('DD-MM-YYYY') : ''; // Format the date or set empty string if newDate is null
-    handleChange('dob', formattedDate); // Update the dob field with the formatted date
+    const formattedDate = newDate ? newDate.format('DD-MM-YYYY') : '';
+    handleChange('dob', formattedDate);
   };
 
   // console.log(currEditItem);
@@ -134,19 +117,6 @@ function AddLeadForm({currEditItem}) {
               <TextField id="Previous School" size={isMobile ? 'small' : 'normal'} fullWidth label="Previous School" variant="outlined" />
             </Grid>
           </Grid>
-
-          {/* <Box pb={2}>
-            <SelectList
-            label="Academic Year Upto"
-            options={AcademicYearOptions}
-            value={academicYear}
-            onChange={AcademicYearChange}
-            size={isMobile ? 'small' : 'normal'}
-            />
-          </Box>
-          <Box pb={2}>
-          <ParamMultipleSelect options={students} label="Classes" value={selectedStudents} setValue={setSelectedStudents} />
-          </Box> */}
         </Box>
 
         <Box pt={2}>
@@ -158,8 +128,7 @@ function AddLeadForm({currEditItem}) {
               <TextField id="Lead-Owner" size={isMobile ? 'small' : 'normal'} fullWidth label="Lead Owner" variant="outlined" />
             </Grid>
             <Grid item xs={12} sm={12} md={6}>
-              {/* <TextField id="Lead-status" size={isMobile ? 'small' : 'normal'} value={formFields.leadNo} onChange={(e) => handleChange('leadNo', e.target.value)} fullWidth label="Lead No." variant="outlined"  /> */}
-              <TextField id="Lead-status" size={isMobile ? 'small' : 'normal'} fullWidth label="Lead Status" variant="outlined"  />
+               <TextField id="Lead-status" size={isMobile ? 'small' : 'normal'} fullWidth label="Lead Status" variant="outlined"  />
             </Grid>
             <Grid item xs={12} sm={12} md={6}>
               <TextField id="Lead-Stage" size={isMobile ? 'small' : 'normal'} fullWidth label="Lead Stage" variant="outlined" />

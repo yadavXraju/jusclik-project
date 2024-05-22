@@ -3,13 +3,12 @@
 import React, { useEffect } from 'react';
 import MainCard from 'ui-component/cards/MainCard';
 import { Box, Grid, Typography, useMediaQuery, Divider } from '@mui/material';
-// import { studentProfileDetails } from 'layout/MainLayout/Header/ProfileSection/ProfileDeatails';
 import { CardMedia } from '@mui/material';
 import ArrowBackOutlinedIcon from '@mui/icons-material/ArrowBackOutlined';
 import { useNavigate } from 'react-router-dom';
-import BusDetailsData from './BusDetailsData';
+import BusDetailsData from './Sample-BusDetailsData';
 import { useParams } from 'react-router';
-import documentData from './DocumentData';
+import documentData from './Sample-DocumentData';
 
 
 function Preview() {
@@ -21,7 +20,6 @@ function Preview() {
     navigate(`/erp/student-info-fee/transport/bus-details`);
   };
 
-  //const [filteredIndex, setFilteredIndex] = React.useState(-1); // Initial state set to -1
   const [filteredRow, setFilteredRow] = React.useState(null);
   useEffect(() => {
     const filteredBus = BusDetailsData.find((bus) => bus.id === id);
@@ -29,13 +27,6 @@ function Preview() {
       setFilteredRow(filteredBus);
     }
   }, [id]);
-
-  // ======= Update filtered row when filteredIndex changes =======
-  //useEffect(() => {
-  //   if (filteredIndex !== -1) {
-  //     setFilteredRow(BusDetailsData[filteredIndex]);
-  //   }
-  // }, [filteredIndex]);
 
   const isMobile = useMediaQuery('(max-width: 767px)');
   const issmallMobile = useMediaQuery('(max-width: 425px)');
@@ -62,18 +53,7 @@ function Preview() {
                 <Typography variant="h4" sx={{ ml: '10px' }}>
                   Bus Details
                 </Typography>
-                {/* <Box>
-                <CardMedia
-                  sx={{ height: '70px', width: '70px', borderRadius: '50%', m: '0px 15px' }}
-                  image={studentProfileDetails.StudentImage}
-                  title="Student image"
-                />
-              </Box>
-              <Box>
-                <Typography variant="h4">{filteredRow.StudentName}</Typography>
-                <Box>Admission No - {filteredRow.AdmNo}</Box>
-                <Box>Class - {filteredRow.class}</Box>
-              </Box> */}
+
               </Box>
             </Box>
             <Grid container spacing={2}>
@@ -222,9 +202,6 @@ function Preview() {
                                 <Typography gutterBottom variant="h4" component="div" color={'#8b8989'}>
                                   {document.title}
                                 </Typography>
-                                {/* <Typography variant="body2" color="text.secondary">
-                                    {document.subtitle}
-                                </Typography>  */}
 
                                 <a
                                   href={document.url}
@@ -243,29 +220,6 @@ function Preview() {
                     </Box>
                   </Box>
 
-                  {/* =============== Render Sibling Details ===================== */}
-                  {/* <Box p={2}>
-                  <Typography p={0.7} variant="h4">
-                    Sibling Details
-                  </Typography>
-                  <Divider />
-                  <Box p={2}>
-                    <Box sx={{ display: 'flex', alignItems: 'center', width: '100%' }}>
-                      <Box>
-                        <CardMedia
-                          sx={{ height: '60px', width: '60px', borderRadius: '50%', mr:'20px' }}
-                          image={studentProfileDetails.StudentImage}
-                          title="Student image"
-                        />
-                      </Box>
-                      <Box>
-                        <Typography variant="h4">Subham</Typography>
-                        <Box>Admission No - 958504</Box>
-                        <Box>Class/Section - VI</Box>
-                      </Box>
-                    </Box>
-                  </Box>
-                </Box> */}
                 </Box>
               </Grid>
               <Grid item xs={12} md={6}>

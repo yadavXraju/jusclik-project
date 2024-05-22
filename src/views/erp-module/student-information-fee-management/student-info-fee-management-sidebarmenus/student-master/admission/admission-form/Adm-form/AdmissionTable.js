@@ -13,7 +13,7 @@ import AdmissionDrawer from './AdmissionDrawer';
 import RemoveRedEyeTwoToneIcon from '@mui/icons-material/RemoveRedEyeTwoTone';
 import useDrawer from 'hooks/useDrawer';
 import EditDrawer from './EditDrawer';
-import FilterStudents from 'views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/reports/common-report-section/filter-and-sort/Filter';
+import FilterStudents from 'views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/reports/common-report-section/filter-and-sort/temp-Filter';
 import WarningDialog from 'views/common-section/WarningDialog';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import { useSelector } from 'react-redux';
@@ -26,12 +26,6 @@ const AdmissionTable = () => {
   const [currEditItem, setCurrEditItem] = React.useState({});
   const { anchor, toggleDrawer } = useDrawer();
 
-  //const { anchor, toggleDrawer } = useDrawer();
-  // const handleRowClick = () => {
-  //   navigate(`../registration`);
-  // };
-
-  // search
 
   const [isSearchVisible, setSearchVisible] = useState(false);
 
@@ -45,18 +39,13 @@ const AdmissionTable = () => {
 
   const Click = (rowData) => {
     navigate('/erp/student-info-fee/student-master/admission-form', { state: { rowData } });
+    // navigate(`/erp/hr-payroll/employee-master/${rowData.id}`, { state: { rowData }});
   };
 
   // ========== function for handle Edit row ===========
   const handleEditClick = (editItem) => {
-    // console.log(editItem)
-    // setCurrEditItem({ ...currEditItem, ...editItem });
     setCurrEditItem(editItem);
   };
-
-  // useEffect(() => {
-  //   // console.log(currEditItem);
-  // },[currEditItem]);
 
   // ========= render error model for duplicate date ==========
   const [modalOpen, setmodalOpen] = React.useState(false);
@@ -75,11 +64,8 @@ const AdmissionTable = () => {
 
   // ========== function for handle delete row ===========
   const handleDeleteRow = (id) => {
-    // handleModalOpen();
     setdeleteId(id);
     setmodalOpen(true);
-    // const updatedRows = tableRows.filter((row) => row.id !== id);
-    // setTableRows(updatedRows);
   };
 
   // ========= Data Grid Columns ==========
@@ -169,9 +155,6 @@ const AdmissionTable = () => {
             </Grid>
             <Grid item xs={12} sm={6} lg={6}>
               <div style={{ display: 'flex', justifyContent: 'end', width: '100%' }}>
-                {/* <Button sx={{ mr: 1 }} onClick={Click} variant="outlined" startIcon={<AddOutlinedIcon />}>
-                Add Student
-              </Button> */}
                 <AdmissionDrawer />
 
                 <IconButton sx={{ marginRight: '8px', background: '#cccccc54' }} onClick={handleSearchClick}>
@@ -182,10 +165,10 @@ const AdmissionTable = () => {
                     sx={{
                       marginRight: '8px',
                       marginTop: '0px',
-                      height: '30px', // Adjust the height according to your preference
+                      height: '30px',
                       '& input': {
                         paddingTop: '8px',
-                        paddingBottom: '8px' // Adjust the top padding to center the text vertically
+                        paddingBottom: '8px'
                       }
                     }}
                     autoFocus
@@ -228,7 +211,7 @@ const AdmissionTable = () => {
         <Box p={2}>
           <DataGrid
             rows={tableRows}
-            columns={columns} // Use state variable for columns
+            columns={columns}
             onRowClick={(params) => Click(params.row)}
             initialState={{
               pagination: {

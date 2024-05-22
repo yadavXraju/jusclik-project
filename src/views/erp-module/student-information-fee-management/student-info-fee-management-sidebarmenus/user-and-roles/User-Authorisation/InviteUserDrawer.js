@@ -5,7 +5,7 @@ import { Button, Typography, Box } from '@mui/material';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import { TextField } from '@mui/material';
 import SelectList from 'views/common-section/ParamSelectList';
-import ParamChackboxSelectAll from '../../../../common-section/ParamChackboxSelectAll';
+import ParamChackboxSelectAll from '../../../../../common-section/ParamChackboxSelectAll';
 
 const InviteUserDrawer = () => {
   // ========= call custom hook for toggle drawer ==========

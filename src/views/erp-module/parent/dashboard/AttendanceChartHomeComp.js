@@ -1,16 +1,16 @@
 import React from 'react';
 import ApexCharts from 'react-apexcharts';
-import { present, absent } from './chart-data/AttandanceData';
 import { Grid, Paper, Typography , Button , Box ,useMediaQuery  } from '@mui/material';
-// import { gridSpacing } from 'store/constant';
-import { HeadingCss , boxHeight} from '../../../common-section/dashboard-css/CommonCss';
+import { HeadingCss , boxHeight} from 'views/common-section/dashboard-css/CommonCss';
 import { useNavigate } from 'react-router';
+
+export const present = '63.3%';
+export const absent = ' 36.7%';
 
 const AttandanceChartHomeComp = () => {
 const navigate = useNavigate();
 const isMediumDesktop = useMediaQuery('(max-width: 1600px)');
 const isMobile = useMediaQuery('(max-width: 767px)');
-
 
   // const AttendanceBox = {
   //   display : 'flex',

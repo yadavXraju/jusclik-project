@@ -7,7 +7,7 @@ import { Box } from '@mui/system';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 import WarningDialog from 'views/common-section/WarningDialog';
 import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
-import SlabTableData from './SlabTableData';
+import SlabTableData from './Sample-SlabTableData';
 import SlabFormDrawer from './SlabFormDrawer';
 
 export default function SlabTable() {

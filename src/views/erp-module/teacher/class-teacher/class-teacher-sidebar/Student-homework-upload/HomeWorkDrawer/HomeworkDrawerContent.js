@@ -5,12 +5,13 @@ import HomeCategory from './HomeCategory';
 import HomeworkTopic from './HomeworkTopic';
 import HomeworkTemplate from './HomeworkTemplate';
 import HomeReplyBox from './HomeReplyBox';
-import HomeWorkDragDrop from './HomeWorkDragDrop';
+import { CommonDropZone } from 'views/common-section/CommonDropZone';
 import HomeYoutubeLink from './HomeYoutubeLink';
 import HomeDrawerSubmit from './HomeDrawerSubmit';
 
 function HomeworkDrawerContent() {
-
+  const [selectedFile,setSelectedFile]=React.useState(null)
+   const stateHandler=(_,value)=>setSelectedFile(value)
   const isMobile = window.innerWidth < 600;
   return (
     <>
@@ -42,7 +43,7 @@ function HomeworkDrawerContent() {
             <HomeReplyBox />
           </Grid>
           <Grid item xs={12} sx={{ paddingTop: isMobile ? '30px' : '0px' }}>
-            <HomeWorkDragDrop />
+          <CommonDropZone stateHandler={stateHandler} selectedFile={selectedFile} updatekey={'_'} />
           </Grid>
         </Grid>
         <Grid item xs={12} sx={{ paddingLeft: isMobile ? '10px' : '10px', paddingRight: isMobile ? '11px' : '8px', paddingTop: '5px' }}>

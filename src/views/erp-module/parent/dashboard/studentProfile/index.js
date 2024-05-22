@@ -1,6 +1,6 @@
-// Import necessary dependencies from Material-UI
+// ======= Page Owner Vikash =========
+// ======= Entry Page of Student Profile =========
 import React, { useState, useEffect } from 'react';
-
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import MainCard from 'ui-component/cards/MainCard';

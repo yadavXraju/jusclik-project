@@ -1,3 +1,5 @@
+// ======= Page Owner Vikash =========
+// ======= Add Contact Drawer And Tabs =========
 import React, { useState } from 'react';
 import useDrawer from 'hooks/useDrawer';
 import Drawer from '@mui/material/Drawer';
@@ -5,19 +7,17 @@ import { Button, Typography, Box, Tab, Tabs } from '@mui/material';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import BottomNavbar from 'views/common-section/BottomNavbar';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
-// import CommonDocuments from 'views/erp-common-component/commonDocuments';
-import documentData from './DocumentData';
+import documentData from './Sample-DocumentData';
 import AddLeadForm from './AddLeadForm';
 import PersonAddAltTwoToneIcon from '@mui/icons-material/PersonAddAltTwoTone';
 import DriveFolderUploadTwoToneIcon from '@mui/icons-material/DriveFolderUploadTwoTone';
 import DescriptionTwoToneIcon from '@mui/icons-material/DescriptionTwoTone';
 import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
-import OtherDetails from './OtherDetails';
-import DocumentTest from './DocumentTest';
+import CommonDocuments from 'views/erp-common-component/commonDocuments';
 
 const AddContactDrawer = ({ DrawerBtn = false, editIcon = false, currEditItem , handleClick }) => {
   const { anchor, toggleDrawer } = useDrawer();
-  const [tabValue, setTabValue] = useState(0); // State for controlling tabs
+  const [tabValue, setTabValue] = useState(0);
 
   const tabs = [
     { name: 'Primary Details', icon: <PersonAddAltTwoToneIcon /> },
@@ -84,11 +84,10 @@ const AddContactDrawer = ({ DrawerBtn = false, editIcon = false, currEditItem , 
             {/* Tab panels based on selected tab */}
             <Box sx={{ mt: 1, height: 'calc(100vh - 188px)' , overflowY:'auto' }}>
               {tabValue === 0 && <AddLeadForm currEditItem={currEditItem} />}
-              {tabValue === 1 && <OtherDetails/>}
+              {tabValue === 1 && <Box>Other Details</Box>}
               {tabValue === 2 && (
                 <>
-                  {/* <CommonDocuments documentData={documentData} customStyle={{ height: '100%' }} /> */}
-                  <DocumentTest documentData={documentData}/>
+                  <CommonDocuments documentData={documentData} customStyle={{ height: '100%' }} />
                 </>
               )}
             </Box>

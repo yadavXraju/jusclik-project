@@ -9,9 +9,7 @@ const Builder= Loadable(lazy(() => import('views/erp-module/form-builder/builder
 const Reports = Loadable(lazy(() => import('views/erp-module/form-builder/reports')));
 // setting
 const Settings = Loadable(lazy(() => import('views/erp-module/form-builder/settings')));
-// temp routes
-const DamanTemp= Loadable(lazy(() => import('views/erp-module/form-builder/common/common-fields')));
-const CommonDrawer= Loadable(lazy(() => import('views/erp-module/form-builder/common/common-drawer')));
+
 
 // visitor reg
 
@@ -45,15 +43,6 @@ const FormBuilderRoutes = [
             path: 'reports', 
             element: <Reports /> 
         },
-          // temp routes
-          { 
-            path: 'daman-temp', 
-            element: <DamanTemp />
-            },
-            { 
-              path: 'common-drawer', 
-              element: <CommonDrawer />
-              },
     ]
 }
 ];

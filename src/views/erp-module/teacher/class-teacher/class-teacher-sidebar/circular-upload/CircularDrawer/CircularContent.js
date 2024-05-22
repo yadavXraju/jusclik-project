@@ -2,14 +2,16 @@ import * as React from 'react';
 import {  Grid } from '@mui/material';
 import CircularDate from './CircularDate';
 import HomeReplyBox from 'views/erp-module/teacher/class-teacher/class-teacher-sidebar/Student-homework-upload/HomeWorkDrawer/HomeReplyBox';
-import HomeWorkDragDrop from 'views/erp-module/teacher/class-teacher/class-teacher-sidebar/Student-homework-upload/HomeWorkDrawer/HomeWorkDragDrop';
 import HomeYoutubeLink from 'views/erp-module/teacher/class-teacher/class-teacher-sidebar/Student-homework-upload/HomeWorkDrawer/HomeYoutubeLink';
 import CircularTopic from './CircularTopic';
 import HomeworkTemplate from 'views/erp-module/teacher/class-teacher/class-teacher-sidebar/Student-homework-upload/HomeWorkDrawer/HomeworkTemplate';
 import CircularCategory from './CircularCategory';
 import CirclarSelectClass from './CircularSelectClass';
+import { CommonDropZone } from 'views/common-section/CommonDropZone';
 
 const CircularContent = () => {
+  const [selectedFile,setSelectedFile]=React.useState(null)
+  const stateHandler=(_,value)=>setSelectedFile(value)
   return (
     <>
        <Grid>
@@ -32,7 +34,7 @@ const CircularContent = () => {
           <HomeReplyBox />
         </Grid>
         <Grid item xs={12}>
-          <HomeWorkDragDrop />
+          <CommonDropZone stateHandler={stateHandler} selectedFile={selectedFile} updatekey={'_'} />
         </Grid>
        <Grid item sx={{ paddingLeft: '10px', paddingRight: '8px' }} xs={12}>
           <HomeYoutubeLink />

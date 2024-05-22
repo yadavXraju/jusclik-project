@@ -1,5 +1,5 @@
 // ======= Page Owner Vikash =========
-
+// ======= Return Tabs for Routes and Slab =========
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
@@ -9,7 +9,6 @@ import Box from '@mui/material/Box';
 import { Card } from '@mui/material';
 import TransportRouteTable from './TransportRouteTable';
 import SlabTable from './SlabTable';
-// import Stoppage from './Stoppage';
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -53,7 +52,7 @@ export default function RoutesAndSlabs() {
             <Tabs value={value} variant="scrollable" onChange={handleChange} aria-label="basic tabs example">
               <Tab label="Slabs" {...a11yProps(0)} />
               <Tab label="Route" {...a11yProps(1)} />
-              {/* <Tab label="Stoppage" {...a11yProps(2)} /> */}
+              
             </Tabs>
           </Box>
           <CustomTabPanel value={value} index={0}>
@@ -62,9 +61,6 @@ export default function RoutesAndSlabs() {
           <CustomTabPanel value={value} index={1}>
            <TransportRouteTable/>
           </CustomTabPanel>
-          {/* <CustomTabPanel value={value} index={2}>
-          <Stoppage/>
-          </CustomTabPanel> */}
         </Box>
       </Card>
     </>

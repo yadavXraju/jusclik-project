@@ -1,3 +1,4 @@
+// @Page Owner-Tarun Pandey
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import FileOpenOutlinedIcon from '@mui/icons-material/FileOpenOutlined';
 import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
@@ -6,12 +7,13 @@ import ApprovalOutlinedIcon from '@mui/icons-material/ApprovalOutlined';
 import IntegrationInstructionsOutlinedIcon from '@mui/icons-material/IntegrationInstructionsOutlined';
 import FormatPaintOutlinedIcon from '@mui/icons-material/FormatPaintOutlined';
 import ParamStepper from 'views/common-section/param-stepper';
-import BuilderComponent from './builder-component';
+import BuilderComponent from './form-pages/builder-component';
 import Rule from './form-pages/Rule';
 import Settings from './form-pages/settings';
 import Integration from './form-pages/Integration';
 
 const FormBuilder = () => {
+  // Form Builder Pages
   const tabPages = [
     {
       id: 1,
