@@ -8,7 +8,7 @@ import CalendarMonthTwoToneIcon from '@mui/icons-material/CalendarMonthTwoTone';
 import BadgeTwoToneIcon from '@mui/icons-material/BadgeTwoTone';
 import PaymentTwoToneIcon from '@mui/icons-material/PaymentTwoTone';
 import DocumentScannerTwoToneIcon from '@mui/icons-material/DocumentScannerTwoTone';
-import DesktopWindowsTwoToneIcon from '@mui/icons-material/DesktopWindowsTwoTone';
+
 
 const HrPayRollMenu = {
     id: 'hr-payrollMenu',
@@ -81,15 +81,7 @@ const HrPayRollMenu = {
         icon: CalendarMonthTwoToneIcon,
         breadcrumbs: false
       },
-      // salary
-      {
-        id: 'salary',
-        title: 'Salary',
-        type: 'item',
-        url: '/erp/hr-payroll/salary',
-        icon: PaymentTwoToneIcon,
-        breadcrumbs: false
-      },
+
       // leave application
       {
         id: 'leave-application',
@@ -105,7 +97,7 @@ const HrPayRollMenu = {
           title: 'Payroll',
           type: 'item',
           url: '/erp/hr-payroll/payroll',
-          icon: DesktopWindowsTwoToneIcon,
+          icon: PaymentTwoToneIcon,
           breadcrumbs: false
         },
       // report

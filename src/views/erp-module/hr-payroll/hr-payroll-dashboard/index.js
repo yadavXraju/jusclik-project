@@ -64,7 +64,7 @@ const Dashboard = () => {
     flexDirection:"row",
     alignItems:"center",
     marginRight:"0px",
-    borderBottom:"1px solid #ccc",
+    // borderBottom:"1px solid #ccc",
     
    }}
 customtabPanelStyle={{
@@ -75,6 +75,12 @@ customtabPanelStyle={{
 customIconStyle={{
   marginRight:"10px",
 }}
+customStyleTabs={{
+  borderBottom:'2px solid red',
+  borderColor:'rgb(227, 232, 239) rgb(227, 232, 239) rgba(183, 183, 183, 0.26)',
+}}
+
+customtabWrapper={{marginTop:'0'}}
 
    />
       {/* <Box sx={{ width: '100%', typography: 'body1' }}>
