@@ -8,7 +8,7 @@ import LeadTimeline from './LeadTimeline';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import CommunicationLogs from './CommunicationLogs';
 import CommonDocuments from 'views/erp-common-component/commonDocuments';
-import documentData from './DocumentData';
+import documentData from './Sample-DocumentData';
 import FollowUpAndNotes from './FollowUpAndNotes';
 
 const PreviewTabs = () => {

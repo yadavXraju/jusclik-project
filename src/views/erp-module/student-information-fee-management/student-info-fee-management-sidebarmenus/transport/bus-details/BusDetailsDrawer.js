@@ -13,13 +13,12 @@ import DirectionsBusTwoToneIcon from '@mui/icons-material/DirectionsBusTwoTone';
 import DriveFolderUploadTwoToneIcon from '@mui/icons-material/DriveFolderUploadTwoTone';
 import AccountBoxTwoToneIcon from '@mui/icons-material/AccountBoxTwoTone';
 import CommonDocuments from 'views/erp-common-component/commonDocuments';
-import documentData from './DocumentData';
+import documentData from './Sample-DocumentData';
 
 const BusDetailsDrawer = () => {
   const { anchor, toggleDrawer } = useDrawer();
-  const [tabValue, setTabValue] = useState(0); // State for controlling tabs
+  const [tabValue, setTabValue] = useState(0);
 
-//   const tabs = ['Vehicle Details', 'Owner Details', 'Documents'];
   const tabs = [
     {name : 'Vehicle Details', icon: <DirectionsBusTwoToneIcon/>},
     {name : 'Owner Details', icon: <AccountBoxTwoToneIcon/>},
@@ -53,7 +52,6 @@ const BusDetailsDrawer = () => {
                   key={index}
                   label={
                     <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                      {/* <span style={{padding:'5px', border: `1px solid ${tabValue === index ? '#2196f3' : '#ccc'}`, borderRadius:'50%', width:'29px', marginRight:'5px'}}>{index + 1}</span> */}
                       <span style={{marginRight:'5px'}}>{label.icon}</span>
                       {label.name}
                       { <KeyboardArrowRightIcon />}
