@@ -3,193 +3,111 @@ import { Grid, Paper, Typography , Box , } from '@mui/material';
 import ParamCounters from 'component/ParamCounters';
 
 import Divider from '@mui/material/Divider';
-
-
-
-
+import CommonChart from 'component/CommonChart';
 
 const ExpenseAndTravel = () => {
-  // const HeadingData = [
-  //   { name: 'Total Paid Out Expenses', value: '7', color: '#84c5d2' },
-  //   { name: 'Total Paid Amount', value: 'INR 71,756', color: '#a0b650' },
-  //   { name: 'Total Employees', value: '4', color: '#c080bc' },
-  //   { name: 'Pending Receipt Submission', value: '4', color: '#f4cb6a' }
-  // ];
+  const ApexChartData = {
+    series: [100, 200, 50],
+    labels: ['Air Travel', 'Boarding And Lodging', 'Food & Drinks'],
+    colors: ['#c031ee', '#1e88e5', '#5c34ae']
+  };
 
+  const ApexChartData2 = {
+    series: [150, 100, 40],
+    labels: ['Approved', 'Pending', 'Reject'],
+    colors: ['#75bb75', '#0f8290', '#f74d49']
+  };
 
+  const Apexheading = 'Expense by Category';
+  const Apexheading2 = 'Expense by Status';
+
+  const chartDetails = [
+    { label: 'HIGHEST SPEND CATEGORY', chartvalues: 'Air Travel' },
+    { label: 'HIGHEST SPEND CATEGORY', chartvalues: 'Boarding And Lodging' },
+    { label: 'AVG SPEND CATEGORY', chartvalues: 'INR 6,400' }
+  ];
+
+  const chartDetails2 = [
+    { label: 'APPROVED EXPENSES', chartvalues: '51.7% - High' },
+    { label: 'PENDING EXPENSES', chartvalues: '34.5% - Avg' },
+    { label: 'REJECTED EXPENSES', chartvalues: '17% - Low' }
+  ];
   const CounterData = [
     {
-        id: 1,
-        counterTitle: 'Total Paid Out Expenses',
-        icon:  (<Box><Divider
-        orientation="vertical"
-        sx={{background:'red', width: '2px', height: '80%', marginLeft: '1rem', marginTop: '0.5rem' }}
-      /> </Box>),
-        counterNumber: 7,
-        
-       
+      id: 1,
+      counterTitle: 'Total Paid Out Expenses',
+      icon: (
+        <Box sx={{ height: '50px' }}>
+          <Divider orientation="vertical" sx={{ background: '#84c5d2', width: '3px', height: '100%', marginLeft: '0.2rem' }} />{' '}
+        </Box>
+      ),
+      counterNumber: 7
     },
     {
-        id: 2,
-        icon: (<Box><Divider
-          orientation="vertical"
-          sx={{background:'red', width: '2px', height: '80%', marginLeft: '1rem', marginTop: '0.5rem' }}
-        /> </Box>),
-        counterNumber: 'INR 71,756',       
-        counterTitle: 'Total Paid Amount',
-       
+      id: 2,
+      icon: (
+        <Box sx={{ height: '50px' }}>
+          <Divider orientation="vertical" sx={{ background: '#a0b650', width: '3px', height: '100%', marginLeft: '0.2rem' }} />{' '}
+        </Box>
+      ),
+      counterNumber: 'INR 71,756',
+      counterTitle: 'Total Paid Amount'
     },
     {
-        id: 3,
-        icon: (<Box><Divider
-          orientation="vertical"
-          sx={{background:'red', width: '2px', height: '80%', marginLeft: '1rem', marginTop: '0.5rem' }}
-        /> </Box>),
-        counterNumber: 4,
-        counterTitle: 'Total Employees',
-     
+      id: 3,
+      icon: (
+        <Box sx={{ height: '50px' }}>
+          <Divider orientation="vertical" sx={{ background: '#c080bc', width: '3px', height: '100%', marginLeft: '0.2rem' }} />{' '}
+        </Box>
+      ),
+      counterNumber: 4,
+      counterTitle: 'Total Employees'
     },
 
     {
       id: 4,
-      icon: (<Box><Divider
-        orientation="vertical"
-        sx={{background:'red', width: '2px', height: '80%', marginLeft: '1rem', marginTop: '0.5rem' }}
-      /> </Box>),
+      icon: (
+        <Box sx={{ height: '50px' }}>
+          <Divider orientation="vertical" sx={{ background: '#f4cb6a', width: '3px', height: '100%', marginLeft: '0.2rem' }} />{' '}
+        </Box>
+      ),
       counterNumber: 4,
-      counterTitle: 'Pending Receipt Submission',
-   
-  },
-
-];
-
+      counterTitle: 'Pending Receipt Submission'
+    }
+  ];
 
   return (
     <>
-      <Grid component={Paper} elevation={2} sx={{ display: 'flex', height: '5vh', alignItems: 'center' }}>
-        <Typography variant="h3" sx={{ paddingLeft: '2rem' }}>
+      <Grid sx={{ display: 'flex', height: '5vh', alignItems: 'center' }}>
+        <Typography variant="h3" sx={{ paddingLeft: '0.1rem' }}>
           Expense Overview{' '}
         </Typography>
       </Grid>
 
-      <Grid spacing={5} sx={{ paddingTop: '1rem' }}>
-          <ParamCounters CounterData={CounterData} reverseOrderFlag={true} headingstyle={{fontSize:'14px'}} subheadingstyle={{fontSize:'24px'}} customboxstyle={{padding:'1rem'}} />
+      <Grid spacing={5} sx={{ paddingTop: '0.5rem' }}>
+        <ParamCounters
+          CounterData={CounterData}
+          reverseOrderFlag={true}
+          headingstyle={{ fontSize: '14px' }}
+          subheadingstyle={{ fontSize: '24px' }}
+          customboxstyle={{ padding: '1rem', gap: '20px' }}
+        />
       </Grid>
 
       <Grid container spacing={2}>
-
-      <Grid item lg={6}>
-Heelo
+        <Grid item lg={6} sx={{ marginTop: '1.2rem' }}>
+          <Paper>
+            <CommonChart Data={ApexChartData} heading={Apexheading} hideDiv={true} chartdetails={chartDetails} />
+          </Paper>
+        </Grid>
+        <Grid item lg={6} sx={{ marginTop: '1.2rem' }}>
+          <Paper>
+            <CommonChart Data={ApexChartData2} heading={Apexheading2} hideDiv={true} chartdetails={chartDetails2} />
+          </Paper>
+        </Grid>
       </Grid>
-      <Grid item lg={6}>
-        Hello
-      </Grid>
-
-
-      </Grid>
-
-
-
-
-
-
-    
-
-      {/* <Grid container item spacing={5} sx={{ paddingTop: '1rem' }}> */}
-      
-      {/* <Grid item lg={3} > */}
-      
-
-        {/* </Grid> */}
-
-{/* 
-        </Grid> */}
-        {/* </Grid> */}
-
-      {/* <Grid container spacing={5} sx={{ paddingTop: '1rem' }}>
-        {HeadingData.map((item, index) => (
-          <Grid item lg={3} key={index}>
-            <Paper sx={{ height: '10vh', display: 'flex', alignItems: 'top', justifyContent: 'left' }}>
-              <Divider
-                orientation="vertical"
-                sx={{ backgroundColor: item.color, width: '2px', height: '80%', marginLeft: '1rem', marginTop: '0.5rem' }}
-              />
-
-              <Box>
-                <Typography variant="h4" sx={{ paddingLeft: '1.5rem', paddingTop: '1rem' }}>
-                  {item.name}
-                </Typography>
-                <Typography variant="h3" sx={{ paddingLeft: '1.5rem', paddingTop: '0.7rem' }}>
-                  {item.value}
-                </Typography>
-              </Box>
-            </Paper>
-          </Grid>
-        ))}
-      </Grid> */}
-
-      {/* <Grid container spacing={5} sx={{paddingTop:'1rem'}} >
-  <Grid item lg={6} >
-    <Paper sx={{height:'40vh'}}>
-      <Typography variant='h4'>Hello</Typography>
-    </Paper>
-  </Grid>
-
-  <Grid item lg={6} >
-    <Paper sx={{height:'40vh'}}>
-      <Typography>Hello</Typography>
-    </Paper>
-  </Grid>
-</Grid> */}
-
-
-
-
-
-
     </>
   );
 };
 
 export default ExpenseAndTravel;
-
-{
-  /* <Grid item lg={3}>
-      <Paper sx={{ height: '10vh', display: 'flex', alignItems: 'top', justifyContent: 'left' }}>
-        
-        <Divider orientation="vertical" sx={{ backgroundColor: '#9acfda', width: '3px' , height:'80%' , marginLeft:'1rem' , marginTop:'0.5rem'}} />
-       
-       <Box>
-        <Typography variant='h4' sx={{ paddingLeft: '1.5rem' , paddingTop:'1rem' }}>
-          Total Paid out Expenses
-        </Typography>
-        <Typography variant='h2' sx={{  paddingLeft: '1.5rem' , paddingTop:'0.7rem' }}>
-          7
-        </Typography>
-        </Box>
-
-      </Paper>
-    </Grid>
-      <Grid item lg={3}>
-        
-      <Paper sx={{height:'10vh'}}>
-        <Typography variant='h4' sx={{ textAlign: 'center' }}>
-          Total Paid Amount
-        </Typography>
-        </Paper>
-      </Grid>
-      <Grid item lg={3}>
-      <Paper sx={{height:'10vh'}}>
-        <Typography variant='h4' sx={{ textAlign: 'center' }}>
-          Total Employees
-        </Typography>
-        </Paper>
-      </Grid>
-      <Grid item lg={3}>
-      <Paper sx={{height:'10vh'}}>
-        <Typography variant='h4' sx={{ textAlign: 'center' }}>
-          Pending Receipt Submission
-        </Typography>
-        </Paper>
-      </Grid> */
-}
