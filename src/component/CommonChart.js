@@ -2,7 +2,7 @@
 // Description : Common Donut Chart
 
 import React from 'react';
-import { Paper, Box, Grid, Typography, useMediaQuery } from '@mui/material';
+import { Paper, Box, Grid, Typography, useMediaQuery ,Divider} from '@mui/material';
 import ApexCharts from 'react-apexcharts';
 import ParamWidgetHeader from 'component/ParamWidgetHeader';
 
