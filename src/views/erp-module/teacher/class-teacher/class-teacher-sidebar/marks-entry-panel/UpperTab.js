@@ -1,6 +1,6 @@
 import { Button, Grid, Paper } from '@mui/material'
 import React from 'react'
-import  { ExamDropDown, SubjectDropDown, TermDropDown,ClassDropDown} from '../SearchFilter/filterComponent/DropDown'
+import  { ExamDropDown, SubjectDropDown, TermDropDown,ClassDropDown} from '../SearchFilter/DropDown'
 import {ClassData} from './dropdown data/ClassData'
 import {Term }from './dropdown data/TermData'
 import { subject } from './dropdown data/SubjectData'
