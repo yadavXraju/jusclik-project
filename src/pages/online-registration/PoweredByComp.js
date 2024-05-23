@@ -3,7 +3,7 @@
 
 import React from 'react';
 import { Typography, Link, Box, useMediaQuery, useTheme, Grid } from '@mui/material';
-import CloudLogo from '../../../assets/images/Untitled-2.png';
+import CloudLogo from 'assets/images/login/PoweredBy.png';
 // import AppStoreButtonsGroup from './AppStoreLogos';
 
 const commonTextStyle = {

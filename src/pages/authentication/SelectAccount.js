@@ -6,7 +6,7 @@ import DialogContent from '@mui/material/DialogContent';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import ArrowRightAltOutlinedIcon from '@mui/icons-material/ArrowRightAltOutlined';
-import DefaultAvatar from '../../../assets/images/defaultAvatars.jpeg';
+import DefaultAvatar from 'assets/images/Avatar-images/defaultAvatar.jpeg';
 import {
   Typography,
   ListItem,

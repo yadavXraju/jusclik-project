@@ -3,7 +3,7 @@
 
 import React, { useRef } from 'react';
 import Box from '@mui/material/Box';
-import logo from 'assets/images/WhatsApp_Image_2020-03-21_at_8_04_53_PM__1-removebg-preview 1.png';
+import logo from 'assets/images/school-logos/ArwachinLogo.png';
 import Typography from '@mui/material/Typography';
 import Avatar from '@mui/material/Avatar';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';

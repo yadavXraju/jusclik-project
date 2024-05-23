@@ -8,11 +8,11 @@ import Loadable from 'ui-component/Loadable';
 // import MinimalLayout from 'layout/MinimalLayout';
 
 // login option 3 routing
-const Login = Loadable(lazy(() => import('views/pages/authentication')));
-const VisitorRegistration =  Loadable(lazy(() => import('views/pages/authentication/visitor-registration')));
-const Registration =  Loadable(lazy(() => import('views/pages/registartion')));
-const OnlineRegistration =  Loadable(lazy(() => import('views/pages/online-registration')));
-const Pricing =  Loadable(lazy(() => import('views/pages/pricing')));
+const Login = Loadable(lazy(() => import('pages/authentication')));
+const VisitorRegistration =  Loadable(lazy(() => import('pages/authentication/visitor-registration')));
+const Registration =  Loadable(lazy(() => import('pages/registartion')));
+const OnlineRegistration =  Loadable(lazy(() => import('pages/online-registration')));
+const Pricing =  Loadable(lazy(() => import('pages/pricing')));
 
 
 // ==============================|| AUTHENTICATION ROUTING ||============================== //

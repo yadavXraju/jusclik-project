@@ -3,7 +3,7 @@
 // Description -  Online Registration Form 
 
 import React, { useState } from 'react';
-import SchoolLogo from '../../../assets/images/Arwachin School (Test Logo) (2).png';
+import SchoolLogo from 'assets/images/school-logos/ArwachinLogo2.png';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import { Grid, Box, Paper, useMediaQuery, IconButton, Drawer, List, ListItem, ListItemText, Typography } from '@mui/material';
@@ -20,7 +20,7 @@ import Additional_Information from './Additional_Information';
 import PreviewAndSubmit from './PreviewAndSubmit';
 import TabNumber from './TabNumber';
 import BottomNavbar from 'views/common-section/BottomNavbar';
-import SchoolLogo2 from '../../../assets/images/Logo (Online Registration form Application).png';
+import SchoolLogo2 from 'assets/images/school-logos/ArwachinLogo2.png';
 import CloseIcon from '@mui/icons-material/Close';
 
 const OnlineRegistration = () => {

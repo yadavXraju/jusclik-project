@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid, useMediaQuery, useTheme } from '@mui/material';
 import Typography from '@mui/material/Typography';
-import LogoImg from '../../../assets/images/WhatsApp_Image_2020-03-21_at_8_04_53_PM__1-removebg-preview 1.png';
+import LogoImg from 'assets/images/school-logos/ArwachinLogo.png';
 
 const commonStyles = (isMobile) => ({
   logoImage: {

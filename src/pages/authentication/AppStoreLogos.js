@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Button,  useMediaQuery, useTheme } from '@mui/material';
-import PlayStoreImage from '../../../assets/images/Google-Play.png';
-import AppleStoreImage from '../../../assets/images/app-store.png';
+import PlayStoreImage from 'assets/images/login/Google-Play.png';
+import AppleStoreImage from 'assets/images/login/app-store.png';
 
 const StoreButton = ({ href, storeImage, altText, isMobile }) => (
   <Button

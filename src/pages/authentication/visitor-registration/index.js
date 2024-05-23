@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Box, Grid, Typography, useMediaQuery, useTheme, CssBaseline } from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import LogoImg from '../../../../assets/images/WhatsApp_Image_2020-03-21_at_8_04_53_PM__1-removebg-preview 1.png';
+import LogoImg from 'assets/images/school-logos/ArwachinLogo.png';
 import {VisitorDetails} from './visitor-details';
 import {SelfieVerification} from './selfie-verification';
 import { MobileNumber } from './mobile-number';
