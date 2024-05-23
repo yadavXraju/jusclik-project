@@ -1,3 +1,5 @@
+// ======= Page Owner Vikash =========
+// ======= Return Employee Table =========
 import React from 'react';
 import MainCard from 'ui-component/cards/MainCard';
 import { Box, Grid, Typography, IconButton, useMediaQuery, Divider } from '@mui/material';
@@ -13,6 +15,8 @@ import ExitEmployee from './exitProcess/ExitEmployee';
 
 
 function EmployeePreview() {
+
+  console.log('hii')
   const location = useLocation();
   const { rowData } = location.state;
 
