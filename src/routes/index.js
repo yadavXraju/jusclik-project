@@ -1,5 +1,5 @@
 // Page Owner Abhishek
-// Description : Routes Layout for with sidebar and without sidebar
+// Description : Routes Layout for with sidebar[ MainRoutes ] and without sidebar [ AuthenticationRoutes ]
 
 import { useRoutes } from 'react-router-dom';
 
@@ -10,5 +10,5 @@ import AuthenticationRoutes from './AuthenticationRoutes';
 // ==============================|| ROUTING RENDER ||============================== //
 
 export default function ThemeRoutes() {
-  return useRoutes([ AuthenticationRoutes,MainRoutes]);
+  return useRoutes([ AuthenticationRoutes , MainRoutes]);
 }
