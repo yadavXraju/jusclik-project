@@ -1,13 +1,10 @@
-import { lazy } from 'react';
+// page owner : Abhishek
+// Description :  Authentication Routes
 
-// project imports
+import { lazy } from 'react';
 import Loadable from 'ui-component/Loadable';
 
 
-// minimal layout for  without sidebar and header
-// import MinimalLayout from 'layout/MinimalLayout';
-
-// login option 3 routing
 const Login = Loadable(lazy(() => import('pages/authentication')));
 const VisitorRegistration =  Loadable(lazy(() => import('pages/authentication/visitor-registration')));
 const Registration =  Loadable(lazy(() => import('pages/registartion')));

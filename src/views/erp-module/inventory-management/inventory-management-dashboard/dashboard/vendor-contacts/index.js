@@ -4,7 +4,7 @@ import { HeadingCss } from 'views/common-section/dashboard-css/CommonCss'
 import { gridSpacing } from 'store/constant';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
-// import VendorAvatar from '../../../../../assets/images/Company-Avatar.jpg'
+
 
 const VendorContacts = () => {
   const isMobile = useMediaQuery('(max-width: 600px)');

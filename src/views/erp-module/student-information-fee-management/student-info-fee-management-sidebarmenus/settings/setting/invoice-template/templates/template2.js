@@ -12,7 +12,7 @@ import {  styled } from '@mui/system';
 import { List, ListItemText } from '@mui/material';
 import { commonTemplateContent } from '../common/sample-dropdown-values';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import schoollogo from 'assets/images/24x24-inch-logo-1.png';
+import schoollogo from 'assets/images/school-logos/Xaviers.png';
 import { useSelector } from 'react-redux';
 
 const DottedDivider = styled('div')({
