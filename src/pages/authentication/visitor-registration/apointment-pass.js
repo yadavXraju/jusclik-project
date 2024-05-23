@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import Avatar from '@mui/material/Avatar';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import Divider from '@mui/material/Divider';
-import QRCODE from 'assets/images/Demo_QR.jpg';
+import QRCODE from 'assets/images/QrCode.jpg';
 import Button from '@mui/material/Button';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import WithPrintPdf from 'component/withPrintPdf';

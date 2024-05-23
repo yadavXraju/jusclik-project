@@ -1,6 +1,6 @@
 // material-ui
 // import { useTheme } from '@mui/material/styles';
-import brand from '../assets/images/brand.svg';
+import JusklikLogo from 'assets/images/JusklikLogo.svg';
 import { Box } from '@mui/material';
 
 // ==============================|| LOGO SVG ||============================== //
@@ -8,14 +8,14 @@ import { Box } from '@mui/material';
 const Logo = () => {
   // const theme = useTheme();
 
-  const brandStyle = {
+  const LogoStyle = {
     display : 'flex',
     justifyContent:'start',
     alignItems:'center',
     gap:'10px'
   }
 
-  const brandImage = {
+  const LogoImage = {
     width:'70%',
     ObjectFit:'cover',
   }
@@ -23,8 +23,8 @@ const Logo = () => {
 
   return (
     <>
-    <Box style={brandStyle} >
-      <img src={brand} alt="Jusklik"  style={brandImage}/>
+    <Box style={LogoStyle} >
+      <img src={JusklikLogo} alt="Jusklik"  style={LogoImage}/>
      {/* <p style={{fontWeight:'700'}}>CLOUD9 SCHOOL APP</p> */}
     </Box>
     </>

@@ -1,5 +1,4 @@
-import AvatarImg from 'assets/images/avatar.png'
-
+import AvatarImg from 'assets/images/avatar-images/avatar.png';
 
 export const BirthdayList = [
   {

@@ -1,16 +1,16 @@
 // Sample data for initial inbox messages
 
-import Image1 from 'assets/images/Avatar-images/IMG_01.png';
-import Image2 from 'assets/images/Avatar-images/IMG_02.png';
-import Image3 from 'assets/images/Avatar-images/IMG_03.png';
-import Image4 from 'assets/images/Avatar-images/IMG_04.png';
-import Image5 from 'assets/images/Avatar-images/IMG_05.png';
-// import Image6 from '../../../../assets/images/Avatar-images/IMG_06.png';
-// import Image7 from '../../../../assets/images/Avatar-images/IMG_07.png';
-import Image8 from 'assets/images/Avatar-images/IMG_08.png';
-// import Image9 from '../../../../assets/images/Avatar-images/IMG_09.png';
-// import Image10 from '../../../../assets/images/Avatar-images/IMG_10.png';
-// import Image11 from '../../../../assets/images/Avatar-images/IMG_11.png';
+import Image1 from 'assets/images/avatar-images/IMG_01.png';
+import Image2 from 'assets/images/avatar-images/IMG_02.png';
+import Image3 from 'assets/images/avatar-images/IMG_03.png';
+import Image4 from 'assets/images/avatar-images/IMG_04.png';
+import Image5 from 'assets/images/avatar-images/IMG_05.png';
+// import Image6 from '../../../../assets/images/avatar-images/IMG_06.png';
+// import Image7 from '../../../../assets/images/avatar-images/IMG_07.png';
+import Image8 from 'assets/images/avatar-images/IMG_08.png';
+// import Image9 from '../../../../assets/images/avatar-images/IMG_09.png';
+// import Image10 from '../../../../assets/images/avatar-images/IMG_10.png';
+// import Image11 from '../../../../assets/images/avatar-images/IMG_11.png';
 
 const initialData = [
   {
