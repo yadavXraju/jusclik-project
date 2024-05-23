@@ -1,11 +1,12 @@
 // PAGE OWNER: DAMANDEEP
 import React from 'react'
-import {Typography,TextField,Box, Checkbox, Button} from '@mui/material'
+import {Typography,TextField,Box, Checkbox, Button, IconButton, Drawer} from '@mui/material'
 import ParamAttachement from 'views/common-section/ParamAttachement'
 import MultipleSelectChip from '../ChipSelect'
+import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 
-
-const names = [
+export const EditTaskDrawer=({toggleDrawer,state})=>{
+  const names = [
     'Oliver Hansen',
     'Van Henry',
     'April Tucker',
@@ -17,12 +18,22 @@ const names = [
     'Virginia Andrews',
     'Kelly Snyder',
   ];
-
-
-const EditTask = () => {
   return (
-    <>
-    <Box>
+      <>
+      <IconButton onClick={toggleDrawer('editTask', true)}  id="editTask" sx={{marginRight:'8px'}}>
+      <EditTwoToneIcon />
+    </IconButton>
+      <Drawer anchor="right" open={state.editTask} onClose={toggleDrawer('editTask', false)} >
+      {/* {form} */}
+      <Box sx={{ width: { xs: '100vw', sm: 650 }, padding: 2 }} role="presentation">
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #ccc' }}>
+          <Typography variant="h4">Edit Task</Typography>
+
+          <Button onClick={toggleDrawer('editTask', false)} sx={{ alignSelf: 'flex-end' }}>
+            Close
+          </Button>
+        </Box>
+        <Box>
 <Typography  sx={{mt:2, mb:1}}variant="h5" color="initial">Edit  Task List Name</Typography>
 <TextField
   fullWidth
@@ -72,8 +83,8 @@ const EditTask = () => {
   Save
 </Button>
 </Box>
-</>
+      </Box>
+    </Drawer>
+    </>
   )
 }
-
-export default EditTask
