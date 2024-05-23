@@ -6,7 +6,7 @@ import React from 'react';
 import { Grid, Typography, Box, TextField, InputLabel, useMediaQuery } from '@mui/material';
 import { useSelector } from 'react-redux';
 import Divider from '@mui/material/Divider';
-import Dropdown from 'views/common-section/ParamSelectList';
+import Dropdown from 'component/ParamSelectList';
 import { useState } from 'react';
 
 const StudentDetails =({ handleClick }) => {
@@ -567,7 +567,7 @@ export default StudentDetails;
 // import { Grid, Typography, Box, TextField, InputLabel } from '@mui/material';
 // import { useSelector } from 'react-redux';
 // import Divider from '@mui/material/Divider';
-// import Dropdown from 'views/common-section/ParamSelectList';
+// import Dropdown from 'component/ParamSelectList';
 // import { useState } from 'react';
 
 // function StudentDetails({ handleClick }) {
@@ -1081,7 +1081,7 @@ export default StudentDetails;
 // import { Grid, Typography, Box,  TextField,InputLabel  } from '@mui/material';
 // import { useSelector } from 'react-redux';
 // import Divider from '@mui/material/Divider';
-// import Dropdown from 'views/common-section/ParamSelectList';
+// import Dropdown from 'component/ParamSelectList';
 // import { useState } from 'react';
 
 // function StudentDetails({ handleClick  }) {
@@ -1558,7 +1558,7 @@ export default StudentDetails;
 // import { Grid, Typography, Box, TextField, InputLabel,useMediaQuery} from '@mui/material';
 // import { useSelector } from 'react-redux';
 // import Divider from '@mui/material/Divider';
-// import Dropdown from 'views/common-section/ParamSelectList';
+// import Dropdown from 'component/ParamSelectList';
 // import { useState } from 'react';
 
 // function StudentDetails({ handleClick }) {

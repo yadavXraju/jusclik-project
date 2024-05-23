@@ -1,9 +1,9 @@
 //@Page Onwer-Tarun Pandey
 import React, { useState } from 'react';
 import { Box, Paper, TextField, Drawer, Button } from '@mui/material';
-import ParameterizedAutoComplete from 'views/common-section/ParamAutoComplete';
-import SearchBar from 'views/common-section/SearchBox';
-import QuickSearchDrawer from 'views/common-section/QuickSearchDrawer'
+import ParameterizedAutoComplete from 'component/ParamAutoComplete';
+import SearchBar from 'component/SearchBox';
+import QuickSearchDrawer from 'component/QuickSearchDrawer'
 
 const subjects = ["Delivered", "notdelivered", "yetto delivered"];
 

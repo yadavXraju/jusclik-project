@@ -9,7 +9,7 @@ import { IconButton } from '@mui/material';
 import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
-import Pagination from 'views/common-section/Pagination';
+import Pagination from 'component/Pagination';
 //import useMediaQuery from '@mui/material/useMediaQuery';
 
 // ============= Assets data ===========

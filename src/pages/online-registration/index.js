@@ -19,7 +19,7 @@ import MotherDetails from './MotherDetails';
 import Additional_Information from './Additional_Information';
 import PreviewAndSubmit from './PreviewAndSubmit';
 import TabNumber from './TabNumber';
-import BottomNavbar from 'views/common-section/BottomNavbar';
+import BottomNavbar from 'component/BottomNavbar';
 import SchoolLogo2 from 'assets/images/school-logos/ArwachinLogo3.png';
 import CloseIcon from '@mui/icons-material/Close';
 
@@ -359,7 +359,7 @@ export default OnlineRegistration;
 // import Additional_Information from './Additional_Information';
 // import PreviewAndSubmit from './PreviewAndSubmit';
 // import TabNumber from './TabNumber';
-// import BottomNavbar from 'views/common-section/BottomNavbar';
+// import BottomNavbar from 'component/BottomNavbar';
 
 // const OnlineRegistration = () => {
 //   const [TabChange, setTabChange] = useState(0);

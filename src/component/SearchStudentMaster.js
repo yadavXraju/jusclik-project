@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import {Box,Paper,TextField,Button,useMediaQuery} from '@mui/material';
-import ParameterizedAutoComplete from 'views/common-section/ParamAutoComplete';
-import DateComponent from 'views/common-section/ParamDateComponent';
+import ParameterizedAutoComplete from 'component/ParamAutoComplete';
+import DateComponent from 'component/ParamDateComponent';
 
 const subjects = ["Delivered", "notdelivered", "yetto delivered"];
 

@@ -4,7 +4,7 @@
 import React, { useState } from 'react';
 import { Grid, Typography, Box, Paper, Button } from '@mui/material';
 import Divider from '@mui/material/Divider';
-import Dropdown from 'views/common-section/ParamSelectList';
+import Dropdown from 'component/ParamSelectList';
 
 const Declaration =({handleClick}) => {
     const [selectedDeclare, setSelectedDeclare] = useState('');

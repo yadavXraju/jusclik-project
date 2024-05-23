@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react'
 import { Box, Paper, Button, Typography } from '@mui/material';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
-import WithPrintPdf from 'views/common-section/withPrintPdf';
+import WithPrintPdf from 'component/withPrintPdf';
 import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
 import MoreVertTwoToneIcon from '@mui/icons-material/MoreVertTwoTone';
 import Popover from '@mui/material/Popover';

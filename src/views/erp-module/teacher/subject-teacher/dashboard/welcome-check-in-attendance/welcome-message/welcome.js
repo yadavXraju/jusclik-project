@@ -1,5 +1,5 @@
 import React from "react";
-import WelcomeMessageTemplate from "views/common-section/Welcome";
+import WelcomeMessageTemplate from "component/Welcome";
 
 
 const SubjectTeacherWelcomeMessage = () => {

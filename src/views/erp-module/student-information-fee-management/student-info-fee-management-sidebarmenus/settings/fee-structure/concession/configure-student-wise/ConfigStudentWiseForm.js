@@ -1,7 +1,7 @@
 import React , {useState} from 'react';
 import { Grid , TextField , Button} from '@mui/material';
-import ParamDateComponent from 'views/common-section/ParamDateComponent';
-import ParamMultipleSelect from 'views/common-section/ParamMultipleSelect';
+import ParamDateComponent from 'component/ParamDateComponent';
+import ParamMultipleSelect from 'component/ParamMultipleSelect';
 import { useDispatch , useSelector} from 'react-redux';
 import { setFeeHeads , setStudentWiseClass } from 'store/student-info-and-fee/settings/fee-structure/fee-structure-slice';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';

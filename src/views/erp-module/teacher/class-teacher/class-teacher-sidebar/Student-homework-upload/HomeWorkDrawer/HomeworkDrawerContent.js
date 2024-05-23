@@ -5,7 +5,7 @@ import HomeCategory from './HomeCategory';
 import HomeworkTopic from './HomeworkTopic';
 import HomeworkTemplate from './HomeworkTemplate';
 import HomeReplyBox from './HomeReplyBox';
-import { CommonDropZone } from 'views/common-section/CommonDropZone';
+import { CommonDropZone } from 'component/CommonDropZone';
 import HomeYoutubeLink from './HomeYoutubeLink';
 import HomeDrawerSubmit from './HomeDrawerSubmit';
 

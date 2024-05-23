@@ -1,5 +1,5 @@
 import { useDispatch, useSelector  } from 'react-redux';
-import ParamFeeStructureConfig from 'views/common-section/ParamFeeStructureConfig';
+import ParamFeeStructureConfig from 'component/ParamFeeStructureConfig';
 import { configGlobally } from 'store/student-info-and-fee/settings/fee-structure/fee-structure-slice';
 import ConfigGloballyForm from './ConfigGloballyForm';
 

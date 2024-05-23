@@ -3,7 +3,7 @@
 import React from 'react';
 import { Paper, Grid, Typography, TableContainer, Table, TableHead, TableRow, TableBody, TableCell, Chip } from '@mui/material';
 import { gridSpacing } from 'store/constant';
-import { HeadingCss } from 'views/common-section/dashboard-css/CommonCss';
+import { HeadingCss } from 'component/dashboard-css/CommonCss';
 
 
 const LeadInProcess = () => {

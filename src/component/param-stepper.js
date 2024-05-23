@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Tabs, Tab, Typography, Box } from '@mui/material';
-import BottomNavbar from 'views/common-section/BottomNavbar';
+import BottomNavbar from 'component/BottomNavbar';
 import TabsName from './ParamTabStep';
 
 

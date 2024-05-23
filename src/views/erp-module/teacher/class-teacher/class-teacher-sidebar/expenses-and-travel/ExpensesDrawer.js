@@ -1,5 +1,5 @@
 import React from 'react'
-import withParamDrawer from 'views/common-section/withParamDrawer';
+import withParamDrawer from 'component/withParamDrawer';
 import ExpenseDrawerContent from './ExpenseDrawerContent';
 
 const NewParamDrawer=withParamDrawer(ExpenseDrawerContent);

@@ -1,12 +1,12 @@
 // PAGE OWNER: DAMANDEEP
 import { Box, IconButton, Paper, Tooltip, Typography } from '@mui/material';
 import React from 'react';
-import CommonDataGrid from 'views/common-section/commonDataGrid';
+import CommonDataGrid from 'component/commonDataGrid';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 import { AddTaskListDrawer } from './drawers/add-task-list';
 import { EditTaskListDrawer } from './drawers/edit-task-list';
 import { AddTaskDrawer } from './drawers/add-task';
-import WarningDialog from 'views/common-section/WarningDialog';
+import WarningDialog from 'component/WarningDialog';
 import { EditTaskDrawer } from './drawers/edit-task';
 import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 

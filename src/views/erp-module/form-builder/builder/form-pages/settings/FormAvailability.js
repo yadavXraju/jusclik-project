@@ -4,8 +4,8 @@ import React, { useState } from 'react';
 import LensOutlinedIcon from '@mui/icons-material/LensOutlined';
 import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
 import TextArea from 'antd/es/input/TextArea';
-import ParameterizedDateComponent from 'views/common-section/ParamDateComponent';
-import ParamTime from 'views/common-section/ParamTime';
+import ParameterizedDateComponent from 'component/ParamDateComponent';
+import ParamTime from 'component/ParamTime';
 
 function FormAvailability() {
   const [activeButton, setActiveButton] = useState('always');

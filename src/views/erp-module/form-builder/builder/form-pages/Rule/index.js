@@ -1,7 +1,7 @@
 //@Page Onwer-Tarun Pandey
 import React from 'react';
 import { Box} from '@mui/material';
-import ParamTabs from 'views/common-section/ParamSearchTabs';
+import ParamTabs from 'component/ParamSearchTabs';
 import useDrawer from 'hooks/useDrawer';
 import FieldRule from './field-rule';
 import FormRule from './form-rule';

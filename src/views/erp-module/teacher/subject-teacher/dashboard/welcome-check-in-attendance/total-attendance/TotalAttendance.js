@@ -1,5 +1,5 @@
 import React from 'react'
-import Counter2 from 'views/common-section/Counter2'
+import Counter2 from 'component/Counter2'
 import { TotalAttendanceDeatails } from './AttendanceDetails'
 
 const SubjectTeacherTotalAttendance = () => {

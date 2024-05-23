@@ -6,8 +6,8 @@ import { IconButton, Tooltip } from '@mui/material';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 import RemoveRedEyeTwoToneIcon from '@mui/icons-material/RemoveRedEyeTwoTone';
 import rows from './LeaveTableData';
-import WarningDialog from 'views/common-section/WarningDialog';
-import CommonDataGrid from 'views/common-section/commonDataGrid';
+import WarningDialog from 'component/WarningDialog';
+import CommonDataGrid from 'component/commonDataGrid';
 import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 
 
