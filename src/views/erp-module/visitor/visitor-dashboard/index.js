@@ -1,6 +1,6 @@
 import React from 'react';
 import DashboardContent from './Dashboard';
-import DashboardPayRoll from 'component/dashboard-payroll';
+import DashboardPayRoll from 'pages/getting-started';
 import SetupTabs from 'component/param-stepper';
 import HomeTwoToneIcon from '@mui/icons-material/HomeTwoTone';
 import SettingsSuggestTwoToneIcon from '@mui/icons-material/SettingsSuggestTwoTone';
