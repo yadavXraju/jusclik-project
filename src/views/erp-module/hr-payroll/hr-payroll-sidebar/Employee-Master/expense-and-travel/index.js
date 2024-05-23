@@ -1,7 +1,10 @@
 import React from 'react';
-import { Grid, Paper, Typography } from '@mui/material';
+import { Grid, Paper, Typography , Box , } from '@mui/material';
 import ParamCounters from 'views/common-section/ParamCounters';
-import Person2OutlinedIcon from '@mui/icons-material/Person2Outlined';
+
+import Divider from '@mui/material/Divider';
+
+
 
 
 
@@ -18,21 +21,30 @@ const ExpenseAndTravel = () => {
     {
         id: 1,
         counterTitle: 'Total Paid Out Expenses',
-        icon: <Person2OutlinedIcon  sx={{  color: 'rgb(16 185 129)' }} />,
+        icon:  (<Box><Divider
+        orientation="vertical"
+        sx={{background:'red', width: '2px', height: '80%', marginLeft: '1rem', marginTop: '0.5rem' }}
+      /> </Box>),
         counterNumber: 7,
         
        
     },
     {
         id: 2,
-        icon: <Person2OutlinedIcon  sx={{ color: 'rgb(247, 144, 9)' }} />,
+        icon: (<Box><Divider
+          orientation="vertical"
+          sx={{background:'red', width: '2px', height: '80%', marginLeft: '1rem', marginTop: '0.5rem' }}
+        /> </Box>),
         counterNumber: 'INR 71,756',       
         counterTitle: 'Total Paid Amount',
        
     },
     {
         id: 3,
-        icon: <Person2OutlinedIcon sx={{ color: 'rgb(42, 101, 191)' }} />,
+        icon: (<Box><Divider
+          orientation="vertical"
+          sx={{background:'red', width: '2px', height: '80%', marginLeft: '1rem', marginTop: '0.5rem' }}
+        /> </Box>),
         counterNumber: 4,
         counterTitle: 'Total Employees',
      
@@ -40,7 +52,10 @@ const ExpenseAndTravel = () => {
 
     {
       id: 4,
-      icon: <Person2OutlinedIcon sx={{ color: 'rgb(42, 101, 191)' }} />,
+      icon: (<Box><Divider
+        orientation="vertical"
+        sx={{background:'red', width: '2px', height: '80%', marginLeft: '1rem', marginTop: '0.5rem' }}
+      /> </Box>),
       counterNumber: 4,
       counterTitle: 'Pending Receipt Submission',
    
@@ -58,8 +73,24 @@ const ExpenseAndTravel = () => {
       </Grid>
 
       <Grid spacing={5} sx={{ paddingTop: '1rem' }}>
-          <ParamCounters CounterData={CounterData} reverseOrderFlag={true}/>
+          <ParamCounters CounterData={CounterData} reverseOrderFlag={true} headingstyle={{fontSize:'14px'}} subheadingstyle={{fontSize:'24px'}} customboxstyle={{padding:'1rem'}} />
       </Grid>
+
+      <Grid container spacing={2}>
+
+      <Grid item lg={6}>
+Heelo
+      </Grid>
+      <Grid item lg={6}>
+        Hello
+      </Grid>
+
+
+      </Grid>
+
+
+
+
 
 
     
