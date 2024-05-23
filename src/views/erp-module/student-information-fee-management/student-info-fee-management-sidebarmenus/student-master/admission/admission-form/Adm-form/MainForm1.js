@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import { Grid, Card } from '@mui/material';
 import Remarks from './Remarks';
 import PersonAddAltTwoToneIcon from '@mui/icons-material/PersonAddAltTwoTone';
 import HomeWorkTwoToneIcon from '@mui/icons-material/HomeWorkTwoTone';
@@ -12,13 +11,13 @@ import HandymanTwoToneIcon from '@mui/icons-material/HandymanTwoTone';
 import TextsmsTwoToneIcon from '@mui/icons-material/TextsmsTwoTone';
 import DescriptionTwoToneIcon from '@mui/icons-material/DescriptionTwoTone';
 import BottomNavbar from '../../../../../../../erp-common-component/bottom-navbar';
-import Profile from './Profile';
 import ProfileDetail from './PrimaryDetails';
 import ContactPerson from './ContactPerson';
-import { useSelector,useDispatch } from 'react-redux';
-import  {addField,subGroupbyGroup}  from 'store/student-info-and-fee/student/admission-slice';
+import { useSelector, useDispatch } from 'react-redux';
+import { addField, subGroupbyGroup } from 'store/student-info-and-fee/student/admission-slice';
 import CommonAddress from 'views/common-section/CommonAddress';
-
+import Mainformlayout from 'layout/main-form-layout';
+import Profile from './Profile';
 
 const buttonsData = [
   { name: 0, icon: <PersonAddAltTwoToneIcon />, label: 'Primary Details' },
@@ -31,18 +30,11 @@ const buttonsData = [
 
 
 const Mainform1 = ({ currEditItem }) => {
-  const dispatch=useDispatch();
-  const { studentDetailsData,subGroups } = useSelector((state) => state.admission);
+  const dispatch = useDispatch();
+  const { studentDetailsData, subGroups } = useSelector((state) => state.admission);
   const [selectedButton, setSelectedButton] = useState(0);
-  const [section,setSection]=useState([]);
-  const [option, setOption] = useState({
-    primaryDetails: [],
-    otherDetails: [],
-    address: [],
-    contactPerson: [],
-    customFields: [],
-    remarks: [],
-  });
+  const [section, setSection] = useState([]);
+  const [option, setOption] = useState();
 
   const handleButtonClick = (buttonName) => {
     setSelectedButton(buttonName);
@@ -61,7 +53,7 @@ const Mainform1 = ({ currEditItem }) => {
       if (item?.sectionCode === 2) {
         setOption(prevOption => ({ ...prevOption, ["address"]: item?.section }));
       }
-      if(item?.sectionCode===3){
+      if (item?.sectionCode === 3) {
         setOption(prevOption => ({ ...prevOption, ["contactPerson"]: item?.section }));
       }
       if (item?.sectionCode === 3) {
@@ -70,12 +62,12 @@ const Mainform1 = ({ currEditItem }) => {
     });
   }, [studentDetailsData])
 
- 
+
   const getSectionName = () => {
     const updatedSections = [];
     studentDetailsData.forEach((item) => {
       item?.section?.forEach((subitem) => {
-        updatedSections.push({ label: subitem.name, value: subitem.name});
+        updatedSections.push({ label: subitem.name, value: subitem.name });
       });
     });
     setSection(updatedSections);
@@ -85,7 +77,7 @@ const Mainform1 = ({ currEditItem }) => {
     getSectionName();
   }, [])
 
-  const handleChange =(name, newValue) => {
+  const handleChange = (name, newValue) => {
     setStudentDetails({ ...student, [name]: newValue });
   };
 
@@ -98,7 +90,7 @@ const Mainform1 = ({ currEditItem }) => {
     { name: 'zipCode', label: 'Zip Code', type: 'text' }
   ];
 
-  
+
   let cardComponent;
   switch (selectedButton) {
     case 0:
@@ -111,7 +103,7 @@ const Mainform1 = ({ currEditItem }) => {
       cardComponent = <CommonAddress addressFields={studentAddressFields} title="Current" />;
       break;
     case 3:
-      cardComponent = <ContactPerson studentFields={option?.contactPerson}/>;
+      cardComponent = <ContactPerson studentFields={option?.contactPerson} />;
       break;
     case 4:
       cardComponent = <ProfileDetail studentFields={option?.customFields} type="Custom Fields" />;
@@ -123,55 +115,44 @@ const Mainform1 = ({ currEditItem }) => {
       cardComponent = null;
   }
 
-   const handleAddField=(customFields)=>{
-      dispatch(addField(customFields))
-   }
-  
-  const handleSubGroup=(subGroupName)=>{
-     dispatch(subGroupbyGroup(subGroupName));
+  const handleAddField = (customFields) => {
+    dispatch(addField(customFields))
   }
+
+  const handleSubGroup = (subGroupName) => {
+    dispatch(subGroupbyGroup(subGroupName));
+  }
+
+  const grid1=<Profile />
   
+
+  const grid2= [
+    buttonsData.map((button) => (
+      <Button
+        key={button.name}
+        sx={{
+          color: selectedButton === button.name ? '#2196f3' : 'black',
+          justifyContent: 'start',
+          fontSize: '14px'
+        }}
+        startIcon={button.icon}
+        size="large"
+        onClick={() => handleButtonClick(button.name)}
+      >
+        <Box>
+          <div style={{ justifyContent: 'start', display: 'flex' }}>{button.label}</div>
+        </Box>
+      </Button>
+    ))
+  ]
+
+  const grid3 = [
+    cardComponent
+  ]
+
   return (
     <>
-      <Card>
-        <Grid container spacing={3} mb={8} sx={{ display: 'flex', height: '100%' }}>
-          <Grid item xs={12} sm={12} lg={3}>
-            <Box sx={{ border: '1px solid #ccc', borderRadius: '10px' }}>
-              <Card>
-                <Box sx={{ borderBottom: '1px solid #ccc' }}>
-                  <Profile profileDetails={student} />
-                </Box>
-
-                <Box sx={{ flex: '0 0 auto', display: 'flex', flexDirection: 'column', padding: '20px' }}>
-                  {buttonsData.map((button) => (
-                    <Button
-                      key={button.name}
-                      sx={{
-                        color: selectedButton === button.name ? '#2196f3' : 'black',
-                        justifyContent: 'start',
-                        fontSize: '14px'
-                      }}
-                      startIcon={button.icon}
-                      size="large"
-                      onClick={() => handleButtonClick(button.name)}
-                    >
-                      <Box>
-                        <div style={{ justifyContent: 'start', display: 'flex' }}>{button.label}</div>
-                      </Box>
-                    </Button>
-                  ))}
-                </Box>
-              </Card>
-            </Box>
-          </Grid>
-
-          <Grid item xs={12} sm={12} lg={9}>
-            <Box sx={{ flex: '1', overflow: 'auto', border: '1px solid #ccc', borderRadius: '10px' }}>
-              <Box>{cardComponent}</Box>
-            </Box>
-          </Grid>
-        </Grid>
-      </Card>
+      <Mainformlayout grid1={grid1} grid2={grid2} grid3={grid3} />
       <BottomNavbar
         tabPageLength={buttonsData.length}
         value={selectedButton}

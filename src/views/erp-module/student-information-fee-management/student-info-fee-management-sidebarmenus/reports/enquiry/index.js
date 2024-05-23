@@ -11,7 +11,7 @@ import IconButton from '@mui/material/IconButton';
 // import RemoveRedEyeTwoToneIcon from '@mui/icons-material/RemoveRedEyeTwoTone';
 // import useDrawer from 'hooks/useDrawer';
 import EnquiryDrawer from './EnquiryDrawer';
-import ReportTable from '../common-report-section/report-table';
+import ReportTable from './report-table';
 import {useSelector} from 'react-redux';
 
 
