@@ -3,11 +3,8 @@ import { Card, Box, IconButton, Tooltip, Typography, Dialog, DialogTitle, Dialog
 import CheckCircleTwoToneIcon from '@mui/icons-material/CheckCircleTwoTone';
 import CancelTwoToneIcon from '@mui/icons-material/CancelTwoTone';
 import rows from './LeaveTableData';
-import WarningDialog from 'component/WarningDialog';
 import CommonDataGrid from 'component/commonDataGrid';
-import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 
-import CommonDataGrid from 'views/common-section/commonDataGrid';
 
 const LeaveTable = () => {
     const [tableRows, setTableRows] = React.useState(rows);
