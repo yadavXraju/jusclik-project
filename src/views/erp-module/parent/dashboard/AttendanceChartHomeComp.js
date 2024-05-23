@@ -1,7 +1,7 @@
 import React from 'react';
 import ApexCharts from 'react-apexcharts';
 import { Grid, Paper, Typography , Button , Box ,useMediaQuery  } from '@mui/material';
-import { HeadingCss , boxHeight} from 'views/common-section/dashboard-css/CommonCss';
+import { HeadingCss , boxHeight} from 'component/dashboard-css/CommonCss';
 import { useNavigate } from 'react-router';
 
 export const present = '63.3%';

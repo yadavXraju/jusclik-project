@@ -2,7 +2,7 @@
 // uses a reusable component "ParamStepper"
 // renders a panel with datagrid
 import React from 'react';
-import ParamStepper from 'views/common-section/param-stepper';
+import ParamStepper from 'component/param-stepper';
 import { Paper } from '@mui/material';
 import Onboarding from './onboarding-tasklist';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Paper, Grid, Typography, Box } from '@mui/material';
-import { HeadingCss } from 'views/common-section/dashboard-css/CommonCss'
+import { HeadingCss } from 'component/dashboard-css/CommonCss'
 import StockList from './StockList';
 
 const LowStockItemList = () => {

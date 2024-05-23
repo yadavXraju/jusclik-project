@@ -6,7 +6,7 @@ import PaymentTwoToneIcon from '@mui/icons-material/PaymentTwoTone';
 import ArticleTwoToneIcon from '@mui/icons-material/ArticleTwoTone';
 import useDrawer from 'hooks/useDrawer';
 import FeeLedgerForms from './Forms';
-import WithPrintPdf from 'views/common-section/withPrintPdf';
+import WithPrintPdf from 'component/withPrintPdf';
 
 // icon
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';

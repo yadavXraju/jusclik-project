@@ -1,8 +1,8 @@
 // OWNER : DAMANDEEP
 import {  Box, Checkbox, FormControl, FormControlLabel, Grid, Tab, Tabs } from '@mui/material';
 import React from 'react';
-import { CommonColorPicker } from 'views/common-section/CommonColorPicker'; 
-import { CommonDropZone } from 'views/common-section/CommonDropZone';
+import { CommonColorPicker } from 'component/CommonColorPicker'; 
+import { CommonDropZone } from 'component/CommonDropZone';
 import FontSize from '../../common/font-size';
 import { useDispatch } from 'react-redux';
 import { updateHeaderFooterProperty } from 'store/student-info-and-fee/settings/Invoice-Template-Slice';

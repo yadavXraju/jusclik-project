@@ -14,8 +14,8 @@ import ThumbUpOffAltOutlinedIcon from '@mui/icons-material/ThumbUpOffAltOutlined
 import MailOutlinedIcon from '@mui/icons-material/MailOutlined';
 import CreditCardOutlinedIcon from '@mui/icons-material/CreditCardOutlined';
 import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
-import SelectList from 'views/common-section/ParamSelectList';
-import ParameterizedDateComponent from 'views/common-section/ParamDateComponent';
+import SelectList from 'component/ParamSelectList';
+import ParameterizedDateComponent from 'component/ParamDateComponent';
 import AccessAlarmsOutlinedIcon from '@mui/icons-material/AccessAlarmsOutlined';
 import TextArea from 'antd/es/input/TextArea';
 import AddNoteDrawer from './AddNoteDrawer';
@@ -71,7 +71,7 @@ export default function FollowUpAndNotes() {
             Follow Up & Notes
           </Typography>
         </Box>
-        <Box>
+        <Box sx={{display:'flex'}}>
           <AddNoteDrawer />
 
           {/* ============= Add Follow Up Drawer =========== */}

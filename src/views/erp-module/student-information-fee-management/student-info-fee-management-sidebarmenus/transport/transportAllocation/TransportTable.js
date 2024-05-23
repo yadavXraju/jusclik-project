@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 import RemoveRedEyeTwoToneIcon from '@mui/icons-material/RemoveRedEyeTwoTone';
 import rows from './Sample-TransportTableData';
-import WarningDialog from 'views/common-section/WarningDialog';
+import WarningDialog from 'component/WarningDialog';
 import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 
 

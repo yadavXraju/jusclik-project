@@ -1,6 +1,6 @@
 // ======= Page Owner Vikash =========
 import React from 'react'
-import TeacherTimeTable from 'views/common-section/TeacherTimeTable'
+import TeacherTimeTable from 'component/TeacherTimeTable'
 import { TeacherTimeTableDetails } from './TimeTableDetails'
 
 const SubjectTeacherTimeTable = () => {

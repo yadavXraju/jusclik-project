@@ -1,8 +1,8 @@
 // @Page Owner-Tarun Pandey
 import React, { useState } from 'react'
 import { Box, TextField, Typography} from '@mui/material';
-import ParramPopover from 'views/common-section/ParamPopOverasDropDown';
-import ParamWarningBox from 'views/common-section/ParamWarningBox';
+import ParramPopover from 'component/ParamPopOverasDropDown';
+import ParamWarningBox from 'component/ParamWarningBox';
 
 const dropDownOption=["Only Me","Only Select","Everyone"];
 const ReportReference = () => {

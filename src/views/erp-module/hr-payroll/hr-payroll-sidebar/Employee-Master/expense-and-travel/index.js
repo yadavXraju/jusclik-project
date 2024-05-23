@@ -1,6 +1,6 @@
 import React from 'react';
-import { Grid, Paper, Typography, Box } from '@mui/material';
-import ParamCounters from 'views/common-section/ParamCounters';
+import { Grid, Paper, Typography , Box , } from '@mui/material';
+import ParamCounters from 'component/ParamCounters';
 
 import Divider from '@mui/material/Divider';
 import CommonChart from 'views/common-section/CommonChart';

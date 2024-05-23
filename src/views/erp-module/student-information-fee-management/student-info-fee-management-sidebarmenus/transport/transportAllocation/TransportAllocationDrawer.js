@@ -5,14 +5,14 @@ import useDrawer from 'hooks/useDrawer';
 import Drawer from '@mui/material/Drawer';
 import { Button, Typography, Box, Tab, Tabs, Grid } from '@mui/material';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
-import ParameterizedDateComponent from 'views/common-section/ParamDateComponent';
-import SelectList from 'views/common-section/ParamSelectList';
-import ParamMultipleSelect from 'views/common-section/ParamMultipleSelect';
+import ParameterizedDateComponent from 'component/ParamDateComponent';
+import SelectList from 'component/ParamSelectList';
+import ParamMultipleSelect from 'component/ParamMultipleSelect';
 import TextArea from 'antd/es/input/TextArea';
 import TextField from '@mui/material/TextField';
 import TransportTimeline from './TransportTimeline';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
-import BottomNavbar from 'views/common-section/BottomNavbar';
+import BottomNavbar from 'component/BottomNavbar';
 
 const TransportDrawer = () => {
   // ========= call custom hook for toggle drawer ==========

@@ -1,12 +1,12 @@
 // @Page Onwer-Tarun Pandey
 import React from 'react';
 import { Grid, Typography } from '@mui/material';
-import TestFilter from './filter-options/TestFilter'
+import TestFilter from './TestFilter'
 import { TextField, useMediaQuery } from '@mui/material';
 import {
   FilterByEnquiryDate, FilterByEnquiryNo, FilterByStudentName,
   FilterByClass, FilterBySection
-} from './filter-options/index';
+} from './filter-options';
 import { InputAdornment, IconButton } from '@mui/material';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import useOutsideClick from 'hooks/useClickOutside';

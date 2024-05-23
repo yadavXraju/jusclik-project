@@ -6,7 +6,7 @@ import { IconButton, Tooltip } from '@mui/material';
 import RemoveRedEyeTwoToneIcon from '@mui/icons-material/RemoveRedEyeTwoTone';
 import InviteUserDrawer from './InviteUserDrawer';
 import Switch from '@mui/material/Switch';
-import CommonDataGrid from 'views/common-section/commonDataGrid';
+import CommonDataGrid from 'component/commonDataGrid';
 
 const UserDetails = () => {
   const Click = (id) => {

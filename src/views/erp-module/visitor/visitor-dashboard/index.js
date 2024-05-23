@@ -4,9 +4,9 @@ import { Box, Paper } from '@mui/material';
 import TabContext from '@mui/lab/TabContext';
 import TabPanel from '@mui/lab/TabPanel';
 import TabLabel from 'views/erp-module/erp-common-item/tab/TabLabel';
-import DashboardPayRoll from 'views/common-section/dashboard-payroll';
+import DashboardPayRoll from 'component/dashboard-payroll';
 import PhoneIcon from '@mui/icons-material/Phone';
-import useTabValue from 'views/common-section/ParamTab';
+import useTabValue from 'component/ParamTab';
 import DashboardContent from './Dashboard';
 
 

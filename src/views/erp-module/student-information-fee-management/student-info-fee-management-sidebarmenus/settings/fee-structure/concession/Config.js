@@ -1,5 +1,5 @@
 import React from 'react';
-import  ParamStepper from 'views/common-section/param-stepper';
+import  ParamStepper from 'component/param-stepper';
 import ConfigureStudentWise from './configure-student-wise/ConfigureStudentWise';
 import ConfigureGlobally from './configure-globally/ConfigureGlobally';
 

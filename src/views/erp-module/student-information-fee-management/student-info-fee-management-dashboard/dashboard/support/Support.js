@@ -1,6 +1,6 @@
 import React from 'react'
 import {  Grid , Typography , Paper , Box } from '@mui/material'
-import { HeadingCss,} from 'views/common-section/dashboard-css/CommonCss';
+import { HeadingCss,} from 'component/dashboard-css/CommonCss';
 import { gridSpacing } from 'store/constant';
 import { useState } from 'react';
 import TabContext from '@mui/lab/TabContext';

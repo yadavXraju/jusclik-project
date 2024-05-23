@@ -1,8 +1,8 @@
 // ======= Page Owner Vikash =========
 // ======= Initiate Withdrawal Drawer =========
 import React, { useState } from 'react'
-import ParameterizedDateComponent from 'views/common-section/ParamDateComponent';
-import SelectList from 'views/common-section/ParamSelectList';
+import ParameterizedDateComponent from 'component/ParamDateComponent';
+import SelectList from 'component/ParamSelectList';
 import { Box, Button, Typography, FormGroup,FormControlLabel,Switch, TextField, Stack, Grid} from '@mui/material';
 
 export default function InitiateWithdrawal() {

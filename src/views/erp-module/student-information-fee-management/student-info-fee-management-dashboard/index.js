@@ -1,11 +1,13 @@
 import React from 'react';
 import DashboardContent from './dashboard';
-import DashboardPayRoll from 'views/common-section/dashboard-payroll';
-import SetupTabs from 'views/common-section/param-stepper';
+import DashboardPayRoll from 'component/dashboard-payroll';
+import SetupTabs from 'component/param-stepper';
 import HomeTwoToneIcon from '@mui/icons-material/HomeTwoTone';
 import SettingsSuggestTwoToneIcon from '@mui/icons-material/SettingsSuggestTwoTone';
 import NotificationsActiveTwoToneIcon from '@mui/icons-material/NotificationsActiveTwoTone';
 import { useMediaQuery } from '@mui/material';
+import { DashboardTab } from 'component/dashboard-css/CommonCss';
+
 const Dashboard = () => {
 
   const isTab = useMediaQuery('(max-width:991px)')
@@ -38,36 +40,19 @@ const Dashboard = () => {
   return (
     <>
       <SetupTabs  
-      variant={"scrollable"}
-      tabPage={tabPage}
-      orientation={ isTab ? "horizontal" :"horizontal"}
-      showBottomNav={false}
-      numberShow ={false}
-      iconShow={false}
-      customtabSytle = {{
-        display:"flex-inline",
-        flexDirection:"row",
-        alignItems:"center",
-        marginRight:"0px",
-        minHeight:'50px',
-      }}
+        variant={"scrollable"}
+        tabPage={tabPage}
+        orientation={ isTab ? "horizontal" :"horizontal"}
+        showBottomNav={false}
+        numberShow ={false}
+        iconShow={false}
+        customtabSytle = {DashboardTab.customtabSytle}
 
-    customtabPanelStyle={{
-      height:"auto",
-      background:"transparent",
-      padding:"24px 0px"
-    }}
-    customIconStyle={{
-      marginRight:"10px",
-      color:'#000'
-    }}
-    customStyleTabs={{
-      borderBottom:'2px solid red',
-      borderColor:'rgb(227, 232, 239) rgb(227, 232, 239) rgba(183, 183, 183, 0.26)',
-      mx:'24px'
-    }}
-      customtabWrapper={{marginTop:'0'}}
-   />
+        customtabPanelStyle={DashboardTab.customtabPanelStyle}
+        customIconStyle={DashboardTab.customIconStyle}
+        customStyleTabs={DashboardTab.customStyleTabs}
+        customtabWrapper={DashboardTab.customtabWrapper}
+     />
       
     </>
   );

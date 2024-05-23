@@ -1,15 +1,13 @@
 //  Page Owner : Abhishek
-//  Page Owner : Dashboard Layout 
+//  Page Owner : Dashboard Grid Layout Only  for Reference
 
 import React from 'react';
 import { Grid   }from '@mui/material';
 import { gridSpacing } from 'store/constant';
-import NeedHelp from 'views/erp-module/student-information-fee-management/student-info-fee-management-dashboard/dashboard/support/Support2';
 
 
 
-
-const DashboardLayout = ({ isLoading , children }) => {
+const DashboardLayout = ({ children }) => {
   return (
     <>
         <Grid container spacing={gridSpacing}>
@@ -48,8 +46,7 @@ const DashboardLayout = ({ isLoading , children }) => {
 
                     {/* need support */}
                     <Grid item xs={12} lg={4} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
-                        {/* <NeedSupport isLoading={isLoading} />  */}
-                        <NeedHelp isLoading={isLoading} />
+                        {children}
                     </Grid>
 
                 </Grid>

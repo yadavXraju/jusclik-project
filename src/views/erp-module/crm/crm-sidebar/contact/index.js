@@ -7,8 +7,8 @@ import { useNavigate } from 'react-router-dom';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 import RemoveRedEyeTwoToneIcon from '@mui/icons-material/RemoveRedEyeTwoTone';
 import rows from './Sample-LeadTableData';
-import WarningDialog from 'views/common-section/WarningDialog';
-import CommonDataGrid from 'views/common-section/commonDataGrid';
+import WarningDialog from 'component/WarningDialog';
+import CommonDataGrid from 'component/commonDataGrid';
 import AddContactDrawer from './AddContactDrawer'
 
 

@@ -1,3 +1,5 @@
+// ======= Page Owner Vikash =========
+// ======= Return Employee Form Tabs =========
 import React, { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -17,8 +19,8 @@ import Experience from './Experience';
 import TextArea from 'antd/es/input/TextArea';
 import BottomNavbar from 'views/erp-common-component/bottom-navbar';
 import {addField,subGroupbyGroup} from 'store/Hr-Payroll/AddEmployee-slice';
-import CommonAddress from '../../../../common-section/CommonAddress';
-import CommonContactPerson from 'views/common-section/CommonContactPerson';
+import CommonAddress from '../../../../../component/CommonAddress';
+import CommonContactPerson from 'component/CommonContactPerson';
 
 
 const buttonsData = [

@@ -1,5 +1,5 @@
 import React from "react";
-import CommonCounter from "views/common-section/CommonCounter";
+import CommonCounter from "component/CommonCounter";
 import { useSelector } from "react-redux";
 
 export const CheckInAndCheckOutData  = {

@@ -1,12 +1,14 @@
+// ======= Page Owner Vikash =========
+// ======= Employee Detail table =========
 import React from 'react';
 import { IconButton, Tooltip } from '@mui/material';
 import { Box } from '@mui/system';
 import { useNavigate } from 'react-router-dom';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 import RemoveRedEyeTwoToneIcon from '@mui/icons-material/RemoveRedEyeTwoTone';
-import EmployeeData from './EmployeeData';
-import WarningDialog from 'views/common-section/WarningDialog';
-import CommonDataGrid from 'views/common-section/commonDataGrid';
+import EmployeeData from './Sample-EmployeeData';
+import WarningDialog from 'component/WarningDialog';
+import CommonDataGrid from 'component/commonDataGrid';
 // import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 import EmployeeDrawer from './AddEmployeeDrawer';
 
@@ -17,11 +19,11 @@ export default function EmployeeTable() {
   const [currEditItem, setCurrEditItem] = React.useState({});
 
   const Click = (rowData) => {
-    navigate(`/erp/hr-payroll/employee-master/${rowData.id}`, { state: { rowData }});
+    navigate(`/erp/hr-payroll/employee/employee-master/${rowData.id}`, { state: { rowData }});
   };
 
   // ========== function for handle Edit row ===========
-   const handleEditClick = (editItem) => {
+  const handleEditClick = (editItem) => {
     setCurrEditItem(editItem);
   };
   
@@ -91,7 +93,6 @@ export default function EmployeeTable() {
       )
     }
   ];
-
   
   return (
     <>

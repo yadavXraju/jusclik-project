@@ -77,7 +77,7 @@ const StudentDetailsForm =  Loadable(lazy(() => import('views/erp-module/student
 const TransactionNoSeries =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/settings/transaction-no-series')));
 
 // dashboard payroll
-const DashboardPayroll =  Loadable(lazy(() => import('views/common-section/dashboard-payroll')));
+const DashboardPayroll =  Loadable(lazy(() => import('component/dashboard-payroll')));
 // user details and roles
 const UserDetailsRoles =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-sidebarmenus/user-and-roles')));
 // invoice template

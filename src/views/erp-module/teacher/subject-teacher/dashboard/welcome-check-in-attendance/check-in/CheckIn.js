@@ -1,5 +1,5 @@
 import React from 'react'
-import Counter1 from 'views/common-section/CommonCounter'
+import Counter1 from 'component/CommonCounter'
 import { CheckInAndCheckOutData } from './CheckInDetails'
 
 
