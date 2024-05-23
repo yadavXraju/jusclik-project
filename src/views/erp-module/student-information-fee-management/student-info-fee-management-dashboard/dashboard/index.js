@@ -1,20 +1,5 @@
 
-//Fee module Dashboard.js
-// import React from 'react';
-// import Grid from '@mui/material/Grid';
-// import { gridSpacing } from 'store/constant';
-// import FeeDefaulter from './fee-defaulter';
-// import InvoiceRaised from './invoice-raised';
-// import FeeCollection from './fee-collection';
-// import Counters from './counters/Counters';
-// import EnrollmentStatistics from './enrollment-statistics/EnrollmentStatistics';
-// import ParentLoginStatus from './parent-login-status/ParentLoginStatus';
 import NeedHelp from './support/Support2';
-
-
-// new 
-
-
 import React from 'react';
 import { Grid , Box , Typography , Paper , useMediaQuery , LinearProgress }from '@mui/material';
 
@@ -32,8 +17,7 @@ import BadgeTwoToneIcon from '@mui/icons-material/BadgeTwoTone';
 import NoAccountsTwoToneIcon from '@mui/icons-material/NoAccountsTwoTone';
 
 // Payment Gateway Wise Collection  import
-import ParentLoginStatusTemplate from 'views/erp-module/student-information-fee-management/student-info-fee-management-dashboard/dashboard/parent-login-status/parentLoginStatusTemplate';
-
+import CommonChart from 'views/common-section/CommonChart';
 
 // ================== fee defaulter imports ==================
 import SkeletonTotalGrowthBarChart from 'ui-component/cards/Skeleton/TotalGrowthBarChart';
@@ -165,7 +149,7 @@ const EnrollmentStatistics = () => {
 
 // ===================  Payment Gateway Wise Collection start ============
 const ParentLoginStatus = () => {
-  const loginData = {
+  const Data = {
       series: [100, 200, 50],
       labels: ['Desktop Logins', 'Mobile Logins', 'Never Logged In'],
       colors: ['rgba(60, 159, 60, 0.71)', 'rgb(94, 53, 177)', 'rgb(30, 136, 229)'],
@@ -174,7 +158,7 @@ const ParentLoginStatus = () => {
   const heading = "Payment Gateway Wise Collection";
 
   return (
-      <ParentLoginStatusTemplate loginData={loginData} heading={heading} />
+      <CommonChart Data={Data} heading={heading} />
   );
 }
 // ===================  Payment Gateway Wise Collection end ============
@@ -269,7 +253,7 @@ const InvoiceRaised = () => {
 // ===================  Fee Collection Start  ============
 const FeeCollection = () => {
   // Dummy data
-  const loginData = {
+  const Data = {
     series: [5000, 4000],
     labels: ['Cash', 'Demand Draft'],
     colors: ['rgb(94, 53, 177)', 'rgb(30, 136, 229)'],
@@ -279,7 +263,7 @@ const FeeCollection = () => {
   const heading = "Fee Collection";
 
   return (
-      <ParentLoginStatusTemplate loginData={loginData} heading={heading} />
+      <CommonChart Data={Data} heading={heading} />
   );
 }
 // ===================  Fee Collection end  ============
@@ -418,7 +402,6 @@ const FeeDefaulter = ({ isLoading }) => {
   );
 };
 // ================== fee defaulter end ==================
-
 
 const DashboardContent = ({ isLoading }) => {
   return (
