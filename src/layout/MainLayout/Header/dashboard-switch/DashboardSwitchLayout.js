@@ -9,8 +9,8 @@ import { useTheme } from '@mui/material/styles';
 import { useNavigate } from 'react-router';
 import { useDispatch } from 'react-redux';
 import { handleErpModule } from 'store/layout/erp-module-slice';
-import parent from 'assets/images/dashboard-icon/parent-dashboard.svg';
-import teacher from 'assets/images/dashboard-icon/teacher-dashboard.svg';
+import parent from 'assets/images/erp-module-icon/parent-dashboard.svg';
+import teacher from 'assets/images/erp-module-icon/teacher-dashboard.svg';
 
 const ListItemWrapper = styled('div')(({ theme }) => ({
   cursor: 'pointer',
