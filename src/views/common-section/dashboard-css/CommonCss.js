@@ -1,11 +1,9 @@
+// page owner :  Abhishek
+// description : css use in the dashboards
 
 export const HeadingCss = {
     color: 'rgb(17, 25, 39)',
-   //  letterSpacing: '.5px' ,
-    //  borderBottom:'1px solid #80808040' ,
      paddingBottom:'20px',
-   //   textTransform : 'uppercase',
-   //   fontSize:'20px',
      fontSize:'1.0417rem',
      textTransform: 'capitalize',
      fontFamily : '"Plus Jakarta Sans", "sans-serif"',
@@ -21,7 +19,6 @@ export const boxHeight = {
  export const fullHeight = {
     height: '100%',
  }
-
 
  export const subTitle = {
          margin: '0px',
@@ -52,3 +49,30 @@ export const boxHeight = {
  }
 
 
+ export const DashboardTab = {
+   customtabSytle : {
+     display:"flex-inline",
+     flexDirection:"row",
+     alignItems:"center",
+     marginRight:"0px",
+     minHeight:'50px',
+   },
+ 
+   customtabPanelStyle :{
+     height:"auto",
+     background:"transparent",
+     padding:"24px 0px"
+   },
+   customIconStyle:{
+     marginRight:"10px",
+     color:'#000'
+   },
+   customStyleTabs :{
+     borderBottom:'2px solid red',
+     borderColor:'rgb(227, 232, 239) rgb(227, 232, 239) rgba(183, 183, 183, 0.26)',
+     mx:'24px',
+   },
+   customtabWrapper:{
+     marginTop:'0'
+   }
+ }
