@@ -4,8 +4,9 @@ import React from 'react'
 import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 
 export const EditTaskListDrawer=({toggleDrawer,state,taskGroups,setTaskGroups,value})=>{
+    console.log(taskGroups[value],value);
     const [name,setName]=React.useState(taskGroups[value]?.name)
-  const [desc,setDesc]=React.useState(taskGroups[value]?.description)
+    const [desc,setDesc]=React.useState(taskGroups[value]?.description)
   const handleNameChange=(e)=>{
     const newName=e.target.value
       setName(newName)   
