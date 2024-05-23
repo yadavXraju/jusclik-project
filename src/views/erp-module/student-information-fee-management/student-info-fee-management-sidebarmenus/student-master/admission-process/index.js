@@ -4,10 +4,10 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import { Box, useMediaQuery } from '@mui/material';
-import SearchStudentMaster from 'views/common-section/SearchStudentMaster';
-import PrintPdf from 'views/common-section/withPrintPdf';
-import PrintExcel from 'views/common-section/PrintExcel';
-import DownloadPdf from 'views/common-section/DownloadPdf';
+import SearchStudentMaster from 'component/SearchStudentMaster';
+import PrintPdf from 'component/withPrintPdf';
+import PrintExcel from 'component/PrintExcel';
+import DownloadPdf from 'component/DownloadPdf';
 import StudentInfo from './StudentInfo';
 import 'assets/scss/tabscustomization.css';
 

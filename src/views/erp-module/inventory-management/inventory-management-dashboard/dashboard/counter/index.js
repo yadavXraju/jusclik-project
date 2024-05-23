@@ -1,5 +1,5 @@
 import React from "react";
-import ParamCounters from "views/common-section/ParamCounters";
+import ParamCounters from "component/ParamCounters";
 // icons
 import PeopleOutlineIcon from '@mui/icons-material/PeopleOutline';
 import PermIdentityOutlinedIcon from '@mui/icons-material/PermIdentityOutlined';

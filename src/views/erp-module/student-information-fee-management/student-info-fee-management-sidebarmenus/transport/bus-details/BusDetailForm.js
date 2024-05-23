@@ -3,7 +3,7 @@
 import { Box } from '@mui/system';
 import React from 'react';
 import { Grid, TextField, Typography } from '@mui/material';
-import ParameterizedDateComponent from 'views/common-section/ParamDateComponent';
+import ParameterizedDateComponent from 'component/ParamDateComponent';
 
 function BusDetailForm() {
   return (

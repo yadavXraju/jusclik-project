@@ -13,7 +13,7 @@ import ReceiptOutlinedIcon from '@mui/icons-material/ReceiptOutlined';
 // import FolderOpenOutlinedIcon from '@mui/icons-material/FolderOpenOutlined';
 // import ManageHistoryOutlinedIcon from '@mui/icons-material/ManageHistoryOutlined';
 import ReportsPayrollInv from './ReportsPayrollInv';
-import SearchBar from 'views/common-section/ParamSearchBar';
+import SearchBar from 'component/ParamSearchBar';
 import { Link } from 'react-router-dom'; 
 
 

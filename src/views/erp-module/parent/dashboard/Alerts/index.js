@@ -4,7 +4,7 @@ import React from 'react';
 import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
 import CurrencyRupeeOutlinedIcon from '@mui/icons-material/CurrencyRupeeOutlined';
 import BookOutlinedIcon from '@mui/icons-material/BookOutlined';
-import ParamWidget from 'views/common-section/ParamWidget';
+import ParamWidget from 'component/ParamWidget';
 import { Box } from '@mui/material';
 
 export const ParentAlertData = [

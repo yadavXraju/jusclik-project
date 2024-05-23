@@ -13,7 +13,7 @@ import themes from 'themes';
 // project imports
 import NavigationScroll from 'layout/NavigationScroll';
 // import SubjectCard from 'views/utilities/SubjectCard';
-import SaveVisitedURLs from 'views/common-section/SaveVisitedURLS';
+import SaveVisitedURLs from 'component/SaveVisitedURLS';
 
 // ==============================|| APP ||============================== //
 

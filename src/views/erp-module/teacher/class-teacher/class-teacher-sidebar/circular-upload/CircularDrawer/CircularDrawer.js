@@ -83,7 +83,7 @@
 
 
 import React from 'react'
-import withParamDrawer from 'views/common-section/withParamDrawer';
+import withParamDrawer from 'component/withParamDrawer';
 import CircularContent from './CircularContent';
 
 const NewParamDrawer=withParamDrawer(CircularContent);

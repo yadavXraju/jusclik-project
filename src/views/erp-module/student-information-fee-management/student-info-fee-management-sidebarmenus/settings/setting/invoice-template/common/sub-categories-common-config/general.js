@@ -1,14 +1,14 @@
 // OWNER : DAMANDEEP
 import { Box, Checkbox, FormControl, FormControlLabel, Grid, Radio, RadioGroup, Tab, Tabs, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react';
-import { CommonColorPicker } from 'views/common-section/CommonColorPicker';
+import { CommonColorPicker } from 'component/CommonColorPicker';
 import CommonSelect from '../../common/common-select';
 import FontSize from '../../common/font-size';
 import { fontFamily} from '../sample-dropdown-values';
 import { useDispatch } from 'react-redux';
 import { updateGeneralProperty } from 'store/student-info-and-fee/settings/Invoice-Template-Slice';
 import { useSelector } from 'react-redux';
-import { CommonDropZone } from 'views/common-section/CommonDropZone';
+import { CommonDropZone } from 'component/CommonDropZone';
 
 const General = () => {
   const dispatch = useDispatch();

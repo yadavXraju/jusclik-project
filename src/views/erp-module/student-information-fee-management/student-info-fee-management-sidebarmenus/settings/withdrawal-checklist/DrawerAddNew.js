@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Box, Button,Grid ,Stack} from '@mui/material';
-import SelectList from 'views/common-section/ParamSelectList';
-import ParameterizedDateComponent from 'views/common-section/ParamDateComponent';
+import SelectList from 'component/ParamSelectList';
+import ParameterizedDateComponent from 'component/ParamDateComponent';
 
 
 const DrawerAddNew=() => {

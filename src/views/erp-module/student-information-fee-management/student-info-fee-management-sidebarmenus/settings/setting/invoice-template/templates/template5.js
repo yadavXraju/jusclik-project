@@ -5,7 +5,7 @@ import Box from '@mui/material/Box';
 import { Grid } from '@mui/material';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
-import schoollogo from 'assets/images/24x24-inch-logo-1.png';
+import schoollogo from 'assets/images/school-logos/Xaviers.png';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';

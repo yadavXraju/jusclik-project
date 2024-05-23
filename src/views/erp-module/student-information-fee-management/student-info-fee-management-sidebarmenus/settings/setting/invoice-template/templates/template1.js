@@ -2,7 +2,7 @@ import React from 'react';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { Typography } from '@mui/material';
-import schoollogo from 'assets/images/24x24-inch-logo-1.png';
+import schoollogo from 'assets/images/school-logos/Xaviers.png';
 import CurrencyRupeeOutlinedIcon from '@mui/icons-material/CurrencyRupeeOutlined';
 import { commonTemplateContent } from '../common/sample-dropdown-values';
 import { templateCompact } from '../common/sample-dropdown-values';

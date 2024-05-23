@@ -5,7 +5,7 @@ import { DataGrid } from '@mui/x-data-grid';
 import { IconButton, Tooltip, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
-import WarningDialog from 'views/common-section/WarningDialog';
+import WarningDialog from 'component/WarningDialog';
 import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 import SlabTableData from './Sample-SlabTableData';
 import SlabFormDrawer from './SlabFormDrawer';

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import AlignItemsList from 'views/erp-module/parent/parent-sidebar/communication-message/Contact-list';
-import ParamWidgetHeader from 'views/common-section/ParamWidgetHeader';
+import ParamWidgetHeader from 'component/ParamWidgetHeader';
 import { Grid ,Paper} from '@mui/material';
 
 const CommunicationHomeComp = () => {

@@ -1,7 +1,7 @@
 // @Page Owner-Tarun Pandey
 import React from 'react';
 // import ParamChackboxSelectAll from './ParamChackboxSelectAll';
-import CustomizedTreeView from '../../../../../common-section/ParamReportTreeView';
+import CustomizedTreeView from '../../../../../../component/ParamReportTreeView';
 
 // const AcademicSessionData = [
 //   { id: '1', details: { year: 'Loan Reports', checked: false } },

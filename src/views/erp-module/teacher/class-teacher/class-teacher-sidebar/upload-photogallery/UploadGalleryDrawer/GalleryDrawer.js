@@ -51,7 +51,7 @@
 
 
 import React from 'react'
-import withParamDrawer from 'views/common-section/withParamDrawer';
+import withParamDrawer from 'component/withParamDrawer';
 import CreateNewDetails from './CreateNewDetails';
 const NewParamDrawer=withParamDrawer(CreateNewDetails);
 function GalleryDrawer() {

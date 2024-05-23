@@ -4,10 +4,10 @@
 import PropTypes from 'prop-types';
 import {  Divider, Grid, Typography , Button ,Box , useMediaQuery,Paper} from '@mui/material';
 import SkeletonPopularCard from 'ui-component/cards/Skeleton/PopularCard';
-import { boxHeight, subtitle2 } from 'views/common-section/dashboard-css/CommonCss';
+import { boxHeight, subtitle2 } from 'component/dashboard-css/CommonCss';
 import { UpdatesData } from 'views/erp-module/parent/parent-sidebar/updates/UpdatesData';
 import { useNavigate } from 'react-router';
-import ParamWidgetHeader from 'views/common-section/ParamWidgetHeader';
+import ParamWidgetHeader from 'component/ParamWidgetHeader';
 const CircularAndNoticeHomeComp = ({ isLoading }) => {
  
   const navigate = useNavigate();

@@ -25,7 +25,7 @@ const AddTaskListDrawerContent = () => {
 export const AddTaskListDrawer=({toggleDrawer,state})=>{
     return (
         <>
-        <IconButton onClick={toggleDrawer('addTaskGroup', true)} sx={{ fontSize: '0.875rem', lineHeight: '1.75' }} id="addTaskGroup">
+        <IconButton onClick={toggleDrawer('addTaskGroup', true)}  id="addTaskGroup" sx={{marginRight:'8px'}}>
         <AddOutlinedIcon />
       </IconButton>
         <Drawer anchor="right" open={state.addTaskGroup} onClose={toggleDrawer('addTaskGroup', false)}>

@@ -1,7 +1,7 @@
 
 import { Typography , Grid} from '@mui/material';
 import {Divider , Box ,Paper} from '@mui/material';
-import { subTitle , subtitle2  , boxHeight ,  HeadingCss } from 'views/common-section/dashboard-css/CommonCss';
+import { subTitle , subtitle2  , boxHeight ,  HeadingCss } from 'component/dashboard-css/CommonCss';
 import { studnetAttendancePercentage } from './Attendance';
 
 
