@@ -1,32 +1,31 @@
 // ======= Page Owner Vikash =========
-// ======= Employee Detail table =========
-import React from 'react';
+import React from 'react'
+import { Card, Box } from '@mui/material'
 import { IconButton, Tooltip } from '@mui/material';
-import { Box } from '@mui/system';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 import RemoveRedEyeTwoToneIcon from '@mui/icons-material/RemoveRedEyeTwoTone';
-import EmployeeData from './Sample-EmployeeData';
+import rows from './LeaveTableData';
 import WarningDialog from 'views/common-section/WarningDialog';
 import CommonDataGrid from 'views/common-section/commonDataGrid';
-// import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
-import EmployeeDrawer from './AddEmployeeDrawer';
+import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 
 
-export default function EmployeeTable() {
-  const navigate = useNavigate();
-  const [tableRows, setTableRows] = React.useState(EmployeeData);
-  const [currEditItem, setCurrEditItem] = React.useState({});
+const LeaveTable = () => {
+//   const navigate = useNavigate();
+  const [tableRows, setTableRows] = React.useState(rows);
+//   const [currEditItem, setCurrEditItem] = React.useState({});
 
-  const Click = (rowData) => {
-    navigate(`/erp/hr-payroll/employee/employee-master/${rowData.id}`, { state: { rowData }});
-  };
+// const Click = (rowData) => {
+//     navigate(`/erp/crm/contact/${rowData.id}`, { state: { rowData }});
+//   };
 
-  // ========== function for handle Edit row ===========
-  const handleEditClick = (editItem) => {
-    setCurrEditItem(editItem);
-  };
-  
+//    // ========== function for handle Edit row ===========
+//    const handleEditClick = (editItem) => {
+//     setCurrEditItem(editItem);
+//   };
+ 
+
   // ========= render error model for Delete row ==========
   const [modalOpen, setmodalOpen] = React.useState(false);
   const [deleteId, setdeleteId] = React.useState(null);
@@ -49,19 +48,15 @@ export default function EmployeeTable() {
 
   // ========= Data Grid Columns ==========
   const columns = [
-    { field: 'employeeId', headerName: 'Employee Id', flex: 1, minWidth: 130, align: 'left', headerAlign: 'left' },
-    { field: 'firstName', headerName: 'First Name', flex: 1, minWidth: 130 },
-    { field: 'lastName', headerName: 'Last Name', flex: 1, minWidth: 130 },
-    // { field: 'ClassSection', headerName: 'Class/Section', flex: 1, minWidth: 100,
-    //   valueGetter: (params) => `${params.row.class}-${params.row.Section}`
-    // },
-    { field: 'gender', headerName: 'Gender', flex: 1, minWidth: 130 },
-    { field: 'dob', headerName: 'D.O.B', flex: 1, minWidth: 130 },
-    { field: 'doj', headerName: 'Joining Date', flex: 1, minWidth: 130 },
-    { field: 'designation', headerName: 'Designation', flex: 1, minWidth: 130 },
-    { field: 'email', headerName: 'Email', flex: 1, minWidth: 130 },
-    { field: 'mobile', headerName: 'Mobile', flex: 1, minWidth: 130 },
-    { field: 'department', headerName: 'Department', flex: 1, minWidth: 130 },
+    { field: 'contactNo', headerName: 'Emp. Code', flex: 1, minWidth: 130, align: 'left', headerAlign: 'left' },
+    { field: 'firstName', headerName: 'Emp. Name', flex: 1, minWidth: 130 },
+    { field: 'lastName', headerName: 'Department', flex: 1, minWidth: 130 },
+    { field: 'leadOwner', headerName: 'Application No', flex: 1, minWidth: 130 },
+    { field: 'email', headerName: 'Leave Type', flex: 1, minWidth: 130 },
+    { field: 'mobile', headerName: 'App. Date', flex: 1, minWidth: 130 },
+    { field: 'createdBy', headerName: 'Planned/Unplanned', flex: 1, minWidth: 130 },
+    { field: 'description', headerName: 'Applied', flex: 1, minWidth: 130 },
+    { field: 'status', headerName: 'Status', flex: 1, minWidth: 130 },
     {
       field: 'Action',
       headerName: 'Action',
@@ -79,8 +74,7 @@ export default function EmployeeTable() {
           </Tooltip>
           <Tooltip >
           <IconButton onClick={(event) => event.stopPropagation()}>
-            {/* <EditTwoToneIcon/> */}
-            <EmployeeDrawer editIcon="true" currEditItem={currEditItem} handleClick={() => handleEditClick(params.row)} />
+             <EditTwoToneIcon/>
           </IconButton>
           
           </Tooltip>
@@ -93,14 +87,16 @@ export default function EmployeeTable() {
       )
     }
   ];
-  
+
+
   return (
     <>
-      <Box>
+    <Card sx={{padding:'16px'}}>
+    <Box>
         <Box mt={3}>
           <CommonDataGrid
             rows={tableRows}
-            columns={columns} // Use state variable for columns
+            columns={columns}
             onRowClick={(params) => Click(params.row)}
             initialState={{
               pagination: {
@@ -119,7 +115,9 @@ export default function EmployeeTable() {
         contentText="Are you sure you want to delete?"
         onConfirm={handleConfirmDelete}
       />
+    </Card>
     </>
-  );
+  )
 }
 
+export default LeaveTable

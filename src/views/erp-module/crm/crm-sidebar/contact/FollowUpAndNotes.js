@@ -71,7 +71,7 @@ export default function FollowUpAndNotes() {
             Follow Up & Notes
           </Typography>
         </Box>
-        <Box>
+        <Box sx={{display:'flex'}}>
           <AddNoteDrawer />
 
           {/* ============= Add Follow Up Drawer =========== */}
