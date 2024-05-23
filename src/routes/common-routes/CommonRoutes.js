@@ -4,7 +4,7 @@ import Loadable from 'ui-component/Loadable';
 
 
 // Class Teacher  Dashboard Menus
-const ContactSupport = Loadable(lazy(() => import('views/erp-common-component/post-support-ticket')));
+const ContactSupport = Loadable(lazy(() => import('pages/post-support-ticket')));
 
 const CommonRoutes = [
 

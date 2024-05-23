@@ -15,7 +15,7 @@ function ProgressBar() {
   const filledUnits = 3;
 
   // Calculate the percentage of filled units
-  const filledPercentage = (filledUnits / totalUnits) * 100;
+  const filledPercentage = (filledUnits / totalUnits  ) * 100;
 
   const classes = useStyles();
 
