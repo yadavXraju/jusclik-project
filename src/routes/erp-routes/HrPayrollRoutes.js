@@ -35,13 +35,19 @@ const HrPayRollRoutes = [
           path: 'employee', 
           children : [
             {
-                path : 'employee-master' ,
-                element: <EmployeeMaster /> 
+                path: 'employee-master', 
+                children : [
+                     {
+                      path : '' ,
+                      element: <EmployeeMaster /> 
+                    },
+                    {
+                      path : ':id' ,
+                      element: <EmployeeMasterPreview /> 
+                    },
+                 ],
             },
-            {
-              path : ':id' ,
-              element: <EmployeeMasterPreview /> 
-            },
+           
             {
               path : 'exits' ,
               element: <ExitEmployee /> 

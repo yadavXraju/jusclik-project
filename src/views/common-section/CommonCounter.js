@@ -1,3 +1,6 @@
+// Page Owner : Abhishek
+// Description : Used in Parent and teacher Dashboard 
+
 import React from 'react'
 import PropTypes from 'prop-types';
 
@@ -13,13 +16,13 @@ import SkeletonAttendanceCard from 'ui-component/cards/Skeleton/CounterCard';
 import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
 import ArrowForwardTwoToneIcon from '@mui/icons-material/ArrowForwardTwoTone';
 import { useNavigate } from 'react-router';
-import { useSelector } from 'react-redux';
 
 
-// ===========================|| DASHBOARD 1st Counter ||=========================== //
 
-// Counter1Data is a props
-const Counter1 = ({ isLoading  ,  Counter1Data }) => {
+// ===========================|| DASHBOARD  Counter ||=========================== //
+
+// CounterData is a props
+const CommonCounter = ({ isLoading  ,  CounterData , themeColor , className}) => {
 
 
     const theme = useTheme();
@@ -31,15 +34,7 @@ const Counter1 = ({ isLoading  ,  Counter1Data }) => {
 
 // ===========================|| Theme color and other setting ||=========================== //
 
-
-      // to store state in this varible
-      const customization = useSelector((state) => state.customization);
-
-    
-      // Extract background color and set opacity
-      const themeColor = customization.themeColor || 'rgb(94, 53, 177)';
       const opacity = .95;
-
 
       // style for component
 
@@ -87,7 +82,7 @@ const Counter1 = ({ isLoading  ,  Counter1Data }) => {
     {isLoading ? (
       <SkeletonAttendanceCard />
     ) : (
-      <CardWrapper border={false} content={false} className='themeColor'>
+      <CardWrapper border={false} content={false} className={className}>
         <Box sx={{ p: 2.25 }}>
           <Grid container direction="column">
             <Grid item>
@@ -103,7 +98,7 @@ const Counter1 = ({ isLoading  ,  Counter1Data }) => {
                       mt: 1,
                       color : '#fff'
                     }}
-                    className='themeColor'
+                    className={className}
                   >
                      <AccessTimeOutlinedIcon />
                   </Avatar>
@@ -121,7 +116,7 @@ const Counter1 = ({ isLoading  ,  Counter1Data }) => {
                       color: theme.palette.secondary[200],
                       zIndex: 1
                     }}
-                    className='themeColor'
+                    className={className}
                     aria-controls="menu-earning-card"
                     aria-haspopup="true"  
                     onClick={() => navigate('/attendance')}   
@@ -137,7 +132,7 @@ const Counter1 = ({ isLoading  ,  Counter1Data }) => {
             <Grid item>
               <Grid container alignItems="center">
                 <Grid item>
-                  <Typography sx={{ fontSize: '2.125rem', fontWeight: 500, mr: 1, mt: 1.75, mb: 0.75 }}>  {Counter1Data.counterValue}</Typography>
+                  <Typography sx={{ fontSize: '2.125rem', fontWeight: 500, mr: 1, mt: 1.75, mb: 0.75 }}>  {CounterData.counterValue}</Typography>
                 </Grid>
    
               </Grid>
@@ -153,7 +148,7 @@ const Counter1 = ({ isLoading  ,  Counter1Data }) => {
                 }}
               >
                 {/* Counter Title */}
-             {Counter1Data.counterTitle}
+             {CounterData.counterTitle}
               </Typography>
             </Grid>
           </Grid>
@@ -165,8 +160,8 @@ const Counter1 = ({ isLoading  ,  Counter1Data }) => {
 }
 
 
-Counter1.propTypes = {
+CommonCounter.propTypes = {
     isLoading: PropTypes.bool
   };
 
-export default Counter1
+export default CommonCounter

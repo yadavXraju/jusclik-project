@@ -1,3 +1,6 @@
+// Page Owner : Abhishek
+// Description : welcome message in dashboards
+
 import { Typography , useMediaQuery } from '@mui/material'
 import React from 'react'
 import { welcomeMsg } from 'views/common-section/dashboard-css/CommonCss';
