@@ -32,7 +32,7 @@ import BadgeTwoToneIcon from '@mui/icons-material/BadgeTwoTone';
 import NoAccountsTwoToneIcon from '@mui/icons-material/NoAccountsTwoTone';
 
 // Payment Gateway Wise Collection  import
-import ParentLoginStatusTemplate from 'views/erp-module/student-information-fee-management/student-info-fee-management-dashboard/dashboard/parent-login-status/parentLoginStatusTemplate';
+import ParentLoginStatusTemplate from './parent-login-status/parentLoginStatusTemplate';
 
 
 // ================== fee defaulter imports ==================

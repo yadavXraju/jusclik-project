@@ -9,7 +9,7 @@ import {Template3} from './template3';
 import {Template4} from './template4';
 import {Template5} from './template5';
 
-import CommonConfig from '../common/common-config-component';
+import { CommonConfigSidebar } from '../common/common-config-sidebar';
 const Index = () => {
   // temporary logic for rendring template
   const template = useSelector(state => state.invoiceTemplate.selectedTemplate)
@@ -25,7 +25,7 @@ const Index = () => {
       <Button onClick={() => navigate('/erp/student-info-fee/settings/invoice-template')} sx={{ position: 'absolute', right: 0, marginTop: '-4rem', marginRight: '2rem' }}>Close</Button>
       <Grid container spacing={4}>
         <Grid item md={4}>
-            <CommonConfig />
+            <CommonConfigSidebar />
         </Grid>
         <Grid item md={8} sx={sx}>
         {template == 1 && <Template1/>}

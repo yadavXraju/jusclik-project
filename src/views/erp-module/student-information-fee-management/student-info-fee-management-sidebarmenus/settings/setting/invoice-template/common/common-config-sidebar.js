@@ -9,7 +9,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Labels from './sub-categories-common-config/labels';
 import { useState } from 'react';
 
-const CommonConfig = () => {
+export const CommonConfigSidebar = () => {
   const [expandedPanel, setExpandedPanel] = useState(null);
 
   const handleChange = (panel) => (event, isExpanded) => {
@@ -67,5 +67,3 @@ const CommonConfig = () => {
       </>
   );
 };
-
-export default CommonConfig;
