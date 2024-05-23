@@ -2,7 +2,7 @@ import React from 'react';
 import Box from '@mui/material/Box';
 import AddRoleDrawer from './AddRoleDrawer';
 import Avatar from '@mui/material/Avatar';
-import CommonDataGrid from 'views/common-section/commonDataGrid';
+import CommonDataGrid from 'component/commonDataGrid';
 import { Typography } from '@mui/material';
 import Chip from '@mui/material/Chip';
 

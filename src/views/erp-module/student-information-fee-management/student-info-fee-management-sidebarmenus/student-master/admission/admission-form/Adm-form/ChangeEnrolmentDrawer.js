@@ -5,7 +5,7 @@ import { Box, Drawer, Button, Typography, IconButton, Grid, Stack, TextField, Me
 import Popover from '@mui/material/Popover';
 import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
 import MoreVertTwoToneIcon from '@mui/icons-material/MoreVertTwoTone';
-import ParameterizedDateComponent from 'views/common-section/ParamDateComponent';
+import ParameterizedDateComponent from 'component/ParamDateComponent';
 import InitiateWithdrawal from './InitiateWithdrawal';
 
 

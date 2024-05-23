@@ -4,7 +4,7 @@ import FilterAndSort from '../common-report-section/filter-and-sort';
 import ShowHide from '../common-report-section/selected-column';
 import ReportLayout from '../common-report-section/report-layout';
 import ReportReference from '../common-report-section/report-preference';
-import ParamStepper from '../../../../../common-section/param-stepper';
+import ParamStepper from '../../../../../../component/param-stepper';
 
 const steps = [
   'Report Preferences',

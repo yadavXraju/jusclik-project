@@ -4,11 +4,11 @@ import React from 'react';
 import { Grid , Box , Typography , Paper , useMediaQuery , LinearProgress }from '@mui/material';
 
 // coutner imports
-import ParamCounters from "views/common-section/ParamCounters";
+import ParamCounters from "component/ParamCounters";
 import PeopleOutlineIcon from '@mui/icons-material/PeopleOutline';
 import PermIdentityOutlinedIcon from '@mui/icons-material/PermIdentityOutlined';
 import Person2OutlinedIcon from '@mui/icons-material/Person2Outlined';
-import ParamWidgetHeader from 'views/common-section/ParamWidgetHeader';
+import ParamWidgetHeader from 'component/ParamWidgetHeader';
 import { gridSpacing } from 'store/constant';
 // Enrollment imports
 import LiveHelpTwoToneIcon from '@mui/icons-material/LiveHelpTwoTone';
@@ -17,11 +17,11 @@ import BadgeTwoToneIcon from '@mui/icons-material/BadgeTwoTone';
 import NoAccountsTwoToneIcon from '@mui/icons-material/NoAccountsTwoTone';
 
 // Payment Gateway Wise Collection  import
-import CommonChart from 'views/common-section/CommonChart';
+import CommonChart from 'component/CommonChart';
 
 // ================== fee defaulter imports ==================
 import SkeletonTotalGrowthBarChart from 'ui-component/cards/Skeleton/TotalGrowthBarChart';
-import { HeadingCss } from 'views/common-section/dashboard-css/CommonCss';
+import { HeadingCss } from 'component/dashboard-css/CommonCss';
 import Chart from 'react-apexcharts';
 
 

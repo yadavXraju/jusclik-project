@@ -25,7 +25,7 @@ import {
   randomEmail,
   randomDesk
 } from '@mui/x-data-grid-generator';
-import WarningDialog from 'views/common-section/WarningDialog';
+import WarningDialog from 'component/WarningDialog';
 const roles = ['Yes','No'];
 const randomRole = () => {
   return randomArrayItem(roles);

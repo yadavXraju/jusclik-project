@@ -2,7 +2,7 @@
 // using for tesing purpose of the reuseableCrudgrid
 
 import React from 'react'
-import ReusableCrudGrid from 'views/common-section/ReuseableCrudGrid'
+import ReusableCrudGrid from 'component/ReuseableCrudGrid'
 import {  initialRows , columns} from './data'
 import { Paper } from '@mui/material'
 const Test = () => {

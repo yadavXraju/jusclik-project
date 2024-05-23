@@ -1,7 +1,7 @@
 // @Page Owner-Tarun Pandey
 import { Box, Radio, FormControlLabel, FormControl, FormLabel, RadioGroup, TextField, Grid, InputLabel } from '@mui/material';
 import React, { useState } from 'react';
-import SelectList from 'views/common-section/ParamSelectList';
+import SelectList from 'component/ParamSelectList';
 
 function DisplayComponent() {
   const [value, setValue] = React.useState('Show');

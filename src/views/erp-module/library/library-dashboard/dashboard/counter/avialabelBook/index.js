@@ -1,7 +1,7 @@
 import React from 'react'
-// import Counter1 from 'views/common-section/stufee-counter/stufee-counter-1/Counter1'
+// import Counter1 from 'component/stufee-counter/stufee-counter-1/Counter1'
 import avialabelBook from './avialabelBook'
-import Counter3 from 'views/common-section/stufee-counter/stufee-counter-3/Counter3'
+import Counter3 from 'component/stufee-counter/stufee-counter-3/Counter3'
 const AvialabelBooks = () => {
   return (
     <>

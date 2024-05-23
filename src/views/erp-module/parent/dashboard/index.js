@@ -9,11 +9,11 @@ import ApexCharts from 'react-apexcharts';
 // ============== user welcome message imports 
 
 import { studentProfileDetails } from 'layout/MainLayout/Header/ProfileSection/ProfileDeatails'
-import { welcomeMsg } from 'views/common-section/dashboard-css/CommonCss'
+import { welcomeMsg } from 'component/dashboard-css/CommonCss'
 
 // ============== Counter imports 
 import { useSelector } from 'react-redux';
-import CommonCounter from 'views/common-section/CommonCounter';
+import CommonCounter from 'component/CommonCounter';
 import { useNavigate } from 'react-router';
 
 // ============== Profile imports 

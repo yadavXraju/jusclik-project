@@ -4,11 +4,11 @@ import React from 'react';
 import { IconButton, Typography, Switch, Tooltip } from '@mui/material';
 import { Box } from '@mui/system';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
-import WarningDialog from 'views/common-section/WarningDialog';
+import WarningDialog from 'component/WarningDialog';
 import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 import RouteData from './Sample-RoutesData';
 import RoutesFormDrawer from './RoutesFormDrawer';
-import CommonDataGrid from 'views/common-section/commonDataGrid';
+import CommonDataGrid from 'component/commonDataGrid';
 //import SettingsTwoToneIcon from '@mui/icons-material/SettingsTwoTone';
 //import RoutesManageDrawer from './RoutesManageDrawer';
 

@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react'
 import { Box, Paper, Button, Typography } from '@mui/material';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
-import WithPrintPdf from 'views/common-section/withPrintPdf';
+import WithPrintPdf from 'component/withPrintPdf';
 import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
 import MoreVertTwoToneIcon from '@mui/icons-material/MoreVertTwoTone';
 import Popover from '@mui/material/Popover';
@@ -11,7 +11,7 @@ import IconButton from '@mui/material/IconButton';
 // import RemoveRedEyeTwoToneIcon from '@mui/icons-material/RemoveRedEyeTwoTone';
 // import useDrawer from 'hooks/useDrawer';
 import EnquiryDrawer from './EnquiryDrawer';
-import ReportTable from '../common-report-section/report-table';
+import ReportTable from './report-table';
 import {useSelector} from 'react-redux';
 
 

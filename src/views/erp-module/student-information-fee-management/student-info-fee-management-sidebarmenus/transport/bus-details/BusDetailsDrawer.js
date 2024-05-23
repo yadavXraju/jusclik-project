@@ -5,7 +5,7 @@ import useDrawer from 'hooks/useDrawer';
 import Drawer from '@mui/material/Drawer';
 import { Button, Typography, Box, Tab, Tabs } from '@mui/material';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
-import BottomNavbar from 'views/common-section/BottomNavbar';
+import BottomNavbar from 'component/BottomNavbar';
 import BusDetailForm from './BusDetailForm';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import OwnerDetails from './OwnerDetails';

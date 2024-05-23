@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
-import CommonDataGrid from 'views/common-section/commonDataGrid'
+import CommonDataGrid from 'component/commonDataGrid'
 import { Box,Tooltip,IconButton, Card,Typography,Grid,Chip } from '@mui/material'
-import WarningDialog from 'views/common-section/WarningDialog';
+import WarningDialog from 'component/WarningDialog';
 
 // icon
 import RemoveRedEyeTwoToneIcon from '@mui/icons-material/RemoveRedEyeTwoTone';
