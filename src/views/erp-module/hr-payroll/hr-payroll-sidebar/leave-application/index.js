@@ -2,8 +2,7 @@
 import React from 'react';
 import { Grid, Paper, Box } from '@mui/material';
 import LeaveConsumedChart from './LeaveConsumedChart';
-// import LeaveTable from './LeaveTable';
-// import LeaveApplication from 'views/erp-module/teacher/class-teacher/class-teacher-sidebar/leave-application/index'
+import LeaveTable from './LeaveTable';
 
 const LeaveApplication1 = () => {
   return (
@@ -21,8 +20,7 @@ const LeaveApplication1 = () => {
           </Grid>
         </Grid>
       </Box>
-      {/* <LeaveApplication/> */}
-      {/* <LeaveTable /> */}
+      <LeaveTable />
     </>
   );
 };
