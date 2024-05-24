@@ -1,5 +1,7 @@
+// Page Owner :  stufee dashboard
+// Description :  stufee dashboard content
 
-import NeedHelp from './support/Support2';
+import NeedHelp from 'pages/HelpAndSupport';
 import React from 'react';
 import { Grid , Box , Typography , Paper , useMediaQuery , LinearProgress }from '@mui/material';
 
@@ -403,7 +405,7 @@ const FeeDefaulter = ({ isLoading }) => {
 };
 // ================== fee defaulter end ==================
 
-const DashboardContent = ({ isLoading }) => {
+const Dashboard = ({ isLoading }) => {
   return (
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
@@ -452,4 +454,4 @@ const DashboardContent = ({ isLoading }) => {
   );
 };
 
-export default DashboardContent;
+export default Dashboard;

@@ -1,3 +1,7 @@
+// Page Owner : Sangeeta
+// Description : Jusklik Pricing Page url : Jusklik/pricing
+
+
 import * as React from 'react';
 import { Box, Card, CardActions, Button, Typography, Divider, List, ListItem, styled, Paper, Grid, useMediaQuery } from '@mui/material';
 import CheckIcon from '@mui/icons-material/Check';
