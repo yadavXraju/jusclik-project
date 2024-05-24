@@ -1,5 +1,5 @@
 
-import NeedHelp from './support/Support2';
+import NeedHelp from 'pages/HelpAndSupport';
 import React from 'react';
 import { Grid , Box , Typography , Paper , useMediaQuery , LinearProgress }from '@mui/material';
 

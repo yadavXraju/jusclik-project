@@ -13,7 +13,7 @@ import HourlyVisior from './hourly-visitor';
 import DepartmentwiseVisitor from './deparmentwise-visitor';
 import RecentVisitors from './recent visitor';
 import Counters from './counter';
-import NeedHelp from 'views/erp-module/student-information-fee-management/student-info-fee-management-dashboard/dashboard/support/Support2';
+import NeedHelp from 'pages/HelpAndSupport';
 
 const DashboardContent = () => {
   return (
