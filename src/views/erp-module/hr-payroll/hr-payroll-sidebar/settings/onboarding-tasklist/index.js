@@ -157,6 +157,7 @@ const OnboardingTasklist = () => {
         modalOpen={modalOpen}
         setmodalOpen={setmodalOpen}
         rows={rows}
+        setRows={setRows}
         columns={columns}
         handleConfirmDelete={handleConfirmDelete}
         handleModalClose={handleModalClose}

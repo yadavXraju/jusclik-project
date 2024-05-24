@@ -32,6 +32,7 @@ const CustomTabs = (props) => {
     setSelectedTab,
     // datagrid rows columns
     rows,
+    setRows,
     columns,
     // confirm delete popup  
     modalOpen,
@@ -170,6 +171,8 @@ const CustomTabs = (props) => {
                   toggleDrawer={toggleDrawer}
                   value={selectedTab}
                   state={state}
+                  rows={rows}
+                  setRows={setRows}
                 />
                 <EditTaskDrawer toggleDrawer={toggleDrawer} state={state} />
               </Box>
