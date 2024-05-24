@@ -1,4 +1,4 @@
-import AvatarImg from 'assets/images/avatar-images/avatar.png';
+import AvatarImg from 'assets/images/Avatar-images/avatar.png';
 
 export const StudentLeaveData = [
   {

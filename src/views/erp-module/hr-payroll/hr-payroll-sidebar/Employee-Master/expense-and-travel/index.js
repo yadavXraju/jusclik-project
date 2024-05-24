@@ -3,7 +3,7 @@ import { Grid, Paper, Typography , Box , } from '@mui/material';
 import ParamCounters from 'components/ParamCounters';
 
 import Divider from '@mui/material/Divider';
-import CommonChart from 'component/CommonChart';
+import CommonChart from 'components/CommonChart';
 
 const ExpenseAndTravel = () => {
   const ApexChartData = {

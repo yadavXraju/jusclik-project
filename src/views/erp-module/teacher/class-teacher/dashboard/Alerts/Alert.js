@@ -2,7 +2,7 @@ import React from 'react';
 import ParamWidget from 'components/ParamWidget';
 import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
 import initialData from 'views/erp-module/parent/parent-sidebar/communication-message/MailBox/InboxNameList';
-import AvatarImg from 'assets/images/avatar-images/avatar.png';
+import AvatarImg from 'assets/images/Avatar-images/avatar.png';
 import { Box } from '@mui/material';
 
 // store a first data from initialData in this var

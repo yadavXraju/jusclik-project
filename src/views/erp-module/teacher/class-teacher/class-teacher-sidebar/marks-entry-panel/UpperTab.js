@@ -1,10 +1,10 @@
 import { Button, Grid, Paper } from '@mui/material'
 import React from 'react'
 import  { ExamDropDown, SubjectDropDown, TermDropDown,ClassDropDown} from '../SearchFilter/DropDown'
-import {ClassData} from './dropdown data/ClassData'
-import {Term }from './dropdown data/TermData'
-import { subject } from './dropdown data/SubjectData'
-import { EXAM } from './dropdown data/ExamData'
+import {ClassData} from './dropdown-data/ClassData'
+import {Term }from './dropdown-data/TermData'
+import { subject } from './dropdown-data/SubjectData'
+import { EXAM } from './dropdown-data/ExamData'
 import SearchTwoToneIcon from '@mui/icons-material/SearchTwoTone';
 function UpperTab( { onClassChange,selectedSubject, onSubjectChange,selectedClass, selectedTerm,onTermChange,selectedExam,onExamChange}) {
 

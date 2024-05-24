@@ -2,7 +2,7 @@
 // Description : Teacher Profile Details
 
 // import User1 from 'assets/images/users/user-round.svg';
-import User1 from 'assets/images/avatar-images/IMG_07.png';
+import User1 from 'assets/images/Avatar-images/IMG_07.png';
 export const ClassTeacherProfileDetails = {
   image: User1,
   name : 'Suraj Mishra',

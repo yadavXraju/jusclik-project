@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import EditIcon from '@mui/icons-material/Edit';
-import AvatarImage from 'assets/images/avatar-images/avatar.png';
+import AvatarImage from 'assets/images/Avatar-images/avatar.png';
 // import FromPopUp from './data-forms/FromPopUp';
 
 

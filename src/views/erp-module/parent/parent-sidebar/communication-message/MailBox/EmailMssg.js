@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router';
 import initialData from './InboxNameList';
 // import AvtarImg from '../../../../assets/images/avatar.png';
 import ReplyForwardBox from './ReplyForwardBox';
-import Image1 from 'assets/images/avatar-images/IMG_01.png';
+import Image1 from 'assets/images/Avatar-images/IMG_01.png';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 const Message = () => {

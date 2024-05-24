@@ -1,12 +1,12 @@
 import React from 'react';
 import DashboardContent from './dashboard';
 import DashboardPayRoll from 'pages/getting-started';
-import SetupTabs from 'component/param-stepper';
+import SetupTabs from 'components/param-stepper';
 import HomeTwoToneIcon from '@mui/icons-material/HomeTwoTone';
 import SettingsSuggestTwoToneIcon from '@mui/icons-material/SettingsSuggestTwoTone';
 import NotificationsActiveTwoToneIcon from '@mui/icons-material/NotificationsActiveTwoTone';
 import { useMediaQuery } from '@mui/material';
-import { DashboardTab } from 'component/dashboard-css/CommonCss';
+import { DashboardTab } from 'components/dashboard-css/CommonCss';
 
 const Dashboard = () => {
 
