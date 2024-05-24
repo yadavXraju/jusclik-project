@@ -1,4 +1,4 @@
-// ImageSlider.jsx
+// ImageSlider.jsx   sangeeta
 
 import React from 'react';
 import Slider from 'react-slick';
