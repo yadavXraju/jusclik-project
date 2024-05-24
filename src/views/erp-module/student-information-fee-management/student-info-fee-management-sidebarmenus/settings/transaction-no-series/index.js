@@ -7,7 +7,7 @@ import WarningDialog from 'components/WarningDialog';
 import TableRowData from './TableRowData';
 // import DrawerAddTransaction from './DrawerAddTransaction';
 // import DrawerNewTask from './DrawerNewTask';
-import CommonDataGrid from 'components/commonDataGrid';
+import CommonDataGrid from 'components/table-data-grid/commonDataGrid';
 // import withParamDrawer from 'components/withParamDrawer';
 import RemoveRedEyeTwoToneIcon from '@mui/icons-material/RemoveRedEyeTwoTone';
 import { useNavigate } from 'react-router-dom';

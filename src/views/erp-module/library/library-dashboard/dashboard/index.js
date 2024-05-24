@@ -14,7 +14,7 @@ import IssueReturn2 from './issuedRetun';
 import LastestUpdatesOfBooks from './latestbooks';
 import OverDueBook from './OverDueBooks';
 import LateFine from './LateFine';
-import NeedHelp from 'views/erp-module/student-information-fee-management/student-info-fee-management-dashboard/dashboard/support/Support2';
+import NeedHelp from 'pages/HelpAndSupport';
 
 const DashboardContent = () => {
   return (

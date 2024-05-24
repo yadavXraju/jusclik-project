@@ -8,7 +8,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Box } from '@mui/system';
-import { ClassTeacherProfileDetails } from 'layout/MainLayout/Header/class-teacher/teacher-profile-section/TeacherProfile';
+import { ClassTeacherProfileDetails } from 'layout/MainLayout/Header/TeacherProfile';
 
 
 export default function ClassTeacherCard() {

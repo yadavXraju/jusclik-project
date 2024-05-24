@@ -3,7 +3,7 @@
 import React from 'react';
 import { Grid, Paper, Typography, useMediaQuery, Table, TableContainer, TableBody, TableRow, TableCell, Box } from '@mui/material';
 import { gridSpacing } from 'store/constant';
-import { HeadingCss } from 'components/dashboard-css/CommonCss';
+import { HeadingCss } from 'components/dashboard/CommonCss';
 // import EmailIcon from '@mui/icons-material/Email';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 

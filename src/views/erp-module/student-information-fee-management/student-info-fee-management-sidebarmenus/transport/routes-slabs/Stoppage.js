@@ -11,7 +11,7 @@ import TableRow from '@mui/material/TableRow';
 import { IconButton, TextField, Tooltip, Button, Box } from '@mui/material';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 import WarningDialog from 'components/WarningDialog';
-import ParamTime from 'components/ParamTime';
+import ParamTime from 'components/ui/custom-input/Time';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 
 const columns = [

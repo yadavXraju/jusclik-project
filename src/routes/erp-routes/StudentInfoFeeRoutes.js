@@ -2,7 +2,7 @@
 // Description : Stufee Routes
 
 import { lazy } from 'react';
-import Loadable from 'ui-component/Loadable';
+import Loadable from 'components/ui/Loadable';
 
 // project imports
 const DashboardDefault = Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-info-fee-management-dashboard')));

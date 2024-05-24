@@ -1,7 +1,7 @@
 // PAGE OWNER: DAMANDEEP
 import React from 'react';
 import { Typography, TextField, Box, Checkbox, Button, Drawer } from '@mui/material';
-import ParamAttachement from 'components/ParamAttachement';
+import ParamAttachement from 'components/upload-file/Attachement';
 import MultipleSelectChip from '../ChipSelect';
 
 export const EditTaskDrawer = ({ toggleDrawer, state }) => {

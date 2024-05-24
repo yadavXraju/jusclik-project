@@ -2,14 +2,14 @@
 // Description : Inventory Routes
 
 import { lazy } from 'react';
-import Loadable from 'ui-component/Loadable';
+import Loadable from 'components/ui/Loadable';
 
 // project imports
 const DashboardDefault = Loadable(lazy(() => import('views/erp-module/inventory-management/inventory-management-dashboard')));
 // report
 const Reports = Loadable(lazy(() => import('views/erp-module/inventory-management/inventory-managment-sidebar/report')));
 // setting
-const Setting = Loadable(lazy(() => import('views/erp-module/inventory-management/inventory-managment-sidebar/setting/setting-inventory')));
+const Setting = Loadable(lazy(() => import('views/erp-module/inventory-management/inventory-managment-sidebar/settings')));
 
 
 const InventoryRoutes = [

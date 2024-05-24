@@ -8,7 +8,7 @@ import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 import RemoveRedEyeTwoToneIcon from '@mui/icons-material/RemoveRedEyeTwoTone';
 import EmployeeData from './Sample-EmployeeData';
 import WarningDialog from 'components/WarningDialog';
-import CommonDataGrid from 'components/commonDataGrid';
+import CommonDataGrid from 'components/table-data-grid/commonDataGrid';
 // import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 import EmployeeDrawer from './AddEmployeeDrawer';
 

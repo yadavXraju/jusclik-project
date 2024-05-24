@@ -3,7 +3,7 @@ import React from 'react';
 import { Paper, Typography, Grid, Table, TableContainer, TableHead, TableBody, TableRow, TableCell, Chip, Avatar, 
   // useMediaQuery
  } from '@mui/material';
-import { HeadingCss } from 'components/dashboard-css/CommonCss';
+import { HeadingCss } from 'components/dashboard/CommonCss';
 
 const UpcomingLeaves = () => {
   // const isMobile = useMediaQuery('(max-width: 767px)');

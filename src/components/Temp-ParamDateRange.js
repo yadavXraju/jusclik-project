@@ -3,7 +3,7 @@
 import React, { useState, useRef } from 'react';
 import { Box } from '@mui/material';
 import dayjs from 'dayjs'; // Import dayjs for date manipulation
-import ParameterizedDateComponent from './ParamDateComponent';
+import ParameterizedDateComponent from './ui/custom-input/DateComponent';
 
 const ParamDateRangePicker = ({ startDateValue, endDateValue, onStartDateChange, onEndDateChange, startLabel='', endLabel='' }) => {
   const [startDate, setStartDate] = useState(startDateValue);

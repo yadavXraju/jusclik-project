@@ -1,5 +1,5 @@
 import React from 'react';
-import MainCard from 'ui-component/cards/MainCard';
+import MainCard from 'components/ui/cards/MainCard';
 import Expense from './Expense';
 import ExpenseDrawer from './ExpensesDrawer';
 import { Box, Typography } from '@mui/material';

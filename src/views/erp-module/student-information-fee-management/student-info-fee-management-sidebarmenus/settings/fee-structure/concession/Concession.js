@@ -1,5 +1,5 @@
 import React from 'react';
-import ParamTableDragDrop from "components/ParamTableDragDrop";
+import ParamTableDragDrop from "components/table-data-grid/TableDragDrop";
 import { Drawer,Box,Typography,Button } from '@mui/material';
 import Tab1 from './Tab1';
 import Config from './Config';

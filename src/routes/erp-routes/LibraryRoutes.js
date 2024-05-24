@@ -2,10 +2,10 @@
 // Description : Library Routes
 
 import { lazy } from 'react';
-import Loadable from 'ui-component/Loadable';
+import Loadable from 'components/ui/Loadable';
 const DashboardDefault = Loadable(lazy(() => import('views/erp-module/library/library-dashboard')));
 const Reports =  Loadable(lazy(() => import('views/erp-module/library/library-sidebar/reports')));
-const Settings =  Loadable(lazy(() => import('views/erp-module/library/library-sidebar/settings/setting-library')));
+const Settings =  Loadable(lazy(() => import('views/erp-module/library/library-sidebar/settings')));
 
 const LibraryRoutes = [
   {

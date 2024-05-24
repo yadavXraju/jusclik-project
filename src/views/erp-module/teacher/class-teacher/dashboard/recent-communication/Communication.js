@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { Typography , Grid ,Paper} from '@mui/material'
-import { HeadingCss , boxHeight} from 'components/dashboard-css/CommonCss';
+import { HeadingCss , boxHeight} from 'components/dashboard/CommonCss';
 // import 'views/erp-module/parent/dashboard/dashboard-css/Overflow.css'
 import GmailInboxTemplate from 'views/erp-module/parent/parent-sidebar/communication-message/MailBox'
 

@@ -2,7 +2,7 @@
 // ======= Render Primary Details for student =========
 import React, { useEffect } from 'react';
 import { Grid, TextField, Card, useMediaQuery, Typography } from '@mui/material';
-import ParameterizedDateComponent from 'components/ParamDateComponent';
+import ParameterizedDateComponent from 'components/ui/custom-input/DateComponent';
 import EditableTable from './SiblingDetails';
 
 const ProfileDetail = ({ setStudentDetail, setEditItem, studentFields, type }) => {

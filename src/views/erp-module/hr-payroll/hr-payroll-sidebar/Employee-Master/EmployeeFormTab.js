@@ -17,10 +17,10 @@ import LeaderboardTwoToneIcon from '@mui/icons-material/LeaderboardTwoTone';
 import Education from './Education';
 import Experience from './Experience';
 import TextArea from 'antd/es/input/TextArea';
-import BottomNavbar from 'views/erp-common-component/bottom-navbar';
+import BottomNavbar from 'components/BottomNavbar';
 import {addField,subGroupbyGroup} from 'store/Hr-Payroll/AddEmployee-slice';
-import CommonAddress from '../../../../../components/CommonAddress';
-import CommonContactPerson from 'components/CommonContactPerson';
+import CommonAddress from '../../../../../components/Address';
+import CommonContactPerson from 'components/ContactPerson';
 
 
 const buttonsData = [

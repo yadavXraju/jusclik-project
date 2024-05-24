@@ -10,7 +10,7 @@ import {
   FormControl,
   OutlinedInput
 } from '@mui/material';
-import SelectList from 'components/ParamSelectList';
+import SelectList from 'components/ui/custom-input/SelectList';
 
 const DrawerAddTransaction = ({currEditItem}) => {
   // const [addTransaction, setAddTransaction] = useState('');

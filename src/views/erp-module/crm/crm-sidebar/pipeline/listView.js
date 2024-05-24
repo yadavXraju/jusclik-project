@@ -3,7 +3,7 @@
 import React from 'react';
 import { kanbanData } from './data';
 import { Box, Paper } from '@mui/material';
-import CommonDataGrid from 'components/commonDataGrid';
+import CommonDataGrid from 'components/table-data-grid/commonDataGrid';
 const KanbanListView = () => {
   // Prepare columns for the DataGrid
   const columns = [
