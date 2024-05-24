@@ -1,7 +1,7 @@
 // @Page Owner-Tarun Pandey
 import React, { useState } from 'react'
 import { Box, TextField, Typography} from '@mui/material';
-import ParramPopover from 'components/PopOverasDropDown';
+import ParramPopover from 'components/ui/custom-input/PopOverasDropDown';
 import ParamWarningBox from 'components/WarningBox';
 
 const dropDownOption=["Only Me","Only Select","Everyone"];

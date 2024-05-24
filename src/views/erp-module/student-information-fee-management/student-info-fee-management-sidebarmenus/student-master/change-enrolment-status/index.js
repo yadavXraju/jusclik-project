@@ -4,7 +4,7 @@ import { Box, Paper, TextField, Drawer, Button,useMediaQuery} from '@mui/materia
 import ParameterizedAutoComplete from 'components/ui/custom-input/AutoComplete';
 import DateComponent from 'components/ui/custom-input/DateComponent';
 import SearchBar from 'components/temp-SearchBox';
-import QuickSearchDrawer from 'components/QuickSearchDrawer'
+import QuickSearchDrawer from 'components/temp-QuickSearchDrawer'
 
 const subjects = ["Delivered", "notdelivered", "yetto delivered"];
 

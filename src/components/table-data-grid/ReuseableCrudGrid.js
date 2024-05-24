@@ -19,7 +19,7 @@ import {
 
     randomId,
 } from '@mui/x-data-grid-generator';
-import WarningDialog from './WarningDialog';
+import WarningDialog from '../WarningDialog';
 
 
 

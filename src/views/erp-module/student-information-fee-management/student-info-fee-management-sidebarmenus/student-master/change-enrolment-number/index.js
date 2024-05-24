@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Box, Paper, TextField, Drawer, Button } from '@mui/material';
 import ParameterizedAutoComplete from 'components/ui/custom-input/AutoComplete';
 import SearchBar from 'components/temp-SearchBox';
-import QuickSearchDrawer from 'components/QuickSearchDrawer'
+import QuickSearchDrawer from 'components/temp-QuickSearchDrawer'
 
 const subjects = ["Delivered", "notdelivered", "yetto delivered"];
 

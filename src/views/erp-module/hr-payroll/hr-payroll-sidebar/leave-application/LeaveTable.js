@@ -3,7 +3,7 @@ import { Card, Box, IconButton, Tooltip, Typography, Dialog, DialogTitle, Dialog
 import CheckCircleTwoToneIcon from '@mui/icons-material/CheckCircleTwoTone';
 import CancelTwoToneIcon from '@mui/icons-material/CancelTwoTone';
 import rows from './LeaveTableData';
-import CommonDataGrid from 'components/commonDataGrid';
+import CommonDataGrid from 'components/table-data-grid/commonDataGrid';
 
 
 const LeaveTable = () => {

@@ -6,7 +6,7 @@ import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 import SettingsTwoToneIcon from '@mui/icons-material/SettingsTwoTone';
 import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 import useDrawer from 'hooks/useDrawer';
-import WarningDialog from './WarningDialog';
+import WarningDialog from '../WarningDialog';
 
 
 

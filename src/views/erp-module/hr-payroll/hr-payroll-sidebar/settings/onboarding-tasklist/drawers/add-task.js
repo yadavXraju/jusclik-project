@@ -1,7 +1,7 @@
 // PAGE OWNER: DAMANDEEP
 import React from 'react'
 import {Typography,TextField, Checkbox, Button,Box, Drawer } from '@mui/material'
-// import ParamAttachement from 'components/Attachement'
+// import ParamAttachement from 'components/upload-file/Attachement'
 import MultipleSelectChip from '../ChipSelect'
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import ParameterizedAutoComplete from 'components/ui/custom-input/AutoComplete';

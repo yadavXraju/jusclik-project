@@ -7,7 +7,7 @@ import FolderOutlinedIcon from '@mui/icons-material/FolderOutlined';
 import LeadTimeline from './LeadTimeline';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import CommunicationLogs from './CommunicationLogs';
-import CommonDocuments from 'components/Documents';
+import CommonDocuments from 'components/table-data-grid/Documents';
 import documentData from './Sample-DocumentData';
 import FollowUpAndNotes from './FollowUpAndNotes';
 

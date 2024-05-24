@@ -2,7 +2,7 @@
 
 
 import React,{useState} from 'react'
-import CommonDataGrid from 'components/commonDataGrid'
+import CommonDataGrid from 'components/table-data-grid/commonDataGrid'
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 // import WarningDialog from 'components/WarningDialog';
 import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
