@@ -1,12 +1,10 @@
 // PAGE OWNER: DAMANDEEP
 import React from 'react'
 import {Typography,TextField, Checkbox, Button,Box, Drawer } from '@mui/material'
-import ParamAttachement from 'components/ParamAttachement'
+// import ParamAttachement from 'components/ParamAttachement'
 import MultipleSelectChip from '../ChipSelect'
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import ParameterizedAutoComplete from 'components/ParamAutoComplete';
-
-
 
 const selectDate = Array.from({ length: 50 }, (_, index) => ({ label: (index + 1).toString(), value: index + 1 }));
 const option=[
