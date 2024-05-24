@@ -35,13 +35,6 @@ import { useLocation } from 'react-router-dom';
 import { studentProfileDetails } from '../parent/student-profile-section/StudentProfile';
 // for class teacher
 import { ClassTeacherProfileDetails } from '../class-teacher/teacher-profile-section/TeacherProfile';
-// for subject teacher
-import { SubjectTeacherProfileDetails } from '../subject-teacher/subject-teacher-profile-section/subjectTeacherProfile';
-
-
-
-// for visitor profile
-import { VisitorProfileDetails } from '../visitor-profile/visitor-profile-section/VisitorProfile';
 
 // ==============================|| PROFILE MENU ||============================== //
 
@@ -49,12 +42,8 @@ const ProfileSection = () => {
   const theme = useTheme();
   const customization = useSelector((state) => state.customization);
   const navigate = useNavigate();
-
   const [open, setOpen] = useState(false);
-    
   const anchorRef = useRef(null);
-
-
 
   // logout function
 
@@ -105,12 +94,8 @@ const ProfileSection = () => {
       data = studentProfileDetails;
     } else if (pathname.includes('/class-teacher/')) {
       data = ClassTeacherProfileDetails;
-    } else if (pathname.includes('/subject-teacher/')) {
-      data = SubjectTeacherProfileDetails;
     } 
-    else if (pathname.includes('/visitor/')) {
-      data = VisitorProfileDetails;
-    } else {
+    else {
       data = [];
     }
 

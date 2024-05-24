@@ -9,7 +9,7 @@ import FrequentlyItems from './frequently-issued-items';
 import VendorContacts from './vendor-contacts';
 // import NeedSupport from 'views/erp-module/student-information-fee-management/student-info-fee-management-dashboard/dashboard/support/Support';
 import Counters from './counter';
-import NeedHelp from 'views/erp-module/student-information-fee-management/student-info-fee-management-dashboard/dashboard/support/Support2';
+import NeedHelp from 'pages/HelpAndSupport';
 
 const DashboardContent = ({ isLoading }) => {
   return (
