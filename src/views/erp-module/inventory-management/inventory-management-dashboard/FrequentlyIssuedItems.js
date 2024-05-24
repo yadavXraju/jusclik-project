@@ -1,8 +1,8 @@
 import * as React from 'react';
 import LinearProgress from '@mui/material/LinearProgress';
-import { HeadingCss } from 'components/dashboard/CommonCss';
 import Typography from '@mui/material/Typography';
-import { Box, Paper, Grid } from '@mui/material';
+import { Box, Paper} from '@mui/material';
+import ParamWidgetHeader from 'components/dashboard/WidgetHeader';
 
 // Custom component to display linear progress with label
 const LinearProgressWithLabel = ({ value, color }) => {
@@ -26,18 +26,7 @@ const FrequentlyItems = () => {
 
   return (
     <Paper variant="elevation" elevation={3}>
-      <Grid
-          sx={{
-            padding: '24px 24px 0 24px',
-            background: '#f9f9fb',
-            borderBottom: '1px solid rgba(128, 128, 128, 0.25)',
-            borderRadius: '12px 12px 0px 0'
-          }}
-        >
-          <Typography variant="h2" style={{ ...HeadingCss, border: 'none' }}>
-          Frequently Issued Items
-          </Typography>
-        </Grid>
+        <ParamWidgetHeader title='Frequently Issued Items' />
 
       <Box height="425px" className='scrollbar-2' sx={{overflow: 'scroll', width: '100%', padding: '24px' }} >
         {/* Iterate over the progressBars array and render each progress bar */}
