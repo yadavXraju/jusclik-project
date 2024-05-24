@@ -1,8 +1,8 @@
 
 import React, { useState } from 'react';
 import { Box, Paper, TextField,Button} from '@mui/material';
-import ParameterizedAutoComplete from 'component/ParamAutoComplete';
-import ParameterizedDateComponent from 'component/ParamDateComponent';
+import ParameterizedAutoComplete from 'components/ParamAutoComplete';
+import ParameterizedDateComponent from 'components/ParamDateComponent';
 
 const whatsappStatus = ["All", "Pushed", "Sent","Delivered","Read","Failed"];
 const subjects = ["Delivered", "notdelivered", "yetto delivered"];

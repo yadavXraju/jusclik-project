@@ -1,5 +1,5 @@
 import React from 'react';
-import ParamWidget from 'component/ParamWidget';
+import ParamWidget from 'components/ParamWidget';
 import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
 import initialData from 'views/erp-module/parent/parent-sidebar/communication-message/MailBox/InboxNameList';
 import AvatarImg from 'assets/images/avatar.png';

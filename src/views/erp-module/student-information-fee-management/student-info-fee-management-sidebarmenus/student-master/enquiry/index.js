@@ -38,7 +38,7 @@
 //         <Grid item xs={12}>
 //           <Grid container>
 //             <Grid item xs={12}>
-//               <UpperComponent/>
+//               <Uppercomponent/>
 //             </Grid>
 //             <Grid item xs={12} sx={{ marginTop: '10px' }}>
 //               <Paper>
@@ -46,7 +46,7 @@
 //               </Paper>
 //             </Grid>
 //             <Grid item xs={12} sx={{ marginTop: '40px' }}>
-//              <GardianComponent/>
+//              <Gardiancomponent/>
 //             </Grid>
 //             <Grid item xs={12} sx={{ marginTop: '40px' }}>
 //               <Paper>

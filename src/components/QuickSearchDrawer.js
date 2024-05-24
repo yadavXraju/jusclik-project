@@ -1,6 +1,6 @@
 import React,{useState} from 'react';
 import { Box, Typography, Button, TextField } from '@mui/material';
-import ParameterizedAutoComplete from 'component/ParamAutoComplete';
+import ParameterizedAutoComplete from 'components/ParamAutoComplete';
 const subjects = ["Delivered", "notdelivered", "yetto delivered"];
 
 

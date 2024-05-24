@@ -11,7 +11,7 @@ import RoleAuthorisation from './RoleAuthorisation';
 import { makeStyles } from '@mui/styles';
 
 const steps = ['MODULES', 'AUTHORISATION'];
-const components = [RoleAccess, RoleAuthorisation];
+const component = [RoleAccess, RoleAuthorisation];
 
 // =========== Style for Decrease font size for mobile responsive ==========
 const useStyles = makeStyles((theme) => ({
@@ -61,7 +61,7 @@ const AddRoleDrawer = () => {
     setActiveStep(steps.length);
   };
 
-  const ActiveComponent = components[activeStep];
+  const ActiveComponent = component[activeStep];
 
   return (
     <>

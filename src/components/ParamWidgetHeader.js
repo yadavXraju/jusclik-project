@@ -3,7 +3,7 @@
 
 import React from 'react';
 import { Grid , Typography } from '@mui/material';
-import { HeadingCss } from '../component/dashboard-css/CommonCss';
+import { HeadingCss } from '../components/dashboard-css/CommonCss';
 
 const ParamWidgetHeader = ({title}) => {
   return (

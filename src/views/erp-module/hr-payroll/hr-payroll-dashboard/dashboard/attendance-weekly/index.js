@@ -4,7 +4,7 @@ import { Grid, Paper, Typography, useMediaQuery,
   //  Box 
   } from '@mui/material';
 import { gridSpacing } from 'store/constant';
-import { HeadingCss } from 'component/dashboard-css/CommonCss';
+import { HeadingCss } from 'components/dashboard-css/CommonCss';
 
 const AttendanceweekChart = () => {
   const isMediumDesktop = useMediaQuery('(max-width: 1600px)');

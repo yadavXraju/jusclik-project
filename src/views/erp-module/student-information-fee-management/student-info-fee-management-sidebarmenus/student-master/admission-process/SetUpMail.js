@@ -1,5 +1,5 @@
 import React from 'react'
-import ParameterizedAutoComplete from 'component/ParamAutoComplete'
+import ParameterizedAutoComplete from 'components/ParamAutoComplete'
 
 const SetUpMail = () => {
   return (

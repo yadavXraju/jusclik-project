@@ -4,7 +4,7 @@ import { Table, TableCell, TableContainer, TableHead, TableRow, Typography, Tabl
 import { IconButton } from '@mui/material';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
-import Pagination from 'component/Pagination';
+import Pagination from 'components/Pagination';
 
 const ExpensesTraveldata = [
   {

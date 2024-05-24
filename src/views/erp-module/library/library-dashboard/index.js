@@ -4,9 +4,9 @@ import TabContext from '@mui/lab/TabContext';
 import TabPanel from '@mui/lab/TabPanel';
 import TabLabel from 'views/erp-module/erp-common-item/tab/TabLabel';
 import DashboardContent from './dashboard';
-import DashboardPayRoll from 'component/dashboard-payroll';
+import DashboardPayRoll from 'components/dashboard-payroll';
 import PhoneIcon from '@mui/icons-material/Phone';
-import useTabValue from 'component/ParamTab';
+import useTabValue from 'components/ParamTab';
 
 const Dashboard = () => {
   const { value, handleChange } = useTabValue('1');

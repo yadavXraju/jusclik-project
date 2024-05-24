@@ -16,7 +16,7 @@ import { useNavigate } from 'react-router-dom';
 import { InputBase, IconButton } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
-import ParramPopover from 'component/ParamPopOverasDropDown';
+import ParramPopover from 'components/ParamPopOverasDropDown';
 import Standard from 'assets/images/Form-Builder/standard.gif';
 import Card from 'assets/images/Form-Builder/card.gif';
 

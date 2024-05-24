@@ -2,7 +2,7 @@
 // // import ParamTable from 'views/erp-common-component/ParamTable';
 // // import Drawer from '@mui/material/Drawer';
 // // import DrawerContent from './DrawerContent';
-// // import CommonDataGrid from 'component/commonDataGrid';
+// // import CommonDataGrid from 'components/commonDataGrid';
 // import { initialRows,initialColumns } from '../../black-listed-visitor/common/VisitorData';
 // import EditIcon from '@mui/icons-material/Edit';
 // import DeleteIcon from '@mui/icons-material/DeleteOutlined';
@@ -19,7 +19,7 @@
 //   randomId,
 // } from '@mui/x-data-grid-generator';
 // import { useEffect , useState} from 'react';
-// import WarningDialog from 'component/WarningDialog';
+// import WarningDialog from 'components/WarningDialog';
 
 // function EditToolbar(props) {
 //   const { setRows, setRowModesModel } = props;
@@ -209,7 +209,7 @@ import {
   randomId,
   randomArrayItem,
 } from '@mui/x-data-grid-generator';
-import WarningDialog from 'component/WarningDialog';
+import WarningDialog from 'components/WarningDialog';
 const roles = ['Head Master', 'Principal', 'Class Teacher'];
 const randomRole = () => {
   return randomArrayItem(roles);

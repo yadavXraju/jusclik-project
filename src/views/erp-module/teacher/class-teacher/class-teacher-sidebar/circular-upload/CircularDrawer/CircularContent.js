@@ -7,7 +7,7 @@ import CircularTopic from './CircularTopic';
 import HomeworkTemplate from 'views/erp-module/teacher/class-teacher/class-teacher-sidebar/Student-homework-upload/HomeWorkDrawer/HomeworkTemplate';
 import CircularCategory from './CircularCategory';
 import CirclarSelectClass from './CircularSelectClass';
-import { CommonDropZone } from 'component/CommonDropZone';
+import { CommonDropZone } from 'components/CommonDropZone';
 
 const CircularContent = () => {
   const [selectedFile,setSelectedFile]=React.useState(null)

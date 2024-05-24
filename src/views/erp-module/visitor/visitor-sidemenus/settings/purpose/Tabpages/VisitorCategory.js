@@ -23,7 +23,7 @@ import {
   randomId,
   randomArrayItem,
 } from '@mui/x-data-grid-generator';
-import WarningDialog from 'component/WarningDialog';
+import WarningDialog from 'components/WarningDialog';
 const roles = ['Staff', 'Query', 'Parents Meeting'];
 const randomRole = () => {
   return randomArrayItem(roles);

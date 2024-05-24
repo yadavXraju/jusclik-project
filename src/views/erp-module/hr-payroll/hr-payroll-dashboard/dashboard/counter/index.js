@@ -1,7 +1,7 @@
 // owned by sangeeta
 
 import React from "react";
-import ParamCounters from "component/ParamCounters";
+import ParamCounters from "components/ParamCounters";
 // icons
 
 

@@ -6,7 +6,7 @@ import { Grid, Typography, Box,Button , useMediaQuery } from '@mui/material';
 import Divider from '@mui/material/Divider';
 import Checkbox from '@mui/material/Checkbox';
 import { useState } from 'react';
-import CommonGoogleCaptcha from 'component/CommonGoogleCaptcha';
+import CommonGoogleCaptcha from 'components/CommonGoogleCaptcha';
 
 
 

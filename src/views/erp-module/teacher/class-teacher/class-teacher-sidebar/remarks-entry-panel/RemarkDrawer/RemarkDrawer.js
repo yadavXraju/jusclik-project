@@ -4,9 +4,9 @@ import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import CancelTwoToneIcon from '@mui/icons-material/CancelTwoTone';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import { ClassDropDown, ExamDropDown, StudentDropDown } from './Dropdown';
-import { ClassData } from 'views/erp-module/teacher/class-teacher/class-teacher-sidebar/marks-entry-panel/dropdown data/ClassData';
-import { EXAM } from 'views/erp-module/teacher/class-teacher/class-teacher-sidebar/marks-entry-panel/dropdown data/ExamData'
-import { StudentData, StudentData2, StudentData3 } from 'views/erp-module/teacher/class-teacher/class-teacher-sidebar/marks-entry-panel/dropdown data/StudentData';
+import { ClassData } from 'views/erp-module/teacher/class-teacher/class-teacher-sidebar/marks-entry-panel/dropdown-data/ClassData';
+import { EXAM } from 'views/erp-module/teacher/class-teacher/class-teacher-sidebar/marks-entry-panel/dropdown-data/ExamData'
+import { StudentData, StudentData2, StudentData3 } from 'views/erp-module/teacher/class-teacher/class-teacher-sidebar/marks-entry-panel/dropdown-data/StudentData';
 import { useState, useEffect } from 'react';
 import RemarkEditor from './RemarkEditor';
 import useMediaQuery from '@mui/material/useMediaQuery';

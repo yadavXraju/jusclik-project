@@ -10,7 +10,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import CheckCircleOutlineOutlinedIcon from '@mui/icons-material/CheckCircleOutlineOutlined';
-import Pagination from 'component/Pagination';
+import Pagination from 'components/Pagination';
 
 const columns = [
   { id: 'documenttitle', label: 'DOCUMENT TITLE', minWidth: 170 },

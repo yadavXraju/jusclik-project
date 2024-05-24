@@ -2,7 +2,7 @@ import React from 'react'
 import{Paper,Grid,Typography,Box,Tab,useMediaQuery}  from '@mui/material'
 // import { gridSpacing } from 'store/constant';
 import {TabContext,TabList,TabPanel } from '@mui/lab';
-import { HeadingCss } from 'component/dashboard-css/CommonCss'
+import { HeadingCss } from 'components/dashboard-css/CommonCss'
 import NewArrivals from './NewArrivals';
 import PopularBook from './PopularBook';
 // import NewArrivals from './NewArrivals';

@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 import {  Box, Paper, TextField, Button, Typography, useMediaQuery } from '@mui/material';
-import ParameterizedAutoComplete from 'component/ParamAutoComplete';
-import DateComponent from 'component/ParamDateComponent';
+import ParameterizedAutoComplete from 'components/ParamAutoComplete';
+import DateComponent from 'components/ParamDateComponent';
 import SmsDeliveryTable from './smsDeliveryTable';
 import Report from './Report';
 import LocalPrintshopOutlinedIcon from '@mui/icons-material/LocalPrintshopOutlined';

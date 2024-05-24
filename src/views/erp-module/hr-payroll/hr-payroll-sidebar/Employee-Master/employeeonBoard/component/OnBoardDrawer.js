@@ -3,7 +3,7 @@ import useDrawer from 'hooks/useDrawer';
 import Drawer from '@mui/material/Drawer';
 import { Button, Typography, Box  } from '@mui/material';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
-import ParameterizedAutoComplete from 'component/ParamAutoComplete';
+import ParameterizedAutoComplete from 'components/ParamAutoComplete';
 import {groups } from './CountryData';
 
 

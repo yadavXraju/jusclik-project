@@ -52,9 +52,9 @@ const ReportLayout = () => {
     return (<>
     <Grid container>
         <Grid item md={5}>
-            {/* for left side components */}
+            {/* for left side component */}
             <Box>
-            {/* left side components =======================================================*/}
+            {/* left side component =======================================================*/}
             {/* form -------------------------------------------------------------------------------*/}
             <FormControl>
                 <Grid container spacing={6}>

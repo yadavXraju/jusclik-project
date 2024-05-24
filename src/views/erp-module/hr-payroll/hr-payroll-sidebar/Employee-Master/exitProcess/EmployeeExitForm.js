@@ -4,9 +4,9 @@
 
 import React from 'react';
 import { Typography, TextField, FormControlLabel, FormGroup, Switch, Grid, Button } from '@mui/material';
-import ParameterizedAutoComplete from 'component/ParamAutoComplete';
-import ParameterizedDateComponent from 'component/ParamDateComponent';
-import RadioButtonsGroup from 'component/ParamRadioButton';
+import ParameterizedAutoComplete from 'components/ParamAutoComplete';
+import ParameterizedDateComponent from 'components/ParamDateComponent';
+import RadioButtonsGroup from 'components/ParamRadioButton';
 
 const EmployeeExitForm = () => {
     const reasons = [

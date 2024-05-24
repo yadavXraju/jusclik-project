@@ -9,9 +9,9 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { IconButton, TextField, Tooltip, Button, Box, Typography } from '@mui/material';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
-import WarningDialog from 'component/WarningDialog';
+import WarningDialog from 'components/WarningDialog';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
-import ParameterizedDateComponent from 'component/ParamDateComponent';
+import ParameterizedDateComponent from 'components/ParamDateComponent';
 
 const columns = [
   { id: 'organization', label: 'Organization', minWidth: 150 },

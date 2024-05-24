@@ -14,7 +14,7 @@ import CreditCardOutlinedIcon from '@mui/icons-material/CreditCardOutlined';
 import FolderOpenOutlinedIcon from '@mui/icons-material/FolderOpenOutlined';
 import ManageHistoryOutlinedIcon from '@mui/icons-material/ManageHistoryOutlined';
 import ReportsPayroll from './ReportsPayroll';
-import SearchBar from 'component/ParamSearchBar';
+import SearchBar from 'components/ParamSearchBar';
 
 const sections = [
   {

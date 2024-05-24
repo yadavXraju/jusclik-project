@@ -15,11 +15,11 @@ import Alert from './Alerts';
 // ============== user welcome message imports 
 
 import { studentProfileDetails } from 'layout/MainLayout/Header/ProfileSection/ProfileDeatails'
-import { welcomeMsg } from 'component/dashboard-css/CommonCss'
+import { welcomeMsg } from 'components/dashboard-css/CommonCss'
 
 // ============== Counter imports 
 import { useSelector } from 'react-redux';
-import CommonCounter from 'component/CommonCounter';
+import CommonCounter from 'components/CommonCounter';
 import { useNavigate } from 'react-router';
 
 // ============== Profile imports 

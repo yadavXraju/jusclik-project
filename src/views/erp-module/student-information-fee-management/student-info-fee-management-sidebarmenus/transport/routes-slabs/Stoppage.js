@@ -10,8 +10,8 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { IconButton, TextField, Tooltip, Button, Box } from '@mui/material';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
-import WarningDialog from 'component/WarningDialog';
-import ParamTime from 'component/ParamTime';
+import WarningDialog from 'components/WarningDialog';
+import ParamTime from 'components/ParamTime';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 
 const columns = [
@@ -155,8 +155,8 @@ export default function Stoppage() {
 // import { IconButton, TextField, Tooltip, Button } from '@mui/material';
 // import { Box } from '@mui/system';
 // import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
-// import ParamTime from 'component/ParamTime';
-// import WarningDialog from 'component/WarningDialog';
+// import ParamTime from 'components/ParamTime';
+// import WarningDialog from 'components/WarningDialog';
 
 // const columns = [
 //   { id: 'stoppage', label: 'Stoppage', minWidth: 230 },

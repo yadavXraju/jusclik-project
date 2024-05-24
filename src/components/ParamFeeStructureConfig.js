@@ -4,7 +4,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Grid, Button, Paper, TextField, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
-import WarningDialog from 'component/WarningDialog';
+import WarningDialog from 'components/WarningDialog';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 

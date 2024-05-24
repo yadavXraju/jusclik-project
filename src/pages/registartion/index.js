@@ -19,7 +19,7 @@ import {
 import InputAdornment from '@mui/material/InputAdornment';
 import { useStyles } from '../authentication/visitor-registration/mobile-number';
 import { css } from '../authentication/visitor-registration/css';
-import SelectList from 'component/ParamSelectList';
+import SelectList from 'components/ParamSelectList';
 import MailOutlineOutlinedIcon from '@mui/icons-material/MailOutlineOutlined';
 import { useNavigate } from 'react-router';
 import { useSelector } from 'react-redux';

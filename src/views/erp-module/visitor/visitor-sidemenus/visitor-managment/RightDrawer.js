@@ -51,7 +51,7 @@ const VisitorDrawer = () => {
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [searchResults, setSearchResults] = useState([]);
 
-  // Styled components using MUI's styled utility
+  // Styled component using MUI's styled utility
   const SearchWrapper = styled('div')({
     position: 'relative',
     borderRadius: theme.shape.borderRadius,

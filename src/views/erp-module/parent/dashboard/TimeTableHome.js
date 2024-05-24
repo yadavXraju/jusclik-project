@@ -4,8 +4,8 @@
 import React, { useEffect, useState } from 'react';
 import timeTableData1 from 'views/erp-module/parent/parent-sidebar/timetable/TimeTableData';
 import { Typography, Grid, Paper, useMediaQuery } from '@mui/material';
-import { boxHeight } from 'component/dashboard-css/CommonCss';
-import ParamWidgetHeader from 'component/ParamWidgetHeader';
+import { boxHeight } from 'components/dashboard-css/CommonCss';
+import ParamWidgetHeader from 'components/ParamWidgetHeader';
 
 
 const TimeTableHome = () => {

@@ -2,15 +2,15 @@
 import React, { useState } from 'react';
 import { Grid, Box, Typography, Button } from '@mui/material';
 import Divider from '@mui/material/Divider';
-import ParamTabs from 'component/ParamSearchTabs';
+import ParamTabs from 'components/ParamSearchTabs';
 import useDrawer from 'hooks/useDrawer';
 import Fee from 'assets/images/erp-module-icon/fee.svg';
 import Customer from 'assets/images/erp-module-icon/customer.svg';
 import FormBuilder from 'assets/images/erp-module-icon/form-builder.svg';
 import ArrowRightAltOutlinedIcon from '@mui/icons-material/ArrowRightAltOutlined';
-import ParamSelectList from 'component/ParamSelectList';
+import ParamSelectList from 'components/ParamSelectList';
 import ReplayOutlinedIcon from '@mui/icons-material/ReplayOutlined';
-import ParamSelectPlaceholder from 'component/ParamSelectPlaceholder';
+import ParamSelectPlaceholder from 'components/ParamSelectPlaceholder';
 import AddCircleOutlinedIcon from '@mui/icons-material/AddCircleOutlined';
 import RemoveCircleOutlinedIcon from '@mui/icons-material/RemoveCircleOutlined';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';

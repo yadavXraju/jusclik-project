@@ -1,7 +1,7 @@
 // owned by sangeeta
 
 import React from 'react'
-import Systemdata from 'component/ParamSearchTabs';
+import Systemdata from 'components/ParamSearchTabs';
 import { leadClassification , leadSource,leadOwnerConfig} from './TabPages';
 
 import { useSelector } from 'react-redux';

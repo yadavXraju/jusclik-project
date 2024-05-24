@@ -11,7 +11,7 @@ import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 import { useSelector, useDispatch } from 'react-redux';
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
-import ParamSearchBar from 'component/ParamSearchBar';
+import ParamSearchBar from 'components/ParamSearchBar';
 import useDrawer from 'hooks/useDrawer';
 import AddCustomField from './add-custom-field';
 import EditCustomField from './edit-custom-field'

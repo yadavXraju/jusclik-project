@@ -3,9 +3,9 @@ import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper
 import { makeStyles, useTheme, ThemeProvider } from '@mui/styles';
 import UpperTab from './UpperTab';
 import MiddleBox from './MiddleBox';
-import { StudentData, StudentData2, StudentData3 } from './dropdown data/StudentData';
+import { StudentData, StudentData2, StudentData3 } from './dropdown-data/StudentData';
 import NumericTextField from './TextFeild';
-import { subject} from './dropdown data/SubjectData';
+import { subject} from './dropdown-data/SubjectData';
 
 const useStyles = makeStyles((theme) => ({
   tableContainer: {

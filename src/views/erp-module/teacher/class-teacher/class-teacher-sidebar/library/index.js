@@ -1,5 +1,5 @@
 import React from 'react'
-import LibraryComponent from './libraryComponent/LibraryComponent'
+import LibraryComponent from './LibraryComponent'
 
 const Library = () => {
   return (

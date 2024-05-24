@@ -1,6 +1,6 @@
 import React from 'react'
 import { SubjectTeacherProfileDetails } from 'layout/MainLayout/Header/subject-teacher/subject-teacher-profile-section/subjectTeacherProfile'
-import Profile from 'component/Profile'
+import Profile from 'components/Profile'
 
 const SubjectTeacherProfile = () => {
   return (

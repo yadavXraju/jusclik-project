@@ -1,7 +1,7 @@
 //@Page Owner-Tarun Pandey
 import React, { useState, useEffect } from 'react';
 import { Typography, Box, Button, TextField,FormControl } from '@mui/material';
-import ParamSelectPlaceholder from 'component/ParamSelectPlaceholder';
+import ParamSelectPlaceholder from 'components/ParamSelectPlaceholder';
 
 
 

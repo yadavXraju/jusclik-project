@@ -109,7 +109,7 @@ export default ContactPerson;
 
 // import React from 'react';
 // import { Grid, TextField, Card, useMediaQuery, Typography, Checkbox,Box, Button } from '@mui/material';
-// import ParameterizedDateComponent from 'component/ParamDateComponent';
+// import ParameterizedDateComponent from 'components/ParamDateComponent';
 // import AddIcon from '@mui/icons-material/Add';
 
 // function ContactPerson() {

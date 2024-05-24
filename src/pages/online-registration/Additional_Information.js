@@ -5,7 +5,7 @@
 import React, { useState } from 'react';
 import { Grid, Typography, Box, TextField, InputLabel, useMediaQuery } from '@mui/material';
 import Divider from '@mui/material/Divider';
-import Dropdown from 'component/ParamSelectList';
+import Dropdown from 'components/ParamSelectList';
 
 const Additional_Information = ({ handleClick }) => {
   const [formData, setFormData] = useState({

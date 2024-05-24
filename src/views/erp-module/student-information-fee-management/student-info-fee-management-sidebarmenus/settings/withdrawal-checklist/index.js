@@ -2,13 +2,13 @@ import React from 'react';
 import { IconButton, Typography, Tooltip, Card , Box, Button} from '@mui/material';
 // import { Box } from '@mui/system';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
-import WarningDialog from 'component/WarningDialog';
+import WarningDialog from 'components/WarningDialog';
 import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 import TableRowData from './TableRowData';
 import DrawerAddNew from './DrawerAddNew';
 // import DrawerNewTask from './DrawerNewTask';
-import CommonDataGrid from 'component/commonDataGrid';
-import withParamDrawer from 'component/withParamDrawer';
+import CommonDataGrid from 'components/commonDataGrid';
+import withParamDrawer from 'components/withParamDrawer';
 import RemoveRedEyeTwoToneIcon from '@mui/icons-material/RemoveRedEyeTwoTone';
 import { useNavigate } from 'react-router-dom';
 
@@ -200,7 +200,7 @@ export default function BusDetails() {
 // // import Drawer from '@mui/material/Drawer';
 // import DrawerAddNew from './DrawerAddNew';
 // import DrawerNewTask from './DrawerNewTask';
-// import withParamDrawer from 'component/withParamDrawer';
+// import withParamDrawer from 'components/withParamDrawer';
 
 
 

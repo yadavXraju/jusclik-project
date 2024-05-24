@@ -4,7 +4,7 @@
 import React from 'react';
 import { Paper, Box, Grid, Typography, useMediaQuery } from '@mui/material';
 import ApexCharts from 'react-apexcharts';
-import ParamWidgetHeader from 'component/ParamWidgetHeader';
+import ParamWidgetHeader from 'components/ParamWidgetHeader';
 
 
 const CommonChart = ({ Data, heading }) => {

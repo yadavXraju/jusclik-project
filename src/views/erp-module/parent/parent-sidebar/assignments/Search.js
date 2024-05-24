@@ -75,7 +75,7 @@ export default function SearchAssignment({ onSearch }) {
       autoComplete="off"
     >
       <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <DemoContainer components={['DatePicker']}>
+        <DemoContainer component={['DatePicker']}>
           <DatePicker label="From" value={startDate} onChange={handleStartDateChange} />
           <DatePicker label="To" value={endDate} onChange={handleEndDateChange} />
         </DemoContainer>

@@ -8,7 +8,7 @@ import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import TransportRoutes from './TransportRoutes';
 import Stoppage from './Stoppage';
 //import BottomNavbar from '../../student-master/admission/admission-common-section/bottom-navbar';
-import BottomNavbar from 'component/BottomNavbar';
+import BottomNavbar from 'components/BottomNavbar';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 
 const RoutesFormDrawer = () => {

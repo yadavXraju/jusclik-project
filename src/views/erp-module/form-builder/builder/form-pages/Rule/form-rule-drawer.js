@@ -5,8 +5,8 @@ import AddCircleOutlinedIcon from '@mui/icons-material/AddCircleOutlined';
 import RemoveCircleOutlinedIcon from '@mui/icons-material/RemoveCircleOutlined';
 import UnfoldMoreOutlinedIcon from '@mui/icons-material/UnfoldMoreOutlined';
 import Divider from '@mui/material/Divider';
-import ParamSelectList from 'component/ParamSelectList';
-import ParamTime from 'component/ParamTime';
+import ParamSelectList from 'components/ParamSelectList';
+import ParamTime from 'components/ParamTime';
 
 const comparisonOptions = [
   { id: 1, label: 'Is', value: 'is' },

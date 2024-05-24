@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import SelectList from 'component/ParamSelectList';
+import SelectList from 'components/ParamSelectList';
 import { Grid , TextField } from '@mui/material';
 
 

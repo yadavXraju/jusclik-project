@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Typography, Box, TextField } from '@mui/material';
-import ParameterizedAutoComplete from 'component/ParamAutoComplete';
+import ParameterizedAutoComplete from 'components/ParamAutoComplete';
 
 const DrawerContent = ({ toggleDrawer, handleChange, name,classDetails }) =>{
     return (

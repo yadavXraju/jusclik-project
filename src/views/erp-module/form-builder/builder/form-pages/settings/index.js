@@ -6,7 +6,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 import columns from './data';
 
-// Import your different components here
+// Import your different component here
 import DisplayComponent from './DisplayComponent';
 import OtherComponent from './OtherComponent';
 import FormAvailability from './FormAvailability';

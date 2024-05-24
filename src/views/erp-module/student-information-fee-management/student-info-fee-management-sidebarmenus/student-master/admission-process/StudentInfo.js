@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography, Paper,TextField} from '@mui/material';
 import Checkbox from '@mui/material/Checkbox';
-import Datecomponent from 'component/ParamDateComponent';
-import ParamTime from 'component/ParamTime';
-import ParameterizedAutoComplete from 'component/ParamAutoComplete';
+import Datecomponent from 'components/ParamDateComponent';
+import ParamTime from 'components/ParamTime';
+import ParameterizedAutoComplete from 'components/ParamAutoComplete';
 const subjects = ["Delivered", "notdelivered", "yetto delivered"];
 
 

@@ -2,13 +2,13 @@
 // ======= Return Transport Routes Form =========
 import React, { useState } from 'react';
 import { Box, TextField, Typography, useMediaQuery, Grid, Card } from '@mui/material';
-import SelectList from 'component/ParamSelectList';
+import SelectList from 'components/ParamSelectList';
 import FiberManualRecordRoundedIcon from '@mui/icons-material/FiberManualRecordRounded';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
-import RadioButtonsGroup from 'component/ParamRadioButton';
-import ParamTime from 'component/ParamTime';
-import ParamMultipleSelect from 'component/ParamMultipleSelect';
-import ParameterizedDateComponent from 'component/ParamDateComponent';
+import RadioButtonsGroup from 'components/ParamRadioButton';
+import ParamTime from 'components/ParamTime';
+import ParamMultipleSelect from 'components/ParamMultipleSelect';
+import ParameterizedDateComponent from 'components/ParamDateComponent';
 
 function TransportRoutes() {
   const isMobile = useMediaQuery('(max-width: 767px)');

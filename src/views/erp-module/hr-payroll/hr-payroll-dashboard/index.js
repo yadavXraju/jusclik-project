@@ -6,10 +6,10 @@ import {
 // import TabPanel from '@mui/lab/TabPanel';
 // import TabLabel from 'views/erp-module/erp-common-item/tab/TabLabel';
 import DashboardContent from './dashboard';
-import DashboardPayRoll from 'component/dashboard-payroll';
+import DashboardPayRoll from 'components/dashboard-payroll';
 // import PhoneIcon from '@mui/icons-material/Phone';
-// import useTabValue from 'component/ParamTab';
-import SetupTabs from 'component/param-stepper';
+// import useTabValue from 'components/ParamTab';
+import SetupTabs from 'components/param-stepper';
 
 // You can add more label in the tab here 
 import HomeTwoToneIcon from '@mui/icons-material/HomeTwoTone';

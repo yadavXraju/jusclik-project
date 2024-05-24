@@ -83,7 +83,7 @@ const GmailInboxTemplate = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [currentFilter, setCurrentFilter] = useState('');
 
-  // Styled components using MUI's styled utility
+  // Styled component using MUI's styled utility
   const SearchWrapper = styled('div')({
     position: 'relative',
     borderRadius: theme.shape.borderRadius,

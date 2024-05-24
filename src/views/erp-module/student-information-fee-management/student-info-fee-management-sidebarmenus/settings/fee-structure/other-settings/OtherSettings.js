@@ -42,7 +42,7 @@ const OtherSettings = () => {
 //   console.log(` Quater 1 : ${switches.quarter1 }, Quater 2 : ${switches.quarter2}, Quater 3 : ${switches.quarter3}, Quater 4 : ${switches.quarter4}`);
 
   return (
-    // Grid container to hold all the Switch components
+    // Grid container to hold all the Switch component
     <Grid container spacing={2} sx={{ padding: '24px', margin: '0', gap: '20px' }}>
       {data.map((item) => (
         // Grid item for each quarter's Switch and label

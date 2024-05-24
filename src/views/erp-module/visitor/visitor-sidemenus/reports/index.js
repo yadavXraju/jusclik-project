@@ -10,7 +10,7 @@ import GroupsOutlinedIcon from '@mui/icons-material/GroupsOutlined';
 import BadgeOutlinedIcon from '@mui/icons-material/BadgeOutlined';
 import ManageHistoryOutlinedIcon from '@mui/icons-material/ManageHistoryOutlined';
 import ReportsPayroll from './ReportsPayroll';
-import SearchBar from 'component/ParamSearchBar';
+import SearchBar from 'components/ParamSearchBar';
 
 const sections = [
   {

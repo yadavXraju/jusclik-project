@@ -6,14 +6,14 @@ import { Grid, Paper, Typography, Box, IconButton, Tooltip, Button, Badge , useM
 import { data } from 'views/erp-module/parent/parent-sidebar/assignments/AssignmentData';
 import CreateIcon from '@mui/icons-material/Create';
 import { useNavigate } from 'react-router';
-import { subTitle, subtitle2 } from 'component/dashboard-css/CommonCss';
+import { subTitle, subtitle2 } from 'components/dashboard-css/CommonCss';
 import Checkbox from '@mui/material/Checkbox';
 import Attachment from 'views/erp-module/parent/parent-sidebar/assignments/Attachment';
 import AttachmentIcon from '@mui/icons-material/Attachment';
 import { commonStyles } from 'views/erp-module/parent/parent-sidebar/communication-message/Contact-list';
-import { boxHeight } from 'component/dashboard-css/CommonCss';
+import { boxHeight } from 'components/dashboard-css/CommonCss';
 import useDialog from '../customHook/UseDialog';
-import ParamWidgetHeader from 'component/ParamWidgetHeader';
+import ParamWidgetHeader from 'components/ParamWidgetHeader';
 
 const AssignmentsHomeComp = () => {
   const [selectedItems, setSelectedItems] = useState([]);

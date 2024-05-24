@@ -3,7 +3,7 @@
 import React from 'react';
 import ApexCharts from 'react-apexcharts';
 import { Grid, Paper, Typography, useMediaQuery} from '@mui/material';
-import { HeadingCss } from 'component/dashboard-css/CommonCss';
+import { HeadingCss } from 'components/dashboard-css/CommonCss';
 
 
 const HotAndColdLeads = () => {

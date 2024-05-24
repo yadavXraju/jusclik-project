@@ -1,5 +1,5 @@
 import React from 'react'
-import Counter1 from 'component/CommonCounter'
+import Counter1 from 'components/CommonCounter'
 import { CheckInAndCheckOutData } from './CheckInDetails'
 
 

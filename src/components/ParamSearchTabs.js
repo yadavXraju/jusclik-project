@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Tabs, Tab, Typography, Box } from '@mui/material';
-import ParamSearchBar from 'component/ParamSearchBar';
+import ParamSearchBar from 'components/ParamSearchBar';
 import 'assets/scss/tabscustomization.css';
 import { useEffect } from 'react';
 

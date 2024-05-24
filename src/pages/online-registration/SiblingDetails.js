@@ -4,7 +4,7 @@
 import React from 'react';
 import { Grid, Typography, Box, TextField, InputLabel, useMediaQuery} from '@mui/material';
 import Divider from '@mui/material/Divider';
-import Dropdown from 'component/ParamSelectList';
+import Dropdown from 'components/ParamSelectList';
 import { useState } from 'react';
 
 const SiblingDetails=({ handleClick }) =>{

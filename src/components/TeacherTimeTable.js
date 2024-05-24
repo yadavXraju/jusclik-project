@@ -10,7 +10,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Grid, Typography } from '@mui/material';
-import { HeadingCss } from 'component/dashboard-css/CommonCss';
+import { HeadingCss } from 'components/dashboard-css/CommonCss';
 import { getCurrentDate } from 'utils/timeUtils';
 
 export default function TeacherTimeTable({ TeacherTimeTableDetails }) {

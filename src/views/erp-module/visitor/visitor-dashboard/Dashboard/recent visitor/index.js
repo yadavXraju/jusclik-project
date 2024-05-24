@@ -1,6 +1,6 @@
 import React from 'react';
 import { Paper, Typography, Grid, Table, TableRow, TableCell, TableBody, Avatar, Box, TableHead, useMediaQuery } from '@mui/material';
-import { HeadingCss } from 'component/dashboard-css/CommonCss';
+import { HeadingCss } from 'components/dashboard-css/CommonCss';
 import { gridSpacing } from 'store/constant';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import EventIcon from '@mui/icons-material/Event';

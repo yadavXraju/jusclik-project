@@ -1,5 +1,5 @@
 import React from 'react'
-import CommonCounter from 'component/CommonCounter';
+import CommonCounter from 'components/CommonCounter';
 import { useSelector } from "react-redux";
 
  const TotalAttendanceDeatails  = {

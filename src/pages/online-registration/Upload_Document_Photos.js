@@ -10,7 +10,7 @@ import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
-import WarningDialog from 'component/WarningDialog';
+import WarningDialog from 'components/WarningDialog';
 
 const Upload_Document_Photos = ({ handleClick }) => {
   const [selectedFiles, setSelectedFiles] = useState({

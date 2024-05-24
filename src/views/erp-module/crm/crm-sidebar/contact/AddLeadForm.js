@@ -2,8 +2,8 @@
 // ======= Add Lead Form =========
 import React from 'react';
 import { Box, TextField, useMediaQuery, Card, Grid, Typography } from '@mui/material';
-import ParamMultipleSelect from 'component/ParamMultipleSelect';
-import ParameterizedDateComponent from 'component/ParamDateComponent';
+import ParamMultipleSelect from 'components/ParamMultipleSelect';
+import ParameterizedDateComponent from 'components/ParamDateComponent';
 import TextArea from 'antd/es/input/TextArea';
 
 function AddLeadForm({currEditItem}) {

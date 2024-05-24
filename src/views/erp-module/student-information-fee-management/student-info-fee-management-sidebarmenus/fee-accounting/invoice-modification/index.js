@@ -3,11 +3,11 @@
 // import { Grid , Box , Typography , Paper , useMediaQuery , LinearProgress }from '@mui/material';
 
 // // coutner imports
-// import ParamCounters from "component/ParamCounters";
+// import ParamCounters from "components/ParamCounters";
 // import PeopleOutlineIcon from '@mui/icons-material/PeopleOutline';
 // import PermIdentityOutlinedIcon from '@mui/icons-material/PermIdentityOutlined';
 // import Person2OutlinedIcon from '@mui/icons-material/Person2Outlined';
-// import ParamWidgetHeader from 'component/ParamWidgetHeader';
+// import ParamWidgetHeader from 'components/ParamWidgetHeader';
 // import { gridSpacing } from 'store/constant';
 // // Enrollment imports
 // import LiveHelpTwoToneIcon from '@mui/icons-material/LiveHelpTwoTone';
@@ -21,7 +21,7 @@
 
 // // ================== fee defaulter imports ==================
 // import SkeletonTotalGrowthBarChart from 'ui-component/cards/Skeleton/TotalGrowthBarChart';
-// import { HeadingCss } from 'component/dashboard-css/CommonCss';
+// import { HeadingCss } from 'components/dashboard-css/CommonCss';
 // import Chart from 'react-apexcharts';
 
 

@@ -2,9 +2,9 @@
 
 
 import React,{useState} from 'react'
-import CommonDataGrid from 'component/commonDataGrid'
+import CommonDataGrid from 'components/commonDataGrid'
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
-// import WarningDialog from 'component/WarningDialog';
+// import WarningDialog from 'components/WarningDialog';
 import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 import { IconButton, Tooltip } from '@mui/material';
 import { Box ,Grid, Card, Typography } from '@mui/material';
@@ -18,7 +18,7 @@ import DoDisturbAltOutlinedIcon from '@mui/icons-material/DoDisturbAltOutlined';
 import Chip from '@mui/material/Chip';
 import Avatar from '@mui/material/Avatar';
 import VisitorDetails from '../visitor-detail';
-import WarningDialog from 'component/WarningDialog';
+import WarningDialog from 'components/WarningDialog';
  
 
 const renderChipCell = (params) => {

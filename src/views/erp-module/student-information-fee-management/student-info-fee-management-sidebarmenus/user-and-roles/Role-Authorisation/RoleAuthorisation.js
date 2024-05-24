@@ -2,9 +2,9 @@
 import React, {useState,useEffect } from 'react'
 import { Box } from '@mui/material'
 import ReportSection from './ReportSection'
-import ParamSearchTab from 'component/ParamSearchTabs';
+import ParamSearchTab from 'components/ParamSearchTabs';
 import { useSelector } from 'react-redux';
-import ParamChackboxSelectAll from 'component/ParamChackboxSelectAll'
+import ParamChackboxSelectAll from 'components/ParamChackboxSelectAll'
 
 const ShowComponent = () => {
   const AllRecordData = [

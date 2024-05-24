@@ -1,7 +1,7 @@
 import React from 'react';
 import { QuickTipsData } from './QuickTipsData';
 import { Typography , Box , Grid , Button , Divider } from '@mui/material';
-import { subTitle  } from 'component/dashboard-css/CommonCss';
+import { subTitle  } from 'components/dashboard-css/CommonCss';
 
 const QuickTips = () => {
   return (

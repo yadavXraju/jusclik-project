@@ -21,7 +21,7 @@ import {
   randomId,
   randomArrayItem,
 } from '@mui/x-data-grid-generator';
-import WarningDialog from 'component/WarningDialog';
+import WarningDialog from 'components/WarningDialog';
 import { useEffect } from 'react';
 const roles = ['Yes','No'];
 const randomRole = () => {

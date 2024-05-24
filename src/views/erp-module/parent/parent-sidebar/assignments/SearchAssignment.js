@@ -69,7 +69,7 @@ const SearchAssignment = ({ onSearch }) => {
       <Grid container spacing={2} sx={{ paddingLeft: '20px', paddingTop: '10px'  }}>
         <Grid lg={2}    sm={12} md={6} xs={12} sx={{'& .css-4jnixx-MuiStack-root': {display:'flex' , flexDirection:'column'}, paddingRight:'10px' ,'& .MuiTextField-root': {minWidth:'auto !important'} }}>
           <LocalizationProvider dateAdapter={AdapterDayjs}  >
-            <DemoContainer components={['DatePicker']} >
+            <DemoContainer component={['DatePicker']} >
               <DatePicker
                 label="From"
                 value={startDate}
@@ -86,7 +86,7 @@ const SearchAssignment = ({ onSearch }) => {
 
         <Grid lg={2} sm={12} md={6} xs={12} sx={{'& .css-4jnixx-MuiStack-root': {display:'flex' , flexDirection:'column'},paddingRight:'10px' , '& .MuiTextField-root': {minWidth:'auto !important'}}}>
           <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DemoContainer components={['DatePicker']}>
+            <DemoContainer component={['DatePicker']}>
               <DatePicker
                 label="To"
                 value={endDate}
@@ -102,7 +102,7 @@ const SearchAssignment = ({ onSearch }) => {
         {/*Commented for responsive */}
 
         {/*<LocalizationProvider dateAdapter={AdapterDayjs}>
-        <DemoContainer components={['DatePicker']}>
+        <DemoContainer component={['DatePicker']}>
            <DatePicker label="From" value={startDate} onChange={handleStartDateChange} slots={{
             openPickerIcon: CalendarMonthTwoToneIcon
           }} />

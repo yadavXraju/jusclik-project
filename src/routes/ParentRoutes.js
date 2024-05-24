@@ -3,7 +3,7 @@ import Loadable from 'ui-component/Loadable';
 
 // project imports
 const Dashboard = Loadable(lazy(() => import('views/erp-module/parent/dashboard')));
-// components page routing
+// component page routing
 const Attendance = Loadable(lazy(() => import('views/erp-module/parent/parent-sidebar/attendance')));
 const Assignments = Loadable(lazy(() => import('views/erp-module/parent/parent-sidebar/assignments/')));
 const Updates = Loadable(lazy(() => import('views/erp-module/parent/parent-sidebar/updates/')));

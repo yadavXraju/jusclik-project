@@ -245,7 +245,7 @@ export default function LoginPage() {
         <Grid item xs={12} sm={6} md={6} paddingBottom="1rem">
           <LeftLogo />
         </Grid>
-        {/* Right Side Components */}
+        {/* Right Side component */}
         <Grid
           item
           xs={12}

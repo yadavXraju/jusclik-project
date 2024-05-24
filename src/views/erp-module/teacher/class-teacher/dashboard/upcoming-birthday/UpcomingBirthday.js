@@ -1,6 +1,6 @@
 
 import { Typography , Grid} from '@mui/material';
-import { boxHeight , HeadingCss ,  subTitle , subtitle2 } from 'component/dashboard-css/CommonCss';
+import { boxHeight , HeadingCss ,  subTitle , subtitle2 } from 'components/dashboard-css/CommonCss';
 
 import { BirthdayList } from './BirthdayList';
 import {Divider , Box , Paper} from '@mui/material';

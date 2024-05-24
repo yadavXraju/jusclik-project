@@ -2,7 +2,7 @@ import React from 'react';
 import ApexCharts from 'react-apexcharts';
 import { Grid, Paper, Typography } from '@mui/material';
 // import { gridSpacing } from 'store/constant';
-import { HeadingCss , boxHeight } from 'component/dashboard-css/CommonCss';
+import { HeadingCss , boxHeight } from 'components/dashboard-css/CommonCss';
 import { StudentStrengthList } from './StudentStrengthList';
 
 
