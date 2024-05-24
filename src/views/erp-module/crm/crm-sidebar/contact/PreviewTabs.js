@@ -7,7 +7,7 @@ import FolderOutlinedIcon from '@mui/icons-material/FolderOutlined';
 import LeadTimeline from './LeadTimeline';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import CommunicationLogs from './CommunicationLogs';
-import CommonDocuments from 'views/erp-common-component/commonDocuments';
+import CommonDocuments from 'components/Documents';
 import documentData from './Sample-DocumentData';
 import FollowUpAndNotes from './FollowUpAndNotes';
 

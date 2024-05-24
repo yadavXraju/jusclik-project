@@ -27,8 +27,8 @@ import {
 import PerfectScrollbar from 'react-perfect-scrollbar';
 
 // project imports
-import MainCard from 'ui-component/cards/MainCard';
-import Transitions from 'ui-component/extended/Transitions';
+import MainCard from 'components/ui/cards/MainCard';
+import Transitions from 'components/ui/extended/Transitions';
 import { IconLogout, IconSettings, IconUser } from '@tabler/icons';
 import { useLocation } from 'react-router-dom';
 // for parent

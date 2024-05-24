@@ -1,6 +1,6 @@
 import { Grid  ,  Typography,  useMediaQuery, Paper,Box } from '@mui/material';
 import QuickTips from './quick-tips';
-import ParamStepper from 'components/param-stepper';
+import ParamStepper from 'components/Stepper';
 import { HeadingCss } from 'components/dashboard-css/CommonCss';
 import MakeInvoiceVideo from './make-invoice-video';
 

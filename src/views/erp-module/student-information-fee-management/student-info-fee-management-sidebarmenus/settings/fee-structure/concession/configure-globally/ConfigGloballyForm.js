@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Grid, TextField } from '@mui/material';
-import ParamDateComponent from 'components/ParamDateComponent';
-import ParamMultipleSelect from 'components/ParamMultipleSelect';
+import ParamDateComponent from 'components/ui/custom-input/DateComponent';
+import ParamMultipleSelect from 'components/ui/custom-input/MultipleSelect';
 import { useDispatch, useSelector } from 'react-redux';
 import { setFeeHeads, setClass } from 'store/student-info-and-fee/settings/fee-structure/fee-structure-slice';
 import ConfigureGloballyPreview from './ConfigureGloballyPreview';

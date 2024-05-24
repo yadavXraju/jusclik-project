@@ -2,8 +2,8 @@
 // ======= Return Slab Form =========
 import React, {useState} from 'react';
 import { Box, TextField, useMediaQuery, Card } from '@mui/material';
-import SelectList from 'components/ParamSelectList';
-import ParamMultipleSelect from 'components/ParamMultipleSelect';
+import SelectList from 'components/ui/custom-input/SelectList';
+import ParamMultipleSelect from 'components/ui/custom-input/MultipleSelect';
 
 function SlabForm() {
   const isMobile = useMediaQuery('(max-width: 767px)');

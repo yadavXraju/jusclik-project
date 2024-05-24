@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {  Grid, Select, FormControl, MenuItem, InputLabel, TextField } from '@mui/material';
 
-import ParamDateComponent from 'components/ParamDateComponent';
+import ParamDateComponent from 'components/ui/custom-input/DateComponent';
 
 const FeeLedgerForms = () => {
   const [formData, setFormData] = useState({

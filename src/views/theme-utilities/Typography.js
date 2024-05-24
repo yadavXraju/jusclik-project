@@ -2,9 +2,9 @@
 // import MuiTypography from '@mui/material/Typography';
 
 // // project imports
-// import SubCard from 'ui-component/cards/SubCard';
-// import MainCard from 'ui-component/cards/MainCard';
-// import SecondaryAction from 'ui-component/cards/CardSecondaryAction';
+// import SubCard from 'components/ui/cards/SubCard';
+// import MainCard from 'components/ui/cards/MainCard';
+// import SecondaryAction from 'components/ui/cards/CardSecondaryAction';
 // import { gridSpacing } from 'store/constant';
 
 // // ==============================|| TYPOGRAPHY ||============================== //

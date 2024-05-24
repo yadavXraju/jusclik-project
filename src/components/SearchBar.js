@@ -5,6 +5,7 @@ import InputBase from '@mui/material/InputBase';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 //Search Bar
+// Used in stufee/reports
 const SearchBar = ({
   onChange,
   paperStyle,

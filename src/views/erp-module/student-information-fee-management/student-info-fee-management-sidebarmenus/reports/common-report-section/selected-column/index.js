@@ -4,7 +4,7 @@ import { Box, Typography, IconButton } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import ArrowCircleRightOutlinedIcon from '@mui/icons-material/ArrowCircleRightOutlined';
-import ParamSearchBar from 'components/ParamSearchBar';
+import ParamSearchBar from 'components/SearchBar';
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 
 

@@ -1,6 +1,6 @@
 // owned by sangeeta
 import React from 'react'
-import SetupTabs from 'components/param-stepper'
+import SetupTabs from 'components/Stepper'
 import { Grid, Paper, Typography,Box} from '@mui/material';
 import { gridSpacing } from 'store/constant';
 import { HeadingCss } from 'components/dashboard-css/CommonCss'

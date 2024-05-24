@@ -1,7 +1,7 @@
 // ======= Page Owner Vikash =========
 // ======= Render Student Preview Page =========
 import React, {useEffect} from 'react';
-import MainCard from 'ui-component/cards/MainCard';
+import MainCard from 'components/ui/cards/MainCard';
 import { Box, Grid, Typography, IconButton, useMediaQuery, Divider } from '@mui/material';
 import PriviewTabs from './PreviewTabs';
 import Button from '@mui/material/Button';

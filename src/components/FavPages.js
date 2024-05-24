@@ -3,7 +3,7 @@
 
 
 import React, { useState, useEffect } from 'react';
-// import MainCard from 'ui-component/cards/MainCard';
+// import MainCard from 'components/ui/cards/MainCard';
 import { Typography, Grid, Box, Button , Divider ,Paper} from '@mui/material';
 // import {  } from 'views/dashboard/Default/dashboard-css/CommonCss';
 // import { gridSpacing } from 'store/constant';

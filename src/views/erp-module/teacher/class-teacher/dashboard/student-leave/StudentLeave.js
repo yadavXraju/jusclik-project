@@ -4,7 +4,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { Settings } from './SliderSetting';
 import { StudentLeaveData } from './StudentLeaveData';
-// import MainCard from 'ui-component/cards/MainCard';
+// import MainCard from 'components/ui/cards/MainCard';
 import { Grid, Typography, Box ,Paper} from '@mui/material';
 // import { gridSpacing } from 'store/constant';
 import { subTitle, subtitle2 , HeadingCss } from 'components/dashboard-css/CommonCss';

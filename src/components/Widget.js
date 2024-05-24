@@ -6,7 +6,7 @@ import { Divider, Grid, Typography, Button, } from '@mui/material';
 import { boxHeight, subTitle, subtitle2} from 'components/dashboard-css/CommonCss';
 import { Box ,Paper} from '@mui/material';
 import { useNavigate } from 'react-router';
-import ParamWidgetHeader from './ParamWidgetHeader';
+import ParamWidgetHeader from './WidgetHeader';
 
 const Alert = ({ Data , HeadingTitle , icon , description }) => {
     const navigate = useNavigate()

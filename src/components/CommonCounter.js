@@ -9,8 +9,8 @@ import { styled, useTheme } from '@mui/material/styles';
 import { Avatar, Box, Grid,  Typography } from '@mui/material';
 
 // project imports
-import MainCard from 'ui-component/cards/MainCard';
-import SkeletonAttendanceCard from 'ui-component/cards/Skeleton/CounterCard';
+import MainCard from 'components/ui/cards/MainCard';
+import SkeletonAttendanceCard from 'components/ui/cards/Skeleton/CounterCard';
 
 // assets
 import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';

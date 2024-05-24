@@ -9,7 +9,7 @@
 // import PopupState, { bindPopper, bindToggle } from 'material-ui-popup-state';
 
 // // project imports
-// import Transitions from 'ui-component/extended/Transitions';
+// import Transitions from 'components/ui/extended/Transitions';
 
 // // assets
 // import { IconAdjustmentsHorizontal, IconSearch, IconX } from '@tabler/icons';

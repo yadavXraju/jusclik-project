@@ -2,8 +2,8 @@
 // import { Card } from '@mui/material';
 
 // // project imports
-// import MainCard from 'ui-component/cards/MainCard';
-// import SecondaryAction from 'ui-component/cards/CardSecondaryAction';
+// import MainCard from 'components/ui/cards/MainCard';
+// import SecondaryAction from 'components/ui/cards/CardSecondaryAction';
 
 // // assets
 // import LinkIcon from '@mui/icons-material/Link';

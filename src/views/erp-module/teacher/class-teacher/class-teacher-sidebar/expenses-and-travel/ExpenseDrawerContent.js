@@ -2,9 +2,9 @@ import React from 'react';
 import { Button, Box } from '@mui/material';
 import TextArea from 'antd/es/input/TextArea';
 import { useState } from 'react';
-import SelectList from 'components/ParamSelectList';
+import SelectList from 'components/ui/custom-input/SelectList';
 import TextField from '@mui/material/TextField';
-import ParameterizedDateComponent from 'components/ParamDateComponent';
+import ParameterizedDateComponent from 'components/ui/custom-input/DateComponent';
 
 function ExpenseDrawerContent() {
     const [expense, setexpense] = useState('');

@@ -1,9 +1,9 @@
 import React from 'react';
 import { Grid, Paper, Typography , Box , } from '@mui/material';
-import ParamCounters from 'components/ParamCounters';
+import ParamCounters from 'components/Counters';
 
 import Divider from '@mui/material/Divider';
-import CommonChart from 'components/CommonChart';
+import CommonChart from 'components/chart/CommonChart';
 
 const ExpenseAndTravel = () => {
   const ApexChartData = {

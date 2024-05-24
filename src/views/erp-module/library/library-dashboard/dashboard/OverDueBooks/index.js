@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Grid, Paper, Typography, Box, useMediaQuery } from '@mui/material';
 import Chart from 'react-apexcharts';
 import { HeadingCss } from 'components/dashboard-css/CommonCss'
-import SkeletonTotalGrowthBarChart from 'ui-component/cards/Skeleton/TotalGrowthBarChart';
+import SkeletonTotalGrowthBarChart from 'components/ui/cards/Skeleton/TotalGrowthBarChart';
 import { gridSpacing } from 'store/constant';
 
 const OverDueBook = ({ isLoading }) => {

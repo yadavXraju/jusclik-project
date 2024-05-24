@@ -2,7 +2,7 @@
 // Description : Hr Payroll Routes
 
 import { lazy } from 'react';
-import Loadable from 'ui-component/Loadable';
+import Loadable from 'components/ui/Loadable';
 // project imports
 const Dashboard = Loadable(lazy(() => import('views/erp-module/hr-payroll/hr-payroll-dashboard')));
 // report

@@ -13,7 +13,7 @@ import PersonAddAltTwoToneIcon from '@mui/icons-material/PersonAddAltTwoTone';
 import DriveFolderUploadTwoToneIcon from '@mui/icons-material/DriveFolderUploadTwoTone';
 import DescriptionTwoToneIcon from '@mui/icons-material/DescriptionTwoTone';
 import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
-import CommonDocuments from 'views/erp-common-component/commonDocuments';
+import CommonDocuments from 'components/Documents';
 
 const AddContactDrawer = ({ DrawerBtn = false, editIcon = false, currEditItem , handleClick }) => {
   const { anchor, toggleDrawer } = useDrawer();

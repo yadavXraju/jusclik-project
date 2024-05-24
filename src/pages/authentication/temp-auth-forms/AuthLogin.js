@@ -27,7 +27,7 @@
 
 // // project imports
 // import useScriptRef from 'hooks/useScriptRef';
-// import AnimateButton from 'ui-component/extended/AnimateButton';
+// import AnimateButton from 'components/ui/extended/AnimateButton';
 
 // // assets
 // import Visibility from '@mui/icons-material/Visibility';

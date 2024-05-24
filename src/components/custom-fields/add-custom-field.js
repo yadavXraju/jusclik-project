@@ -1,7 +1,7 @@
 //@Page Owner-Tarun Pandey
 import React, { useState, useEffect } from 'react';
 import { Typography, Box, Button, TextField,FormControl } from '@mui/material';
-import ParamSelectPlaceholder from 'components/ParamSelectPlaceholder';
+import ParamSelectPlaceholder from 'components/ui/custom-input/SelectPlaceholder';
 import { Email, CustomCheckbox, Phone, CustomText, CustomNumber, Currency, URL, CustomDate } from './custom-field-options';
 import Picklist from './Picklist';
 import CalendarMonthTwoToneIcon from '@mui/icons-material/CalendarMonthTwoTone';

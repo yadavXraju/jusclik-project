@@ -1,6 +1,6 @@
 // import React from 'react';
 // import { lazy } from 'react';
-// import Loadable from 'ui-component/Loadable';
+// import Loadable from 'components/ui/Loadable';
 
 // // Class Teacher  Dashboard Menus
 // const ClassTeacherDashboard = Loadable(lazy(() => import('views/class-teacher-dashboard/')));

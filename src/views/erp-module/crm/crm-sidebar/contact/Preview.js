@@ -1,7 +1,7 @@
 // ======= Page Owner Vikash =========
 // ======= Contact Details Preview =========
 import React from 'react';
-import MainCard from 'ui-component/cards/MainCard';
+import MainCard from 'components/ui/cards/MainCard';
 import { Box, Grid, Typography, IconButton, useMediaQuery, Button, Divider } from '@mui/material';
 import { studentProfileDetails } from 'layout/MainLayout/Header/ProfileSection/ProfileDeatails';
 import { CardMedia } from '@mui/material';

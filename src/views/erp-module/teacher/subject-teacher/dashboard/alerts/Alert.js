@@ -1,5 +1,5 @@
 import React from 'react'
-import Alert from 'components/ParamWidget'
+import Alert from 'components/Widget'
 import SubjectTeacherAlertData from './AlertData'
 
 const SubjectTeacherAlert = () => {

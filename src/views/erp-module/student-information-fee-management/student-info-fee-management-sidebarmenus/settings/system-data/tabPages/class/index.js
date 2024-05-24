@@ -1,5 +1,5 @@
 import React from 'react';
-import ParamTable from 'views/erp-common-component/ParamTable';
+import ParamTable from 'components/Table';
 import DrawerContent from './DrawerContent';
 import Drawer from '@mui/material/Drawer';
 

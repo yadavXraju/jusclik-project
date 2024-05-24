@@ -1,5 +1,5 @@
 import React from 'react';
-import ParamTableDragDrop from 'components/ParamTableDragDrop';
+import ParamTableDragDrop from 'components/TableDragDrop';
 import { Drawer,Box,Typography,Button } from '@mui/material';
 import OptionalFeeHeadDrawer from './OptionalFeeHeadDrawer';
 import OptionalFeeHeadConfigTab from './optional-fee-head-config/OptionalFeeHeadConfig';

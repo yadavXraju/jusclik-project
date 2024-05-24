@@ -12,7 +12,7 @@ import OwnerDetails from './OwnerDetails';
 import DirectionsBusTwoToneIcon from '@mui/icons-material/DirectionsBusTwoTone';
 import DriveFolderUploadTwoToneIcon from '@mui/icons-material/DriveFolderUploadTwoTone';
 import AccountBoxTwoToneIcon from '@mui/icons-material/AccountBoxTwoTone';
-import CommonDocuments from 'views/erp-common-component/commonDocuments';
+import CommonDocuments from 'components/Documents';
 import documentData from './Sample-DocumentData';
 
 const BusDetailsDrawer = () => {

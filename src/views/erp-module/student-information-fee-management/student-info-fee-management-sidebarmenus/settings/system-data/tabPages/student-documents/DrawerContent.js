@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Typography, Box, TextField } from '@mui/material';
-import ParameterizedAutoComplete from 'components/ParamAutoComplete';
+import ParameterizedAutoComplete from 'components/ui/custom-input/AutoComplete';
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 const classDetails = ['a', 'b', 'c', 'd', 'e'];

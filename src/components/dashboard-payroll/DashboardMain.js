@@ -6,7 +6,7 @@ import AccountBalanceRoundedIcon from '@mui/icons-material/AccountBalanceRounded
 import ContactMailRoundedIcon from '@mui/icons-material/ContactMailRounded';
 import NotificationsRoundedIcon from '@mui/icons-material/NotificationsRounded';
 import PersonRoundedIcon from '@mui/icons-material/PersonRounded';
-import MainCard from 'ui-component/cards/MainCard';
+import MainCard from 'components/ui/cards/MainCard';
 import ProgressBar from './ProgressBar';
 import FaqEnquiry from './FaqEnquiry';
 import { useState } from 'react';

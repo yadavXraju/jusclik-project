@@ -1,7 +1,7 @@
 // ======= Page Owner Vikash =========
 // ======= Render Bus Details Preview =========
 import React, { useEffect } from 'react';
-import MainCard from 'ui-component/cards/MainCard';
+import MainCard from 'components/ui/cards/MainCard';
 import { Box, Grid, Typography, useMediaQuery, Divider } from '@mui/material';
 import { CardMedia } from '@mui/material';
 import ArrowBackOutlinedIcon from '@mui/icons-material/ArrowBackOutlined';

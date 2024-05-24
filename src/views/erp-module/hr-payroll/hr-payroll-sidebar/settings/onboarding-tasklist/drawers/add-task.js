@@ -1,7 +1,7 @@
 // PAGE OWNER: DAMANDEEP
 import React from 'react'
 import {Typography,TextField, Checkbox, Button,Box, Drawer } from '@mui/material'
-import ParamAttachement from 'components/ParamAttachement'
+import ParamAttachement from 'components/Attachement'
 import MultipleSelectChip from '../ChipSelect'
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 

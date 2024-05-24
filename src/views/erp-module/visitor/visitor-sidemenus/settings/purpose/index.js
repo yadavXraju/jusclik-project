@@ -1,5 +1,5 @@
 import React from 'react';
-import Systemdata from 'components/ParamSearchTabs';
+import Systemdata from 'components/SearchTabs';
 import {
   VisitorPurpose,
   ToMeet,

@@ -19,7 +19,7 @@ import QueryBuilderOutlinedIcon from '@mui/icons-material/QueryBuilderOutlined';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import {Dialog, DialogTitle , DialogContent ,DialogContentText ,DialogActions } from '@mui/material';
-import ParamMultipleSelect from 'components/ParamMultipleSelect';
+import ParamMultipleSelect from 'components/ui/custom-input/MultipleSelect';
 
 function LeaveApplicationDrawerContent() {
     const [state, setState] = React.useState({

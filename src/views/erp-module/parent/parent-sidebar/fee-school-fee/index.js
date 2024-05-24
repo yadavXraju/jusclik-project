@@ -1,7 +1,7 @@
 // ======= Page Owner Vikash =========
 // ======= School Fee Entry Page =========
 import React from 'react'
-import MainCard from 'ui-component/cards/MainCard';
+import MainCard from 'components/ui/cards/MainCard';
 import Feetabs from './Fee_tabs';
 import { Box  } from '@mui/system';
 import PoliciesCounter from './policiesCounter';

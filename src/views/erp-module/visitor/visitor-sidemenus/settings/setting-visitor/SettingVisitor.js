@@ -5,7 +5,7 @@ import SmsOutlinedIcon from '@mui/icons-material/SmsOutlined';
 import PermDataSettingOutlinedIcon from '@mui/icons-material/PermDataSettingOutlined';
 import DashboardCustomizeOutlinedIcon from '@mui/icons-material/DashboardCustomizeOutlined';
 import TuneOutlinedIcon from '@mui/icons-material/TuneOutlined';
-import CommonSettings from 'views/erp-common-component/commonSetting';
+import CommonSettings from 'components/Setting';
 import { handleConfigure } from 'store/visitor/Visitor-management-slice';
 
 const SettingData = [

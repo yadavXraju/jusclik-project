@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector  } from 'react-redux';
 import FeeHeadForm from './FeeHeadForm';
 import { feeHeadConfigGlobally } from 'store/student-info-and-fee/settings/fee-structure/fee-structure-slice';
-import ParamFeeStructureConfig from 'components/ParamFeeStructureConfig';
+import ParamFeeStructureConfig from 'components/FeeStructureConfig';
 
 const FeeHeadGlobally = () => {
 

@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Tabs, Tab, Typography, Box } from '@mui/material';
 import BottomNavbar from 'components/BottomNavbar';
-import TabsName from './ParamTabStep';
+import TabsName from './TabStep';
 
 
 const TabPanel = (props) => {
