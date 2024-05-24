@@ -1,4 +1,4 @@
-import { Box, IconButton, Paper, Tab, Tabs, Typography } from '@mui/material';
+import { Box, IconButton, Paper, Tab, Tabs, Tooltip, Typography } from '@mui/material';
 import TabsName from 'components/TabStep';
 import WarningDialog from 'components/WarningDialog';
 import CommonDataGrid from 'components/table-data-grid/commonDataGrid';
@@ -8,6 +8,7 @@ import { EditTaskListDrawer } from './drawers/edit-task-list';
 import { AddTaskDrawer } from './drawers/add-task';
 import { EditTaskDrawer } from './drawers/edit-task';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
+
 const TabPanel = (props) => {
   const { children, value, index, ...other } = props;
   return (
@@ -20,19 +21,28 @@ const TabPanel = (props) => {
     </Box>
   );
 };
+
 const CustomTabs = (props) => {
   const {
+    // tabs data
     tabsData,
+    setTabsData,       
+    // selected tab 
     selectedTab,
     setSelectedTab,
+    // datagrid rows columns
     rows,
     columns,
+    // confirm delete popup  
     modalOpen,
+    setmodalOpen,
+    // delete popup handler
     handleConfirmDelete,
+    // delete popup close 
     handleModalClose,
-    taskGroups,
-    setTaskGroups,
+    // drawer states
     state,
+    // toggle drawer function
     toggleDrawer
   } = props;
   const lastIndex = tabsData.length - 1;
@@ -40,13 +50,14 @@ const CustomTabs = (props) => {
   const handleTabChange = (event, newValue) => {
     setSelectedTab(newValue);
   };
-
-  const DeleteTaskListButton = ({ onClick }) => (
-    <IconButton onClick={onClick} sx={{ marginRight: '8px' }}>
-      <DeleteTwoToneIcon sx={{ color: '#f19e9e' }} />
-    </IconButton>
-  );
-
+  const handleTaskGroupDelete=()=>{
+    const tabs=tabsData
+     const newTabs=tabs.filter((_,index)=>index!==selectedTab)
+     setTabsData(newTabs)
+     if(selectedTab>newTabs.length-1)
+        setSelectedTab(newTabs.length-1)
+     setmodalOpen(false)
+  }
   return (
     <>
       <Box
@@ -56,7 +67,7 @@ const CustomTabs = (props) => {
           padding: '0rem',
           width: '100%',
           display: 'flex',
-          marginTop: '25px'
+          marginTop: '25px',
         }}
       >
         <Tabs
@@ -71,7 +82,9 @@ const CustomTabs = (props) => {
               background: '#2196f3',
               color: '#fff'
             },
-            paddingLeft: '1rem'
+            paddingLeft: '1rem',
+            background:'#fff'
+
           }}
         >
           {tabsData.map((tab, index) => (
@@ -98,9 +111,7 @@ const CustomTabs = (props) => {
             />
           ))}
         </Tabs>
-
         {/*----------------------------------- TAB PANEL --------------------------------- */}
-
         {tabsData.map((tab, index) => (
           <TabPanel
             key={index}
@@ -119,12 +130,13 @@ const CustomTabs = (props) => {
               }
             }}
           >
+
             <Paper sx={{ marginBottom: '1rem', padding: '1rem', display: 'flex' }}>
               <Box sx={{ flex: '6' }}>
                 <Typography variant="h2" mb={1}>
-                  {tabsData[selectedTab].name}
+                  {tabsData[selectedTab]?.name}
                 </Typography>
-                <Typography variant="h4">{tabsData[selectedTab].description}</Typography>
+                <Typography variant="h4">{tabsData[selectedTab]?.description}</Typography>
               </Box>
               <Box sx={{ flex: '1', alignItems: 'center', display: 'flex ', justifyContent: 'end' }}>
                 {/*  POPUP ---- DRAWERS FOR TASK-LISTS: ADD, EDIT, DELETE */}
@@ -132,19 +144,22 @@ const CustomTabs = (props) => {
                 {/* -----------------------------------popup drawers   ------------------------------------------------------- */}
                 <AddTaskListDrawer
                   toggleDrawer={toggleDrawer}
-                  value={selectedTab}
-                  taskGroups={taskGroups}
-                  setTaskGroups={setTaskGroups}
+                  tabsData={tabsData}
+                  setTabsData={setTabsData}
                   state={state}
                 />
                 <EditTaskListDrawer
                   toggleDrawer={toggleDrawer}
-                  value={selectedTab}
-                  taskGroups={taskGroups}
-                  setTaskGroups={setTaskGroups}
+                  selectedTab={selectedTab}
+                  tabsData={tabsData}
+                  setTabsData={setTabsData}
                   state={state}
                 />
-                <DeleteTaskListButton buttonLabel="Delete Task List" drawerTitle="Delete Task List" />
+               <Tooltip title="Delete Task Group">
+                <IconButton onClick={()=>setmodalOpen(true)} sx={{ marginRight: '8px' }}>
+                <DeleteTwoToneIcon sx={{ color: '#f19e9e' }} />
+                </IconButton>
+                </Tooltip>
               </Box>
             </Paper>
 
@@ -154,8 +169,6 @@ const CustomTabs = (props) => {
                 <AddTaskDrawer
                   toggleDrawer={toggleDrawer}
                   value={selectedTab}
-                  taskGroups={taskGroups}
-                  setTaskGroups={setTaskGroups}
                   state={state}
                 />
                 <EditTaskDrawer toggleDrawer={toggleDrawer} state={state} />
@@ -172,12 +185,19 @@ const CustomTabs = (props) => {
           </TabPanel>
         ))}
 
-        {/* ========= import warning dialog ========== */}
+        {/* =========  warning dialog for datagrid ========== */}
         <WarningDialog
           open={modalOpen}
           onClose={handleModalClose}
           contentText="Are you sure you want to delete?"
           onConfirm={handleConfirmDelete}
+        />
+        {/* ====== warning dialog for task groups */}
+          <WarningDialog
+          open={modalOpen}
+          onClose={handleModalClose}
+          contentText={`Are you sure you want to delete ${tabsData[selectedTab].name}?`}
+          onConfirm={handleTaskGroupDelete}
         />
       </Box>
     </>

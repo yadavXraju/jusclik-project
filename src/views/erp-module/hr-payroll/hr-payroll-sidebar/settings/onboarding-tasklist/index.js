@@ -104,12 +104,12 @@ const OnboardingTasklist = () => {
       disableColumnMenu: true,
       renderCell: (params) => (
         <Box display="flex">
-          <Tooltip>
+          <Tooltip title="Edit Task">
             <IconButton onClick={toggleDrawer('editTask', true)} id="editTask" sx={{ marginRight: '8px' }}>
               <EditTwoToneIcon />
             </IconButton>
           </Tooltip>
-          <Tooltip title="Delete">
+          <Tooltip title="Delete Task">
             <IconButton
               onClick={(event) => {
                 event.stopPropagation();
@@ -123,7 +123,7 @@ const OnboardingTasklist = () => {
       )
     }
   ];
-  const tabsData = [
+  const [tabsData,setTabsData] =React.useState( [
     {
       name: 'Document Submission',
       description: 'Tasks related to submitting documents'
@@ -144,15 +144,18 @@ const OnboardingTasklist = () => {
       name: 'HR Tasks',
       description: 'Tasks related to HR management'
     }
-  ];
+  ]);
   const [selectedTab, setSelectedTab] = React.useState(0);
+  
   return (
     <>
       <CustomTabs
         tabsData={tabsData}
+        setTabsData={setTabsData}
         selectedTab={selectedTab}
         setSelectedTab={setSelectedTab}
         modalOpen={modalOpen}
+        setmodalOpen={setmodalOpen}
         rows={rows}
         columns={columns}
         handleConfirmDelete={handleConfirmDelete}
