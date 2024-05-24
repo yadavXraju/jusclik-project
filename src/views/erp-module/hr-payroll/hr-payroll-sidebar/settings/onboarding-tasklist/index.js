@@ -1,15 +1,9 @@
 // PAGE OWNER: DAMANDEEP
 import React from 'react';
-<<<<<<< HEAD
-import ParamStepper from 'components/Stepper';
-import { Paper } from '@mui/material';
-import Onboarding from './onboarding-tasklist';
-=======
 import CustomTabs from './CustomTabs';
 import { Box, IconButton, Tooltip } from '@mui/material';
 import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
->>>>>>> 5f4503f369f477afe5578d7a498282b82b9669b6
 
 const OnboardingTasklist = () => {
   // tab and panel data based on selected tab

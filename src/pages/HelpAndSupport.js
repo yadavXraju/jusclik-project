@@ -2,9 +2,9 @@
 // Description : Help And support comp for all modules 
 
 import { Grid  ,  Typography,  useMediaQuery, Paper,Box , Card , CardMedia , Button , Divider } from '@mui/material';
-import ParamStepper from 'components/param-stepper';
+import ParamStepper from 'components/Stepper';
 import { subTitle  } from 'components/dashboard-css/CommonCss';
-import ParamWidgetHeader from 'components/ParamWidgetHeader';
+import ParamWidgetHeader from 'components/WidgetHeader';
 // ============== quick tips imports
 import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
 import PersonAddAltOutlinedIcon from '@mui/icons-material/PersonAddAltOutlined';
