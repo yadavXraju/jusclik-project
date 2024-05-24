@@ -1,3 +1,5 @@
+// Page Owner :  stufee dashboard
+// Description :  stufee dashboard content
 
 import NeedHelp from 'pages/HelpAndSupport';
 import React from 'react';
@@ -403,7 +405,7 @@ const FeeDefaulter = ({ isLoading }) => {
 };
 // ================== fee defaulter end ==================
 
-const DashboardContent = ({ isLoading }) => {
+const Dashboard = ({ isLoading }) => {
   return (
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
@@ -452,4 +454,4 @@ const DashboardContent = ({ isLoading }) => {
   );
 };
 
-export default DashboardContent;
+export default Dashboard;
