@@ -32,7 +32,7 @@ import Transitions from 'components/ui/extended/Transitions';
 import { IconLogout, IconSettings, IconUser } from '@tabler/icons';
 import { useLocation } from 'react-router-dom';
 // for class teacher
-import { ClassTeacherProfileDetails } from './class-teacher/teacher-profile-section/TeacherProfile';
+import { ClassTeacherProfileDetails } from './TeacherProfile';
 
 // ==============================|| PROFILE MENU ||============================== //
 // =========== student profile imports
