@@ -3,7 +3,7 @@ import Timing from './Timing';
 import Grid from '@mui/material/Grid';
 import AttandanceStatus from './AttandanceStatus';
 import AttendanceLog from './AttandanceLog';
-import MainCard from 'ui-component/cards/MainCard';
+import MainCard from 'components/ui/cards/MainCard';
 
 const BiometricDetailsOrAttendanceDetails = () => {
   return (

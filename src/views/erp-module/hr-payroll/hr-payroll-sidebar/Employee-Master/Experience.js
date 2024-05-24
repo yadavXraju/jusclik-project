@@ -11,7 +11,7 @@ import { IconButton, TextField, Tooltip, Button, Box, Typography } from '@mui/ma
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 import WarningDialog from 'components/WarningDialog';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
-import ParameterizedDateComponent from 'components/ParamDateComponent';
+import ParameterizedDateComponent from 'components/ui/custom-input/DateComponent';
 
 const columns = [
   { id: 'organization', label: 'Organization', minWidth: 150 },

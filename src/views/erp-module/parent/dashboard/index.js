@@ -8,25 +8,25 @@ import ApexCharts from 'react-apexcharts';
 
 // ============== user welcome message imports 
 
-import { studentProfileDetails } from 'layout/MainLayout/Header/ProfileSection/ProfileDeatails'
-import { welcomeMsg } from 'components/dashboard-css/CommonCss'
+import { studentProfileDetails } from 'layout/MainLayout/Header/Profile';
+import { welcomeMsg } from 'components/dashboard/CommonCss'
 
 // ============== Counter imports 
 import { useSelector } from 'react-redux';
-import CommonCounter from 'components/CommonCounter';
+import CommonCounter from 'components/dashboard/CommonCounter';
 import { useNavigate } from 'react-router';
 
 // ============== Profile imports 
 
 // ============== Communication  imports
 import AlignItemsList from 'views/erp-module/parent/parent-sidebar/communication-message/Contact-list';
-import ParamWidgetHeader from 'components/ParamWidgetHeader';
+import ParamWidgetHeader from 'components/dashboard/WidgetHeader';
 
 // ============== Alerts imports
 import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
 import CurrencyRupeeOutlinedIcon from '@mui/icons-material/CurrencyRupeeOutlined';
 import BookOutlinedIcon from '@mui/icons-material/BookOutlined';
-import ParamWidget from 'components/ParamWidget';
+import ParamWidget from 'components/dashboard/Widget';
 
 // ============== Assignment  imports
 import Checkbox from '@mui/material/Checkbox';
@@ -34,16 +34,16 @@ import Attachment from 'views/erp-module/parent/parent-sidebar/assignments/Attac
 import AttachmentIcon from '@mui/icons-material/Attachment';
 import CreateIcon from '@mui/icons-material/Create';
 import { data } from 'views/erp-module/parent/parent-sidebar/assignments/AssignmentData';
-import { subTitle, subtitle2 } from 'components/dashboard-css/CommonCss';
+import { subTitle, subtitle2 } from 'components/dashboard/CommonCss';
 import { commonStyles } from 'views/erp-module/parent/parent-sidebar/communication-message/Contact-list';
-import { boxHeight } from 'components/dashboard-css/CommonCss';
+import { boxHeight } from 'components/dashboard/CommonCss';
 
 // ============== Time Table  imports
 import timeTableData1 from 'views/erp-module/parent/parent-sidebar/timetable/TimeTableData';
 
 
 // Circular or update start 
-import SkeletonPopularCard from 'ui-component/cards/Skeleton/PopularCard';
+import SkeletonPopularCard from 'components/ui/cards/Skeleton/PopularCard';
 import { UpdatesData } from 'views/erp-module/parent/parent-sidebar/updates/UpdatesData';
 
 // user welcome Message start

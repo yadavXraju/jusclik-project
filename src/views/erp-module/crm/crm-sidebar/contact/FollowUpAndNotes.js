@@ -14,8 +14,8 @@ import ThumbUpOffAltOutlinedIcon from '@mui/icons-material/ThumbUpOffAltOutlined
 import MailOutlinedIcon from '@mui/icons-material/MailOutlined';
 import CreditCardOutlinedIcon from '@mui/icons-material/CreditCardOutlined';
 import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
-import SelectList from 'components/ParamSelectList';
-import ParameterizedDateComponent from 'components/ParamDateComponent';
+import SelectList from 'components/ui/custom-input/SelectList';
+import ParameterizedDateComponent from 'components/ui/custom-input/DateComponent';
 import AccessAlarmsOutlinedIcon from '@mui/icons-material/AccessAlarmsOutlined';
 import TextArea from 'antd/es/input/TextArea';
 import AddNoteDrawer from './AddNoteDrawer';

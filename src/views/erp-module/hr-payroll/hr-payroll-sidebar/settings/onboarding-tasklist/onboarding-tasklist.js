@@ -1,7 +1,7 @@
 // PAGE OWNER: DAMANDEEP
 import { Box, IconButton, Paper, Tooltip, Typography } from '@mui/material';
 import React from 'react';
-import CommonDataGrid from 'components/commonDataGrid';
+import CommonDataGrid from 'components/table-data-grid/commonDataGrid';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 import { AddTaskListDrawer } from './drawers/add-task-list';
 import { EditTaskListDrawer } from './drawers/edit-task-list';

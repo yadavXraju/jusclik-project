@@ -1,6 +1,6 @@
 import { Box, Typography, Button , useMediaQuery } from '@mui/material';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
-import ParamStepper from 'components/param-stepper';
+import ParamStepper from 'components/Stepper';
 import FeeHeads from './feeHead/FeeHeads';
 import Concession from './concession/Concession';
 import OtherSettings from './other-settings/OtherSettings';

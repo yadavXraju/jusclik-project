@@ -85,7 +85,7 @@
 // }
 
 import React from 'react'
-import withParamDrawer from 'components/withParamDrawer';
+import withParamDrawer from 'components/temp-withParamDrawer';
 import HomeworkDrawerContent from './HomeworkDrawerContent';
 
 const NewParamDrawer=withParamDrawer(HomeworkDrawerContent);

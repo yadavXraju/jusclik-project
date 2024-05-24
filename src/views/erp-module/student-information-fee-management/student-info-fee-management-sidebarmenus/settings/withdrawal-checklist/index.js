@@ -7,8 +7,8 @@ import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 import TableRowData from './TableRowData';
 import DrawerAddNew from './DrawerAddNew';
 // import DrawerNewTask from './DrawerNewTask';
-import CommonDataGrid from 'components/commonDataGrid';
-import withParamDrawer from 'components/withParamDrawer';
+import CommonDataGrid from 'components/table-data-grid/commonDataGrid';
+import withParamDrawer from 'components/temp-withParamDrawer';
 import RemoveRedEyeTwoToneIcon from '@mui/icons-material/RemoveRedEyeTwoTone';
 import { useNavigate } from 'react-router-dom';
 

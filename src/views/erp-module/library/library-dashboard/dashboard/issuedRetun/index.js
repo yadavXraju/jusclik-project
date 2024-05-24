@@ -2,7 +2,7 @@ import React from 'react';
 import ApexCharts from 'react-apexcharts';
 import { Grid, Paper, Typography, useMediaQuery } from '@mui/material';
 import { gridSpacing } from 'store/constant';
-import { HeadingCss } from 'components/dashboard-css/CommonCss'
+import { HeadingCss } from 'components/dashboard/CommonCss'
 
 const IssueReturn2 = () => {
   const isMediumDesktop = useMediaQuery('(max-width: 1600px)');

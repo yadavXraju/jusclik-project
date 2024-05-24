@@ -2,8 +2,8 @@ import React from 'react'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import TextField from '@mui/material/TextField'
-import ParameterizedAutoComplete from 'components/ParamAutoComplete'
-import CommonDataGrid from 'components/commonDataGrid'
+import ParameterizedAutoComplete from 'components/ui/custom-input/AutoComplete'
+import CommonDataGrid from 'components/table-data-grid/commonDataGrid'
 
 
 const option = [

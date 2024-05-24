@@ -17,8 +17,8 @@ import {
   useMediaQuery
 } from '@mui/material';
 import PerfectScrollbar from 'react-perfect-scrollbar';
-import MainCard from 'ui-component/cards/MainCard'; 
-import Transitions from 'ui-component/extended/Transitions'; 
+import MainCard from 'components/ui/cards/MainCard'; 
+import Transitions from 'components/ui/extended/Transitions'; 
 import GridViewOutlinedIcon from '@mui/icons-material/GridViewOutlined';
 import { useSelector } from 'react-redux'; 
 import DashboardSwitchLayout from './DashboardSwitchLayout'; 

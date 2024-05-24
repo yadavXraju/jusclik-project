@@ -6,7 +6,7 @@ import React from 'react';
 import { Grid, Typography, Box, TextField, InputLabel, useMediaQuery } from '@mui/material';
 import { useSelector } from 'react-redux';
 import Divider from '@mui/material/Divider';
-import Dropdown from 'components/ParamSelectList';
+import Dropdown from 'components/ui/custom-input/SelectList';
 import { useState } from 'react';
 
 const StudentDetails =({ handleClick }) => {

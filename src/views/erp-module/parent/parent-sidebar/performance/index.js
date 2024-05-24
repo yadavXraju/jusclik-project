@@ -5,7 +5,7 @@ import Performance from './performanceComponent/Performance';
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 // import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
-import MainCard from 'ui-component/cards/MainCard';
+import MainCard from 'components/ui/cards/MainCard';
 export default function BasicTabs() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));

@@ -3,7 +3,7 @@
 
 import React from 'react';
 import { Grid , Typography , Box } from '@mui/material';
-import MainCard from 'ui-component/cards/MainCard';
+import MainCard from 'components/ui/cards/MainCard';
 import { gridSpacing } from 'store/constant';
 import { useNavigate , useLocation } from 'react-router';
 import { useSelector } from 'react-redux';

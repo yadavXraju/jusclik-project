@@ -1,5 +1,5 @@
 import React from 'react';
-import FavPages from 'components/FavPages';
+import FavPages from 'components/dashboard/FavPages';
 import { FavPagesList } from './FavPagesList';
 import { Box } from '@mui/material';
 

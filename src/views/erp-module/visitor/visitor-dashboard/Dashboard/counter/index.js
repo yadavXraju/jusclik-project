@@ -1,5 +1,5 @@
 import React from "react";
-import ParamCounters from "components/ParamCounters";
+import ParamCounters from "components/dashboard/Counters";
 // icons
 import AccessAlarmIcon from '@mui/icons-material/AccessAlarm';
 import PeopleIcon from '@mui/icons-material/People';

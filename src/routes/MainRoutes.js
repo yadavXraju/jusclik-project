@@ -3,7 +3,7 @@
 
 import React from 'react';
 import { lazy } from 'react';
-import Loadable from 'ui-component/Loadable';
+import Loadable from 'components/ui/Loadable';
 import MainLayout from 'layout/MainLayout';
 
 // parent routes

@@ -3,7 +3,7 @@ import {  Grid , Typography , Box ,Divider } from '@mui/material'
 import { HeadingCss , boxHeight , subTitle , subtitle2 } from 'views/dashboard/Default/dashboard-css/CommonCss'
 import { FrequentlyReturningVisitorList } from './FrequentlyReturningVisitors'
 import { gridSpacing } from 'store/constant';
-import MainCard from 'ui-component/cards/MainCard';
+import MainCard from 'components/ui/cards/MainCard';
 import '../../../../dashboard/Default/dashboard-css/Overflow.css'
 
 const FrequentlyReturningVisitor = () => {

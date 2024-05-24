@@ -1,9 +1,9 @@
 //@Page Onwer-Tarun Pandey
 import React, { useState } from 'react';
-import ParamSelectList from 'components/ParamSelectList';
-import ParamChackboxSelectAll from 'components/ParamChackboxSelectAll';
+import ParamSelectList from 'components/ui/custom-input/SelectList';
+import ParamChackboxSelectAll from 'components/ui/custom-input/ChackboxSelectAll';
 import { Typography, Box, TextField } from '@mui/material';
-import ParamDateComponent from 'components/ParamDateComponent';
+import ParamDateComponent from 'components/ui/custom-input/DateComponent';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 
 const compareOptions = [

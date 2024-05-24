@@ -1,6 +1,6 @@
 
 import React from 'react'
-import WelcomeMessageTemplate from 'components/Welcome'
+import WelcomeMessageTemplate from 'components/dashboard/Welcome'
 
 
 

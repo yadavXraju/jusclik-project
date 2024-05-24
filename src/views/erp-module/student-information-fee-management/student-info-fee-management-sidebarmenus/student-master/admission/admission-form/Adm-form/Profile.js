@@ -5,7 +5,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import {Box, Checkbox} from '@mui/material'; // Import Box from @mui/material
-import ParamDragDropImage from 'components/ParamDragDropImage';
+import ParamDragDropImage from 'components/upload-file/DragDropImage';
 
 // Assuming studentProfileDetails is defined elsewhere
 // const studentProfileDetails = {

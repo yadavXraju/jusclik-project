@@ -7,7 +7,7 @@ import CreditCardOutlinedIcon from '@mui/icons-material/CreditCardOutlined';
 import TuneOutlinedIcon from '@mui/icons-material/TuneOutlined';
 import FolderOpenOutlinedIcon from '@mui/icons-material/FolderOpenOutlined';
 import AddShoppingCartOutlinedIcon from '@mui/icons-material/AddShoppingCartOutlined';
-import ParamSetting from 'views/erp-common-component/commonSetting';
+import ParamSetting from 'components/Setting';
 
 const SettingData = [
   {

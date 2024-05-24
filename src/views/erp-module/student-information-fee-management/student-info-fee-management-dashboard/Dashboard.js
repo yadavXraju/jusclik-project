@@ -6,11 +6,11 @@ import React from 'react';
 import { Grid , Box , Typography , Paper , useMediaQuery , LinearProgress }from '@mui/material';
 
 // coutner imports
-import ParamCounters from "components/ParamCounters";
+import ParamCounters from "components/dashboard/Counters";
 import PeopleOutlineIcon from '@mui/icons-material/PeopleOutline';
 import PermIdentityOutlinedIcon from '@mui/icons-material/PermIdentityOutlined';
 import Person2OutlinedIcon from '@mui/icons-material/Person2Outlined';
-import ParamWidgetHeader from 'components/ParamWidgetHeader';
+import ParamWidgetHeader from 'components/dashboard/WidgetHeader';
 import { gridSpacing } from 'store/constant';
 // Enrollment imports
 import LiveHelpTwoToneIcon from '@mui/icons-material/LiveHelpTwoTone';
@@ -19,11 +19,11 @@ import BadgeTwoToneIcon from '@mui/icons-material/BadgeTwoTone';
 import NoAccountsTwoToneIcon from '@mui/icons-material/NoAccountsTwoTone';
 
 // Payment Gateway Wise Collection  import
-import CommonChart from 'components/CommonChart';
+import CommonChart from 'components/chart/CommonChart';
 
 // ================== fee defaulter imports ==================
-import SkeletonTotalGrowthBarChart from 'ui-component/cards/Skeleton/TotalGrowthBarChart';
-import { HeadingCss } from 'components/dashboard-css/CommonCss';
+import SkeletonTotalGrowthBarChart from 'components/ui/cards/Skeleton/TotalGrowthBarChart';
+import { HeadingCss } from 'components/dashboard/CommonCss';
 import Chart from 'react-apexcharts';
 
 

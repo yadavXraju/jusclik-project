@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Outlet ,  useLocation } from 'react-router-dom';
 import { styled, useTheme } from '@mui/material/styles';
 import { AppBar, Box, CssBaseline,  Toolbar, useMediaQuery } from '@mui/material';
-import Breadcrumbs from 'ui-component/extended/Breadcrumbs';
+import Breadcrumbs from 'components/ui/extended/Breadcrumbs';
 import Header from './Header';
 import Sidebar from './Sidebar';
 import Customization from '../Customization';

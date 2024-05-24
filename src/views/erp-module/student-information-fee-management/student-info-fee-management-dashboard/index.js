@@ -4,12 +4,12 @@
 import React from 'react';
 import Dashboard from 'views/erp-module/student-information-fee-management/student-info-fee-management-dashboard/Dashboard';
 import DashboardPayRoll from 'pages/getting-started';
-import SetupTabs from 'components/param-stepper';
+import SetupTabs from 'components/Stepper';
 import HomeTwoToneIcon from '@mui/icons-material/HomeTwoTone';
 import SettingsSuggestTwoToneIcon from '@mui/icons-material/SettingsSuggestTwoTone';
 import NotificationsActiveTwoToneIcon from '@mui/icons-material/NotificationsActiveTwoTone';
 import { useMediaQuery } from '@mui/material';
-import { DashboardTab } from 'components/dashboard-css/CommonCss';
+import { DashboardTab } from 'components/dashboard/CommonCss';
 
 const DashboardTabs = () => {
 

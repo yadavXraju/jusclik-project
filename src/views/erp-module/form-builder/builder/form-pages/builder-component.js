@@ -1,7 +1,7 @@
 //@Page Onwer-Tarun Pandey
 import React, { useState } from 'react'
 import { Box, Typography, Paper, Drawer} from '@mui/material';
-import ParamStepper from 'components/param-stepper';
+import ParamStepper from 'components/Stepper';
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import { useSelector, useDispatch } from 'react-redux';
 import { handleSelectField } from 'store/form-builder/custom-form-slice';
