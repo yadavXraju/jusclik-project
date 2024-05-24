@@ -1,3 +1,8 @@
+// Page Owner : Abhishek
+// Description : Jusklik Customer Registration  Page url : Jusklik/registration
+
+
+
 import React, { useState } from 'react';
 import {
   Grid,
@@ -17,9 +22,9 @@ import {
 } from '@mui/material';
 
 import InputAdornment from '@mui/material/InputAdornment';
-import { useStyles } from '../authentication/visitor-registration/mobile-number';
-import { css } from '../authentication/visitor-registration/css';
-import SelectList from 'components/ui/custom-input/SelectList';
+import { useStyles } from './authentication/visitor-registration/mobile-number';
+import { css } from './authentication/visitor-registration/css';
+import SelectList from 'components/ParamSelectList';
 import MailOutlineOutlinedIcon from '@mui/icons-material/MailOutlineOutlined';
 import { useNavigate } from 'react-router';
 import { useSelector } from 'react-redux';

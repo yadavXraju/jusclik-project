@@ -1,10 +1,8 @@
 import React from 'react';
-import FinancialYearMonths from './FinancialYearMonths';
-
 const Payroll = () => {
   return (
     <>
-     <FinancialYearMonths />
+       <h1>payroll</h1>
     </>
   )
 }

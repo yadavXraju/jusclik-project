@@ -12,7 +12,7 @@ import FormControl from '@mui/material/FormControl';
 import Input from '@mui/material/Input';
 import { Grid } from '@mui/material';
 import VerifiedUserOutlinedIcon from '@mui/icons-material/VerifiedUserOutlined';
-import { studentProfileDetails } from 'layout/MainLayout/Header/ProfileSection/ProfileDeatails';
+import { studentProfileDetails } from 'layout/MainLayout/Header/Profile';
 import { useState } from 'react';
 import TextField from '@mui/material/TextField';
 import { Label } from 'reactstrap';

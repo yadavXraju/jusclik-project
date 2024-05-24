@@ -11,12 +11,10 @@ import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
 import Input from '@mui/material/Input';
 import { Grid } from '@mui/material';
-import { studentProfileDetails } from 'layout/MainLayout/Header/ProfileSection/ProfileDeatails';
+import { studentProfileDetails } from 'layout/MainLayout/Header/Profile';
 import { useState } from 'react';
 import TextField from '@mui/material/TextField';
 import { Label } from 'reactstrap';
-
-
 
 export default function TeacherCredentials() {
 

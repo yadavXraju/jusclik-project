@@ -56,8 +56,6 @@ const a11yProps = (index) => {
 // Customize each tab with a name, component, and any additional props needed for tab pages.
 //Show BottomNavbar: true to display the bottom Navbar
 
-
-
 const SetupTabs = ({
   tabPage,
   component=null,

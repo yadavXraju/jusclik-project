@@ -1,120 +1,175 @@
 // PAGE OWNER: DAMANDEEP
-// uses a reusable component "ParamStepper"
-// renders a panel with datagrid
 import React from 'react';
+<<<<<<< HEAD
 import ParamStepper from 'components/Stepper';
 import { Paper } from '@mui/material';
 import Onboarding from './onboarding-tasklist';
+=======
+import CustomTabs from './CustomTabs';
+import { Box, IconButton, Tooltip } from '@mui/material';
+import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
+import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
+>>>>>>> 5f4503f369f477afe5578d7a498282b82b9669b6
 
-export default function OnboardingTasklist() {
-  // selected tab value
-  const [value, setValue] = React.useState(0); 
+const OnboardingTasklist = () => {
   // tab and panel data based on selected tab
   const [taskGroups, setTaskGroups] = React.useState({
-    '0': {
+    0: {
       name: 'Document Submission',
       description: 'Tasks related to submitting documents'
     },
-    '1': {
+    1: {
       name: 'Payroll Tasks',
       description: 'Tasks related to payroll processing'
     },
-    '2': {
+    2: {
       name: 'Interns Tasks',
       description: 'Tasks related to interns management'
     },
-    '3': {
+    3: {
       name: 'IT Team Tasks',
       description: 'Tasks related to IT team activities'
     },
-    '4': {
+    4: {
       name: 'HR Tasks',
       description: 'Tasks related to HR management'
     }
   });
-  
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
+
+  const [rows, setRows] = React.useState([
+    { id: 1, task: 'IT Declaration', dueOn: '1 day(s) after joining day', assignedTo: 'Employee', validator: 'Payroll Admin' },
+    { id: 2, task: 'Submit Bank Account Details', dueOn: '1 day(s) after joining day', assignedTo: 'Employee', validator: 'Payroll Admin' },
+    { id: 3, task: 'Submit PAN Card details', dueOn: '0 day(s) after joining day', assignedTo: 'Employee', validator: 'Payroll Admin' },
+    { id: 4, task: 'Collection of Forms', dueOn: '3 day(s) after joining day', assignedTo: 'Employee', validator: 'Payroll Admin' },
+    { id: 5, task: 'Bank Account Creation', dueOn: '3 day(s) after joining day', assignedTo: 'Payroll Admin', validator: 'Not Available' },
+    {
+      id: 6,
+      task: 'Submit Previous Employment...',
+      dueOn: '1 day(s) after joining day',
+      assignedTo: 'Employee',
+      validator: 'Payroll Admin'
+    },
+    {
+      id: 7,
+      task: 'Enroll employee in benefit...',
+      dueOn: '1 day(s) after joining day',
+      assignedTo: 'Payroll Admin',
+      validator: 'Not Available'
+    }
+  ]);
+  const [modalOpen, setmodalOpen] = React.useState(false);
+  const [deleteId, setDeleteId] = React.useState(null); // State to store the id of the row to be deleted
+  const [state, setState] = React.useState({
+    addTaskGroup: false,
+    editTaskGroup: false,
+    addTask: false,
+    editTask: false
+  });
+
+  const handleDeleteRow = (id) => {
+    // Set the id of the row to be deleted
+    setDeleteId(id);
+    // Open the warning dialog
+    setmodalOpen(true);
   };
 
-  const tabPage = [
+  const handleConfirmDelete = () => {
+    // Filter out the row with the given id
+    const updatedRows = rows.filter((row) => row.id !== deleteId);
+    // Update the rows state
+    setRows(updatedRows);
+    // Close the warning dialog
+    setmodalOpen(false);
+    // Reset the deleteId state
+    setDeleteId(null);
+  };
+
+  const handleModalClose = () => {
+    setmodalOpen(false);
+  };
+
+  const toggleDrawer = (anchor, open) => (event) => {
+    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+      return;
+    }
+    setState({ ...state, [anchor]: open });
+  };
+
+  const columns = [
+    { field: 'task', headerName: 'Task', width: 260 },
+    { field: 'dueOn', headerName: 'Due On', width: 260 },
+    { field: 'assignedTo', headerName: 'Assigned To', width: 260 },
+    { field: 'validator', headerName: 'Validator', width: 250 },
     {
-      id: 0,
-      name: taskGroups['0'].name,
-      component:Onboarding,
-      props: {
-        panelHeading: taskGroups['0'].name,
-        panelSubheading:taskGroups['0'].description,
-        setTaskGroups:setTaskGroups,
-        value:value,
-        taskGroups:taskGroups
-      }
-    },
-    {
-      id: 1,
-      name: taskGroups['1'].name,
-      component:Onboarding,
-      props: {
-        panelHeading: taskGroups['1'].name,
-        panelSubheading:taskGroups['1'].description,
-        setTaskGroups:setTaskGroups,
-        value:value,
-        taskGroups:taskGroups
-      }
-    },
-    {
-      id: 2,
-      name: taskGroups['2'].name,
-      component:Onboarding,
-      props: {
-        panelHeading: taskGroups['2'].name,
-        panelSubheading:taskGroups['2'].description,
-        setTaskGroups:setTaskGroups,
-        value:value,
-        taskGroups:taskGroups
-      }
-    },
-    {
-      id: 3,
-      name: taskGroups['3'].name,
-      component:Onboarding,
-      props: {
-        panelHeading: taskGroups['3'].name,
-        panelSubheading:taskGroups['3'].description,
-        setTaskGroups:setTaskGroups,
-        value:value,
-        taskGroups:taskGroups
-      }
-    },
-    {
-      id: 4,
-      name: taskGroups['4'].name,
-      component:Onboarding,
-      props: {
-        panelHeading: taskGroups['4'].name,
-        panelSubheading:taskGroups['4'].description,
-        setTaskGroups:setTaskGroups,
-        value:value,
-        taskGroups:taskGroups
-      }
+      field: 'Action',
+      headerName: 'Action',
+      flex: 1,
+      minWidth: 130,
+      sortable: false,
+      filterable: false,
+      disableColumnMenu: true,
+      renderCell: (params) => (
+        <Box display="flex">
+          <Tooltip>
+            <IconButton onClick={toggleDrawer('editTask', true)} id="editTask" sx={{ marginRight: '8px' }}>
+              <EditTwoToneIcon />
+            </IconButton>
+          </Tooltip>
+          <Tooltip title="Delete">
+            <IconButton
+              onClick={(event) => {
+                event.stopPropagation();
+                handleDeleteRow(params.row.id);
+              }}
+            >
+              <DeleteTwoToneIcon sx={{ color: '#f19e9e' }} />
+            </IconButton>
+          </Tooltip>
+        </Box>
+      )
     }
   ];
-
+  const tabsData = [
+    {
+      name: 'Document Submission',
+      description: 'Tasks related to submitting documents'
+    },
+    {
+      name: 'Payroll Tasks',
+      description: 'Tasks related to payroll processing'
+    },
+    {
+      name: 'Interns Tasks',
+      description: 'Tasks related to interns management'
+    },
+    {
+      name: 'IT Team Tasks',
+      description: 'Tasks related to IT team activities'
+    },
+    {
+      name: 'HR Tasks',
+      description: 'Tasks related to HR management'
+    }
+  ];
+  const [selectedTab, setSelectedTab] = React.useState(0);
   return (
     <>
-    {/* TABS FOR TASKLISTS */}
-      <ParamStepper
-        orientation="vertical"
-        value={value}
-        onChange={handleChange}
-        aria-label="Vertical tabs example"
-        tabPage={tabPage}
-        customtabWrapper={{ flexDirection: 'row', gap: 4,padding:'0rem' }}
-        component={Paper}
-        customStyleTabs={{paddingLeft:'1rem'}}
-        customtabPanelStyle={{backgroundColor:'transparent'}}
-        customtabSytle={{textAlign:'left'}}
+      <CustomTabs
+        tabsData={tabsData}
+        selectedTab={selectedTab}
+        setSelectedTab={setSelectedTab}
+        modalOpen={modalOpen}
+        rows={rows}
+        columns={columns}
+        handleConfirmDelete={handleConfirmDelete}
+        handleModalClose={handleModalClose}
+        taskGroups={taskGroups}
+        setTaskGroups={setTaskGroups}
+        state={state}
+        toggleDrawer={toggleDrawer}
       />
     </>
   );
-}
+};
+
+export default OnboardingTasklist;
