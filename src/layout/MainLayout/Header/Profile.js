@@ -31,12 +31,19 @@ import MainCard from 'ui-component/cards/MainCard';
 import Transitions from 'ui-component/extended/Transitions';
 import { IconLogout, IconSettings, IconUser } from '@tabler/icons';
 import { useLocation } from 'react-router-dom';
-// for parent
-import { studentProfileDetails } from '../parent/student-profile-section/StudentProfile';
 // for class teacher
-import { ClassTeacherProfileDetails } from '../class-teacher/teacher-profile-section/TeacherProfile';
+import { ClassTeacherProfileDetails } from './class-teacher/teacher-profile-section/TeacherProfile';
 
 // ==============================|| PROFILE MENU ||============================== //
+// =========== student profile imports
+import user from 'assets/images/users/user.jpg'
+export const studentProfileDetails = {
+  StudentImage: user,
+  StudentName : 'Abhishek Negi',
+  Class : 'V A',
+  AdminNo :'(Adm No : D00158)',
+};
+
 
 const ProfileSection = () => {
   const theme = useTheme();

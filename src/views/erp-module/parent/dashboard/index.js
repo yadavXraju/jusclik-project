@@ -8,7 +8,7 @@ import ApexCharts from 'react-apexcharts';
 
 // ============== user welcome message imports 
 
-import { studentProfileDetails } from 'layout/MainLayout/Header/ProfileSection/ProfileDeatails'
+import { studentProfileDetails } from 'layout/MainLayout/Header/Profile';
 import { welcomeMsg } from 'components/dashboard-css/CommonCss'
 
 // ============== Counter imports 

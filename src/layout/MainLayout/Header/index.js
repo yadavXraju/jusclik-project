@@ -6,12 +6,12 @@ import React, { useState, useRef } from 'react';
 import { useTheme } from '@mui/material/styles';
 import { Avatar, Box, ButtonBase, useMediaQuery, Grid, Popper, Paper, ClickAwayListener } from '@mui/material';
 import LogoSection from '../LogoSection';
-import ProfileSection from './ProfileSection';
+import ProfileSection from 'layout/MainLayout/Header/Profile';
 import SchoolName from './SchoolNameAndLogoSection';
 import NotificationSection from './NotificationSection';
 import { IconMenu2 } from '@tabler/icons';
-import AcadmicYear from './AcadmicYearSection';
-import HelpSection from './HelpSection';
+import AcademicYear from 'layout/MainLayout/Header/AcademicYear';
+import HelpSection from 'layout/MainLayout/Header/Help';
 import ErpModule from './erp-module';
 import DashboardSwitch from './dashboard-switch';
 import ExpandMoreTwoToneIcon from '@mui/icons-material/ExpandMoreTwoTone';
@@ -139,7 +139,7 @@ const Header = ({ handleLeftDrawerToggle }) => {
                         <ClickAwayListener onClickAway={handleClose}>
                           <Paper elevation={6} sx={{ display: 'flex', flexDirection: 'column', gap: '20px', padding: '18px 3rem 1rem 3rem', justifyContent: 'end', marginTop: '80px' }} >
                             <HelpSection onClick={handleItemClick} setOpen={setOpen} />
-                            <AcadmicYear onClick={handleItemClick} setOpen={setOpen} />
+                            <AcademicYear onClick={handleItemClick} setOpen={setOpen} />
                             <DashboardSwitch onClick={handleItemClick} setOpen={setOpen} />
                           </Paper>
                         </ClickAwayListener>
@@ -205,7 +205,7 @@ const Header = ({ handleLeftDrawerToggle }) => {
               <DashboardSwitch />
               <ErpModule />
               <HelpSection setOpen={setOpen} />
-              <AcadmicYear setOpen={setOpen} />
+              <AcademicYear setOpen={setOpen} />
               <NotificationSection />
               <ProfileSection />
             </Box>
