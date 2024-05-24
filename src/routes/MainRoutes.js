@@ -1,44 +1,35 @@
+// page owner : Abhishek Negi 
+// Description : Distuctring  
 
-// project imports
+import React from 'react';
+import { lazy } from 'react';
+import Loadable from 'ui-component/Loadable';
 import MainLayout from 'layout/MainLayout';
 
-// import { lazy } from 'react';
-// import Loadable from 'ui-component/Loadable';
-
 // parent routes
-import ParentRoutes from './ParentRoutes';
-
+import ParentRoutes from 'routes/erp-routes/ParentRoutes';
 // class teacher routes
-import classTeacherRoutes from './ClassTeacherRoutes';
-
+import classTeacherRoutes from 'routes/erp-routes/ClassTeacherRoutes';
 // visitor dashboard
-import VisitorRoutes from './erp-routes/VisitorRoutes';
-
+import VisitorRoutes from 'routes/erp-routes/VisitorRoutes';
 // stufee dashboard
-import StudentInfoFeeRoutes from './erp-routes/StudentInfoFeeRoutes';
-
+import StudentInfoFeeRoutes from 'routes/erp-routes/StudentInfoFeeRoutes';
 // library dashboard
-import LibraryRoutes from './erp-routes/LibraryRoutes';
-
+import LibraryRoutes from 'routes/erp-routes/LibraryRoutes';
 // inventory dashboard
-import InventoryRoutes from './erp-routes/InventoryRoutes';
-
+import InventoryRoutes from 'routes/erp-routes/InventoryRoutes';
 // hr payroll dashbaord
-import HrPayRollRoutes from './erp-routes/HrPayrollRoutes';
-
+import HrPayRollRoutes from 'routes/erp-routes/HrPayrollRoutes';
 // crm dashbaord
-import CrmRoutes from './erp-routes/CrmRoutes';
-
-
+import CrmRoutes from 'routes/erp-routes/CrmRoutes';
 // form builder
-import FormBuilderRoutes from './erp-routes/FormBuilderRoutes';
+import FormBuilderRoutes from 'routes/erp-routes/FormBuilderRoutes';
 
  // subject Teacher  Dashboard Menus
-
 //  const SubjectTeacherDashboard= Loadable(lazy(() => import('views/subject-teacher-dashboard/')));
 
 //  common routes
-import CommonRoutes from './common-routes/CommonRoutes';
+const ContactSupport = Loadable(lazy(() => import('pages/post-support-ticket')));
 
 // ==============================|| MAIN ROUTING ||============================== //
 
@@ -46,8 +37,6 @@ const MainRoutes = {
   path: '/',
   element: <MainLayout />,
   children: [
-
-
     // Parent Dashboard Menus (Include imported routes here)
      ...ParentRoutes,
  
@@ -82,8 +71,12 @@ const MainRoutes = {
    // from builder Dashboard Menus (Include imported routes here)
     ...FormBuilderRoutes,
 
-    // common routes  
-    ...CommonRoutes
+     // common   Pages routes
+     { 
+      path: 'contact-support', 
+      element: <ContactSupport />
+      },
+
 
   ]
 };

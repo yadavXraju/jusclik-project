@@ -18,7 +18,7 @@ import {
 import TablePagination from '@mui/material/TablePagination';
 import SearchIcon from '@mui/icons-material/Search';
 import { styled } from '@mui/system';
-import AvtarImg from '../../../../../assets/images/avatar.png';
+import AvtarImg from 'assets/images/avatar-images/avatar.png';
 
 const theme = createTheme();
 

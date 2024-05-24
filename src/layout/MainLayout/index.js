@@ -13,7 +13,7 @@ import { GetMenuItems } from 'menu-items';
 import { drawerWidth } from 'store/constant';
 import { setMenu , handleUserclickedtoggle} from 'store/customization-slice';
 import { IconChevronRight } from '@tabler/icons';
-import UrlPage from 'themes/navigation-for-pages';
+import UrlPage from 'layout/breadcrumb';
 
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(({ theme, open }) => ({

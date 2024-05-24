@@ -47,34 +47,40 @@ const Onboarding = ({ panelSubheading, panelHeading, taskGroups, setTaskGroups, 
     addTask: false,
     editTask: false
   });
-
+  const [modalOpen, setmodalOpen] = React.useState(false);
   const toggleDrawer = (anchor, open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return;
     }
 
-    setState({ ...state, [anchor]: open });
-  };
-  // DRAWERS
+  
+  setState({ ...state, [anchor]: open });
+};
+// DRAWERS
 
-  const handleDeleteRow = (id) => {
-    // Filter out the row with the given id
-    setmodalOpen(true);
-    console.log(id);
-    const updatedRows = rows.filter((row) => row.id !== id);
-    // Update the rows state
-    setRows(updatedRows);
-  };
-  const [modalOpen, setmodalOpen] = React.useState(false);
-  const handleModalClose = () => {
-    setmodalOpen(false);
-  };
-  const handleConfirmDelete = () => {
-    const updatedRows = tableRows.filter((row) => row.id !== deleteId);
-    setTableRows(updatedRows);
-    setmodalOpen(false);
-    setdeleteId(null);
-  };
+const [deleteId, setDeleteId] = React.useState(null); // State to store the id of the row to be deleted
+
+const handleDeleteRow = (id) => {
+  // Set the id of the row to be deleted
+  setDeleteId(id);
+  // Open the warning dialog
+  setmodalOpen(true);
+};
+
+const handleConfirmDelete = () => {
+  // Filter out the row with the given id
+  const updatedRows = rows.filter((row) => row.id !== deleteId);
+  // Update the rows state
+  setRows(updatedRows);
+  // Close the warning dialog
+  setmodalOpen(false);
+  // Reset the deleteId state
+  setDeleteId(null);
+};
+
+const handleModalClose = () => {
+  setmodalOpen(false);
+};
   const columns = [
     { field: 'task', headerName: 'Task', width: 260 },
     { field: 'dueOn', headerName: 'Due On', width: 260 },

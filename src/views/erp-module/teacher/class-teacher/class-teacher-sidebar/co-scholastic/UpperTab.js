@@ -1,9 +1,9 @@
 import { Button, Grid, Paper } from '@mui/material'
 import React from 'react'
-import  { TermDropDown,ClassDropDown,StudentDropDown,AreaDropDown } from '../SearchFilter/filterComponent/DropDown';
-import {ClassData} from '../marks-entry-panel/dropdown-data/ClassData'
-import {Term }from '../marks-entry-panel/dropdown-data/TermData'
-// import LibraryComponent from '../library/LibraryComponent'
+import  { TermDropDown,ClassDropDown,StudentDropDown,AreaDropDown } from '../SearchFilter/DropDown'
+import {ClassData} from '../marks-entry-panel/dropdown data/ClassData'
+import {Term }from '../marks-entry-panel/dropdown data/TermData'
+
 import SearchTwoToneIcon from '@mui/icons-material/SearchTwoTone';
 function UpperTab( { onClassChange,
   selectedClass,

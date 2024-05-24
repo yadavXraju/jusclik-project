@@ -8,7 +8,7 @@ import { useTheme, styled } from '@mui/material/styles';
 import { Divider, Grid, List, ListItem, Box, ListItemText, Button } from '@mui/material';
 
 // Import alert data with different names
-import { ParentAlertData } from 'views/erp-module/parent/dashboard/Alerts';
+import { ParentAlertData } from 'views/erp-module/parent/dashboard';
 import { ClassTeacherAlertData } from 'views/erp-module/teacher/class-teacher/dashboard/Alerts/Alert';
 import SubjectTeacherAlertData from 'views/erp-module/teacher/subject-teacher/dashboard/alerts/AlertData';
 

@@ -1,3 +1,6 @@
+// Page Owner : Abhshek Negi
+// Description : breadcrumbs for all menu pages
+
 import React from 'react';
 import { Grid , Typography , Box } from '@mui/material';
 import MainCard from 'ui-component/cards/MainCard';
@@ -5,7 +8,7 @@ import { gridSpacing } from 'store/constant';
 import { useNavigate , useLocation } from 'react-router';
 import { useSelector } from 'react-redux';
 
-const UrlPage = () => {
+const BreadCrumb = () => {
   const { menuNavItem } = useSelector((state) => state.menuNavItemSlice);
   const menuNavCollapse = useSelector((state) => state.menuNavCollapseSlice);
   const navigate = useNavigate();
@@ -63,5 +66,5 @@ const UrlPage = () => {
   );
 };
 
-export default UrlPage;
+export default BreadCrumb;
 

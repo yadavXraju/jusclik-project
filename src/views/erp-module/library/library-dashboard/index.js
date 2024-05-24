@@ -1,39 +1,59 @@
 import React from 'react';
-import { Box, Paper } from '@mui/material';
-import TabContext from '@mui/lab/TabContext';
-import TabPanel from '@mui/lab/TabPanel';
-import TabLabel from 'views/erp-module/erp-common-item/tab/TabLabel';
 import DashboardContent from './dashboard';
-import DashboardPayRoll from 'components/dashboard-payroll';
-import PhoneIcon from '@mui/icons-material/Phone';
-import useTabValue from 'components/ParamTab';
+import DashboardPayRoll from 'pages/getting-started';
+import SetupTabs from 'component/param-stepper';
+import HomeTwoToneIcon from '@mui/icons-material/HomeTwoTone';
+import SettingsSuggestTwoToneIcon from '@mui/icons-material/SettingsSuggestTwoTone';
+import NotificationsActiveTwoToneIcon from '@mui/icons-material/NotificationsActiveTwoTone';
+import { useMediaQuery } from '@mui/material';
+import { DashboardTab } from 'component/dashboard-css/CommonCss';
 
 const Dashboard = () => {
-  const { value, handleChange } = useTabValue('1');
 
+  const isTab = useMediaQuery('(max-width:991px)')
+  const tabPage = [
+    {
+      id: 1,
+      name: 'Dashboard',
+      value: '1',
+      component:DashboardContent,
+      icon: <HomeTwoToneIcon sx={{mb:'0 !important'}} />
+    },
+    {
+      id: 2,
+      name: 'Getting Started',
+      value: '2',
+      component: DashboardPayRoll ,
+      icon: <SettingsSuggestTwoToneIcon sx={{mb:'0 !important'}}  /> // Include your icon component here
+    },
+
+  
+    {
+      id: 3,
+      name: 'Recent Updates',
+      value: '3',
+      component:"test",
+      icon: <NotificationsActiveTwoToneIcon sx={{mb:'0 !important'}}  /> 
+    },
+  
+  ];
   return (
     <>
-      <Box sx={{ width: '100%', typography: 'body1' }}>
-        <TabContext value={value}>
-          <Paper sx={{ mx: '24px', background: 'none' }}>
-            <Box sx={{ 
-              borderBottom: 0,
-              borderColor: '#e3e8efad',
-              borderRadius: '10px',
-              padding: '10px',
-              '& .MuiBox-root': {
-                marginBottom: '10px'
-              }
-            }}>
-              <TabLabel handleChange={handleChange} />
-            </Box>
-          </Paper>
-          <TabPanel icon={<PhoneIcon />} value="1"><DashboardContent/></TabPanel>
-          <TabPanel value="2"><DashboardPayRoll /></TabPanel>
-          <TabPanel value="3"></TabPanel>
-          <TabPanel value="4"></TabPanel>
-        </TabContext>
-      </Box>
+      <SetupTabs  
+        variant={"scrollable"}
+        tabPage={tabPage}
+        orientation={ isTab ? "horizontal" :"horizontal"}
+        showBottomNav={false}
+        numberShow ={false}
+        iconShow={false}
+        customtabSytle = {DashboardTab.customtabSytle}
+
+        customtabPanelStyle={DashboardTab.customtabPanelStyle}
+        customIconStyle={DashboardTab.customIconStyle}
+        customStyleTabs={DashboardTab.customStyleTabs}
+        customtabWrapper={DashboardTab.customtabWrapper}
+     />
+      
     </>
   );
 };

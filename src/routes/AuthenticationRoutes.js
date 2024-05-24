@@ -7,9 +7,9 @@ import Loadable from 'ui-component/Loadable';
 
 const Login = Loadable(lazy(() => import('pages/authentication')));
 const VisitorRegistration =  Loadable(lazy(() => import('pages/authentication/visitor-registration')));
-const Registration =  Loadable(lazy(() => import('pages/registartion')));
+const Registration =  Loadable(lazy(() => import('pages/customer-registartion/CustomerRegistration')));
 const OnlineRegistration =  Loadable(lazy(() => import('pages/online-registration')));
-const Pricing =  Loadable(lazy(() => import('pages/pricing')));
+const Pricing =  Loadable(lazy(() => import('pages/jusklik-pricing/JusklikPricing')));
 
 
 // ==============================|| AUTHENTICATION ROUTING ||============================== //

@@ -1,61 +1,49 @@
-// ======= Page Owner Vikash =========
-import React from 'react'
-import { Card, Box } from '@mui/material'
-import { IconButton, Tooltip } from '@mui/material';
-// import { useNavigate } from 'react-router-dom';
-import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
-import RemoveRedEyeTwoToneIcon from '@mui/icons-material/RemoveRedEyeTwoTone';
+import React from 'react';
+import { Card, Box, IconButton, Tooltip, Typography, Dialog, DialogTitle, DialogContent, DialogActions, Button } from '@mui/material';
+import CheckCircleTwoToneIcon from '@mui/icons-material/CheckCircleTwoTone';
+import CancelTwoToneIcon from '@mui/icons-material/CancelTwoTone';
 import rows from './LeaveTableData';
-import WarningDialog from 'components/WarningDialog';
-import CommonDataGrid from 'components/commonDataGrid';
-import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
+import CommonDataGrid from 'component/commonDataGrid';
 
 
 const LeaveTable = () => {
-//   const navigate = useNavigate();
-  const [tableRows, setTableRows] = React.useState(rows);
-//   const [currEditItem, setCurrEditItem] = React.useState({});
+    const [tableRows, setTableRows] = React.useState(rows);
+    const [selectedRow, setSelectedRow] = React.useState(null);
+    const [action, setAction] = React.useState(null);
+  
+    const handleApproveLeave = (id) => {
+      setSelectedRow(id);
+      setAction('approve');
+    };
+  
+    const handleRejectLeave = (id) => {
+      setSelectedRow(id);
+      setAction('reject');
+    };
+  
+    const handleConfirmAction = () => {
+      if (action === 'approve') {
+        setTableRows(tableRows.map((row) =>
+          row.id === selectedRow ? { ...row, status: 'Approved' } : row
+        ));
+      } else if (action === 'reject') {
+        setTableRows(tableRows.map((row) =>
+          row.id === selectedRow ? { ...row, status: 'Rejected' } : row
+        ));
+      }
+      setSelectedRow(null);
+      setAction(null);
+    };
 
-// const Click = (rowData) => {
-//     navigate(`/erp/crm/contact/${rowData.id}`, { state: { rowData }});
-//   };
-
-//    // ========== function for handle Edit row ===========
-//    const handleEditClick = (editItem) => {
-//     setCurrEditItem(editItem);
-//   };
- 
-
-  // ========= render error model for Delete row ==========
-  const [modalOpen, setmodalOpen] = React.useState(false);
-  const [deleteId, setdeleteId] = React.useState(null);
-
-  const handleModalClose = () => {
-    setmodalOpen(false);
-  };
-  const handleConfirmDelete = () => {
-    const updatedRows = tableRows.filter((row) => row.id !== deleteId);
-    setTableRows(updatedRows);
-    setmodalOpen(false);
-    setdeleteId(null)
-  };
-
-  // ========== function for handle delete row ===========
-  const handleDeleteRow = (id) => {
-    setdeleteId(id)
-    setmodalOpen(true);
-  };
-
-  // ========= Data Grid Columns ==========
   const columns = [
-    { field: 'contactNo', headerName: 'Emp. Code', flex: 1, minWidth: 130, align: 'left', headerAlign: 'left' },
-    { field: 'firstName', headerName: 'Emp. Name', flex: 1, minWidth: 130 },
-    { field: 'lastName', headerName: 'Department', flex: 1, minWidth: 130 },
-    { field: 'leadOwner', headerName: 'Application No', flex: 1, minWidth: 130 },
-    { field: 'email', headerName: 'Leave Type', flex: 1, minWidth: 130 },
-    { field: 'mobile', headerName: 'App. Date', flex: 1, minWidth: 130 },
-    { field: 'createdBy', headerName: 'Planned/Unplanned', flex: 1, minWidth: 130 },
-    { field: 'description', headerName: 'Applied', flex: 1, minWidth: 130 },
+    { field: 'empCode', headerName: 'Emp. Code', flex: 1, minWidth: 130 },
+    { field: 'empName', headerName: 'Emp. Name', flex: 1, minWidth: 130 },
+    { field: 'department', headerName: 'Department', flex: 1, minWidth: 130 },
+    { field: 'applicationNo', headerName: 'Application No', flex: 1, minWidth: 130 },
+    { field: 'leaveType', headerName: 'Leave Type', flex: 1, minWidth: 130 },
+    { field: 'applicationDate', headerName: 'App. Date', flex: 1, minWidth: 130 },
+    { field: 'planned', headerName: 'Planned/Unplanned', flex: 1, minWidth: 130 },
+    { field: 'applied', headerName: 'Applied', flex: 1, minWidth: 130 },
     { field: 'status', headerName: 'Status', flex: 1, minWidth: 130 },
     {
       field: 'Action',
@@ -66,58 +54,64 @@ const LeaveTable = () => {
       filterable: false,
       disableColumnMenu: true,
       renderCell: (params) => (
-        <Box>
-          <Tooltip title="Preview">
-          <IconButton>
-            <RemoveRedEyeTwoToneIcon sx={{ color: 'rgb(124, 178, 221)' }} />
-          </IconButton>
+        <Box onClick={(event) => event.stopPropagation()}>
+          <Tooltip title="Approve">
+            <IconButton onClick={() => handleApproveLeave(params.row.id)}>
+              <CheckCircleTwoToneIcon sx={{ color: '#5ce975d1' }} />
+            </IconButton>
           </Tooltip>
-          <Tooltip >
-          <IconButton onClick={(event) => event.stopPropagation()}>
-             <EditTwoToneIcon/>
-          </IconButton>
-          
-          </Tooltip>
-          <Tooltip title="Delete">
-          <IconButton onClick={(event) => event.stopPropagation()}>
-            <DeleteTwoToneIcon onClick={() => handleDeleteRow(params.row.id)} sx={{ color: '#f19e9e' }} />
-          </IconButton>
+          <Tooltip title="Reject">
+            <IconButton onClick={() => handleRejectLeave(params.row.id)}>
+              <CancelTwoToneIcon sx={{ color: '#ff7070ad' }} />
+            </IconButton>
           </Tooltip>
         </Box>
       )
     }
   ];
 
-
   return (
     <>
-    <Card sx={{padding:'16px'}}>
-    <Box>
+      <Card sx={{ padding: '16px' }}>
         <Box mt={3}>
           <CommonDataGrid
             rows={tableRows}
             columns={columns}
-            onRowClick={(params) => Click(params.row)}
             initialState={{
-              pagination: {
-                paginationModel: { page: 0, pageSize: 50 }
-              }
-            }}
-            pageSizeOptions={[10, 25, 50, 100]}
-            checkboxSelection
+                pagination: { paginationModel: { page: 0, pageSize: 50 } }
+              }}
+              pageSizeOptions={[10, 25, 50, 100]}
+              checkboxSelection
           />
         </Box>
-      </Box>
-      {/* ========= import warning dialog ========== */}
-      <WarningDialog
-        open={modalOpen}
-        onClose={handleModalClose}
-        contentText="Are you sure you want to delete?"
-        onConfirm={handleConfirmDelete}
-      />
-    </Card>
+      </Card>
+
+      {/* Approve Confirmation Dialog */}
+      <Dialog open={action === 'approve'} onClose={() => setAction(null)}>
+        <DialogTitle>Confirm Approval</DialogTitle>
+        <DialogContent>
+          <Typography>Are you sure you want to approve leave application with ID {selectedRow}?</Typography>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleConfirmAction} color="primary">Approve</Button>
+          <Button onClick={() => setAction(null)} color="inherit">Cancel</Button>
+        </DialogActions>
+      </Dialog>
+
+      {/* Reject Confirmation Dialog */}
+      <Dialog open={action === 'reject'} onClose={() => setAction(null)}>
+        <DialogTitle>Confirm Rejection</DialogTitle>
+        <DialogContent>
+          <Typography>Are you sure you want to reject leave application with ID {selectedRow}?</Typography>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleConfirmAction} color="error">Reject</Button>
+          <Button onClick={() => setAction(null)} color="inherit">Cancel</Button>
+        </DialogActions>
+      </Dialog>
     </>
-  )
+  );
 }
 
-export default LeaveTable
+export default LeaveTable;
+

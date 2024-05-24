@@ -19,7 +19,7 @@ import PeopleOutlineOutlinedIcon from '@mui/icons-material/PeopleOutlineOutlined
 import VisitorDrawer from '../RightDrawer';
 import PrintIcon from '@mui/icons-material/Print';
 import { useReactToPrint } from 'react-to-print';
-import AvatarImage from '../../../../../../assets/images/avatar.png';
+import AvatarImage from 'assets/images/avatar-images/avatar.png';
 
 const VisuallyHiddenInput = styled('input')({
   clip: 'rect(0 0 0 0)',
