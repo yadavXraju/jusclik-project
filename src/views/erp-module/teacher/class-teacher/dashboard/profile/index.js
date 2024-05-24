@@ -1,5 +1,5 @@
 import React from 'react'
-import { ClassTeacherProfileDetails } from 'layout/MainLayout/Header/class-teacher/teacher-profile-section/TeacherProfile'
+import { ClassTeacherProfileDetails } from 'layout/MainLayout/Header/TeacherProfile'
 import Profile from 'components/dashboard/Profile'
 
 const ClassTeacherProfile = () => {

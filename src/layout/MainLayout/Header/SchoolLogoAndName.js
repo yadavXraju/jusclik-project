@@ -4,7 +4,7 @@
 import React from 'react';
 import { Box } from '@mui/system';
 import { Typography ,  useMediaQuery } from '@mui/material';
-import logo from './logo.png';
+import logo from 'assets/images/school-logos/WisdomTreeLogo.png';
 
 export const SchoolData = {
   logo: logo, 

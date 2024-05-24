@@ -9,7 +9,7 @@ import { Box } from '@mui/system';
 import {TextField, useMediaQuery} from '@mui/material';
 import Grid from '@mui/material/Grid';
 import CardMedia from '@mui/material/CardMedia';
-import { ClassTeacherProfileDetails } from 'layout/MainLayout/Header/class-teacher/teacher-profile-section/TeacherProfile';
+import { ClassTeacherProfileDetails } from 'layout/MainLayout/Header/TeacherProfile';
 
 
 export default function TeacherContactDetails() {

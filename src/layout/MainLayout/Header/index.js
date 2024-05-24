@@ -7,7 +7,7 @@ import { useTheme } from '@mui/material/styles';
 import { Avatar, Box, ButtonBase, useMediaQuery, Grid, Popper, Paper, ClickAwayListener } from '@mui/material';
 import LogoSection from '../LogoSection';
 import ProfileSection from 'layout/MainLayout/Header/Profile';
-import SchoolName from './SchoolNameAndLogoSection';
+import SchoolName from './SchoolLogoAndName';
 import NotificationSection from './NotificationSection';
 import { IconMenu2 } from '@tabler/icons';
 import AcademicYear from 'layout/MainLayout/Header/AcademicYear';
