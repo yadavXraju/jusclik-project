@@ -2,16 +2,16 @@
 import React from 'react';
 import Grid from '@mui/material/Grid';
 import { gridSpacing } from 'store/constant';
-import StockStatus from './stock-status';
-import StockDetailPieChart from './category-wise-stock';
-import LowStockItemList from './low-stock-items';
-import FrequentlyItems from './frequently-issued-items';
-import VendorContacts from './vendor-contacts';
+import StockStatus from './StockStatus';
+import StockDetailPieChart from './CategoryWiseStock';
+import LowStockItems from './LowStockItems';
+import FrequentlyItems from './FrequentlyIssuedItems';
+import VendorContacts from './VendorContact';
 // import NeedSupport from 'views/erp-module/student-information-fee-management/student-info-fee-management-dashboard/dashboard/support/Support';
-import Counters from './counter';
+import Counters from './Counter';
 import NeedHelp from 'pages/HelpAndSupport';
 
-const DashboardContent = ({ isLoading }) => {
+const Dashboard = ({ isLoading }) => {
   return (
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
@@ -41,7 +41,7 @@ const DashboardContent = ({ isLoading }) => {
           </Grid>
           {/* Low stock items */}
           <Grid item xs={12} lg={6} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
-            <LowStockItemList />
+            <LowStockItems />
           </Grid>
           {/* Frequently Issued Items */}
           <Grid item xs={12} lg={6} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
@@ -58,4 +58,4 @@ const DashboardContent = ({ isLoading }) => {
   );
 };
 
-export default DashboardContent;
+export default Dashboard;
