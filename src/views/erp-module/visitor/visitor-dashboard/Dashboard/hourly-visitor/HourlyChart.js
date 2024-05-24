@@ -2,7 +2,7 @@
 import React from 'react';
 import Chart from 'react-apexcharts';
 import { Paper , Grid , Typography } from '@mui/material';
-import {HeadingCss } from 'components/dashboard-css/CommonCss';
+import {HeadingCss } from 'components/dashboard/CommonCss';
 import { gridSpacing } from 'store/constant';
 
 

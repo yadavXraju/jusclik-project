@@ -3,7 +3,7 @@
 
 import { Typography , useMediaQuery } from '@mui/material'
 import React from 'react'
-import { welcomeMsg } from 'components/dashboard-css/CommonCss';
+import { welcomeMsg } from 'components/dashboard/CommonCss';
 
 // teacher detail is  props 
 const WelcomeMessageTemplate = ( { teacherDetails}) => {

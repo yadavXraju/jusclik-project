@@ -1,6 +1,6 @@
 import * as React from 'react';
 import LinearProgress from '@mui/material/LinearProgress';
-import { HeadingCss } from 'components/dashboard-css/CommonCss';
+import { HeadingCss } from 'components/dashboard/CommonCss';
 import Typography from '@mui/material/Typography';
 import { Box, Paper, Grid } from '@mui/material';
 

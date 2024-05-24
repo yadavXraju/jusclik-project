@@ -9,7 +9,7 @@ import HomeTwoToneIcon from '@mui/icons-material/HomeTwoTone';
 import SettingsSuggestTwoToneIcon from '@mui/icons-material/SettingsSuggestTwoTone';
 import NotificationsActiveTwoToneIcon from '@mui/icons-material/NotificationsActiveTwoTone';
 import { useMediaQuery } from '@mui/material';
-import { DashboardTab } from 'components/dashboard-css/CommonCss';
+import { DashboardTab } from 'components/dashboard/CommonCss';
 
 const DashboardTabs = () => {
 

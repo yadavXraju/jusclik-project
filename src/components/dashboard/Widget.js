@@ -3,7 +3,7 @@
 
 import React from 'react';
 import { Divider, Grid, Typography, Button, } from '@mui/material';
-import { boxHeight, subTitle, subtitle2} from 'components/dashboard-css/CommonCss';
+import { boxHeight, subTitle, subtitle2} from 'components/dashboard/CommonCss';
 import { Box ,Paper} from '@mui/material';
 import { useNavigate } from 'react-router';
 import ParamWidgetHeader from './WidgetHeader';

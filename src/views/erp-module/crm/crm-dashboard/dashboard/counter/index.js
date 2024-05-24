@@ -1,7 +1,7 @@
 // ownedby -----san
 
 import React from 'react'
-import ParamCounters from "components/Counters";
+import ParamCounters from "components/dashboard/Counters";
 
 // icons
 

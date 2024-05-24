@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Grid, Paper, Typography, Box, useMediaQuery } from '@mui/material';
 import Chart from 'react-apexcharts';
-import { HeadingCss } from 'components/dashboard-css/CommonCss'
+import { HeadingCss } from 'components/dashboard/CommonCss'
 import SkeletonTotalGrowthBarChart from 'components/ui/cards/Skeleton/TotalGrowthBarChart';
 import { gridSpacing } from 'store/constant';
 

@@ -4,7 +4,7 @@
 import React from 'react';
 import { Paper, Box, Grid, Typography, useMediaQuery ,Divider} from '@mui/material';
 import ApexCharts from 'react-apexcharts';
-import ParamWidgetHeader from 'components/WidgetHeader';
+import ParamWidgetHeader from 'components/dashboard/WidgetHeader';
 
 const CommonChart = ({ Data, heading, hideDiv, chartdetails = [] }) => {
   const isMediumDesktop = useMediaQuery('(max-width: 1480px)');

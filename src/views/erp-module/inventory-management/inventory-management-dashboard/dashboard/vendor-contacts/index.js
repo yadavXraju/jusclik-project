@@ -1,6 +1,6 @@
 import React from 'react';
 import { Paper, Typography, Grid, Table, TableRow, TableCell, TableBody, Avatar, Box, TableHead, useMediaQuery, Stack } from '@mui/material';
-import { HeadingCss } from 'components/dashboard-css/CommonCss'
+import { HeadingCss } from 'components/dashboard/CommonCss'
 import { gridSpacing } from 'store/constant';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';

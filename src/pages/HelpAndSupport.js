@@ -3,8 +3,8 @@
 
 import { Grid  ,  Typography,  useMediaQuery, Paper,Box , Card , CardMedia , Button , Divider } from '@mui/material';
 import ParamStepper from 'components/Stepper';
-import { subTitle  } from 'components/dashboard-css/CommonCss';
-import ParamWidgetHeader from 'components/WidgetHeader';
+import { subTitle  } from 'components/dashboard/CommonCss';
+import ParamWidgetHeader from 'components/dashboard/WidgetHeader';
 // ============== quick tips imports
 import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
 import PersonAddAltOutlinedIcon from '@mui/icons-material/PersonAddAltOutlined';
