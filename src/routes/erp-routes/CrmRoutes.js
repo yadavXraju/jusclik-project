@@ -7,19 +7,19 @@ import Loadable from 'components/ui/Loadable';
 // project imports
 const Dashboard = Loadable(lazy(() => import('views/erp-module/crm/crm-dashboard')));
 // contact
-const Contact = Loadable(lazy(() => import('views/erp-module/crm/crm-sidebar/contact')));
-const Preview = Loadable(lazy(() => import('views/erp-module/crm/crm-sidebar/contact/Preview')));
+const Contact = Loadable(lazy(() => import('views/erp-module/crm/contact')));
+const Preview = Loadable(lazy(() => import('views/erp-module/crm/contact/Preview')));
 
 // pipeline
-const Pipeline = Loadable(lazy(() => import('views/erp-module/crm/crm-sidebar/pipeline')));
+const Pipeline = Loadable(lazy(() => import('views/erp-module/crm/pipeline')));
 
 // report
-const Reports = Loadable(lazy(() => import('views/erp-module/crm/crm-sidebar/reports')));
+const Reports = Loadable(lazy(() => import('views/erp-module/crm/reports')));
 // // settings
-const Settings = Loadable(lazy(() => import('views/erp-module/crm/crm-sidebar/settings')));
-const LeadStage = Loadable(lazy(() => import('views/erp-module/crm/crm-sidebar/settings/configure/lead-stage')));
-const LeadScore = Loadable(lazy(() => import('views/erp-module/crm/crm-sidebar/settings/configure/lead-score')));
-const SystemDataEnter = Loadable(lazy(() => import('views/erp-module/crm/crm-sidebar/settings/configure/system-data')));
+const Settings = Loadable(lazy(() => import('views/erp-module/crm/settings')));
+const LeadStage = Loadable(lazy(() => import('views/erp-module/crm/settings/configure/lead-stage')));
+const LeadScore = Loadable(lazy(() => import('views/erp-module/crm/settings/configure/lead-score')));
+const SystemDataEnter = Loadable(lazy(() => import('views/erp-module/crm/settings/configure/system-data')));
 // ==============================|| Visitor MENUS ||============================== //
 
 const CrmRoutes = [
