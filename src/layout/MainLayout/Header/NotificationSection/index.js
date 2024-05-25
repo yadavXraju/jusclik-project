@@ -1,6 +1,5 @@
 // Page Owner Abhishek
 // Description :  Notification Layout
-
 import { useState, useRef, useEffect } from 'react';
 import { useTheme } from '@mui/material/styles';
 import {
@@ -30,7 +29,6 @@ import { useSelector } from 'react-redux';
 // assets
 // import { IconBell } from '@tabler/icons';
 import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
-
 
 // ==============================|| NOTIFICATION ||============================== //
 
@@ -64,11 +62,9 @@ const NotificationSection = () => {
     prevOpen.current = open;
   }, [open]);
 
-
   // to store state in this varible
   const customization = useSelector((state) => state.customization);
 
-    
   // Extract theme color and set opacity
   const themeColor = customization.themeColor || 'rgb(94, 53, 177)';
   const opacity = 0.2;

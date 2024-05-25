@@ -1,8 +1,11 @@
+// Page Owner : Abhishek
+// description : set the role of selected erp module 
+
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     erpModule: {
-        role: '',
+        role: sessionStorage.getItem('userRole') || '', // Retrieve role from sessionStorage
         url: '',
     },
 }
@@ -14,9 +17,8 @@ const erpModuleSlice = createSlice({
         handleErpModule: (state, action) => {
             const erpModule = action.payload;
             state.erpModule = erpModule;
-
-            // Save state to local storage
-            localStorage.setItem('erpModuleState', JSON.stringify(state));
+            // Save role to sessionStorage
+            sessionStorage.setItem('userRole', erpModule.role);
         }
     }
 })

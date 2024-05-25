@@ -1,31 +1,5 @@
-// import { createSlice } from '@reduxjs/toolkit';
-
-// const initialMenuNavItem = {
-//   NavItem: ""
-// }
-
-// const initialState = {
-//   menuNavItem: initialMenuNavItem,
-// };
-
-// const menuNavItemSlice = createSlice({
-//   name: 'menuNavItem',
-//   initialState,
-//   reducers: {
-//     handleMenuNavItem: (state, action) => {
-//       const NavItem = action.payload;
-//       state.menuNavItem.NavItem = NavItem;
-//     },
-//     resetMenuNavItem: state => {
-//       state.menuNavItem = initialMenuNavItem; 
-//     }
-//   }
-// });
-
-// export const { handleMenuNavItem, resetMenuNavItem } = menuNavItemSlice.actions;
-
-// export default menuNavItemSlice.reducer;
-
+// Page Owner : Abhshek
+// Description : Storing Clicked Menu Data into the slice
 
 import { createSlice } from '@reduxjs/toolkit';
 
