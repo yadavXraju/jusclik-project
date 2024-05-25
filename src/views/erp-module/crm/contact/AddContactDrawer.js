@@ -13,7 +13,7 @@ import PersonAddAltTwoToneIcon from '@mui/icons-material/PersonAddAltTwoTone';
 import DriveFolderUploadTwoToneIcon from '@mui/icons-material/DriveFolderUploadTwoTone';
 import DescriptionTwoToneIcon from '@mui/icons-material/DescriptionTwoTone';
 import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
-import CommonDocuments from 'components/table-data-grid/Documents';
+import DocumentTest from './DocumentUpload';
 
 const AddContactDrawer = ({ DrawerBtn = false, editIcon = false, currEditItem , handleClick }) => {
   const { anchor, toggleDrawer } = useDrawer();
@@ -36,6 +36,16 @@ const AddContactDrawer = ({ DrawerBtn = false, editIcon = false, currEditItem , 
     if (typeof handleClick === 'function') {
       handleClick();
     }
+  };
+
+  const handleFileChange = (file, documentId) => {
+    // Handle file change
+    console.log(`File ${file.name} selected for document ID ${documentId}`);
+  };
+
+  const handleRemoveFile = (documentId) => {
+    // Handle file removal
+    console.log(`File removed for document ID ${documentId}`);
   };
 
   return (
@@ -87,7 +97,7 @@ const AddContactDrawer = ({ DrawerBtn = false, editIcon = false, currEditItem , 
               {tabValue === 1 && <Box>Other Details</Box>}
               {tabValue === 2 && (
                 <>
-                  <CommonDocuments documentData={documentData} customStyle={{ height: '100%' }} />
+                  <DocumentTest documentData={documentData}  onFileChange={handleFileChange} onRemoveFile={handleRemoveFile}/>
                 </>
               )}
             </Box>
