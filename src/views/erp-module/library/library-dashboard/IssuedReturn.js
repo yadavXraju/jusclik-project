@@ -2,9 +2,11 @@ import React from 'react';
 import ApexCharts from 'react-apexcharts';
 import { Grid, Paper, Typography, useMediaQuery } from '@mui/material';
 import { gridSpacing } from 'store/constant';
-import { HeadingCss } from 'components/dashboard/CommonCss'
+import { HeadingCss } from 'components/dashboard/CommonCss';
 
-const IssueReturn2 = () => {
+
+
+const IssueReturn = () => {
   const isMediumDesktop = useMediaQuery('(max-width: 1600px)');
   const isMobile = useMediaQuery('(max-width: 767px)');
 
@@ -96,4 +98,4 @@ const IssueReturn2 = () => {
   );
 };
 
-export default IssueReturn2;
+export default IssueReturn;
