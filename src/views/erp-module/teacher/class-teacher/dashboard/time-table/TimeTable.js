@@ -1,5 +1,5 @@
 import React from 'react'
-import TeacherTimeTable from 'components/table-data-grid/TeacherTimeTable'
+import TeacherTimeTable from 'components/table-data-grid/temp-TeacherTimeTable'
 import { TeacherTimeTableDetails } from './TimeTableDetails'
 
 const ClassTeacherTimeTable = () => {
