@@ -5,25 +5,31 @@ import ParamMultipleSelect from 'components/ui/custom-input/MultipleSelect';
 import ParameterizedAutoComplete from 'components/ui/custom-input/AutoComplete';
 
 
-export const EditTaskDrawer = ({ toggleDrawer, state }) => {
-
-  const[assign,setAssign]=useState([]);
-  const[validator,setValidator]=useState([]);
-
-
-  // Data
-const selectDate = Array.from({ length: 50 }, (_, index) => ({ label: (index + 1).toString(), value: index + 1 }));
-const option=[
-{value:"1",label:"Before due date"},
-{value:"2",label:"After due date"},
-]
-  const names = [ { id: 1, name: 'Sangeeta' },
-  { id: 2, name: 'tarun' },
-  { id: 3, name: 'Aman' },
-  { id: 4, name: 'Sakshi' },
-  { id: 5, name: 'Jivesh' },
-  { id: 6, name: 'Jivesh' },
-    ];
+export const EditTaskDrawer = ({ toggleDrawer, state,editId,rows,setRows}) => {
+  const names = [
+    'Oliver Hansen',
+    'Van Henry',
+    'April Tucker',
+    'Ralph Hubbard',
+    'Omar Alexander',
+    'Carlos Abbott',
+    'Miriam Wagner',
+    'Bradley Wilkerson',
+    'Virginia Andrews',
+    'Kelly Snyder'
+  ];
+  const [taskData,setTaskData]=React.useState({
+    id:editId,
+    task:rows[editId-1]?.task,
+    description:rows[editId-1]?.description
+  })
+  const handleSave=(e)=>{
+    const newRows=rows
+    newRows[editId]=taskData
+    setRows(newRows)
+    const closeDrawer= toggleDrawer('editTask', false)
+closeDrawer(e)
+  }
   return (
     <>
       <Drawer anchor="right" open={state.editTask} onClose={toggleDrawer('editTask', false)}>
@@ -59,8 +65,14 @@ const option=[
          <Typography  sx={{mt:2, mb:1}}variant="h5" color="initial">
            Assigned to
             </Typography>
-            <ParamMultipleSelect options={names}  value={assign} setValue={setAssign}/>
-         </Box>
+            <TextField fullWidth 
+              onChange={(e)=>{
+              let taskName=e.target.value
+              const task=taskName
+              setTaskData(prev=>({...prev,task:task}))
+             }}
+             value={taskData?.task}
+            />
 
          <Box>
          <Typography  sx={{mt:2, mb:1}}variant="h5" color="initial">
@@ -107,7 +119,7 @@ const option=[
 
 
           <Box>
-            <Button variant="contained" color="primary" sx={{ position: 'fixed', right: '80px', bottom: '10px' }}>
+            <Button variant="contained" color="primary" sx={{ position: 'fixed', right: '80px', bottom: '10px' }} onClick={(e)=>handleSave(e)}>
               Save
             </Button>
           </Box>

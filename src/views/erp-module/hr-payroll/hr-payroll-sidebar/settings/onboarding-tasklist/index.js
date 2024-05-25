@@ -53,6 +53,7 @@ const OnboardingTasklist = () => {
   ]);
   const [modalOpen, setmodalOpen] = React.useState(false);
   const [deleteId, setDeleteId] = React.useState(null); // State to store the id of the row to be deleted
+  const [editId,setEditId]=React.useState(null)
   const [state, setState] = React.useState({
     addTaskGroup: false,
     editTaskGroup: false,
@@ -60,6 +61,11 @@ const OnboardingTasklist = () => {
     editTask: false
   });
 
+  const handleEditRow=(e,id)=>{
+    setEditId(id)
+    const openDrawer=toggleDrawer('editTask', true)
+    openDrawer(e)
+  }
   const handleDeleteRow = (id) => {
     // Set the id of the row to be deleted
     setDeleteId(id);
@@ -105,7 +111,7 @@ const OnboardingTasklist = () => {
       renderCell: (params) => (
         <Box display="flex">
           <Tooltip title="Edit Task">
-            <IconButton onClick={toggleDrawer('editTask', true)} id="editTask" sx={{ marginRight: '8px' }}>
+            <IconButton onClick={(e)=>handleEditRow(e,params.row.id)} id="editTask" sx={{ marginRight: '8px' }}>
               <EditTwoToneIcon />
             </IconButton>
           </Tooltip>
@@ -165,6 +171,7 @@ const OnboardingTasklist = () => {
         setTaskGroups={setTaskGroups}
         state={state}
         toggleDrawer={toggleDrawer}
+        editId={editId}
       />
     </>
   );
