@@ -1,14 +1,10 @@
 import React from 'react';
 import { Grid, Paper, Typography, Box } from '@mui/material';
-import ParamCounters from 'components/ParamCounters';
-import { Grid, Paper, Typography , Box , } from '@mui/material';
 import ParamCounters from 'components/dashboard/Counters';
-
 import Divider from '@mui/material/Divider';
-import CommonChart from 'components/CommonChart';
-import CommonBarChart from 'components/CommonBarChart';
-import CommonStackedChart from 'components/CommonStackedChart';
-
+import CommonChart from 'components/chart/CommonChart';
+import CommonStackedChart from 'components/chart/CommonStackedChart';
+import CommonBarChart from 'components/chart/CommonBarChart';
 const ExpenseAndTravel = () => {
   const ApexChartData = {
     series: [100, 200, 50],

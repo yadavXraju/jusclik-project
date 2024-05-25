@@ -1,6 +1,6 @@
 import React from 'react';
 import Chart from 'react-apexcharts';
-import { HeadingCss } from 'components/dashboard-css/CommonCss';
+import { HeadingCss } from 'components/dashboard/CommonCss';
 import { Grid, Typography, Box, Divider } from '@mui/material';
 
 const CommonStackedChart = ({ ChartSeries, StackedChartTitle ,StackedBarColor ,StackedChartXCategories  }) => {

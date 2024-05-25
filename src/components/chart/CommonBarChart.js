@@ -1,7 +1,7 @@
 import React from 'react';
 import Chart from 'react-apexcharts';
 import { Box, Paper, Grid, Typography, Divider } from '@mui/material';
-import { HeadingCss } from 'components/dashboard-css/CommonCss';
+import { HeadingCss } from 'components/dashboard/CommonCss';
 
 const CommonBarChart = ({ ChartTitle, BarChartcategories, BarChartSeries}) => {
   const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
