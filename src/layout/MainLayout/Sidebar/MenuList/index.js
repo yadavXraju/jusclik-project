@@ -8,9 +8,7 @@ import { GetMenuItems } from 'menu-items';
 
 const MenuList = () => {
   // console.log('Calling GetMenuItems');
-
   const menuItems = GetMenuItems();
-  
   // console.log('menuItems:', menuItems);
 
   const navItems = menuItems.items.map((item) => {

@@ -2,57 +2,46 @@
 //   Description : Push the menu items accroding to erp module 
 
 // parent
-import parentDashboard from './erp-menus/parentDashboard';
-import parentMenu from './erp-menus/parentMenus';
+import parentDashboard from 'menu-items/erp-menus/parentDashboard';
+import parentMenu from 'menu-items/erp-menus/parentMenus';
 
 // class teacher
-import ClassTeacherDashboard from './erp-menus/classTeacherDashboard';
-import ClassTeacherMenu from './erp-menus/classTeacherMenus';
-
-// subject teacher
-// import SubjectTeacherDashboard from './subjectTeacherDashboard';
-
+import ClassTeacherDashboard from 'menu-items/erp-menus/classTeacherDashboard';
+import ClassTeacherMenu from 'menu-items/erp-menus/classTeacherMenus';
 // visitor
-import VisitorDashboard from './erp-menus/visitor/visitorDashboard';
-import VisitorMenu from './erp-menus/visitor/visitorMenus';
+import VisitorDashboard from 'menu-items/erp-menus/visitor/visitorDashboard';
+import VisitorMenu from 'menu-items/erp-menus/visitor/visitorMenus';
 
 // stufee
-import StudentInfoFeeDashboard from './erp-menus/student-info-fee-management/studnetInfoFeeDashboard';
-import StudentInfoFeeMenu from './erp-menus/student-info-fee-management/studentInfoFeeMenus';
+import StudentInfoFeeDashboard from 'menu-items/erp-menus/student-info-fee-management/studnetInfoFeeDashboard';
+import StudentInfoFeeMenu from 'menu-items/erp-menus/student-info-fee-management/studentInfoFeeMenus';
 
 // inventory
-import InventoryDashboard from './erp-menus/inventory/inventoryDashboard';
-import InventoryMenu from './erp-menus/inventory/inventoryMenus';
+import InventoryDashboard from 'menu-items/erp-menus/inventory/inventoryDashboard';
+import InventoryMenu from 'menu-items/erp-menus/inventory/inventoryMenus';
 
 // library
-import LibraryDashboard from './erp-menus/library/libraryDashboard';
-import LibraryMenu from './erp-menus/library/libraryMenus';
+import LibraryDashboard from 'menu-items/erp-menus/library/libraryDashboard';
+import LibraryMenu from 'menu-items/erp-menus/library/libraryMenus';
 
 // hr payroll
-import HrPayRollDashboard from './erp-menus/hr-payroll/hrPayRollDashboard';
-import HrPayRollMenu from './erp-menus/hr-payroll/hrPayrollMenus';
+import HrPayRollDashboard from 'menu-items/erp-menus/hr-payroll/hrPayRollDashboard';
+import HrPayRollMenu from 'menu-items/erp-menus/hr-payroll/hrPayrollMenus';
 
 // crm
-import CrmDashboard from './erp-menus/crm/crmDashboard';
-import CrmMenu from './erp-menus/crm/crmMenus';
+import CrmDashboard from 'menu-items/erp-menus/crm/crmDashboard';
+import CrmMenu from 'menu-items/erp-menus/crm/crmMenus';
 
 // from builder
-import FormBuilderMenus from './erp-menus/form-builder/formBuilderMenus';
+import FormBuilderMenus from 'menu-items/erp-menus/form-builder/formBuilderMenus';
 
 import { useSelector } from 'react-redux';
 
 // Export function to retrieve and generate menu items
 export const GetMenuItems = () => {
   const {erpModule} = useSelector((state) =>  state.erpModuleSlice);
-  console.log(erpModule.role)
-
-  const userRole = getUserRole();
+  const userRole = erpModule.role;
   return generateMenuItems(userRole);
-};
-
-// Function to retrieve user role from local storage
-const getUserRole = () => {
-  return localStorage.getItem('userRole');
 };
 
 // Function to generate menu items based on the user role
@@ -71,11 +60,6 @@ const generateMenuItems = (userRole) => {
       // class teacher
     case 'class-teacher':
       menuItems.items.push(ClassTeacherDashboard, ClassTeacherMenu);
-      break;
-
-      // subject techer
-    case 'subject-teacher':
-      menuItems.items.push(SubjectTeacherDashboard);
       break;
 
       // visitor
