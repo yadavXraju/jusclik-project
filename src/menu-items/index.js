@@ -2,12 +2,12 @@
 //   Description : Push the menu items accroding to erp module 
 
 // parent
-import parentDashboard from './parentDashboard';
-import parentMenu from './parentMenus';
+import parentDashboard from './erp-menus/parentDashboard';
+import parentMenu from './erp-menus/parentMenus';
 
 // class teacher
-import ClassTeacherDashboard from './classTeacherDashboard';
-import ClassTeacherMenu from './classTeacherMenus';
+import ClassTeacherDashboard from './erp-menus/classTeacherDashboard';
+import ClassTeacherMenu from './erp-menus/classTeacherMenus';
 
 // subject teacher
 // import SubjectTeacherDashboard from './subjectTeacherDashboard';

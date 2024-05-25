@@ -17,7 +17,7 @@ import { useState } from 'react';
 import TextField from '@mui/material/TextField';
 import { Label } from 'reactstrap';
 import Checkbox from '@mui/material/Checkbox';
-import sidebarMenu from 'menu-items/parentMenus';
+import sidebarMenu from 'menu-items/erp-menus/parentMenus';
 
 
 export default function Credentials() {
