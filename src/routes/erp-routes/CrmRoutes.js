@@ -5,7 +5,7 @@
 import { lazy } from 'react';
 import Loadable from 'components/ui/Loadable';
 // project imports
-const Dashboard = Loadable(lazy(() => import('views/erp-module/crm/crm-dashboard')));
+const Dashboard = Loadable(lazy(() => import('views/erp-module/crm/dashboard')));
 // contact
 const Contact = Loadable(lazy(() => import('views/erp-module/crm/contact')));
 const Preview = Loadable(lazy(() => import('views/erp-module/crm/contact/Preview')));
