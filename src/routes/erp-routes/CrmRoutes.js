@@ -3,7 +3,7 @@
 
 
 import { lazy } from 'react';
-import Loadable from 'ui-component/Loadable';
+import Loadable from 'components/ui/Loadable';
 // project imports
 const Dashboard = Loadable(lazy(() => import('views/erp-module/crm/crm-dashboard')));
 // contact

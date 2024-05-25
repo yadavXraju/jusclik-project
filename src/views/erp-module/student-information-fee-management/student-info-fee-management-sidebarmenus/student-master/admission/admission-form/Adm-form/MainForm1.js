@@ -10,12 +10,12 @@ import PeopleAltTwoToneIcon from '@mui/icons-material/PeopleAltTwoTone';
 import HandymanTwoToneIcon from '@mui/icons-material/HandymanTwoTone';
 import TextsmsTwoToneIcon from '@mui/icons-material/TextsmsTwoTone';
 import DescriptionTwoToneIcon from '@mui/icons-material/DescriptionTwoTone';
-import BottomNavbar from '../../../../../../../erp-common-component/bottom-navbar';
+import BottomNavbar from 'components/BottomNavbar';
 import ProfileDetail from './PrimaryDetails';
 import ContactPerson from './ContactPerson';
 import { useSelector, useDispatch } from 'react-redux';
 import { addField, subGroupbyGroup } from 'store/student-info-and-fee/student/admission-slice';
-import CommonAddress from 'components/CommonAddress';
+import CommonAddress from 'components/Address';
 import Mainformlayout from 'layout/main-form-layout';
 import Profile from './Profile';
 

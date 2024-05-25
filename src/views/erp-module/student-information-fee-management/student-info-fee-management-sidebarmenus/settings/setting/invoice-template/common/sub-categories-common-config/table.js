@@ -1,7 +1,7 @@
 // OWNER : DAMANDEEP
 import { Checkbox, FormControl, FormControlLabel, Grid, Typography } from '@mui/material';
 import React from 'react';
-import { CommonColorPicker } from 'components/CommonColorPicker'; 
+import { CommonColorPicker } from 'components/ColorPicker'; 
 import FontSize from '../../common/font-size';
 import Divider from '@mui/material/Divider';
 import { useDispatch } from 'react-redux';

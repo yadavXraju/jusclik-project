@@ -10,7 +10,7 @@ import { Box } from '@mui/system';
 import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 import CardMedia from '@mui/material/CardMedia';
-import { studentProfileDetails } from 'layout/MainLayout/Header/ProfileSection/ProfileDeatails';
+import { studentProfileDetails } from 'layout/MainLayout/Header/Profile';
 
 
 

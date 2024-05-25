@@ -6,7 +6,7 @@ import CalendarMonthTwoToneIcon from '@mui/icons-material/CalendarMonthTwoTone';
 import Box from '@mui/material/Box';
 import SearchFilter from './SearchFilter'; // Correct import path
 import { UpdatesData } from './UpdatesData';
-import MainCard from 'ui-component/cards/MainCard';
+import MainCard from 'components/ui/cards/MainCard';
 
 const Update = () => {
   const [searchTerm, setSearchTerm] = useState('');

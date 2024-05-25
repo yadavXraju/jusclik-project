@@ -1,7 +1,10 @@
+// ======= Page Owner Vikash =========
+// ======= Transport Preview Component =========
+
 import React, {useEffect} from 'react';
-import MainCard from 'ui-component/cards/MainCard';
+import MainCard from 'components/ui/cards/MainCard';
 import { Box, Grid, Typography, useMediaQuery, Divider } from '@mui/material';
-import { studentProfileDetails } from 'layout/MainLayout/Header/ProfileSection/ProfileDeatails';
+import { studentProfileDetails } from 'layout/MainLayout/Header/Profile';
 import { CardMedia } from '@mui/material';
 import ArrowBackOutlinedIcon from '@mui/icons-material/ArrowBackOutlined';
 import { useNavigate } from 'react-router-dom';

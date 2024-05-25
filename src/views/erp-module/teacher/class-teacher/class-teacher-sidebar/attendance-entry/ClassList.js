@@ -1,3 +1,6 @@
+// Page Owner: Suraj
+// Description: Attendance Class Student List
+
 export const ClassList = [
   { id: '1', value: 'pre-nursery', class: 'class Pre-Nursery' },
   { id: '2', value: 'nursery', class: 'class Nursery' },

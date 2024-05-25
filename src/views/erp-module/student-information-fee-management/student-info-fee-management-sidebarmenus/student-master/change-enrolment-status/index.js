@@ -1,10 +1,10 @@
 // @Page Owner-Tarun Pandey
 import React, { useState } from 'react';
 import { Box, Paper, TextField, Drawer, Button,useMediaQuery} from '@mui/material';
-import ParameterizedAutoComplete from 'components/ParamAutoComplete';
-import DateComponent from 'components/ParamDateComponent';
-import SearchBar from 'components/SearchBox';
-import QuickSearchDrawer from 'components/QuickSearchDrawer'
+import ParameterizedAutoComplete from 'components/ui/custom-input/AutoComplete';
+import DateComponent from 'components/ui/custom-input/DateComponent';
+import SearchBar from 'components/temp-SearchBox';
+import QuickSearchDrawer from 'components/temp-QuickSearchDrawer'
 
 const subjects = ["Delivered", "notdelivered", "yetto delivered"];
 
@@ -65,7 +65,8 @@ const ChangeEnrolmentStatus = () => {
   return (
     <>
       <Paper>
-        <Box container spacing={1} sx={{ padding: "20px 0px 20px 60px", display: "flex", flexWrap: "wrap", flexDirection: "row", gap: "40px" }}>
+        <Box container spacing={1} sx={{ padding: "20px 0px 20px 60px", display: "flex",
+         flexWrap: "wrap", flexDirection: "row", gap: "40px" }}>
           <ParameterizedAutoComplete option={subjects} label="Entrolement Type" onChange={(event, newData) => handleChange("enrolltype", newData)} customStyle={style.filter} />
           <TextField id="outlined-basic" label="Admission No." variant="outlined" inputProps={{ maxLength: 10 }} sx={style.filter} onChange={(event) => handleChange("admissionNo", event.target.value)} />
           <TextField id="outlined-basic" label="Date of Admission" variant="outlined" inputProps={{ maxLength: 10 }} sx={style.filter} onChange={(event) => handleChange("dos", event.target.value)} />

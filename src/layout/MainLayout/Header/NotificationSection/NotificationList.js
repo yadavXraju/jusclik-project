@@ -10,7 +10,6 @@ import { Divider, Grid, List, ListItem, Box, ListItemText, Button } from '@mui/m
 // Import alert data with different names
 import { ParentAlertData } from 'views/erp-module/parent/dashboard';
 import { ClassTeacherAlertData } from 'views/erp-module/teacher/class-teacher/dashboard/Alerts/Alert';
-import SubjectTeacherAlertData from 'views/erp-module/teacher/subject-teacher/dashboard/alerts/AlertData';
 
 // styles
 const ListItemWrapper = styled('div')(({ theme }) => ({
@@ -37,9 +36,8 @@ const NotificationList = () => {
       data = ParentAlertData;
     } else if (pathname.includes('/class-teacher/dashboard')) {
       data = ClassTeacherAlertData;
-    } else if (pathname.includes('/subject-teacher/dashboard')) {
-      data = SubjectTeacherAlertData;
-    } else {
+    }
+     else {
       data = [];
     }
 

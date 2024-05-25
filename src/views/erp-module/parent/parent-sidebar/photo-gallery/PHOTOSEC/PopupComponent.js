@@ -1,4 +1,4 @@
-// PopupComponent.jsx
+// PopupComponent.jsx  sangeeta
 import React from 'react';
 import { Dialog, DialogTitle, DialogContent, DialogActions, Button, Typography, Grid } from '@mui/material';
 import ImageSlider from './ImageSlider';

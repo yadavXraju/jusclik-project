@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Paper, Typography, TableContainer, Table, TableHead, TableBody, TableRow, TableCell, Avatar, Grid } from '@mui/material';
-import { HeadingCss } from 'components/dashboard-css/CommonCss';
+import { HeadingCss } from 'components/dashboard/CommonCss';
 
 const UpcomingBirthdays = () => {
   // Dummy data for upcoming birthdays

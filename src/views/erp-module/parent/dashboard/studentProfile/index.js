@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import MainCard from 'ui-component/cards/MainCard';
+import MainCard from 'components/ui/cards/MainCard';
 import { useTheme, useMediaQuery, Box, Typography } from '@mui/material';
 import ProdileCard from './StudentProfile';
 import Grid from '@mui/material/Grid';

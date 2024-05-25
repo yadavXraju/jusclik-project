@@ -8,7 +8,7 @@ import WarningDialog from 'components/WarningDialog';
 import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 import RouteData from './Sample-RoutesData';
 import RoutesFormDrawer from './RoutesFormDrawer';
-import CommonDataGrid from 'components/commonDataGrid';
+import CommonDataGrid from 'components/table-data-grid/commonDataGrid';
 //import SettingsTwoToneIcon from '@mui/icons-material/SettingsTwoTone';
 //import RoutesManageDrawer from './RoutesManageDrawer';
 

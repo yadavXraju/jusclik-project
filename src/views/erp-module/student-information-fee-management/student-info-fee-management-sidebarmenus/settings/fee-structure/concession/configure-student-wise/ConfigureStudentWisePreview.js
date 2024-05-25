@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Grid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Checkbox, TextField , Box , Typography , Button , styled , } from '@mui/material';
 import { useSelector ,useDispatch } from 'react-redux';
-import SelectList from 'components/ParamSelectList';
+import SelectList from 'components/ui/custom-input/SelectList';
 import { configStudentWise, setFeeHeads } from 'store/student-info-and-fee/settings/fee-structure/fee-structure-slice';
 
 // style for bottom nav bar start

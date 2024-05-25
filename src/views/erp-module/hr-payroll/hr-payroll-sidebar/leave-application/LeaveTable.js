@@ -16,9 +16,15 @@ import {
 } from '@mui/material';
 import CheckCircleTwoToneIcon from '@mui/icons-material/CheckCircleTwoTone';
 import CancelTwoToneIcon from '@mui/icons-material/CancelTwoTone';
+<<<<<<< HEAD
 import CommonDataGrid from 'components/commonDataGrid';
 import CloseIcon from '@mui/icons-material/Close';
 import rows from './LeaveTableData';
+=======
+import rows from './LeaveTableData';
+import CommonDataGrid from 'components/table-data-grid/commonDataGrid';
+
+>>>>>>> 0402dbd0b359de6fa2f826c8801bd81f42030048
 
 const LeaveTable = () => {
   const [tableRows, setTableRows] = useState(rows);

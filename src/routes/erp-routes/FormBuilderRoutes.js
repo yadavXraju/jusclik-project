@@ -1,6 +1,6 @@
 import React from 'react';
 import { lazy } from 'react';
-import Loadable from 'ui-component/Loadable';
+import Loadable from 'components/ui/Loadable';
 
 
 const Forms= Loadable(lazy(() => import('views/erp-module/form-builder')));

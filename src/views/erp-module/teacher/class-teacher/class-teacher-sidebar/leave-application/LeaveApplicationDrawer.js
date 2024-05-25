@@ -1,6 +1,6 @@
 // ======= Page Owner Vikash =========
 import React from 'react'
-import withParamDrawer from 'components/withParamDrawer';
+import withParamDrawer from 'components/temp-withParamDrawer';
 import LeaveApplicationDrawerContent from './LeaveApplicationDrawerContent';
 
 const NewParamDrawer=withParamDrawer(LeaveApplicationDrawerContent);

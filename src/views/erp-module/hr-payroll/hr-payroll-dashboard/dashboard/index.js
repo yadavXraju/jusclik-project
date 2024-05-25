@@ -2,8 +2,7 @@
 import React from 'react';
 import Grid from '@mui/material/Grid';
 import { gridSpacing } from 'store/constant';
-
-import NeedHelp from 'views/erp-module/student-information-fee-management/student-info-fee-management-dashboard/dashboard/support/Support2';
+import NeedHelp from 'pages/HelpAndSupport';
 import Counters from './counter';
 import AttendanceChart from './attendance';
 import UpcomingLeaves from './upcoming-leaves';
