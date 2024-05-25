@@ -1,5 +1,5 @@
 import React from 'react';
-import DashboardContent from './dashboard';
+import Dashboard from 'views/erp-module/inventory-management/inventory-management-dashboard/Dashboard';
 import DashboardPayRoll from 'pages/getting-started';
 import SetupTabs from 'components/Stepper';
 import HomeTwoToneIcon from '@mui/icons-material/HomeTwoTone';
@@ -8,7 +8,7 @@ import NotificationsActiveTwoToneIcon from '@mui/icons-material/NotificationsAct
 import { useMediaQuery } from '@mui/material';
 import { DashboardTab } from 'components/dashboard/CommonCss';
 
-const Dashboard = () => {
+const DashboardTabs = () => {
 
   const isTab = useMediaQuery('(max-width:991px)')
   const tabPage = [
@@ -16,7 +16,7 @@ const Dashboard = () => {
       id: 1,
       name: 'Dashboard',
       value: '1',
-      component:DashboardContent,
+      component:Dashboard,
       icon: <HomeTwoToneIcon sx={{mb:'0 !important'}} />
     },
     {
@@ -58,4 +58,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default DashboardTabs;

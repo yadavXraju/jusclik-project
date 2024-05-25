@@ -1,9 +1,9 @@
 import React from 'react';
 import ApexCharts from 'react-apexcharts';
-import { Grid, Paper, Typography, useMediaQuery } from '@mui/material';
+import { Grid, Paper,  useMediaQuery } from '@mui/material';
 import { gridSpacing } from 'store/constant';
-import { HeadingCss } from 'components/dashboard/CommonCss';
 import { useTheme } from '@emotion/react';
+import ParamWidgetHeader from 'components/dashboard/WidgetHeader';
 
 const StockDetailPieChart = () => {
   const theme = useTheme();
@@ -85,19 +85,8 @@ const StockDetailPieChart = () => {
         }}
       >
         {/* ================================= heading  =================================  */}
-        <Grid
-          sx={{
-            padding: '24px 24px 0 24px',
-            background: '#f9f9fb',
-            borderBottom: '1px solid rgba(128, 128, 128, 0.25)',
-            borderRadius: '12px 12px 0px 0'
-          }}
-        >
-          <Typography variant="h2" style={{ ...HeadingCss, border: 'none' }}>
-            Category Wise Stock
-          </Typography>
-        </Grid>
 
+       <ParamWidgetHeader  title='Category Wise Stock' />
         {/* =================================  chart =================================   */}
         <Grid
           sx={{

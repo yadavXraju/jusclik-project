@@ -33,7 +33,8 @@ const CommonChart = ({ Data, heading, hideDiv, chartdetails = [] }) => {
     colors: Data?.colors,
     legend: {
       show: hideDiv ? true : false,
-      position: 'right'
+      position:isMediumDesktop?'bottom':'right',
+      
     },
     responsive: [
       {
@@ -111,7 +112,7 @@ const CommonChart = ({ Data, heading, hideDiv, chartdetails = [] }) => {
         {hideDiv && (
           <Grid sx={{ padding: '0.5rem 2rem' }}>
             <Box>
-              <Divider sx={{ background: 'red' }} />
+              <Divider/>
               <Typography variant="h5" sx={{ paddingBottom: '0.5rem', paddingTop: '0.5rem' }}>
                 Insights
               </Typography>
