@@ -1,3 +1,7 @@
+// Page Owner :  Sangeeta 
+// Description : Dashboard tabs
+
+
 import React from 'react';
 import DashboardPayRoll from 'pages/getting-started';
 import SetupTabs from 'components/Stepper';
