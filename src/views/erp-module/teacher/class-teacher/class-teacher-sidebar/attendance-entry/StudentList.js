@@ -1,3 +1,6 @@
+// Page Owner: Suraj
+// Description: Student List
+
 import Image1 from 'assets/images/Avatar-images/IMG_01.png';
 import Image2 from 'assets/images/Avatar-images/IMG_02.png';
 import Image3 from 'assets/images/Avatar-images/IMG_03.png';

@@ -1,12 +1,13 @@
 import React from 'react';
 import { Paper, Grid, Box, Typography, useMediaQuery } from '@mui/material';
-import { HeadingCss } from 'components/dashboard/CommonCss'
+
 
 // icons
 import LiveHelpTwoToneIcon from '@mui/icons-material/LiveHelpTwoTone';
 import AssignmentTurnedInTwoToneIcon from '@mui/icons-material/AssignmentTurnedInTwoTone';
 import BadgeTwoToneIcon from '@mui/icons-material/BadgeTwoTone';
 import { useTheme } from '@emotion/react';
+import ParamWidgetHeader from 'components/dashboard/WidgetHeader';
 
 const StockStatus = () => {
   const theme = useTheme();
@@ -46,18 +47,8 @@ const StockStatus = () => {
         height: isMobile?'100%':'412px'
       }}
     >
-      <Box
-        sx={{
-          padding: '24px 24px 0 24px',
-          background: '#f9f9fb',
-          borderRadius: '12px 12px 0 0',
-          borderBottom: '1px solid rgb(227, 227, 227)'
-        }}
-      >
-        <Typography variant="h2" style={{ ...HeadingCss, border: 'none' }}>
-          Stock Status
-        </Typography>
-      </Box>
+
+      <ParamWidgetHeader title='Stock Status' />
 
       <Grid container spacing={0} sx={{display:isMobile?'block':''}}>
         {EnrollmentData.map((item, index) => (

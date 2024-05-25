@@ -1,3 +1,6 @@
+// Page Owner: Suraj
+// Description: Powered By Component
+
 import React from 'react';
 import { Typography, Link, Box, useMediaQuery, useTheme, Grid } from '@mui/material';
 import CloudLogo from 'assets/images/login/PoweredBy.png';

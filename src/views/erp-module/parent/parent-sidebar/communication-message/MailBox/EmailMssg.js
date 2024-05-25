@@ -1,3 +1,6 @@
+// Page Owner: Suraj
+// Description: Email Message
+
 import React, { useState } from 'react';
 import { Box, Typography, Avatar, Paper, IconButton, Button } from '@mui/material';
 import ArrowBackIosNewOutlinedIcon from '@mui/icons-material/ArrowBackIosNewOutlined';

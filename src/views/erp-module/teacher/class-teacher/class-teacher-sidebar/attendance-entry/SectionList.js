@@ -1,3 +1,6 @@
+// Page Owner: Suraj
+// Description: Class Section List
+
 export const SectionList = [
     { id: '1', value:'A', section:'A' },
     { id: '2', value:'B', section:'B' },

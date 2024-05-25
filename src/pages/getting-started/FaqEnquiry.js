@@ -50,7 +50,6 @@ const FaqEnquiry = () => {
               {/* FAQ Section */}
               <Box
                 sx={{
-                 
                   display: 'flex',
                   backgroundColor: '#DCF7EC',
                   borderRadius: '10px',
@@ -96,7 +95,6 @@ const FaqEnquiry = () => {
               <Box
                
                 sx={{
-                //   cursor: 'pointer',
                   backgroundColor: '#DCF7EC',
                   borderRadius: '10px',
                   padding: '10px',

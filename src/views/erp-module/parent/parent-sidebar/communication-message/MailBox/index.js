@@ -1,3 +1,7 @@
+// Page Owner: Suraj
+// Description: Inbox message List
+
+
 import React, { useState, useRef, useEffect } from 'react';
 import {
   CssBaseline,
@@ -38,22 +42,22 @@ const GmailInboxTemplate = () => {
     // Here, we update the state to reflect the current viewport width
     onChange: (matches) => {
       setIsMobileView(matches);
-    },
+    }
   });
 
   // Function to get the current date and time
   const getCurrentDateTime = () => {
     const currentDate = new Date();
     let options;
-  
+
     // Check viewport width or use media queries here to determine mobile view
     const isMobileView = window.innerWidth < 600; // Example threshold for mobile view
-  
+
     if (isMobileView) {
       options = {
         day: 'numeric',
         month: 'short',
-        year: 'numeric',
+        year: 'numeric'
       };
     } else {
       options = {
@@ -63,13 +67,12 @@ const GmailInboxTemplate = () => {
         day: 'numeric',
         hour: 'numeric',
         minute: 'numeric',
-        hour12: false,
+        hour12: false
       };
     }
-  
+
     return currentDate.toLocaleString('en-US', options);
   };
-  
 
   const location = useLocation();
   const shouldOpenByDefault = location.pathname.includes('inbox');
@@ -165,11 +168,11 @@ const GmailInboxTemplate = () => {
 
   const highlightMatch = (text, query, isMobileView) => {
     if (!query || !text) return text;
-  
+
     const maxLength = isMobileView ? 25 : 50; // Adjust the maximum length based on the viewport width
-  
+
     const truncatedText = text.length > maxLength ? `${text.slice(0, maxLength)}...` : text;
-  
+
     const regex = new RegExp(`(${query})`, 'gi');
     return truncatedText.split(regex).map((part, index) =>
       regex.test(part) ? (
@@ -181,7 +184,6 @@ const GmailInboxTemplate = () => {
       )
     );
   };
-  
 
   // Handlers for changing page and rows per page
   const handleChangePage = (event, newPage) => {
@@ -247,12 +249,10 @@ const GmailInboxTemplate = () => {
   }, [searchQuery]);
 
   const isMobile = useMediaQuery(theme.breakpoints.only('xs'));
- 
 
   return (
     <>
-      <Paper >
-       
+      <Paper>
         <ThemeProvider theme={theme}>
           <Box sx={{ display: 'flex', flexDirection: 'column' }}>
             <CssBaseline />
@@ -316,16 +316,16 @@ const GmailInboxTemplate = () => {
                         </ListItemIcon>
                         {/* Message Text */}
                         <ListItemText
-  primary={highlightMatch(item.name, searchQuery, isMobileView)}
-  secondary={highlightMatch(item.message, searchQuery, isMobileView)}
-  primaryTypographyProps={{ variant: 'body1', fontSize: '16px' }}
-  secondaryTypographyProps={{ variant: 'body2', fontSize: '14px' }}
-  sx={{
-    overflow: 'hidden',
-    textOverflow: 'ellipsis',
-    whiteSpace: 'nowrap',
-  }}
-/>
+                          primary={highlightMatch(item.name, searchQuery, isMobileView)}
+                          secondary={highlightMatch(item.message, searchQuery, isMobileView)}
+                          primaryTypographyProps={{ variant: 'body1', fontSize: '16px' }}
+                          secondaryTypographyProps={{ variant: 'body2', fontSize: '14px' }}
+                          sx={{
+                            overflow: 'hidden',
+                            textOverflow: 'ellipsis',
+                            whiteSpace: 'nowrap'
+                          }}
+                        />
 
                         {/* Timestamp */}
                         <Typography
@@ -333,7 +333,7 @@ const GmailInboxTemplate = () => {
                           color="textSecondary"
                           sx={{
                             // paddingRight: isMobile ? '0px' : '10px',
-                            textAlign:'right',
+                            textAlign: 'right',
                             fontSize: isMobile ? '11px' : '14px',
                             flex: isMobile ? '0 0 20%' : '0 0 20%'
                           }}
@@ -359,7 +359,6 @@ const GmailInboxTemplate = () => {
             <MailCompose open={isComposeOpen} onClose={handleComposeClose} onSend={handleComposeSend} />
           </Box>
         </ThemeProvider>
-        
       </Paper>
     </>
   );

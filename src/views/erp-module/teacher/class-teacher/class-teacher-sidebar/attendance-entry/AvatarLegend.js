@@ -1,3 +1,6 @@
+// Page Owner: Suraj
+// Description: Attendance Avatars of Legends
+
 import React from 'react';
 import { Paper, Grid, Typography, Avatar } from '@mui/material';
 import Badge from '@mui/material/Badge';
