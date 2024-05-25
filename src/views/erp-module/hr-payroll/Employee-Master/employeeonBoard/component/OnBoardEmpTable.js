@@ -10,7 +10,7 @@ import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 
 // rowData
 
-import { initialRows } from 'views/erp-module/hr-payroll/hr-payroll-sidebar/Employee-Master/employeeonBoard/component/employeData';
+import { initialRows } from 'views/erp-module/hr-payroll/Employee-Master/employeeonBoard/component/employeData';
 import OnBoardDrawer from './OnBoardDrawer';
 
 

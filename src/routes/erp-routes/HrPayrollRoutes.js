@@ -6,20 +6,20 @@ import Loadable from 'components/ui/Loadable';
 // project imports
 const Dashboard = Loadable(lazy(() => import('views/erp-module/hr-payroll/hr-payroll-dashboard')));
 // report
-const Reports = Loadable(lazy(() => import('views/erp-module/hr-payroll/hr-payroll-sidebar/report')));
-const Settings = Loadable(lazy(() => import('views/erp-module/hr-payroll/hr-payroll-sidebar/settings')));
-const EmployeeMaster =  Loadable(lazy(() => import('views/erp-module/hr-payroll/hr-payroll-sidebar/Employee-Master')));
-const EmployeeMasterPreview =  Loadable(lazy(() => import('views/erp-module/hr-payroll/hr-payroll-sidebar/Employee-Master/EmployeePreview')));
-const EmployeeSalary=Loadable(lazy(()=>import('views/erp-module/hr-payroll/hr-payroll-sidebar/new-salary')));
-const EmployeeOnBoard=Loadable(lazy(()=>import('views/erp-module/hr-payroll/hr-payroll-sidebar/Employee-Master/employeeonBoard')));
-const OnboardingTaskList=Loadable(lazy(()=>import('views/erp-module/hr-payroll/hr-payroll-sidebar/settings/onboarding-tasklist')));
-const LeaveApplication=Loadable(lazy(()=>import('views/erp-module/hr-payroll/hr-payroll-sidebar/leave-application')));
-const ExitEmployee = Loadable(lazy(()=>import('views/erp-module/hr-payroll/hr-payroll-sidebar/Employee-Master/exit-employee')));
-const Attendance = Loadable(lazy(()=>import('views/erp-module/hr-payroll/hr-payroll-sidebar/new-attendance/index')));
-const ExpenseAndTravel = Loadable(lazy(()=>import('views/erp-module/hr-payroll/hr-payroll-sidebar/Employee-Master/expense-and-travel')));
-const Document = Loadable(lazy(()=>import('views/erp-module/hr-payroll/hr-payroll-sidebar/Employee-Master/document')));
-const Assets = Loadable(lazy(()=>import('views/erp-module/hr-payroll/hr-payroll-sidebar/Employee-Master/assets')));
-const Payroll = Loadable(lazy(()=>import('views/erp-module/hr-payroll/hr-payroll-sidebar/new-payroll')));
+const Reports = Loadable(lazy(() => import('views/erp-module/hr-payroll/report')));
+const Settings = Loadable(lazy(() => import('views/erp-module/hr-payroll/settings')));
+const EmployeeMaster =  Loadable(lazy(() => import('views/erp-module/hr-payroll/Employee-Master')));
+const EmployeeMasterPreview =  Loadable(lazy(() => import('views/erp-module/hr-payroll/Employee-Master/EmployeePreview')));
+const EmployeeSalary=Loadable(lazy(()=>import('views/erp-module/hr-payroll/new-salary')));
+const EmployeeOnBoard=Loadable(lazy(()=>import('views/erp-module/hr-payroll/Employee-Master/employeeonBoard')));
+const OnboardingTaskList=Loadable(lazy(()=>import('views/erp-module/hr-payroll/settings/onboarding-tasklist')));
+const LeaveApplication=Loadable(lazy(()=>import('views/erp-module/hr-payroll/leave-application')));
+const ExitEmployee = Loadable(lazy(()=>import('views/erp-module/hr-payroll/Employee-Master/exit-employee')));
+const Attendance = Loadable(lazy(()=>import('views/erp-module/hr-payroll/new-attendance/index')));
+const ExpenseAndTravel = Loadable(lazy(()=>import('views/erp-module/hr-payroll/Employee-Master/expense-and-travel')));
+const Document = Loadable(lazy(()=>import('views/erp-module/hr-payroll/Employee-Master/document')));
+const Assets = Loadable(lazy(()=>import('views/erp-module/hr-payroll/Employee-Master/assets')));
+const Payroll = Loadable(lazy(()=>import('views/erp-module/hr-payroll/new-payroll')));
 
 // ==============================|| Visitor MENUS ||============================== //
 

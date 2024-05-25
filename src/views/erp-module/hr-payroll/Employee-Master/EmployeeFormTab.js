@@ -19,7 +19,7 @@ import Experience from './Experience';
 import TextArea from 'antd/es/input/TextArea';
 import BottomNavbar from 'components/BottomNavbar';
 import {addField,subGroupbyGroup} from 'store/Hr-Payroll/AddEmployee-slice';
-import CommonAddress from '../../../../../components/Address';
+import CommonAddress from 'components/Address';
 import CommonContactPerson from 'components/ContactPerson';
 
 
