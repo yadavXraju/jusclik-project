@@ -9,10 +9,10 @@ import { gridSpacing } from 'store/constant';
 
 
 // import VisitorDetail from './visitor-detail';
-import HourlyVisior from './hourly-visitor';
-import DepartmentwiseVisitor from './deparmentwise-visitor';
-import RecentVisitors from './recent visitor';
-import Counters from './counter';
+import HourlyVisior from 'views/erp-module/visitor/visitor-dashboard/Dashboard/HourlyChart';
+import DepartmentwiseVisitor from 'views/erp-module/visitor/visitor-dashboard/Dashboard/DepartmentwiseVisitor';
+import RecentVisitors from 'views/erp-module/visitor/visitor-dashboard/Dashboard/RecentVisitors';
+import Counters from 'views/erp-module/visitor/visitor-dashboard/Dashboard/Counter';
 import NeedHelp from 'pages/HelpAndSupport';
 
 const DashboardContent = () => {
