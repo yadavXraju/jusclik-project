@@ -246,14 +246,6 @@ const TransportDrawer = () => {
                   </>
                 )}
 
-                {/* {tabValue === 2 && (
-                  <>
-                    <Box>
-                      <Box p={0.5}>Remarks</Box>
-                      <TextArea rows={4} placeholder="Enter your text here..." fullWidth variant="outlined" />
-                    </Box>
-                  </>
-                )} */}
               </Box>
             </Box>
           </Box>
