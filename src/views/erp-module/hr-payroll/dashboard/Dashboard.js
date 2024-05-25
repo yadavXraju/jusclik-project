@@ -3,15 +3,15 @@ import React from 'react';
 import Grid from '@mui/material/Grid';
 import { gridSpacing } from 'store/constant';
 import NeedHelp from 'pages/HelpAndSupport';
-import Counters from './counter';
-import AttendanceChart from './attendance';
-import UpcomingLeaves from './upcoming-leaves';
-import EmployeeDemogaphy from './employee-demography';
-import UpcomingBirthdays from './upcoming-birthdays';
-import EmployeeTopAndBottom from './employee-performance';
-// import AttendanWeekceChart from './attendance-weekly';
+import Counters from 'views/erp-module/hr-payroll/dashboard/TotalGender';
+import AttendanceChart from 'views/erp-module/hr-payroll/dashboard/Attendance';
+import UpcomingLeaves from 'views/erp-module/hr-payroll/dashboard/UpcomingLeaves';
+import EmployeeDemogaphy from 'views/erp-module/hr-payroll/dashboard/EmployeeDemogaphy';
+import UpcomingBirthdays from 'views/erp-module/hr-payroll/dashboard/UpcomingBirthdays';
+import EmployeeTopAndBottom from 'views/erp-module/hr-payroll/dashboard/EmployeeTopAndBottom';
+// import AttendanWeekceChart from 'views/erp-module/hr-payroll/hr-payroll-dashboard/dashboard/attendance-weekly';
 
-const DashboardContent = ({ isLoading }) => {
+const Dashboard = ({ isLoading }) => {
   return (
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
@@ -61,4 +61,4 @@ const DashboardContent = ({ isLoading }) => {
   );
 };
 
-export default DashboardContent;
+export default Dashboard;
