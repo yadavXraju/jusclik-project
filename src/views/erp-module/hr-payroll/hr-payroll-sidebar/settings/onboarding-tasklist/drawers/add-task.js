@@ -1,10 +1,9 @@
 // PAGE OWNER: DAMANDEEP
-import React from 'react'
+import React,{useState} from 'react'
 import {Typography,TextField, Checkbox, Button,Box, Drawer } from '@mui/material'
-// import ParamAttachement from 'components/ParamAttachement'
-import MultipleSelectChip from '../ChipSelect'
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import ParameterizedAutoComplete from 'components/ui/custom-input/AutoComplete';
+import ParamMultipleSelect from 'components/ui/custom-input/MultipleSelect';
 
 const selectDate = Array.from({ length: 50 }, (_, index) => ({ label: (index + 1).toString(), value: index + 1 }));
 const option=[
@@ -12,18 +11,17 @@ const option=[
 {value:"2",label:"After due date"},
 ]
 
+
 export const AddTaskDrawer=({toggleDrawer,state,rows,setRows})=>{
-  const names = [
-      'Oliver Hansen',
-      'Van Henry',
-      'April Tucker',
-      'Ralph Hubbard',
-      'Omar Alexander',
-      'Carlos Abbott',
-      'Miriam Wagner',
-      'Bradley Wilkerson',
-      'Virginia Andrews',
-      'Kelly Snyder',
+
+  const[assign,setAssign]=useState([]);
+  const[validator,setValidator]=useState([]);
+  const names = [ { id: 1, name: 'Sangeeta' },
+  { id: 2, name: 'tarun' },
+  { id: 3, name: 'Aman' },
+  { id: 4, name: 'Sakshi' },
+  { id: 5, name: 'Jivesh' },
+  { id: 6, name: 'Jivesh' },
     ];
   const [taskData,setTaskData]=React.useState('')
  
@@ -53,7 +51,7 @@ closeDrawer(e)
           </Button>
         </Box>
         {/* ========= import Initiate Employee Exit Form ========== */}
-       
+       <Box>
         <Box>
         <Typography  sx={{mt:2, mb:1}}variant="h5" color="initial">Add  Task  Name</Typography>
         <TextField
@@ -76,27 +74,28 @@ closeDrawer(e)
          <Typography  sx={{mt:2, mb:1}}variant="h5" color="initial">
            Assigned to
             </Typography>
-            <MultipleSelectChip name={names}/>
+            <ParamMultipleSelect options={names}  value={assign} setValue={setAssign}/>
          </Box>
 
          <Box>
          <Typography  sx={{mt:2, mb:1}}variant="h5" color="initial">
            Validator
             </Typography>
-            <MultipleSelectChip name={names}/>
+            <ParamMultipleSelect options={names}  value={validator} setValue={setValidator}/>
+        
          </Box>
           <Box xs={12} sx={{display:"flex", flexDirection:"row",justifyContent:"flex-start" ,width:"100%",alignItems:"center",mt:2,mb:1}}>
                       
           <ParameterizedAutoComplete
              option={selectDate}
-             customStyle={{width:"60px",marginLeft:"10px",marginRight:"3px","& .MuiOutlinedInput-input":{height:"10px",textAlign:"center"}
+             customStyle={{width:"100px",marginLeft:"10px",marginRight:"3px","& .MuiOutlinedInput-input":{height:"10px",textAlign:"center"}
              }}
              onChange={handleAutoComplete}
              />
              <Typography  sx={{}}variant="h5" color="initial">days to done after joined</Typography>
          </Box>
 
-         {/* <ParamAttachement label={"Attach File"}/> */}
+     
 
          <Box sx={{display:"flex" ,alignItems:"center"}}>
             <Checkbox />
@@ -119,9 +118,14 @@ closeDrawer(e)
           }}
           />
         </Box>
+      </Box>
       <Box>
-
-        <Button variant="contained" color="primary" sx={{position:"fixed",right:"80px",bottom:"10px"}}
+      <Button variant="outlined" color="primary" sx={{position:"fixed",right:"80px",bottom:"10px"}}
+        onClick={(e)=>handleAdd(e)}
+        >
+        Cancel
+        </Button>
+        <Button variant="contained" color="primary" sx={{position:"fixed",right:"10px",bottom:"10px"}}
         onClick={(e)=>handleAdd(e)}
         >
           Add
