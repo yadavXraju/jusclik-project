@@ -143,9 +143,6 @@ function AddLeadForm({currEditItem}) {
           </Grid>
             
           </Grid>
-
-          
-        
         </Box>
       </Card>
     </>
