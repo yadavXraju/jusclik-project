@@ -12,7 +12,7 @@ const option=[
 {value:"2",label:"After due date"},
 ]
 
-export const AddTaskDrawer=({toggleDrawer,state})=>{
+export const AddTaskDrawer=({toggleDrawer,state,rows,setRows})=>{
   const names = [
       'Oliver Hansen',
       'Van Henry',
@@ -25,15 +25,23 @@ export const AddTaskDrawer=({toggleDrawer,state})=>{
       'Virginia Andrews',
       'Kelly Snyder',
     ];
-  
+  const [taskData,setTaskData]=React.useState('')
+ 
+  // { id: 5, task: 'Bank Account Creation', dueOn: '3 day(s) after joining day', assignedTo: 'Payroll Admin', validator: 'Not Available' }
+  const handleAdd=(e)=>{   
+setRows(prev=>([...prev,taskData]))
+const closeDrawer= toggleDrawer('addTask', false)
+closeDrawer(e)
+  }
+  const handleAutoComplete=(e,val)=>{
+   setTaskData(prev=>({...prev,dueOn:`${val.value} day(s) after joining day`})) 
+  }
   return (
       <>
-      {/* <IconButton onClick={toggleDrawer('addTask', true)} sx={{ fontSize: '0.875rem', lineHeight: '1.75' }} id="addTask">
-      <AddOutlinedIcon /> Add Task
-    </IconButton> */}
+
     <Button onClick={toggleDrawer('addTask', true)} variant="outlined" sx={ {fontSize: '0.875rem', lineHeight: '1.75'} } id="addTask" startIcon={<AddOutlinedIcon />}>
     Add Task
-          </Button>
+    </Button>
       <Drawer anchor="right" open={state.addTask} onClose={toggleDrawer('addTask', false)}>
       {/* {form} */}
       <Box sx={{ width: { xs: '100vw', sm: 650 }, padding: 2 }} role="presentation">
@@ -50,6 +58,10 @@ export const AddTaskDrawer=({toggleDrawer,state})=>{
         <Typography  sx={{mt:2, mb:1}}variant="h5" color="initial">Add  Task  Name</Typography>
         <TextField
           fullWidth
+          onChange={(e)=>{let taskName=e.target.value
+           const task=taskName
+           setTaskData(prev=>({...prev,task:task,id:rows?.length+1}))
+          }}
         />
         </Box>
          <Box>
@@ -79,6 +91,7 @@ export const AddTaskDrawer=({toggleDrawer,state})=>{
              option={selectDate}
              customStyle={{width:"60px",marginLeft:"10px",marginRight:"3px","& .MuiOutlinedInput-input":{height:"10px",textAlign:"center"}
              }}
+             onChange={handleAutoComplete}
              />
              <Typography  sx={{}}variant="h5" color="initial">days to done after joined</Typography>
          </Box>
@@ -108,7 +121,9 @@ export const AddTaskDrawer=({toggleDrawer,state})=>{
         </Box>
       <Box>
 
-        <Button variant="contained" color="primary" sx={{position:"fixed",right:"80px",bottom:"10px"}}>
+        <Button variant="contained" color="primary" sx={{position:"fixed",right:"80px",bottom:"10px"}}
+        onClick={(e)=>handleAdd(e)}
+        >
           Add
         </Button>
       </Box>

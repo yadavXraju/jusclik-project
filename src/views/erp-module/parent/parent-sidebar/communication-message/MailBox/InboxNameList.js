@@ -1,3 +1,6 @@
+// Page Owner: Suraj
+// Description: Inbox Name List
+
 // Sample data for initial inbox messages
 
 import Image1 from 'assets/images/Avatar-images/IMG_01.png';

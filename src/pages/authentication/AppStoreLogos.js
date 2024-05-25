@@ -1,3 +1,6 @@
+// Page Owner: Suraj
+// Description: Login page App Store Logo
+
 import React from 'react';
 import { Box, Button,  useMediaQuery, useTheme } from '@mui/material';
 import PlayStoreImage from 'assets/images/login/Google-Play.png';

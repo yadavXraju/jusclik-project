@@ -1,3 +1,6 @@
+// Page Owner: Suraj
+// Description: Recent Message
+
 import GmailInboxTemplate from '../MailBox';
 import { Paper ,Box, useMediaQuery} from '@mui/material';
 
