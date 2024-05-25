@@ -19,7 +19,6 @@ import { Label } from 'reactstrap';
 import Checkbox from '@mui/material/Checkbox';
 import sidebarMenu from 'menu-items/erp-menus/parentMenus';
 
-
 export default function Credentials() {
 
   // ============= User Name textfield toggle code ===========
