@@ -5,7 +5,7 @@ import { Autocomplete } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import Chip from '@mui/material/Chip';
 
-export default function ParamMultipleSelect({ options, value, setValue, label = '' , sx }) {
+export default function ParamMultipleSelect({ options, value, setValue, label = '' , sx,singleSelect }) {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -15,7 +15,7 @@ export default function ParamMultipleSelect({ options, value, setValue, label = 
 
   return (
     <Autocomplete
-      multiple
+      multiple={!singleSelect?true:false}
       id="student-autocomplete"
       options={filteredOptions}
       getOptionLabel={(option) => option.name}

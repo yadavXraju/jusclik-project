@@ -6,23 +6,37 @@ import ParameterizedAutoComplete from 'components/ui/custom-input/AutoComplete';
 
 
 export const EditTaskDrawer = ({ toggleDrawer, state,editId,rows,setRows}) => {
-  const names = [
-    'Oliver Hansen',
-    'Van Henry',
-    'April Tucker',
-    'Ralph Hubbard',
-    'Omar Alexander',
-    'Carlos Abbott',
-    'Miriam Wagner',
-    'Bradley Wilkerson',
-    'Virginia Andrews',
-    'Kelly Snyder'
-  ];
+  // const names = [
+  //   'Oliver Hansen',
+  //   'Van Henry',
+  //   'April Tucker',
+  //   'Ralph Hubbard',
+  //   'Omar Alexander',
+  //   'Carlos Abbott',
+  //   'Miriam Wagner',
+  //   'Bradley Wilkerson',
+  //   'Virginia Andrews',
+  //   'Kelly Snyder'
+  // ];
   const [taskData,setTaskData]=React.useState({
     id:editId,
     task:rows[editId-1]?.task,
-    description:rows[editId-1]?.description
+    description:rows[editId-1]?.description,
+    dueOn:rows[editId-1]?.dueOn,
+    assignedTo:rows[editId-1]?.assignedTo,
+    validator:rows[editId-1]?.validator,
   })
+  const [validator,setValidator]=React.useState(taskData?.validator)
+  const[assign,setAssign]=React.useState(taskData?.assignedTo);
+  const selectDate = Array.from({ length: 50 }, (_, index) => ({ label: (index + 1).toString(), value: index + 1 }));
+  const option=[
+    {value:"1",label:"Before due date"},
+    {value:"2",label:"After due date"},
+    ]
+      const names = [ { id: 1, name: 'Employee' },
+      { id: 2, name: 'Payroll Admin' },
+        ];
+    
   const handleSave=(e)=>{
     const newRows=rows
     newRows[editId]=taskData
@@ -30,6 +44,7 @@ export const EditTaskDrawer = ({ toggleDrawer, state,editId,rows,setRows}) => {
     const closeDrawer= toggleDrawer('editTask', false)
 closeDrawer(e)
   }
+  console.log(rows[editId]);
   return (
     <>
       <Drawer anchor="right" open={state.editTask} onClose={toggleDrawer('editTask', false)}>
@@ -65,20 +80,20 @@ closeDrawer(e)
          <Typography  sx={{mt:2, mb:1}}variant="h5" color="initial">
            Assigned to
             </Typography>
-            <TextField fullWidth 
+            {/* <TextField fullWidth 
               onChange={(e)=>{
               let taskName=e.target.value
               const task=taskName
               setTaskData(prev=>({...prev,task:task}))
              }}
              value={taskData?.task}
-            />
-
+            /> */}
+              <ParamMultipleSelect options={names}  value={assign&&assign} setValue={setAssign}/>
          <Box>
          <Typography  sx={{mt:2, mb:1}}variant="h5" color="initial">
            Validator
             </Typography>
-            <ParamMultipleSelect options={names}  value={validator} setValue={setValidator}/>
+            <ParamMultipleSelect options={names}  value={validator&&validator} setValue={setValidator} singleSelect={true}/>
         
          </Box>
           <Box xs={12} sx={{display:"flex", flexDirection:"row",justifyContent:"flex-start" ,width:"100%",alignItems:"center",mt:2,mb:1}}>
