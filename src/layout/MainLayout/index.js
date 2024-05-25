@@ -13,7 +13,7 @@ import { GetMenuItems } from 'menu-items';
 import { drawerWidth } from 'store/constant';
 import { setMenu , handleUserclickedtoggle} from 'store/customization-slice';
 import { IconChevronRight } from '@tabler/icons';
-import UrlPage from 'layout/breadcrumb';
+import BreadCrumb from 'layout/Breadcrumb';
 
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(({ theme, open }) => ({
@@ -105,7 +105,7 @@ const MainLayout = () => {
         <Breadcrumbs separator={IconChevronRight} navigation={GetMenuItems} icon title rightAlign />
 
         {/* url page */}
-        { !location.pathname.match(/\/dashboard\b/)&& !location.pathname.match(/\/builder\b/) && <UrlPage />}
+        { !location.pathname.match(/\/dashboard\b/)&& !location.pathname.match(/\/builder\b/) && <BreadCrumb />}
 
         {/* <UrlPage /> */}
         <Outlet />
