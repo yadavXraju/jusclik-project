@@ -1,10 +1,10 @@
 import * as React from 'react';
 import {  Grid } from '@mui/material';
 import CircularDate from './CircularDate';
-import HomeReplyBox from 'views/erp-module/teacher/class-teacher/class-teacher-sidebar/Student-homework-upload/HomeWorkDrawer/HomeReplyBox';
-import HomeYoutubeLink from 'views/erp-module/teacher/class-teacher/class-teacher-sidebar/Student-homework-upload/HomeWorkDrawer/HomeYoutubeLink';
+import HomeReplyBox from 'views/erp-module/teacher/class-teacher/Student-homework-upload/HomeWorkDrawer/HomeReplyBox';
+import HomeYoutubeLink from 'views/erp-module/teacher/class-teacher/Student-homework-upload/HomeWorkDrawer/HomeYoutubeLink';
 import CircularTopic from './CircularTopic';
-import HomeworkTemplate from 'views/erp-module/teacher/class-teacher/class-teacher-sidebar/Student-homework-upload/HomeWorkDrawer/HomeworkTemplate';
+import HomeworkTemplate from 'views/erp-module/teacher/class-teacher/Student-homework-upload/HomeWorkDrawer/HomeworkTemplate';
 import CircularCategory from './CircularCategory';
 import CirclarSelectClass from './CircularSelectClass';
 import { CommonDropZone } from 'components/upload-file/DropZone';

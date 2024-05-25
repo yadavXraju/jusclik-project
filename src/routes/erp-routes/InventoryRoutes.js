@@ -5,7 +5,7 @@ import { lazy } from 'react';
 import Loadable from 'components/ui/Loadable';
 
 // project imports
-const DashboardDefault = Loadable(lazy(() => import('views/erp-module/inventory-management/inventory-management-dashboard')));
+const DashboardDefault = Loadable(lazy(() => import('views/erp-module/inventory-management/dashboard')));
 // report
 const Reports = Loadable(lazy(() => import('views/erp-module/inventory-management/report')));
 // setting
