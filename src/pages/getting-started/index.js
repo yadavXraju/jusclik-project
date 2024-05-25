@@ -10,7 +10,7 @@ import FaqEnquiry from './FaqEnquiry';
 import { useState } from 'react';
 
 const stepsData = [
-  { title: 'Add Organisation Details', completed: true, path: '/organisation-details' },
+  { title: 'Add Organization Details', completed: true, path: '/organisation-details' },
   { title: 'Upload Student Data', completed: false, path: '/upload-student-data' },
   { title: 'Create Class and Section', completed: false, path: '/create-class-and-section' },
   { title: 'Configure Fee Structure', completed: false, path: '/configure-fee-structure' },

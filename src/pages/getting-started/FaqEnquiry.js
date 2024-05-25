@@ -93,7 +93,6 @@ const FaqEnquiry = () => {
                 tabIndex={0}
                sx={{display:'flex', margin:'40px',  cursor: 'pointer'}}>
               <Box
-               
                 sx={{
                   backgroundColor: '#DCF7EC',
                   borderRadius: '10px',
