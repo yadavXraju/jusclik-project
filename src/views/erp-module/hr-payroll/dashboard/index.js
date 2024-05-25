@@ -1,8 +1,5 @@
-// Page Owner :  Sangeeta 
-// Description : Dashboard tabs
-
-
 import React from 'react';
+import Dashboard from 'views/erp-module/hr-payroll/dashboard/Dashboard';
 import DashboardPayRoll from 'pages/getting-started';
 import SetupTabs from 'components/Stepper';
 import HomeTwoToneIcon from '@mui/icons-material/HomeTwoTone';
@@ -10,7 +7,7 @@ import SettingsSuggestTwoToneIcon from '@mui/icons-material/SettingsSuggestTwoTo
 import NotificationsActiveTwoToneIcon from '@mui/icons-material/NotificationsActiveTwoTone';
 import { useMediaQuery } from '@mui/material';
 import { DashboardTab } from 'components/dashboard/CommonCss';
-import Dashboard from './Dashboard';
+
 const DashboardTabs = () => {
 
   const isTab = useMediaQuery('(max-width:991px)')

@@ -5,19 +5,22 @@ import { Autocomplete } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import Chip from '@mui/material/Chip';
 
-export default function ParamMultipleSelect({ options, value, setValue, label = '' , sx,singleSelect }) {
+export default function ParamMultipleSelect({ options, value, setValue, label = '' , sx ,multiple=true}) {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
+  console.log(value);
   // Filter out selected options from the available options
-  const filteredOptions = options.filter(option => !value.some(val => val.id === option.id));
+    let filteredOptions  
+    if(multiple)
+    filteredOptions=options.filter(option => !value.some(val => val.id === option.id));
 
   return (
     <Autocomplete
-      multiple={!singleSelect?true:false}
+      multiple={multiple}
       id="student-autocomplete"
-      options={filteredOptions}
+      options={multiple?filteredOptions:options}
       getOptionLabel={(option) => option.name}
       value={value}
       onChange={handleChange}

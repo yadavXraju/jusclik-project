@@ -10,7 +10,7 @@ import TablePagination from '@mui/material/TablePagination';
 import styled from '@emotion/styled';
 
 
-export const stylesPagination= styled.div`
+export const StylesPagination= styled.div`
 .css-jtlhu6-MuiTablePagination-root {
    overflow: hidden !important;
  
@@ -58,7 +58,7 @@ const InboxHeader = ({
           flexWrap: isMobile ? 'wrap' : 'noWrap'
         }}
       >
-        <Grid sx={{ display: 'inline-flex' }} xs={12} sm={6} md={4}>
+        <Grid item sx={{ display: 'inline-flex' }} xs={12} sm={6} md={4}>
           <ComposeButtonWrapper onClick={handleComposeOpen}>
             <Button variant="contained" color="primary">
               <AddCircleOutlineOutlinedIcon sx={{ marginRight: '7px' }} />
@@ -88,7 +88,7 @@ const InboxHeader = ({
             </Popover>
           </FilterWrapper>
         </Grid>
-        <Grid
+        <Grid item
           sx={{
             display: 'inline-flex',
             alignItems: 'center',
@@ -117,7 +117,7 @@ const InboxHeader = ({
           </Grid>
           <Grid>
             {/* Pagination Section */}
-            <stylesPagination>
+            <StylesPagination>
             <TablePagination
               component="div"
               count={searchResults.length || initialData.length}
@@ -127,7 +127,7 @@ const InboxHeader = ({
               onRowsPerPageChange={handleChangeRowsPerPage}
               labelRowsPerPage="Pages"
             />
-            </stylesPagination>
+            </StylesPagination>
           </Grid>
         </Grid>
       </Box>
