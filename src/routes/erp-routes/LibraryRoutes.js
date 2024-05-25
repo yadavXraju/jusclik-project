@@ -3,9 +3,9 @@
 
 import { lazy } from 'react';
 import Loadable from 'components/ui/Loadable';
-const DashboardDefault = Loadable(lazy(() => import('views/erp-module/library/library-dashboard')));
-const Reports =  Loadable(lazy(() => import('views/erp-module/library/library-sidebar/reports')));
-const Settings =  Loadable(lazy(() => import('views/erp-module/library/library-sidebar/settings')));
+const DashboardDefault = Loadable(lazy(() => import('views/erp-module/library/dashboard')));
+const Reports =  Loadable(lazy(() => import('views/erp-module/library/reports')));
+const Settings =  Loadable(lazy(() => import('views/erp-module/library/settings')));
 
 const LibraryRoutes = [
   {

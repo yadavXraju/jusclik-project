@@ -4,22 +4,22 @@ import Loadable from 'components/ui/Loadable';
 // project imports
 const Dashboard = Loadable(lazy(() => import('views/erp-module/parent/dashboard')));
 // component page routing
-const Attendance = Loadable(lazy(() => import('views/erp-module/parent/parent-sidebar/attendance')));
-const Assignments = Loadable(lazy(() => import('views/erp-module/parent/parent-sidebar/assignments/')));
-const Updates = Loadable(lazy(() => import('views/erp-module/parent/parent-sidebar/updates/')));
-const TimeTable = Loadable(lazy(() => import('views/erp-module/parent/parent-sidebar/timetable/')));
-const Performance = Loadable(lazy(() => import('views/erp-module/parent/parent-sidebar/performance/')));
-const SchoolFee = Loadable(lazy(() => import('views/erp-module/parent/parent-sidebar/fee-school-fee/')));
-const OnlineAssessment = Loadable(lazy(() => import('views/erp-module/parent/parent-sidebar/remote-learning/assessments')));
-const OnlineClass = Loadable(lazy(() => import('views/erp-module/parent/parent-sidebar/remote-learning/online-class')));
-const ContactList = Loadable(lazy(() => import('views/erp-module/parent/parent-sidebar/communication-message/Contact-list')));
-const RecentMessage = Loadable(lazy(() => import('views/erp-module/parent/parent-sidebar/communication-message/Recent-Message')));
-const AddMeeting = Loadable(lazy(() => import('views/erp-module/parent/parent-sidebar/request/AddMetting')));
-const ItemRequestGatePass = Loadable(lazy(() => import('views/erp-module/parent/parent-sidebar/request/ItemRequestGatePass')));
-const Resources = Loadable(lazy(() => import('views/erp-module/parent/parent-sidebar/resources')));
+const Attendance = Loadable(lazy(() => import('views/erp-module/parent/attendance')));
+const Assignments = Loadable(lazy(() => import('views/erp-module/parent/assignments')));
+const Updates = Loadable(lazy(() => import('views/erp-module/parent/updates')));
+const TimeTable = Loadable(lazy(() => import('views/erp-module/parent/timetable')));
+const Performance = Loadable(lazy(() => import('views/erp-module/parent/performance')));
+const SchoolFee = Loadable(lazy(() => import('views/erp-module/parent/fee-school-fee')));
+const OnlineAssessment = Loadable(lazy(() => import('views/erp-module/parent/remote-learning/assessments')));
+const OnlineClass = Loadable(lazy(() => import('views/erp-module/parent/remote-learning/online-class')));
+const ContactList = Loadable(lazy(() => import('views/erp-module/parent/communication-message/Contact-list')));
+const RecentMessage = Loadable(lazy(() => import('views/erp-module/parent/communication-message/Recent-Message')));
+const AddMeeting = Loadable(lazy(() => import('views/erp-module/parent/request/AddMetting')));
+const ItemRequestGatePass = Loadable(lazy(() => import('views/erp-module/parent/request/ItemRequestGatePass')));
+const Resources = Loadable(lazy(() => import('views/erp-module/parent/resources')));
 const StudentProfile = Loadable(lazy(() => import('views/erp-module/parent/dashboard/studentProfile')));
-const PhotoGallery = Loadable(lazy(() => import('views/erp-module/parent/parent-sidebar/photo-gallery')));
-const EmailMsg = Loadable(lazy(() => import('views/erp-module/parent/parent-sidebar/communication-message/MailBox/EmailMssg')));
+const PhotoGallery = Loadable(lazy(() => import('views/erp-module/parent/photo-gallery')));
+const EmailMsg = Loadable(lazy(() => import('views/erp-module/parent/communication-message/MailBox/EmailMssg')));
 
 // ==============================|| PARENT MENUS ||============================== //
 

@@ -19,7 +19,7 @@ import { useNavigate } from 'react-router';
 // ============== Profile imports 
 
 // ============== Communication  imports
-import AlignItemsList from 'views/erp-module/parent/parent-sidebar/communication-message/Contact-list';
+import AlignItemsList from 'views/erp-module/parent/communication-message/Contact-list';
 import ParamWidgetHeader from 'components/dashboard/WidgetHeader';
 
 // ============== Alerts imports
@@ -30,21 +30,21 @@ import ParamWidget from 'components/dashboard/Widget';
 
 // ============== Assignment  imports
 import Checkbox from '@mui/material/Checkbox';
-import Attachment from 'views/erp-module/parent/parent-sidebar/assignments/Attachment';
+import Attachment from 'views/erp-module/parent/assignments/Attachment';
 import AttachmentIcon from '@mui/icons-material/Attachment';
 import CreateIcon from '@mui/icons-material/Create';
-import { data } from 'views/erp-module/parent/parent-sidebar/assignments/AssignmentData';
+import { data } from 'views/erp-module/parent/assignments/AssignmentData';
 import { subTitle, subtitle2 } from 'components/dashboard/CommonCss';
-import { commonStyles } from 'views/erp-module/parent/parent-sidebar/communication-message/Contact-list';
+import { commonStyles } from 'views/erp-module/parent/communication-message/Contact-list';
 import { boxHeight } from 'components/dashboard/CommonCss';
 
 // ============== Time Table  imports
-import timeTableData1 from 'views/erp-module/parent/parent-sidebar/timetable/TimeTableData';
+import timeTableData1 from 'views/erp-module/parent/timetable/TimeTableData';
 
 
 // Circular or update start 
 import SkeletonPopularCard from 'components/ui/cards/Skeleton/PopularCard';
-import { UpdatesData } from 'views/erp-module/parent/parent-sidebar/updates/UpdatesData';
+import { UpdatesData } from 'views/erp-module/parent/updates/UpdatesData';
 
 // user welcome Message start
 const WelcomeMessage = () => {

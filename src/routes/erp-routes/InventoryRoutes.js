@@ -7,9 +7,9 @@ import Loadable from 'components/ui/Loadable';
 // project imports
 const DashboardDefault = Loadable(lazy(() => import('views/erp-module/inventory-management/inventory-management-dashboard')));
 // report
-const Reports = Loadable(lazy(() => import('views/erp-module/inventory-management/inventory-managment-sidebar/report')));
+const Reports = Loadable(lazy(() => import('views/erp-module/inventory-management/report')));
 // setting
-const Setting = Loadable(lazy(() => import('views/erp-module/inventory-management/inventory-managment-sidebar/settings')));
+const Setting = Loadable(lazy(() => import('views/erp-module/inventory-management/settings')));
 
 
 const InventoryRoutes = [

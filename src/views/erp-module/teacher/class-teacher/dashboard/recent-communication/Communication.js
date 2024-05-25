@@ -3,7 +3,7 @@ import React from 'react'
 import { Typography , Grid ,Paper} from '@mui/material'
 import { HeadingCss , boxHeight} from 'components/dashboard/CommonCss';
 // import 'views/erp-module/parent/dashboard/dashboard-css/Overflow.css'
-import GmailInboxTemplate from 'views/erp-module/parent/parent-sidebar/communication-message/MailBox'
+import GmailInboxTemplate from 'views/erp-module/parent/communication-message/MailBox'
 
 const   Communication = () => {
     // const isMobile = useMediaQuery('(max-width: 767px)');
