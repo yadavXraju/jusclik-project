@@ -28,8 +28,6 @@ import {
 } from './tabPages';
 
 
-
-
 const SystemDataPages = () => {
   const { anchor, toggleDrawer } = useDrawer();
   const tabPage = [
