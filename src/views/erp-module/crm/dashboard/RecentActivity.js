@@ -3,9 +3,8 @@
 import React from 'react';
 import { Grid, Paper, Typography, useMediaQuery, Table, TableContainer, TableBody, TableRow, TableCell, Box } from '@mui/material';
 import { gridSpacing } from 'store/constant';
-import { HeadingCss } from 'components/dashboard/CommonCss';
-// import EmailIcon from '@mui/icons-material/Email';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
+import ParamWidgetHeader from 'components/dashboard/WidgetHeader';
 
 const RecentActivity = () => {
   const isMobile = useMediaQuery('(max-width: 767px)');
@@ -32,20 +31,8 @@ const RecentActivity = () => {
       }}
     >
       {/* Heading */}
-      <Grid
-        sx={{
-          padding: '24px 24px 0 24px',
-          background: '#f9f9fb',
-          borderBottom: '1px solid rgba(128, 128, 128, 0.25)',
-          borderRadius: '12px 12px 0px 0',
-        }}
-      >
-        <Typography variant="h2" style={{ ...HeadingCss, border: 'none' }}>
-          Recent Activity
-        </Typography>
-      </Grid>
 
-
+      <ParamWidgetHeader title='Recent Activity' />
       {/* Content */}
       <Grid
         sx={{

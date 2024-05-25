@@ -1,14 +1,15 @@
-// ownedby------------ Sangeeta
+// owned by ----------- sangeeta
 
 import React from 'react';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
-import { Box } from '@mui/system';
-import styled from '@emotion/styled'
+import styled from '@emotion/styled';
+import { Paper, Grid,Box } from '@mui/material';
+import ParamWidgetHeader from 'components/dashboard/WidgetHeader';
 
-
+// Event Up Calender Start
 // calender style overides
 export const StyleCalender = styled.div`
 
@@ -156,4 +157,33 @@ const EventUpCalendar = () => {
   );
 };
 
-export default EventUpCalendar;
+// Event Up Calender End
+
+const FollowUpCalendar = () => {
+  return (
+    <Paper
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        border: '1px solid rgb(227, 227, 227)',
+        boxShadow: '4px 4px 9px 2px #ddddddc2',
+      }}
+    >
+      {/* Heading */}
+       <ParamWidgetHeader title='Follow Up Calender'/>
+
+      {/* Content */}
+      <Grid>
+
+
+        {/* Calendar */}
+        <Box sx={{padding:"10px"}} >
+         <EventUpCalendar/>
+        </Box>
+      </Grid>
+    </Paper>
+  );
+};
+
+export default FollowUpCalendar;

@@ -3,16 +3,16 @@ import React from 'react';
 import Grid from '@mui/material/Grid';
 import { gridSpacing } from 'store/constant';
 import NeedHelp from 'pages/HelpAndSupport';
-import CRMCounter from './counter';
-import LeadStatus from './lead-status';
-import AgentLeaderBoard from './Aggent-leaderbord';
-import LeadBySource from './Lead-source';
-import RecentActivity from './recent-activity';
-import LeadInProcess from './process-lead';
-import HotAndColdLeads from './Hot-coldLeads';
-import FollowUpCalender from './follow-up-calednder';
+import CRMCounter from 'views/erp-module/crm/dashboard/Counter';
+import LeadStatus from 'views/erp-module/crm/dashboard/LeadStatus';
+import AgentLeaderBoard from 'views/erp-module/crm/dashboard/AgentLeaderBoard';
+import LeadBySource from 'views/erp-module/crm/dashboard/LeadSource';
+import RecentActivity from 'views/erp-module/crm/dashboard/RecentActivity';
+import LeadInProcess from 'views/erp-module/crm/dashboard/LeadInProcess';
+import HotAndColdLeads from 'views/erp-module/crm/dashboard/HotAndColdLeads';
+import FollowUpCalender from 'views/erp-module/crm/dashboard/FollowUpCalendar';
 
-const DashboardContent = ({ isLoading }) => {
+const Dashboard = ({ isLoading }) => {
   return (
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
@@ -76,4 +76,4 @@ const DashboardContent = ({ isLoading }) => {
   );
 };
 
-export default DashboardContent;
+export default Dashboard;
