@@ -44,7 +44,8 @@ const CustomTabs = (props) => {
     // drawer states
     state,
     // toggle drawer function
-    toggleDrawer
+    toggleDrawer,
+    editId
   } = props;
   const lastIndex = tabsData.length - 1;
 
@@ -174,7 +175,7 @@ const CustomTabs = (props) => {
                   rows={rows}
                   setRows={setRows}
                 />
-                <EditTaskDrawer toggleDrawer={toggleDrawer} state={state} />
+                <EditTaskDrawer toggleDrawer={toggleDrawer} state={state} editId={editId} rows={rows} setRows={setRows} />
               </Box>
               <CommonDataGrid
                 rows={rows}
