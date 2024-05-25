@@ -1,10 +1,13 @@
+// Page Owner  - Kulwinder Singh
+// Description  - Expense and Travel Dashboard
 import React from 'react';
-import { Grid, Paper, Typography, Box } from '@mui/material';
+import { Grid, Paper, Typography, Box , useMediaQuery } from '@mui/material';
 import ParamCounters from 'components/dashboard/Counters';
 import Divider from '@mui/material/Divider';
 import CommonChart from 'components/chart/CommonChart';
 import CommonStackedChart from 'components/chart/CommonStackedChart';
 import CommonBarChart from 'components/chart/CommonBarChart';
+
 const ExpenseAndTravel = () => {
   const ApexChartData = {
     series: [100, 200, 50],
@@ -22,9 +25,9 @@ const ExpenseAndTravel = () => {
   const Apexheading2 = 'Expense by Status';
 
   const chartDetails = [
-    { label: 'HIGHEST SPEND CATEGORY', chartvalues: 'Air Travel' },
     { label: 'HIGHEST SPEND CATEGORY', chartvalues: 'Boarding And Lodging' },
-    { label: 'AVG SPEND CATEGORY', chartvalues: 'INR 6,400' }
+    { label: 'LOWEST SPEND CATEGORY', chartvalues: 'Air Travel' },
+    { label: 'AVG SPEND PER CATEGORY', chartvalues: 'INR 6,400' }
   ];
 
   const chartDetails2 = [
@@ -32,7 +35,7 @@ const ExpenseAndTravel = () => {
     { label: 'PENDING EXPENSES', chartvalues: '34.5% - Avg' },
     { label: 'REJECTED EXPENSES', chartvalues: '17% - Low' }
   ];
-  const CounterData = [
+  const   CounterData = [
     {
       id: 1,
       counterTitle: 'Total Paid Out Expenses',
@@ -134,6 +137,8 @@ const ExpenseAndTravel = () => {
     }
   ];
 
+  const Res1500= useMediaQuery('(max-width:1500px)')
+
   return (
     <>
       <Grid sx={{ display: 'flex', height: '5vh', alignItems: 'center' }}>
@@ -146,9 +151,9 @@ const ExpenseAndTravel = () => {
         <ParamCounters
           CounterData={CounterData}
           reverseOrderFlag={true}
-          headingstyle={{ fontSize: '14px' }}
-          subheadingstyle={{ fontSize: '24px' }}
-          customboxstyle={{ padding: '1rem', gap: '20px' }}
+          headingstyle={{ fontSize:Res1500?'12px':'14px' }}
+          subheadingstyle={{ fontSize:Res1500?'18px':'24px' }}
+          customboxstyle={{ padding: '1rem', gap: '0px' , minWidth:'200px' }}
         />
       </Grid>
 

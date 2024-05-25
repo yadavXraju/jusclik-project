@@ -8,7 +8,7 @@ import { Divider, Grid, List, ListItem, Box, ListItemText, Button } from '@mui/m
 import { useSelector } from 'react-redux';
 // Import alert data with different names
 import { ParentAlertData } from 'views/erp-module/parent/dashboard';
-import { ClassTeacherAlertData } from 'views/erp-module/teacher/class-teacher/dashboard/Alerts/Alert';
+import { ClassTeacherAlertData } from 'views/erp-module/teacher/class-teacher/dashboard/Alert';
 
 // styles
 const ListItemWrapper = styled('div')(({ theme }) => ({

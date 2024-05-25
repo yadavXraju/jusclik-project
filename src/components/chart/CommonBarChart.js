@@ -1,9 +1,12 @@
+// Page Owner - Kulwinder SIngh
+ // Description : Apex Bar Chart
+
 import React from 'react';
 import Chart from 'react-apexcharts';
 import { Box, Paper, Grid, Typography, Divider } from '@mui/material';
-import { HeadingCss } from 'components/dashboard/CommonCss';
+import ParamWidgetHeader from 'components/dashboard/WidgetHeader';
 
-const CommonBarChart = ({ ChartTitle, BarChartcategories, BarChartSeries}) => {
+const CommonBarChart = ({ ChartTitle, BarChartcategories, BarChartSeries }) => {
   const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   const FeeDefaulterData = {
     height: 350,
@@ -137,20 +140,7 @@ const CommonBarChart = ({ ChartTitle, BarChartcategories, BarChartSeries}) => {
           flexDirection: 'column'
         }}
       >
-        <Grid
-          sx={{
-            padding: '24px 24px 0 24px',
-            background: '#f9f9fb',
-            borderBottom: '1px solid rgba(128, 128, 128, 0.25)',
-            borderRadius: '12px 12px 0px 0',
-            display: 'flex',
-            justifyContent: 'space-between'
-          }}
-        >
-          <Typography variant="h2" style={{ ...HeadingCss, border: 'none' }}>
-            {ChartTitle}
-          </Typography>
-        </Grid>
+        <ParamWidgetHeader title={ChartTitle} />
         <Grid height={350}>
           <Grid item>
             <Chart {...FeeDefaulterData} />
@@ -165,9 +155,9 @@ const CommonBarChart = ({ ChartTitle, BarChartcategories, BarChartSeries}) => {
             </Typography>
           </Box>
 
-          <Grid container spacing={2} sx={{ padding: '0.5rem 2rem' }}>
+          <Grid container spacing={2}  sx={{ padding: '0.5rem 2rem'}}>
             {barChartDetails.map((item, index) => (
-              <Grid item lg={4} key={index}>
+              <Grid item lg={4} md={4} sm={4} xs={4} key={index}>
                 <Typography variant="body" sx={{ fontSize: '14px' }}>
                   {item.label}
                 </Typography>

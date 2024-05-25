@@ -22,7 +22,7 @@ function EmployeePreview() {
 
   const navigate = useNavigate();
   const BackClick = () => {
-    navigate(`/erp/hr-payroll/employee-master`);
+    navigate(`/erp/hr-payroll/employee/employee-master`);
   };
 
   const isMobile = useMediaQuery('(max-width: 767px)');

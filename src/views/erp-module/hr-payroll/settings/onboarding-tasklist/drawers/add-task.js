@@ -12,10 +12,16 @@ const option=[
 ]
 
 
+const validator=[
+  {value:"1",label:"Manager"},
+  {value:"2",label:"Team lead"},
+  ]
+  
+
 export const AddTaskDrawer=({toggleDrawer,state,rows,setRows})=>{
 
   const[assign,setAssign]=useState([]);
-  const[validator,setValidator]=useState([]);
+  // const[validator,setValidator]=useState([{ id: 2, name: 'tarun' }]);
   const names = [ { id: 1, name: 'Sangeeta' },
   { id: 2, name: 'tarun' },
   { id: 3, name: 'Aman' },
@@ -81,8 +87,13 @@ closeDrawer(e)
          <Typography  sx={{mt:2, mb:1}}variant="h5" color="initial">
            Validator
             </Typography>
-            <ParamMultipleSelect options={names}  value={validator} setValue={setValidator}/>
+            {/* <ParamMultipleSelect options={names}  value={validator} setValue={setValidator} /> */}
+            <ParameterizedAutoComplete
+             option={ validator}
+             fullWidth
+             customStyle={{width:"100%"}}
         
+             />
          </Box>
           <Box xs={12} sx={{display:"flex", flexDirection:"row",justifyContent:"flex-start" ,width:"100%",alignItems:"center",mt:2,mb:1}}>
                       

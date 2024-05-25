@@ -3,14 +3,10 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import SearchTwoToneIcon from '@mui/icons-material/SearchTwoTone';
-import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import CalendarMonthTwoToneIcon from '@mui/icons-material/CalendarMonthTwoTone';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import Autocomplete from '@mui/material/Autocomplete';
 import { data } from './AssignmentData';
 import { Grid } from '@mui/material';
+import ParameterizedDateComponent from 'components/ui/custom-input/DateComponent';
 
 
 const uniqueSubjects = [...new Set(data.map((item) => item.name))];
@@ -68,8 +64,8 @@ const SearchAssignment = ({ onSearch }) => {
     >
       <Grid container spacing={2} sx={{ paddingLeft: '20px', paddingTop: '10px'  }}>
         <Grid lg={2}    sm={12} md={6} xs={12} sx={{'& .css-4jnixx-MuiStack-root': {display:'flex' , flexDirection:'column'}, paddingRight:'10px' ,'& .MuiTextField-root': {minWidth:'auto !important'} }}>
-          <LocalizationProvider dateAdapter={AdapterDayjs}  >
-            <DemoContainer component={['DatePicker']} >
+          {/* <LocalizationProvider dateAdapter={AdapterDayjs}  >
+
               <DatePicker
                 label="From"
                 value={startDate}
@@ -80,12 +76,17 @@ const SearchAssignment = ({ onSearch }) => {
               
 
               />
-            </DemoContainer>
-          </LocalizationProvider>
+           
+          </LocalizationProvider> */}
+          <ParameterizedDateComponent 
+           value={startDate}
+           label="From"
+           onChange={handleStartDateChange}
+          />
         </Grid>
 
         <Grid lg={2} sm={12} md={6} xs={12} sx={{'& .css-4jnixx-MuiStack-root': {display:'flex' , flexDirection:'column'},paddingRight:'10px' , '& .MuiTextField-root': {minWidth:'auto !important'}}}>
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
+          {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DemoContainer component={['DatePicker']}>
               <DatePicker
                 label="To"
@@ -96,7 +97,12 @@ const SearchAssignment = ({ onSearch }) => {
                 }}
               />
             </DemoContainer>
-          </LocalizationProvider>
+          </LocalizationProvider> */}
+            <ParameterizedDateComponent 
+           value={startDate}
+           label="From"
+           onChange={handleEndDateChange}
+          />
         </Grid>
 
         {/*Commented for responsive */}
