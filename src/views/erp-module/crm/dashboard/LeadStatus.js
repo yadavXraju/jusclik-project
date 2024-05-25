@@ -4,7 +4,7 @@ import React from 'react';
 import ApexCharts from 'react-apexcharts';
 import { Grid, Paper, Typography, useMediaQuery,Box} from '@mui/material';
 import { gridSpacing } from 'store/constant';
-import { HeadingCss } from 'components/dashboard/CommonCss';
+import ParamWidgetHeader from 'components/dashboard/WidgetHeader';
 // import WomanIcon from '@mui/icons-material/Woman';
 const LeadStatus = () => {
   const isMediumDesktop = useMediaQuery('(max-width: 1600px)');
@@ -99,18 +99,7 @@ const LeadStatus = () => {
         }}
       >
         {/* ================================= heading  =================================  */}
-        <Grid
-          sx={{
-            padding: '24px 24px 0 24px',
-            background: '#f9f9fb',
-            borderBottom: '1px solid rgba(128, 128, 128, 0.25)',
-            borderRadius: '12px 12px 0px 0',
-          }}
-        >
-          <Typography variant="h2" style={{ ...HeadingCss, border: 'none' }}>
-          Lead Status
-          </Typography>
-        </Grid>
+        <ParamWidgetHeader title='Lead Status' />
 
         {/* ================================= content  =================================  */}
         <Grid

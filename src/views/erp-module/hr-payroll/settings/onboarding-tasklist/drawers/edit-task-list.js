@@ -4,7 +4,6 @@ import React from 'react';
 import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 
 export const EditTaskListDrawer = ({ toggleDrawer, state, tabsData, setTabsData, selectedTab }) => {
-  console.log(tabsData);
   const [name, setName] = React.useState(tabsData[selectedTab]?.name);
   const [desc, setDesc] = React.useState(tabsData[selectedTab]?.description);
   const handleNameChange = (e) => {

@@ -2,8 +2,8 @@
 
 import React from 'react';
 import ApexCharts from 'react-apexcharts';
-import { Grid, Paper, Typography, useMediaQuery} from '@mui/material';
-import { HeadingCss } from 'components/dashboard/CommonCss';
+import { Grid, Paper, useMediaQuery} from '@mui/material';
+import ParamWidgetHeader from 'components/dashboard/WidgetHeader';
 
 
 const HotAndColdLeads = () => {
@@ -63,18 +63,7 @@ const HotAndColdLeads = () => {
       }}
     >
       {/* Heading */}
-      <Grid
-        sx={{
-            padding: '24px 24px 0 24px',
-            background: '#f9f9fb',
-            borderBottom: '1px solid rgba(128, 128, 128, 0.25)',
-            borderRadius: '12px 12px 0px 0',
-        }}
-      >
-        <Typography  variant="h2" sx={HeadingCss}>
-          Hot And Cold Leads
-        </Typography>
-      </Grid>
+      <ParamWidgetHeader title='Hot And Cold Leads'/>
 
       {/* Content */}
       <Grid sx={{ padding: '24px' ,height:"303px"}}>

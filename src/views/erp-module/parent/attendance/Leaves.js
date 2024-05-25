@@ -1,127 +1,76 @@
-import * as React from 'react';
+import React from 'react';
 import { styled } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
-import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
-import ListItemText from '@mui/material/ListItemText';
-import Button from '@mui/material/Button';
-import Stack from '@mui/material/Stack';
+import { Box, Paper, Grid, Typography, ListItemText, Button, Stack } from '@mui/material';
 import axios from 'axios';
 import config from 'config';
 
 const StyledPaper = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-    ...theme.typography.body2,
-    padding: theme.spacing(2),
-    color: theme.palette.text.primary,
+  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+  ...theme.typography.body2,
+  padding: theme.spacing(2),
+  color: theme.palette.text.primary,
 }));
 
+const LeaveItem = ({ title, date, duration }) => (
+  <StyledPaper sx={{ my: 1, mx: 'auto', p: 2 }}>
+    <Grid container wrap="nowrap" spacing={2}>
+      <Grid item xs zeroMinWidth>
+        <Typography noWrap>{title}</Typography>
+        <ListItemText secondary={date} />
+      </Grid>
+      <Grid item>
+        <Typography variant="body2" color="text.secondary">{duration}</Typography>
+      </Grid>
+    </Grid>
+  </StyledPaper>
+);
 
 export default function Leaves() {
-
-    const leaveData = ()=>{
-        fetchData();
-    }
-    const fetchData = async () => {
-        const response = await axios.get(
-          'https://uat.shauryasoft.com/api/student/attendance',
-          { 
-            params: {
-              SCode: 6,
-              Session: '2023-2024',
-              Class: 'IX' ,
-              Section: 'A',
-              EnrollCode: 'D00023',
-              Month: 'Nov-2023',
-              Date:''
-            },
-            headers: {
-              ApiKey: config.ApiKey,
-            },
-           
-          }
-        );
+  const fetchLeaveData = async () => {
+    try {
+      const response = await axios.get('https://uat.shauryasoft.com/api/student/attendance', {
+        params: {
+          SCode: 6,
+          Session: '2023-2024',
+          Class: 'IX',
+          Section: 'A',
+          EnrollCode: 'D00023',
+          Month: 'Nov-2023',
+          Date: ''
+        },
+        headers: { ApiKey: config.ApiKey },
+      });
+      console.log(response.data);
+      alert(response.data.EnrollNo);
+      if (response.data.EnrollNo === 'D00023') {
+        alert('Successfull');
         console.log(response.data);
-        alert(response.data.EnrollNo);
-        if (response.data.EnrollNo === 'D00023') {
-        alert(' successfull');
-          console.log(jResponse);
-        
-        } else {
-         alert('login unsuccessfull');
-        }
-    
-    };
-    return (
-        <>
-        <Box sx={{ flexGrow: 1, overflow: 'hidden', px: 3 }}>
-            <h3>Recent Leaves</h3>
-            <StyledPaper
-                sx={{
-                    my: 1,
-                    mx: 'auto',
-                    p: 2,
-                }}
-            >
-                {/* leave application */}
-                <Grid container wrap="nowrap" spacing={2}>
-                    <Grid item xs zeroMinWidth >
-                        <Typography noWrap>Marriage</Typography>
-                        <ListItemText secondary="Jan 9, 2023" />
-                    </Grid>
-                    <Grid item>
-                        <Typography variant="body2" color="text.secondary">Half Day</Typography>
-                    </Grid>
+      } else {
+        alert('Login unsuccessful');
+      }
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      alert('Error fetching data');
+    }
+  };
 
+  const leaveItems = [
+    { title: 'Marriage', date: 'Jan 9, 2023', duration: 'Half Day' },
+    { title: 'Fever', date: 'Jan 9, 2023', duration: '3 Day' },
+    { title: 'Fever', date: 'Jan 9, 2023', duration: '4 Day' },
+  ];
 
-                </Grid>
-            </StyledPaper>
-            <StyledPaper
-                sx={{
-                    my: 1,
-                    mx: 'auto',
-                    p: 2,
-                }}
-            >
-                <Grid container wrap="nowrap" spacing={2}>
-                    <Grid item xs zeroMinWidth >
-                        <Typography noWrap>Fever</Typography>
-                        <ListItemText secondary="Jan 9, 2023" />
-                    </Grid>
-                    <Grid item>
-                        <Typography variant="body2" color="text.secondary">3 Day</Typography>
-                    </Grid>
-
-
-                </Grid>
-            </StyledPaper>
-            <StyledPaper
-                sx={{
-                    my: 1,
-                    mx: 'auto',
-                    p: 2,
-                }}
-            >
-                <Grid container wrap="nowrap" spacing={2}>
-                    <Grid item xs zeroMinWidth >
-                        <Typography noWrap>Fever</Typography>
-                        <ListItemText secondary="Jan 9, 2023" />
-                    </Grid>
-                    <Grid item>
-                        <Typography variant="body2" color="text.secondary">4 Day</Typography>
-                    </Grid>
-
-
-                </Grid>
-            </StyledPaper>
-        </Box>
-        {/* Apply for leave */}
-               <Stack direction="row" spacing={2} sx={{display:"flexbox", justifyContent:"flex-end", alignItems:"flex-end",m: 2 }} >
-                  <Button variant="contained"  onClick={leaveData} >Apply Leave +</Button>
-               </Stack>
-            </>
-        
-    );
+  return (
+    <>
+      <Box sx={{ flexGrow: 1, overflow: 'hidden', px: 3 }}>
+        <Typography variant="h3">Recent Leaves</Typography>
+        {leaveItems.map((leave, index) => (
+          <LeaveItem key={index} {...leave} />
+        ))}
+      </Box>
+      <Stack direction="row" spacing={2} sx={{ justifyContent: "flex-end", alignItems: "flex-end", m: 2 }}>
+        <Button variant="contained" onClick={fetchLeaveData}>Apply Leave +</Button>
+      </Stack>
+    </>
+  );
 }
-
