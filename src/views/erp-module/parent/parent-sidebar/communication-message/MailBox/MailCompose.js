@@ -1,3 +1,6 @@
+// Page Owner: Suraj
+// Description: Email Compose Editor
+
 import React, { useState, useEffect } from 'react';
 import {Dialog,DialogTitle,DialogContent,DialogActions,Button,TextField,Typography,Box,Tooltip,IconButton,Input,Paper,MenuItem,FormControl,Select,OutlinedInput,InputLabel,useMediaQuery,useTheme,} from '@mui/material';
 import ReactQuill from 'react-quill';

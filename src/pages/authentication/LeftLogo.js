@@ -1,3 +1,6 @@
+// Page Owner: Suraj
+// Description: Login Logo Page
+
 import React from 'react';
 import { Grid, useMediaQuery, useTheme } from '@mui/material';
 import Typography from '@mui/material/Typography';

@@ -1,3 +1,6 @@
+// Page Owner: Suraj
+// Description: Email Reply Forward Message
+
 import React, { useState } from 'react';
 import 'react-quill/dist/quill.snow.css';
 import { Box, Button, Paper, Toolbar, InputAdornment, FormControl, InputBase, Chip, useMediaQuery, useTheme, Avatar } from '@mui/material';
