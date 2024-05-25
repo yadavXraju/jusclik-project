@@ -1,4 +1,4 @@
-// dummy data
+// dummy data sangeeta
 
 export const FrequentlyReturningVisitorList = [
     {

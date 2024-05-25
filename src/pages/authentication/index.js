@@ -26,8 +26,31 @@ import EnterMobileDialog from './EnterMobileDialog';
 import SelectAccount from './SelectAccount';
 import PoweredBySection from './PoweredBy';
 import MobileLogin from './MobileLogin';
-import { Auth } from 'Auth';
 import AppStoreButtonsGroup from './AppStoreLogos';
+
+
+export const Auth  = [
+
+  {
+      id:'1',
+      token:'dkjfhfdddfdffkfjdkfdfdfdjfd',
+      role:'parent',
+  },
+
+  {
+  id:'2',
+  token:'dkjfhfdfkfjdkfdfdfdjfd',
+  role:'class-teacher',
+},
+
+
+{
+  id:'3',
+  token:'dkjfhfdfkfjdkfdfdfdjfd',
+  role:'visitor',
+},
+
+]
 
 const defaultTheme = createTheme({
   palette: {
@@ -118,9 +141,10 @@ export default function LoginPage() {
     if (userId === 'jusklik' && userPassword === 'jusklik@123') {
       // Save user role and token in local storage
       const user = Auth.find((user) => user.role === 'parent');
-      localStorage.setItem('userRole', user.role);
-      localStorage.setItem('userToken', user.token);
-
+      // localStorage.setItem('userRole', user.role);
+      // localStorage.setItem('userToken', user.token);
+      sessionStorage.setItem('userRole', user.role);
+      
       // Redirect to parent dashboard after a slight delay
       setTimeout(() => {
         window.location.href = '/parent/dashboard';
@@ -130,8 +154,9 @@ export default function LoginPage() {
     else if (userId === 'cteacher' && userPassword === 'cteacher@123') {
       // Save user role and token in local storage
       const user = Auth.find((user) => user.role === 'class-teacher');
-      localStorage.setItem('userRole', user.role);
-      localStorage.setItem('userToken', user.token);
+      // localStorage.setItem('userRole', user.role);
+      // localStorage.setItem('userToken', user.token);
+      sessionStorage.setItem('userRole', user.role);
 
       // Redirect to class teacher dashboard after a slight delay
       setTimeout(() => {
@@ -142,9 +167,9 @@ export default function LoginPage() {
     else if (userId === 'visitor' && userPassword === 'visitor@123') {
       // Save user role and token in local storage
       const user = Auth.find((user) => user.role === 'visitor');
-      localStorage.setItem('userRole', user.role);
-      localStorage.setItem('userToken', user.token);
-
+      // localStorage.setItem('userRole', user.role);
+      // localStorage.setItem('userToken', user.token);
+      sessionStorage.setItem('userRole', user.role);
       // Redirect to visitor dashboard after a slight delay
       setTimeout(() => {
         window.location.href = '/erp/visitor/dashboard';

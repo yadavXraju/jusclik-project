@@ -1,17 +1,76 @@
+// Page Owner : Abhshek Negi 
+// Description : Lowest Student Widget
 
 import { Typography , Grid} from '@mui/material';
-import { boxHeight , HeadingCss ,  subTitle , subtitle2 } from 'components/dashboard/CommonCss';
+import {Divider , Box ,Paper} from '@mui/material';
+import AvatarImg from 'assets/images/Avatar-images/avatar.png';
+import { subTitle , subtitle2  , boxHeight ,  HeadingCss } from 'components/dashboard/CommonCss';
 
-import { BirthdayList } from './BirthdayList';
-import {Divider , Box , Paper} from '@mui/material';
+export const studnetAttendancePercentage = [
+    {
+        profile : <img src={AvatarImg} alt="avatar" style={{ width: '65px', height: '65px', borderRadius: '50%' }} /> ,
+        name : 'Suraj Mishra' ,
+        attendancePercentage : '85%',
+        class : 'V A'
+   },
+
+   {
+    profile : <img src={AvatarImg} alt="avatar" style={{ width: '65px', height: '65px', borderRadius: '50%' }} />,
+    name : 'Viksah Poonia',
+    attendancePercentage : '80%',
+    class : 'V A'
+  },
 
 
+  {
+    profile : <img src={AvatarImg} alt="avatar" style={{ width: '65px', height: '65px', borderRadius: '50%' }} />,
+    name : 'Ruby Dhiman' ,
+    attendancePercentage : '78%',
+    class : 'V A'
+ },
 
-const UpcomingBirthday =()  => {
+
+ {
+    profile : <img src={AvatarImg} alt="avatar" style={{ width: '65px', height: '65px', borderRadius: '50%' }} />,
+    name : 'Sangeeta Rani' ,
+    attendancePercentage : '87%',
+    class : 'V A'
+ },
+
+  {
+    profile : <img src={AvatarImg} alt="avatar" style={{ width: '65px', height: '65px', borderRadius: '50%' }} />,
+    name : 'Amit' ,
+    attendancePercentage : '88%',
+    class : 'V A'
+ },
+
+
+ {
+    profile : <img src={AvatarImg} alt="avatar" style={{ width: '65px', height: '65px', borderRadius: '50%' }} />,
+    name : 'Shruti Sharma' ,
+    attendancePercentage : '98%',
+    class : 'V A'
+ },
+
+ {
+    profile : <img src={AvatarImg} alt="avatar" style={{ width: '65px', height: '65px', borderRadius: '50%' }} />,
+    name : 'Nitika Dhiman' ,
+    attendancePercentage : '91%',
+    class : 'V A'
+ },
+
+]
+
+const LowStudentAttendance = () => {
+
+  // Sort the array based on attendancePercentage in ascending order
+  const sortedAttendance = [...studnetAttendancePercentage].sort(
+    (a, b) => parseFloat(a.attendancePercentage) - parseFloat(b.attendancePercentage)
+  );
 
   return (
      <>
-     <Paper
+       <Paper
       sx={{
         display: 'flex',
         flexDirection: 'column',
@@ -30,17 +89,18 @@ const UpcomingBirthday =()  => {
         }}
       >
                   <Typography variant="h2" style={HeadingCss}>
-                     Upcoming Birthdays
+                     Lowest Attendance
                   </Typography>
                 </Grid>
-             
-     <Grid sx={{padding:'24px'}}style={boxHeight}>
+            
+     
            {/* maping data */}
-            {BirthdayList.map((item, index) => (
+           <Grid sx={{ padding: '24px' }}style={boxHeight}>
+            {sortedAttendance.slice(0 , 5).map((item, index) => (
                 <Grid item xs={12} key={index} sx={{paddingTop:'0 !important'}}>
                   <Grid container direction="column">
                     <Grid item>
-                      <Grid container alignItems="center" justifyContent="space-between" sx={{gap:'14px'}}>
+                      <Grid container alignItems="center" justifyContent="space-between" >
                         {/* title and icon */}
                         <Grid item sx={{display:'flex' , gap:'16px' ,alignItems:'center',}}>
 
@@ -53,7 +113,7 @@ const UpcomingBirthday =()  => {
                               display: 'flex',
                               justifyContent: 'center',
                            }}>
-                                  {item.icon}
+                                  {item.profile}
                            </Box>
 
                             {/* title */}
@@ -72,12 +132,12 @@ const UpcomingBirthday =()  => {
 
                         </Grid>
 
-                         {/* birthday date              */}
-                        <Grid item sx={{marginLeft:'auto'}}>
+                         {/* birth date */}
+                        <Grid item>
                           <Grid container alignItems="center" justifyContent="space-between">
                             <Grid item>
                               <Box>
-                                 <Typography variant='h4'>{item.birthday}</Typography>
+                                 <Typography variant='h4'>{item.attendancePercentage}</Typography>
                               </Box>
                             </Grid>
                           </Grid>
@@ -90,12 +150,12 @@ const UpcomingBirthday =()  => {
                   <Divider sx={{ my: 1.5 , color:'1px solid #80808024'}} />
                 </Grid>
             ))}
-           
-           </Grid>
-      </Paper> 
-  </>
+          </Grid>
+           </Paper>
+          
+     </>
   )
 }
 
-export default UpcomingBirthday
+export default LowStudentAttendance
 
