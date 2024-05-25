@@ -28,7 +28,7 @@ import {
   updateWhatsappActivities,
   updateOtherApplicantActivities,
   updateTelephonyActivities
-} from '../../../../../../../store/crm/settings/leadScoreSlice';
+} from 'store/crm/settings/leadScoreSlice';
 import { useEffect } from 'react';
 const dispatchers = [
   updateLeadRegistrationAndVerification,
