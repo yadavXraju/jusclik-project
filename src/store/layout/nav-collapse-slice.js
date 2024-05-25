@@ -1,26 +1,5 @@
-// import { createSlice } from '@reduxjs/toolkit';
-
-// const initialState = {
-//   NavCollapse: [],
-// };
-
-// const menuNavCollapseSlice = createSlice({
-//   name: 'menuNavCollapse',
-//   initialState,
-//   reducers: {
-//     handleMenuNavCollapse: (state, action) => {
-//       state.NavCollapse = action.payload;
-//     },
-//     resetMenuNavCollapse: state => {
-//       state.NavCollapse = [];
-//     }
-    
-//   },
-// });
-
-// export const {  handleMenuNavCollapse  , resetMenuNavCollapse } = menuNavCollapseSlice.actions;
-
-// export default menuNavCollapseSlice.reducer;
+// Page Owner : Abhshek
+// Description : Storing Clicked Menu Data into the slice
 
 import { createSlice } from '@reduxjs/toolkit';
 

@@ -2,11 +2,10 @@
 // Description : Notification List 
 
 import React from 'react';
-import { useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useTheme, styled } from '@mui/material/styles';
 import { Divider, Grid, List, ListItem, Box, ListItemText, Button } from '@mui/material';
-
+import { useSelector } from 'react-redux';
 // Import alert data with different names
 import { ParentAlertData } from 'views/erp-module/parent/dashboard';
 import { ClassTeacherAlertData } from 'views/erp-module/teacher/class-teacher/dashboard/Alerts/Alert';
@@ -24,17 +23,15 @@ const ListItemWrapper = styled('div')(({ theme }) => ({
 }));
 
 const NotificationList = () => {
-  const location = useLocation();
   const [alertData, setAlertData] = useState([]);
   const theme = useTheme();
-
+  const {erpModule} = useSelector((state) =>  state.erpModuleSlice);
+ 
   useEffect(() => {
-    const { pathname } = location;
     let data;
-
-    if (pathname.includes('/parent/dashboard')) {
+    if (erpModule.role == 'parent') {
       data = ParentAlertData;
-    } else if (pathname.includes('/class-teacher/dashboard')) {
+    } else if (erpModule.role == 'class-teacher') {
       data = ClassTeacherAlertData;
     }
      else {

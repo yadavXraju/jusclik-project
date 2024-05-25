@@ -55,10 +55,11 @@ const ProfileSection = () => {
   // logout function
 
   const handleLogout = () => {
-    // Remove user role and token from local storage
+    // Remove user role and token from local storage 
     localStorage.removeItem('userRole');
     localStorage.removeItem('userToken');
-  
+    sessionStorage.removeItem('userRole');
+    // sessionStorage.removeItem('userToken');
     // Navigate to the login page
     navigate('/login');
   };

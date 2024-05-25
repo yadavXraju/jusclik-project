@@ -1,4 +1,4 @@
-import ClassTeacherMenu from "menu-items/classTeacherMenus";
+import ClassTeacherMenu from "menu-items/erp-menus/classTeacherMenus";
 
 // Define an empty array to store dynamically generated favorite pages
 const FavPagesList = [];
