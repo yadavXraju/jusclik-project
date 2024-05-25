@@ -1,21 +1,23 @@
+// Page Owner : Abhshek Negi 
+// Description : Student Strength Widget
+
 import React from 'react';
 import ApexCharts from 'react-apexcharts';
-import { Grid, Paper, Typography } from '@mui/material';
-// import { gridSpacing } from 'store/constant';
-import { HeadingCss , boxHeight } from 'components/dashboard/CommonCss';
-import { StudentStrengthList } from './StudentStrengthList';
+import { Grid, Paper } from '@mui/material';
+import {  boxHeight } from 'components/dashboard/CommonCss';
+import ParamWidgetHeader from 'components/dashboard/WidgetHeader';
 
+export const StudentStrengthList = [
+  {
+     id:1,
+     totalStudent : 55,
+     boys : 30,
+     girls: 25,
+
+  }
+]
 
 const StudentStrength = () => {
-  // const isMobile = useMediaQuery('(max-width: 767px)');
-
-  // const AttendanceBox = {
-  //   display: 'flex',
-  //   flexDirection: 'column',
-  //   padding: '20px',
-  //   paddingBottom: '30px',
-  //   alignItems: isMobile ? 'center' : 'auto',
-  // };
 
   const studentData = StudentStrengthList[0]; // Access the first element of the array
 
@@ -61,20 +63,9 @@ const StudentStrength = () => {
         marginBottom: '20px', // Add some bottom margin for spacing
       }}
     >
-        <Grid
-        sx={{
-            padding: '24px 24px 0 24px',
-            background: '#f9f9fb',
-            borderBottom: '1px solid rgba(128, 128, 128, 0.25)',
-            borderRadius: '12px 12px 0px 0',
-        }}
-      >
-          <Typography variant="h2" style={HeadingCss}>
-            Students Strength
-          </Typography>
-        </Grid>
 
-        <Grid sx={{ padding: '24px'}} style={boxHeight}>
+        <ParamWidgetHeader title='Students Strength' />
+        <Grid item sx={{ padding: '24px'}} style={boxHeight}>
           <ApexCharts options={chartData} series={chartData.series} type="donut" height={420} />
         </Grid>
       </Paper>

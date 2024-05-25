@@ -1,17 +1,180 @@
-// Dashboard.js
+// Page Owner : Abhishek Negi
+// Description : Class Teacher Dashboard
+
 import React from 'react';
-import Grid from '@mui/material/Grid';
+import {  Grid, Paper , Box } from '@mui/material';
 import { gridSpacing } from 'store/constant';
-import WelcomeAttandanceCheckIn from './welcome-check-in-attendance';
-import ClassTeacherProfile from './profile';
-import Communication from './recent-communication/Communication';
-import ClassTeacherAlert from './Alerts/Alert';
-import ClassTeacherFavPages from './fav-pages/FavPages';
-import UpcomingBirthday from './upcoming-birthday/UpcomingBirthday';
-import LowStudentAttendance from './low-student-attendance/LowStudentAttendance';
-import StudentStrength from './student-strength/StudentStrength';
-import StudentLeave from './student-leave/StudentLeave';
-import ClassTeacherTimeTable from './time-table/TimeTable';
+import { useSelector } from "react-redux";
+import ClassTeacherAlert from 'views/erp-module/teacher/class-teacher/dashboard/Alert';
+import UpcomingBirthday from 'views/erp-module/teacher/class-teacher/dashboard/UpcomingBirthday';
+import LowStudentAttendance from 'views/erp-module/teacher/class-teacher/dashboard/LowStudentAttendance';
+import StudentStrength from 'views/erp-module/teacher/class-teacher/dashboard/StudentStrength';
+import StudentLeave from 'views/erp-module/teacher/class-teacher/dashboard/StudentLeave';
+import FavPages from 'components/dashboard/FavPages';
+import ClassTeacherMenu from "menu-items/erp-menus/classTeacherMenus";
+import { ClassTeacherProfileDetails } from 'layout/MainLayout/Header/TeacherProfile'
+import Profile from 'components/dashboard/Profile'
+import {  boxHeight } from 'components/dashboard/CommonCss';
+import GmailInboxTemplate from 'views/erp-module/parent/communication-message/MailBox';
+import ParamWidgetHeader from 'components/dashboard/WidgetHeader';
+import WelcomeMessageTemplate from 'components/dashboard/Welcome';
+import CommonCounter from "components/dashboard/CommonCounter";
+
+
+// Welcome  section start
+const ClassTeacherWelcomeMessage = () => { 
+  const teacherDetails = {
+    name: 'Suraj Mishra',
+  };
+
+  return (
+    <>
+        <WelcomeMessageTemplate teacherDetails={teacherDetails} />
+    </>
+  )
+}
+
+// Check in counter section start
+export const CheckInAndCheckOutData  = {
+  id :1,
+  counterValue : '09:21 AM'  ,
+  counterTitle : 'CHECK IN TIME',
+}
+
+const ClassTeacherCheckIn = () => {
+      // to store state in this varible
+      const customization = useSelector((state) => state.customization);
+      // Extract background color and set opacity
+      const themeColor = customization.themeColor || '';
+
+  return (
+    <>
+      <CommonCounter CounterData={CheckInAndCheckOutData} themeColor={themeColor} className='themeColor'/>
+    </>
+  )
+}
+
+// Attendance counter section start
+const TotalAttendanceDeatails  = {
+  id :1,
+  counterValue : '92%'  ,
+  counterTitle : 'TOTAL ATTENDANCE',
+}
+const ClassTeacherTotalAttendance = () => {
+    // to store state in this varible
+    const customization = useSelector((state) => state.customization);
+    // Extract background color and set opacity
+    const themeColor = customization.themeColorV2 || '';
+    
+  return (
+    <>
+      <CommonCounter CounterData={TotalAttendanceDeatails} themeColor={themeColor} className='themeColorV2'/>
+    </>
+  )
+}
+
+// ========= profile section start
+const ClassTeacherProfile = () => {
+  return (
+    <>
+       <Profile  teacherDetails={ClassTeacherProfileDetails}/>
+    </>
+  )
+}
+// =========== communication
+const Communication = () => {
+  return (
+    <>
+      <Paper
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          borderRadius: '12px',
+          border: '1px solid rgba(128, 128, 128, 0.25)',
+          boxShadow: '4px 4px 9px 2px #ddddddc2',
+          marginBottom: '20px' // Add some bottom margin for spacing
+        }}
+      >
+        <ParamWidgetHeader title=" Recent  communication" />
+        <Grid item sx={{ padding: '24px' }} style={boxHeight}>
+          <GmailInboxTemplate />
+        </Grid>
+      </Paper>
+    </>
+  );
+};
+
+// ======== fav pages section start
+export const FavPagesList = [];
+
+ClassTeacherMenu.children.forEach(menuItem => {
+    const { id, title, url } = menuItem;
+    // Add the extracted information to FavPagesList array
+    FavPagesList.push({
+        id,
+        title,
+        url,
+        btnText: 'Click Here'
+    });
+});
+
+const ClassTeacherFavPages = () => {
+  return (
+    <>
+      <Box sx={{'& .css-16ti1tk-MuiButtonBase-root-MuiButton-root': {fontSize:{md:'14px' , sm:'12px' , xs:'10px'}}}}>
+         <FavPages FavPagesList={FavPagesList}/>
+      </Box>
+    </>
+  )
+}
+
+
+// =============== time table imports
+import TeacherTimeTable from 'components/table-data-grid/TeacherTimeTable';
+export const TeacherTimeTableDetails = [
+  {
+      id:1,
+      period : 'I',
+      class : 'V A',
+      subject : 'Hindi',
+      Time : '9:00am-9:45'
+  },
+
+  {
+      id:2,
+      period : 'II',
+      class : 'V B',
+      subject : 'English',
+      Time : '9:45am-10:30'
+  },
+
+  
+  {
+      id:3,
+      period : 'III',
+      class : 'IV A',
+      subject : 'Math',
+      Time : '10:30am-11:15'
+  },
+
+      
+  {
+      id:4,
+      period : 'IV',
+      class : 'V A',
+      subject : 'Science',
+      Time : '11:15am-12:00'
+  },
+]
+
+const ClassTeacherTimeTable = () => {
+  return (
+    <>
+       <TeacherTimeTable TeacherTimeTableDetails={TeacherTimeTableDetails}/>
+    </>
+  )
+}
+
 
 const Dashboard = ({ isLoading }) => {
   return (
@@ -31,8 +194,18 @@ const Dashboard = ({ isLoading }) => {
                 py: 3,
               }}
             >
-              <WelcomeAttandanceCheckIn isLoading={isLoading} />
-            </Grid>
+                <Grid container spacing={gridSpacing} sx={{pb:'11px'}}>
+                      <Grid item lg={12} md={12} sm={12} xs={12}>
+                        <ClassTeacherWelcomeMessage isLoading={isLoading} />
+                      </Grid>
+                        <Grid item lg={6} md={6} sm={6} xs={12}>
+                          <ClassTeacherCheckIn  isLoading={isLoading} />
+                        </Grid>
+                          <Grid item lg={6} md={6} sm={6} xs={12}>
+                            <ClassTeacherTotalAttendance isLoading={isLoading} />
+                          </Grid>
+                    </Grid>
+             </Grid>
           </Grid>
 
            {/* Profile comp */}
