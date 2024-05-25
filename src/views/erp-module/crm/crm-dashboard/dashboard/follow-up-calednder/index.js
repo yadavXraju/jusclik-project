@@ -1,4 +1,4 @@
-// owned by ----------- san
+// owned by ----------- sangeeta
 
 import React from 'react';
 import { Paper, Grid, Typography, Box } from '@mui/material';
