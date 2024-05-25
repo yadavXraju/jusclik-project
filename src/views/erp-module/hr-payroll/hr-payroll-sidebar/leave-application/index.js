@@ -1,4 +1,5 @@
 // ======= Page Owner Vikash =========
+// ======= Entry Point of Leave Application =========
 import React from 'react';
 import { Grid, Paper, Box } from '@mui/material';
 import LeaveConsumedChart from './LeaveConsumedChart';

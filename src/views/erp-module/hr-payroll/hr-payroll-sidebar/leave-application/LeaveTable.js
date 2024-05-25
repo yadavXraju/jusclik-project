@@ -1,39 +1,75 @@
-import React from 'react';
-import { Card, Box, IconButton, Tooltip, Typography, Dialog, DialogTitle, DialogContent, DialogActions, Button } from '@mui/material';
+// ======= Page Owner Vikash =========
+// ======= Leave Application Table =========
+import React, { useState, useEffect } from 'react';
+import {
+  Card,
+  Box,
+  IconButton,
+  Tooltip,
+  Typography,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  Button,
+  Alert
+} from '@mui/material';
 import CheckCircleTwoToneIcon from '@mui/icons-material/CheckCircleTwoTone';
 import CancelTwoToneIcon from '@mui/icons-material/CancelTwoTone';
-import rows from './LeaveTableData';
 import CommonDataGrid from 'components/commonDataGrid';
-
+import CloseIcon from '@mui/icons-material/Close';
+import rows from './LeaveTableData';
 
 const LeaveTable = () => {
-    const [tableRows, setTableRows] = React.useState(rows);
-    const [selectedRow, setSelectedRow] = React.useState(null);
-    const [action, setAction] = React.useState(null);
-  
-    const handleApproveLeave = (id) => {
-      setSelectedRow(id);
-      setAction('approve');
-    };
-  
-    const handleRejectLeave = (id) => {
-      setSelectedRow(id);
-      setAction('reject');
-    };
-  
-    const handleConfirmAction = () => {
-      if (action === 'approve') {
-        setTableRows(tableRows.map((row) =>
-          row.id === selectedRow ? { ...row, status: 'Approved' } : row
-        ));
-      } else if (action === 'reject') {
-        setTableRows(tableRows.map((row) =>
-          row.id === selectedRow ? { ...row, status: 'Rejected' } : row
-        ));
-      }
-      setSelectedRow(null);
-      setAction(null);
-    };
+  const [tableRows, setTableRows] = useState(rows);
+  const [selectedRows, setSelectedRows] = useState([]);
+  const [action, setAction] = useState(null);
+  const [warning, setWarning] = useState(false);
+
+  const handleApproveLeave = (id) => {
+    setSelectedRows([id]);
+    setAction('approve');
+  };
+
+  const handleRejectLeave = (id) => {
+    setSelectedRows([id]);
+    setAction('reject');
+  };
+
+  const handleSelectionChange = (selectionModel) => {
+    setSelectedRows(selectionModel);
+    const selectedNames = selectionModel.map((id) => {
+      const selectedRow = rows.find((row) => row.id === id);
+      return `${selectedRow?.id || ''} ${selectedRow?.empName || ''}`;
+    });
+    console.log('Selected names:', selectedNames);
+  };
+
+  const handleConfirmAction = () => {
+    if (action === 'approve') {
+      setTableRows(tableRows.map((row) => (selectedRows.includes(row.id) ? { ...row, status: 'Approved' } : row)));
+    } else if (action === 'reject') {
+      setTableRows(tableRows.map((row) => (selectedRows.includes(row.id) ? { ...row, status: 'Rejected' } : row)));
+    }
+    setSelectedRows([]);
+    setAction(null);
+  };
+
+  const handleCancel = () => {
+    setSelectedRows([]);
+    setAction(null);
+  }
+
+  // ========== Auto Remove Warning Alert ========
+  useEffect(() => {
+    let timer;
+    if (warning) {
+      timer = setTimeout(() => {
+        setWarning(false);
+      }, 5000);
+    }
+    return () => clearTimeout(timer);
+  }, [warning]);
 
   const columns = [
     { field: 'empCode', headerName: 'Emp. Code', flex: 1, minWidth: 130 },
@@ -57,12 +93,12 @@ const LeaveTable = () => {
         <Box onClick={(event) => event.stopPropagation()}>
           <Tooltip title="Approve">
             <IconButton onClick={() => handleApproveLeave(params.row.id)}>
-              <CheckCircleTwoToneIcon sx={{ color: '#5ce975d1' }} />
+              <CheckCircleTwoToneIcon sx={{ color: '#70cf80a3' }} />
             </IconButton>
           </Tooltip>
           <Tooltip title="Reject">
             <IconButton onClick={() => handleRejectLeave(params.row.id)}>
-              <CancelTwoToneIcon sx={{ color: '#ff7070ad' }} />
+              <CancelTwoToneIcon sx={{ color: '#e18b8b85' }} />
             </IconButton>
           </Tooltip>
         </Box>
@@ -73,45 +109,94 @@ const LeaveTable = () => {
   return (
     <>
       <Card sx={{ padding: '16px' }}>
-        <Box mt={3}>
+        <Box p={1} mb={2} sx={{ borderBottom: '1px solid #ccc', display: 'flex', justifyContent: 'space-between' }}>
+          <Box sx={{ display: 'flex', alignItems: 'end' }}>
+            <Typography variant="h4" sx={{ pb: '0px' }}>
+              Pending Leaves For Approvals
+            </Typography>
+          </Box>
+        </Box>
+        <Box>
+          <Button
+            sx={{ marginRight: '8px' }}
+            variant="contained"
+            onClick={() => {
+              if (selectedRows.length === 0) {
+                console.log('Please select rows first.');
+                setWarning(true);
+              } else {
+                setAction('approve');
+              }
+            }}
+          >
+            Approve
+          </Button>
+          <Button
+            variant="outlined"
+            onClick={() => {
+              if (selectedRows.length === 0) {
+                console.log('Please select rows first.');
+                setWarning(true);
+              } else {
+                setAction('reject');
+              }
+            }}
+          >
+            Reject
+          </Button>
+          {/* ========= Warning Alert box ========== */}
+          {warning === true && (
+            <Box mt={2}>
+              <Alert
+                severity="info"
+                action={
+                  <IconButton aria-label="close" color="inherit" size="small" onClick={() => setWarning(false)}>
+                    <CloseIcon fontSize="inherit" />
+                  </IconButton>
+                }
+              >
+                Please select rows first.
+              </Alert>
+            </Box>
+          )}
+        </Box>
+
+        <Box mt={2}>
           <CommonDataGrid
             rows={tableRows}
             columns={columns}
             initialState={{
-                pagination: { paginationModel: { page: 0, pageSize: 50 } }
-              }}
-              pageSizeOptions={[10, 25, 50, 100]}
-              checkboxSelection
+              pagination: { paginationModel: { page: 0, pageSize: 50 } }
+            }}
+            pageSizeOptions={[10, 25, 50, 100]}
+            checkboxSelection
+            disableRowSelectionOnClick
+            rowSelectionModel={selectedRows}
+            onRowSelectionModelChange={handleSelectionChange}
           />
         </Box>
       </Card>
 
-      {/* Approve Confirmation Dialog */}
-      <Dialog open={action === 'approve'} onClose={() => setAction(null)}>
-        <DialogTitle>Confirm Approval</DialogTitle>
+      <Dialog open={action === 'approve' || action === 'reject'} onClose={() => setAction(null)}>
+        <DialogTitle>{action === 'approve' ? 'Confirm Approval' : 'Confirm Rejection'}</DialogTitle>
         <DialogContent>
-          <Typography>Are you sure you want to approve leave application with ID {selectedRow}?</Typography>
+          <Typography>
+            {action === 'approve'
+              ? 'Are you sure you want to approve selected leave applications?'
+              : 'Are you sure you want to reject selected leave applications?'}
+          </Typography>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleConfirmAction} color="primary">Approve</Button>
-          <Button onClick={() => setAction(null)} color="inherit">Cancel</Button>
-        </DialogActions>
-      </Dialog>
-
-      {/* Reject Confirmation Dialog */}
-      <Dialog open={action === 'reject'} onClose={() => setAction(null)}>
-        <DialogTitle>Confirm Rejection</DialogTitle>
-        <DialogContent>
-          <Typography>Are you sure you want to reject leave application with ID {selectedRow}?</Typography>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleConfirmAction} color="error">Reject</Button>
-          <Button onClick={() => setAction(null)} color="inherit">Cancel</Button>
+          <Button onClick={handleConfirmAction} color={action === 'approve' ? 'primary' : 'error'}>
+            {action === 'approve' ? 'Approve' : 'Reject'}
+          </Button>
+          <Button onClick={handleCancel} color="inherit">
+            Cancel
+          </Button>
         </DialogActions>
       </Dialog>
     </>
   );
-}
+};
 
 export default LeaveTable;
-
