@@ -1,5 +1,5 @@
 // PAGE OWNER: DAMANDEEP
-import React,{useState} from 'react';
+import React from 'react';
 import { Typography, TextField, Box, Checkbox, Button, Drawer } from '@mui/material';
 import ParamMultipleSelect from 'components/ui/custom-input/MultipleSelect';
 import ParameterizedAutoComplete from 'components/ui/custom-input/AutoComplete';
@@ -123,6 +123,7 @@ closeDrawer(e)
               Save
             </Button>
           </Box>
+        </Box>
         </Box>
       </Drawer>
     </>
