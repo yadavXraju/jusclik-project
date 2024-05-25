@@ -5,11 +5,11 @@ import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Drawer, Button, CardActionArea, CardActions } from '@mui/material';
-import PortraitImage1 from '../../../../../../../assets/images/invoice-template/templatePortrait1.png';
-import PortraitImage2 from '../../../../../../../assets/images/invoice-template/templatePortrait2.png';
-import PortraitImage3 from '../../../../../../../assets/images/invoice-template/templatePortrait3.png';
-import PortraitImage4 from '../../../../../../../assets/images/invoice-template/templatePortrait4.png';
-import LandscapeImage1 from '../../../../../../../assets/images/invoice-template/templateLandscape1.png';
+import PortraitImage1 from 'assets/images/invoice-template/templatePortrait1.png';
+import PortraitImage2 from 'assets/images/invoice-template/templatePortrait2.png';
+import PortraitImage3 from 'assets/images/invoice-template/templatePortrait3.png';
+import PortraitImage4 from 'assets/images/invoice-template/templatePortrait4.png';
+import LandscapeImage1 from 'assets/images/invoice-template/templateLandscape1.png';
 import {Badge} from '@mui/material'
 import useDrawer from 'hooks/useDrawer';
 import { useDispatch } from 'react-redux';

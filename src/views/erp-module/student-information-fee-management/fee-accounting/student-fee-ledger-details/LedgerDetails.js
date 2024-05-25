@@ -1,5 +1,5 @@
 // import React,{useState} from 'react';
-import user from '../../../../../../assets/images/users/user.jpg';
+import user from 'assets/images/users/user.jpg';
 import { Grid, Typography , Box ,  Select, MenuItem , InputLabel , FormControl , 
   //  FormControl, , InputLabel,  TextField,
 } 

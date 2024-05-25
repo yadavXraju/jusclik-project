@@ -2,7 +2,7 @@
 // Description :  Tabs 
 
 import React from 'react';
-import Dashboard from 'views/erp-module/student-information-fee-management/student-info-fee-management-dashboard/Dashboard';
+import Dashboard from 'views/erp-module/student-information-fee-management/dashboard/Dashboard';
 import DashboardPayRoll from 'pages/getting-started';
 import SetupTabs from 'components/Stepper';
 import HomeTwoToneIcon from '@mui/icons-material/HomeTwoTone';
