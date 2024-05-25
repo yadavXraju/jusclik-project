@@ -1,5 +1,4 @@
 import React from 'react';
-import DashboardContent from './dashboard';
 import DashboardPayRoll from 'pages/getting-started';
 import SetupTabs from 'components/Stepper';
 import HomeTwoToneIcon from '@mui/icons-material/HomeTwoTone';
@@ -7,8 +6,8 @@ import SettingsSuggestTwoToneIcon from '@mui/icons-material/SettingsSuggestTwoTo
 import NotificationsActiveTwoToneIcon from '@mui/icons-material/NotificationsActiveTwoTone';
 import { useMediaQuery } from '@mui/material';
 import { DashboardTab } from 'components/dashboard/CommonCss';
-
-const Dashboard = () => {
+import Dashboard from './Dashboard';
+const DashboardTabs = () => {
 
   const isTab = useMediaQuery('(max-width:991px)')
   const tabPage = [
@@ -16,7 +15,7 @@ const Dashboard = () => {
       id: 1,
       name: 'Dashboard',
       value: '1',
-      component:DashboardContent,
+      component:Dashboard,
       icon: <HomeTwoToneIcon sx={{mb:'0 !important'}} />
     },
     {
@@ -58,4 +57,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default DashboardTabs;
