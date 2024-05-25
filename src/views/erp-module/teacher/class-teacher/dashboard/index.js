@@ -130,7 +130,7 @@ const ClassTeacherFavPages = () => {
 
 
 // =============== time table imports
-import TeacherTimeTable from 'components/table-data-grid/TeacherTimeTable';
+import TeacherTimeTable from 'components/table-data-grid/temp-TeacherTimeTable';
 export const TeacherTimeTableDetails = [
   {
       id:1,

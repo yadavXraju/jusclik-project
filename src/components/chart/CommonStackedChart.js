@@ -1,9 +1,11 @@
+// Page Owner - Kulwinder SIngh
+ // Description : Apex Stacked Bar  Chart
 import React from 'react';
 import Chart from 'react-apexcharts';
-import { HeadingCss } from 'components/dashboard/CommonCss';
+import ParamWidgetHeader from 'components/dashboard/WidgetHeader';
 import { Grid, Typography, Box, Divider } from '@mui/material';
 
-const CommonStackedChart = ({ ChartSeries, StackedChartTitle ,StackedBarColor ,StackedChartXCategories  }) => {
+const CommonStackedChart = ({ ChartSeries, StackedChartTitle, StackedBarColor, StackedChartXCategories }) => {
   // Function to calculate the sum of data for each product
   const calculatetotalclaim = () => {
     return ChartSeries.reduce((total, series) => {
@@ -55,7 +57,7 @@ const CommonStackedChart = ({ ChartSeries, StackedChartTitle ,StackedBarColor ,S
       }
     },
     xaxis: {
-      categories:StackedChartXCategories 
+      categories: StackedChartXCategories
     },
     legend: {
       position: 'top',
@@ -79,20 +81,7 @@ const CommonStackedChart = ({ ChartSeries, StackedChartTitle ,StackedBarColor ,S
 
   return (
     <>
-      <Grid
-        sx={{
-          padding: '24px 24px 0 24px',
-          background: '#f9f9fb',
-          borderBottom: '1px solid rgba(128, 128, 128, 0.25)',
-          borderRadius: '12px 12px 0px 0',
-          display: 'flex',
-          justifyContent: 'space-between'
-        }}
-      >
-        <Typography variant="h2" style={{ ...HeadingCss, border: 'none' }}>
-          {StackedChartTitle}
-        </Typography>
-      </Grid>
+      <ParamWidgetHeader title={StackedChartTitle} />
       <Chart options={options} series={options.series} type="bar" height={350} />
       <Divider sx={{ paddingTop: '0.5rem' }} />
       <Box sx={{ padding: '0rem 2rem' }}>

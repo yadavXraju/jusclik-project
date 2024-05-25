@@ -118,7 +118,7 @@ const CommonChart = ({ Data, heading, hideDiv, chartdetails = [] }) => {
               </Typography>
               <Grid container spacing={1}>
                 {chartdetails.map((item, index) => (
-                  <Grid item lg={4} key={index}>
+                  <Grid item lg={4} md={4} sm={4} xs={12} key={index}>
                     <Typography variant="body" sx={{ fontSize: '12px' }}>
                       {item.label}
                     </Typography>

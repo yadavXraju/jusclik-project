@@ -5,7 +5,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import MainCard from 'components/ui/cards/MainCard';
 import { useTheme, useMediaQuery, Box, Typography } from '@mui/material';
-import ProdileCard from './StudentProfile';
+import ProfileCard from './StudentProfile';
 import Grid from '@mui/material/Grid';
 import ProfileForm from './ProfileForm';
 import FatherDetails from './FatherDetails';
@@ -96,7 +96,7 @@ function Profile() {
       <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2}>
         <Grid item xs={12} sm={4}>
-        <ProdileCard/>
+        <ProfileCard/>
         </Grid>
         <Grid item xs={12} sm={8}>
           <ProfileForm/>
