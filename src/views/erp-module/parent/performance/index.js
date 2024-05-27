@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { Box, Tab, Paper, useMediaQuery, useTheme,  IconButton } from '@mui/material';
 import { TabContext, TabPanel, TabList } from '@mui/lab';
-import Performance from './performanceComponent/Performance';
+import Performance from './Performance';
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 // import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
