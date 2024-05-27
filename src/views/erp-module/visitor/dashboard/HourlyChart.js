@@ -1,9 +1,9 @@
 // sangeeta
 import React from 'react';
 import Chart from 'react-apexcharts';
-import { Paper , Grid , Typography } from '@mui/material';
-import {HeadingCss } from 'components/dashboard/CommonCss';
+import { Paper , Grid  } from '@mui/material';
 import { gridSpacing } from 'store/constant';
+import ParamWidgetHeader from 'components/dashboard/WidgetHeader';
 
 
 export default function HourlyChart() {
@@ -63,10 +63,7 @@ export default function HourlyChart() {
   return (
   
       <Paper spacing={gridSpacing}  >
-          <Grid sx={{ padding: '24px 24px 0 24px', background: '#f9f9fb', borderBottom: '1px solid rgba(128, 128, 128, 0.25)', borderRadius: '12px 12px 0px 0' }}>
-          <Typography variant='h2' style={{ ...HeadingCss, border: 'none' }}>Hourly Visitor</Typography>
-        </Grid>
-
+          <ParamWidgetHeader title='Hourly Visitor' />
 
           <Grid   >
               {/* <ApexCharts options={chartData} series={chartData.series} type="donut"  height={ isMediumDesktop ? 370 : 370} /> */}

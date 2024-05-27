@@ -3,7 +3,7 @@ import React from 'react'
 import ApexCharts from 'react-apexcharts';
 import { Grid, Paper, Typography, useMediaQuery,Box } from '@mui/material';
 import { gridSpacing } from 'store/constant';
-import { HeadingCss } from 'components/dashboard/CommonCss';
+import ParamWidgetHeader from 'components/dashboard/WidgetHeader';
 
 
 
@@ -93,9 +93,8 @@ const DepartmentwiseVisitor = () => {
     <>
        <Paper spacing={gridSpacing} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', border: '1px solid rgb(227, 227, 227)'}}>
    {/* ================================= heading  =================================  */}
-   <Grid sx={{ padding: '24px 24px 0 24px', background: '#f9f9fb', borderBottom: '1px solid rgba(128, 128, 128, 0.25)', borderRadius: '12px 12px 0px 0' }}>
-          <Typography variant='h2' style={{ ...HeadingCss, border: 'none' }}>Department Wise Visitor</Typography>
-        </Grid>
+
+        <ParamWidgetHeader title='Department Wise Visitor' />
 
         <Grid sx={{ display:'flex',flexDirection:isMobile?"column":"row" ,paddingBottom:isMobile?'10px' :"0px"}}>
           {/* =================================  chart =================================   */}

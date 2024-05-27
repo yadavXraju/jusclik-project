@@ -1,10 +1,10 @@
 // sangeeta
 import React from 'react';
 import { Paper, Typography, Grid, Table, TableRow, TableCell, TableBody, Avatar, Box, TableHead, useMediaQuery } from '@mui/material';
-import { HeadingCss } from 'components/dashboard/CommonCss';
 import { gridSpacing } from 'store/constant';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import EventIcon from '@mui/icons-material/Event';
+import ParamWidgetHeader from 'components/dashboard/WidgetHeader';
 
 const RecentVisitors = () => {
   const isMobile = useMediaQuery('(max-width: 767px)');
@@ -57,9 +57,7 @@ const RecentVisitors = () => {
 
   return (
     <Paper spacing={gridSpacing} sx={{ display: 'flex', borderRadius: '12px', flexDirection: 'column', justifyContent: 'space-between', border: '1px solid rgb(227, 227, 227)', boxShadow: '4px 4px 9px 2px #ddddddc2' }}>
-      <Grid sx={{ padding: '24px 24px 0 24px', background: '#f9f9fb', borderBottom: '1px solid rgba(128, 128, 128, 0.25)', borderRadius: '12px 12px 0px 0' }}>
-        <Typography variant='h2' style={{ ...HeadingCss, border: 'none' }}>Recent Visitors</Typography>
-      </Grid>
+      <ParamWidgetHeader title='Recent Visitors' />
       <Grid container height="424px" className='scrollbar-2' sx={{ overflow: isMobile ? 'scroll' : 'hidden' }}>
         <Table>
           <TableHead>
