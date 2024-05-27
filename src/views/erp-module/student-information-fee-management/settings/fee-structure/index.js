@@ -1,9 +1,12 @@
-import { Box, Typography, Button , useMediaQuery } from '@mui/material';
+// Page owner : Abhishek negi
+// description : Fee structure tabs and comp 
+import React,{useState} from 'react';
+import { Box, Typography, Button, useMediaQuery } from '@mui/material';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
-import ParamStepper from 'components/Stepper';
-import FeeHeads from './feeHead/FeeHeads';
+import ParamStepper from 'components/tabs/Stepper';
+import FeeHeads from './regular-fee-head/RegularFeeHeads';
 import Concession from './concession/Concession';
-import OtherSettings from './other-settings/OtherSettings';
+import OtherSettings from './OtherSettings';
 import useDrawer from 'hooks/useDrawer';
 import ReceiptTwoToneIcon from '@mui/icons-material/ReceiptTwoTone';
 import FeedTwoToneIcon from '@mui/icons-material/FeedTwoTone';
@@ -15,8 +18,11 @@ import OptionalFeeHead from './optional-fee-head/OptionalFeeHead';
 
 const FeeStructure = () => {
   const isTab = useMediaQuery('(max-width:991px)');
+  const [value, setValue] = useState(0);
 
-
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
   // drawer btn
   const { anchor, toggleDrawer } = useDrawer();
   const tabPage = [
@@ -26,10 +32,10 @@ const FeeStructure = () => {
       value: '1',
       component: FeeHeads,
       props: {
-         anchor:anchor,
-         toggleDrawer:toggleDrawer
+        anchor: anchor,
+        toggleDrawer: toggleDrawer
       },
-      icon:<ReceiptTwoToneIcon />,
+      icon: <ReceiptTwoToneIcon />,
     },
     {
       id: 2,
@@ -37,10 +43,10 @@ const FeeStructure = () => {
       value: '2',
       component: OptionalFeeHead,
       props: {
-         anchor:anchor,
-         toggleDrawer:toggleDrawer
+        anchor: anchor,
+        toggleDrawer: toggleDrawer
       },
-      icon:<FeedTwoToneIcon />,
+      icon: <FeedTwoToneIcon />,
     },
     {
       id: 3,
@@ -48,10 +54,10 @@ const FeeStructure = () => {
       value: '3',
       component: Concession,
       props: {
-        anchor:anchor,
-        toggleDrawer:toggleDrawer
+        anchor: anchor,
+        toggleDrawer: toggleDrawer
       },
-      icon:<DiscountTwoToneIcon />,
+      icon: <DiscountTwoToneIcon />,
     },
     {
       id: 4,
@@ -59,10 +65,10 @@ const FeeStructure = () => {
       value: '4',
       component: FeeHeads,
       props: {
-        anchor:anchor,
-        toggleDrawer:toggleDrawer
+        anchor: anchor,
+        toggleDrawer: toggleDrawer
       },
-      icon:<NewReleasesTwoToneIcon />,
+      icon: <NewReleasesTwoToneIcon />,
     },
     {
       id: 5,
@@ -70,10 +76,10 @@ const FeeStructure = () => {
       value: '5',
       component: OtherSettings,
       props: {
-        anchor:anchor,
-        toggleDrawer:toggleDrawer
+        anchor: anchor,
+        toggleDrawer: toggleDrawer
       },
-      icon:<SettingsTwoToneIcon/>,
+      icon: <SettingsTwoToneIcon />,
     }
   ];
   return (
@@ -100,8 +106,10 @@ const FeeStructure = () => {
         variant={isTab ? 'scrollable' : null}
         tabPage={tabPage}
         numberShow={false}
-        orientation={ isTab ? "horizontal" :"vertical"}
+        orientation={isTab ? "horizontal" : "vertical"}
         nextBtnText='Next'
+        value={value}
+        handleChange={handleChange}
         customtabWrapper={{
           display: 'flex',
           flexDirection: isTab ? 'column' : 'row',
@@ -113,11 +121,12 @@ const FeeStructure = () => {
           }
         }}
         // customtabStyle === tab btn style
-        customtabSytle={{ width:'100%', margin:'0', border: 'none', fontSize: '16px' , marginRight:isTab ? '0' : 'auto' , display:'flex' , flexDirection:'row' , justifyContent:'start' , alignItems:'center' , gap:'10px' , minHeight:'auto' , padding:'12px 20px' ,maxWidth:{xs:'fit-content', lg:'100%'}
-       }}
-        selectedTab={{background:'rgb(231 243 255)'}}
+        customtabSytle={{
+          width: '100%', margin: '0', border: 'none', fontSize: '16px', marginRight: isTab ? '0' : 'auto', display: 'flex', flexDirection: 'row', justifyContent: 'start', alignItems: 'center', gap: '10px', minHeight: 'auto', padding: '12px 20px', maxWidth: { xs: 'fit-content', lg: '100%' }
+        }}
+        selectedTab={{ background: 'rgb(231 243 255)' }}
         customtabPanelStyle={{ paddingTop: '0', height: 'auto' }}
-        customStyleTabs={{  minWidth: isTab ? 'auto' :'250px' ,borderRight: '1px solid rgba(224, 224, 224, 1)' , borderBottom:'1px solid #e0e0e0' ,  paddingTop:'10px' ,}}
+        customTabsStyle={{ minWidth: isTab ? 'auto' : '250px', borderRight: '1px solid rgba(224, 224, 224, 1)', borderBottom: '1px solid #e0e0e0', paddingTop: '10px', }}
       />
     </>
   );

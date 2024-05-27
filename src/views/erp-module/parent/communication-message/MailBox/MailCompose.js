@@ -8,7 +8,7 @@ import 'react-quill/dist/quill.snow.css';
 import CloseIcon from '@mui/icons-material/Close';
 import SendIcon from '@mui/icons-material/Send';
 import AttachmentIcon from '@mui/icons-material/Attachment';
-import { contactData } from '../Contact-list';
+import { contactData } from '../ContactList';
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;

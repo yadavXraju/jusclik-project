@@ -1,7 +1,7 @@
-import React from 'react';
+import React,{useState} from 'react';
 import Dashboard from 'views/erp-module/crm/dashboard/Dashboard';
 import DashboardPayRoll from 'pages/getting-started';
-import SetupTabs from 'components/Stepper';
+import SetupTabs from 'components/tabs/Stepper';
 import HomeTwoToneIcon from '@mui/icons-material/HomeTwoTone';
 import SettingsSuggestTwoToneIcon from '@mui/icons-material/SettingsSuggestTwoTone';
 import NotificationsActiveTwoToneIcon from '@mui/icons-material/NotificationsActiveTwoTone';
@@ -11,6 +11,11 @@ import { DashboardTab } from 'components/dashboard/CommonCss';
 const DashboardTabs = () => {
 
   const isTab = useMediaQuery('(max-width:991px)')
+  const [value, setValue] = useState(0);
+
+const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
   const tabPage = [
     {
       id: 1,
@@ -50,8 +55,10 @@ const DashboardTabs = () => {
 
         customtabPanelStyle={DashboardTab.customtabPanelStyle}
         customIconStyle={DashboardTab.customIconStyle}
-        customStyleTabs={DashboardTab.customStyleTabs}
+        customTabsStyle={DashboardTab.customTabsStyle}
         customtabWrapper={DashboardTab.customtabWrapper}
+        value={value}
+        handleChange={handleChange}
      />
       
     </>

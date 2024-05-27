@@ -4,7 +4,7 @@
 
 import React from 'react';
 import DashboardPayRoll from 'pages/getting-started';
-import SetupTabs from 'components/Stepper';
+import SetupTabs from 'components/tabs/Stepper';
 import HomeTwoToneIcon from '@mui/icons-material/HomeTwoTone';
 import SettingsSuggestTwoToneIcon from '@mui/icons-material/SettingsSuggestTwoTone';
 import NotificationsActiveTwoToneIcon from '@mui/icons-material/NotificationsActiveTwoTone';
@@ -49,11 +49,13 @@ const DashboardTabs = () => {
         showBottomNav={false}
         numberShow ={false}
         iconShow={false}
+        value={value}
+        handleChange={handleChange}
         customtabSytle = {DashboardTab.customtabSytle}
 
         customtabPanelStyle={DashboardTab.customtabPanelStyle}
         customIconStyle={DashboardTab.customIconStyle}
-        customStyleTabs={DashboardTab.customStyleTabs}
+        customTabsStyle={DashboardTab.customTabsStyle}
         customtabWrapper={DashboardTab.customtabWrapper}
      />
       

@@ -6,40 +6,49 @@ import ParameterizedAutoComplete from 'components/ui/custom-input/AutoComplete';
 import ParamMultipleSelect from 'components/ui/custom-input/MultipleSelect';
 
 const selectDate = Array.from({ length: 50 }, (_, index) => ({ label: (index + 1).toString(), value: index + 1 }));
+
+// const [taskData, setTaskData] = React.useState(null);
+
+
+
+
 const option=[
 {value:"1",label:"Before due date"},
 {value:"2",label:"After due date"},
 ]
 
+export const AddTaskDrawer=({toggleDrawer,state,setRows})=>{
 
-const validator=[
-  {value:"1",label:"Manager"},
-  {value:"2",label:"Team lead"},
-  ]
-  
-
-export const AddTaskDrawer=({toggleDrawer,state,rows,setRows})=>{
-
-  const[assign,setAssign]=useState([]);
+  const[assignTo,setAssignTo]=useState([]);
+  const [validator, setValidator] = React.useState([]);
+  const handleSetValidator = (val) => {
+    setValidator(val);
+    setTaskData((prev) => ({ ...prev, validator: val?.name }));
+  };
+  const handleSetAssignedTo = (val) => {
+    setAssignTo(val);
+    const assignedToArr = val.map((ele) => ele.name);
+    setTaskData((prev) => ({ ...prev, assignedTo: [assignedToArr] }));
+  };
   // const[validator,setValidator]=useState([{ id: 2, name: 'tarun' }]);
-  const names = [ { id: 1, name: 'Sangeeta' },
-  { id: 2, name: 'tarun' },
-  { id: 3, name: 'Aman' },
-  { id: 4, name: 'Sakshi' },
-  { id: 5, name: 'Jivesh' },
-  { id: 6, name: 'Jivesh' },
-    ];
+  const names = [
+    { id: 1, name: 'Employee' },
+    { id: 2, name: 'Payroll Admin' },
+    { id: 3, name: 'Not Available' }
+  ];
+  
   const [taskData,setTaskData]=React.useState('')
  
   // { id: 5, task: 'Bank Account Creation', dueOn: '3 day(s) after joining day', assignedTo: 'Payroll Admin', validator: 'Not Available' }
   const handleAdd=(e)=>{   
-setRows(prev=>([...prev,taskData]))
+
+setRows(prev=>([...prev,{...taskData,id:prev.length+1}]))
 const closeDrawer= toggleDrawer('addTask', false)
 closeDrawer(e)
   }
-  const handleAutoComplete=(e,val)=>{
-   setTaskData(prev=>({...prev,dueOn:`${val.value} day(s) after joining day`})) 
-  }
+  const handleDueDate = (e, value) => {
+    setTaskData((prev) => ({ ...prev, dueOn: `${value.value} day(s) after joining day` }));
+  };
   return (
       <>
 
@@ -62,9 +71,9 @@ closeDrawer(e)
         <Typography  sx={{mt:2, mb:1}}variant="h5" color="initial">Add  Task  Name</Typography>
         <TextField
           fullWidth
-          onChange={(e)=>{let taskName=e.target.value
-           const task=taskName
-           setTaskData(prev=>({...prev,task:task,id:rows?.length+1}))
+          onChange={(e)=>{
+          let task=e.target.value
+           setTaskData(prev=>({...prev,task:task}))
           }}
         />
         </Box>
@@ -80,20 +89,20 @@ closeDrawer(e)
          <Typography  sx={{mt:2, mb:1}}variant="h5" color="initial">
            Assigned to
             </Typography>
-            <ParamMultipleSelect options={names}  value={assign} setValue={setAssign}/>
+            <ParamMultipleSelect options={names}  value={assignTo||[]} setValue={handleSetAssignedTo}/>
          </Box>
 
          <Box>
          <Typography  sx={{mt:2, mb:1}}variant="h5" color="initial">
            Validator
             </Typography>
-            {/* <ParamMultipleSelect options={names}  value={validator} setValue={setValidator} /> */}
-            <ParameterizedAutoComplete
+            {<ParamMultipleSelect options={names}  value={validator} setValue={handleSetValidator} multiple={false} />}
+            {/* <ParameterizedAutoComplete
              option={ validator}
              fullWidth
              customStyle={{width:"100%"}}
         
-             />
+             /> */}
          </Box>
           <Box xs={12} sx={{display:"flex", flexDirection:"row",justifyContent:"flex-start" ,width:"100%",alignItems:"center",mt:2,mb:1}}>
                       
@@ -101,7 +110,7 @@ closeDrawer(e)
              option={selectDate}
              customStyle={{width:"100px",marginLeft:"10px",marginRight:"3px","& .MuiOutlinedInput-input":{height:"10px",textAlign:"center"}
              }}
-             onChange={handleAutoComplete}
+             onChange={handleDueDate}
              />
              <Typography  sx={{}}variant="h5" color="initial">days to done after joined</Typography>
          </Box>

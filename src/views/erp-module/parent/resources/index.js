@@ -2,11 +2,11 @@ import { useState } from 'react';
 import TabContext from '@mui/lab/TabContext';
 import { Paper , Box } from '@mui/material';
 import TabPanel from '@mui/lab/TabPanel';
-import TabLabel from './Tab/TabLabel';
-import Video from './video/Video';
-import Document from './document/Document';
-import Image from './images/Image';
-import Link from './links/Link';
+import TabLabel from './TabLabel';
+import Video from './Video';
+import Document from './Document';
+import Image from './Image';
+import Link from './Link';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 

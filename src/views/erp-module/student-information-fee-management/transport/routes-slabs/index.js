@@ -1,45 +1,30 @@
-// ======= Page Owner Vikash =========
-// ======= Return Tabs for Routes and Slab =========
-import * as React from 'react';
-import PropTypes from 'prop-types';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import { Card } from '@mui/material';
+// // ======= Page Owner Vikash =========
+// // ======= Return Tabs for Routes and Slab =========
+
+import React, { useState } from 'react';
+import ParamStepper from 'components/tabs/Stepper';
+import { Card, Box } from '@mui/material';
 import TransportRouteTable from './TransportRouteTable';
 import SlabTable from './SlabTable';
 
-function CustomTabPanel(props) {
-  const { children, value, index, ...other } = props;
+const RoutesAndSlabs = () => {
+  const [value, setValue] = useState(0);
 
-  return (
-    <div role="tabpanel" hidden={value !== index} id={`simple-tabpanel-${index}`} aria-labelledby={`simple-tab-${index}`} {...other}>
-      {value === index && (
-        <Box sx={{ padding:{xs:0 , sm:2} }}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
-    </div>
-  );
-}
-
-CustomTabPanel.propTypes = {
-  children: PropTypes.node,
-  index: PropTypes.number.isRequired,
-  value: PropTypes.number.isRequired
-};
-
-function a11yProps(index) {
-  return {
-    id: `simple-tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`
-  };
-}
-
-export default function RoutesAndSlabs() {
-  const [value, setValue] = React.useState(0);
-
+  // drawer btn
+  const tabPage = [
+    {
+      id: 1,
+      name: 'Slabs',
+      value: '1',
+      component: SlabTable
+    },
+    {
+      id: 2,
+      name: 'Route',
+      value: '2',
+      component: TransportRouteTable
+    }
+  ];
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -48,21 +33,21 @@ export default function RoutesAndSlabs() {
     <>
       <Card sx={{ padding: '16px' }}>
         <Box sx={{ width: '100%' }}>
-          <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-            <Tabs value={value} variant="scrollable" onChange={handleChange} aria-label="basic tabs example">
-              <Tab label="Slabs" {...a11yProps(0)} />
-              <Tab label="Route" {...a11yProps(1)} />
-              
-            </Tabs>
-          </Box>
-          <CustomTabPanel value={value} index={0}>
-          <SlabTable/>
-          </CustomTabPanel>
-          <CustomTabPanel value={value} index={1}>
-           <TransportRouteTable/>
-          </CustomTabPanel>
+          {/* stepper tabs  */}
+          <ParamStepper
+            variant={'scrollable'}
+            tabPage={tabPage}
+            numberShow={false}
+            showBottomNav={false}
+            iconShow={false}
+            value={value}
+            handleChange={handleChange}
+            customtabWrapper={{ marginTop: '0px' }}
+          />
         </Box>
       </Card>
     </>
   );
-}
+};
+
+export default RoutesAndSlabs;

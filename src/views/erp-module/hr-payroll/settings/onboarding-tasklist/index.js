@@ -1,7 +1,7 @@
 // PAGE OWNER: DAMANDEEP
 import React from 'react';
 import CustomTabs from './CustomTabs';
-import { Box, IconButton, Tooltip } from '@mui/material';
+import { Box, IconButton, Tooltip, Typography } from '@mui/material';
 import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 
@@ -31,27 +31,28 @@ const OnboardingTasklist = () => {
   });
 
   const [rows, setRows] = React.useState([
-    { id: 1, task: 'IT Declaration', dueOn: '1 day(s) after joining day', assignedTo: 'Employee', validator: 'Payroll Admin' },
-    { id: 2, task: 'Submit Bank Account Details', dueOn: '1 day(s) after joining day', assignedTo: 'Employee', validator: 'Payroll Admin' },
-    { id: 3, task: 'Submit PAN Card details', dueOn: '0 day(s) after joining day', assignedTo: 'Employee', validator: 'Payroll Admin' },
-    { id: 4, task: 'Collection of Forms', dueOn: '3 day(s) after joining day', assignedTo: 'Employee', validator: 'Payroll Admin' },
-    { id: 5, task: 'Bank Account Creation', dueOn: '3 day(s) after joining day', assignedTo: 'Payroll Admin', validator: 'Not Available' },
+    { id: 1, task: 'IT Declaration', dueOn: '1 day(s) after joining day', assignedTo:[ 'Employee' ],validator: 'Payroll Admin' },
+    { id: 2, task: 'Submit Bank Account Details', dueOn: '1 day(s) after joining day', assignedTo:[ 'Employee'],validator: 'Payroll Admin' },
+    { id: 3, task: 'Submit PAN Card details', dueOn: '0 day(s) after joining day', assignedTo:[ 'Employee', ],validator: 'Payroll Admin' },
+    { id: 4, task: 'Collection of Forms', dueOn: '3 day(s) after joining day', assignedTo:[ 'Employee'],validator: 'Payroll Admin' },
+    { id: 5, task: 'Bank Account Creation', dueOn: '3 day(s) after joining day', assignedTo:[ 'Payroll Admin'], validator: 'Not Available' },
     {
       id: 6,
       task: 'Submit Previous Employment...',
       dueOn: '1 day(s) after joining day',
-      assignedTo: 'Employee',
+      assignedTo:[ 'Employee'],      
       validator: 'Payroll Admin'
     },
     {
       id: 7,
       task: 'Enroll employee in benefit...',
       dueOn: '1 day(s) after joining day',
-      assignedTo: 'Payroll Admin',
+      assignedTo:[ 'Payroll Admin'],
       validator: 'Not Available'
     }
   ]);
-  const [modalOpen, setmodalOpen] = React.useState(false);
+  const [rowModalOpen, setRowModalOpen] = React.useState(false);
+  const [tabModalOpen, setTabModalOpen] = React.useState(false);
   const [deleteId, setDeleteId] = React.useState(null); // State to store the id of the row to be deleted
   const [editId,setEditId]=React.useState(null)
   const [state, setState] = React.useState({
@@ -70,7 +71,7 @@ const OnboardingTasklist = () => {
     // Set the id of the row to be deleted
     setDeleteId(id);
     // Open the warning dialog
-    setmodalOpen(true);
+    setRowModalOpen(true);
   };
 
   const handleConfirmDelete = () => {
@@ -79,13 +80,16 @@ const OnboardingTasklist = () => {
     // Update the rows state
     setRows(updatedRows);
     // Close the warning dialog
-    setmodalOpen(false);
+    setRowModalOpen(false);
     // Reset the deleteId state
     setDeleteId(null);
   };
 
-  const handleModalClose = () => {
-    setmodalOpen(false);
+  const handleModalClose = (str) => {
+    if(str==='row')
+    setRowModalOpen(false);
+  if(str==='tab')
+    setTabModalOpen(false)
   };
 
   const toggleDrawer = (anchor, open) => (event) => {
@@ -98,7 +102,13 @@ const OnboardingTasklist = () => {
   const columns = [
     { field: 'task', headerName: 'Task', width: 260 },
     { field: 'dueOn', headerName: 'Due On', width: 260 },
-    { field: 'assignedTo', headerName: 'Assigned To', width: 260 },
+    { field: 'assignedTo', headerName: 'Assigned To', width: 260, renderCell: (params) => (
+      <Box>
+        {params.value.map((task, index) => (
+          <Typography key={index}>{task}</Typography>
+        ))}
+      </Box>
+    ), },
     { field: 'validator', headerName: 'Validator', width: 250 },
     {
       field: 'Action',
@@ -160,8 +170,10 @@ const OnboardingTasklist = () => {
         setTabsData={setTabsData}
         selectedTab={selectedTab}
         setSelectedTab={setSelectedTab}
-        modalOpen={modalOpen}
-        setmodalOpen={setmodalOpen}
+        rowModalOpen={rowModalOpen}
+        tabModalOpen={tabModalOpen}
+        setTabModalOpen={setTabModalOpen}
+        setRowModalOpen={setRowModalOpen}
         rows={rows}
         setRows={setRows}
         columns={columns}

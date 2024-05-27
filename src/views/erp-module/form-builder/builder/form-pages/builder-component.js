@@ -1,7 +1,7 @@
 //@Page Onwer-Tarun Pandey
 import React, { useState } from 'react'
-import { Box, Typography, Paper, Drawer} from '@mui/material';
-import ParamStepper from 'components/Stepper';
+import { Box, Typography, Paper, Drawer } from '@mui/material';
+import ParamStepper from 'components/tabs/Stepper';
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import { useSelector, useDispatch } from 'react-redux';
 import { handleSelectField } from 'store/form-builder/custom-form-slice';
@@ -88,7 +88,11 @@ const SelectedFormFields = () => {
   const [recentlyDropped, setRencetlyDropped] = useState(-1);
   const [clickedField, setClickedFiled] = useState(-1);
   const { basicFields } = useSelector((state) => state.customForm);
+  const [value, setValue] = useState(0);
 
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
   const tabPages = [
     {
       id: 1,
@@ -105,6 +109,8 @@ const SelectedFormFields = () => {
   const handleDragAndDrop = (result) => {
     const { source, destination } = result;
     //if either source or destination is null
+    
+
     if (!source?.droppableId || !destination?.droppableId)
       return;
 
@@ -141,7 +147,8 @@ const SelectedFormFields = () => {
           <Box sx={{ width: "30%" }} className="scrollbar">
             <ParamStepper tabPage={tabPages} numberShow={false}
               iconShow={false} showBottomNav={false}
-              customStyleTabs={{ backgroundColor: "white", paddingLeft: "20px" }}
+              value={value} handleChange={handleChange}
+              customTabsStyle={{ backgroundColor: "white", paddingLeft: "20px" }}
               customtabPanelStyle={{
                 borderTopLeftRadius: '0px',
                 borderTopRightRadius: '0px',
