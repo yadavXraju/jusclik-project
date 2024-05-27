@@ -3,12 +3,7 @@
 
 import React from 'react'
 import {Box, Typography,Paper, useMediaQuery} from '@mui/material'
-import OnlineTest from './onlineAssesment/OnlineTest'
-
-
-
-
-
+import OnlineTest from './OnlineTest'
 
 const OnlineAssessment = () => {
   const res2560 = useMediaQuery('(min-width:2000px)')
