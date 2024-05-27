@@ -1,3 +1,6 @@
+// Page owner : Abhishek negi
+// description : Optional fee head preview 
+
 import React, { useState } from 'react';
 import {
   Grid, Table, TableBody, TableCell, TableContainer,
@@ -5,7 +8,9 @@ import {
   Box, Typography, Button, styled,
 } from '@mui/material';
 import { useSelector, useDispatch } from 'react-redux';
-import { feeHeadConfigGlobally , setFeeHeads } from 'store/student-info-and-fee/settings/fee-structure/fee-structure-slice';
+import { OptionalFeeHeadConfigGlobally , setFeeHeads } from 'store/student-info-and-fee/settings/fee-structure/fee-structure-slice';
+
+
 
 // Styled component for visually hidden input
 export const VisuallyHiddenInput = styled('input')({
@@ -38,7 +43,7 @@ export const style = {
   }
 };
 
-const FeeHeadPreview = ({ customStyle, clearStates }) => {
+const OptionalFeeHeadPreview = ({ customStyle, clearStates }) => {
   const dispatch = useDispatch();
   const [amounts, setAmounts] = useState([]);
   const [checkboxStates, setCheckboxStates] = useState({});
@@ -105,7 +110,7 @@ const FeeHeadPreview = ({ customStyle, clearStates }) => {
   };
   
   const handleSave = () => {
-    dispatch(feeHeadConfigGlobally(PreviewData));
+    dispatch(OptionalFeeHeadConfigGlobally(PreviewData));
     dispatch(setFeeHeads([]));
     setAmounts([]);
     setCheckboxStates({});
@@ -239,4 +244,4 @@ const FeeHeadPreview = ({ customStyle, clearStates }) => {
   );
 };
 
-export default FeeHeadPreview;
+export default OptionalFeeHeadPreview;

@@ -19,7 +19,7 @@ import GmailInboxTemplate from 'views/erp-module/parent/communication-message/Ma
 import ParamWidgetHeader from 'components/dashboard/WidgetHeader';
 import WelcomeMessageTemplate from 'components/dashboard/Welcome';
 import CommonCounter from "components/dashboard/CommonCounter";
-
+// import TeacherTimeTable from 'components/table-data-grid/temp-TeacherTimeTable';
 
 // Welcome  section start
 const ClassTeacherWelcomeMessage = () => { 
@@ -129,51 +129,51 @@ const ClassTeacherFavPages = () => {
 }
 
 
-// =============== time table imports
-import TeacherTimeTable from 'components/table-data-grid/temp-TeacherTimeTable';
-export const TeacherTimeTableDetails = [
-  {
-      id:1,
-      period : 'I',
-      class : 'V A',
-      subject : 'Hindi',
-      Time : '9:00am-9:45'
-  },
+// =============== time table
 
-  {
-      id:2,
-      period : 'II',
-      class : 'V B',
-      subject : 'English',
-      Time : '9:45am-10:30'
-  },
+// export const TeacherTimeTableDetails = [
+//   {
+//       id:1,
+//       period : 'I',
+//       class : 'V A',
+//       subject : 'Hindi',
+//       Time : '9:00am-9:45'
+//   },
+
+//   {
+//       id:2,
+//       period : 'II',
+//       class : 'V B',
+//       subject : 'English',
+//       Time : '9:45am-10:30'
+//   },
 
   
-  {
-      id:3,
-      period : 'III',
-      class : 'IV A',
-      subject : 'Math',
-      Time : '10:30am-11:15'
-  },
+//   {
+//       id:3,
+//       period : 'III',
+//       class : 'IV A',
+//       subject : 'Math',
+//       Time : '10:30am-11:15'
+//   },
 
       
-  {
-      id:4,
-      period : 'IV',
-      class : 'V A',
-      subject : 'Science',
-      Time : '11:15am-12:00'
-  },
-]
+//   {
+//       id:4,
+//       period : 'IV',
+//       class : 'V A',
+//       subject : 'Science',
+//       Time : '11:15am-12:00'
+//   },
+// ]
 
-const ClassTeacherTimeTable = () => {
-  return (
-    <>
-       <TeacherTimeTable TeacherTimeTableDetails={TeacherTimeTableDetails}/>
-    </>
-  )
-}
+// const ClassTeacherTimeTable = () => {
+//   return (
+//     <>
+//        <TeacherTimeTable TeacherTimeTableDetails={TeacherTimeTableDetails}/>
+//     </>
+//   )
+// }
 
 
 const Dashboard = ({ isLoading }) => {
@@ -253,9 +253,9 @@ const Dashboard = ({ isLoading }) => {
              <StudentLeave isLoading={isLoading} />
           </Grid>
      
-          <Grid item xs={12} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>           
+          {/* <Grid item xs={12} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>           
              <ClassTeacherTimeTable isLoading={isLoading} />
-          </Grid>
+          </Grid> */}
 
         </Grid>
       </Grid>

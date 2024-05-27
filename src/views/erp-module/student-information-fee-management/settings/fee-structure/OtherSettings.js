@@ -1,3 +1,6 @@
+// Page owner : Abhishek negi
+// description : Other settings
+
 import React, { useState } from 'react';
 import { Grid, Paper, Typography } from '@mui/material';
 import FormGroup from '@mui/material/FormGroup';

@@ -1,3 +1,6 @@
+// Page owner : Abhishek negi
+// description : Concession Config Globally Preview table
+
 import React, { useState } from 'react';
 import {
   Grid, Table, TableBody, TableCell, TableContainer,

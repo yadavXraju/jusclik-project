@@ -1,9 +1,12 @@
+// Page owner : Abhishek negi
+// description : Fee structure tabs and comp 
+
 import { Box, Typography, Button , useMediaQuery } from '@mui/material';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import ParamStepper from 'components/tabs/Stepper';
-import FeeHeads from './feeHead/FeeHeads';
+import FeeHeads from './regular-fee-head/RegularFeeHeads';
 import Concession from './concession/Concession';
-import OtherSettings from './other-settings/OtherSettings';
+import OtherSettings from './OtherSettings';
 import useDrawer from 'hooks/useDrawer';
 import ReceiptTwoToneIcon from '@mui/icons-material/ReceiptTwoTone';
 import FeedTwoToneIcon from '@mui/icons-material/FeedTwoTone';
