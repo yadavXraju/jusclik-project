@@ -22,10 +22,10 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import LeftLogo from './LeftLogo';
-import EnterMobileDialog from './EnterMobileDialog';
+import EnterMobileDialog from '../login/EnterMobileDialog';
 import SelectAccount from './SelectAccount';
 import PoweredBySection from './PoweredBy';
-import MobileLogin from './MobileLogin';
+import MobileLogin from '../login/MobileLogin';
 import AppStoreButtonsGroup from './AppStoreLogos';
 
 

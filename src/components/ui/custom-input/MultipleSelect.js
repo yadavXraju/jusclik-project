@@ -10,18 +10,20 @@ export default function ParamMultipleSelect({ options, value, setValue, label = 
     setValue(newValue);
   };
 
-  console.log(value);
+
   // Filter out selected options from the available options
     let filteredOptions  
     if(multiple)
-    filteredOptions=options.filter(option => !value.some(val => val.id === option.id));
+    filteredOptions=options.filter(option => !value?.some(val => val?.id === option?.id));
+
+    
 
   return (
     <Autocomplete
       multiple={multiple}
       id="student-autocomplete"
       options={multiple?filteredOptions:options}
-      getOptionLabel={(option) => option.name}
+      getOptionLabel={(option) => option?.name}
       value={value}
       onChange={handleChange}
       sx={sx}
@@ -36,8 +38,8 @@ export default function ParamMultipleSelect({ options, value, setValue, label = 
       renderTags={(value, getTagProps) =>
         value.map((option, index) => (
           <Chip
-            key={option.id}
-            label={option.name}
+            key={option?.id}
+            label={option?.name}
             {...getTagProps({ index })}
             onDelete={() => {
               const newValue = [...value];
