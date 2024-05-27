@@ -9,13 +9,13 @@ import { gridSpacing } from 'store/constant';
 
 
 // import VisitorDetail from './visitor-detail';
-import HourlyVisior from 'views/erp-module/visitor/visitor-dashboard/Dashboard/HourlyChart';
-import DepartmentwiseVisitor from 'views/erp-module/visitor/visitor-dashboard/Dashboard/DepartmentwiseVisitor';
-import RecentVisitors from 'views/erp-module/visitor/visitor-dashboard/Dashboard/RecentVisitors';
-import Counters from 'views/erp-module/visitor/visitor-dashboard/Dashboard/Counter';
+import HourlyVisior from 'views/erp-module/visitor/dashboard/HourlyChart';
+import DepartmentwiseVisitor from 'views/erp-module/visitor/dashboard/DepartmentwiseVisitor';
+import RecentVisitors from 'views/erp-module/visitor/dashboard/RecentVisitors';
+import Counters from 'views/erp-module/visitor/dashboard/Counter';
 import NeedHelp from 'pages/HelpAndSupport';
 
-const DashboardContent = () => {
+const Dashboard = () => {
   return (
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
@@ -65,4 +65,4 @@ const DashboardContent = () => {
 
 
 
-export default  DashboardContent;
+export default  Dashboard;
