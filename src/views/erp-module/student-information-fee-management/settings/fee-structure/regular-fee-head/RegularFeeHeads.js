@@ -1,8 +1,142 @@
-import React from 'react';
+// Page owner : Abhishek negi
+// description : Regular fee head
+
+import React,{useState} from 'react';
 import ParamTableDragDrop from 'components/table-data-grid/TableDragDrop';
-import { Drawer,Box,Typography,Button } from '@mui/material';
-import FeeHeadDrawer from './FeeHeadDrawer';
-import FeeHeadConfigTab from './fee-head-config/FeeHeadConfigTab';
+import { Drawer,Box,Typography,Button ,  Grid , TextField } from '@mui/material';
+import SelectList from 'components/ui/custom-input/SelectList';
+import  ParamStepper from 'components/Stepper';
+import FeeHeadGlobally from 'views/erp-module/student-information-fee-management/settings/fee-structure/regular-fee-head/FeeHeadGlobally';
+import FeeHeadStudentWise from 'views/erp-module/student-information-fee-management/settings/fee-structure/regular-fee-head/FeeHeadStudentWise';
+
+// ===============   Add fee head Drawer start
+const FeeHeadDrawer = () => {
+  // ========= state for Attach Slab ============
+  const [feeHead, setFeeHead] = useState('');
+  const [periodicity, setperiodicity] = useState('');
+  const [feeType, setFeeType] = useState('');
+  const [toBeChargeFrom, setToBeChargeFrom] = useState('');
+
+
+
+
+  const PeriodicityOptions = [
+    { value: 'Monthly', label: 'Monthly' },
+    { value: 'Quarterly ', label: 'Quarterly ' },
+    { value: 'Half Yearly', label: 'Half Yearly' },
+    { value: 'Annually', label: 'Annually' },
+
+  ];
+
+  const FeeTypeOptions = [
+    { value: 'Supplementary', label: 'Supplementary' },
+    { value: 'One time ', label: 'One time ' },
+    { value: 'Half Yearly', label: 'Optional Fee Head' },
+
+  ];
+
+  const ToBeChargeFromOptions = [
+    { value: 'Old students', label: 'Old students' },
+    { value: 'New student', label: 'New student' },
+    { value: 'Old student and New student', label: 'Old student and New student' },
+
+  ];
+
+
+  const FeeHead = (event) => {
+    setFeeHead(event.target.value);
+  };
+
+
+  const Periodicity = (event) => {
+    setperiodicity(event.target.value);
+  };
+
+  const FeeType= (event) => {
+    setFeeType(event.target.value);
+  };
+
+  const ToBeChargeFrom= (event) => {
+    setToBeChargeFrom(event.target.value);
+  };
+  
+  return (
+    <>
+    <Grid  sx={{padding:'16px' , border:'1px solid #ccc' , borderRadius:'5px' , marginTop:'1rem'}}>
+
+      <Grid item xs={12} sx={{paddingBottom:'16px'}} >
+             <TextField id="fee-head" value={feeHead} label="Fee Head" variant="outlined" onChange={FeeHead} fullWidth />
+        </Grid>
+
+
+        <Grid item xs={12} sx={{paddingBottom:'16px'}} >
+            <SelectList 
+                label="Periodicity"
+                options={ PeriodicityOptions}
+                value={periodicity}
+                onChange={Periodicity}
+            />
+        </Grid>
+
+        <Grid item xs={12} sx={{paddingBottom:'16px'}} >
+            <SelectList 
+                label="Fee Type"
+                options={FeeTypeOptions}
+                value={feeType}
+                onChange={FeeType}
+            />
+        </Grid>
+
+        <Grid item xs={12} sx={{paddingBottom:'16px'}} >
+            <SelectList 
+                label="To be charged from"
+                options={ToBeChargeFromOptions}
+                value={toBeChargeFrom}
+                onChange={ToBeChargeFrom}
+            />
+        </Grid>
+
+    </Grid>
+    </>
+  )
+}
+// ===============   Add fee head Drawer end
+
+// ===============    fee head config start
+const tabs = [
+  {
+      id: 1,
+      name: 'Configure Globally',
+      value: '1',
+      component: FeeHeadGlobally ,
+    },
+
+
+  {
+    id: 2,
+    name: 'Configure Student Wise',
+    value: '2',
+    component: FeeHeadStudentWise ,
+  },
+
+
+];
+
+const FeeHeadConfigTab = () => {
+return (
+  <>
+        <ParamStepper 
+            tabPage={tabs}  //for tab label
+            customtabWrapper={{marginTop:'0px'}} // outer box of tabs
+            customStyleTabs={{borderBottom:'1px solid #ccc', marginTop:'20px' , }} // MuiTabs-root styles
+            customtabSytle={{margin:'0 5px 0 20px' , padding:'0px' , minWidth:'0'}} // tab btn styles
+            customtabPanelStyle={{paddingRight:'0' , marginTop:'0px' , padding:'0px',height:'auto'}}
+            showBottomNav={false}
+         />  
+   </>
+)
+}
+// ===============    fee head config end
 
 const tableHeadings = [
   {
@@ -188,7 +322,7 @@ const data = [
 ];
 
 
-const FeeHeads = ({ anchor, toggleDrawer }) => {
+const RegularFeeHeads = ({ anchor, toggleDrawer }) => {
 
   return (
     <>
@@ -210,4 +344,4 @@ const FeeHeads = ({ anchor, toggleDrawer }) => {
   );
 };
 
-export default FeeHeads;
+export default RegularFeeHeads;

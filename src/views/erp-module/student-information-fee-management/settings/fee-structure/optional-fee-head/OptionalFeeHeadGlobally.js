@@ -1,11 +1,17 @@
+// Page owner : Abhishek negi
+// description : Optional fee head globally
+
 import React, { useState } from 'react';
+import { useDispatch, useSelector  } from 'react-redux';
 import { Grid, TextField } from '@mui/material';
+import ParamFeeStructureConfig from 'components/table-data-grid/FeeStructureConfig';
 import ParamDateComponent from 'components/ui/custom-input/DateComponent';
 import ParamMultipleSelect from 'components/ui/custom-input/MultipleSelect';
-import { useDispatch, useSelector } from 'react-redux';
+import { OptionalFeeHeadConfigGlobally } from 'store/student-info-and-fee/settings/fee-structure/fee-structure-slice';
 import { setFeeHeads, setClass } from 'store/student-info-and-fee/settings/fee-structure/fee-structure-slice';
-import OptionalFeeHeadPreview from './OptionalFeeHeadPreview';
+import OptionalFeeHeadPreview from 'views/erp-module/student-information-fee-management/settings/fee-structure/optional-fee-head/OptionalFeeHeadPreview';
 
+// ========== optonal fee head form start
 const OptionalFeeHeadForm = () => {
   const [applicableFromDate, setApplicableFromDate] = useState('');
   const [uptoDate, setUptoDate] = useState('');
@@ -88,5 +94,59 @@ const OptionalFeeHeadForm = () => {
     </>
   )
 }
+// ========== optonal fee head form end
 
-export default OptionalFeeHeadForm;
+const OptionalFeeHeadGlobally = () => {
+
+    const dispatch = useDispatch();
+    const configGloballyData = useSelector((state) => state.configGloballyFormSlice.OptionalFeeHeadConfigGlobally); 
+  
+  
+    const handleSaveRow = (updatedRow) => {
+      // Map through the current data and update the row with the matching ID
+      const updatedData = configGloballyData.map((row) => (row.id === updatedRow.id ? updatedRow : row));
+      // Dispatch the updated data to the Redux store
+      dispatch(OptionalFeeHeadConfigGlobally(updatedData));
+    };
+  
+    // Handler function to delete a row
+    const handleDeleteRow = (rowToDelete) => {
+      // Filter out the row to be deleted based on its ID
+      const updatedData = configGloballyData.filter((row) => row.id !== rowToDelete.id);
+      // Dispatch the updated data to the Redux store
+      dispatch(OptionalFeeHeadConfigGlobally(updatedData));
+    };
+  
+  
+    const tableHeadings = [
+      { id: 'srNo', tabHeading: 'Sr No.' },
+      { id: 'feeHead', tabHeading: 'Fee Head' },
+      { id: 'classes', tabHeading: 'Class' },
+      { id: 'amount', tabHeading: 'Amount' },
+    ];
+  
+    // Prepare data for the ParamFeeStructureConfig component
+    const data = configGloballyData.map((item, index) => ({
+      id: item.id,
+      srNo: index + 1, // Add 1 to index for Sr No.
+      feeHead: item.feeHead,
+      classes: Array.isArray(item.classes) ? item.classes.join(', ') : item.classes, // Convert array of classes to string
+      amount: item.amount,
+    }));
+
+  return (
+    <>
+      <ParamFeeStructureConfig
+      data={data}
+      tableHeadings={tableHeadings}
+      onSaveRow={handleSaveRow}
+      onDeleteRow={handleDeleteRow}
+      tablColumnWidth={{flex:'0 0 20%'}}
+    >
+       <OptionalFeeHeadForm />
+      </ParamFeeStructureConfig>
+    </>
+  )
+}
+
+export default OptionalFeeHeadGlobally

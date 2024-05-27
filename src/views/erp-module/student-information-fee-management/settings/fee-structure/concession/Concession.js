@@ -1,8 +1,97 @@
-import React from 'react';
+// Page owner : Abhishek negi
+// description : Concession Config 
+
+import React, { useState } from 'react';
+import { Drawer,Box,Typography,Button , Grid, TextField,  Checkbox , FormControlLabel} from '@mui/material';
+import  ParamStepper from 'components/Stepper';
 import ParamTableDragDrop from "components/table-data-grid/TableDragDrop";
-import { Drawer,Box,Typography,Button } from '@mui/material';
-import Tab1 from './Tab1';
-import Config from './Config';
+import ConfigureStudentWise from 'views/erp-module/student-information-fee-management/settings/fee-structure/concession/ConfigureStudentWise';
+import ConfigureGlobally from 'views/erp-module/student-information-fee-management/settings/fee-structure/concession/ConfigureGlobally';
+
+// ======== concession new head Comp start
+const ConcessionNewHead = () => {
+  const [concessionCategory, setConcessionCategory] = useState('');
+  const [approvalId, setApprovalId] = useState('');
+  const [approvalBased, setApprovalBased] = useState(true);
+
+
+  const ConcessionCategory = (event) => {
+    setConcessionCategory(event.target.value);
+  };
+
+  const ApprovalId = (event) => {
+    setApprovalId(event.target.value);
+  };
+
+
+
+  const handleApprovalBased = (event) => {
+      setApprovalBased(event.target.checked);
+  };
+    
+//   console.log(approvalBased)
+
+  return (
+    <>
+      <Grid sx={{ padding: '16px', border: '1px solid #ccc', borderRadius: '5px', marginTop: '1rem' }}>
+
+        <Grid item xs={12} sx={{ paddingBottom: '16px' }}>
+          <TextField id="fee-head" value={concessionCategory} label="Concession Category" variant="outlined" onChange={ConcessionCategory} fullWidth />
+        </Grid>
+
+        <Grid item xs={12} sx={{ padding: '3px 12px' , border:'1px solid #bfc0c2', marginBottom:'20px' ,  borderRadius:'10px'}} >
+              <FormControlLabel
+                  control={<Checkbox />}
+                  checked={approvalBased}
+                  onChange={handleApprovalBased}
+                  inputProps={{ 'aria-label': 'controlled' }}
+                  label="Approval Based" 
+             />
+        </Grid>
+
+        <Grid item xs={12} >
+          <TextField id="approvalId" sx={{ paddingBottom: '16px' }} value={approvalId} label="Approval Id" variant="outlined" onChange={ApprovalId} fullWidth />
+        </Grid>
+        
+      </Grid>
+    </>
+  );
+};
+// ======== concession new head Comp end
+const tabs = [
+  {
+      id: 1,
+      name: 'Configure Globally',
+      value: '1',
+      component:ConfigureGlobally,
+    },
+
+
+  {
+    id: 2,
+    name: 'Configure Student Wise',
+    value: '2',
+    component:  ConfigureStudentWise,
+  },
+
+
+];
+
+const ConcessionConfig = () => {
+return (
+  <>
+        <ParamStepper 
+            tabPage={tabs}  //for tab label
+            customtabWrapper={{marginTop:'0px'}} // outer box of tabs
+            customStyleTabs={{borderBottom:'1px solid #ccc', marginTop:'20px' , }} // MuiTabs-root styles
+            customtabSytle={{margin:'0 5px 0 20px' , padding:'0px' , minWidth:'0'}} // tab btn styles
+            customtabPanelStyle={{paddingRight:'0' , marginTop:'0px' , padding:'0px',height:'auto'}}
+            showBottomNav={false}
+         />  
+   </>
+)
+}
+// ======== concession config Comp end
 
 
 const tableHeadings = [
@@ -139,7 +228,6 @@ const data = [
 ];
 
 const Concession = ({ anchor , toggleDrawer }) => {
- 
 
 
   return (
@@ -150,7 +238,7 @@ const Concession = ({ anchor , toggleDrawer }) => {
                 columns={tableHeadings}
                 initialData={data}
             >
-              <Config />
+              <ConcessionConfig />
             </ParamTableDragDrop>
 
             <Drawer anchor="right" open={anchor.right} onClose={toggleDrawer('right', false)}>
@@ -162,7 +250,7 @@ const Concession = ({ anchor , toggleDrawer }) => {
                         </Button>
                     </Box>
                      
-                    <Tab1 />
+                     <ConcessionNewHead />
                     </Box>
             </Drawer>
     </>
