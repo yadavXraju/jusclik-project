@@ -5,8 +5,8 @@ import ParamMultipleSelect from 'components/ui/custom-input/MultipleSelect';
 import ParameterizedAutoComplete from 'components/ui/custom-input/AutoComplete';
 
 export const EditTaskDrawer = ({ toggleDrawer, state, editId, rows, setRows }) => {
-  const rowData = rows[editId - 1];
-
+  const [rowData] = rows.filter((row) => row.id === editId);
+  
   const names = [
     { id: 1, name: 'Employee' },
     { id: 2, name: 'Payroll Admin' },
@@ -14,33 +14,39 @@ export const EditTaskDrawer = ({ toggleDrawer, state, editId, rows, setRows }) =
   ];
   const valdiatorValue = names.find((ele) => ele.name == rowData?.validator);
   const assignedToValue = names.find((ele) => ele.name == rowData?.assignedTo);
-  const [taskData, setTaskData] = React.useState(rowData);
+  const [taskData, setTaskData] = React.useState(null);
+
   const [validator, setValidator] = React.useState(null);
   const [assignedTo, setAssignTo] = React.useState(null);
-
   React.useEffect(() => {
+    setTaskData(rowData);
     setAssignTo([assignedToValue]);
     setValidator(valdiatorValue);
   }, [editId]);
-  // console.log(validator,assignedTo);
 
-  // const handleValidatorChange = (newVal) => {
-  //   setTaskData((prev) => ({ ...prev, validator: newVal }));
-  // };
+  const handleSetValidator = (val) => {
+    setValidator(val);
+    setTaskData((prev) => ({ ...prev, validator: val?.name }));
+  };
+  const handleSetAssignedTo = (val) => {
+    setAssignTo(val);
+    const assignedToArr = val.map((ele) => ele.name);
+    setTaskData((prev) => ({ ...prev, assignedTo: [assignedToArr] }));
+  };
+  const handleEdit = (e) => {
+    const updatedRows = rows.map((row) => (row.id === editId ? taskData : row));
+    setRows(updatedRows);
+    const closeDrawer = toggleDrawer('editTask', false);
+    closeDrawer(e);
+  };
   const selectDate = Array.from({ length: 50 }, (_, index) => ({ label: (index + 1).toString(), value: index + 1 }));
   const option = [
     { value: '1', label: 'Before due date' },
     { value: '2', label: 'After due date' }
   ];
-
-  const handleSave = (e) => {
-    const newRows = rows;
-    newRows[editId] = taskData;
-    setRows(newRows);
-    const closeDrawer = toggleDrawer('editTask', false);
-    closeDrawer(e);
+  const handleDueDate = (e, value) => {
+    setTaskData((prev) => ({ ...prev, dueOn: `${value.value} day(s) after joining day` }));
   };
-
   return (
     <>
       <Drawer anchor="right" open={state.editTask} onClose={toggleDrawer('editTask', false)}>
@@ -60,10 +66,11 @@ export const EditTaskDrawer = ({ toggleDrawer, state, editId, rows, setRows }) =
               </Typography>
               <TextField
                 fullWidth
+                value={taskData?.task}
                 onChange={(e) => {
                   let taskName = e.target.value;
                   const task = taskName;
-                  setTaskData((prev) => ({ ...prev, task: task, id: rows?.length + 1 }));
+                  setTaskData((prev) => ({ ...prev, task: task }));
                 }}
               />
             </Box>
@@ -77,20 +84,16 @@ export const EditTaskDrawer = ({ toggleDrawer, state, editId, rows, setRows }) =
               <Typography sx={{ mt: 2, mb: 1 }} variant="h5" color="initial">
                 Assigned to
               </Typography>
-              {/* <TextField fullWidth 
-              onChange={(e)=>{
-              let taskName=e.target.value
-              const task=taskName
-              setTaskData(prev=>({...prev,task:task}))
-             }}
-             value={taskData?.task}
-            /> */}
-              {editId && validator && <ParamMultipleSelect options={names} value={assignedTo} setValue={setAssignTo} />}
+              {editId && assignedTo !== null && assignedTo !== undefined && (
+                <ParamMultipleSelect options={names} value={assignedTo} setValue={handleSetAssignedTo} />
+              )}
               <Box>
                 <Typography sx={{ mt: 2, mb: 1 }} variant="h5" color="initial">
                   Validator
                 </Typography>
-                {editId && validator && <ParamMultipleSelect options={names} value={validator} setValue={setValidator} multiple={false} />}
+                {editId && validator !== null && validator !== undefined && (
+                  <ParamMultipleSelect options={names} value={validator} setValue={handleSetValidator} multiple={false} />
+                )}
               </Box>
               <Box
                 xs={12}
@@ -112,6 +115,7 @@ export const EditTaskDrawer = ({ toggleDrawer, state, editId, rows, setRows }) =
                     marginRight: '3px',
                     '& .MuiOutlinedInput-input': { height: '10px', textAlign: 'center' }
                   }}
+                  onChange={handleDueDate}
                 />
                 <Typography sx={{}} variant="h5" color="initial">
                   days to done after joined
@@ -142,7 +146,7 @@ export const EditTaskDrawer = ({ toggleDrawer, state, editId, rows, setRows }) =
                 variant="contained"
                 color="primary"
                 sx={{ position: 'fixed', right: '80px', bottom: '10px' }}
-                onClick={(e) => handleSave(e)}
+                onClick={(e) => handleEdit(e)}
               >
                 Save
               </Button>

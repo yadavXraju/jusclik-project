@@ -7,7 +7,7 @@ import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
 import CreditCardOutlinedIcon from '@mui/icons-material/CreditCardOutlined';
 import TuneOutlinedIcon from '@mui/icons-material/TuneOutlined';
 import FolderOpenOutlinedIcon from '@mui/icons-material/FolderOpenOutlined';
-import ParamSetting from 'components/Setting';
+import ParamSetting from 'pages/Settings';
 import { handleConfigure } from 'store/crm/settings/SystemTap-slice';
 
 
