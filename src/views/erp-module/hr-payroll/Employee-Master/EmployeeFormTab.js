@@ -19,8 +19,8 @@ import Experience from './Experience';
 import TextArea from 'antd/es/input/TextArea';
 import BottomNavbar from 'components/BottomNavbar';
 import {addField,subGroupbyGroup} from 'store/Hr-Payroll/AddEmployee-slice';
-import CommonAddress from 'components/Address';
-import CommonContactPerson from 'components/ContactPerson';
+import CommonAddress from 'components/forms/Address';
+import CommonContactPerson from 'components/forms/ContactPerson';
 
 
 const buttonsData = [

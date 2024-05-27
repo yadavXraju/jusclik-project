@@ -5,7 +5,7 @@ import React,{useState} from 'react';
 import ParamTableDragDrop from 'components/table-data-grid/TableDragDrop';
 import { Drawer,Box,Typography,Button, Grid , TextField} from '@mui/material';
 import SelectList from 'components/ui/custom-input/SelectList';
-import  ParamStepper from 'components/Stepper';
+import  ParamStepper from 'components/tabs/Stepper';
 import OptionalFeeHeadGlobally from 'views/erp-module/student-information-fee-management/settings/fee-structure/optional-fee-head/OptionalFeeHeadGlobally';
 import OptionalFeeHeadStudentWise from 'views/erp-module/student-information-fee-management/settings/fee-structure/optional-fee-head/OptionalFeeHeadStudentWise';
 

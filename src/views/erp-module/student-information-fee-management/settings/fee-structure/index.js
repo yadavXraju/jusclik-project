@@ -3,7 +3,7 @@
 
 import { Box, Typography, Button , useMediaQuery } from '@mui/material';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
-import ParamStepper from 'components/Stepper';
+import ParamStepper from 'components/tabs/Stepper';
 import FeeHeads from './regular-fee-head/RegularFeeHeads';
 import Concession from './concession/Concession';
 import OtherSettings from './OtherSettings';

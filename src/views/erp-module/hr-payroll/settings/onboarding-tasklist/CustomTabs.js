@@ -1,5 +1,5 @@
 import { Box, IconButton, Paper, Tab, Tabs, Tooltip, Typography } from '@mui/material';
-import TabsName from 'components/TabStep';
+import TabsName from 'components/tabs/TabStep';
 import WarningDialog from 'components/WarningDialog';
 import CommonDataGrid from 'components/table-data-grid/commonDataGrid';
 import React from 'react';

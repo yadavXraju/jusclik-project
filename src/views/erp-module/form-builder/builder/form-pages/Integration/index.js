@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Grid, Box, Typography, Button } from '@mui/material';
 import Divider from '@mui/material/Divider';
-import ParamTabs from 'components/SearchTabs';
+import ParamTabs from 'components/tabs/SearchTabs';
 import useDrawer from 'hooks/useDrawer';
 import Fee from 'assets/images/erp-module-icon/fee.svg';
 import Customer from 'assets/images/erp-module-icon/customer.svg';

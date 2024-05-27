@@ -3,7 +3,7 @@
 
 import React, { useState } from 'react';
 import { Drawer,Box,Typography,Button , Grid, TextField,  Checkbox , FormControlLabel} from '@mui/material';
-import  ParamStepper from 'components/Stepper';
+import  ParamStepper from 'components/tabs/Stepper';
 import ParamTableDragDrop from "components/table-data-grid/TableDragDrop";
 import ConfigureStudentWise from 'views/erp-module/student-information-fee-management/settings/fee-structure/concession/ConfigureStudentWise';
 import ConfigureGlobally from 'views/erp-module/student-information-fee-management/settings/fee-structure/concession/ConfigureGlobally';
