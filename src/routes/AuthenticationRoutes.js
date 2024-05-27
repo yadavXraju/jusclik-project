@@ -5,7 +5,7 @@ import { lazy } from 'react';
 import Loadable from 'components/ui/Loadable';
 
 
-const Login = Loadable(lazy(() => import('pages/authentication')));
+const Login = Loadable(lazy(() => import('pages/authentication/login')));
 const VisitorRegistration =  Loadable(lazy(() => import('pages/authentication/visitor-registration')));
 const Registration =  Loadable(lazy(() => import('pages/CustomerRegistration')));
 const OnlineRegistration =  Loadable(lazy(() => import('pages/online-registration')));
