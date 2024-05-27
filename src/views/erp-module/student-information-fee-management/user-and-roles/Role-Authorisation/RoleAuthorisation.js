@@ -2,7 +2,7 @@
 import React, {useState,useEffect } from 'react'
 import { Box } from '@mui/material'
 import ReportSection from './ReportSection'
-import ParamSearchTab from 'components/SearchTabs';
+import ParamSearchTab from 'components/tabs/SearchTabs';
 import { useSelector } from 'react-redux';
 import ParamChackboxSelectAll from 'components/ui/custom-input/ChackboxSelectAll'
 

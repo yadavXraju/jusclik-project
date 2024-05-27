@@ -1,5 +1,5 @@
 import React from 'react';
-import  ParamStepper from 'components/Stepper';
+import  ParamStepper from 'components/tabs/Stepper';
 import OptionalFeeHeadGlobally from './fee-head-globally';
 import OptionalFeeHeadStudentWise from './fee-head-student-wise';
 const tabPage = [

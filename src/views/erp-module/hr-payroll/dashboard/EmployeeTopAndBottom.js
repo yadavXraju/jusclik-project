@@ -1,6 +1,6 @@
 // owned by sangeeta
 import React from 'react'
-import SetupTabs from 'components/Stepper'
+import SetupTabs from 'components/tabs/Stepper'
 import { Grid, Paper, Typography,Box} from '@mui/material';
 import LinearProgress from '@mui/material/LinearProgress';
 import { gridSpacing } from 'store/constant';
