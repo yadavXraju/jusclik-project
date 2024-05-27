@@ -51,7 +51,8 @@ const OnboardingTasklist = () => {
       validator: 'Not Available'
     }
   ]);
-  const [modalOpen, setmodalOpen] = React.useState(false);
+  const [rowModalOpen, setRowModalOpen] = React.useState(false);
+  const [tabModalOpen, setTabModalOpen] = React.useState(false);
   const [deleteId, setDeleteId] = React.useState(null); // State to store the id of the row to be deleted
   const [editId,setEditId]=React.useState(null)
   const [state, setState] = React.useState({
@@ -70,7 +71,7 @@ const OnboardingTasklist = () => {
     // Set the id of the row to be deleted
     setDeleteId(id);
     // Open the warning dialog
-    setmodalOpen(true);
+    setRowModalOpen(true);
   };
 
   const handleConfirmDelete = () => {
@@ -79,13 +80,16 @@ const OnboardingTasklist = () => {
     // Update the rows state
     setRows(updatedRows);
     // Close the warning dialog
-    setmodalOpen(false);
+    setRowModalOpen(false);
     // Reset the deleteId state
     setDeleteId(null);
   };
 
-  const handleModalClose = () => {
-    setmodalOpen(false);
+  const handleModalClose = (str) => {
+    if(str==='row')
+    setRowModalOpen(false);
+  if(str==='tab')
+    setTabModalOpen(false)
   };
 
   const toggleDrawer = (anchor, open) => (event) => {
@@ -166,8 +170,10 @@ const OnboardingTasklist = () => {
         setTabsData={setTabsData}
         selectedTab={selectedTab}
         setSelectedTab={setSelectedTab}
-        modalOpen={modalOpen}
-        setmodalOpen={setmodalOpen}
+        rowModalOpen={rowModalOpen}
+        tabModalOpen={tabModalOpen}
+        setTabModalOpen={setTabModalOpen}
+        setRowModalOpen={setRowModalOpen}
         rows={rows}
         setRows={setRows}
         columns={columns}
