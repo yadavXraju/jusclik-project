@@ -49,11 +49,13 @@ const DashboardTabs = () => {
         showBottomNav={false}
         numberShow ={false}
         iconShow={false}
+        value={value}
+        handleChange={handleChange}
         customtabSytle = {DashboardTab.customtabSytle}
 
         customtabPanelStyle={DashboardTab.customtabPanelStyle}
         customIconStyle={DashboardTab.customIconStyle}
-        customStyleTabs={DashboardTab.customStyleTabs}
+        customTabsStyle={DashboardTab.customTabsStyle}
         customtabWrapper={DashboardTab.customtabWrapper}
      />
       

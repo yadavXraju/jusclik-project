@@ -1,11 +1,11 @@
 // Page owner : Abhishek negi
 // description : Optional Fee Head  
 
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import ParamTableDragDrop from 'components/table-data-grid/TableDragDrop';
-import { Drawer,Box,Typography,Button, Grid , TextField} from '@mui/material';
+import { Drawer, Box, Typography, Button, Grid, TextField } from '@mui/material';
 import SelectList from 'components/ui/custom-input/SelectList';
-import  ParamStepper from 'components/tabs/Stepper';
+import ParamStepper from 'components/tabs/Stepper';
 import OptionalFeeHeadGlobally from 'views/erp-module/student-information-fee-management/settings/fee-structure/optional-fee-head/OptionalFeeHeadGlobally';
 import OptionalFeeHeadStudentWise from 'views/erp-module/student-information-fee-management/settings/fee-structure/optional-fee-head/OptionalFeeHeadStudentWise';
 
@@ -17,7 +17,7 @@ const OptionalFeeHeadDrawer = () => {
   const [periodicity, setperiodicity] = useState('');
   const [feeType, setFeeType] = useState('');
   const [toBeChargeFrom, setToBeChargeFrom] = useState('');
-
+ 
 
   const PeriodicityOptions = [
     { value: 'Monthly', label: 'Monthly' },
@@ -51,51 +51,51 @@ const OptionalFeeHeadDrawer = () => {
     setperiodicity(event.target.value);
   };
 
-  const FeeType= (event) => {
+  const FeeType = (event) => {
     setFeeType(event.target.value);
   };
 
-  const ToBeChargeFrom= (event) => {
+  const ToBeChargeFrom = (event) => {
     setToBeChargeFrom(event.target.value);
   };
-  
+
   return (
     <>
-    <Grid  sx={{padding:'16px' , border:'1px solid #ccc' , borderRadius:'5px' , marginTop:'1rem'}}>
+      <Grid sx={{ padding: '16px', border: '1px solid #ccc', borderRadius: '5px', marginTop: '1rem' }}>
 
-      <Grid item xs={12} sx={{paddingBottom:'16px'}} >
-             <TextField id="fee-head" value={feeHead} label="Fee Head" variant="outlined" onChange={FeeHead} fullWidth />
+        <Grid item xs={12} sx={{ paddingBottom: '16px' }} >
+          <TextField id="fee-head" value={feeHead} label="Fee Head" variant="outlined" onChange={FeeHead} fullWidth />
         </Grid>
 
 
-        <Grid item xs={12} sx={{paddingBottom:'16px'}} >
-            <SelectList 
-                label="Periodicity"
-                options={ PeriodicityOptions}
-                value={periodicity}
-                onChange={Periodicity}
-            />
+        <Grid item xs={12} sx={{ paddingBottom: '16px' }} >
+          <SelectList
+            label="Periodicity"
+            options={PeriodicityOptions}
+            value={periodicity}
+            onChange={Periodicity}
+          />
         </Grid>
 
-        <Grid item xs={12} sx={{paddingBottom:'16px'}} >
-            <SelectList 
-                label="Fee Type"
-                options={FeeTypeOptions}
-                value={feeType}
-                onChange={FeeType}
-            />
+        <Grid item xs={12} sx={{ paddingBottom: '16px' }} >
+          <SelectList
+            label="Fee Type"
+            options={FeeTypeOptions}
+            value={feeType}
+            onChange={FeeType}
+          />
         </Grid>
 
-        <Grid item xs={12} sx={{paddingBottom:'16px'}} >
-            <SelectList 
-                label="To be charged from"
-                options={ToBeChargeFromOptions}
-                value={toBeChargeFrom}
-                onChange={ToBeChargeFrom}
-            />
+        <Grid item xs={12} sx={{ paddingBottom: '16px' }} >
+          <SelectList
+            label="To be charged from"
+            options={ToBeChargeFromOptions}
+            value={toBeChargeFrom}
+            onChange={ToBeChargeFrom}
+          />
         </Grid>
 
-    </Grid>
+      </Grid>
     </>
   )
 }
@@ -104,11 +104,11 @@ const OptionalFeeHeadDrawer = () => {
 // ===========  optional fee head tabs start
 const tabs = [
   {
-      id: 1,
-      name: 'Configure Globally',
-      value: '1',
-      component: OptionalFeeHeadGlobally ,
-    },
+    id: 1,
+    name: 'Configure Globally',
+    value: '1',
+    component: OptionalFeeHeadGlobally,
+  },
 
 
   {
@@ -122,18 +122,24 @@ const tabs = [
 ];
 
 const OptionalFeeHeadConfigTab = () => {
-return (
-  <>
-        <ParamStepper 
-            tabPage={tabs}  //for tab label
-            customtabWrapper={{marginTop:'0px'}} // outer box of tabs
-            customStyleTabs={{borderBottom:'1px solid #ccc', marginTop:'20px' , }} // MuiTabs-root styles
-            customtabSytle={{margin:'0 5px 0 20px' , padding:'0px' , minWidth:'0'}} // tab btn styles
-            customtabPanelStyle={{paddingRight:'0' , marginTop:'0px' , padding:'0px',height:'auto'}}
-            showBottomNav={false}
-         />  
-   </>
-)
+  const [value, setValue] = useState(0);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+  return (
+    <>
+      <ParamStepper
+        tabPage={tabs}  //for tab label
+        customtabWrapper={{ marginTop: '0px' }} // outer box of tabs
+        customTabsStyle={{ borderBottom: '1px solid #ccc', marginTop: '20px', }} // MuiTabs-root styles
+        customtabSytle={{ margin: '0 5px 0 20px', padding: '0px', minWidth: '0' }} // tab btn styles
+        customtabPanelStyle={{ paddingRight: '0', marginTop: '0px', padding: '0px', height: 'auto' }}
+        showBottomNav={false} value={value}
+        handleChange={handleChange}
+      />
+    </>
+  )
 }
 // ===========  optional fee head tabs end
 
@@ -326,7 +332,7 @@ const OptionalFeeHead = ({ anchor, toggleDrawer }) => {
   return (
     <>
       <ParamTableDragDrop tableStyle={{ paddingBottom: '4rem' }} dragIcon={true} columns={tableHeadings} initialData={data} >
-         <OptionalFeeHeadConfigTab />
+        <OptionalFeeHeadConfigTab />
       </ParamTableDragDrop>
       <Drawer anchor="right" open={anchor.right} onClose={toggleDrawer('right', false)}>
         <Box sx={{ width: { xs: '100vw', sm: 650 }, padding: '1rem' }} role="presentation">
@@ -336,7 +342,7 @@ const OptionalFeeHead = ({ anchor, toggleDrawer }) => {
               Close
             </Button>
           </Box>
-            <OptionalFeeHeadDrawer />
+          <OptionalFeeHeadDrawer />
         </Box>
       </Drawer>
     </>
