@@ -9,12 +9,14 @@ import CommonStackedChart from 'components/chart/CommonStackedChart';
 import CommonBarChart from 'components/chart/CommonBarChart';
 
 const ExpenseAndTravel = () => {
+  //Dummy data
   const ApexChartData = {
     series: [100, 200, 50],
     labels: ['Air Travel', 'Boarding And Lodging', 'Food & Drinks'],
     colors: ['#c031ee', '#1e88e5', '#5c34ae']
   };
 
+  //Dummy data
   const ApexChartData2 = {
     series: [150, 100, 40],
     labels: ['Approved', 'Pending', 'Reject'],
@@ -24,17 +26,22 @@ const ExpenseAndTravel = () => {
   const Apexheading = 'Expense by Category';
   const Apexheading2 = 'Expense by Status';
 
+  //Dummy data
   const chartDetails = [
     { label: 'HIGHEST SPEND CATEGORY', chartvalues: 'Boarding And Lodging' },
     { label: 'LOWEST SPEND CATEGORY', chartvalues: 'Air Travel' },
     { label: 'AVG SPEND PER CATEGORY', chartvalues: 'INR 6,400' }
   ];
 
+  //Dummy data
   const chartDetails2 = [
     { label: 'APPROVED EXPENSES', chartvalues: '51.7% - High' },
     { label: 'PENDING EXPENSES', chartvalues: '34.5% - Avg' },
     { label: 'REJECTED EXPENSES', chartvalues: '17% - Low' }
   ];
+  
+  //Dummy data
+  
   const   CounterData = [
     {
       id: 1,
@@ -129,6 +136,8 @@ const ExpenseAndTravel = () => {
     'November',
     'December'
   ];
+
+  //Dummy data
 
   const BarChartSeries = [
     {

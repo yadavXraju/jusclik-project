@@ -8,13 +8,76 @@ import {
   CardContent,
   CardMedia,
   Button,
+  Dialog, DialogTitle, DialogContent, DialogActions
 } from '@mui/material';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
-import PopupComponent from './PopupComponent';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 import Image1 from './img/front-view-smiley-woman-with-fireworks.jpg';
 import Image2 from './img/women-outdoor-park-using-mobiles.jpg';
 import Image3 from './img/group-girlfriends-sitting-table-together-celebrating-birthday-outdoor-park.jpg';
 import Image4 from './img/pic4.jpg';
+
+
+// image slider start =============
+const ImageSlider = ({ images }) => {
+ 
+  
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  
+  };
+
+  return (
+    <Slider {...settings}>
+      {images.map((image, index) => (
+        <div key={index} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center',textAlign:'center' ,margin:'10px'}}>
+          <img
+            src={image}
+            alt={`Slide ${index}`}
+            style={{ maxWidth: '100%', height: '400px' }}
+            onError={() => console.error(`Error loading image ${index}: ${image}`)}
+          />
+        </div>
+      ))}
+    </Slider>
+  );
+};
+
+// image slider end =============
+
+// pupular component start ==================
+const PopupComponent = ({ isOpen, onClose, data }) => {
+  
+
+  return (
+    <Dialog open={isOpen} onClose={onClose} height="400px" >
+      <DialogTitle>{data?.title}</DialogTitle>
+      <DialogContent style={{ overflow: 'hidden',background:"rgba(0,0,0,0.2)", margin:'10px', paddingTop:'20px' }}>
+        {data && (
+          <>
+            <ImageSlider images={data.sliderImg} />
+            <Grid container sx={{display:'flex',justifyContent:'flex-start'}}>
+              <Typography sx={{color:'black'}}>{data?.description}</Typography>
+              <Typography sx={{color:'black'}}>Date: {data?.date}</Typography>
+            </Grid>
+          </>
+        )}
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={onClose} color="primary">
+          Close
+        </Button>
+      </DialogActions>
+    </Dialog>
+  );
+};
+// pupular component end ==================
 
 const galleryData = [
   {

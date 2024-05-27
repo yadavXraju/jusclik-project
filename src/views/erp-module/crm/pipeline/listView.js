@@ -2,8 +2,11 @@
 // list-view of kanban data
 import React from 'react';
 import { kanbanData } from './data';
-import { Box, Paper } from '@mui/material';
+import { Box, Paper ,Typography  } from '@mui/material';
 import CommonDataGrid from 'components/table-data-grid/commonDataGrid';
+import TableLayout from 'layout/TableLayout';
+
+
 const KanbanListView = () => {
   // Prepare columns for the DataGrid
   const columns = [
@@ -27,17 +30,29 @@ const KanbanListView = () => {
     }))
   );
 
+  const TableData =()=>{
+    return(
+      <CommonDataGrid
+        rows={rows}
+        columns={columns}
+        pageSize={5}
+        rowsPerPageOptions={[5, 10, 20]}
+        disableSelectionOnClick
+        checkboxSelection
+      />
+    )
+    }
+
+     const Header=()=>{
+          return(
+            <Typography variant="h4"  sx={{}} >Student List </Typography>
+          )
+     }
+
   return (
     <Box component={Paper} style={{ height: 'calc(100vh - 350px)', width: '100%',margin:'25px' }}>
-     
-       <CommonDataGrid
-            rows={rows}
-            columns={columns}
-            pageSize={5}
-            rowsPerPageOptions={[5, 10, 20]}
-            disableSelectionOnClick
-            checkboxSelection
-          />
+      <TableLayout  Header={<Header />}
+       DataGrid={<TableData />} />
     </Box>
   );
 };

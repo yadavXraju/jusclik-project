@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import ImgCard from './PHOTOSEC/ImgCard';
+import ImgCard from './ImgCard';
 import { Paper, Tab, Box } from '@mui/material';
 import { TabContext, TabList, TabPanel } from '@mui/lab';
-import VideoCard from './VideoSec/VideoCard';
+import VideoCard from './VideoCard';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 const PhotoGallery = () => {

@@ -1,8 +1,7 @@
 // @page owner-Tarun Pandey
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Tabs, Tab, Typography, Box } from '@mui/material';
-import BottomNavbar from 'components/BottomNavbar';
 import TabsName from './TabStep';
 
 
@@ -61,8 +60,7 @@ const SetupTabs = ({
   component=null,
   orientation = 'horizontal',
   variant = 'scrollable',
-  showBottomNav=true,
-  customStyleTabs,
+  customTabsStyle,
   customtabWrapper = {},
   customtabSytle = {},
   customtabPanelStyle = {},
@@ -71,36 +69,33 @@ const SetupTabs = ({
   customBoxStyle={},
   customIconStyle={},
   selectedTab,
-  nextBtnText = 'Save and Next'
+  value,
+  handleChange
 }) => {
-  const [value, setValue] = useState(0);
   const lastIndex = tabPage.length - 1;
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
-
   const style = {
     tabWrapper: {
       width: '100%',
       display: 'flex',
-      flexDirection: 'column',
+      flexDirection: orientation=='vertical'?'row':'column',
       marginTop: '25px',
     },
+    TabsStyle:{
+      borderBottom:'1px solid rgb(227, 232, 239)',
+   },
     tabStyle: {
+      display:'flex',
+      flexDirection:'row',
+      alignItems:'center',
+      gap:'15px',
       width: 'fit-content',
-      borderBottom: '1px solid #eef2f6',
-      alignItems: 'baseline',
       paddingLeft: '0px',
-      marginRight: '40px',
     },
     tabPanel: {
       width: '100%',
       padding: '24px',
       bgcolor: 'background.paper',
       borderRadius: '10px',
-      overflowY: 'auto',
-      height: 'calc(100vh - 250px)',
     },
     boxStyle:{
       padding:"0",
@@ -109,7 +104,6 @@ const SetupTabs = ({
       marginBottom:'0'
     }
   };
-
   return (
     <>
       <Box  sx={{ ...style?.tabWrapper, ...customtabWrapper }} >
@@ -121,10 +115,19 @@ const SetupTabs = ({
           onChange={handleChange}
           aria-label="Vertical tabs example"
           sx={{
-            ...customStyleTabs,
+            ...style?.TabsStyle,
+            ...customTabsStyle,
+            '& .Mui-selected .MuiTypography-root':{
+              color:'#2196f3',
+            },
             '& .Mui-selected .number-bg': {
               background: '#2196f3',
               color: '#fff',
+              // color:'#2196f3',
+              '& ~ .MuiTypography-root':{
+                color:'#2196f3',
+                background:'none',
+              },
             },
             '& .Mui-selected': {
               ...selectedTab
@@ -134,7 +137,11 @@ const SetupTabs = ({
           {tabPage.map((tab, index) => (
             <Tab
               key={tab?.id}
-              label={<TabsName name={tab.name} number={index} numberShow={numberShow} iconShow={iconShow} lastIndex={lastIndex}  />}
+              label={<TabsName name={tab.name} 
+              number={index} numberShow={numberShow} 
+              iconShow={iconShow} lastIndex={lastIndex} 
+              selectedValue={value}
+              />}
               icon={tab?.icon} 
               {...a11yProps(index)}
               sx={{
@@ -149,12 +156,11 @@ const SetupTabs = ({
                  ...style?.iconStyle,
                  ...customIconStyle,
                 }
-
               }}
             />
           ))}
         </Tabs>
-        {tabPage.map((tab, index) => (
+        {tabPage&&tabPage.map((tab, index) => (
           <TabPanel
             key={tab?.id}
             value={value}
@@ -173,7 +179,6 @@ const SetupTabs = ({
           </TabPanel>
         ))}
       </Box>
-      {showBottomNav&&<BottomNavbar  tabPageLength={tabPage.length} value={value} setValue={setValue}   nextBtnText={nextBtnText} />}
     </>
   );
 };

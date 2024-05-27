@@ -3,7 +3,7 @@
 import React from 'react';
 import Chart from 'react-apexcharts';
 import ParamWidgetHeader from 'components/dashboard/WidgetHeader';
-import { Grid, Typography, Box, Divider } from '@mui/material';
+import { Grid, Typography, Box, Divider , useMediaQuery } from '@mui/material';
 
 const CommonStackedChart = ({ ChartSeries, StackedChartTitle, StackedBarColor, StackedChartXCategories }) => {
   // Function to calculate the sum of data for each product
@@ -79,6 +79,26 @@ const CommonStackedChart = ({ ChartSeries, StackedChartTitle, StackedBarColor, S
     { label: 'LOWEST CLAIMED CATEGORY', value: lowestProduct.name }
   ];
 
+  let labelStyle = {
+    fontSize: '14px'
+  };
+
+  
+
+  const isResponsive990 = useMediaQuery('(max-width:990px)');
+
+  if (isResponsive990) {
+    labelStyle = {
+      fontSize: '12px',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center'
+    };
+  }
+
+
+ 
+
   return (
     <>
       <ParamWidgetHeader title={StackedChartTitle} />
@@ -91,11 +111,11 @@ const CommonStackedChart = ({ ChartSeries, StackedChartTitle, StackedBarColor, S
       </Box>
       <Grid container spacing={2} sx={{ padding: '0.5rem 2rem' }}>
         {StackedChartDetails.map((item, index) => (
-          <Grid item lg={4} key={index}>
-            <Typography variant="body" sx={{ fontSize: '14px' }}>
+          <Grid item lg={4} md={4} sm={12} xs={12} key={index}>
+            <Typography variant="body" sx={ labelStyle}>
               {item.label}
             </Typography>
-            <Typography variant="h4" sx={{ fontWeight: 'bold' }}>
+            <Typography variant="h4" sx={{  ...labelStyle, fontWeight: 'bold', fontSize:isResponsive990?'14px':'16px'}}>
               {item.value}
             </Typography>
           </Grid>
