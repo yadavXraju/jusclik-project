@@ -11,8 +11,9 @@ import { useMediaQuery } from '@mui/material';
 import { DashboardTab } from 'components/dashboard/CommonCss';
 
 const DashboardTabs = () => {
-
   const isTab = useMediaQuery('(max-width:991px)')
+  handleChange={handleChange}
+
   const tabPage = [
     {
       id: 1,
@@ -49,10 +50,11 @@ const DashboardTabs = () => {
         numberShow ={false}
         iconShow={false}
         customtabSytle = {DashboardTab.customtabSytle}
-
+        value={value}
+        handleChange={handleChange}
         customtabPanelStyle={DashboardTab.customtabPanelStyle}
         customIconStyle={DashboardTab.customIconStyle}
-        customStyleTabs={DashboardTab.customStyleTabs}
+        customTabsStyle={DashboardTab.customTabsStyle}
         customtabWrapper={DashboardTab.customtabWrapper}
      />
       

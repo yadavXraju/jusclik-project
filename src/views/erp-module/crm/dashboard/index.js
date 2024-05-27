@@ -11,6 +11,11 @@ import { DashboardTab } from 'components/dashboard/CommonCss';
 const DashboardTabs = () => {
 
   const isTab = useMediaQuery('(max-width:991px)')
+  const [value, setValue] = useState(0);
+
+const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
   const tabPage = [
     {
       id: 1,
@@ -50,8 +55,10 @@ const DashboardTabs = () => {
 
         customtabPanelStyle={DashboardTab.customtabPanelStyle}
         customIconStyle={DashboardTab.customIconStyle}
-        customStyleTabs={DashboardTab.customStyleTabs}
+        customTabsStyle={DashboardTab.customTabsStyle}
         customtabWrapper={DashboardTab.customtabWrapper}
+        value={value}
+        handleChange={handleChange}
      />
       
     </>

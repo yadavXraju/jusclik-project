@@ -1,6 +1,6 @@
-// ======= Page Owner Vikash =========
-// ======= School Fee Entry Page =========
-
+// // ======= Page Owner Vikash =========
+// // ======= School Fee Entry Page =========
+import React,{useState} from 'react';
 import ParamStepper from 'components/tabs/Stepper';
 import PoliciesCounter from './policiesCounter';
 import { Box } from '@mui/material';
@@ -9,6 +9,7 @@ import FeeDataTable from './Fee_table';
 import Summary from './Summary';
 
 const FeeStructure = () => {
+  const [value, setValue] = useState(0);
 
   const Transport = () => {
     return <>Transport</>;
@@ -54,6 +55,10 @@ const FeeStructure = () => {
     }
   ];
 
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
   return (
     <>
       <MainCard title="Fee Ledger">
@@ -63,9 +68,12 @@ const FeeStructure = () => {
           </Box>
         </Box>
         {/* stepper tabs  */}
-       <ParamStepper variant={'scrollable'} tabPage={tabPage}  numberShow={false} showBottomNav={false} iconShow={false} /> 
+        <ParamStepper variant='scrollable' tabPage={tabPage}
+          numberShow={false} iconShow={false}
+          value={value} handleChange={handleChange}
+        />
       </MainCard>
-      
+
     </>
   );
 };

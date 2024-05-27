@@ -16,9 +16,9 @@ const OnboardingTaskList=Loadable(lazy(()=>import('views/erp-module/hr-payroll/s
 const LeaveApplication=Loadable(lazy(()=>import('views/erp-module/hr-payroll/leave-application')));
 const ExitEmployee = Loadable(lazy(()=>import('views/erp-module/hr-payroll/Employee-Master/exit-employee')));
 const Attendance = Loadable(lazy(()=>import('views/erp-module/hr-payroll/new-attendance/index')));
-const ExpenseAndTravel = Loadable(lazy(()=>import('views/erp-module/hr-payroll/Employee-Master/expense-and-travel')));
-const Document = Loadable(lazy(()=>import('views/erp-module/hr-payroll/Employee-Master/document')));
-const Assets = Loadable(lazy(()=>import('views/erp-module/hr-payroll/Employee-Master/assets')));
+const ExpenseAndTravel = Loadable(lazy(()=>import('views/erp-module/hr-payroll/Employee-Master/ExpenseAndTravel')));
+const Document = Loadable(lazy(()=>import('views/erp-module/hr-payroll/Employee-Master/new-document')));
+const Assets = Loadable(lazy(()=>import('views/erp-module/hr-payroll/Employee-Master/new-assets')));
 const Payroll = Loadable(lazy(()=>import('views/erp-module/hr-payroll/new-payroll')));
 
 // ==============================|| Visitor MENUS ||============================== //

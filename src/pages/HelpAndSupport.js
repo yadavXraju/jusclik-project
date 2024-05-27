@@ -1,6 +1,6 @@
 // Page Owner : Abhsihek Negi
 // Description : Help And support comp for all modules 
-
+import React,{useState} from 'react';
 import { Grid  ,  Typography,  useMediaQuery, Paper,Box , Card , CardMedia , Button , Divider } from '@mui/material';
 import ParamStepper from 'components/tabs/Stepper';
 import { subTitle  } from 'components/dashboard/CommonCss';
@@ -151,7 +151,11 @@ const HowToMakeInvoice = () => {
 const NeedHelp = () => {
   const isTab = useMediaQuery('(max-width:991px)')
   // drawer btn
+  const [value, setValue] = useState(0);
 
+  const handleChange = (event, newValue) => {
+      setValue(newValue);
+    };
   const tabPage = [
     {
       id: 1,
@@ -190,6 +194,8 @@ const NeedHelp = () => {
               showBottomNav={false}
               numberShow ={false}
               iconShow={false}
+              value={value}
+              handleChange={handleChange}
               customtabWrapper={{
                 display: 'flex',
                 marginTop: '0',
