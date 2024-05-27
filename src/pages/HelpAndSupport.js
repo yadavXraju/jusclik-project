@@ -2,7 +2,7 @@
 // Description : Help And support comp for all modules 
 
 import { Grid  ,  Typography,  useMediaQuery, Paper,Box , Card , CardMedia , Button , Divider } from '@mui/material';
-import ParamStepper from 'components/Stepper';
+import ParamStepper from 'components/tabs/Stepper';
 import { subTitle  } from 'components/dashboard/CommonCss';
 import ParamWidgetHeader from 'components/dashboard/WidgetHeader';
 // ============== quick tips imports

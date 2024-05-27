@@ -7,7 +7,7 @@ import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import SearchTwoToneIcon from '@mui/icons-material/SearchTwoTone';
-import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
+
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
@@ -75,10 +75,10 @@ export default function SearchAssignment({ onSearch }) {
       autoComplete="off"
     >
       <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <DemoContainer component={['DatePicker']}>
+      
           <DatePicker label="From" value={startDate} onChange={handleStartDateChange} />
           <DatePicker label="To" value={endDate} onChange={handleEndDateChange} />
-        </DemoContainer>
+     
       </LocalizationProvider>
       <Autocomplete
         id="highlights-demo"

@@ -1,9 +1,10 @@
 // owned by sangeeta
 
 import React from 'react'
-import Systemdata from 'components/SearchTabs';
-import { leadClassification , leadSource,leadOwnerConfig} from './TabPages';
-
+import Systemdata from 'components/tabs/SearchTabs';
+import leadClassification from 'views/erp-module/crm/settings/configure/system-data/LeadClassification';
+import leadSource from 'views/erp-module/crm/settings/configure/system-data/LeadSource';
+import leadOwnerConfig from 'views/erp-module/crm/settings/configure/system-data/LeadOwnerConfig';
 import { useSelector } from 'react-redux';
 
 const LeadSystemData = () => {

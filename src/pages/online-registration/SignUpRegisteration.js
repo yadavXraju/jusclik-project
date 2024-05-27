@@ -3,12 +3,12 @@
 
 import React from 'react';
 import { Grid, Box, Button, Typography, useMediaQuery } from '@mui/material';
-import LeftLogo from '../authentication/LeftLogo';
+import LeftLogo from '../authentication/login/LeftLogo';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 import Tab from '@mui/material/Tab';
-import MobileLogin from '../authentication/MobileLogin';
+import MobileLogin from '../authentication/login/MobileLogin';
 import Dropdown from 'components/ui/custom-input/SelectList';
 import TextField from '@mui/material/TextField';
 import ParameterizedDateComponent from 'components/ui/custom-input/DateComponent';

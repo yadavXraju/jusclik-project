@@ -6,7 +6,7 @@ import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
 import ApprovalOutlinedIcon from '@mui/icons-material/ApprovalOutlined';
 import IntegrationInstructionsOutlinedIcon from '@mui/icons-material/IntegrationInstructionsOutlined';
 import FormatPaintOutlinedIcon from '@mui/icons-material/FormatPaintOutlined';
-import ParamStepper from 'components/Stepper';
+import ParamStepper from 'components/tabs/Stepper';
 import BuilderComponent from './form-pages/builder-component';
 import Rule from './form-pages/Rule';
 import Settings from './form-pages/settings';

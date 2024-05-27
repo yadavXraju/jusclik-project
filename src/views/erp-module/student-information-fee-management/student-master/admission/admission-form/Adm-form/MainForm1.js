@@ -15,7 +15,7 @@ import ProfileDetail from './PrimaryDetails';
 import ContactPerson from './ContactPerson';
 import { useSelector, useDispatch } from 'react-redux';
 import { addField, subGroupbyGroup } from 'store/student-info-and-fee/student/admission-slice';
-import CommonAddress from 'components/Address';
+import CommonAddress from 'components/forms/Address';
 import Mainformlayout from 'layout/main-form-layout';
 import Profile from './Profile';
 

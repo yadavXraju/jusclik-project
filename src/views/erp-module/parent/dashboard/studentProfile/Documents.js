@@ -14,7 +14,7 @@ import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
-import Pagination from 'components/table-data-grid/Pagination';
+import Pagination from 'components/table-data-grid/TablePagination';
 
 const columns = [
   { id: 'documenttitle', label: 'Document Title', minWidth: 170 },

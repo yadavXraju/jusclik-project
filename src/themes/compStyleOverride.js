@@ -11,7 +11,7 @@ export default function componentStyleOverrides(theme) {
     },
     MuiPaper: {
       defaultProps: {
-        elevation: 0
+        elevation: 0   
       },
       styleOverrides: {
         root: {
