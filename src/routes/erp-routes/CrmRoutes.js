@@ -18,7 +18,7 @@ const Reports = Loadable(lazy(() => import('views/erp-module/crm/reports')));
 // // settings
 const Settings = Loadable(lazy(() => import('views/erp-module/crm/settings')));
 const LeadStage = Loadable(lazy(() => import('views/erp-module/crm/settings/configure/lead-stage')));
-const LeadScore = Loadable(lazy(() => import('views/erp-module/crm/settings/configure/lead-score')));
+const LeadScore = Loadable(lazy(() => import('views/erp-module/crm/settings/configure/LeadScore')));
 const SystemDataEnter = Loadable(lazy(() => import('views/erp-module/crm/settings/configure/system-data')));
 // ==============================|| Visitor MENUS ||============================== //
 
