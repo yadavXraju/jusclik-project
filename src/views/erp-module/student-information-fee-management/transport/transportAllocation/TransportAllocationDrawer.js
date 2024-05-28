@@ -3,7 +3,6 @@
 
 import React, { useState } from 'react';
 import useDrawer from 'hooks/useDrawer';
-import Drawer from '@mui/material/Drawer';
 import { Button, Typography, Box, Grid } from '@mui/material';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import ParameterizedDateComponent from 'components/ui/custom-input/DateComponent';
@@ -14,6 +13,7 @@ import TextField from '@mui/material/TextField';
 import TransportTimeline from './TransportTimeline';
 import ParamStepper from 'components/tabs/Stepper';
 import BottomNavbar from 'components/BottomNavbar';
+import DrawerLayOut from 'layout/drawer-layout';
 
 const TransportDrawer = () => {
   // ========= call custom hook for toggle drawer ==========
@@ -185,47 +185,61 @@ const TransportDrawer = () => {
       component: TransportTimeline
     }
   ];
-  const tabLength = tabPage.length;
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
+  const handlePrev = () => {
+    setValue(Math.max(0, value - 1));
+  };
+
+  const handleNext = () => {
+    setValue(Math.min(tabPage.length - 1, value + 1));
+  };
+
+  const handleCancelClick=(e)=>{
+   toggleDrawer('right',false)(e);
+  }
+
+  const handleSubmitClick=()=>{
+
+  }
+
+  const DrawerBottom = () => {
+    return (
+      <>
+        <BottomNavbar handlePrev={handlePrev} handleNext={handleNext}  
+          handleCancelClick={handleCancelClick} handleSubmitClick={handleSubmitClick} 
+          tabPageLength={tabPage.length} value={value} setValue={setValue}
+          customStyle={{ width: { sm: '100vw', md: '42%' }, bottom: '0', 
+          borderRadius: '1px' }}
+        />
+      </>
+    )
+  }
+
+  const DrawerBody = () => {
+    return (
+      <ParamStepper
+        variant={'scrollable'}
+        tabPage={tabPage}
+        showBottomNav={false}
+        value={value}
+        handleChange={handleChange}
+        customtabPanelStyle={{ padding: '0px', marginTop: '4px' }}
+        customtabWrapper={{ marginTop: '0px' }}
+      />
+    )
+  }
+
   return (
     <>
       <Button onClick={toggleDrawer('right', true)} sx={{ mr: '8px' }} variant="outlined" startIcon={<AddOutlinedIcon />}>
-        Add Transport Details
+      Add Transport Details
       </Button>
-      <Drawer anchor={'right'} open={anchor.right} onClose={toggleDrawer('right', false)}>
-        <Box sx={{ width: { xs: '100vw', sm: 650 }, height: '100vh', padding: 2 }} role="presentation">
-          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #ccc' }}>
-            <Typography variant="h4">Add Transport Details</Typography>
-            <Button onClick={toggleDrawer('right', false)} sx={{ alignSelf: 'flex-end' }}>
-              Close
-            </Button>
-          </Box>
-
-          <Box>
-            {/* ========== Render Drawer Contant ============ */}
-            <Box >
-              <ParamStepper
-                variant={'scrollable'}
-                tabPage={tabPage}
-                showBottomNav={false}
-                value={value}
-                handleChange={handleChange}
-                customtabPanelStyle={{ padding: '0px', marginTop: '4px' }}
-                customtabWrapper={{ marginTop: '0px' }}
-              />
-            </Box>
-          </Box>
-        </Box>
-        <BottomNavbar
-          tabPageLength={tabLength}
-          value={value}
-          setValue={setValue}
-          customStyle={{ width: { sm: '100vw', md: '42%' }, bottom: '0', borderRadius: '1px' }}
-        />
-      </Drawer>
+      <DrawerLayOut anchor={anchor} direction={'right'} toggleDrawer={toggleDrawer}
+        Title={'Add Transport Details'} Body={<DrawerBody />} customStyles={{width: { sm: '100vw', md: 700 }}} Bottom={<DrawerBottom />} 
+      />
     </>
   );
 };

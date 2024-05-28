@@ -23,7 +23,7 @@ function StudentPreview() {
 
   const navigate = useNavigate();
   const BackClick = () => {
-    navigate(`../admission`);
+    navigate(`/erp/student-info-fee/student-master/admission`);
   };
 
   //const filteredRows = rows.filter(row => row.id === rowData.id);

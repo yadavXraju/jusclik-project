@@ -1,5 +1,5 @@
 import React from 'react'
-import AdmissionTable from '../admission/admission-form/Adm-form/AdmissionTable'
+import AdmissionTable from '../admission'
 // import StudentDetails from './student-details'
 
 const Registration = () => {

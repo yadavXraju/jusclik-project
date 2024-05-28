@@ -1,13 +1,12 @@
 // ======= Page Owner Vikash =========
 // ======= Add Bus Details Drawer =========
+
 import React, { useState } from 'react';
 import useDrawer from 'hooks/useDrawer';
-import Drawer from '@mui/material/Drawer';
-import { Button, Typography, Box } from '@mui/material';
+import { Button } from '@mui/material';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import BottomNavbar from 'components/BottomNavbar';
 import BusDetailForm from './BusDetailForm';
-// import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import OwnerDetails from './OwnerDetails';
 import DirectionsBusTwoToneIcon from '@mui/icons-material/DirectionsBusTwoTone';
 import DriveFolderUploadTwoToneIcon from '@mui/icons-material/DriveFolderUploadTwoTone';
@@ -15,6 +14,8 @@ import AccountBoxTwoToneIcon from '@mui/icons-material/AccountBoxTwoTone';
 import CommonDocuments from 'components/table-data-grid/Documents';
 import documentData from './Sample-DocumentData';
 import ParamStepper from 'components/tabs/Stepper';
+import DrawerLayOut from 'layout/drawer-layout';
+
 
 const BusDetailsDrawer = () => {
   const { anchor, toggleDrawer } = useDrawer();
@@ -44,46 +45,67 @@ const BusDetailsDrawer = () => {
       icon: <DriveFolderUploadTwoToneIcon/>
     }
   ];
-  const tabLength = tabPage.length;
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
+  // const handleChange = (event, newValue) => {
+  //   setValue(newValue);
+  // };
+
+  const handlePrev = () => {
+    setValue(Math.max(0, value - 1));
+  };
+
+  const handleNext = () => {
+    setValue(Math.min(tabPage.length - 1, value + 1));
+  };
+
+  const handleCancelClick=(e)=>{
+   toggleDrawer('right',false)(e);
+  }
+
+  const handleSubmitClick=()=>{
+
+  }
+
+  const DrawerBottom = () => {
+    return (
+      <>
+        <BottomNavbar handlePrev={handlePrev} handleNext={handleNext}  
+          handleCancelClick={handleCancelClick} handleSubmitClick={handleSubmitClick} 
+          tabPageLength={tabPage.length} value={value} setValue={setValue}
+          customStyle={{ width: { sm: '100vw', md: '42%' }, bottom: '0', 
+          borderRadius: '1px' }}
+        />
+      </>
+    )
+  }
+
+  const DrawerBody = () => {
+    return (
+      <ParamStepper
+        variant={'scrollable'}
+        tabPage={tabPage}
+        showBottomNav={false}
+        numberShow={false}
+        value={value}
+        handleChange={handleChange}
+        customTabsStyle={{'& .MuiButtonBase-root':{minHeight:'49px'}, height:'50px'}}
+        customtabPanelStyle={{ padding: '0px', marginTop: '4px' }}
+        customtabWrapper={{ marginTop: '0px' }}
+      />
+    )
+  }
+
   return (
     <>
       <Button onClick={toggleDrawer('right', true)} sx={{ mr: '8px' }} variant="outlined" startIcon={<AddOutlinedIcon />}>
-        Add Bus Details
+      Add Bus Details
       </Button>
-      <Drawer anchor={'right'} open={anchor.right} onClose={toggleDrawer('right', false)}>
-        <Box sx={{ width: { xs: '100vw', sm: 750 }, height: '100vh', padding: 2 }} role="presentation">
-          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #ccc' }}>
-            <Typography variant="h4">Add Bus Details</Typography>
-            <Button onClick={toggleDrawer('right', false)} sx={{ alignSelf: 'flex-end' }}>
-              Close
-            </Button>
-          </Box>
-          <Box>
-          <ParamStepper
-              variant={'scrollable'}
-              tabPage={tabPage}
-              showBottomNav={false}
-              numberShow={false}
-              value={value}
-              customTabsStyle={{'& .MuiButtonBase-root':{minHeight:'50px'}, height:'50px'}}
-              handleChange={handleChange}
-              customtabPanelStyle={{ padding: '0px', marginTop: '4px' }}
-              customtabWrapper={{ marginTop: '0px' }}
-            />
-          </Box>
-        </Box>
-        
-        <BottomNavbar
-          tabPageLength={tabLength}
-          value={value}
-          setValue={setValue}
-          customStyle={{ width:'100%', bottom: '0', borderRadius: '1px' }}
-        />
-      </Drawer>
+      <DrawerLayOut anchor={anchor} direction={'right'} toggleDrawer={toggleDrawer}
+        Title={'Add Bus Details'} Body={<DrawerBody />} Bottom={<DrawerBottom />} 
+      />
     </>
   );
 };

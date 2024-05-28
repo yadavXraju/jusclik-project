@@ -38,7 +38,7 @@ const Admission = () => {
   };
 
   const Click = (rowData) => {
-    navigate('/erp/student-info-fee/student-master/admission-form', { state: { rowData } });
+    navigate(`/erp/student-info-fee/student-master/admission/${rowData.id}`, { state: { rowData } });
     // navigate(`/erp/hr-payroll/employee-master/${rowData.id}`, { state: { rowData }});
   };
 

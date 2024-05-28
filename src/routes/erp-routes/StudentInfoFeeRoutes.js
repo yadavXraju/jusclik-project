@@ -15,10 +15,8 @@ const AdmissionProcess =  Loadable(lazy(() => import('views/erp-module/student-i
 const Provisional =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-master/provisional')));
 const Admission =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-master/admission')));
 
-// dynamic routes end 
-const AdmissionForm =Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-master/admission/admission-form')));
 const EditMasterDataField =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-master/EditMasterDataField')));
-
+const StudentPreview =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-master/admission/admission-form/Adm-form/StudentPreview')));
 // Fee invoice
 const InvoiceModification =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/fee-accounting/new-invoice-modification')));
 const StudentFeeLedgerDetails =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/fee-accounting/student-fee-ledger-details')));
@@ -119,15 +117,13 @@ const StudentInfoFeeRoutes = [
           path : '',
           element : <Admission />
         },
+        {
+          path:':id',
+          element:<StudentPreview />
+        },
 
     ]
     },
-     {
-      path: 'admission-form',
-      element: <AdmissionForm />
-    },
- 
-
 
       // {
       //   path: 'custom-data',
