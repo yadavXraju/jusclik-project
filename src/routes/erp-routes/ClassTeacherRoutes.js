@@ -14,7 +14,7 @@ const Library =  Loadable(lazy(()=> import('views/erp-module/teacher/class-teach
 const StudentAllocation = Loadable(lazy(() => import('views/erp-module/teacher/class-teacher/StudentAllocation')));
 const StudentHomeWorkUpload = Loadable(lazy(() => import('views/erp-module/teacher/class-teacher/Student-homework-upload')));
 const CircularUpload = Loadable(lazy(() => import('views/erp-module/teacher/class-teacher/circular-upload')));
-const UploadResources = Loadable(lazy(() => import('views/erp-module/teacher/class-teacher/Upload-Resources')));
+const UploadResources = Loadable(lazy(() => import('views/erp-module/teacher/class-teacher/UploadResources')));
 const TeacherInbox = Loadable(lazy(() => import('views/erp-module/teacher/class-teacher/new-teacher-inbox')));
 const BiometricDetailsOrAttendanceDetails = Loadable(lazy(() => import('views/erp-module/teacher/class-teacher/biometric-details-attendance-details')));
 const LeaveApplication = Loadable(lazy(() => import('views/erp-module/teacher/class-teacher/leave-application')));

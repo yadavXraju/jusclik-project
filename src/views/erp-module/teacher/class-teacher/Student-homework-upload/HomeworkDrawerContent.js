@@ -1,13 +1,57 @@
 import * as React from 'react';
-import {Box,Grid} from '@mui/material';
-import HomeDate from './HomeDate';
+import {Box,Grid , TextField , Stack , Button } from '@mui/material';
 import HomeCategory from './HomeCategory';
-import HomeworkTopic from './HomeworkTopic';
 import HomeworkTemplate from './HomeworkTemplate';
 import HomeReplyBox from './HomeReplyBox';
 import { CommonDropZone } from 'components/upload-file/DropZone';
 import HomeYoutubeLink from './HomeYoutubeLink';
-import HomeDrawerSubmit from './HomeDrawerSubmit';
+// =========== home date start
+function HomeDate({label}) {
+
+  return (
+ <>
+   <TextField
+      id="outlined-select-option"
+      type="date"
+      fullWidth
+      label={label}
+      sx={{margin:"10px"}}
+      InputLabelProps={{
+        shrink: true,
+      }}
+    />
+ </>
+  )
+}
+// =========== home date end
+
+// =========== home drawer start
+export function HomeDrawerSubmit() {
+  return (
+    <Stack spacing={2} direction="row" sx={{display:'flex', justifyContent:'center'}}>
+      <Button variant="contained">Submit</Button>
+    </Stack>
+  );
+}
+// =========== home drawer end
+
+// =========== Home workTopic start
+export  function HomeworkTopic() {
+  return (
+    <Box
+      component="form"
+      sx={{
+        '& > :not(style)': { m: 1, width: '100%' }, paddingLeft:'4px', paddingRight:'8px'
+      }}
+      noValidate
+      autoComplete="off"
+    >
+      <TextField id="outlined-basic" label="Topic" variant="outlined" />
+  
+    </Box>
+  );
+}
+// =========== Home workTopic end
 
 function HomeworkDrawerContent() {
   const [selectedFile,setSelectedFile]=React.useState(null)

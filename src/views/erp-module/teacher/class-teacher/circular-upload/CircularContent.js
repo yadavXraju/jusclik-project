@@ -1,10 +1,10 @@
 import * as React from 'react';
 import {InputLabel ,Box , MenuItem , FormControl , Select , Grid , TextField , Chip}  from '@mui/material';
-import HomeReplyBox from 'views/erp-module/teacher/class-teacher/Student-homework-upload/HomeWorkDrawer/HomeReplyBox';
-import HomeYoutubeLink from 'views/erp-module/teacher/class-teacher/Student-homework-upload/HomeWorkDrawer/HomeYoutubeLink';
-import HomeworkTemplate from 'views/erp-module/teacher/class-teacher/Student-homework-upload/HomeWorkDrawer/HomeworkTemplate';
+import HomeReplyBox from 'views/erp-module/teacher/class-teacher/Student-homework-upload/HomeReplyBox';
+import HomeYoutubeLink from 'views/erp-module/teacher/class-teacher/Student-homework-upload/HomeYoutubeLink';
+import HomeworkTemplate from 'views/erp-module/teacher/class-teacher/Student-homework-upload/HomeworkTemplate';
 import { CommonDropZone } from 'components/upload-file/DropZone';
-import { StudentList } from 'views/erp-module/teacher/class-teacher/Student-homework-upload/HomeWorkDrawer/StudentHomeworkList';
+import { StudentList } from 'views/erp-module/teacher/class-teacher/Student-homework-upload/StudentHomeworkList';
 
 // ============== circular category start
 

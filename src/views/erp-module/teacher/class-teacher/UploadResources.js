@@ -1,11 +1,111 @@
-import React from 'react';
-import { Paper, IconButton, TableCell, TableRow, TableContainer, Table, TableHead, TableBody, Button, Typography, Popover, Grid } from '@mui/material';
+import React from 'react'
+import { CircularProgress , Box , Paper , Button , TableCell  , IconButton,  TableRow, TableContainer, Table, TableHead, TableBody, Typography, Popover, Grid ,  } from '@mui/material';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import MoreVertOutlinedIcon from '@mui/icons-material/MoreVertOutlined';
 import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
-import HomeworkDrawer from '../Student-homework-upload/HomeWorkDrawer/HomeworkDrawer';
-import HomeworkData from '../Student-homework-upload/HomeworkData';
+import HomeworkDrawer from 'views/erp-module/teacher/class-teacher/Student-homework-upload/HomeworkDrawer';
+import HomeworkData from 'views/erp-module/teacher/class-teacher/Student-homework-upload/HomeworkData';
 
-export default function Homework() {
+// Upload Progress start ===============
+const HomeworkProgress = ({ value, subject }) => {
+  const normalizedValue = Math.min(Math.max(value, 0), 100);
+  const strokeColor = normalizedValue >= 0 ? '#2196f3' : '#aaaaaa';
+
+  return (
+    <Paper
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        p: 2,
+        textAlign: 'center',
+      }}
+    >
+      <Box position="relative" display="inline-flex" alignItems="center" justifyContent="center">
+        <CircularProgress
+          variant="determinate"
+          value={100}
+          size={100}
+          thickness={3}
+          style={{ color: '#aaaaaa' }}
+        />
+        <CircularProgress
+          variant="determinate"
+          value={normalizedValue}
+          size={100}
+          thickness={3}
+          style={{ color: strokeColor, position: 'absolute' }}
+        />
+        <div style={{ position: 'absolute', fontSize: '16px', fontWeight: 'bold', zIndex: 2 }}>
+          {`${Math.round(normalizedValue)}%`}
+        </div>
+      </Box>
+      <div style={{ marginTop: '8px', fontSize: '16px', fontWeight: 'bold' }}>{subject}</div>
+    </Paper>
+  );
+};
+
+const HomeworkProgressChart = () => {
+  const progressData = [
+    { value: 69, subject: 'Maths 101' },
+    { value: 95, subject: 'Maths 102' },
+    { value: 100, subject: 'Maths 103' },
+    { value: 20, subject: 'Maths 104' },
+    { value: 90, subject: 'Maths 105' },
+    { value: 30, subject: 'Maths 106' },
+  ];
+
+  const settings = {
+    dots: false,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 5, // Default slides to show
+    slidesToScroll: 1,
+    nextArrow: <ArrowForwardIosIcon sx={{ color : '#c8c8c8 !important',  width : '32px !important', height : '32px !important',borderRadius:'50%',right:'24px !important' }}/>,
+    prevArrow: <ArrowBackIosIcon sx={{ color : '#c8c8c8 !important',  width : '32px !important', height : '32px !important',borderRadius:'50%', zIndex:'1', left:'24px !important'}}/>,
+    responsive: [
+      {
+        breakpoint: 1500, // Large devices (laptops/desktops)
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+      {
+        breakpoint: 500, // Medium devices (tablets, landscape phones)
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+      {
+        breakpoint: 480, // Small devices (phones)
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
+  };
+
+  return (
+    <Slider {...settings}>
+      {progressData.map((data, index) => (
+        <Paper key={index} sx={{ p: 7, borderRadius:'0px' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around', marginTop: '20px' }}>
+            <HomeworkProgress value={data.value} subject={data.subject} />
+          </div>
+        </Paper>
+      ))}
+    </Slider>
+  );
+};
+// Upload Progress end ===============
+
+// Upload Resources start ============
+export  function UploadResources() {
   // Sample homework data (you can fetch this data from an API or other source)
   
   const getStatusColor = (status, submissionRate) => {
@@ -94,3 +194,15 @@ export default function Homework() {
     </>
   );
 }
+// Upload Resources end ============
+
+const Upload = () => {
+  return (
+    <>
+    <HomeworkProgressChart />
+    <UploadResources/>
+    </>
+  )
+}
+
+export default Upload;
