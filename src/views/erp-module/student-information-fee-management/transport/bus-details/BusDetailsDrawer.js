@@ -3,31 +3,50 @@
 import React, { useState } from 'react';
 import useDrawer from 'hooks/useDrawer';
 import Drawer from '@mui/material/Drawer';
-import { Button, Typography, Box, Tab, Tabs } from '@mui/material';
+import { Button, Typography, Box } from '@mui/material';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import BottomNavbar from 'components/BottomNavbar';
 import BusDetailForm from './BusDetailForm';
-import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+// import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import OwnerDetails from './OwnerDetails';
 import DirectionsBusTwoToneIcon from '@mui/icons-material/DirectionsBusTwoTone';
 import DriveFolderUploadTwoToneIcon from '@mui/icons-material/DriveFolderUploadTwoTone';
 import AccountBoxTwoToneIcon from '@mui/icons-material/AccountBoxTwoTone';
 import CommonDocuments from 'components/table-data-grid/Documents';
 import documentData from './Sample-DocumentData';
+import ParamStepper from 'components/tabs/Stepper';
 
 const BusDetailsDrawer = () => {
   const { anchor, toggleDrawer } = useDrawer();
-  const [tabValue, setTabValue] = useState(0);
+  const [value, setValue] = useState(0);
 
-  const tabs = [
-    {name : 'Vehicle Details', icon: <DirectionsBusTwoToneIcon/>},
-    {name : 'Owner Details', icon: <AccountBoxTwoToneIcon/>},
-    {name : 'Documents', icon: <DriveFolderUploadTwoToneIcon/>},
-  ]
-  const tabLength = tabs.length;
-  
-  const handleTabChange = (event, newValue) => {
-    setTabValue(newValue);
+  const tabPage = [
+    {
+      id: 1,
+      name: 'Vehicle Details',
+      value: '1',
+      component: BusDetailForm,
+      icon: <DirectionsBusTwoToneIcon/>
+    },
+    {
+      id: 2,
+      name: 'Owner Details',
+      value: '2',
+      component: OwnerDetails,
+      icon: <AccountBoxTwoToneIcon/>
+    },
+    {
+      id: 2,
+      name: 'Documents',
+      value: '2',
+      component: CommonDocuments,
+      props:{documentData:documentData},
+      icon: <DriveFolderUploadTwoToneIcon/>
+    }
+  ];
+  const tabLength = tabPage.length;
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
   };
 
   return (
@@ -44,35 +63,24 @@ const BusDetailsDrawer = () => {
             </Button>
           </Box>
           <Box>
-            {/* Tabs for switching between TransportRoutes and Stoppage */}
-            <Tabs value={tabValue} onChange={handleTabChange} sx={{borderBottom:'1px solid #ccc', marginBottom:'15px'}} variant="scrollable" aria-label="Route tabs">
-              {tabs.map((label, index) => (
-                <Tab
-                  sx={{padding:'12px 2px', margin:'0px 10px 0px 0px'}}
-                  key={index}
-                  label={
-                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                      <span style={{marginRight:'5px'}}>{label.icon}</span>
-                      {label.name}
-                      { <KeyboardArrowRightIcon />}
-                    </Box>
-                  }
-                />
-              ))}
-            </Tabs>
-            {/* Tab panels based on selected tab */}
-            <Box sx={{ mt: 1 }}>
-              {tabValue === 0 && <BusDetailForm />}
-              {tabValue === 1 &&  <OwnerDetails />}
-              {tabValue === 2 &&  <CommonDocuments documentData={documentData} />}
-            </Box>
+          <ParamStepper
+              variant={'scrollable'}
+              tabPage={tabPage}
+              showBottomNav={false}
+              numberShow={false}
+              value={value}
+              customTabsStyle={{'& .MuiButtonBase-root':{minHeight:'50px'}, height:'50px'}}
+              handleChange={handleChange}
+              customtabPanelStyle={{ padding: '0px', marginTop: '4px' }}
+              customtabWrapper={{ marginTop: '0px' }}
+            />
           </Box>
         </Box>
         
         <BottomNavbar
           tabPageLength={tabLength}
-          value={tabValue}
-          setValue={setTabValue}
+          value={value}
+          setValue={setValue}
           customStyle={{ width:'100%', bottom: '0', borderRadius: '1px' }}
         />
       </Drawer>
