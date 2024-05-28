@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import Dashboard from 'views/erp-module/crm/dashboard/Dashboard';
 import DashboardPayRoll from 'pages/getting-started';
 import SetupTabs from 'components/tabs/Stepper';
@@ -52,7 +52,6 @@ const handleChange = (event, newValue) => {
         numberShow ={false}
         iconShow={false}
         customtabSytle = {DashboardTab.customtabSytle}
-
         customtabPanelStyle={DashboardTab.customtabPanelStyle}
         customIconStyle={DashboardTab.customIconStyle}
         customTabsStyle={DashboardTab.customTabsStyle}
