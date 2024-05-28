@@ -52,7 +52,6 @@ const handleChange = (event, newValue) => {
         numberShow ={false}
         iconShow={false}
         customtabSytle = {DashboardTab.customtabSytle}
-
         customtabPanelStyle={DashboardTab.customtabPanelStyle}
         customIconStyle={DashboardTab.customIconStyle}
         customTabsStyle={DashboardTab.customTabsStyle}
