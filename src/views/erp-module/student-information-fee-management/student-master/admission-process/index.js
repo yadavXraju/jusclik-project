@@ -1,3 +1,5 @@
+// owner @Tarun pandey
+
 import  React,{useRef} from 'react';
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Box, Typography, Button } from '@mui/material';
 import FilterAndSort from '../common-report-section/filter-and-sort';
-import ShowHide from '../common-report-section/selected-column';
+import ShowHide from '../common-report-section/ShowHide';
 import ReportLayout from '../common-report-section/report-layout';
-import ReportReference from '../common-report-section/report-preference';
+import ReportReference from '../common-report-section/ReportReference';
 import ParamStepper from 'components/tabs/Stepper';
 
 const steps = [

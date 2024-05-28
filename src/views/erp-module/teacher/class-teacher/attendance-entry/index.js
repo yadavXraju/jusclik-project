@@ -16,7 +16,6 @@ import {
   useMediaQuery
 } from '@mui/material';
 // import AvtarImg from '../../../assets/images/avatar.png';
-import { ClassList } from './ClassList';
 import { SectionList } from './SectionList';
 import { StudentList } from './StudentList';
 import TakeAttendance from './TakeAttendance';
@@ -33,6 +32,7 @@ const Item = styled(Paper)(({ theme }) => ({
   textAlign: 'center',
   color: theme.palette.text.secondary
 }));
+
 
 export default function AttendanceEntry() {
   const [selectClass, setSelectClass] = useState('');
