@@ -1,5 +1,5 @@
-// // ======= Page Owner Vikash =========
-// // ======= School Fee Entry Page =========
+// ======= Page Owner Vikash =========
+// ======= School Fee Entry Page =========
 import React,{useState} from 'react';
 import ParamStepper from 'components/tabs/Stepper';
 import PoliciesCounter from './policiesCounter';
@@ -73,7 +73,6 @@ const FeeStructure = () => {
           value={value} handleChange={handleChange}
         />
       </MainCard>
-
     </>
   );
 };

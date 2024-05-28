@@ -26,7 +26,6 @@ const AdmissionTable = () => {
   const [currEditItem, setCurrEditItem] = React.useState({});
   const { anchor, toggleDrawer } = useDrawer();
 
-
   const [isSearchVisible, setSearchVisible] = useState(false);
 
   const handleSearchClick = () => {
@@ -39,7 +38,6 @@ const AdmissionTable = () => {
 
   const Click = (rowData) => {
     navigate('/erp/student-info-fee/student-master/admission-form', { state: { rowData } });
-    // navigate(`/erp/hr-payroll/employee-master/${rowData.id}`, { state: { rowData }});
   };
 
   // ========== function for handle Edit row ===========
@@ -156,10 +154,6 @@ const AdmissionTable = () => {
             <Grid item xs={12} sm={6} lg={6}>
               <div style={{ display: 'flex', justifyContent: 'end', width: '100%' }}>
                 <AdmissionDrawer />
-
-                <IconButton sx={{ marginRight: '8px', background: '#cccccc54' }} onClick={handleSearchClick}>
-                  <SearchOutlinedIcon />
-                </IconButton>
                 {isSearchVisible && (
                   <TextField
                     sx={{
@@ -182,6 +176,10 @@ const AdmissionTable = () => {
                     }}
                   />
                 )}
+                <IconButton sx={{ marginRight: '8px', background: '#cccccc54' }} onClick={handleSearchClick}>
+                  <SearchOutlinedIcon />
+                </IconButton>
+                
                 <IconButton sx={{ marginRight: '8px', background: '#cccccc54' }}>
                   <FilterListRoundedIcon onClick={toggleDrawer('right', true)} />
                   <Drawer anchor="right" open={anchor.right} onClose={toggleDrawer('right', false)}>

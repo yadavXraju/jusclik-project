@@ -54,8 +54,6 @@ const TimeTable = () => {
 
     return (
       <>
-
-          
         {daySchedule.map((scheduleItem, index) => (
           <Grid container spacing={0.5} style={{ marginTop: '6px' }} key={index} >
             <Grid item xs={12}>
@@ -88,8 +86,6 @@ const TimeTable = () => {
 
   return (
     <>
-
-     
       <Card sx={{ padding: { xs: 1, md: 3 }  }}>
       <Grid sx={{paddingRight:rem , paddingLeft:rem}}>
         <Typography sx={{ p: 2, borderBottom: '1px solid #ccc', fontSize: '1.3rem' }} variant="h5" component="div">

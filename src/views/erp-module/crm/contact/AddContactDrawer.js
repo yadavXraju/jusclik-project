@@ -93,13 +93,6 @@ const AddContactDrawer = ({ DrawerBtn = false, editIcon = false, currEditItem , 
           <Box>
             {/* Tab panels based on selected tab */}
             {/* <Box sx={{ mt: 1, height: 'calc(100vh - 188px)' , overflowY:'auto' }}>
-              {tabValue === 0 && <AddLeadForm currEditItem={currEditItem} />}
-              {tabValue === 1 && <Box>Other Details</Box>}
-              {tabValue === 2 && (
-                <>
-                  <DocumentTest documentData={documentData}  onFileChange={handleFileChange} onRemoveFile={handleRemoveFile}/>
-                </>
-              )}
             </Box> */}
             <ParamStepper
               variant={'scrollable'}

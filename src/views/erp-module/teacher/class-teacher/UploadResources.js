@@ -1,6 +1,5 @@
-import React from 'react';
-import CircularProgress from '@mui/material/CircularProgress';
-import { Box , Paper, IconButton, TableCell, TableRow, TableContainer, Table, TableHead, TableBody, Button, Typography, Popover, Grid  } from '@mui/material';
+import React from 'react'
+import { CircularProgress , Box , Paper , Button , TableCell  , IconButton,  TableRow, TableContainer, Table, TableHead, TableBody, Typography, Popover, Grid ,  } from '@mui/material';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -8,10 +7,10 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import MoreVertOutlinedIcon from '@mui/icons-material/MoreVertOutlined';
 import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
-import HomeworkDrawer from './HomeworkDrawer';
-import HomeworkData from './HomeworkData';
+import HomeworkDrawer from 'views/erp-module/teacher/class-teacher/Student-homework-upload/HomeworkDrawer';
+import HomeworkData from 'views/erp-module/teacher/class-teacher/Student-homework-upload/HomeworkData';
 
-// HomeworkProgressChart start ============= 
+// Upload Progress start ===============
 const HomeworkProgress = ({ value, subject }) => {
   const normalizedValue = Math.min(Math.max(value, 0), 100);
   const strokeColor = normalizedValue >= 0 ? '#2196f3' : '#aaaaaa';
@@ -103,10 +102,10 @@ const HomeworkProgressChart = () => {
     </Slider>
   );
 };
-// HomeworkProgressChart end  ============= 
+// Upload Progress end ===============
 
-// Home work start  ============= 
-export  function Homework() {
+// Upload Resources start ============
+export  function UploadResources() {
   // Sample homework data (you can fetch this data from an API or other source)
   
   const getStatusColor = (status, submissionRate) => {
@@ -126,7 +125,7 @@ export  function Homework() {
         <Grid container spacing={2} p={2} alignItems="end">
           <Grid item xs={12} sm={8} lg={8}>
             <div>
-              <Typography variant="h3">Homework</Typography>
+              <Typography variant="h3">Upload Resources</Typography>
             </div>
           </Grid>
           <Grid item xs={12} sm={4} lg={4}>
@@ -195,15 +194,15 @@ export  function Homework() {
     </>
   );
 }
-// Home work end  ============= 
+// Upload Resources end ============
 
-const StudentHomeworkUpload = () => {
+const Upload = () => {
   return (
     <>
-      <HomeworkProgressChart/>
-      <Homework/>
-  </>
+    <HomeworkProgressChart />
+    <UploadResources/>
+    </>
   )
 }
 
-export default StudentHomeworkUpload;
+export default Upload;
