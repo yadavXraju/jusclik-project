@@ -1,5 +1,5 @@
 import React from 'react';
-import RightDrawer from './RightDrawer';
+import RightDrawer from './TempRightDrawer';
 import useDrawer from 'hooks/useDrawer';
 import PeopleOutlineOutlinedIcon from '@mui/icons-material/PeopleOutlineOutlined';
 import Drawer from '@mui/material/Drawer';

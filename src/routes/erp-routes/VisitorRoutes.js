@@ -5,7 +5,7 @@ import { lazy } from 'react';
 import Loadable from 'components/ui/Loadable';
 const DashboardDefault = Loadable(lazy(() => import('views/erp-module/visitor/dashboard')));
 const VisitorEntry = Loadable(lazy(() => import('views/erp-module/visitor/visitor-managment/visitor-entry')));
-const ScheduledVisit = Loadable(lazy(() => import('views/erp-module/visitor/visitor-managment/scheduled-visit')));
+const ScheduledVisit = Loadable(lazy(() => import('views/erp-module/visitor/visitor-managment/new-scheduled-visit')));
 const VisitorDetails=Loadable(lazy(() => import('views/erp-module/visitor/visitor-managment/visitor-detail')));
 const Reports =Loadable(lazy(() => import('views/erp-module/visitor/reports')));
 const Settings =Loadable(lazy(() => import('views/erp-module/visitor/settings')));
