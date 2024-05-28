@@ -14,11 +14,12 @@ const DrawerLayOut = ({
 }) => {
     const defaultStyles = {
         width: { sm: '100vw', md: 820 },
+        padding:2,
+        height:'100vh',
         ...customStyles,
     };
    
     const BodyStyle={
-        paddingLeft:2,
         height:'calc(100vh - 140px)',
         overflowY:'auto'
     }
@@ -31,7 +32,7 @@ const DrawerLayOut = ({
                         justifyContent: 'space-between',
                         alignItems: 'center',
                         borderBottom: '1px solid #ccc',
-                        padding: 2,
+    
                     }}
                 >
                     <Typography variant="h4">{Title}</Typography>
