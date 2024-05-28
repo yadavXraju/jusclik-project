@@ -12,7 +12,7 @@ import { useMediaQuery } from '@mui/material';
 import { DashboardTab } from 'components/dashboard/CommonCss';
 import Dashboard from './Dashboard';
 const DashboardTabs = () => {
-  const [value,setValue]=useState();
+  const [value,setValue]=useState(0);
   const isTab = useMediaQuery('(max-width:991px)')
 
   const handleChange=(event,newValue)=>{
@@ -57,7 +57,6 @@ const DashboardTabs = () => {
         value={value}
         handleChange={handleChange}
         customtabSytle = {DashboardTab.customtabSytle}
-
         customtabPanelStyle={DashboardTab.customtabPanelStyle}
         customIconStyle={DashboardTab.customIconStyle}
         customTabsStyle={DashboardTab.customTabsStyle}

@@ -32,6 +32,7 @@ const SmsDeliveryReport = () => {
   const style={
     filter:{
           width:width,
+          
     }
   }
 
