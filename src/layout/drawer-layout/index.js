@@ -1,27 +1,51 @@
-import { Box, Typography, Button,Drawer} from '@mui/material';
+import { Box, Typography, Button, Drawer } from '@mui/material';
 
-const DrawerLayOut = ({ Title, Body, Bottom, toggleDrawer }) => {
+
+// direction=left,right,top,bottom
+const DrawerLayOut = ({
+    anchor,
+    direction = 'left',
+    toggleDrawer,
+    Title,
+    Body,
+    Bottom,
+    customStyles = {},
+    CustomBodyStyle={}
+}) => {
+    const defaultStyles = {
+        width: { sm: '100vw', md: 820 },
+        ...customStyles,
+    };
+   
+    const BodyStyle={
+        paddingLeft:2,
+        height:'calc(100vh - 140px)',
+        overflowY:'auto'
+    }
     return (
-        <Drawer anchor={'right'} open={anchor.right} onClose={toggleDrawer('right', false)}>
-            <Box p-2>
-                <Box sx={{
-                    display: 'flex', justifyContent: 'space-between',
-                    alignItems: 'center', borderBottom: '1px solid #ccc'
-                }}>
+        <Drawer anchor={direction} open={anchor[direction]} onClose={toggleDrawer(direction, false)}>
+            <Box sx={{ ...defaultStyles }} role="presentation">
+                <Box
+                    sx={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                        borderBottom: '1px solid #ccc',
+                        padding: 2,
+                    }}
+                >
                     <Typography variant="h4">{Title}</Typography>
-                    <Button onClick={toggleDrawer('right', false)} sx={{ alignSelf: 'flex-end' }}>
+                    <Button onClick={toggleDrawer(direction, false)} sx={{ alignSelf: 'flex-end' }}>
                         Close
                     </Button>
                 </Box>
-                <Box>
+                <Box sx={{...BodyStyle,...CustomBodyStyle}} className='scrollbar'>
                     {Body}
                 </Box>
-                <Box sx={{ position: 'fixed', bottom: '0px' }}>
-                    {Bottom}
-                </Box>
+                <Box sx={{ position: 'fixed', bottom:'0px'}}>{Bottom}</Box>
             </Box>
         </Drawer>
-    )
-}
+    );
+};
 
 export default DrawerLayOut;

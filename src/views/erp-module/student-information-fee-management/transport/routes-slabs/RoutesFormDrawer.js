@@ -2,14 +2,14 @@
 // ======= Return Routes Form Drawer =========
 
 import React, { useState } from 'react';
+import { Button } from '@mui/material';
 import useDrawer from 'hooks/useDrawer';
-import Drawer from '@mui/material/Drawer';
-import { Button, Typography, Box } from '@mui/material';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import TransportRoutes from './TransportRoutes';
 import Stoppage from './Stoppage';
 import BottomNavbar from 'components/BottomNavbar';
 import ParamStepper from 'components/tabs/Stepper';
+import DrawerLayOut from 'layout/drawer-layout';
 
 const RoutesFormDrawer = () => {
   const { anchor, toggleDrawer } = useDrawer();
@@ -29,48 +29,62 @@ const RoutesFormDrawer = () => {
       component: Stoppage
     }
   ];
-  const tabLength = tabPage.length;
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
-    // const Transport = () => {
-  //   return <>Transport</>;
-  // };
+  const handlePrev = () => {
+    setValue(Math.max(0, value - 1));
+  };
+
+  const handleNext = () => {
+    setValue(Math.min(tabPage.length - 1, value + 1));
+  };
+
+  const handleCancelClick=(e)=>{
+   toggleDrawer('right',false)(e);
+  }
+
+  const handleSubmitClick=()=>{
+
+  }
+
+  const DrawerBottom = () => {
+    return (
+      <>
+        <BottomNavbar handlePrev={handlePrev} handleNext={handleNext}  
+          handleCancelClick={handleCancelClick} handleSubmitClick={handleSubmitClick} 
+          tabPageLength={tabPage.length} value={value} setValue={setValue}
+          customStyle={{ width: { sm: '100vw', md: '42%' }, bottom: '0', 
+          borderRadius: '1px' }}
+        />
+      </>
+    )
+  }
+
+  const DrawerBody = () => {
+    return (
+      <ParamStepper
+        variant={'scrollable'}
+        tabPage={tabPage}
+        showBottomNav={false}
+        value={value}
+        handleChange={handleChange}
+        customtabPanelStyle={{ padding: '0px', marginTop: '4px' }}
+        customtabWrapper={{ marginTop: '0px' }}
+      />
+    )
+  }
 
   return (
     <>
       <Button onClick={toggleDrawer('right', true)} sx={{ mr: '8px' }} variant="outlined" startIcon={<AddOutlinedIcon />}>
         Add Route
       </Button>
-      <Drawer anchor={'right'} open={anchor.right} onClose={toggleDrawer('right', false)}>
-        <Box sx={{ width: { sm: '100vw', md: 820 }, height: '100vh', padding: 2 }} role="presentation">
-          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #ccc' }}>
-            <Typography variant="h4">Add Route & Stoppage</Typography>
-            <Button onClick={toggleDrawer('right', false)} sx={{ alignSelf: 'flex-end' }}>
-              Close
-            </Button>
-          </Box>
-          <Box>
-            <ParamStepper
-              variant={'scrollable'}
-              tabPage={tabPage}
-              showBottomNav={false}
-              value={value}
-              handleChange={handleChange}
-              customtabPanelStyle={{ padding: '0px', marginTop: '4px' }}
-              customtabWrapper={{ marginTop: '0px' }}
-            />
-          </Box>
-        </Box>
-
-        <BottomNavbar
-          tabPageLength={tabLength}
-          value={value}
-          setValue={setValue}
-          customStyle={{ width: { sm: '100vw', md: '42%' }, bottom: '0', borderRadius: '1px' }}
-        />
-      </Drawer>
+      <DrawerLayOut anchor={anchor} direction={'right'} toggleDrawer={toggleDrawer}
+        Title={'Add Route & Stoppage'} Body={<DrawerBody />} Bottom={<DrawerBottom />} 
+      />
     </>
   );
 };

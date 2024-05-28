@@ -18,8 +18,6 @@ const Admission =  Loadable(lazy(() => import('views/erp-module/student-informat
 // dynamic routes end 
 const AdmissionForm =Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-master/admission/admission-form')));
 const EditMasterDataField =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-master/EditMasterDataField')));
-const ChangeEnrolmentStatus =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-master/ChangeEnrolmentStatus')));
-const ChangeEnrolmentNumber =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-master/ChangeEnrolmentNumber')));
 
 // Fee invoice
 const InvoiceModification =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/fee-accounting/new-invoice-modification')));
@@ -139,16 +137,6 @@ const StudentInfoFeeRoutes = [
       {
         path: 'edit-master-data-field',
         element: <EditMasterDataField />
-      },
-
-      {
-        path: 'change-enrolment-status',
-        element: <ChangeEnrolmentStatus />
-      },
-
-      {
-        path: 'change-enrolment-number',
-        element: <ChangeEnrolmentNumber />
       },
 
 
