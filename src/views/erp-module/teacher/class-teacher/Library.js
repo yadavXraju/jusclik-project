@@ -3,7 +3,7 @@
 import React from 'react';
 import { Box, Paper, TextField, Button, Grid } from '@mui/material';
 
-const LibraryComponent = () => {
+const Library = () => {
   return (
     <div style={{ backgroundColor: '#f0f0f0', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
       <Box>
@@ -49,4 +49,4 @@ const LibraryComponent = () => {
   );
 };
 
-export default LibraryComponent;
+export default Library;
