@@ -1,6 +1,6 @@
 // sangeeta
 
-import React from 'react';
+import React,{useState} from 'react';
 import Dashboard from 'views/erp-module/visitor/dashboard/Dashboard';
 import DashboardPayRoll from 'pages/getting-started';
 import SetupTabs from 'components/tabs/Stepper';
@@ -11,8 +11,11 @@ import { useMediaQuery } from '@mui/material';
 import { DashboardTab } from 'components/dashboard/CommonCss';
 
 const DashboardTabs = () => {
+  const [value, setValue] = useState(0);
   const isTab = useMediaQuery('(max-width:991px)')
-  handleChange={handleChange}
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
 
   const tabPage = [
     {

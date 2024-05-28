@@ -6,10 +6,23 @@ import { Box } from '@mui/system';
 import LeaveBarChart from './LeaveapplicationBar';
 import LeaveTabs from './LeaveApplicationFilter';
 import { Paper } from '@mui/material';
-import LeaveDrawer from './LeaveApplicationDrawer';
 import LeaveBalance from './LeaveBalance';
 
+import withParamDrawer from 'components/temp-withParamDrawer';
+import LeaveApplicationDrawerContent from './LeaveApplicationDrawerContent';
 
+const NewParamDrawer=withParamDrawer(LeaveApplicationDrawerContent);
+
+// leave drawer start ==========
+function LeaveDrawer() {
+  return (
+    <div>
+      <NewParamDrawer buttonLabel='Leave Application' drawerTitle='Request Leave' />
+    </div>
+  )
+}
+
+// leave drawer end ==========
 
 const LeaveApplication = () => (
   <>

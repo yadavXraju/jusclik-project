@@ -15,19 +15,14 @@ const AdmissionProcess =  Loadable(lazy(() => import('views/erp-module/student-i
 const Provisional =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-master/provisional')));
 const Admission =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-master/admission')));
 
-// admission dynamic routes
-const AdmissionDynamicRoutes =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-master/admission/dynamic-admission-routes')));
 // dynamic routes end 
 const AdmissionForm =Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-master/admission/admission-form')));
-const EditMasterDataField =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-master/edit-master-data-field')));
-const ChangeEnrolmentStatus =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-master/change-enrolment-status')));
-const ChangeEnrolmentNumber =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-master/change-enrolment-number')));
-const UploadDocument =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-master/upload-document')));
+const EditMasterDataField =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-master/EditMasterDataField')));
 
 // Fee invoice
 const InvoiceModification =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/fee-accounting/new-invoice-modification')));
 const StudentFeeLedgerDetails =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/fee-accounting/student-fee-ledger-details')));
-const OptionalFeeHeadsEntry =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/fee-accounting/optional-fee-heads-entry')));
+const OptionalFeeHeadsEntry =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/fee-accounting/new-optional-fee-heads-entry')));
 
 // fee receipt
 const FeeTransactionEntry =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/fee-accounting/new-fee-transaction-entry')));
@@ -36,7 +31,7 @@ const FeeClearanceEntry=  Loadable(lazy(() => import('views/erp-module/student-i
 const SecurityDeposit=  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/fee-accounting/new-security-deposit')));
 
 // hostel
-const DormEntry=  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/hostel/dorm-entry')));
+const DormEntry=  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/new-hostel/dorm-entry')));
 
 
 // transport
@@ -46,7 +41,7 @@ const BusDetails =  Loadable(lazy(() => import('views/erp-module/student-informa
 const BusDetailsPreveiw =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/transport/bus-details/Preview')));
 // dynamic routes
 const TransportAllocation =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/transport/transportAllocation')));
-const TransportAllocationPreview =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/transport/transportAllocation/transportPreview')));
+const TransportAllocationPreview =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/transport/transportAllocation/TransportPreview')));
 
 // setings
 const SystemData = Loadable(lazy(() => import('views/erp-module/student-information-fee-management/settings/system-data')));
@@ -57,23 +52,14 @@ const WithdrawalChecklist = Loadable(lazy(() => import('views/erp-module/student
 // reports
 const Reports = Loadable(lazy(() => import('views/erp-module/student-information-fee-management/reports/')));
 const EnquiryReport =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/reports/enquiry')));
-const EnquiryRegister =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/reports/register')));
 
-// tools
-const GpsBusTracking =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/tool/gps-bus-tracking')));
-const WhatshapConversations =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/tool/gps-bus-tracking')));
-const WhatshapDeliveryReport =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/tool/whatsapp-delivery-report')));
-const WhatshapExcelSheet =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/tool/whatsapp-excel-sheet')));
+
 
 // setting
 
 const Settings =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/settings/setting/setting-stufee')));
 // student details and forms
 
-const StudentDetails =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-master/registration/student-details')));
-const FatherDetailsForm =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-master/registration/student-details/data-forms/FatherDetails')));
-const MotherDetailsForm =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-master/registration/student-details/data-forms/MotherDetails')));
-const StudentDetailsForm =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-master/registration/student-details/data-forms/StudentDetails')));
 const TransactionNoSeries =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/settings/transaction-no-series')));
 
 // dashboard payroll
@@ -118,26 +104,6 @@ const StudentInfoFeeRoutes = [
             path: 'registration',
             element: <Registration />
          },
-          // student details main
-          { 
-            path: 'registration/student-details', 
-            element: <StudentDetails /> 
-          },
-           // father details
-          { 
-            path: 'registration/father-details-form', 
-            element: <FatherDetailsForm/> 
-          },
-          // mother details       
-          { 
-            path: 'registration/mother-details-form', 
-            element: <MotherDetailsForm /> 
-          },
-          //  student details       
-          { 
-            path: 'registration/student-details-form', 
-            element: <StudentDetailsForm /> 
-          },
         {
           path: 'admission-process',
           element: <AdmissionProcess />
@@ -154,10 +120,6 @@ const StudentInfoFeeRoutes = [
           element : <Admission />
         },
 
-        {
-          path : ':id',
-          element : <AdmissionDynamicRoutes/>
-        },
     ]
     },
      {
@@ -177,20 +139,6 @@ const StudentInfoFeeRoutes = [
         element: <EditMasterDataField />
       },
 
-      {
-        path: 'change-enrolment-status',
-        element: <ChangeEnrolmentStatus />
-      },
-
-      {
-        path: 'change-enrolment-number',
-        element: <ChangeEnrolmentNumber />
-      },
-
-      {
-        path: 'upload-document',
-        element: <UploadDocument />
-      },
 
         ]
       },
@@ -222,12 +170,6 @@ const StudentInfoFeeRoutes = [
           path:'enquiry',
           element:<EnquiryReport />
           },
-
-          {
-            path:'register',
-            element:<EnquiryRegister />
-            }
-
          ]
        },
 
@@ -369,37 +311,6 @@ const StudentInfoFeeRoutes = [
             
           ]
         },
-
-          // tools
-
-          {
-            path: 'tools',
-            children: [
-              { 
-                path: 'gps-bus-tracking', 
-                element: <GpsBusTracking /> 
-              },
-
-              { 
-                path: 'whatsapp-conversations', 
-                element: <WhatshapConversations /> 
-              },
-
-
-              { 
-                path: 'whatsapp-delivery-report', 
-                element: <WhatshapDeliveryReport /> 
-              },
-
-
-              { 
-                path: 'whatsapp-excel-sheet', 
-                element: <WhatshapExcelSheet /> 
-              },
-    
-    
-            ]
-          },
 
           // user and roles
 

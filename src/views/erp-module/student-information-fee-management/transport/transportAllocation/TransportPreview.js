@@ -1,58 +1,32 @@
 // ======= Page Owner Vikash =========
-// ======= Render Student Preview Page =========
+// ======= Transport Preview Component =========
+
 import React, {useEffect} from 'react';
 import MainCard from 'components/ui/cards/MainCard';
-import { Box, Grid, Typography, IconButton, useMediaQuery, Divider } from '@mui/material';
-import PreviewTabs from './Adm-form/PreviewTabs';
-import Button from '@mui/material/Button';
-import ButtonGroup from '@mui/material/ButtonGroup';
-import ArrowBackIosOutlinedIcon from '@mui/icons-material/ArrowBackIosOutlined';
-import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
-import { useLocation } from 'react-router-dom';
+import { Box, Grid, Typography, useMediaQuery, Divider } from '@mui/material';
 import { studentProfileDetails } from 'layout/MainLayout/Header/Profile';
 import { CardMedia } from '@mui/material';
 import ArrowBackOutlinedIcon from '@mui/icons-material/ArrowBackOutlined';
 import { useNavigate } from 'react-router-dom';
-import EditDrawer from './Adm-form/EditDrawer';
-import rows from './Adm-form/AdmissionTableData';
-import PreviewLoginAndWithdrawalDrawer from './Adm-form/PreviewLoginAndWithdrawalDrawer';
+import rows from '../../student-master/admission/admission-form/Adm-form/AdmissionTableData';
+import { useParams } from 'react-router';
 
-function AdmissionForm() {
-  const location = useLocation();
-  const { rowData } = location.state;
+function TransportPreview() {
+  let { id } = useParams();
 
   const navigate = useNavigate();
   const BackClick = () => {
-    navigate(`../admission`);
+    navigate(`/erp/student-info-fee/transport/allocation`);
   };
 
-  //const filteredRows = rows.filter(row => row.id === rowData.id);
   const [filteredIndex, setFilteredIndex] = React.useState(-1); // Initial state set to -1
   const [filteredRow, setFilteredRow] = React.useState(null);
   useEffect(() => {
-    // Find the index of the filtered row
-    const index = rows.findIndex(row => row.id === rowData.id);
-
-    // Set filtered index and row
-    if (index !== -1) {
-      setFilteredIndex(index);
-      setFilteredRow(rows[index]);
+    if (id !== -1) {
+      setFilteredIndex(id);
+      setFilteredRow(rows[id]);
     }
-  }, [rowData]);
-
-  // Function to handle moving to the next row
-  const handleNext = () => {
-    if (filteredIndex < rows.length - 1) {
-      setFilteredIndex(prevIndex => prevIndex + 1);
-    }
-  };
-
-  // Function to handle moving to the previous row
-  const handlePrevious = () => {
-    if (filteredIndex > 0) {
-      setFilteredIndex(prevIndex => prevIndex - 1);
-    }
-  };
+  }, [id]);
 
   // ======= Update filtered row when filteredIndex changes =======
   useEffect(() => {
@@ -98,24 +72,7 @@ function AdmissionForm() {
                 <Box>Class - {filteredRow.class}</Box>
               </Box>
             </Box>
-            <Box sx={{ display: 'flex', justifyContent: 'end', width: '100%', gap: issmallMobile ? '10px' : '0px' }}>
-              <IconButton sx={{ marginRight: '8px', background: '#cccccc54' }}>
-                {/* <EditTwoToneIcon /> */}
-                {/* ============ import edit drawer ============ */}
-                <EditDrawer currEditItem={filteredRow} handleClick={() => {}}/>
-              </IconButton>
-        
-              <PreviewLoginAndWithdrawalDrawer/>
-
-              <ButtonGroup color="primary" variant="outlined" aria-label="Basic button group">
-                <Button sx={{ padding: '5px' }}>
-                  <ArrowBackIosOutlinedIcon onClick={handlePrevious}/>
-                </Button>
-                <Button sx={{ padding: '5px' }}>
-                  <ArrowForwardIosOutlinedIcon onClick={handleNext}/>
-                </Button>
-              </ButtonGroup>
-            </Box>
+            
           </Box>
           <Grid container spacing={2}>
             <Grid item xs={12} md={4}>
@@ -191,7 +148,6 @@ function AdmissionForm() {
                       </Grid>
                     </Grid>
                   </Box>
-
                 </Box>
            
                  {/* =============== Render Fee Details ===================== */}
@@ -202,12 +158,6 @@ function AdmissionForm() {
                   <Divider />
                   <Box p={2}>
                     <Grid container spacing={3}>
-                      {/* <Grid item xs={12} md={6}>
-                        <Box pb={0.5} color={'#8b8989'}>
-                          CATEGORY
-                        </Box>
-                        <Box fontSize={16}>General</Box>
-                      </Grid> */}
                       <Grid item xs={12} md={6}>
                         <Box pb={0.5} color={'#8b8989'}>
                           PAY MODE
@@ -250,7 +200,7 @@ function AdmissionForm() {
               </Box>
             </Grid>
             <Grid item xs={12} md={8}>
-              <PreviewTabs />
+              
             </Grid>
           </Grid>
         </Box>
@@ -260,4 +210,4 @@ function AdmissionForm() {
   );
 }
 
-export default AdmissionForm;
+export default TransportPreview;

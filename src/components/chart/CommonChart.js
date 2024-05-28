@@ -59,6 +59,21 @@ const CommonChart = ({ Data, heading, hideDiv, chartdetails = [] }) => {
     )
   );
 
+  let labelStyle = {
+    fontSize: '14px'
+  };
+
+  const isResponsive990 = useMediaQuery('(max-width:990px)');
+
+  if (isResponsive990) {
+    labelStyle = {
+      fontSize: '12px',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center'
+    };
+  }
+
   return (
     <>
       <Paper
@@ -118,11 +133,11 @@ const CommonChart = ({ Data, heading, hideDiv, chartdetails = [] }) => {
               </Typography>
               <Grid container spacing={1}>
                 {chartdetails.map((item, index) => (
-                  <Grid item lg={4} md={4} sm={4} xs={12} key={index}>
-                    <Typography variant="body" sx={{ fontSize: '12px' }}>
+                  <Grid item lg={4} md={4} sm={12} xs={12} key={index}>
+                    <Typography variant="body" sx={labelStyle}>
                       {item.label}
                     </Typography>
-                    <Typography variant="h5" sx={{ fontWeight: 'bold' }}>
+                    <Typography variant="h5" sx={{...labelStyle, fontWeight: 'bold', fontSize:isResponsive990?'14px':'16px' }}>
                       {item.chartvalues}
                     </Typography>
                   </Grid>
