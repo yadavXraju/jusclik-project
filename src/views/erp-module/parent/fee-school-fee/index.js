@@ -38,19 +38,19 @@ const FeeStructure = () => {
     {
       id: 3,
       name: 'Transport',
-      value: '1',
+      value: '3',
       component: Transport
     },
     {
       id: 4,
       name: 'Donation',
-      value: '1',
+      value: '4',
       component: Donation
     },
     {
       id: 5,
       name: 'Activity',
-      value: '1',
+      value: '5',
       component: Activity
     }
   ];
