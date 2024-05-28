@@ -1,7 +1,7 @@
 // Page Owner  - Kulwinder Singh
 // Description  - Expense and Travel Dashboard
 import React from 'react';
-import { Grid, Paper, Typography, Box , useMediaQuery } from '@mui/material';
+import { Grid, Paper, Typography, Box , useMediaQuery ,} from '@mui/material';
 import ParamCounters from 'components/dashboard/Counters';
 import Divider from '@mui/material/Divider';
 import CommonChart from 'components/chart/CommonChart';
@@ -148,6 +148,8 @@ const ExpenseAndTravel = () => {
 
   const Res1500= useMediaQuery('(max-width:1500px)')
 
+ 
+   
   return (
     <>
       <Grid sx={{ display: 'flex', height: '5vh', alignItems: 'center' }}>
