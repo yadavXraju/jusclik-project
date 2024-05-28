@@ -1,13 +1,54 @@
-import { useState } from 'react';
+// ======= Page Owner Vikash =========
+// ======= Entry Page of Biometric =========
+
+import React, { useState } from 'react';
 import Grid from '@mui/material/Grid';
-import AttendanceLog from './AttandanceLog';
 import MainCard from 'components/ui/cards/MainCard';
+import {
+  Table,
+  Tab,
+  Tabs,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  TableBody,
+  Button,
+  Popover
+} from '@mui/material';
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
+import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
+import Pagination from 'components/table-data-grid/TablePagination';
 import { Box, Typography, MenuItem, Select, IconButton , LinearProgress } from '@mui/material';
 import {  Info, Person, PersonOutline } from '@mui/icons-material';
 import FingerprintIcon from '@mui/icons-material/Fingerprint';
 import SignalCellularAltOutlinedIcon from '@mui/icons-material/SignalCellularAltOutlined';
 import Popper from '@mui/material/Popper';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+
+const leavedata = [
+  { date: '05-Jan-2024', attendanceVisual: 'Present', effectiveHours: '7h 45m', grossHours: '8h 15m', arrival: '8:30 AM', log: 'Entry 1' },
+  { date: '12-Mar-2024', attendanceVisual: 'Absent', effectiveHours: '7h 0m', grossHours: '7h 30m', arrival: '8:00 AM', log: 'Entry 2' },
+  { date: '19-Jan-2024', attendanceVisual: 'Present', effectiveHours: '8h 0m', grossHours: '8h 30m', arrival: '8:15 AM', log: 'Entry 3' },
+  { date: '26-Jan-2024', attendanceVisual: 'Present', effectiveHours: '8h 30m', grossHours: '9h 0m', arrival: '8:30 AM', log: 'Entry 4' },
+  { date: '02-Apr-2024', attendanceVisual: 'Present', effectiveHours: '7h 45m', grossHours: '8h 15m', arrival: '8:30 AM', log: 'Entry 5' },
+  { date: '09-Apr-2024', attendanceVisual: 'Present', effectiveHours: '8h 0m', grossHours: '8h 30m', arrival: '8:15 AM', log: 'Entry 6' },
+  { date: '16-Mar-2024', attendanceVisual: 'Present', effectiveHours: '8h 30m', grossHours: '9h 0m', arrival: '8:30 AM', log: 'Entry 7' },
+  { date: '23-Apr-2024', attendanceVisual: 'Present', effectiveHours: '7h 45m', grossHours: '8h 15m', arrival: '8:30 AM', log: 'Entry 8' },
+  { date: '23-Jan-2024', attendanceVisual: 'Present', effectiveHours: '7h 45m', grossHours: '8h 15m', arrival: '8:30 AM', log: 'Entry 8' },
+  { date: '30-Apr-2024', attendanceVisual: 'Absent', effectiveHours: '8h 0m', grossHours: '8h 30m', arrival: '8:15 AM', log: 'Entry 9' },
+  { date: '05-Mar-2023', attendanceVisual: 'Present', effectiveHours: '7h 45m', grossHours: '8h 15m', arrival: '8:30 AM', log: 'Entry 1' },
+  { date: '12-Aug-2023', attendanceVisual: 'Absent', effectiveHours: '7h 0m', grossHours: '7h 30m', arrival: '8:00 AM', log: 'Entry 2' },
+  { date: '19-July-2023', attendanceVisual: 'Present', effectiveHours: '8h 0m', grossHours: '8h 30m', arrival: '8:15 AM', log: 'Entry 3' },
+  { date: '26-Mar-2023', attendanceVisual: 'Present', effectiveHours: '8h 30m', grossHours: '9h 0m', arrival: '8:30 AM', log: 'Entry 4' },
+  { date: '02-Jun-2023', attendanceVisual: 'Present', effectiveHours: '7h 45m', grossHours: '8h 15m', arrival: '8:30 AM', log: 'Entry 5' },
+  { date: '09-Apr-2023', attendanceVisual: 'Present', effectiveHours: '8h 0m', grossHours: '8h 30m', arrival: '8:15 AM', log: 'Entry 6' },
+  { date: '16-May-2023', attendanceVisual: 'Present', effectiveHours: '8h 30m', grossHours: '9h 0m', arrival: '8:30 AM', log: 'Entry 7' },
+  { date: '23-Apr-2023', attendanceVisual: 'Present', effectiveHours: '7h 45m', grossHours: '8h 15m', arrival: '8:30 AM', log: 'Entry 8' },
+  { date: '30-Dec-2023', attendanceVisual: 'Absent', effectiveHours: '8h 0m', grossHours: '8h 30m', arrival: '8:15 AM', log: 'Entry 9' }
+];
+
+const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']; // Define the months you want to filter by
 
 // ================= Attendance status start
 function AttandanceStatus() {
