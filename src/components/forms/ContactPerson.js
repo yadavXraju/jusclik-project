@@ -6,6 +6,7 @@ import AddIcon from '@mui/icons-material/Add';
 import HighlightOffOutlinedIcon from '@mui/icons-material/HighlightOffOutlined';
 
 const CommonContactPerson = ({ fields }) => {
+  console.log(fields)
   const isMobile = useMediaQuery('(max-width: 767px)');
   const [contactPersons, setContactPersons] = useState([{ id: 1 }]); // Initial contact person
 
@@ -30,7 +31,7 @@ const CommonContactPerson = ({ fields }) => {
               Contact Person {index + 1}
             </Typography>
             <Grid container spacing={2} sx={{ display: 'flex', height: '100%' }}>
-              {fields.map((field) => (
+              {fields&&fields.map((field) => (
                 <Grid item xs={12} sm={12} lg={field.name === 'address' ? 12 : 6} key={`${field.name}-${person.id}`}>
                   <TextField
                     size={isMobile ? 'small' : 'normal'}
