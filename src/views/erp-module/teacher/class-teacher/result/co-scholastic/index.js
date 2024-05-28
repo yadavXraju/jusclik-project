@@ -3,8 +3,8 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button, Grid, Typography } from '@mui/material';
 import { makeStyles, ThemeProvider } from '@mui/styles';
-import { FeildData } from './Data/feild';
-import { StudentData, StudentData2, StudentData3 } from './Data/studentData';
+import { FeildData } from './feild';
+import { StudentData, StudentData2, StudentData3 } from './studentData';
 import UpperTab from './UpperTab';
 import MiddleBox from './MiddleBox';
 import CustomTextField from './TextField';

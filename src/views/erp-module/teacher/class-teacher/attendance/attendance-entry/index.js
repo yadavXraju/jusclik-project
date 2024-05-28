@@ -24,6 +24,7 @@ import { styled } from '@mui/material/styles';
 import AvatarLegend from './AvatarLegend'; 
 import SearchFilterBox from './SeachFilter';
 import { useTheme } from '@emotion/react';
+import { ClassList } from './ClassList';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
