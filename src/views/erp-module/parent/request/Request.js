@@ -1,6 +1,6 @@
 // sangeeta
 
-import React from 'react'
+import React,{useState} from 'react'
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Leave from './requestcomponent/Leave';
@@ -17,8 +17,11 @@ import { DashboardTab } from 'components/dashboard/CommonCss';
 
 function Request() {
 
-
+  const [value,setValue]=useState(0);
   const isTab = useMediaQuery('(max-width:991px)')
+  const handleChange=(event,newValue)=>{
+      setValue(newValue)
+  }
   const tabPage = [
     {
       id: 1,
@@ -89,6 +92,8 @@ function Request() {
         variant={"scrollable"}
         tabPage={tabPage}
         orientation={ isTab ? "horizontal" :"horizontal"}
+        value={value}
+        handleChange={handleChange}
         showBottomNav={false}
         numberShow ={false}
         iconShow={false}
