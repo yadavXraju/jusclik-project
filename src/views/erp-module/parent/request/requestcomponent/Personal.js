@@ -1,16 +1,22 @@
 // sangeeta
 
 import React from 'react';
-import { Typography, TextField, Grid, Box, Paper,MenuItem, Button } from '@mui/material';
+import { Typography, Grid, Box, Paper,Button } from '@mui/material';
+import CustomTextField from 'components/ui/custom-input/TextField';
+import ParameterizedAutoComplete from 'components/ui/custom-input/AutoComplete';
 
 const options = [
   {
     value: "1",
-    label: 'Withdrawal'
+    label: 'A+'
   },
   {
     value: "2",
-    label: 'Change Route'
+    label: 'B+'
+  },
+  {
+    value: "3",
+    label: 'AB'
   }
 ];
 
@@ -32,46 +38,27 @@ function PersonalDetail() {
       
            <Grid item xs={12} md={5}>
                <Typography variant='h3'>Information as per records</Typography>
-               <TextField fullWidth variant="outlined" label="Mobile No."  sx={{margin:"10px"}}/>
-               <TextField fullWidth variant="outlined" label="Blood Group" sx={{margin:"10px"}} />
-               <TextField fullWidth variant="outlined" label="Father Mobile No." sx={{margin:"10px"}}  />
-               <TextField fullWidth variant="outlined"  label="Father Email" sx={{margin:"10px"}}  />
-               <TextField fullWidth variant="outlined"  label="Mother Mobile No." sx={{margin:"10px"}} />
-               <TextField fullWidth variant="outlined" label="Mother Email"  sx={{margin:"10px"}} />
-               <TextField fullWidth variant="outlined"  label="Address" sx={{margin:"10px"}} />
+               <CustomTextField label="Mobile No."   customStyle={{margin:"10px",width:"100%"}}/>
+               <CustomTextField label="Blood Group"  customStyle={{margin:"10px",width:"100%"}}/>
+               <CustomTextField label="Father Mobile No."  customStyle={{margin:"10px",width:"100%"}}/>
+               <CustomTextField  label="Father Email"  customStyle={{margin:"10px",width:"100%"}}/>
+               <CustomTextField label="Mother Mobile No."   customStyle={{margin:"10px",width:"100%"}}/>
+               <CustomTextField label="Mother Email"   customStyle={{margin:"10px",width:"100%"}}/>
+               <CustomTextField label="Address"  customStyle={{margin:"10px",width:"100%"}}/>
+
            </Grid>
            <Grid item  xs={12} md={5}>
            <Typography variant='h3' >Information Requested</Typography>
-           <TextField
-              fullWidth variant="outlined"  label="Mobile No." sx={{margin:"10px"}} 
-              />
-               <TextField
-                id="outlined-select-option"
-                select
-                label="Blood Group"
-                defaultValue="EUR"
-                fullWidth
-                sx={{margin:"10px"}} 
-              >
-                {options.map((option) => (
-                    <MenuItem key={option.value} value={option.value}>
-                    {option.label}
-                  </MenuItem>
-                ))}
-              </TextField>
-              <TextField fullWidth variant="outlined"   label="Father Mobile No." sx={{margin:"10px"}} />
-              <TextField fullWidth variant="outlined" label="Father Email"  sx={{margin:"10px"}} />
-              <TextField fullWidth variant="outlined" label="Mother Mobile No." sx={{margin:"10px"}}  />
-              <TextField fullWidth variant="outlined"  label="Mother Email" sx={{margin:"10px"}} />
-              <TextField fullWidth variant="outlined"  label="Address" sx={{margin:"10px"}} />
-              <TextField
-                id="outlined-select-option"
-                label="Remark"
-                multiline
-                fullWidth
-                sx={{margin:"10px"}} 
-              />
-          
+
+           <CustomTextField label="Mobile No."   customStyle={{margin:"10px",width:"100%"}}/>
+
+              <ParameterizedAutoComplete option={options}  label="Blood Group" customStyle={{width:"100%",margin:"10px"}} />
+              <CustomTextField label="Father Mobile No."  customStyle={{margin:"10px",width:"100%"}}/>
+               <CustomTextField  label="Father Email"  customStyle={{margin:"10px",width:"100%"}}/>
+               <CustomTextField label="Mother Mobile No."   customStyle={{margin:"10px",width:"100%"}}/>
+               <CustomTextField label="Mother Email"   customStyle={{margin:"10px",width:"100%"}}/>
+               <CustomTextField label="Address"  customStyle={{margin:"10px",width:"100%"}}/>
+               <CustomTextField label="Remark" type="multiline"  customStyle={{margin:"10px",width:"100%"}}/>
             </Grid>
           </Grid>
     

@@ -1,7 +1,8 @@
 // PAGE OWNER: DAMANDEEP
-import { Box, Button, Drawer, IconButton, TextField, Tooltip, Typography } from '@mui/material';
+import { Box, Button, Drawer, IconButton,  Tooltip, Typography } from '@mui/material';
 import React from 'react';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
+import CustomTextField from 'components/ui/custom-input/TextField';
 
 export const AddTaskListDrawer = ({ toggleDrawer, state, tabsData, setTabsData }) => {
   const [taskGroupName, setTaskGroupName] = React.useState('');
@@ -34,7 +35,7 @@ export const AddTaskListDrawer = ({ toggleDrawer, state, tabsData, setTabsData }
           </Box>
           {/* ========= import Initiate Employee Exit Form ========== */}
           <Box sx={{ display: 'flex', flexDirection: 'column', height: 'calc(100vh - 70px)', marginTop: '1rem' }}>
-            <TextField
+            <CustomTextField 
               label="Task List Name"
               sx={{ marginBottom: '1rem' }}
               onChange={(e) => {
@@ -42,15 +43,16 @@ export const AddTaskListDrawer = ({ toggleDrawer, state, tabsData, setTabsData }
                 setTaskGroupName(groupName);
               }}
             />
-            <TextField
-              label="Description"
-              sx={{ marginBottom: '1rem' }}
-              multiline={true}
-              minRows={3}
-              onChange={(e) => {
-                let groupDesc = e.target.value;
-                setTaskGroupDesc(groupDesc);
-              }}
+
+            <CustomTextField 
+             label="Description"
+             sx={{ marginBottom: '1rem' }}
+             multiline={true}
+             minRows={3}
+             onChange={(e) => {
+               let groupDesc = e.target.value;
+               setTaskGroupDesc(groupDesc);
+             }}
             />
             <Box sx={{ position: 'fixed', bottom: '10px', right: '10px' }}>
               <Button variant="outlined" color="primary" sx={{ marginRight: '10px' }}>

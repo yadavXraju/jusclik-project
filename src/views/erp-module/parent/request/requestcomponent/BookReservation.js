@@ -1,8 +1,9 @@
 // sangeeta
 
 import React from 'react'
-import {  TextField, Grid, Box, Paper, Button } from '@mui/material';
-import Datecomponet from './Datecomponent';
+import {  Grid, Box, Paper, Button } from '@mui/material';
+import CustomTextField from 'components/ui/custom-input/TextField';
+import ParameterizedDateComponent from 'components/ui/custom-input/DateComponent';
 
 function BookReservation() {
   return (
@@ -13,28 +14,28 @@ function BookReservation() {
       <Grid container spacing={2} sx={{marginTop:"10px"}} justifyContent="center" > 
 
        <Grid item xs={12} md={5}>
-       <TextField
-            id="outlined-select-option"
-            fullWidth
-            label="Accession No"
-            sx={{margin:"10px"}}
-          />
+
+      <CustomTextField customStyle={{width:'100%',margin:"10px"}} label="Accession No" />
+
      <Grid container spacing={2} sx={{marginTop:"10px"}}> 
        <Grid item xs={12} md={8}>
-       <TextField fullWidth variant="outlined" label="Title"sx={{margin:"10px"}} />
+       <CustomTextField customStyle={{width:'100%',margin:"10px"}} label="Title"/>
+
        </Grid>
        <Grid item xs={12} md={4}>
-       <TextField fullWidth variant="outlined" id="status" label="Status" sx={{margin:"10px"}} />
+       <CustomTextField customStyle={{width:'100%',margin:"10px"}} label="Status"/>
+   
        </Grid>
       </Grid>
-      <TextField fullWidth variant="outlined"  label="Author" sx={{margin:"10px"}} />
-      {/* <TextField fullWidth variant="outlined" type='date'  label="Date for Required Book"  sx={{margin:"10px"}}/> */}
-      <Datecomponet  label="Date for Required Book"/>
-      <TextField  id="outlined-select-option"
-            label="Remark"
-            multiline
-            fullWidth
-            sx={{margin:"10px"}}/>
+
+      <CustomTextField customStyle={{width:'100%',margin:"10px"}}  label="Author"/>
+
+      
+      
+      <ParameterizedDateComponent label="Date for Required Book" customStyle={{width:'100%',margin:"10px"}}/>
+
+      <CustomTextField customStyle={{width:'100%',margin:"10px"}}    label="Remark" />
+
        </Grid>
       </Grid>
 
