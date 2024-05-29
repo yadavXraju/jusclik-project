@@ -12,7 +12,7 @@ import Tooltip from '@mui/material/Tooltip';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 import WarningDialog from 'components/WarningDialog';
 
-const Upload_Document_Photos = ({ handleClick }) => {
+const UploadDocumentPhotos = ({ handleClick }) => {
   const [selectedFiles, setSelectedFiles] = useState({
     dateOfBirthProof: null,
     passport: null,
@@ -386,4 +386,4 @@ const Upload_Document_Photos = ({ handleClick }) => {
   );
 }
 
-export default Upload_Document_Photos;
+export default UploadDocumentPhotos;

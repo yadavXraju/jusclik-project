@@ -7,7 +7,7 @@ import {VisitorDetails} from './visitor-details';
 import {SelfieVerification} from './selfie-verification';
 import { MobileNumber } from './mobile-number';
 import {OtpVerification} from './otp-verification';
-import {AppointmentPass} from './apointment-pass';
+import {AppointmentPass} from './ApointmentPass';
 import { css } from './css';
 
 const defaultTheme = createTheme({

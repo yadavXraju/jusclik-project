@@ -1,7 +1,7 @@
 import React from 'react'
 import { Grid, Typography , Box ,useMediaQuery , Button ,Paper } from '@mui/material';
 import ParamCounters from 'components/dashboard/Counters';
-import CommonStackedChart from 'components/chart/CommonStackedChart';
+import StackedChart from 'components/chart/StackedChart';
 
 
 
@@ -91,8 +91,6 @@ const Assets = () => {
   ];
   
   const StackedBarColor = ['#0DB2A2', '#44A5C2', '#5C96A5', '#FFAE49'];
-  
-  
   return (
     <>
     
@@ -115,7 +113,7 @@ const Assets = () => {
 
       <Box sx={{paddingTop:'1.2rem'}}>
         <Paper>
-          <CommonStackedChart
+          <StackedChart
             ChartSeries={ChartSeries}
             StackedChartTitle={'Asset Availability by Condition'}
             StackedBarColor={StackedBarColor}
@@ -129,9 +127,6 @@ const Assets = () => {
           />
         </Paper>
       </Box>
-
-    
-    
     </>
   )
 }
