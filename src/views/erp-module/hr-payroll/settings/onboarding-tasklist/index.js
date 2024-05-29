@@ -100,21 +100,32 @@ const OnboardingTasklist = () => {
   };
 
   const columns = [
-    { field: 'task', headerName: 'Task', width: 260 },
-    { field: 'dueOn', headerName: 'Due On', width: 260 },
-    { field: 'assignedTo', headerName: 'Assigned To', width: 260, renderCell: (params) => (
+    { field: 'task', headerName: 'Task', 
+    // width: 260
+    flex:1},
+    { field: 'dueOn', headerName: 'Due On',
+    //  width: 260
+     flex:1
+    },
+    { field: 'assignedTo', headerName: 'Assigned To',
+    //  width: 260,
+     flex:1,
+     renderCell: (params) => (
       <Box>
         {params.value.map((task, index) => (
           <Typography key={index}>{task}</Typography>
         ))}
       </Box>
     ), },
-    { field: 'validator', headerName: 'Validator', width: 250 },
+    { field: 'validator', headerName: 'Validator',
+    //  width: 250,
+    flex:1
+     },
     {
       field: 'Action',
       headerName: 'Action',
       flex: 1,
-      minWidth: 130,
+      // minWidth: 130,
       sortable: false,
       filterable: false,
       disableColumnMenu: true,
