@@ -69,7 +69,10 @@ const SetupTabs = ({
   customIconStyle={},
   selectedTab,
   value,
-  handleChange
+  handleChange,
+  tabNameStyle={},
+  tabsProps,
+  customTabFont
 }) => {
   const lastIndex = tabPage.length - 1;
   const style = {
@@ -118,6 +121,7 @@ const SetupTabs = ({
             ...customTabsStyle,
             '& .Mui-selected .MuiTypography-root':{
               color:'#2196f3',
+              ...tabNameStyle
             },
             '& .Mui-selected .number-bg': {
               background: '#2196f3',
@@ -132,6 +136,7 @@ const SetupTabs = ({
               ...selectedTab
             }
           }}
+          {...tabsProps}
         >
           {tabPage.map((tab, index) => (
             <Tab
@@ -150,6 +155,7 @@ const SetupTabs = ({
                   fontSize: '14px',
                   fontWeight: '600',
                   color:'rgb(18, 25, 38)',
+                  ...customTabFont
                 },
                 '& .MuiSvgIcon-root':{
                  ...style?.iconStyle,

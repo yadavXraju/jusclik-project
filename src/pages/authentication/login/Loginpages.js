@@ -2,21 +2,8 @@
 // Description: Login Main Page
 
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import CssBaseline from '@mui/material/CssBaseline';
-import {
-  Box,
-  Button,
-  Grid,
-  Paper,
-  Typography,
-  Tabs,
-  Tab,
-  InputAdornment,
-  IconButton,
-  useMediaQuery,
-  useTheme
-} from '@mui/material';
+import { Box, Button, Grid, Paper, Typography, InputAdornment, IconButton, useMediaQuery, useTheme } from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
@@ -27,30 +14,28 @@ import PoweredBySection from './PoweredBy';
 import MobileLogin from '../login/MobileLogin';
 import AppStoreButtonsGroup from './AppStoreLogos';
 import CustomTextField from 'components/ui/custom-input/TextField';
+import SetupTabs from 'components/tabs/Stepper';
 
 
-export const Auth  = [
-
+export const Auth = [
   {
-      id:'1',
-      token:'dkjfhfdddfdffkfjdkfdfdfdjfd',
-      role:'parent',
+    id: '1',
+    token: 'dkjfhfdddfdffkfjdkfdfdfdjfd',
+    role: 'parent'
   },
 
   {
-  id:'2',
-  token:'dkjfhfdfkfjdkfdfdfdjfd',
-  role:'class-teacher',
-},
+    id: '2',
+    token: 'dkjfhfdfkfjdkfdfdfdjfd',
+    role: 'class-teacher'
+  },
 
-
-{
-  id:'3',
-  token:'dkjfhfdfkfjdkfdfdfdjfd',
-  role:'visitor',
-},
-
-]
+  {
+    id: '3',
+    token: 'dkjfhfdfkfjdkfdfdfdjfd',
+    role: 'visitor'
+  }
+];
 
 const defaultTheme = createTheme({
   palette: {
@@ -60,39 +45,7 @@ const defaultTheme = createTheme({
   }
 });
 
-function CustomTabPanel({ children, value, index }) {
-  const theme = useTheme(); // Accessing theme object using useTheme hook
-  const isMobile = useMediaQuery(theme.breakpoints.only('xs'));
-
-  const tabPanelStyles = {
-    pt: isMobile ? 1 : 3
-  };
-
-  return (
-    <div role="tabpanel" hidden={value !== index} id={`simple-tabpanel-${index}`} aria-labelledby={`simple-tab-${index}`}>
-      {value === index && (
-        <Box sx={tabPanelStyles}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
-    </div>
-  );
-}
-
-CustomTabPanel.propTypes = {
-  children: PropTypes.node,
-  index: PropTypes.number.isRequired,
-  value: PropTypes.number.isRequired
-};
-
-function a11yProps(index) {
-  return {
-    id: `full-width-tab-${index}`,
-    'aria-controls': `full-width-tabpanel-${index}`
-  };
-}
-
-export default function LoginPage({LeftLogo}) {
+export default function LoginPage({ LeftLogo }) {
   const theme = useTheme(); // Accessing theme object using useTheme hook
   const [usernameError, setUsernameError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
@@ -101,6 +54,7 @@ export default function LoginPage({LeftLogo}) {
   const [selectAccountOpen, setSelectAccountOpen] = useState(false);
   const [userId, setUserId] = useState('');
   const [userPassword, setUserPassword] = useState('');
+
   const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
@@ -126,14 +80,14 @@ export default function LoginPage({LeftLogo}) {
     const { value } = event.target;
     setUserId(value);
     setUsernameError(false); // Reset username error state
-    setUserId(value.trim()); 
+    setUserId(value.trim());
   };
 
   const handleChangePassword = (event) => {
     const { value } = event.target;
     setUserPassword(value);
     setPasswordError(false); // Reset password error state
-    setUserPassword(value.trim()); 
+    setUserPassword(value.trim());
   };
 
   const handleSubmit = (event) => {
@@ -146,7 +100,7 @@ export default function LoginPage({LeftLogo}) {
       // localStorage.setItem('userRole', user.role);
       // localStorage.setItem('userToken', user.token);
       sessionStorage.setItem('userRole', user.role);
-      
+
       // Redirect to parent dashboard after a slight delay
       setTimeout(() => {
         window.location.href = '/parent/dashboard';
@@ -193,12 +147,32 @@ export default function LoginPage({LeftLogo}) {
       return;
     }
   };
-
+  const isXs=useMediaQuery(theme.breakpoints.down('xs'));
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const isMd = useMediaQuery(theme.breakpoints.down('md'));
   const isLg = useMediaQuery(theme.breakpoints.down('lg'));
   const isXl = useMediaQuery(theme.breakpoints.up('lg'));
+  const isXXl=useMediaQuery(theme.breakpoints.up('xl'));
+  const isSmMobile = useMediaQuery(theme.breakpoints.only('xs'));
 
+  const tabPanelStyles = {
+    pt: isSmMobile ? 1 : 3
+  };
+  let marTop
+ 
+  
+  if(isXs)
+    marTop=null
+if(isMobile)
+  marTop='1.5rem'
+if(isMd)
+  marTop='1.5rem'
+if(isLg)
+  marTop='4.5rem'
+if(isXl)
+  marTop='9.5rem'
+if(isXXl)
+  marTop='14.5rem'
 
   const commonStyles = {
     fontFamily: 'plus Jakarta sans',
@@ -211,9 +185,8 @@ export default function LoginPage({LeftLogo}) {
   };
 
   const tabStyles = {
-    width: isMobile ? '260px' : '200px',
     paddingTop: '21px',
-    textTransform: 'none'
+    textTransform: 'none',
   };
 
   const buttonStyles = {
@@ -231,30 +204,102 @@ export default function LoginPage({LeftLogo}) {
       color: '#fff'
     }
   };
-  const playstoreButtonStyles = !isMobile&&{
-        position: 'fixed',
-        bottom: theme.spacing(3),
-        right: theme.spacing(3),
-        display: 'block', // Show/hide based on md breakpoint and above
-        zIndex: theme.zIndex.tooltip
-      };
+  const playstoreButtonStyles = !isMobile && {
+    position: 'fixed',
+    bottom: theme.spacing(3),
+    right: theme.spacing(3),
+    display: 'block', // Show/hide based on md breakpoint and above
+    zIndex: theme.zIndex.tooltip
+  };
 
-      const getWidthPercentage = () => {
-        if (isMobile) {
-          return '100%';
-        } else if (isMd) {
-          return '80%';
-        } else if (isLg) {
-          return '80%';
-        } else if (isXl) {
-          return '60%';
-        }
-        else {
-          return '100%'
-        }
-      };
-    
-      const widthPercentage = getWidthPercentage();
+  const getWidthPercentage = () => {
+    if (isMobile) {
+      return '100%';
+    } else if (isMd) {
+      return '80%';
+    } else if (isLg) {
+      return '80%';
+    } else if (isXl) {
+      return '60%';
+    } else {
+      return '100%';
+    }
+  };
+
+  const widthPercentage = getWidthPercentage();
+
+  const UserLogin = () => {
+    return (
+      <Box component="form" noValidate onSubmit={handleSubmit}>
+        <CustomTextField
+          InputProps={{
+            style: { ...commonStyles }
+          }}
+          margin="normal"
+          required
+          fullWidth
+          id="Username"
+          placeholder="Username"
+          name="Username"
+          autoComplete="Username"
+          autoFocus
+          value={userId}
+          error={usernameError}
+          helperText={usernameError ? 'Enter the username' : ''}
+          onChange={handleChangeUsername}
+        />
+        <CustomTextField
+          InputProps={{
+            style: { ...commonStyles, borderRadius: '50px' },
+            endAdornment: (
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={() => setShowPassword(!showPassword)}
+                  edge="end"
+                  sx={{ color: '#364152b5', marginRight: '2px' }}
+                >
+                  {showPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
+                </IconButton>
+              </InputAdornment>
+            )
+          }}
+          margin="normal"
+          required
+          fullWidth
+          name="password"
+          placeholder="Password"
+          type={showPassword ? 'text' : 'password'}
+          id="password"
+          autoComplete="current-password"
+          value={userPassword}
+          error={passwordError}
+          helperText={passwordError ? 'Enter your password' : ''}
+          onChange={handleChangePassword}
+        />
+
+        <Grid item xs sx={{ display: 'flex', alignItems: 'center', justifyContent: isMobile ? 'center' : 'left', mt: isMobile ? 1 : 2 }}>
+          <Button type="submit" sx={buttonStyles}>
+            LOGIN
+          </Button>
+          <EnterMobileDialog open={dialogOpen} onClose={handleDialogToggle} onMobileSubmit={handleMobileSubmit} />
+          <SelectAccount open={selectAccountOpen} onClose={handleSelectAccountToggle} />
+        </Grid>
+      </Box>
+    );
+  };
+  const tabPage = [
+    {
+      id: 0,
+      name: 'Username',
+      component: UserLogin
+    },
+    {
+      id: 1,
+      name: 'Mobile Number',
+      component: MobileLogin
+    }
+  ];
   return (
     <ThemeProvider theme={defaultTheme}>
       <Grid
@@ -265,9 +310,8 @@ export default function LoginPage({LeftLogo}) {
         flexDirection={isMobile ? 'column' : 'row'}
         justifyContent="center"
         minHeight="100vh"
-        backgroundColor={(t) => (t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900])}        
+        backgroundColor={(t) => (t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900])}
       >
-  
         <CssBaseline />
         {/* Left Side Logo ==================================================================  */}
         <Grid item xs={12} sm={6} md={6} paddingBottom="1rem">
@@ -293,12 +337,15 @@ export default function LoginPage({LeftLogo}) {
           height="100%"
           pt={1}
         >
-          <Box height="100%" width={widthPercentage} padding={isMobile ? '1.5rem' : '0px'} display="flex" flexDirection="column" >
+          <Box height="100%" width={widthPercentage} padding={isMobile ? '1.5rem' : '0px'} display="flex" flexDirection="column">
             {/* Label: Login To Your Dashboard =========================================================================== */}
             <Box height={isMobile ? null : '100%'}>
               {/* header and tabs */}
-              <Box height='50%'  display='flex' flexDirection='column' justifyContent='end' >
-                <Box display="flex" flexDirection="column" alignItems="flex-start" mb={isMobile ? 0 : 1}>
+              <Box  display="flex" flexDirection="column" justifyContent="start" 
+              // position={!isMobile&&'fixed'} top='30%'
+              marginTop={marTop}
+              >
+                <Box display="flex" flexDirection="column" alignItems="flex-start" marginBottom='8px' >
                   <Typography
                     component="h1"
                     variant="h4"
@@ -320,109 +367,29 @@ export default function LoginPage({LeftLogo}) {
                     your dashboard!
                   </Typography>
                 </Box>
-                {/* Tabs :  Username / Mobile Number ========================================================================== */}
-                <Box borderBottom={1} borderColor="divider" >
-                  <Tabs
+                <Box 
+                // borderBottom={1} borderColor="divider"
+                >
+                  <SetupTabs
+                    tabPage={tabPage}
+                    numberShow={false}
+                    iconShow={false}
                     value={value}
-                    onChange={handleChange}
-                    textColor="secondary"
-                    indicatorColor="secondary"
+                    handleChange={handleChange}
                     variant="fullWidth"
-                    aria-label="full width tabs example"
-                  >
-                    <Tab label="Username" {...a11yProps(0)} sx={tabStyles} />
-                    <Tab label="Mobile Number" {...a11yProps(1)} sx={tabStyles} />
-                  </Tabs>
+                    tabsProps={{ textColor: 'secondary', indicatorColor: 'secondary' }}
+                    customTabsStyle={tabStyles}
+                    customBoxStyle={tabPanelStyles}
+                    customtabPanelStyle={{backgroundColor:'#ffecec',padding:'0'}}
+                    customtabWrapper={{marginTop:'0'}}
+                    tabNameStyle={{color:'#e64b4c'}}
+                    customTabFont={{color:'#00000099'}}
+                    
+                  />
                 </Box>
               </Box>
-              {/*  Username Tab Content ====================================================================================== */}
-              <CustomTabPanel value={value} index={0}>
-                <Box component="form" noValidate onSubmit={handleSubmit}>
-                  {/* <TextField
-                    InputProps={{
-                      style: { ...commonStyles }
-                    }}
-                    margin="normal"
-                    // variant="outlined"
-                    required
-                    fullWidth
-                    id="Username"
-                    placeholder="Username"
-                    name="Username"
-                    autoComplete="Username"
-                    autoFocus
-                    value={userId}
-                    error={usernameError}
-                    helperText={usernameError ? 'Enter the username' : ''}
-                    onChange={handleChangeUsername}
-                  /> */}
-                  <CustomTextField 
-                   InputProps={{
-                    style: { ...commonStyles }
-                  }}
-                  margin="normal"
-                  required
-                  fullWidth
-                  id="Username"
-                  placeholder="Username"
-                  name="Username"
-                  autoComplete="Username"
-                  autoFocus
-                  value={userId}
-                  error={usernameError}
-                  helperText={usernameError ? 'Enter the username' : ''}
-                  onChange={handleChangeUsername}
-                  />
-
-                  <CustomTextField
-                    InputProps={{
-                      style: { ...commonStyles, borderRadius: '50px' },
-                      endAdornment: (
-                        <InputAdornment position="end">
-                          <IconButton
-                            aria-label="toggle password visibility"
-                            onClick={() => setShowPassword(!showPassword)}
-                            edge="end"
-                            sx={{ color: '#364152b5', marginRight: '2px' }}
-                          >
-                            {showPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
-                          </IconButton>
-                        </InputAdornment>
-                      )
-                    }}
-                    margin="normal"
-                    required
-                    fullWidth
-                    name="password"
-                    placeholder="Password"
-                    type={showPassword ? 'text' : 'password'}
-                    id="password"
-                    autoComplete="current-password"
-                    value={userPassword}
-                    error={passwordError}
-                    helperText={passwordError ? 'Enter your password' : ''}
-                    onChange={handleChangePassword}
-                  />
-
-                  <Grid
-                    item
-                    xs
-                    sx={{ display: 'flex', alignItems: 'center', justifyContent: isMobile ? 'center' : 'left', mt: isMobile ? 1 : 2 }}
-                  >
-                    <Button type="submit" sx={buttonStyles}>
-                      LOGIN
-                    </Button>
-                    <EnterMobileDialog open={dialogOpen} onClose={handleDialogToggle} onMobileSubmit={handleMobileSubmit} />
-                    <SelectAccount open={selectAccountOpen} onClose={handleSelectAccountToggle} />
-                  </Grid>
-                </Box>
-              </CustomTabPanel>
-              {/*  Mobile Login Tab ========================================================================================== */}
-              <CustomTabPanel value={value} index={1}>
-                <MobileLogin />
-              </CustomTabPanel>
             </Box>
-            {isMobile &&(
+            {isMobile && (
               <Grid item flex="auto" alignContent="flex-end">
                 <Box pt={1}>
                   <PoweredBySection />
@@ -430,19 +397,18 @@ export default function LoginPage({LeftLogo}) {
                   <AppStoreButtonsGroup />
                 </Box>
               </Grid>
-            ) }
+            )}
 
             {!isMobile && (
               <>
-              <Box>
-                <PoweredBySection />
-              </Box>
-              <Box sx={playstoreButtonStyles}>
-                <AppStoreButtonsGroup />
-              </Box>
+                <Box>
+                  <PoweredBySection />
+                </Box>
+                <Box sx={playstoreButtonStyles}>
+                  <AppStoreButtonsGroup />
+                </Box>
               </>
             )}
-
           </Box>
         </Grid>
       </Grid>
