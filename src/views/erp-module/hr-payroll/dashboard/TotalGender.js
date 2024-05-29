@@ -89,7 +89,7 @@ const TotalGender = () => {
     },
   };
 
-  let trasform
+
   
   return (
     <>

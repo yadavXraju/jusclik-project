@@ -9,7 +9,6 @@ import {
   Button,
   Grid,
   Paper,
-  TextField,
   Typography,
   Tabs,
   Tab,
@@ -27,6 +26,7 @@ import SelectAccount from './SelectAccount';
 import PoweredBySection from './PoweredBy';
 import MobileLogin from '../login/MobileLogin';
 import AppStoreButtonsGroup from './AppStoreLogos';
+import CustomTextField from 'components/ui/custom-input/TextField';
 
 
 export const Auth  = [
@@ -231,9 +231,7 @@ export default function LoginPage({LeftLogo}) {
       color: '#fff'
     }
   };
-  const playstoreButtonStyles = isMobile
-    ? null
-    : {
+  const playstoreButtonStyles = !isMobile&&{
         position: 'fixed',
         bottom: theme.spacing(3),
         right: theme.spacing(3),
@@ -340,12 +338,12 @@ export default function LoginPage({LeftLogo}) {
               {/*  Username Tab Content ====================================================================================== */}
               <CustomTabPanel value={value} index={0}>
                 <Box component="form" noValidate onSubmit={handleSubmit}>
-                  <TextField
+                  {/* <TextField
                     InputProps={{
                       style: { ...commonStyles }
                     }}
                     margin="normal"
-                    variant="outlined"
+                    // variant="outlined"
                     required
                     fullWidth
                     id="Username"
@@ -357,12 +355,28 @@ export default function LoginPage({LeftLogo}) {
                     error={usernameError}
                     helperText={usernameError ? 'Enter the username' : ''}
                     onChange={handleChangeUsername}
+                  /> */}
+                  <CustomTextField 
+                   InputProps={{
+                    style: { ...commonStyles }
+                  }}
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="Username"
+                  placeholder="Username"
+                  name="Username"
+                  autoComplete="Username"
+                  autoFocus
+                  value={userId}
+                  error={usernameError}
+                  helperText={usernameError ? 'Enter the username' : ''}
+                  onChange={handleChangeUsername}
                   />
 
-                  <TextField
+                  <CustomTextField
                     InputProps={{
                       style: { ...commonStyles, borderRadius: '50px' },
-                      // startAdornment: <InputAdornment position="start" style={{ paddingLeft: '10px' }} />,
                       endAdornment: (
                         <InputAdornment position="end">
                           <IconButton
@@ -377,7 +391,6 @@ export default function LoginPage({LeftLogo}) {
                       )
                     }}
                     margin="normal"
-                    variant="outlined"
                     required
                     fullWidth
                     name="password"
@@ -409,28 +422,27 @@ export default function LoginPage({LeftLogo}) {
                 <MobileLogin />
               </CustomTabPanel>
             </Box>
-            {isMobile ? (
+            {isMobile &&(
               <Grid item flex="auto" alignContent="flex-end">
                 <Box pt={1}>
                   <PoweredBySection />
                   <Box pt={1}></Box>
                   <AppStoreButtonsGroup />
-                  <Box></Box>
                 </Box>
               </Grid>
-            ) : null}
+            ) }
 
-            {!isMobile ? (
+            {!isMobile && (
+              <>
               <Box>
                 <PoweredBySection />
               </Box>
-            ) : null}
-
-            {!isMobile ? (
               <Box sx={playstoreButtonStyles}>
                 <AppStoreButtonsGroup />
               </Box>
-            ) : null}
+              </>
+            )}
+
           </Box>
         </Grid>
       </Grid>

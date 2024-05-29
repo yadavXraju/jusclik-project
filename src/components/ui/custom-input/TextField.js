@@ -1,31 +1,27 @@
-// sangeeta
+// OWNER DAMAN
 
 import { TextField } from '@mui/material'
 import React from 'react'
 
-const CustomTextField = ({ type, label, customStyle, variant, rowNo,handleChange }) => {
+const CustomTextField = ({ name="", label="",varient='outlined', customStyle,handleChange,...props }) => {
 
  
   return (
     <>
       <TextField
-        multiline={type === 'multiline'} // Set multiline prop based on type
-        type={type === 'multiline' ? 'text' : type} // Change type to 'text' if multiline
+        name={name}
         label={label}
-        variant={variant}
+        variant={varient}
         sx={customStyle}
-        rows={rowNo}
         onChange={handleChange}
+        {...props}
       />
     </>
   )
 }
 
-
-// type -number,text,password,search
-// variant -Outlined,filled,standard
 // label- name of the text Field
-// customStyle for styleing
+// customStyle for styling
 // onChange any function from parent to child
 
 export default CustomTextField
