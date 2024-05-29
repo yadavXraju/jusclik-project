@@ -13,7 +13,7 @@ import themes from 'themes';
 // project imports
 import NavigationScroll from 'layout/NavigationScroll';
 // import SubjectCard from 'views/utilities/SubjectCard';
-import SaveVisitedURLs from 'components/dashboard/SaveVisitedURLS';
+
 
 // ==============================|| APP ||============================== //
 
@@ -27,9 +27,7 @@ const App = () => {
         <CssBaseline />
         <NavigationScroll>
      {/*    // ==============================||SaveVisitedURLs for save most visited pages in local storage  ||============================== // */}
-          <SaveVisitedURLs>   
             <Routes />
-          </SaveVisitedURLs>
         </NavigationScroll>
       </ThemeProvider>
 

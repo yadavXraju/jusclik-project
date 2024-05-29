@@ -2,7 +2,7 @@
 // Description : Class Teacher Dashboard
 
 import React from 'react';
-import {  Grid, Paper , Box } from '@mui/material';
+import {  Grid, Paper , } from '@mui/material';
 import { gridSpacing } from 'store/constant';
 import { useSelector } from "react-redux";
 import ClassTeacherAlert from 'views/erp-module/teacher/class-teacher/dashboard/Alert';
@@ -10,8 +10,7 @@ import UpcomingBirthday from 'views/erp-module/teacher/class-teacher/dashboard/U
 import LowStudentAttendance from 'views/erp-module/teacher/class-teacher/dashboard/LowStudentAttendance';
 import StudentStrength from 'views/erp-module/teacher/class-teacher/dashboard/StudentStrength';
 import StudentLeave from 'views/erp-module/teacher/class-teacher/dashboard/StudentLeave';
-import FavPages from 'components/dashboard/FavPages';
-import ClassTeacherMenu from "menu-items/erp-menus/classTeacherMenus";
+import MostVisitedPages from 'views/erp-module/teacher/class-teacher/dashboard/MostVisitedPages';
 import { ClassTeacherProfileDetails } from 'layout/MainLayout/Header/TeacherProfile'
 import Profile from 'components/dashboard/Profile'
 import {  boxHeight } from 'components/dashboard/CommonCss';
@@ -104,76 +103,6 @@ const Communication = () => {
   );
 };
 
-// ======== fav pages section start
-export const FavPagesList = [];
-
-ClassTeacherMenu.children.forEach(menuItem => {
-    const { id, title, url } = menuItem;
-    // Add the extracted information to FavPagesList array
-    FavPagesList.push({
-        id,
-        title,
-        url,
-        btnText: 'Click Here'
-    });
-});
-
-const ClassTeacherFavPages = () => {
-  return (
-    <>
-      <Box sx={{'& .css-16ti1tk-MuiButtonBase-root-MuiButton-root': {fontSize:{md:'14px' , sm:'12px' , xs:'10px'}}}}>
-         <FavPages FavPagesList={FavPagesList}/>
-      </Box>
-    </>
-  )
-}
-
-
-// =============== time table
-
-// export const TeacherTimeTableDetails = [
-//   {
-//       id:1,
-//       period : 'I',
-//       class : 'V A',
-//       subject : 'Hindi',
-//       Time : '9:00am-9:45'
-//   },
-
-//   {
-//       id:2,
-//       period : 'II',
-//       class : 'V B',
-//       subject : 'English',
-//       Time : '9:45am-10:30'
-//   },
-
-  
-//   {
-//       id:3,
-//       period : 'III',
-//       class : 'IV A',
-//       subject : 'Math',
-//       Time : '10:30am-11:15'
-//   },
-
-      
-//   {
-//       id:4,
-//       period : 'IV',
-//       class : 'V A',
-//       subject : 'Science',
-//       Time : '11:15am-12:00'
-//   },
-// ]
-
-// const ClassTeacherTimeTable = () => {
-//   return (
-//     <>
-//        <TeacherTimeTable TeacherTimeTableDetails={TeacherTimeTableDetails}/>
-//     </>
-//   )
-// }
 
 
 const Dashboard = ({ isLoading }) => {
@@ -235,7 +164,7 @@ const Dashboard = ({ isLoading }) => {
 
           {/* Fav pages comp */}
            <Grid item xs={12} lg={5} md={12} sx={{ marginTop: { md: '0px', lg: '0rem' } }}>
-             <ClassTeacherFavPages isLoading={isLoading} />
+             <MostVisitedPages isLoading={isLoading} />
           </Grid>
 
           {/* Low Students Attendance comp */}
