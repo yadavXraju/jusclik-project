@@ -248,16 +248,16 @@ import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 import Drawer from '@mui/material/Drawer';
 import Typography from '@mui/material/Typography';
 import FilterListRoundedIcon from '@mui/icons-material/FilterListRounded';
-import AdmissionDrawer from './admission-form/Adm-form/AdmissionDrawer';
+import AdmissionDrawer from './admission-form/AdmissionDrawer';
 import RemoveRedEyeTwoToneIcon from '@mui/icons-material/RemoveRedEyeTwoTone';
 import useDrawer from 'hooks/useDrawer';
-import EditDrawer from './admission-form/Adm-form/EditDrawer';
+import EditDrawer from './admission-form/EditDrawer';
 import FilterStudents from 'views/erp-module/student-information-fee-management/reports/common-report-section/filter-and-sort/temp-Filter';
 import WarningDialog from 'components/WarningDialog';
 import CloseIcon from '@mui/icons-material/Close';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import { useSelector } from 'react-redux';
-import ChangeEnrolmentDrawer from './admission-form/Adm-form/ChangeEnrolmentDrawer';
+import ChangeEnrolmentDrawer from './admission-form/ChangeEnrolmentDrawer';
 
 const Admission = () => {
   const { studentDetailsList } = useSelector((state) => state.admission);

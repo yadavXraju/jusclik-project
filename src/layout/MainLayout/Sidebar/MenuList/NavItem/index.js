@@ -47,11 +47,31 @@ const NavItem = ({ item, level , }) => {
     listItemProps = { component: 'a', href: item.url, target: itemTarget };
   }
 
-const itemHandler = (id) => {
-  dispatch(menuOpen({id }));
-  if (matchesSM) dispatch(setMENU({opened: false}));
-  dispatch(handleMenuNavItem(item)); 
-  dispatch(resetMenuNavCollapse());
+  const itemHandler = (id, item) => {
+    dispatch(menuOpen({ id }));
+    if (matchesSM) dispatch(setMENU({ opened: false }));
+    dispatch(handleMenuNavItem(item)); 
+    dispatch(resetMenuNavCollapse());
+
+    // Check if the URL path includes "teacher"
+    if (item.url.includes('teacher')) {
+        // Define the key
+        const MostVisitedPagesKey = 'MostVisitedPages';
+        let MostVisitedPages = localStorage.getItem(MostVisitedPagesKey);
+        MostVisitedPages = MostVisitedPages ? JSON.parse(MostVisitedPages) : {};
+        const itemKey = `${item.title}, ${item.url}`;
+        let itemCount = MostVisitedPages[itemKey] ? MostVisitedPages[itemKey].count : 0;
+        // Increment the count
+        itemCount += 1;
+        // Update the object with the new count
+        MostVisitedPages[itemKey] = {
+            title: item.title,
+            url: item.url,
+            count: itemCount
+        };
+        // Store the updated object back in localStorage
+        localStorage.setItem(MostVisitedPagesKey, JSON.stringify(MostVisitedPages));
+    }
 };
 
   // active menu item on page load
@@ -85,7 +105,7 @@ const itemHandler = (id) => {
         pl: `${level * 24}px`,
       }}
       selected={customization.isOpen.findIndex((id) => id === item.id) > -1}
-      onClick={() => itemHandler(item.id)}
+      onClick={() => itemHandler(item.id , item)}
     >
       <ListItemIcon sx={{ my: 'auto', minWidth: !item?.icon ? 18 : 36 }} className='menu-icon'>{itemIcon}</ListItemIcon>
       <ListItemText

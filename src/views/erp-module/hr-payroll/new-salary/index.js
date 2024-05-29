@@ -79,6 +79,7 @@ const Test = () => {
           handleSaveClick={handleSaveClick}
           rowModesModel={rowModesModel}
           setRowModesModel={setRowModesModel}
+          CustomActions={CustomActions}
         />
       </Paper>
       <Drawer anchor={'right'} open={anchor.right} onClose={toggleDrawer('right', false)}>

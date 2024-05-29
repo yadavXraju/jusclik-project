@@ -20,7 +20,7 @@ const option=[
 export const AddTaskDrawer=({toggleDrawer,state,setRows})=>{
 
   const[assignTo,setAssignTo]=useState([]);
-  const [validator, setValidator] = React.useState([]);
+  const [validator, setValidator] = React.useState(null);
   const handleSetValidator = (val) => {
     setValidator(val);
     setTaskData((prev) => ({ ...prev, validator: val?.name }));

@@ -1,11 +1,12 @@
 // sangeeta
 
-import { Grid,  TextField, Paper, Button } from '@mui/material';
+import { Grid,  Paper, Button } from '@mui/material';
 import { Box  } from '@mui/system';
 import React from 'react';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import ParameterizedDateComponent from 'components/ui/custom-input/DateComponent';
 import ParameterizedAutoComplete from 'components/ui/custom-input/AutoComplete';
+import CustomTextField from 'components/ui/custom-input/TextField';
 
 const Leave = () => {
  const res2560 = useMediaQuery('(min-width:2000px)')
@@ -27,11 +28,16 @@ const Leave = () => {
         <Grid container >
           <Grid item xs={12} container flexDirection="row" alignItems="center">
             <Grid item xs={12} md={6} style={{ padding: '5px 10px' }}>
-              <TextField
+              {/* <TextField
                 multiline
                 label="REMARK"
                 fullWidth
                 variant="outlined"
+              /> */}
+              <CustomTextField  
+              type='multiline'
+              label="Remarks"
+              customStyle={{width:"100%"}}
               />
             </Grid>
 
@@ -54,10 +60,12 @@ const Leave = () => {
 
           <Grid container>
             <Grid item xs={12} md={6} style={{ padding: '5px 10px' }}>
-              <TextField fullWidth variant="outlined" label="Total Leaves:" />
+              {/* <TextField fullWidth variant="outlined" label="Total Leaves:" /> */}
+              <CustomTextField  label="Total Leaves:" customStyle={{width:"100%"}} />
             </Grid>
             <Grid item xs={12} md={6} style={{ padding: '5px 10px' }}>
-              <TextField fullWidth variant="outlined" label=' Reason:' />
+              {/* <TextField fullWidth variant="outlined" label=' Reason:' /> */}
+              <CustomTextField  label="Reason:" customStyle={{width:"100%"}} />
             </Grid>
           </Grid>
 

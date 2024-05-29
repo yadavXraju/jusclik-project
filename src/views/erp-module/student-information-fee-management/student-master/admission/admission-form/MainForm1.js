@@ -11,13 +11,13 @@ import HandymanTwoToneIcon from '@mui/icons-material/HandymanTwoTone';
 import TextsmsTwoToneIcon from '@mui/icons-material/TextsmsTwoTone';
 import DescriptionTwoToneIcon from '@mui/icons-material/DescriptionTwoTone';
 import BottomNavbar from 'components/BottomNavbar';
-import ProfileDetail from './PrimaryDetails';
-import ContactPerson from './ContactPerson';
+import ProfileDetail from 'components/forms/PrimaryDetails';
+import ContactPerson from 'components/forms/ContactPerson';
 import { useSelector, useDispatch } from 'react-redux';
 import { addField, subGroupbyGroup } from 'store/student-info-and-fee/student/admission-slice';
 import CommonAddress from 'components/forms/Address';
 import Mainformlayout from 'layout/main-form-layout';
-import Profile from './Profile';
+import Profile from 'components/forms/Profile';
 
 const buttonsData = [
   { name: 0, icon: <PersonAddAltTwoToneIcon />, label: 'Primary Details' },
@@ -54,9 +54,10 @@ const Mainform1 = ({ currEditItem }) => {
         setOption(prevOption => ({ ...prevOption, ["address"]: item?.section }));
       }
       if (item?.sectionCode === 3) {
+        console.log(item?.section)
         setOption(prevOption => ({ ...prevOption, ["contactPerson"]: item?.section }));
       }
-      if (item?.sectionCode === 3) {
+      if (item?.sectionCode === 4) {
         setOption(prevOption => ({ ...prevOption, ["customFields"]: item?.section }));
       }
     });
