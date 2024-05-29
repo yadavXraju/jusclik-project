@@ -51,7 +51,8 @@ const OnboardingTasklist = () => {
       validator: 'Not Available'
     }
   ]);
-  const [modalOpen, setmodalOpen] = React.useState(false);
+  const [rowModalOpen, setRowModalOpen] = React.useState(false);
+  const [tabModalOpen, setTabModalOpen] = React.useState(false);
   const [deleteId, setDeleteId] = React.useState(null); // State to store the id of the row to be deleted
   const [editId,setEditId]=React.useState(null)
   const [state, setState] = React.useState({
@@ -70,7 +71,7 @@ const OnboardingTasklist = () => {
     // Set the id of the row to be deleted
     setDeleteId(id);
     // Open the warning dialog
-    setmodalOpen(true);
+    setRowModalOpen(true);
   };
 
   const handleConfirmDelete = () => {
@@ -80,13 +81,16 @@ const OnboardingTasklist = () => {
     console.log(updatedRows);
     setRows(updatedRows);
     // Close the warning dialog
-    setmodalOpen(false);
+    setRowModalOpen(false);
     // Reset the deleteId state
     setDeleteId(null);
   };
 
-  const handleModalClose = () => {
-    setmodalOpen(false);
+  const handleModalClose = (str) => {
+    if(str==='row')
+    setRowModalOpen(false);
+  if(str==='tab')
+    setTabModalOpen(false)
   };
 
   const toggleDrawer = (anchor, open) => (event) => {
@@ -97,21 +101,32 @@ const OnboardingTasklist = () => {
   };
 
   const columns = [
-    { field: 'task', headerName: 'Task', width: 260 },
-    { field: 'dueOn', headerName: 'Due On', width: 260 },
-    { field: 'assignedTo', headerName: 'Assigned To', width: 260, renderCell: (params) => (
+    { field: 'task', headerName: 'Task', 
+    // width: 260
+    flex:1},
+    { field: 'dueOn', headerName: 'Due On',
+    //  width: 260
+     flex:1
+    },
+    { field: 'assignedTo', headerName: 'Assigned To',
+    //  width: 260,
+     flex:1,
+     renderCell: (params) => (
       <Box>
         {params.value.map((task, index) => (
           <Typography key={index}>{task}</Typography>
         ))}
       </Box>
     ), },
-    { field: 'validator', headerName: 'Validator', width: 250 },
+    { field: 'validator', headerName: 'Validator',
+    //  width: 250,
+    flex:1
+     },
     {
       field: 'Action',
       headerName: 'Action',
       flex: 1,
-      minWidth: 130,
+      // minWidth: 130,
       sortable: false,
       filterable: false,
       disableColumnMenu: true,
@@ -167,8 +182,10 @@ const OnboardingTasklist = () => {
         setTabsData={setTabsData}
         selectedTab={selectedTab}
         setSelectedTab={setSelectedTab}
-        modalOpen={modalOpen}
-        setmodalOpen={setmodalOpen}
+        rowModalOpen={rowModalOpen}
+        tabModalOpen={tabModalOpen}
+        setTabModalOpen={setTabModalOpen}
+        setRowModalOpen={setRowModalOpen}
         rows={rows}
         setRows={setRows}
         columns={columns}

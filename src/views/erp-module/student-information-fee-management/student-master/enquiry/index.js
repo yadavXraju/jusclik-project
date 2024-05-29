@@ -257,7 +257,7 @@
 // export default Enquiry;
 
 import React from 'react'
-import AdmissionTable from '../admission/admission-form/Adm-form/AdmissionTable'
+import AdmissionTable from '../admission'
 
 function index() {
   return (

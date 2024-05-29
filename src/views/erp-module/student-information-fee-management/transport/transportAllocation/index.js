@@ -7,7 +7,7 @@ import RemoveRedEyeTwoToneIcon from '@mui/icons-material/RemoveRedEyeTwoTone';
 import rows from './Sample-TransportTableData';
 import WarningDialog from 'components/WarningDialog';
 import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
-import TransportLedger from '../TransportCommon/TransportLedger';
+import TransportLedger from './TransportLedger';
 import { Card, Typography, Box, IconButton, Tooltip } from '@mui/material';
 import TransportDrawer from './TransportAllocationDrawer';
 

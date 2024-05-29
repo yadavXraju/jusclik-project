@@ -35,8 +35,8 @@ const CustomTabs = (props) => {
     setRows,
     columns,
     // confirm delete popup  
-    modalOpen,
-    setmodalOpen,
+    rowModalOpen,
+    setTabModalOpen,
     // delete popup handler
     handleConfirmDelete,
     // delete popup close 
@@ -45,7 +45,8 @@ const CustomTabs = (props) => {
     state,
     // toggle drawer function
     toggleDrawer,
-    editId
+    editId,
+    tabModalOpen
   } = props;
   const lastIndex = tabsData.length - 1;
 
@@ -58,7 +59,7 @@ const CustomTabs = (props) => {
      setTabsData(newTabs)
      if(selectedTab>newTabs.length-1)
         setSelectedTab(newTabs.length-1)
-     setmodalOpen(false)
+     setTabModalOpen(false)
   }
   return (
     <>
@@ -158,7 +159,7 @@ const CustomTabs = (props) => {
                   state={state}
                 />
                <Tooltip title="Delete Task Group">
-                <IconButton onClick={()=>setmodalOpen(true)} sx={{ marginRight: '8px' }}>
+                <IconButton onClick={()=>setTabModalOpen(true)} sx={{ marginRight: '8px' }}>
                 <DeleteTwoToneIcon sx={{ color: '#f19e9e' }} />
                 </IconButton>
                 </Tooltip>
@@ -191,15 +192,15 @@ const CustomTabs = (props) => {
 
         {/* =========  warning dialog for datagrid ========== */}
         <WarningDialog
-          open={modalOpen}
-          onClose={handleModalClose}
+          open={rowModalOpen}
+          onClose={()=>handleModalClose('row')}
           contentText="Are you sure you want to delete?"
           onConfirm={handleConfirmDelete}
         />
         {/* ====== warning dialog for task groups */}
           <WarningDialog
-          open={modalOpen}
-          onClose={handleModalClose}
+          open={tabModalOpen}
+          onClose={()=>handleModalClose('tab')}
           contentText={`Are you sure you want to delete ${tabsData[selectedTab].name}?`}
           onConfirm={handleTaskGroupDelete}
         />

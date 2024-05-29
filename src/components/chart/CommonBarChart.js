@@ -3,7 +3,7 @@
 
 import React from 'react';
 import Chart from 'react-apexcharts';
-import { Box, Paper, Grid, Typography, Divider } from '@mui/material';
+import { Box, Paper, Grid, Typography, Divider , useMediaQuery } from '@mui/material';
 import ParamWidgetHeader from 'components/dashboard/WidgetHeader';
 
 const CommonBarChart = ({ ChartTitle, BarChartcategories, BarChartSeries }) => {
@@ -128,6 +128,22 @@ const CommonBarChart = ({ ChartTitle, BarChartcategories, BarChartSeries }) => {
     { label: 'LEAST EXPENSE PAID', value: leastExpensiveMonth }
   ];
 
+
+  let labelStyle = {
+    fontSize: '14px'
+  };
+
+  const isResponsive990 = useMediaQuery('(max-width:990px)');
+
+  if (isResponsive990) {
+    labelStyle = {
+      fontSize: '12px',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center'
+    };
+  }
+
   return (
     <>
       <Paper
@@ -157,11 +173,11 @@ const CommonBarChart = ({ ChartTitle, BarChartcategories, BarChartSeries }) => {
 
           <Grid container spacing={2}  sx={{ padding: '0.5rem 2rem'}}>
             {barChartDetails.map((item, index) => (
-              <Grid item lg={4} md={4} sm={4} xs={4} key={index}>
-                <Typography variant="body" sx={{ fontSize: '14px' }}>
+              <Grid item lg={4} md={4} sm={12} xs={12} key={index}>
+                <Typography variant="body" sx={labelStyle }>
                   {item.label}
                 </Typography>
-                <Typography variant="h4" sx={{ fontWeight: 'bold' }}>
+                <Typography variant="h4" sx={{ ...labelStyle, fontWeight: 'bold', fontSize:isResponsive990?'14px':'16px' }}>
                   {item.value}
                 </Typography>
               </Grid>

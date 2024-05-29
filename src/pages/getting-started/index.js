@@ -37,11 +37,10 @@ const DashboardPayRoll = () => {
 
   return (
     <Box>
+      <Box sx={{ display: 'flex', flexDirection: 'column', textAlign: 'center', paddingBottom: '50px' }}>
       <Typography variant="h2" sx={{ paddingBottom: '10px', marginTop: '5px', color: '#333' }}>
         Welcome Abhishek Negi!
       </Typography>
-
-      <Box sx={{ display: 'flex', flexDirection: 'column', textAlign: 'center', paddingBottom: '50px' }}>
         <Typography variant="subtitle1" sx={{ color: '#6c757d' }}>
           Set up your Organization before you run your first payroll.
         </Typography>

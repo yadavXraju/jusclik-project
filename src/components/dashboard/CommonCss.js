@@ -67,7 +67,7 @@ export const boxHeight = {
      marginRight:"10px",
      color:'#000'
    },
-   customStyleTabs :{
+   customTabsStyle :{
      borderBottom:'2px solid red',
      borderColor:'rgb(227, 232, 239) rgb(227, 232, 239) rgba(183, 183, 183, 0.26)',
      mx:'24px',

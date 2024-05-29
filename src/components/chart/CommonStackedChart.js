@@ -3,9 +3,9 @@
 import React from 'react';
 import Chart from 'react-apexcharts';
 import ParamWidgetHeader from 'components/dashboard/WidgetHeader';
-import { Grid, Typography, Box, Divider } from '@mui/material';
+import { Grid, Typography, Box, Divider , useMediaQuery } from '@mui/material';
 
-const CommonStackedChart = ({ ChartSeries, StackedChartTitle, StackedBarColor, StackedChartXCategories }) => {
+const CommonStackedChart = ({ ChartSeries, StackedChartTitle, StackedBarColor, StackedChartXCategories ,Yaxistitle ,xaxistitle ,hidechartdetails ,chartHeight=350 ,barWidth='40%' ,showgridlines }) => {
   // Function to calculate the sum of data for each product
   const calculatetotalclaim = () => {
     return ChartSeries.reduce((total, series) => {
@@ -34,6 +34,7 @@ const CommonStackedChart = ({ ChartSeries, StackedChartTitle, StackedBarColor, S
     { name: '', total: 0 }
   );
 
+ 
   const options = {
     chart: {
       type: 'bar',
@@ -49,7 +50,7 @@ const CommonStackedChart = ({ ChartSeries, StackedChartTitle, StackedBarColor, S
     plotOptions: {
       bar: {
         horizontal: false,
-        columnWidth: '42%',
+        columnWidth: barWidth,
         borderRadius: 5,
         dataLabels: {
           position: 'top'
@@ -57,8 +58,33 @@ const CommonStackedChart = ({ ChartSeries, StackedChartTitle, StackedBarColor, S
       }
     },
     xaxis: {
-      categories: StackedChartXCategories
+      categories: StackedChartXCategories,
+      title: {
+        text:xaxistitle,
+        style: {
+          fontSize: '13px', // Adjust the font size as needed
+          fontFamily: 'Plus Jakarta Sans, sans-serif',
+          fontWeight: 600,
+          color: '#a7a3a0'
+        }
+      },
     },
+
+    yaxis: {
+      title: {
+        text:Yaxistitle,
+        style: {
+          fontSize: '13px', // Adjust the font size as needed
+          fontFamily: 'Plus Jakarta Sans, sans-serif',
+          fontWeight: 600,
+          color: '#a7a3a0'
+        }
+      },
+
+    },
+
+ 
+
     legend: {
       position: 'top',
       offsetY: 15
@@ -67,10 +93,12 @@ const CommonStackedChart = ({ ChartSeries, StackedChartTitle, StackedBarColor, S
       opacity: 1
     },
     grid: {
-      show: false // Hide the background horizontal lines
+      show: showgridlines // Hide the background horizontal lines
     },
     series: ChartSeries,
     colors: StackedBarColor
+
+    
   };
 
   const StackedChartDetails = [
@@ -79,10 +107,31 @@ const CommonStackedChart = ({ ChartSeries, StackedChartTitle, StackedBarColor, S
     { label: 'LOWEST CLAIMED CATEGORY', value: lowestProduct.name }
   ];
 
+  let labelStyle = {
+    fontSize: '14px'
+  };
+
+  
+
+  const isResponsive990 = useMediaQuery('(max-width:990px)');
+
+  if (isResponsive990) {
+    labelStyle = {
+      fontSize: '12px',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center'
+    };
+  }
+
+
+ 
+
   return (
     <>
       <ParamWidgetHeader title={StackedChartTitle} />
-      <Chart options={options} series={options.series} type="bar" height={350} />
+      <Chart options={options} series={options.series} type="bar" height={chartHeight} />
+     {!hidechartdetails && (<Grid>
       <Divider sx={{ paddingTop: '0.5rem' }} />
       <Box sx={{ padding: '0rem 2rem' }}>
         <Typography variant="h5" sx={{ paddingBottom: '0.5rem', paddingTop: '0.5rem' }}>
@@ -91,16 +140,18 @@ const CommonStackedChart = ({ ChartSeries, StackedChartTitle, StackedBarColor, S
       </Box>
       <Grid container spacing={2} sx={{ padding: '0.5rem 2rem' }}>
         {StackedChartDetails.map((item, index) => (
-          <Grid item lg={4} key={index}>
-            <Typography variant="body" sx={{ fontSize: '14px' }}>
+          <Grid item lg={4} md={4} sm={12} xs={12} key={index}>
+            <Typography variant="body" sx={ labelStyle}>
               {item.label}
             </Typography>
-            <Typography variant="h4" sx={{ fontWeight: 'bold' }}>
+            <Typography variant="h4" sx={{  ...labelStyle, fontWeight: 'bold', fontSize:isResponsive990?'14px':'16px'}}>
               {item.value}
             </Typography>
           </Grid>
         ))}
       </Grid>
+      </Grid>)} 
+     
     </>
   );
 };

@@ -664,7 +664,7 @@ export default OnlineRegistration;
 //                 tabPage={tabPage}
 //                 activeStep={activeStep}
 //                 handleStepChange={handleStepChange}
-//                 customStyleTabs={{
+//                 customTabsStyle={{
 //                   width: '20%',
 //                   paddingTop: '1.5rem',
 //                   alignItems:"center",

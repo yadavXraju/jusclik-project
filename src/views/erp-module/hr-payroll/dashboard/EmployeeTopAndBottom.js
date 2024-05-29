@@ -1,5 +1,5 @@
 // owned by sangeeta
-import React from 'react'
+import React,{useState} from 'react'
 import SetupTabs from 'components/tabs/Stepper'
 import { Grid, Paper, Typography,Box} from '@mui/material';
 import LinearProgress from '@mui/material/LinearProgress';
@@ -77,7 +77,11 @@ const TopFive = () => {
 // Topfive section end ============= 
 
 const EmployeeTopAndBottom = () => {
+  const [value, setValue] = useState(0);
 
+  const handleChange = (event, newValue) => {
+      setValue(newValue);
+    };
   const tabPage = [
     {
       id: 1,
@@ -110,6 +114,8 @@ const EmployeeTopAndBottom = () => {
         orientation={ "horizontal"}
         showBottomNav={false}
         numberShow ={false}
+        value={value}
+        handleChange={handleChange}
         iconShow={false}
         customtabWrapper={{
           display: 'flex',
