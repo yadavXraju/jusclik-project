@@ -13,7 +13,8 @@ import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDiss
 const TotalGender = () => {
 
     const isMediumDesktop = useMediaQuery('(max-width: 1600px)');
-    // const isMobile = useMediaQuery('(max-width: 767px)');
+    const isSmallDesktop = useMediaQuery('(max-width: 1440px)');
+    const isTab = useMediaQuery('(max-width: 767px)');
   
   // Sample data for the donut chart
   const chartData = {
@@ -88,14 +89,16 @@ const TotalGender = () => {
     },
   };
 
+  let trasform
+  
   return (
     <>
     <Paper sx={{padding:"21px"}}>
     <Grid Container sx={{display:"flex"}} lg={12}>
-    <Grid lg={7} style={{ position: 'relative',alignItems:"center", }}>
+    <Grid lg={7} md={12} style={{ position: 'relative',alignItems:"center", }}>
     <ApexCharts options={chartData} series={chartData.series} type="donut" height={isMediumDesktop ? 200 : 250} />
 
-      <Box style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',display:"flex" }}>
+      <Box style={{ position: 'absolute', top: '50%', left: '50%', transform:isSmallDesktop?" translate(-45%, -92%)":isTab ?" translate(-45%, -75%)":"translate(-50%, -50%)",display:"flex" }}>
         <WomanIcon sx={{fontSize:"76px" ,color:"#5E35B1",marginRight:"-40px"}}/> <ManIcon sx={{fontSize:"76px",color:"#1E88E5",marginRight:"10px"}}/>
       </Box>
     </Grid>  
@@ -168,14 +171,14 @@ const Counters = () => {
     return (
         <>
         <Grid container lg={12} spacing={2}>
-         <Grid item lg={5}>
+         <Grid item lg={5} md={12} sm={12}>
          <TotalGender/>
          </Grid>
-         <Grid item lg={7} >
+         <Grid item lg={7} md={12}  sm={12}>
            < Grid  sx={{mb:1}}>
            <ParamCounters CounterData={CounterData} />
            </Grid> 
-           < Grid spacing={1}>
+           < Grid spacing={1} md={12}  sm={12}>
            <ParamCounters CounterData={CounterData2} />
            </Grid> 
         

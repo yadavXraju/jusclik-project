@@ -77,6 +77,7 @@ const OnboardingTasklist = () => {
     // Filter out the row with the given id
     const updatedRows = rows.filter((row) => row.id !== deleteId);
     // Update the rows state
+    console.log(updatedRows);
     setRows(updatedRows);
     // Close the warning dialog
     setmodalOpen(false);
