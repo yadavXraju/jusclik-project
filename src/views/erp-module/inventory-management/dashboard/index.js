@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import Dashboard from 'views/erp-module/inventory-management/dashboard/Dashboard';
 import DashboardPayRoll from 'pages/getting-started';
 import SetupTabs from 'components/tabs/Stepper';
@@ -9,7 +9,10 @@ import { useMediaQuery } from '@mui/material';
 import { DashboardTab } from 'components/dashboard/CommonCss';
 
 const DashboardTabs = () => {
-
+  const [value,setValue]=useState(0);
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
   const isTab = useMediaQuery('(max-width:991px)')
   const tabPage = [
     {
@@ -46,11 +49,13 @@ const DashboardTabs = () => {
         showBottomNav={false}
         numberShow ={false}
         iconShow={false}
+        value={value}
+        handleChange={handleChange}
         customtabSytle = {DashboardTab.customtabSytle}
 
         customtabPanelStyle={DashboardTab.customtabPanelStyle}
         customIconStyle={DashboardTab.customIconStyle}
-        customStyleTabs={DashboardTab.customStyleTabs}
+        customTabsStyle={DashboardTab.customTabsStyle}
         customtabWrapper={DashboardTab.customtabWrapper}
      />
       

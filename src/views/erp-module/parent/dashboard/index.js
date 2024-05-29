@@ -19,7 +19,7 @@ import { useNavigate } from 'react-router';
 // ============== Profile imports 
 
 // ============== Communication  imports
-import AlignItemsList from 'views/erp-module/parent/communication-message/Contact-list';
+import AlignItemsList from 'views/erp-module/parent/communication-message/ContactList';
 import ParamWidgetHeader from 'components/dashboard/WidgetHeader';
 
 // ============== Alerts imports
@@ -35,7 +35,7 @@ import AttachmentIcon from '@mui/icons-material/Attachment';
 import CreateIcon from '@mui/icons-material/Create';
 import { data } from 'views/erp-module/parent/assignments/AssignmentData';
 import { subTitle, subtitle2 } from 'components/dashboard/CommonCss';
-import { commonStyles } from 'views/erp-module/parent/communication-message/Contact-list';
+import { commonStyles } from 'views/erp-module/parent/communication-message/ContactList';
 import { boxHeight } from 'components/dashboard/CommonCss';
 
 // ============== Time Table  imports

@@ -12,8 +12,8 @@ const Performance = Loadable(lazy(() => import('views/erp-module/parent/performa
 const SchoolFee = Loadable(lazy(() => import('views/erp-module/parent/fee-school-fee')));
 const OnlineAssessment = Loadable(lazy(() => import('views/erp-module/parent/remote-learning/assessments')));
 const OnlineClass = Loadable(lazy(() => import('views/erp-module/parent/remote-learning/online-class')));
-const ContactList = Loadable(lazy(() => import('views/erp-module/parent/communication-message/Contact-list')));
-const RecentMessage = Loadable(lazy(() => import('views/erp-module/parent/communication-message/Recent-Message')));
+const ContactList = Loadable(lazy(() => import('views/erp-module/parent/communication-message/ContactList')));
+const RecentMessage = Loadable(lazy(() => import('views/erp-module/parent/communication-message/RecentMessage')));
 const AddMeeting = Loadable(lazy(() => import('views/erp-module/parent/request/AddMetting')));
 const ItemRequestGatePass = Loadable(lazy(() => import('views/erp-module/parent/request/ItemRequestGatePass')));
 const Resources = Loadable(lazy(() => import('views/erp-module/parent/resources')));

@@ -8,11 +8,11 @@ const useDrawer = () => {
         right: false
     });
 
-    const toggleDrawer = (anchor, open) => (event) => {
+    const toggleDrawer = (direction, open) => (event) => {
         if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
             return;
         }
-        setAnchor({ ...anchor, [anchor]: open });
+        setAnchor({ ...anchor, [direction]: open });
     };
 
     return {anchor,toggleDrawer};

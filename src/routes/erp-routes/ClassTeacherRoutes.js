@@ -4,17 +4,17 @@ import Loadable from 'components/ui/Loadable';
 
 // Class Teacher  Dashboard Menus
 const ClassTeacherDashboard = Loadable(lazy(() => import('views/erp-module/teacher/class-teacher/dashboard')));
-const DailyAttendance = Loadable(lazy(() => import('views/erp-module/teacher/class-teacher/attendance-entry')));
-const MonthlyAttendance = Loadable(lazy(() => import('views/erp-module/teacher/class-teacher/monthly-attendance')));
-const MarksEntryPanel = Loadable(lazy(() => import('views/erp-module/teacher/class-teacher/marks-entry-panel')));
-const Scholastic = Loadable(lazy(() => import('views/erp-module/teacher/class-teacher/co-scholastic')));
-const RemarksEntryPanel = Loadable(lazy(() => import('views/erp-module/teacher/class-teacher/remarks-entry-panel')));
+const DailyAttendance = Loadable(lazy(() => import('views/erp-module/teacher/class-teacher/attendance/attendance-entry')));
+const MonthlyAttendance = Loadable(lazy(() => import('views/erp-module/teacher/class-teacher/attendance/monthly-attendance')));
+const MarksEntryPanel = Loadable(lazy(() => import('views/erp-module/teacher/class-teacher/result/marks-entry-panel')));
+const Scholastic = Loadable(lazy(() => import('views/erp-module/teacher/class-teacher/result/co-scholastic')));
+const RemarksEntryPanel = Loadable(lazy(() => import('views/erp-module/teacher/class-teacher/result/remarks-entry-panel')));
 const TimeTableEntry  = Loadable(lazy(() => import('views/erp-module/teacher/class-teacher/time-table-entry')));
-const Library =  Loadable(lazy(()=> import('views/erp-module/teacher/class-teacher/library')))
-const StudentAllocation = Loadable(lazy(() => import('views/erp-module/teacher/class-teacher/student-allocation')));
+const Library =  Loadable(lazy(()=> import('views/erp-module/teacher/class-teacher/Library')))
+const StudentAllocation = Loadable(lazy(() => import('views/erp-module/teacher/class-teacher/StudentAllocation')));
 const StudentHomeWorkUpload = Loadable(lazy(() => import('views/erp-module/teacher/class-teacher/Student-homework-upload')));
 const CircularUpload = Loadable(lazy(() => import('views/erp-module/teacher/class-teacher/circular-upload')));
-const UploadResources = Loadable(lazy(() => import('views/erp-module/teacher/class-teacher/Upload-Resources')));
+const UploadResources = Loadable(lazy(() => import('views/erp-module/teacher/class-teacher/UploadResources')));
 const TeacherInbox = Loadable(lazy(() => import('views/erp-module/teacher/class-teacher/new-teacher-inbox')));
 const BiometricDetailsOrAttendanceDetails = Loadable(lazy(() => import('views/erp-module/teacher/class-teacher/biometric-details-attendance-details')));
 const LeaveApplication = Loadable(lazy(() => import('views/erp-module/teacher/class-teacher/leave-application')));
