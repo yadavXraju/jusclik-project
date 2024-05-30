@@ -412,7 +412,7 @@ const Admission = () => {
             </Grid>
 
             <Grid item xs={12} sm={6} lg={6}>
-              <div style={{ display: 'flex', justifyContent: 'end', width: '100%' }}>
+              <Box style={{ display: 'flex', justifyContent: 'end', width: '100%' }}>
                 <AdmissionDrawer DrawerBtn={true} />
 
                 <Box
