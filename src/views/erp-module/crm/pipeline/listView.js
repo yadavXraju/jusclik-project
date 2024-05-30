@@ -3,7 +3,7 @@
 import React from 'react';
 import { kanbanData } from './data';
 import { Box, Paper ,Typography  } from '@mui/material';
-import CommonDataGrid from 'components/table-data-grid/commonDataGrid';
+import CommonDataGrid from 'components/table-data-grid/DataGrid';
 import TableLayout from 'layout/TableLayout';
 
 

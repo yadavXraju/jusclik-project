@@ -3,7 +3,7 @@ import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import TextField from '@mui/material/TextField'
 import ParameterizedAutoComplete from 'components/ui/custom-input/AutoComplete'
-import CommonDataGrid from 'components/table-data-grid/commonDataGrid'
+import CommonDataGrid from 'components/table-data-grid/DataGrid'
 
 
 const option = [
