@@ -16,7 +16,7 @@ import { List, ListItemText } from '@mui/material';
 import jsPDF from 'jspdf';
 import { getCurrentDate } from 'utils/timeUtils';
 import { getCurrentTime } from 'utils/timeUtils';
-import DownloadPdfWithCanvas from 'components/print/DownloadPdfWithCanvas';
+import DownloadPdfWithCanvas from 'components/print/DownloadpdfWithCanvas';
 
 const PrintButton = () => {
   return (

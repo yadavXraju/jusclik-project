@@ -2,12 +2,11 @@
 // ======= Drawer for Admission From ========
 import React, {useState, useEffect} from 'react';
 import useDrawer from 'hooks/useDrawer';
-import { Button, Box } from '@mui/material';
+import { Button, Box, Grid, Typography, Card } from '@mui/material';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
-// import Mainform1 from './MainForm1';
 import DrawerLayOut from 'layout/drawer-layout';
 import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
-import Remarks from './Remarks';
+import TextArea from 'antd/es/input/TextArea';
 import PersonAddAltTwoToneIcon from '@mui/icons-material/PersonAddAltTwoTone';
 import HomeWorkTwoToneIcon from '@mui/icons-material/HomeWorkTwoTone';
 import PeopleAltTwoToneIcon from '@mui/icons-material/PeopleAltTwoTone';
@@ -123,7 +122,21 @@ const AdmissionDrawer = ({DrawerBtn = false, editIcon = false, currEditItem, han
       cardComponent = <ProfileDetail studentFields={option?.customFields} type="Custom Fields" />;
       break;
     case 5:
-      cardComponent = <Remarks />;
+      cardComponent = <>
+      <Card sx={{padding:'10px'}}>
+      <Typography variant={'h4'} p={1.4} mb={2} sx={{borderBottom:'1px solid #ccc'}}>
+      Remarks
+      </Typography>
+    <Grid container spacing={1} sx={{ display: 'flex', height: '100%' }}>
+    <Grid item xs={12} sm={12} lg={12}>
+    <Box pb={1}>
+              <Box p={0.5}>Remarks</Box>
+              <TextArea rows={4} placeholder="Enter your text here..." fullWidth variant="outlined" />
+            </Box>
+      </Grid>
+    </Grid>
+    </Card>
+      </>;
       break;
     default:
       cardComponent = null;
@@ -196,7 +209,7 @@ const AdmissionDrawer = ({DrawerBtn = false, editIcon = false, currEditItem, han
       )}
 
       <DrawerLayOut anchor={anchor} direction={'top'} toggleDrawer={toggleDrawer}
-        Title={'Add Student'} Body={<DrawerBody />} customStyles={{width:'100%'}} 
+        Title={'Add Student'} Body={<DrawerBody />} CustomBodyStyle={{ height:'calc(100vh - 115px)'}} customStyles={{width:'100%'}} 
       />
     </>
   );
