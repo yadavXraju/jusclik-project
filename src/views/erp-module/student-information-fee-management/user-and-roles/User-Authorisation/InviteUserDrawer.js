@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import useDrawer from 'hooks/useDrawer';
-import Drawer from '@mui/material/Drawer';
 import { Button, Typography, Box } from '@mui/material';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import { TextField } from '@mui/material';
 import SelectList from 'components/ui/custom-input/SelectList';
 import ParamChackboxSelectAll from 'components/ui/custom-input/ChackboxSelectAll';
+import DrawerLayOut from 'layout/drawer-layout';
 
 const InviteUserDrawer = () => {
   // ========= call custom hook for toggle drawer ==========
@@ -36,23 +36,10 @@ const InviteUserDrawer = () => {
     // Handle selection logic here
   };
 
-
-  return (
-    <>
-      <Button onClick={toggleDrawer('right', true)} variant="outlined" startIcon={<AddOutlinedIcon />}>
-        Invite User
-      </Button>
-      <Drawer anchor={'right'} open={anchor.right} onClose={toggleDrawer('right', false)}>
-        <Box sx={{ width: { xs: '100vw', sm: 650 }, padding: 2 }} role="presentation">
-          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #ccc' }}>
-            <Typography variant="h4">Invite User</Typography>
-            <Button onClick={toggleDrawer('right', false)} sx={{ alignSelf: 'flex-end' }}>
-              Close
-            </Button>
-          </Box>
-          <Box>
-            {/* ========== Render Drawer Contant Form ============ */}
-            <form>
+  const DrawerBody = () => {
+    return (
+      <>
+      <form>
               <Box sx={{ padding: 2 }}>
                 <Box pb={2}>
                   <TextField id="outlined-basic" label="Name" variant="outlined" fullWidth />
@@ -75,9 +62,19 @@ const InviteUserDrawer = () => {
                 </Box>
               </Box>
             </form>
-          </Box>
-        </Box>
-      </Drawer>
+      </>
+    )
+  }
+
+
+  return (
+    <>
+      <Button onClick={toggleDrawer('right', true)} sx={{ mr: '8px' }} variant="outlined" startIcon={<AddOutlinedIcon />}>
+      Invite User
+      </Button>
+      <DrawerLayOut anchor={anchor} direction={'right'} toggleDrawer={toggleDrawer}
+        Title={'Invite User'} Body={<DrawerBody />} customStyles={{width:{ sm: '100vw', md: 700 }}}  
+      />
     </>
   );
 };

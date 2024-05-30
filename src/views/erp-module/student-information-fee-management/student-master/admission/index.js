@@ -251,7 +251,6 @@ import FilterListRoundedIcon from '@mui/icons-material/FilterListRounded';
 import AdmissionDrawer from './admission-form/AdmissionDrawer';
 import RemoveRedEyeTwoToneIcon from '@mui/icons-material/RemoveRedEyeTwoTone';
 import useDrawer from 'hooks/useDrawer';
-import EditDrawer from './admission-form/EditDrawer';
 import FilterStudents from 'views/erp-module/student-information-fee-management/reports/common-report-section/filter-and-sort/temp-Filter';
 import WarningDialog from 'components/WarningDialog';
 import CloseIcon from '@mui/icons-material/Close';
@@ -348,7 +347,7 @@ const Admission = () => {
           </IconButton>
           <IconButton onClick={(event) => event.stopPropagation()}>
             {/* <EditTwoToneIcon onClick={handleEdit} /> */}
-            <EditDrawer currEditItem={currEditItem} handleClick={() => handleEditClick(params.row)} />
+            <AdmissionDrawer editIcon={true} currEditItem={currEditItem} handleClick={() => handleEditClick(params.row)}/>
           </IconButton>
           <IconButton onClick={(event) => event.stopPropagation()}>
             <DeleteTwoToneIcon onClick={() => handleDeleteRow(params.row.id)} sx={{ color: '#f19e9e' }} />
@@ -413,8 +412,8 @@ const Admission = () => {
             </Grid>
 
             <Grid item xs={12} sm={6} lg={6}>
-              <Box sx={{ display: 'flex', justifyContent: 'end', width: '100%', alignItems: 'center' }}>
-                <AdmissionDrawer />
+              <Box style={{ display: 'flex', justifyContent: 'end', width: '100%' }}>
+                <AdmissionDrawer DrawerBtn={true} />
 
                 <Box
                   sx={{

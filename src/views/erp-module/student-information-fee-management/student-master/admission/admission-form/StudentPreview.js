@@ -13,7 +13,7 @@ import { studentProfileDetails } from 'layout/MainLayout/Header/Profile';
 import { CardMedia } from '@mui/material';
 import ArrowBackOutlinedIcon from '@mui/icons-material/ArrowBackOutlined';
 import { useNavigate } from 'react-router-dom';
-import EditDrawer from './EditDrawer';
+import AdmissionDrawer from './AdmissionDrawer';
 import rows from './AdmissionTableData';
 import PreviewLoginAndWithdrawalDrawer from './PreviewLoginAndWithdrawalDrawer';
 
@@ -102,7 +102,7 @@ function StudentPreview() {
               <IconButton sx={{ marginRight: '8px', background: '#cccccc54' }}>
                 {/* <EditTwoToneIcon /> */}
                 {/* ============ import edit drawer ============ */}
-                <EditDrawer currEditItem={filteredRow} handleClick={() => {}}/>
+                <AdmissionDrawer editIcon={true} currEditItem={filteredRow} handleClick={() => {}}/>
               </IconButton>
         
               <PreviewLoginAndWithdrawalDrawer/>
