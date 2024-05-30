@@ -237,7 +237,7 @@
 // export default Admission;
 
 
-// =======  With Search Bar =========
+// =======  With Search Bar ========
 
 import React, { useState } from 'react';
 import { DataGrid } from '@mui/x-data-grid';
