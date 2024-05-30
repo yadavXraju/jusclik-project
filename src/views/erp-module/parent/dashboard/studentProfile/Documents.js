@@ -43,17 +43,14 @@ export default function Documents() {
 
   const handleAttachmentButtonClick = () => {
     setAttachmentDialogOpen(true);
-    //setSelectedRow(row);
   };
 
   const handleAttachmentDialogClose = () => {
     setAttachmentDialogOpen(false);
-    //setSelectedRow(null);
   };
 
   const handleAttachmentUpload = () => {
     setAttachmentDialogOpen(false);
-    //setSelectedRow(null);
   };
   // ============== code for handle upload attachment end ==============
 
@@ -115,7 +112,6 @@ export default function Documents() {
         <DialogTitle>Attachment Options</DialogTitle>
         <DialogContent>
           {/* Add your attachment options/content here */}
-          {/* For example, you can add a file input for uploading attachments */}
           <input type="file" />
         </DialogContent>
         <DialogActions>
