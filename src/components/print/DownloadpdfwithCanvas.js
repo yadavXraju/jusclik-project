@@ -1,12 +1,12 @@
 
-   // Page Owner - Kulwinder Singh 
+   //Page Owner - Kulwinder Singh 
    //Description  - This component can be use to download PDF File by using html2canvas Method
 
 import React from 'react';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 
-const DownloadpdfwithCanvas = (WrappedComponent) => {
+const DownloadPdfWithCanvas = (WrappedComponent) => {
   const handleDownload = (ref ,width) => {     //Receiving Props Ref for Image capturing for print and Width for % ratio for print 
     const input = ref.current;
 
@@ -32,4 +32,4 @@ const DownloadpdfwithCanvas = (WrappedComponent) => {
   return (props) => <WrappedComponent {...props} handleDownload={handleDownload} />;
 };
 
-export default DownloadpdfwithCanvas;
+export default DownloadPdfWithCanvas;

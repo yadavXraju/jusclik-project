@@ -120,7 +120,7 @@ export default function LoginPage() {
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'left' }}>
+      {/* <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'left' }}> */}
         <Box component="form" noValidate onSubmit={step === 0 ? handleMobileSubmit : handleSubmit}>
           {step === 0 && (
             <Box>
@@ -249,7 +249,7 @@ export default function LoginPage() {
             )}
           </Grid>
         </Box>
-      </Box>
+      {/* </Box> */}
     </ThemeProvider>
   );
 }

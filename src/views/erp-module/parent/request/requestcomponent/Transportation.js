@@ -2,8 +2,12 @@
 
 
 import React from 'react';
-import { Typography, TextField, Grid, Box, Paper,MenuItem, Button } from '@mui/material';
-import Datecomponet from './Datecomponent';
+import { Typography, Grid, Box, Paper, Button } from '@mui/material';
+import ParameterizedAutoComplete from 'components/ui/custom-input/AutoComplete';
+
+
+import CustomTextField from 'components/ui/custom-input/TextField';
+import ParameterizedDateComponent from 'components/ui/custom-input/DateComponent';
 
 const options = [
   {
@@ -31,97 +35,31 @@ function Transportation() {
         
           <Grid container spacing={5} display="flex" justifyContent="center" >
             <Grid item xs={12} md={5}>
-              <TextField
-                id="outlined-select-option"
-                select
-                label="Transport Option"
-                defaultValue="EUR"
-                fullWidth
-              >
-                {options.map((option) => (
-                    <MenuItem key={option.value} value={option.value}>
-                    {option.label}
-                  </MenuItem>
-                ))}
-              </TextField>
+              <ParameterizedAutoComplete   label="Transport Option" option={options}  customStyle={{width:"100%"}}/>
             </Grid>
           </Grid>
+
           <Grid container spacing={5} sx={{marginTop:"10px"}} justifyContent="center" alignContent="center"> 
      
            <Grid item xs={12} md={5}>
-               <Typography variant='h3' >Information as per records</Typography>
-               <TextField fullWidth variant="outlined" label='Pick Route' sx={{margin:"10px"}} />
-               <TextField fullWidth variant="outlined" label="Pick Stop" sx={{margin:"10px"}} />
-               <TextField fullWidth variant="outlined" label="Drop Route" sx={{margin:"10px"}}/>
-               <TextField fullWidth variant="outlined" label="Drop Stop" sx={{margin:"10px"}} />
+           <Typography variant='h3' >Information as per records</Typography>
+            <CustomTextField label='Pick Route' customStyle={{margin:"10px",width:"100%"}} />
+            <CustomTextField label="Pick Stop" customStyle={{margin:"10px",width:"100%"}} />
+            <CustomTextField label="Drop Route" customStyle={{margin:"10px",width:"100%"}} />
+            <CustomTextField label="Drop Stop" customStyle={{margin:"10px",width:"100%"}} />
+
            </Grid>
            <Grid item  xs={12} md={5}>
            <Typography variant='h3' >Information Requested</Typography>
-           <TextField
-                id="outlined-select-option"
-                select
-                label="Pick Route"
-                defaultValue="EUR"
-                fullWidth
-                sx={{margin:"10px"}}
-              >
-                {options.map((option) => (
-                    <MenuItem key={option.value} value={option.value}>
-                    {option.label}
-                  </MenuItem>
-                ))}
-              </TextField>
-              <TextField
-                id="outlined-select-option"
-                select
-                label="Pick Stop"
-                defaultValue="EUR"
-                fullWidth
-                sx={{margin:"10px"}}
-              >
-                {options.map((option) => (
-                    <MenuItem key={option.value} value={option.value}>
-                    {option.label}
-                  </MenuItem>
-                ))}
-              </TextField>
-              <TextField
-                id="outlined-select-option"
-                select
-                label="Drop Route"
-                defaultValue="EUR"
-                fullWidth
-                sx={{margin:"10px"}}
-              >
-                {options.map((option) => (
-                    <MenuItem key={option.value} value={option.value}>
-                    {option.label}
-                  </MenuItem>
-                ))}
-              </TextField>
 
-              <TextField
-                id="outlined-select-option"
-                select
-                label="Drop Stop" 
-                defaultValue="EUR"
-                fullWidth
-                sx={{margin:"10px"}}
-              >
-                {options.map((option) => (
-                    <MenuItem key={option.value} value={option.value}>
-                    {option.label}
-                  </MenuItem>
-                ))}
-              </TextField>
-              <Datecomponet label="Effective Date"/>
-              <TextField
-                id="outlined-select-option"
-                label="Remark"
-                multiline
-                fullWidth
-                sx={{margin:"10px"}}
-              />
+           <ParameterizedAutoComplete option={options} customStyle={{margin:"10px",width:"100%"}}   label="Pick Route"/>
+           
+           <ParameterizedAutoComplete option={options} customStyle={{margin:"10px",width:"100%"}}    label="Pick Stop"/>
+           <ParameterizedAutoComplete option={options} customStyle={{margin:"10px",width:"100%"}}   label="Drop Route"/>
+           <ParameterizedAutoComplete option={options} customStyle={{margin:"10px",width:"100%"}}   label="Drop Stop" />
+           <ParameterizedDateComponent label="Effective Date" customStyle={{margin:"10px",width:"100%"}} />
+           <CustomTextField label="Remark" type="multiline" customStyle={{margin:"10px",width:"100%"}}  />
+
             </Grid>
           </Grid>
           

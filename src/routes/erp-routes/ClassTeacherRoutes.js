@@ -23,9 +23,6 @@ const TeacherProfile = Loadable(lazy(() => import('views/erp-module/teacher/clas
 const ExpenseAndTravel = Loadable(lazy(() => import('views/erp-module/teacher/class-teacher/expenses-and-travel')));
 
 
-
-
-
 // Class Teacher Routes
 const classTeacherRoutes = [
 

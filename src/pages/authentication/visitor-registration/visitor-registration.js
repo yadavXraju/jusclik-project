@@ -9,7 +9,7 @@ import VisitorDetails from './visitor-details';
 import SelfieVerification from './selfie-verification';
 import { MobileNumber } from './mobile-number';
 import OtpVerification from './otp-verification';
-import VisitorAppointmentPass from './apointment-pass';
+import VisitorAppointmentPass from './ApointmentPass';
 import { useState } from 'react';
 const defaultTheme = createTheme({
   palette: {

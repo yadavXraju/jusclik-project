@@ -7,7 +7,7 @@ import { Grid, Typography, Box, TextField, InputLabel, useMediaQuery } from '@mu
 import Divider from '@mui/material/Divider';
 import Dropdown from 'components/ui/custom-input/SelectList';
 
-const Additional_Information = ({ handleClick }) => {
+const AdditionalInformation = ({ handleClick }) => {
   const [formData, setFormData] = useState({
     parents_status: '',
     applied_earlier: 'select',
@@ -324,4 +324,5 @@ const Additional_Information = ({ handleClick }) => {
   );
 }
 
-export default Additional_Information;
+export default AdditionalInformation
+;

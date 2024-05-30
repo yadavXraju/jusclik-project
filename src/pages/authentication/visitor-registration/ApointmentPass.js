@@ -12,11 +12,11 @@ import QRCODE from 'assets/images/QrCode.jpg';
 import Button from '@mui/material/Button';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import WithPrintPdf from 'components/print/withPrintPdf';
-import DownloadpdfwithCanvas from 'components/print/DownloadpdfwithCanvas';
 import { List, ListItemText } from '@mui/material';
 import jsPDF from 'jspdf';
 import { getCurrentDate } from 'utils/timeUtils';
 import { getCurrentTime } from 'utils/timeUtils';
+import DownloadPdfWithCanvas from 'components/print/DownloadPdfWithCanvas';
 
 const PrintButton = () => {
   return (
@@ -163,4 +163,4 @@ const VisitorAppointmentPass = ({ handleDownload, capturedImage, personalDetails
     </Box>
   );
 };
-export const AppointmentPass=DownloadpdfwithCanvas(VisitorAppointmentPass); //Wrap the component for downloding
+export const AppointmentPass=DownloadPdfWithCanvas(VisitorAppointmentPass); //Wrap the component for downloding

@@ -5,8 +5,8 @@ import { Grid, Paper, Typography, Box , useMediaQuery ,} from '@mui/material';
 import ParamCounters from 'components/dashboard/Counters';
 import Divider from '@mui/material/Divider';
 import CommonChart from 'components/chart/CommonChart';
-import CommonStackedChart from 'components/chart/CommonStackedChart';
-import CommonBarChart from 'components/chart/CommonBarChart';
+import BarChart from 'components/chart/BarChart';
+import StackedChart from 'components/chart/StackedChart';
 
 const ExpenseAndTravel = () => {
   //Dummy data
@@ -181,11 +181,11 @@ const ExpenseAndTravel = () => {
         </Grid>
       </Grid>
       <Box sx={{ padding: '1.2rem 0rem' }}>
-        <CommonBarChart ChartTitle={'Employees Expense Trend'} BarChartcategories={BarChartCategories} BarChartSeries={BarChartSeries} />
+        <BarChart ChartTitle={'Employees Expense Trend'} BarChartcategories={BarChartCategories} BarChartSeries={BarChartSeries} />
       </Box>
       <Box>
         <Paper>
-          <CommonStackedChart
+          <StackedChart
             ChartSeries={ChartSeries}
             StackedChartTitle={'Compare Category Wise Expense Trend'}
             StackedBarColor={StackedBarColor}

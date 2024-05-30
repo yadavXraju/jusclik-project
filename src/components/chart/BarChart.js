@@ -6,7 +6,7 @@ import Chart from 'react-apexcharts';
 import { Box, Paper, Grid, Typography, Divider , useMediaQuery } from '@mui/material';
 import ParamWidgetHeader from 'components/dashboard/WidgetHeader';
 
-const CommonBarChart = ({ ChartTitle, BarChartcategories, BarChartSeries }) => {
+const BarChart = ({ ChartTitle, BarChartcategories, BarChartSeries }) => {
   const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   const FeeDefaulterData = {
     height: 350,
@@ -189,8 +189,8 @@ const CommonBarChart = ({ ChartTitle, BarChartcategories, BarChartSeries }) => {
   );
 };
 
-CommonBarChart.defaultProps = {
+BarChart.defaultProps = {
   ChartTitle: 'Enter Chart Name '
 };
 
-export default CommonBarChart;
+export default BarChart;
