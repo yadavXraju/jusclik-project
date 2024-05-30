@@ -1,7 +1,7 @@
 import { Box, IconButton, Paper, Tab, Tabs, Tooltip, Typography } from '@mui/material';
 import TabsName from 'components/tabs/TabStep';
 import WarningDialog from 'components/WarningDialog';
-import CommonDataGrid from 'components/table-data-grid/commonDataGrid';
+import CommonDataGrid from 'components/table-data-grid/DataGrid';
 import React from 'react';
 import { AddTaskListDrawer } from './drawers/add-task-list';
 import { EditTaskListDrawer } from './drawers/edit-task-list';

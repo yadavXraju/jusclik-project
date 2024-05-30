@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import CommonDataGrid from 'components/table-data-grid/commonDataGrid'
+import CommonDataGrid from 'components/table-data-grid/DataGrid'
 import { Box,Tooltip,IconButton, Card,Typography,Grid,Chip } from '@mui/material'
 import WarningDialog from 'components/WarningDialog';
 
