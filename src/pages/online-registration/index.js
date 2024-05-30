@@ -9,19 +9,19 @@ import Tab from '@mui/material/Tab';
 import { Grid, Box, Paper, useMediaQuery, IconButton, Drawer, List, ListItem, ListItemText, Typography } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import StudentDetails from './StudentDetails';
-import Upload_Document_Photos from './Upload_Document_Photos';
 import SignUpRegisteration from './SignUpRegisteration';
 import OtherDetails from './OtherDetails';
 import SiblingDetails from './SiblingDetails';
 import PermanentAddress from './PermanentAddress';
 import FatherDetails from './FatherDetails';
 import MotherDetails from './MotherDetails';
-import Additional_Information from './Additional_Information';
 import PreviewAndSubmit from './PreviewAndSubmit';
 import TabNumber from './TabNumber';
 import BottomNavbar from 'components/BottomNavbar';
 import SchoolLogo2 from 'assets/images/school-logos/ArwachinLogo3.png';
 import CloseIcon from '@mui/icons-material/Close';
+import AdditionalInformation from './AdditionalInformation';
+import UploadDocumentPhotos from './UploadDocumentPhotos';
 
 const OnlineRegistration = () => {
   const [TabChange, setTabChange] = useState(0);
@@ -45,8 +45,8 @@ const OnlineRegistration = () => {
     { id: 5, value: 3, component: <PermanentAddress handleClick={handleClick} />, label: 'PERMANENT ADDRESS' },
     { id: 6, value: 4, component: <FatherDetails handleClick={handleClick} />, label: "FATHER'S DETAILS" },
     { id: 7, value: 5, component: <MotherDetails handleClick={handleClick} />, label: "MOTHER'S DETAILS" },
-    { id: 8, value: 6, component: <Additional_Information handleClick={handleClick} />, label: 'ADDITIONAL INFORMATION' },
-    { id: 9, value: 7, component: <Upload_Document_Photos handleClick={handleClick} />, label: 'UPLOAD DOCUMENTS' },
+    { id: 8, value: 6, component: <AdditionalInformation handleClick={handleClick} />, label: 'ADDITIONAL INFORMATION' },
+    { id: 9, value: 7, component: <UploadDocumentPhotos handleClick={handleClick} />, label: 'UPLOAD DOCUMENTS' },
     { id: 10, value: 8, component: <PreviewAndSubmit />, label: 'PREVIEW AND SUBMIT' }
   ];
 
@@ -349,14 +349,14 @@ export default OnlineRegistration;
 // import Tab from '@mui/material/Tab';
 // import { Grid, Box, Paper, Typography ,useMediaQuery} from '@mui/material';
 // import StudentDetails from './StudentDetails';
-// import Upload_Document_Photos from './Upload_Document_Photos';
+// import UploadDocumentPhotos from './UploadDocumentPhotos';
 // import SignUpRegisteration from './SignUpRegisteration';
 // import OtherDetails from './OtherDetails';
 // import SiblingDetails from './SiblingDetails';
 // import PermanentAddress from './PermanentAddress';
 // import FatherDetails from './FatherDetails';
 // import MotherDetails from './MotherDetails';
-// import Additional_Information from './Additional_Information';
+// import AdditionalInformation from './AdditionalInformation';
 // import PreviewAndSubmit from './PreviewAndSubmit';
 // import TabNumber from './TabNumber';
 // import BottomNavbar from 'components/BottomNavbar';
@@ -383,8 +383,8 @@ export default OnlineRegistration;
 //     { id: 5, value: 3, component: <PermanentAddress handleClick={handleClick} />, label: 'PERMANENT ADDRESS' },
 //     { id: 6, value: 4, component: <FatherDetails handleClick={handleClick} />, label: "FATHER'S DETAILS" },
 //     { id: 7, value: 5, component: <MotherDetails handleClick={handleClick} />, label: "MOTHER'S DETAILS" },
-//     { id: 8, value: 6, component: <Additional_Information handleClick={handleClick} />, label: 'ADDITIONAL INFORMATION' },
-//     { id: 9, value: 7, component: <Upload_Document_Photos handleClick={handleClick} />, label: 'UPLOAD DOCUMENTS' },
+//     { id: 8, value: 6, component: <AdditionalInformation handleClick={handleClick} />, label: 'ADDITIONAL INFORMATION' },
+//     { id: 9, value: 7, component: <UploadDocumentPhotos handleClick={handleClick} />, label: 'UPLOAD DOCUMENTS' },
 //     { id: 10, value: 8, component: <PreviewAndSubmit />, label: 'PREVIEW AND SUBMIT' }
 //   ];
 
@@ -592,9 +592,9 @@ export default OnlineRegistration;
 // import PermanentAddress from './PermanentAddress';
 // import FatherDetails from './FatherDetails';
 // import MotherDetails from './MotherDetails';
-// import Additional_Information from './Additional_Information';
+// import AdditionalInformation from './AdditionalInformation';
 // import Declaration from './Declaration';
-// import Upload_Document_Photos from './Upload_Document_Photos';
+// import UploadDocumentPhotos from './UploadDocumentPhotos';
 // import PreviewAndSubmit from './PreviewAndSubmit';
 
 // const OnlineRegistration = () => {
@@ -627,9 +627,9 @@ export default OnlineRegistration;
 //     { id: 3, name: 'Permanent Address', component: PermanentAddress },
 //     { id: 4, name: "Father's Details", component: FatherDetails },
 //     { id: 5, name: "Mother's Details", component: MotherDetails },
-//     { id: 6, name: 'Additional Information', component: Additional_Information },
+//     { id: 6, name: 'Additional Information', component: AdditionalInformation },
 //     { id: 7, name: 'Declaration', component: Declaration },
-//     { id: 8, name: 'Upload Documents', component: Upload_Document_Photos },
+//     { id: 8, name: 'Upload Documents', component: UploadDocumentPhotos },
 //     { id: 9, name: 'Preview and Submit', component: PreviewAndSubmit }
 //   ];
 

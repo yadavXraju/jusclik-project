@@ -5,7 +5,7 @@ import Chart from 'react-apexcharts';
 import ParamWidgetHeader from 'components/dashboard/WidgetHeader';
 import { Grid, Typography, Box, Divider , useMediaQuery } from '@mui/material';
 
-const CommonStackedChart = ({ ChartSeries, StackedChartTitle, StackedBarColor, StackedChartXCategories ,Yaxistitle ,xaxistitle ,hidechartdetails ,chartHeight=350 ,barWidth='40%' ,showgridlines }) => {
+const StackedChart = ({ ChartSeries, StackedChartTitle, StackedBarColor, StackedChartXCategories ,Yaxistitle ,xaxistitle ,hidechartdetails ,chartHeight=350 ,barWidth='40%' ,showgridlines }) => {
   // Function to calculate the sum of data for each product
   const calculatetotalclaim = () => {
     return ChartSeries.reduce((total, series) => {
@@ -156,4 +156,4 @@ const CommonStackedChart = ({ ChartSeries, StackedChartTitle, StackedBarColor, S
   );
 };
 
-export default CommonStackedChart;
+export default StackedChart;
