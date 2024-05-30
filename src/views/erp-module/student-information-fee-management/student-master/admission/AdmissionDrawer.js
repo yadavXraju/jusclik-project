@@ -1,9 +1,12 @@
 // ======= Page Owner Vikash =========
-
-import React, { useState, useEffect } from 'react';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Remarks from './Remarks';
+// ======= Drawer for Admission From ========
+import React, {useState, useEffect} from 'react';
+import useDrawer from 'hooks/useDrawer';
+import { Button, Box, Grid, Typography, Card } from '@mui/material';
+import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
+import DrawerLayOut from 'layout/drawer-layout';
+import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
+import TextArea from 'antd/es/input/TextArea';
 import PersonAddAltTwoToneIcon from '@mui/icons-material/PersonAddAltTwoTone';
 import HomeWorkTwoToneIcon from '@mui/icons-material/HomeWorkTwoTone';
 import PeopleAltTwoToneIcon from '@mui/icons-material/PeopleAltTwoTone';
@@ -19,6 +22,7 @@ import CommonAddress from 'components/forms/Address';
 import Mainformlayout from 'layout/main-form-layout';
 import Profile from 'components/forms/Profile';
 
+
 const buttonsData = [
   { name: 0, icon: <PersonAddAltTwoToneIcon />, label: 'Primary Details' },
   { name: 1, icon: <DescriptionTwoToneIcon />, label: 'Other Details' },
@@ -28,8 +32,16 @@ const buttonsData = [
   { name: 5, icon: <TextsmsTwoToneIcon />, label: 'Remarks' }
 ];
 
+const AdmissionDrawer = ({DrawerBtn = false, editIcon = false, currEditItem, handleClick}) => {
+  // ========= call custom hook for toggle drawer ==========
+  const { anchor, toggleDrawer } = useDrawer();
 
-const Mainform1 = ({ currEditItem }) => {
+  const handleEditClick=(event)=>{
+    toggleDrawer('top', true)(event);
+    handleClick();
+  }
+
+
   const dispatch = useDispatch();
   const { studentDetailsData, subGroups } = useSelector((state) => state.admission);
   const [selectedButton, setSelectedButton] = useState(0);
@@ -110,7 +122,21 @@ const Mainform1 = ({ currEditItem }) => {
       cardComponent = <ProfileDetail studentFields={option?.customFields} type="Custom Fields" />;
       break;
     case 5:
-      cardComponent = <Remarks />;
+      cardComponent = <>
+      <Card sx={{padding:'10px'}}>
+      <Typography variant={'h4'} p={1.4} mb={2} sx={{borderBottom:'1px solid #ccc'}}>
+      Remarks
+      </Typography>
+    <Grid container spacing={1} sx={{ display: 'flex', height: '100%' }}>
+    <Grid item xs={12} sm={12} lg={12}>
+    <Box pb={1}>
+              <Box p={0.5}>Remarks</Box>
+              <TextArea rows={4} placeholder="Enter your text here..." fullWidth variant="outlined" />
+            </Box>
+      </Grid>
+    </Grid>
+    </Card>
+      </>;
       break;
     default:
       cardComponent = null;
@@ -151,8 +177,9 @@ const Mainform1 = ({ currEditItem }) => {
     cardComponent
   ]
 
-  return (
-    <>
+  const DrawerBody = () => {
+    return (
+      <>
       <Box mt={1}>
       <Mainformlayout grid1={grid1} grid2={grid2} grid3={grid3} />
       <BottomNavbar
@@ -166,8 +193,26 @@ const Mainform1 = ({ currEditItem }) => {
         section={section}
       />
       </Box>
+      </>
+    )
+  }
+
+  return (
+    <>
+      {DrawerBtn && (
+         <Button onClick={toggleDrawer('top', true)} sx={{mr:'8px'}} variant="outlined" startIcon={<AddOutlinedIcon />}>
+         Add Student
+         </Button>
+      )}
+      {editIcon && (
+          <EditTwoToneIcon onClick={() => handleEditClick(event)}/>
+      )}
+
+      <DrawerLayOut anchor={anchor} direction={'top'} toggleDrawer={toggleDrawer}
+        Title={'Add Student'} Body={<DrawerBody />} CustomBodyStyle={{ height:'calc(100vh - 115px)'}} customStyles={{width:'100%'}} 
+      />
     </>
   );
 };
 
-export default Mainform1;
+export default AdmissionDrawer;

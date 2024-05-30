@@ -8,7 +8,7 @@ import { studentProfileDetails } from 'layout/MainLayout/Header/Profile';
 import { CardMedia } from '@mui/material';
 import ArrowBackOutlinedIcon from '@mui/icons-material/ArrowBackOutlined';
 import { useNavigate } from 'react-router-dom';
-import rows from '../../student-master/admission/admission-form/AdmissionTableData';
+import rows from '../../student-master/admission/AdmissionTableData';
 import { useParams } from 'react-router';
 
 function TransportPreview() {

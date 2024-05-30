@@ -5,7 +5,7 @@ import { Dialog,  DialogContent, DialogContentText, DialogActions, Button, Typog
 import WarningTwoToneIcon from '@mui/icons-material/WarningTwoTone';
 import { Box } from '@mui/system';
 
-const WarningDialog = ({ open = {}, onClose = {}, contentText = {}, onConfirm = {} ,hideCancel=false}) => {
+const WarningDialog = ({ open = false, onClose, contentText = {}, onConfirm = {} ,hideCancel=false}) => {
   
   return (
     <Dialog open={open} onClose={onClose}>

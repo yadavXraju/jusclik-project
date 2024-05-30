@@ -13,8 +13,8 @@ import { studentProfileDetails } from 'layout/MainLayout/Header/Profile';
 import { CardMedia } from '@mui/material';
 import ArrowBackOutlinedIcon from '@mui/icons-material/ArrowBackOutlined';
 import { useNavigate } from 'react-router-dom';
-import AdmissionDrawer from './AdmissionDrawer';
-import rows from './AdmissionTableData';
+import AdmissionDrawer from '../AdmissionDrawer';
+import rows from '../AdmissionTableData';
 import PreviewLoginAndWithdrawalDrawer from './PreviewLoginAndWithdrawalDrawer';
 
 function StudentPreview() {
