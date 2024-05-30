@@ -153,6 +153,7 @@ const Mainform1 = ({ currEditItem }) => {
 
   return (
     <>
+      <Box mt={1}>
       <Mainformlayout grid1={grid1} grid2={grid2} grid3={grid3} />
       <BottomNavbar
         tabPageLength={buttonsData.length}
@@ -164,6 +165,7 @@ const Mainform1 = ({ currEditItem }) => {
         customStyle={{ width: '100%', bottom: '0', borderRadius: '1px' }}
         section={section}
       />
+      </Box>
     </>
   );
 };
