@@ -168,7 +168,7 @@ const EmployeeFormTab = ({ currEditItem }) => {
 
   return (
     <>
-      <Card>
+      <Card sx={{marginTop: 1}}>
         <Grid container spacing={3} mb={8} sx={{ display: 'flex', height: '100%' }}>
           <Grid item xs={12} sm={12} lg={3}>
             <Box sx={{ border: '1px solid #ccc', borderRadius: '4px' }}>

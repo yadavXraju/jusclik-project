@@ -8,7 +8,7 @@ import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 import RemoveRedEyeTwoToneIcon from '@mui/icons-material/RemoveRedEyeTwoTone';
 import rows from './Sample-LeadTableData';
 import WarningDialog from 'components/WarningDialog';
-import CommonDataGrid from 'components/table-data-grid/commonDataGrid';
+import CommonDataGrid from 'components/table-data-grid/DataGrid';
 import AddContactDrawer from './AddContactDrawer'
 
 

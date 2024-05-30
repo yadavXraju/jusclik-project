@@ -5,7 +5,7 @@ import { Grid, Paper, Box, Button, IconButton, Tooltip, Typography, Dialog, Dial
 import LeaveConsumedChart from './LeaveConsumedChart';
 import CheckCircleTwoToneIcon from '@mui/icons-material/CheckCircleTwoTone';
 import CancelTwoToneIcon from '@mui/icons-material/CancelTwoTone';
-import CommonDataGrid from 'components/table-data-grid/commonDataGrid';
+import CommonDataGrid from 'components/table-data-grid/DataGrid';
 import CloseIcon from '@mui/icons-material/Close';
 import rows from './LeaveTableData';
 

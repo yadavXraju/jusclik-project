@@ -29,34 +29,34 @@ export default function ProfileForm() {
          id="outlined-basic" fullWidth disabled value={'Male'} label="Gender" variant="outlined" />
         </Grid>
         <Grid item xs={12}>
-        <TextField size={isMobile  ? 'small' : 'normal' } id="outlined-basic" fullWidth disabled label="Address" variant="outlined" />
+        <TextField size={isMobile ? 'small' : 'normal' } id="outlined-basic" fullWidth disabled label="Address" variant="outlined" />
         </Grid>
         <Grid item sm={6} xs={12}>
-        <TextField size={isMobile  ? 'small' : 'normal' } id="outlined-basic" fullWidth disabled label="DOB" variant="outlined" />
+        <TextField size={isMobile ? 'small' : 'normal' } id="outlined-basic" fullWidth disabled label="DOB" variant="outlined" />
         </Grid>
         <Grid item sm={6} xs={12}>
         <TextField size={isMobile  ? 'small' : 'normal' } id="outlined-basic" fullWidth disabled label="Area" variant="outlined" />
         </Grid>
         <Grid item sm={6} xs={12}>
-        <TextField size={isMobile  ? 'small' : 'normal' } id="outlined-basic" fullWidth label="Landline" variant="outlined" />
+        <TextField size={isMobile ? 'small' : 'normal' } id="outlined-basic" fullWidth label="Landline" variant="outlined" />
         </Grid>
         <Grid item sm={6} xs={12}>
-        <TextField size={isMobile  ? 'small' : 'normal' } id="outlined-basic" fullWidth disabled label="City" variant="outlined" />
+        <TextField size={isMobile ? 'small' : 'normal' } id="outlined-basic" fullWidth disabled label="City" variant="outlined" />
         </Grid>
         <Grid item sm={6} xs={12}>
-        <TextField size={isMobile  ? 'small' : 'normal' } id="outlined-basic" fullWidth label="Mobile" variant="outlined" />
+        <TextField size={isMobile ? 'small' : 'normal' } id="outlined-basic" fullWidth label="Mobile" variant="outlined" />
         </Grid>
         <Grid item sm={6} xs={12}>
-        <TextField size={isMobile  ? 'small' : 'normal' } id="outlined-basic" fullWidth disabled label="Pin Code" variant="outlined" />
+        <TextField size={isMobile ? 'small' : 'normal' } id="outlined-basic" fullWidth disabled label="Pin Code" variant="outlined" />
         </Grid>
         <Grid item sm={6} xs={12}>
-        <TextField size={isMobile  ? 'small' : 'normal' } id="outlined-basic" fullWidth label="Email" variant="outlined" />
+        <TextField size={isMobile ? 'small' : 'normal' } id="outlined-basic" fullWidth label="Email" variant="outlined" />
         </Grid>
         <Grid item sm={6} xs={12}>
-        <TextField size={isMobile  ? 'small' : 'normal' } id="outlined-basic" fullWidth disabled label="House" variant="outlined" />
+        <TextField size={isMobile ? 'small' : 'normal' } id="outlined-basic" fullWidth disabled label="House" variant="outlined" />
         </Grid>
         <Grid item sm={6} xs={12}>
-        <TextField size={isMobile  ? 'small' : 'normal' } id="outlined-basic" fullWidth label="Aadhaar No." variant="outlined" />
+        <TextField size={isMobile ? 'small' : 'normal' } id="outlined-basic" fullWidth label="Aadhaar No." variant="outlined" />
         </Grid>
       </Grid>
       </Box>

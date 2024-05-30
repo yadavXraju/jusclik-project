@@ -1,51 +1,23 @@
 // ======= Page Owner Vikash =========
-import React, { useState } from 'react';
-import { Box, Tab, Tabs, Grid, Typography, Divider } from '@mui/material';
+// ======= Preview Tabs For Students =========
+
+import React, {useState} from 'react';
+import { Box, Typography, Divider, Grid } from '@mui/material';
 import SchoolTwoToneIcon from '@mui/icons-material/SchoolTwoTone';
 import DescriptionTwoToneIcon from '@mui/icons-material/DescriptionTwoTone';
 import HomeWorkTwoToneIcon from '@mui/icons-material/HomeWorkTwoTone';
 import PeopleAltTwoToneIcon from '@mui/icons-material/PeopleAltTwoTone';
 import LeaderboardTwoToneIcon from '@mui/icons-material/LeaderboardTwoTone';
+import ParamStepper from 'components/tabs/Stepper';
 import Experience from './Experience';
 import Education from './Education';
 
+export default function PreviewTabs() {
+  const [value, setValue] = useState(0);
 
-const PreviewTabs = () => {
-  const [tabValue, setTabValue] = useState(0); // State for controlling tabs
-
-  const tabs = [
-    { name: 'Other Details', icon: <DescriptionTwoToneIcon /> },
-    { name: 'Education', icon: <SchoolTwoToneIcon /> },
-    { name: 'Experience', icon: <LeaderboardTwoToneIcon /> },
-    { name: 'Address', icon: <HomeWorkTwoToneIcon /> },
-    { name: 'Contact Person', icon: <PeopleAltTwoToneIcon /> }
-  ];
-  //const tabLength = tabs.length;
-
-  const handleTabChange = (event, newValue) => {
-    setTabValue(newValue);
-  };
-
-  return (
-    <Box sx={{ width: '100%', height: '100%' }}>
-      {/* Tabs for switching between tabs */}
-      <Tabs value={tabValue} onChange={handleTabChange} sx={{ borderBottom: '1px solid #ccc' }} variant="scrollable" aria-label="Tabs">
-        {tabs.map((tab, index) => (
-          <Tab
-            key={index}
-            label={
-              <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                <span style={{ marginRight: '5px' }}>{tab.icon}</span>
-                {tab.name}
-              </Box>
-            }
-          />
-        ))}
-      </Tabs>
-      {/* Tab panels based on selected tab */}
-      <Box>
-        {tabValue === 0 && (
-          <>
+  const OtherDetails = () => {
+    return (
+      <>
             {/* ================ Render Basic Info tab content ============== */}
             <Box>
               <Box p={2}>
@@ -127,15 +99,12 @@ const PreviewTabs = () => {
               </Box>
             </Box>
           </>
-        )}
-        {tabValue === 1 && <Box mt={2}>
-          <Education disabled='true'/>
-          </Box>}
-        {tabValue === 2 && <Box mt={2}>
-          <Experience disabled='true' />
-          </Box>}
-        {tabValue === 3 && 
-         <>
+    );
+  };
+
+  const Address = () => {
+    return (
+      <>
          {/* ================ Render Address tab content ============== */}
          <Box p={2}>
            <Typography pb={1} variant="h4" gutterBottom>
@@ -223,159 +192,220 @@ const PreviewTabs = () => {
 
          </Box>
        </>
-        }
-        {tabValue === 4 && 
-         <>
-         {/* ================ Render Contact Person tab content ============== */}
-         <Box p={2}>
-           <Typography pb={1} variant="h4" gutterBottom>
-             Contact Person (Father)
-           </Typography>
-           <Divider />
+    );
+  };
 
-           <Box p={2}>
-             <Grid container spacing={3}>
-               <Grid item xs={12} md={6}>
-                 <Box pb={0.5} color={'#8b8989'}>
-                   NAME
-                 </Box>
-                 <Box fontSize={16}>Mr. Subash</Box>
-               </Grid>
-               <Grid item xs={12} md={6}>
-                 <Box pb={0.5} color={'#8b8989'}>
-                   RELATION
-                 </Box>
-                 <Box fontSize={16}>Father</Box>
-               </Grid>
-               <Grid item xs={12} md={6}>
-                 <Box pb={0.5} color={'#8b8989'}>
-                   MOBILE
-                 </Box>
-                 <Box fontSize={16}>8484937348</Box>
-               </Grid>
-               <Grid item xs={12} md={6}>
-                 <Box pb={0.5} color={'#8b8989'}>
-                   EMAIL
-                 </Box>
-                 <Box fontSize={16}>abc@gmail.com</Box>
-               </Grid>
-               <Grid item xs={12} md={6}>
-                 <Box pb={0.5} color={'#8b8989'}>
-                   EDUCATION
-                 </Box>
-                 <Box fontSize={16}>B.Sc</Box>
-               </Grid>
-               <Grid item xs={12} md={6}>
-                 <Box pb={0.5} color={'#8b8989'}>
-                   COMPANY
-                 </Box>
-                 <Box fontSize={16}>abc Company</Box>
-               </Grid>
-               <Grid item xs={12} md={6}>
-                 <Box pb={0.5} color={'#8b8989'}>
-                   DESIGNATION
-                 </Box>
-                 <Box fontSize={16}>Manager</Box>
-               </Grid>
-               <Grid item xs={12} md={6}>
-                 <Box pb={0.5} color={'#8b8989'}>
-                   ADDRESS
-                 </Box>
-                 <Box fontSize={16}>Delhi</Box>
-               </Grid>
-               <Grid item xs={12} md={6}>
-                 <Box pb={0.5} color={'#8b8989'}>
-                   AADHAAR NO.
-                 </Box>
-                 <Box fontSize={16}>12456789345</Box>
-               </Grid>
-               <Grid item xs={12} md={6}>
-                 <Box pb={0.5} color={'#8b8989'}>
-                   PEN
-                 </Box>
-                 <Box fontSize={16}>AZCIV89345</Box>
-               </Grid>
-             </Grid>
-           </Box>
+  const ContactPerson = () => {
+    return (
+      <>
+      {/* ================ Render Contact Person tab content ============== */}
+      <Box p={2}>
+        <Typography pb={1} variant="h4" gutterBottom>
+          Contact Person (Father)
+        </Typography>
+        <Divider />
 
-         </Box>
+        <Box p={2}>
+          <Grid container spacing={3}>
+            <Grid item xs={12} md={6}>
+              <Box pb={0.5} color={'#8b8989'}>
+                NAME
+              </Box>
+              <Box fontSize={16}>Mr. Subash</Box>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <Box pb={0.5} color={'#8b8989'}>
+                RELATION
+              </Box>
+              <Box fontSize={16}>Father</Box>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <Box pb={0.5} color={'#8b8989'}>
+                MOBILE
+              </Box>
+              <Box fontSize={16}>8484937348</Box>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <Box pb={0.5} color={'#8b8989'}>
+                EMAIL
+              </Box>
+              <Box fontSize={16}>abc@gmail.com</Box>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <Box pb={0.5} color={'#8b8989'}>
+                EDUCATION
+              </Box>
+              <Box fontSize={16}>B.Sc</Box>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <Box pb={0.5} color={'#8b8989'}>
+                COMPANY
+              </Box>
+              <Box fontSize={16}>abc Company</Box>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <Box pb={0.5} color={'#8b8989'}>
+                DESIGNATION
+              </Box>
+              <Box fontSize={16}>Manager</Box>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <Box pb={0.5} color={'#8b8989'}>
+                ADDRESS
+              </Box>
+              <Box fontSize={16}>Delhi</Box>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <Box pb={0.5} color={'#8b8989'}>
+                AADHAAR NO.
+              </Box>
+              <Box fontSize={16}>12456789345</Box>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <Box pb={0.5} color={'#8b8989'}>
+                PEN
+              </Box>
+              <Box fontSize={16}>AZCIV89345</Box>
+            </Grid>
+          </Grid>
+        </Box>
 
-         <Box p={2}>
-           <Typography pb={1} variant="h4" gutterBottom>
-             Contact Person (Mother)
-           </Typography>
-           <Divider />
-
-           <Box p={2}>
-             <Grid container spacing={3}>
-               <Grid item xs={12} md={6}>
-                 <Box pb={0.5} color={'#8b8989'}>
-                   NAME
-                 </Box>
-                 <Box fontSize={16}>Ms. Suman</Box>
-               </Grid>
-               <Grid item xs={12} md={6}>
-                 <Box pb={0.5} color={'#8b8989'}>
-                   RELATION
-                 </Box>
-                 <Box fontSize={16}>Mother</Box>
-               </Grid>
-               <Grid item xs={12} md={6}>
-                 <Box pb={0.5} color={'#8b8989'}>
-                   MOBILE
-                 </Box>
-                 <Box fontSize={16}>5469354098</Box>
-               </Grid>
-               <Grid item xs={12} md={6}>
-                 <Box pb={0.5} color={'#8b8989'}>
-                   EMAIL
-                 </Box>
-                 <Box fontSize={16}>abc@gmail.com</Box>
-               </Grid>
-               <Grid item xs={12} md={6}>
-                 <Box pb={0.5} color={'#8b8989'}>
-                   EDUCATION
-                 </Box>
-                 <Box fontSize={16}>B.Sc</Box>
-               </Grid>
-               <Grid item xs={12} md={6}>
-                 <Box pb={0.5} color={'#8b8989'}>
-                   COMPANY
-                 </Box>
-                 <Box fontSize={16}>abc Company</Box>
-               </Grid>
-               <Grid item xs={12} md={6}>
-                 <Box pb={0.5} color={'#8b8989'}>
-                   DESIGNATION
-                 </Box>
-                 <Box fontSize={16}>Manager</Box>
-               </Grid>
-               <Grid item xs={12} md={6}>
-                 <Box pb={0.5} color={'#8b8989'}>
-                   ADDRESS
-                 </Box>
-                 <Box fontSize={16}>Delhi</Box>
-               </Grid>
-               <Grid item xs={12} md={6}>
-                 <Box pb={0.5} color={'#8b8989'}>
-                   AADHAAR NO.
-                 </Box>
-                 <Box fontSize={16}>12456789345</Box>
-               </Grid>
-               <Grid item xs={12} md={6}>
-                 <Box pb={0.5} color={'#8b8989'}>
-                   PEN
-                 </Box>
-                 <Box fontSize={16}>AZCIV89345</Box>
-               </Grid>
-             </Grid>
-           </Box>
-         </Box>
-       </>
-        }
       </Box>
-    </Box>
-  );
-};
 
-export default PreviewTabs;
+      <Box p={2}>
+        <Typography pb={1} variant="h4" gutterBottom>
+          Contact Person (Mother)
+        </Typography>
+        <Divider />
+
+        <Box p={2}>
+          <Grid container spacing={3}>
+            <Grid item xs={12} md={6}>
+              <Box pb={0.5} color={'#8b8989'}>
+                NAME
+              </Box>
+              <Box fontSize={16}>Ms. Suman</Box>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <Box pb={0.5} color={'#8b8989'}>
+                RELATION
+              </Box>
+              <Box fontSize={16}>Mother</Box>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <Box pb={0.5} color={'#8b8989'}>
+                MOBILE
+              </Box>
+              <Box fontSize={16}>5469354098</Box>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <Box pb={0.5} color={'#8b8989'}>
+                EMAIL
+              </Box>
+              <Box fontSize={16}>abc@gmail.com</Box>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <Box pb={0.5} color={'#8b8989'}>
+                EDUCATION
+              </Box>
+              <Box fontSize={16}>B.Sc</Box>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <Box pb={0.5} color={'#8b8989'}>
+                COMPANY
+              </Box>
+              <Box fontSize={16}>abc Company</Box>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <Box pb={0.5} color={'#8b8989'}>
+                DESIGNATION
+              </Box>
+              <Box fontSize={16}>Manager</Box>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <Box pb={0.5} color={'#8b8989'}>
+                ADDRESS
+              </Box>
+              <Box fontSize={16}>Delhi</Box>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <Box pb={0.5} color={'#8b8989'}>
+                AADHAAR NO.
+              </Box>
+              <Box fontSize={16}>12456789345</Box>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <Box pb={0.5} color={'#8b8989'}>
+                PEN
+              </Box>
+              <Box fontSize={16}>AZCIV89345</Box>
+            </Grid>
+          </Grid>
+        </Box>
+      </Box>
+    </>
+    );
+  };
+
+
+
+  const tabPage = [
+    {
+      id: 1,
+      name: 'Other Details',
+      value: '1',
+      component: OtherDetails,
+      icon : <DescriptionTwoToneIcon />
+    },
+    {
+      id: 2,
+      name: 'Education',
+      value: '2',
+      component: Education,
+      icon: <SchoolTwoToneIcon />
+    },
+    {
+      id: 3,
+      name: 'Experience',
+      value: '3',
+      component: Experience,
+      icon : <LeaderboardTwoToneIcon />
+    },
+    {
+      id: 4,
+      name: 'Address',
+      value: '4',
+      component: Address,
+      icon : <HomeWorkTwoToneIcon />
+    },
+    {
+      id: 5,
+      name: 'Contact Person',
+      value: '5',
+      component: ContactPerson,
+      icon : <PeopleAltTwoToneIcon />
+    },
+  ];
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
+  return (
+    <>
+      <ParamStepper
+        variant={'scrollable'}
+        tabPage={tabPage}
+        showBottomNav={false}
+        numberShow={false}
+        iconShow={false}
+        value={value}
+        handleChange={handleChange}
+        customtabSytle={{padding:'8px'}}
+        customTabsStyle={{'& .MuiButtonBase-root':{minHeight:'49px'}, height:'50px'}}
+        customtabPanelStyle={{ padding: '0px', marginTop: '4px' }}
+        customtabWrapper={{ marginTop: '0px' }}
+      />
+    </>
+  );
+}
