@@ -16,7 +16,7 @@ const Provisional =  Loadable(lazy(() => import('views/erp-module/student-inform
 const Admission =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-master/admission')));
 
 const EditMasterDataField =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-master/EditMasterDataField')));
-const StudentPreview =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-master/admission/admission-form/StudentPreview')));
+const StudentPreview =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/student-master/admission/admission-preview/StudentPreview')));
 // Fee invoice
 const InvoiceModification =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/fee-accounting/new-invoice-modification')));
 const StudentFeeLedgerDetails =  Loadable(lazy(() => import('views/erp-module/student-information-fee-management/fee-accounting/student-fee-ledger-details')));
