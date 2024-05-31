@@ -1,5 +1,5 @@
 // OWNER DAMANDEEP
-import { ReuseableSettings } from 'pages/ReuseableSettingsLayout'
+import { ReuseableSettings } from 'pages/SettingsLayout'
 import { SettingData } from './SettingStufee'
 import React from 'react'
 
