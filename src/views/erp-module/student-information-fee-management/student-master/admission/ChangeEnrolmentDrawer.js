@@ -9,7 +9,7 @@ import ParameterizedDateComponent from 'components/ui/custom-input/DateComponent
 import InitiateWithdrawal from './admission-preview/InitiateWithdrawal';
 
 
-export default function ChangeEnrolmentDrawer() {
+ const  ChangeEnrolmentDrawer=()=>{
   const [state, setState] = React.useState({
     right: false,
     replacementDrawerOpen: false,
@@ -261,3 +261,6 @@ export default function ChangeEnrolmentDrawer() {
     </>
   );
 }
+
+
+export default ChangeEnrolmentDrawer;
