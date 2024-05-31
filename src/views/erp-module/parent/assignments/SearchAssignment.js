@@ -6,7 +6,7 @@ import SearchTwoToneIcon from '@mui/icons-material/SearchTwoTone';
 import Autocomplete from '@mui/material/Autocomplete';
 import { data } from './AssignmentData';
 import { Grid } from '@mui/material';
-import ParameterizedDateComponent from 'components/ui/custom-input/DateComponent';
+import DateComponent from 'components/ui/custom-input/DateComponent';
 
 
 const uniqueSubjects = [...new Set(data.map((item) => item.name))];
@@ -78,7 +78,7 @@ const SearchAssignment = ({ onSearch }) => {
               />
            
           </LocalizationProvider> */}
-          <ParameterizedDateComponent 
+          <DateComponent 
            value={startDate}
            label="From"
            onChange={handleStartDateChange}
@@ -98,7 +98,7 @@ const SearchAssignment = ({ onSearch }) => {
               />
             </DemoContainer>
           </LocalizationProvider> */}
-            <ParameterizedDateComponent 
+            <DateComponent 
            value={startDate}
            label="From"
            onChange={handleEndDateChange}

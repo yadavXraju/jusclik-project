@@ -7,9 +7,9 @@ import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
 import CreditCardOutlinedIcon from '@mui/icons-material/CreditCardOutlined';
 import TuneOutlinedIcon from '@mui/icons-material/TuneOutlined';
 import FolderOpenOutlinedIcon from '@mui/icons-material/FolderOpenOutlined';
-import ParamSetting from 'pages/Settings';
 
-const SettingData = [
+
+export const SettingData = [
   {
     icon: <CorporateFareRoundedIcon sx={{ color: '#838195' }} />,
     title: 'Organisation',
@@ -89,12 +89,3 @@ const SettingData = [
   }
 ];
 
-const Organisation= () =>{
-  return(
-    <>
-    <ParamSetting SettingData={SettingData} />
-    </>
-  )
-}
-
-export { SettingData, Organisation as default };

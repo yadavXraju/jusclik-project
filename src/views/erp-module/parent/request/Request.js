@@ -3,13 +3,13 @@
 import React,{useState} from 'react'
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
-import Leave from './requestcomponent/Leave';
-import Transportation from './requestcomponent/Transportation';
-import PersonalDetail from './requestcomponent/Personal';
-import ChangeSection from './requestcomponent/ChangeSection';
-import InterBranchTransfer from './requestcomponent/InterBranchTransfer';
-import Widthrawal from './requestcomponent/Widthrawal';
-import BookReservation from './requestcomponent/BookReservation';
+import Leave from './request-component/Leave';
+import Transportation from './request-component/Transportation';
+import PersonalDetail from './request-component/Personal';
+import ChangeSection from './request-component/ChangeSection';
+import InterBranchTransfer from './request-component/InterBranchTransfer';
+import Widthrawal from './request-component/Widthrawal';
+import BookReservation from './request-component/BookReservation';
 import SetupTabs from 'components/tabs/Stepper';
 import { useMediaQuery } from '@mui/material';
 import { DashboardTab } from 'components/dashboard/CommonCss';

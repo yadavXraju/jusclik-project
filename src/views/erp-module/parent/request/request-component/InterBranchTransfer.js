@@ -34,6 +34,7 @@ const options = [
 ];
 
 const InterBranchTransfer=()=>{
+  
   const [branchTransferInfo,setBranchTransferInfo]=useState({
         branch:"",
         effectiveDate:"",
@@ -61,7 +62,7 @@ const InterBranchTransfer=()=>{
             <DateComponent  name="effectiveDate" customStyle={{ width: "100%", margin: "10px" }} 
             onChange={handleChange} label="Effective Date" />
             <CustomTextField label="Remark" name="remarks" customStyle={{ width: "100%", margin: "10px" }} 
-            onChange={handleChange} type="multiline" />
+            onChange={handleChange} multiline={true} />
           </Grid>
         </Grid>
         <Grid textAlign="end"> <Button variant="contained">Submit Request</Button></Grid>
