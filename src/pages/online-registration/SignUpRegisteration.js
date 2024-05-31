@@ -60,7 +60,6 @@ const SignUpRegisteration = ({ continueHandler }) => {
 
   const changeHandler = (e) => {
     const { name, value } = e.target;
-
     // Check if the input field is a text field and not email or Aadhar card
     if (e.target.nodeName === 'INPUT' && e.target.type === 'text' && name !== 'email') {
       // Capitalize the first letter
@@ -79,11 +78,11 @@ const SignUpRegisteration = ({ continueHandler }) => {
   const [showDiv2, setShowDiv2] = useState(false);
 
   // Data can not directly stored in Dob , by this function using dob in setallDataform
-  const DatePickerSelector = (date) => {
-    const formatteddate = date.format('DD-MM-YYYY');
-    setallDataform({ ...allDataform, dob: formatteddate });
-    dispatch(updateAllDataform({ dob: formatteddate }));
-  };
+  // const DatePickerSelector = (date) => {
+  //   const formatteddate = date.format('DD-MM-YYYY');
+  //   setallDataform({ ...allDataform, dob: formatteddate });
+  //   dispatch(updateAllDataform({ dob: formatteddate }));
+  // };
 
   // Error Handling
 
@@ -280,7 +279,7 @@ const SignUpRegisteration = ({ continueHandler }) => {
 
                     <ParameterizedDateComponent
                       label="Date of Birth"
-                      onChange={DatePickerSelector}
+                      onChange={changeHandler}
                       name="dob"
                       value={allDataform.dob}
                       customStyle={{
