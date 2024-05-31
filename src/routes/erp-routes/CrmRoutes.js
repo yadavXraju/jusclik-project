@@ -8,7 +8,7 @@ import Loadable from 'components/ui/Loadable';
 const Dashboard = Loadable(lazy(() => import('views/erp-module/crm/dashboard')));
 // contact
 const Contact = Loadable(lazy(() => import('views/erp-module/crm/contact')));
-const Preview = Loadable(lazy(() => import('views/erp-module/crm/contact/Preview')));
+const Preview = Loadable(lazy(() => import('views/erp-module/crm/contact/contact-preview/Preview')));
 
 // pipeline
 const Pipeline = Loadable(lazy(() => import('views/erp-module/crm/pipeline')));

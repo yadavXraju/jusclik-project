@@ -18,7 +18,7 @@ import WarningDialog from '../WarningDialog';
 
 
 
-const CommonDataGrid=({ rows, setRows, columns,
+const CommonDataGrid=({ rows, setRows, columns, onRowClick,
   allowEdit = true, allowDelete = true, customAction=true,
   setIdToDelete, idToDelete,rowModesModel,setRowModesModel,
   checkboxSelection=true,customHandleDeleteClick,customHandleSaveClick }) => {
@@ -190,6 +190,7 @@ const CommonDataGrid=({ rows, setRows, columns,
         rows={rows}
         columns={gridColumns}
         editMode="row"
+        onRowClick={onRowClick}
         rowModesModel={rowModesModel}
         onRowModesModelChange={handleRowModesModelChange}
         onRowEditStop={handleRowEditStop}

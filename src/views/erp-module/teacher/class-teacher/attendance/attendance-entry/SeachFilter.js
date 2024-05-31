@@ -4,12 +4,11 @@
 import React from 'react';
 import { Paper, Box, FormControl, InputLabel, Select, MenuItem, Button, useMediaQuery } from '@mui/material';
 import SearchTwoToneIcon from '@mui/icons-material/SearchTwoTone';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { DatePicker } from '@mui/x-date-pickers';
-import CalendarMonthTwoToneIcon from '@mui/icons-material/CalendarMonthTwoTone';
+
 import PropTypes from 'prop-types';
 import { useTheme } from '@emotion/react';
+import ParameterizedDateComponent from 'components/ui/custom-input/DateComponent';
+import ParameterizedAutoComplete from 'components/ui/custom-input/AutoComplete';
 
 export default function SearchFilterBox({
   selectClass,
@@ -19,11 +18,7 @@ export default function SearchFilterBox({
   SectionList,
   handleChange,
   handleSearchClick,
-  datePickerLabel,
-  datePickerValue,
-  datePickerOpenTo,
-  datePickerViews,
-  handleMonthChange
+
 }) {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
@@ -31,7 +26,7 @@ export default function SearchFilterBox({
   return (
     <Paper sx={{ borderRadius: '30px' }}>
       <Box sx={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', p: 2, gap: 1, justifyContent: isMobile ? 'center' : 'left' }}>
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
+        {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
           <DatePicker
             label={datePickerLabel}
             value={datePickerValue}
@@ -41,7 +36,15 @@ export default function SearchFilterBox({
             slots={{ openPickerIcon: CalendarMonthTwoToneIcon }}
             sx={{ minWidth: '250px' }}
           />
-        </LocalizationProvider>
+        </LocalizationProvider> */}
+        <ParameterizedDateComponent   
+        onChange={handleChange}  
+        value={selectClass}
+        label='Select Date'
+        name="selectdate"
+        />
+
+        <ParameterizedAutoComplete  name='selectClass' onChange={handleChange} label='Select Class' />
         <FormControl sx={{ minWidth: 250 }}>
           <InputLabel id="class-select-label">Select Class</InputLabel>
           <Select
