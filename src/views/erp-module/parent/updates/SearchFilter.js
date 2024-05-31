@@ -4,10 +4,8 @@ import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import SearchTwoToneIcon from '@mui/icons-material/SearchTwoTone';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import CalendarMonthTwoToneIcon from '@mui/icons-material/CalendarMonthTwoTone';
+
+import ParameterizedDateComponent from 'components/ui/custom-input/DateComponent';
 
 const SearchFilter = ({ onSearch }) => {
   const [startDate, setStartDate] = React.useState(null);
@@ -52,25 +50,14 @@ const SearchFilter = ({ onSearch }) => {
       autoComplete="off"
     >
     
-
-      <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <DatePicker
-          label="From"
+<ParameterizedDateComponent name="startDate"   label="From"
           value={startDate}
-          onChange={handleStartDateChange}
-          slots={{
-            openPickerIcon: CalendarMonthTwoToneIcon
-          }}
-        />
-        <DatePicker
-          label="To"
+          onChange={handleStartDateChange}  />
+
+<ParameterizedDateComponent name="endDate"   label="To"
           value={endDate}
-          onChange={handleEndDateChange}
-          slots={{
-            openPickerIcon: CalendarMonthTwoToneIcon
-          }}
-        />
-      </LocalizationProvider>
+          onChange={handleEndDateChange}  />
+
       
      
       <TextField

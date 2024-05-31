@@ -4,8 +4,8 @@ import { Grid,  Paper, Button } from '@mui/material';
 import { Box  } from '@mui/system';
 import React from 'react';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import ParameterizedDateComponent from 'components/ui/custom-input/DateComponent';
-import ParameterizedAutoComplete from 'components/ui/custom-input/AutoComplete';
+import DateComponent from 'components/ui/custom-input/DateComponent';
+import AutoComplete from 'components/ui/custom-input/AutoComplete';
 import CustomTextField from 'components/ui/custom-input/TextField';
 
 const Leave = () => {
@@ -15,6 +15,22 @@ const Leave = () => {
  const toppadding = res800?'10px':null;
  const toppadding2 = res800?'5px':null;
  
+const[leaveInfo,setLeaveInfo]=React.useState({
+
+  remarks:"",
+  leaveType:"",
+  leaveFrom:"",
+  leaveTo:"",
+  leaveReason:"",
+  totalLeave:"",
+  status:""
+});
+
+const handleChange=(e)=>{
+const{name,value}=e.target;
+setLeaveInfo({...leaveInfo,[name]:value})
+}
+
    const  leaveOptions=[{
     label:"Medical Emergency",value:"Medical Emergency"
    },
@@ -28,32 +44,30 @@ const Leave = () => {
         <Grid container >
           <Grid item xs={12} container flexDirection="row" alignItems="center">
             <Grid item xs={12} md={6} style={{ padding: '5px 10px' }}>
-              {/* <TextField
-                multiline
-                label="REMARK"
-                fullWidth
-                variant="outlined"
-              /> */}
               <CustomTextField  
-              type='multiline'
+              multiline={true}
               label="Remarks"
+              name='remarks'
               customStyle={{width:"100%"}}
+              onChange={handleChange} 
               />
             </Grid>
 
             <Grid container flexDirection="row" item xs={12} md={6} >
               <Grid item md={6} xs={12}  style={{ paddingLeft:'10px' ,paddingTop:toppadding2 ,paddingRight:'10px' }}>
              
-                <ParameterizedDateComponent 
+                <DateComponent 
                 label={"Leave From "}
                 customStyle={{width:"100%"}}
+                name='leaveFrom'
+                onChange={handleChange} 
                 />
 
               </Grid>
 
               <Grid item md={6} xs={12} style={{ paddingRight:'10px' , paddingLeft:'10px' , paddingTop:toppadding }}>
 
-                <ParameterizedDateComponent label={"Leave To"} customStyle={{width:"100%"}} />
+                <DateComponent label={"Leave To"} customStyle={{width:"100%"}} name='leaveTo'  onChange={handleChange}  />
               </Grid>
             </Grid>
           </Grid>
@@ -61,18 +75,18 @@ const Leave = () => {
           <Grid container>
             <Grid item xs={12} md={6} style={{ padding: '5px 10px' }}>
               {/* <TextField fullWidth variant="outlined" label="Total Leaves:" /> */}
-              <CustomTextField  label="Total Leaves:" customStyle={{width:"100%"}} />
+              <CustomTextField  name='totalLeave' label="Total Leaves:" customStyle={{width:"100%"}}   onChange={handleChange} />
             </Grid>
             <Grid item xs={12} md={6} style={{ padding: '5px 10px' }}>
               {/* <TextField fullWidth variant="outlined" label=' Reason:' /> */}
-              <CustomTextField  label="Reason:" customStyle={{width:"100%"}} />
+              <CustomTextField  name='reason' label="Reason:" customStyle={{width:"100%"}}  onChange={handleChange}  />
             </Grid>
           </Grid>
 
           <Grid container>
             <Grid item xs={12} md={6} style={{ marginBottom: '20px', padding: '5px 10px' }}>
             
-              <ParameterizedAutoComplete option={leaveOptions} customStyle={{width:"100%"}} label={"Status:"}/>
+              <AutoComplete option={leaveOptions} customStyle={{width:"100%"}} name="status" label={"Status:"}  onChange={handleChange} />
             </Grid>
 
          
