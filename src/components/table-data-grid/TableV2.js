@@ -8,7 +8,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
 const CustomTable = ({ rows, columns }) => {
-  const tableHeader = columns.map((ele,index) => <TableCell key={"table column"+index} align="right">{ele}</TableCell>);
+  const tableHeader =<TableRow>{columns.map((ele,index) => <TableCell key={"table column"+index} align="right">{ele}</TableCell>)}</TableRow>
   const tableBody = rows.map((row,rowNum) => (
     <TableRow key={"table row"+rowNum}>{
       Object.keys(row).map((key,cellNo)=>(
@@ -20,7 +20,7 @@ const CustomTable = ({ rows, columns }) => {
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
-          <TableRow>{tableHeader}</TableRow>
+          {tableHeader}
         </TableHead>
         <TableBody>{tableBody}</TableBody>
       </Table>
