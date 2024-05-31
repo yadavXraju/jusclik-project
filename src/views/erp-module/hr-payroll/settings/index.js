@@ -1,4 +1,4 @@
-import { ReuseableSettings } from 'pages/ReuseableSettingsLayout'
+import { ReuseableSettings } from 'pages/SettingsLayout'
 import React from 'react'
 import { SettingData } from './SettingHrPayroll'
 const Setting = () => {
