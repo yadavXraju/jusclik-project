@@ -159,6 +159,7 @@ const Admission = () => {
       zIndex: '20'
     }
   };
+  
   return (
     <>
       <Card>

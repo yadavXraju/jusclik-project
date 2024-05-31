@@ -12,9 +12,9 @@ import Popover from '@mui/material/Popover';
 import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
 import MoreVertTwoToneIcon from '@mui/icons-material/MoreVertTwoTone';
 import PreviewTabs from './PreviewTabs';
-import ProgressSteps from './ProgressSteps';
+import ProgressSteps from '../ProgressSteps';
 import { useLocation } from 'react-router-dom';
-import AddContactDrawer from './AddContactDrawer';
+import AddContactDrawer from '../AddContactDrawer';
 
 function Preview() {
   const location = useLocation();

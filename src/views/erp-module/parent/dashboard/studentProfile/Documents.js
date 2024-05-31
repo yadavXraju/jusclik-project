@@ -55,7 +55,7 @@ export default function Documents() {
   // ============== code for handle upload attachment end ==============
 
   return (
-    <React.Fragment>
+    <>
       <Paper sx={{ width: '100%', overflow: 'hidden', borderRadius: 0 }}>
         <TableContainer sx={{ maxHeight: 440 }}>
           <Table stickyHeader aria-label="sticky table" sx={{ border: '1px solid #ccc' }}>
@@ -119,6 +119,6 @@ export default function Documents() {
           <Button onClick={handleAttachmentDialogClose} sx={{ background: 'rgb(216, 67, 21)', color: 'black' }}>Cancel</Button>
         </DialogActions>
       </Dialog>
-    </React.Fragment>
+    </>
   );
 }

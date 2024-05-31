@@ -5,7 +5,7 @@ import useDrawer from 'hooks/useDrawer';
 import { Button, Box } from '@mui/material';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import BottomNavbar from 'components/BottomNavbar';
-import documentData from './Sample-DocumentData';
+import documentData from './contact-preview/Sample-DocumentData';
 import AddLeadForm from './AddLeadForm';
 import PersonAddAltTwoToneIcon from '@mui/icons-material/PersonAddAltTwoTone';
 import DriveFolderUploadTwoToneIcon from '@mui/icons-material/DriveFolderUploadTwoTone';
