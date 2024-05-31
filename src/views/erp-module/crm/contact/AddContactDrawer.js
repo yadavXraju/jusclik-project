@@ -126,7 +126,7 @@ const AddContactDrawer = ({ DrawerBtn = false, editIcon = false, currEditItem, h
 
       {editIcon && <EditTwoToneIcon onClick={() => handleEditClick(event)} />}
 
-      <DrawerLayOut anchor={anchor} direction={'right'} toggleDrawer={toggleDrawer} Title={'Add Contact'} Body={<DrawerBody />} Bottom={<DrawerBottom />} />
+      <DrawerLayOut anchor={anchor} direction={'right'} toggleDrawer={toggleDrawer} Title={'Add Contact'} Body={<DrawerBody />} customStyles={{width: { sm: '100vw', md: 820 }}} Bottom={<DrawerBottom />} />
     </>
   );
 };
