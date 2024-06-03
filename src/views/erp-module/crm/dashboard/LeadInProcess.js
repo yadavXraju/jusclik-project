@@ -7,6 +7,32 @@ import ParamWidgetHeader from 'components/dashboard/WidgetHeader';
 import CustomTable from 'components/table-data-grid/TableV2';
 
 const LeadInProcess = () => {
+    // Function to render status chip with different colors
+    const renderStatusChip = (status) => {
+      let backgroundColor, color;
+  
+      switch (status) {
+        case 'In Progress':
+          backgroundColor = '#90caf94a';
+          color = '#90CAF9';
+          break;
+        case 'Pending':
+          backgroundColor = '#FFF8E1';
+          color = '#FFC107';
+          break;
+        case 'Completed':
+          backgroundColor = '#D5FADF';
+          color = '#5EC853';
+          break;
+        default:
+          backgroundColor = '#D5FADF';
+          color = '#000';
+          break;
+      }
+  
+      return <Chip label={status} color="default" style={{ backgroundColor, color }} />;
+    };
+  
   const rows = [
     {
       leadNo: 1,
@@ -146,31 +172,6 @@ const LeadInProcess = () => {
     // Add more leads data as needed
   ];
   const columns = ['Lead No', 'Name', 'Company', 'Status', 'Phone No.', 'Next Follow Up', 'Source'];
-  // Function to render status chip with different colors
-  const renderStatusChip = (status) => {
-    let backgroundColor, color;
-
-    switch (status) {
-      case 'In Progress':
-        backgroundColor = '#90caf94a';
-        color = '#90CAF9';
-        break;
-      case 'Pending':
-        backgroundColor = '#FFF8E1';
-        color = '#FFC107';
-        break;
-      case 'Completed':
-        backgroundColor = '#D5FADF';
-        color = '#5EC853';
-        break;
-      default:
-        backgroundColor = '#D5FADF';
-        color = '#000';
-        break;
-    }
-
-    return <Chip label={status} color="default" style={{ backgroundColor, color }} />;
-  };
 
   return (
     <Paper
